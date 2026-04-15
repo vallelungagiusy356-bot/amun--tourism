@@ -1,50 +1,46 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Georgia', serif;
-    /* TRAMONTO ROSSO FUOCO - Molto intenso */
+    margin: 0 !important;
+    padding: 0 !important;
+    /* TRAMONTO ROSSO FUOCO INTENSO */
     background: linear-gradient(180deg, 
         #b8860b 0%,    
-        #ff4500 20%,   /* Rosso acceso dell'originale */
+        #ff4500 20%,   /* Il Rosso che cercavi */
         #ff8c00 45%,   
         #8a2be2 70%,   
         #000000 100%   
     ) fixed !important;
-    color: white;
-    min-height: 100vh;
+    background-size: cover !important;
+    color: white !important;
+    min-height: 100vh !important;
 }
 
-/* BOTTONI ORO REGALE */
+/* BOTTONI ORO REGALE - Sostituiscono il grigio */
 .btn-gold {
     background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728) !important;
     border: none !important;
     color: #332200 !important;
-    padding: 15px 30px;
-    border-radius: 12px;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    cursor: pointer;
+    padding: 15px 30px !important;
+    border-radius: 12px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    display: inline-block !important;
 }
 
-/* EFFETTO VETRO CRISTALLINO */
+/* FINESTRA CHAT - VETRO TRASPARENTE */
 .chat-window {
     background: rgba(255, 255, 255, 0.15) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
     border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border-radius: 30px !important;
+    width: 90% !important;
+    max-width: 400px !important;
 }
 
-/* CASTELLANA CHE VOLTEGGIA */
-.castellana-img {
-    max-height: 75vh;
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
-    animation: floating 5s ease-in-out infinite;
-}
-
-@keyframes floating {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+/* SISTEMAZIONE MENU (rimuove i pallini bianchi) */
+nav ul {
+    list-style: none !important;
+    padding: 0 !important;
+    display: flex !important;
+    gap: 20px !important;
 }
