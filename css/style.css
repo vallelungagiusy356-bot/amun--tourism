@@ -1,37 +1,129 @@
+/* Definizione dei colori e delle variabili */
 :root {
     --gold: #d4af37;
-    --dark-bg: rgba(0, 0, 0, 0.6);
+    --gold-gradient: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
     --glass: rgba(255, 255, 255, 0.1);
+    --dark-overlay: rgba(0, 0, 0, 0.5);
 }
 
+/* Reset e Sfondo Principale */
 body {
     margin: 0;
+    padding: 0;
     font-family: 'Georgia', serif;
-    background: url('../assets/tramonto-caccamo.jpg') no-repeat center center fixed;
+    background: url('../asset/castello.jpg') no-repeat center center fixed;
     background-size: cover;
     color: white;
+    overflow-x: hidden;
 }
 
+/* Sovrapposizione scura per rendere leggibile il testo */
 .background-overlay {
     background: linear-gradient(to bottom, transparent, #1a0f00);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Stile pulsanti Gold come nel tuo mockup */
-.btn-gold {
-    background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
-    border: none;
-    padding: 15px 30px;
-    border-radius: 10px;
+/* Navigazione */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: rgba(0,0,0,0.3);
+}
+
+.logo {
+    font-size: 24px;
     font-weight: bold;
+    color: var(--gold);
+}
+
+/* Layout Principale */
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 5% 50px 5%;
+    flex-grow: 1;
+}
+
+/* Sezione Avatar (Castellana) */
+.avatar-section {
+    width: 45%;
+    position: relative;
+}
+
+.castellana-img {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
+}
+
+/* Pulsanti stile Mockup */
+.buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btn-gold {
+    background: var(--gold-gradient);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #332200;
     cursor: pointer;
-    box-shadow: 0 0 15px var(--gold);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    transition: 0.3s;
+}
+
+.btn-glass {
+    background: var(--glass);
+    border: 1px solid white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    color: white;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+}
+
+/* Chatbox Glassmorphism */
+.chat-section {
+    width: 35%;
+    margin-bottom: 50px;
 }
 
 .chat-window {
     background: var(--glass);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 20px;
-    padding: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.chat-input-area {
+    display: flex;
+    margin-top: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 30px;
+    padding: 5px 15px;
+}
+
+.chat-input-area input {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+
+.mic-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
 }
