@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="background-castle"></div>
+
     <div class="background-overlay">
-        
         <header>
             <nav>
-                <div class="logo">Amunì <span style="color: white; font-weight: normal;">Tourism</span></div>
-                <ul style="display: flex; list-style: none; gap: 20px;">
+                <div class="logo">Amunì <span>Tourism</span></div>
+                <ul>
                     <li>Home</li>
                     <li>Esperienze</li>
                     <li>Chi Siamo</li>
@@ -22,7 +23,9 @@
 
         <main>
             <section class="avatar-section">
-                <img src="asset/castellana.jpg" alt="La Castellana di Caccamo" class="castellana-img">
+                <div id="container-3d">
+                    <img src="asset/castellana_clean.png" alt="La Castellana" class="castellana-img">
+                </div>
                 <div class="buttons">
                     <button class="btn-gold">ESPLORA CON LA CASTELLANA</button>
                     <button class="btn-glass">INVOCA L'APP AR</button>
@@ -32,8 +35,7 @@
             <section class="chat-section">
                 <div class="chat-window">
                     <div id="chat-display">
-                        <p style="color: var(--gold); font-weight: bold; margin-bottom: 5px;">Castellana di Caccamo</p>
-                        <p>Benvenuta nel mio regno. Io sono la custode delle storie di questo castello. Cosa desideri scoprire oggi?</p>
+                        <p class="bot-msg"><b>Castellana di Caccamo</b><br>Benvenuta nel mio regno. Cosa desideri scoprire oggi?</p>
                     </div>
                     <div class="chat-input-area">
                         <input type="text" id="user-input" placeholder="Scrivi alla Castellana...">
@@ -42,9 +44,7 @@
                 </div>
             </section>
         </main>
-
     </div>
-
     <script src="js/main.js"></script>
 </body>
 </html>
