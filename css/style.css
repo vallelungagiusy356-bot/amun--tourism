@@ -1,25 +1,37 @@
-/* Definizione dei colori e delle variabili */
 :root {
-    --gold: #d4af37;
-    --gold-gradient: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
+    --gold: #bf953f;
+    --light-gold: #fcf6ba;
     --glass: rgba(255, 255, 255, 0.1);
-    --dark-overlay: rgba(0, 0, 0, 0.5);
+    --shadow: rgba(0, 0, 0, 0.5);
 }
 
-/* Reset e Sfondo Principale */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Georgia', serif;
-    background: url('../asset/castello.jpg') no-repeat center center fixed;
+    /* Cielo al tramonto: dall'oro scuro al viola notte */
+    background: linear-gradient(180deg, #b8860b 0%, #ff8c00 35%, #4b0082 75%, #000000 100%) no-repeat fixed;
     background-size: cover;
     color: white;
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* Sovrapposizione scura per rendere leggibile il testo */
+/* Il Castello trasparente */
+.background-castle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('../asset/castello_clean.png') no-repeat center center;
+    background-size: cover;
+    mix-blend-mode: overlay; /* Fondamentale per fondere i pixel con il tramonto */
+    opacity: 0.6;
+}
+
 .background-overlay {
-    background: linear-gradient(to bottom, transparent, #1a0f00);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -30,100 +42,94 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 20px 50px;
-    background: rgba(0,0,0,0.3);
+    align-items: center;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--gold);
-}
+.logo { font-size: 24px; font-weight: bold; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
+.logo span { color: white; font-weight: normal; }
+
+nav ul { display: flex; list-style: none; gap: 30px; }
+nav ul li { cursor: pointer; font-size: 14px; letter-spacing: 1px; transition: 0.3s; }
+nav ul li:hover { color: var(--gold); }
 
 /* Layout Principale */
 main {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 0 5% 50px 5%;
-    flex-grow: 1;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 50px;
 }
 
-/* Sezione Avatar (Castellana) */
+/* Sezione Avatar */
 .avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 45%;
-    position: relative;
 }
 
 .castellana-img {
-    width: 100%;
-    max-width: 500px;
-    display: block;
-    filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
+    max-height: 65vh;
+    width: auto;
+    filter: drop-shadow(0 0 25px rgba(184, 134, 11, 0.6));
+    animation: float 4s ease-in-out infinite; /* Effetto galleggiamento */
 }
 
-/* Pulsanti stile Mockup */
-.buttons {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
 }
+
+/* Pulsanti */
+.buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; width: 100%; max-width: 300px; }
 
 .btn-gold {
-    background: var(--gold-gradient);
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-weight: bold;
-    color: #332200;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-    transition: 0.3s;
+    background: linear-gradient(45deg, var(--gold), var(--light-gold));
+    border: none; padding: 15px; border-radius: 8px;
+    font-weight: bold; cursor: pointer; transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .btn-glass {
     background: var(--glass);
-    border: 1px solid white;
-    padding: 12px 25px;
-    border-radius: 8px;
-    color: white;
-    backdrop-filter: blur(5px);
-    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white; padding: 15px; border-radius: 8px;
+    backdrop-filter: blur(10px); cursor: pointer; transition: 0.3s;
 }
 
-/* Chatbox Glassmorphism */
-.chat-section {
-    width: 35%;
-    margin-bottom: 50px;
-}
+.btn-gold:hover, .btn-glass:hover { transform: scale(1.05); }
 
+/* Chat Window */
 .chat-window {
-    background: var(--glass);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    width: 380px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
+
+#chat-display { flex: 1; padding: 25px; overflow-y: auto; font-size: 15px; line-height: 1.6; }
+.bot-msg { color: var(--light-gold); }
 
 .chat-input-area {
     display: flex;
-    margin-top: 20px;
+    padding: 20px;
     background: rgba(0,0,0,0.2);
-    border-radius: 30px;
-    padding: 5px 15px;
+    border-radius: 0 0 30px 30px;
 }
 
 .chat-input-area input {
+    flex: 1;
     background: transparent;
     border: none;
     color: white;
-    padding: 10px;
-    width: 100%;
+    padding-left: 10px;
 }
 
-.mic-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-}
+.mic-btn { background: none; border: none; cursor: pointer; font-size: 20px; }
