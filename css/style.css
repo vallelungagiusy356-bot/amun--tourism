@@ -2,14 +2,14 @@
     --gold: #bf953f;
     --light-gold: #fcf6ba;
     --glass: rgba(255, 255, 255, 0.1);
-    --shadow: rgba(0, 0, 0, 0.5);
+    --shadow: rgba(0, 0, 0, 0.6);
 }
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Georgia', serif;
-    /* Cielo al tramonto: dall'oro scuro al viola notte */
+    /* Gradiente Tramonto: Oro -> Arancio -> Viola -> Nero */
     background: linear-gradient(180deg, #b8860b 0%, #ff8c00 35%, #4b0082 75%, #000000 100%) no-repeat fixed;
     background-size: cover;
     color: white;
@@ -17,7 +17,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Il Castello trasparente */
+/* IL CASTELLO SULLO SFONDO */
 .background-castle {
     position: fixed;
     top: 0;
@@ -25,10 +25,12 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: url('../asset/castello_clean.png') no-repeat center center;
+    /* Il percorso '../' serve per uscire dalla cartella css/ e trovare l'immagine nella root */
+    background: url('../castello_clean.png') no-repeat center center;
     background-size: cover;
-    mix-blend-mode: overlay; /* Fondamentale per fondere i pixel con il tramonto */
-    opacity: 0.6;
+    mix-blend-mode: overlay; /* Fonde il castello con i colori del tramonto */
+    opacity: 0.5;
+    filter: brightness(0.9) contrast(1.3);
 }
 
 .background-overlay {
@@ -37,7 +39,7 @@ body {
     flex-direction: column;
 }
 
-/* Navigazione */
+/* NAVIGAZIONE */
 nav {
     display: flex;
     justify-content: space-between;
@@ -45,14 +47,21 @@ nav {
     align-items: center;
 }
 
-.logo { font-size: 24px; font-weight: bold; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
+.logo { 
+    font-size: 24px; 
+    font-weight: bold; 
+    color: var(--gold); 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+}
+
 .logo span { color: white; font-weight: normal; }
 
 nav ul { display: flex; list-style: none; gap: 30px; }
-nav ul li { cursor: pointer; font-size: 14px; letter-spacing: 1px; transition: 0.3s; }
+nav ul li { cursor: pointer; font-size: 14px; transition: 0.3s; }
 nav ul li:hover { color: var(--gold); }
 
-/* Layout Principale */
+/* LAYOUT PRINCIPALE */
 main {
     display: flex;
     flex: 1;
@@ -61,7 +70,7 @@ main {
     padding: 20px 50px;
 }
 
-/* Sezione Avatar */
+/* SEZIONE CASTELLANA */
 .avatar-section {
     display: flex;
     flex-direction: column;
@@ -70,10 +79,11 @@ main {
 }
 
 .castellana-img {
-    max-height: 65vh;
+    max-height: 70vh;
     width: auto;
-    filter: drop-shadow(0 0 25px rgba(184, 134, 11, 0.6));
-    animation: float 4s ease-in-out infinite; /* Effetto galleggiamento */
+    /* Un'aura dorata per nascondere eventuali imperfezioni del ritaglio */
+    filter: drop-shadow(0 0 25px rgba(184, 134, 11, 0.5));
+    animation: float 4s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -82,26 +92,41 @@ main {
     100% { transform: translateY(0px); }
 }
 
-/* Pulsanti */
-.buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; width: 100%; max-width: 300px; }
+/* PULSANTI */
+.buttons { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: 30px; 
+    width: 100%; 
+    max-width: 300px; 
+}
 
 .btn-gold {
     background: linear-gradient(45deg, var(--gold), var(--light-gold));
-    border: none; padding: 15px; border-radius: 8px;
-    font-weight: bold; cursor: pointer; transition: 0.3s;
+    border: none; 
+    padding: 15px; 
+    border-radius: 8px;
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: 0.3s;
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .btn-glass {
     background: var(--glass);
     border: 1px solid rgba(255,255,255,0.3);
-    color: white; padding: 15px; border-radius: 8px;
-    backdrop-filter: blur(10px); cursor: pointer; transition: 0.3s;
+    color: white; 
+    padding: 15px; 
+    border-radius: 8px;
+    backdrop-filter: blur(10px); 
+    cursor: pointer; 
+    transition: 0.3s;
 }
 
 .btn-gold:hover, .btn-glass:hover { transform: scale(1.05); }
 
-/* Chat Window */
+/* CHAT WINDOW */
 .chat-window {
     width: 380px;
     height: 500px;
@@ -114,7 +139,14 @@ main {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-#chat-display { flex: 1; padding: 25px; overflow-y: auto; font-size: 15px; line-height: 1.6; }
+#chat-display { 
+    flex: 1; 
+    padding: 25px; 
+    overflow-y: auto; 
+    font-size: 15px; 
+    line-height: 1.6; 
+}
+
 .bot-msg { color: var(--light-gold); }
 
 .chat-input-area {
@@ -130,6 +162,7 @@ main {
     border: none;
     color: white;
     padding-left: 10px;
+    outline: none;
 }
 
-.mic-btn { background: none; border: none; cursor: pointer; font-size: 20px; }
+.mic-btn { background: none; border: none; cursor: pointer; font-size: 20px; filter: grayscale(1); }
