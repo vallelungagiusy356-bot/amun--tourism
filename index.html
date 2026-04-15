@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amunì Tourism - Caccamo</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Amuni Tourism - Caccamo</title>
+    <link rel="stylesheet" href="css/style.css?v=3.0">
 </head>
 <body>
-    <div class="background-castle"></div>
-
-    <div class="background-overlay">
+    
+    <div class="sky-gradient"></div>    <div class="back-castle"></div>     <div class="back-dress"></div>      <div class="vignette-overlay"></div><div class="content-wrapper">
         <header>
             <nav>
                 <div class="logo">Amunì <span>Tourism</span></div>
-                <ul>
+                <ul class="nav-menu">
                     <li>Home</li>
                     <li>Esperienze</li>
                     <li>Chi Siamo</li>
@@ -23,28 +22,26 @@
 
         <main>
             <section class="avatar-section">
-                <div id="container-3d">
-                    <img src="castellana_clean.png" alt="La Castellana" class="castellana-img">
+                <img src="castellana_clean.png" alt="Castellana di Caccamo" class="castellana-img">
+            </section>
+
+            <section class="chat-window glass">
+                <div id="chat-display">
+                    <p class="bot-msg"><strong>Castellana di Caccamo</strong></p>
+                    <p>Benvenuta nel mio regno. Cosa desideri scoprire oggi?</p>
                 </div>
-                <div class="buttons">
+                <div class="buttons-area">
                     <button class="btn-gold">ESPLORA CON LA CASTELLANA</button>
                     <button class="btn-glass">INVOCA L'APP AR</button>
                 </div>
-            </section>
-
-            <section class="chat-section">
-                <div class="chat-window">
-                    <div id="chat-display">
-                        <p class="bot-msg"><b>Castellana di Caccamo</b><br>Benvenuta nel mio regno. Cosa desideri scoprire oggi?</p>
-                    </div>
-                    <div class="chat-input-area">
-                        <input type="text" id="user-input" placeholder="Scrivi alla Castellana...">
-                        <button class="mic-btn">🎤</button>
-                    </div>
+                <div class="chat-input-area">
+                    <input type="text" placeholder="Scrivi alla Castellana...">
+                    <button class="mic-btn">🎤</button>
                 </div>
             </section>
         </main>
     </div>
+
     <script src="js/main.js"></script>
 </body>
 </html>
