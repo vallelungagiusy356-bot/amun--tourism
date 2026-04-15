@@ -1,46 +1,181 @@
-body {
-    margin: 0 !important;
-    padding: 0 !important;
-    /* TRAMONTO ROSSO FUOCO INTENSO */
+/* VARIABILI PER COLORI REGALI */
+:root {
+    --gold: #bf953f;
+    --light-gold: #fcf6ba;
+    --text-color: #332200;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* 1. IL CIELO - Sfondo base */
+.sky-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -4;
     background: linear-gradient(180deg, 
-        #b8860b 0%,    
-        #ff4500 20%,   /* Il Rosso che cercavi */
+        #b8860b 0%,    /* Oro scuro */
+        #ff4500 20%,   /* Rosso fuoco */
         #ff8c00 45%,   
         #8a2be2 70%,   
         #000000 100%   
     ) fixed !important;
-    background-size: cover !important;
-    color: white !important;
-    min-height: 100vh !important;
 }
 
-/* BOTTONI ORO REGALE - Sostituiscono il grigio */
-.btn-gold {
-    background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728) !important;
-    border: none !important;
-    color: #332200 !important;
-    padding: 15px 30px !important;
-    border-radius: 12px !important;
-    font-weight: bold !important;
-    cursor: pointer !important;
-    display: inline-block !important;
+/* 2. IL CASTELLO - Sfondo Nitido (Z-index superiore al cielo) */
+.back-castle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    /* Assicurati di avere il file .png trasparente */
+    background: url('../castello_clean.png') no-repeat center center;
+    background-size: cover;
+    /* Rende il castello nitido e definito */
+    filter: contrast(1.5) brightness(0.7) saturate(1.2);
+    mix-blend-mode: multiply; /* Aiuta a fondere col cielo senza opacità */
 }
 
-/* FINESTRA CHAT - VETRO TRASPARENTE */
+/* 3. L'ABITO - Sfondo Nitido Sfalsato (Z-index superiore al castello) */
+.back-dress {
+    position: fixed;
+    bottom: -10vh; /* Sfalsato verso il basso */
+    right: -10vw;  /* Sfalsato verso destra */
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    /* Assicurati di avere il file .png trasparente */
+    background: url('../abito_clean.png') no-repeat center center;
+    background-size: contain; /* Contain per non deformare l'abito */
+    filter: contrast(1.3) brightness(0.7);
+    opacity: 0.8; /* Leggermente trasparente per non sovrastare */
+}
+
+/* OVERSHADOW - Aggiunge profondità */
+.vignette-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(0,0,0,0.6) 100%);
+}
+
+/* CONTENUTO */
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+/* HEADER & MENU PULITO */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 60px;
+}
+
+.logo { color: var(--gold); font-size: 24px; font-weight: bold; text-transform: uppercase; }
+.logo span { color: white; font-weight: 300; }
+
+.nav-menu {
+    display: flex;
+    list-style: none; /* Rimuove i pallini */
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+.nav-menu li { color: white; font-size: 14px; cursor: pointer; }
+
+/* MAIN LAYOUT */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 80px;
+    gap: 40px;
+}
+
+/* AVATAR IN PRIMO PIANO */
+.castellana-img {
+    max-height: 80vh;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
+    animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* SCHERMO GLASS - Cristallino e Trasparente */
 .chat-window {
-    background: rgba(255, 255, 255, 0.15) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    border-radius: 30px !important;
-    width: 90% !important;
-    max-width: 400px !important;
+    width: 450px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* SISTEMAZIONE MENU (rimuove i pallini bianchi) */
-nav ul {
-    list-style: none !important;
-    padding: 0 !important;
-    display: flex !important;
-    gap: 20px !important;
+.chat-window.glass {
+    /* Vetro cristallino (aumentato Alpha a 0.15 e cambiato colore) */
+    background: rgba(255, 255, 255, 0.15); 
+    /* Sfocatura ridotta per l'effetto cristallo */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
+
+#chat-display { flex: 1; padding: 30px; overflow-y: auto; color: white; }
+.bot-msg { color: var(--light-gold); font-weight: bold; font-size: 18px; }
+
+/* AREA PULSANTI ORO E GLASS */
+.buttons-area {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-gold {
+    background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
+    border: none;
+    color: var(--text-color);
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-glass {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+/* INPUT CHAT */
+.chat-input-area {
+    display: flex;
+    padding: 15px 25px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 0 0 30px 30px;
+}
+.chat-input-area input { flex: 1; background: transparent; border: none; color: white; outline: none; }
+.mic-btn { background: none; border: none; font-size: 20px; cursor: pointer; }
