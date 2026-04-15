@@ -1,101 +1,44 @@
-/*     /* VARIABILI PER COLORI REGALI */
-:root {
-    --gold: #bf953f;
-    --light-gold: #fcf6ba;
-    --glass: rgba(255, 255, 255, 0.25); /* Più brillante */
-    --shadow: rgba(0, 0, 0, 0.7);
-}
-
+/* SFONDO E TRAMONTO */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Georgia', serif;
-    /* TRAMONTO ULTRA-REALE: Ho aggiunto il rosso fuoco (#ff4500) per avvicinarci all'originale */
+    /* Colori intensi come l'originale */
     background: 
-        radial-gradient(circle at 50% 25%, rgba(255, 140, 0, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 50% 25%, rgba(255, 140, 0, 0.4) 0%, transparent 60%),
         linear-gradient(180deg, 
-            #b8860b 0%,    /* Oro scuro */
-            #ff8c00 15%,   /* Arancio vibrante */
-            #ff4500 35%,   /* Rosso fuoco (il tocco magico) */
-            #8a2be2 60%,   /* Viola brillante */
-            #2a0d4a 85%,   /* Viola notte profondo */
-            #000000 100%   /* Nero base */
-        );
-    background-attachment: fixed;
-    background-size: cover;
+            #b8860b 0%,    
+            #ff4500 20%,   /* Rosso fuoco */
+            #ff8c00 40%,   
+            #8a2be2 65%,   
+            #000000 100%   
+        ) !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
     color: white;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
-/* SFONDO DEL CASTELLO - Più nitido */
-.background-castle {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: url('../castello_clean.png') no-repeat center center;
-    background-size: cover;
-    /* Aumentiamo il contrasto per definire meglio le mura contro il rosso del cielo */
-    filter: contrast(1.5) brightness(0.7) saturate(1.2);
-    mix-blend-mode: screen; 
-    opacity: 0.5;
-}
-
-.background-overlay {
-    min-height: 100vh;
+/* FINESTRA CHAT - ORA CRISTALLINA */
+.chat-window {
+    width: 400px;
+    height: 520px;
+    /* Quasi totalmente trasparente (0.15) per non coprire la Castellana */
+    background: rgba(255, 255, 255, 0.15) !important; 
+    backdrop-filter: blur(8px) !important; /* Sfocatura minima */
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 35px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
-/* HEADER & LOGO */
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px 60px;
-    align-items: center;
-}
-
-.logo { 
-    font-size: 26px; 
-    font-weight: bold; 
-    color: var(--gold); 
-    text-transform: uppercase; 
-    letter-spacing: 3px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.logo span { color: white; font-weight: 300; }
-
-nav ul { display: flex; list-style: none; gap: 35px; }
-nav ul li { cursor: pointer; font-size: 13px; letter-spacing: 1px; transition: 0.3s; }
-nav ul li:hover { color: var(--gold); transform: translateY(-2px); }
-
-/* LAYOUT CENTRALE */
-main {
-    display: flex;
-    flex: 1;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px 80px;
-}
-
-/* LA CASTELLANA - Effetto Volteggio */
-.avatar-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 45%;
-}
-
+/* LA CASTELLANA VOLTEGGIANTE */
 .castellana-img {
     max-height: 75vh;
     width: auto;
     background: transparent !important;
-    /* Ombra più netta e meno sfocata per dare definizione */
-    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.7));
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8)) !important;
     animation: floating 5s ease-in-out infinite;
 }
 
@@ -103,86 +46,4 @@ main {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
     100% { transform: translateY(0px); }
-}
-
-/* PULSANTI */
-.buttons { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 15px; 
-    margin-top: 20px; 
-    width: 100%; 
-    max-width: 320px; 
-}
-
-.btn-gold {
-    background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
-    border: none; 
-    padding: 16px; 
-    border-radius: 12px;
-    font-weight: bold; 
-    color: #332200;
-    cursor: pointer; 
-    transition: 0.4s;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-}
-
-.btn-glass {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: white; 
-    padding: 16px; 
-    border-radius: 12px;
-    backdrop-filter: blur(12px); 
-    cursor: pointer; 
-    transition: 0.4s;
-}
-
-/* FINESTRA CHAT - Glassmorphism Cristallino */
-.chat-window {
-    width: 400px;
-    height: 520px;
-    /* Molto più trasparente e chiaro per mostrare cosa c'è dietro */
-    background: rgba(255, 255, 255, 0.2); 
-    /* Sfocatura ridotta per l'effetto cristallo */
-    backdrop-filter: blur(15px); 
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 35px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-}
-
-#chat-display { 
-    flex: 1; 
-    padding: 30px; 
-    overflow-y: auto; 
-    font-size: 15px; 
-    line-height: 1.7;
-    color: white;
-}
-
-.bot-msg { color: var(--light-gold); font-weight: bold; }
-
-.chat-input-area {
-    display: flex;
-    padding: 20px 25px;
-    background: rgba(0,0,0,0.4); /* Un po' più scuro alla base per contrasto */
-    border-radius: 0 0 35px 35px;
-}
-
-.chat-input-area input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: white;
-    outline: none;
-}
-
-.mic-btn { 
-    background: none; 
-    border: none; 
-    cursor: pointer; 
-    font-size: 22px; 
-    filter: drop-shadow(0 0 5px var(--gold));
 }
