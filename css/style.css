@@ -1,0 +1,37 @@
+:root {
+    --gold: #d4af37;
+    --dark-bg: rgba(0, 0, 0, 0.6);
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: url('../assets/tramonto-caccamo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+.background-overlay {
+    background: linear-gradient(to bottom, transparent, #1a0f00);
+    min-height: 100vh;
+}
+
+/* Stile pulsanti Gold come nel tuo mockup */
+.btn-gold {
+    background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--gold);
+}
+
+.chat-window {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 20px;
+}
