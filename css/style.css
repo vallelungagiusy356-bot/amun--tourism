@@ -1,8 +1,8 @@
-/* VARIABILI PER COLORI REGALI */
+/*     /* VARIABILI PER COLORI REGALI */
 :root {
     --gold: #bf953f;
     --light-gold: #fcf6ba;
-    --glass: rgba(255, 255, 255, 0.1);
+    --glass: rgba(255, 255, 255, 0.25); /* Più brillante */
     --shadow: rgba(0, 0, 0, 0.7);
 }
 
@@ -10,15 +10,15 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Georgia', serif;
-    /* TRAMONTO AD ALTA DEFINIZIONE: 
-       Uso un mix di radial e linear gradient per evitare l'effetto "a strisce" */
+    /* TRAMONTO ULTRA-REALE: Ho aggiunto il rosso fuoco (#ff4500) per avvicinarci all'originale */
     background: 
-        radial-gradient(circle at 50% 30%, rgba(255, 140, 0, 0.2) 0%, transparent 60%),
+        radial-gradient(circle at 50% 25%, rgba(255, 140, 0, 0.3) 0%, transparent 60%),
         linear-gradient(180deg, 
-            #b8860b 0%,    /* Oro scuro in alto */
-            #ff8c00 25%,   /* Arancio vibrante */
-            #8a2be2 55%,   /* Viola brillante */
-            #4b0082 80%,   /* Indigo profondo */
+            #b8860b 0%,    /* Oro scuro */
+            #ff8c00 15%,   /* Arancio vibrante */
+            #ff4500 35%,   /* Rosso fuoco (il tocco magico) */
+            #8a2be2 60%,   /* Viola brillante */
+            #2a0d4a 85%,   /* Viola notte profondo */
             #000000 100%   /* Nero base */
         );
     background-attachment: fixed;
@@ -28,7 +28,7 @@ body {
     overflow-x: hidden;
 }
 
-/* SFONDO DEL CASTELLO - Trasparente e Definito */
+/* SFONDO DEL CASTELLO - Più nitido */
 .background-castle {
     position: fixed;
     top: 0;
@@ -36,12 +36,10 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    /* Assicurati che il file sia .png e nella cartella principale */
     background: url('../castello_clean.png') no-repeat center center;
     background-size: cover;
-    /* Filtri per aumentare la definizione delle pietre contro il cielo */
-    filter: contrast(1.4) brightness(0.7) saturate(1.1);
-    /* 'screen' aiuta a fondere le luci del tramonto con le mura */
+    /* Aumentiamo il contrasto per definire meglio le mura contro il rosso del cielo */
+    filter: contrast(1.5) brightness(0.7) saturate(1.2);
     mix-blend-mode: screen; 
     opacity: 0.5;
 }
@@ -50,7 +48,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4) 100%);
 }
 
 /* HEADER & LOGO */
@@ -85,7 +82,7 @@ main {
     padding: 20px 80px;
 }
 
-/* LA CASTELLANA - Avatar Section */
+/* LA CASTELLANA - Effetto Volteggio */
 .avatar-section {
     display: flex;
     flex-direction: column;
@@ -96,9 +93,9 @@ main {
 .castellana-img {
     max-height: 75vh;
     width: auto;
-    /* Rimuove sfondi residui e crea un'aura di profondità */
     background: transparent !important;
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
+    /* Ombra più netta e meno sfocata per dare definizione */
+    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.7));
     animation: floating 5s ease-in-out infinite;
 }
 
@@ -108,7 +105,7 @@ main {
     100% { transform: translateY(0px); }
 }
 
-/* PULSANTI INTERATTIVI */
+/* PULSANTI */
 .buttons { 
     display: flex; 
     flex-direction: column; 
@@ -131,7 +128,7 @@ main {
 }
 
 .btn-glass {
-    background: var(--glass);
+    background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255,255,255,0.2);
     color: white; 
     padding: 16px; 
@@ -141,22 +138,19 @@ main {
     transition: 0.4s;
 }
 
-.btn-gold:hover, .btn-glass:hover { 
-    transform: scale(1.05) translateY(-3px); 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-}
-
-/* FINESTRA CHAT (Glassmorphism) */
+/* FINESTRA CHAT - Glassmorphism Cristallino */
 .chat-window {
     width: 400px;
     height: 520px;
-    background: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Molto più trasparente e chiaro per mostrare cosa c'è dietro */
+    background: rgba(255, 255, 255, 0.2); 
+    /* Sfocatura ridotta per l'effetto cristallo */
+    backdrop-filter: blur(15px); 
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 35px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
 #chat-display { 
@@ -164,17 +158,17 @@ main {
     padding: 30px; 
     overflow-y: auto; 
     font-size: 15px; 
-    line-height: 1.7; 
+    line-height: 1.7;
+    color: white;
 }
 
-.bot-msg { color: var(--light-gold); font-style: italic; }
+.bot-msg { color: var(--light-gold); font-weight: bold; }
 
 .chat-input-area {
     display: flex;
     padding: 20px 25px;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.4); /* Un po' più scuro alla base per contrasto */
     border-radius: 0 0 35px 35px;
-    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .chat-input-area input {
@@ -182,7 +176,6 @@ main {
     background: transparent;
     border: none;
     color: white;
-    font-size: 14px;
     outline: none;
 }
 
