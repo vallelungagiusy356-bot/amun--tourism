@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amuni Tourism - Caccamo</title>
-    <link rel="stylesheet" href="css/style.css?v=3.0">
+    <title>Amunì Tourism - La Castellana</title>
+    <link rel="stylesheet" href="css/style.css?v=5.0">
 </head>
 <body>
-    
-    <div class="sky-gradient"></div>    <div class="back-castle"></div>     <div class="back-dress"></div>      <div class="vignette-overlay"></div><div class="content-wrapper">
+
+    <div class="sky-background"></div>
+    <div class="castle-background"></div>
+    <div class="dress-background"></div>
+
+    <div class="wrapper">
         <header>
             <nav>
-                <div class="logo">Amunì <span>Tourism</span></div>
-                <ul class="nav-menu">
+                <div class="logo">AMUNÌ <span>TOURISM</span></div>
+                <ul class="nav-links">
                     <li>Home</li>
                     <li>Esperienze</li>
                     <li>Chi Siamo</li>
@@ -20,25 +24,29 @@
             </nav>
         </header>
 
-        <main>
-            <section class="avatar-section">
-                <img src="castellana_clean.png" alt="Castellana di Caccamo" class="castellana-img">
-            </section>
+        <main class="hero">
+            <div class="avatar-container">
+                <img src="castellana_clean.png" alt="La Castellana" class="main-avatar">
+            </div>
 
-            <section class="chat-window glass">
-                <div id="chat-display">
-                    <p class="bot-msg"><strong>Castellana di Caccamo</strong></p>
-                    <p>Benvenuta nel mio regno. Cosa desideri scoprire oggi?</p>
+            <div class="glass-container">
+                <div class="glass-screen">
+                    <div class="chat-header">
+                        <h2>Castellana di Caccamo</h2>
+                        <p>Benvenuta nel mio regno. Cosa desideri scoprire oggi?</p>
+                    </div>
+                    
+                    <div class="chat-actions">
+                        <button class="btn-gold">ESPLORA CON LA CASTELLANA</button>
+                        <button class="btn-outline">INVOCA L'APP AR</button>
+                    </div>
+
+                    <div class="chat-input">
+                        <input type="text" placeholder="Scrivi alla Castellana...">
+                        <span class="mic-icon">🎤</span>
+                    </div>
                 </div>
-                <div class="buttons-area">
-                    <button class="btn-gold">ESPLORA CON LA CASTELLANA</button>
-                    <button class="btn-glass">INVOCA L'APP AR</button>
-                </div>
-                <div class="chat-input-area">
-                    <input type="text" placeholder="Scrivi alla Castellana...">
-                    <button class="mic-btn">🎤</button>
-                </div>
-            </section>
+            </div>
         </main>
     </div>
 
