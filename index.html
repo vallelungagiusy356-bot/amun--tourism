@@ -4,46 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - La Castellana</title>
-    <link rel="stylesheet" href="css/style.css?v=10.0">
+    <link rel="stylesheet" href="css/style.css?v=11.0">
 </head>
 <body>
 
-    <div class="sky-layer"></div>
-    <div class="castle-layer"></div>
+    <div class="sky-background"></div>
+    <div class="castle-background"></div>
+    <div class="dress-background"></div>
 
     <div class="wrapper">
         <header>
-            <div class="logo">Amunì <span>Tourism</span></div>
             <nav>
-                <ul><li>Home</li><li>Esperienze</li><li>Chi Siamo</li><li>Contatti</li><li>IT/EN</li></ul>
+                <div class="logo">AMUNÌ <span>TOURISM</span></div>
+                <ul class="nav-links">
+                    <li>Home</li>
+                    <li>Esperienze</li>
+                    <li>Chi Siamo</li>
+                </ul>
             </nav>
         </header>
 
-        <main class="layout-grid">
-            <div class="character-section">
-                <img src="castellana_clean.png" alt="Castellana" class="hero-image">
-                <div class="action-buttons">
-                    <button class="btn-glow">ESPLORA CON LA CASTELLANA</button>
-                    <button class="btn-glow">INVOCA L'APP AR</button>
-                </div>
+        <main class="hero">
+            <div class="avatar-container">
+                <img src="castellana_clean.png" alt="La Castellana" class="main-avatar">
             </div>
 
-            <div class="interface-section">
-                <div class="glass-box">
-                    <div class="chat-content">
-                        <p class="user-msg">Gentile Castellana, mi narri i segreti di questo luogo antico.</p>
-                        <div class="bot-response">
-                            <p><strong>Castellana di Caccamo</strong></p>
-                            <p>Benvenuto, viandante. Le pietre di Caccamo sussurrano storie di cavalieri e nobili...</p>
-                        </div>
+            <div class="glass-container">
+                <div class="glass-screen">
+                    <div class="chat-header">
+                        <h2>Castellana di Caccamo</h2>
+                        <p>Benvenuta nel mio regno. Cosa desideri scoprire oggi?</p>
                     </div>
-                    <div class="input-bar">
-                        <input type="text" placeholder="Scrivi un messaggio...">
-                        <div class="mic-button">🎤</div>
+                    
+                    <div class="chat-actions">
+                        <button class="btn-gold">ESPLORA CON LA CASTELLANA</button>
+                        <button class="btn-outline">INVOCA L'APP AR</button>
+                    </div>
+
+                    <div class="chat-input">
+                        <input type="text" placeholder="Scrivi alla Castellana...">
+                        <span class="mic-icon">🎤</span>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+
 </body>
 </html>
