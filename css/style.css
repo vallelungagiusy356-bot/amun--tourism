@@ -135,196 +135,74 @@ input:checked + .slider { background-color: #bf953f; }
 input:checked + .slider:before { transform: translateX(20px); }
 
 footer { position: fixed; bottom: 15px; width: 100%; display: flex; justify-content: center; color: #bf953f; font-size: 14px; opacity: 0.7; z-index: 5; }
-
 /* =========================================
-   ADATTAMENTO SMARTPHONE (FIX FINALE)
+   ADATTAMENTO SMARTPHONE - PULIZIA FINALE
    ========================================= */
-@media screen and (max-width: 768px) {
-    body {
-        display: flex !important;
-        flex-direction: column !important;
-    }
 
-    /* Navbar compatta per mobile */
+/* A. REGOLE GENERALI MOBILE (Comuni a tutte le rotazioni) */
+@media screen and (max-width: 950px) {
+    .nav-main { display: none !important; }
     .dashboard {
         padding: 5px 15px !important;
-        height: 50px !important;
+        height: 60px !important;
         background: rgba(26, 10, 5, 0.98) !important;
-        flex-shrink: 0 !important;
     }
-    .nav-main { display: none !important; }
-
-    .hero {
-        flex: 1 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important; /* Mantiene spazio tra avatar e chat */
-        height: auto !important;
-        padding: 10px !important;
-        position: relative !important;
-    }
-
-    /* CASTELLANA: Dimensione equilibrata */
-    .avatar-placeholder {
-        width: 100% !important;
-        height: 38vh !important; 
-        position: relative !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: flex-end !important;
-        z-index: 1 !important;
-        margin-top: 5px !important;
-    }
-
-    .floating-img {
-        max-height: 100% !important;
-        width: auto !important;
-        bottom: 0 !important;
-        top: auto !important;
-        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6)) !important;
-    }
-
-    /* CHAT: Allargata e leggibile */
-    .chat-glass {
-        width: 96% !important; /* Prende quasi tutto lo schermo */
-        margin: 0 auto 10px auto !important;
-        padding: 20px !important;
-        z-index: 10 !important;
-        background: rgba(20, 10, 5, 0.9) !important; /* Più scuro per leggere meglio */
-        border-radius: 20px !important;
-        box-shadow: 0 -10px 25px rgba(0,0,0,0.5) !important;
-    }
-
-    /* Testi e bottoni ottimizzati */
-    .chat-glass h2 { 
-        font-size: 1.1rem !important; 
-        margin-bottom: 8px !important;
-        color: #fcf6ba !important;
-    }
-    
-    .chat-glass p { 
-        font-size: 0.85rem !important; 
-        line-height: 1.4 !important; 
-        color: #ffffff !important;
-    }
-
-    .action-buttons { 
-        display: flex !important; 
-        gap: 10px !important; 
-        margin-top: 15px !important;
-    }
-
-    .btn-gold, .btn-outline { 
-        padding: 12px 5px !important; 
-        font-size: 0.8rem !important; 
-        flex: 1 !important;
-        border-radius: 12px !important;
-    }
-
     .input-wrapper, .mic-btn { display: none !important; }
 }
-/* =========================================
-   FIX DEFINITIVO VERTICALE (Portrait)
-   ========================================= */
+
+/* B. FIX VERTICALE (Portrait) - Chat larga e Avatar proporzionato */
 @media screen and (max-width: 768px) and (orientation: portrait) {
     .hero {
         flex-direction: column !important;
-        justify-content: space-between !important; /* Distribuisce spazio tra avatar e chat */
-        height: calc(100vh - 80px) !important; /* Toglie lo spazio della navbar */
+        justify-content: space-between !important;
+        height: calc(100vh - 80px) !important;
         padding: 10px !important;
     }
 
-    /* Riduciamo l'avatar per dare respiro alla chat */
     .avatar-placeholder {
         width: 100% !important;
-        height: 32vh !important; /* Ridotto leggermente per non schiacciare */
+        height: 32vh !important; /* Mantiene l'avatar sobrio */
         display: flex !important;
         justify-content: center !important;
         align-items: flex-end !important;
-        margin-top: 10px !important;
     }
 
-    .floating-img {
-        max-height: 100% !important;
-        width: auto !important;
-        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4)) !important;
-    }
-
-    /* ALLARGAMENTO E POSIZIONAMENTO CHAT */
     .chat-glass {
-        width: 95% !important;
-        min-width: 90vw !important;
-        margin: 0 auto 5px auto !important;
-        padding: 18px !important;
-        background: rgba(15, 5, 0, 0.92) !important; /* Più opaco per leggere meglio */
-        border-radius: 20px !important;
+        width: 100% !important;
+        min-width: 92vw !important;
+        margin: 0 auto 10px auto !important;
+        padding: 20px !important;
+        background: rgba(20, 10, 5, 0.92) !important;
         box-sizing: border-box !important;
     }
-
-    .chat-glass h2 { font-size: 1.1rem !important; margin-bottom: 5px !important; }
-    .chat-glass p { font-size: 0.85rem !important; line-height: 1.3 !important; }
-
-    .action-buttons {
-        display: flex !important;
-        gap: 8px !important;
-        margin-top: 10px !important;
-    }
-
-    .btn-gold, .btn-outline {
-        padding: 12px 5px !important;
-        font-size: 0.75rem !important;
-    }
+    
+    .chat-glass h2 { font-size: 1.1rem !important; }
+    .chat-glass p { font-size: 0.85rem !important; line-height: 1.4 !important; }
 }
 
-/* =========================================
-   ADATTAMENTO SMARTPHONE (VERTICALE E ORIZZONTALE)
-   ========================================= */
-
-/* 1. REGOLE PER VERTICALE (Portrait) */
-@media screen and (max-width: 768px) and (orientation: portrait) {
-    .hero {
-        flex-direction: column !important;
-        justify-content: flex-end !important;
-        height: calc(100vh - 60px) !important;
-    }
-    .avatar-placeholder {
-        width: 100% !important;
-        height: 38vh !important;
-    }
-    .chat-glass {
-        width: 95% !important;
-        margin: 0 auto 10px !important;
-    }
-}
-
-/* 2. REGOLE PER ORIZZONTALE (Landscape) - Qui risolviamo il tuo dubbio */
+/* C. FIX ORIZZONTALE (Landscape) - Castellana protagonista e Chat ridotta */
 @media screen and (max-width: 950px) and (orientation: landscape) {
     .hero {
-        flex-direction: row !important; /* Li tiene affiancati */
+        flex-direction: row !important;
         align-items: flex-end !important;
-        height: calc(100vh - 50px) !important;
-        padding: 0 2% 5px !important;
+        height: calc(100vh - 60px) !important;
+        padding: 0 5% 10px !important;
     }
 
-    /* Diamo più spazio alla Castellana in orizzontale */
     .avatar-placeholder {
         width: 45% !important; 
-        height: 70vh !important;
+        height: 75vh !important;
     }
 
-    .floating-img {
-        max-height: 90% !important;
-    }
-
-    /* Rimpiccioliamo il riquadro chat in orizzontale */
     .chat-glass {
         width: 45% !important; 
         padding: 15px !important;
-        margin-bottom: 5px !important;
-        backdrop-filter: blur(10px) !important;
+        background: rgba(15, 5, 0, 0.85) !important;
     }
 
-    .chat-glass h2 { font-size: 0.9rem !important; margin-bottom: 5px !important; }
+    .chat-glass h2 { font-size: 0.9rem !important; }
     .chat-glass p { font-size: 0.75rem !important; line-height: 1.2 !important; }
     .btn-gold, .btn-outline { padding: 8px !important; font-size: 0.7rem !important; }
 }
+
+   
