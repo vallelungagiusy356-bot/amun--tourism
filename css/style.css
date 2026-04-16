@@ -117,49 +117,60 @@ input:checked + .slider:before { transform: translateX(20px); }
 footer { position: fixed; bottom: 15px; width: 100%; display: flex; justify-content: center; color: #bf953f; font-size: 14px; opacity: 0.7; z-index: 5; }
 
 /* =========================================
-   ADATTAMENTO SMARTPHONE - CHAT IN BASSO A DESTRA
+   ADATTAMENTO SMARTPHONE - INTEGRATO 
    ========================================= */
 @media screen and (max-width: 768px) {
     .hero {
         display: grid !important;
-        /* Colonna sinistra per l'avatar, colonna destra per la chat */
-        grid-template-columns: 1fr 1.3fr !important; 
-        align-items: end !important; /* Allinea entrambi al fondo */
-        gap: 5px !important;
+        /* Dividiamo lo spazio: 40% per la Castellana, 60% per la Chat */
+        grid-template-columns: 40% 60% !important; 
+        align-items: end !important; 
         height: 100vh !important;
-        padding: 0 10px 30px !important; /* Ridotto il padding per scendere ancora di più */
+        padding: 0 10px 40px !important; /* Spinge tutto verso il basso */
+        gap: 0 !important;
+        position: relative !important;
+        overflow: hidden;
     }
 
     .avatar-placeholder {
         width: 100% !important;
-        display: flex;
-        justify-content: flex-start; /* Spinge l'avatar tutto a sinistra */
+        display: flex !important;
+        justify-content: center !important;
+        z-index: 5 !important;
+        position: relative !important;
     }
 
     .floating-img {
-        max-height: 45vh !important; /* Leggermente più grande ma laterale */
+        /* Altezza bilanciata per non sparire e non coprire troppo */
+        max-height: 42vh !important; 
         width: auto !important;
-        margin-left: -10px; /* La sposta verso il bordo sinistro */
+        display: block !important;
+        margin-bottom: -5px; 
+        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4)) !important;
     }
 
     .chat-glass {
         width: 100% !important;
-        /* Spostamento a destra tramite margine */
-        margin-left: auto !important; 
-        margin-bottom: 0 !important;
+        margin: 0 !important;
         padding: 15px !important;
+        z-index: 10 !important;
         border-radius: 20px !important;
 
-        /* Effetto Vetro Fotografico (Invariato) */
-        background: rgba(255, 255, 255, 0.03) !important;
-        backdrop-filter: blur(20px) saturate(220%) brightness(1.1) !important;
-        -webkit-backdrop-filter: blur(20px) saturate(220%) brightness(1.1) !important;
+        /* --- VETRO FOTOGRAFICO (Massima brillantezza) --- */
+        background: rgba(255, 255, 255, 0.02) !important; 
+        /* Saturazione alta per esaltare il tramonto dietro e blur moderato */
+        backdrop-filter: blur(15px) saturate(230%) brightness(1.1) !important;
+        -webkit-backdrop-filter: blur(15px) saturate(230%) brightness(1.1) !important;
+        
+        /* Bordo cristallo sottile */
         border: 1px solid rgba(255, 255, 255, 0.2) !important;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* Ottimizzazione testi per spazio ridotto */
-    .chat-glass h2 { font-size: 0.8rem !important; }
-    .chat-glass p { font-size: 0.7rem !important; line-height: 1.2; }
-    .btn-gold, .btn-outline { padding: 8px !important; font-size: 0.65rem !important; }
+    /* Ottimizzazione testi e pulsanti per il layout affiancato */
+    .chat-glass h2 { font-size: 0.85rem !important; line-height: 1.1; margin-bottom: 6px; }
+    .chat-glass p { font-size: 0.7rem !important; line-height: 1.2; margin-bottom: 10px; }
+    .chat-controls { gap: 8px !important; }
+    .btn-gold, .btn-outline { padding: 8px !important; font-size: 0.65rem !important; border-radius: 8px; }
+    .input-wrapper { padding: 5px 10px !important; }
 }
