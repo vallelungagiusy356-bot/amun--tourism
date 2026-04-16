@@ -269,3 +269,55 @@ footer { position: fixed; bottom: 15px; width: 100%; display: flex; justify-cont
         line-height: 1.4 !important; 
     }
 }
+/* =========================================
+   ADATTAMENTO SMARTPHONE (VERTICALE E ORIZZONTALE)
+   ========================================= */
+
+/* 1. REGOLE PER VERTICALE (Portrait) */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+    .hero {
+        flex-direction: column !important;
+        justify-content: flex-end !important;
+        height: calc(100vh - 60px) !important;
+    }
+    .avatar-placeholder {
+        width: 100% !important;
+        height: 38vh !important;
+    }
+    .chat-glass {
+        width: 95% !important;
+        margin: 0 auto 10px !important;
+    }
+}
+
+/* 2. REGOLE PER ORIZZONTALE (Landscape) - Qui risolviamo il tuo dubbio */
+@media screen and (max-width: 950px) and (orientation: landscape) {
+    .hero {
+        flex-direction: row !important; /* Li tiene affiancati */
+        align-items: flex-end !important;
+        height: calc(100vh - 50px) !important;
+        padding: 0 2% 5px !important;
+    }
+
+    /* Diamo più spazio alla Castellana in orizzontale */
+    .avatar-placeholder {
+        width: 45% !important; 
+        height: 70vh !important;
+    }
+
+    .floating-img {
+        max-height: 90% !important;
+    }
+
+    /* Rimpiccioliamo il riquadro chat in orizzontale */
+    .chat-glass {
+        width: 45% !important; 
+        padding: 15px !important;
+        margin-bottom: 5px !important;
+        backdrop-filter: blur(10px) !important;
+    }
+
+    .chat-glass h2 { font-size: 0.9rem !important; margin-bottom: 5px !important; }
+    .chat-glass p { font-size: 0.75rem !important; line-height: 1.2 !important; }
+    .btn-gold, .btn-outline { padding: 8px !important; font-size: 0.7rem !important; }
+}
