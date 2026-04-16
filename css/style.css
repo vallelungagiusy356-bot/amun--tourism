@@ -18,137 +18,6 @@ body {
     background-position: center bottom;
 }
 
-/* =========================================
-   NAVBAR FIX (Risolve l'esplosione del menù)
-   ========================================= */
-.dashboard {
-    position: relative; z-index: 100; padding: 15px 50px; display: flex;
-    justify-content: space-between; align-items: center;
-    background: rgba(26, 10, 5, 0.8); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-gold);
-}
-
-.nav-main {
-    display: flex !important;
-    flex-direction: row !important;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 15px;
-}
-
-.nav-main li { position: relative; white-space: nowrap; }
-
-/* Nascondi i dropdown per evitare sovrapposizioni su mobile se non cliccati */
-.dropdown, .sub-dropdown { display: none; position: absolute; }
-
-/* =========================================
-   HERO - LAYOUT DESKTOP
-   ========================================= */
-.hero {
-    display: grid !important;
-    grid-template-columns: 45% 55% !important;
-    align-items: end !important;
-    height: calc(100vh - 80px);
-    padding: 0 5% 30px !important;
-    gap: 0;
-    position: relative;
-    z-index: 10;
-}
-
-.avatar-placeholder {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-.floating-img {
-    max-height: 75vh !important;
-    width: auto;
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.6));
-    animation: floating 6s ease-in-out infinite;
-}
-
-@keyframes floating {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-.chat-glass {
-    width: 100%;
-    max-width: 500px;
-    margin-left: auto;
-    margin-bottom: 60px;
-    padding: 25px !important;
-    border-radius: 24px !important;
-    z-index: 20;
-    background: rgba(255, 255, 255, 0.02) !important;
-    backdrop-filter: blur(15px) saturate(240%) brightness(1.1) !important;
-    -webkit-backdrop-filter: blur(15px) saturate(240%) brightness(1.1) !important;
-    border: 1px solid rgba(252, 246, 186, 0.3) !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* =========================================
-   ADATTAMENTO SMARTPHONE (FIX TOTALE)
-   ========================================= */
-@media screen and (max-width: 768px) {
-    body {
-        background-position: center bottom !important;
-    }
-
-    /* Reset della Navbar su mobile */
-    .dashboard { padding: 10px 15px !important; }
-    .nav-main { gap: 8px !important; }
-    .nav-main li { font-size: 0.7rem !important; }
-
-    .hero {
-        display: block !important; /* Passiamo a block per usare position absolute */
-        position: relative !important;
-        height: calc(100vh - 60px) !important;
-    }
-
-    /* CASTELLANA: Ancorata in basso a sinistra */
-    .avatar-placeholder {
-        position: absolute !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 60% !important;
-        justify-content: flex-start !important;
-        z-index: 5 !important;
-    }
-
-    .floating-img {
-        max-height: 45vh !important;
-        width: auto !important;
-        margin-left: -10px !important;
-    }
-
-    /* CHAT: Ancorata in basso a destra */
-    .chat-glass {
-        position: absolute !important;
-        bottom: 20px !important;
-        right: 10px !important;
-        width: 72% !important;
-        margin: 0 !important;
-        padding: 12px !important;
-        border-radius: 15px !important;
-        z-index: 10 !important;
-        backdrop-filter: blur(10px) saturate(230%) !important;
-    }
-
-    /* Ridimensionamento contenuti per mobile */
-    .chat-glass h2 { font-size: 0.8rem !important; margin-bottom: 4px !important; }
-    .chat-glass p { font-size: 0.65rem !important; line-height: 1.1 !important; margin-bottom: 8px !important; }
-    
-    .chat-controls { margin-top: 5px !important; }
-    .input-wrapper { display: none !important; } /* Nasconde l'input per salvare spazio su mobile */
-    
-    .action-buttons {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 4px !important;
-    }
     
     .btn-gold, .btn-outline {
         padding: 8px 2px !important;
@@ -156,6 +25,84 @@ body {
         flex: 1 !important;
     }
 
-    /* Rimuovi elementi extra ingombranti */
-    .badge { display: none !important; }
+    /* =========================================
+   ADATTAMENTO SMARTPHONE (FIX VERTICALE)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    body {
+        /* Impedisce lo scroll fastidioso */
+        overflow: hidden !important;
+        background-position: center bottom !important;
+    }
+
+    /* Reset Navbar: compatta e non invasiva */
+    .dashboard { 
+        padding: 5px 10px !important; 
+        height: 50px !important;
+    }
+    .nav-main { gap: 8px !important; }
+    .nav-main li { font-size: 0.65rem !important; }
+
+    .hero {
+        display: flex !important;
+        flex-direction: column !important; /* Disposti uno sopra l'altro */
+        justify-content: flex-end !important; /* Spinge tutto verso il basso */
+        height: calc(100vh - 50px) !important; /* Tutta l'altezza tolta la nav */
+        padding: 0 10px 10px !important;
+        gap: 5px !important;
+    }
+
+    /* CASTELLANA: Ora "respira" sopra la chat */
+    .avatar-placeholder {
+        flex: 1 !important; /* Prende lo spazio centrale */
+        display: flex !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    .floating-img {
+        max-height: 40vh !important; /* Ridimensionata per non spingere giù la chat */
+        width: auto !important;
+        object-fit: contain !important;
+    }
+
+    /* CHAT: Diventa una fascia orizzontale in basso */
+    .chat-glass {
+        width: 100% !important; /* Prende tutta la larghezza */
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 12px !important;
+        border-radius: 15px !important;
+        background: rgba(26, 10, 5, 0.6) !important; /* Sfondo un po' più scuro per leggere meglio */
+        box-sizing: border-box !important;
+    }
+
+    .chat-glass h2 { font-size: 0.85rem !important; margin-bottom: 2px !important; }
+    .chat-glass p { 
+        font-size: 0.7rem !important; 
+        line-height: 1.2 !important; 
+        margin-bottom: 8px !important; 
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Taglia il testo troppo lungo per farlo stare */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    /* Controlli e Pulsanti */
+    .chat-controls { margin-top: 0 !important; }
+    .input-wrapper { display: none !important; } 
+    
+    .action-buttons {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 8px !important;
+    }
+    
+    .btn-gold, .btn-outline {
+        padding: 10px 5px !important;
+        font-size: 0.65rem !important;
+        flex: 1 !important;
+    }
 }
+
