@@ -18,96 +18,110 @@ body {
 }
 
 /* =========================================
-   DASHBOARD (RIPRISTINO TRASPARENZA ORO)
+   1. DASHBOARD E MENU (VISIBILITÀ MASSIMA)
    ========================================= */
 .dashboard {
-    position: relative; z-index: 100; padding: 15px 50px; display: flex;
-    justify-content: space-between; align-items: center;
-    background: rgba(255, 255, 255, 0.05); /* Torna trasparente */
+    position: fixed; /* La blocchiamo in alto */
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+    padding: 15px 40px; 
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(26, 10, 5, 0.7); /* Nero soft trasparente */
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border-gold);
 }
 
-.nav-main { display: flex; list-style: none; gap: 30px; color: #fcf6ba; font-weight: bold; }
+.nav-main { display: flex; list-style: none; gap: 25px; color: #fcf6ba; font-weight: bold; }
 
 /* =========================================
-   LAYOUT PC (DESKTOP)
+   2. HERO E CASTELLANA (POSIZIONAMENTO IN BASSO)
    ========================================= */
 .hero { 
-    position: relative; z-index: 10; display: flex; 
-    height: 80vh; align-items: flex-end; 
-    padding: 0 5% 20px; justify-content: space-between; 
+    position: relative; 
+    display: flex; 
+    height: 100vh; /* Usa tutta l'altezza */
+    align-items: flex-end; /* Spinge tutto verso il basso */
+    padding: 0 5% 40px; /* Spazio dal fondo */
+    justify-content: space-between;
+    z-index: 10;
 }
 
-.avatar-placeholder { width: 35%; display: flex; justify-content: center; }
+.avatar-placeholder { 
+    width: 38%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-end; /* Forza la Castellana sul fondo */
+}
 
 .floating-img {
-    max-height: 60vh; width: auto;
-    filter: drop-shadow(0 0 30px rgba(252, 246, 186, 0.4));
+    max-height: 65vh; /* Altezza bilanciata per PC */
+    width: auto;
+    filter: drop-shadow(0 0 25px rgba(252, 246, 186, 0.3));
     animation: floating 6s ease-in-out infinite;
 }
 
-/* CHAT GLASS ORIGINALE */
+/* =========================================
+   3. CHAT GLASS (EFFETTO VETRO RIPRISTINATO)
+   ========================================= */
 .chat-glass {
-    width: 50%; max-width: 550px; 
-    background: rgba(255, 255, 255, 0.04); /* Effetto vetro originale */
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    width: 50%; 
+    max-width: 550px; 
+    background: rgba(255, 255, 255, 0.05); /* Effetto vetro originale */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(252, 246, 186, 0.2);
-    border-radius: 30px; padding: 30px; 
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    border-radius: 30px; 
+    padding: 25px; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
 
 /* =========================================
-   MOBILE FIX (VERTICALE E ORIZZONTALE)
+   4. FIX MOBILE DEFINITIVO (VERTICALE)
    ========================================= */
-@media screen and (max-width: 850px) {
-    .nav-main { display: none !important; }
-    
-    .dashboard {
-        padding: 10px 20px !important;
-        background: rgba(26, 10, 5, 0.6) !important; /* Meno scuro */
-    }
+@media screen and (max-width: 768px) {
+    .dashboard { padding: 10px 15px; height: 60px; }
+    .nav-main { display: none; }
 
     .hero {
         flex-direction: column !important;
-        justify-content: space-between !important;
-        height: calc(100vh - 70px) !important;
-        padding: 10px 15px !important;
+        justify-content: flex-end !important; /* Elementi impilati verso il basso */
+        padding: 10px 15px 80px !important; /* Spazio extra per non coprire il footer */
     }
 
-    /* VERTICALE (Portrait) */
-    @media (orientation: portrait) {
-        .avatar-placeholder {
-            height: 35vh !important; /* Più piccolo per non schiacciare la chat */
-            margin-top: 10px !important;
-        }
-        .chat-glass {
-            width: 100% !important;
-            margin-bottom: 20px !important; /* Alza la chat dal bordo */
-            background: rgba(20, 10, 5, 0.8) !important; /* Più leggibile ma non nero */
-        }
+    .avatar-placeholder {
+        width: 100% !important;
+        height: 40vh !important; /* Ridotto per non schiacciare la chat */
+        margin-bottom: -20px; /* Sovrapposizione artistica leggera */
     }
 
-    /* ORIZZONTALE (Landscape) */
-    @media (orientation: landscape) {
-        .hero {
-            flex-direction: row !important;
-            align-items: flex-end !important;
-        }
-        .avatar-placeholder { width: 40% !important; height: 70vh !important; }
-        .chat-glass { width: 55% !important; padding: 15px !important; }
+    .floating-img {
+        max-height: 100% !important;
+        object-fit: contain;
     }
 
-    /* BOTTONI BEN VISIBILI */
-    .btn-gold { 
-        background: var(--gold) !important; 
-        color: #000 !important; 
-        box-shadow: 0 4px 15px rgba(191, 149, 63, 0.4);
+    .chat-glass {
+        width: 100% !important;
+        max-width: 100% !important;
+        background: rgba(15, 5, 0, 0.85) !important; /* Leggermente più opaco per leggere bene */
+        padding: 20px !important;
+        border-radius: 20px !important;
     }
-    .btn-outline { 
-        border: 1px solid #fcf6ba !important; 
-        color: #fcf6ba !important; 
-    }
+
+    .chat-glass h2 { font-size: 1.1rem; color: #fcf6ba; }
+    .chat-glass p { font-size: 0.85rem; line-height: 1.4; color: #fff; }
+
+    /* Bottoni oro e nero ben visibili */
+    .btn-gold { background: var(--gold) !important; color: #000 !important; font-weight: bold; }
+    .btn-outline { border: 1px solid #fff !important; color: #fff !important; }
+}
+
+/* =========================================
+   5. FIX ORIZZONTALE (Landscape)
+   ========================================= */
+@media screen and (max-width: 950px) and (orientation: landscape) {
+    .hero { flex-direction: row !important; padding-bottom: 20px !important; }
+    .avatar-placeholder { width: 40% !important; height: 75vh !important; }
+    .chat-glass { width: 55% !important; padding: 15px !important; }
 }
