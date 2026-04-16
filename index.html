@@ -4,51 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - La Castellana</title>
-    <link rel="stylesheet" href="css/style.css?v=30.0">
+    <link rel="stylesheet" href="css/style.css?v=50.0">
 </head>
 <body>
 
-    <div class="sky-bg"></div>
-    <div class="castle-bg"></div>
-    <div class="dress-bg"></div>
+    <div class="layer sky-bg"></div>
+    <div class="layer castle-layer"></div>
 
-    <div class="wrapper">
-        <header>
-            <nav>
-                <div class="logo"></div>
-                <ul class="nav-links">
-                    <li>Home</li>
-                    <li>Esperienze</li>
-                    <li>Chi Siamo</li>
+    <header class="dashboard">
+        <div class="logo" style="color:#fcf6ba; font-weight:bold;">AMUNÌ TOURISM</div>
+        
+        <ul class="nav-main">
+            <li class="nav-item">MENÙ ▾
+                <ul class="dropdown">
+                    <li>Cultura</li>
+                    <li>Siti Artistici</li>
+                    <li>Eventi</li>
+                    <li class="has-submenu">Gastronomia ▸
+                        <ul class="sub-dropdown">
+                            <li>Attività (Freemium)</li>
+                            <li>Storia e Territorio</li>
+                        </ul>
+                    </li>
                 </ul>
-            </nav>
-        </header>
+            </li>
+            <li class="nav-item">CHI SIAMO</li>
+            <li class="nav-item">LINGUE ▾
+                <ul class="dropdown">
+                    <li>Italiano</li>
+                    <li>English</li>
+                </ul>
+            </li>
+            <li><button class="premium-toggle">FREE / FREEMIUM</button></li>
+        </ul>
+    </header>
 
-        <main class="hero">
-            <div class="avatar-container">
-                <img src="castellana_clean.png" alt="La Castellana" class="main-avatar">
+    <main class="hero">
+        <div class="avatar-box">
+            <img src="castellana_clean.png" alt="La Castellana" class="main-avatar">
+        </div>
+
+        <div class="glass-chat">
+            <h2 style="color:#fcf6ba; margin-bottom:15px;">Castellana di Caccamo</h2>
+            <p style="color:#eee; font-size:15px; line-height:1.6; margin-bottom:25px;">
+                Benvenuta. Nella modalità <b>Freemium</b>, ti svelerò i vicoli segreti e le leggende 
+                che solo i figli di questa terra conoscono. Sei pronta a scoprire il cuore di Caccamo?
+            </p>
+            
+            <div style="display:flex; gap:15px;">
+                <button class="btn-gold">ESPLORA (FREEMIUM)</button>
+                <button style="background:transparent; border:1px solid #fff; color:#fff; padding:12px; flex:1; border-radius:10px;">PROVA FREE</button>
             </div>
-
-            <div class="glass-container">
-                <div class="glass-screen">
-                    <div class="chat-header">
-                        <h2>Castellana di Caccamo</h2>
-                        <p>Benvenuta nel mio regno. Cosa desideri scoprire oggi?</p>
-                    </div>
-                    
-                    <div class="chat-actions">
-                        <button class="btn-gold">ESPLORA CON LA CASTELLANA</button>
-                        <button class="btn-outline">INVOCA L'APP AR</button>
-                    </div>
-
-                    <div class="chat-input">
-                        <input type="text" placeholder="Scrivi alla Castellana...">
-                        <span class="mic-icon">🎤</span>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
+        </div>
+    </main>
 
 </body>
 </html>
