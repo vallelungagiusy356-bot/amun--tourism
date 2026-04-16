@@ -1,4 +1,6 @@
-/* RESET TOTALE PER EVITARE SPOSTAMENTI */
+/* =========================================
+   RESET TOTALE PER EVITARE SPOSTAMENTI
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -8,13 +10,16 @@
 body, html {
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    font-family: 'Georgia', serif;
     background-color: #000;
+    overflow: hidden; /* Blocca ogni scroll fastidioso */
 }
 
-/* SFONDI: BLOCCO DELLE POSIZIONI */
+/* =========================================
+   SFONDI: BLOCCO DELLE POSIZIONI
+   ========================================= */
 .sky-bg, .castle-bg, .dress-bg {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -22,18 +27,23 @@ body, html {
     pointer-events: none;
 }
 
-/* 1. Cielo: Gradiente fisso */
+/* 1. Cielo: Gradiente Rosso Fuoco calibrato */
 .sky-bg {
     z-index: 1;
-    background: linear-gradient(180deg, #1a0033 0%, #e63900 40%, #000 100%);
+    background: linear-gradient(180deg, 
+        #1a0033 0%,    /* Viola scuro */
+        #e63900 35%,   /* Rosso Fuoco (Dato Python) */
+        #ff8c00 65%,   /* Arancio/Oro */
+        #000000 100%   /* Nero orizzonte */
+    ) !important;
 }
 
-/* 2. Castello: Spostato a destra e ridimensionato */
+/* 2. Castello: Silhouette nitida a DESTRA */
 .castle-bg {
     z-index: 2;
     background: url('../castello_clean.png') no-repeat;
-    background-size: 85% auto; /* Proporzione corretta */
-    background-position: bottom 0% right -15%; /* Spostato lateralmente */
+    background-size: 80% auto; /* Proporzione corretta */
+    background-position: bottom 0% right -15%; /* Spostato laterale */
     filter: brightness(0.35) contrast(1.4);
     opacity: 0.9;
 }
@@ -48,27 +58,55 @@ body, html {
     opacity: 0.7;
 }
 
-/* LAYOUT PRINCIPALE */
+/* =========================================
+   CONTENITORE PRINCIPALE (HEADER E FOOTER)
+   ========================================= */
 .wrapper {
     position: relative;
-    z-index: 10;
+    z-index: 10; /* Sopra a tutti gli sfondi */
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* HERO: Divisione rigida degli spazi */
+/* Header a destra */
+nav {
+    display: flex;
+    justify-content: flex-end; /* Sposta i link a destra */
+    align-items: center;
+    padding: 30px 60px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    color: white;
+}
+
+.nav-links li {
+    font-size: 14px;
+    cursor: pointer;
+    text-shadow: 0 0 10px rgba(191,149,63,0.5); /* Sottile bagliore oro */
+    transition: 0.3s;
+}
+
+.nav-links li:hover { color: #fcf6ba; }
+
+/* =========================================
+   LAYOUT EROICO (DEFINIZIONE SPAZI)
+   ========================================= */
 .hero {
     flex: 1;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-end; /* Tutto appoggiato alla base */
     padding: 0 5% 50px 5%; /* Margine dal basso */
 }
 
-/* CASTELLANA: Dimensione e Animazione */
-.char-area {
-    width: 45%; /* Occupa quasi metà schermo a sinistra */
+/* Area Castellana: Dimensione Rigida (45%) */
+.avatar-container {
+    width: 45%;
     display: flex;
     justify-content: center;
 }
@@ -77,26 +115,90 @@ body, html {
     max-height: 90vh; /* Molto grande come nel riferimento */
     width: auto;
     filter: drop-shadow(0 20px 50px rgba(0,0,0,1));
+    /* FLUTTUAMENTO SEMPRE ATTIVO */
     animation: floating 6s ease-in-out infinite;
 }
 
 @keyframes floating {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-25px); }
+    50% { transform: translateY(-25px); } /* Sale di 25 pixel */
 }
 
-/* CHAT: Posizione fissa a destra */
-.chat-area {
+/* Area Chat: Misure Esatte (50%) */
+.glass-container {
     width: 50%;
     max-width: 550px;
 }
 
-.glass-box {
-    background: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(252, 246, 186, 0.4);
+.glass-screen {
+    background: rgba(255, 255, 255, 0.08); /* Trasparenza calibrata */
+    backdrop-filter: blur(20px); /* Vetro cristallino */
+    -webkit-backdrop-filter: blur(20px);
+    /* Bordo Oro con Glow sottile */
+    border: 1px solid rgba(252, 246, 186, 0.35);
     border-radius: 40px;
     padding: 35px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 0 20px rgba(252, 246, 186, 0.1);
 }
+
+.chat-header h2 {
+    color: #fcf6ba; /* Oro chiaro */
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.chat-header p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #ddd;
+}
+
+/* Bottoni */
+.chat-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.btn-gold {
+    background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+    border: none;
+    color: #1a0a05; /* Testo scuro */
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+    box-shadow: 0 5px 15px rgba(191, 149, 63, 0.4);
+}
+
+.btn-outline {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    flex: 1;
+    transition: 0.3s;
+}
+
+/* Input Chat */
+.chat-input {
+    background: rgba(0,0,0,0.5); /* Sfondo scuro input */
+    border-radius: 20px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.chat-input input {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    width: 90%;
+}
+
+.mic-icon { color: #fcf6ba; font-size: 20px; cursor: pointer; }
