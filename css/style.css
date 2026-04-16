@@ -55,7 +55,15 @@ body {
 /* =========================================
    AVATAR E CHAT (POSIZIONAMENTO SULLA SCENA - INVARIATI)
    ========================================= */
-.hero { position: relative; z-index: 10; display: flex; height: 80vh; align-items: flex-end; padding: 0 5% 50px; justify-content: space-between; }
+.hero { 
+    position: relative; 
+    z-index: 10; 
+    display: flex; 
+    height: 80vh; 
+    align-items: flex-end; 
+    padding: 0 5% 10px; /* MODIFICATO: da 50px a 10px per ancorare al fondo */
+    justify-content: space-between; 
+}
 
 /* Predisposizione spazio per Avatar 3D (40% sx - INVARIATA) */
 .avatar-placeholder { width: 40%; display: flex; justify-content: center; overflow: visible; }
@@ -64,9 +72,16 @@ body {
     max-height: 85vh; width: auto;
     filter: drop-shadow(0 0 30px rgba(252, 246, 186, 0.4));
     animation: floating 6s ease-in-out infinite;
+    
+    /* MODIFICA POSIZIONE VERTICALE */
+    position: relative;
+    top: 120px; /* La abbassa rispetto alla linea superiore */
 }
 
-@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+@keyframes floating { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-10px); } /* MODIFICATO: oscillazione più dolce */
+}
 
 /* LASTRA DI VETRO CHAT (50% dx - INVARIATA) */
 .chat-glass {
