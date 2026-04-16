@@ -12,7 +12,7 @@
 
 /* =========================================
    MODIFICA FONDAMENTALE: Uso dello sfondo statico PNG
-   ========================================= */
+   ======================================== */
 body { 
     height: 100vh;
     font-family: 'Garamond', serif;
@@ -222,4 +222,50 @@ footer { position: fixed; bottom: 15px; width: 100%; display: flex; justify-cont
     }
 
     .input-wrapper, .mic-btn { display: none !important; }
+}
+/* =========================================
+   FIX SOLO DIMENSIONI CHAT MOBILE (VERTICALE)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    /* Cambia la disposizione da affiancata a colonna */
+    .hero {
+        flex-direction: column !important;
+        justify-content: flex-end !important;
+        height: calc(100vh - 70px) !important;
+        padding: 10px !important;
+    }
+
+    /* Ridimensiona l'avatar per lasciare spazio alla chat */
+    .avatar-placeholder {
+        width: 100% !important;
+        height: 35vh !important;
+        margin-bottom: -15px !important;
+    }
+
+    .floating-img {
+        max-height: 100% !important;
+        width: auto !important;
+        top: auto !important;
+    }
+
+    /* ALLARGAMENTO CHAT: Qui risolviamo il tuo problema */
+    .chat-glass {
+        width: 95% !important;      /* La chat ora occupa quasi tutta la larghezza */
+        min-width: 90vw !important;  /* Forza l'espansione orizzontale */
+        max-width: 100% !important;
+        margin: 0 auto 10px auto !important; /* Centra il riquadro */
+        padding: 20px !important;    /* Più spazio interno per il testo */
+        background: rgba(20, 10, 5, 0.9) !important; /* Sfondo più scuro per leggere meglio */
+        border-radius: 25px !important;
+    }
+
+    /* Ottimizzazione testi per la nuova larghezza */
+    .chat-glass h2 { 
+        font-size: 1.1rem !important; 
+    }
+    
+    .chat-glass p { 
+        font-size: 0.85rem !important; 
+        line-height: 1.4 !important; 
+    }
 }
