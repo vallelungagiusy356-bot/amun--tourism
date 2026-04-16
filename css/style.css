@@ -1,176 +1,180 @@
 /* =========================================
-   RESET E DEFINIZIONI ORO (INVARIATI)
+   DEFINIZIONI GLOBALI E PULIZIA 
+   (Sostituisci o verifica queste righe in alto)
    ========================================= */
 :root {
     --gold: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #b38728 100%);
-    /* Trasparenza migliorata per far vedere lo sfondo */
-    --glass: rgba(255, 255, 255, 0.04); 
-    --border-gold: rgba(252, 246, 186, 0.3);
+    --border-gold: rgba(252, 246, 186, 0.4);
+    /* Vetro molto più pulito e trasparente */
+    --glass: rgba(26, 10, 5, 0.2); 
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
 /* =========================================
-   MODIFICA FONDAMENTALE: Uso dello sfondo statico PNG
+   BODY E SFONDO (Correzione Sfondo Verticale)
    ========================================= */
 body { 
     height: 100vh;
     font-family: 'Garamond', serif;
     overflow: hidden;
     background-image: url('../sunset_caccamo.png'); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* DEFAULT: Orizzontale (PC) - cover va bene */
     background-size: cover; 
     background-position: center bottom;
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
 }
 
 /* =========================================
-   DASHBOARD E MENU (INVARIATI)
+   NAVBAR (Per riferimento, assicurati sia così)
    ========================================= */
 .dashboard {
-    position: relative; z-index: 100; padding: 20px 50px; display: flex;
+    position: relative; z-index: 100; padding: 15px 50px; display: flex;
     justify-content: space-between; align-items: center;
-    background: var(--glass); backdrop-filter: blur(20px);
+    background: rgba(26, 10, 5, 0.8); backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-gold);
 }
 
-.nav-main { display: flex; list-style: none; gap: 30px; color: #fcf6ba; font-weight: bold; }
-.has-dropdown { position: relative; cursor: pointer; }
-
-.dropdown {
-    position: absolute; top: 100%; left: 0; display: none; min-width: 200px;
-    background: rgba(26, 10, 5, 0.95); border: 1px solid #bf953f; list-style: none;
-}
-.dropdown li { padding: 12px; color: #fff; font-size: 14px; border-bottom: 1px solid rgba(191,149,63,0.1); }
-.dropdown li:hover { background: #bf953f; color: #000; }
-.has-dropdown:hover .dropdown { display: block; }
-
-.sub-dropdown { position: absolute; left: 100%; top: 0; display: none; background: #1a0a05; border: 1px solid #bf953f; }
-.has-submenu:hover .sub-dropdown { display: block; }
-
 /* =========================================
-   AVATAR E CHAT (POSIZIONAMENTO STANDARD / PC)
+   HERO - LAYOUT PRINCIPALE (PC/ORIZZONTALE)
    ========================================= */
 .hero { 
     position: relative; 
     z-index: 10; 
-    display: flex; 
-    height: 80vh; 
-    align-items: flex-end; 
-    padding: 0 5% 10px; 
-    justify-content: space-between; 
+    display: grid; /* Passiamo a GRID per controllo assoluto */
+    /* Dividiamo lo spazio: 45% per l'avatar, 55% per la chat */
+    grid-template-columns: 45% 55%; 
+    height: calc(100vh - 80px); /* Altezza totale meno navbar */
+    align-items: end; /* Ancoriamo entrambi alla base della griglia */
+    padding: 0 5% 20px; 
+    gap: 0;
+    justify-items: stretch;
 }
 
-.avatar-placeholder { width: 40%; display: flex; justify-content: center; overflow: visible; }
+/* CONTENITORE AVATAR (45% sx) */
+.avatar-placeholder { 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-end; /* Avatar appoggiato al fondo */
+    overflow: visible; 
+    position: relative;
+    z-index: 1; /* L'avatar sta dietro la chat se si toccano */
+}
 
 .floating-img {
-    max-height: 85vh; width: auto;
-    filter: drop-shadow(0 0 30px rgba(252, 246, 186, 0.4));
+    /* Altezza proporzionata: 75% dell'altezza dello schermo */
+    max-height: 75vh; 
+    width: auto;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.7));
     animation: floating 6s ease-in-out infinite;
+    display: block;
     position: relative;
-    top: 120px; 
+    /* Rimosso 'top: 120px' - ora la griglia gestisce l'allineamento */
 }
 
 @keyframes floating { 
     0%, 100% { transform: translateY(0); } 
-    50% { transform: translateY(-10px); } 
+    50% { transform: translateY(-15px); } 
 }
 
+/* CONTENITORE CHAT-GLASS (55% dx) */
 .chat-glass {
-    width: 50%; max-width: 550px; 
+    width: 100%; /* Prende tutto il 55% della sua colonna */
+    max-width: 550px; /* Limite per non diventare enorme su PC grandi */
+    /* Ancoriamo il box al fondo e lo stacchiamo leggermente */
+    margin-bottom: 20px; 
+    margin-left: auto; /* Se lo spazio avanza, lo spinge a destra */
+    
     background: var(--glass);
-    backdrop-filter: blur(35px); /* Sfocatura più profonda */
-    -webkit-backdrop-filter: blur(35px);
-    border: 1px solid rgba(252, 246, 186, 0.2);
-    border-radius: 30px; padding: 30px; 
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    backdrop-filter: blur(15px) saturate(160%); /* Più saturazione dietro */
+    border: 1px solid var(--border-gold);
+    border-radius: 20px; /* Bordi più dolci, come nel riferimento */
+    padding: 25px; 
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Allinea il contenuto (pulsanti) alla base del box */
+    height: auto;
+    max-height: 70vh; /* Il box non supera il 70% dello schermo */
 }
 
-.chat-controls { display: flex; flex-direction: column; gap: 20px; }
-.input-wrapper { display: flex; align-items: center; background: rgba(0,0,0,0.4); border-radius: 20px; padding: 10px 15px; border: 1px solid rgba(255,255,255,0.1); }
-.input-wrapper input { background: transparent; border: none; color: #fff; flex: 1; outline: none; }
-.mic-btn { background: transparent; border: none; color: #fcf6ba; cursor: pointer; }
+/* Stile Testi Chat per pulizia */
+.chat-glass h2 { font-size: 1.6rem; color: #fcf6ba; margin-bottom: 10px; }
+.chat-glass p { font-size: 1rem; color: #fff; line-height: 1.4; margin-bottom: 20px; opacity: 0.9; }
 
-.action-buttons { display: flex; gap: 15px; }
+/* Controlli Chat e Input (Rifacimento Allineamento Base) */
+.chat-controls { display: flex; flex-direction: column; gap: 15px; margin-top: auto; }
+
+.input-wrapper { display: flex; align-items: center; background: rgba(0,0,0,0.5); border-radius: 12px; padding: 12px; border: 1px solid rgba(255,255,255,0.1); }
+.input-wrapper input { background: transparent; border: none; color: #fff; flex: 1; outline: none; font-size: 0.95rem; }
+
+.action-buttons { display: flex; gap: 10px; margin-top: 5px; } /* Allineati orizzontalmente */
 
 .btn-gold { 
-    background: var(--gold); border: none; padding: 12px; border-radius: 10px;
-    font-weight: bold; cursor: pointer; flex: 1; color: #000;
+    background: var(--gold); border: none; padding: 12px; border-radius: 8px;
+    font-weight: bold; cursor: pointer; flex: 1; color: #000; font-size: 0.9rem; text-transform: uppercase;
 }
 
 .btn-outline {
     background: transparent; border: 1px solid #fff; color: #fff;
-    padding: 12px; border-radius: 10px; flex: 1; cursor: pointer;
+    padding: 12px; border-radius: 8px; flex: 1; cursor: pointer; font-size: 0.9rem; text-transform: uppercase;
 }
 
 /* =========================================
-   PREMIUM SWITCH E FOOTER (INVARIATI)
-   ========================================= */
-.premium-switch { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 10px; }
-.switch { position: relative; display: inline-block; width: 40px; height: 20px; }
-.switch input { opacity: 0; width: 0; height: 0; }
-.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255,255,255,0.2); transition: .4s; border-radius: 20px; }
-.slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background: #fcf6ba; transition: .4s; border-radius: 50%; }
-input:checked + .slider { background-color: #bf953f; }
-input:checked + .slider:before { transform: translateX(20px); }
-
-footer { position: fixed; bottom: 15px; width: 100%; display: flex; justify-content: center; color: #bf953f; font-size: 14px; opacity: 0.7; z-index: 5; }
-
-/* =========================================
-   ADATTAMENTO SMARTPHONE - INTEGRATO 
+   MEDIA QUERY: SMARTPHONE (VERTICALE)
    ========================================= */
 @media screen and (max-width: 768px) {
-    .hero {
-        display: grid !important;
-        /* Dividiamo lo spazio: 40% per la Castellana, 60% per la Chat */
-        grid-template-columns: 40% 60% !important; 
-        align-items: end !important; 
-        height: 100vh !important;
-        padding: 0 10px 40px !important; /* Spinge tutto verso il basso */
-        gap: 0 !important;
-        position: relative !important;
-        overflow: hidden;
+    /* CORREZIONE SFONDO: Mostrare tutto il panorama senza tagli */
+    body {
+        background-size: contain; /* Sfondo intero, non tagliato */
+        background-position: center bottom; /* Ancorato al fondo */
+        /* background-color: #1a0a05; */ /* Opzionale: colore di riempimento se serve */
     }
 
-    .avatar-placeholder {
-        width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
-        z-index: 5 !important;
-        position: relative !important;
+    .dashboard { padding: 10px 15px; } /* Navbar più compatta */
+    
+    /* HERO - LAYOUT MOBILE */
+    .hero {
+        /* MANTENIAMO GRID PER AFFIANCAMENTO */
+        grid-template-columns: 1fr 1fr; /* 50/50 per stare affiancati */
+        align-items: end; /* Entrambi alla base dello schermo */
+        height: 100vh;
+        padding: 0 10px 20px; /* Spazio dal bordo inferiore per i tasti browser */
+    }
+
+    /* AVATAR MOBILE (50% sx) */
+    .avatar-placeholder { 
+        width: 100%; 
+        justify-content: flex-start; /* Avatar spinto a sinistra */
     }
 
     .floating-img {
-        /* Altezza bilanciata per non sparire e non coprire troppo */
-        max-height: 42vh !important; 
-        width: auto !important;
-        display: block !important;
-        margin-bottom: -5px; 
-        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4)) !important;
+        /* Altezza ridotta per mobile: 45% dello schermo */
+        max-height: 45vh; 
+        margin-left: -5px; /* Piccola correzione laterale */
+        margin-bottom: -5px; /* Appoggiato al fondo */
     }
 
+    /* CHAT-GLASS MOBILE (50% dx) */
     .chat-glass {
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 15px !important;
-        z-index: 10 !important;
-        border-radius: 20px !important;
-
-        /* --- VETRO FOTOGRAFICO (Massima brillantezza) --- */
-        background: rgba(255, 255, 255, 0.02) !important; 
-        /* Saturazione alta per esaltare il tramonto dietro e blur moderato */
-        backdrop-filter: blur(15px) saturate(230%) brightness(1.1) !important;
-        -webkit-backdrop-filter: blur(15px) saturate(230%) brightness(1.1) !important;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 0; /* Appoggiato al fondo della sua colonna */
+        padding: 15px; 
+        border-radius: 15px;
         
-        /* Bordo cristallo sottile */
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+        /* Vetro ancora più trasparente su mobile */
+        background: rgba(26, 10, 5, 0.3); 
     }
 
-    /* Ottimizzazione testi e pulsanti per il layout affiancato */
-    .chat-glass h2 { font-size: 0.85rem !important; line-height: 1.1; margin-bottom: 6px; }
-    .chat-glass p { font-size: 0.7rem !important; line-height: 1.2; margin-bottom: 10px; }
-    .chat-controls { gap: 8px !important; }
-    .btn-gold, .btn-outline { padding: 8px !important; font-size: 0.65rem !important; border-radius: 8px; }
-    .input-wrapper { padding: 5px 10px !important; }
+    /* Rimpiccioliamo i testi per mobile */
+    .chat-glass h2 { font-size: 0.95rem; margin-bottom: 5px; }
+    .chat-glass p { font-size: 0.7rem; margin-bottom: 10px; line-height: 1.2; }
+    
+    .chat-controls { gap: 8px; }
+    .action-buttons { flex-direction: row; gap: 5px; } /* Pulsanti affiancati */
+    
+    .btn-gold, .btn-outline { padding: 8px; font-size: 0.7rem; }
+    .input-wrapper { padding: 8px; }
 }
