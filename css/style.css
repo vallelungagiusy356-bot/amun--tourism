@@ -34,147 +34,89 @@ body {
     border-bottom: 1px solid var(--border-gold);
 }
 
-/* =========================================
-   HERO - LAYOUT PRINCIPALE (PC/ORIZZONTALE)
+        /* =========================================
+   HERO - LAYOUT PRINCIPALE (DESKTOP/LANDSCAPE)
    ========================================= */
-.hero { 
-    position: relative; 
-    z-index: 10; 
-    display: grid; /* Passiamo a GRID per controllo assoluto */
-    /* Dividiamo lo spazio: 45% per l'avatar, 55% per la chat */
-    grid-template-columns: 45% 55%; 
-    height: calc(100vh - 80px); /* Altezza totale meno navbar */
-    align-items: end; /* Ancoriamo entrambi alla base della griglia */
-    padding: 0 5% 20px; 
+.hero {
+    display: grid !important;
+    grid-template-columns: 45% 55% !important; /* Proporzioni immagine riferimento */
+    align-items: end !important; /* Entrambi ancorati alla base */
+    height: calc(100vh - 80px);
+    padding: 0 5% 30px !important;
     gap: 0;
-    justify-items: stretch;
+    position: relative;
+    z-index: 10;
 }
 
-/* CONTENITORE AVATAR (45% sx) */
-.avatar-placeholder { 
-    width: 100%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: flex-end; /* Avatar appoggiato al fondo */
-    overflow: visible; 
-    position: relative;
-    z-index: 1; /* L'avatar sta dietro la chat se si toccano */
+.avatar-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .floating-img {
-    /* Altezza proporzionata: 75% dell'altezza dello schermo */
-    max-height: 75vh; 
+    max-height: 75vh !important;
     width: auto;
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.6));
     animation: floating 6s ease-in-out infinite;
-    display: block;
-    position: relative;
-    /* Rimosso 'top: 120px' - ora la griglia gestisce l'allineamento */
 }
 
-@keyframes floating { 
-    0%, 100% { transform: translateY(0); } 
-    50% { transform: translateY(-15px); } 
-}
-
-/* CONTENITORE CHAT-GLASS (55% dx) */
 .chat-glass {
-    width: 100%; /* Prende tutto il 55% della sua colonna */
-    max-width: 550px; /* Limite per non diventare enorme su PC grandi */
-    /* Ancoriamo il box al fondo e lo stacchiamo leggermente */
-    margin-bottom: 20px; 
-    margin-left: auto; /* Se lo spazio avanza, lo spinge a destra */
-    
-    background: var(--glass);
-    backdrop-filter: blur(15px) saturate(160%); /* Più saturazione dietro */
-    border: 1px solid var(--border-gold);
-    border-radius: 20px; /* Bordi più dolci, come nel riferimento */
-    padding: 25px; 
-    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Allinea il contenuto (pulsanti) alla base del box */
-    height: auto;
-    max-height: 70vh; /* Il box non supera il 70% dello schermo */
-}
+    width: 100%;
+    max-width: 500px; /* Non troppo larga per non coprire il panorama */
+    margin-left: auto; /* Spinge a destra */
+    margin-bottom: 20px; /* Allineata alla base dell'avatar */
+    padding: 25px !important;
+    border-radius: 24px !important;
+    z-index: 20;
 
-/* Stile Testi Chat per pulizia */
-.chat-glass h2 { font-size: 1.6rem; color: #fcf6ba; margin-bottom: 10px; }
-.chat-glass p { font-size: 1rem; color: #fff; line-height: 1.4; margin-bottom: 20px; opacity: 0.9; }
-
-/* Controlli Chat e Input (Rifacimento Allineamento Base) */
-.chat-controls { display: flex; flex-direction: column; gap: 15px; margin-top: auto; }
-
-.input-wrapper { display: flex; align-items: center; background: rgba(0,0,0,0.5); border-radius: 12px; padding: 12px; border: 1px solid rgba(255,255,255,0.1); }
-.input-wrapper input { background: transparent; border: none; color: #fff; flex: 1; outline: none; font-size: 0.95rem; }
-
-.action-buttons { display: flex; gap: 10px; margin-top: 5px; } /* Allineati orizzontalmente */
-
-.btn-gold { 
-    background: var(--gold); border: none; padding: 12px; border-radius: 8px;
-    font-weight: bold; cursor: pointer; flex: 1; color: #000; font-size: 0.9rem; text-transform: uppercase;
-}
-
-.btn-outline {
-    background: transparent; border: 1px solid #fff; color: #fff;
-    padding: 12px; border-radius: 8px; flex: 1; cursor: pointer; font-size: 0.9rem; text-transform: uppercase;
+    /* --- EFFETTO VETRO FOTOGRAFICO (Riferimento 3) --- */
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(15px) saturate(240%) brightness(1.1) !important;
+    -webkit-backdrop-filter: blur(15px) saturate(240%) brightness(1.1) !important;
+    border: 1px solid rgba(252, 246, 186, 0.3) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* =========================================
-   MEDIA QUERY: SMARTPHONE (VERTICALE)
+   ADATTAMENTO SMARTPHONE (VERTICALE)
    ========================================= */
 @media screen and (max-width: 768px) {
-    /* CORREZIONE SFONDO: Mostrare tutto il panorama senza tagli */
     body {
-        background-size: contain; /* Sfondo intero, non tagliato */
-        background-position: center bottom; /* Ancorato al fondo */
-        /* background-color: #1a0a05; */ /* Opzionale: colore di riempimento se serve */
+        /* Impedisce allo sfondo di venire tagliato male */
+        background-size: cover; 
+        background-position: 70% bottom; /* Sposta il castello un po' più a destra */
     }
 
-    .dashboard { padding: 10px 15px; } /* Navbar più compatta */
-    
-    /* HERO - LAYOUT MOBILE */
     .hero {
-        /* MANTENIAMO GRID PER AFFIANCAMENTO */
-        grid-template-columns: 1fr 1fr; /* 50/50 per stare affiancati */
-        align-items: end; /* Entrambi alla base dello schermo */
-        height: 100vh;
-        padding: 0 10px 20px; /* Spazio dal bordo inferiore per i tasti browser */
-    }
-
-    /* AVATAR MOBILE (50% sx) */
-    .avatar-placeholder { 
-        width: 100%; 
-        justify-content: flex-start; /* Avatar spinto a sinistra */
+        grid-template-columns: 42% 58% !important; /* Affiancati e proporzionati */
+        padding: 0 10px 40px !important; /* Abbassa tutto verso il fondo */
+        align-items: end !important;
     }
 
     .floating-img {
-        /* Altezza ridotta per mobile: 45% dello schermo */
-        max-height: 45vh; 
-        margin-left: -5px; /* Piccola correzione laterale */
-        margin-bottom: -5px; /* Appoggiato al fondo */
+        max-height: 40vh !important; /* Castellana ridimensionata */
+        margin-left: -10px;
     }
 
-    /* CHAT-GLASS MOBILE (50% dx) */
     .chat-glass {
-        width: 100%;
-        margin-left: 0;
-        margin-bottom: 0; /* Appoggiato al fondo della sua colonna */
-        padding: 15px; 
-        border-radius: 15px;
-        
-        /* Vetro ancora più trasparente su mobile */
-        background: rgba(26, 10, 5, 0.3); 
+        padding: 15px !important;
+        margin-bottom: 0 !important; /* Ancorata al fondo come l'avatar */
+        backdrop-filter: blur(12px) saturate(250%) brightness(1.1) !important;
     }
 
-    /* Rimpiccioliamo i testi per mobile */
-    .chat-glass h2 { font-size: 0.95rem; margin-bottom: 5px; }
-    .chat-glass p { font-size: 0.7rem; margin-bottom: 10px; line-height: 1.2; }
+    /* Testi e pulsanti compatti per evitare che il box salga troppo */
+    .chat-glass h2 { font-size: 0.85rem !important; margin-bottom: 4px; }
+    .chat-glass p { font-size: 0.7rem !important; line-height: 1.2; margin-bottom: 10px; }
     
-    .chat-controls { gap: 8px; }
-    .action-buttons { flex-direction: row; gap: 5px; } /* Pulsanti affiancati */
+    .action-buttons {
+        display: flex !important;
+        flex-direction: row !important; /* Pulsanti affiancati */
+        gap: 5px;
+    }
     
-    .btn-gold, .btn-outline { padding: 8px; font-size: 0.7rem; }
-    .input-wrapper { padding: 8px; }
+    .btn-gold, .btn-outline {
+        padding: 10px 5px !important;
+        font-size: 0.65rem !important;
+    }
 }
