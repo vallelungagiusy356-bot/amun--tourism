@@ -137,7 +137,7 @@ input:checked + .slider:before { transform: translateX(20px); }
 footer { position: fixed; bottom: 15px; width: 100%; display: flex; justify-content: center; color: #bf953f; font-size: 14px; opacity: 0.7; z-index: 5; }
 
 /* =========================================
-   ADATTAMENTO SMARTPHONE (FIX VERTICALE) - SOLO QUESTO BLOCCO
+   ADATTAMENTO SMARTPHONE (FIX FINALE)
    ========================================= */
 @media screen and (max-width: 768px) {
     body {
@@ -145,33 +145,35 @@ footer { position: fixed; bottom: 15px; width: 100%; display: flex; justify-cont
         flex-direction: column !important;
     }
 
-    /* Navbar: Forza la visibilità */
+    /* Navbar compatta per mobile */
     .dashboard {
-        padding: 10px 15px !important;
+        padding: 5px 15px !important;
         height: 50px !important;
-        background: rgba(26, 10, 5, 0.95) !important;
+        background: rgba(26, 10, 5, 0.98) !important;
         flex-shrink: 0 !important;
     }
-    .nav-main { display: none !important; } /* Nasconde menu ingombranti su mobile */
+    .nav-main { display: none !important; }
 
     .hero {
         flex: 1 !important;
+        display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-end !important;
+        justify-content: space-between !important; /* Mantiene spazio tra avatar e chat */
         height: auto !important;
-        padding: 0 10px 10px !important;
+        padding: 10px !important;
         position: relative !important;
     }
 
-    /* CASTELLANA: Ora occupa solo il 40% dello schermo, lasciando vedere il castello */
+    /* CASTELLANA: Dimensione equilibrata */
     .avatar-placeholder {
         width: 100% !important;
-        height: 40vh !important; 
+        height: 38vh !important; 
         position: relative !important;
         display: flex !important;
         justify-content: center !important;
         align-items: flex-end !important;
         z-index: 1 !important;
+        margin-top: 5px !important;
     }
 
     .floating-img {
@@ -179,22 +181,45 @@ footer { position: fixed; bottom: 15px; width: 100%; display: flex; justify-cont
         width: auto !important;
         bottom: 0 !important;
         top: auto !important;
-        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)) !important;
+        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6)) !important;
     }
 
-    /* CHAT: Box compatto in basso */
+    /* CHAT: Allargata e leggibile */
     .chat-glass {
-        width: 100% !important;
-        margin: 0 0 5px 0 !important;
-        padding: 15px !important;
+        width: 96% !important; /* Prende quasi tutto lo schermo */
+        margin: 0 auto 10px auto !important;
+        padding: 20px !important;
         z-index: 10 !important;
-        background: rgba(26, 10, 5, 0.8) !important;
+        background: rgba(20, 10, 5, 0.9) !important; /* Più scuro per leggere meglio */
         border-radius: 20px !important;
+        box-shadow: 0 -10px 25px rgba(0,0,0,0.5) !important;
     }
 
-    /* Bottoni e testi più piccoli per mobile */
-    .chat-glass h2 { font-size: 0.9rem !important; }
-    .chat-glass p { font-size: 0.75rem !important; line-height: 1.2 !important; }
-    .btn-gold, .btn-outline { padding: 8px !important; font-size: 0.7rem !important; }
+    /* Testi e bottoni ottimizzati */
+    .chat-glass h2 { 
+        font-size: 1.1rem !important; 
+        margin-bottom: 8px !important;
+        color: #fcf6ba !important;
+    }
+    
+    .chat-glass p { 
+        font-size: 0.85rem !important; 
+        line-height: 1.4 !important; 
+        color: #ffffff !important;
+    }
+
+    .action-buttons { 
+        display: flex !important; 
+        gap: 10px !important; 
+        margin-top: 15px !important;
+    }
+
+    .btn-gold, .btn-outline { 
+        padding: 12px 5px !important; 
+        font-size: 0.8rem !important; 
+        flex: 1 !important;
+        border-radius: 12px !important;
+    }
+
     .input-wrapper, .mic-btn { display: none !important; }
 }
