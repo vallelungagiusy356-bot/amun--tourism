@@ -117,44 +117,64 @@ input:checked + .slider:before { transform: translateX(20px); }
 footer { position: fixed; bottom: 15px; width: 100%; display: flex; justify-content: center; color: #bf953f; font-size: 14px; opacity: 0.7; z-index: 5; }
 
 /* =========================================
-   ADATTAMENTO SMARTPHONE (VERTICALE) - FIX POSIZIONE E TRASPARENZA
+   ADATTAMENTO SMARTPHONE (FIX VERTICALE) - SOLO QUESTO BLOCCO
    ========================================= */
 @media screen and (max-width: 768px) {
-    .hero {
-        flex-direction: column; 
-        justify-content: flex-end; /* Spinge tutto verso il basso */
-        align-items: center;
-        height: 100vh;
-        padding-bottom: 40px;
+    body {
+        display: flex !important;
+        flex-direction: column !important;
     }
 
+    /* Navbar: Forza la visibilità */
+    .dashboard {
+        padding: 10px 15px !important;
+        height: 50px !important;
+        background: rgba(26, 10, 5, 0.95) !important;
+        flex-shrink: 0 !important;
+    }
+    .nav-main { display: none !important; } /* Nasconde menu ingombranti su mobile */
+
+    .hero {
+        flex: 1 !important;
+        flex-direction: column !important;
+        justify-content: flex-end !important;
+        height: auto !important;
+        padding: 0 10px 10px !important;
+        position: relative !important;
+    }
+
+    /* CASTELLANA: Ora occupa solo il 40% dello schermo, lasciando vedere il castello */
     .avatar-placeholder {
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
+        width: 100% !important;
+        height: 40vh !important; 
+        position: relative !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-end !important;
+        z-index: 1 !important;
     }
 
     .floating-img {
-        max-height: 75vh;
-        top: auto;
-        bottom: -10px; 
+        max-height: 100% !important;
+        width: auto !important;
+        bottom: 0 !important;
+        top: auto !important;
+        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)) !important;
     }
 
+    /* CHAT: Box compatto in basso */
     .chat-glass {
-        width: 92%;
-        position: relative;
-        z-index: 10;
-        
-        /* Forza la chat a stare in basso */
-        margin-top: auto; 
-        margin-bottom: 20px; 
-
-        /* Vetro Extra Trasparente per smartphone */
-        background: rgba(255, 255, 255, 0.02); 
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(252, 246, 186, 0.15);
+        width: 100% !important;
+        margin: 0 0 5px 0 !important;
+        padding: 15px !important;
+        z-index: 10 !important;
+        background: rgba(26, 10, 5, 0.8) !important;
+        border-radius: 20px !important;
     }
+
+    /* Bottoni e testi più piccoli per mobile */
+    .chat-glass h2 { font-size: 0.9rem !important; }
+    .chat-glass p { font-size: 0.75rem !important; line-height: 1.2 !important; }
+    .btn-gold, .btn-outline { padding: 8px !important; font-size: 0.7rem !important; }
+    .input-wrapper, .mic-btn { display: none !important; }
 }
