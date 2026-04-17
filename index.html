@@ -4,80 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism</title>
-
-    <!-- ✔ CSS CORRETTO -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-    <!-- ============================
-         NAVBAR / DASHBOARD
-         ============================ -->
-    <header class="dashboard">
-        <ul class="nav-main">
-            <li>Home</li>
+    <!-- LAYER SFONDO -->
+    <div class="scene-background"></div>
 
-            <li class="has-dropdown">Esperienze
-                <ul class="dropdown">
-                    <li>I Segreti del Castello</li>
+    <!-- LAYER INTERFACCIA -->
+    <div class="scene-grid">
 
-                    <li class="has-submenu">Gastronomia
-                        <ul class="sub-dropdown">
-                            <li>Sapori Locali</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+        <!-- NAVBAR -->
+        <header class="dashboard">
+            <div class="logo-title">Amunì Tourism</div>
+            <ul class="nav-main">
+                <li>Home</li>
+                <li>Esperienze</li>
+                <li>Chi Siamo</li>
+                <li>Contatti</li>
+            </ul>
+        </header>
 
-            <li>Chi Siamo</li>
-            <li>Contatti</li>
-        </ul>
-    </header>
+        <!-- CASTELLANA (qui in futuro canvas 3D) -->
+        <section class="panel panel-castellana">
+            <!-- Sostituibile con <canvas id="avatar3d"></canvas> -->
+            <img src="castellana_clean.png" alt="Castellana di Caccamo" class="img-castellana">
+        </section>
 
-    <!-- ============================
-         HERO: AVATAR + CHAT
-         ============================ -->
-    <section class="hero">
+        <!-- CASTELLO -->
+        <section class="panel panel-castello">
+            <img src="castello_clean.png" alt="Castello di Caccamo" class="img-castello">
+        </section>
 
-        <!-- AVATAR -->
-        <div class="avatar-placeholder">
-            <img src="castellana_clean.png" class="floating-img" alt="Castellana di Caccamo">
-        </div>
+        <!-- ABITO -->
+        <section class="panel panel-abito">
+            <img src="abito_clean.png" alt="Abito cerimoniale" class="img-abito">
+        </section>
 
         <!-- CHAT -->
-        <div class="chat-glass">
-            <div class="chat-controls">
+        <section class="panel panel-chat">
+            <div class="chat-glass">
 
-                <div class="message">
-                    Benvenuto, viandante. Le pietre di Caccamo sussurrano storie di cavalieri e nobili...
+                <div class="chat-messages">
+                    <div class="message">
+                        Benvenuto, viandante. Le pietre di Caccamo sussurrano storie di cavalieri e nobili...
+                    </div>
+                    <div class="message">
+                        Ah, la nostra terra è generosa! Olio dorato e dolci mandorle vi delizieranno...
+                    </div>
                 </div>
 
-                <div class="message">
-                    Ah, la nostra terra è generosa! Olio dorato e dolci mandorle vi delizieranno...
-                </div>
-
-                <div class="input-wrapper">
+                <div class="chat-input-row">
                     <input type="text" placeholder="Scrivi un messaggio...">
                     <button class="mic-btn">🎤</button>
                 </div>
 
-                <div class="action-buttons">
+                <div class="chat-actions">
                     <button class="btn-gold">Esplora con la Castellana</button>
                     <button class="btn-outline">Invoca l’app AR</button>
                 </div>
 
             </div>
-        </div>
+        </section>
 
-    </section>
+        <!-- FOOTER -->
+        <footer class="footer">
+            © Amunì Tourism
+        </footer>
 
-    <!-- ============================
-         FOOTER
-         ============================ -->
-    <footer>
-        © Amunì Tourism
-    </footer>
+    </div>
 
 </body>
 </html>
