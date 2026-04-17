@@ -295,3 +295,12 @@ img[src*="castellana"] {
     border: 5px solid cyan !important;
     transform: scale(1.2);
 }
+/* BLOCCO 2 — Ottimizzazione Castello */
+img[src*="castello"] {
+    max-width: 85%;
+    max-height: 55vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    transform: translateY(10px);
+}
