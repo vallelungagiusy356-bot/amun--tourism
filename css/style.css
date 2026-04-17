@@ -1,4 +1,4 @@
-/* RESET BASE */
+⁶/* RESET BASE */
 * {
     margin: 0;
     padding: 0;
@@ -90,12 +90,14 @@ body {
 
 /* POSIZIONI NELLA GRIGLIA (DESKTOP) */
 .panel-castellana {
-    grid-row: 2;
+    grid-row: 2 / span 2; /* occupa due righe */
     grid-column: 1;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    min-height: 70vh; /* più spazio verticale */
 }
 
 .panel-castello {
