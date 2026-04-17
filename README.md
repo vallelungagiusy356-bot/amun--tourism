@@ -19,7 +19,7 @@ Benvenuti nel cuore della Sicilia. **Amunì Tourism** è un'esperienza digitale 
 
 ## 🚀 Come Visualizzare il Progetto
 Puoi visitare la versione live del sito qui:
-[Sostituisci con il tuo link di GitHub Pages]
+[https://github.com/vallelungagiusy356-bot/amun--tourism.git]
 
 ## ✍️ Autore
 Progetto ideato e sviluppato da **Giusy Vallelunga**.
