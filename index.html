@@ -3,79 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amunì Tourism - Castellana</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Amunì Tourism</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <header class="dashboard">
-            <div class="logo">AMUNÌ TOURISM</div>
-            <nav>
-                <ul class="nav-main">
-                    <li>HOME</li>
-                    <li class="has-dropdown">MENÙ ▾
-                        <ul class="dropdown">
-                            <li>Cultura</li>
-                            <li>Siti Artistici</li>
-                            <li>Eventi</li>
-                            <li class="has-submenu">Gastronomia ▸
-                                <ul class="sub-dropdown">
-                                    <li>Attività & Concept</li>
-                                    <li>Storia & Territorio</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>CHI SIAMO</li>
-                    <li class="has-dropdown">LINGUE ▾
-                        <ul class="dropdown">
-                            <li>IT - Italiano</li>
-                            <li>EN - English</li>
+
+    <!-- ============================
+         NAVBAR / DASHBOARD
+         ============================ -->
+    <header class="dashboard">
+        <ul class="nav-main">
+            <li>Home</li>
+
+            <li class="has-dropdown">Esperienze
+                <ul class="dropdown">
+                    <li>I Segreti del Castello</li>
+
+                    <li class="has-submenu">Gastronomia
+                        <ul class="sub-dropdown">
+                            <li>Sapori Locali</li>
                         </ul>
                     </li>
                 </ul>
-            </nav>
-            <div class="premium-switch">
-                <span class="label">FREE</span>
-                <label class="switch">
-                    <input type="checkbox" id="mode-toggle">
-                    <span class="slider"></span>
-                </label>
-                <span class="label">FREEMIUM</span>
-            </div>
-        </header>
+            </li>
 
-        <main class="hero">
-            <div class="avatar-placeholder">
-                <img src="castellana_clean.png" class="floating-img" alt="La Castellana">
-            </div>
+            <li>Chi Siamo</li>
+            <li>Contatti</li>
+        </ul>
+    </header>
 
-            <div class="chat-glass">
-                <div class="chat-header">
-                    <h2>Castellana di Caccamo</h2>
-                    <span class="badge">MODALITÀ FREEMIUM</span>
-                </div>
-                <div class="chat-body">
-                    <p class="msg">Benvenuta, viandante. In questa versione <strong>Freemium</strong>, ti svelerò i vicoli segreti e le leggende che solo un caccamese conosce...</p>
-                </div>
-                
-                <div class="chat-controls">
-                    <div class="input-wrapper">
-                        <input type="text" placeholder="Chiedi alla Castellana...">
-                        <button class="mic-btn">🎤</button>
-                    </div>
-                    <div class="action-buttons">
-                        <button class="btn-gold">AVVIA GUIDA 3D</button>
-                        <button class="btn-outline">VERSIONE FREE</button>
-                    </div>
-                </div>
-            </div>
-        </main>
+    <!-- ============================
+         HERO: AVATAR + CHAT
+         ============================ -->
+    <section class="hero">
 
-        <footer>
-            <div class="social-icons">𝕏 f i t</div>
-        </footer>
-    </div>
+        <!-- AVATAR -->
+        <div class="avatar-placeholder">
+            <img src="castellana_clean.png" class="floating-img" alt="Castellana di Caccamo">
+        </div>
+
+        <!-- CHAT -->
+        <div class="chat-glass">
+            <div class="chat-controls">
+
+                <div class="message">
+                    Benvenuto, viandante. Le pietre di Caccamo sussurrano storie di cavalieri e nobili...
+                </div>
+
+                <div class="message">
+                    Ah, la nostra terra è generosa! Olio dorato e dolci mandorle vi delizieranno...
+                </div>
+
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Scrivi un messaggio...">
+                    <button class="mic-btn">🎤</button>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-gold">Esplora con la Castellana</button>
+                    <button class="btn-outline">Invoca l’app AR</button>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ============================
+         FOOTER
+         ============================ -->
+    <footer>
+        © Amunì Tourism
+    </footer>
+
 </body>
 </html>
-<link rel="stylesheet" href="css/style.css?v=10.0">
+<link rel="stylesheet" href="css/style.css?v=11.0">
