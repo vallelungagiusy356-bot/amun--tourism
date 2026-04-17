@@ -1,206 +1,292 @@
-/* =========================================
-   RESET E DEFINIZIONI ORO (INVARIATI)
-   ========================================= */
-:root {
-    --gold: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #b38728 100%);
-    --glass: rgba(255, 255, 255, 0.08);
-    --border-gold: rgba(252, 246, 186, 0.3);
+/* RESET BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-/* =========================================
-   SFONDO TRAMONTO (VERSIONE STABILE)
-   ========================================= */
-body { 
-    height: 100vh;
-    font-family: 'Garamond', serif;
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #f7f2e9;
+    min-height: 100vh;
     overflow-x: hidden;
-
-    /* Il tuo file si chiama sunset_caccamo.png */
-    background-image: url('../sunset_caccamo.png');
-    background-size: cover; 
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: #000;
 }
 
-/* =========================================
-   DASHBOARD (PIÙ LEGGIBILE)
-   ========================================= */
+/* ============================
+   LAYER 0 — SFONDO
+   ============================ */
+.scene-background {
+    position: fixed;
+    inset: 0;
+    background-image: url('../sunset_caccamo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.75);
+    z-index: 0;
+}
+
+/* ============================
+   LAYER 1 — GRIGLIA PRINCIPALE
+   ============================ */
+.scene-grid {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 16px;
+
+    padding: 16px 24px 24px;
+}
+
+/* ============================
+   DASHBOARD / NAVBAR
+   ============================ */
 .dashboard {
-    position: relative; 
-    z-index: 100; 
-    padding: 20px 50px; 
+    grid-column: 1 / 3;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
 
-    background: rgba(0,0,0,0.35); 
-    backdrop-filter: blur(20px);
-
-    border-bottom: 1px solid var(--border-gold);
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(14px);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 160, 0.4);
 }
 
-.nav-main { 
-    display: flex; 
-    list-style: none; 
-    gap: 30px; 
-    color: #fcf6ba; 
-    font-weight: bold; 
+.logo-title {
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
-.has-dropdown { position: relative; cursor: pointer; }
-
-.dropdown {
-    position: absolute; 
-    top: 100%; 
-    left: 0; 
-    display: none; 
-    min-width: 200px;
-    background: rgba(26, 10, 5, 0.95); 
-    border: 1px solid #bf953f; 
+.nav-main {
     list-style: none;
-}
-.dropdown li { 
-    padding: 12px; 
-    color: #fff; 
-    font-size: 14px; 
-    border-bottom: 1px solid rgba(191,149,63,0.1); 
-}
-.dropdown li:hover { background: #bf953f; color: #000; }
-.has-dropdown:hover .dropdown { display: block; }
-
-.sub-dropdown { 
-    position: absolute; 
-    left: 100%; 
-    top: 0; 
-    display: none; 
-    background: #1a0a05; 
-    border: 1px solid #bf953f; 
-}
-.has-submenu:hover .sub-dropdown { display: block; }
-
-/* =========================================
-   HERO: AVATAR + CHAT (FIX POSIZIONI)
-   ========================================= */
-.hero {
-    position: relative;
-    z-index: 10;
     display: flex;
-    flex-direction: row; /* forza due colonne */
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 0 5% 50px;
-    height: 100vh; /* evita centratura verticale */
+    gap: 18px;
+    font-size: 0.9rem;
 }
 
-/* Avatar */
-.avatar-placeholder { 
-    width: 40%; 
-    display: flex; 
-    justify-content: center; 
-    overflow: visible; 
-}
-
-.floating-img {
-    max-height: 85vh; 
-    width: auto;
-    filter: drop-shadow(0 0 30px rgba(252, 246, 186, 0.4));
-    animation: floating 6s ease-in-out infinite;
-}
-
-@keyframes floating { 
-    0%, 100% { transform: translateY(0); } 
-    50% { transform: translateY(-20px); } 
-}
-
-/* Chat */
-.chat-glass {
-    width: 50%; 
-    max-width: 550px; 
-    background: var(--glass);
-    backdrop-filter: blur(25px); 
-    border: 1px solid var(--border-gold);
-    border-radius: 30px; 
-    padding: 30px; 
-    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-}
-
-.chat-controls { display: flex; flex-direction: column; gap: 20px; }
-.input-wrapper { 
-    display: flex; 
-    align-items: center; 
-    background: rgba(0,0,0,0.4); 
-    border-radius: 20px; 
-    padding: 10px 15px; 
-    border: 1px solid rgba(255,255,255,0.1); 
-}
-.input-wrapper input { background: transparent; border: none; color: #fff; flex: 1; outline: none; }
-.mic-btn { background: transparent; border: none; color: #fcf6ba; cursor: pointer; }
-
-.action-buttons { display: flex; gap: 15px; }
-
-.btn-gold { 
-    background: var(--gold); 
-    border: none; 
-    padding: 12px; 
-    border-radius: 10px;
-    font-weight: bold; 
-    cursor: pointer; 
-    flex: 1; 
-    color: #000;
-}
-
-.btn-outline {
-    background: transparent; 
-    border: 1px solid #fff; 
-    color: #fff;
-    padding: 12px; 
-    border-radius: 10px; 
-    flex: 1; 
+.nav-main li {
     cursor: pointer;
 }
 
-/* =========================================
-   RESPONSIVE FIX — VERSIONE MOBILE
-   ========================================= */
-@media (max-width: 768px) {
-
-    .hero {
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        height: auto;
-        padding-bottom: 30px;
-        gap: 20px;
-    }
-
-    .avatar-placeholder {
-        width: 70%;
-    }
-
-    .floating-img {
-        max-height: 60vh;
-    }
-
-    .chat-glass {
-        width: 90%;
-        padding: 20px;
-    }
+/* ============================
+   PANNELLI STRATIFICATI
+   ============================ */
+.panel {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(18px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 215, 160, 0.35);
+    padding: 16px;
 }
 
-/* =========================================
-   SOCIAL FOOTER (INVARIATO)
-   ========================================= */
-footer { 
-    position: fixed; 
-    bottom: 15px; 
-    width: 100%; 
-    display: flex; 
-    justify-content: center; 
-    color: #bf953f; 
-    font-size: 14px; 
-    opacity: 0.7; 
-    z-index: 5; 
+/* POSIZIONI NELLA GRIGLIA (DESKTOP) */
+.panel-castellana {
+    grid-row: 2;
+    grid-column: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel-castello {
+    grid-row: 2;
+    grid-column: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel-abito {
+    grid-row: 3;
+    grid-column: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel-chat {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+/* ============================
+   IMMAGINI
+   ============================ */
+.img-castellana {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+}
+
+.img-castello,
+.img-abito {
+    max-width: 100%;
+    max-height: 30vh;
+    object-fit: contain;
+}
+
+/* ============================
+   CHAT GLASS
+   ============================ */
+.chat-glass {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.message {
+    background: rgba(15, 10, 5, 0.8);
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input-row input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.6);
+    color: #f7f2e9;
+}
+
+.chat-input-row input::placeholder {
+    color: rgba(247, 242, 233, 0.6);
+}
+
+.mic-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 0 12px;
+    background: rgba(255, 215, 160, 0.9);
+    cursor: pointer;
+}
+
+.chat-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.btn-gold,
+.btn-outline {
+    flex: 1;
+    min-width: 140px;
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.btn-gold {
+    border: none;
+    background: linear-gradient(135deg, #f5d08a, #e0a84f);
+    color: #3b2208;
+}
+
+.btn-outline {
+    border: 1px solid rgba(255, 215, 160, 0.7);
+    background: transparent;
+    color: #f7f2e9;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+.footer {
+    grid-column: 1 / 3;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(247, 242, 233, 0.8);
+}
+
+/* ============================
+   VERSIONE MOBILE
+   ============================ */
+@media (max-width: 768px) {
+
+    .scene-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto auto;
+        gap: 12px;
+        padding: 12px 12px 18px;
+    }
+
+    .dashboard {
+        grid-column: 1;
+        border-radius: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .nav-main {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 0.85rem;
+    }
+
+    .panel-castellana {
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    .panel-castello {
+        grid-row: 3;
+        grid-column: 1;
+    }
+
+    .panel-abito {
+        grid-row: 4;
+        grid-column: 1;
+    }
+
+    .panel-chat {
+        grid-row: 5;
+        grid-column: 1;
+    }
+
+    .footer {
+        grid-row: 6;
+        grid-column: 1;
+    }
+
+    .img-castellana {
+        max-height: 45vh;
+    }
+
+    .img-castello,
+    .img-abito {
+        max-height: 22vh;
+    }
+
+    .chat-messages {
+        max-height: 160px;
+    }
 }
