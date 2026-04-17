@@ -3,8 +3,9 @@
    ========================================= */
 :root {
     --gold: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #b38728 100%);
-    --glass: rgba(0, 0, 0, 0.6); /* Scurito per leggibilità */
+    --glass: rgba(0, 0, 0, 0.6);
     --border-gold: rgba(252, 246, 186, 0.4);
+    --dash-height: 70px; /* Variabile per gestire costantemente lo spazio in alto */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,13 +22,15 @@ body {
    1. DASHBOARD E MENU (VISIBILITÀ MASSIMA)
    ========================================= */
 .dashboard {
-    position: fixed; /* La blocchiamo in alto */
+    position: fixed;
     top: 0;
+    left: 0; /* Assicura l'allineamento orizzontale */
     width: 100%;
     z-index: 1000; 
-    padding: 15px 40px; 
+    padding: 0 40px; 
+    height: var(--dash-height); /* Altezza fissa per evitare sparizioni */
     display: flex; justify-content: space-between; align-items: center;
-    background: rgba(26, 10, 5, 0.7); /* Nero soft trasparente */
+    background: rgba(26, 10, 5, 0.8); /* Leggermente più scuro per contrasto */
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border-gold);
@@ -35,40 +38,53 @@ body {
 
 .nav-main { display: flex; list-style: none; gap: 25px; color: #fcf6ba; font-weight: bold; }
 
+/* FIX MENU ORIZZONTALE: Impedisce al dropdown di coprire tutto lo schermo */
+.dropdown-menu { 
+    max-height: 60vh; 
+    overflow-y: auto; 
+    background: rgba(26, 10, 5, 0.95);
+}
+
 /* =========================================
-   2. HERO E CASTELLANA (POSIZIONAMENTO IN BASSO)
+   2. HERO E CASTELLANA (POSIZIONAMENTO AL SUOLO)
    ========================================= */
 .hero { 
     position: relative; 
     display: flex; 
-    height: 100vh; /* Usa tutta l'altezza */
-    align-items: flex-end; /* Spinge tutto verso il basso */
-    padding: 0 5% 40px; /* Spazio dal fondo */
+    /* Altezza dinamica: 100% meno la dashboard per non finire sotto di essa */
+    height: calc(100vh - var(--dash-height)); 
+    margin-top: var(--dash-height);
+    align-items: flex-end; 
+    padding: 0 5% 20px; /* Padding ridotto per far toccare terra alla Castellana */
     justify-content: space-between;
     z-index: 10;
 }
 
 .avatar-placeholder { 
     width: 38%; 
+    height: 100%; /* Occupa tutta l'altezza della hero */
     display: flex; 
     justify-content: center; 
-    align-items: flex-end; /* Forza la Castellana sul fondo */
+    align-items: flex-end; /* La Castellana poggia sulla base */
 }
 
 .floating-img {
-    max-height: 65vh; /* Altezza bilanciata per PC */
+    max-height: 95%; /* Quasi tutta l'altezza disponibile */
     width: auto;
+    object-fit: contain;
     filter: drop-shadow(0 0 25px rgba(252, 246, 186, 0.3));
+    /* Mantieni l'animazione ma assicurati che il "bottom" non si stacchi da terra */
     animation: floating 6s ease-in-out infinite;
 }
 
 /* =========================================
-   3. CHAT GLASS (EFFETTO VETRO RIPRISTINATO)
+   3. CHAT GLASS (LAYOUT SIMILE AL MOCKUP)
    ========================================= */
 .chat-glass {
     width: 50%; 
     max-width: 550px; 
-    background: rgba(255, 255, 255, 0.05); /* Effetto vetro originale */
+    margin-bottom: 40px; /* Alza leggermente la chat come nel mockup */
+    background: rgba(255, 255, 255, 0.05); 
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(252, 246, 186, 0.2);
@@ -81,47 +97,55 @@ body {
    4. FIX MOBILE DEFINITIVO (VERTICALE)
    ========================================= */
 @media screen and (max-width: 768px) {
-    .dashboard { padding: 10px 15px; height: 60px; }
+    :root { --dash-height: 60px; }
+    
+    .dashboard { padding: 0 15px; }
     .nav-main { display: none; }
 
     .hero {
         flex-direction: column !important;
-        justify-content: flex-end !important; /* Elementi impilati verso il basso */
-        padding: 10px 15px 80px !important; /* Spazio extra per non coprire il footer */
+        justify-content: flex-end !important;
+        padding: 0 15px 20px !important;
     }
 
     .avatar-placeholder {
         width: 100% !important;
-        height: 40vh !important; /* Ridotto per non schiacciare la chat */
-        margin-bottom: -20px; /* Sovrapposizione artistica leggera */
-    }
-
-    .floating-img {
-        max-height: 100% !important;
-        object-fit: contain;
+        height: 45vh !important; /* Spazio dedicato alla Castellana */
+        margin-bottom: -10px; /* Sovrapposizione bilanciata */
     }
 
     .chat-glass {
         width: 100% !important;
         max-width: 100% !important;
-        background: rgba(15, 5, 0, 0.85) !important; /* Leggermente più opaco per leggere bene */
+        background: rgba(15, 5, 0, 0.9) !important;
         padding: 20px !important;
-        border-radius: 20px !important;
+        margin-bottom: 0;
     }
-
-    .chat-glass h2 { font-size: 1.1rem; color: #fcf6ba; }
-    .chat-glass p { font-size: 0.85rem; line-height: 1.4; color: #fff; }
-
-    /* Bottoni oro e nero ben visibili */
-    .btn-gold { background: var(--gold) !important; color: #000 !important; font-weight: bold; }
-    .btn-outline { border: 1px solid #fff !important; color: #fff !important; }
 }
 
 /* =========================================
-   5. FIX ORIZZONTALE (Landscape)
+   5. FIX ORIZZONTALE (Landscape) - Risolve il menu coprente
    ========================================= */
 @media screen and (max-width: 950px) and (orientation: landscape) {
-    .hero { flex-direction: row !important; padding-bottom: 20px !important; }
-    .avatar-placeholder { width: 40% !important; height: 75vh !important; }
-    .chat-glass { width: 55% !important; padding: 15px !important; }
+    :root { --dash-height: 50px; }
+    
+    .hero { 
+        flex-direction: row !important; 
+        padding-bottom: 10px !important; 
+    }
+    
+    .avatar-placeholder { 
+        width: 35% !important; 
+        height: 100% !important; 
+    }
+    
+    .chat-glass { 
+        width: 60% !important; 
+        padding: 15px !important; 
+        margin-bottom: 5px !important;
+    }
+
+    /* Rimpicciolisce i testi in landscape per non saturare lo schermo */
+    .chat-glass h2 { font-size: 1rem; }
+    .chat-glass p { font-size: 0.8rem; line-height: 1.2; }
 }
