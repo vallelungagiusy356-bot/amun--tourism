@@ -1,4 +1,3 @@
-body { outline: 5px solid red; }
 /* =========================================
    RESET E DEFINIZIONI ORO (INVARIATI)
    ========================================= */
@@ -19,7 +18,7 @@ body {
     overflow-x: hidden;
 
     /* Il tuo file si chiama sunset_caccamo.png */
-    background-image: url('sunset_caccamo.png'); 
+    background-image: url('../sunset_caccamo.png');
     background-size: cover; 
     background-position: center bottom;
     background-repeat: no-repeat;
