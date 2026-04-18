@@ -316,7 +316,7 @@ img[src*="abito"] {
     border: none !important;
     box-shadow: none !important;
 
-    backdrop-filter: blur(12px) !important; /* sfocatura dietro la Castellana */
+    backdrop-filter: blur(12px) !important;
 }
 
 /* ============================
