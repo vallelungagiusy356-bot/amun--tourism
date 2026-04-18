@@ -198,12 +198,13 @@ body {
 }
 
 .btn-gold {
-    border: 1px solid rgba(255, 215, 160, 0.9);
-    background: linear-gradient(135deg, #ffdf9a, #e6a84f, #c98a2f);
+    border: 1px solid rgba(255, 215, 160, 1);
+    background: linear-gradient(135deg, #ffe7b3, #f0b45c, #c98a2f);
     color: #3b2208;
+
     box-shadow:
-        0 0 12px rgba(255, 215, 160, 0.55),
-        inset 0 0 8px rgba(255, 255, 255, 0.25);
+        0 0 14px rgba(255, 215, 160, 0.75),
+        inset 0 0 10px rgba(255, 255, 255, 0.35);
 }
 
 .btn-outline {
