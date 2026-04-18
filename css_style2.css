@@ -123,12 +123,12 @@ body {
     max-height: 80vh;
     object-fit: contain;
 
-    /* Effetto oro */
     filter:
-        drop-shadow(0 0 12px rgba(255, 215, 160, 0.55))
-        drop-shadow(0 0 22px rgba(255, 215, 160, 0.35))
-        saturate(1.25)
-        brightness(1.08);
+        drop-shadow(0 0 18px rgba(255, 215, 160, 0.75))
+        drop-shadow(0 0 28px rgba(255, 215, 160, 0.55))
+        saturate(1.35)
+        brightness(1.12)
+        contrast(1.08);
 }
 
 .img-castello {
@@ -216,24 +216,20 @@ body {
    ABITO DENTRO LA CHAT
    ============================ */
 .chat-item-abito {
-    display: flex;
-    justify-content: center;
-    margin: 12px 0 6px;
-}
-
 .chat-item-abito img {
     max-width: 68%;
     max-height: 30vh;
     object-fit: contain;
     border-radius: 18px;
     opacity: 0.98;
-    filter: drop-shadow(0 0 8px rgba(255, 215, 160, 0.35));
-    animation: fadeIn 0.8s ease-out;
-}
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+    filter:
+        drop-shadow(0 0 14px rgba(255, 215, 160, 0.55))
+        drop-shadow(0 0 22px rgba(255, 215, 160, 0.35))
+        saturate(1.25)
+        brightness(1.08);
+
+    animation: fadeIn 0.8s ease-out;
 }
 
 /* ============================
