@@ -16,7 +16,7 @@ body {
 /* ============================
    LAYER 0 — SFONDO
    ============================ */
-..scene-background {
+.scene-background {
     position: fixed;
     inset: 0;
     background-image: url('tuo_nuovo_sfondo.jpeg');
