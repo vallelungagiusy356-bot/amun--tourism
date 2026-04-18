@@ -324,3 +324,19 @@ img[src*="castello"] {
     box-shadow: none !important;
     backdrop-filter: none !important;
 }
+/* ============================
+   ABITO DENTRO LA CHAT
+   ============================ */
+.chat-item-abito {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 4px;
+}
+
+.chat-item-abito img {
+    max-width: 70%;
+    max-height: 32vh;
+    object-fit: contain;
+    border-radius: 18px;
+    opacity: 0.95;
+}
