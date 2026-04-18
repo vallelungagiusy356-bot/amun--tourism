@@ -76,18 +76,6 @@ body {
 .nav-main li {
     cursor: pointer;
 }
-
-/* ============================
-   PANNELLI STRATIFICATI
-   ============================ */
-.panel {
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(18px);
-    border-radius: 24px;
-    border: 1px solid rgba(255, 215, 160, 0.35);
-    padding: 16px;
-}
-
 /* POSIZIONI NELLA GRIGLIA (DESKTOP) */
 .panel-castellana {
     grid-row: 2 / span 2; /* occupa due righe */
