@@ -293,19 +293,48 @@ img[src*="abito"] {
     margin: 0 auto;
     opacity: 0.95;
 }
-/* VETRO TIPO FINESTRA — trasparente, nitido, con bordo brillante */
-.panel-castellana,
-.panel-castello,
-.panel-abito,
+/* ============================
+   CHAT — unico pannello con vetro
+   ============================ */
 .panel-chat {
-    background: rgba(255, 255, 255, 0.03) !important; /* quasi invisibile, vetro vero */
-    backdrop-filter: blur(4px) brightness(1.05) !important; /* leggerissimo, solo riflesso */
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(4px) brightness(1.05) !important;
     border-radius: 32px !important;
 
-    /* Bordo vetro + glow dorato */
     border: 1px solid rgba(255, 215, 160, 0.35) !important;
     box-shadow:
-        0 0 10px rgba(255, 215, 160, 0.35),  /* glow dorato */
-        inset 0 0 12px rgba(255, 255, 255, 0.12), /* riflesso interno da vetro */
-        0 12px 40px rgba(0, 0, 0, 0.35) !important; /* profondità */
+        0 0 10px rgba(255, 215, 160, 0.35),
+        inset 0 0 12px rgba(255, 255, 255, 0.12),
+        0 12px 40px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ============================
+   CASTELLANA — sfocatura dietro, NO vetro
+   ============================ */
+.panel-castellana {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    backdrop-filter: blur(12px) !important; /* sfocatura dietro la Castellana */
+}
+
+/* ============================
+   CASTELLO — nessun effetto
+   ============================ */
+.panel-castello {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+/* ============================
+   ABITO — nessun effetto
+   ============================ */
+.panel-abito {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
 }
