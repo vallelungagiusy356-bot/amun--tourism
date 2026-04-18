@@ -91,10 +91,6 @@ body {
     min-height: 35vh;
 }
 
-.panel-abito {
-    min-height: 30vh;
-}
-
 .img-castello,
 .img-abito {
     max-height: 25vh;
@@ -282,15 +278,6 @@ img[src*="castello"] {
     display: block;
     margin: 0 auto;
     transform: translateY(10px);
-}
-/* BLOCCO 3 — Ridimensionamento Abito */
-img[src*="abito"] {
-    max-width: 55%;
-    max-height: 35vh;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-    opacity: 0.95;
 }
 /* ============================
    CHAT — unico pannello con vetro
