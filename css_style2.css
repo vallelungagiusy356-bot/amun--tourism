@@ -1,6 +1,3 @@
-body {
-    border: 8px solid magenta !important;
-}
 ⁶/* RESET BASE */
 * {
     margin: 0;
@@ -289,11 +286,6 @@ body {
     .chat-messages {
         max-height: 160px;
     }
-}
-/* TEST SICURO SULLA CASTELLANA */
-img[src*="castellana"] {
-    border: 5px solid cyan !important;
-    transform: scale(1.2);
 }
 /* BLOCCO 2 — Ottimizzazione Castello */
 img[src*="castello"] {
