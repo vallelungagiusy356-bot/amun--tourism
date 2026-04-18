@@ -565,3 +565,75 @@ img[src*="castello"] {
     border-radius: 18px;
     opacity: 0.95;
 }
+/* ============================================
+   LAYOUT VERTICALE — SMARTPHONE (MEDIA)
+   ============================================ */
+@media (max-width: 768px) and (orientation: portrait) {
+
+    /* Castello più piccolo e leggero */
+    .panel-castello {
+        grid-row: 1;
+        grid-column: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 8px;
+    }
+
+    .img-castello {
+        max-height: 22vh;
+        opacity: 0.85;
+    }
+
+    /* Castellana protagonista ma non enorme */
+    .panel-castellana {
+        grid-row: 2;
+        grid-column: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -10px;
+        background: transparent !important;
+        backdrop-filter: none !important;
+    }
+
+    .img-castellana {
+        max-height: 48vh;
+        max-width: 80%;
+    }
+
+    /* Chat compatta e proporzionata */
+    .panel-chat {
+        grid-row: 3;
+        grid-column: 1;
+        margin-top: -6px;
+        transform: scale(1);
+        width: 100%;
+    }
+
+    .chat-glass {
+        padding: 14px 16px;
+    }
+
+    .chat-messages {
+        max-height: 140px;
+    }
+
+    /* Abito dentro la chat — proporzionato */
+    .chat-item-abito img {
+        max-width: 70%;
+        max-height: 26vh;
+    }
+
+    /* Bottoni più compatti */
+    .chat-actions button {
+        min-width: 120px;
+        padding: 7px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Footer */
+    .footer {
+        margin-top: 10px;
+    }
+}
