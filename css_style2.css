@@ -217,6 +217,11 @@ body {
    ABITO DENTRO LA CHAT
    ============================ */
 .chat-item-abito {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 4px;
+}
+
 .chat-item-abito img {
     max-width: 68%;
     max-height: 30vh;
