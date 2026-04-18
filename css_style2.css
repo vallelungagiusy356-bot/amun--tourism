@@ -24,6 +24,8 @@ body {
     filter: brightness(0.75);
     z-index: 0;
 }
+
+/* GRIGLIA BASE */
 .scene-grid {
     position: relative;
     z-index: 1;
@@ -36,19 +38,26 @@ body {
 
     padding: 16px 24px 24px;
 }
+
+/* DASHBOARD ISTITUZIONALE */
 .dashboard {
     grid-column: 1 / 3;
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 10px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     padding: 12px 20px;
+    border-radius: 22px;
+
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(14px);
-    border-radius: 999px;
 
-    border: 1px solid rgba(255, 215, 160, 0.6);
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.4);
+    border: 1px solid rgba(255, 215, 160, 0.8);
+    box-shadow: 0 0 18px rgba(255, 215, 160, 0.45);
 }
 
 .logo-title {
@@ -68,38 +77,8 @@ body {
 .nav-main li {
     cursor: pointer;
 }
-.panel-castellana {
-    grid-row: 2 / span 2;
-    grid-column: 1;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    min-height: 70vh;
-}
-
-.panel-castello {
-    min-height: 35vh;
-}
-
-.panel-chat {
-    grid-row: 3;
-    grid-column: 2;
-
-    transform: scale(1.08);
-    transform-origin: top right;
-
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(4px) brightness(1.03) !important;
-    border-radius: 32px !important;
-
-    border: 1px solid rgba(255, 215, 160, 0.35) !important;
-    box-shadow:
-        0 0 10px rgba(255, 215, 160, 0.35),
-        inset 0 0 12px rgba(255, 255, 255, 0.12),
-        0 12px 40px rgba(0, 0, 0, 0.35) !important;
-}
+/* IMMAGINI */
 .img-castellana {
     max-width: 90%;
     max-height: 80vh;
@@ -115,9 +94,10 @@ body {
 
 .img-castello {
     max-width: 100%;
-    max-height: 30vh;
     object-fit: contain;
 }
+
+/* CHAT */
 .chat-glass {
     display: flex;
     flex-direction: column;
@@ -165,7 +145,8 @@ body {
     padding: 0 12px;
     background: rgba(255, 215, 160, 0.9);
     cursor: pointer;
-    }
+}
+
 .btn-gold {
     border: 1px solid rgba(255, 215, 160, 1);
     background: linear-gradient(135deg, #ffe7b3, #f0b45c, #c98a2f);
@@ -180,7 +161,8 @@ body {
     border: 1px solid rgba(255, 215, 160, 0.7);
     background: transparent;
     color: #f7f2e9;
-    }
+}
+
 .chat-item-abito {
     display: flex;
     justify-content: center;
@@ -207,197 +189,100 @@ body {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* ============================================================
+   📱 VERTICALE — CASTELLO A DESTRA (ALLINEATO AI TETTI)
+   ============================================================ */
 @media (max-width: 768px) and (orientation: portrait) {
 
     .scene-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto auto;
+        grid-template-rows: auto auto auto auto;
         gap: 12px;
         padding: 12px 12px 18px;
     }
 
-    .dashboard {
-        grid-row: 1;
-        grid-column: 1;
-        border-radius: 18px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-    }
-
+    /* CASTELLO A DESTRA, GRANDE, ABBASSATO */
     .panel-castello {
         grid-row: 2;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-    }
-
-    .img-castello {
-        max-height: 22vh;
-        opacity: 0.85;
-    }
-
-    .panel-castellana {
-        grid-row: 3;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: transparent !important;
-        backdrop-filter: none !important;
-    }
-
-    .img-castellana {
-        max-height: 48vh;
-        max-width: 80%;
-    }
-
-    .panel-chat {
-        grid-row: 4;
-        transform: scale(1);
-        width: 100%;
-    }
-
-    .chat-messages {
-        max-height: 140px;
-    }
-@media (max-height: 420px) and (orientation: landscape) {
-
-    .panel-castellana {
-        display: none !important;
-    }
-
-    .dashboard {
-        display: flex !important;
-        grid-row: 1;
-        grid-column: 1 / 3;
-    }
-
-    .img-castello {
-        max-height: 30vh;
-    }
-
-    .panel-chat {
-        transform: scale(0.9);
-        margin-top: 0;
-    }
-
-    .chat-messages {
-        max-height: 110px;
-    }
-}
-    .footer {
-        grid-row: 5;
-        margin-top: 10px;
-    }
-}
-/* ============================================
-   DASHBOARD ISTITUZIONALE (centrata e dorata)
-   ============================================ */
-.dashboard {
-    width: 85%;
-    margin: 0 auto;
-    margin-top: 10px;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 215, 160, 0.7);
-    box-shadow: 0 0 14px rgba(255, 215, 160, 0.5);
-    justify-content: space-between;
-}
-
-/* Landscape: dashboard più larga */
-@media (orientation: landscape) {
-    .dashboard {
-        width: 70%;
-        margin-top: 6px;
-    }
-}
-
-/* ============================================
-   VERTICALE — CASTELLO A DESTRA, GRANDE
-   ============================================ */
-@media (max-width: 768px) and (orientation: portrait) {
-
-    /* Castello molto grande e spostato a destra */
-    .panel-castello {
-        grid-row: 2;
-        grid-column: 1;
         display: flex;
         justify-content: flex-end;
-        align-items: center;
-        margin-top: -20px;
+        align-items: flex-end;
+        margin-top: 40px;
     }
 
     .img-castello {
-        max-height: 55vh;
-        transform: translateX(20px);
-        opacity: 0.95;
+        max-height: 75vh;
+        transform: translateX(25px) translateY(20px);
+        opacity: 0.98;
     }
 
-    /* Chat a sinistra, leggermente più in alto */
-    .panel-chat {
-        grid-row: 3;
-        grid-column: 1;
-        margin-top: -20px;
-        width: 85%;
-        margin-left: 0;
-    }
-
-    /* Castellana più in basso a sinistra */
+    /* CASTELLANA A SINISTRA, PIÙ IN BASSO */
     .panel-castellana {
-        grid-row: 4;
-        grid-column: 1;
+        grid-row: 3;
         display: flex;
         justify-content: flex-start;
         align-items: flex-end;
-        margin-top: -10px;
+        margin-top: 20px;
     }
 
     .img-castellana {
-        max-height: 42vh;
+        max-height: 45vh;
         transform: translateX(-10px);
+    }
+
+    /* CHAT SOTTO LA CASTELLANA */
+    .panel-chat {
+        grid-row: 4;
+        width: 92%;
+        margin-left: 0;
     }
 }
 
-/* ============================================
-   LANDSCAPE — CASTELLO A DESTRA, GRANDE
-   ============================================ */
+/* ============================================================
+   🖥️ LANDSCAPE — STESSA LOGICA, PIÙ CINEMATOGRAFICO
+   ============================================================ */
 @media (orientation: landscape) {
 
-    /* Castello grande a destra */
+    .dashboard {
+        width: 85%;
+        margin-top: 6px;
+    }
+
+    /* CASTELLO A DESTRA, GRANDE, ALLINEATO AI TETTI */
     .panel-castello {
         grid-row: 2;
         grid-column: 2;
         display: flex;
         justify-content: flex-end;
-        align-items: center;
-        margin-top: -10px;
+        align-items: flex-end;
+        margin-top: 40px;
     }
 
     .img-castello {
-        max-height: 65vh;
-        transform: translateX(25px);
+        max-height: 85vh;
+        transform: translateX(30px) translateY(20px);
     }
 
-    /* Chat a sinistra, più in alto */
-    .panel-chat {
-        grid-row: 2;
-        grid-column: 1;
-        margin-top: -20px;
-        width: 90%;
-    }
-
-    /* Castellana più in basso a sinistra */
+    /* CASTELLANA A SINISTRA, PIÙ IN BASSO */
     .panel-castellana {
-        grid-row: 3;
+        grid-row: 2;
         grid-column: 1;
         justify-content: flex-start;
         align-items: flex-end;
-        margin-top: -10px;
+        margin-top: 60px;
     }
 
     .img-castellana {
         max-height: 55vh;
         transform: translateX(-10px);
     }
-        }
+
+    /* CHAT SOTTO LA CASTELLANA */
+    .panel-chat {
+        grid-row: 3;
+        grid-column: 1;
+        width: 90%;
+        margin-top: -10px;
+    }
+}
