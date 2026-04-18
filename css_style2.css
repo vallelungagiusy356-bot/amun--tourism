@@ -1,4 +1,4 @@
-⁶/* RESET BASE */
+/* RESET BASE */
 * {
     margin: 0;
     padding: 0;
@@ -26,6 +26,7 @@ body {
     filter: brightness(0.75);
     z-index: 0;
 }
+
 /* ============================
    LAYER 1 — GRIGLIA PRINCIPALE
    ============================ */
@@ -75,30 +76,255 @@ body {
 .nav-main li {
     cursor: pointer;
 }
-/* POSIZIONI NELLA GRIGLIA (DESKTOP) */
+
+/* ============================
+   POSIZIONI NELLA GRIGLIA
+   ============================ */
 .panel-castellana {
-    grid-row: 2 / span 2; /* occupa due righe */
+    grid-row: 2 / span 2;
     grid-column: 1;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    min-height: 70vh; /* più spazio verticale */
+    min-height: 70vh;
 }
 
+/* CASTELLO */
 .panel-castello {
     min-height: 35vh;
 }
 
-.img-castello,
-.img-abito {
-    max-height: 25vh;
-}
-
+/* CHAT */
 .panel-chat {
     grid-row: 3;
     grid-column: 2;
+
+    transform: scale(1.12);
+    transform-origin: top right;
+
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(4px) brightness(1.05) !important;
+    border-radius: 32px !important;
+
+    border: 1px solid rgba(255, 215, 160, 0.35) !important;
+    box-shadow:
+        0 0 10px rgba(255, 215, 160, 0.35),
+        inset 0 0 12px rgba(255, 255, 255, 0.12),
+        0 12px 40px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ============================
+   IMMAGINI
+   ============================ */
+.img-castellana {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+
+    /* Effetto oro */
+    filter:
+        drop-shadow(0 0 12px rgba(255, 215, 160, 0.55))
+        drop-shadow(0 0 22px rgba(255, 215, 160, 0.35))
+        saturate(1.25)
+        brightness(1.08);
+}
+
+.img-castello {
+    max-width: 100%;
+    max-height: 30vh;
+    object-fit: contain;
+}
+
+/* ============================
+   CHAT GLASS
+   ============================ */
+.chat-glass {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 20px;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.message {
+    background: rgba(15, 10, 5, 0.8);
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* INPUT */
+.chat-input-row {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input-row input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.6);
+    color: #f7f2e9;
+}
+
+.chat-input-row input::placeholder {
+    color: rgba(247, 242, 233, 0.6);
+}
+
+.mic-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 0 12px;
+    background: rgba(255, 215, 160, 0.9);
+    cursor: pointer;
+}
+
+/* BOTTONI */
+.chat-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.btn-gold {
+    border: 1px solid rgba(255, 215, 160, 0.9);
+    background: linear-gradient(135deg, #ffdf9a, #e6a84f, #c98a2f);
+    color: #3b2208;
+    box-shadow:
+        0 0 12px rgba(255, 215, 160, 0.55),
+        inset 0 0 8px rgba(255, 255, 255, 0.25);
+}
+
+.btn-outline {
+    border: 1px solid rgba(255, 215, 160, 0.7);
+    background: transparent;
+    color: #f7f2e9;
+}
+
+/* ============================
+   ABITO DENTRO LA CHAT
+   ============================ */
+.chat-item-abito {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0 6px;
+}
+
+.chat-item-abito img {
+    max-width: 68%;
+    max-height: 30vh;
+    object-fit: contain;
+    border-radius: 18px;
+    opacity: 0.98;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 160, 0.35));
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================
+   CASTELLANA — TRASPARENTE
+   ============================ */
+.panel-castellana {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+/* ============================
+   CASTELLO — nessun effetto
+   ============================ */
+.panel-castello {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+.footer {
+    grid-column: 1 / 3;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(247, 242, 233, 0.8);
+}
+
+/* ============================
+   VERSIONE MOBILE
+   ============================ */
+@media (max-width: 768px) {
+
+    .scene-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto auto;
+        gap: 12px;
+        padding: 12px 12px 18px;
+    }
+
+    .dashboard {
+        grid-column: 1;
+        border-radius: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .nav-main {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 0.85rem;
+    }
+
+    .panel-castellana {
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    .panel-castello {
+        grid-row: 3;
+        grid-column: 1;
+    }
+
+    .panel-chat {
+        grid-row: 5;
+        grid-column: 1;
+        transform: scale(1);
+    }
+
+    .footer {
+        grid-row: 6;
+        grid-column: 1;
+    }
+
+    .img-castellana {
+        max-height: 45vh;
+    }
+
+    .img-castello {
+        max-height: 22vh;
+    }
+
+    .chat-messages {
+        max-height: 160px;
+    }
+    }    grid-column: 2;
 }
 
 /* ============================
