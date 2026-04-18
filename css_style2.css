@@ -305,14 +305,14 @@ img[src*="abito"] {
     margin: 0 auto;
     opacity: 0.95;
 }
-/* BLOCCO — Effetto vetro premium POTENZIATO */
+/* BLOCCO — Effetto vetro ULTRA */
 .panel-castellana,
 .panel-castello,
 .panel-abito,
 .panel-chat {
-    background: rgba(0, 0, 0, 0.18) !important; /* molto più trasparente */
-    backdrop-filter: blur(22px) saturate(180%) !important; /* vetro vero */
-    border-radius: 26px !important;
-    border: 1px solid rgba(255, 215, 160, 0.16) !important; /* bordo delicatissimo */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important; /* profondità premium */
+    background: rgba(0, 0, 0, 0.12) !important; /* quasi trasparente */
+    backdrop-filter: blur(28px) saturate(220%) !important; /* effetto AR */
+    border-radius: 28px !important;
+    border: 1px solid rgba(255, 215, 160, 0.12) !important; /* bordo sottilissimo */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.38) !important; /* profondità morbida */
 }
