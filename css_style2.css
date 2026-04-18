@@ -305,14 +305,18 @@ img[src*="abito"] {
     margin: 0 auto;
     opacity: 0.95;
 }
-/* BLOCCO — Effetto vetro ULTRA‑ULTRA (massimo livello) */
+/* BLOCCO — Effetto vetro ULTRA‑ULTRA con glow dorato */
 .panel-castellana,
 .panel-castello,
 .panel-abito,
 .panel-chat {
-    background: rgba(0, 0, 0, 0.08) !important; /* trasparenza quasi totale */
-    backdrop-filter: blur(34px) saturate(260%) !important; /* vetro liquido */
-    border-radius: 30px !important;
-    border: 1px solid rgba(255, 215, 160, 0.10) !important; /* bordo etereo */
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.40) !important; /* profondità cinematografica */
+    background: rgba(0, 0, 0, 0.06) !important; /* quasi invisibile */
+    backdrop-filter: blur(38px) saturate(280%) !important; /* vetro liquido AR */
+    border-radius: 32px !important;
+
+    /* Bordo dorato brillante */
+    border: 1px solid rgba(255, 215, 160, 0.18) !important;
+    box-shadow:
+        0 0 12px rgba(255, 215, 160, 0.25),   /* glow dorato morbido */
+        0 12px 48px rgba(0, 0, 0, 0.45) !important; /* profondità cinematografica */
 }
