@@ -290,3 +290,114 @@ body {
         margin-top: 10px;
     }
 }
+/* ============================================
+   DASHBOARD ISTITUZIONALE (centrata e dorata)
+   ============================================ */
+.dashboard {
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 215, 160, 0.7);
+    box-shadow: 0 0 14px rgba(255, 215, 160, 0.5);
+    justify-content: space-between;
+}
+
+/* Landscape: dashboard più larga */
+@media (orientation: landscape) {
+    .dashboard {
+        width: 70%;
+        margin-top: 6px;
+    }
+}
+
+/* ============================================
+   VERTICALE — CASTELLO A DESTRA, GRANDE
+   ============================================ */
+@media (max-width: 768px) and (orientation: portrait) {
+
+    /* Castello molto grande e spostato a destra */
+    .panel-castello {
+        grid-row: 2;
+        grid-column: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: -20px;
+    }
+
+    .img-castello {
+        max-height: 55vh;
+        transform: translateX(20px);
+        opacity: 0.95;
+    }
+
+    /* Chat a sinistra, leggermente più in alto */
+    .panel-chat {
+        grid-row: 3;
+        grid-column: 1;
+        margin-top: -20px;
+        width: 85%;
+        margin-left: 0;
+    }
+
+    /* Castellana più in basso a sinistra */
+    .panel-castellana {
+        grid-row: 4;
+        grid-column: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        margin-top: -10px;
+    }
+
+    .img-castellana {
+        max-height: 42vh;
+        transform: translateX(-10px);
+    }
+}
+
+/* ============================================
+   LANDSCAPE — CASTELLO A DESTRA, GRANDE
+   ============================================ */
+@media (orientation: landscape) {
+
+    /* Castello grande a destra */
+    .panel-castello {
+        grid-row: 2;
+        grid-column: 2;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: -10px;
+    }
+
+    .img-castello {
+        max-height: 65vh;
+        transform: translateX(25px);
+    }
+
+    /* Chat a sinistra, più in alto */
+    .panel-chat {
+        grid-row: 2;
+        grid-column: 1;
+        margin-top: -20px;
+        width: 90%;
+    }
+
+    /* Castellana più in basso a sinistra */
+    .panel-castellana {
+        grid-row: 3;
+        grid-column: 1;
+        justify-content: flex-start;
+        align-items: flex-end;
+        margin-top: -10px;
+    }
+
+    .img-castellana {
+        max-height: 55vh;
+        transform: translateX(-10px);
+    }
+        }
