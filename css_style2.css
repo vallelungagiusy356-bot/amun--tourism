@@ -313,3 +313,11 @@ img[src*="abito"] {
     margin: 0 auto;
     opacity: 0.95;
 }
+/* BLOCCO — Effetto vetro premium */
+.panel {
+    background: rgba(0, 0, 0, 0.28); /* più trasparente */
+    backdrop-filter: blur(14px) saturate(140%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 215, 160, 0.22); /* bordo più fine */
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.25); /* profondità */
+}
