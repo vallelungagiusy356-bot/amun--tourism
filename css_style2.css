@@ -101,11 +101,11 @@ body {
     grid-row: 3;
     grid-column: 2;
 
-    transform: scale(1.12);
+    transform: scale(1.08);
     transform-origin: top right;
 
     background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(4px) brightness(1.05) !important;
+    backdrop-filter: blur(4px) brightness(1.03) !important;
     border-radius: 32px !important;
 
     border: 1px solid rgba(255, 215, 160, 0.35) !important;
