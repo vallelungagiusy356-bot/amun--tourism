@@ -637,3 +637,28 @@ img[src*="castello"] {
         margin-top: 10px;
     }
 }
+/* ============================================
+   LANDSCAPE SU SMARTPHONE — OTTIMIZZAZIONE
+   ============================================ */
+@media (max-height: 480px) and (orientation: landscape) {
+
+    /* Nascondiamo la Castellana per evitare sovrapposizioni */
+    .panel-castellana {
+        display: none !important;
+    }
+
+    /* Castello più basso */
+    .img-castello {
+        max-height: 30vh;
+    }
+
+    /* Chat più piccola */
+    .panel-chat {
+        transform: scale(0.9);
+        margin-top: 0;
+    }
+
+    .chat-messages {
+        max-height: 110px;
+    }
+}
