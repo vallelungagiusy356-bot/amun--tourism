@@ -44,7 +44,17 @@ body {
 
     padding: 16px 24px 24px;
 }
+/* Impedisce alla griglia di scrollare */
+.scene-grid {
+    height: 100vh;
+    overflow: hidden;
+}
 
+/* Rende scrollabile solo la chat */
+.panel-chat {
+    overflow-y: auto;
+    max-height: 40vh;
+}
 /* ============================================================
    DASHBOARD — STILE C (piatta + glow oro)
    ============================================================ */
