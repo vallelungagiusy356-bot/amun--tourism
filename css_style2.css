@@ -119,8 +119,8 @@ body {
         0 0 10px rgba(255, 215, 160, 0.35),
         inset 0 0 12px rgba(255, 255, 255, 0.12),
         0 12px 40px rgba(0, 0, 0, 0.35);
-    margin-top: -40px; /* FIX: chat più vicina alla Castellana */
-}
+    margin-top: -10px; /* NON troppo vicino */
+       }
 
 .chat-glass {
     display: flex;
@@ -208,7 +208,7 @@ body {
 
     .img-castello {
         max-height: 60vh;
-        transform: translateX(10px) translateY(-60px); /* FIX: castello riposizionato */
+        transform: translateX(10px) translateY(-20px); /* FIX: castello riposizionato */
     }
 
     .panel-castellana {
