@@ -35,8 +35,8 @@ body {
 .scene-grid {
     position: relative;
     z-index: 1;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;   /* la griglia può crescere */
+    overflow: visible;   /* gli elementi possono respirare */
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
