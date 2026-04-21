@@ -1,5 +1,5 @@
 /* ============================================================
-   RESET BASE
+   RESET
    ============================================================ */
 * {
     margin: 0;
@@ -8,50 +8,34 @@
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: #f7f2e9;
+    font-family: system-ui, sans-serif;
     background: #000;
-    overflow-x: hidden;
+    color: #f7f2e9;
+    overflow: hidden; /* niente scroll della pagina */
 }
 
 /* ============================================================
-   SFONDO FISSO
+   LIVELLO 0 — SFONDO FISSO
    ============================================================ */
 .scene-background {
     position: fixed;
     inset: 0;
     background-image: url('tuo_nuovo_sfondo.jpeg');
     background-size: cover;
-    background-position: center -40px; /* sfondo uniforme */
-    background-repeat: no-repeat;
+    background-position: center;
     filter: brightness(0.75);
     z-index: 0;
 }
 
 /* ============================================================
-   GRIGLIA PRINCIPALE — STRUTTURA STABILE
-   ============================================================ */
-.scene-grid {
-    position: relative;
-    z-index: 1;
-
-    height: 100vh;        /* la scena è fissa */
-    overflow: hidden;     /* niente scroll della griglia */
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr auto; /* dashboard – scena – chat */
-    gap: 0;
-    padding: 0;
-}
-
-/* ============================================================
-   DASHBOARD — A TUTTA LARGHEZZA
+   LIVELLO 1 — DASHBOARD FISSA
    ============================================================ */
 .dashboard {
-    grid-column: 1 / 3;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 52px;
+    height: 54px;
 
     display: flex;
     justify-content: space-between;
@@ -63,155 +47,145 @@ body {
     backdrop-filter: blur(12px);
 
     border-bottom: 1px solid rgba(255, 215, 160, 0.85);
-    border-radius: 0;
 
-    box-shadow:
-        0 0 12px rgba(255, 215, 160, 0.45),
-        inset 0 0 6px rgba(255, 255, 255, 0.15);
-}
-
-.logo-title {
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.9rem;
+    z-index: 3;
 }
 
 .nav-main {
     list-style: none;
     display: flex;
     gap: 18px;
-    font-size: 0.9rem;
 }
 
 /* ============================================================
-   IMMAGINI — CASTELLANA E CASTELLO
+   LIVELLO 2 — SCENA (CASTELLANA + CASTELLO)
    ============================================================ */
-.panel-castellana,
-.panel-castello {
-    display: flex;
-    align-items: flex-end;
-}
+.scene-layer {
+    position: fixed;
+    top: 54px; /* sotto la dashboard */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 54px - 32vh); /* spazio per la chat */
 
-.img-castellana {
-    max-width: 90%;
-    max-height: 70vh;
-    object-fit: contain;
-    filter:
-        drop-shadow(0 0 18px rgba(255, 215, 160, 0.75))
-        drop-shadow(0 0 28px rgba(255, 215, 160, 0.55))
-        saturate(1.35)
-        brightness(1.12)
-        contrast(1.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    padding: 0 20px;
+
+    z-index: 1;
 }
 
 .img-castello {
-    max-width: 100%;
-    max-height: 75vh;
+    max-height: 70%;
     object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.6));
+}
+
+.img-castellana {
+    max-height: 65%;
+    object-fit: contain;
+    filter:
+        drop-shadow(0 0 18px rgba(255, 215, 160, 0.75))
+        drop-shadow(0 0 28px rgba(255, 215, 160, 0.55));
 }
 
 /* ============================================================
-   CHAT — SOLO LEI SCROLLA
+   LIVELLO 3 — CHAT (SCROLLABILE)
    ============================================================ */
-.panel-chat {
-    grid-row: 3;
-    grid-column: 1 / 3;
-
-    overflow-y: auto;
-    max-height: 32vh;
-
+.chat-layer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    padding: 12px 0;
+    height: 32vh;
 
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(10px) brightness(1.1);
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
 
     border-top: 1px solid rgba(255, 215, 160, 0.35);
-    box-shadow:
-        0 -4px 12px rgba(0, 0, 0, 0.4),
-        inset 0 0 12px rgba(255, 255, 255, 0.12);
+
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
 }
 
 .chat-glass {
+    width: 92%;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 18px 20px;
+    padding: 14px 0;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.message {
+    background: rgba(15, 10, 5, 0.8);
+    padding: 10px 12px;
+    border-radius: 14px;
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input-row input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+}
+
+.mic-btn {
+    padding: 0 14px;
+    border-radius: 999px;
+    background: rgba(255, 215, 160, 0.9);
+    border: none;
+    cursor: pointer;
 }
 
 /* ============================================================
-   📱 PORTRAIT — CASTELLANA SOPRA, CHAT SOTTO
+   PORTRAIT
    ============================================================ */
-@media (max-width: 768px) and (orientation: portrait) {
-
-    .scene-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr auto;
-    }
-
-    .panel-castello {
-        grid-row: 2;
-        justify-content: flex-end;
-        margin-right: 10px;
+@media (orientation: portrait) {
+    .scene-layer {
+        justify-content: center;
+        gap: 20px;
     }
 
     .img-castello {
-        transform: translateX(10px) translateY(0px);
-        max-height: 55vh;
-    }
-
-    .panel-castellana {
-        grid-row: 2;
-        justify-content: flex-start;
-        margin-left: 10px;
+        max-height: 45%;
     }
 
     .img-castellana {
-        max-height: 40vh;
-        transform: translateX(-10px);
-    }
-
-    .panel-chat {
-        grid-row: 3;
-        width: 100%;
-        margin: 0;
+        max-height: 40%;
     }
 }
 
 /* ============================================================
-   🖥️ LANDSCAPE — CASTELLANA + CHAT A SINISTRA, CASTELLO A DESTRA
+   LANDSCAPE
    ============================================================ */
 @media (orientation: landscape) {
-
-    .panel-castello {
-        grid-row: 2;
-        grid-column: 2;
-        justify-content: flex-end;
-        margin-right: 20px;
+    .scene-layer {
+        justify-content: space-between;
     }
 
     .img-castello {
-        max-height: 80vh;
-        transform: translateX(0px) translateY(0px);
-    }
-
-    .panel-castellana {
-        grid-row: 2;
-        grid-column: 1;
-        justify-content: flex-start;
-        margin-left: 20px;
+        max-height: 80%;
     }
 
     .img-castellana {
-        max-height: 55vh;
-    }
-
-    .panel-chat {
-        grid-row: 2;
-        grid-column: 1;
-        align-self: center;
-        width: 90%;
-        margin-top: 20px;
+        max-height: 70%;
     }
    }
