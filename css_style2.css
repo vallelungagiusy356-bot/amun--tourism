@@ -22,7 +22,7 @@ body {
     position: fixed;
     inset: 0;
     background-image: url('tuo_nuovo_sfondo.jpeg');
-    background-size: 100%;          /* sfondo panoramico */
+    background-size: 100%;          /* panoramico */
     background-position: center top; /* mostra bene il castello */
     background-repeat: no-repeat;
     filter: brightness(0.75);
@@ -35,26 +35,15 @@ body {
 .scene-grid {
     position: relative;
     z-index: 1;
-    min-height: 100vh;
-
+    height: 100vh;        /* unificato */
+    overflow: hidden;     /* impedisce scroll */
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 colonne in landscape */
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
     gap: 16px;
-
     padding: 16px 24px 24px;
 }
-/* Impedisce alla griglia di scrollare */
-.scene-grid {
-    height: 100vh;
-    overflow: hidden;
-}
 
-/* Rende scrollabile solo la chat */
-.panel-chat {
-    overflow-y: auto;
-    max-height: 40vh;
-}
 /* ============================================================
    DASHBOARD — STILE C (piatta + glow oro)
    ============================================================ */
@@ -62,21 +51,16 @@ body {
     grid-column: 1 / 3;
     width: 94%;
     margin: 0 auto;
-    margin-top: 6px;
-
+    margin-top: 20px; /* corretto */
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 8px 18px;
     height: 48px;
-
     background: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(12px);
-
     border-radius: 14px;
     border: 1px solid rgba(255, 215, 160, 0.85);
-
     box-shadow:
         0 0 12px rgba(255, 215, 160, 0.45),
         inset 0 0 6px rgba(255, 255, 255, 0.15);
@@ -109,7 +93,6 @@ body {
     max-width: 90%;
     max-height: 80vh;
     object-fit: contain;
-
     filter:
         drop-shadow(0 0 18px rgba(255, 215, 160, 0.75))
         drop-shadow(0 0 28px rgba(255, 215, 160, 0.55))
@@ -118,30 +101,29 @@ body {
         contrast(1.08);
 }
 
-/* Castello PNG sovrapposto allo sfondo */
+/* Castello PNG — versione base (portrait/landscape lo sovrascrivono) */
 .img-castello {
-    transform: translateX(35px) translateY(40px);
-    max-height: 70vh;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 /* ============================================================
-   CHAT — Effetto vetro premium (ripristinato)
+   CHAT — Effetto vetro premium (unificato)
    ============================================================ */
 .panel-chat {
+    overflow-y: auto;
+    max-height: 40vh;
     background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(10px) brightness(1.1);
     border-radius: 28px;
-
     border: 1px solid rgba(255, 215, 160, 0.35);
     box-shadow:
         0 0 10px rgba(255, 215, 160, 0.35),
         inset 0 0 12px rgba(255, 255, 255, 0.12),
         0 12px 40px rgba(0, 0, 0, 0.35);
+    margin-top: -20px; /* avvicina la chat alla Castellana */
 }
-/* Avvicina la chat alla Castellana */
-.panel-chat {
-    margin-top: -20px;
-}
+
 .chat-glass {
     display: flex;
     flex-direction: column;
@@ -195,7 +177,6 @@ body {
     border: 1px solid rgba(255, 215, 160, 1);
     background: linear-gradient(135deg, #ffe7b3, #f0b45c, #c98a2f);
     color: #3b2208;
-
     box-shadow:
         0 0 14px rgba(255, 215, 160, 0.75),
         inset 0 0 10px rgba(255, 255, 255, 0.35);
@@ -207,39 +188,11 @@ body {
     color: #f7f2e9;
 }
 
-.chat-item-abito {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0 4px;
-}
-
-.chat-item-abito img {
-    max-width: 68%;
-    max-height: 30vh;
-    object-fit: contain;
-    border-radius: 18px;
-    opacity: 0.98;
-
-    filter:
-        drop-shadow(0 0 14px rgba(255, 215, 160, 0.55))
-        drop-shadow(0 0 22px rgba(255, 215, 160, 0.35))
-        saturate(1.25)
-        brightness(1.08);
-
-    animation: fadeIn 0.8s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 /* ============================================================
-   📱 VERTICALE — CASTELLO A DESTRA (allineato ai tetti)
+   📱 PORTRAIT
    ============================================================ */
 @media (max-width: 768px) and (orientation: portrait) {
 
-    /* Griglia a 1 colonna */
     .scene-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto auto;
@@ -247,28 +200,25 @@ body {
         padding: 12px 12px 18px;
     }
 
-    /* CASTELLO — grande, a destra, abbassato */
     .panel-castello {
         grid-row: 2;
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     .img-castello {
-        max-height: 75vh;
-        transform: translateX(25px) translateY(20px);
-        opacity: 0.98;
+        max-height: 60vh;
+        transform: translateX(20px) translateY(-20px);
     }
 
-    /* CASTELLANA — più in basso, a sinistra */
     .panel-castellana {
         grid-row: 3;
         display: flex;
         justify-content: flex-start;
         align-items: flex-end;
-        margin-top: 20px;
+        margin-top: -20px;
     }
 
     .img-castellana {
@@ -276,7 +226,6 @@ body {
         transform: translateX(-10px);
     }
 
-    /* CHAT — sotto la Castellana */
     .panel-chat {
         grid-row: 4;
         width: 92%;
@@ -285,38 +234,35 @@ body {
 }
 
 /* ============================================================
-   🖥️ LANDSCAPE — CASTELLANA + CHAT a sinistra, CASTELLO a destra
+   🖥️ LANDSCAPE
    ============================================================ */
 @media (orientation: landscape) {
 
-    /* Dashboard più larga */
     .dashboard {
         width: 85%;
-        margin-top: 6px;
+        margin-top: 20px;
     }
 
-    /* CASTELLO — grande, a destra, allineato ai tetti */
     .panel-castello {
         grid-row: 2;
         grid-column: 2;
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     .img-castello {
-        max-height: 85vh;
-        transform: translateX(30px) translateY(20px);
+        max-height: 70vh;
+        transform: translateX(20px) translateY(-10px);
     }
 
-    /* CASTELLANA — a sinistra, più in basso */
     .panel-castellana {
         grid-row: 2;
         grid-column: 1;
         justify-content: flex-start;
         align-items: flex-end;
-        margin-top: 60px;
+        margin-top: 20px;
     }
 
     .img-castellana {
@@ -324,11 +270,10 @@ body {
         transform: translateX(-10px);
     }
 
-    /* CHAT — sotto la Castellana */
     .panel-chat {
         grid-row: 3;
         grid-column: 1;
         width: 90%;
         margin-top: -10px;
     }
-            }
+                     }
