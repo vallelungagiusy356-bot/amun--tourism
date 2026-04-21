@@ -120,8 +120,8 @@ body {
 
 /* Castello PNG sovrapposto allo sfondo */
 .img-castello {
-    max-width: 100%;
-    object-fit: contain;
+    transform: translateX(35px) translateY(40px);
+    max-height: 70vh;
 }
 
 /* ============================================================
