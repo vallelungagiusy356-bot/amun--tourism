@@ -138,7 +138,10 @@ body {
         inset 0 0 12px rgba(255, 255, 255, 0.12),
         0 12px 40px rgba(0, 0, 0, 0.35);
 }
-
+/* Avvicina la chat alla Castellana */
+.panel-chat {
+    margin-top: -20px;
+}
 .chat-glass {
     display: flex;
     flex-direction: column;
