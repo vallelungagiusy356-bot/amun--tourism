@@ -4,78 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism</title>
-
-    <!-- Collegamento al CSS -->
     <link rel="stylesheet" href="css_style2.css">
 </head>
 <body>
 
-    <!-- SFONDO FISSO -->
+    <!-- LIVELLO 0 — SFONDO -->
     <div class="scene-background"></div>
 
-    <!-- GRIGLIA PRINCIPALE DELL’INTERFACCIA -->
-    <div class="scene-grid">
+    <!-- LIVELLO 1 — DASHBOARD -->
+    <header class="dashboard">
+        <div class="logo-title">Amunì Tourism</div>
+        <ul class="nav-main">
+            <li>Home</li>
+            <li>Esperienze</li>
+            <li>Chi Siamo</li>
+            <li>Contatti</li>
+        </ul>
+    </header>
 
-        <!-- DASHBOARD / NAVBAR (stile C: piatta + glow oro) -->
-        <header class="dashboard">
-            <div class="logo-title">Amunì Tourism</div>
-            <ul class="nav-main">
-                <li>Home</li>
-                <li>Esperienze</li>
-                <li>Chi Siamo</li>
-                <li>Contatti</li>
-            </ul>
-        </header>
+    <!-- LIVELLO 2 — SCENA (CASTELLANA + CASTELLO) -->
+    <div class="scene-layer">
+        <img src="castello-clean.png" class="img-castello" alt="Castello di Caccamo">
+        <img src="castellana_clean.png" class="img-castellana" alt="Castellana di Caccamo">
+    </div>
 
-        <!-- CASTELLANA (in futuro avatar 3D) -->
-        <section class="panel panel-castellana">
-            <img src="castellana_clean.png" alt="Castellana di Caccamo" class="img-castellana">
-        </section>
+    <!-- LIVELLO 3 — CHAT -->
+    <div class="chat-layer">
+        <div class="chat-glass">
 
-        <!-- CASTELLO (PNG sovrapposto allo sfondo, allineato ai tetti) -->
-        <section class="panel panel-castello">
-            <img src="castello-clean.png" alt="Castello di Caccamo" class="img-castello">
-        </section>
-
-        <!-- CHAT (effetto vetro ripristinato) -->
-        <section class="panel panel-chat">
-            <div class="chat-glass">
-
-                <!-- MESSAGGI DELLA CASTELLANA -->
-                <div class="chat-messages">
-                    <div class="message">
-                        Benvenuto, viandante. Le pietre di Caccamo sussurrano storie di cavalieri e nobili...
-                    </div>
-                    <div class="message">
-                        Ah, la nostra terra è generosa! Olio dorato e dolci mandorle vi delizieranno...
-                    </div>
+            <div class="chat-messages">
+                <div class="message">
+                    Benvenuto, viandante. Le pietre di Caccamo sussurrano storie di cavalieri e nobili...
                 </div>
-
-                <!-- ABITO MOSTRATO NELLA CHAT -->
-                <div class="chat-item-abito">
-                    <img src="abito_clean.png" alt="Abito cerimoniale" class="img-abito">
+                <div class="message">
+                    Ah, la nostra terra è generosa! Olio dorato e dolci mandorle vi delizieranno...
                 </div>
-
-                <!-- INPUT + MICROFONO -->
-                <div class="chat-input-row">
-                    <input type="text" placeholder="Scrivi un messaggio...">
-                    <button class="mic-btn">🎤</button>
-                </div>
-
-                <!-- BOTTONI AZIONE -->
-                <div class="chat-actions">
-                    <button class="btn-gold">Esplora con la Castellana</button>
-                    <button class="btn-outline">Invoca l’app AR</button>
-                </div>
-
             </div>
-        </section>
 
-        <!-- FOOTER -->
-        <footer class="footer">
-            © Amunì Tourism
-        </footer>
+            <div class="chat-item-abito">
+                <img src="abito_clean.png" class="img-abito" alt="Abito cerimoniale">
+            </div>
 
+            <div class="chat-input-row">
+                <input type="text" placeholder="Scrivi un messaggio...">
+                <button class="mic-btn">🎤</button>
+            </div>
+
+            <div class="chat-actions">
+                <button class="btn-gold">Esplora con la Castellana</button>
+                <button class="btn-outline">Invoca l’app AR</button>
+            </div>
+
+        </div>
     </div>
 
 </body>
