@@ -23,7 +23,7 @@ body {
     inset: 0;
     background-image: url('tuo_nuovo_sfondo.jpeg');
     background-size: 100%;          
-    background-position: center -120px; /* FIX: sfondo abbassato */
+    background-position: center -60px; /* FIX: sfondo abbassato */
     background-repeat: no-repeat;
     filter: brightness(0.75);
     z-index: 0;
