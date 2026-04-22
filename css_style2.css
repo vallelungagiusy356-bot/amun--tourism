@@ -160,24 +160,31 @@ body {
 }
 
 /* ============================================================
-   PORTRAIT — RICALIBRAZIONE
+   PORTRAIT — RICALIBRAZIONE DEFINITIVA
    ============================================================ */
 @media (orientation: portrait) {
 
+    /* Aumentiamo lo spazio della scena */
     .scene-layer {
+        height: calc(100vh - 54px - 18vh); /* prima era 22vh */
         justify-content: center;
-        gap: 20px;
+        gap: 12px;
     }
 
+    /* Riduciamo ancora le immagini */
     .img-castello {
-        max-height: 35vh; /* ridotto */
+        max-height: 28vh; /* prima 35vh */
     }
 
     .img-castellana {
-        max-height: 30vh; /* ridotta */
+        max-height: 24vh; /* prima 30vh */
+    }
+
+    /* Chat più piccola */
+    .chat-layer {
+        height: 18vh; /* prima 22vh */
     }
 }
-
 /* ============================================================
    LANDSCAPE — RICALIBRAZIONE
    ============================================================ */
