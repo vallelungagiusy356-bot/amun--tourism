@@ -11,7 +11,8 @@ body {
     font-family: system-ui, sans-serif;
     background: #000;
     color: #f7f2e9;
-    overflow: hidden;
+    overflow-y: auto;   /* permette lo scroll verticale */
+    overflow-x: hidden;
 }
 
 /* ============================================================
@@ -83,8 +84,7 @@ body {
     max-height: 80vh;
     width: auto;
     object-fit: contain;
-    filter:
-        drop-shadow(0 0 30px rgba(0,0,0,0.8));
+    filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
     opacity: 0.95;
 }
 
@@ -92,13 +92,169 @@ body {
    LIVELLO 3 — CHAT CINEMATOGRAFICA
    ============================================================ */
 .chat-layer {
-    position: fixed;
-    left: 50%;
-    bottom: 4vh;
-    transform: translateX(-50%);
+    position: relative; /* NON più fissa */
+    margin: 6vh auto 8vh auto;
     width: 92%;
     max-width: 480px;
+    z-index: 2;
+}
 
+.chat-glass {
+    background: rgba(5, 3, 2, 0.45);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 215, 160, 0.45);
+
+    padding: 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    position: relative;
+    overflow: hidden; /* fondamentale per il vetro */
+}
+
+/* MESSAGGI NARRATIVI */
+.chat-messages {
+    max-height: 24vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.message {
+    background: rgba(15, 10, 5, 0.9);
+    padding: 8px 10px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+}
+
+/* CASTELLANA DENTRO LA CHAT (IN BASSO, MEDIA) */
+.chat-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-castellana {
+    max-height: 26vh; /* media */
+    object-fit: contain;
+    filter:
+        drop-shadow(0 0 18px rgba(255, 215, 160, 0.85))
+        drop-shadow(0 0 28px rgba(255, 215, 160, 0.55));
+}
+
+/* INPUT + AZIONI */
+.chat-input-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 2px;
+}
+
+.chat-input-row input {
+    flex: 1;
+    padding: 7px 11px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.chat-input-row input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.mic-btn {
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(255, 215, 160, 0.95);
+    border: none;
+    cursor: pointer;
+}
+
+/* BOTTONI AZIONE */
+.chat-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+}
+
+.btn-gold,
+.btn-outline {
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 160, 0.8);
+    background: transparent;
+    color: #f7f2e9;
+    cursor: pointer;
+}
+
+.btn-gold {
+    background: rgba(255, 215, 160, 0.18);
+}
+
+.btn-outline {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   PORTRAIT — RICALIBRAZIONE
+   ============================================================ */
+@media (orientation: portrait) {
+
+    .chat-layer {
+        width: 92%;
+        max-width: 480px;
+        margin-top: 6vh;
+    }
+
+    .chat-messages {
+        max-height: 24vh;
+    }
+
+    .img-castellana {
+        max-height: 26vh;
+    }
+
+    .img-castello {
+        max-height: 82vh;
+    }
+}
+
+/* ============================================================
+   LANDSCAPE — RICALIBRAZIONE
+   ============================================================ */
+@media (orientation: landscape) {
+
+    .scene-layer {
+        justify-content: flex-end;
+        padding-right: 8vw;
+    }
+
+    .img-castello {
+        max-height: 82vh;
+    }
+
+    .chat-layer {
+        width: 30%;
+        max-width: 380px;
+        margin: 4vh 0 4vh 6vw;
+    }
+
+    .chat-messages {
+        max-height: 28vh;
+    }
+
+    .img-castellana {
+        max-height: 24vh;
+    }
+   }
     z-index: 2;
 }
 
