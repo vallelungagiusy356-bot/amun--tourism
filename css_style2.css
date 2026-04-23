@@ -24,7 +24,8 @@ body {
     background-image: url('tuo_nuovo_sfondo.jpeg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.8);
+    filter: brightness(0.85) contrast(1.15) saturate(1.2);
+    transition: filter 0.6s ease-in-out;
     z-index: 0;
 }
 
@@ -75,7 +76,7 @@ body {
 }
 
 /* ============================================================
-   CHAT A SINISTRA (40%)
+   CHAT A SINISTRA (45%)
    ============================================================ */
 .chat-column {
     width: 45%;
@@ -85,18 +86,19 @@ body {
 }
 
 .chat-glass {
-    background: rgba(5, 3, 2, 0.45);
-    backdrop-filter: blur(18px) saturate(140%);
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    background: rgba(10, 6, 4, 0.55);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
     border-radius: 18px;
-    border: 1px solid rgba(255, 215, 160, 0.45);
+    border: 1px solid rgba(255, 215, 160, 0.55);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
 
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 14px;
 
-    height: calc(100vh - 74px); /* 54 dashboard + 20 margine */
+    height: calc(100vh - 74px);
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -141,9 +143,8 @@ body {
     flex: 1;
     padding: 7px 11px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.3);
     background: rgba(5, 3, 2, 0.55);
-border: 1px solid rgba(255, 215, 160, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.55);
     color: #fff;
     font-size: 0.9rem;
 }
@@ -189,23 +190,11 @@ border: 1px solid rgba(255, 215, 160, 0.55);
 }
 
 /* ============================================================
-   CASTELLO A DESTRA (55%)
+   COLONNA DESTRA (vuota, lo sfondo fa tutto)
    ============================================================ */
 .castle-column {
     width: 55%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding-right: 20px;
     z-index: 1;
-}
-
-.img-castello {
-    max-height: 82vh;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
-    opacity: 0.95;
 }
 
 /* ============================================================
@@ -224,4 +213,4 @@ border: 1px solid rgba(255, 215, 160, 0.55);
     .img-castellana {
         max-height: 24vh;
     }
-}
+   }
