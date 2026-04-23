@@ -167,6 +167,51 @@ body {
         width: 38%;
         height: 75vh;
     }
+    }    color: #fff;
+}
+
+.mic-btn {
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(255, 215, 160, 0.95);
+    border: none;
+}
+
+/* BOTTONI */
+.chat-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-gold,
+.btn-outline {
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 160, 0.8);
+    background: transparent;
+    color: #f7f2e9;
+}
+
+.btn-gold {
+    background: rgba(255, 215, 160, 0.18);
+}
+
+/* LANDSCAPE */
+@media (orientation: landscape) {
+    .scene-background {
+        background-position: center 20%;
+    }
+
+    .castellana-wrapper {
+        width: 35%;
+    }
+
+    .chat-box {
+        width: 38%;
+        height: 75vh;
+    }
 }    display: flex;
     flex-direction: column;
     gap: 6px;
