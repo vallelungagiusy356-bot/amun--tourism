@@ -125,136 +125,6 @@ body {
     color: #fff;
 }
 
-.mic-btn {
-    padding: 0 12px;
-    border-radius: 999px;
-    background: rgba(255, 215, 160, 0.95);
-    border: none;
-}
-
-/* BOTTONI */
-.chat-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.btn-gold,
-.btn-outline {
-    flex: 1;
-    padding: 6px 8px;
-    font-size: 0.8rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 215, 160, 0.8);
-    background: transparent;
-    color: #f7f2e9;
-}
-
-.btn-gold {
-    background: rgba(255, 215, 160, 0.18);
-}
-
-/* LANDSCAPE */
-@media (orientation: landscape) {
-    .scene-background {
-        background-position: center 20%;
-    }
-
-    .castellana-wrapper {
-        width: 35%;
-    }
-
-    .chat-box {
-        width: 38%;
-        height: 75vh;
-    }
-    }    color: #fff;
-}
-
-.mic-btn {
-    padding: 0 12px;
-    border-radius: 999px;
-    background: rgba(255, 215, 160, 0.95);
-    border: none;
-}
-
-/* BOTTONI */
-.chat-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.btn-gold,
-.btn-outline {
-    flex: 1;
-    padding: 6px 8px;
-    font-size: 0.8rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 215, 160, 0.8);
-    background: transparent;
-    color: #f7f2e9;
-}
-
-.btn-gold {
-    background: rgba(255, 215, 160, 0.18);
-}
-
-/* LANDSCAPE */
-@media (orientation: landscape) {
-    .scene-background {
-        background-position: center 20%;
-    }
-
-    .castellana-wrapper {
-        width: 35%;
-    }
-
-    .chat-box {
-        width: 38%;
-        height: 75vh;
-    }
-}    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.message {
-    background: rgba(15, 10, 5, 0.9);
-    padding: 8px 10px;
-    border-radius: 14px;
-    font-size: 0.9rem;
-}
-
-/* CASTELLANA */
-.chat-avatar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.img-castellana {
-    max-height: 28vh;
-    object-fit: contain;
-    filter:
-        drop-shadow(0 0 18px rgba(255, 215, 160, 0.85))
-        drop-shadow(0 0 28px rgba(255, 215, 160, 0.55));
-}
-
-/* INPUT */
-.chat-input-row {
-    display: flex;
-    gap: 6px;
-}
-
-.chat-input-row input {
-    flex: 1;
-    padding: 7px 11px;
-    border-radius: 999px;
-    background: rgba(5, 3, 2, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.55);
-    color: #fff;
-    font-size: 0.9rem;
-}
-
 .chat-input-row input::placeholder {
     color: rgba(255,255,255,0.6);
 }
@@ -264,15 +134,12 @@ body {
     border-radius: 999px;
     background: rgba(255, 215, 160, 0.95);
     border: none;
-    cursor: pointer;
 }
 
 /* BOTTONI */
 .chat-actions {
     display: flex;
     gap: 8px;
-    margin-top: 4px;
-    flex-wrap: wrap;
 }
 
 .btn-gold,
@@ -284,39 +151,24 @@ body {
     border: 1px solid rgba(255, 215, 160, 0.8);
     background: transparent;
     color: #f7f2e9;
-    cursor: pointer;
 }
 
 .btn-gold {
     background: rgba(255, 215, 160, 0.18);
 }
 
-.btn-outline {
-    background: rgba(0, 0, 0, 0.4);
-}
-
-/* ============================================================
-   COLONNA DESTRA (vuota, lo sfondo fa tutto)
-   ============================================================ */
-.castle-column {
-    width: 55%;
-    z-index: 1;
-}
-
-/* ============================================================
-   LANDSCAPE
-   ============================================================ */
+/* LANDSCAPE */
 @media (orientation: landscape) {
-
-    .chat-column {
-        width: 40%;
+    .scene-background {
+        background-position: center 20%;
     }
 
-    .castle-column {
-        width: 60%;
+    .castellana-wrapper {
+        width: 35%;
     }
 
-    .img-castellana {
-        max-height: 24vh;
+    .chat-box {
+        width: 38%;
+        height: 75vh;
     }
-   }
+}
