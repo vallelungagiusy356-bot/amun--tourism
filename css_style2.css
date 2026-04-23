@@ -1,6 +1,4 @@
-/* ============================================================
-   RESET
-   ============================================================ */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -11,102 +9,165 @@ body {
     font-family: system-ui, sans-serif;
     background: #000;
     color: #f7f2e9;
-    overflow-y: auto;
     overflow-x: hidden;
 }
 
-/* ============================================================
-   LIVELLO 0 — SFONDO FISSO
-   ============================================================ */
+/* SFONDO CINEMATOGRAFICO */
 .scene-background {
     position: fixed;
     inset: 0;
     background-image: url('tuo_nuovo_sfondo.jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     filter: brightness(0.85) contrast(1.15) saturate(1.2);
-    transition: filter 0.6s ease-in-out;
     z-index: 0;
 }
 
-/* ============================================================
-   LIVELLO 1 — DASHBOARD FISSA
-   ============================================================ */
+/* DASHBOARD */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 54px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 8px 18px;
-
     background: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(12px);
-
     border-bottom: 1px solid rgba(255, 215, 160, 0.85);
-
     z-index: 3;
 }
 
 .logo-title {
     font-weight: 600;
-    letter-spacing: 0.04em;
 }
 
 .nav-main {
     list-style: none;
     display: flex;
     gap: 18px;
-    font-size: 0.9rem;
 }
 
-/* ============================================================
-   LAYOUT A DUE COLONNE
-   ============================================================ */
-.page-layout {
+/* LAYOUT PRINCIPALE */
+.hero-layout {
+    margin-top: 74px;
     display: flex;
-    margin-top: 74px; /* 54px dashboard + 20px margine */
-    width: 100%;
-    min-height: calc(100vh - 74px);
-}
-
-/* ============================================================
-   CHAT A SINISTRA (45%)
-   ============================================================ */
-.chat-column {
-    width: 45%;
-    padding-left: 12px;
-    padding-right: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    height: calc(100vh - 74px);
     z-index: 2;
+    position: relative;
 }
 
-.chat-glass {
+/* CASTELLANA A MEZZO BUSTO */
+.castellana-wrapper {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.castellana-img {
+    width: 100%;
+    max-width: 380px;
+    object-fit: contain;
+    filter:
+        drop-shadow(0 0 18px rgba(255, 215, 160, 0.85))
+        drop-shadow(0 0 28px rgba(255, 215, 160, 0.55));
+}
+
+/* CHAT QUADRATA */
+.chat-box {
+    width: 42%;
     background: rgba(10, 6, 4, 0.55);
     backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
     border-radius: 18px;
     border: 1px solid rgba(255, 215, 160, 0.55);
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 14px;
-
-    height: calc(100vh - 74px);
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: 70vh;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
 }
 
 /* MESSAGGI */
 .chat-messages {
     flex: 1;
     display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+}
+
+.message {
+    background: rgba(15, 10, 5, 0.9);
+    padding: 8px 10px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+}
+
+/* INPUT */
+.chat-input-row {
+    display: flex;
+    gap: 6px;
+}
+
+.chat-input-row input {
+    flex: 1;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(5, 3, 2, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.55);
+    color: #fff;
+}
+
+.mic-btn {
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(255, 215, 160, 0.95);
+    border: none;
+}
+
+/* BOTTONI */
+.chat-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-gold,
+.btn-outline {
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 160, 0.8);
+    background: transparent;
+    color: #f7f2e9;
+}
+
+.btn-gold {
+    background: rgba(255, 215, 160, 0.18);
+}
+
+/* LANDSCAPE */
+@media (orientation: landscape) {
+    .scene-background {
+        background-position: center 20%;
+    }
+
+    .castellana-wrapper {
+        width: 35%;
+    }
+
+    .chat-box {
+        width: 38%;
+        height: 75vh;
+    }
+}    display: flex;
     flex-direction: column;
     gap: 6px;
 }
