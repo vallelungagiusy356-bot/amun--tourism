@@ -8,10 +8,10 @@
 </head>
 <body>
 
-    <!-- LIVELLO 0 — SFONDO -->
+    <!-- SFONDO -->
     <div class="scene-background"></div>
 
-    <!-- LIVELLO 1 — DASHBOARD -->
+    <!-- DASHBOARD -->
     <header class="dashboard">
         <div class="logo-title">Amunì Tourism</div>
         <ul class="nav-main">
@@ -22,41 +22,35 @@
         </ul>
     </header>
 
-    <!-- LIVELLO 2 — LAYOUT A DUE COLONNE -->
-    <div class="page-layout">
+    <!-- LAYOUT PRINCIPALE -->
+    <div class="hero-layout">
 
-        <!-- COLONNA SINISTRA: CHAT -->
-        <div class="chat-column">
-            <div class="chat-glass">
-
-                <div class="chat-messages">
-                    <div class="message">
-                        Benvenuto, viandante. Le pietre di Caccamo sussurrano storie di cavalieri e nobili...
-                    </div>
-                    <div class="message">
-                        Ah, la nostra terra è generosa! Olio dorato e dolci mandorle vi delizieranno...
-                    </div>
-                </div>
-
-                <div class="chat-avatar">
-                    <img src="castellana_clean.png" class="img-castellana" alt="Castellana di Caccamo">
-                </div>
-
-                <div class="chat-input-row">
-                    <input type="text" placeholder="Scrivi un messaggio...">
-                    <button class="mic-btn">🎤</button>
-                </div>
-
-                <div class="chat-actions">
-                    <button class="btn-gold">Esplora con la Castellana</button>
-                    <button class="btn-outline">Invoca l’app AR</button>
-                </div>
-
-            </div>
+        <!-- CASTELLANA A MEZZO BUSTO -->
+        <div class="castellana-wrapper">
+            <img src="castellana_clean.png" class="castellana-img" alt="Castellana di Caccamo">
         </div>
 
-        <!-- COLONNA DESTRA: VUOTA (lo sfondo fa tutto) -->
-        <div class="castle-column"></div>
+        <!-- CHAT QUADRATA -->
+        <div class="chat-box">
+            <div class="chat-messages">
+                <div class="message">
+                    Benvenuto, viandante. Le pietre di Caccamo sussurrano storie di cavalieri e nobili...
+                </div>
+                <div class="message">
+                    Ah, la nostra terra è generosa! Olio dorato e dolci mandorle vi delizieranno...
+                </div>
+            </div>
+
+            <div class="chat-input-row">
+                <input type="text" placeholder="Scrivi un messaggio...">
+                <button class="mic-btn">🎤</button>
+            </div>
+
+            <div class="chat-actions">
+                <button class="btn-gold">Esplora con la Castellana</button>
+                <button class="btn-outline">Invoca l’app AR</button>
+            </div>
+        </div>
 
     </div>
 
