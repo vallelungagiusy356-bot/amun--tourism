@@ -54,10 +54,10 @@ body {
 .hero-layout {
     margin-top: 74px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 18px;
-    height: calc(100vh - 74px);
+    align-items: flex-end;
+    padding: 0 18px 28px 18px; /* padding bottom aggiunto */
+    min-height: calc(100vh - 74px);
     z-index: 2;
     position: relative;
 }
@@ -82,18 +82,20 @@ body {
 /* CHAT QUADRATA */
 .chat-box {
     width: 45%;
-    height: 55vh;
-    background: rgba(10, 6, 4, 0.55);
-    backdrop-filter: blur(20px) saturate(160%);
-    border-radius: 18px;
-    border: 1px solid rgba(255, 215, 160, 0.55);
-    padding: 16px;
+    min-height: 48vh;
+    max-height: 62vh;
+    background: rgba(255, 255, 255, 0.06); /* trasparenza vera */
+    backdrop-filter: blur(24px) saturate(190%);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 215, 160, 0.35);
+    box-shadow:
+        0 0 22px rgba(255, 215, 160, 0.25),
+        0 0 42px rgba(255, 215, 160, 0.15);
+    padding: 18px;
     display: flex;
     flex-direction: column;
     gap: 14px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
 }
-
 /* MESSAGGI */
 .chat-messages {
     flex: 1;
@@ -142,20 +144,29 @@ body {
     gap: 8px;
 }
 
-.btn-gold,
-.btn-outline {
+.btn-gold {
     flex: 1;
-    padding: 6px 8px;
-    font-size: 0.8rem;
+    padding: 12px 14px;
+    font-size: 1rem;
     border-radius: 999px;
-    border: 1px solid rgba(255, 215, 160, 0.8);
-    background: transparent;
-    color: #f7f2e9;
+    background: linear-gradient(135deg, #ffd78f, #ffb300);
+    color: #3a2400;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 0 18px rgba(255, 200, 80, 0.55);
 }
 
-.btn-gold {
-    background: rgba(255, 215, 160, 0.18);
-}
+.btn-outline {
+    flex: 1;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 999px;
+    border: 2px solid #ffd78f;
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffd78f;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(255, 200, 80, 0.45);
+    }
 
 /* LANDSCAPE */
 @media (orientation: landscape) {
