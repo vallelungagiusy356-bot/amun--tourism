@@ -83,10 +83,9 @@ body {
 }
 
 /* CHAT QUADRATA */
-.chat-box {
-    width: 45%;
-    min-height: 48vh;
-    max-height: 62vh;
+..chat-box {
+    width: 38%;
+    height: 52vh; /* proporzione perfetta desktop */
     background: rgba(255, 255, 255, 0.06); /* trasparenza vera */
     backdrop-filter: blur(24px) saturate(190%);
     border-radius: 22px;
