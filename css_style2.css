@@ -67,10 +67,10 @@ body {
 
 /* CASTELLANA A MEZZO BUSTO */
 .castellana-wrapper {
-    width: 50%;
+    width: 42%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .castellana-img {
