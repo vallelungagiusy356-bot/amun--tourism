@@ -159,16 +159,17 @@ body {
 
 /* LANDSCAPE */
 @media (orientation: landscape) {
-    .scene-background {
-        background-position: center 20%;
-    }
 
     .castellana-wrapper {
-        width: 35%;
+        width: 40%;
     }
 
     .chat-box {
-        width: 38%;
-        height: 75vh;
+        width: 35%;
+        height: 60vh;
     }
-}
+
+    .scene-background {
+        background-position: center 15%;
+    }
+    }
