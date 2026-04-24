@@ -75,7 +75,7 @@ body {
 
 .castellana-img {
     width: 100%;
-    max-width: 380px;
+    max-width: 340px;
     object-fit: contain;
     filter:
         drop-shadow(0 0 18px rgba(255, 215, 160, 0.85))
