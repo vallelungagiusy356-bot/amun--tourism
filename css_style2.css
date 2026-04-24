@@ -53,14 +53,16 @@ body {
 
 /* LAYOUT PRINCIPALE */
 .hero-layout {
-    margin-top: 74px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 74px); /* tutto lo spazio sotto la dashboard */
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 18px 28px 18px; /* padding bottom aggiunto */
-    min-height: calc(100vh - 74px);
+    padding: 0 28px 28px 28px;
     z-index: 2;
-    position: relative;
 }
 
 /* CASTELLANA A MEZZO BUSTO */
