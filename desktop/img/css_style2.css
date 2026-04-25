@@ -1,0 +1,188 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    background: #000;
+    color: #f7f2e9;
+    overflow-x: hidden;
+}
+
+/* SFONDO CINEMATOGRAFICO */
+.scene-background {
+    position: fixed;
+    inset: 0;
+    background-image: url('tuo_nuovo_sfondo.jpeg');
+    background-size: cover;
+    background-position: center top;
+    filter: brightness(0.85) contrast(1.15) saturate(1.2);
+    z-index: 0;
+}
+
+/* DASHBOARD */
+.dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px; /* più alta, più leggibile */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 14px; /* meno padding laterale, più spazio reale */
+    background: rgba(0, 0, 0, 0.35); /* più trasparente */
+    backdrop-filter: blur(18px) saturate(160%); /* vetro più elegante */
+    border-bottom: 1px solid rgba(255, 215, 160, 0.85);
+    z-index: 3;
+    font-size: 0.95rem; /* più leggibile su mobile */
+}
+
+.logo-title {
+    font-weight: 600;
+}
+
+.nav-main {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+}
+
+/* LAYOUT PRINCIPALE */
+.hero-layout {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 74px); /* tutto lo spazio sotto la dashboard */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 28px 28px 28px;
+    z-index: 2;
+}
+
+/* CASTELLANA A MEZZO BUSTO */
+.castellana-wrapper {
+    width: 42%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.castellana-img {
+    width: 100%;
+    max-width: 340px;
+    object-fit: contain;
+    filter:
+        drop-shadow(0 0 18px rgba(255, 215, 160, 0.85))
+        drop-shadow(0 0 28px rgba(255, 215, 160, 0.55));
+}
+
+/* CHAT QUADRATA */
+..chat-box {
+    width: 38%;
+    height: 52vh; /* proporzione perfetta desktop */
+    background: rgba(255, 255, 255, 0.06); /* trasparenza vera */
+    backdrop-filter: blur(24px) saturate(190%);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 215, 160, 0.35);
+    box-shadow:
+        0 0 22px rgba(255, 215, 160, 0.25),
+        0 0 42px rgba(255, 215, 160, 0.15);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+/* MESSAGGI */
+.chat-messages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+}
+
+.message {
+    background: rgba(15, 10, 5, 0.9);
+    padding: 8px 10px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+}
+
+/* INPUT */
+.chat-input-row {
+    display: flex;
+    gap: 6px;
+}
+
+.chat-input-row input {
+    flex: 1;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(5, 3, 2, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.55);
+    color: #fff;
+}
+
+.chat-input-row input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.mic-btn {
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(255, 215, 160, 0.95);
+    border: none;
+}
+
+/* BOTTONI */
+.chat-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-gold {
+    flex: 1;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ffd78f, #ffb300);
+    color: #3a2400;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 0 18px rgba(255, 200, 80, 0.55);
+}
+
+.btn-outline {
+    flex: 1;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 999px;
+    border: 2px solid #ffd78f;
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffd78f;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(255, 200, 80, 0.45);
+    }
+
+/* LANDSCAPE */
+@media (orientation: landscape) {
+
+    .castellana-wrapper {
+        width: 40%;
+    }
+
+    .chat-box {
+        width: 35%;
+        height: 60vh;
+    }
+
+    .scene-background {
+        background-position: center 15%;
+    }
+    }
