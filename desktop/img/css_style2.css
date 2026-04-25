@@ -16,7 +16,7 @@ body {
 .scene-background {
     position: fixed;
     inset: 0;
-    background-image: url('tuo_nuovo_sfondo.jpeg');
+    background-image: url('img/tuo_nuovo_sfondo.jpeg');
     background-size: cover;
     background-position: center top;
     filter: brightness(0.85) contrast(1.15) saturate(1.2);
@@ -29,16 +29,16 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 64px; /* più alta, più leggibile */
+    height: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 14px; /* meno padding laterale, più spazio reale */
-    background: rgba(0, 0, 0, 0.35); /* più trasparente */
-    backdrop-filter: blur(18px) saturate(160%); /* vetro più elegante */
+    padding: 6px 14px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(18px) saturate(160%);
     border-bottom: 1px solid rgba(255, 215, 160, 0.85);
     z-index: 3;
-    font-size: 0.95rem; /* più leggibile su mobile */
+    font-size: 0.95rem;
 }
 
 .logo-title {
@@ -57,7 +57,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 74px); /* tutto lo spazio sotto la dashboard */
+    height: calc(100vh - 74px);
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -83,10 +83,10 @@ body {
 }
 
 /* CHAT QUADRATA */
-..chat-box {
+.chat-box {
     width: 38%;
-    height: 52vh; /* proporzione perfetta desktop */
-    background: rgba(255, 255, 255, 0.06); /* trasparenza vera */
+    height: 52vh;
+    background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(24px) saturate(190%);
     border-radius: 22px;
     border: 1px solid rgba(255, 215, 160, 0.35);
@@ -98,6 +98,7 @@ body {
     flex-direction: column;
     gap: 14px;
 }
+
 /* MESSAGGI */
 .chat-messages {
     flex: 1;
@@ -168,7 +169,7 @@ body {
     color: #ffd78f;
     font-weight: 600;
     box-shadow: 0 0 12px rgba(255, 200, 80, 0.45);
-    }
+}
 
 /* LANDSCAPE */
 @media (orientation: landscape) {
