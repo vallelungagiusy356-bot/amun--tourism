@@ -52,53 +52,90 @@ body {
     display: flex;
     flex-direction: column;
     gap: 22px;
+    position: relative;
+    z-index: 2;
 }
 
-/* CASTELLANA */
-.castellana-wrapper {
+/* VIDEO CASTELLANA */
+.video-container {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    height: 260px;
+    overflow: hidden;
+    border-bottom: 2px solid rgba(255, 215, 160, 0.5);
+    border-radius: 0 0 18px 18px;
 }
 
-.castellana-img {
-    width: 65%;
-    max-width: 240px;
-    filter:
-        drop-shadow(0 0 10px rgba(255, 215, 160, 0.75))
-        drop-shadow(0 0 18px rgba(255, 215, 160, 0.35));
-}
-
-/* CHAT MOBILE */
-.chat-box {
+.castellana-video {
     width: 100%;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(20px);
-    border-radius: 18px;
-    border: 1px solid rgba(255, 215, 160, 0.30);
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BOTTONI BAROCCHI */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.btn-barocco {
+    background: #000;
+    border: 2px solid #d4a84f;
+    border-radius: 14px;
+    padding: 14px 6px;
+    text-align: center;
+    color: #ffd78f;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 0 10px rgba(255, 215, 160, 0.25);
+}
+
+/* BOTTONI SECONDA FILA */
+.buttons-row-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
 }
 
-.chat-messages {
-    max-height: 200px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+/* BOTTONE CHAT WEB */
+.btn-chat-web {
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 2px solid #ffd78f;
+    border-radius: 18px;
+    padding: 14px;
+    text-align: center;
+    color: #ffd78f;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
 }
 
-.message {
-    background: rgba(20, 14, 8, 0.88);
-    padding: 10px 12px;
-    border-radius: 14px;
-    font-size: 0.92rem;
-    line-height: 1.3;
+/* SEZIONE AMUNI */
+.amuni-box {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.45);
+    border-radius: 18px;
+    padding: 18px;
+    backdrop-filter: blur(10px);
 }
 
-/* INPUT */
+.amuni-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffd78f;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.amuni-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #f7f2e9;
+    text-align: center;
+}/* INPUT */
 .chat-input-row {
     display: flex;
     gap: 8px;
