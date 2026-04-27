@@ -8,6 +8,11 @@
 </head>
 <body>
 
+    <!-- AUDIO EPICO -->
+    <audio id="bg-music" loop>
+        <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- SFONDO -->
     <div class="scene-background"></div>
 
@@ -55,6 +60,24 @@
         </div>
 
     </div>
+
+    <!-- SCRIPT: MUSICA PARTE AL PRIMO TOCCO -->
+    <script>
+        let musicStarted = false;
+
+        function startMusic() {
+            if (!musicStarted) {
+                const audio = document.getElementById("bg-music");
+                audio.play();
+                musicStarted = true;
+                document.removeEventListener("touchstart", startMusic);
+                document.removeEventListener("click", startMusic);
+            }
+        }
+
+        document.addEventListener("touchstart", startMusic);
+        document.addEventListener("click", startMusic);
+    </script>
 
 </body>
 </html>
