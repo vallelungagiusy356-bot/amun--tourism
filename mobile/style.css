@@ -137,15 +137,15 @@ body {
    ============================ */
 .castellana-avatar {
     position: absolute;
-    bottom: 0;
+    bottom: -40px; /* 🔥 ABBASSA IL VIDEO */
     left: 50%;
     transform: translateX(-50%);
-    width: 55vw;
-    max-width: 260px;
+    width: 58vw; /* leggermente più grande */
+    max-width: 280px;
     z-index: 10;
     pointer-events: none;
     animation: fadeIn 1.2s ease-out;
-}
+    }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateX(-50%) translateY(20px); }
