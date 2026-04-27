@@ -63,12 +63,7 @@ body {
     overflow: hidden;
     border-bottom: 2px solid rgba(255, 215, 160, 0.5);
     border-radius: 0 0 18px 18px;
-}
-
-.castellana-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    position: relative;
 }
 
 /* BOTTONI BAROCCHI */
@@ -135,54 +130,24 @@ body {
     line-height: 1.4;
     color: #f7f2e9;
     text-align: center;
-}/* INPUT */
-.chat-input-row {
-    display: flex;
-    gap: 8px;
 }
 
-.chat-input-row input {
-    flex: 1;
-    padding: 10px 14px;
-    border-radius: 999px;
-    background: rgba(10, 7, 5, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.45);
-    color: #fff;
-    font-size: 0.9rem;
+/* ============================
+   CASTELLANA — VIDEO AVATAR
+   ============================ */
+.castellana-avatar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55vw;
+    max-width: 260px;
+    z-index: 10;
+    pointer-events: none;
+    animation: fadeIn 1.2s ease-out;
 }
 
-.mic-btn {
-    padding: 0 14px;
-    border-radius: 999px;
-    background: rgba(255, 215, 160, 0.95);
-    border: none;
-    font-size: 1rem;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
-
-/* BOTTONI */
-.chat-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-gold {
-    flex: 1;
-    padding: 12px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #ffd78f, #ffb300);
-    color: #3a2400;
-    font-weight: 600;
-    border: none;
-    font-size: 0.95rem;
-}
-
-.btn-outline {
-    flex: 1;
-    padding: 12px;
-    border-radius: 999px;
-    border: 2px solid #ffd78f;
-    background: rgba(0, 0, 0, 0.35);
-    color: #ffd78f;
-    font-weight: 600;
-    font-size: 0.95rem;
-                     }
