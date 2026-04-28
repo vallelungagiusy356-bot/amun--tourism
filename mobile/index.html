@@ -62,22 +62,32 @@
     </div>
 
     <!-- SCRIPT: MUSICA PARTE AL PRIMO TOCCO -->
-    <script>
-        let musicStarted = false;
+<script>
+    const audio = document.getElementById("bg-music");
+    audio.volume = 0.5; // volume iniziale
 
-        function startMusic() {
-            if (!musicStarted) {
-                const audio = document.getElementById("bg-music");
-                audio.play();
+    let musicStarted = false;
+
+    function startMusic() {
+        if (!musicStarted) {
+            audio.play().then(() => {
                 musicStarted = true;
-                document.removeEventListener("touchstart", startMusic);
-                document.removeEventListener("click", startMusic);
-            }
-        }
+            }).catch(() => {
+                // fallback per Safari
+                setTimeout(() => {
+                    audio.play();
+                }, 200);
+            });
 
-        document.addEventListener("touchstart", startMusic);
-        document.addEventListener("click", startMusic);
-    </script>
+            document.removeEventListener("touchstart", startMusic);
+            document.removeEventListener("click", startMusic);
+        }
+    }
+
+    // ascolta qualsiasi gesto dell'utente
+    document.addEventListener("touchstart", startMusic, { once: true });
+    document.addEventListener("click", startMusic, { once: true });
+</script>
 
 </body>
 </html>
