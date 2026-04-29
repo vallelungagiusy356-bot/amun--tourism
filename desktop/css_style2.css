@@ -18,7 +18,7 @@ body {
     inset: 0;
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
     background-size: cover;
-    background-position: center center; /* centrato per desktop */
+    background-position: center center;
     filter: brightness(0.85) contrast(1.15) saturate(1.2);
     z-index: 0;
 }
