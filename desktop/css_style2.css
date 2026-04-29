@@ -68,20 +68,20 @@ body {
 
 /* CASTELLANA A MEZZO BUSTO */
 .castellana-wrapper {
-    width: 26%;
+    width: 26%; /* più piccola */
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
 .castellana-img {
-    width: 70%;
-    max-width: 220px;
+    width: 70%; /* più piccola */
+    max-width: 210px; /* più piccola */
     object-fit: contain;
     filter:
         drop-shadow(0 0 14px rgba(255, 215, 160, 0.75))
         drop-shadow(0 0 22px rgba(255, 215, 160, 0.45));
-}}
+}
 
 /* CHAT QUADRATA */
 .chat-box {
