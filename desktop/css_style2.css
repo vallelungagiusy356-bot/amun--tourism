@@ -90,18 +90,18 @@ body {
     height: 48vh;
 
     /* VETRO BRILLANTE */
-    background: rgba(255, 255, 255, 0.12);
-    -webkit-backdrop-filter: blur(28px) saturate(220%);
-    backdrop-filter: blur(28px) saturate(220%);
+    background: rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(30px) saturate(240%);
+    backdrop-filter: blur(30px) saturate(240%);
 
-    /* BORDO DORATO BEN VISIBILE */
+    /* BORDO DORATO LUMINOSO */
     border-radius: 22px;
-    border: 2px solid rgba(255, 215, 160, 0.85);
+    border: 2px solid rgba(255, 215, 160, 0.95);
 
     /* GLOW DORATO */
     box-shadow:
-        0 0 18px rgba(255, 215, 160, 0.45),
-        0 0 38px rgba(255, 215, 160, 0.25);
+        0 0 22px rgba(255, 215, 160, 0.55),
+        0 0 48px rgba(255, 215, 160, 0.35);
 
     padding: 18px;
     display: flex;
