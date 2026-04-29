@@ -62,7 +62,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 60px 90px 60px; /* abbassa tutto */
+    padding: 0 60px 120px 60px; /* abbassa tutto */
     z-index: 2;
 }
 
