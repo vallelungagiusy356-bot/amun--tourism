@@ -54,15 +54,15 @@ body {
 
 /* LAYOUT PRINCIPALE */
 .hero-layout {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 74px);
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 40px 70px 40px; /* AUMENTATO da 40px a 70px */
+    padding: 0 60px 60px 60px;
     z-index: 2;
 }
 
