@@ -18,7 +18,7 @@ body {
     inset: 0;
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
     background-size: cover;
-    background-position: center top;
+    background-position: center center; /* centrato per desktop */
     filter: brightness(0.85) contrast(1.15) saturate(1.2);
     z-index: 0;
 }
@@ -52,13 +52,13 @@ body {
     gap: 18px;
 }
 
-/* LAYOUT PRINCIPALE */
+/* LAYOUT PRINCIPALE — VERSIONE DESKTOP ORIZZONTALE */
 .hero-layout {
-    position: fixed; /* fisso come un vero layout desktop */
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 74px); /* occupa tutto lo spazio utile */
+    height: calc(100vh - 74px);
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -66,33 +66,32 @@ body {
     z-index: 2;
 }
 
-/* CASTELLANA A MEZZO BUSTO */
+/* CASTELLANA A MEZZO BUSTO — PROPORZIONATA */
 .castellana-wrapper {
-    width: 26%; /* più piccola */
+    width: 24%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
 .castellana-img {
-    width: 70%; /* più piccola */
-    max-width: 210px; /* più piccola */
+    width: 70%;
+    max-width: 200px;
     object-fit: contain;
     filter:
         drop-shadow(0 0 14px rgba(255, 215, 160, 0.75))
         drop-shadow(0 0 22px rgba(255, 215, 160, 0.45));
 }
 
-/* CHAT QUADRATA */
-.chat-box {
+/* CHAT QUADRATA — VETRO BRILLANTE + GLOW DORATO */
 .chat-box {
     width: 32%;
     height: 48vh;
 
     /* VETRO BRILLANTE */
-    background: rgba(255, 255, 255, 0.14);
-    -webkit-backdrop-filter: blur(30px) saturate(240%);
-    backdrop-filter: blur(30px) saturate(240%);
+    background: rgba(255, 255, 255, 0.12);
+    -webkit-backdrop-filter: blur(28px) saturate(220%);
+    backdrop-filter: blur(28px) saturate(220%);
 
     /* BORDO DORATO LUMINOSO */
     border-radius: 22px;
@@ -108,6 +107,7 @@ body {
     flex-direction: column;
     gap: 14px;
 }
+
 /* MESSAGGI */
 .chat-messages {
     flex: 1;
@@ -180,19 +180,7 @@ body {
     box-shadow: 0 0 12px rgba(255, 200, 80, 0.45);
 }
 
-/* LANDSCAPE */
+/* LANDSCAPE — DISATTIVATO PERCHÉ ROVINAVA IL DESKTOP */
 @media (orientation: landscape) {
-
-    .castellana-wrapper {
-        width: 40%;
-    }
-
-    .chat-box {
-        width: 35%;
-        height: 60vh;
-    }
-
-    .scene-background {
-        background-position: center 15%;
-    }
+    /* vuoto per ora */
 }
