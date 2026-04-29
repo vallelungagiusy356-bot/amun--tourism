@@ -68,15 +68,15 @@ body {
 
 /* CASTELLANA A MEZZO BUSTO */
 .castellana-wrapper {
-    width: 38%;
+    width: 32%; /* ridotto */
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
 .castellana-img {
-    width: 90%;
-    max-width: 320px;
+    width: 80%; /* ridotto */
+    max-width: 260px; /* ridotto */
     object-fit: contain;
     filter:
         drop-shadow(0 0 18px rgba(255, 215, 160, 0.85))
