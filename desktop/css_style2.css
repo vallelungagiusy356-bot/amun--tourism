@@ -36,6 +36,7 @@ body {
     padding: 6px 14px;
     background: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
     border-bottom: 1px solid rgba(255, 215, 160, 0.85);
     z-index: 3;
     font-size: 0.95rem;
@@ -61,21 +62,21 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 28px 28px 28px;
+    padding: 0 40px 40px 40px;
     z-index: 2;
 }
 
 /* CASTELLANA A MEZZO BUSTO */
 .castellana-wrapper {
-    width: 42%;
+    width: 38%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
 .castellana-img {
-    width: 100%;
-    max-width: 340px;
+    width: 90%;
+    max-width: 320px;
     object-fit: contain;
     filter:
         drop-shadow(0 0 18px rgba(255, 215, 160, 0.85))
@@ -87,6 +88,7 @@ body {
     width: 38%;
     height: 52vh;
     background: rgba(255, 255, 255, 0.06);
+    -webkit-backdrop-filter: blur(24px) saturate(190%);
     backdrop-filter: blur(24px) saturate(190%);
     border-radius: 22px;
     border: 1px solid rgba(255, 215, 160, 0.35);
@@ -186,4 +188,4 @@ body {
     .scene-background {
         background-position: center 15%;
     }
-    }
+}
