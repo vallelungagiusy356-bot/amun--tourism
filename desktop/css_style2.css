@@ -52,52 +52,53 @@ body {
     gap: 18px;
 }
 
-/* LAYOUT PRINCIPALE — VERSIONE DESKTOP ORIZZONTALE */
+/* LAYOUT PRINCIPALE — SBLOCCATO */
 .hero-layout {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 74px);
+
+    /* QUI È LA CORREZIONE CHE SBLOCCA TUTTO */
+    height: auto; /* ← NON PIÙ 100vh */
+
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 60px 120px 60px; /* abbassa tutto */
+
+    padding: 0 60px 120px 60px; /* ora scende davvero */
     z-index: 2;
 }
 
-/* CASTELLANA A MEZZO BUSTO — PROPORZIONATA */
+/* CASTELLANA */
 .castellana-wrapper {
-    width: 24%;
+    width: 26%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
 .castellana-img {
-    width: 70%;
-    max-width: 200px;
+    width: 85%;
+    max-width: 260px;
     object-fit: contain;
     filter:
         drop-shadow(0 0 14px rgba(255, 215, 160, 0.75))
         drop-shadow(0 0 22px rgba(255, 215, 160, 0.45));
 }
 
-/* CHAT QUADRATA — VETRO BRILLANTE + GLOW DORATO */
+/* CHAT — VETRO BRILLANTE */
 .chat-box {
-    width: 32%;
-    height: 48vh;
+    width: 36%;
+    height: 52vh;
 
-    /* VETRO BRILLANTE */
-    background: rgba(255, 255, 255, 0.12);
-    -webkit-backdrop-filter: blur(28px) saturate(220%);
-    backdrop-filter: blur(28px) saturate(220%);
+    background: rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(30px) saturate(240%);
+    backdrop-filter: blur(30px) saturate(240%);
 
-    /* BORDO DORATO LUMINOSO */
     border-radius: 22px;
     border: 2px solid rgba(255, 215, 160, 0.95);
 
-    /* GLOW DORATO */
     box-shadow:
         0 0 22px rgba(255, 215, 160, 0.55),
         0 0 48px rgba(255, 215, 160, 0.35);
@@ -180,7 +181,5 @@ body {
     box-shadow: 0 0 12px rgba(255, 200, 80, 0.45);
 }
 
-/* LANDSCAPE — DISATTIVATO PERCHÉ ROVINAVA IL DESKTOP */
-@media (orientation: landscape) {
-    /* vuoto per ora */
-}
+/* LANDSCAPE DISATTIVATO */
+@media (orientation: landscape) {}
