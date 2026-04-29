@@ -86,27 +86,28 @@ body {
 /* CHAT QUADRATA */
 .chat-box {
 .chat-box {
-    width: 38%;
-    height: 52vh;
+    width: 32%;
+    height: 48vh;
 
-    /* VETRO PERFETTO: né troppo trasparente né opaco */
-    background: rgba(255, 255, 255, 0.12); /* 12% = vetro reale */
-    -webkit-backdrop-filter: blur(22px) saturate(180%);
-    backdrop-filter: blur(22px) saturate(180%);
+    /* VETRO BRILLANTE */
+    background: rgba(255, 255, 255, 0.12);
+    -webkit-backdrop-filter: blur(28px) saturate(220%);
+    backdrop-filter: blur(28px) saturate(220%);
 
+    /* BORDO DORATO BEN VISIBILE */
     border-radius: 22px;
-    border: 1px solid rgba(255, 215, 160, 0.45);
+    border: 2px solid rgba(255, 215, 160, 0.85);
 
+    /* GLOW DORATO */
     box-shadow:
-        0 0 22px rgba(255, 215, 160, 0.25),
-        0 0 42px rgba(255, 215, 160, 0.15);
+        0 0 18px rgba(255, 215, 160, 0.45),
+        0 0 38px rgba(255, 215, 160, 0.25);
 
     padding: 18px;
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
-
 /* MESSAGGI */
 .chat-messages {
     flex: 1;
