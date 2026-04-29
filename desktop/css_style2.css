@@ -62,7 +62,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 40px 40px 40px;
+    padding: 0 40px 70px 40px; /* AUMENTATO da 40px a 70px */
     z-index: 2;
 }
 
