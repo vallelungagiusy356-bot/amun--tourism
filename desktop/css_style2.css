@@ -52,36 +52,47 @@ body {
     gap: 18px;
 }
 
-/* LAYOUT PRINCIPALE — SBLOCCATO */
+/* LAYOUT PRINCIPALE */
 .hero-layout {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-
-    /* QUI È LA CORREZIONE CHE SBLOCCA TUTTO */
-    height: auto; /* ← NON PIÙ 100vh */
-
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-
-    padding: 0 60px 120px 60px; /* ora scende davvero */
+    padding: 0 60px 120px 60px;
     z-index: 2;
 }
 
-/* CASTELLANA */
+/* CASTELLANA — WRAPPER */
 .castellana-wrapper {
     width: 26%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
+/* SPAZIO 3D PER LA CASTELLANA */
+#castellana-3d {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* FALLBACK IMMAGINE (sopra il 3D finché non è attivo) */
 .castellana-img {
     width: 85%;
     max-width: 260px;
     object-fit: contain;
+    position: relative;
+    z-index: 2;
     filter:
         drop-shadow(0 0 14px rgba(255, 215, 160, 0.75))
         drop-shadow(0 0 22px rgba(255, 215, 160, 0.45));
@@ -91,18 +102,14 @@ body {
 .chat-box {
     width: 36%;
     height: 52vh;
-
     background: rgba(255, 255, 255, 0.14);
     -webkit-backdrop-filter: blur(30px) saturate(240%);
     backdrop-filter: blur(30px) saturate(240%);
-
     border-radius: 22px;
     border: 2px solid rgba(255, 215, 160, 0.95);
-
     box-shadow:
         0 0 22px rgba(255, 215, 160, 0.55),
         0 0 48px rgba(255, 215, 160, 0.35);
-
     padding: 18px;
     display: flex;
     flex-direction: column;
@@ -181,8 +188,7 @@ body {
     box-shadow: 0 0 12px rgba(255, 200, 80, 0.45);
 }
 
-/* LANDSCAPE DISATTIVATO */
-@media (orientation: landscape) {}
+/* BREAKPOINT DESKTOP — LAYOUT FINALE */
 @media screen and (min-width: 700px) {
 
     .hero-layout {
@@ -194,20 +200,28 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        padding: 0 60px 120px 60px;
+        padding: 0 60px 80px 60px;
     }
 
     .castellana-wrapper {
-        width: 24%;
+        width: 28%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    #castellana-3d {
+        height: 420px;
     }
 
     .castellana-img {
         width: 85%;
-        max-width: 260px;
+        max-width: 280px;
     }
 
     .chat-box {
-        width: 36%;
-        height: 52vh;
+        width: 34%;
+        height: 50vh;
     }
-        }
+    }
