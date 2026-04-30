@@ -188,40 +188,37 @@ body {
     box-shadow: 0 0 12px rgba(255, 200, 80, 0.45);
 }
 
-/* BREAKPOINT DESKTOP — LAYOUT FINALE */
-@media screen and (min-width: 500px) {
+/* FORZA IL LAYOUT DESKTOP SEMPRE */
+.hero-layout {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 74px);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 60px 80px 60px;
+}
 
-    .hero-layout {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: calc(100vh - 74px);
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding: 0 60px 80px 60px;
-    }
+.castellana-wrapper {
+    width: 28%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
 
-    .castellana-wrapper {
-        width: 28%;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-    }
+#castellana-3d {
+    height: 420px;
+}
 
-    #castellana-3d {
-        height: 420px;
-    }
+.castellana-img {
+    width: 85%;
+    max-width: 280px;
+}
 
-    .castellana-img {
-        width: 85%;
-        max-width: 280px;
-    }
-
-    .chat-box {
-        width: 34%;
-        height: 50vh;
-    }
+.chat-box {
+    width: 34%;
+    height: 50vh;
 }
