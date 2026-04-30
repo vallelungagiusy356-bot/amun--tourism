@@ -183,7 +183,7 @@ body {
 
 /* LANDSCAPE DISATTIVATO */
 @media (orientation: landscape) {}
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 700px) {
 
     .hero-layout {
         position: fixed;
