@@ -6,13 +6,13 @@
     <title>Amunì Tourism - Redirect</title>
 
     <script>
-        // Se lo schermo è largo → versione desktop
-        if (window.innerWidth > 768) {
-            window.location.href = "desktop/index.html";
-        } 
-        // Se lo schermo è stretto → versione mobile
-        else {
+        // Rilevazione più affidabile per mobile/desktop
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+        if (isMobile) {
             window.location.href = "mobile/index.html";
+        } else {
+            window.location.href = "desktop/index.html";
         }
     </script>
 
