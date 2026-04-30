@@ -6,59 +6,80 @@
     <title>Amunì Tourism</title>
     <link rel="stylesheet" href="css_style2_v2.css">
 </head>
+
 <body>
 
     <!-- SFONDO -->
     <div class="scene-background"></div>
 
-    <!-- DASHBOARD -->
+    <!-- DASHBOARD DESKTOP -->
     <header class="dashboard">
         <div class="logo-title">Amunì Tourism</div>
-        <ul class="nav-main">
-            <li>Home</li>
-            <li>Esperienze</li>
-            <li>Chi Siamo</li>
-            <li>Contatti</li>
-        </ul>
+
+        <nav class="nav-desktop">
+            <a href="#">Cittadino del borgo</a>
+            <a href="#">Chi siamo</a>
+            <a href="#">Contatti</a>
+        </nav>
     </header>
 
-    <!-- LAYOUT PRINCIPALE -->
-    <div class="hero-layout">
-
-        <!-- CASTELLANA A MEZZO BUSTO -->
-        <div class="castellana-wrapper">
-
-    <!-- SPAZIO 3D -->
+    <!-- CONTENITORE 3D (per ora invisibile) -->
     <div id="castellana-3d"></div>
 
-    <!-- FALLBACK IMMAGINE (se il 3D non è caricato) -->
-    <img src="img/castellana_clean.png" class="castellana-img" alt="Castellana di Caccamo">
+    <!-- VIDEO CASTELLANA (cliccabile per aprire la chat) -->
+    <div class="castellana-video-wrapper">
+        <video 
+            class="castellana-video" 
+            src="img/castellana_alpha.webm" 
+            autoplay 
+            muted 
+            loop 
+            playsinline>
+        </video>
+    </div>
 
+    <!-- CHAT DESKTOP (inizialmente nascosta) -->
+    <div class="chat-desktop" id="chat-desktop">
+        
+        <div class="chat-header">
+            <span>Castellana di Caccamo</span>
+            <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
 
-        <!-- CHAT QUADRATA -->
-        <div class="chat-box">
-            <div class="chat-messages">
-                <div class="message">
-                    Benvenuto, viandante. Le pietre di Caccamo sussurrano storie di cavalieri e nobili...
-                </div>
-                <div class="message">
-                    Ah, la nostra terra è generosa! Olio dorato e dolci mandorle vi delizieranno...
-                </div>
+        <div class="chat-messages">
+            <div class="message">
+                Benvenuto, viandante. Le pietre di Caccamo sussurrano storie di cavalieri e nobili...
             </div>
+            <div class="message">
+                Ah, la nostra terra è generosa! Olio dorato e dolci mandorle vi delizieranno...
+            </div>
+        </div>
 
-            <div class="chat-input-row">
-                <input type="text" placeholder="Scrivi un messaggio...">
-                <button class="mic-btn">🎤</button>
-            </div>
-
-            <div class="chat-actions">
-                <button class="btn-gold">Esplora con la Castellana</button>
-                <button class="btn-outline">Invoca l’app AR</button>
-            </div>
+        <div class="chat-input-row">
+            <input type="text" placeholder="Scrivi un messaggio...">
+            <button class="mic-btn">🎤</button>
         </div>
 
     </div>
+
+    <!-- SCRIPT APERTURA/CHIUSURA CHAT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const castellana = document.querySelector(".castellana-video");
+            const chat = document.getElementById("chat-desktop");
+            const closeBtn = document.getElementById("close-chat");
+
+            castellana.addEventListener("click", () => {
+                chat.classList.add("active");
+            });
+
+            closeBtn.addEventListener("click", () => {
+                chat.classList.remove("active");
+            });
+
+        });
+    </script>
 
 </body>
 </html>
