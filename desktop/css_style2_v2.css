@@ -189,7 +189,7 @@ body {
 }
 
 /* BREAKPOINT DESKTOP — LAYOUT FINALE */
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 500px) {
 
     .hero-layout {
         position: fixed;
@@ -224,4 +224,4 @@ body {
         width: 34%;
         height: 50vh;
     }
-    }
+}
