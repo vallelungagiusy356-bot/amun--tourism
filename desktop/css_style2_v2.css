@@ -5,16 +5,15 @@
 
     /* SFONDO — VERSIONE DESKTOP */
     .scene-background {
-        position: fixed;
-        inset: 0;
-        background-image: url('../img/tuo_nuovo_sfondo.jpeg') !important;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        filter: brightness(0.78) contrast(1.1) saturate(1.1);
-        z-index: 0 !important;
+    position: fixed;
+    inset: 0;
+    background-image: url('img/tuo_nuovo_sfondo.jpeg') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.78) contrast(1.1) saturate(1.1);
+    z-index: 0 !important;
     }
-
     /* EVITA SFONDO BIANCO DI DEFAULT */
     body {
         background: transparent !important;
