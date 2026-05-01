@@ -3,12 +3,15 @@
    ============================ */
 @media screen and (min-width: 900px) {
 
-    /* SFONDO — CORREZIONE CRITICA */
+    /* SFONDO — VERSIONE DESKTOP */
     .scene-background {
         position: fixed;
         inset: 0;
+        background-image: url('../img/tuo_nuovo_sfondo.jpeg') !important;
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
+        filter: brightness(0.78) contrast(1.1) saturate(1.1);
         z-index: 0 !important;
     }
 
@@ -76,14 +79,14 @@
         display: none !important;
     }
 
-    /* VIDEO CASTELLANA — CORREZIONE Z-INDEX */
+    /* VIDEO CASTELLANA */
     .castellana-video-wrapper {
         position: relative;
         width: 100%;
         margin-top: 90px;
         display: flex;
         justify-content: center;
-        z-index: 10 !important; /* 🔥 fondamentale */
+        z-index: 10 !important;
         background: none !important;
     }
 
@@ -143,6 +146,7 @@
         display: block;
     }
 
+    /* HEADER CHAT */
     .chat-header {
         display: flex;
         justify-content: space-between;
@@ -170,6 +174,7 @@
         background: rgba(255, 215, 160, 0.15);
     }
 
+    /* MESSAGGI */
     .chat-messages {
         height: 150px;
         overflow-y: auto;
@@ -183,6 +188,7 @@
         line-height: 1.4;
     }
 
+    /* INPUT */
     .chat-input-row {
         display: flex;
         gap: 10px;
@@ -213,4 +219,4 @@
         box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
         background: rgba(255, 215, 160, 0.15);
     }
-   }
+       }
