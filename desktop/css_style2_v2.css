@@ -15,12 +15,11 @@
         z-index: 0 !important;
     }
 
-    /* EVITA SFONDO BIANCO DI DEFAULT */
     body {
         background: transparent !important;
     }
 
-    /* DASHBOARD DESKTOP */
+    /* DASHBOARD */
     .dashboard {
         position: fixed;
         top: 0;
@@ -107,16 +106,30 @@
         transform: scale(1.02);
     }
 
-    /* SPAZIO 3D (per ora invisibile) */
-    #castellana-3d {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        opacity: 0;
-        z-index: 5;
+    /* PULSANTE CHAT — ORA VISIBILE */
+    .chat-trigger-desktop {
+        margin: 20px auto 0 auto;
+        display: block;
+        padding: 12px 22px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #ffd78f;
+        background: rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(255, 215, 160, 0.75);
+        border-radius: 12px;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 14px rgba(255, 215, 160, 0.55);
+        transition: 0.2s;
+        z-index: 25 !important; /* sopra il video */
     }
 
-    /* CHAT DESKTOP — VETRO CRISTALLINO + GLOW ORO */
+    .chat-trigger-desktop:hover {
+        background: rgba(255, 215, 160, 0.15);
+        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
+    }
+
+    /* CHAT — VETRO CRISTALLINO */
     .chat-desktop {
         position: fixed;
         bottom: 0;
@@ -126,16 +139,13 @@
         max-width: 950px;
         height: 300px;
 
-        /* VETRO CRISTALLINO */
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(28px) saturate(250%);
-        -webkit-backdrop-filter: blur(28px) saturate(250%);
+        background: rgba(255, 255, 255, 0.03) !important;
+        backdrop-filter: blur(40px) saturate(280%) !important;
+        -webkit-backdrop-filter: blur(40px) saturate(280%) !important;
 
-        /* BORDO ORO */
         border: 2px solid rgba(255, 215, 160, 0.85);
         border-radius: 22px 22px 0 0;
 
-        /* GLOW ORO FORTISSIMO */
         box-shadow:
             0 0 32px rgba(255, 215, 160, 0.85),
             0 0 64px rgba(255, 215, 160, 0.55),
@@ -150,43 +160,20 @@
         display: block;
     }
 
-    /* HEADER CHAT */
-    .chat-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: #ffd78f;
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        text-shadow: 0 0 12px rgba(255, 215, 160, 0.85);
+    /* RIMOZIONE OPACITÀ INTERNA */
+    .chat-desktop * {
+        background: transparent !important;
     }
 
-    .close-chat-btn {
-        background: rgba(0, 0, 0, 0.45);
-        border: 1px solid rgba(255, 215, 160, 0.75);
-        color: #ffd78f;
-        font-size: 1.2rem;
-        padding: 4px 10px;
-        border-radius: 8px;
-        cursor: pointer;
-        box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
-    }
-
-    .close-chat-btn:hover {
-        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-        background: rgba(255, 215, 160, 0.15);
-    }
-
-    /* MESSAGGI — CARD NERO/ORO */
     .chat-messages {
         height: 150px;
         overflow-y: auto;
         padding-right: 6px;
     }
 
+    /* MESSAGGI — CARD NERO/ORO */
     .message {
-        background: rgba(0, 0, 0, 0.55);
+        background: rgba(0, 0, 0, 0.55) !important;
         border: 1px solid rgba(255, 215, 160, 0.55);
         padding: 10px 14px;
         border-radius: 12px;
@@ -229,4 +216,4 @@
         box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
         background: rgba(255, 215, 160, 0.15);
     }
-       }
+                          }
