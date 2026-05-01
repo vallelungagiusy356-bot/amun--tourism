@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - Mobile</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- PWA: Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- PWA: Colore barra superiore -->
+    <meta name="theme-color" content="#000000">
 </head>
 <body>
 
@@ -64,7 +72,7 @@
     <!-- SCRIPT: MUSICA PARTE AL PRIMO TOCCO -->
 <script>
     const audio = document.getElementById("bg-music");
-    audio.volume = 0.5; // volume iniziale
+    audio.volume = 0.5;
 
     let musicStarted = false;
 
@@ -73,7 +81,6 @@
             audio.play().then(() => {
                 musicStarted = true;
             }).catch(() => {
-                // fallback per Safari
                 setTimeout(() => {
                     audio.play();
                 }, 200);
@@ -84,9 +91,17 @@
         }
     }
 
-    // ascolta qualsiasi gesto dell'utente
     document.addEventListener("touchstart", startMusic, { once: true });
     document.addEventListener("click", startMusic, { once: true });
+</script>
+
+<!-- PWA: Registrazione Service Worker -->
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("Service Worker registrato"))
+        .catch(err => console.log("Errore SW:", err));
+}
 </script>
 
 </body>
