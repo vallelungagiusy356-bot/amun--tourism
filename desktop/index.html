@@ -71,7 +71,11 @@
             const castellana = document.querySelector(".castellana-video");
             const chat = document.getElementById("chat-desktop");
             const closeBtn = document.getElementById("close-chat");
+const chatTrigger = document.getElementById("chat-trigger-desktop");
 
+chatTrigger.addEventListener("click", () => {
+    chat.classList.add("active");
+});
             castellana.addEventListener("click", () => {
                 chat.classList.add("active");
             });
