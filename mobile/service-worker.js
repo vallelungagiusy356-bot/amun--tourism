@@ -1,9 +1,13 @@
 const CACHE_NAME = "amuni-cache-v1";
 const urlsToCache = [
-  "/amun--tourism/mobile/",
-  "/amun--tourism/mobile/index.html",
-  "/amun--tourism/mobile/style.css",
-  "/amun--tourism/mobile/img/castello.jpg"
+  "./",
+  "./index.html",
+  "./style.css",
+  "./img/icon-192.png",
+  "./img/icon-512.png",
+  "./img/splash-1080x1920.png",
+  "./img/castellana_alpha.webm",
+  "./img/castello_clean.png"
 ];
 
 // Installazione SW
