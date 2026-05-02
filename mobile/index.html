@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - Mobile</title>
 
-    <!-- CSS -->
-    <link rel="manifest" href="manifest.json?v=2">
-
     <!-- PWA: Manifest -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json?v=2">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 
     <!-- PWA: Colore barra superiore -->
     <meta name="theme-color" content="#000000">
@@ -32,7 +32,7 @@
     <!-- LAYOUT MOBILE -->
     <div class="mobile-layout">
 
-        <!-- VIDEO CASTELLANA (VERSIONE WEBM TRASPARENTE) -->
+        <!-- VIDEO CASTELLANA -->
         <div class="video-container">
             <video autoplay muted loop playsinline class="castellana-avatar">
                 <source src="img/castellana_alpha.webm" type="video/webm">
@@ -70,39 +70,39 @@
     </div>
 
     <!-- SCRIPT: MUSICA PARTE AL PRIMO TOCCO -->
-<script>
-    const audio = document.getElementById("bg-music");
-    audio.volume = 0.5;
+    <script>
+        const audio = document.getElementById("bg-music");
+        audio.volume = 0.5;
 
-    let musicStarted = false;
+        let musicStarted = false;
 
-    function startMusic() {
-        if (!musicStarted) {
-            audio.play().then(() => {
-                musicStarted = true;
-            }).catch(() => {
-                setTimeout(() => {
-                    audio.play();
-                }, 200);
-            });
+        function startMusic() {
+            if (!musicStarted) {
+                audio.play().then(() => {
+                    musicStarted = true;
+                }).catch(() => {
+                    setTimeout(() => {
+                        audio.play();
+                    }, 200);
+                });
 
-            document.removeEventListener("touchstart", startMusic);
-            document.removeEventListener("click", startMusic);
+                document.removeEventListener("touchstart", startMusic);
+                document.removeEventListener("click", startMusic);
+            }
         }
-    }
 
-    document.addEventListener("touchstart", startMusic, { once: true });
-    document.addEventListener("click", startMusic, { once: true });
-</script>
+        document.addEventListener("touchstart", startMusic, { once: true });
+        document.addEventListener("click", startMusic, { once: true });
+    </script>
 
-<!-- PWA: Registrazione Service Worker -->
-<script>
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js")
-        .then(() => console.log("Service Worker registrato"))
-        .catch(err => console.log("Errore SW:", err));
-}
-</script>
+    <!-- PWA: Registrazione Service Worker -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("./service-worker.js")
+                .then(() => console.log("Service Worker registrato"))
+                .catch(err => console.log("Errore SW:", err));
+        }
+    </script>
 
 </body>
 </html>
