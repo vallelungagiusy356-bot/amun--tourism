@@ -1,0 +1,109 @@
+/* ================================
+   SFONDO TRAMONTO
+================================ */
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #ffecd2 0%,
+        #fcb69f 20%,
+        #ff9a76 40%,
+        #ff6a88 60%,
+        #c44569 80%,
+        #2d0b3a 100%
+    );
+    background-attachment: fixed;
+    color: #fff;
+}
+
+/* ================================
+   GRIGLIA 2×2 CENTRALE
+================================ */
+
+.citizen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 120px auto;
+    padding: 0 40px;
+}
+
+/* ================================
+   QUADRANTI IN VETRO + GLOW ORO
+================================ */
+
+.quadrant {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 22px;
+    border: 2px solid rgba(255, 200, 120, 0.7);
+
+    padding: 30px;
+
+    box-shadow:
+        0 0 25px rgba(255, 200, 120, 0.45),
+        0 0 60px rgba(255, 120, 60, 0.25),
+        inset 0 0 20px rgba(255, 255, 255, 0.15);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Effetto hover */
+.quadrant:hover {
+    transform: scale(1.03);
+    box-shadow:
+        0 0 35px rgba(255, 210, 140, 0.8),
+        0 0 80px rgba(255, 120, 60, 0.4),
+        inset 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+/* ================================
+   TITOLI E TESTI
+================================ */
+
+.quadrant h2 {
+    font-size: 28px;
+    color: #ffe7b3;
+    text-shadow: 0 0 10px rgba(255, 200, 120, 0.9);
+    margin-bottom: 15px;
+}
+
+.quadrant p,
+.quadrant li {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+.quadrant ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.quadrant li::marker {
+    color: #ffcc88;
+}
+
+/* ================================
+   ELEMENTI SPECIALI
+================================ */
+
+.iframe-3d {
+    width: 100%;
+    height: 260px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 200, 120, 0.5);
+    margin-top: 15px;
+}
+
+.battle-preview img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 20px;
+    opacity: 0.9;
+}
