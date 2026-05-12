@@ -256,30 +256,31 @@
        CHAT — VETRO CRISTALLINO
        ============================ */
     .chat-desktop {
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 75%;
-        max-width: 950px;
-        height: 300px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    max-width: 950px;
+    height: 300px;
 
-        background: rgba(255, 255, 255, 0.005) !important;
-        backdrop-filter: blur(50px) saturate(220%) brightness(1.8) !important;
-        -webkit-backdrop-filter: blur(50px) saturate(220%) brightness(1.8) !important;
+    /* Vetro ultra trasparente */
+    background: rgba(255, 255, 255, 0.002) !important;
+    backdrop-filter: blur(60px) saturate(180%) brightness(2.1) contrast(1.15) !important;
+    -webkit-backdrop-filter: blur(60px) saturate(180%) brightness(2.1) contrast(1.15) !important;
 
-        border: 2px solid rgba(255, 215, 160, 0.95);
-        border-radius: 26px 26px 0 0;
+    border: 2px solid rgba(255, 215, 160, 0.9);
+    border-radius: 26px 26px 0 0;
 
-        box-shadow:
-            0 0 42px rgba(255, 215, 160, 1),
-            0 0 82px rgba(255, 215, 160, 0.75),
-            inset 0 0 28px rgba(255, 215, 160, 0.45);
+    box-shadow:
+        0 0 42px rgba(255, 215, 160, 0.9),
+        0 0 82px rgba(255, 215, 160, 0.65),
+        inset 0 0 28px rgba(255, 215, 160, 0.35);
 
-        padding: 18px;
-        display: none;
-        z-index: 30;
-    }
+    padding: 18px;
+    display: none;
+    z-index: 30;
+}
 
     .chat-desktop.active {
         display: block;
