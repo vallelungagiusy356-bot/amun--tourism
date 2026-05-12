@@ -27,6 +27,9 @@
     <!-- DASHBOARD MOBILE -->
     <header class="dashboard">
         <div class="logo-title">Amunì Tourism</div>
+
+        <!-- 🔊 BOTTONE AUDIO -->
+        <button id="toggle-music" class="btn-audio">🔈</button>
     </header>
 
     <!-- LAYOUT MOBILE -->
@@ -117,6 +120,21 @@
         document.addEventListener("click", startMusic, { once: true });
     </script>
 
+    <!-- SCRIPT: CONTROLLO AUDIO ON/OFF -->
+    <script>
+        const toggleBtn = document.getElementById("toggle-music");
+
+        toggleBtn.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play();
+                toggleBtn.textContent = "🔈";
+            } else {
+                audio.pause();
+                toggleBtn.textContent = "🔇";
+            }
+        });
+    </script>
+
     <!-- PWA: Registrazione Service Worker -->
     <script>
         if ("serviceWorker" in navigator) {
@@ -127,4 +145,4 @@
     </script>
 
 </body>
-</html>
+    </html>
