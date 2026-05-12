@@ -1,9 +1,9 @@
 /* ============================
-   VERSIONE DESKTOP — GLOW FORTE
+   VERSIONE DESKTOP — LAYOUT ORIZZONTALE PULITO
    ============================ */
 @media screen and (min-width: 900px) {
 
-    /* SFONDO — VERSIONE DESKTOP */
+    /* SFONDO */
     .scene-background {
         position: fixed;
         inset: 0;
@@ -19,9 +19,7 @@
         background: transparent !important;
     }
 
-    /* ============================
-       DASHBOARD ELEGANTE NERA + ORO
-       ============================ */
+    /* DASHBOARD */
     .dashboard {
         position: fixed;
         top: 0;
@@ -46,37 +44,7 @@
         text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
     }
 
-    /* LINK MENU */
-    .nav-desktop {
-        display: flex;
-        gap: 22px;
-    }
-
-    .nav-desktop a {
-        color: #ffd78f;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 10px 18px;
-        border-radius: 12px;
-        background: rgba(0, 0, 0, 0.55);
-        border: 1px solid rgba(255, 215, 160, 0.75);
-        box-shadow:
-            0 0 14px rgba(255, 215, 160, 0.55),
-            inset 0 0 8px rgba(255, 215, 160, 0.35);
-        transition: 0.2s;
-    }
-
-    .nav-desktop a:hover {
-        background: rgba(255, 215, 160, 0.15);
-        box-shadow:
-            0 0 22px rgba(255, 215, 160, 0.85),
-            inset 0 0 12px rgba(255, 215, 160, 0.45);
-        transform: scale(1.05);
-    }
-
-    /* ============================
-       PULSANTI LINGUA — NERI + ORO
-       ============================ */
+    /* PULSANTI LINGUA */
     .lang-switcher {
         display: flex;
         gap: 12px;
@@ -114,7 +82,7 @@
         justify-content: space-between;
         align-items: flex-end;
         width: 90%;
-        margin: 220px auto 0 auto; /* più in basso */
+        margin: 300px auto 0 auto; /* più in basso */
         z-index: 10;
     }
 
@@ -127,25 +95,20 @@
     }
 
     .castellana-video {
-        width: 35vw; /* più piccola */
-        max-width: 380px;
+        width: 30vw; /* più piccola */
+        max-width: 340px;
         cursor: pointer;
         z-index: 11;
         background: transparent !important;
-        filter:
-            drop-shadow(0 0 25px rgba(255, 215, 160, 0.9))
-            drop-shadow(0 0 45px rgba(255, 215, 160, 0.6));
+        filter: none; /* glow rimosso */
         transition: 0.25s;
     }
 
     .castellana-video:hover {
-        filter:
-            drop-shadow(0 0 38px rgba(255, 215, 160, 1))
-            drop-shadow(0 0 58px rgba(255, 215, 160, 0.85));
         transform: scale(1.03);
     }
 
-    /* TOOLTIP DORATO */
+    /* TOOLTIP */
     .castellana-tooltip {
         position: absolute;
         top: -25px;
@@ -172,9 +135,7 @@
         100% { opacity: 0; }
     }
 
-    /* ============================
-       SEZIONE INSTALLA APP — ORIZZONTALE A DESTRA
-       ============================ */
+    /* SEZIONE QR — ORIZZONTALE A DESTRA */
     .install-app-desktop {
         flex: 1;
         max-width: 400px;
@@ -221,4 +182,36 @@
         width: 160px;
         display: block;
         margin: 10px auto;
-        border-radius: 12
+        border-radius: 12px;
+        border: 2px solid rgba(255,215,160,0.45);
+        box-shadow: 0 0 12px rgba(255,215,160,0.35);
+    }
+
+    .install-right p {
+        margin-top: 10px;
+        color: #f7f2e9;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    /* BOTTONE CHAT */
+    .chat-trigger-desktop {
+        display: block;
+        margin: 20px auto 0 auto;
+        padding: 12px 22px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #ffd78f;
+        background: rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(255, 215, 160, 0.75);
+        border-radius: 12px;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 14px rgba(255, 215, 160, 0.55);
+        transition: 0.2s;
+        z-index: 25 !important;
+    }
+
+    .chat-trigger-desktop:hover {
+        background: rgba(255, 215, 160, 0.15);
+        box-shadow: 0 0
