@@ -1,0 +1,29 @@
+{
+  "menu": {
+    "title": "Amunì Tourism",
+    "citizen": "Citizen of the village",
+    "about": "About us",
+    "contact": "Contact",
+    "eat": "Eat",
+    "sleep": "Sleep",
+    "transport": "Transport",
+    "events": "Events",
+    "monuments": "Monuments"
+  },
+  "home": {
+    "chat_web": "Talk with the Castellana on the website",
+    "amuni_title": "The meaning of Amunì",
+    "amuni_text": "In Sicily, “Amunì” is more than just “let’s go”. It’s a gentle invitation, a smile that accompanies you. It’s the voice of our land saying: move, live, discover, dream.",
+    "install_app": "Install the Amunì Tourism App",
+    "download_apk": "Download the App (APK)",
+    "open_webapp": "Open the Web App",
+    "scan_qr": "Scan the QR to install the app",
+    "chat_desktop": "Chat with the Castellana"
+  },
+  "chat": {
+    "title": "Castellana of Caccamo",
+    "msg1": "Welcome, traveler, to this land rich in art, history, and traditions.",
+    "msg2": "Are you ready to be guided? Art, golden oil, and sweet almonds will delight you.",
+    "placeholder": "Write a message..."
+  }
+}
