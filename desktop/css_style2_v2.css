@@ -89,7 +89,6 @@
         display: flex;
         justify-content: center;
         z-index: 10 !important;
-        background: none !important;
     }
 
     .castellana-video {
@@ -100,6 +99,7 @@
             drop-shadow(0 0 32px rgba(255, 215, 160, 0.55));
         cursor: pointer;
         transition: 0.2s;
+        z-index: 11;
     }
 
     .castellana-video:hover {
@@ -125,6 +125,7 @@
         opacity: 0;
         animation: tooltipFade 3s ease forwards;
         pointer-events: none;
+        z-index: 12;
     }
 
     @keyframes tooltipFade {
@@ -257,7 +258,7 @@
     }
 
     /* X DI CHIUSURA — A DESTRA, NERA, ORO */
-    .chat-close {
+    .close-chat-btn {
         position: absolute;
         top: 12px;
         right: 12px;
@@ -278,13 +279,9 @@
         z-index: 40;
     }
 
-    .chat-close:hover {
+    .close-chat-btn:hover {
         background: rgba(255, 215, 160, 0.15);
         box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-    }
-
-    .chat-desktop * {
-        background: transparent !important;
     }
 
     .chat-messages {
@@ -337,4 +334,4 @@
         background: rgba(255, 215, 160, 0.15);
     }
 
-}
+   }
