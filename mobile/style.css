@@ -45,6 +45,22 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* 🔊 BOTTONE AUDIO */
+.btn-audio {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #ffd78f;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 6px;
+    transition: transform 0.2s ease;
+}
+
+.btn-audio:hover {
+    transform: scale(1.2);
+}
+
 /* LAYOUT MOBILE */
 .mobile-layout {
     margin-top: 75px;
@@ -137,26 +153,23 @@ body {
    ============================ */
 .castellana-avatar {
     position: absolute;
-    bottom: -110px; /* più in basso */
+    bottom: -110px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60vw; /* leggermente più grande */
+    width: 60vw;
     max-width: 300px;
     z-index: 10;
     pointer-events: none;
 
-    /* 🔥 Effetti combinati */
     animation: fadeIn 1.2s ease-out, breathe 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35)); /* alone dorato */
+    filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35));
 }
 
-/* Fade-in iniziale */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateX(-50%) translateY(20px); }
     to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
-/* Effetto respiro */
 @keyframes breathe {
     0%   { transform: translateX(-50%) translateY(0); }
     50%  { transform: translateX(-50%) translateY(-6px); }
@@ -166,12 +179,13 @@ body {
 /* Aumento altezza contenitore video */
 .video-container {
     width: 100%;
-    height: 300px; /* aumentato */
+    height: 300px;
     overflow: hidden;
     border-bottom: 2px solid rgba(255, 215, 160, 0.5);
     border-radius: 0 0 18px 18px;
     position: relative;
-    }
+}
+
 /* ============================
    SEZIONE INSTALLA APP
    ============================ */
@@ -193,7 +207,6 @@ body {
     text-shadow: 0 0 6px rgba(255, 215, 160, 0.35);
 }
 
-/* Pulsanti barocchi riutilizzati */
 .install-app .btn-barocco {
     display: block;
     margin: 10px auto;
@@ -201,7 +214,6 @@ body {
     font-size: 1rem;
 }
 
-/* QR CODE */
 .qr-section {
     margin-top: 18px;
 }
@@ -217,4 +229,4 @@ body {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #f7f2e9;
-}
+    }
