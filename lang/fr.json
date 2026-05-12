@@ -26,4 +26,33 @@
     "msg2": "Es-tu prêt à te laisser guider ? L’art, l’huile dorée et les amandes sucrées te raviront.",
     "placeholder": "Écris un message..."
   }
+  "citizen": {
+    "legends_title": "Légendes et Racines",
+    "legends_desc": "Les histoires anciennes du village, transmises de génération en génération.",
+    "legend_felicia": "La légende de Sœur Felicia",
+    "legend_pizzarrone": "La légende de la Tour du Pizzarrone",
+    "audio_title": "Écoute des prières et contes en dialecte sicilien",
+    "transcription": "Transcription automatique",
+
+    "castle_title": "Le Château",
+    "castle_desc": "Une forteresse millénaire : conspirations, meurtrières, tunnels secrets, prisons et batailles épiques.",
+
+    "church_title": "Églises et Art",
+    "church_desc": "Un voyage entre catacombes, traditions, saints patrons et anciennes dévotions.",
+    "church_catacombs": "Les catacombes et cryptes cachées",
+    "church_sangiuseppe": "L’autel rouge de Saint Joseph",
+    "church_sepolcri": "Les 'sepolcri' de Pâques avec blé germé",
+
+    "food_title": "Gastronomie et Événements",
+    "food_desc": "Saveurs authentiques et lieux où vivre le village.",
+    "food_arancine": "Où déguster d’excellentes arancines",
+    "food_cocktail": "Cocktails avec DJ toute l’année",
+    "food_aperitivo": "Apéritifs panoramiques (été seulement)",
+
+    "events_title": "Événements",
+    "event_castellana": "La Castellana",
+    "event_signuruzzu": "Le 'Signuruzzu a Cavaddu'",
+    "event_salsiccia": "Fête de la Saucisse",
+    "event_beato": "Fête du Bienheureux Giovanni"
+  }
 }
