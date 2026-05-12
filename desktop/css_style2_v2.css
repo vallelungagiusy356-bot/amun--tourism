@@ -112,16 +112,16 @@
     .castellana-video-wrapper {
         position: relative;
         width: 100%;
-        margin-top: 120px;
+        margin-top: 220px; /* ABBASSATA MOLTO */
         display: flex;
-        justify-content: center;
+        justify-content: flex-start; /* A SINISTRA */
+        padding-left: 6%;
         z-index: 10 !important;
     }
 
-    /* Glow attorno alla figura, NON al rettangolo */
     .castellana-video {
-        width: 50vw;
-        max-width: 480px;
+        width: 42vw;
+        max-width: 440px;
         cursor: pointer;
         z-index: 11;
         background: transparent !important;
@@ -142,6 +142,7 @@
     .castellana-tooltip {
         position: absolute;
         top: -25px;
+        left: 6%;
         background: rgba(0, 0, 0, 0.55);
         padding: 8px 14px;
         border-radius: 10px;
@@ -165,18 +166,43 @@
     }
 
     /* ============================
-       SEZIONE INSTALLA APP — RIPRISTINATA
+       BOTTONE CHATTA CON LA CASTELLANA
+       ============================ */
+    .chat-trigger-desktop {
+        margin-left: 6%;
+        margin-top: 15px;
+        display: inline-block;
+        padding: 12px 22px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #ffd78f;
+        background: rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(255, 215, 160, 0.75);
+        border-radius: 12px;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 14px rgba(255, 215, 160, 0.55);
+        transition: 0.2s;
+        z-index: 25 !important;
+    }
+
+    .chat-trigger-desktop:hover {
+        background: rgba(255, 215, 160, 0.15);
+        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
+    }
+
+    /* ============================
+       SEZIONE INSTALLA APP — A DESTRA
        ============================ */
     .install-app-desktop {
-        margin: 60px auto;
-        width: 80%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        position: absolute;
+        top: 260px; /* ALLINEATA ALLA BASE DELLA CASTELLANA */
+        right: 6%;
+        width: 360px;
         background: rgba(0,0,0,0.45);
         border: 1px solid rgba(255,215,160,0.55);
         border-radius: 18px;
-        padding: 30px;
+        padding: 25px;
         backdrop-filter: blur(10px);
         box-shadow: 0 0 28px rgba(255,215,160,0.45);
         z-index: 15;
@@ -184,14 +210,15 @@
 
     .install-left h2 {
         color: #ffd78f;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         margin-bottom: 20px;
         text-shadow: 0 0 12px rgba(255,215,160,0.55);
+        text-align: center;
     }
 
     .btn-desktop {
         display: block;
-        width: 260px;
+        width: 100%;
         margin-bottom: 12px;
         padding: 14px;
         text-align: center;
@@ -210,12 +237,10 @@
         background: rgba(255,215,160,0.12);
     }
 
-    .install-right {
-        text-align: center;
-    }
-
     .qr-desktop {
-        width: 180px;
+        width: 160px;
+        display: block;
+        margin: 10px auto;
         border-radius: 12px;
         border: 2px solid rgba(255,215,160,0.45);
         box-shadow: 0 0 12px rgba(255,215,160,0.35);
@@ -225,6 +250,7 @@
         margin-top: 10px;
         color: #f7f2e9;
         font-size: 1rem;
+        text-align: center;
     }
 
     /* ============================
@@ -239,9 +265,9 @@
         max-width: 950px;
         height: 300px;
 
-        background: rgba(255, 255, 255, 0.01) !important;
-        backdrop-filter: blur(40px) saturate(280%) brightness(1.5) !important;
-        -webkit-backdrop-filter: blur(40px) saturate(280%) brightness(1.5) !important;
+        background: rgba(255, 255, 255, 0.005) !important;
+        backdrop-filter: blur(50px) saturate(300%) brightness(1.7) !important;
+        -webkit-backdrop-filter: blur(50px) saturate(300%) brightness(1.7) !important;
 
         border: 2px solid rgba(255, 215, 160, 0.95);
         border-radius: 26px 26px 0 0;
