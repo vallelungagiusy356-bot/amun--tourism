@@ -110,22 +110,29 @@
     }
 
     /* TOOLTIP DORATO */
-    .castellana-tooltip {
-        position: absolute;
-        top: -40px;
-        background: rgba(0, 0, 0, 0.55);
-        padding: 8px 14px;
-        border-radius: 10px;
-        border: 1px solid rgba(255, 215, 160, 0.75);
-        color: #ffd78f;
-        font-size: 0.95rem;
-        font-weight: 600;
-        text-shadow: 0 0 8px rgba(255, 215, 160, 0.85);
-        box-shadow: 0 0 18px rgba(255, 215, 160, 0.55);
-        opacity: 0;
-        animation: tooltipFade 3s ease forwards;
-        pointer-events: none;
-    }
+.castellana-tooltip {
+    position: absolute;
+    top: -40px;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 160, 0.75);
+    color: #ffd78f;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(255, 215, 160, 0.85);
+    box-shadow: 0 0 18px rgba(255, 215, 160, 0.55);
+    opacity: 0;
+    animation: tooltipFade 3s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes tooltipFade {
+    0% { opacity: 0; transform: translateY(6px); }
+    10% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
 
     @keyframes tooltipFade {
         0% { opacity: 0; transform: translateY(6px); }
