@@ -279,10 +279,10 @@
     max-width: 950px;
     height: 300px;
 
-    /* Vetro ultra trasparente */
-    background: rgba(255, 255, 255, 0.002) !important;
-    backdrop-filter: blur(60px) saturate(180%) brightness(2.1) contrast(1.15) !important;
-    -webkit-backdrop-filter: blur(60px) saturate(180%) brightness(2.1) contrast(1.15) !important;
+    /* 🔹 Vetro cristallino neutro */
+    background: rgba(255, 255, 255, 0.01) !important;
+    backdrop-filter: blur(50px) saturate(90%) brightness(1.1) hue-rotate(-10deg) !important;
+    -webkit-backdrop-filter: blur(50px) saturate(90%) brightness(1.1) hue-rotate(-10deg) !important;
 
     border: 2px solid rgba(255, 215, 160, 0.9);
     border-radius: 26px 26px 0 0;
@@ -295,8 +295,7 @@
     padding: 18px;
     display: none;
     z-index: 30;
-}
-
+    }
     .chat-desktop.active {
         display: block;
     }
