@@ -37,9 +37,39 @@
             playsinline>
         </video>
     </div>
-<button class="chat-trigger-desktop" id="chat-trigger-desktop">
-    💬 Chatta con la Castellana
-</button>
+
+    <!-- ⭐ SEZIONE INSTALLA APP — DESKTOP ⭐ -->
+    <section class="install-app-desktop">
+
+        <div class="install-left">
+            <h2>Installa l’app Amunì Tourism</h2>
+
+            <a href="https://raw.githubusercontent.com/vallelungagiusy356-bot/amun--tourism/main/app-release-signed.apk" 
+               class="btn-desktop">
+                📲 Scarica l’app (APK)
+            </a>
+
+            <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/" 
+               class="btn-desktop">
+                🌐 Apri la Web App
+            </a>
+        </div>
+
+        <div class="install-right">
+            <img src="https://vallelungagiusy356-bot.github.io/amun--tourism/qr.png" 
+                 alt="QR Amunì Tourism" 
+                 class="qr-desktop">
+            <p>Scansiona il QR per installare l’app</p>
+        </div>
+
+    </section>
+    <!-- ⭐ FINE SEZIONE INSTALLA APP ⭐ -->
+
+    <!-- BOTTONE CHAT -->
+    <button class="chat-trigger-desktop" id="chat-trigger-desktop">
+        💬 Chatta con la Castellana
+    </button>
+
     <!-- CHAT DESKTOP (inizialmente nascosta) -->
     <div class="chat-desktop" id="chat-desktop">
         
@@ -71,11 +101,12 @@
             const castellana = document.querySelector(".castellana-video");
             const chat = document.getElementById("chat-desktop");
             const closeBtn = document.getElementById("close-chat");
-const chatTrigger = document.getElementById("chat-trigger-desktop");
+            const chatTrigger = document.getElementById("chat-trigger-desktop");
 
-chatTrigger.addEventListener("click", () => {
-    chat.classList.add("active");
-});
+            chatTrigger.addEventListener("click", () => {
+                chat.classList.add("active");
+            });
+
             castellana.addEventListener("click", () => {
                 chat.classList.add("active");
             });
