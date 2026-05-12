@@ -88,21 +88,21 @@
         height: 42px;
         font-size: 1.2rem;
         border-radius: 10px;
-        background: rgba(0, 0, 0, 0.55);
-        border: 1px solid rgba(255, 215, 160, 0.75);
+        background: rgba(0, 0, 0, 0.65);
+        border: 1px solid rgba(255, 215, 160, 0.85);
         color: #ffd78f;
         cursor: pointer;
         box-shadow:
-            0 0 12px rgba(255, 215, 160, 0.45),
-            inset 0 0 6px rgba(255, 215, 160, 0.35);
+            0 0 14px rgba(255, 215, 160, 0.55),
+            inset 0 0 8px rgba(255, 215, 160, 0.45);
         transition: 0.2s;
     }
 
     .lang-switcher button:hover {
         background: rgba(255, 215, 160, 0.15);
         box-shadow:
-            0 0 18px rgba(255, 215, 160, 0.75),
-            inset 0 0 10px rgba(255, 215, 160, 0.45);
+            0 0 22px rgba(255, 215, 160, 0.85),
+            inset 0 0 12px rgba(255, 215, 160, 0.55);
         transform: scale(1.05);
     }
 
@@ -117,11 +117,10 @@
     /* ============================
        VIDEO CASTELLANA + TOOLTIP
        ============================ */
-
     .castellana-video-wrapper {
         position: relative;
         width: 100%;
-        margin-top: 110px;
+        margin-top: 100px;
         display: flex;
         justify-content: center;
         z-index: 10 !important;
@@ -133,8 +132,8 @@
         cursor: pointer;
         z-index: 11;
         filter:
-            drop-shadow(0 0 28px rgba(255, 215, 160, 0.85))
-            drop-shadow(0 0 42px rgba(255, 215, 160, 0.65));
+            drop-shadow(0 0 25px rgba(255, 215, 160, 0.9))
+            drop-shadow(0 0 45px rgba(255, 215, 160, 0.6));
         transition: 0.25s;
     }
 
@@ -148,7 +147,7 @@
     /* TOOLTIP DORATO */
     .castellana-tooltip {
         position: absolute;
-        top: -40px;
+        top: -20px;
         background: rgba(0, 0, 0, 0.55);
         padding: 8px 14px;
         border-radius: 10px;
@@ -172,141 +171,56 @@
     }
 
     /* ============================
-       CHAT — TRIGGER
+       SEZIONE INSTALLA APP — DESKTOP
        ============================ */
-
-    .chat-trigger-desktop {
-        margin: 20px auto 0 auto;
-        display: block;
-        padding: 12px 22px;
-        font-size: 1rem;
-        font-weight: 600;
-        color: #ffd78f;
-        background: rgba(0, 0, 0, 0.45);
-        border: 1px solid rgba(255, 215, 160, 0.75);
-        border-radius: 12px;
-        cursor: pointer;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 0 14px rgba(255, 215, 160, 0.55);
-        transition: 0.2s;
-        z-index: 25 !important;
-    }
-
-    .chat-trigger-desktop:hover {
-        background: rgba(255, 215, 160, 0.15);
-        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-    }
-
-    /* ============================
-       CHAT — VETRO CRISTALLINO
-       ============================ */
-
-    .chat-desktop {
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 75%;
-        max-width: 950px;
-        height: 300px;
-
-        /* VETRO SUPER TRASPARENTE */
-        background: rgba(255, 255, 255, 0.015) !important;
-        backdrop-filter: blur(40px) saturate(280%) brightness(1.4) !important;
-        -webkit-backdrop-filter: blur(40px) saturate(280%) brightness(1.4) !important;
-
-        border: 2px solid rgba(255, 215, 160, 0.95);
-        border-radius: 26px 26px 0 0;
-
-        box-shadow:
-            0 0 42px rgba(255, 215, 160, 1),
-            0 0 82px rgba(255, 215, 160, 0.75),
-            inset 0 0 28px rgba(255, 215, 160, 0.45);
-
-        padding: 18px;
-        display: none;
-        z-index: 30;
-    }
-
-    .chat-desktop.active {
-        display: block;
-    }
-
-    /* X DI CHIUSURA — A DESTRA, NERA, ORO */
-    .close-chat-btn {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        width: 32px;
-        height: 32px;
-        background: #000;
-        border: 2px solid #ffd78f;
-        border-radius: 8px;
-        color: #ffd78f;
-        font-size: 1.2rem;
-        font-weight: 700;
+    .install-app-desktop {
+        margin: 60px auto;
+        width: 80%;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
-        transition: 0.2s;
-        z-index: 40;
-    }
-
-    .close-chat-btn:hover {
-        background: rgba(255, 215, 160, 0.15);
-        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-    }
-
-    .chat-messages {
-        height: 150px;
-        overflow-y: auto;
-        padding-right: 6px;
-    }
-
-    .message {
-        background: rgba(0, 0, 0, 0.55) !important;
-        border: 1px solid rgba(255, 215, 160, 0.55);
-        padding: 10px 14px;
-        border-radius: 12px;
-        margin-bottom: 12px;
-        color: #f7f2e9;
-        box-shadow:
-            0 0 12px rgba(255, 215, 160, 0.35),
-            inset 0 0 8px rgba(255, 215, 160, 0.25);
-        line-height: 1.4;
-    }
-
-    .chat-input-row {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
-    }
-
-    .chat-input-row input {
-        flex: 1;
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px solid rgba(255, 215, 160, 0.55);
-        background: rgba(0, 0, 0, 0.35);
-        color: #ffd78f;
+        background: rgba(0,0,0,0.45);
+        border: 1px solid rgba(255,215,160,0.55);
+        border-radius: 18px;
+        padding: 30px;
         backdrop-filter: blur(10px);
+        box-shadow: 0 0 28px rgba(255,215,160,0.45);
+        z-index: 15;
     }
 
-    .mic-btn {
-        background: rgba(0, 0, 0, 0.45);
-        border: 1px solid rgba(255, 215, 160, 0.75);
+    .install-left h2 {
         color: #ffd78f;
-        padding: 10px 14px;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        text-shadow: 0 0 12px rgba(255,215,160,0.55);
     }
 
-    .mic-btn:hover {
-        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-        background: rgba(255, 215, 160, 0.15);
+    .btn-desktop {
+        display: block;
+        width: 260px;
+        margin-bottom: 12px;
+        padding: 14px;
+        text-align: center;
+        background: #000;
+        border: 2px solid #d4a84f;
+        border-radius: 14px;
+        color: #ffd78f;
+        font-weight: 600;
+        font-size: 1rem;
+        box-shadow: 0 0 10px rgba(255,215,160,0.25);
+        transition: 0.2s;
     }
 
-                        }
+    .btn-desktop:hover {
+        box-shadow: 0 0 18px rgba(255,215,160,0.65);
+        background: rgba(255,215,160,0.12);
+    }
+
+    .install-right {
+        text-align: center;
+    }
+
+    .qr-desktop {
+        width: 180px;
+        border-radius: 12px;
+        border: 2px solid rgba
