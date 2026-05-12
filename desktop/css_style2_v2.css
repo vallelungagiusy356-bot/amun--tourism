@@ -222,24 +222,30 @@
 
     .btn-desktop {
     display: block;
-    width: 85%;              /* più piccoli */
-    margin: 10px auto;       /* centrati */
-    padding: 10px 14px;      /* più eleganti */
-    text-align: center;
+    width: 85%;
+    margin: 12px auto;
+    padding: 10px 14px;
 
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.75);
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 215, 160, 0.85);
     border-radius: 12px;
 
     color: #ffd78f;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    text-align: center;
 
     box-shadow:
-        0 0 12px rgba(255, 215, 160, 0.35),
-        inset 0 0 8px rgba(255, 215, 160, 0.25);
+        0 0 10px rgba(255, 215, 160, 0.35),
+        inset 0 0 6px rgba(255, 215, 160, 0.25);
 
     transition: 0.2s;
+}
+
+.btn-desktop:hover {
+    background: rgba(255, 215, 160, 0.12);
+    box-shadow: 0 0 18px rgba(255, 215, 160, 0.75);
+    transform: scale(1.03);
 }
 
 .btn-desktop:hover {
