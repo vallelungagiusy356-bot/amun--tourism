@@ -106,6 +106,68 @@
         transform: scale(1.02);
     }
 
+    /* ============================
+       SEZIONE INSTALLA APP — DESKTOP
+       ============================ */
+    .install-app-desktop {
+        margin: 40px auto;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0,0,0,0.55);
+        border: 1px solid rgba(255,215,160,0.45);
+        border-radius: 18px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 22px rgba(255,215,160,0.35);
+    }
+
+    .install-left h2 {
+        color: #ffd78f;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        text-shadow: 0 0 12px rgba(255,215,160,0.55);
+    }
+
+    .btn-desktop {
+        display: block;
+        width: 260px;
+        margin-bottom: 12px;
+        padding: 14px;
+        text-align: center;
+        background: #000;
+        border: 2px solid #d4a84f;
+        border-radius: 14px;
+        color: #ffd78f;
+        font-weight: 600;
+        font-size: 1rem;
+        box-shadow: 0 0 10px rgba(255,215,160,0.25);
+        transition: 0.2s;
+    }
+
+    .btn-desktop:hover {
+        box-shadow: 0 0 18px rgba(255,215,160,0.65);
+        background: rgba(255,215,160,0.12);
+    }
+
+    .install-right {
+        text-align: center;
+    }
+
+    .qr-desktop {
+        width: 180px;
+        border-radius: 12px;
+        border: 2px solid rgba(255,215,160,0.45);
+        box-shadow: 0 0 12px rgba(255,215,160,0.35);
+    }
+
+    .install-right p {
+        margin-top: 10px;
+        color: #f7f2e9;
+        font-size: 1rem;
+    }
+
     /* PULSANTE CHAT — ORA VISIBILE */
     .chat-trigger-desktop {
         margin: 20px auto 0 auto;
@@ -121,7 +183,7 @@
         backdrop-filter: blur(10px);
         box-shadow: 0 0 14px rgba(255, 215, 160, 0.55);
         transition: 0.2s;
-        z-index: 25 !important; /* sopra il video */
+        z-index: 25 !important;
     }
 
     .chat-trigger-desktop:hover {
@@ -160,7 +222,6 @@
         display: block;
     }
 
-    /* RIMOZIONE OPACITÀ INTERNA */
     .chat-desktop * {
         background: transparent !important;
     }
@@ -171,7 +232,6 @@
         padding-right: 6px;
     }
 
-    /* MESSAGGI — CARD NERO/ORO */
     .message {
         background: rgba(0, 0, 0, 0.55) !important;
         border: 1px solid rgba(255, 215, 160, 0.55);
@@ -185,7 +245,6 @@
         line-height: 1.4;
     }
 
-    /* INPUT */
     .chat-input-row {
         display: flex;
         gap: 10px;
@@ -216,4 +275,5 @@
         box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
         background: rgba(255, 215, 160, 0.15);
     }
-                          }
+
+           }
