@@ -190,17 +190,26 @@
        SEZIONE INSTALLA APP — A DESTRA
        ============================ */
     .install-app-desktop {
-        position: absolute;
-        top: 310px;   /* allineata orizzontalmente alla Castellana, ma senza sovrapporsi al bottone */
-        right: 6%;
-        width: 360px;
-        background: rgba(0,0,0,0.45);
-        border: 1px solid rgba(255,215,160,0.55);
-        border-radius: 18px;
-        padding: 20px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 0 28px rgba(255,215,160,0.45);
-        z-index: 15;
+    position: absolute;
+    top: 310px;
+    right: 6%;
+    width: 330px;
+
+    /* Vetro identico alla chat */
+    background: rgba(255, 255, 255, 0.002) !important;
+    backdrop-filter: blur(60px) saturate(180%) brightness(2.1) contrast(1.15) !important;
+    -webkit-backdrop-filter: blur(60px) saturate(180%) brightness(2.1) contrast(1.15) !important;
+
+    border: 2px solid rgba(255, 215, 160, 0.9);
+    border-radius: 20px;
+
+    padding: 18px 20px;
+    box-shadow:
+        0 0 42px rgba(255, 215, 160, 0.9),
+        0 0 82px rgba(255, 215, 160, 0.65),
+        inset 0 0 28px rgba(255, 215, 160, 0.35);
+
+    z-index: 15;
     }
 
     .install-left h2 {
@@ -212,37 +221,43 @@
     }
 
     .btn-desktop {
-        display: block;
-        width: 100%;
-        margin-bottom: 10px;
-        padding: 12px;
-        text-align: center;
-        background: #000;
-        border: 2px solid #d4a84f;
-        border-radius: 14px;
-        color: #ffd78f;
-        font-weight: 600;
-        font-size: 1rem;
-        box-shadow: 0 0 10px rgba(255,215,160,0.25);
-        transition: 0.2s;
-    }
+    display: block;
+    width: 85%;              /* più piccoli */
+    margin: 10px auto;       /* centrati */
+    padding: 10px 14px;      /* più eleganti */
+    text-align: center;
 
-    .btn-desktop:hover {
-        box-shadow: 0 0 18px rgba(255,215,160,0.65);
-        background: rgba(255,215,160,0.12);
-    }
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.75);
+    border-radius: 12px;
 
+    color: #ffd78f;
+    font-weight: 600;
+    font-size: 0.95rem;
+
+    box-shadow:
+        0 0 12px rgba(255, 215, 160, 0.35),
+        inset 0 0 8px rgba(255, 215, 160, 0.25);
+
+    transition: 0.2s;
+}
+
+.btn-desktop:hover {
+    background: rgba(255, 215, 160, 0.12);
+    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
+    transform: scale(1.03);
+}
     .install-right {
         text-align: center;
     }
 
     .qr-desktop {
-        width: 160px;
-        display: block;
-        margin: 10px auto;
-        border-radius: 12px;
-        border: 2px solid rgba(255,215,160,0.45);
-        box-shadow: 0 0 12px rgba(255,215,160,0.35);
+    width: 140px; /* più piccolo */
+    display: block;
+    margin: 12px auto;
+    border-radius: 12px;
+    border: 2px solid rgba(255,215,160,0.45);
+    box-shadow: 0 0 12px rgba(255,215,160,0.35);
     }
 
     .install-right p {
