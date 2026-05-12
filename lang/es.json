@@ -26,4 +26,33 @@
     "msg2": "¿Estás listo para dejarte guiar? El arte, el aceite dorado y las almendras dulces te deleitarán.",
     "placeholder": "Escribe un mensaje..."
   }
+  "citizen": {
+    "legends_title": "Leyendas y Raíces",
+    "legends_desc": "Las historias antiguas del pueblo, transmitidas de generación en generación.",
+    "legend_felicia": "La leyenda de Sor Felicia",
+    "legend_pizzarrone": "La leyenda de la Torre del Pizzarrone",
+    "audio_title": "Escucha oraciones y cuentos en dialecto siciliano",
+    "transcription": "Transcripción automática",
+
+    "castle_title": "El Castillo",
+    "castle_desc": "Una fortaleza milenaria: conspiraciones, troneras, túneles secretos, prisiones y batallas épicas.",
+
+    "church_title": "Iglesias y Arte",
+    "church_desc": "Un viaje entre catacumbas, tradiciones, patronos y antiguas devociones.",
+    "church_catacombs": "Las catacumbas y criptas ocultas",
+    "church_sangiuseppe": "El altar rojo de San José",
+    "church_sepolcri": "Los 'sepolcri' de Pascua con trigo germinado",
+
+    "food_title": "Gastronomía y Eventos",
+    "food_desc": "Sabores auténticos y lugares donde vivir el pueblo.",
+    "food_arancine": "Dónde probar excelentes arancinas",
+    "food_cocktail": "Cócteles con DJ todo el año",
+    "food_aperitivo": "Aperitivos panorámicos (solo verano)",
+
+    "events_title": "Eventos",
+    "event_castellana": "La Castellana",
+    "event_signuruzzu": "El 'Signuruzzu a Cavaddu'",
+    "event_salsiccia": "Fiesta de la Salchicha",
+    "event_beato": "Fiesta del Beato Giovanni"
+  }
 }
