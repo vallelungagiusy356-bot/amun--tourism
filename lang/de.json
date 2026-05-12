@@ -26,4 +26,33 @@
     "msg2": "Bist du bereit, dich führen zu lassen? Kunst, goldenes Öl und süße Mandeln werden dich erfreuen.",
     "placeholder": "Schreibe eine Nachricht..."
   }
+  "citizen": {
+    "legends_title": "Legenden und Wurzeln",
+    "legends_desc": "Die alten Geschichten des Dorfes, über Generationen weitergegeben.",
+    "legend_felicia": "Die Legende der Schwester Felicia",
+    "legend_pizzarrone": "Die Legende des Pizzarrone-Turms",
+    "audio_title": "Höre Gebete und Erzählungen im sizilianischen Dialekt",
+    "transcription": "Automatische Transkription",
+
+    "castle_title": "Die Burg",
+    "castle_desc": "Eine tausendjährige Festung: Verschwörungen, Schießscharten, geheime Tunnel, Gefängnisse und epische Schlachten.",
+
+    "church_title": "Kirchen und Kunst",
+    "church_desc": "Eine Reise durch Katakomben, Traditionen, Schutzheilige und alte Andachten.",
+    "church_catacombs": "Die versteckten Katakomben und Krypten",
+    "church_sangiuseppe": "Der rote Altar des heiligen Josef",
+    "church_sepolcri": "Die Oster-'Sepolcri' mit gekeimtem Weizen",
+
+    "food_title": "Essen und Veranstaltungen",
+    "food_desc": "Authentische Aromen und Orte, an denen man das Dorf erleben kann.",
+    "food_arancine": "Wo man ausgezeichnete Arancine probieren kann",
+    "food_cocktail": "Cocktails mit DJs das ganze Jahr über",
+    "food_aperitivo": "Panoramische Aperitifs (nur im Sommer)",
+
+    "events_title": "Veranstaltungen",
+    "event_castellana": "Die Castellana",
+    "event_signuruzzu": "Der 'Signuruzzu a Cavaddu'",
+    "event_salsiccia": "Wurstfest",
+    "event_beato": "Fest des Seligen Giovanni"
+  }
 }
