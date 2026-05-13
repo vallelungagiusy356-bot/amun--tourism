@@ -229,11 +229,6 @@
     transform: scale(1.03);
 }
 
-.btn-desktop:hover {
-    background: rgba(255, 215, 160, 0.12);
-    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-    transform: scale(1.03);
-}
     .install-right {
         text-align: center;
     }
