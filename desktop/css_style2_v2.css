@@ -284,9 +284,12 @@ backdrop-filter: blur(25px) brightness(1.05) contrast(0.85) !important;
     height: 300px;
 
     /* Vetro cristallino reale */
-background: rgba(255, 255, 255, 0.03) !important;
-backdrop-filter: blur(25px) brightness(1.05) contrast(0.85) !important;
--webkit-backdrop-filter: blur(25px) brightness(1.05) contrast(0.85) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(25px) brightness(1.05) contrast(0.85) !important;
+    -webkit-backdrop-filter: blur(25px) brightness(1.05) contrast(0.85) !important;
+
+    border: 2px solid rgba(255, 215, 160, 0.9);
+    border-radius: 26px 26px 0 0;
 
     box-shadow:
         0 0 42px rgba(255, 215, 160, 0.9),
