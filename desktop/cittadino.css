@@ -4,16 +4,7 @@
 body {
     margin: 0;
     font-family: "Segoe UI", system-ui, sans-serif;
-    background: linear-gradient(
-        135deg,
-        #ffecd2 0%,
-        #fcb69f 20%,
-        #ff9a76 40%,
-        #ff6a88 60%,
-        #c44569 80%,
-        #2d0b3a 100%
-    );
-    background-attachment: fixed;
+    background: none;
     color: #fff;
 }
 
