@@ -259,12 +259,10 @@
        CHAT — VETRO CRISTALLINO
        ============================ */
     .chat-desktop {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 75%;
-    max-width: 950px;
+    position: absolute;
+    top: 300px;
+    right: 6%;
+    width: 330px;
     height: 300px;
 
     /* Vetro cristallino reale */
