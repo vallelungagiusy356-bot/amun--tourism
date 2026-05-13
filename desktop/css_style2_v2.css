@@ -174,9 +174,13 @@
        ============================ */
 .install-app-desktop {
     position: absolute;
-    top: 310px;
-    right: 6%;
-    width: 330px;
+    top: 520px; /* altezza gonna Castellana */
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 70%;          /* rettangolo orizzontale */
+    max-width: 900px;
+    height: auto;
 
     /* Vetro cristallino reale */
     background: rgba(255, 255, 255, 0.03) !important;
@@ -186,11 +190,16 @@
     border: 2px solid rgba(255, 215, 160, 0.9);
     border-radius: 20px;
 
-    padding: 18px 20px;
+    /* Glow cinematografico */
     box-shadow:
-        0 0 42px rgba(255, 215, 160, 0.9),
-        0 0 82px rgba(255, 215, 160, 0.65),
-        inset 0 0 28px rgba(255, 215, 160, 0.35);
+        0 0 55px rgba(255, 215, 160, 1),
+        0 0 95px rgba(255, 215, 160, 0.75),
+        inset 0 0 35px rgba(255, 215, 160, 0.45);
+
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     z-index: 15;
 }
