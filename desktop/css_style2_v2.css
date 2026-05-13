@@ -190,16 +190,19 @@
        SEZIONE INSTALLA APP — A DESTRA
        ============================ */
 .install-app-desktop {
+.install-app-desktop {
     position: absolute;
     top: 310px;
     right: 6%;
     width: 330px;
 
-    /* 🔹 Vetro cristallino neutro */
     /* Vetro cristallino reale */
-background: rgba(255, 255, 255, 0.03) !important;
-backdrop-filter: blur(25px) brightness(1.05) contrast(0.85) !important;
--webkit-backdrop-filter: blur(25px) brightness(1.05) contrast(0.85) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(25px) brightness(1.05) contrast(0.85) !important;
+    -webkit-backdrop-filter: blur(25px) brightness(1.05) contrast(0.85) !important;
+
+    border: 2px solid rgba(255, 215, 160, 0.9);
+    border-radius: 20px;
 
     padding: 18px 20px;
     box-shadow:
