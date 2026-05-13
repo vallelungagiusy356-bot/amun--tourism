@@ -21,16 +21,34 @@ body {
 /* ================================
    GRIGLIA 2×2 CENTRALE
 ================================ */
+<main class="citizen-grid">
 
-.citizen-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    max-width: 1300px;
-    margin: 120px auto;
-    padding: 0 40px;
-}
+    <!-- 1° QUADRANTE — LEGGENDE -->
+    <section class="quadrant">...</section>
 
+    <!-- 2° QUADRANTE — CASTELLO -->
+    <section class="quadrant">
+        <h2 data-i18n="citizen.castle_title"></h2>
+        <p data-i18n="citizen.castle_desc"></p>
+
+        <div class="castle-3d">
+            <iframe src="castello3d.html" class="iframe-3d"></iframe>
+        </div>
+
+        <div class="battle-preview">
+            <img src="img/battle.png" alt="Medieval battle">
+        </div>
+
+        <a href="castello.html" class="quadrant-link">Scopri il Castello</a>
+    </section>
+
+    <!-- 3° QUADRANTE — CHIESE -->
+    <section class="quadrant">...</section>
+
+    <!-- 4° QUADRANTE — CIBO -->
+    <section class="quadrant">...</section>
+
+</main>
 /* ================================
    QUADRANTI IN VETRO + GLOW ORO
 ================================ */
