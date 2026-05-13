@@ -356,5 +356,25 @@
         box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
         background: rgba(255, 215, 160, 0.15);
     }
+   /* Animazione slide-in da destra */
+@keyframes slideInRight {
+    0% {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(-10%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+
+/* Quando la chat diventa active, parte l’animazione */
+.chat-desktop.active {
+    animation: slideInRight 0.55s ease forwards;
+}
 
 }
