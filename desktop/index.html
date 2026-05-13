@@ -35,12 +35,14 @@
     <!-- CONTENITORE 3D (per ora invisibile) -->
     <div id="castellana-3d"></div>
 
-    <!-- VIDEO CASTELLANA (cliccabile per aprire la chat) -->
+    <!-- VIDEO CASTELLANA + BOTTONE CLICK HERE -->
     <div class="castellana-video-wrapper">
         <video class="castellana-video" autoplay muted loop playsinline>
             <source src="img/castellana_alpha.webm" type="video/webm">
         </video>
-        <div class="castellana-tooltip">Click to chat</div>
+
+        <!-- ⭐ NUOVO BOTTONE CLICK HERE ⭐ -->
+        <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
     </div>
 
     <!-- ⭐ SEZIONE INSTALLA APP — DESKTOP ⭐ -->
@@ -68,9 +70,8 @@
         </div>
 
     </section>
-    <!-- ⭐ FINE SEZIONE INSTALLA APP ⭐ -->
 
-    <!-- CHAT DESKTOP (inizialmente nascosta) -->
+    <!-- ⭐ CHAT DESKTOP ⭐ -->
     <div class="chat-desktop" id="chat-desktop">
         
         <div class="chat-header">
@@ -90,28 +91,25 @@
 
     </div>
 
-    <!-- SCRIPT APERTURA/CHIUSURA CHAT -->
+    <!-- ⭐ SCRIPT APERTURA/CHIUSURA CHAT ⭐ -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
 
-            const castellana = document.querySelector(".castellana-video");
-            const chat = document.getElementById("chat-desktop");
-            const closeBtn = document.getElementById("close-chat");
-            const chatTrigger = document.getElementById("chat-trigger-desktop");
+        const chat = document.getElementById("chat-desktop");
+        const closeBtn = document.getElementById("close-chat");
+        const openBtn = document.getElementById("chat-open-btn"); // CLICK HERE
 
-            chatTrigger.addEventListener("click", () => {
-                chat.classList.add("active");
-            });
-
-            castellana.addEventListener("click", () => {
-                chat.classList.add("active");
-            });
-
-            closeBtn.addEventListener("click", () => {
-                chat.classList.remove("active");
-            });
-
+        // Apri chat con CLICK HERE
+        openBtn.addEventListener("click", () => {
+            chat.classList.add("active");
         });
+
+        // Chiudi chat
+        closeBtn.addEventListener("click", () => {
+            chat.classList.remove("active");
+        });
+
+    });
     </script>
 
     <!-- SCRIPT MULTILINGUA -->
