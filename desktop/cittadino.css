@@ -136,11 +136,17 @@ body {
     margin-bottom: 10px;
 }
 
+.castle-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
 .castle-dress {
-    position: absolute;
-    bottom: 60px;
-    right: 8%;
-    width: 280px;
+    flex-shrink: 0;
+    width: 220px;
+    margin-top: 10px;
 }
 
 .castle-dress img {
