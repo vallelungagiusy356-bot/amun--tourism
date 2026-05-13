@@ -37,8 +37,8 @@ body {
 
 .quadrant {
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 
     border-radius: 22px;
     border: 2px solid rgba(255, 200, 120, 0.7);
