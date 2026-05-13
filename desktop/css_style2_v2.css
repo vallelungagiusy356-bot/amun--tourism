@@ -113,13 +113,13 @@
        VIDEO CASTELLANA + TOOLTIP
        ============================ */
     .castellana-video-wrapper {
-        position: relative;
-        width: 100%;
-        margin-top: 300px; /* più in basso per far respirare il cielo */
-        display: flex;
-        justify-content: flex-start; /* a sinistra */
-        padding-left: 6%;
-        z-index: 10 !important;
+    position: relative;
+    width: 100%;
+    margin-top: 300px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 6%;
+    z-index: 10 !important;
     }
 
     .castellana-video {
