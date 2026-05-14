@@ -81,5 +81,17 @@
     });
     </script>
 
+    <script>
+document.getElementById("castellanaButton").addEventListener("click", () => {
+    const video = document.getElementById("castellanaVideo");
+    video.style.display = "block";
+    video.play();
+
+    video.onended = () => {
+        video.style.display = "none";
+        document.querySelector(".chat-panel")?.classList.add("visible");
+    };
+});
+        </script>
 </body>
 </html>
