@@ -125,3 +125,33 @@ body {
         0 0 35px rgba(0, 0, 0, 0.8),
         0 0 55px rgba(255, 215, 160, 0.6);
           }
+.castellana-button-container {
+    position: absolute;
+    bottom: 60px;
+    left: 80px;
+    z-index: 1000;
+}
+
+#castellanaButton {
+    background: rgba(255, 215, 160, 0.35);
+    border: 2px solid rgba(255, 215, 160, 0.9);
+    border-radius: 10px;
+    color: #ffe7b3;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 12px 28px;
+    cursor: pointer;
+    box-shadow: 0 0 18px rgba(255, 215, 160, 0.6);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.castellana-video {
+    position: absolute;
+    bottom: 100px;
+    left: 120px;
+    width: 280px;
+    height: auto;
+    z-index: 999;
+    background: transparent;
+    pointer-events: none;
+}
