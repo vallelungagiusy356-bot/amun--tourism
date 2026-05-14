@@ -80,6 +80,14 @@ body {
     margin-top: 20px;
     opacity: 0.9;
 }
+img, video {
+  background: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
 
 /* ================================
    QUADRANTE CASTELLO (SOLO TITOLO ORO)
