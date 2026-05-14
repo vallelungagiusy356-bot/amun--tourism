@@ -3,57 +3,70 @@
     "title": "Amunì Tourism",
     "citizen": "Bürger des Dorfes",
     "about": "Über uns",
-    "contact": "Kontakt",
+    "contact": "Kontakte",
     "eat": "Essen",
     "sleep": "Schlafen",
     "transport": "Transport",
     "events": "Veranstaltungen",
     "monuments": "Denkmäler"
   },
+
   "home": {
-    "chat_web": "Sprich mit der Castellana auf der Website",
+    "chat_web": "Sprich mit der Kastellanin auf der Website",
     "amuni_title": "Die Bedeutung von Amunì",
-    "amuni_text": "In Sizilien ist „Amunì“ mehr als nur „Los geht’s“. Es ist eine freundliche Einladung, ein Lächeln, das dich begleitet. Es ist die Stimme unseres Landes, die sagt: bewege dich, lebe, entdecke, träume.",
-    "install_app": "Installiere die Amunì Tourism App",
+    "amuni_text": "In Sizilien ist „Amunì“ mehr als nur „los geht’s“. Es ist eine sanfte Einladung, ein begleitendes Lächeln. Es ist die Stimme unseres Landes, die sagt: bewege dich, lebe, entdecke, träume.",
+    "install_app": "Amunì Tourism App installieren",
     "download_apk": "App herunterladen (APK)",
-    "open_webapp": "Web-App öffnen",
-    "scan_qr": "Scanne den QR-Code, um die App zu installieren",
-    "chat_desktop": "Chatte mit der Castellana"
+    "open_webapp": "Web App öffnen",
+    "scan_qr": "QR-Code scannen, um die App zu installieren",
+    "chat_desktop": "Mit der Kastellanin chatten"
   },
+
   "chat": {
-    "title": "Castellana von Caccamo",
+    "title": "Kastellanin von Caccamo",
     "msg1": "Willkommen, Reisender, in diesem Land voller Kunst, Geschichte und Traditionen.",
-    "msg2": "Bist du bereit, dich führen zu lassen? Kunst, goldenes Öl und süße Mandeln werden dich erfreuen.",
-    "placeholder": "Schreibe eine Nachricht..."
+    "msg2": "Bereit, dich führen zu lassen? Kunst, goldenes Öl und süße Mandeln erwarten dich.",
+    "placeholder": "Nachricht schreiben..."
   },
+
   "citizen": {
     "legends_title": "Legenden und Wurzeln",
-    "legends_desc": "Die alten Geschichten des Dorfes, über Generationen weitergegeben.",
+    "legends_desc": "Die ältesten Geschichten des Dorfes, über Generationen hinweg überliefert.",
     "legend_felicia": "Die Legende der Schwester Felicia",
-    "legend_pizzarrone": "Die Legende des Pizzarrone-Turms",
-    "audio_title": "Höre Gebete und Erzählungen im sizilianischen Dialekt",
+    "legend_pizzarrone": "Die Legende des Turms von Pizzarrone",
+
+    "audio_title": "Gebete und Erzählungen im Dialekt anhören",
     "transcription": "Automatische Transkription",
 
-    "castle_title": "Die Burg",
+    "castle_title": "Das Schloss",
     "castle_desc": "Eine tausendjährige Festung: Verschwörungen, Schießscharten, geheime Tunnel, Gefängnisse und epische Schlachten.",
+    "castle_more": "Das Schloss entdecken",
 
     "church_title": "Kirchen und Kunst",
     "church_desc": "Eine Reise durch Katakomben, Traditionen, Schutzheilige und alte Andachten.",
-    "church_catacombs": "Die versteckten Katakomben und Krypten",
-    "church_sangiuseppe": "Der rote Altar des heiligen Josef",
-    "church_sepolcri": "Die Oster-'Sepolcri' mit gekeimtem Weizen",
+    "church_catacombs": "Die verborgenen Katakomben und Krypten",
+    "church_sangiuseppe": "Der rote Auflauf des heiligen Josef",
+    "church_sepolcri": "Die Gräber mit keimendem Weizen",
 
     "food_title": "Essen und Veranstaltungen",
-    "food_desc": "Authentische Aromen und Orte, an denen man das Dorf erleben kann.",
+    "food_desc": "Authentische Aromen, Orte zum Essen und Erleben des Dorfes.",
     "food_arancine": "Wo man ausgezeichnete Arancine probieren kann",
-    "food_cocktail": "Cocktails mit DJs das ganze Jahr über",
-    "food_aperitivo": "Panoramische Aperitifs (nur im Sommer)",
+    "food_cocktail": "Cocktails mit DJ das ganze Jahr",
+    "food_aperitivo": "Panoramische Aperitifs (nur Sommer)",
 
     "events_title": "Veranstaltungen",
-    "event_castellana": "Die Castellana",
-    "event_signuruzzu": "Der 'Signuruzzu a Cavaddu'",
+    "event_castellana": "Die Kastellanin",
+    "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Wurstfest",
-    "event_beato": "Fest des Seligen Giovanni",
-    "castle_more": "Entdecken Sie das Schloss"
+    "event_beato": "Fest des Seligen Giovanni"
+  },
+
+  "castle": {
+    "title": "Das Schloss von Caccamo",
+    "position": "Eine Festung auf einem Felsvorsprung mit Blick über das Tal.",
+    "defense": "Schießscharten, dicke Mauern und Wehrgänge erzählen von ihrer Verteidigungsfunktion.",
+    "conspiracy": "Geheime Räume und Adelssäle waren Schauplatz mittelalterlicher Intrigen.",
+    "prisons": "Die unterirdischen Gefängnisse bewahren noch Spuren alter Haftzeiten.",
+    "legend_brothers": "Die Legende der zwei Brüder erzählt von einem tödlichen Duell um die Liebe einer Dame."
   }
 }
