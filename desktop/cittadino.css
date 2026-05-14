@@ -2,11 +2,8 @@
    SFONDO TRAMONTO (SOLO PER CITTADINO)
 ================================ */
 body {
-    margin: 0;
-    font-family: "Segoe UI", system-ui, sans-serif;
-    background: url("./img/sfondo_tramonto.png");
+    background: url("./img/tuo_nuovo_sfondo.jpeg") no-repeat center center fixed;
     background-size: cover;
-    color: #fff;
 }
 
 /* ================================
