@@ -61,19 +61,16 @@ body {
 }
 
 .castle-main {
-    width: 80%;
-    max-width: 1100px;
-    display: block;
+    width: 70%;
+    max-width: 950px;
     margin: 0 auto;
-
-    /* RIMOZIONE BORDI E ALONI */
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-
-    /* MIGLIORAMENTO IMMAGINE */
     filter: brightness(1.1) contrast(1.05);
+}
+
+.castle-dress img {
+    width: 85%;
+    max-width: 200px;
+    filter: brightness(1.05);
 }
 
 /* ================================
