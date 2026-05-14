@@ -53,7 +53,7 @@ body {
 ================================ */
 .castle-layout {
     position: relative;
-    padding: 80px 8% 80px; /* corretto: prima era 160px */
+    padding: 80px 8% 80px;
     min-height: 100vh;
 }
 
@@ -92,40 +92,35 @@ body {
     gap: 40px;
 }
 
-.castle-panel h2 {
-    font-size: 36px;
-    color: #ffe7b3;
-    text-shadow: 0 0 12px rgba(255, 200, 120, 0.9);
+/* ================================
+   TESTO PERGAMENA
+================================ */
+.castle-text {
+    color: #1a1a1a; /* nero elegante */
+    font-family: "Cormorant Garamond", "Garamond", serif;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+.castle-text h2 {
+    font-family: "Cormorant Garamond", "Garamond", serif;
+    font-size: 40px;
+    color: #3a2a1a;
+    text-shadow: none;
     margin-bottom: 20px;
 }
 
-.castle-panel li {
-    font-size: 20px;
-    line-height: 1.7;
-    margin-bottom: 10px;
+/* Rimuove gli elenchi puntati */
+.castle-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* ================================
-   CHAT PANEL (visibile dopo il video)
-================================ */
-.chat-panel {
-    position: fixed;
-    bottom: 40px; /* più basso rispetto a prima */
-    right: 40px;
-    width: 320px;
-    height: 420px;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 215, 160, 0.8);
-    border-radius: 15px;
-    padding: 20px;
-    display: none;
-    z-index: 2000;
+.castle-text li {
+    margin-bottom: 16px;
 }
 
-.chat-panel.visible {
-    display: block;
-}
 /* ================================
    ABITO DELLA CASTELLANA
 ================================ */
@@ -189,11 +184,11 @@ body {
 }
 
 /* ================================
-   CHAT PANEL
+   CHAT PANEL (visibile dopo il video)
 ================================ */
 .chat-panel {
     position: fixed;
-    bottom: 120px;
+    bottom: 40px; /* corretto: prima troppo alto */
     right: 40px;
     width: 320px;
     height: 420px;
