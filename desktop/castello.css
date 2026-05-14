@@ -55,22 +55,27 @@ body {
 /* ================================
    CASTELLO GRANDE CENTRALE
 ================================ */
-.castle-top {
-    text-align: center;
-    margin-bottom: 40px;
+.castle-top img {
+    width: 70%;
+    max-width: 900px;
+    display: block;
+    margin: 0 auto;
 }
 
-.castle-main {
-    width: 70%;
-    max-width: 950px;
-    margin: 0 auto;
-    filter: brightness(1.1) contrast(1.05);
+.castle-panel {
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
 }
 
 .castle-dress img {
-    width: 85%;
-    max-width: 200px;
-    filter: brightness(1.05);
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(255, 215, 160, 0.6);
 }
 
 /* ================================
