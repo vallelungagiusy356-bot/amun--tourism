@@ -63,11 +63,11 @@ body {
    CASTELLO GRANDE CENTRALE
 ================================ */
 .castle-top img {
-    width: 70%;
-    max-width: 900px;
+    width: 85%;
+    max-width: 1100px;
     display: block;
     margin: 0 auto;
-    filter: brightness(1.1) contrast(1.05);
+    filter: brightness(1.15) contrast(1.1);
 }
 
 /* ================================
