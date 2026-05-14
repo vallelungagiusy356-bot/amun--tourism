@@ -4,13 +4,13 @@
 body {
     margin: 0;
     font-family: "Segoe UI", system-ui, sans-serif;
-    background: url("./img/sfondo_epico_castello.png");
+    background: url("./img/sfondo_epico_castello.png") no-repeat center center fixed;
     background-size: cover;
     color: #fffaf0;
 }
 
 /* ================================
-   DASHBOARD (VISIBILE E DORATA)
+   DASHBOARD
 ================================ */
 .dashboard {
     position: fixed;
@@ -44,11 +44,11 @@ body {
 }
 
 /* ================================
-   LAYOUT CASTELLO CINEMATOGRAFICO
+   LAYOUT CASTELLO
 ================================ */
 .castle-layout {
     position: relative;
-    padding: 80px 8% 160px;
+    padding: 80px 8% 80px; /* corretto: prima era 160px */
     min-height: 100vh;
 }
 
@@ -60,28 +60,17 @@ body {
     max-width: 900px;
     display: block;
     margin: 0 auto;
-}
-
-.castle-panel {
-    max-width: 900px;
-    margin: 40px auto;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-}
-
-.castle-dress img {
-    width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(255, 215, 160, 0.6);
+    filter: brightness(1.1) contrast(1.05);
 }
 
 /* ================================
-   PANNELLO VETRO TESTO + ABITO
+   PANNELLO VETRO + TESTO + ABITO
 ================================ */
 .castle-panel {
+    max-width: 900px;
+    margin: 40px auto 60px;
+    padding: 30px 40px;
+
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -91,9 +80,6 @@ body {
         0 0 45px rgba(255, 215, 160, 0.9),
         0 0 85px rgba(255, 215, 160, 0.6),
         inset 0 0 28px rgba(255, 215, 160, 0.3);
-    padding: 30px 40px;
-    max-width: 900px;
-    margin: 0 auto 60px;
 
     display: flex;
     justify-content: space-between;
@@ -129,7 +115,11 @@ body {
     box-shadow:
         0 0 35px rgba(0, 0, 0, 0.8),
         0 0 55px rgba(255, 215, 160, 0.6);
-          }
+}
+
+/* ================================
+   PULSANTE CASTELLANA
+================================ */
 .castellana-button-container {
     position: absolute;
     bottom: 60px;
@@ -150,13 +140,46 @@ body {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+#castellanaButton:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 35px rgba(255, 210, 140, 0.8),
+        0 0 80px rgba(255, 120, 60, 0.4),
+        inset 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+/* ================================
+   VIDEO CASTELLANA
+================================ */
 .castellana-video {
     position: absolute;
-    bottom: 100px;
+    bottom: 120px;
     left: 120px;
     width: 280px;
     height: auto;
     z-index: 999;
     background: transparent;
     pointer-events: none;
+}
+
+/* ================================
+   CHAT PANEL
+================================ */
+.chat-panel {
+    position: fixed;
+    bottom: 120px;
+    right: 40px;
+    width: 320px;
+    height: 420px;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,215,160,0.8);
+    border-radius: 15px;
+    padding: 20px;
+    display: none;
+    z-index: 2000;
+}
+
+.chat-panel.visible {
+    display: block;
 }
