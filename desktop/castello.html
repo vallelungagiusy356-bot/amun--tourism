@@ -21,13 +21,14 @@
 
         <!-- CASTELLO GRANDE IN ALTO -->
         <div class="castle-top">
-            <img src="img/castello-clean-transparent.png" 
-                alt="Castello di Caccamo"
-                class="castle-main">
+            <img src="img/castello-clean-transparent.png"
+                 alt="Castello di Caccamo"
+                 class="castle-main">
         </div>
 
         <!-- PANNELLO VETRO + TESTO + ABITO -->
         <div class="castle-panel">
+
             <div class="castle-text">
                 <h2 data-i18n="castle.title"></h2>
                 <ul>
@@ -43,6 +44,7 @@
                 <img src="img/abito_clean.png"
                      alt="Abito d’epoca della Castellana">
             </div>
+
         </div>
 
     </section>
@@ -52,7 +54,7 @@
     let currentLang = localStorage.getItem("lang") || "it";
 
     function loadLanguage(lang) {
-        fetch(`../lang/${lang}.json`)
+        fetch(`lang/${lang}.json`)   /* ← percorso corretto */
             .then(res => res.json())
             .then(data => {
                 document.querySelectorAll("[data-i18n]").forEach(el => {
