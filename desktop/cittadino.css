@@ -1,10 +1,11 @@
 /* ================================
-   SFONDO TRAMONTO
+   SFONDO TRAMONTO (SOLO PER CITTADINO)
 ================================ */
 body {
     margin: 0;
     font-family: "Segoe UI", system-ui, sans-serif;
-    background: none;
+    background: url("img/sfondo_tramonto.png") no-repeat center center fixed;
+    background-size: cover;
     color: #fff;
 }
 
@@ -80,14 +81,6 @@ body {
     margin-top: 20px;
     opacity: 0.9;
 }
-img, video {
-  background: none;
-  box-shadow: none;
-  outline: none;
-  border: none;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
 
 /* ================================
    QUADRANTE CASTELLO (SOLO TITOLO ORO)
@@ -113,7 +106,7 @@ img, video {
 }
 
 /* ================================
-   DASHBOARD (VISIBILE E DORATA)
+   DASHBOARD (SOLO PER CITTADINO)
 ================================ */
 .dashboard {
     position: fixed;
@@ -144,80 +137,4 @@ img, video {
 
 .dashboard button:hover {
     background: rgba(255, 215, 160, 0.5);
-}
-
-/* ================================
-   LAYOUT CASTELLO CINEMATOGRAFICO
-================================ */
-.castle-layout {
-    position: relative;
-    background-image: url("img/sfondo_epico_castello.png");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    padding: 80px 8% 160px;
-    color: #fffaf0;
-    min-height: 100vh; /* copre tutta la pagina */
-}
-
-.castle-top {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.castle-main {
-    width: 80%;
-    max-width: 1100px;
-    filter: brightness(1.1) contrast(1.05);
-    box-shadow: 0 0 60px rgba(255, 200, 120, 0.6);
-}
-
-/* Pannello vetro testo + abito */
-.castle-panel {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 215, 160, 0.8);
-    border-radius: 20px;
-    box-shadow:
-        0 0 45px rgba(255, 215, 160, 0.9),
-        0 0 85px rgba(255, 215, 160, 0.6),
-        inset 0 0 28px rgba(255, 215, 160, 0.3);
-    padding: 30px 40px;
-    max-width: 900px;
-    margin: 0 auto 60px;
-    text-align: left;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-}
-
-.castle-panel h2 {
-    font-size: 36px;
-    color: #ffe7b3;
-    text-shadow: 0 0 12px rgba(255, 200, 120, 0.9);
-    margin-bottom: 20px;
-}
-
-.castle-panel li {
-    font-size: 20px;
-    line-height: 1.7;
-    margin-bottom: 10px;
-}
-
-/* Abito dentro il pannello */
-.castle-dress {
-    flex-shrink: 0;
-    width: 220px;
-    margin-top: 10px;
-}
-
-.castle-dress img {
-    width: 100%;
-    filter: brightness(1.05);
-    box-shadow:
-        0 0 35px rgba(0, 0, 0, 0.8),
-        0 0 55px rgba(255, 215, 160, 0.6);
 }
