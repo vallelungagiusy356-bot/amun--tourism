@@ -35,9 +35,9 @@ body {
         0 0 60px rgba(255, 120, 60, 0.25),
         inset 0 0 20px rgba(255, 255, 255, 0.15);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
 }
 
-/* Effetto hover */
 .quadrant:hover {
     transform: scale(1.03);
     box-shadow:
@@ -81,8 +81,64 @@ body {
     opacity: 0.9;
 }
 
+/* ================================
+   QUADRANTE CASTELLO (SOLO TITOLO ORO)
+================================ */
+.castle-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffe7b3;
+    text-shadow: 0 0 12px rgba(255, 200, 120, 0.9);
+    cursor: pointer;
+}
 
-  /* ================================
+.castle-card:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 35px rgba(255, 210, 140, 0.8),
+        0 0 80px rgba(255, 120, 60, 0.4),
+        inset 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+/* ================================
+   DASHBOARD (VISIBILE E DORATA)
+================================ */
+.dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 54px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 18px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.85);
+    z-index: 9999;
+}
+
+.dashboard button {
+    background: rgba(255, 215, 160, 0.35);
+    border: 1px solid rgba(255, 215, 160, 0.9);
+    border-radius: 8px;
+    color: #ffe7b3;
+    font-size: 16px;
+    padding: 6px 12px;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(255, 215, 160, 0.6);
+}
+
+.dashboard button:hover {
+    background: rgba(255, 215, 160, 0.5);
+}
+
+/* ================================
    LAYOUT CASTELLO CINEMATOGRAFICO
 ================================ */
 .castle-layout {
@@ -93,6 +149,7 @@ body {
     background-attachment: fixed;
     padding: 80px 8% 160px;
     color: #fffaf0;
+    min-height: 100vh; /* copre tutta la pagina */
 }
 
 .castle-top {
@@ -107,6 +164,7 @@ body {
     box-shadow: 0 0 60px rgba(255, 200, 120, 0.6);
 }
 
+/* Pannello vetro testo + abito */
 .castle-panel {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(8px);
@@ -121,6 +179,11 @@ body {
     max-width: 900px;
     margin: 0 auto 60px;
     text-align: left;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
 }
 
 .castle-panel h2 {
@@ -136,13 +199,7 @@ body {
     margin-bottom: 10px;
 }
 
-.castle-panel {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-}
-
+/* Abito dentro il pannello */
 .castle-dress {
     flex-shrink: 0;
     width: 220px;
@@ -156,34 +213,3 @@ body {
         0 0 35px rgba(0, 0, 0, 0.8),
         0 0 55px rgba(255, 215, 160, 0.6);
 }
-
-.dashboard {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 54px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 18px;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.85);
-    z-index: 999;
-}
-
-.dashboard button {
-    background: rgba(255, 215, 160, 0.2);
-    border: 1px solid rgba(255, 215, 160, 0.8);
-    border-radius: 8px;
-    color: #ffe7b3;
-    font-size: 16px;
-    padding: 6px 12px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.dashboard button:hover {
-    background: rgba(255, 215, 160, 0.4);
-       }
