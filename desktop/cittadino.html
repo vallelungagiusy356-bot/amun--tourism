@@ -11,19 +11,19 @@
 
 <body>
 
-    <!-- SFONDO (se lo usi) -->
-    <div class="scene-background"></div>
-
-    <!-- DASHBOARD DESKTOP -->
+    <!-- DASHBOARD DESKTOP (IDENTICA ALLA HOME, MA SENZA “Cittadino del Borgo”) -->
     <header class="dashboard">
+
+        <!-- TITOLO / LOGO -->
         <div class="logo-title" data-i18n="menu.title"></div>
 
+        <!-- MENU DESKTOP -->
         <nav class="nav-desktop">
             <a href="about.html" data-i18n="menu.about"></a>
             <a href="contact.html" data-i18n="menu.contact"></a>
         </nav>
 
-        <!-- 🌍 SELETTORE LINGUA -->
+        <!-- SELETTORE LINGUE -->
         <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
@@ -31,68 +31,33 @@
             <button data-lang="de">🇩🇪</button>
             <button data-lang="es">🇪🇸</button>
         </div>
+
+        <!-- SOLO QUI: PULSANTE HOME -->
+        <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
+
     </header>
 
-    <!-- CONTENUTO PRINCIPALE -->
+    <!-- GRIGLIA 2×2 CON SOLO TITOLI -->
     <main class="citizen-grid">
 
-        <!-- 1° QUADRANTE — LEGGENDE E RADICI -->
-        <section class="quadrant">
+        <!-- 1° QUADRANTE — LEGGENDE -->
+        <section class="quadrant" onclick="window.location.href='leggende.html'">
             <h2 data-i18n="citizen.legends_title"></h2>
-            <p data-i18n="citizen.legends_desc"></p>
-
-            <div class="legend-list">
-                <div class="legend-item" data-i18n="citizen.legend_felicia"></div>
-                <div class="legend-item" data-i18n="citizen.legend_pizzarrone"></div>
-            </div>
-
-            <div class="audio-section">
-                <h3 data-i18n="citizen.audio_title"></h3>
-                <audio controls src="audio/preghiera1.mp3"></audio>
-                <audio controls src="audio/preghiera2.mp3"></audio>
-
-                <div class="transcription">
-                    <h4 data-i18n="citizen.transcription"></h4>
-                    <p id="auto-transcript"></p>
-                </div>
-            </div>
         </section>
 
-        <!-- 2° QUADRANTE — CASTELLO (SOLO TITOLO ORO) -->
+        <!-- 2° QUADRANTE — CASTELLO -->
         <section class="quadrant castle-card" onclick="window.location.href='castello.html'">
-            <span data-i18n="citizen.castle_title"></span>
+            <h2 data-i18n="citizen.castle_title"></h2>
         </section>
 
-        <!-- 3° QUADRANTE — CHIESE E ARTE -->
-        <section class="quadrant">
+        <!-- 3° QUADRANTE — CHIESE -->
+        <section class="quadrant" onclick="window.location.href='chiese.html'">
             <h2 data-i18n="citizen.church_title"></h2>
-            <p data-i18n="citizen.church_desc"></p>
-
-            <ul class="church-list">
-                <li data-i18n="citizen.church_catacombs"></li>
-                <li data-i18n="citizen.church_sangiuseppe"></li>
-                <li data-i18n="citizen.church_sepolcri"></li>
-            </ul>
         </section>
 
         <!-- 4° QUADRANTE — CIBO + EVENTI -->
-        <section class="quadrant">
+        <section class="quadrant" onclick="window.location.href='cibo_eventi.html'">
             <h2 data-i18n="citizen.food_title"></h2>
-            <p data-i18n="citizen.food_desc"></p>
-
-            <ul class="food-list">
-                <li data-i18n="citizen.food_arancine"></li>
-                <li data-i18n="citizen.food_cocktail"></li>
-                <li data-i18n="citizen.food_aperitivo"></li>
-            </ul>
-
-            <h3 data-i18n="citizen.events_title"></h3>
-            <ul class="event-list">
-                <li data-i18n="citizen.event_castellana"></li>
-                <li data-i18n="citizen.event_signuruzzu"></li>
-                <li data-i18n="citizen.event_salsiccia"></li>
-                <li data-i18n="citizen.event_beato"></li>
-            </ul>
         </section>
 
     </main>
