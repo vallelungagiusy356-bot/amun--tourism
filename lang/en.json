@@ -1,15 +1,16 @@
 {
   "menu": {
     "title": "Amunì Tourism",
-    "citizen": "Citizen of the village",
-    "about": "About us",
-    "contact": "Contact",
+    "citizen": "Town Citizen",
+    "about": "About Us",
+    "contact": "Contacts",
     "eat": "Eat",
     "sleep": "Sleep",
     "transport": "Transport",
     "events": "Events",
     "monuments": "Monuments"
   },
+
   "home": {
     "chat_web": "Talk with the Castellana on the website",
     "amuni_title": "The meaning of Amunì",
@@ -20,40 +21,52 @@
     "scan_qr": "Scan the QR to install the app",
     "chat_desktop": "Chat with the Castellana"
   },
+
   "chat": {
     "title": "Castellana of Caccamo",
-    "msg1": "Welcome, traveler, to this land rich in art, history, and traditions.",
-    "msg2": "Are you ready to be guided? Art, golden oil, and sweet almonds will delight you.",
+    "msg1": "Welcome, traveler, to this land rich in art, history and traditions.",
+    "msg2": "Are you ready to be guided? Art, golden oil and sweet almonds await you.",
     "placeholder": "Write a message..."
   },
+
   "citizen": {
     "legends_title": "Legends and Roots",
-    "legends_desc": "The ancient stories of the village, passed down through generations.",
+    "legends_desc": "The oldest stories of the village, passed down through generations.",
     "legend_felicia": "The Legend of Sister Felicia",
     "legend_pizzarrone": "The Legend of the Pizzarrone Tower",
-    "audio_title": "Listen to prayers and tales in Sicilian dialect",
+
+    "audio_title": "Listen to prayers and tales in dialect",
     "transcription": "Automatic transcription",
 
     "castle_title": "The Castle",
-    "castle_desc": "A thousand-year-old fortress: conspiracies, arrow slits, secret tunnels, prisons and epic battles.",
+    "castle_desc": "A thousand‑year‑old fortress: conspiracies, arrow slits, secret tunnels, prisons and epic battles.",
+    "castle_more": "Discover the Castle",
 
     "church_title": "Churches and Art",
     "church_desc": "A journey through catacombs, traditions, patrons and ancient devotions.",
     "church_catacombs": "The hidden catacombs and crypts",
-    "church_sangiuseppe": "The red altar of Saint Joseph",
-    "church_sepolcri": "The Easter 'sepolcri' with sprouted wheat",
+    "church_sangiuseppe": "The red gratin of Saint Joseph",
+    "church_sepolcri": "The sepulchres with sprouting wheat",
 
     "food_title": "Food and Events",
-    "food_desc": "Authentic flavors and places to experience the village.",
+    "food_desc": "Authentic flavors, places to eat and experience the village.",
     "food_arancine": "Where to taste excellent arancine",
-    "food_cocktail": "Cocktails with DJs all year round",
+    "food_cocktail": "Cocktails with DJ all year round",
     "food_aperitivo": "Panoramic aperitifs (summer only)",
 
     "events_title": "Events",
     "event_castellana": "The Castellana",
-    "event_signuruzzu": "The 'Signuruzzu a Cavaddu'",
+    "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Sausage Festival",
-    "event_beato": "Feast of Blessed Giovanni",
-    "castle_more": "Discover the Castle"
+    "event_beato": "Feast of Blessed Giovanni"
+  },
+
+  "castle": {
+    "title": "The Castle of Caccamo",
+    "position": "A fortress perched on a rocky spur, overlooking the valley.",
+    "defense": "Arrow slits, thick walls and walkways tell its defensive purpose.",
+    "conspiracy": "Secret rooms and noble halls were the stage of medieval intrigues.",
+    "prisons": "The underground prisons still preserve traces of ancient detentions.",
+    "legend_brothers": "The legend of the two brothers tells of a fatal duel for the love of a lady."
   }
 }
