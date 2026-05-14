@@ -106,6 +106,27 @@ body {
 }
 
 /* ================================
+   CHAT PANEL (visibile dopo il video)
+================================ */
+.chat-panel {
+    position: fixed;
+    bottom: 40px; /* più basso rispetto a prima */
+    right: 40px;
+    width: 320px;
+    height: 420px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 215, 160, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    display: none;
+    z-index: 2000;
+}
+
+.chat-panel.visible {
+    display: block;
+}
+/* ================================
    ABITO DELLA CASTELLANA
 ================================ */
 .castle-dress {
