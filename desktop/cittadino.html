@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1024">
     <title data-i18n="citizen.title"></title>
-    <link rel="stylesheet" href="css_style2_v2.css">
+
+    <!-- CSS PRINCIPALE -->
+    <link rel="stylesheet" href="cittadino.css">
 </head>
 
 <body>
 
-    <!-- SFONDO -->
+    <!-- SFONDO (se lo usi) -->
     <div class="scene-background"></div>
 
     <!-- DASHBOARD DESKTOP -->
@@ -17,7 +19,6 @@
         <div class="logo-title" data-i18n="menu.title"></div>
 
         <nav class="nav-desktop">
-            <link rel="stylesheet" href="cittadino.css">
             <a href="about.html" data-i18n="menu.about"></a>
             <a href="contact.html" data-i18n="menu.contact"></a>
         </nav>
@@ -57,22 +58,10 @@
             </div>
         </section>
 
-        <!-- 2° QUADRANTE — CASTELLO -->
-<section class="quadrant">
-    <h2 data-i18n="citizen.castle_title"></h2>
-    <p data-i18n="citizen.castle_desc"></p>
-
-    <div class="castle-3d">
-        <iframe src="castello.html" class="iframe-3d"></iframe>
-    </div>
-
-    <div class="battle-preview">
-        <img src="img/battle.png" alt="Medieval battle">
-    </div>
-
-    <!-- 🔗 LINK ALLA PAGINA CASTELLO -->
-    <a href="castello.html" class="quadrant-link">Scopri il Castello</a>
-</section>
+        <!-- 2° QUADRANTE — CASTELLO (SOLO TITOLO ORO) -->
+        <section class="quadrant castle-card" onclick="window.location.href='castello.html'">
+            <span data-i18n="citizen.castle_title"></span>
+        </section>
 
         <!-- 3° QUADRANTE — CHIESE E ARTE -->
         <section class="quadrant">
@@ -113,7 +102,7 @@
     let currentLang = localStorage.getItem("lang") || "it";
 
     function loadLanguage(lang) {
-        fetch(`../lang/${lang}.json`)
+        fetch(`lang/${lang}.json`)   // ← percorso corretto
             .then(res => res.json())
             .then(data => {
                 document.querySelectorAll("[data-i18n]").forEach(el => {
