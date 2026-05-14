@@ -1,11 +1,16 @@
 /* ================================
    SFONDO EPICO CASTELLO
 ================================ */
+html, body {
+    height: 100%;
+}
+
 body {
     margin: 0;
     font-family: "Segoe UI", system-ui, sans-serif;
     background: url("./img/sfondo_epico_castello.png") no-repeat center center fixed;
     background-size: cover;
+    background-attachment: fixed;
     color: #fffaf0;
 }
 
