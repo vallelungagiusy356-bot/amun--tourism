@@ -3,57 +3,70 @@
     "title": "Amunì Tourism",
     "citizen": "Ciudadano del pueblo",
     "about": "Quiénes somos",
-    "contact": "Contacto",
+    "contact": "Contactos",
     "eat": "Comer",
     "sleep": "Dormir",
     "transport": "Transporte",
     "events": "Eventos",
     "monuments": "Monumentos"
   },
+
   "home": {
     "chat_web": "Habla con la Castellana en el sitio web",
     "amuni_title": "El significado de Amunì",
-    "amuni_text": "En Sicilia, «Amunì» no es solo un «vamos». Es una invitación amable, una sonrisa que te acompaña. Es la voz de nuestra tierra que te dice: muévete, vive, descubre, sueña.",
-    "install_app": "Instala la aplicación Amunì Tourism",
-    "download_apk": "Descargar la aplicación (APK)",
-    "open_webapp": "Abrir la aplicación web",
-    "scan_qr": "Escanea el QR para instalar la aplicación",
+    "amuni_text": "En Sicilia, «Amunì» no es solo «vamos». Es una invitación amable, una sonrisa que te acompaña. Es la voz de nuestra tierra que te dice: muévete, vive, descubre, sueña.",
+    "install_app": "Instala la app Amunì Tourism",
+    "download_apk": "Descargar la app (APK)",
+    "open_webapp": "Abrir la Web App",
+    "scan_qr": "Escanea el QR para instalar la app",
     "chat_desktop": "Chatea con la Castellana"
   },
+
   "chat": {
     "title": "Castellana de Caccamo",
-    "msg1": "Bienvenido, viajero, a esta tierra rica en arte, historia y tradiciones.",
-    "msg2": "¿Estás listo para dejarte guiar? El arte, el aceite dorado y las almendras dulces te deleitarán.",
+    "msg1": "Bienvenido, viajero, a esta tierra llena de arte, historia y tradiciones.",
+    "msg2": "¿Listo para dejarte guiar? Arte, aceite dorado y dulces almendras te esperan.",
     "placeholder": "Escribe un mensaje..."
   },
+
   "citizen": {
     "legends_title": "Leyendas y Raíces",
-    "legends_desc": "Las historias antiguas del pueblo, transmitidas de generación en generación.",
+    "legends_desc": "Las historias más antiguas del pueblo, transmitidas de generación en generación.",
     "legend_felicia": "La leyenda de Sor Felicia",
     "legend_pizzarrone": "La leyenda de la Torre del Pizzarrone",
-    "audio_title": "Escucha oraciones y cuentos en dialecto siciliano",
+
+    "audio_title": "Escucha oraciones y cuentos en dialecto",
     "transcription": "Transcripción automática",
 
     "castle_title": "El Castillo",
-    "castle_desc": "Una fortaleza milenaria: conspiraciones, troneras, túneles secretos, prisiones y batallas épicas.",
+    "castle_desc": "Una fortaleza milenaria: conspiraciones, saeteras, túneles secretos, prisiones y batallas épicas.",
+    "castle_more": "Descubre el Castillo",
 
     "church_title": "Iglesias y Arte",
     "church_desc": "Un viaje entre catacumbas, tradiciones, patronos y antiguas devociones.",
     "church_catacombs": "Las catacumbas y criptas ocultas",
-    "church_sangiuseppe": "El altar rojo de San José",
-    "church_sepolcri": "Los 'sepolcri' de Pascua con trigo germinado",
+    "church_sangiuseppe": "El gratinado rojo de San José",
+    "church_sepolcri": "Los sepulcros con trigo germinando",
 
-    "food_title": "Gastronomía y Eventos",
-    "food_desc": "Sabores auténticos y lugares donde vivir el pueblo.",
-    "food_arancine": "Dónde probar excelentes arancinas",
+    "food_title": "Comida y Eventos",
+    "food_desc": "Sabores auténticos, lugares donde comer y vivir el pueblo.",
+    "food_arancine": "Dónde degustar excelentes arancinas",
     "food_cocktail": "Cócteles con DJ todo el año",
     "food_aperitivo": "Aperitivos panorámicos (solo verano)",
 
     "events_title": "Eventos",
     "event_castellana": "La Castellana",
-    "event_signuruzzu": "El 'Signuruzzu a Cavaddu'",
+    "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Fiesta de la Salchicha",
-    "event_beato": "Fiesta del Beato Giovanni",
-    "castle_more": "Descubre el Castillo"
+    "event_beato": "Fiesta del Beato Giovanni"
+  },
+
+  "castle": {
+    "title": "El Castillo de Caccamo",
+    "position": "Una fortaleza situada sobre un espolón rocoso, dominando el valle.",
+    "defense": "Saeteras, muros gruesos y pasarelas revelan su función defensiva.",
+    "conspiracy": "Salas secretas y estancias nobles fueron escenario de intrigas medievales.",
+    "prisons": "Las prisiones subterráneas aún conservan huellas de antiguas detenciones.",
+    "legend_brothers": "La leyenda de los dos hermanos cuenta un duelo fatal por el amor de una dama."
   }
 }
