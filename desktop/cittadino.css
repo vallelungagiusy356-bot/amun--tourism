@@ -4,6 +4,8 @@
 body {
     background: url("./img/tuo_nuovo_sfondo.jpeg") no-repeat center center fixed;
     background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
 /* ================================
@@ -28,11 +30,15 @@ body {
     border-radius: 22px;
     border: 2px solid rgba(255, 200, 120, 0.7);
     padding: 30px;
-    min-height: 260px; /* altezza uniforme */
+
+    /* 🔥 Altezza uniforme per TUTTI i quadranti */
+    min-height: 260px;
+
     box-shadow:
         0 0 25px rgba(255, 200, 120, 0.45),
         0 0 60px rgba(255, 120, 60, 0.25),
         inset 0 0 20px rgba(255, 255, 255, 0.15);
+
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     cursor: pointer;
 }
@@ -81,13 +87,16 @@ body {
 }
 
 /* ================================
-   QUADRANTE CASTELLO (SOLO TITOLO ORO)
+   QUADRANTE CASTELLO (TITOLO ORO)
 ================================ */
 .castle-card {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 180px;
+
+    /* 🔥 Prima era height:180px → CAUSA DEL PROBLEMA */
+    min-height: 260px;
+
     font-size: 32px;
     font-weight: 600;
     color: #ffe7b3;
