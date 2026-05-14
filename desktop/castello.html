@@ -45,16 +45,17 @@
                      alt="Abito d’epoca della Castellana">
             </div>
 
-            <!-- PULSANTE CASTELLANA -->
-<div class="castellana-button-container">
-  <button id="castellanaButton">Parla con la Castellana</button>
-</div>
-
-<!-- VIDEO DI BENVENUTO -->
-<video id="castellanaVideo" class="castellana-video" style="display:none;" autoplay>
-  <source src="img/benvenuto_castellana.webm" type="video/webm">
-</video>
         </div>
+
+        <!-- PULSANTE CASTELLANA (FUORI DAL PANNELLO) -->
+        <div class="castellana-button-container">
+            <button id="castellanaButton">Parla con la Castellana</button>
+        </div>
+
+        <!-- VIDEO DI BENVENUTO -->
+        <video id="castellanaVideo" class="castellana-video" style="display:none;" autoplay>
+            <source src="img/benvenuto_castellana.webm" type="video/webm">
+        </video>
 
     </section>
 
@@ -63,7 +64,7 @@
     let currentLang = localStorage.getItem("lang") || "it";
 
     function loadLanguage(lang) {
-         fetch(`../lang/${lang}.json`)  /* ← percorso corretto */
+         fetch(`../lang/${lang}.json`)
             .then(res => res.json())
             .then(data => {
                 document.querySelectorAll("[data-i18n]").forEach(el => {
@@ -81,17 +82,19 @@
     });
     </script>
 
+    <!-- SCRIPT CASTELLANA -->
     <script>
-document.getElementById("castellanaButton").addEventListener("click", () => {
-    const video = document.getElementById("castellanaVideo");
-    video.style.display = "block";
-    video.play();
+    document.getElementById("castellanaButton").addEventListener("click", () => {
+        const video = document.getElementById("castellanaVideo");
+        video.style.display = "block";
+        video.play();
 
-    video.onended = () => {
-        video.style.display = "none";
-        document.querySelector(".chat-panel")?.classList.add("visible");
-    };
-});
-        </script>
+        video.onended = () => {
+            video.style.display = "none";
+            document.querySelector(".chat-panel")?.classList.add("visible");
+        };
+    });
+    </script>
+
 </body>
 </html>
