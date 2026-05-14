@@ -4,7 +4,7 @@
 body {
     margin: 0;
     font-family: "Segoe UI", system-ui, sans-serif;
-    background: url("img/sfondo_epico_castello.png") no-repeat center center fixed;
+    background: url("./img/sfondo_epico_castello.png");
     background-size: cover;
     color: #fffaf0;
 }
