@@ -11,10 +11,31 @@
 
 <body>
 
-    <!-- DASHBOARD CON PULSANTE HOME -->
-    <div class="dashboard">
-        <button onclick="window.location.href='index.html'">Home</button>
-    </div>
+    <!-- DASHBOARD DESKTOP (IDENTICA ALLA HOME, MA SENZA “Cittadino del Borgo”) -->
+    <header class="dashboard">
+
+        <!-- TITOLO / LOGO -->
+        <div class="logo-title" data-i18n="menu.title"></div>
+
+        <!-- MENU DESKTOP -->
+        <nav class="nav-desktop">
+            <a href="about.html" data-i18n="menu.about"></a>
+            <a href="contact.html" data-i18n="menu.contact"></a>
+        </nav>
+
+        <!-- SELETTORE LINGUE -->
+        <div class="lang-switcher">
+            <button data-lang="it">🇮🇹</button>
+            <button data-lang="en">🇬🇧</button>
+            <button data-lang="fr">🇫🇷</button>
+            <button data-lang="de">🇩🇪</button>
+            <button data-lang="es">🇪🇸</button>
+        </div>
+
+        <!-- SOLO QUI: PULSANTE HOME -->
+        <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
+
+    </header>
 
     <!-- SEZIONE CASTELLO CINEMATOGRAFICA -->
     <section class="castle-layout">
@@ -47,20 +68,20 @@
 
         </div>
 
-        <!-- PULSANTE CASTELLANA (FUORI DAL PANNELLO) -->
-<div class="castellana-button-container">
-    <button id="castellanaButton">Parla con la Castellana</button>
-</div>
+        <!-- PULSANTE CASTELLANA -->
+        <div class="castellana-button-container">
+            <button id="castellanaButton">Parla con la Castellana</button>
+        </div>
 
-<!-- CHAT PANEL (FUORI DAL PULSANTE) -->
-<div class="chat-panel">
-   <!-- qui va la tua chat -->
-</div>
+        <!-- CHAT PANEL -->
+        <div class="chat-panel">
+            <!-- qui va la tua chat -->
+        </div>
 
-<!-- VIDEO DI BENVENUTO -->
-<video id="castellanaVideo" class="castellana-video" style="display:none;">
-  <source src="img/benvenuto_castellana.webm" type="video/webm">
-</video>
+        <!-- VIDEO DI BENVENUTO -->
+        <video id="castellanaVideo" class="castellana-video" style="display:none;">
+            <source src="img/benvenuto_castellana.webm" type="video/webm">
+        </video>
 
     </section>
 
@@ -83,6 +104,12 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".lang-switcher button").forEach(btn => {
+            btn.addEventListener("click", () => {
+                loadLanguage(btn.dataset.lang);
+            });
+        });
+
         loadLanguage(currentLang);
     });
     </script>
