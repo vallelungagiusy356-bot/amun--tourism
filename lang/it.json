@@ -10,6 +10,7 @@
     "events": "Eventi",
     "monuments": "Monumenti"
   },
+
   "home": {
     "chat_web": "Parla con la Castellana sul sito web",
     "amuni_title": "Il significato di Amunì",
@@ -20,22 +21,26 @@
     "scan_qr": "Scansiona il QR per installare l’app",
     "chat_desktop": "Chatta con la Castellana"
   },
+
   "chat": {
     "title": "Castellana di Caccamo",
     "msg1": "Benvenuto, viandante in questa terra ricca di arte, storia e tradizioni.",
     "msg2": "Sei pronto a farti guidare? Arte, olio dorato e dolci mandorle ti delizieranno.",
     "placeholder": "Scrivi un messaggio..."
   },
+
   "citizen": {
     "legends_title": "Leggende e Radici",
     "legends_desc": "Le storie più antiche del borgo, tramandate di generazione in generazione.",
     "legend_felicia": "La leggenda di Suor Felicia",
     "legend_pizzarrone": "La leggenda della Torre del Pizzarrone",
+
     "audio_title": "Ascolta le preghiere e i cunti in dialetto",
     "transcription": "Trascrizione automatica",
 
     "castle_title": "Il Castello",
     "castle_desc": "Una fortezza millenaria: congiure, feritoie, tunnel segreti, prigioni e battaglie epiche.",
+    "castle_more": "Scopri il Castello",
 
     "church_title": "Chiese e Arte",
     "church_desc": "Un viaggio tra catacombe, tradizioni, patroni e antiche devozioni.",
@@ -53,7 +58,15 @@
     "event_castellana": "La Castellana",
     "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Sagra della Salsiccia",
-    "event_beato": "Festa del Beato Giovanni",
-    "castle_more": "Scopri il Castello"
+    "event_beato": "Festa del Beato Giovanni"
+  },
+
+  "castle": {
+    "title": "Il Castello di Caccamo",
+    "position": "Una fortezza arroccata su uno sperone roccioso, con vista dominante sulla valle.",
+    "defense": "Feritoie, mura spesse e camminamenti di ronda raccontano la sua funzione difensiva.",
+    "conspiracy": "Sale segrete e stanze nobiliari furono teatro di congiure e intrighi medievali.",
+    "prisons": "Le prigioni sotterranee custodiscono ancora le tracce delle antiche detenzioni.",
+    "legend_brothers": "La leggenda dei due fratelli narra di un duello fatale per l’amore di una dama."
   }
 }
