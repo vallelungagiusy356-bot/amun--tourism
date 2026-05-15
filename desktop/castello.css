@@ -13,27 +13,28 @@ body {
     background-attachment: fixed;
     color: #fffaf0;
 }
-
 /* ================================
-   DASHBOARD
+   DASHBOARD CORREZIONE LUNGHEZZA
 ================================ */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw; /* forza la larghezza piena */
     height: 54px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 18px;
+    padding: 8px 24px; /* leggermente più ampio */
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 215, 160, 0.85);
+    box-sizing: border-box; /* evita che padding riduca la larghezza */
     z-index: 9999;
 }
 
-.dashboard button {
+/* Pulsante Home allineato correttamente */
+.home-btn {
     background: rgba(255, 215, 160, 0.35);
     border: 1px solid rgba(255, 215, 160, 0.9);
     border-radius: 8px;
@@ -42,9 +43,11 @@ body {
     padding: 6px 12px;
     cursor: pointer;
     box-shadow: 0 0 12px rgba(255, 215, 160, 0.6);
+    margin-left: 20px; /* distanzia dal selettore lingue */
+    flex-shrink: 0; /* impedisce che si schiacci */
 }
 
-.dashboard button:hover {
+.home-btn:hover {
     background: rgba(255, 215, 160, 0.5);
 }
 
