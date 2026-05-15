@@ -68,5 +68,25 @@
     "conspiracy": "Sale segrete e stanze nobiliari furono teatro di congiure e intrighi medievali.",
     "prisons": "Le prigioni sotterranee custodiscono ancora le tracce delle antiche detenzioni.",
     "legend_brothers": "La leggenda dei due fratelli narra di un duello fatale per l’amore di una dama."
-  }
+  },
+  
+"monuments": {
+    "title": "Monumenti del Borgo",
+
+    "castle_title": "Castello di Caccamo",
+    "castle_desc": "Tra i più grandi castelli medievali di Sicilia, domina la valle del San Leonardo. Fortezza normanna dell’XI secolo, conserva prigioni, sale storiche e leggende affascinanti.",
+    "castle_button": "Visita la pagina",
+
+    "annunziata_title": "Chiesa SS. Annunziata e San Benedetto della Badia",
+    "annunziata_desc": "Due chiese adiacenti, simbolo della devozione caccamese. L’Annunziata custodisce stucchi barocchi; la Badia conserva cripte e un meraviglioso pavimento in maiolica.",
+
+    "sangiorgio_title": "Chiesa di San Giorgio Martire",
+    "sangiorgio_desc": "Tra le più antiche del borgo, con facciata gotico‑normanna e statue lignee di grande pregio, con il castello alle sue spalle.",
+
+    "angeli_title": "Chiesa di Santa Maria degli Angeli",
+    "angeli_desc": "Piccola chiesa francescana immersa nel silenzio, con altare marmoreo e le spoglie del Beato Giovanni, figura sacra molto amata dalla cittadinanza.",
+
+    "cappuccini_title": "Convento dei Cappuccini",
+    "cappuccini_desc": "Fondato nel XVI secolo, ospita un chiostro sobrio e una biblioteca storica. Vista panoramica sulla valle."
+}
 }
