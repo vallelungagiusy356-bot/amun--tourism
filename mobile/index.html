@@ -188,5 +188,22 @@
         }
     </script>
 
+    <script>
+    const audio = document.getElementById("bg-music");
+    const trigger = document.getElementById("audio-trigger");
+
+    audio.volume = 0.5;
+
+    function startMusic() {
+        audio.play().then(() => {
+            trigger.remove(); // Rimuove il trigger invisibile
+        }).catch(() => {
+            setTimeout(() => audio.play(), 200);
+        });
+    }
+
+    trigger.addEventListener("click", startMusic);
+    trigger.addEventListener("touchstart", startMusic);
+    </script>
 </body>
 </html>
