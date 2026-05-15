@@ -230,3 +230,11 @@ body {
     font-size: 0.9rem;
     color: #f7f2e9;
     }
+
+.dashboard,
+.buttons-grid,
+.buttons-row-2,
+.btn-chat-web {
+    position: relative;
+    z-index: 20;
+}
