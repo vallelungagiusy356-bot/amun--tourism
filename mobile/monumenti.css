@@ -19,7 +19,7 @@ body {
     background-image: url('img/tuo_sfondo_tramonto.jpeg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.78) contrast(1.1) saturate(1.1);
+    filter: brightness(0.72) contrast(1.15) saturate(1.15);
     z-index: 0;
 }
 
