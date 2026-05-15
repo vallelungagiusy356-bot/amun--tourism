@@ -231,10 +231,17 @@ body {
     color: #f7f2e9;
     }
 
+/* Rende cliccabili i bottoni */
 .dashboard,
 .buttons-grid,
 .buttons-row-2,
 .btn-chat-web {
     position: relative;
     z-index: 20;
+}
+
+/* Evita che video e avatar blocchino i click */
+.video-container,
+.castellana-avatar {
+    pointer-events: none;
 }
