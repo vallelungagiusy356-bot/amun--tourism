@@ -45,6 +45,14 @@ body {
     letter-spacing: 0.5px;
 }
 
+.btn-home {
+    font-size: 22px;
+    color: gold;
+    text-decoration: none;
+    padding: 6px 10px;
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7));
+}
+
 /* LAYOUT */
 .monuments-layout {
     margin-top: 80px;
