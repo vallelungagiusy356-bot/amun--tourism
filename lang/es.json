@@ -68,5 +68,24 @@
     "conspiracy": "Salas secretas y estancias nobles fueron escenario de intrigas medievales.",
     "prisons": "Las prisiones subterráneas aún conservan huellas de antiguas detenciones.",
     "legend_brothers": "La leyenda de los dos hermanos cuenta un duelo fatal por el amor de una dama."
+  },
+  "monuments": {
+  "title": "Monumentos del Pueblo",
+
+  "castle_title": "Castillo de Caccamo",
+  "castle_desc": "Uno de los castillos medievales más grandes de Sicilia, con vistas al valle del San Leonardo. Esta fortaleza normanda del siglo XI conserva prisiones, salas históricas y leyendas fascinantes.",
+  "castle_button": "Visitar la página",
+
+  "annunziata_title": "Iglesia SS. Annunziata y San Benedetto della Badia",
+  "annunziata_desc": "Dos iglesias adyacentes, símbolos de la devoción local. La Annunziata presenta elegantes estucos barrocos, mientras que la Badia conserva criptas y un hermoso suelo de mayólica.",
+
+  "sangiorgio_title": "Iglesia de San Jorge Mártir",
+  "sangiorgio_desc": "Una de las iglesias más antiguas del pueblo, con fachada gótico‑normanda y valiosas esculturas de madera, con el castillo elevándose detrás de ella.",
+
+  "angeli_title": "Iglesia de Santa María de los Ángeles",
+  "angeli_desc": "Una pequeña iglesia franciscana envuelta en silencio, con un altar de mármol y las reliquias del Beato Giovanni, una figura espiritual muy querida.",
+
+  "cappuccini_title": "Convento de los Capuchinos",
+  "cappuccini_desc": "Fundado en el siglo XVI, alberga un claustro sobrio y una biblioteca histórica. Ofrece una vista panorámica del valle."
   }
 }
