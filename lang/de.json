@@ -68,5 +68,24 @@
     "conspiracy": "Geheime Räume und Adelssäle waren Schauplatz mittelalterlicher Intrigen.",
     "prisons": "Die unterirdischen Gefängnisse bewahren noch Spuren alter Haftzeiten.",
     "legend_brothers": "Die Legende der zwei Brüder erzählt von einem tödlichen Duell um die Liebe einer Dame."
+  },
+  "monuments": {
+  "title": "Denkmäler des Dorfes",
+
+  "castle_title": "Schloss von Caccamo",
+  "castle_desc": "Einer der größten mittelalterlichen Burgen Siziliens, mit Blick über das Tal des San Leonardo. Diese normannische Festung aus dem 11. Jahrhundert bewahrt Gefängnisse, historische Säle und faszinierende Legenden.",
+  "castle_button": "Seite besuchen",
+
+  "annunziata_title": "Kirche SS. Annunziata und San Benedetto della Badia",
+  "annunziata_desc": "Zwei benachbarte Kirchen, Symbole der lokalen Frömmigkeit. Die Annunziata besitzt elegante barocke Stuckarbeiten, während die Badia Krypten und einen wunderschönen Majolika‑Boden beherbergt.",
+
+  "sangiorgio_title": "Kirche des Heiligen Georgs Märtyrer",
+  "sangiorgio_desc": "Eine der ältesten Kirchen des Dorfes, mit einer normannisch‑gotischen Fassade und wertvollen Holzskulpturen, überragt vom Schloss im Hintergrund.",
+
+  "angeli_title": "Kirche Santa Maria degli Angeli",
+  "angeli_desc": "Eine kleine franziskanische Kirche in stiller Atmosphäre, mit einem Marmoraltar und den Reliquien des Seligen Giovanni, einer sehr verehrten geistlichen Persönlichkeit.",
+
+  "cappuccini_title": "Kapuzinerkloster",
+  "cappuccini_desc": "Im 16. Jahrhundert gegründet, beherbergt es einen schlichten Kreuzgang und eine historische Bibliothek. Es bietet einen Panoramablick über das Tal."
   }
 }
