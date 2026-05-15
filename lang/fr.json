@@ -68,5 +68,24 @@
     "conspiracy": "Salles secrètes et pièces nobles furent le théâtre de complots médiévaux.",
     "prisons": "Les prisons souterraines conservent encore les traces d’anciennes détentions.",
     "legend_brothers": "La légende des deux frères raconte un duel fatal pour l’amour d’une dame."
+  },
+  "monuments": {
+  "title": "Monuments du Bourg",
+
+  "castle_title": "Château de Caccamo",
+  "castle_desc": "L’un des plus grands châteaux médiévaux de Sicile, dominant la vallée du San Leonardo. Cette forteresse normande du XIᵉ siècle conserve des prisons, des salles historiques et des légendes fascinantes.",
+  "castle_button": "Visiter la page",
+
+  "annunziata_title": "Église SS. Annunziata et San Benedetto della Badia",
+  "annunziata_desc": "Deux églises adjacentes, symboles de la dévotion locale. L’Annunziata présente de magnifiques stucs baroques, tandis que la Badia abrite des cryptes et un splendide sol en majolique.",
+
+  "sangiorgio_title": "Église de Saint Georges Martyr",
+  "sangiorgio_desc": "L’une des plus anciennes églises du bourg, avec une façade gothico‑normande et de précieuses statues en bois, dominée par la silhouette du château.",
+
+  "angeli_title": "Église Santa Maria degli Angeli",
+  "angeli_desc": "Une petite église franciscaine plongée dans le silence, avec un autel en marbre et les reliques du Bienheureux Giovanni, figure spirituelle très aimée.",
+
+  "cappuccini_title": "Couvent des Capucins",
+  "cappuccini_desc": "Fondé au XVIᵉ siècle, il abrite un cloître sobre et une bibliothèque historique. Il offre une vue panoramique sur la vallée."
   }
 }
