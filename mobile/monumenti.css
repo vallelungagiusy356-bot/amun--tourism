@@ -64,15 +64,15 @@ body {
 
 /* CARD MONUMENTO */
 .monument-card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 215, 160, 0.8);
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 215, 160, 0.85);
     border-radius: 18px;
     box-shadow:
-        0 0 35px rgba(255, 215, 160, 0.6),
-        inset 0 0 25px rgba(255, 215, 160, 0.3);
-    padding: 18px;
-    margin-bottom: 22px;
+        0 0 40px rgba(255, 215, 160, 0.55),
+        inset 0 0 25px rgba(255, 215, 160, 0.25);
+    padding: 20px;
+    margin-bottom: 26px;
     color: #fffaf0;
 }
 
