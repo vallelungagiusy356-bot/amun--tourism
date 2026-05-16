@@ -5,263 +5,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        /* MAPPA A SCHERMO INTERO */
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
         }
-
         #map {
             height: 100%;
             width: 100%;
         }
     </style>
-
 </head>
 
 <body>
 
-    <div id="map"></div>
+<div id="map"></div>
 
-    <script>
-        // ============================
-        //   INIZIALIZZAZIONE MAPPA
-        // ============================
+<script>
+function initMap() {
 
-        function initMap() {
+    // ============================
+    //   COORDINATE
+    // ============================
 
-            // Centro: Castello di Caccamo
-            const castello = { lat: 37.9325, lng: 13.6645 };
+    const coord = {
+        castello: { lat: 37.9325, lng: 13.6645 },
+        sanGiorgio: { lat: 37.93334, lng: 13.66411 },
+        santaMariaAngeli: { lat: 37.93394, lng: 13.66272 },
+        ssAnnunziata: { lat: 37.93218, lng: 13.66202 },
+        badia: { lat: 37.93286, lng: 13.66341 },
+        cappuccini: { lat: 37.93452, lng: 13.66618 }
+    };
 
-            // Mappa Google
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 16,
-                center: castello,
-                mapTypeId: "roadmap",
-                styles: [
-                    {
-                        "featureType": "all",
-                        "elementType": "geometry",
-                        "stylers": [{ "color": "#f4e9d8" }]
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "labels.text.fill",
-                        "stylers": [{ "color": "#6b4f2d" }]
-                    },
-                    {
-                        "featureType": "road",
-                        "elementType": "geometry",
-                        "stylers": [{ "color": "#e0c9a6" }]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "geometry",
-                        "stylers": [{ "color": "#c9d7e8" }]
-                    }
-                ]
-            });
+    // ============================
+    //   MAPPA
+    // ============================
 
-            // ============================
-            //   ICONA CASTELLO (DORATA)
-            // ============================
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 16,
+        center: coord.castello,
+        styles: [
+            { "featureType": "all", "elementType": "geometry", "stylers": [{ "color": "#f4e9d8" }] },
+            { "featureType": "poi", "elementType": "labels.text.fill", "stylers": [{ "color": "#6b4f2d" }] },
+            { "featureType": "road", "elementType": "geometry", "stylers": [{ "color": "#e0c9a6" }] },
+            { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#c9d7e8" }] }
+        ]
+    });
 
-            const iconaCastello = {
-                url: "img/icon-castello-dorato.png",
-                scaledSize: new google.maps.Size(55, 55)
-            };
+    // ============================
+    //   ICONE
+    // ============================
 
-            // Marker Castello
-            new google.maps.Marker({
-                position: castello,
-                map: map,
-                icon: iconaCastello,
-                title: "Castello di Caccamo"
-            });
-            // ============================
-//   COORDINATE MONUMENTI
-// ============================
+    const iconaCastello = {
+        url: "img/icon-castello-dorato.png",
+        scaledSize: new google.maps.Size(55, 55)
+    };
 
-const coord = {
-    castello: { lat: 37.9325, lng: 13.6645 },
-    sanGiorgio: { lat: 37.93334, lng: 13.66411 },
-    santaMariaAngeli: { lat: 37.93394, lng: 13.66272 },
-    ssAnnunziata: { lat: 37.93218, lng: 13.66202 },
-    badia: { lat: 37.93286, lng: 13.66341 },
-    cappuccini: { lat: 37.93452, lng: 13.66618 }
-};
+    const iconaChiesaGrande = {
+        url: "img/icon-croce-barocca.png",
+        scaledSize: new google.maps.Size(45, 45)
+    };
 
-// ============================
-//   ICONE PERSONALIZZATE
-// ============================
+    // ============================
+    //   MARKER + POPUP
+    // ============================
 
-const iconaCastello = {
-    url: "img/icon-castello-dorato.png",
-    scaledSize: new google.maps.Size(55, 55)
-};
+    function aggiungiMarker(pos, icona, html) {
+        const marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            icon: icona
+        });
 
-const iconaChiesaGrande = {
-    url: "img/icon-croce-barocca.png",
-    scaledSize: new google.maps.Size(45, 45)
-};
+        const info = new google.maps.InfoWindow({ content: html });
 
-// ============================
-//   MARKER CASTELLO
-// ============================
+        marker.addListener("click", () => info.open(map, marker));
+    }
 
-new google.maps.Marker({
-    position: coord.castello,
-    map: map,
-    icon: iconaCastello,
-    title: "Castello di Caccamo"
-});
-
-new google.maps.InfoWindow({
-    content: `
+    aggiungiMarker(coord.castello, iconaCastello, `
         <b>Castello di Caccamo</b><br>
         Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>
-        <a href="https://www.coopculture.it/it/prodotti/castello-di-caccamo/" target="_blank">
-            Acquista biglietti
-        </a>
-    `
-}).open(map, new google.maps.Marker({ position: coord.castello }));
+        <a href="https://www.coopculture.it/it/prodotti/castello-di-caccamo/" target="_blank">Acquista biglietti</a>
+    `);
 
-// ============================
-//   CHIESA SAN GIORGIO MARTIRE
-// ============================
-
-new google.maps.Marker({
-    position: coord.sanGiorgio,
-    map: map,
-    icon: iconaChiesaGrande,
-    title: "Chiesa San Giorgio Martire"
-});
-
-new google.maps.InfoWindow({
-    content: `
+    aggiungiMarker(coord.sanGiorgio, iconaChiesaGrande, `
         <b>Chiesa San Giorgio Martire</b><br>
         Domenica: 08:30 – 11:00 – 18:00<br>
         Feriali: 18:00
-    `
-}).open(map, new google.maps.Marker({ position: coord.sanGiorgio }));
+    `);
 
-// ============================
-//   CHIESA SANTA MARIA DEGLI ANGELI
-// ============================
-
-new google.maps.Marker({
-    position: coord.santaMariaAngeli,
-    map: map,
-    icon: iconaChiesaGrande,
-    title: "Chiesa Santa Maria degli Angeli"
-});
-
-new google.maps.InfoWindow({
-    content: `
+    aggiungiMarker(coord.santaMariaAngeli, iconaChiesaGrande, `
         <b>Chiesa Santa Maria degli Angeli</b><br>
         Domenica: 09:00 – 12:00<br>
         Feriali: 17:00 – 19:00
-    `
-}).open(map, new google.maps.Marker({ position: coord.santaMariaAngeli }));
+    `);
 
-// ============================
-//   CHIESA SS. ANNUNZIATA
-// ============================
-
-new google.maps.Marker({
-    position: coord.ssAnnunziata,
-    map: map,
-    icon: iconaChiesaGrande,
-    title: "Chiesa SS. Annunziata"
-});
-
-new google.maps.InfoWindow({
-    content: `
+    aggiungiMarker(coord.ssAnnunziata, iconaChiesaGrande, `
         <b>Chiesa SS. Annunziata</b><br>
         Domenica: 09:00 – 11:30<br>
         Feriali: 18:00
-    `
-}).open(map, new google.maps.Marker({ position: coord.ssAnnunziata }));
+    `);
 
-// ============================
-//   CHIESA DI SAN BENEDETTO DELLA BADIA
-// ============================
-
-new google.maps.Marker({
-    position: coord.badia,
-    map: map,
-    icon: iconaChiesaGrande,
-    title: "Chiesa di San Benedetto della Badia"
-});
-
-new google.maps.InfoWindow({
-    content: `
+    aggiungiMarker(coord.badia, iconaChiesaGrande, `
         <b>Chiesa di San Benedetto della Badia</b><br>
         Orari visita: 10:00–13:00, 15:00–18:00<br>
         Pavimento in maiolica visitabile<br>
-        <a href="https://www.coopculture.it/it/prodotti/chiesa-di-san-benedetto-della-badia/" target="_blank">
-            Acquista biglietti
-        </a>
-    `
-}).open(map, new google.maps.Marker({ position: coord.badia }));
+        <a href="https://www.coopculture.it/it/prodotti/chiesa-di-san-benedetto-della-badia/" target="_blank">Acquista biglietti</a>
+    `);
 
-// ============================
-//   CONVENTO DEI CAPPUCCINI
-// ============================
-
-new google.maps.Marker({
-    position: coord.cappuccini,
-    map: map,
-    icon: iconaChiesaGrande,
-    title: "Convento dei Frati Cappuccini"
-});
-
-new google.maps.InfoWindow({
-    content: `
+    aggiungiMarker(coord.cappuccini, iconaChiesaGrande, `
         <b>Convento dei Frati Cappuccini</b><br>
-        Orari funzioni (DinDonDan):<br>
         Domenica: 09:00 – 12:00<br>
         Feriali: 17:00 – 19:00
-    `
-}).open(map, new google.maps.Marker({ position: coord.cappuccini }));
+    `);
 
-            // Popup Castello
-            const infoCastello = new google.maps.InfoWindow({
-                content: `
-                    <b>Castello di Caccamo</b><br>
-                    Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>
-                    <a href="https://www.coopculture.it/it/prodotti/castello-di-caccamo/" target="_blank">
-                        Acquista biglietti
-                    </a>
-                `
-            });
+    // ============================
+    //   PERCORSO REALE
+    // ============================
 
-            map.addListener("click", () => infoCastello.close());
-            infoCastello.open(map, new google.maps.Marker({ position: castello }));
-
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer({
+        suppressMarkers: false,
+        polylineOptions: {
+            strokeColor: "#000000",
+            strokeWeight: 5
         }
-    </script>
-const directionsService = new google.maps.DirectionsService();
-const directionsRenderer = new google.maps.DirectionsRenderer({
-    suppressMarkers: false,
-    polylineOptions: {
-        strokeColor: "#000000",
-        strokeWeight: 5
+    });
+    directionsRenderer.setMap(map);
+
+    function calcolaPercorso(start, end) {
+        directionsService.route(
+            {
+                origin: start,
+                destination: end,
+                travelMode: google.maps.TravelMode.WALKING
+            },
+            (result, status) => {
+                if (status === "OK") {
+                    directionsRenderer.setDirections(result);
+                }
+            }
+        );
     }
+
     map.addListener("click", (e) => {
-    const start = {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng()
-    };
+        const start = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+        calcolaPercorso(start, coord.castello);
+    });
 
-    const end = coord.castello; // destinazione: Castello di Caccamo
+}
+</script>
 
-    calcolaPercorso(start, end);
-});
-directionsRenderer.setMap(map);
-    <!-- GOOGLE MAPS API KEY -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-tIu-34BVyuz4t3gayTQY5ePYzFSVe4&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-tIu-34BVyuzxxxxxxxxxxePYzFSVe4&callback=initMap" async defer></script>
 
 </body>
 </html>
