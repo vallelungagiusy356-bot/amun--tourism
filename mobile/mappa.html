@@ -249,6 +249,15 @@ const directionsRenderer = new google.maps.DirectionsRenderer({
         strokeColor: "#000000",
         strokeWeight: 5
     }
+    map.addListener("click", (e) => {
+    const start = {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng()
+    };
+
+    const end = coord.castello; // destinazione: Castello di Caccamo
+
+    calcolaPercorso(start, end);
 });
 directionsRenderer.setMap(map);
     <!-- GOOGLE MAPS API KEY -->
