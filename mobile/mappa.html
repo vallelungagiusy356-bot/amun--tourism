@@ -3,37 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <!-- CSS personalizzato -->
     <link rel="stylesheet" href="mappa.css">
-   
+
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css">
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-        #map {
-            height: 100%;
-            width: 100%;
-            /* stile in linea col sito (puoi aggiungere altro qui) */
-            border-radius: 16px;
-            box-shadow: 0 0 25px rgba(255, 215, 143, 0.4);
-            border: 1px solid rgba(255, 215, 143, 0.6);
-        }
-
-        .leaflet-popup-content-wrapper {
-            background: rgba(10, 10, 10, 0.9);
-            color: #FFF8E1;
-            border-radius: 12px;
-            border: 1px solid #FFD78F;
-        }
-        .leaflet-popup-tip {
-            background: rgba(10, 10, 10, 0.9);
-        }
-    </style>
 </head>
 
 <body>
@@ -41,10 +17,11 @@
     <div id="map"></div>
 
     <script>
-        // COORDINATE DEL MONUMENTO (Castello di Caccamo)
+
+        // COORDINATE CASTELLO
         const monumento = [37.9325, 13.6645];
 
-        // CREA LA MAPPA
+        // CREA MAPPA
         var map = L.map('map').setView(monumento, 16);
 
         // TILE LAYER
@@ -53,28 +30,50 @@
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        // ICONA PERSONALIZZATA DEL MONUMENTO
-        var iconaMonumento = L.icon({
-            iconUrl: 'img/icon-castello.png', // cambia con il tuo percorso
-            iconSize: [40, 40],
-            iconAnchor: [20, 40],
-            popupAnchor: [0, -40]
+        /* ============================
+           ICONE PERSONALIZZATE
+        ============================ */
+
+        // CASTELLO (dorato stilizzato)
+        var iconaCastello = L.icon({
+            iconUrl: 'img/icon-castello-dorato.png',
+            iconSize: [55, 55],
+            className: 'icon-monumento'
         });
 
-        // MARKER DEL MONUMENTO CON "PORTAMI QUI"
+        // CHIESE GRANDI (croce barocca)
+        var iconaChiesaGrande = L.icon({
+            iconUrl: 'img/icon-croce-barocca.png',
+            iconSize: [45, 45],
+            className: 'icon-chiesa-grande'
+        });
+
+        // CHIESE PICCOLE (le altre 33)
+        var iconaChiesaPiccola = L.icon({
+            iconUrl: 'img/icon-croce-barocca.png',
+            iconSize: [18, 18],
+            className: 'icon-chiesa-piccola'
+        });
+
+        /* ============================
+           MARKER CASTELLO
+        ============================ */
+
         L.marker(monumento, { icon: iconaCastello })
-    .addTo(map)
-    .bindPopup(
-        "<b>Castello di Caccamo</b><br>" +
-        "Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>" +
-        "<a href='https://www.coopculture.it/it/prodotti/castello-di-caccamo/' target='_blank'>Acquista biglietti</a>"
-    );
+            .addTo(map)
+            .bindPopup(
+                "<b>Castello di Caccamo</b><br>" +
+                "Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>" +
+                "<a href='https://www.coopculture.it/it/prodotti/castello-di-caccamo/' target='_blank'>Acquista biglietti</a>"
+            )
             .openPopup();
 
-        // VARIABILE PER IL PERCORSO
+        /* ============================
+           PERCORSO NERO
+        ============================ */
+
         let percorsoRosso = null;
 
-        // FUNZIONE PER CALCOLARE DISTANZA (in km)
         function distanza(lat1, lon1, lat2, lon2) {
             const R = 6371;
             const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -87,45 +86,20 @@
             return R * c;
         }
 
-        // CLICK SULLA MAPPA → CREA IL PERCORSO
         map.on('click', function(e) {
             const start = [e.latlng.lat, e.latlng.lng];
 
-            // RIMUOVI IL PERCORSO PRECEDENTE
             if (percorsoRosso) {
                 map.removeLayer(percorsoRosso);
             }
 
-            // CREA LA LINEA ROSSA
             percorsoRosso = L.polyline([start, monumento], {
-    className: 'percorso-nero'
-}).addTo(map);
-// ICONA CASTELLO (dorata stilizzata)
-var iconaCastello = L.icon({
-    iconUrl: 'img/icon-castello-dorato.png',
-    iconSize: [55, 55],
-    className: 'icon-monumento'
-});
+                className: 'percorso-nero'
+            }).addTo(map);
 
-// ICONA CHIESA GRANDE (croce barocca)
-var iconaChiesaGrande = L.icon({
-    iconUrl: 'img/icon-croce-barocca.png',
-    iconSize: [45, 45],
-    className: 'icon-chiesa-grande'
-});
-
-// ICONA CHIESA PICCOLA (per le altre 33)
-var iconaChiesaPiccola = L.icon({
-    iconUrl: 'img/icon-croce-barocca.png',
-    iconSize: [18, 18],
-    className: 'icon-chiesa-piccola'
-});
-            
-            // CALCOLA DISTANZA
             const km = distanza(start[0], start[1], monumento[0], monumento[1]);
-            const minuti = Math.round((km / 4) * 60); // camminata 4 km/h
+            const minuti = Math.round((km / 4) * 60);
 
-            // POPUP SUL PUNTO DI PARTENZA
             L.marker(start)
                 .addTo(map)
                 .bindPopup(
@@ -135,6 +109,7 @@ var iconaChiesaPiccola = L.icon({
                 )
                 .openPopup();
         });
+
     </script>
 
 </body>
