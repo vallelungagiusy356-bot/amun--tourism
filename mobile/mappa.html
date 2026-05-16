@@ -25,20 +25,74 @@
     <div id="map"></div>
 
     <script>
-        // CREA LA MAPPA
-        var map = L.map('map').setView([37.9325, 13.6645], 16);
 
-        // AGGIUNGI IL TILE LAYER (fondamentale!)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap'
+    // COORDINATE DEL MONUMENTO (Castello di Caccamo)
+    const monumento = [37.9325, 13.6645];
+
+    // CREA LA MAPPA
+    var map = L.map('map').setView(monumento, 16);
+
+    // TILE LAYER
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // MARKER DEL MONUMENTO
+    L.marker(monumento)
+        .addTo(map)
+        .bindPopup("Castello di Caccamo")
+        .openPopup();
+
+    // VARIABILE PER IL PERCORSO
+    let percorsoRosso = null;
+
+    // FUNZIONE PER CALCOLARE DISTANZA (in km)
+    function distanza(lat1, lon1, lat2, lon2) {
+        const R = 6371;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a =
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) *
+            Math.sin(dLon/2) * Math.sin(dLon/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
+    }
+
+    // CLICK SULLA MAPPA → CREA IL PERCORSO
+    map.on('click', function(e) {
+
+        const start = [e.latlng.lat, e.latlng.lng];
+
+        // RIMUOVI IL PERCORSO PRECEDENTE
+        if (percorsoRosso) {
+            map.removeLayer(percorsoRosso);
+        }
+
+        // CREA LA LINEA ROSSA
+        percorsoRosso = L.polyline([start, monumento], {
+            color: 'red',
+            weight: 5,
+            opacity: 0.8
         }).addTo(map);
 
-        // MARKER DI TEST
-        L.marker([37.9325, 13.6645]).addTo(map)
-            .bindPopup("Castello di Caccamo")
+        // CALCOLA DISTANZA
+        const km = distanza(start[0], start[1], monumento[0], monumento[1]);
+        const minuti = Math.round((km / 4) * 60); // camminata 4 km/h
+
+        // POPUP SUL PUNTO DI PARTENZA
+        L.marker(start)
+            .addTo(map)
+            .bindPopup(
+                "📍 Punto di partenza<br>" +
+                "📏 Distanza: " + km.toFixed(2) + " km<br>" +
+                "⏱️ Tempo stimato: " + minuti + " min"
+            )
             .openPopup();
-    </script>
+    });
+
+            </script>
 
 </body>
 </html>
