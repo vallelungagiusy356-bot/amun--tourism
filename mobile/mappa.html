@@ -101,7 +101,27 @@
                 weight: 5,
                 opacity: 0.8
             }).addTo(map);
+// ICONA CASTELLO (dorata stilizzata)
+var iconaCastello = L.icon({
+    iconUrl: 'img/icon-castello-dorato.png',
+    iconSize: [55, 55],
+    className: 'icon-monumento'
+});
 
+// ICONA CHIESA GRANDE (croce barocca)
+var iconaChiesaGrande = L.icon({
+    iconUrl: 'img/icon-croce-barocca.png',
+    iconSize: [45, 45],
+    className: 'icon-chiesa-grande'
+});
+
+// ICONA CHIESA PICCOLA (per le altre 33)
+var iconaChiesaPiccola = L.icon({
+    iconUrl: 'img/icon-croce-barocca.png',
+    iconSize: [18, 18],
+    className: 'icon-chiesa-piccola'
+});
+            
             // CALCOLA DISTANZA
             const km = distanza(start[0], start[1], monumento[0], monumento[1]);
             const minuti = Math.round((km / 4) * 60); // camminata 4 km/h
