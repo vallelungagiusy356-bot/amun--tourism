@@ -177,66 +177,6 @@ function initMap() {
         <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.cappuccini.lat}, ${coord.cappuccini.lng})">🚶‍♂️ Portami qui</button>
     `);
 
-}
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-tIu-34BVyuzxxxxxxxxxxePYzFSVe4&callback=initMap" async defer></script>
-
-</body>
-</html>
-
-    // ============================
-    //   MARKER + POPUP
-    // ============================
-
-    function aggiungiMarker(pos, icona, html) {
-        const marker = new google.maps.Marker({
-            position: pos,
-            map: map,
-            icon: icona
-        });
-
-        const info = new google.maps.InfoWindow({ content: html });
-
-        marker.addListener("click", () => info.open(map, marker));
-    }
-
-    aggiungiMarker(coord.castello, iconaCastello, `
-        <b>Castello di Caccamo</b><br>
-        Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>
-        <a href="https://www.coopculture.it/it/prodotti/castello-di-caccamo/" target="_blank">Acquista biglietti</a>
-    `);
-
-    aggiungiMarker(coord.sanGiorgio, iconaChiesaGrande, `
-        <b>Chiesa San Giorgio Martire</b><br>
-        Domenica: 08:30 – 11:00 – 18:00<br>
-        Feriali: 18:00
-    `);
-
-    aggiungiMarker(coord.santaMariaAngeli, iconaChiesaGrande, `
-        <b>Chiesa Santa Maria degli Angeli</b><br>
-        Domenica: 09:00 – 12:00<br>
-        Feriali: 17:00 – 19:00
-    `);
-
-    aggiungiMarker(coord.ssAnnunziata, iconaChiesaGrande, `
-        <b>Chiesa SS. Annunziata</b><br>
-        Domenica: 09:00 – 11:30<br>
-        Feriali: 18:00
-    `);
-
-    aggiungiMarker(coord.badia, iconaChiesaGrande, `
-        <b>Chiesa di San Benedetto della Badia</b><br>
-        Orari visita: 10:00–13:00, 15:00–18:00<br>
-        Pavimento in maiolica visitabile<br>
-        <a href="https://www.coopculture.it/it/prodotti/chiesa-di-san-benedetto-della-badia/" target="_blank">Acquista biglietti</a>
-    `);
-
-    aggiungiMarker(coord.cappuccini, iconaChiesaGrande, `
-        <b>Convento dei Frati Cappuccini</b><br>
-        Domenica: 09:00 – 12:00<br>
-        Feriali: 17:00 – 19:00
-    `);
 
     // ============================
     //   PERCORSO REALE
