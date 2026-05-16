@@ -132,6 +132,24 @@ function initMap() {
         );
     }
 
+    // ============================
+    //   FUNZIONE AGGIUNGI MARKER
+    // ============================
+
+    function aggiungiMarker(pos, icona, titolo, html) {
+        const marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            icon: icona,
+            title: titolo
+        });
+
+        const info = new google.maps.InfoWindow({
+            content: html
+        });
+
+        marker.addListener("click", () => info.open(map, marker));
+    }
 
     // ============================
     //   MARKER + POPUP CON PORTAMI QUI
@@ -141,7 +159,10 @@ function initMap() {
         <b>Castello di Caccamo</b><br>
         Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>
         <a href="https://www.coopculture.it/it/prodotti/castello-di-caccamo/" target="_blank">Acquista biglietti</a><br>
-        <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.castello.lat}, ${coord.castel, `
+        <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.castello.lat}, ${coord.castello.lng})">🚶‍♂️ Portami qui</button>
+    `);
+
+    aggiungiMarker(coord.sanGiorgio, iconaChiesaGrande, "San Giorgio", `
         <b>Chiesa San Giorgio Martire</b><br>
         Domenica: 08:30 – 11:00 – 18:00<br>
         Feriali: 18:00<br>
@@ -177,44 +198,10 @@ function initMap() {
         <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.cappuccini.lat}, ${coord.cappuccini.lng})">🚶‍♂️ Portami qui</button>
     `);
 
-
-    // ============================
-    //   PERCORSO REALE
-    // ============================
-
-    const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer({
-        suppressMarkers: false,
-        polylineOptions: {
-            strokeColor: "#000000",
-            strokeWeight: 5
-        }
-    });
-    directionsRenderer.setMap(map);
-
-    function calcolaPercorso(start, end) {
-        directionsService.route(
-            {
-                origin: start,
-                destination: end,
-                travelMode: google.maps.TravelMode.WALKING
-            },
-            (result, status) => {
-                if (status === "OK") {
-                    directionsRenderer.setDirections(result);
-                }
-            }
-        );
-    }
-
-    map.addListener("click", (e) => {
-        const start = { lat: e.latLng.lat(), lng: e.latLng.lng() };
-        calcolaPercorso(start, coord.castello);
-    });
-
 }
 </script>
 
+<!-- QUI LA TUA API KEY È AL POSTO GIUSTO -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-tIu-34BVyuzxxxxxxxxxxePYzFSVe4&callback=initMap" async defer></script>
 
 </body>
