@@ -4,12 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS personalizzato -->
-    <link rel="stylesheet" href="mappa.css">
+    <style>
+        /* MAPPA A SCHERMO INTERO */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css">
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -17,100 +25,226 @@
     <div id="map"></div>
 
     <script>
+        // ============================
+        //   INIZIALIZZAZIONE MAPPA
+        // ============================
 
-        // COORDINATE CASTELLO
-        const monumento = [37.9325, 13.6645];
+        function initMap() {
 
-        // CREA MAPPA
-        var map = L.map('map').setView(monumento, 16);
+            // Centro: Castello di Caccamo
+            const castello = { lat: 37.9325, lng: 13.6645 };
 
-        // TILE LAYER
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+            // Mappa Google
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16,
+                center: castello,
+                mapTypeId: "roadmap",
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry",
+                        "stylers": [{ "color": "#f4e9d8" }]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{ "color": "#6b4f2d" }]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [{ "color": "#e0c9a6" }]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [{ "color": "#c9d7e8" }]
+                    }
+                ]
+            });
 
-        /* ============================
-           ICONE PERSONALIZZATE
-        ============================ */
+            // ============================
+            //   ICONA CASTELLO (DORATA)
+            // ============================
 
-        // CASTELLO (dorato stilizzato)
-        var iconaCastello = L.icon({
-            iconUrl: 'img/icon-castello-dorato.png',
-            iconSize: [55, 55],
-            className: 'icon-monumento'
-        });
+            const iconaCastello = {
+                url: "img/icon-castello-dorato.png",
+                scaledSize: new google.maps.Size(55, 55)
+            };
 
-        // CHIESE GRANDI (croce barocca)
-        var iconaChiesaGrande = L.icon({
-            iconUrl: 'img/icon-croce-barocca.png',
-            iconSize: [45, 45],
-            className: 'icon-chiesa-grande'
-        });
+            // Marker Castello
+            new google.maps.Marker({
+                position: castello,
+                map: map,
+                icon: iconaCastello,
+                title: "Castello di Caccamo"
+            });
+            // ============================
+//   COORDINATE MONUMENTI
+// ============================
 
-        // CHIESE PICCOLE (le altre 33)
-        var iconaChiesaPiccola = L.icon({
-            iconUrl: 'img/icon-croce-barocca.png',
-            iconSize: [18, 18],
-            className: 'icon-chiesa-piccola'
-        });
+const coord = {
+    castello: { lat: 37.9325, lng: 13.6645 },
+    sanGiorgio: { lat: 37.93334, lng: 13.66411 },
+    santaMariaAngeli: { lat: 37.93394, lng: 13.66272 },
+    ssAnnunziata: { lat: 37.93218, lng: 13.66202 },
+    badia: { lat: 37.93286, lng: 13.66341 },
+    cappuccini: { lat: 37.93452, lng: 13.66618 }
+};
 
-        /* ============================
-           MARKER CASTELLO
-        ============================ */
+// ============================
+//   ICONE PERSONALIZZATE
+// ============================
 
-        L.marker(monumento, { icon: iconaCastello })
-            .addTo(map)
-            .bindPopup(
-                "<b>Castello di Caccamo</b><br>" +
-                "Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>" +
-                "<a href='https://www.coopculture.it/it/prodotti/castello-di-caccamo/' target='_blank'>Acquista biglietti</a>"
-            )
-            .openPopup();
+const iconaCastello = {
+    url: "img/icon-castello-dorato.png",
+    scaledSize: new google.maps.Size(55, 55)
+};
 
-        /* ============================
-           PERCORSO NERO
-        ============================ */
+const iconaChiesaGrande = {
+    url: "img/icon-croce-barocca.png",
+    scaledSize: new google.maps.Size(45, 45)
+};
 
-        let percorsoRosso = null;
+// ============================
+//   MARKER CASTELLO
+// ============================
 
-        function distanza(lat1, lon1, lat2, lon2) {
-            const R = 6371;
-            const dLat = (lat2 - lat1) * Math.PI / 180;
-            const dLon = (lon2 - lon1) * Math.PI / 180;
-            const a =
-                Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) *
-                Math.sin(dLon/2) * Math.sin(dLon/2);
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            return R * c;
+new google.maps.Marker({
+    position: coord.castello,
+    map: map,
+    icon: iconaCastello,
+    title: "Castello di Caccamo"
+});
+
+new google.maps.InfoWindow({
+    content: `
+        <b>Castello di Caccamo</b><br>
+        Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>
+        <a href="https://www.coopculture.it/it/prodotti/castello-di-caccamo/" target="_blank">
+            Acquista biglietti
+        </a>
+    `
+}).open(map, new google.maps.Marker({ position: coord.castello }));
+
+// ============================
+//   CHIESA SAN GIORGIO MARTIRE
+// ============================
+
+new google.maps.Marker({
+    position: coord.sanGiorgio,
+    map: map,
+    icon: iconaChiesaGrande,
+    title: "Chiesa San Giorgio Martire"
+});
+
+new google.maps.InfoWindow({
+    content: `
+        <b>Chiesa San Giorgio Martire</b><br>
+        Domenica: 08:30 – 11:00 – 18:00<br>
+        Feriali: 18:00
+    `
+}).open(map, new google.maps.Marker({ position: coord.sanGiorgio }));
+
+// ============================
+//   CHIESA SANTA MARIA DEGLI ANGELI
+// ============================
+
+new google.maps.Marker({
+    position: coord.santaMariaAngeli,
+    map: map,
+    icon: iconaChiesaGrande,
+    title: "Chiesa Santa Maria degli Angeli"
+});
+
+new google.maps.InfoWindow({
+    content: `
+        <b>Chiesa Santa Maria degli Angeli</b><br>
+        Domenica: 09:00 – 12:00<br>
+        Feriali: 17:00 – 19:00
+    `
+}).open(map, new google.maps.Marker({ position: coord.santaMariaAngeli }));
+
+// ============================
+//   CHIESA SS. ANNUNZIATA
+// ============================
+
+new google.maps.Marker({
+    position: coord.ssAnnunziata,
+    map: map,
+    icon: iconaChiesaGrande,
+    title: "Chiesa SS. Annunziata"
+});
+
+new google.maps.InfoWindow({
+    content: `
+        <b>Chiesa SS. Annunziata</b><br>
+        Domenica: 09:00 – 11:30<br>
+        Feriali: 18:00
+    `
+}).open(map, new google.maps.Marker({ position: coord.ssAnnunziata }));
+
+// ============================
+//   CHIESA DI SAN BENEDETTO DELLA BADIA
+// ============================
+
+new google.maps.Marker({
+    position: coord.badia,
+    map: map,
+    icon: iconaChiesaGrande,
+    title: "Chiesa di San Benedetto della Badia"
+});
+
+new google.maps.InfoWindow({
+    content: `
+        <b>Chiesa di San Benedetto della Badia</b><br>
+        Orari visita: 10:00–13:00, 15:00–18:00<br>
+        Pavimento in maiolica visitabile<br>
+        <a href="https://www.coopculture.it/it/prodotti/chiesa-di-san-benedetto-della-badia/" target="_blank">
+            Acquista biglietti
+        </a>
+    `
+}).open(map, new google.maps.Marker({ position: coord.badia }));
+
+// ============================
+//   CONVENTO DEI CAPPUCCINI
+// ============================
+
+new google.maps.Marker({
+    position: coord.cappuccini,
+    map: map,
+    icon: iconaChiesaGrande,
+    title: "Convento dei Frati Cappuccini"
+});
+
+new google.maps.InfoWindow({
+    content: `
+        <b>Convento dei Frati Cappuccini</b><br>
+        Orari funzioni (DinDonDan):<br>
+        Domenica: 09:00 – 12:00<br>
+        Feriali: 17:00 – 19:00
+    `
+}).open(map, new google.maps.Marker({ position: coord.cappuccini }));
+
+            // Popup Castello
+            const infoCastello = new google.maps.InfoWindow({
+                content: `
+                    <b>Castello di Caccamo</b><br>
+                    Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>
+                    <a href="https://www.coopculture.it/it/prodotti/castello-di-caccamo/" target="_blank">
+                        Acquista biglietti
+                    </a>
+                `
+            });
+
+            map.addListener("click", () => infoCastello.close());
+            infoCastello.open(map, new google.maps.Marker({ position: castello }));
+
         }
-
-        map.on('click', function(e) {
-            const start = [e.latlng.lat, e.latlng.lng];
-
-            if (percorsoRosso) {
-                map.removeLayer(percorsoRosso);
-            }
-
-            percorsoRosso = L.polyline([start, monumento], {
-                className: 'percorso-nero'
-            }).addTo(map);
-
-            const km = distanza(start[0], start[1], monumento[0], monumento[1]);
-            const minuti = Math.round((km / 4) * 60);
-
-            L.marker(start)
-                .addTo(map)
-                .bindPopup(
-                    "📍 Punto di partenza<br>" +
-                    "📏 Distanza: " + km.toFixed(2) + " km<br>" +
-                    "⏱️ Tempo stimato: " + minuti + " min"
-                )
-                .openPopup();
-        });
-
     </script>
+
+    <!-- GOOGLE MAPS API KEY -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-tIu-xxxxxxxxtxxxxxQY5ePYzFSVe4&callback=initMap" async defer></script>
 
 </body>
 </html>
