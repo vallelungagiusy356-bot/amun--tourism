@@ -242,9 +242,17 @@ new google.maps.InfoWindow({
 
         }
     </script>
-
+const directionsService = new google.maps.DirectionsService();
+const directionsRenderer = new google.maps.DirectionsRenderer({
+    suppressMarkers: false,
+    polylineOptions: {
+        strokeColor: "#000000",
+        strokeWeight: 5
+    }
+});
+directionsRenderer.setMap(map);
     <!-- GOOGLE MAPS API KEY -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-tIu-xxxxxxxxtxxxxxQY5ePYzFSVe4&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-tIu-34BVyuz4t3gayTQY5ePYzFSVe4&callback=initMap" async defer></script>
 
 </body>
 </html>
