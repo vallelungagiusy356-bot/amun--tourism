@@ -82,14 +82,13 @@
         const minuti = Math.round((km / 4) * 60); // camminata 4 km/h
 
         // POPUP SUL PUNTO DI PARTENZA
-        L.marker(start)
-            .addTo(map)
-            .bindPopup(
-                "📍 Punto di partenza<br>" +
-                "📏 Distanza: " + km.toFixed(2) + " km<br>" +
-                "⏱️ Tempo stimato: " + minuti + " min"
-            )
-            .openPopup();
+        L.marker(monumento)
+    .addTo(map)
+    .bindPopup(
+        "Castello di Caccamo<br>" +
+        "<a href='https://www.google.com/maps/dir/?api=1&destination=37.9325,13.6645' target='_blank'>Portami qui 🚗</a>"
+    )
+    .openPopup();
     });
 
             </script>
