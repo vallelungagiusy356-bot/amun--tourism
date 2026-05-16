@@ -98,10 +98,8 @@
 
             // CREA LA LINEA ROSSA
             percorsoRosso = L.polyline([start, monumento], {
-                color: 'red',
-                weight: 5,
-                opacity: 0.8
-            }).addTo(map);
+    className: 'percorso-nero'
+}).addTo(map);
 // ICONA CASTELLO (dorata stilizzata)
 var iconaCastello = L.icon({
     iconUrl: 'img/icon-castello-dorato.png',
