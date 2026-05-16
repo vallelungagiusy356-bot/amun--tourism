@@ -1,87 +1,47 @@
-/* ============================
-   STILE GENERALE PAGINA MAPPA
-   ============================ */
-
 html, body {
     height: 100%;
     margin: 0;
-    background: #f4e9d8; /* sabbia/beige */
-    font-family: "Georgia", serif;
+    padding: 0;
+    background: #f7f3ec; /* beige premium */
 }
 
-/* ============================
-   CONTENITORE MAPPA
-   ============================ */
-
+/* Contenitore mappa con cornice oro */
 #map {
     height: 100%;
     width: 100%;
-    border-radius: 20px;
-    border: 2px solid #b48a5a; /* marrone oro */
-    box-shadow: 0 0 25px rgba(255, 215, 143, 0.5); /* glow dorato */
+    border: 3px solid #d4b98a; /* oro soft */
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.15);
     overflow: hidden;
 }
 
-/* ============================
-   POPUP (STILE AMUNÌ)
-   ============================ */
-
-.leaflet-popup-content-wrapper {
-    background: #fdf7ef; /* beige chiaro */
-    color: #3a2a1a; /* marrone scuro */
-    border-radius: 12px;
-    border: 2px solid #b48a5a;
-    font-size: 16px;
+/* Pulsante Portami Qui minimal */
+.btn-portami {
+    background: #ffffff;
+    color: #b08a57;
+    padding: 6px 12px;
+    border: 1px solid #b08a57;
+    border-radius: 6px;
+    margin-top: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.leaflet-popup-tip {
-    background: #fdf7ef;
+.btn-portami:hover {
+    background: #b08a57;
+    color: #fff;
 }
 
-/* Link dentro i popup */
-.leaflet-popup-content a {
-    color: #8b5e34; /* marrone caldo */
-    font-weight: bold;
+/* Popup minimal */
+.gm-style .gm-style-iw {
+    font-family: "Inter", sans-serif;
+    color: #4a3f35;
+    padding: 4px;
+}
+
+.gm-style .gm-style-iw a {
+    color: #b08a57;
     text-decoration: none;
-}
-
-.leaflet-popup-content a:hover {
-    color: #b48a5a; /* oro/marrone */
-}
-
-/* ============================
-   ICONA MONUMENTI GRANDI
-   ============================ */
-
-.icon-monumento {
-    width: 55px;
-    height: 55px;
-}
-
-/* ============================
-   ICONA CHIESE GRANDI (le tue)
-   ============================ */
-
-.icon-chiesa-grande {
-    width: 45px;
-    height: 45px;
-}
-
-/* ============================
-   ICONA CHIESE PICCOLE (le altre 33)
-   ============================ */
-
-.icon-chiesa-piccola {
-    width: 18px;
-    height: 18px;
-}
-
-/* ============================
-   LINEA DEL PERCORSO
-   ============================ */
-
-.percorso-nero {
-    stroke: #000000 !important;
-    stroke-width: 5px !important;
-    opacity: 0.9 !important;
+    font-weight: 600;
 }
