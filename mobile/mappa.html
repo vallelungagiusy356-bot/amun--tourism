@@ -16,6 +16,20 @@
         #map {
             height: 100%;
             width: 100%;
+            /* stile in linea col sito (puoi aggiungere altro qui) */
+            border-radius: 16px;
+            box-shadow: 0 0 25px rgba(255, 215, 143, 0.4);
+            border: 1px solid rgba(255, 215, 143, 0.6);
+        }
+
+        .leaflet-popup-content-wrapper {
+            background: rgba(10, 10, 10, 0.9);
+            color: #FFF8E1;
+            border-radius: 12px;
+            border: 1px solid #FFD78F;
+        }
+        .leaflet-popup-tip {
+            background: rgba(10, 10, 10, 0.9);
         }
     </style>
 </head>
@@ -25,78 +39,82 @@
     <div id="map"></div>
 
     <script>
+        // COORDINATE DEL MONUMENTO (Castello di Caccamo)
+        const monumento = [37.9325, 13.6645];
 
-    // COORDINATE DEL MONUMENTO (Castello di Caccamo)
-    const monumento = [37.9325, 13.6645];
+        // CREA LA MAPPA
+        var map = L.map('map').setView(monumento, 16);
 
-    // CREA LA MAPPA
-    var map = L.map('map').setView(monumento, 16);
-
-    // TILE LAYER
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
-
-    // MARKER DEL MONUMENTO
-    L.marker(monumento)
-        .addTo(map)
-        .bindPopup("Castello di Caccamo")
-        .openPopup();
-
-    // VARIABILE PER IL PERCORSO
-    let percorsoRosso = null;
-
-    // FUNZIONE PER CALCOLARE DISTANZA (in km)
-    function distanza(lat1, lon1, lat2, lon2) {
-        const R = 6371;
-        const dLat = (lat2 - lat1) * Math.PI / 180;
-        const dLon = (lon2 - lon1) * Math.PI / 180;
-        const a =
-            Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) *
-            Math.sin(dLon/2) * Math.sin(dLon/2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        return R * c;
-    }
-
-    // CLICK SULLA MAPPA → CREA IL PERCORSO
-    map.on('click', function(e) {
-
-        const start = [e.latlng.lat, e.latlng.lng];
-
-        // RIMUOVI IL PERCORSO PRECEDENTE
-        if (percorsoRosso) {
-            map.removeLayer(percorsoRosso);
-        }
-
-        // CREA LA LINEA ROSSA
-        percorsoRosso = L.polyline([start, monumento], {
-            color: 'red',
-            weight: 5,
-            opacity: 0.8
+        // TILE LAYER
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        // CALCOLA DISTANZA
-        const km = distanza(start[0], start[1], monumento[0], monumento[1]);
-        const minuti = Math.round((km / 4) * 60); // camminata 4 km/h
+        // ICONA PERSONALIZZATA DEL MONUMENTO
+        var iconaMonumento = L.icon({
+            iconUrl: 'img/icon-castello.png', // cambia con il tuo percorso
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+            popupAnchor: [0, -40]
+        });
 
-        // POPUP SUL PUNTO DI PARTENZA
-        L.marker(monumento)
-    .addTo(map)
-    .bindPopup(
-        "Castello di Caccamo<br>" +
-        "<a href='https://www.google.com/maps/dir/?api=1&destination=37.9325,13.6645' target='_blank'>Portami qui 🚗</a>"
-    )
-    .openPopup();
-    var iconaMonumento = L.icon({
-    iconUrl: 'img/icon-castello.png', // metti qui il percorso della tua icona
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
-    });
+        // MARKER DEL MONUMENTO CON "PORTAMI QUI"
+        L.marker(monumento, { icon: iconaMonumento })
+            .addTo(map)
+            .bindPopup(
+                "Castello di Caccamo<br>" +
+                "<a href='https://www.google.com/maps/dir/?api=1&destination=37.9325,13.6645' target='_blank'>Portami qui 🚗</a>"
+            )
+            .openPopup();
 
-            </script>
+        // VARIABILE PER IL PERCORSO
+        let percorsoRosso = null;
+
+        // FUNZIONE PER CALCOLARE DISTANZA (in km)
+        function distanza(lat1, lon1, lat2, lon2) {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a =
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c;
+        }
+
+        // CLICK SULLA MAPPA → CREA IL PERCORSO
+        map.on('click', function(e) {
+            const start = [e.latlng.lat, e.latlng.lng];
+
+            // RIMUOVI IL PERCORSO PRECEDENTE
+            if (percorsoRosso) {
+                map.removeLayer(percorsoRosso);
+            }
+
+            // CREA LA LINEA ROSSA
+            percorsoRosso = L.polyline([start, monumento], {
+                color: 'red',
+                weight: 5,
+                opacity: 0.8
+            }).addTo(map);
+
+            // CALCOLA DISTANZA
+            const km = distanza(start[0], start[1], monumento[0], monumento[1]);
+            const minuti = Math.round((km / 4) * 60); // camminata 4 km/h
+
+            // POPUP SUL PUNTO DI PARTENZA
+            L.marker(start)
+                .addTo(map)
+                .bindPopup(
+                    "📍 Punto di partenza<br>" +
+                    "📏 Distanza: " + km.toFixed(2) + " km<br>" +
+                    "⏱️ Tempo stimato: " + minuti + " min"
+                )
+                .openPopup();
+        });
+    </script>
 
 </body>
 </html>
