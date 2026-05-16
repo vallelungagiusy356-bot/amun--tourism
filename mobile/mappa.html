@@ -62,12 +62,13 @@
         });
 
         // MARKER DEL MONUMENTO CON "PORTAMI QUI"
-        L.marker(monumento, { icon: iconaMonumento })
-            .addTo(map)
-            .bindPopup(
-                "Castello di Caccamo<br>" +
-                "<a href='https://www.google.com/maps/dir/?api=1&destination=37.9325,13.6645' target='_blank'>Portami qui 🚗</a>"
-            )
+        L.marker(monumento, { icon: iconaCastello })
+    .addTo(map)
+    .bindPopup(
+        "<b>Castello di Caccamo</b><br>" +
+        "Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>" +
+        "<a href='https://www.coopculture.it/it/prodotti/castello-di-caccamo/' target='_blank'>Acquista biglietti</a>"
+    );
             .openPopup();
 
         // VARIABILE PER IL PERCORSO
