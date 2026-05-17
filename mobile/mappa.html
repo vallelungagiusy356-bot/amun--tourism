@@ -26,12 +26,52 @@
             font-size:14px;
             cursor:pointer;
         }
+
+        /* ============================
+           PULSANTI FLOTTANTI MINIMAL
+        ============================ */
+        .map-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 9999;
+        }
+
+        .btn-float {
+            background: rgba(255, 255, 255, 0.9);
+            color: #b08a57;
+            border: 1px solid #b08a57;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 13px;
+            font-family: "Inter", sans-serif;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+        }
+
+        .btn-float:hover {
+            background: #b08a57;
+            color: #fff;
+        }
     </style>
 </head>
 
 <body>
 
 <div id="map"></div>
+
+<!-- ============================
+     PULSANTI FLOTTANTI MINIMAL
+============================ -->
+<div class="map-buttons">
+    <button id="btnCastello" class="btn-float">🏰 Castello</button>
+    <button id="btnMonumenti" class="btn-float">📍 Monumenti</button>
+    <button id="btnPercorso" class="btn-float">🚶 Percorso</button>
+</div>
 
 <script>
 function initMap() {
@@ -50,17 +90,80 @@ function initMap() {
     };
 
     // ============================
-    //   MAPPA
+    //   MAPPA (con stile terracotta)
     // ============================
 
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 16,
         center: coord.castello,
         styles: [
-            { "featureType": "all", "elementType": "geometry", "stylers": [{ "color": "#f4e9d8" }] },
-            { "featureType": "poi", "elementType": "labels.text.fill", "stylers": [{ "color": "#6b4f2d" }] },
-            { "featureType": "road", "elementType": "geometry", "stylers": [{ "color": "#e0c9a6" }] },
-            { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#c9d7e8" }] }
+          {
+            "elementType": "geometry",
+            "stylers": [
+              { "color": "#f2e5d4" }
+            ]
+          },
+          {
+            "elementType": "labels.text.fill",
+            "stylers": [
+              { "color": "#8d6e63" }
+            ]
+          },
+          {
+            "elementType": "labels.text.stroke",
+            "stylers": [
+              { "color": "#f2e5d4" }
+            ]
+          },
+          {
+            "featureType": "administrative",
+            "elementType": "geometry.stroke",
+            "stylers": [
+              { "color": "#d7c1a3" }
+            ]
+          },
+          {
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [
+              { "color": "#e8d3b5" }
+            ]
+          },
+          {
+            "featureType": "poi.park",
+            "elementType": "geometry.fill",
+            "stylers": [
+              { "color": "#d6c8a5" }
+            ]
+          },
+          {
+            "featureType": "road",
+            "elementType": "geometry",
+            "stylers": [
+              { "color": "#f5e6d3" }
+            ]
+          },
+          {
+            "featureType": "road.arterial",
+            "elementType": "geometry",
+            "stylers": [
+              { "color": "#f0d9b5" }
+            ]
+          },
+          {
+            "featureType": "road.highway",
+            "elementType": "geometry",
+            "stylers": [
+              { "color": "#e6c79c" }
+            ]
+          },
+          {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [
+              { "color": "#cdd7e0" }
+            ]
+          }
         ]
     });
 
@@ -152,7 +255,7 @@ function initMap() {
     }
 
     // ============================
-    //   MARKER + POPUP CON PORTAMI QUI
+    //   MARKER + POPUP
     // ============================
 
     aggiungiMarker(coord.castello, iconaCastello, "Castello di Caccamo", `
@@ -197,6 +300,24 @@ function initMap() {
         Feriali: 17:00 – 19:00<br>
         <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.cappuccini.lat}, ${coord.cappuccini.lng})">🚶‍♂️ Portami qui</button>
     `);
+
+    // ============================
+    //   PULSANTI FLOTTANTI JS
+    // ============================
+
+    document.getElementById("btnCastello").addEventListener("click", () => {
+        map.setCenter(coord.castello);
+        map.setZoom(17);
+    });
+
+    document.getElementById("btnMonumenti").addEventListener("click", () => {
+        map.setCenter(coord.castello);
+        map.setZoom(16);
+    });
+
+    document.getElementById("btnPercorso").addEventListener("click", () => {
+        alert("Tocca un punto sulla mappa per calcolare il percorso verso il Castello.");
+    });
 
 }
 </script>
