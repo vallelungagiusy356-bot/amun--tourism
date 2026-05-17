@@ -90,80 +90,26 @@ function initMap() {
     };
 
     // ============================
-    //   MAPPA (con stile terracotta)
+    //   MAPPA (STILE CARTOON)
     // ============================
 
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 16,
         center: coord.castello,
         styles: [
-          {
-            "elementType": "geometry",
-            "stylers": [
-              { "color": "#f2e5d4" }
-            ]
-          },
-          {
-            "elementType": "labels.text.fill",
-            "stylers": [
-              { "color": "#8d6e63" }
-            ]
-          },
-          {
-            "elementType": "labels.text.stroke",
-            "stylers": [
-              { "color": "#f2e5d4" }
-            ]
-          },
-          {
-            "featureType": "administrative",
-            "elementType": "geometry.stroke",
-            "stylers": [
-              { "color": "#d7c1a3" }
-            ]
-          },
-          {
-            "featureType": "poi",
-            "elementType": "geometry",
-            "stylers": [
-              { "color": "#e8d3b5" }
-            ]
-          },
-          {
-            "featureType": "poi.park",
-            "elementType": "geometry.fill",
-            "stylers": [
-              { "color": "#d6c8a5" }
-            ]
-          },
-          {
-            "featureType": "road",
-            "elementType": "geometry",
-            "stylers": [
-              { "color": "#f5e6d3" }
-            ]
-          },
-          {
-            "featureType": "road.arterial",
-            "elementType": "geometry",
-            "stylers": [
-              { "color": "#f0d9b5" }
-            ]
-          },
-          {
-            "featureType": "road.highway",
-            "elementType": "geometry",
-            "stylers": [
-              { "color": "#e6c79c" }
-            ]
-          },
-          {
-            "featureType": "water",
-            "elementType": "geometry.fill",
-            "stylers": [
-              { "color": "#cdd7e0" }
-            ]
-          }
+          { "elementType": "geometry", "stylers": [{ "color": "#f5e6d3" }] },
+          { "elementType": "labels.text.fill", "stylers": [{ "color": "#8b5a2b" }] },
+          { "elementType": "labels.text.stroke", "stylers": [{ "color": "#f5e6d3" }] },
+
+          { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f0d2a0" }] },
+          { "featureType": "poi.park", "elementType": "geometry.fill", "stylers": [{ "color": "#d8e8c8" }] },
+
+          { "featureType": "road", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }] },
+          { "featureType": "road", "elementType": "geometry.stroke", "stylers": [{ "color": "#d1b48c" }] },
+
+          { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "color": "#f0cfa0" }] },
+
+          { "featureType": "water", "elementType": "geometry.fill", "stylers": [{ "color": "#bcd4e6" }] }
         ]
     });
 
@@ -180,31 +126,6 @@ function initMap() {
         url: "img/icon-croce-barocca.png",
         scaledSize: new google.maps.Size(45, 45)
     };
-
-    // ============================
-    //   FUNZIONE PULSANTE PORTAMI QUI
-    // ============================
-
-    function calcolaPercorsoUtente(destLat, destLng) {
-        if (!navigator.geolocation) {
-            alert("Geolocalizzazione non supportata");
-            return;
-        }
-
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
-                const start = {
-                    lat: pos.coords.latitude,
-                    lng: pos.coords.longitude
-                };
-
-                const end = { lat: destLat, lng: destLng };
-
-                calcolaPercorso(start, end);
-            },
-            () => alert("Impossibile ottenere la posizione")
-        );
-    }
 
     // ============================
     //   DIRECTIONS (PERCORSO REALE)
@@ -236,6 +157,29 @@ function initMap() {
     }
 
     // ============================
+    //   PERCORSO AL CLICK
+    // ============================
+
+    let percorsoAttivo = false;
+
+    document.getElementById("btnPercorso").addEventListener("click", () => {
+        percorsoAttivo = true;
+        alert("Tocca un punto sulla mappa per calcolare il percorso.");
+    });
+
+    map.addListener("click", (e) => {
+        if (!percorsoAttivo) return;
+
+        const end = {
+            lat: e.latLng.lat(),
+            lng: e.latLng.lng()
+        };
+
+        calcolaPercorso(coord.castello, end);
+        percorsoAttivo = false;
+    });
+
+    // ============================
     //   FUNZIONE AGGIUNGI MARKER
     // ============================
 
@@ -255,18 +199,19 @@ function initMap() {
     }
 
     // ============================
-    //   MARKER + POPUP
+    //   MARKER + POPUP INTERNI
     // ============================
 
     aggiungiMarker(coord.castello, iconaCastello, "Castello di Caccamo", `
         <b>Castello di Caccamo</b><br>
         Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>
-        <a href="https://www.coopculture.it/it/prodotti/castello-di-caccamo/" target="_blank">Acquista biglietti</a><br>
+        Biglietti disponibili in loco<br>
         <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.castello.lat}, ${coord.castello.lng})">🚶‍♂️ Portami qui</button>
     `);
 
     aggiungiMarker(coord.sanGiorgio, iconaChiesaGrande, "San Giorgio", `
         <b>Chiesa San Giorgio Martire</b><br>
+        Piazza Duomo, 2 – Caccamo<br>
         Domenica: 08:30 – 11:00 – 18:00<br>
         Feriali: 18:00<br>
         <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.sanGiorgio.lat}, ${coord.sanGiorgio.lng})">🚶‍♂️ Portami qui</button>
@@ -274,6 +219,7 @@ function initMap() {
 
     aggiungiMarker(coord.santaMariaAngeli, iconaChiesaGrande, "Santa Maria degli Angeli", `
         <b>Chiesa Santa Maria degli Angeli</b><br>
+        Via Roma – Caccamo<br>
         Domenica: 09:00 – 12:00<br>
         Feriali: 17:00 – 19:00<br>
         <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.santaMariaAngeli.lat}, ${coord.santaMariaAngeli.lng})">🚶‍♂️ Portami qui</button>
@@ -281,6 +227,7 @@ function initMap() {
 
     aggiungiMarker(coord.ssAnnunziata, iconaChiesaGrande, "SS. Annunziata", `
         <b>Chiesa SS. Annunziata</b><br>
+        Via SS. Annunziata – Caccamo<br>
         Domenica: 09:00 – 11:30<br>
         Feriali: 18:00<br>
         <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.ssAnnunziata.lat}, ${coord.ssAnnunziata.lng})">🚶‍♂️ Portami qui</button>
@@ -290,12 +237,13 @@ function initMap() {
         <b>Chiesa di San Benedetto della Badia</b><br>
         Orari visita: 10:00–13:00, 15:00–18:00<br>
         Pavimento in maiolica visitabile<br>
-        <a href="https://www.coopculture.it/it/prodotti/chiesa-di-san-benedetto-della-badia/" target="_blank">Acquista biglietti</a><br>
+        Biglietti disponibili in loco<br>
         <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.badia.lat}, ${coord.badia.lng})">🚶‍♂️ Portami qui</button>
     `);
 
     aggiungiMarker(coord.cappuccini, iconaChiesaGrande, "Cappuccini", `
         <b>Convento dei Frati Cappuccini</b><br>
+        Contrada Cappuccini – Caccamo<br>
         Domenica: 09:00 – 12:00<br>
         Feriali: 17:00 – 19:00<br>
         <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.cappuccini.lat}, ${coord.cappuccini.lng})">🚶‍♂️ Portami qui</button>
@@ -313,10 +261,6 @@ function initMap() {
     document.getElementById("btnMonumenti").addEventListener("click", () => {
         map.setCenter(coord.castello);
         map.setZoom(16);
-    });
-
-    document.getElementById("btnPercorso").addEventListener("click", () => {
-        alert("Tocca un punto sulla mappa per calcolare il percorso verso il Castello.");
     });
 
 }
