@@ -1,373 +1,175 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <!-- Leaflet -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+
+    <!-- Leaflet Awesome Markers -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_c30cbb681eccc2b01af3b8d8060864ee {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            </style>
 
-            <style>html, body {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            </style>
-
-            <style>#map {
-                position:absolute;
-                top:0;
-                bottom:0;
-                right:0;
-                left:0;
-                }
-            </style>
-
-            <script>
-                L_NO_TOUCH = false;
-                L_DISABLE_3D = false;
-            </script>
-
-        
+    <!-- Mouse Position -->
     <script src="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
 </head>
+
 <body>
-    
-    
-            <div class="folium-map" id="map_c30cbb681eccc2b01af3b8d8060864ee" ></div>
-        
-</body>
+
+<div id="map"></div>
+
 <script>
-    
-    
-            var map_c30cbb681eccc2b01af3b8d8060864ee = L.map(
-                "map_c30cbb681eccc2b01af3b8d8060864ee",
-                {
-                    center: [37.9314, 13.6644],
-                    crs: L.CRS.EPSG3857,
-                    ...{
-  "zoom": 16,
-  "zoomControl": true,
-  "preferCanvas": false,
-}
+    // ============================
+    //  CREAZIONE MAPPA
+    // ============================
+    var map = L.map("map", {
+        center: [37.9314, 13.6644],
+        zoom: 16,
+        zoomControl: true
+    });
 
-                }
-            );
+    // ============================
+    //  TILE LAYER
+    // ============================
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: "© OpenStreetMap contributors © CARTO",
+        subdomains: "abcd",
+        maxZoom: 20
+    }).addTo(map);
 
-            
+    // ============================
+    //  ICONE PERSONALIZZATE
+    // ============================
+    var iconaCastello = L.AwesomeMarkers.icon({
+        markerColor: "orange",
+        iconColor: "white",
+        icon: "landmark",
+        prefix: "fa"
+    });
 
-        
-    
-            var tile_layer_1193a49328c3300fa95b41aef8251dcd = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-                {
-  "minZoom": 0,
-  "maxZoom": 20,
-  "maxNativeZoom": 20,
-  "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
-  "subdomains": "abcd",
-  "detectRetina": false,
-  "tms": false,
-  "opacity": 1,
-}
+    var iconaChiesa = L.AwesomeMarkers.icon({
+        markerColor: "blue",
+        iconColor: "white",
+        icon: "church",
+        prefix: "fa"
+    });
 
-            );
-        
-    
-            tile_layer_1193a49328c3300fa95b41aef8251dcd.addTo(map_c30cbb681eccc2b01af3b8d8060864ee);
-        
-    
-            var marker_0f3a21e3e5def61a34e0b4ce6833b931 = L.marker(
-                [37.9317334, 13.6598455],
-                {
-}
-            ).addTo(map_c30cbb681eccc2b01af3b8d8060864ee);
-        
-    
-            var icon_dbc8d3e12ded02ef4845f7865a8ec9ad = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "red",
-  "iconColor": "white",
-  "icon": "castle",
-  "prefix": "fa",
-  "extraClasses": "fa-rotate-0",
-  "iconSize": [45, 45],
-}
-            );
-        
-    
-        var popup_e99efcd1fed0c8e435559ef8e608b3d4 = L.popup({
-  "maxWidth": 200,
-});
+    // ============================
+    //  MONUMENTI DI CACCAMO
+    // ============================
 
-        
-            
-                var html_c77c8e324bdd3986d8aad6add72a5d19 = $(`<div id="html_c77c8e324bdd3986d8aad6add72a5d19" style="width: 100.0%; height: 100.0%;"><b>Castello di Caccamo</b></div>`)[0];
-                popup_e99efcd1fed0c8e435559ef8e608b3d4.setContent(html_c77c8e324bdd3986d8aad6add72a5d19);
-            
-        
+    // CASTELLO DI CACCAMO
+    L.marker([37.93241, 13.66075], {icon: iconaCastello})
+      .addTo(map)
+      .bindPopup(`
+          <b>Castello di Caccamo</b><br>
+          Orari: 09:00 – 17:00<br>
+          <a href="https://www.comune.caccamo.pa.it/turismo" target="_blank">Acquista biglietti</a>
+      `)
+      .bindTooltip("Castello di Caccamo", {sticky: true});
 
-        marker_0f3a21e3e5def61a34e0b4ce6833b931.bindPopup(popup_e99efcd1fed0c8e435559ef8e608b3d4)
-        ;
+    // CHIESA SAN GIORGIO MARTIRE
+    L.marker([37.93202, 13.66463], {icon: iconaChiesa})
+      .addTo(map)
+      .bindPopup(`
+          <b>Chiesa San Giorgio Martire</b><br>
+          Domenica: 08:30 – 11:00 – 18:00<br>
+          Feriali: 18:00
+      `)
+      .bindTooltip("San Giorgio Martire", {sticky: true});
 
-        
-    
-    
-            marker_0f3a21e3e5def61a34e0b4ce6833b931.bindTooltip(
-                `<div>
-                     Castello di Caccamo
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_0f3a21e3e5def61a34e0b4ce6833b931.setIcon(icon_dbc8d3e12ded02ef4845f7865a8ec9ad);
-            
-    
-            var marker_754ad8e9c3916d92f5c22380f69e3d1a = L.marker(
-                [37.9330117, 13.6660399],
-                {
-}
-            ).addTo(map_c30cbb681eccc2b01af3b8d8060864ee);
-        
-    
-            var icon_bd197e2f1586696da8bea14f3b29d293 = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "red",
-  "iconColor": "white",
-  "icon": "castle",
-  "prefix": "fa",
-  "extraClasses": "fa-rotate-0",
-  "iconSize": [45, 45],
-}
-            );
-        
-    
-        var popup_ae6264773877f37be4e828dedf5468e9 = L.popup({
-  "maxWidth": 200,
-});
+    // CHIESA SANTA MARIA DEGLI ANGELI
+    L.marker([37.93286, 13.66642], {icon: iconaChiesa})
+      .addTo(map)
+      .bindPopup(`
+          <b>Santa Maria degli Angeli</b><br>
+          Domenica: 09:00 – 12:00<br>
+          Feriali: 17:00 – 19:00
+      `)
+      .bindTooltip("Santa Maria degli Angeli", {sticky: true});
 
-        
-            
-                var html_00bbc0952846ccf1db4a3b922165a3b2 = $(`<div id="html_00bbc0952846ccf1db4a3b922165a3b2" style="width: 100.0%; height: 100.0%;"><b>Chiesa santa maria degli angeli, Caccamo</b></div>`)[0];
-                popup_ae6264773877f37be4e828dedf5468e9.setContent(html_00bbc0952846ccf1db4a3b922165a3b2);
-            
-        
+    // CHIESA SS. ANNUNZIATA
+    L.marker([37.93252, 13.66339], {icon: iconaChiesa})
+      .addTo(map)
+      .bindPopup(`
+          <b>Chiesa SS. Annunziata</b><br>
+          Domenica: 09:00 – 11:30<br>
+          Feriali: 18:00
+      `)
+      .bindTooltip("SS. Annunziata", {sticky: true});
 
-        marker_754ad8e9c3916d92f5c22380f69e3d1a.bindPopup(popup_ae6264773877f37be4e828dedf5468e9)
-        ;
+    // BADIA
+    L.marker([37.93192, 13.66252], {icon: iconaChiesa})
+      .addTo(map)
+      .bindPopup(`
+          <b>Badia</b><br>
+          Orari visita: 10:00–13:00, 15:00–18:00
+      `)
+      .bindTooltip("Badia", {sticky: true});
 
-        
-    
-    
-            marker_754ad8e9c3916d92f5c22380f69e3d1a.bindTooltip(
-                `<div>
-                     Chiesa santa maria degli angeli, Caccamo
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_754ad8e9c3916d92f5c22380f69e3d1a.setIcon(icon_bd197e2f1586696da8bea14f3b29d293);
-            
-    
-            var marker_5305d96aba2f29ab20965a29b06254f0 = L.marker(
-                [37.9317, 13.6652],
-                {
-}
-            ).addTo(map_c30cbb681eccc2b01af3b8d8060864ee);
-        
-    
-            var icon_f63f0c05ec385ee4f369e6e3d6c63049 = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "cutlery",
-  "prefix": "fa",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_05e7ce0da8c456d0fafe7abea4f65922 = L.popup({
-  "maxWidth": "100%",
-});
+    // CONVENTO DEI CAPPUCCINI
+    L.marker([37.92892, 13.66232], {icon: iconaChiesa})
+      .addTo(map)
+      .bindPopup(`
+          <b>Convento dei Cappuccini</b><br>
+          Domenica: 09:00 – 12:00<br>
+          Feriali: 17:00 – 19:00
+      `)
+      .bindTooltip("Convento dei Cappuccini", {sticky: true});
 
-        
-            
-                var html_81ecd922a8646de34045e4e859610e1e = $(`<div id="html_81ecd922a8646de34045e4e859610e1e" style="width: 100.0%; height: 100.0%;">A Castellana (Ristorante)</div>`)[0];
-                popup_05e7ce0da8c456d0fafe7abea4f65922.setContent(html_81ecd922a8646de34045e4e859610e1e);
-            
-        
+    // ============================
+    //  CONTROLLO COORDINATE
+    // ============================
+    var mousePos = new L.Control.MousePosition({
+        position: "topright",
+        separator: " | ",
+        emptyString: "Clicca sulla mappa per le coordinate",
+        numDigits: 5,
+        prefix: "Coordinate del punto:"
+    });
+    map.addControl(mousePos);
 
-        marker_5305d96aba2f29ab20965a29b06254f0.bindPopup(popup_05e7ce0da8c456d0fafe7abea4f65922)
-        ;
+    var latLngPopup = L.popup();
+    function latLngPop(e) {
+        latLngPopup
+            .setLatLng(e.latlng)
+            .setContent("Latitude: " + e.latlng.lat.toFixed(4) +
+                        "<br>Longitude: " + e.latlng.lng.toFixed(4))
+            .openOn(map);
+    }
+    map.on('click', latLngPop);
 
-        
-    
-    
-            marker_5305d96aba2f29ab20965a29b06254f0.bindTooltip(
-                `<div>
-                     A Castellana (Ristorante)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_5305d96aba2f29ab20965a29b06254f0.setIcon(icon_f63f0c05ec385ee4f369e6e3d6c63049);
-            
-    
-            var marker_1da312133cb081ad006cfd0c162714b1 = L.marker(
-                [37.932, 13.664],
-                {
-}
-            ).addTo(map_c30cbb681eccc2b01af3b8d8060864ee);
-        
-    
-            var icon_54d088fbb45b73f8e19c9a5a5669bf6b = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "cutlery",
-  "prefix": "fa",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_e2fe1a069defd46703c5ff2d8e0b20f7 = L.popup({
-  "maxWidth": "100%",
-});
-
-        
-            
-                var html_141be55d39684e0e9598058ebc89e24d = $(`<div id="html_141be55d39684e0e9598058ebc89e24d" style="width: 100.0%; height: 100.0%;">Ristorante Il Castello</div>`)[0];
-                popup_e2fe1a069defd46703c5ff2d8e0b20f7.setContent(html_141be55d39684e0e9598058ebc89e24d);
-            
-        
-
-        marker_1da312133cb081ad006cfd0c162714b1.bindPopup(popup_e2fe1a069defd46703c5ff2d8e0b20f7)
-        ;
-
-        
-    
-    
-            marker_1da312133cb081ad006cfd0c162714b1.bindTooltip(
-                `<div>
-                     Ristorante Il Castello
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_1da312133cb081ad006cfd0c162714b1.setIcon(icon_54d088fbb45b73f8e19c9a5a5669bf6b);
-            
-    
-            var marker_660f37003918878e065d5a1b49a54176 = L.marker(
-                [37.9301, 13.6615],
-                {
-}
-            ).addTo(map_c30cbb681eccc2b01af3b8d8060864ee);
-        
-    
-            var icon_60a8293a7d8ff349c3a255b6d070f0d9 = L.AwesomeMarkers.icon(
-                {
-  "markerColor": "orange",
-  "iconColor": "white",
-  "icon": "glass",
-  "prefix": "fa",
-  "extraClasses": "fa-rotate-0",
-}
-            );
-        
-    
-        var popup_829eb8fbdc0dd689d637f2f944ca5931 = L.popup({
-  "maxWidth": "100%",
-});
-
-        
-            
-                var html_027ceaa45e357efb0a160b9ab4de996b = $(`<div id="html_027ceaa45e357efb0a160b9ab4de996b" style="width: 100.0%; height: 100.0%;">Bar Royal (Bar/Pub)</div>`)[0];
-                popup_829eb8fbdc0dd689d637f2f944ca5931.setContent(html_027ceaa45e357efb0a160b9ab4de996b);
-            
-        
-
-        marker_660f37003918878e065d5a1b49a54176.bindPopup(popup_829eb8fbdc0dd689d637f2f944ca5931)
-        ;
-
-        
-    
-    
-            marker_660f37003918878e065d5a1b49a54176.bindTooltip(
-                `<div>
-                     Bar Royal (Bar/Pub)
-                 </div>`,
-                {
-  "sticky": true,
-}
-            );
-        
-    
-                marker_660f37003918878e065d5a1b49a54176.setIcon(icon_60a8293a7d8ff349c3a255b6d070f0d9);
-            
-    
-            var mouse_position_5598dfe7fc508cad8affa186a5fbead4 = new L.Control.MousePosition(
-                {
-  "position": "topright",
-  "separator": " | ",
-  "emptyString": "Clicca sulla mappa per le coordinate",
-  "lngFirst": false,
-  "numDigits": 5,
-  "prefix": "Coordinate del punto:",
-}
-            );
-            mouse_position_5598dfe7fc508cad8affa186a5fbead4.options["latFormatter"] =
-                undefined;
-            mouse_position_5598dfe7fc508cad8affa186a5fbead4.options["lngFormatter"] =
-                undefined;
-            map_c30cbb681eccc2b01af3b8d8060864ee.addControl(mouse_position_5598dfe7fc508cad8affa186a5fbead4);
-        
-    
-                var lat_lng_popup_732ca2d49bdbcc057929334194669426 = L.popup();
-                function latLngPop(e) {
-                    lat_lng_popup_732ca2d49bdbcc057929334194669426
-                        .setLatLng(e.latlng)
-                        .setContent("Latitude: " + e.latlng.lat.toFixed(4) +
-                                    "<br>Longitude: " + e.latlng.lng.toFixed(4))
-                        .openOn(map_c30cbb681eccc2b01af3b8d8060864ee);
-                    }
-                map_c30cbb681eccc2b01af3b8d8060864ee.on('click', latLngPop);
-            
 </script>
+
+</body>
 </html>
