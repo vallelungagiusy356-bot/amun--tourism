@@ -15,7 +15,6 @@
             width: 100%;
         }
 
-        /* Stile pulsante Portami Qui */
         .btn-portami {
             background:#000;
             color:#FFD78F;
@@ -27,9 +26,6 @@
             cursor:pointer;
         }
 
-        /* ============================
-           PULSANTI FLOTTANTI MINIMAL
-        ============================ */
         .map-buttons {
             position: fixed;
             bottom: 20px;
@@ -47,7 +43,6 @@
             border-radius: 8px;
             padding: 8px 14px;
             font-size: 13px;
-            font-family: "Inter", sans-serif;
             cursor: pointer;
             box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             transition: all 0.2s ease;
@@ -64,9 +59,6 @@
 
 <div id="map"></div>
 
-<!-- ============================
-     PULSANTI FLOTTANTI MINIMAL
-============================ -->
 <div class="map-buttons">
     <button id="btnCastello" class="btn-float">🏰 Castello</button>
     <button id="btnMonumenti" class="btn-float">📍 Monumenti</button>
@@ -76,66 +68,67 @@
 <script>
 function initMap() {
 
-    // ============================
-    //   COORDINATE
-    // ============================
-
-    const coord = {
-        castello: { lat: 37.9325, lng: 13.6645 },
-        sanGiorgio: { lat: 37.93334, lng: 13.66411 },
-        santaMariaAngeli: { lat: 37.93394, lng: 13.66272 },
-        ssAnnunziata: { lat: 37.93218, lng: 13.66202 },
-        badia: { lat: 37.93286, lng: 13.66341 },
-        cappuccini: { lat: 37.93452, lng: 13.66618 }
-    };
-
-    // ============================
-    //   MAPPA (STILE CARTOON)
-    // ============================
+    const geocoder = new google.maps.Geocoder();
 
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 16,
-        center: coord.castello,
+        center: { lat: 37.9325, lng: 13.6645 },
         styles: [
-          { "elementType": "geometry", "stylers": [{ "color": "#f5e6d3" }] },
-          { "elementType": "labels.text.fill", "stylers": [{ "color": "#8b5a2b" }] },
-          { "elementType": "labels.text.stroke", "stylers": [{ "color": "#f5e6d3" }] },
-
-          { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f0d2a0" }] },
-          { "featureType": "poi.park", "elementType": "geometry.fill", "stylers": [{ "color": "#d8e8c8" }] },
-
-          { "featureType": "road", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }] },
-          { "featureType": "road", "elementType": "geometry.stroke", "stylers": [{ "color": "#d1b48c" }] },
-
-          { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "color": "#f0cfa0" }] },
-
-          { "featureType": "water", "elementType": "geometry.fill", "stylers": [{ "color": "#bcd4e6" }] }
+            {
+                "elementType": "labels",
+                "stylers": [
+                    { "visibility": "off" },
+                    { "color": "#f49f53" }
+                ]
+            },
+            {
+                "featureType": "landscape",
+                "stylers": [
+                    { "color": "#f9ddc5" },
+                    { "lightness": -7 }
+                ]
+            },
+            {
+                "featureType": "road",
+                "stylers": [
+                    { "color": "#813033" },
+                    { "lightness": 43 }
+                ]
+            },
+            {
+                "featureType": "poi.business",
+                "stylers": [
+                    { "color": "#645c20" },
+                    { "lightness": 38 }
+                ]
+            },
+            {
+                "featureType": "water",
+                "stylers": [
+                    { "color": "#1994bf" },
+                    { "saturation": -69 },
+                    { "gamma": 0.99 },
+                    { "lightness": 43 }
+                ]
+            },
+            {
+                "featureType": "road.local",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    { "color": "#f19f53" },
+                    { "weight": 1.3 },
+                    { "visibility": "on" },
+                    { "lightness": 16 }
+                ]
+            }
         ]
     });
-
-    // ============================
-    //   ICONE
-    // ============================
-
-    const iconaCastello = {
-        url: "img/icon-castello-dorato.png",
-        scaledSize: new google.maps.Size(55, 55)
-    };
-
-    const iconaChiesaGrande = {
-        url: "img/icon-croce-barocca.png",
-        scaledSize: new google.maps.Size(45, 45)
-    };
-
-    // ============================
-    //   DIRECTIONS (PERCORSO REALE)
-    // ============================
 
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer({
         suppressMarkers: false,
         polylineOptions: {
-            strokeColor: "#000000",
+            strokeColor: "#000",
             strokeWeight: 5
         }
     });
@@ -156,10 +149,6 @@ function initMap() {
         );
     }
 
-    // ============================
-    //   PERCORSO AL CLICK
-    // ============================
-
     let percorsoAttivo = false;
 
     document.getElementById("btnPercorso").addEventListener("click", () => {
@@ -175,98 +164,85 @@ function initMap() {
             lng: e.latLng.lng()
         };
 
-        calcolaPercorso(coord.castello, end);
+        geocoder.geocode({ address: "Castello di Caccamo" }, (results, status) => {
+            if (status === "OK") {
+                const start = results[0].geometry.location;
+                calcolaPercorso(start, end);
+            }
+        });
+
         percorsoAttivo = false;
     });
 
-    // ============================
-    //   FUNZIONE AGGIUNGI MARKER
-    // ============================
+    function aggiungiMonumento(nome, icona, descrizione) {
+        geocoder.geocode({ address: nome + " Caccamo" }, (results, status) => {
+            if (status !== "OK") return;
 
-    function aggiungiMarker(pos, icona, titolo, html) {
-        const marker = new google.maps.Marker({
-            position: pos,
-            map: map,
-            icon: icona,
-            title: titolo
+            const posizione = results[0].geometry.location;
+
+            const marker = new google.maps.Marker({
+                position: posizione,
+                map: map,
+                icon: icona,
+                title: nome
+            });
+
+            const info = new google.maps.InfoWindow({
+                content: descrizione
+            });
+
+            marker.addListener("click", () => info.open(map, marker));
         });
-
-        const info = new google.maps.InfoWindow({
-            content: html
-        });
-
-        marker.addListener("click", () => info.open(map, marker));
     }
 
-    // ============================
-    //   MARKER + POPUP INTERNI
-    // ============================
+    const iconaCastello = {
+        url: "img/icon-castello-dorato.png",
+        scaledSize: new google.maps.Size(55, 55)
+    };
 
-    aggiungiMarker(coord.castello, iconaCastello, "Castello di Caccamo", `
+    const iconaChiesa = {
+        url: "img/icon-croce-barocca.png",
+        scaledSize: new google.maps.Size(45, 45)
+    };
+
+    aggiungiMonumento("Castello di Caccamo", iconaCastello, `
         <b>Castello di Caccamo</b><br>
-        Orari: 09:00–17:00 (inv), 09:00–19:00 (est)<br>
+        Orari: 09:00–17:00 / 19:00<br>
         Biglietti disponibili in loco<br>
-        <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.castello.lat}, ${coord.castello.lng})">🚶‍♂️ Portami qui</button>
     `);
 
-    aggiungiMarker(coord.sanGiorgio, iconaChiesaGrande, "San Giorgio", `
+    aggiungiMonumento("Chiesa San Giorgio Martire", iconaChiesa, `
         <b>Chiesa San Giorgio Martire</b><br>
-        Piazza Duomo, 2 – Caccamo<br>
         Domenica: 08:30 – 11:00 – 18:00<br>
         Feriali: 18:00<br>
-        <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.sanGiorgio.lat}, ${coord.sanGiorgio.lng})">🚶‍♂️ Portami qui</button>
     `);
 
-    aggiungiMarker(coord.santaMariaAngeli, iconaChiesaGrande, "Santa Maria degli Angeli", `
-        <b>Chiesa Santa Maria degli Angeli</b><br>
-        Via Roma – Caccamo<br>
+    aggiungiMonumento("Chiesa Santa Maria degli Angeli", iconaChiesa, `
+        <b>Santa Maria degli Angeli</b><br>
         Domenica: 09:00 – 12:00<br>
         Feriali: 17:00 – 19:00<br>
-        <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.santaMariaAngeli.lat}, ${coord.santaMariaAngeli.lng})">🚶‍♂️ Portami qui</button>
     `);
 
-    aggiungiMarker(coord.ssAnnunziata, iconaChiesaGrande, "SS. Annunziata", `
-        <b>Chiesa SS. Annunziata</b><br>
-        Via SS. Annunziata – Caccamo<br>
+    aggiungiMonumento("Chiesa SS. Annunziata", iconaChiesa, `
+        <b>SS. Annunziata</b><br>
         Domenica: 09:00 – 11:30<br>
         Feriali: 18:00<br>
-        <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.ssAnnunziata.lat}, ${coord.ssAnnunziata.lng})">🚶‍♂️ Portami qui</button>
     `);
 
-    aggiungiMarker(coord.badia, iconaChiesaGrande, "Badia", `
-        <b>Chiesa di San Benedetto della Badia</b><br>
+    aggiungiMonumento("Chiesa di San Benedetto della Badia", iconaChiesa, `
+        <b>Badia</b><br>
         Orari visita: 10:00–13:00, 15:00–18:00<br>
-        Pavimento in maiolica visitabile<br>
-        Biglietti disponibili in loco<br>
-        <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.badia.lat}, ${coord.badia.lng})">🚶‍♂️ Portami qui</button>
     `);
 
-    aggiungiMarker(coord.cappuccini, iconaChiesaGrande, "Cappuccini", `
-        <b>Convento dei Frati Cappuccini</b><br>
-        Contrada Cappuccini – Caccamo<br>
+    aggiungiMonumento("Convento dei Cappuccini Caccamo", iconaChiesa, `
+        <b>Convento dei Cappuccini</b><br>
         Domenica: 09:00 – 12:00<br>
         Feriali: 17:00 – 19:00<br>
-        <button class="btn-portami" onclick="calcolaPercorsoUtente(${coord.cappuccini.lat}, ${coord.cappuccini.lng})">🚶‍♂️ Portami qui</button>
     `);
-
-    // ============================
-    //   PULSANTI FLOTTANTI JS
-    // ============================
-
-    document.getElementById("btnCastello").addEventListener("click", () => {
-        map.setCenter(coord.castello);
-        map.setZoom(17);
-    });
-
-    document.getElementById("btnMonumenti").addEventListener("click", () => {
-        map.setCenter(coord.castello);
-        map.setZoom(16);
-    });
 
 }
 </script>
 
-<!-- QUI LA TUA API KEY È AL POSTO GIUSTO -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-tIu-34BVyuz4t3gayTQY5ePYzFSVe4&callback=initMap" async defer></script>
 
 </body>
