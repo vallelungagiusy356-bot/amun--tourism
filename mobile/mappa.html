@@ -1,71 +1,87 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Mappa Caccamo + Strade OSM</title>
-  <style>
-    body {
-      margin: 0;
-      background: #d8c2a1;
-      font-family: "Cormorant Garamond", serif;
-    }
+<meta charset="UTF-8">
+<title>Mappa Illustrata Caccamo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    #mappa {
-      position: relative;
-      width: 2000px;
-      height: 2000px;
-      overflow: scroll;
-      cursor: grab;
-    }
+<style>
+body {
+  margin: 0;
+  background: #d8c2a1;
+  font-family: "Cormorant Garamond", serif;
+}
 
-    #mappa:active {
-      cursor: grabbing;
-    }
+#mappa {
+  position: relative;
+  width: 2000px;
+  height: 2000px;
+  overflow: scroll;
+  cursor: grab;
+}
 
-    .punto {
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #d8c2a1;
-      border: 2px solid #000;
-      transform: translate(-50%, -50%);
-    }
+#mappa:active {
+  cursor: grabbing;
+}
 
-    .etichetta {
-      position: absolute;
-      background: rgba(255,255,255,0.8);
-      padding: 3px 6px;
-      border-radius: 4px;
-      font-size: 12px;
-      border: 1px solid #000;
-      transform: translate(-50%, -120%);
-      white-space: nowrap;
-    }
-  </style>
+/* Nomi vie */
+.nome-via {
+  font-size: 14px;
+  fill: #000;
+  stroke: #d8c2a1;
+  stroke-width: 3px;
+  paint-order: stroke;
+  font-family: "Cormorant Garamond", serif;
+  opacity: 0.9;
+}
+
+/* Icone */
+.icon {
+  transform: translate(-50%, -50%);
+}
+</style>
 </head>
+
 <body>
 
 <div id="mappa">
+
+  <!-- AREE URBANE / VERDI -->
+  <svg id="aree" width="2000" height="2000"
+       style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
+
+  <!-- STRADE -->
   <svg id="strade" width="2000" height="2000"
        style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
+
+  <!-- NOMI DELLE VIE -->
+  <svg id="nomi-vie" width="2000" height="2000"
+       style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
+
+  <!-- ICONE -->
+  <svg id="icone" width="2000" height="2000"
+       style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
+
 </div>
 
 <script>
 const mappa = document.getElementById("mappa");
-const svg   = document.getElementById("strade");
+const svgAree = document.getElementById("aree");
+const svgStrade = document.getElementById("strade");
+const svgNomi = document.getElementById("nomi-vie");
+const svgIcone = document.getElementById("icone");
+
 const width = 2000;
 const height = 2000;
 
 let minLat, maxLat, minLng, maxLng;
 
-// 1) Carico il tuo data.json
+// 1) Carico data.json
 fetch("data.json")
   .then(r => r.json())
   .then(data => {
-    // --- calcolo bounding box dai tuoi punti ---
-    const punti = [];
 
+    const punti = [];
     data.chiese.forEach(p => punti.push(p));
     data.ristoranti.forEach(p => punti.push(p));
     data.bar.forEach(p => punti.push(p));
@@ -85,44 +101,55 @@ fetch("data.json")
       return height - ((lat - minLat) / (maxLat - minLat)) * height;
     }
 
-    // --- disegno i tuoi punti ---
-    function aggiungiPunto(lat, lng, nome) {
+    // 2) Icone stilizzate
+    function aggiungiIcona(lat, lng, tipo) {
       const x = posX(lng);
       const y = posY(lat);
 
-      const punto = document.createElement("div");
-      punto.className = "punto";
-      punto.style.left = x + "px";
-      punto.style.top  = y + "px";
+      let svgPath = "";
 
-      const label = document.createElement("div");
-      label.className = "etichetta";
-      label.style.left = x + "px";
-      label.style.top  = y + "px";
-      label.innerText  = nome;
+      if (tipo === "chiesa") {
+        svgPath = "M10 0 L20 10 L10 20 L0 10 Z"; // croce stilizzata
+      }
+      if (tipo === "bar") {
+        svgPath = "M5 0 L15 0 L20 10 L0 10 Z"; // tazzina
+      }
+      if (tipo === "ristorante") {
+        svgPath = "M5 0 L5 20 M15 0 L15 20"; // forchetta
+      }
+      if (tipo === "castello") {
+        svgPath = "M0 20 L0 5 L5 0 L10 5 L10 20 Z"; // torre
+      }
 
-      mappa.appendChild(punto);
-      mappa.appendChild(label);
+      const icon = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      icon.setAttribute("d", svgPath);
+      icon.setAttribute("fill", "#000");
+      icon.setAttribute("transform", `translate(${x},${y}) scale(2)`);
+      icon.setAttribute("class", "icon");
+
+      svgIcone.appendChild(icon);
     }
 
-    aggiungiPunto(data.castello.lat, data.castello.lng, data.castello.nome);
-    data.chiese.forEach(c => aggiungiPunto(c.lat, c.lng, c.nome));
-    data.ristoranti.forEach(r => aggiungiPunto(r.lat, r.lng, r.nome));
-    data.bar.forEach(b => aggiungiPunto(b.lat, b.lng, b.nome));
-    data.pub.forEach(p => aggiungiPunto(p.lat, p.lng, p.nome));
+    // Aggiungo icone
+    aggiungiIcona(data.castello.lat, data.castello.lng, "castello");
+    data.chiese.forEach(c => aggiungiIcona(c.lat, c.lng, "chiesa"));
+    data.ristoranti.forEach(r => aggiungiIcona(r.lat, r.lng, "ristorante"));
+    data.bar.forEach(b => aggiungiIcona(b.lat, b.lng, "bar"));
+    data.pub.forEach(p => aggiungiIcona(p.lat, p.lng, "bar"));
 
-    // --- ora chiedo le strade a Overpass ---
-    caricaStradeDaOSM(posX, posY);
+    // 3) Carico strade + aree + nomi vie
+    caricaOSM(posX, posY);
   });
 
-// 2) Chiamata a Overpass API per le strade
-function caricaStradeDaOSM(posX, posY) {
+// 4) Overpass API
+function caricaOSM(posX, posY) {
   const bbox = `${minLat},${minLng},${maxLat},${maxLng}`;
 
   const query = `
     [out:json][timeout:25];
     (
       way["highway"](${bbox});
+      way["landuse"](${bbox});
     );
     out geom;
   `;
@@ -133,71 +160,100 @@ function caricaStradeDaOSM(posX, posY) {
   })
   .then(r => r.json())
   .then(osm => {
-    osm.elements
-      .filter(el => el.type === "way" && el.geometry)
-      .forEach(way => {
-        disegnaStradaOSM(way.geometry, way.tags && way.tags.highway, posX, posY);
-      });
-  })
-  .catch(err => console.error("Errore Overpass:", err));
+    osm.elements.forEach(el => {
+      if (el.type === "way" && el.geometry) {
+        if (el.tags.landuse) disegnaArea(el, posX, posY);
+        if (el.tags.highway) disegnaStrada(el, posX, posY);
+        if (el.tags.name && el.tags.highway) disegnaNomeVia(el, posX, posY);
+      }
+    });
+  });
 }
 
-// 3) Disegno una strada OSM come path SVG
-function disegnaStradaOSM(geometry, highwayType, posX, posY) {
+// 5) Disegno aree urbane / verdi
+function disegnaArea(way, posX, posY) {
+  const colori = {
+    residential: "#d1b894aa",
+    grass: "#a8d08daa",
+    meadow: "#a8d08daa",
+    forest: "#7ca37daa",
+    park: "#a8d08daa"
+  };
+
+  const colore = colori[way.tags.landuse];
+  if (!colore) return;
+
+  let d = "M ";
+  way.geometry.forEach(pt => {
+    d += `${posX(pt.lon)} ${posY(pt.lat)} `;
+  });
+  d += "Z";
+
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", d);
+  path.setAttribute("fill", colore);
+  path.setAttribute("stroke", "none");
+
+  svgAree.appendChild(path);
+}
+
+// 6) Disegno strade
+function disegnaStrada(way, posX, posY) {
   let d = "";
-  geometry.forEach((pt, i) => {
+  way.geometry.forEach((pt, i) => {
     const x = posX(pt.lon);
     const y = posY(pt.lat);
     d += (i === 0 ? `M ${x} ${y} ` : `L ${x} ${y} `);
   });
 
-  // tipo: principale o via
-  const isMain =
-    highwayType === "primary" ||
-    highwayType === "secondary" ||
-    highwayType === "tertiary" ||
-    highwayType === "trunk";
+  const main = ["primary", "secondary", "tertiary", "trunk"];
 
-  if (isMain) {
-    // contorno nero
+  if (main.includes(way.tags.highway)) {
     const outline = document.createElementNS("http://www.w3.org/2000/svg", "path");
     outline.setAttribute("d", d);
     outline.setAttribute("stroke", "#000");
     outline.setAttribute("stroke-width", "8");
-    outline.setAttribute("stroke-linecap", "round");
-    outline.setAttribute("stroke-linejoin", "round");
     outline.setAttribute("fill", "none");
-    outline.setAttribute("opacity", "0.9");
-    svg.appendChild(outline);
+    svgStrade.appendChild(outline);
 
-    // linea oro
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", d);
     path.setAttribute("stroke", "#d4a64a");
     path.setAttribute("stroke-width", "6");
-    path.setAttribute("stroke-linecap", "round");
-    path.setAttribute("stroke-linejoin", "round");
     path.setAttribute("fill", "none");
-    svg.appendChild(path);
+    svgStrade.appendChild(path);
   } else {
-    // via nera
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", d);
     path.setAttribute("stroke", "#000");
     path.setAttribute("stroke-width", "2");
-    path.setAttribute("stroke-linecap", "round");
-    path.setAttribute("stroke-linejoin", "round");
     path.setAttribute("fill", "none");
-    path.setAttribute("opacity", "0.8");
-    svg.appendChild(path);
+    svgStrade.appendChild(path);
   }
 }
 
-// 4) Drag + zoom (come avevi già)
+// 7) Disegno nomi vie
+function disegnaNomeVia(way, posX, posY) {
+  const pts = way.geometry;
+  const mid = pts[Math.floor(pts.length / 2)];
+
+  const x = posX(mid.lon);
+  const y = posY(mid.lat);
+
+  const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  text.setAttribute("x", x);
+  text.setAttribute("y", y);
+  text.setAttribute("class", "nome-via");
+  text.textContent = way.tags.name;
+
+  svgNomi.appendChild(text);
+}
+
+// 8) Drag + zoom
 let isDragging = false;
 let startX, startY, scrollLeft, scrollTop;
 
-mappa.addEventListener("mousedown", (e) => {
+mappa.addEventListener("mousedown", e => {
   isDragging = true;
   startX = e.pageX - mappa.offsetLeft;
   startY = e.pageY - mappa.offsetTop;
@@ -208,19 +264,17 @@ mappa.addEventListener("mousedown", (e) => {
 mappa.addEventListener("mouseleave", () => isDragging = false);
 mappa.addEventListener("mouseup", () => isDragging = false);
 
-mappa.addEventListener("mousemove", (e) => {
+mappa.addEventListener("mousemove", e => {
   if (!isDragging) return;
   e.preventDefault();
   const x = e.pageX - mappa.offsetLeft;
   const y = e.pageY - mappa.offsetTop;
-  const walkX = (x - startX);
-  const walkY = (y - startY);
-  mappa.scrollLeft = scrollLeft - walkX;
-  mappa.scrollTop = scrollTop - walkY;
+  mappa.scrollLeft = scrollLeft - (x - startX);
+  mappa.scrollTop = scrollTop - (y - startY);
 });
 
 let scale = 1;
-mappa.addEventListener("wheel", (e) => {
+mappa.addEventListener("wheel", e => {
   e.preventDefault();
   scale += e.deltaY * -0.001;
   scale = Math.min(Math.max(0.5, scale), 2);
