@@ -48,15 +48,19 @@ body {
 
 <div id="mappa">
 
+  <!-- AREE URBANE / VERDI -->
   <svg id="aree" width="2000" height="2000"
        style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
 
+  <!-- STRADE -->
   <svg id="strade" width="2000" height="2000"
        style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
 
+  <!-- NOMI DELLE VIE -->
   <svg id="nomi-vie" width="2000" height="2000"
        style="position:absolute; top:0; left:0; pointer-events:none; opacity:0;"></svg>
 
+  <!-- ICONE -->
   <svg id="icone" width="2000" height="2000"
        style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
 
@@ -75,7 +79,7 @@ const height = 2000;
 let minLat, maxLat, minLng, maxLng;
 let scale = 1;
 
-// 1️⃣ Carico data.json
+// 1) Carico data.json
 fetch("data.json")
   .then(r => r.json())
   .then(data => {
@@ -100,7 +104,7 @@ fetch("data.json")
       return height - ((lat - minLat) / (maxLat - minLat)) * height;
     }
 
-    // 2️⃣ Icone stilizzate
+    // 2) Icone stilizzate
     function aggiungiIcona(lat, lng, tipo) {
       const x = posX(lng);
       const y = posY(lat);
@@ -108,10 +112,20 @@ fetch("data.json")
       let svgPath = "";
       let colore = "#000";
 
-      if (tipo === "chiesa") svgPath = "M10 0 L20 10 L10 20 L0 10 Z";
-      if (tipo === "bar") { svgPath = "M5 0 L15 0 L20 10 L0 10 Z"; colore = "#d4a64a"; }
-      if (tipo === "ristorante") { svgPath = "M5 0 L5 20 M15 0 L15 20"; colore = "#2b1e0f"; }
-      if (tipo === "castello") svgPath = "M0 20 L0 5 L5 0 L10 5 L10 20 Z";
+      if (tipo === "chiesa") {
+        svgPath = "M10 0 L20 10 L10 20 L0 10 Z";
+      }
+      if (tipo === "bar") {
+        svgPath = "M5 0 L15 0 L20 10 L0 10 Z";
+        colore = "#d4a64a";
+      }
+      if (tipo === "ristorante") {
+        svgPath = "M5 0 L5 20 M15 0 L15 20";
+        colore = "#2b1e0f";
+      }
+      if (tipo === "castello") {
+        svgPath = "M0 20 L0 5 L5 0 L10 5 L10 20 Z";
+      }
 
       const icon = document.createElementNS("http://www.w3.org/2000/svg", "path");
       icon.setAttribute("d", svgPath);
@@ -129,11 +143,11 @@ fetch("data.json")
     data.bar.forEach(b => aggiungiIcona(b.lat, b.lng, "bar"));
     data.pub.forEach(p => aggiungiIcona(p.lat, p.lng, "bar"));
 
-    // 3️⃣ Carico strade + aree + nomi vie
+    // 3) Carico strade + aree + nomi vie
     caricaOSM(posX, posY);
   });
 
-// 4️⃣ Overpass API
+// 4) Overpass API
 function caricaOSM(posX, posY) {
   const bbox = `${minLat},${minLng},${maxLat},${maxLng}`;
 
@@ -162,7 +176,7 @@ function caricaOSM(posX, posY) {
   });
 }
 
-// 5️⃣ Disegno aree urbane / verdi
+// 5) Disegno aree urbane / verdi
 function disegnaArea(way, posX, posY) {
   const colori = {
     residential: "#d1b894aa",
@@ -189,7 +203,7 @@ function disegnaArea(way, posX, posY) {
   svgAree.appendChild(path);
 }
 
-// 6️⃣ Disegno strade
+// 6) Disegno strade
 function disegnaStrada(way, posX, posY) {
   let d = "";
   way.geometry.forEach((pt, i) => {
@@ -224,19 +238,9 @@ function disegnaStrada(way, posX, posY) {
   }
 }
 
-// 7️⃣ Disegno nomi vie (curvi + zoom + viewport)
+// 7) Nomi vie (curvi + filtro densità)
 let nomiPos = [];
 let idCounter = 0;
-
-function nomeDentroViewport(x, y) {
-  const rect = mappa.getBoundingClientRect();
-  return (
-    x * scale > mappa.scrollLeft &&
-    y * scale > mappa.scrollTop &&
-    x * scale < mappa.scrollLeft + rect.width &&
-    y * scale < mappa.scrollTop + rect.height
-  );
-}
 
 function disegnaNomeVia(way, posX, posY) {
   const pts = way.geometry;
@@ -245,8 +249,6 @@ function disegnaNomeVia(way, posX, posY) {
   const mid = pts[Math.floor(pts.length / 2)];
   const x = posX(mid.lon);
   const y = posY(mid.lat);
-
-  if (!nomeDentroViewport(x, y)) return;
 
   if (nomiPos.some(p => Math.hypot(p.x - x, p.y - y) < 40)) return;
   nomiPos.push({x, y});
@@ -279,7 +281,7 @@ function disegnaNomeVia(way, posX, posY) {
   svgNomi.appendChild(text);
 }
 
-// 8️⃣ Drag + Zoom + visibilità nomi
+// 8) Drag + Zoom + visibilità nomi
 let isDragging = false;
 let startX, startY, scrollLeft, scrollTop;
 
@@ -312,7 +314,7 @@ mappa.addEventListener("wheel", e => {
 });
 
 function aggiornaVisibilitaNomi() {
-  svgNomi.style.opacity = scale < 1.4 ? "0" : "1";
+  svgNomi.style.opacity = scale < 1.1 ? "0" : "1";
 }
 </script>
 
