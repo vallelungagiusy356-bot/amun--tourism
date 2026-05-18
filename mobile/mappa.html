@@ -33,6 +33,7 @@ body {
   paint-order: stroke;
   font-family: "Cormorant Garamond", serif;
   opacity: 0.9;
+  pointer-events: none;
 }
 
 /* Icone */
@@ -47,19 +48,15 @@ body {
 
 <div id="mappa">
 
-  <!-- AREE URBANE / VERDI -->
   <svg id="aree" width="2000" height="2000"
        style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
 
-  <!-- STRADE -->
   <svg id="strade" width="2000" height="2000"
        style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
 
-  <!-- NOMI DELLE VIE -->
   <svg id="nomi-vie" width="2000" height="2000"
-       style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
+       style="position:absolute; top:0; left:0; pointer-events:none; opacity:0;"></svg>
 
-  <!-- ICONE -->
   <svg id="icone" width="2000" height="2000"
        style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
 
@@ -76,11 +73,13 @@ const width = 2000;
 const height = 2000;
 
 let minLat, maxLat, minLng, maxLng;
+let scale = 1;
 
 // 1️⃣ Carico data.json
 fetch("data.json")
   .then(r => r.json())
   .then(data => {
+
     const punti = [];
     data.chiese.forEach(p => punti.push(p));
     data.ristoranti.forEach(p => punti.push(p));
@@ -109,21 +108,10 @@ fetch("data.json")
       let svgPath = "";
       let colore = "#000";
 
-      if (tipo === "chiesa") {
-        svgPath = "M10 0 L20 10 L10 20 L0 10 Z"; // croce
-      }
-      if (tipo === "bar") {
-        svgPath = "M5 0 L15 0 L20 10 L0 10 Z"; // tazzina
-        colore = "#d4a64a";
-      }
-      if (tipo === "ristorante") {
-        svgPath = "M5 0 L5 20 M15 0 L15 20"; // forchetta
-        colore = "#2b1e0f";
-      }
-      if (tipo === "castello") {
-        svgPath = "M0 20 L0 5 L5 0 L10 5 L10 20 Z"; // torre
-        colore = "#000";
-      }
+      if (tipo === "chiesa") svgPath = "M10 0 L20 10 L10 20 L0 10 Z";
+      if (tipo === "bar") { svgPath = "M5 0 L15 0 L20 10 L0 10 Z"; colore = "#d4a64a"; }
+      if (tipo === "ristorante") { svgPath = "M5 0 L5 20 M15 0 L15 20"; colore = "#2b1e0f"; }
+      if (tipo === "castello") svgPath = "M0 20 L0 5 L5 0 L10 5 L10 20 Z";
 
       const icon = document.createElementNS("http://www.w3.org/2000/svg", "path");
       icon.setAttribute("d", svgPath);
@@ -229,4 +217,104 @@ function disegnaStrada(way, posX, posY) {
   } else {
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", d);
-    path
+    path.setAttribute("stroke", "#000");
+    path.setAttribute("stroke-width", "2");
+    path.setAttribute("fill", "none");
+    svgStrade.appendChild(path);
+  }
+}
+
+// 7️⃣ Disegno nomi vie (curvi + zoom + viewport)
+let nomiPos = [];
+let idCounter = 0;
+
+function nomeDentroViewport(x, y) {
+  const rect = mappa.getBoundingClientRect();
+  return (
+    x * scale > mappa.scrollLeft &&
+    y * scale > mappa.scrollTop &&
+    x * scale < mappa.scrollLeft + rect.width &&
+    y * scale < mappa.scrollTop + rect.height
+  );
+}
+
+function disegnaNomeVia(way, posX, posY) {
+  const pts = way.geometry;
+  if (!pts || pts.length < 3) return;
+
+  const mid = pts[Math.floor(pts.length / 2)];
+  const x = posX(mid.lon);
+  const y = posY(mid.lat);
+
+  if (!nomeDentroViewport(x, y)) return;
+
+  if (nomiPos.some(p => Math.hypot(p.x - x, p.y - y) < 40)) return;
+  nomiPos.push({x, y});
+
+  const id = "via" + (++idCounter);
+  let d = "";
+  pts.forEach((pt, i) => {
+    const px = posX(pt.lon);
+    const py = posY(pt.lat);
+    d += (i === 0 ? `M ${px} ${py} ` : `L ${px} ${py} `);
+  });
+
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("id", id);
+  path.setAttribute("d", d);
+  path.setAttribute("fill", "none");
+  path.setAttribute("stroke", "none");
+  svgNomi.appendChild(path);
+
+  const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  text.setAttribute("class", "nome-via");
+
+  const textPath = document.createElementNS("http://www.w3.org/2000/svg", "textPath");
+  textPath.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#" + id);
+  textPath.setAttribute("startOffset", "50%");
+  textPath.setAttribute("text-anchor", "middle");
+  textPath.textContent = way.tags.name;
+
+  text.appendChild(textPath);
+  svgNomi.appendChild(text);
+}
+
+// 8️⃣ Drag + Zoom + visibilità nomi
+let isDragging = false;
+let startX, startY, scrollLeft, scrollTop;
+
+mappa.addEventListener("mousedown", e => {
+  isDragging = true;
+  startX = e.pageX - mappa.offsetLeft;
+  startY = e.pageY - mappa.offsetTop;
+  scrollLeft = mappa.scrollLeft;
+  scrollTop = mappa.scrollTop;
+});
+
+mappa.addEventListener("mouseleave", () => isDragging = false);
+mappa.addEventListener("mouseup", () => isDragging = false);
+
+mappa.addEventListener("mousemove", e => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - mappa.offsetLeft;
+  const y = e.pageY - mappa.offsetTop;
+  mappa.scrollLeft = scrollLeft - (x - startX);
+  mappa.scrollTop = scrollTop - (y - startY);
+});
+
+mappa.addEventListener("wheel", e => {
+  e.preventDefault();
+  scale += e.deltaY * -0.001;
+  scale = Math.min(Math.max(0.5, scale), 3);
+  mappa.style.transform = `scale(${scale})`;
+  aggiornaVisibilitaNomi();
+});
+
+function aggiornaVisibilitaNomi() {
+  svgNomi.style.opacity = scale < 1.4 ? "0" : "1";
+}
+</script>
+
+</body>
+</html>
