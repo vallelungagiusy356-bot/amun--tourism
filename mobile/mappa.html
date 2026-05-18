@@ -2,13 +2,13 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Mappa Illustrata Caccamo</title>
+<title>Mappa Illustrata Caccamo — DEBUG</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   margin: 0;
-  background: #d8c2a1;
+  background: #cbb38a;
   font-family: "Cormorant Garamond", serif;
 }
 
@@ -26,13 +26,13 @@ body {
 
 /* Nomi vie */
 .nome-via {
-  font-size: 14px;
-  fill: #000;
-  stroke: #d8c2a1;
-  stroke-width: 3px;
+  font-size: 18px;
+  fill: #0044ff;
+  stroke: #ffffff;
+  stroke-width: 4px;
   paint-order: stroke;
   font-family: "Cormorant Garamond", serif;
-  opacity: 0.9;
+  opacity: 1;
   pointer-events: none;
 }
 
@@ -55,7 +55,7 @@ body {
        style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
 
   <svg id="nomi-vie" width="2000" height="2000"
-       style="position:absolute; top:0; left:0; pointer-events:none; opacity:0;"></svg>
+       style="position:absolute; top:0; left:0; pointer-events:none; opacity:1;"></svg>
 
   <svg id="icone" width="2000" height="2000"
        style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
@@ -64,6 +64,7 @@ body {
 
 <script>
 alert("JS FUNZIONA");
+
 const mappa = document.getElementById("mappa");
 const svgAree = document.getElementById("aree");
 const svgStrade = document.getElementById("strade");
@@ -76,7 +77,7 @@ const height = 2000;
 let minLat, maxLat, minLng, maxLng;
 let scale = 1;
 
-// 1) Carico data.json
+// Carico data.json
 fetch("data.json")
   .then(r => r.json())
   .then(data => {
@@ -102,25 +103,25 @@ fetch("data.json")
       return height - ((lat - minLat) / (maxLat - minLat)) * height;
     }
 
-    // 2) Icone stilizzate
+    // Icone visibili
     function aggiungiIcona(lat, lng, tipo) {
       const x = posX(lng);
       const y = posY(lat);
 
       let svgPath = "";
-      let colore = "#000";
+      let colore = "#ff0000"; // rosso vivo per debug
 
       if (tipo === "chiesa") svgPath = "M10 0 L20 10 L10 20 L0 10 Z";
-      if (tipo === "bar") { svgPath = "M5 0 L15 0 L20 10 L0 10 Z"; colore = "#d4a64a"; }
-      if (tipo === "ristorante") { svgPath = "M5 0 L5 20 M15 0 L15 20"; colore = "#2b1e0f"; }
+      if (tipo === "bar") svgPath = "M5 0 L15 0 L20 10 L0 10 Z";
+      if (tipo === "ristorante") svgPath = "M5 0 L5 20 M15 0 L15 20";
       if (tipo === "castello") svgPath = "M0 20 L0 5 L5 0 L10 5 L10 20 Z";
 
       const icon = document.createElementNS("http://www.w3.org/2000/svg", "path");
       icon.setAttribute("d", svgPath);
       icon.setAttribute("fill", colore);
       icon.setAttribute("stroke", "#000");
-      icon.setAttribute("stroke-width", "1");
-      icon.setAttribute("transform", `translate(${x},${y}) scale(3)`);
+      icon.setAttribute("stroke-width", "2");
+      icon.setAttribute("transform", `translate(${x},${y}) scale(8)`); // grande
       icon.setAttribute("class", "icon");
 
       svgIcone.appendChild(icon);
@@ -133,14 +134,12 @@ fetch("data.json")
     data.bar.forEach(b => aggiungiIcona(b.lat, b.lng, "bar"));
     data.pub.forEach(p => aggiungiIcona(p.lat, p.lng, "bar"));
 
-    // 3) Carico strade + aree + nomi vie
     caricaOSM(posX, posY);
   });
 
-// 4) Overpass API
+// Overpass API
 function caricaOSM(posX, posY) {
   const bbox = `${minLat},${minLng},${maxLat},${maxLng}`;
-
   const query = `
     [out:json][timeout:25];
     (
@@ -166,14 +165,14 @@ function caricaOSM(posX, posY) {
   });
 }
 
-// 5) Disegno aree urbane / verdi
+// Aree visibili
 function disegnaArea(way, posX, posY) {
   const colori = {
-    residential: "#d1b894aa",
-    grass: "#a8d08daa",
-    meadow: "#a8d08daa",
-    forest: "#7ca37daa",
-    park: "#a8d08daa"
+    residential: "#aaffaa",
+    grass: "#88ff88",
+    meadow: "#88ff88",
+    forest: "#55cc55",
+    park: "#88ff88"
   };
 
   const colore = colori[way.tags.landuse];
@@ -188,12 +187,13 @@ function disegnaArea(way, posX, posY) {
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("d", d);
   path.setAttribute("fill", colore);
-  path.setAttribute("stroke", "none");
+  path.setAttribute("stroke", "#000");
+  path.setAttribute("stroke-width", "1");
 
   svgAree.appendChild(path);
 }
 
-// 6) Disegno strade
+// Strade visibili
 function disegnaStrada(way, posX, posY) {
   let d = "";
   way.geometry.forEach((pt, i) => {
@@ -202,46 +202,266 @@ function disegnaStrada(way, posX, posY) {
     d += (i === 0 ? `M ${x} ${y} ` : `L ${x} ${y} `);
   });
 
-  const main = ["primary", "secondary", "tertiary", "trunk"];
-
-  if (main.includes(way.tags.highway)) {
-    const outline = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    outline.setAttribute("d", d);
-    outline.setAttribute("stroke", "#000");
-    outline.setAttribute("stroke-width", "8");
-    outline.setAttribute("fill", "none");
-    svgStrade.appendChild(outline);
-
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", d);
-    path.setAttribute("stroke", "#d4a64a");
-    path.setAttribute("stroke-width", "6");
-    path.setAttribute("fill", "none");
-    svgStrade.appendChild(path);
-  } else {
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", d);
-    path.setAttribute("stroke", "#000");
-    path.setAttribute("stroke-width", "2");
-    path.setAttribute("fill", "none");
-    svgStrade.appendChild(path);
-  }
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", d);
+  path.setAttribute("stroke", "#0044ff"); // blu vivo
+  path.setAttribute("stroke-width", "4");
+  path.setAttribute("fill", "none");
+  svgStrade.appendChild(path);
 }
 
-// 7) Nomi vie (curvi + zoom intelligente)
-let nomiPos = [];
+// Nomi vie sempre visibili
 let idCounter = 0;
 
 function disegnaNomeVia(way, posX, posY) {
   const pts = way.geometry;
   if (!pts || pts.length < 3) return;
 
-  const mid = pts[Math.floor(pts.length / 2)];
-  const x = posX(mid.lon);
-  const y = posY(mid.lat);
+  const id = "via" + (++idCounter);
+  let d = "";
+  pts.forEach((pt, i) => {
+    const px = posX(pt.lon);
+    const py = posY(pt.lat);
+    d += (i === 0 ? `M ${px} ${py} ` : `L ${px} ${py} `);
+  });
 
-  if (nomiPos.some(p => Math.hypot(p.x - x, p.y - y) < 40)) return;
-  nomiPos.push({x, y});
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("id", id);
+  path.setAttribute("d", d);
+  path.setAttribute("fill", "none");
+  path.setAttribute("stroke", "none");
+  svgNomi.appendChild(path);
+
+  const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  text.setAttribute("class", "nome-via");
+
+  const textPath = document.createElementNS("http://Giusi ❤️  
+Hai ragione, il codice si è troncato a metà mentre lo scrivevo.  
+Ti completo subito la **versione DEBUG completa e funzionante**, così puoi incollarla interamente nel tuo file `mappa.html` e vedere **icone, vie e nomi** ben visibili da smartphone.
+
+---
+
+## 🌈 **Versione completa — Mappa Illustrata Caccamo (DEBUG)**
+
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Mappa Illustrata Caccamo — DEBUG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  background: #cbb38a;
+  font-family: "Cormorant Garamond", serif;
+}
+
+#mappa {
+  position: relative;
+  width: 2000px;
+  height: 2000px;
+  overflow: scroll;
+  cursor: grab;
+}
+
+#mappa:active {
+  cursor: grabbing;
+}
+
+/* Nomi vie */
+.nome-via {
+  font-size: 18px;
+  fill: #0044ff;
+  stroke: #ffffff;
+  stroke-width: 4px;
+  paint-order: stroke;
+  font-family: "Cormorant Garamond", serif;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Icone */
+.icon {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+</style>
+</head>
+
+<body>
+
+<div id="mappa">
+
+  <svg id="aree" width="2000" height="2000"
+       style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
+
+  <svg id="strade" width="2000" height="2000"
+       style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
+
+  <svg id="nomi-vie" width="2000" height="2000"
+       style="position:absolute; top:0; left:0; pointer-events:none; opacity:1;"></svg>
+
+  <svg id="icone" width="2000" height="2000"
+       style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
+
+</div>
+
+<script>
+alert("JS FUNZIONA");
+
+const mappa = document.getElementById("mappa");
+const svgAree = document.getElementById("aree");
+const svgStrade = document.getElementById("strade");
+const svgNomi = document.getElementById("nomi-vie");
+const svgIcone = document.getElementById("icone");
+
+const width = 2000;
+const height = 2000;
+
+let minLat, maxLat, minLng, maxLng;
+let scale = 1;
+
+// Carico data.json
+fetch("data.json")
+  .then(r => r.json())
+  .then(data => {
+    alert("JSON CARICATO: SI");
+
+    const punti = [];
+    data.chiese.forEach(p => punti.push(p));
+    data.ristoranti.forEach(p => punti.push(p));
+    data.bar.forEach(p => punti.push(p));
+    data.pub.forEach(p => punti.push(p));
+    punti.push(data.castello);
+
+    minLat = Math.min(...punti.map(p => p.lat));
+    maxLat = Math.max(...punti.map(p => p.lat));
+    minLng = Math.min(...punti.map(p => p.lng));
+    maxLng = Math.max(...punti.map(p => p.lng));
+
+    function posX(lng) {
+      return ((lng - minLng) / (maxLng - minLng)) * width;
+    }
+
+    function posY(lat) {
+      return height - ((lat - minLat) / (maxLat - minLat)) * height;
+    }
+
+    // Icone visibili
+    function aggiungiIcona(lat, lng, tipo) {
+      const x = posX(lng);
+      const y = posY(lat);
+
+      let svgPath = "";
+      let colore = "#ff0000"; // rosso vivo per debug
+
+      if (tipo === "chiesa") svgPath = "M10 0 L20 10 L10 20 L0 10 Z";
+      if (tipo === "bar") svgPath = "M5 0 L15 0 L20 10 L0 10 Z";
+      if (tipo === "ristorante") svgPath = "M5 0 L5 20 M15 0 L15 20";
+      if (tipo === "castello") svgPath = "M0 20 L0 5 L5 0 L10 5 L10 20 Z";
+
+      const icon = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      icon.setAttribute("d", svgPath);
+      icon.setAttribute("fill", colore);
+      icon.setAttribute("stroke", "#000");
+      icon.setAttribute("stroke-width", "2");
+      icon.setAttribute("transform", `translate(${x},${y}) scale(8)`); // grande
+      icon.setAttribute("class", "icon");
+
+      svgIcone.appendChild(icon);
+    }
+
+    // Aggiungo icone
+    aggiungiIcona(data.castello.lat, data.castello.lng, "castello");
+    data.chiese.forEach(c => aggiungiIcona(c.lat, c.lng, "chiesa"));
+    data.ristoranti.forEach(r => aggiungiIcona(r.lat, r.lng, "ristorante"));
+    data.bar.forEach(b => aggiungiIcona(b.lat, b.lng, "bar"));
+    data.pub.forEach(p => aggiungiIcona(p.lat, p.lng, "bar"));
+
+    caricaOSM(posX, posY);
+  });
+
+// Overpass API
+function caricaOSM(posX, posY) {
+  const bbox = `${minLat},${minLng},${maxLat},${maxLng}`;
+  const query = `
+    [out:json][timeout:25];
+    (
+      way["highway"](${bbox});
+      way["landuse"](${bbox});
+    );
+    out geom;
+  `;
+
+  fetch("https://overpass-api.de/api/interpreter", {
+    method: "POST",
+    body: query
+  })
+  .then(r => r.json())
+  .then(osm => {
+    osm.elements.forEach(el => {
+      if (el.type === "way" && el.geometry) {
+        if (el.tags.landuse) disegnaArea(el, posX, posY);
+        if (el.tags.highway) disegnaStrada(el, posX, posY);
+        if (el.tags.name && el.tags.highway) disegnaNomeVia(el, posX, posY);
+      }
+    });
+  });
+}
+
+// Aree visibili
+function disegnaArea(way, posX, posY) {
+  const colori = {
+    residential: "#aaffaa",
+    grass: "#88ff88",
+    meadow: "#88ff88",
+    forest: "#55cc55",
+    park: "#88ff88"
+  };
+
+  const colore = colori[way.tags.landuse];
+  if (!colore) return;
+
+  let d = "M ";
+  way.geometry.forEach(pt => {
+    d += `${posX(pt.lon)} ${posY(pt.lat)} `;
+  });
+  d += "Z";
+
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", d);
+  path.setAttribute("fill", colore);
+  path.setAttribute("stroke", "#000");
+  path.setAttribute("stroke-width", "1");
+
+  svgAree.appendChild(path);
+}
+
+// Strade visibili
+function disegnaStrada(way, posX, posY) {
+  let d = "";
+  way.geometry.forEach((pt, i) => {
+    const x = posX(pt.lon);
+    const y = posY(pt.lat);
+    d += (i === 0 ? `M ${x} ${y} ` : `L ${x} ${y} `);
+  });
+
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", d);
+  path.setAttribute("stroke", "#0044ff"); // blu vivo
+  path.setAttribute("stroke-width", "4");
+  path.setAttribute("fill", "none");
+  svgStrade.appendChild(path);
+}
+
+// Nomi vie sempre visibili
+let idCounter = 0;
+
+function disegnaNomeVia(way, posX, posY) {
+  const pts = way.geometry;
+  if (!pts || pts.length < 3) return;
 
   const id = "via" + (++idCounter);
   let d = "";
@@ -303,7 +523,7 @@ mappa.addEventListener("wheel", e => {
   aggiornaVisibilitaNomi();
 });
 
-// ZOOM INTELLIGENTE (opzione 2)
+// ZOOM INTELLIGENTE
 function aggiornaVisibilitaNomi() {
   svgNomi.style.opacity = scale < 1.4 ? "0" : "1";
 }
