@@ -112,6 +112,34 @@ fetch("data.json")
         data.pub.forEach(p => {
             aggiungiPunto(p.lat, p.lng, p.nome);
         });
+
+        let isDragging = false;
+let startX, startY;
+let scrollLeft, scrollTop;
+
+const mappa = document.getElementById("mappa");
+
+mappa.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  startX = e.pageX - mappa.offsetLeft;
+  startY = e.pageY - mappa.offsetTop;
+  scrollLeft = mappa.scrollLeft;
+  scrollTop = mappa.scrollTop;
+});
+
+mappa.addEventListener("mouseleave", () => isDragging = false);
+mappa.addEventListener("mouseup", () => isDragging = false);
+
+mappa.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - mappa.offsetLeft;
+  const y = e.pageY - mappa.offsetTop;
+  const walkX = (x - startX);
+  const walkY = (y - startY);
+  mappa.scrollLeft = scrollLeft - walkX;
+  mappa.scrollTop = scrollTop - walkY;
+});
     });
 </script>
 
