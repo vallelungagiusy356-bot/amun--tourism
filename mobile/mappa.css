@@ -106,12 +106,10 @@ body {
     stroke: none;
 }
 
-/* Icone stilizzate (SVG) */
+/* Icone */
 .icon {
-    fill: #000;
-    stroke: none;
-    transform: translate(-50%, -50%);
-    opacity: 0.95;
+  transform: translate(-50%, -50%);
+  opacity: 1;
 }
 
 /* Nomi delle vie (testo curvo e leggibile) */
