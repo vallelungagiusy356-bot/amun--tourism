@@ -1,0 +1,350 @@
+{
+  "chiese": [
+    {
+      "nome": "Chiesa di San Benedetto alla Badia",
+      "indirizzo": "Piazza Vittorio Emanuele, 4, Caccamo",
+      "lat": 37.9312967,
+      "lng": 13.6645125
+    },
+    {
+      "nome": "Chiesa dell'Oratorio",
+      "indirizzo": "Piazza Duomo, Caccamo",
+      "lat": 37.9313414,
+      "lng": 13.6608231
+    },
+    {
+      "nome": "Convent of the Capuchin Friars",
+      "indirizzo": "Piazza Cappuccini, 4, Caccamo",
+      "lat": 37.9354964,
+      "lng": 13.6639045
+    },
+    {
+      "nome": "Chiesa di San Michele",
+      "indirizzo": "Piazza San Michele, Caccamo",
+      "lat": 37.9326222,
+      "lng": 13.6641303
+    },
+    {
+      "nome": "Church of Saint Mary of the Announcement",
+      "indirizzo": "Piazza SS. Annunziata, Caccamo",
+      "lat": 37.9315291,
+      "lng": 13.6642971
+    },
+    {
+      "nome": "Chiesa Santa Maria degli Angeli",
+      "indirizzo": "Piazza San Domenico, 1, Caccamo",
+      "lat": 37.9329931,
+      "lng": 13.6659428
+    },
+    {
+      "nome": "Chiesa di San Francesco",
+      "indirizzo": "Caccamo",
+      "lat": 37.9313951,
+      "lng": 13.6630911
+    },
+    {
+      "nome": "Chiesa Visita Poveri",
+      "indirizzo": "Via Visita Poveri, Caccamo",
+      "lat": 37.9311707,
+      "lng": 13.6634111
+    },
+    {
+      "nome": "Chiesa di Sant Agostino",
+      "indirizzo": "Caccamo",
+      "lat": 37.9340851,
+      "lng": 13.6652181
+    },
+    {
+      "nome": "Chiesa di San Giacomo Maggiore",
+      "indirizzo": "Corso Umberto, 23, Caccamo",
+      "lat": 37.9317104,
+      "lng": 13.661736
+    },
+    {
+      "nome": "Chiesa di Sant'Antonio Abate",
+      "indirizzo": "Via Matteo Bonello, Caccamo",
+      "lat": 37.9322582,
+      "lng": 13.6609508
+    },
+    {
+      "nome": "Chiesa delle Anime Sante del purgatorio",
+      "indirizzo": "Piazza Duomo, Caccamo",
+      "lat": 37.9314049,
+      "lng": 13.6611745
+    },
+    {
+      "nome": "Chiesa Vecchia dei Santi Filippo e Giacomo",
+      "indirizzo": "Via Beato Liccio, 8, Caccamo",
+      "lat": 37.9303825,
+      "lng": 13.6620671
+    },
+    {
+      "nome": "Duomo di San Giorgio Martire",
+      "indirizzo": "Piazza Duomo, 2, Caccamo",
+      "lat": 37.9310429,
+      "lng": 13.6607201
+    },
+    {
+      "nome": "Chiesa di San Nicasio Fuori le mura",
+      "indirizzo": "Via San Nicasio, Caccamo",
+      "lat": 37.9284981,
+      "lng": 13.6638077
+    },
+    {
+      "nome": "Chiesa del Beato Giovanni Liccio",
+      "indirizzo": "Via B. Giovanni Liccio F. M., 2/17, Caccamo",
+      "lat": 37.9301974,
+      "lng": 13.6599842
+    },
+    {
+      "nome": "San Pietro in Vincoli",
+      "indirizzo": "Via Ricovero San Ferdinando, 38, Caccamo",
+      "lat": 37.9309444,
+      "lng": 13.6591422
+    },
+    {
+      "nome": "Church of the Carmel",
+      "indirizzo": "Piazza Carmine, 1, Termini Imerese",
+      "lat": 37.9264717,
+      "lng": 13.6666009
+    },
+    {
+      "nome": "Chiesa Cristiana Evangelica Internazionale",
+      "indirizzo": "Viale Regione Siciliana, 129, Caccamo",
+      "lat": 37.9348716,
+      "lng": 13.6736443
+    }
+  ],
+
+  "ristoranti": [
+    {
+      "nome": "Agriturismo Cicala Giuseppe Faso",
+      "indirizzo": "Contrada Misa, Caccamo",
+      "lat": 37.924958,
+      "lng": 13.664757
+    },
+    {
+      "nome": "A Castellana",
+      "indirizzo": "Piazza dei Caduti, 4, Caccamo",
+      "lat": 37.9321034,
+      "lng": 13.6603796
+    },
+    {
+      "nome": "Snap",
+      "indirizzo": "Piazza G. Torina, 164, Caccamo",
+      "lat": 37.9325903,
+      "lng": 13.6659869
+    },
+    {
+      "nome": "Al Maniero",
+      "indirizzo": "Via Termitana, 7, Caccamo",
+      "lat": 37.9326982,
+      "lng": 13.6608553
+    },
+    {
+      "nome": "Da Peppe",
+      "indirizzo": "Italy",
+      "lat": 37.933353,
+      "lng": 13.6609813
+    },
+    {
+      "nome": "L’officina dei golosi",
+      "indirizzo": "Via Termitana, 35, Caccamo",
+      "lat": 37.9330848,
+      "lng": 13.6608835
+    },
+    {
+      "nome": "Il Borgo",
+      "indirizzo": "Via Amilcare, 13, Caccamo",
+      "lat": 37.9317912,
+      "lng": 13.6607553
+    },
+    {
+      "nome": "La Spiga D'Oro Food & Drink",
+      "indirizzo": "Contrada San Vito, snc, Caccamo",
+      "lat": 37.9311792,
+      "lng": 13.6683213
+    },
+    {
+      "nome": "Capricci di Sicilia",
+      "indirizzo": "Via Termitana, 73, Caccamo",
+      "lat": 37.9356194,
+      "lng": 13.6616011
+    },
+    {
+      "nome": "Strapizzami Di La Corte",
+      "indirizzo": "Viale Regione Siciliana, 205, Caccamo",
+      "lat": 37.9361941,
+      "lng": 13.6707974
+    }
+  ],
+
+  "bar": [
+    {
+      "nome": "Chiosco San Francesco",
+      "indirizzo": "Via de Spuches, 7, Caccamo",
+      "lat": 37.9315769,
+      "lng": 13.6637551
+    },
+    {
+      "nome": "Muscarella Francesco",
+      "indirizzo": "Via Roma, 3, Caccamo",
+      "lat": 37.932684,
+      "lng": 13.6662576
+    },
+    {
+      "nome": "Café 40",
+      "indirizzo": "Corso Umberto, 205, Caccamo",
+      "lat": 37.9324294,
+      "lng": 13.6665625
+    },
+    {
+      "nome": "Al Chiosco da Pietro",
+      "indirizzo": "Via Cappuccini, 9, Caccamo",
+      "lat": 37.9347184,
+      "lng": 13.6638992
+    },
+    {
+      "nome": "The Castle",
+      "indirizzo": "Via Termitana, 3, Caccamo",
+      "lat": 37.9326558,
+      "lng": 13.6608588
+    },
+    {
+      "nome": "L’officina dei golosi",
+      "indirizzo": "Via Termitana, 35, Caccamo",
+      "lat": 37.9330848,
+      "lng": 13.6608835
+    },
+    {
+      "nome": "Caffè Royal",
+      "indirizzo": "Corso Umberto I, 1, Caccamo",
+      "lat": 37.93217,
+      "lng": 13.6607216
+    },
+    {
+      "nome": "Il Borgo",
+      "indirizzo": "Via Amilcare, 13, Caccamo",
+      "lat": 37.9317912,
+      "lng": 13.6607553
+    },
+    {
+      "nome": "GiallomBARdo",
+      "indirizzo": "Caccamo",
+      "lat": 37.9316938,
+      "lng": 13.668469
+    },
+    {
+      "nome": "Bar Del Carmine",
+      "indirizzo": "Via del Carmine, 36b, Caccamo",
+      "lat": 37.9290372,
+      "lng": 13.6676292
+    },
+    {
+      "nome": "Ribaudo",
+      "indirizzo": "Via Circonvallazione, 55, Caccamo",
+      "lat": 37.9304212,
+      "lng": 13.6697967
+    },
+    {
+      "nome": "Kitipigghi",
+      "indirizzo": "Via del Carmine, 73, Caccamo",
+      "lat": 37.927471,
+      "lng": 13.6659805
+    },
+    {
+      "nome": "Dai e Vai Pub & A.S.D San Giorgio Calcetto",
+      "indirizzo": "C. Da piano corte, Caccamo",
+      "lat": 37.9369395,
+      "lng": 13.6594703
+    }
+  ],
+
+  "pub": [
+    {
+      "nome": "Chiosco San Francesco",
+      "indirizzo": "Via de Spuches, 7, Caccamo",
+      "lat": 37.9315769,
+      "lng": 13.6637551
+    },
+    {
+      "nome": "Muscarella Francesco",
+      "indirizzo": "Via Roma, 3, Caccamo",
+      "lat": 37.932684,
+      "lng": 13.6662576
+    },
+    {
+      "nome": "Café 40",
+      "indirizzo": "Corso Umberto, 205, Caccamo",
+      "lat": 37.9324294,
+      "lng": 13.6665625
+    },
+    {
+      "nome": "Al Chiosco da Pietro",
+      "indirizzo": "Via Cappuccini, 9, Caccamo",
+      "lat": 37.9347184,
+      "lng": 13.6638992
+    },
+    {
+      "nome": "The Castle",
+      "indirizzo": "Via Termitana, 3, Caccamo",
+      "lat": 37.9326558,
+      "lng": 13.6608588
+    },
+    {
+      "nome": "L’officina dei golosi",
+      "indirizzo": "Via Termitana, 35, Caccamo",
+      "lat": 37.9330848,
+      "lng": 13.6608835
+    },
+    {
+      "nome": "Caffè Royal",
+      "indirizzo": "Corso Umberto I, 1, Caccamo",
+      "lat": 37.93217,
+      "lng": 13.6607216
+    },
+    {
+      "nome": "Il Borgo",
+      "indirizzo": "Via Amilcare, 13, Caccamo",
+      "lat": 37.9317912,
+      "lng": 13.6607553
+    },
+    {
+      "nome": "GiallomBARdo",
+      "indirizzo": "Caccamo",
+      "lat": 37.9316938,
+      "lng": 13.668469
+    },
+    {
+      "nome": "Bar Del Carmine",
+      "indirizzo": "Via del Carmine, 36b, Caccamo",
+      "lat": 37.9290372,
+      "lng": 13.6676292
+    },
+    {
+      "nome": "Ribaudo",
+      "indirizzo": "Via Circonvallazione, 55, Caccamo",
+      "lat": 37.9304212,
+      "lng": 13.6697967
+    },
+    {
+      "nome": "Kitipigghi",
+      "indirizzo": "Via del Carmine, 73, Caccamo",
+      "lat": 37.927471,
+      "lng": 13.6659805
+    },
+    {
+      "nome": "Dai e Vai Pub & A.S.D San Giorgio Calcetto",
+      "indirizzo": "C. Da piano corte, Caccamo",
+      "lat": 37.9369395,
+      "lng": 13.6594703
+    }
+  ],
+
+  "castello": {
+    "nome": "Castello di Caccamo",
+    "indirizzo": "Piazza Castello",
+    "lat": 37.93241,
+    "lng": 13.66075
+  }
+    }
