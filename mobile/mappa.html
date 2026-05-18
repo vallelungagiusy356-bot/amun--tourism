@@ -1,249 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mappa Illustrata Caccamo</title>
 
     <style>
-        html, body {
-            height: 100%;
+        body {
             margin: 0;
-            padding: 0;
+            background: #d8c2a1; /* sfondo marrone chiaro */
+            font-family: sans-serif;
         }
-        #map {
-            height: 100%;
+
+        #mappa {
             width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-portami {
-            background:#000;
-            color:#FFD78F;
-            padding:8px 14px;
-            border:1px solid #FFD78F;
-            border-radius:8px;
-            margin-top:6px;
-            font-size:14px;
-            cursor:pointer;
+        .punto {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #d8c2a1; /* stesso colore dello sfondo */
+            border: 2px solid #000; /* contorno nero */
+            transform: translate(-50%, -50%);
         }
 
-        .map-buttons {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 9999;
-        }
-
-        .btn-float {
-            background: rgba(255, 255, 255, 0.9);
-            color: #b08a57;
-            border: 1px solid #b08a57;
-            border-radius: 8px;
-            padding: 8px 14px;
-            font-size: 13px;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-            transition: all 0.2s ease;
-        }
-
-        .btn-float:hover {
-            background: #b08a57;
-            color: #fff;
+        .etichetta {
+            position: absolute;
+            background: rgba(255,255,255,0.8);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            border: 1px solid #000;
+            transform: translate(-50%, -120%);
+            white-space: nowrap;
         }
     </style>
 </head>
 
 <body>
 
-<div id="map"></div>
-
-<div class="map-buttons">
-    <button id="btnCastello" class="btn-float">🏰 Castello</button>
-    <button id="btnMonumenti" class="btn-float">📍 Monumenti</button>
-    <button id="btnPercorso" class="btn-float">🚶 Percorso</button>
-</div>
+<div id="mappa"></div>
 
 <script>
-function initMap() {
+// Carica il JSON
+fetch("data.json")
+    .then(response => response.json())
+    .then(data => {
+        console.log("Dati caricati:", data);
 
-    const geocoder = new google.maps.Geocoder();
+        // Limiti geografici per convertire lat/lng in coordinate schermo
+        const minLat = 37.9240;
+        const maxLat = 37.9370;
+        const minLng = 13.6580;
+        const maxLng = 13.6740;
 
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 16,
-        center: { lat: 37.9325, lng: 13.6645 },
-        styles: [
-            {
-                "elementType": "labels",
-                "stylers": [
-                    { "visibility": "off" },
-                    { "color": "#f49f53" }
-                ]
-            },
-            {
-                "featureType": "landscape",
-                "stylers": [
-                    { "color": "#f9ddc5" },
-                    { "lightness": -7 }
-                ]
-            },
-            {
-                "featureType": "road",
-                "stylers": [
-                    { "color": "#813033" },
-                    { "lightness": 43 }
-                ]
-            },
-            {
-                "featureType": "poi.business",
-                "stylers": [
-                    { "color": "#645c20" },
-                    { "lightness": 38 }
-                ]
-            },
-            {
-                "featureType": "water",
-                "stylers": [
-                    { "color": "#1994bf" },
-                    { "saturation": -69 },
-                    { "gamma": 0.99 },
-                    { "lightness": 43 }
-                ]
-            },
-            {
-                "featureType": "road.local",
-                "elementType": "geometry.fill",
-                "stylers": [
-                    { "color": "#f19f53" },
-                    { "weight": 1.3 },
-                    { "visibility": "on" },
-                    { "lightness": 16 }
-                ]
-            }
-        ]
-    });
+        const mappa = document.getElementById("mappa");
+        const width = mappa.clientWidth;
+        const height = mappa.clientHeight;
 
-    const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer({
-        suppressMarkers: false,
-        polylineOptions: {
-            strokeColor: "#000",
-            strokeWeight: 5
+        function posX(lng) {
+            return ((lng - minLng) / (maxLng - minLng)) * width;
         }
-    });
-    directionsRenderer.setMap(map);
 
-    function calcolaPercorso(start, end) {
-        directionsService.route(
-            {
-                origin: start,
-                destination: end,
-                travelMode: google.maps.TravelMode.WALKING
-            },
-            (result, status) => {
-                if (status === "OK") {
-                    directionsRenderer.setDirections(result);
-                }
-            }
-        );
-    }
+        function posY(lat) {
+            return height - ((lat - minLat) / (maxLat - minLat)) * height;
+        }
 
-    let percorsoAttivo = false;
+        function aggiungiPunto(lat, lng, nome) {
+            const x = posX(lng);
+            const y = posY(lat);
 
-    document.getElementById("btnPercorso").addEventListener("click", () => {
-        percorsoAttivo = true;
-        alert("Tocca un punto sulla mappa per calcolare il percorso.");
-    });
+            const punto = document.createElement("div");
+            punto.className = "punto";
+            punto.style.left = x + "px";
+            punto.style.top = y + "px";
 
-    map.addListener("click", (e) => {
-        if (!percorsoAttivo) return;
+            const label = document.createElement("div");
+            label.className = "etichetta";
+            label.style.left = x + "px";
+            label.style.top = y + "px";
+            label.innerText = nome;
 
-        const end = {
-            lat: e.latLng.lat(),
-            lng: e.latLng.lng()
-        };
+            mappa.appendChild(punto);
+            mappa.appendChild(label);
+        }
 
-        geocoder.geocode({ address: "Castello di Caccamo" }, (results, status) => {
-            if (status === "OK") {
-                const start = results[0].geometry.location;
-                calcolaPercorso(start, end);
-            }
+        // Castello
+        aggiungiPunto(data.castello.lat, data.castello.lng, data.castello.nome);
+
+        // Chiese
+        data.chiese.forEach(c => {
+            aggiungiPunto(c.lat, c.lng, c.nome);
         });
 
-        percorsoAttivo = false;
-    });
-
-    function aggiungiMonumento(nome, icona, descrizione) {
-        geocoder.geocode({ address: nome + " Caccamo" }, (results, status) => {
-            if (status !== "OK") return;
-
-            const posizione = results[0].geometry.location;
-
-            const marker = new google.maps.Marker({
-                position: posizione,
-                map: map,
-                icon: icona,
-                title: nome
-            });
-
-            const info = new google.maps.InfoWindow({
-                content: descrizione
-            });
-
-            marker.addListener("click", () => info.open(map, marker));
+        // Ristoranti
+        data.ristoranti.forEach(r => {
+            aggiungiPunto(r.lat, r.lng, r.nome);
         });
-    }
 
-    const iconaCastello = {
-        url: "img/icon-castello-dorato.png",
-        scaledSize: new google.maps.Size(55, 55)
-    };
+        // Bar
+        data.bar.forEach(b => {
+            aggiungiPunto(b.lat, b.lng, b.nome);
+        });
 
-    const iconaChiesa = {
-        url: "img/icon-croce-barocca.png",
-        scaledSize: new google.maps.Size(45, 45)
-    };
-
-    aggiungiMonumento("Castello di Caccamo", iconaCastello, `
-        <b>Castello di Caccamo</b><br>
-        Orari: 09:00–17:00 / 19:00<br>
-        Biglietti disponibili in loco<br>
-    `);
-
-    aggiungiMonumento("Chiesa San Giorgio Martire", iconaChiesa, `
-        <b>Chiesa San Giorgio Martire</b><br>
-        Domenica: 08:30 – 11:00 – 18:00<br>
-        Feriali: 18:00<br>
-    `);
-
-    aggiungiMonumento("Chiesa Santa Maria degli Angeli", iconaChiesa, `
-        <b>Santa Maria degli Angeli</b><br>
-        Domenica: 09:00 – 12:00<br>
-        Feriali: 17:00 – 19:00<br>
-    `);
-
-    aggiungiMonumento("Chiesa SS. Annunziata", iconaChiesa, `
-        <b>SS. Annunziata</b><br>
-        Domenica: 09:00 – 11:30<br>
-        Feriali: 18:00<br>
-    `);
-
-    aggiungiMonumento("Chiesa di San Benedetto della Badia", iconaChiesa, `
-        <b>Badia</b><br>
-        Orari visita: 10:00–13:00, 15:00–18:00<br>
-    `);
-
-    aggiungiMonumento("Convento dei Cappuccini Caccamo", iconaChiesa, `
-        <b>Convento dei Cappuccini</b><br>
-        Domenica: 09:00 – 12:00<br>
-        Feriali: 17:00 – 19:00<br>
-    `);
-
-}
+        // Pub
+        data.pub.forEach(p => {
+            aggiungiPunto(p.lat, p.lng, p.nome);
+        });
+    });
 </script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-tIu-34BVyuz4t3gayTQY5ePYzFSVe4&callback=initMap" async defer></script>
 
 </body>
 </html>
