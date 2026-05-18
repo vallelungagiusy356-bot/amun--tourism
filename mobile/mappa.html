@@ -163,7 +163,7 @@ function caricaOSM(posX, posY) {
       }
     });
   });
-}
+}  // <--- QUESTA CHIUDE LA FUNZIONE E RISOLVE TUTTO
 
 // Aree visibili
 function disegnaArea(way, posX, posY) {
@@ -191,7 +191,7 @@ function disegnaArea(way, posX, posY) {
   path.setAttribute("stroke-width", "1");
 
   svgAree.appendChild(path);
-}
+        }
 
 // Strade visibili
 function disegnaStrada(way, posX, posY) {
