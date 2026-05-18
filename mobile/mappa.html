@@ -194,6 +194,10 @@ function disegnaArea(way, posX, posY) {
 
 // Strade visibili
 function disegnaStrada(way, posX, posY) {
+  function aggiornaVisibilitaNomi() {
+  // Mostra i nomi solo se lo zoom è abbastanza alto
+  svgNomi.style.opacity = scale < 1.4 ? "0" : "1";
+}
   let d = "";
   way.geometry.forEach((pt, i) => {
     const x = posX(pt.lon);
