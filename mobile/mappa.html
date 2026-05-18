@@ -9,10 +9,10 @@
         body {
             margin: 0;
             background: #d8c2a1;
-            font-family: sans-serif;
+            font-family: "Cormorant Garamond", serif;
+            color: #2b1e0f;
         }
 
-        /* La mappa deve essere più grande dello schermo */
         #mappa {
             width: 2000px;
             height: 2000px;
@@ -58,7 +58,6 @@
 </div>
 
 <script>
-
 // ===============================
 // 1️⃣ DICHIARAZIONE MAPPA
 // ===============================
@@ -131,8 +130,8 @@ fetch("data.json")
                 }
             });
 
-            // Strada principale oro con contorno nero
             if (tipo === "principale") {
+                // contorno nero
                 const outline = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 outline.setAttribute("d", d);
                 outline.setAttribute("stroke", "#000");
@@ -143,6 +142,7 @@ fetch("data.json")
                 outline.setAttribute("fill", "none");
                 svg.appendChild(outline);
 
+                // linea oro
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 path.setAttribute("d", d);
                 path.setAttribute("stroke", "#d4a64a");
@@ -151,10 +151,8 @@ fetch("data.json")
                 path.setAttribute("stroke-linejoin", "round");
                 path.setAttribute("fill", "none");
                 svg.appendChild(path);
-            }
-
-            // Via nera
-            else {
+            } else {
+                // via nera
                 const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 path.setAttribute("d", d);
                 path.setAttribute("stroke", "#000");
@@ -170,26 +168,21 @@ fetch("data.json")
         // ===============================
         // 4️⃣ STRADE REALI (ESEMPI)
         // ===============================
-
-        // Via Santo Spirito (via nera)
         disegnaStrada([
             { lat: 37.9311, lng: 13.6611 },
             { lat: 37.9313, lng: 13.6614 }
         ], "via");
 
-        // Via Ricovero San Ferdinando (strada principale oro)
         disegnaStrada([
             { lat: 37.9309, lng: 13.6593 },
             { lat: 37.9310, lng: 13.6595 },
             { lat: 37.9312, lng: 13.6597 }
         ], "principale");
 
-        // Vicolo della Torre (via nera)
         disegnaStrada([
             { lat: 37.9312, lng: 13.6595 },
             { lat: 37.9314, lng: 13.6597 }
         ], "via");
-
     });
 
 // ===============================
@@ -231,7 +224,6 @@ mappa.addEventListener("wheel", (e) => {
   scale = Math.min(Math.max(0.5, scale), 2);
   mappa.style.transform = `scale(${scale})`;
 });
-
 </script>
 
 </body>
