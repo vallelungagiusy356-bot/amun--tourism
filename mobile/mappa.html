@@ -16,7 +16,12 @@
             width: 100%;
             height: 100vh;
             position: relative;
-            overflow: hidden;
+            overflow: scroll; /* IMPORTANTE per muovere la mappa */
+            cursor: grab;
+        }
+
+        #mappa:active {
+            cursor: grabbing;
         }
 
         .punto {
@@ -24,8 +29,8 @@
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            background: #d8c2a1; /* stesso colore dello sfondo */
-            border: 2px solid #000; /* contorno nero */
+            background: #d8c2a1;
+            border: 2px solid #000;
             transform: translate(-50%, -50%);
         }
 
@@ -47,49 +52,29 @@
 <div id="mappa"></div>
 
 <script>
-// Carica il JSON
+
+// ===============================
+// 1️⃣ DICHIARAZIONE MAPPA (UNA SOLA VOLTA)
+// ===============================
+const mappa = document.getElementById("mappa");
+
+// ===============================
+// 2️⃣ CARICAMENTO JSON E DISEGNO PUNTI
+// ===============================
 fetch("data.json")
     .then(response => response.json())
     .then(data => {
-        console.log("Dati caricati:", data);
 
-        let isDragging = false;
-let startX, startY;
-let scrollLeft, scrollTop;
-
-const mappa = document.getElementById("mappa");
-
-mappa.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  startX = e.pageX - mappa.offsetLeft;
-  startY = e.pageY - mappa.offsetTop;
-  scrollLeft = mappa.scrollLeft;
-  scrollTop = mappa.scrollTop;
-});
-
-mappa.addEventListener("mouseleave", () => isDragging = false);
-mappa.addEventListener("mouseup", () => isDragging = false);
-
-mappa.addEventListener("mousemove", (e) => {
-  if (!isDragging) return;
-  e.preventDefault();
-  const x = e.pageX - mappa.offsetLeft;
-  const y = e.pageY - mappa.offsetTop;
-  const walkX = (x - startX);
-  const walkY = (y - startY);
-  mappa.scrollLeft = scrollLeft - walkX;
-  mappa.scrollTop = scrollTop - walkY;
-});
-
-        // Limiti geografici per convertire lat/lng in coordinate schermo
         const minLat = 37.9240;
         const maxLat = 37.9370;
         const minLng = 13.6580;
         const maxLng = 13.6740;
 
-        const mappa = document.getElementById("mappa");
-        const width = mappa.clientWidth;
-        const height = mappa.clientHeight;
+        const width = 2000;   // mappa più grande dello schermo
+        const height = 2000;
+
+        mappa.style.width = width + "px";
+        mappa.style.height = height + "px";
 
         function posX(lng) {
             return ((lng - minLng) / (maxLng - minLng)) * width;
@@ -118,29 +103,53 @@ mappa.addEventListener("mousemove", (e) => {
             mappa.appendChild(label);
         }
 
-        // Castello
         aggiungiPunto(data.castello.lat, data.castello.lng, data.castello.nome);
-
-        // Chiese
-        data.chiese.forEach(c => {
-            aggiungiPunto(c.lat, c.lng, c.nome);
-        });
-
-        // Ristoranti
-        data.ristoranti.forEach(r => {
-            aggiungiPunto(r.lat, r.lng, r.nome);
-        });
-
-        // Bar
-        data.bar.forEach(b => {
-            aggiungiPunto(b.lat, b.lng, b.nome);
-        });
-
-        // Pub
-        data.pub.forEach(p => {
-            aggiungiPunto(p.lat, p.lng, p.nome);
-        });
+        data.chiese.forEach(c => aggiungiPunto(c.lat, c.lng, c.nome));
+        data.ristoranti.forEach(r => aggiungiPunto(r.lat, r.lng, r.nome));
+        data.bar.forEach(b => aggiungiPunto(b.lat, b.lng, b.nome));
+        data.pub.forEach(p => aggiungiPunto(p.lat, p.lng, p.nome));
     });
+
+// ===============================
+// 3️⃣ TRASCINAMENTO MAPPA
+// ===============================
+let isDragging = false;
+let startX, startY;
+let scrollLeft, scrollTop;
+
+mappa.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  startX = e.pageX - mappa.offsetLeft;
+  startY = e.pageY - mappa.offsetTop;
+  scrollLeft = mappa.scrollLeft;
+  scrollTop = mappa.scrollTop;
+});
+
+mappa.addEventListener("mouseleave", () => isDragging = false);
+mappa.addEventListener("mouseup", () => isDragging = false);
+
+mappa.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - mappa.offsetLeft;
+  const y = e.pageY - mappa.offsetTop;
+  const walkX = (x - startX);
+  const walkY = (y - startY);
+  mappa.scrollLeft = scrollLeft - walkX;
+  mappa.scrollTop = scrollTop - walkY;
+});
+
+// ===============================
+// 4️⃣ ZOOM (FACOLTATIVO)
+// ===============================
+let scale = 1;
+mappa.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  scale += e.deltaY * -0.001;
+  scale = Math.min(Math.max(0.5, scale), 2);
+  mappa.style.transform = `scale(${scale})`;
+});
+
 </script>
 
 </body>
