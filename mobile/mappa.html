@@ -8,15 +8,16 @@
     <style>
         body {
             margin: 0;
-            background: #d8c2a1; /* sfondo marrone chiaro */
+            background: #d8c2a1;
             font-family: sans-serif;
         }
 
+        /* La mappa deve essere più grande dello schermo */
         #mappa {
-            width: 100%;
-            height: 100vh;
+            width: 2000px;
+            height: 2000px;
             position: relative;
-            overflow: scroll; /* IMPORTANTE per muovere la mappa */
+            overflow: scroll;
             cursor: grab;
         }
 
@@ -50,20 +51,19 @@
 <body>
 
 <div id="mappa">
-
-    <!-- LIVELLO STRADE (linee nere e oro) -->
-    <svg id="strade" width="100%" height="100%" 
+    <!-- LIVELLO STRADE -->
+    <svg id="strade" width="2000" height="2000"
          style="position:absolute; top:0; left:0; pointer-events:none;">
     </svg>
-
 </div>
 
 <script>
 
 // ===============================
-// 1️⃣ DICHIARAZIONE MAPPA (UNA SOLA VOLTA)
+// 1️⃣ DICHIARAZIONE MAPPA
 // ===============================
 const mappa = document.getElementById("mappa");
+const svg = document.getElementById("strade");
 
 // ===============================
 // 2️⃣ CARICAMENTO JSON E DISEGNO PUNTI
@@ -77,11 +77,8 @@ fetch("data.json")
         const minLng = 13.6580;
         const maxLng = 13.6740;
 
-        const width = 2000;   // mappa più grande dello schermo
+        const width = 2000;
         const height = 2000;
-
-        mappa.style.width = width + "px";
-        mappa.style.height = height + "px";
 
         function posX(lng) {
             return ((lng - minLng) / (maxLng - minLng)) * width;
@@ -110,15 +107,93 @@ fetch("data.json")
             mappa.appendChild(label);
         }
 
+        // Disegno punti
         aggiungiPunto(data.castello.lat, data.castello.lng, data.castello.nome);
         data.chiese.forEach(c => aggiungiPunto(c.lat, c.lng, c.nome));
         data.ristoranti.forEach(r => aggiungiPunto(r.lat, r.lng, r.nome));
         data.bar.forEach(b => aggiungiPunto(b.lat, b.lng, b.nome));
         data.pub.forEach(p => aggiungiPunto(p.lat, p.lng, p.nome));
+
+        // ===============================
+        // 3️⃣ FUNZIONE DISEGNO STRADE
+        // ===============================
+        function disegnaStrada(punti, tipo = "via") {
+            let d = "";
+
+            punti.forEach((p, i) => {
+                const x = posX(p.lng);
+                const y = posY(p.lat);
+
+                if (i === 0) {
+                    d += `M ${x} ${y} `;
+                } else {
+                    d += `L ${x} ${y} `;
+                }
+            });
+
+            // Strada principale oro con contorno nero
+            if (tipo === "principale") {
+                const outline = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                outline.setAttribute("d", d);
+                outline.setAttribute("stroke", "#000");
+                outline.setAttribute("stroke-width", "8");
+                outline.setAttribute("stroke-linecap", "round");
+                outline.setAttribute("stroke-linejoin", "round");
+                outline.setAttribute("opacity", "0.9");
+                outline.setAttribute("fill", "none");
+                svg.appendChild(outline);
+
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", d);
+                path.setAttribute("stroke", "#d4a64a");
+                path.setAttribute("stroke-width", "6");
+                path.setAttribute("stroke-linecap", "round");
+                path.setAttribute("stroke-linejoin", "round");
+                path.setAttribute("fill", "none");
+                svg.appendChild(path);
+            }
+
+            // Via nera
+            else {
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", d);
+                path.setAttribute("stroke", "#000");
+                path.setAttribute("stroke-width", "2");
+                path.setAttribute("stroke-linecap", "round");
+                path.setAttribute("stroke-linejoin", "round");
+                path.setAttribute("opacity", "0.8");
+                path.setAttribute("fill", "none");
+                svg.appendChild(path);
+            }
+        }
+
+        // ===============================
+        // 4️⃣ STRADE REALI (ESEMPI)
+        // ===============================
+
+        // Via Santo Spirito (via nera)
+        disegnaStrada([
+            { lat: 37.9311, lng: 13.6611 },
+            { lat: 37.9313, lng: 13.6614 }
+        ], "via");
+
+        // Via Ricovero San Ferdinando (strada principale oro)
+        disegnaStrada([
+            { lat: 37.9309, lng: 13.6593 },
+            { lat: 37.9310, lng: 13.6595 },
+            { lat: 37.9312, lng: 13.6597 }
+        ], "principale");
+
+        // Vicolo della Torre (via nera)
+        disegnaStrada([
+            { lat: 37.9312, lng: 13.6595 },
+            { lat: 37.9314, lng: 13.6597 }
+        ], "via");
+
     });
 
 // ===============================
-// 3️⃣ TRASCINAMENTO MAPPA
+// 5️⃣ TRASCINAMENTO MAPPA
 // ===============================
 let isDragging = false;
 let startX, startY;
@@ -147,7 +222,7 @@ mappa.addEventListener("mousemove", (e) => {
 });
 
 // ===============================
-// 4️⃣ ZOOM (FACOLTATIVO)
+// 6️⃣ ZOOM
 // ===============================
 let scale = 1;
 mappa.addEventListener("wheel", (e) => {
