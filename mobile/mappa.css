@@ -1,47 +1,82 @@
-html, body {
-    height: 100%;
+/* ===========================
+   Mappa Illustrata Caccamo
+   =========================== */
+
+/* Sfondo generale */
+body {
     margin: 0;
-    padding: 0;
-    background: #f7f3ec; /* beige premium */
+    background-color: #d8c2a1; /* marrone chiaro */
+    font-family: "Cormorant Garamond", serif;
+    color: #2b1e0f;
 }
 
-/* Contenitore mappa con cornice oro */
-#map {
-    height: 100%;
+/* Contenitore mappa */
+#mappa {
+    position: relative;
     width: 100%;
-    border: 3px solid #d4b98a; /* oro soft */
-    border-radius: 18px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.15);
+    height: 100vh;
     overflow: hidden;
 }
 
-/* Pulsante Portami Qui minimal */
-.btn-portami {
-    background: #ffffff;
-    color: #b08a57;
-    padding: 6px 12px;
-    border: 1px solid #b08a57;
+/* Vie secondarie (linee nere sottili) */
+.via {
+    position: absolute;
+    height: 2px;
+    background-color: #000;
+    opacity: 0.8;
+    transform-origin: left center;
+}
+
+/* Strade principali (oro con contorno nero) */
+.strada {
+    position: absolute;
+    height: 4px;
+    background-color: #d4a64a; /* oro */
+    border: 1px solid #000;
+    border-radius: 2px;
+    transform-origin: left center;
+}
+
+/* Monumenti stilizzati */
+.monumento {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #d8c2a1; /* stesso colore dello sfondo */
+    border: 2px solid #000;
     border-radius: 6px;
-    margin-top: 6px;
-    font-size: 13px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+/* Etichette dei monumenti */
+.etichetta {
+    position: absolute;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    text-shadow: 1px 1px 0 #d8c2a1;
+    transform: translate(-50%, -120%);
+}
+
+/* Pulsanti o punti cliccabili */
+.punto {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #d8c2a1;
+    border: 2px solid #000;
+    border-radius: 50%;
     cursor: pointer;
     transition: 0.2s;
 }
 
-.btn-portami:hover {
-    background: #b08a57;
-    color: #fff;
+.punto:hover {
+    background-color: #d4a64a;
 }
 
-/* Popup minimal */
-.gm-style .gm-style-iw {
-    font-family: "Inter", sans-serif;
-    color: #4a3f35;
-    padding: 4px;
-}
-
-.gm-style .gm-style-iw a {
-    color: #b08a57;
-    text-decoration: none;
-    font-weight: 600;
+/* Popup o percorso attivo */
+.percorso-attivo {
+    background-color: #d4a64a;
+    border: 2px solid #000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
