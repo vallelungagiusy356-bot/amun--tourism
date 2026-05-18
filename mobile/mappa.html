@@ -232,22 +232,52 @@ function disegnaStrada(way, posX, posY) {
   }
 }
 
-// 7) Disegno nomi vie
+// 7️⃣ Disegno nomi vie (curvi e ordinati)
+let nomiPos = [];
+let idCounter = 0;
+
 function disegnaNomeVia(way, posX, posY) {
   const pts = way.geometry;
-  const mid = pts[Math.floor(pts.length / 2)];
+  if (!pts || pts.length < 3) return; // salta vie troppo corte
 
+  // calcolo punto medio
+  const mid = pts[Math.floor(pts.length / 2)];
   const x = posX(mid.lon);
   const y = posY(mid.lat);
 
-  const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  text.setAttribute("x", x);
-  text.setAttribute("y", y);
-  text.setAttribute("class", "nome-via");
-  text.textContent = way.tags.name;
+  // controllo sovrapposizione con altri nomi
+  if (nomiPos.some(p => Math.hypot(p.x - x, p.y - y) < 40)) return;
+  nomiPos.push({x, y});
 
+  // crea path per textPath
+  const id = "via" + (++idCounter);
+  let d = "";
+  pts.forEach((pt, i) => {
+    const px = posX(pt.lon);
+    const py = posY(pt.lat);
+    d += (i === 0 ? `M ${px} ${py} ` : `L ${px} ${py} `);
+  });
+
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("id", id);
+  path.setAttribute("d", d);
+  path.setAttribute("fill", "none");
+  path.setAttribute("stroke", "none");
+  svgNomi.appendChild(path);
+
+  // testo curvo
+  const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  text.setAttribute("class", "nome-via");
+
+  const textPath = document.createElementNS("http://www.w3.org/2000/svg", "textPath");
+  textPath.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#" + id);
+  textPath.setAttribute("startOffset", "50%");
+  textPath.setAttribute("text-anchor", "middle");
+  textPath.textContent = way.tags.name;
+
+  text.appendChild(textPath);
   svgNomi.appendChild(text);
-}
+      }
 
 // 8) Drag + zoom
 let isDragging = false;
