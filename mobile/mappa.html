@@ -194,10 +194,6 @@ function disegnaArea(way, posX, posY) {
 
 // Strade visibili
 function disegnaStrada(way, posX, posY) {
-  function aggiornaVisibilitaNomi() {
-  // Mostra i nomi solo se lo zoom è abbastanza alto
-  svgNomi.style.opacity = scale < 1.4 ? "0" : "1";
-}
   let d = "";
   way.geometry.forEach((pt, i) => {
     const x = posX(pt.lon);
@@ -213,7 +209,7 @@ function disegnaStrada(way, posX, posY) {
   svgStrade.appendChild(path);
 }
 
-// Nomi vie sempre visibili
+// Nomi vie
 let idCounter = 0;
 
 function disegnaNomeVia(way, posX, posY) {
@@ -248,7 +244,24 @@ function disegnaNomeVia(way, posX, posY) {
   svgNomi.appendChild(text);
 }
 
-// Drag + Zoom
+//
+// ⭐ ZOOM INTELLIGENTE DEI NOMI DELLE VIE
+//
+function aggiornaVisibilitaNomi() {
+  svgNomi.style.opacity = scale < 1.4 ? "0" : "1";
+}
+
+mappa.addEventListener("wheel", e => {
+  e.preventDefault();
+  scale += e.deltaY * -0.001;
+  scale = Math.min(Math.max(0.5, scale), 3);
+  mappa.style.transform = `scale(${scale})`;
+  aggiornaVisibilitaNomi();
+});
+
+//
+// Drag + Zoom (movimento)
+//
 let isDragging = false;
 let startX, startY, scrollLeft, scrollTop;
 
@@ -270,13 +283,6 @@ mappa.addEventListener("mousemove", e => {
   const y = e.pageY - mappa.offsetTop;
   mappa.scrollLeft = scrollLeft - (x - startX);
   mappa.scrollTop = scrollTop - (y - startY);
-});
-
-mappa.addEventListener("wheel", e => {
-  e.preventDefault();
-  scale += e.deltaY * -0.001;
-  scale = Math.min(Math.max(0.5, scale), 3);
-  mappa.style.transform = `scale(${scale})`;
 });
 </script>
 
