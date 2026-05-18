@@ -79,7 +79,7 @@ let scale = 1;
 // 1) Carico data.json
 fetch("data.json")
   .then(r => r.json())
-  .then(data => {
+  .then(data => {alert("JSON CARICATO: " + (data ? "SI" : "NO"));
 
     const punti = [];
     data.chiese.forEach(p => punti.push(p));
