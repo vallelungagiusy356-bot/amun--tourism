@@ -16,6 +16,11 @@ body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    cursor: grab;
+}
+
+#mappa:active {
+    cursor: grabbing;
 }
 
 /* Vie secondarie (linee nere sottili) */
@@ -81,14 +86,43 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
+/* ===========================
+   NUOVI STILI PER MAPPA OSM
+   =========================== */
+
+/* Aree urbane e verdi (poligoni SVG) */
+.area-residenziale {
+    fill: #d1b894aa; /* beige scuro */
+    stroke: none;
+}
+
+.area-verde {
+    fill: #a8d08daa; /* verde chiaro */
+    stroke: none;
+}
+
+.area-bosco {
+    fill: #7ca37daa; /* verde scuro */
+    stroke: none;
+}
+
+/* Icone stilizzate (SVG) */
+.icon {
+    fill: #000;
+    stroke: none;
+    transform: translate(-50%, -50%);
+    opacity: 0.95;
+}
+
 /* Nomi delle vie (testo curvo e leggibile) */
 .nome-via {
     font-size: 13px;
     fill: #000;                 /* colore del testo */
-    stroke: #d8c2a1;            /* contorno chiaro per leggibilità */
+    stroke: #d8c2a1;            /* contorno chiaro */
     stroke-width: 3px;
-    paint-order: stroke;        /* prima il contorno, poi il testo */
+    paint-order: stroke;        /* prima contorno, poi testo */
     font-family: "Cormorant Garamond", serif;
     opacity: 0.9;
     letter-spacing: 0.5px;
+    pointer-events: none;       /* evita click sul testo */
 }
