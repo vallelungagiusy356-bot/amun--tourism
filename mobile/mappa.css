@@ -124,3 +124,7 @@ body {
     letter-spacing: 0.5px;
     pointer-events: none;       /* evita click sul testo */
 }
+
+svg {
+  transform-origin: 0 0;
+}
