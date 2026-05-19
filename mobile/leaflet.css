@@ -21,7 +21,17 @@ body {
 
 /* Sfondo della mappa */
 .leaflet-container {
-  background: #d8c2a1 !important;
+  background: #d8c2a1 !important; /* sabbia */
+  filter: sepia(0.3) brightness(1.05); /* tono caldo */
+}
+
+/* ===========================
+   Nasconde le icone di base OSM
+   =========================== */
+
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+  display: none !important;
 }
 
 /* ===========================
@@ -63,8 +73,15 @@ body {
    =========================== */
 
 /* Ombra leggera sotto le icone (effetto illustrato) */
-.leaflet-marker-icon {
+.leaflet-marker-icon.custom-icon {
+  display: block !important;
   filter: drop-shadow(0 2px 2px rgba(0,0,0,0.25));
+  transition: transform 0.2s ease;
+}
+
+/* Effetto hover sulle icone */
+.leaflet-marker-icon.custom-icon:hover {
+  transform: scale(1.1);
 }
 
 /* ===========================
@@ -79,4 +96,20 @@ body {
   font-size: 14px;
   padding: 4px 8px;
   border-radius: 4px;
+}
+
+/* ===========================
+   Dettagli extra per effetto pergamena
+   =========================== */
+
+/* Bordo decorativo leggero attorno alla mappa */
+#mappa {
+  border: 3px solid #d4b98a; /* oro soft */
+  box-shadow: 0 0 25px rgba(0,0,0,0.15);
+  border-radius: 12px;
+}
+
+/* Rimuove selezione testo */
+body, #mappa {
+  user-select: none;
 }
