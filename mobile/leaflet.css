@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  background-color: #d8c2a1; /* sabbia */
+  font-family: "Cormorant Garamond", serif;
+  color: #2b1e0f;
+}
+
+#mappa {
+  width: 100vw;
+  height: 100vh;
+}
+
+.leaflet-container {
+  background: #d8c2a1;
+}
+
+/* Stile medievale */
+.leaflet-popup-content {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  color: #2b1e0f;
+}
