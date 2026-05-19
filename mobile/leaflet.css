@@ -1,22 +1,82 @@
+/* ===========================
+   Stile generale pagina
+   =========================== */
+
 body {
   margin: 0;
   background-color: #d8c2a1; /* sabbia */
   font-family: "Cormorant Garamond", serif;
   color: #2b1e0f;
+  overflow: hidden; /* evita scroll indesiderati */
 }
+
+/* ===========================
+   Contenitore mappa
+   =========================== */
 
 #mappa {
   width: 100vw;
   height: 100vh;
 }
 
+/* Sfondo della mappa */
 .leaflet-container {
-  background: #d8c2a1;
+  background: #d8c2a1 !important;
 }
 
-/* Stile medievale */
+/* ===========================
+   Popup stile medievale
+   =========================== */
+
 .leaflet-popup-content {
   font-family: "Cormorant Garamond", serif;
   font-size: 16px;
   color: #2b1e0f;
+  line-height: 1.4;
+}
+
+.leaflet-popup-content b {
+  font-size: 18px;
+  color: #000;
+}
+
+.leaflet-popup-content small {
+  color: #2b1e0f;
+}
+
+/* Bordo popup */
+.leaflet-popup-content-wrapper {
+  background: #f2e4cf; /* pergamena chiara */
+  border: 2px solid #2b1e0f;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+/* Punta del popup */
+.leaflet-popup-tip {
+  background: #f2e4cf;
+  border: 2px solid #2b1e0f;
+}
+
+/* ===========================
+   Icone personalizzate
+   =========================== */
+
+/* Ombra leggera sotto le icone (effetto illustrato) */
+.leaflet-marker-icon {
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.25));
+}
+
+/* ===========================
+   Tooltip (se li userai)
+   =========================== */
+
+.leaflet-tooltip {
+  background: #f2e4cf;
+  border: 1px solid #2b1e0f;
+  color: #2b1e0f;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
