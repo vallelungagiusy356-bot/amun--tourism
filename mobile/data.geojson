@@ -1,0 +1,15 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Castello di Caccamo" },
+      "geometry": { "type": "Point", "coordinates": [13.671, 37.944] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Chiesa SS. Annunziata" },
+      "geometry": { "type": "Point", "coordinates": [13.672, 37.943] }
+    }
+  ]
+}
