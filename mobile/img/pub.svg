@@ -1,0 +1,12 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <!-- Insegna del pub -->
+  <rect x="10" y="12" width="28" height="20" fill="#d8c2a1" stroke="#2b1e0f" stroke-width="2"/>
+  <rect x="14" y="16" width="20" height="12" fill="#d4a64a" stroke="#2b1e0f" stroke-width="2"/>
+
+  <!-- Boccale stilizzato -->
+  <rect x="18" y="18" width="8" height="8" fill="#2b1e0f"/>
+  <rect x="26" y="19" width="3" height="6" fill="#2b1e0f"/>
+
+  <!-- Asta dell’insegna -->
+  <rect x="8" y="10" width="2" height="26" fill="#2b1e0f"/>
+</svg>
