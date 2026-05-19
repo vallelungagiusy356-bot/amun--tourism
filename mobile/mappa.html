@@ -255,7 +255,12 @@ mappa.addEventListener("wheel", e => {
   e.preventDefault();
   scale += e.deltaY * -0.001;
   scale = Math.min(Math.max(0.5, scale), 3);
-  mappa.style.transform = `scale(${scale})`;
+
+  svgAree.style.transform =
+  svgStrade.style.transform =
+  svgNomi.style.transform =
+  svgIcone.style.transform = `scale(${scale})`;
+
   aggiornaVisibilitaNomi();
 });
 
