@@ -198,6 +198,18 @@
         "coordinates": [13.664757, 37.924958]
       }
     },
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Il Borgo",
+    "type": "ristorante",
+    "address": "Via Amilcare, 13"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [13.6607553, 37.9317912]
+  }
+},
     {
       "type": "Feature",
       "properties": {
@@ -210,7 +222,20 @@
         "coordinates": [13.6603796, 37.9321034]
       }
     },
-
+    <!-- LUDOTECA -->
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Dorotea Playpark",
+    "type": "ludoteca",
+    "address": "Via Antonio Amato",
+    "phone": "— da aggiungere se me lo dai tu —"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [13.6660132, 37.9340287]
+  }
+}
     <!-- BAR / PUB (unificati come PUB) -->
     {
       "type": "Feature",
@@ -236,6 +261,55 @@
         "coordinates": [13.6662576, 37.932684]
       }
     },
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Bar Royal",
+    "type": "bar",
+    "address": "Corso Umberto I, 1"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [13.6607216, 37.93217]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Fratelli Scimeca",
+    "type": "bar",
+    "address": "Viale Regione Siciliana, 145"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [13.6736443, 37.9348716]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "The Castle",
+    "type": "pub",
+    "address": "Via Termitana, 3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [13.6608588, 37.9326558]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Kitipigghi",
+    "type": "pub",
+    "address": "Via del Carmine, Caccamo"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [13.6659805, 37.927471]
+  }
+},
+
     {
       "type": "Feature",
       "properties": {
