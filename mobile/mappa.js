@@ -1,22 +1,31 @@
-// Inserisci qui il tuo token Mapbox
-mapboxgl.accessToken = 'INSERISCI_IL_TUO_TOKEN_MAPBOX';
+// TOKEN Mapbox
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l1c2lmaTg5IiwiYSI6ImNtcGNvYXpqYTAwZ3kzNHM5amI4emxxOTAifQ.iNuDFyanN-ZEyl8-zRevGw';
 
 // Inizializzazione mappa
 const map = new mapboxgl.Map({
     container: 'mappa',
-    style: 'mapbox://styles/tuo-username/tuo-style-id', 
+    style: 'mapbox://styles/giusifi89/cmpdzd1e3000m01qp1zly9qx9',
     center: [13.666, 37.933], // Caccamo
     zoom: 14
 });
 
+// Geolocalizzazione "Tu sei qui"
+map.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: { enableHighAccuracy: true },
+    trackUserLocation: true,
+    showUserHeading: true
+}));
+
 // Caricamento GeoJSON
 map.on('load', () => {
+
+    // Sorgente GeoJSON
     map.addSource('puntiAmuni', {
         type: 'geojson',
         data: 'data/punti.json' // <-- il tuo file GeoJSON
     });
 
-    // Layer dei punti
+    // Layer dei punti (temporaneo, poi lo sostituiremo con icone)
     map.addLayer({
         id: 'poi',
         type: 'circle',
