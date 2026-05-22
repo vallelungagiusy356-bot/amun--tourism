@@ -18,13 +18,13 @@ map.addControl(new mapboxgl.GeolocateControl({
 
 map.on('load', () => {
 
-    // Sorgente GeoJSON
+    // GeoJSON corretto
     map.addSource('puntiAmuni', {
         type: 'geojson',
         data: 'data.geojson'
     });
 
-    // Icone da caricare
+    // Lista icone
     const icone = [
         'castello_icona',
         'duomo_icona',
@@ -35,20 +35,19 @@ map.on('load', () => {
         'chiesa',
         'bar',
         'ristorante_icona',
-        'leone_pub_icona',
-        'ludoteca'
+        'leone_pub_icona'
     ];
 
-    let iconeCaricate = 0;
+    let caricate = 0;
 
     icone.forEach(nome => {
-        map.loadImage(`img/icons/${nome}.png`, (error, image) => {
+        map.loadImage(`img/${nome}.png`, (error, image) => {
             if (error) throw error;
             map.addImage(nome, image);
 
-            iconeCaricate++;
+            caricate++;
 
-            if (iconeCaricate === icone.length) {
+            if (caricate === icone.length) {
 
                 map.addLayer({
                     id: 'poi',
