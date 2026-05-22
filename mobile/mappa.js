@@ -5,11 +5,11 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l1c2lmaTg5IiwiYSI6ImNtcGNvYXpqYTAwZ3kzNHM5a
 const map = new mapboxgl.Map({
     container: 'mappa',
     style: 'mapbox://styles/giusifi89/cmpdzd1e3000m01qp1zly9qx9',
-    center: [13.666, 37.933],
+    center: [13.666, 37.933], // Caccamo
     zoom: 14
 });
 
-// Geolocalizzazione
+// Geolocalizzazione "Tu sei qui"
 map.addControl(new mapboxgl.GeolocateControl({
     positionOptions: { enableHighAccuracy: true },
     trackUserLocation: true,
@@ -18,13 +18,13 @@ map.addControl(new mapboxgl.GeolocateControl({
 
 map.on('load', () => {
 
-    // GeoJSON corretto
+    // Sorgente GeoJSON (corretto)
     map.addSource('puntiAmuni', {
         type: 'geojson',
         data: 'data.geojson'
     });
 
-    // Lista icone
+    // Lista delle icone da caricare
     const icone = [
         'castello_icona',
         'duomo_icona',
@@ -38,16 +38,18 @@ map.on('load', () => {
         'leone_pub_icona'
     ];
 
-    let caricate = 0;
+    let iconeCaricate = 0;
 
+    // Caricamento automatico di tutte le icone
     icone.forEach(nome => {
         map.loadImage(`img/${nome}.png`, (error, image) => {
             if (error) throw error;
             map.addImage(nome, image);
 
-            caricate++;
+            iconeCaricate++;
 
-            if (caricate === icone.length) {
+            // Quando tutte le icone sono caricate → aggiungi il layer
+            if (iconeCaricate === icone.length) {
 
                 map.addLayer({
                     id: 'poi',
@@ -61,6 +63,7 @@ map.on('load', () => {
                     }
                 });
 
+                // Popup al click
                 map.on('click', 'poi', (e) => {
                     const nome = e.features[0].properties.name;
                     const address = e.features[0].properties.address;
@@ -71,6 +74,7 @@ map.on('load', () => {
                         .addTo(map);
                 });
 
+                // Cursore interattivo
                 map.on('mouseenter', 'poi', () => {
                     map.getCanvas().style.cursor = 'pointer';
                 });
