@@ -22,7 +22,7 @@ map.on('load', () => {
     // Sorgente GeoJSON
     map.addSource('puntiAmuni', {
         type: 'geojson',
-        data: 'data/punti.json' // <-- il tuo file GeoJSON
+        data: 'data.geojson'
     });
 
     // Lista delle icone da caricare
