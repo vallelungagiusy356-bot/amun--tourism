@@ -18,31 +18,47 @@ map.addControl(new mapboxgl.GeolocateControl({
 
 map.on('load', () => {
 
-    // Sorgente GeoJSON
+    // ⭐ DEBUG PANEL VISIBILE
+    const debugPanel = document.createElement('div');
+    debugPanel.style.position = 'absolute';
+    debugPanel.style.top = '10px';
+    debugPanel.style.left = '10px';
+    debugPanel.style.background = 'rgba(0,0,0,0.75)';
+    debugPanel.style.color = '#00ff00';
+    debugPanel.style.padding = '10px';
+    debugPanel.style.fontFamily = 'monospace';
+    debugPanel.style.fontSize = '12px';
+    debugPanel.style.zIndex = '9999';
+    debugPanel.style.maxWidth = '90%';
+    debugPanel.style.borderRadius = '8px';
+    debugPanel.innerHTML = 'DEBUG PANEL<br>Avvio...';
+    document.body.appendChild(debugPanel);
+
+    function debug(msg, color = '#00ff00') {
+        debugPanel.innerHTML += `<br><span style="color:${color}">${msg}</span>`;
+    }
+
+    debug("🔍 Avvio verifica caricamento...");
+
+    // ⭐ Sorgente GeoJSON
     map.addSource('puntiAmuni', {
         type: 'geojson',
         data: 'data.geojson'
     });
 
-    // -------------------------
-    // 🔍 DEBUG: VERIFICA FILE E ICONE
-    // -------------------------
-
-    console.log("🔍 Avvio verifica caricamento...");
-
-    // Test 1: verifica file GeoJSON
+    // ⭐ Test 1: verifica file GeoJSON
     fetch('data.geojson')
-      .then(response => {
-        if (!response.ok) throw new Error(`❌ File GeoJSON non trovato (${response.status})`);
-        console.log("✅ File GeoJSON trovato e accessibile");
-        return response.json();
-      })
-      .then(data => {
-        console.log(`📦 Numero di punti caricati: ${data.features.length}`);
-      })
-      .catch(error => console.error(error));
+        .then(response => {
+            if (!response.ok) throw new Error(`❌ File GeoJSON non trovato (${response.status})`);
+            debug("✅ File GeoJSON trovato");
+            return response.json();
+        })
+        .then(data => {
+            debug(`📦 Numero punti: ${data.features.length}`);
+        })
+        .catch(error => debug(error.message, '#ff4444'));
 
-    // Lista icone
+    // ⭐ Lista icone
     const icone = [
         'castello_icona',
         'duomo_icona',
@@ -56,31 +72,33 @@ map.on('load', () => {
         'leone_pub_icona'
     ];
 
-    // Test 2: verifica icone
+    // ⭐ Test 2: verifica icone
     icone.forEach(nome => {
-      const url = `img/${nome}.png`;
-      fetch(url)
-        .then(response => {
-          if (!response.ok) throw new Error(`❌ Icona mancante: ${url}`);
-          console.log(`✅ Icona caricata: ${url}`);
-        })
-        .catch(error => console.error(error));
+        const url = `img/${nome}.png`;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error(`❌ Icona mancante: ${url}`);
+                debug(`✅ Icona caricata: ${url}`);
+            })
+            .catch(error => debug(error.message, '#ff4444'));
     });
 
-    // -------------------------
-    // CARICAMENTO ICONE E LAYER
-    // -------------------------
-
+    // ⭐ Caricamento icone e layer
     let iconeCaricate = 0;
 
     icone.forEach(nome => {
         map.loadImage(`img/${nome}.png`, (error, image) => {
-            if (error) throw error;
-            map.addImage(nome, image);
+            if (error) {
+                debug(`❌ Errore caricamento immagine: img/${nome}.png`, '#ff4444');
+                return;
+            }
 
+            map.addImage(nome, image);
             iconeCaricate++;
 
             if (iconeCaricate === icone.length) {
+
+                debug("🎯 Tutte le icone caricate, aggiungo il layer...");
 
                 map.addLayer({
                     id: 'poi',
@@ -93,6 +111,8 @@ map.on('load', () => {
                         'icon-allow-overlap': true
                     }
                 });
+
+                debug("✅ Layer 'poi' aggiunto");
 
                 // Popup
                 map.on('click', 'poi', (e) => {
