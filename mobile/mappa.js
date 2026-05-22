@@ -18,7 +18,7 @@ map.addControl(new mapboxgl.GeolocateControl({
 
 map.on('load', () => {
 
-    // ⭐ DEBUG PANEL VISIBILE
+    // ⭐ DEBUG PANEL
     const debugPanel = document.createElement('div');
     debugPanel.style.position = 'absolute';
     debugPanel.style.top = '10px';
@@ -46,16 +46,14 @@ map.on('load', () => {
         data: 'data.geojson'
     });
 
-    // ⭐ Test 1: verifica file GeoJSON
+    // ⭐ Test GeoJSON
     fetch('data.geojson')
         .then(response => {
             if (!response.ok) throw new Error(`❌ File GeoJSON non trovato (${response.status})`);
             debug("✅ File GeoJSON trovato");
             return response.json();
         })
-        .then(data => {
-            debug(`📦 Numero punti: ${data.features.length}`);
-        })
+        .then(data => debug(`📦 Numero punti: ${data.features.length}`))
         .catch(error => debug(error.message, '#ff4444'));
 
     // ⭐ Lista icone
@@ -69,10 +67,11 @@ map.on('load', () => {
         'chiesa',
         'bar',
         'ristorante_icona',
-        'leone_pub_icona'
+        'leone_pub_icona',
+        'ludoteca'
     ];
 
-    // ⭐ Test 2: verifica icone
+    // ⭐ Test icone
     icone.forEach(nome => {
         const url = `img/${nome}.png`;
         fetch(url)
@@ -83,7 +82,37 @@ map.on('load', () => {
             .catch(error => debug(error.message, '#ff4444'));
     });
 
-    // ⭐ Caricamento icone e layer
+    // ⭐ Offset centrati per icone 512×512
+    const offsetPersonalizzato = {
+        'castello_icona': [0, -40],
+        'duomo_icona': [0, -40],
+        'badia_icona': [0, -40],
+        'annunziata': [0, -40],
+        'san_domenico': [0, -40],
+        'cappuccini': [0, -40],
+        'chiesa': [0, -40],
+        'ristorante_icona': [0, -40],
+        'bar': [0, -40],
+        'leone_pub_icona': [0, -40],
+        'ludoteca': [0, -40]
+    };
+
+    // ⭐ Dimensioni calibrate per icona (512px)
+    const dimensioniIcone = {
+        'castello_icona': 0.22,
+        'duomo_icona': 0.19,
+        'badia_icona': 0.17,
+        'annunziata': 0.17,
+        'san_domenico': 0.17,
+        'cappuccini': 0.17,
+        'chiesa': 0.15,
+        'ristorante_icona': 0.13,
+        'bar': 0.12,
+        'leone_pub_icona': 0.12,
+        'ludoteca': 0.14
+    };
+
+    // ⭐ Caricamento icone
     let iconeCaricate = 0;
 
     icone.forEach(nome => {
@@ -100,57 +129,48 @@ map.on('load', () => {
 
                 debug("🎯 Tutte le icone caricate, aggiungo il layer...");
 
-                // Offset personalizzati per ogni icona
-const offsetPersonalizzato = {
-    // 🏰 Monumenti principali
-    'castello_icona': [0, -35],
-    'duomo_icona': [0, -30],
-    'badia_icona': [-10, -25],
-    'annunziata': [0, -25],
-    'san_domenico': [5, -25],
-    'cappuccini': [0, -20],
-    'chiesa': [0, -18],
+                // ⭐ LAYER POI COMPLETO
+                map.addLayer({
+                    id: 'poi',
+                    type: 'symbol',
+                    source: 'puntiAmuni',
+                    layout: {
+                        'icon-image': ['get', 'icona'],
 
-    // 🍽️ Attività (già corrette)
-    'ristorante_icona': [0, -15],
-    'bar': [0, -15],
-    'leone_pub_icona': [0, -15],
-    'ludoteca': [0, -15]
-};
+                        // ⭐ Dimensioni dinamiche
+                        'icon-size': [
+                            'case',
+                            ['has', ['get', 'icona'], ['literal', dimensioniIcone]],
+                            ['get', ['get', 'icona'], ['literal', dimensioniIcone]],
+                            0.15
+                        ],
 
-// Aggiunta layer con offset + rotazione
-map.addLayer({
-    id: 'poi',
-    type: 'symbol',
-    source: 'puntiAmuni',
-    layout: {
-        'icon-image': ['get', 'icona'],
-        'icon-size': 0.15,
-        'icon-anchor': 'center',
+                        'icon-anchor': 'center',
 
-        // Offset dinamico per ogni icona
-        'icon-offset': [
-            'case',
-            ['has', ['get', 'icona'], ['literal', offsetPersonalizzato]],
-            ['get', ['get', 'icona'], ['literal', offsetPersonalizzato]],
-            [0, 0]
-        ],
+                        // ⭐ Offset dinamico
+                        'icon-offset': [
+                            'case',
+                            ['has', ['get', 'icona'], ['literal', offsetPersonalizzato]],
+                            ['get', ['get', 'icona'], ['literal', offsetPersonalizzato]],
+                            [0, 0]
+                        ],
 
-        // Rotazione dinamica (se presente nel GeoJSON)
-        'icon-rotate': [
-            'case',
-            ['has', 'rotation'],
-            ['get', 'rotation'],
-            0
-        ],
+                        // ⭐ Rotazione dinamica
+                        'icon-rotate': [
+                            'case',
+                            ['has', 'rotation'],
+                            ['get', 'rotation'],
+                            0
+                        ],
 
-        'icon-rotation-alignment': 'map',
-        'icon-allow-overlap': true
-    }
-});
+                        'icon-rotation-alignment': 'map',
+                        'icon-allow-overlap': true
+                    }
+                });
+
                 debug("✅ Layer 'poi' aggiunto");
 
-                // Popup
+                // ⭐ Popup
                 map.on('click', 'poi', (e) => {
                     const nome = e.features[0].properties.name;
                     const address = e.features[0].properties.address;
@@ -161,7 +181,7 @@ map.addLayer({
                         .addTo(map);
                 });
 
-                // Cursore
+                // ⭐ Cursore
                 map.on('mouseenter', 'poi', () => {
                     map.getCanvas().style.cursor = 'pointer';
                 });
