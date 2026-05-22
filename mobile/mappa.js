@@ -16,7 +16,7 @@ map.addControl(new mapboxgl.GeolocateControl({
     showUserHeading: true
 }));
 
-// Caricamento GeoJSON
+// Caricamento GeoJSON e icone
 map.on('load', () => {
 
     // Sorgente GeoJSON
@@ -25,16 +25,38 @@ map.on('load', () => {
         data: 'data/punti.json' // <-- il tuo file GeoJSON
     });
 
-    // Layer dei punti (temporaneo, poi lo sostituiremo con icone)
+    // Lista delle icone da caricare
+    const icone = [
+        'castello_icona',
+        'duomo_icona',
+        'annunziata',
+        'badia_icona',
+        'cappuccini',
+        'san_domenico',
+        'chiesa',
+        'bar',
+        'ristorante_icona',
+        'leone_pub_icona'
+    ];
+
+    // Caricamento automatico di tutte le icone
+    icone.forEach(nome => {
+        map.loadImage(`img/icons/${nome}.png`, (error, image) => {
+            if (error) throw error;
+            map.addImage(nome, image);
+        });
+    });
+
+    // Layer con icone personalizzate
     map.addLayer({
         id: 'poi',
-        type: 'circle',
+        type: 'symbol',
         source: 'puntiAmuni',
-        paint: {
-            'circle-radius': 8,
-            'circle-color': '#d4a056',
-            'circle-stroke-width': 2,
-            'circle-stroke-color': '#5a3e1b'
+        layout: {
+            'icon-image': ['get', 'icona'], // proprietà "icona" nel tuo GeoJSON
+            'icon-size': 0.15,
+            'icon-anchor': 'bottom',
+            'icon-allow-overlap': true
         }
     });
 
@@ -47,5 +69,13 @@ map.on('load', () => {
             .setLngLat(e.lngLat)
             .setHTML(`<h3>${nome}</h3><p>${descrizione}</p>`)
             .addTo(map);
+    });
+
+    // Cambia il cursore quando si passa sopra un punto
+    map.on('mouseenter', 'poi', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', 'poi', () => {
+        map.getCanvas().style.cursor = '';
     });
 });
