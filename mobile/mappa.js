@@ -100,18 +100,54 @@ map.on('load', () => {
 
                 debug("🎯 Tutte le icone caricate, aggiungo il layer...");
 
-                map.addLayer({
-                    id: 'poi',
-                    type: 'symbol',
-                    source: 'puntiAmuni',
-                    layout: {
-                        'icon-image': ['get', 'icona'],
-                        'icon-size': 0.15,
-                        'icon-anchor': 'bottom',
-                        'icon-allow-overlap': true
-                    }
-                });
+                // Offset personalizzati per ogni icona
+const offsetPersonalizzato = {
+    // 🏰 Monumenti principali
+    'castello_icona': [0, -35],
+    'duomo_icona': [0, -30],
+    'badia_icona': [-10, -25],
+    'annunziata': [0, -25],
+    'san_domenico': [5, -25],
+    'cappuccini': [0, -20],
+    'chiesa': [0, -18],
 
+    // 🍽️ Attività (già corrette)
+    'ristorante_icona': [0, -15],
+    'bar': [0, -15],
+    'leone_pub_icona': [0, -15],
+    'ludoteca': [0, -15]
+};
+
+// Aggiunta layer con offset + rotazione
+map.addLayer({
+    id: 'poi',
+    type: 'symbol',
+    source: 'puntiAmuni',
+    layout: {
+        'icon-image': ['get', 'icona'],
+        'icon-size': 0.15,
+        'icon-anchor': 'center',
+
+        // Offset dinamico per ogni icona
+        'icon-offset': [
+            'case',
+            ['has', ['get', 'icona'], ['literal', offsetPersonalizzato]],
+            ['get', ['get', 'icona'], ['literal', offsetPersonalizzato]],
+            [0, 0]
+        ],
+
+        // Rotazione dinamica (se presente nel GeoJSON)
+        'icon-rotate': [
+            'case',
+            ['has', 'rotation'],
+            ['get', 'rotation'],
+            0
+        ],
+
+        'icon-rotation-alignment': 'map',
+        'icon-allow-overlap': true
+    }
+});
                 debug("✅ Layer 'poi' aggiunto");
 
                 // Popup
