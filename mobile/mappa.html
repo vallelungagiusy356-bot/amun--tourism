@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mappa di Amunì</title>
+    <title>Mappa Amunì</title>
 
     <!-- Mapbox CSS -->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.16.1/mapbox-gl.css" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
 
     <!-- Il tuo CSS -->
     <link rel="stylesheet" href="mappa.css">
@@ -14,14 +14,32 @@
 
 <body>
 
-    <!-- Contenitore della mappa -->
-    <div id="mappa"></div>
+<!-- ⭐ DEBUG PANEL visibile su smartphone -->
+<div id="debug" style="
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 90%;
+    max-height: 40%;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.75);
+    color: #00ff00;
+    padding: 10px;
+    font-size: 12px;
+    z-index: 9999;
+    border-radius: 8px;
+    font-family: monospace;">
+DEBUG PANEL
+</div>
 
-    <!-- Mapbox JS -->
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.16.1/mapbox-gl.js"></script>
+<!-- Contenitore mappa -->
+<div id="mappa"></div>
 
-    <!-- Il tuo file JS -->
-    <script src="mappa.js"></script>
+<!-- Mapbox JS -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+
+<!-- Il tuo JS -->
+<script src="mappa.js"></script>
 
 </body>
 </html>
