@@ -9,7 +9,7 @@
         "type": "castello",
         "address": "Piazza Castello",
         "icona": "castello_icona",
-        "rotation": 0
+        "rotation": 30
       },
       "geometry": {
         "type": "Point",
@@ -24,7 +24,7 @@
         "type": "chiesa",
         "address": "Piazza Vittorio Emanuele, 4",
         "icona": "badia_icona",
-        "rotation": 0
+        "rotation": -30
       },
       "geometry": {
         "type": "Point",
@@ -54,7 +54,7 @@
         "type": "convento",
         "address": "Piazza Cappuccini, 4",
         "icona": "cappuccini",
-        "rotation": 0
+        "rotation": 30
       },
       "geometry": {
         "type": "Point",
@@ -84,7 +84,7 @@
         "type": "chiesa",
         "address": "Piazza SS. Annunziata",
         "icona": "annunziata",
-        "rotation": 0
+        "rotation": -30
       },
       "geometry": {
         "type": "Point",
@@ -99,7 +99,7 @@
         "type": "chiesa",
         "address": "Piazza San Domenico, 1",
         "icona": "san_domenico",
-        "rotation": 0
+        "rotation": 30
       },
       "geometry": {
         "type": "Point",
@@ -144,7 +144,7 @@
         "type": "chiesa",
         "address": "Caccamo",
         "icona": "chiesa",
-        "rotation": 0
+        "rotation": 30
       },
       "geometry": {
         "type": "Point",
@@ -174,7 +174,7 @@
         "type": "chiesa",
         "address": "Via Matteo Bonello",
         "icona": "chiesa",
-        "rotation": 0
+        "rotation": 30
       },
       "geometry": {
         "type": "Point",
@@ -204,7 +204,7 @@
         "type": "chiesa",
         "address": "Via Beato Liccio, 8",
         "icona": "chiesa",
-        "rotation": 0
+        "rotation": -30
       },
       "geometry": {
         "type": "Point",
@@ -249,7 +249,7 @@
         "type": "ristorante",
         "address": "Via Amilcare, 13",
         "icona": "ristorante_icona",
-        "rotation": 0
+        "rotation": 10
       },
       "geometry": {
         "type": "Point",
@@ -264,7 +264,7 @@
         "type": "ristorante",
         "address": "Piazza dei Caduti, 4",
         "icona": "ristorante_icona",
-        "rotation": 0
+        "rotation": -10
       },
       "geometry": {
         "type": "Point",
@@ -294,7 +294,7 @@
         "type": "pub",
         "address": "Via de Spuches, 7",
         "icona": "leone_pub_icona",
-        "rotation": 0
+        "rotation": 10
       },
       "geometry": {
         "type": "Point",
@@ -309,7 +309,7 @@
         "type": "pub",
         "address": "Via Roma, 3",
         "icona": "leone_pub_icona",
-        "rotation": 0
+        "rotation": -10
       },
       "geometry": {
         "type": "Point",
@@ -354,7 +354,7 @@
         "type": "pub",
         "address": "Via Termitana, 3",
         "icona": "leone_pub_icona",
-        "rotation": 0
+        "rotation": 10
       },
       "geometry": {
         "type": "Point",
@@ -369,7 +369,7 @@
         "type": "pub",
         "address": "Via del Carmine, Caccamo",
         "icona": "leone_pub_icona",
-        "rotation": 0
+        "rotation": -10
       },
       "geometry": {
         "type": "Point",
@@ -384,7 +384,7 @@
         "type": "pub",
         "address": "Corso Umberto, 205",
         "icona": "leone_pub_icona",
-        "rotation": 0
+        "rotation": 10
       },
       "geometry": {
         "type": "Point",
