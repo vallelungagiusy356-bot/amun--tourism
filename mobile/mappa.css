@@ -59,3 +59,32 @@ body {
 .mapboxgl-ctrl button:hover {
     background-color: #f0e2cf !important;
 }
+
+/* Migliore sovrapposizione icone */
+.mapboxgl-marker,
+.mapboxgl-canvas {
+    image-rendering: crisp-edges;
+}
+
+/* Popup più elegante e leggibile */
+.mapboxgl-popup-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #b06a2b;
+    text-shadow: 0 0 4px rgba(212,160,86,0.3);
+}
+
+.mapboxgl-popup-content p {
+    font-family: 'Poppins', sans-serif;
+    color: #4a3b2a;
+}
+
+/* Ombra leggera sotto le icone */
+.mapboxgl-marker img {
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.35));
+}
+
+/* Popup freccia */
+.mapboxgl-popup-tip {
+    border-top-color: #d4a056 !important;
+}
