@@ -24,6 +24,43 @@ map.on('load', () => {
         data: 'data.geojson'
     });
 
+    console.log("🔍 Avvio verifica caricamento...");
+
+// Test 1: verifica file GeoJSON
+fetch('data.geojson')
+  .then(response => {
+    if (!response.ok) throw new Error(`❌ File GeoJSON non trovato (${response.status})`);
+    console.log("✅ File GeoJSON trovato e accessibile");
+    return response.json();
+  })
+  .then(data => {
+    console.log(`📦 Numero di punti caricati: ${data.features.length}`);
+  })
+  .catch(error => console.error(error));
+
+// Test 2: verifica icone
+const icone = [
+  'castello_icona',
+  'duomo_icona',
+  'annunziata',
+  'badia_icona',
+  'cappuccini',
+  'san_domenico',
+  'chiesa',
+  'bar',
+  'ristorante_icona',
+  'leone_pub_icona'
+];
+
+icone.forEach(nome => {
+  const url = `img/${nome}.png`;
+  fetch(url)
+    .then(response => {
+      if (!response.ok) throw new Error(`❌ Icona mancante: ${url}`);
+      console.log(`✅ Icona caricata: ${url}`);
+    })
+    .catch(error => console.error(error));
+});
     // Lista delle icone da caricare
     const icone = [
         'castello_icona',
