@@ -40,11 +40,11 @@ map.on('load', () => {
 
     debug("🔍 Avvio verifica caricamento...");
 
-    // ⭐ Sorgente GeoJSON
+    // ⭐ Sorgente GeoJSON (versione semplice e funzionante)
     map.addSource('puntiAmuni', {
-    type: 'vector',
-    url: 'mapbox://giusifi89.cru2qbxb'
-});
+        type: 'geojson',
+        data: 'data.geojson'
+    });
 
     // ⭐ Test GeoJSON
     fetch('data.geojson')
@@ -71,7 +71,7 @@ map.on('load', () => {
         'ludoteca'
     ];
 
-    // ⭐ Test icone (esistenza file)
+    // ⭐ Test icone
     icone.forEach(nome => {
         const url = `img/${nome}.png`;
         fetch(url)
@@ -123,9 +123,7 @@ map.on('load', () => {
             }
 
             map.addImage(nome, image);
-
-            // ⭐ TEST NUOVO: conferma registrazione icona
-            debug(`🖼️ Icona registrata in Mapbox: ${nome}`);
+            debug(`🖼️ Icona registrata: ${nome}`);
 
             iconeCaricate++;
 
