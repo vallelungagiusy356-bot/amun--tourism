@@ -129,7 +129,7 @@ map.on('load', () => {
 
                 debug("🎯 Tutte le icone caricate, aggiungo il layer...");
 
-                // ⭐ LAYER POI COMPLETO
+                // ⭐ LAYER POI COMPLETO (FIXATO)
                 map.addLayer({
                     id: 'poi',
                     type: 'symbol',
@@ -137,22 +137,42 @@ map.on('load', () => {
                     layout: {
                         'icon-image': ['get', 'icona'],
 
-                        // ⭐ Dimensioni dinamiche
+                        // ⭐ Dimensioni dinamiche (MATCH FIX)
                         'icon-size': [
-                            'case',
-                            ['has', ['get', 'icona'], ['literal', dimensioniIcone]],
-                            ['get', ['get', 'icona'], ['literal', dimensioniIcone]],
-                            0.35
+                            'match',
+                            ['get', 'icona'],
+                            'castello_icona', 0.22,
+                            'duomo_icona', 0.19,
+                            'badia_icona', 0.17,
+                            'annunziata', 0.17,
+                            'san_domenico', 0.17,
+                            'cappuccini', 0.17,
+                            'chiesa', 0.15,
+                            'ristorante_icona', 0.13,
+                            'bar', 0.12,
+                            'leone_pub_icona', 0.12,
+                            'ludoteca', 0.14,
+                            0.20
                         ],
 
                         'icon-anchor': 'center',
 
-                        // ⭐ Offset dinamico
+                        // ⭐ Offset dinamico (MATCH FIX)
                         'icon-offset': [
-                            'case',
-                            ['has', ['get', 'icona'], ['literal', offsetPersonalizzato]],
-                            ['get', ['get', 'icona'], ['literal', offsetPersonalizzato]],
-                            [0, 0]
+                            'match',
+                            ['get', 'icona'],
+                            'castello_icona', [0, -40],
+                            'duomo_icona', [0, -40],
+                            'badia_icona', [0, -40],
+                            'annunziata', [0, -40],
+                            'san_domenico', [0, -40],
+                            'cappuccini', [0, -40],
+                            'chiesa', [0, -40],
+                            'ristorante_icona', [0, -40],
+                            'bar', [0, -40],
+                            'leone_pub_icona', [0, -40],
+                            'ludoteca', [0, -40],
+                            [0, -40]
                         ],
 
                         // ⭐ Rotazione dinamica
