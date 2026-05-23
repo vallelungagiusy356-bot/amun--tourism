@@ -42,9 +42,9 @@ map.on('load', () => {
 
     // ⭐ Sorgente GeoJSON
     map.addSource('puntiAmuni', {
-        type: 'geojson',
-        data: 'data.geojson'
-    });
+    type: 'vector',
+    url: 'mapbox://giusifi89.cru2qbxb'
+});
 
     // ⭐ Test GeoJSON
     fetch('data.geojson')
