@@ -142,7 +142,7 @@ map.on('load', () => {
                             'case',
                             ['has', ['get', 'icona'], ['literal', dimensioniIcone]],
                             ['get', ['get', 'icona'], ['literal', dimensioniIcone]],
-                            0.15
+                            0.35
                         ],
 
                         'icon-anchor': 'center',
