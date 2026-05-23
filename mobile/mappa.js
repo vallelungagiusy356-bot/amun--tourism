@@ -71,13 +71,13 @@ map.on('load', () => {
         'ludoteca'
     ];
 
-    // ⭐ Test icone
+    // ⭐ Test icone (esistenza file)
     icone.forEach(nome => {
         const url = `img/${nome}.png`;
         fetch(url)
             .then(response => {
                 if (!response.ok) throw new Error(`❌ Icona mancante: ${url}`);
-                debug(`✅ Icona caricata: ${url}`);
+                debug(`✅ Icona trovata: ${url}`);
             })
             .catch(error => debug(error.message, '#ff4444'));
     });
@@ -123,13 +123,17 @@ map.on('load', () => {
             }
 
             map.addImage(nome, image);
+
+            // ⭐ TEST NUOVO: conferma registrazione icona
+            debug(`🖼️ Icona registrata in Mapbox: ${nome}`);
+
             iconeCaricate++;
 
             if (iconeCaricate === icone.length) {
 
-                debug("🎯 Tutte le icone caricate, aggiungo il layer...");
+                debug("🎯 Tutte le icone registrate, aggiungo il layer...");
 
-                // ⭐ LAYER POI COMPLETO (FIXATO)
+                // ⭐ LAYER POI COMPLETO (MATCH FIXATO)
                 map.addLayer({
                     id: 'poi',
                     type: 'symbol',
@@ -137,7 +141,7 @@ map.on('load', () => {
                     layout: {
                         'icon-image': ['get', 'icona'],
 
-                        // ⭐ Dimensioni dinamiche (MATCH FIX)
+                        // ⭐ Dimensioni dinamiche
                         'icon-size': [
                             'match',
                             ['get', 'icona'],
@@ -157,7 +161,7 @@ map.on('load', () => {
 
                         'icon-anchor': 'center',
 
-                        // ⭐ Offset dinamico (MATCH FIX)
+                        // ⭐ Offset dinamico
                         'icon-offset': [
                             'match',
                             ['get', 'icona'],
@@ -189,26 +193,27 @@ map.on('load', () => {
                 });
 
                 debug("✅ Layer 'poi' aggiunto");
-
-                // ⭐ Popup
-                map.on('click', 'poi', (e) => {
-                    const nome = e.features[0].properties.name;
-                    const address = e.features[0].properties.address;
-
-                    new mapboxgl.Popup()
-                        .setLngLat(e.lngLat)
-                        .setHTML(`<h3>${nome}</h3><p>${address}</p>`)
-                        .addTo(map);
-                });
-
-                // ⭐ Cursore
-                map.on('mouseenter', 'poi', () => {
-                    map.getCanvas().style.cursor = 'pointer';
-                });
-                map.on('mouseleave', 'poi', () => {
-                    map.getCanvas().style.cursor = '';
-                });
             }
         });
     });
+
+    // ⭐ Popup
+    map.on('click', 'poi', (e) => {
+        const nome = e.features[0].properties.name;
+        const address = e.features[0].properties.address;
+
+        new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`<h3>${nome}</h3><p>${address}</p>`)
+            .addTo(map);
+    });
+
+    // ⭐ Cursore
+    map.on('mouseenter', 'poi', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', 'poi', () => {
+        map.getCanvas().style.cursor = '';
+    });
+
 });
