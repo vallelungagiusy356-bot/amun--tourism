@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <title>Mappa Amunì</title>
+
+    <!-- Preconnessione per velocizzare Mapbox -->
+    <link rel="preconnect" href="https://api.mapbox.com">
+    <link rel="preconnect" href="https://events.mapbox.com">
+
+    <!-- Font elegante e coerente -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- Mapbox CSS -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
@@ -14,14 +22,21 @@
 
 <body>
 
-<!-- Contenitore mappa -->
-<div id="mappa"></div>
+    <!-- Contenitore mappa -->
+    <div id="mappa"></div>
 
-<!-- Mapbox JS -->
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <!-- Messaggio fallback se JS è disattivato -->
+    <noscript>
+        <div style="padding:20px; text-align:center; font-family:Poppins; color:#4a3b2a;">
+            ⚠️ Per visualizzare la mappa è necessario attivare JavaScript.
+        </div>
+    </noscript>
 
-<!-- Il tuo JS -->
-<script src="mappa.js"></script>
+    <!-- Mapbox JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+
+    <!-- Il tuo JS -->
+    <script src="mappa.js"></script>
 
 </body>
 </html>
