@@ -1,396 +1,200 @@
 {
   "type": "FeatureCollection",
   "features": [
-
     {
       "type": "Feature",
       "properties": {
         "name": "Castello di Caccamo",
         "type": "castello",
         "address": "Piazza Castello",
-        "icona": "castello_icona",
-        "rotation": 30
+        "icona": "castello_icona"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.66075, 37.93241]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa di San Benedetto alla Badia",
         "type": "chiesa",
         "address": "Piazza Vittorio Emanuele, 4",
-        "icona": "badia_icona",
-        "rotation": -30
+        "icona": "badia_icona"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6645125, 37.9312967]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa dell'Oratorio",
         "type": "chiesa",
         "address": "Piazza Duomo",
-        "icona": "chiesa",
-        "rotation": 0
+        "icona": "chiesa"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6608231, 37.9313414]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Convento dei Cappuccini",
         "type": "convento",
         "address": "Piazza Cappuccini, 4",
-        "icona": "cappuccini",
-        "rotation": 30
+        "icona": "cappuccini"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6639045, 37.9354964]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa di San Michele",
         "type": "chiesa",
         "address": "Piazza San Michele",
-        "icona": "chiesa",
-        "rotation": 0
+        "icona": "chiesa"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6641303, 37.9326222]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa SS. Annunziata",
         "type": "chiesa",
         "address": "Piazza SS. Annunziata",
-        "icona": "annunziata",
-        "rotation": -30
+        "icona": "annunziata"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6642971, 37.9315291]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa Santa Maria degli Angeli",
         "type": "chiesa",
         "address": "Piazza San Domenico, 1",
-        "icona": "san_domenico",
-        "rotation": 30
+        "icona": "san_domenico"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6659428, 37.9329931]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa di San Francesco",
         "type": "chiesa",
         "address": "Caccamo",
-        "icona": "chiesa",
-        "rotation": 0
+        "icona": "chiesa"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6630911, 37.9313951]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa Visita Poveri",
         "type": "chiesa",
         "address": "Via Visita Poveri",
-        "icona": "chiesa",
-        "rotation": 0
+        "icona": "chiesa"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6634111, 37.9311707]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa di Sant'Agostino",
         "type": "chiesa",
         "address": "Caccamo",
-        "icona": "chiesa",
-        "rotation": 30
+        "icona": "chiesa"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6652181, 37.9340851]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa di San Giacomo Maggiore",
         "type": "chiesa",
         "address": "Corso Umberto, 23",
-        "icona": "chiesa",
-        "rotation": 0
+        "icona": "chiesa"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.661736, 37.9317104]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa di Sant'Antonio Abate",
         "type": "chiesa",
         "address": "Via Matteo Bonello",
-        "icona": "chiesa",
-        "rotation": 30
+        "icona": "chiesa"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6609508, 37.9322582]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa Anime Sante del Purgatorio",
         "type": "chiesa",
         "address": "Piazza Duomo",
-        "icona": "chiesa",
-        "rotation": 0
+        "icona": "chiesa"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6611745, 37.9314049]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Chiesa Vecchia dei Santi Filippo e Giacomo",
         "type": "chiesa",
         "address": "Via Beato Liccio, 8",
-        "icona": "chiesa",
-        "rotation": -30
+        "icona": "chiesa"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6620671, 37.9303825]
       }
     },
-
     {
       "type": "Feature",
       "properties": {
         "name": "Duomo di San Giorgio Martire",
         "type": "chiesa",
         "address": "Piazza Duomo, 2",
-        "icona": "duomo_icona",
-        "rotation": 0
+        "icona": "duomo_icona"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [13.6607201, 37.9310429]
       }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Agriturismo Cicala",
-        "type": "ristorante",
-        "address": "Contrada Misa",
-        "icona": "ristorante_icona",
-        "rotation": 0
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.664757, 37.924958]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Il Borgo",
-        "type": "ristorante",
-        "address": "Via Amilcare, 13",
-        "icona": "ristorante_icona",
-        "rotation": 10
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.6607553, 37.9317912]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "A Castellana",
-        "type": "ristorante",
-        "address": "Piazza dei Caduti, 4",
-        "icona": "ristorante_icona",
-        "rotation": -10
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.6603796, 37.9321034]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Dorotea Playpark",
-        "type": "ludoteca",
-        "address": "Via Antonio Amato",
-        "icona": "ludoteca",
-        "rotation": 0
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.6660132, 37.9340287]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Chiosco San Francesco",
-        "type": "pub",
-        "address": "Via de Spuches, 7",
-        "icona": "leone_pub_icona",
-        "rotation": 10
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.6637551, 37.9315769]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Muscarella Francesco",
-        "type": "pub",
-        "address": "Via Roma, 3",
-        "icona": "leone_pub_icona",
-        "rotation": -10
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.6662576, 37.932684]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Bar Royal",
-        "type": "bar",
-        "address": "Corso Umberto I, 1",
-        "icona": "bar",
-        "rotation": 0
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.6607216, 37.93217]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Fratelli Scimeca",
-        "type": "bar",
-        "address": "Viale Regione Siciliana, 145",
-        "icona": "bar",
-        "rotation": 0
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.6736443, 37.9348716]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "The Castle",
-        "type": "pub",
-        "address": "Via Termitana, 3",
-        "icona": "leone_pub_icona",
-        "rotation": 10
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.6608588, 37.9326558]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Kitipigghi",
-        "type": "pub",
-        "address": "Via del Carmine, Caccamo",
-        "icona": "leone_pub_icona",
-        "rotation": -10
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.6659805, 37.927471]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Café 40",
-        "type": "pub",
-        "address": "Corso Umberto, 205",
-        "icona": "leone_pub_icona",
-        "rotation": 10
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [13.6665625, 37.9324294]
-      }
     }
-
   ]
 }
