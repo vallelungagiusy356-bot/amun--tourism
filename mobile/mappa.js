@@ -4,10 +4,10 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l1c2lmaTg5IiwiYSI6ImNtcGNvYXpqYTAwZ3kzNHM5a
 // Inizializzazione mappa con NUOVO STILE A CONTRASTO
 const map = new mapboxgl.Map({
     container: 'mappa',
-    style: 'mapbox://styles/giusifi89/cmpl4lr6n003401r63fof43dl', // AGGIORNATO CON SUCCESSO
+    style: 'mapbox://styles/giusifi89/cmpl4lr6n003401r63fof43dl',
     center: [13.666, 37.933], // Coordinate di Caccamo
     zoom: 14,
-    pitch: 45, // Inclinazione della visuale per godere dell'effetto dei futuri monumenti 3D
+    pitch: 45, // Inclinazione della visuale per l'effetto tridimensionale
     bearing: 0
 });
 
@@ -39,13 +39,13 @@ map.on('load', () => {
         console.warn("Layer 'poi' non trovato nello stile (ok così).");
     }
 
-    // ⭐ PANEL DEBUG RIGENERATO
+    // ⭐ PANEL DEBUG
     const debugPanel = document.createElement('div');
     debugPanel.style.position = 'absolute';
     debugPanel.style.top = '10px';
     debugPanel.style.left = '10px';
-    debugPanel.style.background = 'rgba(26, 21, 16, 0.9)'; // Coordinato con lo stile seppia
-    debugPanel.style.color = '#CDA843'; // Testo oro antico
+    debugPanel.style.background = 'rgba(26, 21, 16, 0.9)'; // Seppia scuro
+    debugPanel.style.color = '#CDA843'; // Oro antico
     debugPanel.style.padding = '10px';
     debugPanel.style.fontFamily = 'monospace';
     debugPanel.style.fontSize = '12px';
@@ -62,13 +62,12 @@ map.on('load', () => {
 
     debug("🔍 Avvio verifica sorgenti dati...");
 
-    // Sorgente GeoJSON per punti d'interesse minori, bar, fermate bus
+    // Sorgente GeoJSON per punti d'interesse, bar, fermate bus
     map.addSource('puntiAmuni', {
         type: 'geojson',
         data: 'data.geojson'
     });
 
-    // SISTEMATO ERRORE DI SINTASSI QUI (Aggiunta parentesi graffa di chiusura)
     fetch('data.geojson')
         .then(response => {
             if (!response.ok) throw new Error(`❌ File GeoJSON non trovato (${response.status})`);
@@ -78,76 +77,80 @@ map.on('load', () => {
         .then(data => debug(`📦 Punti interattivi caricati: ${data.features.length}`))
         .catch(error => debug(error.message, '#ff4444'));
 
-    // Lista icone bidimensionali per la mappa
+    // Lista delle icone bidimensionali da precaricare
     const icone = [
         'castello_icona', 'duomo_icona', 'annunziata', 'badia_icona',
         'cappuccini', 'san_domenico', 'chiesa', 'bar',
         'ristorante_icona', 'leone_pub_icona', 'ludoteca'
     ];
 
-    let iconeCaricate = 0;
-
-    icone.forEach(nome => {
-        map.loadImage(`img/${nome}.png`, (error, image) => {
-            if (error) {
-                debug(`❌ Impossibile trovare l'icona: img/${nome}.png`, '#ff4444');
-                return;
-            }
-
-            map.addImage(nome, image);
-            iconeCaricate++;
-
-            if (iconeCaricate === icone.length) {
-                debug("🎯 Tutte le icone 2D registrate. Genero i layer grafici...");
-
-                map.addLayer({
-                    id: 'poi-github',
-                    type: 'symbol',
-                    source: 'puntiAmuni',
-                    layout: {
-                        'icon-image': ['get', 'icona'],
-                        'icon-size': [
-                            'match',
-                            ['get', 'icona'],
-                            'castello_icona', 0.22,
-                            'duomo_icona', 0.19,
-                            'badia_icona', 0.17,
-                            'annunziata', 0.17,
-                            'san_domenico', 0.17,
-                            'cappuccini', 0.17,
-                            'chiesa', 0.15,
-                            'ristorante_icona', 0.13,
-                            'bar', 0.12,
-                            'leone_pub_icona', 0.12,
-                            'ludoteca', 0.14,
-                            0.20
-                        ],
-                        'icon-anchor': 'center',
-                        'icon-offset': [
-                            'match',
-                            ['get', 'icona'],
-                            'castello_icona', [0, -40],
-                            'duomo_icona', [0, -40],
-                            'badia_icona', [0, -40],
-                            'annunziata', [0, -40],
-                            'san_domenico', [0, -40],
-                            'cappuccini', [0, -40],
-                            'chiesa', [0, -40],
-                            'ristorante_icona', [0, -40],
-                            'bar', [0, -40],
-                            'leone_pub_icona', [0, -40],
-                            'ludoteca', [0, -40],
-                            [0, -40]
-                        ],
-                        'icon-rotate': ['case', ['has', 'rotation'], ['get', 'rotation'], 0],
-                        'icon-rotation-alignment': 'map',
-                        'icon-allow-overlap': true
-                    }
-                });
-
-                debug("✅ Layer 'poi-github' agganciato ed attivo.");
-            }
+    // ==========================================
+    // CARICAMENTO ICONE ASINCRONO CON FIX PROMISE
+    // ==========================================
+    const promises = icone.map(nome => {
+        return new Promise((resolve) => {
+            map.loadImage(`img/${nome}.png`, (error, image) => {
+                if (error) {
+                    debug(`⚠️ Icona non trovata su GitHub: img/${nome}.png`, '#ffaa00');
+                    resolve(null); // Salta l'icona mancante senza bloccare la mappa
+                } else {
+                    map.addImage(nome, image);
+                    resolve(nome);
+                }
+            });
         });
+    });
+
+    Promise.all(promises).then(() => {
+        debug("🎯 Sincronizzazione icone completata. Genero il layer grafico...");
+
+        if (!map.getLayer('poi-github')) {
+            map.addLayer({
+                id: 'poi-github',
+                type: 'symbol',
+                source: 'puntiAmuni',
+                layout: {
+                    'icon-image': ['get', 'icona'],
+                    'icon-size': [
+                        'match',
+                        ['get', 'icona'],
+                        'castello_icona', 0.22,
+                        'duomo_icona', 0.19,
+                        'badia_icona', 0.17,
+                        'annunziata', 0.17,
+                        'san_domenico', 0.17,
+                        'cappuccini', 0.17,
+                        'chiesa', 0.15,
+                        'ristorante_icona', 0.13,
+                        'bar', 0.12,
+                        'leone_pub_icona', 0.12,
+                        'ludoteca', 0.14,
+                        0.20
+                    ],
+                    'icon-anchor': 'center',
+                    'icon-offset': [
+                        'match',
+                        ['get', 'icona'],
+                        'castello_icona', [0, -40],
+                        'duomo_icona', [0, -40],
+                        'badia_icona', [0, -40],
+                        'annunziata', [0, -40],
+                        'san_domenico', [0, -40],
+                        'cappuccini', [0, -40],
+                        'chiesa', [0, -40],
+                        'ristorante_icona', [0, -40],
+                        'bar', [0, -40],
+                        'leone_pub_icona', [0, -40],
+                        'ludoteca', [0, -40],
+                        [0, -40]
+                    ],
+                    'icon-rotate': ['case', ['has', 'rotation'], ['get', 'rotation'], 0],
+                    'icon-rotation-alignment': 'map',
+                    'icon-allow-overlap': true
+                }
+            });
+            debug("✅ Layer 'poi-github' agganciato ed attivo sul display.");
+        }
     });
 
     // ===================================================
@@ -195,7 +198,7 @@ map.on('load', () => {
                         model.traverse((node) => {
                             if (node.isMesh) {
                                 node.material = new THREE.MeshStandardMaterial({
-                                    color: 0xD4AF37, 
+                                    color: 0xD4AF37, // Oro lucido reale sbalzato
                                     metalness: 0.9,
                                     roughness: 0.1
                                 });
@@ -253,13 +256,14 @@ map.on('load', () => {
         const lng = coordinatePunto[0];
         const lat = coordinatePunto[1];
 
+        // Creazione del link universale per i navigatori GPS mobile (Google Maps)
         const urlNavigatore = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=walking`;
 
         new mapboxgl.Popup({ offset: [0, -30], className: 'popup-medievale' })
             .setLngLat(coordinatePunto)
             .setHTML(`
                 <div style="font-family: 'Cormorant Garamond', serif; padding: 5px;">
-                    <h3 style="margin: 0 0 5px 0; color: #1A1510; font-size: 16px; font-weight: bold;">${nome}</h3>
+                    <h3 style="margin: 0 0 5px 0; color: #1A1510; font-size: 16px; font-weight: bold; font-family: 'Cinzel', serif;">${nome}</h3>
                     <p style="margin: 0 0 10px 0; color: #5C4A33; font-size: 13px; font-style: italic;">${address}</p>
                     <a href="${urlNavigatore}" target="_blank" rel="noopener noreferrer" 
                        style="display: block; text-align: center; background: #1A1510; color: #D4AF37; 
