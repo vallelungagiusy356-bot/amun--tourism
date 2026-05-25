@@ -1,11 +1,11 @@
-/* Reset */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corpo pagina */
+/* CORPO PAGINA */
 body {
     font-family: 'Poppins', sans-serif;
     background: #f7f2e8; /* sabbia chiara */
@@ -14,23 +14,28 @@ body {
     overflow: hidden;
 }
 
-/* Contenitore mappa */
+/* CONTENITORE MAPPA */
 #mappa {
     width: 100%;
     height: 100vh;
     border: 4px solid #d4a056; /* oro */
     box-shadow: 0 0 25px rgba(180, 120, 60, 0.35);
+    cursor: grab;
 }
 
-/* Popup Mapbox */
+#mappa:active {
+    cursor: grabbing;
+}
+
+/* POPUP MAPBOX */
 .mapboxgl-popup {
     max-width: 260px;
     font-family: 'Poppins', sans-serif;
 }
 
 .mapboxgl-popup-content {
-    background: #fff8ef;
-    border: 2px solid #d4a056;
+    background: linear-gradient(#fff8ef, #f3e4d2); /* effetto pergamena */
+    border: 2px solid #b88a3c; /* oro più scuro */
     border-radius: 12px;
     padding: 15px;
     color: #4a3b2a;
@@ -40,15 +45,29 @@ body {
 .mapboxgl-popup-content h3 {
     margin-bottom: 8px;
     font-size: 18px;
+    font-weight: 700;
     color: #b06a2b;
+    text-shadow: 0 0 4px rgba(212,160,86,0.3);
 }
 
 .mapboxgl-popup-content p {
     font-size: 14px;
     line-height: 1.4;
+    font-weight: 500;
+    color: #4a3b2a;
 }
 
-/* Controlli zoom */
+/* FRECCIA POPUP */
+.mapboxgl-popup-tip {
+    border-top-color: #d4a056 !important;
+}
+
+/* CONTROLLI ZOOM */
+.mapboxgl-ctrl {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
 .mapboxgl-ctrl button {
     background-color: #fff8ef !important;
     border-radius: 6px !important;
@@ -60,31 +79,13 @@ body {
     background-color: #f0e2cf !important;
 }
 
-/* Migliore sovrapposizione icone */
-.mapboxgl-marker,
+/* MIGLIORE RESA ICONE */
+.mapboxgl-marker img,
 .mapboxgl-canvas {
     image-rendering: crisp-edges;
 }
 
-/* Popup più elegante e leggibile */
-.mapboxgl-popup-content h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    color: #b06a2b;
-    text-shadow: 0 0 4px rgba(212,160,86,0.3);
-}
-
-.mapboxgl-popup-content p {
-    font-family: 'Poppins', sans-serif;
-    color: #4a3b2a;
-}
-
-/* Ombra leggera sotto le icone */
+/* OMBRA SOTTO LE ICONE */
 .mapboxgl-marker img {
     filter: drop-shadow(0 2px 3px rgba(0,0,0,0.35));
-}
-
-/* Popup freccia */
-.mapboxgl-popup-tip {
-    border-top-color: #d4a056 !important;
 }
