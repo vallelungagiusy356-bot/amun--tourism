@@ -2,40 +2,48 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Mappa Amunì</title>
+    <title>Mappa Amunì - Caccamo</title>
 
-    <!-- Preconnessione per velocizzare Mapbox -->
     <link rel="preconnect" href="https://api.mapbox.com">
     <link rel="preconnect" href="https://events.mapbox.com">
 
-    <!-- Font elegante e coerente -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Mapbox CSS -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
 
-    <!-- Il tuo CSS -->
     <link rel="stylesheet" href="mappa.css">
+
+    <style>
+        /* Stile specifico per i popup medievali per forzare i font corretti ed evitare scritte moderne */
+        .popup-medievale .mapboxgl-popup-content {
+            background: #EFE6D5 !important; /* Colore pergamena coerente */
+            border: 1px solid #B48A1D !important;
+            border-radius: 6px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        }
+        .popup-medievale .mapboxgl-popup-tip {
+            border-top-color: #B48A1D !important; /* Colora anche la freccetta del popup */
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Contenitore mappa -->
     <div id="mappa"></div>
 
-    <!-- Messaggio fallback se JS è disattivato -->
     <noscript>
-        <div style="padding:20px; text-align:center; font-family:Poppins; color:#4a3b2a;">
-            ⚠️ Per visualizzare la mappa è necessario attivare JavaScript.
+        <div style="padding:20px; text-align:center; font-family:'Cormorant Garamond', serif; color:#4a3b2a; background:#EFE6D5; height:100vh;">
+            ⚠️ Per visualizzare l'esperienza interattiva e la mappa di Amunì è necessario attivare JavaScript nel browser.
         </div>
     </noscript>
 
-    <!-- Mapbox JS -->
+    <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
+
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 
-    <!-- Il tuo JS -->
     <script src="mappa.js"></script>
 
 </body>
