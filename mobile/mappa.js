@@ -18,6 +18,13 @@ map.addControl(new mapboxgl.GeolocateControl({
 
 map.on('load', () => {
 
+    // ⭐ NASCONDI IL LAYER POI DI MAPBOX STUDIO
+    try {
+        map.setLayoutProperty('poi', 'visibility', 'none');
+    } catch (e) {
+        console.warn("Layer 'poi' non trovato nello stile (ok così).");
+    }
+
     // ⭐ DEBUG PANEL
     const debugPanel = document.createElement('div');
     debugPanel.style.position = 'absolute';
@@ -40,7 +47,7 @@ map.on('load', () => {
 
     debug("🔍 Avvio verifica caricamento...");
 
-    // ⭐ Sorgente GeoJSON (versione semplice e funzionante)
+    // ⭐ Sorgente GeoJSON
     map.addSource('puntiAmuni', {
         type: 'geojson',
         data: 'data.geojson'
@@ -131,9 +138,9 @@ map.on('load', () => {
 
                 debug("🎯 Tutte le icone registrate, aggiungo il layer...");
 
-                // ⭐ LAYER POI COMPLETO (MATCH FIXATO)
+                // ⭐ LAYER POI PERSONALIZZATO (RINOMINATO)
                 map.addLayer({
-                    id: 'poi',
+                    id: 'poi-github',
                     type: 'symbol',
                     source: 'puntiAmuni',
                     layout: {
@@ -190,13 +197,13 @@ map.on('load', () => {
                     }
                 });
 
-                debug("✅ Layer 'poi' aggiunto");
+                debug("✅ Layer 'poi-github' aggiunto");
             }
         });
     });
 
     // ⭐ Popup
-    map.on('click', 'poi', (e) => {
+    map.on('click', 'poi-github', (e) => {
         const nome = e.features[0].properties.name;
         const address = e.features[0].properties.address;
 
@@ -207,10 +214,10 @@ map.on('load', () => {
     });
 
     // ⭐ Cursore
-    map.on('mouseenter', 'poi', () => {
+    map.on('mouseenter', 'poi-github', () => {
         map.getCanvas().style.cursor = 'pointer';
     });
-    map.on('mouseleave', 'poi', () => {
+    map.on('mouseleave', 'poi-github', () => {
         map.getCanvas().style.cursor = '';
     });
 
