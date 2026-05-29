@@ -3,18 +3,15 @@
 ================================ */
 html, body {
     height: 100%;
-}
-
-body {
     margin: 0;
     font-family: "Segoe UI", system-ui, sans-serif;
-    /* Modificato: rimosso l'immagine e impostato il moka scuro di sfondo */
     background-color: #2c1e17; 
-    color: #e5a93c; /* Colore oro base per tutta la pagina */
+    color: #e5a93c;
+    overflow-x: hidden;
 }
 
 /* ================================
-   DASHBOARD CORREZIONE LUNGHEZZA
+   DASHBOARD
 ================================ */
 .dashboard {
     position: fixed;
@@ -46,112 +43,97 @@ body {
     flex-shrink: 0; 
 }
 
-.home-btn:hover {
-    background: rgba(255, 215, 160, 0.5);
-}
-
 /* ================================
-   LAYOUT CASTELLO
+   LAYOUT A DUE COLONNE FLUIDO
 ================================ */
 .castle-layout {
-    position: relative;
-    padding: 80px 0 80px; 
+    padding-top: 90px; /* Lascia spazio per la dashboard */
     min-height: 100vh;
-    width: 100vw; 
-    overflow-x: hidden; 
+    display: block;
 }
 
-/* ================================
-   CASTELLO GRANDE CENTRALE (VIDEO & IMG)
-================================ */
-/* Modificato: ora si applica sia al nuovo video WebM che all'immagine di fallback */
-.castle-main-video, .castle-top img {
-    width: 85%;
-    max-width: 1100px;
-    display: block;
+.castle-container-2col {
+    max-width: 1200px;
     margin: 0 auto;
-    filter: brightness(1.15) contrast(1.1);
+    padding: 20px;
+    display: table; /* Layout solido e compatibile */
+    width: 100%;
+}
+
+/* Colonna Sinistra (Video) */
+.column-left {
+    display: table-cell;
+    width: 45%;
+    vertical-align: middle;
+    text-align: center;
+    padding-right: 40px;
+}
+
+/* Colonna Destra (Pannello testo + bottone) */
+.column-right {
+    display: table-cell;
+    width: 55%;
+    vertical-align: middle;
+}
+
+/* Forziamo il video a mostrarsi a pieno blocco */
+.castle-main-video {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    display: inline-block;
     background: transparent;
 }
 
 /* ================================
-   PANNELLO VETRO + TESTO + ABITO
+   PANNELLO VETRO
 ================================ */
 .castle-panel {
-    max-width: 900px;
-    margin: 40px auto 60px;
-    padding: 30px 40px;
-
-    /* Modificato: sfondo scuro trasparente per risaltare sul moka */
     background: rgba(0, 0, 0, 0.3); 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 215, 160, 0.6);
+    border: 2px solid rgba(255, 215, 160, 0.5);
     border-radius: 20px;
-    box-shadow:
-        0 0 30px rgba(255, 215, 160, 0.3),
-        0 0 60px rgba(255, 215, 160, 0.15),
-        inset 0 0 20px rgba(255, 215, 160, 0.1);
-
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
+    padding: 30px;
+    display: table; /* Sotto-layout per testo e abito */
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* ================================
-   TESTO PERGAMENA ORO
-================================ */
 .castle-text {
-    color: #e5a93c; /* Modificato: testo dei paragrafi in Oro */
+    display: table-cell;
+    vertical-align: top;
+    color: #e5a93c;
     font-family: "Cormorant Garamond", "Garamond", serif;
-    font-size: 22px;
-    line-height: 1.6;
+    font-size: 20px;
+    line-height: 1.5;
+    padding-right: 20px;
 }
 
 .castle-text h2 {
-    font-family: "Cormorant Garamond", "Garamond", serif;
-    font-size: 40px;
-    color: #ffe7b3; /* Oro più chiaro e luminoso per il titolo dell'edificio */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
+    font-size: 36px;
+    color: #ffe7b3;
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
-.castle-text ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.castle-text li {
-    margin-bottom: 16px;
-}
-
-/* ================================
-   ABITO DELLA CASTELLANA
-================================ */
 .castle-dress {
-    flex-shrink: 0;
-    width: 220px;
-    margin-top: 10px;
+    display: table-cell;
+    width: 160px;
+    vertical-align: top;
 }
 
 .castle-dress img {
     width: 100%;
-    filter: brightness(1.05);
-    box-shadow:
-        0 0 35px rgba(0, 0, 0, 0.8),
-        0 0 55px rgba(255, 215, 160, 0.4);
+    height: auto;
 }
 
 /* ================================
-   PULSANTE CASTELLANA
+   PULSANTE CASTELLANA CORRETTO
 ================================ */
 .castellana-button-container {
-    position: absolute;
-    bottom: 60px;
-    left: 80px;
-    z-index: 1000;
+    margin-top: 25px;
+    text-align: left;
 }
 
 #castellanaButton {
@@ -159,54 +141,33 @@ body {
     border: 2px solid rgba(255, 215, 160, 0.9);
     border-radius: 10px;
     color: #ffe7b3;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
-    padding: 12px 28px;
+    padding: 10px 24px;
     cursor: pointer;
-    box-shadow: 0 0 18px rgba(255, 215, 160, 0.6);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 0 12px rgba(255, 215, 160, 0.4);
 }
 
-#castellanaButton:hover {
-    transform: scale(1.05);
-    box-shadow:
-        0 0 35px rgba(255, 210, 140, 0.8),
-        0 0 80px rgba(255, 120, 60, 0.4),
-        inset 0 0 25px rgba(255, 255, 255, 0.25);
-}
-
-/* ================================
-   VIDEO CASTELLANA
-================================ */
+/* VIDEO DI BENVENUTO E CHAT PANEL OVERLAY */
 .castellana-video {
-    position: absolute;
-    bottom: 120px;
-    left: 120px;
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
     width: 280px;
-    height: auto;
     z-index: 999;
-    background: transparent;
-    pointer-events: none;
 }
 
-/* ================================
-   CHAT PANEL
-================================ */
 .chat-panel {
     position: fixed;
     bottom: 40px; 
     right: 40px;
     width: 320px;
     height: 420px;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.5);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,215,160,0.8);
     border-radius: 15px;
-    padding: 20px;
     display: none;
     z-index: 2000;
 }
-
-.chat-panel.visible {
-    display: block;
-}
+.chat-panel.visible { display: block; }
