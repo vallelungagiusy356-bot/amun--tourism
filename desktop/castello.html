@@ -2,7 +2,8 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024">
+    <!-- 📱 Sistemata la viewport per far vedere la pagina correttamente su smartphone -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="castle.title"></title>
 
     <link rel="stylesheet" href="castello.css">
@@ -30,9 +31,10 @@
         <div class="castle-container-2col">
             
             <div class="column-left">
-                <video autoplay loop muted playsinline class="castle-main-video" width="500" height="500">
-                    <source src="img/castello 2.webm" type="video/webm">
-                    <img src="img/castello 2 (1).webp" alt="Castello di Caccamo" class="castle-main">
+                <!-- 🔗 Corretti i percorsi inserendo ../ per uscire dalla sottocartella, gestito lo spazio nel nome del file -->
+                <video autoplay loop muted playsinline webkit-playsinline class="castle-main-video" width="500" height="500">
+                    <source src="../img/castello_2.webm" type="video/webm">
+                    <img src="../img/castello 2 (1).webp" alt="Castello di Caccamo" class="castle-main">
                 </video>
             </div>
 
@@ -45,7 +47,7 @@
                             Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
                         </p>
                         <p>
-                            Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
+                            Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
                         </p>
                         <p>
                             Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
@@ -53,7 +55,7 @@
                     </div>
 
                     <div class="castle-dress">
-                        <img src="img/abito_clean.png" alt="Abito d’epoca della Castellana">
+                        <img src="../img/abito_clean.png" alt="Abito d’epoca della Castellana">
                     </div>
                 </div>
                 
@@ -65,10 +67,11 @@
         </div>
 
         <div class="chat-panel">
-            </div>
+        </div>
 
-        <video id="castellanaVideo" class="castellana-video" playsinline style="display:none;">
-            <source src="img/benvenuto_castellana.webm" type="video/webm">
+        <!-- 🔗 Corretto anche il percorso del video della Castellana interattiva -->
+        <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline style="display:none;">
+            <source src="../img/benvenuto_castellana.webm" type="video/webm">
         </video>
     </section>
 
