@@ -1,5 +1,5 @@
 /* ================================
-   SFONDO EPICO CASTELLO
+   SFONDO COLORE MOCHA
 ================================ */
 html, body {
     height: 100%;
@@ -8,11 +8,11 @@ html, body {
 body {
     margin: 0;
     font-family: "Segoe UI", system-ui, sans-serif;
-    background: url("./img/sfondo_epico_castello.png") no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    color: #fffaf0;
+    /* Modificato: rimosso l'immagine e impostato il moka scuro di sfondo */
+    background-color: #2c1e17; 
+    color: #e5a93c; /* Colore oro base per tutta la pagina */
 }
+
 /* ================================
    DASHBOARD CORREZIONE LUNGHEZZA
 ================================ */
@@ -20,20 +20,19 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* forza la larghezza piena */
+    width: 100vw; 
     height: 54px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 24px; /* leggermente più ampio */
+    padding: 8px 24px; 
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 215, 160, 0.85);
-    box-sizing: border-box; /* evita che padding riduca la larghezza */
+    box-sizing: border-box; 
     z-index: 9999;
 }
 
-/* Pulsante Home allineato correttamente */
 .home-btn {
     background: rgba(255, 215, 160, 0.35);
     border: 1px solid rgba(255, 215, 160, 0.9);
@@ -43,8 +42,8 @@ body {
     padding: 6px 12px;
     cursor: pointer;
     box-shadow: 0 0 12px rgba(255, 215, 160, 0.6);
-    margin-left: 20px; /* distanzia dal selettore lingue */
-    flex-shrink: 0; /* impedisce che si schiacci */
+    margin-left: 20px; 
+    flex-shrink: 0; 
 }
 
 .home-btn:hover {
@@ -56,21 +55,23 @@ body {
 ================================ */
 .castle-layout {
     position: relative;
-    padding: 80px 0 80px; /* tolto 8% laterale */
+    padding: 80px 0 80px; 
     min-height: 100vh;
-    width: 100vw; /* forza la larghezza piena */
-    overflow-x: hidden; /* elimina eventuali scroll orizzontali */
+    width: 100vw; 
+    overflow-x: hidden; 
 }
 
 /* ================================
-   CASTELLO GRANDE CENTRALE
+   CASTELLO GRANDE CENTRALE (VIDEO & IMG)
 ================================ */
-.castle-top img {
+/* Modificato: ora si applica sia al nuovo video WebM che all'immagine di fallback */
+.castle-main-video, .castle-top img {
     width: 85%;
     max-width: 1100px;
     display: block;
     margin: 0 auto;
     filter: brightness(1.15) contrast(1.1);
+    background: transparent;
 }
 
 /* ================================
@@ -81,15 +82,16 @@ body {
     margin: 40px auto 60px;
     padding: 30px 40px;
 
-    background: rgba(255, 255, 255, 0.08);
+    /* Modificato: sfondo scuro trasparente per risaltare sul moka */
+    background: rgba(0, 0, 0, 0.3); 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 215, 160, 0.8);
+    border: 2px solid rgba(255, 215, 160, 0.6);
     border-radius: 20px;
     box-shadow:
-        0 0 45px rgba(255, 215, 160, 0.9),
-        0 0 85px rgba(255, 215, 160, 0.6),
-        inset 0 0 28px rgba(255, 215, 160, 0.3);
+        0 0 30px rgba(255, 215, 160, 0.3),
+        0 0 60px rgba(255, 215, 160, 0.15),
+        inset 0 0 20px rgba(255, 215, 160, 0.1);
 
     display: flex;
     justify-content: space-between;
@@ -98,10 +100,10 @@ body {
 }
 
 /* ================================
-   TESTO PERGAMENA
+   TESTO PERGAMENA ORO
 ================================ */
 .castle-text {
-    color: #1a1a1a; /* nero elegante */
+    color: #e5a93c; /* Modificato: testo dei paragrafi in Oro */
     font-family: "Cormorant Garamond", "Garamond", serif;
     font-size: 22px;
     line-height: 1.6;
@@ -110,12 +112,11 @@ body {
 .castle-text h2 {
     font-family: "Cormorant Garamond", "Garamond", serif;
     font-size: 40px;
-    color: #3a2a1a;
-    text-shadow: none;
+    color: #ffe7b3; /* Oro più chiaro e luminoso per il titolo dell'edificio */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
 }
 
-/* Rimuove gli elenchi puntati */
 .castle-text ul {
     list-style: none;
     padding: 0;
@@ -140,7 +141,7 @@ body {
     filter: brightness(1.05);
     box-shadow:
         0 0 35px rgba(0, 0, 0, 0.8),
-        0 0 55px rgba(255, 215, 160, 0.6);
+        0 0 55px rgba(255, 215, 160, 0.4);
 }
 
 /* ================================
@@ -189,11 +190,11 @@ body {
 }
 
 /* ================================
-   CHAT PANEL (visibile dopo il video)
+   CHAT PANEL
 ================================ */
 .chat-panel {
     position: fixed;
-    bottom: 40px; /* corretto: prima troppo alto */
+    bottom: 40px; 
     right: 40px;
     width: 320px;
     height: 420px;
