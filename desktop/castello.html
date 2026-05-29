@@ -7,11 +7,34 @@
 
     <!-- CSS PRINCIPALE -->
     <link rel="stylesheet" href="castello.css">
+
+    <!-- MODIFICHE DI STILE: COLORE MOKA E ORO -->
+    <style>
+        /* Sfondo Moka Scuro ed elegante per l'intera pagina */
+        body {
+            background-color: #2c1e17 !important; 
+            color: #e5a93c !important;
+        }
+
+        /* Forza il testo del pannello in colore Oro */
+        .castle-text p, .castle-text h2 {
+            color: #e5a93c !important;
+        }
+
+        /* Assicura che il video del castello sia centrato e fluido */
+        .castle-main-video {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 0 auto;
+            background: transparent;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- DASHBOARD DESKTOP (IDENTICA ALLA HOME, MA SENZA “Cittadino del Borgo”) -->
+    <!-- DASHBOARD DESKTOP -->
     <header class="dashboard">
 
         <!-- TITOLO / LOGO -->
@@ -32,7 +55,7 @@
             <button data-lang="es">🇪🇸</button>
         </div>
 
-        <!-- SOLO QUI: PULSANTE HOME -->
+        <!-- PULSANTE HOME -->
         <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
 
     </header>
@@ -40,50 +63,37 @@
     <!-- SEZIONE CASTELLO CINEMATOGRAFICA -->
     <section class="castle-layout">
 
-        <!-- CASTELLO GRANDE IN ALTO -->
+        <!-- CASTELLO IN ALTO: Sostituito l'img statica con il Video WebM in Loop -->
         <div class="castle-top">
-            <img src="img/castello 2 (1).webp"
-                 alt="Castello di Caccamo"
-                 class="castle-main">
+            <video autoplay loop muted playsinline class="castle-main-video">
+                <source src="img/1000083291.webm" type="video/webm">
+                <!-- Fallback statico se il browser non caricasse il video -->
+                <img src="img/castello 2 (1).webp" alt="Castello di Caccamo" class="castle-main">
+            </video>
         </div>
 
-        <!-- PANNELLO VETRO + TESTO + ABITO -->
+        <!-- PANNELLO VETRO + TESTO CORTO ORO + ABITO -->
         <div class="castle-panel">
 
             <div class="castle-text">
-    <h2 data-i18n="castle.title"></h2>
+                <h2 data-i18n="castle.title"></h2>
 
-    <p>
-        Il Castello di Caccamo, tra i più grandi e meglio conservati castelli medievali di Sicilia,
-        sorse nell’XI secolo come fortezza normanna e fu ampliato nei secoli successivi dalle famiglie
-        Chiaramonte, Prades e Amato. La sua posizione dominante sulla valle del San Leonardo ne fece
-        un baluardo strategico per il controllo del territorio.
-    </p>
+                <p>
+                    Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
+                    Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
+                </p>
 
-    <p>
-        Una delle figure più legate alla memoria popolare è Suor Felicia, giovane monaca caccamese
-        la cui leggenda narra di apparizioni e miracoli che avrebbero protetto il borgo nei secoli.
-    </p>
+                <p>
+                    Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra, che conservano ancora i graffiti dei detenuti.
+                </p>
 
-    <p>
-        Sul lato destro del castello si trovano ancora oggi le antiche prigioni, utilizzate anche
-        durante il periodo dell’Inquisizione: ambienti angusti, scavati nella roccia, che conservano
-        incisioni e segni lasciati dai detenuti.
-    </p>
-
-    <p>
-        Di grande fascino è anche la Sala delle Congiure, dove secondo la tradizione si svolsero
-        incontri segreti, trattative politiche e accordi tra nobili siciliani durante il Medioevo.
-    </p>
-
-    <p>
-        La Castellana ti racconterà ogni dettaglio, leggenda e curiosità direttamente in chat.
-    </p>
+                <p>
+                    Tra storia e leggenda, si narra che lo spirito di Suor Felicia protegga ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
+                </p>
             </div>
 
             <div class="castle-dress">
-                <img src="img/abito_clean.png"
-                     alt="Abito d’epoca della Castellana">
+                <img src="img/abito_clean.png" alt="Abito d’epoca della Castellana">
             </div>
 
         </div>
@@ -98,8 +108,8 @@
             <!-- qui va la tua chat -->
         </div>
 
-        <!-- VIDEO DI BENVENUTO -->
-        <video id="castellanaVideo" class="castellana-video" style="display:none;">
+        <!-- VIDEO DI BENVENUTO: Aggiunto playsinline fondamentale per il mobile -->
+        <video id="castellanaVideo" class="castellana-video" playsinline style="display:none;">
             <source src="img/benvenuto_castellana.webm" type="video/webm">
         </video>
 
