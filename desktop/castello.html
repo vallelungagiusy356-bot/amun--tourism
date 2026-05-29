@@ -5,48 +5,17 @@
     <meta name="viewport" content="width=1024">
     <title data-i18n="castle.title"></title>
 
-    <!-- CSS PRINCIPALE -->
     <link rel="stylesheet" href="castello.css">
-
-    <!-- MODIFICHE DI STILE: COLORE MOKA E ORO -->
-    <style>
-        /* Sfondo Moka Scuro ed elegante per l'intera pagina */
-        body {
-            background-color: #2c1e17 !important; 
-            color: #e5a93c !important;
-        }
-
-        /* Forza il testo del pannello in colore Oro */
-        .castle-text p, .castle-text h2 {
-            color: #e5a93c !important;
-        }
-
-        /* Assicura che il video del castello sia centrato e fluido */
-        .castle-main-video {
-            width: 100%;
-            max-width: 800px;
-            display: block;
-            margin: 0 auto;
-            background: transparent;
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- DASHBOARD DESKTOP -->
     <header class="dashboard">
-
-        <!-- TITOLO / LOGO -->
         <div class="logo-title" data-i18n="menu.title"></div>
-
-        <!-- MENU DESKTOP -->
         <nav class="nav-desktop">
             <a href="about.html" data-i18n="menu.about"></a>
             <a href="contact.html" data-i18n="menu.contact"></a>
         </nav>
-
-        <!-- SELETTORE LINGUE -->
         <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
@@ -54,71 +23,57 @@
             <button data-lang="de">🇩🇪</button>
             <button data-lang="es">🇪🇸</button>
         </div>
-
-        <!-- PULSANTE HOME -->
         <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
-
     </header>
 
-    <!-- SEZIONE CASTELLO CINEMATOGRAFICA -->
     <section class="castle-layout">
-
-        <!-- CASTELLO IN ALTO: Sostituito l'img statica con il Video WebM in Loop -->
-        <div class="castle-top">
-            <video autoplay loop muted playsinline class="castle-main-video">
-                <source src="img/castello_2.webm.webm" type="video/webm">
-                <!-- Fallback statico se il browser non caricasse il video -->
-                <img src="img/castello 2 (1).webp" alt="Castello di Caccamo" class="castle-main">
-            </video>
-        </div>
-
-        <!-- PANNELLO VETRO + TESTO CORTO ORO + ABITO -->
-        <div class="castle-panel">
-
-            <div class="castle-text">
-                <h2 data-i18n="castle.title"></h2>
-
-                <p>
-                    Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
-                    Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
-                </p>
-
-                <p>
-                    Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra, che conservano ancora i graffiti dei detenuti.
-                </p>
-
-                <p>
-                    Tra storia e leggenda, si narra che lo spirito di Suor Felicia protegga ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
-                </p>
+        <div class="castle-container-2col">
+            
+            <div class="column-left">
+                <video autoplay loop muted playsinline class="castle-main-video" width="500" height="500">
+                    <source src="img/castello 2.webm" type="video/webm">
+                    <img src="img/castello 2 (1).webp" alt="Castello di Caccamo" class="castle-main">
+                </video>
             </div>
 
-            <div class="castle-dress">
-                <img src="img/abito_clean.png" alt="Abito d’epoca della Castellana">
+            <div class="column-right">
+                <div class="castle-panel">
+                    <div class="castle-text">
+                        <h2 data-i18n="castle.title"></h2>
+                        <p>
+                            Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
+                            Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
+                        </p>
+                        <p>
+                            Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
+                        </p>
+                        <p>
+                            Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
+                        </p>
+                    </div>
+
+                    <div class="castle-dress">
+                        <img src="img/abito_clean.png" alt="Abito d’epoca della Castellana">
+                    </div>
+                </div>
+                
+                <div class="castellana-button-container">
+                    <button id="castellanaButton">Parla con la Castellana</button>
+                </div>
             </div>
 
         </div>
 
-        <!-- PULSANTE CASTELLANA -->
-        <div class="castellana-button-container">
-            <button id="castellanaButton">Parla con la Castellana</button>
-        </div>
-
-        <!-- CHAT PANEL -->
         <div class="chat-panel">
-            <!-- qui va la tua chat -->
-        </div>
+            </div>
 
-        <!-- VIDEO DI BENVENUTO: Aggiunto playsinline fondamentale per il mobile -->
         <video id="castellanaVideo" class="castellana-video" playsinline style="display:none;">
             <source src="img/benvenuto_castellana.webm" type="video/webm">
         </video>
-
     </section>
 
-    <!-- SCRIPT MULTILINGUA -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
-
     function loadLanguage(lang) {
          fetch(`../lang/${lang}.json`)
             .then(res => res.json())
@@ -129,28 +84,21 @@
                     if (text) el.innerHTML = text;
                 });
             });
-
         localStorage.setItem("lang", lang);
     }
-
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".lang-switcher button").forEach(btn => {
-            btn.addEventListener("click", () => {
-                loadLanguage(btn.dataset.lang);
-            });
+            btn.addEventListener("click", () => { loadLanguage(btn.dataset.lang); });
         });
-
         loadLanguage(currentLang);
     });
     </script>
 
-    <!-- SCRIPT CASTELLANA -->
     <script>
     document.getElementById("castellanaButton").addEventListener("click", () => {
         const video = document.getElementById("castellanaVideo");
         video.style.display = "block";
         video.play();
-
         video.onended = () => {
             video.style.display = "none";
             document.querySelector(".chat-panel")?.classList.add("visible");
