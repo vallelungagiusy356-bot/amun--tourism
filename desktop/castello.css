@@ -11,23 +11,27 @@ html, body {
 }
 
 /* ================================
-   DASHBOARD
+   DASHBOARD (Ottimizzata per Mobile)
 ================================ */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; 
-    height: 54px;
+    width: 100%; 
+    height: auto; /* Fluida per schermi piccoli */
+    min-height: 54px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 24px; 
-    background: rgba(0, 0, 0, 0.55);
+    padding: 8px 16px; 
+    background: rgba(0, 0, 0, 0.75); /* Leggermente più scuro per contrasto */
     backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.85);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.5);
     box-sizing: border-box; 
     z-index: 9999;
+    flex-wrap: wrap; /* Permette agli elementi di andare a capo se lo schermo è mini */
+    gap: 8px;
 }
 
 .home-btn {
@@ -35,139 +39,210 @@ html, body {
     border: 1px solid rgba(255, 215, 160, 0.9);
     border-radius: 8px;
     color: #ffe7b3;
-    font-size: 16px;
+    font-size: 14px;
     padding: 6px 12px;
     cursor: pointer;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.6);
-    margin-left: 20px; 
+    box-shadow: 0 0 12px rgba(255, 215, 160, 0.4);
+    margin-left: auto; /* Lo spinge a destra */
     flex-shrink: 0; 
 }
 
 /* ================================
-   LAYOUT A DUE COLONNE FLUIDO
+   LAYOUT RESPONSIVE MODERNO (Flexbox)
 ================================ */
 .castle-layout {
-    padding-top: 90px; /* Lascia spazio per la dashboard */
+    padding-top: 80px; /* Spazio per la dashboard superiore */
     min-height: 100vh;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .castle-container-2col {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    padding: 20px;
-    display: table; /* Layout solido e compatibile */
-    width: 100%;
-}
-
-/* Colonna Sinistra (Video) */
-.column-left {
-    display: table-cell;
-    width: 45%;
-    vertical-align: middle;
-    text-align: center;
-    padding-right: 40px;
-}
-
-/* Colonna Destra (Pannello testo + bottone) */
-.column-right {
-    display: table-cell;
-    width: 55%;
-    vertical-align: middle;
-}
-
-/* Forziamo il video a mostrarsi a pieno blocco */
-.castle-main-video {
-    width: 100%;
-    max-width: 480px;
-    height: auto;
-    display: inline-block;
-    background: transparent;
-}
-
-/* ================================
-   PANNELLO VETRO
-================================ */
-.castle-panel {
-    background: rgba(0, 0, 0, 0.3); 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 215, 160, 0.5);
-    border-radius: 20px;
-    padding: 30px;
-    display: table; /* Sotto-layout per testo e abito */
-    width: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column; /* Su mobile: elementi impilati in verticale */
+    gap: 24px;
     box-sizing: border-box;
 }
 
+/* Colonna Sinistra (Video 3D del Castello) */
+.column-left {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Forziamo il video e il fallback a comportarsi al millimetro */
+.castle-main-video, .castle-main {
+    width: 100%;
+    max-width: 340px; /* Dimensione perfetta per schermi mobile */
+    height: auto;
+    display: block;
+    background: transparent;
+    border-radius: 16px;
+}
+
+/* Colonna Destra (Contenitore pannello info) */
+.column-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================================
+   PANNELLO VETRO RESPONSIVE
+================================ */
+.castle-panel {
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 160, 0.4);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row; /* Mantiene testo e abito affiancati */
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 12px;
+}
+
 .castle-text {
-    display: table-cell;
-    vertical-align: top;
+    flex: 1; /* Prende tutto lo spazio disponibile */
     color: #e5a93c;
     font-family: "Cormorant Garamond", "Garamond", serif;
-    font-size: 20px;
-    line-height: 1.5;
-    padding-right: 20px;
+    font-size: 16px; /* Ottimizzato per la lettura da smartphone */
+    line-height: 1.6;
 }
 
 .castle-text h2 {
-    font-size: 36px;
+    font-size: 26px;
     color: #ffe7b3;
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .castle-dress {
-    display: table-cell;
-    width: 160px;
-    vertical-align: top;
+    width: 90px; /* Ridimensionato proporzionalmente per il mobile */
+    flex-shrink: 0; /* Impedisce all'abito di schiacciarsi */
 }
 
 .castle-dress img {
     width: 100%;
     height: auto;
+    display: block;
 }
 
 /* ================================
-   PULSANTE CASTELLANA CORRETTO
+   PULSANTE INTERATTIVO CASTELLANA
 ================================ */
 .castellana-button-container {
-    margin-top: 25px;
-    text-align: left;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centrato su mobile per un tocco più comodo */
 }
 
 #castellanaButton {
-    background: rgba(255, 215, 160, 0.35);
-    border: 2px solid rgba(255, 215, 160, 0.9);
-    border-radius: 10px;
+    width: 100%;
+    max-width: 280px; /* Evita che diventi un bottone gigante */
+    background: rgba(255, 215, 160, 0.25);
+    border: 2px solid rgba(255, 215, 160, 0.8);
+    border-radius: 25px; /* Più arrotondato in stile mobile design */
     color: #ffe7b3;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
-    padding: 10px 24px;
+    padding: 12px 24px;
     cursor: pointer;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.4);
+    box-shadow: 0 4px 12px rgba(255, 215, 160, 0.2);
+    transition: all 0.3s ease;
 }
 
-/* VIDEO DI BENVENUTO E CHAT PANEL OVERLAY */
+/* ================================
+   VIDEO DI BENVENUTO E CHAT OVERLAY (Mobile)
+================================ */
 .castellana-video {
     position: fixed;
-    bottom: 40px;
-    left: 40px;
-    width: 280px;
-    z-index: 999;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Centrato perfettamente sullo schermo del telefono */
+    width: 90%;
+    max-width: 320px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+    z-index: 9999;
 }
 
 .chat-panel {
     position: fixed;
-    bottom: 40px; 
-    right: 40px;
-    width: 320px;
-    height: 420px;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,215,160,0.8);
-    border-radius: 15px;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    height: 75vh; /* Copre i 3/4 inferiori dello schermo per una chat comodissima */
+    background: rgba(20, 13, 9, 0.95); /* Colore scuro mocha coerente */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 2px solid rgba(255, 215, 160, 0.7);
+    border-radius: 24px 24px 0 0; /* Arrotondati solo gli angoli superiori */
     display: none;
-    z-index: 2000;
+    z-index: 99999;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
 }
-.chat-panel.visible { display: block; }
+
+.chat-panel.visible { 
+    display: block; 
+}
+
+/* ================================
+   MEDIA QUERY PER SCHERMI DESKTOP
+================================ */
+@media (min-width: 768px) {
+    .castle-container-2col {
+        flex-direction: row; /* Torna a due colonne affiancate su PC */
+        align-items: center;
+    }
+    .column-left {
+        width: 45%;
+    }
+    .column-right {
+        width: 55%;
+    }
+    .castle-main-video, .castle-main {
+        max-width: 480px;
+    }
+    .castle-text {
+        font-size: 20px;
+    }
+    .castle-text h2 {
+        font-size: 36px;
+    }
+    .castle-dress {
+        width: 160px;
+    }
+    .castellana-button-container {
+        justify-content: flex-start;
+    }
+    #castellanaButton {
+        width: auto;
+    }
+    .castellana-video {
+        left: 40px;
+        transform: none;
+        width: 280px;
+    }
+    .chat-panel {
+        bottom: 40px; 
+        right: 40px;
+        left: auto;
+        width: 320px;
+        height: 420px;
+        border-radius: 15px;
+        border: 2px solid rgba(255,215,160,0.8);
+    }
+}
