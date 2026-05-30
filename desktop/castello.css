@@ -1,20 +1,25 @@
 /* ================================
-   SFONDO SCURO ASSOLUTO
+   SFONDO SCURO ASSOLUTO & ALTA RISOLUZIONE
 ================================ */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: "Segoe UI", system-ui, sans-serif;
-    background-color: #000000; /* Nero assoluto per risaltare il monumento */
+    background-color: #000000; 
     color: #ffe7b3;
     overflow-x: hidden;
+    
+    /* 🚀 TRATTAMENTO ULTRA NITIDEZZA 4K */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 /* ================================
-   DASHBOARD SUPERIORE (Coerente e allineata)
+   DASHBOARD SUPERIORE
 ================================ */
 .dashboard {
     position: fixed;
@@ -26,7 +31,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
     padding: 0 16px; 
-    background: #1a0f0a; /* Marrone scurissimo della home */
+    background: #1a0f0a; 
     border-bottom: 2px solid rgba(255, 231, 179, 0.2);
     box-sizing: border-box; 
     z-index: 9999;
@@ -39,7 +44,7 @@ html, body {
 }
 
 .nav-desktop {
-    display: none; /* Nasconde i link di navigazione estesi su mobile */
+    display: none; 
 }
 
 .lang-switcher button {
@@ -61,10 +66,10 @@ html, body {
 }
 
 /* ================================
-   STRUTTURA LAYOUT (Sbloccata per Mobile)
+   STRUTTURA LAYOUT
 ================================ */
 .castle-layout {
-    padding-top: 80px; 
+    padding-top: 75px; /* Avviciniamo leggermente il contenuto alla cima */
     padding-bottom: 30px;
     min-height: 100vh;
     display: flex;
@@ -78,7 +83,7 @@ html, body {
 .castle-container-2col {
     width: 100% !important;
     max-width: 100% !important; 
-    padding: 0 16px; /* Sfrutta tutta l'ampiezza dello schermo del telefono */
+    padding: 0 16px; 
     display: flex;
     flex-direction: column; 
     align-items: center;
@@ -86,56 +91,59 @@ html, body {
 }
 
 /* ================================
-   MONUMENTO LIBERO CON SUPER ZOOM E GLOW NATURALE
+   MONUMENTO: MAXI ZOOM VERTICALE & GLOW CRISTALLINO
 ================================ */
 .column-left {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 0;
+    padding: 0; /* Azzerato per far spazio allo zoom verticale */
     box-sizing: border-box;
-    overflow: visible; /* Evita che lo zoom tagli le torri */
+    overflow: visible; 
 }
 
-/* 🚀 RENDIAMO IL CASTELLO MAESTOSO E GRANDE AD ALTA RISOLUZIONE */
+/* 🚀 SPINTA SULLE DIMENSIONI, VERTICALITÀ E 4K RENDERING */
 .castle-main-video, .castle-main {
-    width: 85% !important; /* Espansione orizzontale ottimale */
+    width: 85% !important; 
     height: auto !important;
     display: block;
     background: transparent;
     
-    /* Lo zoom ottimizzato che riempie lo schermo del telefono */
-    transform: scale(1.3); 
+    /* Forza l'accelerazione hardware della GPU per evitare sgranature in zoom */
+    transform: scale(1.55) translateZ(0); 
+    -webkit-transform: scale(1.55) translateZ(0);
     transform-origin: center center;
     
-    /* Il bagliore dorato che segue fedelmente i contorni del Castello */
-    filter: drop-shadow(0 0 25px rgba(255, 231, 179, 0.65));
-    -webkit-filter: drop-shadow(0 0 25px rgba(255, 231, 179, 0.65));
-    margin: 25px auto; 
+    /* Il bagliore dorato si intensifica e si allarga */
+    filter: drop-shadow(0 0 30px rgba(255, 231, 179, 0.75));
+    -webkit-filter: drop-shadow(0 0 30px rgba(255, 231, 179, 0.75));
+    
+    /* Margini calibrati per gestire la maestosità verticale dello zoom */
+    margin: 45px auto 40px auto; 
 }
 
 /* ================================
-   RETTANGOLO TESTO INQUADRATO (Come il tuo Mockup)
+   RETTANGOLO TESTO INQUADRATO
 ================================ */
 .column-right {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 35px; /* Spazio di sicurezza per non sovrapporsi allo zoom */
+    margin-top: 45px; /* Spazio di sicurezza aumentato per l'imponente mole del castello zoommato */
 }
 
 .castle-panel {
     width: 100% !important;
-    background: rgba(15, 10, 8, 0.7); /* Vetro scuro trasparente */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 2px solid #ffe7b3; /* Bordo oro definito */
+    background: rgba(15, 10, 8, 0.75); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid #ffe7b3; 
     border-radius: 20px; 
-    padding: 20px 16px;
-    box-shadow: 0 0 18px rgba(255, 231, 179, 0.4),
-                inset 0 0 10px rgba(255, 231, 179, 0.15);
+    padding: 22px 18px;
+    box-shadow: 0 0 20px rgba(255, 231, 179, 0.4),
+                inset 0 0 12px rgba(255, 231, 179, 0.15);
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -147,7 +155,7 @@ html, body {
     color: #ffe7b3;
     font-family: system-ui, -apple-system, sans-serif;
     font-size: 15px;
-    line-height: 1.5;
+    line-height: 1.55;
     text-align: left;
 }
 
@@ -172,7 +180,7 @@ html, body {
 }
 
 /* ================================
-   PULSANTE OVALE IN BASSO (Coerente con il Box)
+   PULSANTE OVALE IN BASSO
 ================================ */
 .castellana-button-container {
     margin-top: 20px;
@@ -185,7 +193,7 @@ html, body {
     width: 100%;
     background: rgba(0, 0, 0, 0.9);
     border: 2px solid #ffe7b3;
-    border-radius: 30px; /* Perfettamente ovale */
+    border-radius: 30px; 
     color: #ffe7b3;
     font-size: 16px;
     font-weight: 600;
@@ -202,7 +210,7 @@ html, body {
 }
 
 /* ================================
-   OVERLAY VIDEO E CHAT INTERNA
+   OVERLAY CHAT
 ================================ */
 .castellana-video {
     position: fixed;
@@ -234,7 +242,7 @@ html, body {
 }
 
 /* ================================
-   MEDIA QUERY DESKTOP (Mantiene la modalità a 2 colonne su PC)
+   MEDIA QUERY DESKTOP
 ================================ */
 @media (min-width: 1024px) {
     .nav-desktop {
@@ -261,6 +269,7 @@ html, body {
     }
     .castle-main-video, .castle-main {
         width: 100% !important;
-        transform: none; /* Rimuove lo zoom forzato su schermi grandi */
+        transform: none; 
+        -webkit-transform: none;
     }
 }
