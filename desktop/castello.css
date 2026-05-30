@@ -80,7 +80,7 @@ html, body {
     overflow: visible; /* Impedisce che il castello venga tagliato dallo zoom */
 }
 
-/* 🚀 MODIFICATO:Forziamo il video e il fallback a mostrarsi GRANDI e maestosi */
+/* 🚀 SUPER ZOOM: Castello maestoso ed enorme su mobile */
 .castle-main-video, .castle-main {
     width: 100%;
     max-width: 100%; 
@@ -88,12 +88,11 @@ html, body {
     display: block;
     background: transparent;
     border-radius: 16px;
-    transform: scale(1.4); /* 🚀 Spinto lo zoom per renderlo imponente! */
+    transform: scale(1.8); /* 🏰 Spinto lo zoom a 1.8 per un effetto imponente! */
     transform-origin: center center;
-    margin-top: 20px;     /* Bilancia lo zoom in alto */
-    margin-bottom: 20px;  /* Bilancia lo zoom in basso */
+    margin-top: 40px;      /* Dà spazio extra sopra per via dello zoom aumentato */
+    margin-bottom: 40px;   /* Dà spazio sotto per non sovrapporsi al testo */
 }
-
 
 /* Colonna Destra (Contenitore pannello info) */
 .column-right {
