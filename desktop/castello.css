@@ -1,5 +1,5 @@
 /* ================================
-   SFONDO SCURO ASSOLUTO & ALTA RISOLUZIONE
+   SFONDO SCURO ASSOLUTO
 ================================ */
 html, body {
     height: 100%;
@@ -9,13 +9,8 @@ html, body {
     background-color: #000000; 
     color: #ffe7b3;
     overflow-x: hidden;
-    
-    /* Trattamento ultra nitidezza per evitare sgranature ad alto zoom */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
 }
 
 /* ================================
@@ -66,11 +61,11 @@ html, body {
 }
 
 /* ================================
-   STRUTTURA LAYOUT (Spaziati per il Maxi Zoom)
+   STRUTTURA LAYOUT (Flessibile e reattiva)
 ================================ */
 .castle-layout {
-    padding-top: 65px; /* Spazio ottimizzato sotto la dashboard */
-    padding-bottom: 30px;
+    padding-top: 70px; 
+    padding-bottom: 25px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -83,7 +78,7 @@ html, body {
 .castle-container-2col {
     width: 100% !important;
     max-width: 100% !important; 
-    padding: 0 16px; 
+    padding: 0 14px; 
     display: flex;
     flex-direction: column; 
     align-items: center;
@@ -91,7 +86,7 @@ html, body {
 }
 
 /* ================================
-   MONUMENTO: RADDOPPIO DELLO ZOOM & IMMENSITÀ VISIVA
+   MONUMENTO: GRANDEZZA NATURALE SENZA SGRANATURA
 ================================ */
 .column-left {
     width: 100%;
@@ -100,27 +95,22 @@ html, body {
     align-items: center;
     padding: 0; 
     box-sizing: border-box;
-    overflow: visible; /* Fondamentale per non tagliare il castello gigante */
 }
 
-/* 🚀 MAESTOSITÀ REALE: ZOOM RADDOPPIATO (SCALE 2.1) */
+/* Aumentiamo la larghezza reale per dare imponenza senza usare lo zoom artificiale */
 .castle-main-video, .castle-main {
-    width: 85% !important; 
+    width: 100% !important; /* Copre l'intera larghezza disponibile */
+    max-width: 340px;       /* Evita l'effetto sgranato bloccando l'espansione al limite del file */
     height: auto !important;
     display: block;
     background: transparent;
     
-    /* Zoom raddoppiato combinato con l'accelerazione hardware per dettagli taglienti */
-    transform: scale(2.1) translateZ(0); 
-    -webkit-transform: scale(2.1) translateZ(0);
-    transform-origin: center center;
+    /* Bagliore dorato avvolgente e morbido */
+    filter: drop-shadow(0 0 25px rgba(255, 231, 179, 0.7));
+    -webkit-filter: drop-shadow(0 0 25px rgba(255, 231, 179, 0.7));
     
-    /* Bagliore imponente coordinato alle nuove proporzioni monumentali */
-    filter: drop-shadow(0 0 35px rgba(255, 231, 179, 0.8));
-    -webkit-filter: drop-shadow(0 0 35px rgba(255, 231, 179, 0.8));
-    
-    /* Margini aumentati per dare la giusta 'aria' sopra e sotto l'altezza del maxi modello */
-    margin: 80px auto 75px auto; 
+    /* Ridotti i margini per eliminare il vuoto verticale eccessivo */
+    margin: 15px auto 20px auto; 
 }
 
 /* ================================
@@ -131,19 +121,19 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px; /* Incrementato lo stacco per assecondare la maestosità del castello */
+    margin-top: 5px; 
 }
 
 .castle-panel {
     width: 100% !important;
     background: rgba(15, 10, 8, 0.75); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 2px solid #ffe7b3; 
     border-radius: 20px; 
-    padding: 22px 18px;
-    box-shadow: 0 0 20px rgba(255, 231, 179, 0.4),
-                inset 0 0 12px rgba(255, 231, 179, 0.15);
+    padding: 18px 16px;
+    box-shadow: 0 0 15px rgba(255, 231, 179, 0.35),
+                inset 0 0 10px rgba(255, 231, 179, 0.1);
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -154,22 +144,22 @@ html, body {
     flex: 1;
     color: #ffe7b3;
     font-family: system-ui, -apple-system, sans-serif;
-    font-size: 15px;
-    line-height: 1.55;
+    font-size: 14.5px;
+    line-height: 1.5;
     text-align: left;
 }
 
 .castle-text h2 {
     font-family: "Cormorant Garamond", "Garamond", serif;
-    font-size: 26px;
+    font-size: 24px;
     color: #ffe7b3;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-weight: 600;
 }
 
 .castle-dress {
-    width: 70px;
+    width: 60px;
     flex-shrink: 0;
 }
 
@@ -183,7 +173,7 @@ html, body {
    PULSANTE OVALE IN BASSO
 ================================ */
 .castellana-button-container {
-    margin-top: 20px;
+    margin-top: 15px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -195,22 +185,22 @@ html, body {
     border: 2px solid #ffe7b3;
     border-radius: 30px; 
     color: #ffe7b3;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    padding: 14px 20px;
+    padding: 13px 20px;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(255, 231, 179, 0.35);
+    box-shadow: 0 0 12px rgba(255, 231, 179, 0.3);
     transition: all 0.2s ease;
     text-align: center;
 }
 
 #castellanaButton:active {
     background: rgba(255, 231, 179, 0.1);
-    box-shadow: 0 0 22px rgba(255, 231, 179, 0.5);
+    box-shadow: 0 0 18px rgba(255, 231, 179, 0.45);
 }
 
 /* ================================
-   OVERLAY CHAT
+   OVERLAY CHAT E VIDEO
 ================================ */
 .castellana-video {
     position: fixed;
@@ -242,7 +232,7 @@ html, body {
 }
 
 /* ================================
-   MEDIA QUERY DESKTOP
+   MEDIA QUERY DESKTOP REALISTICA
 ================================ */
 @media (min-width: 1024px) {
     .nav-desktop {
@@ -268,9 +258,7 @@ html, body {
         margin-top: 0;
     }
     .castle-main-video, .castle-main {
-        width: 100% !important;
-        transform: none; 
-        -webkit-transform: none;
+        max-width: 100%;
         margin: 0;
     }
 }
