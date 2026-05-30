@@ -76,6 +76,8 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 30px 0; /* Dà spazio verticale al castello ingrandito */
+    overflow: visible; /* Impedisce che il castello venga tagliato dallo zoom */
 }
 
 /* 🚀 MODIFICATO:Forziamo il video e il fallback a mostrarsi GRANDI e maestosi */
