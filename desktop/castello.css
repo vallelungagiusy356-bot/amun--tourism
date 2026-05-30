@@ -1,17 +1,17 @@
 /* ================================
-   SFONDO SCURO REALE (Effetto Contrast)
+   SFONDO SCURO ASSOLUTO
 ================================ */
 html, body {
     height: 100%;
     margin: 0;
     font-family: "Segoe UI", system-ui, sans-serif;
-    background-color: #080504; 
-    color: #e5a93c;
+    background-color: #000000; /* Nero assoluto per far risaltare il monumento */
+    color: #ffe7b3;
     overflow-x: hidden;
 }
 
 /* ================================
-   DASHBOARD (Ottimizzata per Mobile)
+   DASHBOARD SUPERIORE (Stile Mockup)
 ================================ */
 .dashboard {
     position: fixed;
@@ -19,136 +19,125 @@ html, body {
     left: 0;
     width: 100%; 
     height: auto; 
-    min-height: 54px;
+    min-height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 16px; 
-    background: rgba(0, 0, 0, 0.85); 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.3);
+    padding: 12px 20px; 
+    background: #1a0f0a; /* Marrone scurissimo coerente con la home */
+    border-bottom: 2px solid rgba(255, 231, 179, 0.2);
     box-sizing: border-box; 
     z-index: 9999;
-    flex-wrap: wrap; 
-    gap: 8px;
 }
 
 .home-btn {
-    background: rgba(255, 215, 160, 0.2);
-    border: 1px solid rgba(255, 215, 160, 0.7);
-    border-radius: 8px;
+    background: transparent;
+    border: none;
     color: #ffe7b3;
-    font-size: 14px;
-    padding: 6px 12px;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.3);
-    margin-left: auto; 
-    flex-shrink: 0; 
+    font-family: "Cormorant Garamond", serif;
 }
 
 /* ================================
-   LAYOUT: LA GRANDE TECA UNICA PERIMETRALE (VERSIONE LIBERA)
+   STRUTTURA LAYOUT (Elementi Incolonnati)
 ================================ */
 .castle-layout {
-    padding-top: 74px; /* Spazio per non finire sotto la dashboard */
-    padding-bottom: 40px;
+    padding-top: 80px; 
+    padding-bottom: 30px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     box-sizing: border-box;
 }
 
-/* 🚀 LIBERATA LA LARGHEZZA: Adesso usa lo schermo del telefono al massimo del suo splendore */
 .castle-container-2col {
-    width: 92%;           /* Prende il 92% della larghezza dello schermo (lascia l'4% di margine a destra e sinistra) */
-    max-width: 100%;      /* Rimosso il limite dei 420px che stringeva tutto */
-    margin: 0 auto;
-    padding: 20px 16px;
+    width: 100%;
+    max-width: 450px; /* Dimensione ideale mobile */
+    padding: 0 20px;
     display: flex;
     flex-direction: column; 
-    gap: 0px; 
+    align-items: center;
     box-sizing: border-box;
-    
-    /* Effetto Vetro Scuro + Bordo e Glow coordinati */
-    background: rgba(5, 3, 2, 0.55); 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 2px solid #ffe7b3; 
-    border-radius: 24px;
-    box-shadow: 0 0 25px rgba(255, 231, 179, 0.4), 
-                inset 0 0 15px rgba(255, 231, 179, 0.15);
+    background: transparent; /* Nessun riquadro globale */
+    border: none;
+    box-shadow: none;
 }
 
 /* ================================
-   COLONNA SINISTRA (Contenitore Castello)
+   MONUMENTO LIBERO CON BAGLIORE (Glow perimetrale)
 ================================ */
 .column-left {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0; /* Spazio interno verticale ben calibrato */
+    padding: 20px 0 10px 0;
     box-sizing: border-box;
-    overflow: visible;
 }
 
-/* Il video del castello si allarga finalmente insieme alla teca */
+/* Sfruttiamo drop-shadow che crea il bagliore seguendo i contorni del castello */
 .castle-main-video, .castle-main {
-    width: 100%;
-    max-width: 100%; 
+    width: 90%;
     height: auto;
     display: block;
     background: transparent;
-    transform: scale(1.3); /* Leggero zoom per farlo fluttuare maestoso */
-    transform-origin: center center;
-    margin: 0; 
+    filter: drop-shadow(0 0 20px rgba(255, 231, 179, 0.55));
+    -webkit-filter: drop-shadow(0 0 20px rgba(255, 231, 179, 0.55));
+    margin: 0 auto;
 }
 
 /* ================================
-   COLONNA DESTRA (Contenitore Testo)
+   RETTANGOLO TESTO INQUADRATO (Esatto come da mockup)
 ================================ */
 .column-right {
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    align-items: center;
+    margin-top: 15px;
 }
 
 .castle-panel {
-    background: transparent; 
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: none; 
-    box-shadow: none;
-    padding: 10px 4px;
-    display: flex;
-    flex-direction: row; 
-    align-items: flex-start;
     width: 100%;
+    background: rgba(15, 10, 8, 0.65); /* Sfondo scuro semitrasparente */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid #ffe7b3; /* Bordo oro definito */
+    border-radius: 20px; /* Angoli arrotondati come nel mockup */
+    padding: 22px 20px;
+    box-shadow: 0 0 15px rgba(255, 231, 179, 0.35),
+                inset 0 0 10px rgba(255, 231, 179, 0.1);
     box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
     gap: 12px;
 }
 
 .castle-text {
-    flex: 1; 
-    color: #f5cb78; 
-    font-family: "Cormorant Garamond", "Garamond", serif;
-    font-size: 16px; 
-    line-height: 1.6;
+    flex: 1;
+    color: #ffe7b3;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: left;
 }
 
 .castle-text h2 {
-    font-size: 26px;
+    font-family: "Cormorant Garamond", "Garamond", serif;
+    font-size: 24px;
     color: #ffe7b3;
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .castle-dress {
-    width: 80px; 
-    flex-shrink: 0; 
+    width: 65px;
+    flex-shrink: 0;
 }
 
 .castle-dress img {
@@ -158,121 +147,52 @@ html, body {
 }
 
 /* ================================
-   PULSANTE INTERATTIVO "PARLA CON LA CASTELLANA"
+   PULSANTE OVALE STACCATO (In basso)
 ================================ */
 .castellana-button-container {
-    margin-top: 20px;
+    margin-top: 15px;
     width: 100%;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
 
 #castellanaButton {
     width: 100%;
-    max-width: 280px; 
-    background: rgba(0, 0, 0, 0.8); 
-    border: 2px solid #ffe7b3; 
-    border-radius: 25px; 
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #ffe7b3;
+    border-radius: 30px; /* Perfettamente ovale come nel mockup */
     color: #ffe7b3;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 20px;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(255, 231, 179, 0.3),
-                inset 0 0 5px rgba(255, 231, 179, 0.15);
-    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 231, 179, 0.3);
+    transition: all 0.2s ease;
+    text-align: center;
 }
 
-#castellanaButton:hover, #castellanaButton:active {
-    background: rgba(255, 231, 179, 0.12);
-    box-shadow: 0 0 25px rgba(255, 231, 179, 0.6);
-    transform: scale(1.02);
-}
-
-/* ================================
-   VIDEO DI BENVENUTO E CHAT OVERLAY (Mobile)
-================================ */
-.castellana-video {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%); 
-    width: 90%;
-    max-width: 320px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-    z-index: 9999;
-}
-
-.chat-panel {
-    position: fixed;
-    bottom: 0; 
-    left: 0;
-    width: 100%;
-    height: 75vh; 
-    background: rgba(10, 7, 5, 0.98); 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-top: 2px solid rgba(255, 215, 160, 0.6);
-    border-radius: 24px 24px 0 0; 
-    display: none;
-    z-index: 99999;
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.6);
-}
-
-.chat-panel.visible { 
-    display: block; 
+#castellanaButton:active {
+    background: rgba(255, 231, 179, 0.1);
+    box-shadow: 0 0 22px rgba(255, 231, 179, 0.5);
 }
 
 /* ================================
-   MEDIA QUERY PER SCHERMI DESKTOP (Ripristina il layout largo su PC)
+   MEDIA QUERY DESKTOP (Mantiene le proporzioni su PC)
 ================================ */
 @media (min-width: 1024px) {
     .castle-container-2col {
-        max-width: 1200px;
-        flex-direction: row; 
-        align-items: center;
-        padding: 40px;
-        gap: 40px;
+        max-width: 1100px;
+        flex-direction: row;
+        gap: 50px;
+        padding: 0;
     }
     .column-left {
         width: 45%;
     }
     .column-right {
         width: 55%;
-        margin-top: 0;
     }
     .castle-main-video, .castle-main {
-        max-width: 480px; 
-        transform: none;
-    }
-    .castle-text {
-        font-size: 20px;
-    }
-    .castle-text h2 {
-        font-size: 36px;
-    }
-    .castle-dress {
-        width: 160px;
-    }
-    .castellana-button-container {
-        justify-content: flex-start;
-    }
-    #castellanaButton {
-        width: auto;
-    }
-    .castellana-video {
-        left: 40px;
-        transform: none;
-        width: 280px;
-    }
-    .chat-panel {
-        bottom: 40px; 
-        right: 40px;
-        left: auto;
-        width: 320px;
-        height: 420px;
-        border-radius: 15px;
-        border: 2px solid rgba(255,215,160,0.8);
+        width: 100%;
     }
 }
