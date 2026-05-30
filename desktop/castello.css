@@ -10,7 +10,7 @@ html, body {
     color: #ffe7b3;
     overflow-x: hidden;
     
-    /* 🚀 TRATTAMENTO ULTRA NITIDEZZA 4K */
+    /* Trattamento ultra nitidezza per evitare sgranature ad alto zoom */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -66,10 +66,10 @@ html, body {
 }
 
 /* ================================
-   STRUTTURA LAYOUT
+   STRUTTURA LAYOUT (Spaziati per il Maxi Zoom)
 ================================ */
 .castle-layout {
-    padding-top: 75px; /* Avviciniamo leggermente il contenuto alla cima */
+    padding-top: 65px; /* Spazio ottimizzato sotto la dashboard */
     padding-bottom: 30px;
     min-height: 100vh;
     display: flex;
@@ -91,36 +91,36 @@ html, body {
 }
 
 /* ================================
-   MONUMENTO: MAXI ZOOM VERTICALE & GLOW CRISTALLINO
+   MONUMENTO: RADDOPPIO DELLO ZOOM & IMMENSITÀ VISIVA
 ================================ */
 .column-left {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0; /* Azzerato per far spazio allo zoom verticale */
+    padding: 0; 
     box-sizing: border-box;
-    overflow: visible; 
+    overflow: visible; /* Fondamentale per non tagliare il castello gigante */
 }
 
-/* 🚀 SPINTA SULLE DIMENSIONI, VERTICALITÀ E 4K RENDERING */
+/* 🚀 MAESTOSITÀ REALE: ZOOM RADDOPPIATO (SCALE 2.1) */
 .castle-main-video, .castle-main {
     width: 85% !important; 
     height: auto !important;
     display: block;
     background: transparent;
     
-    /* Forza l'accelerazione hardware della GPU per evitare sgranature in zoom */
-    transform: scale(1.55) translateZ(0); 
-    -webkit-transform: scale(1.55) translateZ(0);
+    /* Zoom raddoppiato combinato con l'accelerazione hardware per dettagli taglienti */
+    transform: scale(2.1) translateZ(0); 
+    -webkit-transform: scale(2.1) translateZ(0);
     transform-origin: center center;
     
-    /* Il bagliore dorato si intensifica e si allarga */
-    filter: drop-shadow(0 0 30px rgba(255, 231, 179, 0.75));
-    -webkit-filter: drop-shadow(0 0 30px rgba(255, 231, 179, 0.75));
+    /* Bagliore imponente coordinato alle nuove proporzioni monumentali */
+    filter: drop-shadow(0 0 35px rgba(255, 231, 179, 0.8));
+    -webkit-filter: drop-shadow(0 0 35px rgba(255, 231, 179, 0.8));
     
-    /* Margini calibrati per gestire la maestosità verticale dello zoom */
-    margin: 45px auto 40px auto; 
+    /* Margini aumentati per dare la giusta 'aria' sopra e sotto l'altezza del maxi modello */
+    margin: 80px auto 75px auto; 
 }
 
 /* ================================
@@ -131,7 +131,7 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 45px; /* Spazio di sicurezza aumentato per l'imponente mole del castello zoommato */
+    margin-top: 70px; /* Incrementato lo stacco per assecondare la maestosità del castello */
 }
 
 .castle-panel {
@@ -271,5 +271,6 @@ html, body {
         width: 100% !important;
         transform: none; 
         -webkit-transform: none;
+        margin: 0;
     }
 }
