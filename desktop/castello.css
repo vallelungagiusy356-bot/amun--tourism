@@ -70,28 +70,51 @@ html, body {
     box-sizing: border-box;
 }
 
+/* ================================
+   CONTENITORE CASTELLO TRASPARENTE CON CORNICE GLOW
+================================ */
+
 /* Colonna Sinistra (Contenitore del Video 3D) */
 .column-left {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 0; /* Aumentato il padding per contenere lo zoom a 1.8 */
-    overflow: visible; 
+    padding: 60px 16px; /* Spazio verticale per gestire lo zoom */
+    box-sizing: border-box;
+    position: relative; /* Fondamentale per allineare la cornice */
+    overflow: visible;
 }
 
-/* 🚀 SUPER ZOOM: Castello maestoso ed enorme su mobile */
+/* LA CORNICE: Completamente trasparente con solo bordo e glow oro attorno al castello */
+.column-left::before {
+    content: "";
+    position: absolute;
+    width: 85%;          /* Larghezza della cornice rispetto al telefono */
+    height: 100%;        /* Copre l'altezza del contenitore */
+    max-height: 240px;   /* Evita che diventi troppo alta */
+    background: transparent; /* Mantiene la trasparenza dello sfondo mocha */
+    
+    /* Bordo e Glow Oro coordinati con il pannello di testo */
+    border: 2px solid #ffe7b3; 
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 231, 179, 0.4), 
+                inset 0 0 10px rgba(255, 231, 179, 0.15);
+    z-index: 1;          /* Rimane dietro al video */
+}
+
+/* Il video del castello (mantiene la trasparenza nativa fluttuando sopra la cornice) */
 .castle-main-video, .castle-main {
     width: 100%;
     max-width: 100%; 
     height: auto;
     display: block;
     background: transparent;
-    border-radius: 16px;
-    transform: scale(1.8); /* 🏰 Spinto lo zoom a 1.8 per un effetto imponente! */
+    transform: scale(1.6); /* Zoom bilanciato per stare a pennello nella teca trasparente */
     transform-origin: center center;
-    margin-top: 40px;      /* Dà spazio extra sopra per via dello zoom aumentato */
-    margin-bottom: 40px;   /* Dà spazio sotto per non sovrapporsi al testo */
+    position: relative;
+    z-index: 2;          /* Sta sopra la cornice */
+    margin: 0; 
 }
 
 /* Colonna Destra (Contenitore pannello info) */
@@ -105,10 +128,9 @@ html, body {
    PANNELLO VETRO RESPONSIVE CON GLOW ORO
 ================================ */
 .castle-panel {
-    background: rgba(0, 0, 0, 0.55); /* Leggermente più scuro per far risaltare l'oro */
+    background: rgba(0, 0, 0, 0.55); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    /* Bordo color oro lucido */
     border: 2px solid #ffe7b3; 
     border-radius: 20px;
     padding: 20px;
@@ -118,7 +140,7 @@ html, body {
     width: 100%;
     box-sizing: border-box;
     gap: 12px;
-    /* 🚀 IL GLOW: ombra esterna sfumata + micro-bagliore interno */
+    /* IL GLOW: ombra esterna sfumata + micro-bagliore interno */
     box-shadow: 0 0 15px rgba(255, 231, 179, 0.4), 
                 inset 0 0 10px rgba(255, 231, 179, 0.15);
 }
@@ -150,7 +172,7 @@ html, body {
 }
 
 /* ================================
-   PULSANTE INTERATTIVO CASTELLANA
+   PULSANTE INTERATTIVO CASTELLANA CON GLOW COERENTE
 ================================ */
 .castellana-button-container {
     margin-top: 20px;
@@ -162,16 +184,25 @@ html, body {
 #castellanaButton {
     width: 100%;
     max-width: 280px; 
-    background: rgba(255, 215, 160, 0.25);
-    border: 2px solid rgba(255, 215, 160, 0.8);
+    background: rgba(0, 0, 0, 0.6); /* Sfondo scuro per contrasto */
+    border: 2px solid #ffe7b3; /* Bordo oro come il pannello */
     border-radius: 25px; 
     color: #ffe7b3;
     font-size: 16px;
     font-weight: 600;
     padding: 12px 24px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(255, 215, 160, 0.2);
+    /* Glow oro sul bottone coerente con l'interfaccia */
+    box-shadow: 0 0 15px rgba(255, 231, 179, 0.4),
+                inset 0 0 5px rgba(255, 231, 179, 0.2);
     transition: all 0.3s ease;
+}
+
+/* Effetto quando ci si passa sopra col dito o mouse */
+#castellanaButton:hover, #castellanaButton:active {
+    background: rgba(255, 231, 179, 0.15);
+    box-shadow: 0 0 25px rgba(255, 231, 179, 0.7); /* Il glow si accende al tocco */
+    transform: scale(1.02);
 }
 
 /* ================================
@@ -212,7 +243,6 @@ html, body {
 /* ================================
    MEDIA QUERY PER SCHERMI DESKTOP
 ================================ */
-/* 🚀 MODIFICATO: Alzato a 1024px per costringere i tablet e i telefoni grandi a stare in verticale */
 @media (min-width: 1024px) {
     .castle-container-2col {
         flex-direction: row; /* Torna a due colonne affiancate SOLO su PC */
@@ -225,8 +255,11 @@ html, body {
         width: 55%;
     }
     .castle-main-video, .castle-main {
-        max-width: 480px; /* Dimensione fissa ed elegante per schermi grandi */
+        max-width: 480px; /* Dimensione elegante per PC */
         transform: none;
+    }
+    .column-left::before {
+        display: none; /* Rimuove la cornice mobile su schermi grandi se non necessaria */
     }
     .castle-text {
         font-size: 20px;
