@@ -76,8 +76,8 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px 0; /* Dà spazio verticale al castello ingrandito */
-    overflow: visible; /* Impedisce che il castello venga tagliato dallo zoom */
+    padding: 60px 0; /* Aumentato il padding per contenere lo zoom a 1.8 */
+    overflow: visible; 
 }
 
 /* 🚀 SUPER ZOOM: Castello maestoso ed enorme su mobile */
