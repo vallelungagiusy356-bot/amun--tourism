@@ -102,13 +102,14 @@ html, body {
 }
 
 /* ================================
-   PANNELLO VETRO RESPONSIVE
+   PANNELLO VETRO RESPONSIVE CON GLOW ORO
 ================================ */
 .castle-panel {
-    background: rgba(0, 0, 0, 0.4); 
+    background: rgba(0, 0, 0, 0.55); /* Leggermente più scuro per far risaltare l'oro */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 160, 0.4);
+    /* Bordo color oro lucido */
+    border: 2px solid #ffe7b3; 
     border-radius: 20px;
     padding: 20px;
     display: flex;
@@ -117,6 +118,9 @@ html, body {
     width: 100%;
     box-sizing: border-box;
     gap: 12px;
+    /* 🚀 IL GLOW: ombra esterna sfumata + micro-bagliore interno */
+    box-shadow: 0 0 15px rgba(255, 231, 179, 0.4), 
+                inset 0 0 10px rgba(255, 231, 179, 0.15);
 }
 
 .castle-text {
