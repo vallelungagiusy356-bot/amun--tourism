@@ -78,16 +78,20 @@ html, body {
     align-items: center;
 }
 
-/* 🚀 MODIFICATO: Forziamo il monumento a prendersi tutto lo spazio per essere GRANDE */
+/* 🚀 MODIFICATO:Forziamo il video e il fallback a mostrarsi GRANDI e maestosi */
 .castle-main-video, .castle-main {
     width: 100%;
-    max-width: 100%; /* Si allarga fino al bordo dello schermo del telefono */
+    max-width: 100%; 
     height: auto;
     display: block;
     background: transparent;
     border-radius: 16px;
-    transform: scale(1.05); /* Un leggero zoom per dargli ancora più risalto visivo */
+    transform: scale(1.4); /* 🚀 Spinto lo zoom per renderlo imponente! */
+    transform-origin: center center;
+    margin-top: 20px;     /* Bilancia lo zoom in alto */
+    margin-bottom: 20px;  /* Bilancia lo zoom in basso */
 }
+
 
 /* Colonna Destra (Contenitore pannello info) */
 .column-right {
