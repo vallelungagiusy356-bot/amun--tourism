@@ -14,7 +14,7 @@ html, body {
 }
 
 /* ================================
-   DASHBOARD SUPERIORE FIXATO
+   DASHBOARD SUPERIORE
 ================================ */
 .dashboard {
     position: fixed;
@@ -61,22 +61,22 @@ html, body {
 }
 
 /* ================================
-   STRUTTURA MOBILE A SCHERMO INTERO (L'ancora di salvezza)
+   STRUTTURA LAYOUT
 ================================ */
 .castle-layout {
     box-sizing: border-box;
     width: 100%;
     min-height: 100vh;
-    padding-top: 70px; /* Lascia spazio alla dashboard */
-    padding-bottom: 20px;
+    padding-top: 80px; 
+    padding-bottom: 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .castle-container-2col {
     display: flex;
     flex-direction: column;
-    flex: 1; /* Forza a occupare tutto lo spazio verticale rimasto sullo schermo */
     width: 100% !important;
     max-width: 100% !important;
     padding: 0 16px;
@@ -84,57 +84,60 @@ html, body {
 }
 
 /* ================================
-   COLONNA SINISTRA: AREA DEL CASTELLO
+   COLONNA CASTELLO CON ALTEZZA PROTETTA
 ================================ */
 .column-left {
-    flex: 1; /* Si prende la prima metà verticale dello schermo */
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center; /* Centra perfettamente il castello nello spazio nero */
-    min-height: 250px; /* Evita il collasso visivo */
-    width: 100%;
+    align-items: center;
+    /* Imponiamo un'altezza fissa all'area per contenere lo zoom senza rompere il layout */
+    height: 320px !important; 
+    position: relative;
     box-sizing: border-box;
+    margin-bottom: 40px; /* Crea lo spazio di sicurezza prima del testo */
 }
 
-/* RENDIAMO IL CASTELLO GIGANTE E NITIDO */
+/* L'IPER-ZOOM IMPONENTE */
 .castle-main-video, .castle-main {
-    width: 85% !important;  /* Occupa quasi tutta la larghezza dello schermo del telefono */
-    max-width: 380px !important; /* Limite per non farlo sgranare sui telefoni giganti */
+    width: 260px !important; /* Dimensione base stabile */
     height: auto !important;
     display: block;
     background: transparent;
+    position: absolute; /* Si muove liberamente nella sua area protetta */
     
-    /* Usiamo una trasformazione hardware pulita per ingrandirlo senza sfocare */
-    transform: scale(1.35);
-    -webkit-transform: scale(1.35);
+    /* Lo zoom massiccio che volevamo per farlo dominare lo schermo */
+    transform: scale(2.1) translateZ(0);
+    -webkit-transform: scale(2.1) translateZ(0);
+    transform-origin: center center;
     
-    /* Il famoso bagliore dorato avvolgente */
-    filter: drop-shadow(0 0 35px rgba(255, 231, 179, 0.75));
-    -webkit-filter: drop-shadow(0 0 35px rgba(255, 231, 179, 0.75));
+    /* Bagliore oro tridimensionale */
+    filter: drop-shadow(0 0 30px rgba(255, 231, 179, 0.8));
+    -webkit-filter: drop-shadow(0 0 30px rgba(255, 231, 179, 0.8));
     
-    margin: 0 auto; /* Centratura automatica */
+    margin: 0 auto;
 }
 
 /* ================================
-   COLONNA DESTRA: AREA DEL TESTO
+   COLONNA TESTO (Posizionata perfettamente sotto)
 ================================ */
 .column-right {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 25px; /* Crea lo stacco perfetto dal castello gigante */
+    position: relative;
+    z-index: 10; /* Fa sì che il testo resti sopra l'eventuale alone dello zoom */
 }
 
-/* IL PANNELLO INQUADRATO */
 .castle-panel {
     width: 100% !important;
-    background: rgba(15, 10, 8, 0.82); 
+    background: rgba(15, 10, 8, 0.85); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid #ffe7b3; 
     border-radius: 20px; 
-    padding: 20px 16px;
+    padding: 22px 18px;
     box-shadow: 0 0 20px rgba(255, 231, 179, 0.4),
                 inset 0 0 10px rgba(255, 231, 179, 0.15);
     box-sizing: border-box;
@@ -154,10 +157,10 @@ html, body {
 
 .castle-text h2 {
     font-family: "Cormorant Garamond", "Garamond", serif;
-    font-size: 25px;
+    font-size: 26px;
     color: #ffe7b3;
     margin-top: 0;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-weight: 600;
 }
 
@@ -176,7 +179,7 @@ html, body {
    PULSANTE OVALE IN BASSO
 ================================ */
 .castellana-button-container {
-    margin-top: 20px;
+    margin-top: 25px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -247,23 +250,24 @@ html, body {
         text-decoration: none;
         font-size: 14px;
     }
-    .castle-container-2col {
-        max-width: 1100px !important;
-        flex-direction: row !important; /* Torna affiancato su PC */
-        gap: 50px;
-        padding: 0 40px;
-    }
     .column-left {
         width: 45%;
-        flex: none;
+        height: auto !important;
+        margin-bottom: 0;
     }
     .column-right {
         width: 55%;
-        margin-top: 0;
+    }
+    .castle-container-2col {
+        max-width: 1100px !important;
+        flex-direction: row !important;
+        gap: 50px;
+        padding: 0 40px;
     }
     .castle-main-video, .castle-main {
         width: 100% !important;
         max-width: 100% !important;
+        position: relative;
         transform: none; 
         -webkit-transform: none;
         margin: 0;
