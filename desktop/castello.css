@@ -51,7 +51,7 @@ html, body {
    LAYOUT RESPONSIVE MODERNO (Flexbox)
 ================================ */
 .castle-layout {
-    padding-top: 80px; 
+    padding-top: 40px; 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
