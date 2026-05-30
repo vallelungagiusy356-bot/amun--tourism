@@ -18,19 +18,19 @@ html, body {
     top: 0;
     left: 0;
     width: 100%; 
-    height: auto; /* Fluida per schermi piccoli */
+    height: auto; 
     min-height: 54px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 16px; 
-    background: rgba(0, 0, 0, 0.75); /* Leggermente più scuro per contrasto */
+    background: rgba(0, 0, 0, 0.75); 
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 215, 160, 0.5);
     box-sizing: border-box; 
     z-index: 9999;
-    flex-wrap: wrap; /* Permette agli elementi di andare a capo se lo schermo è mini */
+    flex-wrap: wrap; 
     gap: 8px;
 }
 
@@ -43,7 +43,7 @@ html, body {
     padding: 6px 12px;
     cursor: pointer;
     box-shadow: 0 0 12px rgba(255, 215, 160, 0.4);
-    margin-left: auto; /* Lo spinge a destra */
+    margin-left: auto; 
     flex-shrink: 0; 
 }
 
@@ -51,7 +51,7 @@ html, body {
    LAYOUT RESPONSIVE MODERNO (Flexbox)
 ================================ */
 .castle-layout {
-    padding-top: 80px; /* Spazio per la dashboard superiore */
+    padding-top: 80px; 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -65,12 +65,12 @@ html, body {
     margin: 0 auto;
     padding: 16px;
     display: flex;
-    flex-direction: column; /* Su mobile: elementi impilati in verticale */
+    flex-direction: column; /* Elementi in verticale su mobile */
     gap: 24px;
     box-sizing: border-box;
 }
 
-/* Colonna Sinistra (Video 3D del Castello) */
+/* Colonna Sinistra (Contenitore del Video 3D) */
 .column-left {
     width: 100%;
     display: flex;
@@ -78,14 +78,15 @@ html, body {
     align-items: center;
 }
 
-/* Forziamo il video e il fallback a comportarsi al millimetro */
+/* 🚀 MODIFICATO: Forziamo il monumento a prendersi tutto lo spazio per essere GRANDE */
 .castle-main-video, .castle-main {
     width: 100%;
-    max-width: 340px; /* Dimensione perfetta per schermi mobile */
+    max-width: 100%; /* Si allarga fino al bordo dello schermo del telefono */
     height: auto;
     display: block;
     background: transparent;
     border-radius: 16px;
+    transform: scale(1.05); /* Un leggero zoom per dargli ancora più risalto visivo */
 }
 
 /* Colonna Destra (Contenitore pannello info) */
@@ -106,7 +107,7 @@ html, body {
     border-radius: 20px;
     padding: 20px;
     display: flex;
-    flex-direction: row; /* Mantiene testo e abito affiancati */
+    flex-direction: row; 
     align-items: flex-start;
     width: 100%;
     box-sizing: border-box;
@@ -114,10 +115,10 @@ html, body {
 }
 
 .castle-text {
-    flex: 1; /* Prende tutto lo spazio disponibile */
+    flex: 1; 
     color: #e5a93c;
     font-family: "Cormorant Garamond", "Garamond", serif;
-    font-size: 16px; /* Ottimizzato per la lettura da smartphone */
+    font-size: 16px; 
     line-height: 1.6;
 }
 
@@ -129,8 +130,8 @@ html, body {
 }
 
 .castle-dress {
-    width: 90px; /* Ridimensionato proporzionalmente per il mobile */
-    flex-shrink: 0; /* Impedisce all'abito di schiacciarsi */
+    width: 90px; 
+    flex-shrink: 0; 
 }
 
 .castle-dress img {
@@ -146,15 +147,15 @@ html, body {
     margin-top: 20px;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centrato su mobile per un tocco più comodo */
+    justify-content: center; 
 }
 
 #castellanaButton {
     width: 100%;
-    max-width: 280px; /* Evita che diventi un bottone gigante */
+    max-width: 280px; 
     background: rgba(255, 215, 160, 0.25);
     border: 2px solid rgba(255, 215, 160, 0.8);
-    border-radius: 25px; /* Più arrotondato in stile mobile design */
+    border-radius: 25px; 
     color: #ffe7b3;
     font-size: 16px;
     font-weight: 600;
@@ -171,7 +172,7 @@ html, body {
     position: fixed;
     bottom: 20px;
     left: 50%;
-    transform: translateX(-50%); /* Centrato perfettamente sullo schermo del telefono */
+    transform: translateX(-50%); 
     width: 90%;
     max-width: 320px;
     border-radius: 16px;
@@ -184,12 +185,12 @@ html, body {
     bottom: 0; 
     left: 0;
     width: 100%;
-    height: 75vh; /* Copre i 3/4 inferiori dello schermo per una chat comodissima */
-    background: rgba(20, 13, 9, 0.95); /* Colore scuro mocha coerente */
+    height: 75vh; 
+    background: rgba(20, 13, 9, 0.95); 
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-top: 2px solid rgba(255, 215, 160, 0.7);
-    border-radius: 24px 24px 0 0; /* Arrotondati solo gli angoli superiori */
+    border-radius: 24px 24px 0 0; 
     display: none;
     z-index: 99999;
     box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
@@ -202,9 +203,10 @@ html, body {
 /* ================================
    MEDIA QUERY PER SCHERMI DESKTOP
 ================================ */
-@media (min-width: 768px) {
+/* 🚀 MODIFICATO: Alzato a 1024px per costringere i tablet e i telefoni grandi a stare in verticale */
+@media (min-width: 1024px) {
     .castle-container-2col {
-        flex-direction: row; /* Torna a due colonne affiancate su PC */
+        flex-direction: row; /* Torna a due colonne affiancate SOLO su PC */
         align-items: center;
     }
     .column-left {
@@ -214,7 +216,8 @@ html, body {
         width: 55%;
     }
     .castle-main-video, .castle-main {
-        max-width: 480px;
+        max-width: 480px; /* Dimensione fissa ed elegante per schermi grandi */
+        transform: none;
     }
     .castle-text {
         font-size: 20px;
