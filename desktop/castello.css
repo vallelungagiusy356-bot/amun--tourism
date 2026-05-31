@@ -54,94 +54,79 @@ html, body {
     width: 100%;
     gap: 20px;
 }
-
-/* ================================
-   📱 DISPOSIZIONE MOBILE VERTICALE (Portrait)
+    /* ================================
+   📱 DISPOSIZIONE MOBILE VERTICALE (Aggiornata per Pesi e Proporzioni)
 ================================ */
 .column-left {
     display: flex;
-    flex-direction: row;        /* Mette Castello e Castellana affiancati */
+    flex-direction: row;        
     justify-content: space-between;
-    align-items: flex-end;      /* Allinea le basi inferiori */
+    align-items: flex-end;      /* Tiene la Castellana e il pulsante ancorati in basso */
     width: 100%;
     position: relative;
     padding-bottom: 10px;
+    height: auto;               /* Lasciamo che l'altezza si adatti ai contenuti */
 }
 
-/* 🏰 Box Castello (In alto a sinistra) */
+/* 🏰 BOX CASTELLO: Più grande e dominante (passa al 58%) */
 .castle-media-box {
-    width: 48%;                 /* Prende metà dello spazio disponibile */
+    width: 58%;                 
     display: flex;
     justify-content: center;
     align-items: center;
-    align-self: flex-start;     /* Lo ancora stabilmente in alto */
+    align-self: flex-start;     /* Spinto in alto a sinistra */
+    margin-top: 10px;
 }
 
 .castle-main-video, .castle-main {
     width: 100%;
     height: auto;
-    max-height: 220px;
     object-fit: contain;
-    filter: drop-shadow(0 0 15px rgba(255, 231, 179, 0.3));
+    /* Aumentiamo lo zoom hardware per renderlo maestoso */
+    transform: scale(1.8) translateZ(0); 
+    -webkit-transform: scale(1.8) translateZ(0);
+    transform-origin: left center;
+    filter: drop-shadow(0 0 25px rgba(255, 231, 179, 0.5));
 }
 
-/* 🎬 Box Interattivo Castellana (Sfalsato in basso a destra) */
+/* 🎬 BOX CASTELLANA: Più contenuto e proporzionato (scende al 38%) */
 .castellana-interactive-box {
-    width: 48%;                 /* Prende l'altra metà dello spazio senza sovrapporsi */
+    width: 38%;                 
     display: flex;
     flex-direction: column;
-    gap: 8px;                   /* Distanza fissa e pulita tra video e pulsante */
+    gap: 6px;                   
 }
 
 .castellana-video {
     width: 100%;
     height: auto;
-    aspect-ratio: 3 / 4;        /* Forza la corretta proporzione verticale del video */
+    aspect-ratio: 3 / 4;        
     object-fit: cover;
     border-radius: 12px;
     border: 1px solid #ffe7b3;
-    box-shadow: 0 0 15px rgba(255, 231, 179, 0.3);
+    box-shadow: 0 0 12px rgba(255, 231, 179, 0.25);
 }
 
-/* 🪙 Pulsante Oro ancorato alla base */
+/* 🪙 PULSANTE ORO: Scalato in proporzione alla nuova larghezza del video */
 .castellana-button-container {
     width: 100%;
 }
 
 #castellanaButton {
     width: 100%;
-    padding: 10px 4px;          /* Padding fisso invece di altezza percentuale per evitare lo schiacciamento */
+    padding: 8px 2px;          
     background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
     border: 1px solid #ffe7b3;
-    border-radius: 12px;
+    border-radius: 10px;
     color: #000;
-    font-size: 10px;
+    font-size: 8.5px; /* Leggermente ridotto per non farlo andare a capo sul box più stretto */
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(255, 231, 179, 0.3);
+    box-shadow: 0 3px 8px rgba(255, 231, 179, 0.3);
     white-space: nowrap;
 }
 
-/* 📜 INFORMAZIONI A TUTTO SCHERMO IN BASSO */
-.column-right {
-    width: 100%;
-}
-
-.castle-panel {
-    background: rgba(15, 10, 8, 0.9);
-    border: 1px solid #ffe7b3;
-    border-radius: 16px;
-    padding: 16px;
-    display: flex;
-    gap: 15px;
-    box-shadow: inset 0 0 10px rgba(255, 231, 179, 0.1);
-}
-
-.castle-text { flex: 1; font-size: 13px; line-height: 1.5; color: #ffe7b3; }
-.castle-text h2 { font-size: 18px; margin-top: 0; margin-bottom: 10px; color: #ffe7b3; }
-.castle-dress { width: 50px; flex-shrink: 0; display: flex; align-items: center; }
-.castle-dress img { width: 100%; height: auto; }
 
 /* ================================
    🔄 MOBILE ORIZZONTALE (Landscape)
@@ -153,43 +138,33 @@ html, body {
 
     .column-left {
         flex-direction: row;
-        justify-content: space-around;
-        align-items: center;    /* Centra perfettamente entrambi gli elementi in orizzontale */
-        height: auto;
-        padding-bottom: 0;
+        justify-content: space-evenly;
+        align-items: center;    
+        padding: 0 10px;
     }
 
+    /* Bilanciamo anche in orizzontale */
     .castle-media-box {
-        width: 40%;
+        width: 50% !important;
         align-self: center;
     }
 
     .castle-main-video, .castle-main {
-        max-height: 60vh;       /* Evita che il castello diventi troppo grande o troppo piccolo */
+        transform: scale(1.4) !important; 
+        transform-origin: center center;
     }
 
     .castellana-interactive-box {
-        width: 35%;             /* Dimensione calibrata per non far tagliare la testa in altezza */
+        width: 32% !important;             
     }
 
     .castellana-video {
-        aspect-ratio: 4 / 3;    /* Ammorbidisce il taglio del video quando lo schermo è largo */
-        max-height: 50vh;
+        aspect-ratio: 4 / 3;    
+        max-height: 45vh;
     }
 
     #castellanaButton {
         padding: 8px 4px;
-        font-size: 11px;
+        font-size: 10px !important;
     }
-}
-
-/* ================================
-   💻 CONFIGURAZIONE DESKTOP
-================================ */
-@media screen and (min-width: 1024px) {
-    .nav-desktop { display: flex; gap: 20px; }
-    .nav-desktop a { color: #ffe7b3; text-decoration: none; font-size: 14px; }
-    .castle-container-2col { max-width: 1200px; flex-direction: row; margin: 0 auto; gap: 40px; padding: 20px; }
-    .column-left { width: 50%; align-items: center; }
-    .castle-text { font-size: 15px; }
 }
