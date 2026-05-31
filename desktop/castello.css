@@ -134,7 +134,7 @@ html, body {
 .castellana-video {
     width: 100%;
     max-width: 320px;
-    object-fit: contain; /* Evita zoom forzati che tagliano mento o occhi */
+    object-fit: contain;
     cursor: pointer;
     z-index: 11;
     background: transparent !important;
@@ -175,20 +175,24 @@ html, body {
     100% { opacity: 0; transform: translateX(-50%) scale(0.95); }
 }
 
-/* 🏰 BOX CASTELLO (Spostato a DESTRA) */
+/* 🏰 BOX CASTELLO (Spostato a DESTRA, Abbassato) */
 .castle-media-box {
-    width: 55%;
+    width: 58%;
     display: flex;
     justify-content: flex-end; 
-    align-self: flex-start; 
+    align-self: flex-end; /* Sposta il box in basso rispetto alla linea della Castellana */
+    margin-top: 20px; /* Incrementa lo spazio dall'alto */
+    overflow: visible; /* Permette allo zoom di rompere il bordo senza tagliare l'immagine */
 }
 
+/* ZOOM E RIPOSIZIONAMENTO IMMAGINE/VIDEO NATIVI */
 .castle-main-video, .castle-main {
     width: 100%;
     height: auto;
     object-fit: contain;
-    transform: scale(1.6); 
-    transform-origin: right center; /* Ancoraggio a destra per evitare l'uscita dallo schermo */
+    /* Aumentato lo zoom a 2.1 per compensare l'immagine piccola; modificati gli assi per spingere a destra e in basso */
+    transform: scale(2.1) translate(5px, 8px); 
+    transform-origin: right bottom; /* L'ancoraggio in basso a destra evita la fuga verso l'alto e il centro */
     filter: drop-shadow(0 0 20px rgba(255, 215, 160, 0.4));
 }
 
@@ -378,28 +382,28 @@ html, body {
     }
 
     .multimedia-wrapper {
-        align-items: center;
-        height: 150px; /* Blocca l'altezza massima per impedire tagli brutali di proporzione */
+        align-items: flex-end;
+        height: 160px; 
     }
 
     .castle-media-box {
-        width: 45%;
-        align-self: center;
+        width: 50%;
+        align-self: flex-end;
     }
 
     .castle-main-video, .castle-main {
-        transform: scale(1.3);
-        transform-origin: center center;
+        transform: scale(1.8) translate(8px, 5px);
+        transform-origin: right bottom;
     }
 
     .castellana-video-wrapper {
         width: 25vw;
         height: 100%;
-        justify-content: center;
+        justify-content: flex-end;
     }
 
     .castellana-video {
-        max-height: 130px; /* Impedisce al video di espandersi verticalmente, salvando il mento e la fronte */
+        max-height: 130px; 
         width: auto !important;
         object-fit: contain !important;
     }
@@ -470,25 +474,36 @@ html, body {
     }
 
     .multimedia-wrapper {
-        justify-content: flex-start;
-        padding-left: 6%;
-    }
-
-    .castle-media-box {
-        width: 35%;
+        justify-content: space-between;
+        padding-left: 4%;
+        padding-right: 4%;
+        align-items: flex-end;
     }
 
     .castellana-video-wrapper {
-        width: 28vw;
-        padding-left: 4%;
+        width: 25vw;
+        padding-left: 0;
     }
 
     .castellana-tooltip {
         top: -40px;
-        left: 4%;
-        transform: none;
+        left: 50%;
+        transform: translateX(-50%);
         padding: 12px 26px;
         font-size: 1.1rem;
+    }
+
+    /* Ottimizzazione Desktop per il Castello ingrandito */
+    .castle-media-box {
+        width: 45%;
+        align-self: flex-end;
+        margin-bottom: -10px; /* Lo adagia ancora più in basso */
+    }
+
+    .castle-main-video, .castle-main {
+        /* Zoom massiccio per i grandi schermi e traslazione asse X (destra) e asse Y (basso) */
+        transform: scale(2.4) translate(15px, 12px); 
+        transform-origin: right bottom;
     }
     
     @keyframes slideInRight {
@@ -499,7 +514,7 @@ html, body {
     .chat-desktop {
         position: absolute;
         top: 220px;
-        right: 6%;
+        right: 4%;
         bottom: auto;
         width: 340px;
         height: 320px;
