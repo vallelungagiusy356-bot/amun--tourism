@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="castle.title"></title>
-
     <link rel="stylesheet" href="castello.css">
 </head>
 
 <body>
 
     <header class="dashboard">
-        <div class="logo-title" data-i18n="menu.title"></div>
+        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         <nav class="nav-desktop">
-            <a href="about.html" data-i18n="menu.about"></a>
-            <a href="contact.html" data-i18n="menu.contact"></a>
+            <a href="about.html" data-i18n="menu.about">About</a>
+            <a href="contact.html" data-i18n="menu.contact">Contact</a>
         </nav>
         <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
@@ -29,8 +28,10 @@
     <section class="castle-layout">
         <div class="castle-container-2col">
             
+            <!-- 🚀 AREA MULTIMEDIALE SUPERIORE -->
             <div class="column-left">
                 
+                <!-- 🏰 BOX CASTELLO (In alto a sinistra) -->
                 <div class="castle-media-box">
                     <video autoplay loop muted playsinline webkit-playsinline class="castle-main-video">
                         <source src="img/castello_2.webm" type="video/webm">
@@ -38,8 +39,9 @@
                     </video>
                 </div>
 
+                <!-- 🎬 BOX INTERATTIVO CASTELLANA (Sfalsato a destra con pulsante alla base) -->
                 <div class="castellana-interactive-box">
-                    <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline>
+                    <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
                         <source src="img/benvenuto_castellana.webm" type="video/webm">
                     </video>
                     
@@ -50,10 +52,11 @@
 
             </div>
 
+            <!-- 📜 AREA INFORMATIVA INFERIORE -->
             <div class="column-right">
                 <div class="castle-panel">
                     <div class="castle-text">
-                        <h2 data-i18n="castle.title"></h2>
+                        <h2 data-i18n="castle.title">Il Castello di Caccamo</h2>
                         <p>
                             Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
                             Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
@@ -74,10 +77,11 @@
 
         </div>
 
-        <div class="chat-panel">
-        </div>
+        <!-- Pannello Chat che si attiva al click -->
+        <div class="chat-panel"></div>
     </section>
 
+    <!-- Script Multilingua -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
     function loadLanguage(lang) {
@@ -100,18 +104,11 @@
     });
     </script>
 
+    <!-- Script Interazione Chat -->
     <script>
     document.getElementById("castellanaButton").addEventListener("click", () => {
-        const video = document.getElementById("castellanaVideo");
-        
-        // Aggiungiamo la classe per gestire l'apparizione fluida via CSS
-        video.classList.add("playing");
-        video.play();
-        
-        video.onended = () => {
-            video.classList.remove("playing");
-            document.querySelector(".chat-panel")?.classList.add("visible");
-        };
+        const chatPanel = document.querySelector(".chat-panel");
+        chatPanel.classList.toggle("visible");
     });
     </script>
 
