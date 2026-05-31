@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="castle.title"></title>
+    <title data-i18n="castle.title">Il Castello di Caccamo</title>
     <link rel="stylesheet" href="castello.css">
 </head>
-
 <body>
 
+    <!-- SFONDO DINAMICO DELLA PAGINA -->
+    <div class="scene-background"></div>
+
+    <!-- 👑 DASHBOARD ELEGANTE NERA + ORO -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         <nav class="nav-desktop">
@@ -25,63 +28,71 @@
         <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
     </header>
 
-    <section class="castle-layout">
-        <div class="castle-container-2col">
+    <main class="castle-layout">
+        
+        <!-- 🎬 BLOCCO MULTIMEDIALE SUPERIORE: CASTELLO + CASTELLANA -->
+        <div class="multimedia-wrapper">
             
-            <!-- 🚀 AREA MULTIMEDIALE SUPERIORE -->
-            <div class="column-left">
-                
-                <!-- 🏰 BOX CASTELLO (In alto a sinistra) -->
-                <div class="castle-media-box">
-                    <video autoplay loop muted playsinline webkit-playsinline class="castle-main-video">
-                        <source src="img/castello_2.webm" type="video/webm">
-                        <img src="img/castello 2 (1).webp" alt="Castello di Caccamo" class="castle-main">
-                    </video>
-                </div>
-
-                <!-- 🎬 BOX INTERATTIVO CASTELLANA (Sfalsato a destra con pulsante alla base) -->
-                <div class="castellana-interactive-box">
-                    <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
-                        <source src="img/benvenuto_castellana.webm" type="video/webm">
-                    </video>
-                    
-                    <div class="castellana-button-container">
-                        <button id="castellanaButton">Parla con la Castellana</button>
-                    </div>
-                </div>
-
+            <!-- 🏰 CASTELLO MAESTOSO (Sinistra) -->
+            <div class="castle-media-box">
+                <video autoplay loop muted playsinline webkit-playsinline class="castle-main-video">
+                    <source src="img/castello_2.webm" type="video/webm">
+                    <img src="img/castello 2 (1).webp" alt="Castello di Caccamo" class="castle-main">
+                </video>
             </div>
 
-            <!-- 📜 AREA INFORMATIVA INFERIORE -->
-            <div class="column-right">
-                <div class="castle-panel">
-                    <div class="castle-text">
-                        <h2 data-i18n="castle.title">Il Castello di Caccamo</h2>
-                        <p>
-                            Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
-                            Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
-                        </p>
-                        <p>
-                            Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
-                        </p>
-                        <p>
-                            Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
-                        </p>
-                    </div>
-
-                    <div class="castle-dress">
-                        <img src="img/abito_clean.png" alt="Abito d’epoca della Castellana">
-                    </div>
-                </div>
+            <!-- 🎬 VIDEO CASTELLANA + TOOLTIP INTERATTIVO (Destra) -->
+            <div class="castellana-video-wrapper">
+                <div class="castellana-tooltip" id="castellanaTooltip">Parla con la Castellana</div>
+                <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
+                    <source src="img/benvenuto_castellana.webm" type="video/webm">
+                </video>
             </div>
 
         </div>
 
-        <!-- Pannello Chat che si attiva al click -->
-        <div class="chat-panel"></div>
-    </section>
+        <!-- 📜 SEZIONE INFORMATIVA CENTRALE — VETRO CRISTALLINO REALE -->
+        <section class="castle-info-panel">
+            <div class="install-left">
+                <h2 data-i18n="castle.title">Il Castello di Caccamo</h2>
+                <div class="castle-text-content">
+                    <p>
+                        Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
+                        Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
+                    </p>
+                    <p>
+                        Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
+                    </p>
+                    <p>
+                        Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
+                    </p>
+                </div>
+            </div>
+            <div class="install-right">
+                <div class="castle-dress">
+                    <img src="img/abito_clean.png" alt="Abito d’epoca della Castellana" class="dress-img">
+                </div>
+                <p data-i18n="castle.dress-caption">Abito Storico</p>
+            </div>
+        </section>
 
-    <!-- Script Multilingua -->
+        <!-- 💬 CHAT — VETRO CRISTALLINO (Slide-in da destra) -->
+        <div class="chat-desktop" id="chatDesktop">
+            <button class="close-chat-btn" id="closeChatBtn">×</button>
+            <div class="chat-messages">
+                <div class="message">
+                    <strong>La Castellana:</strong> Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure.
+                </div>
+            </div>
+            <div class="chat-input-row">
+                <input type="text" placeholder="Scrivi alla Castellana..." id="chatInput">
+                <button class="mic-btn">🎤</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 🌐 SCRIPT 1: Gestione Traduzioni i18n -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
     function loadLanguage(lang) {
@@ -104,11 +115,22 @@
     });
     </script>
 
-    <!-- Script Interazione Chat -->
+    <!-- 🎬 SCRIPT 2: Interazione Apertura Chat e Tooltip -->
     <script>
-    document.getElementById("castellanaButton").addEventListener("click", () => {
-        const chatPanel = document.querySelector(".chat-panel");
-        chatPanel.classList.toggle("visible");
+    const castellanaVideo = document.getElementById("castellanaVideo");
+    const castellanaTooltip = document.getElementById("castellanaTooltip");
+    const chatDesktop = document.getElementById("chatDesktop");
+    const closeChatBtn = document.getElementById("closeChatBtn");
+
+    function openChat() {
+        chatDesktop.classList.add("active");
+    }
+
+    castellanaVideo.addEventListener("click", openChat);
+    castellanaTooltip.addEventListener("click", openChat);
+
+    closeChatBtn.addEventListener("click", () => {
+        chatDesktop.classList.remove("active");
     });
     </script>
 
