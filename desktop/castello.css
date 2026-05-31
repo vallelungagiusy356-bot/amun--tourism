@@ -84,7 +84,7 @@ html, body {
 }
 
 /* ================================
-   GABBIA DEL CASTELLO (Area Espansa)
+   GABBIA DEL CASTELLO (Area Espansa Mobile Verticale)
 ================================ */
 .column-left {
     width: 100%;
@@ -236,44 +236,62 @@ html, body {
 }
 
 /* ================================
-   NEW 🔄 SMARTPHONE IN ORIZZONTALE (LANDSCAPE)
+   🔄 SMARTPHONE IN ORIZZONTALE (LANDSCAPE) - NUOVO APPROCCIO
 ================================ */
 @media (min-width: 480px) and (max-width: 1023px) and (orientation: landscape) {
     .castle-layout {
-        padding-top: 75px;
+        padding-top: 70px;
+        padding-bottom: 20px;
     }
     
+    /* Manteniamo la colonna singola per la macro-struttura così il testo va sotto */
     .castle-container-2col {
-        flex-direction: row !important; /* Affianca gli elementi in orizzontale */
-        gap: 30px;
-        align-items: center;
-        padding: 0 24px;
+        flex-direction: column !important;
+        gap: 20px;
+        padding: 0 16px;
     }
     
+    /* La parte superiore diventa una riga affiancata: Castello a sinistra, Pulsante a destra */
     .column-left {
-        width: 45%;
-        height: 65vh !important; /* Diamo più altezza dinamica in orizzontale */
-        min-height: auto;
+        width: 100%;
+        height: 55vh !important; /* Molto più spazio verticale per il monumento */
+        display: flex;
+        flex-direction: row !important; /* Affianca internamente */
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 10px;
     }
     
+    /* Il castello si sviluppa in altezza sfruttando tutto il 55vh */
     .castle-main-video, .castle-main {
         height: 100% !important;
         width: auto !important;
-        transform: scale(1.4) translateZ(0); /* Zoom leggermente ridotto per non tagliare le torri in altezza */
-        -webkit-transform: scale(1.4) translateZ(0);
+        transform: scale(1.7) translateZ(0); /* Mega zoom verticale protetto */
+        -webkit-transform: scale(1.7) translateZ(0);
+        margin: 0;
     }
     
+    /* Il pulsante viene intercettato e posizionato a fianco del castello */
+    .castellana-button-container {
+        width: auto !important;
+        margin-top: 0;
+        flex-shrink: 0;
+    }
+    
+    #castellanaButton {
+        width: 180px; /* Larghezza fissa compatta per stare a fianco del castello */
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    
+    /* La colonna destra (il testo) si posiziona sotto a tutta larghezza */
     .column-right {
-        width: 55%;
-        margin-top: 0; /* Elimina il distacco verticale del mobile */
+        width: 100%;
+        margin-top: 20px; /* Distanza dallo zoom superiore */
     }
     
     .castle-panel {
-        padding: 16px 14px; /* Ottimizza lo spazio interno del testo */
-    }
-    
-    .castle-text h2 {
-        font-size: 22px; /* Testo leggermente più compatto per evitare lo scroll eccessivo */
+        padding: 16px 18px;
     }
 }
 
@@ -294,6 +312,9 @@ html, body {
         width: 45%;
         height: auto !important;
         margin-bottom: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
     .column-right {
         width: 55%;
