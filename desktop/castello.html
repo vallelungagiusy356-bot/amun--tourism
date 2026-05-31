@@ -8,10 +8,8 @@
 </head>
 <body>
 
-    <!-- SFONDO DINAMICO DELLA PAGINA -->
     <div class="scene-background"></div>
 
-    <!-- 👑 DASHBOARD ELEGANTE NERA + ORO -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         <nav class="nav-desktop">
@@ -30,10 +28,15 @@
 
     <main class="castle-layout">
         
-        <!-- 🎬 BLOCCO MULTIMEDIALE SUPERIORE: CASTELLO + CASTELLANA -->
         <div class="multimedia-wrapper">
             
-            <!-- 🏰 CASTELLO MAESTOSO (Sinistra) -->
+            <div class="castellana-video-wrapper">
+                <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat-tooltip">Click to Chat</div>
+                <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
+                    <source src="img/benvenuto_castellana.webm" type="video/webm">
+                </video>
+            </div>
+
             <div class="castle-media-box">
                 <video autoplay loop muted playsinline webkit-playsinline class="castle-main-video">
                     <source src="img/castello_2.webm" type="video/webm">
@@ -41,17 +44,8 @@
                 </video>
             </div>
 
-            <!-- 🎬 VIDEO CASTELLANA + TOOLTIP INTERATTIVO (Destra) -->
-            <div class="castellana-video-wrapper">
-                <div class="castellana-tooltip" id="castellanaTooltip">Parla con la Castellana</div>
-                <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
-                    <source src="img/benvenuto_castellana.webm" type="video/webm">
-                </video>
-            </div>
-
         </div>
 
-        <!-- 📜 SEZIONE INFORMATIVA CENTRALE — VETRO CRISTALLINO REALE -->
         <section class="castle-info-panel">
             <div class="install-left">
                 <h2 data-i18n="castle.title">Il Castello di Caccamo</h2>
@@ -76,7 +70,6 @@
             </div>
         </section>
 
-        <!-- 💬 CHAT — VETRO CRISTALLINO (Slide-in da destra) -->
         <div class="chat-desktop" id="chatDesktop">
             <button class="close-chat-btn" id="closeChatBtn">×</button>
             <div class="chat-messages">
@@ -92,7 +85,6 @@
 
     </main>
 
-    <!-- 🌐 SCRIPT 1: Gestione Traduzioni i18n -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
     function loadLanguage(lang) {
@@ -115,7 +107,6 @@
     });
     </script>
 
-    <!-- 🎬 SCRIPT 2: Interazione Apertura Chat e Tooltip -->
     <script>
     const castellanaVideo = document.getElementById("castellanaVideo");
     const castellanaTooltip = document.getElementById("castellanaTooltip");
