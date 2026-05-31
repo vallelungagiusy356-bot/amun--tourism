@@ -1,5 +1,5 @@
 /* ================================
-   SFONDO E STRUTTURA BASE
+   RESET E CONFIGURAZIONE BASE
 ================================ */
 html, body {
     height: 100%;
@@ -9,344 +9,213 @@ html, body {
     background-color: #000000; 
     color: #ffe7b3;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ================================
-   DASHBOARD SUPERIORE
+   DASHBOARD SUPERIORE FIXATO
 ================================ */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%; 
-    height: 60px;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px; 
-    background: #1a0f0a; 
-    border-bottom: 2px solid rgba(255, 231, 179, 0.2);
+    padding: 0 12px; 
+    background: #150a05; 
+    border-bottom: 1px solid rgba(255, 231, 179, 0.2);
     box-sizing: border-box; 
     z-index: 9999;
 }
 
-.logo-title {
-    color: #ffe7b3;
-    font-weight: bold;
-    font-size: 16px;
-}
+.logo-title { color: #ffe7b3; font-weight: bold; font-size: 14px; }
+.nav-desktop { display: none; }
+.lang-switcher button { background: transparent; border: none; font-size: 14px; cursor: pointer; }
+.home-btn { background: rgba(255, 231, 179, 0.1); border: 1px solid #ffe7b3; border-radius: 4px; color: #ffe7b3; font-size: 11px; padding: 2px 8px; }
 
-.nav-desktop {
-    display: none; 
-}
-
-.lang-switcher button {
-    background: transparent;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 2px;
-}
-
-.home-btn {
-    background: rgba(255, 231, 179, 0.15);
-    border: 1px solid #ffe7b3;
-    border-radius: 6px;
-    color: #ffe7b3;
-    font-size: 13px;
-    padding: 4px 10px;
-    cursor: pointer;
-}
-
-/* ================================
-   STRUTTURA LAYOUT GENERALE
-================================ */
+/* LAYOUT GENERALI */
 .castle-layout {
     box-sizing: border-box;
     width: 100%;
-    min-height: 100vh;
-    padding-top: 60px; 
-    padding-bottom: 30px;
+    padding-top: 55px; 
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .castle-container-2col {
     display: flex;
     flex-direction: column;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 16px;
-    box-sizing: border-box;
+    width: 100%;
 }
 
 /* ================================
-   GABBIA MOBILE VERTICALE (BLINDATA E PERFETTA)
+   📱 DISPOSIZIONE MOBILE VERTICALE
 ================================ */
 .column-left {
+    position: relative;
     width: 100%;
+    height: 48vh; /* Contenitore superiore bilanciato per i due media */
+    margin-bottom: 10px;
+}
+
+/* 🏰 Castello in alto sulla sinistra */
+.castle-media-box {
+    position: absolute;
+    top: 5px;
+    left: 4%;
+    width: 50%;
+    height: 65%;
+}
+
+.castle-main-video, .castle-main {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(1.6); /* Il tuo maestoso iper-zoom */
+    transform-origin: left center;
+    filter: drop-shadow(0 0 20px rgba(255, 231, 179, 0.4));
+}
+
+/* 🎬 Box Castellana sfalsato in basso a destra */
+.castellana-interactive-box {
+    position: absolute;
+    bottom: 5px;
+    right: 4%;
+    width: 42%;
+    height: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 40vh !important; 
-    min-height: 320px;
-    position: relative;
-    box-sizing: border-box;
-    overflow: visible; 
+    justify-content: flex-end;
 }
 
-/* Il castello imponente e gigante in verticale */
-.castle-main-video, .castle-main {
-    height: 100% !important; 
-    width: auto !important; 
-    display: block;
-    background: transparent;
-    
-    transform: scale(1.9) translateZ(0);
-    -webkit-transform: scale(1.9) translateZ(0);
-    transform-origin: center center;
-    
-    filter: drop-shadow(0 0 35px rgba(255, 231, 179, 0.85));
-    -webkit-filter: drop-shadow(0 0 35px rgba(255, 231, 179, 0.85));
-    
-    margin: 0 auto;
-}
-
-/* Il pulsante posizionato sotto lo zoom in verticale */
-.castellana-button-container {
-    margin-top: 65px; 
+.castellana-video {
     width: 100%;
+    height: 78%;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #ffe7b3;
+    box-shadow: 0 0 15px rgba(255, 231, 179, 0.3);
+}
+
+/* 🪙 Pulsante alla stessa identica altezza della base inferiore a sinistra */
+.castellana-button-container {
+    width: 100%;
+    height: 22%;
     display: flex;
-    justify-content: center;
-    position: relative;
-    z-index: 20;
+    align-items: center;
+    margin-top: 4px;
 }
 
 #castellanaButton {
     width: 100%;
-    max-width: 340px;
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid #ffe7b3;
-    border-radius: 30px; 
-    color: #ffe7b3;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 14px 20px;
+    height: 100%;
+    max-height: 32px;
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+    border: 1px solid #ffe7b3;
+    border-radius: 12px;
+    color: #000;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(255, 231, 179, 0.35);
-    transition: all 0.2s ease;
-    text-align: center;
+    box-shadow: 0 2px 8px rgba(255, 231, 179, 0.4);
 }
 
-/* ================================
-   RETTANGOLO TESTO (Sotto in verticale)
-================================ */
+/* 📜 INFORMAZIONI A TUTTO SCHERMO IN BASSO */
 .column-right {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 25px; 
-    position: relative;
-    z-index: 10;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .castle-panel {
-    width: 100% !important;
-    background: rgba(15, 10, 8, 0.85); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 2px solid #ffe7b3; 
-    border-radius: 20px; 
-    padding: 22px 18px;
-    box-shadow: 0 0 20px rgba(255, 231, 179, 0.4),
-                inset 0 0 10px rgba(255, 231, 179, 0.15);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-}
-
-.castle-text {
-    flex: 1;
-    color: #ffe7b3;
-    font-family: system-ui, -apple-system, sans-serif;
-    font-size: 15px;
-    line-height: 1.55;
-    text-align: left;
-}
-
-.castle-text h2 {
-    font-family: "Cormorant Garamond", "Garamond", serif;
-    font-size: 26px;
-    color: #ffe7b3;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.castle-dress {
-    width: 65px;
-    flex-shrink: 0;
-}
-
-.castle-dress img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* ================================
-   OVERLAY CHAT E VIDEO (Comportamento Mobile Verticale)
-================================ */
-.castellana-video {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%); 
-    width: 90%;
-    max-width: 320px;
+    background: rgba(15, 10, 8, 0.9);
+    border: 1px solid #ffe7b3;
     border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-    z-index: 9999;
+    padding: 16px;
+    display: flex;
+    gap: 10px;
+    box-shadow: inset 0 0 10px rgba(255, 231, 179, 0.1);
 }
 
-.chat-panel {
-    position: fixed;
-    bottom: 0; 
-    left: 0;
-    width: 100%;
-    height: 75vh; 
-    background: rgba(10, 7, 5, 0.98); 
-    border-top: 2px solid rgba(255, 215, 160, 0.6);
-    border-radius: 24px 24px 0 0; 
-    display: none;
-    z-index: 99999;
-}
-
-.chat-panel.visible { 
-    display: block; 
-}
-
+.castle-text { flex: 1; font-size: 13px; line-height: 1.5; color: #ffe7b3; }
+.castle-text h2 { font-size: 18px; margin-top: 0; margin-bottom: 8px; color: #ffe7b3; }
+.castle-dress { width: 45px; flex-shrink: 0; }
+.castle-dress img { width: 100%; height: auto; }
 
 /* ================================
-   🔄 NEW SMARTPHONE IN ORIZZONTALE (LANDSCAPE)
-   Cabina di Regia Simmetrica: Castello a SX, Video + Pulsante Oro a DX
+   🔄 📱 MOBILE ORIZZONTALE (LANDSCAPE)
+   Proporzionato, simmetrico e maestoso
 ================================ */
-@media screen and (max-width: 1023px) and (orientation: landscape) {
-    .castle-layout {
-        padding-top: 75px;
-    }
-
-    /* La parte alta diventa un contenitore orizzontale simmetrico */
+@media screen and (max-width: 950px) and (orientation: landscape) {
+    .castle-layout { padding-top: 55px; }
+    
     .column-left {
-        flex-direction: row !important; 
-        justify-content: space-evenly !important;
-        align-items: center !important;
-        height: 60vh !important; /* Massima estensione verticale per entrambi i media */
-        min-height: auto !important;
-        margin-bottom: 20px !important;
-        gap: 15px !important;
+        height: 72vh; /* Aumentiamo lo spazio per far svettare i media */
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 20px;
+        box-sizing: border-box;
     }
 
-    /* 🏰 CASTELLO GIGANTE A SINISTRA */
-    .castle-main-video, .castle-main {
-        height: 100% !important;
-        width: 45% !important; /* Occupa quasi metà del layout flessibile */
-        max-width: 280px !important;
-        transform: scale(1.6) translateZ(0) !important; /* Zoom importante e imponente */
-        margin: 0 !important;
-    }
-
-    /* 🎬 VIDEO DELLA CASTELLANA AFFIANCATO A DESTRA (PROPORZIONATO) */
-    .castellana-video {
-        position: relative !important; /* Esce dalla modalità "a tutto schermo" fissa */
-        bottom: auto !important;
-        left: auto !important;
-        transform: none !important;
-        display: block !important; /* Diventa un elemento nativo del layout orizzontale */
-        height: 100% !important; 
-        width: 45% !important; /* Stessa identica proporzione del castello! */
-        max-width: 280px !important;
-        border-radius: 16px !important;
-        border: 2px solid #ffe7b3 !important;
-        box-shadow: 0 0 25px rgba(255, 231, 179, 0.4) !important;
-        object-fit: cover !important;
-    }
-
-    /* SPOSTAMENTO LOGICO DEL PULSANTEDENTRO L'ORIZZONTALE */
-    .castellana-button-container {
-        position: absolute !important;
-        bottom: -25px !important;
-        right: 5% !important;
+    /* Rigeneriamo le posizioni assolute per metterle in riga fluida */
+    .castle-media-box {
+        position: relative !important;
+        top: auto !important; left: auto !important;
         width: 45% !important;
-        max-width: 280px !important;
-        margin-top: 0 !important;
-        justify-content: center !important;
+        height: 100% !important;
     }
 
-    /* ✨ PULSANTE CLICK CHAT IN ORO LUCIDO E DEFINITO */
+    .castle-main-video, .castle-main {
+        transform: scale(1.5) !important; /* Zoom calibrato per l'orizzontale */
+        transform-origin: center center;
+    }
+
+    .castellana-interactive-box {
+        position: relative !important;
+        bottom: auto !important; right: auto !important;
+        width: 40% !important;
+        height: 100% !important;
+    }
+
+    .castellana-video {
+        height: 80% !important;
+    }
+
+    .castellana-button-container {
+        height: 18% !important;
+        margin-top: 6px !important;
+    }
+
     #castellanaButton {
-        width: 100% !important;
-        background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%) !important;
-        border: 1px solid #ffe7b3 !important;
-        color: #000000 !important; /* Testo nero scuro per contrasto con l'oro lucido */
-        font-weight: 700 !important;
-        font-size: 13px !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        padding: 10px 12px !important;
-        border-radius: 20px !important;
-        box-shadow: 0 0 15px rgba(255, 231, 179, 0.6) !important;
+        max-height: 36px !important;
+        font-size: 11px !important;
     }
 
-    /* 📜 IL TESTO CON LE INFO SCIVOLA SOTTO IN MODO NATURALE */
     .column-right {
         width: 100% !important;
-        margin-top: 40px !important; /* Spazio per far respirare il blocco multimediale sopra */
+        margin-top: 15px;
     }
 }
 
-
 /* ================================
-   💻 CONFIGURAZIONE PERFETTA DESKTOP (PC)
+   💻 CONFIGURAZIONE PC DESKTOP
 ================================ */
 @media screen and (min-width: 1024px) {
-    .nav-desktop {
-        display: flex;
-        gap: 20px;
-    }
-    .nav-desktop a {
-        color: #ffe7b3;
-        text-decoration: none;
-        font-size: 14px;
-    }
-    .castle-container-2col {
-        max-width: 1100px !important;
-        flex-direction: row !important; 
-        gap: 50px;
-        padding: 0 40px;
-        align-items: flex-start;
-    }
-    .column-left {
-        width: 45%;
-        height: auto !important;
-    }
-    .castle-main-video, .castle-main {
-        width: 100% !important;
-        height: auto !important;
-        transform: none !important; 
-        margin: 0;
-    }
-    .castellana-button-container {
-        margin-top: 30px;
-    }
-    .column-right {
-        width: 55%;
-        margin-top: 0;
-    }
+    .nav-desktop { display: flex; gap: 20px; }
+    .nav-desktop a { color: #ffe7b3; text-decoration: none; font-size: 14px; }
+    .castle-container-2col { max-width: 1200px; flex-direction: row !important; margin: 0 auto; gap: 40px; padding: 20px; }
+    .column-left { width: 50%; height: auto; display: flex; flex-direction: row; gap: 20px; }
+    .castle-media-box, .castellana-interactive-box { position: relative !important; top: auto; left: auto; bottom: auto; right: auto; width: 50% !important; height: auto !important; }
+    .castle-main-video, .castle-main { transform: none !important; }
+    .castellana-video { height: 350px !important; }
+    .column-right { width: 50%; }
 }
+
+/* PANNELLO CHAT */
+.chat-panel { position: fixed; bottom: 0; left: 0; width: 100%; height: 60vh; background: #0a0503; border-top: 2px solid #bf953f; display: none; z-index: 99999; }
+.chat-panel.visible { display: block; }
