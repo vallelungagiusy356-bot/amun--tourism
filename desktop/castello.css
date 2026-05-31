@@ -55,7 +55,7 @@ html, body {
 }
 
 .nav-desktop {
-    display: none; /* Nascosto su smartphone, si attiva su desktop */
+    display: none; /* Si attiva solo nella media query desktop */
 }
 
 /* INTERRUTTORE LINGUE */
@@ -81,6 +81,12 @@ html, body {
     justify-content: center;
 }
 
+.lang-switcher button:hover {
+    background: rgba(255, 215, 160, 0.15);
+    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85), inset 0 0 12px rgba(255, 215, 160, 0.55);
+    transform: scale(1.05);
+}
+
 .home-btn {
     background: rgba(0, 0, 0, 0.65);
     border: 1px solid #ffd78f;
@@ -99,7 +105,7 @@ html, body {
 .castle-layout {
     box-sizing: border-box;
     width: 100%;
-    padding: 90px 14px 30px 14px; /* Margine alto per non finire sotto la dashboard */
+    padding: 90px 14px 30px 14px; 
     display: flex;
     flex-direction: column;
     gap: 35px;
@@ -110,32 +116,15 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end; /* Allineamento asimmetrico sulla base */
+    align-items: flex-end; 
     width: 100%;
     position: relative;
 }
 
-/* 🏰 BOX CASTELLO (In alto a sinistra) */
-.castle-media-box {
-    width: 55%;
-    display: flex;
-    justify-content: flex-start;
-    align-self: flex-start; /* Lo blocca in alto rispetto alla Castellana */
-}
-
-.castle-main-video, .castle-main {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    transform: scale(1.6); /* Zoom maestoso */
-    transform-origin: left center;
-    filter: drop-shadow(0 0 20px rgba(255, 215, 160, 0.4));
-}
-
-/* 🎬 WRAPPER INTERATTIVO CASTELLANA (Sfalsato a destra) */
+/* 🎬 WRAPPER INTERATTIVO CASTELLANA (Spostato a SINISTRA) */
 .castellana-video-wrapper {
     position: relative;
-    width: 38%; /* Rispetta la dimensione ridotta richiesta */
+    width: 38%; 
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -145,6 +134,7 @@ html, body {
 .castellana-video {
     width: 100%;
     max-width: 320px;
+    object-fit: contain; /* Evita zoom forzati che tagliano mento o occhi */
     cursor: pointer;
     z-index: 11;
     background: transparent !important;
@@ -153,18 +143,22 @@ html, body {
     border-radius: 16px;
 }
 
-/* IL TOOLTIP (TOP TILK) */
+.castellana-video:hover {
+    transform: scale(1.03);
+}
+
+/* IL TOOLTIP (TOP TILK) — Dimensioni contenute per "Click to Chat" */
 .castellana-tooltip {
     position: absolute;
-    top: -45px;
+    top: -38px; 
     left: 50%;
     transform: translateX(-50%);
-    padding: 6px 12px;
+    padding: 4px 8px; 
     background: rgba(0, 0, 0, 0.75);
     border: 1px solid rgba(255, 215, 160, 0.9);
-    border-radius: 10px;
+    border-radius: 6px; 
     color: #ffd78f;
-    font-size: 0.75rem;
+    font-size: 0.65rem; 
     font-weight: 700;
     text-shadow: 0 0 8px rgba(255, 215, 160, 1);
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.6), inset 0 0 6px rgba(255, 215, 160, 0.3);
@@ -179,6 +173,23 @@ html, body {
     20% { opacity: 1; transform: translateX(-50%) scale(1); }
     50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
     100% { opacity: 0; transform: translateX(-50%) scale(0.95); }
+}
+
+/* 🏰 BOX CASTELLO (Spostato a DESTRA) */
+.castle-media-box {
+    width: 55%;
+    display: flex;
+    justify-content: flex-end; 
+    align-self: flex-start; 
+}
+
+.castle-main-video, .castle-main {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transform: scale(1.6); 
+    transform-origin: right center; /* Ancoraggio a destra per evitare l'uscita dallo schermo */
+    filter: drop-shadow(0 0 20px rgba(255, 215, 160, 0.4));
 }
 
 /* ==========================================
@@ -258,7 +269,7 @@ html, body {
     bottom: 0;
     right: 0;
     width: 100%;
-    height: 50vh; /* Pannello inferiore su mobile verticale */
+    height: 50vh; 
     background: rgba(255, 255, 255, 0.03) !important;
     backdrop-filter: blur(15px) brightness(1.15) contrast(0.85) !important;
     -webkit-backdrop-filter: blur(15px) brightness(1.15) contrast(0.85) !important;
@@ -273,7 +284,6 @@ html, body {
     box-sizing: border-box;
 }
 
-/* Quando la chat diventa active, parte l’animazione */
 .chat-desktop.active {
     display: flex;
     flex-direction: column;
@@ -305,6 +315,11 @@ html, body {
     z-index: 40;
 }
 
+.close-chat-btn:hover {
+    background: rgba(255, 215, 160, 0.15);
+    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
+}
+
 .chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -318,7 +333,7 @@ html, body {
     padding: 12px;
     border-radius: 12px;
     color: #f7f2e9;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.25);
+    box-shadow: 0 0 12px rgba(255, 215, 160, 0.25), inset 0 0 8px rgba(255, 215, 160, 0.25);
     line-height: 1.4;
     font-size: 0.88rem;
 }
@@ -348,6 +363,11 @@ html, body {
     box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
 }
 
+.mic-btn:hover {
+    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
+    background: rgba(255, 215, 160, 0.15);
+}
+
 /* ==========================================
    🔄 📱 MOBILE ORIZZONTALE (Landscape)
 ========================================== */
@@ -359,6 +379,7 @@ html, body {
 
     .multimedia-wrapper {
         align-items: center;
+        height: 150px; /* Blocca l'altezza massima per impedire tagli brutali di proporzione */
     }
 
     .castle-media-box {
@@ -373,11 +394,20 @@ html, body {
 
     .castellana-video-wrapper {
         width: 25vw;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .castellana-video {
+        max-height: 130px; /* Impedisce al video di espandersi verticalmente, salvando il mento e la fronte */
+        width: auto !important;
+        object-fit: contain !important;
     }
 
     .castellana-tooltip {
-        top: -35px;
-        font-size: 0.7rem;
+        top: -30px;
+        font-size: 0.6rem;
+        padding: 3px 6px;
     }
 
     .chat-desktop {
@@ -393,7 +423,7 @@ html, body {
 }
 
 /* ==========================================
-   💻 VERSIONE PC DESKTOP (Glow Forte di Riferimento)
+   💻 VERSIONE PC DESKTOP (Glow Forte Completo)
 ========================================== */
 @media screen and (min-width: 900px) {
     .dashboard {
@@ -474,7 +504,7 @@ html, body {
         width: 340px;
         height: 320px;
         border-radius: 26px;
-        box-shadow: 0 0 55px rgba(255, 215, 160, 1), 0 0 95px rgba(255, 215, 160, 0.75);
+        box-shadow: 0 0 55px rgba(255, 215, 160, 1), 0 0 95px rgba(255, 215, 160, 0.75), inset 0 0 35px rgba(255, 215, 160, 0.45);
     }
 
     .chat-desktop.active {
