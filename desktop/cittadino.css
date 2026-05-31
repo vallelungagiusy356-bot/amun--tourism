@@ -1,221 +1,147 @@
 /* ================================
-   RESET E CONFIGURAZIONE BASE
+   SFONDO TRAMONTO (SOLO PER CITTADINO)
 ================================ */
-html, body {
-    height: 100%;
+body {
+    background: url("./img/tuo_nuovo_sfondo.jpeg") no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
-    font-family: "Segoe UI", system-ui, sans-serif;
-    background-color: #000000; 
-    color: #ffe7b3;
-    overflow-x: hidden;
 }
 
 /* ================================
-   DASHBOARD SUPERIORE FIXATO
+   GRIGLIA 2×2 CENTRALE
+================================ */
+.citizen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 120px auto;
+    padding: 0 40px;
+}
+
+/* ================================
+   QUADRANTI IN VETRO + GLOW ORO
+================================ */
+.quadrant {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 22px;
+    border: 2px solid rgba(255, 200, 120, 0.7);
+    padding: 30px;
+
+    /* 🔥 Altezza uniforme per TUTTI i quadranti */
+    min-height: 260px;
+
+    box-shadow:
+        0 0 25px rgba(255, 200, 120, 0.45),
+        0 0 60px rgba(255, 120, 60, 0.25),
+        inset 0 0 20px rgba(255, 255, 255, 0.15);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+}
+
+.quadrant:hover {
+    transform: scale(1.03);
+    box-shadow:
+        0 0 35px rgba(255, 210, 140, 0.8),
+        0 0 80px rgba(255, 120, 60, 0.4),
+        inset 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+/* ================================
+   TITOLI E TESTI
+================================ */
+.quadrant h2 {
+    font-size: 28px;
+    color: #ffe7b3;
+    text-shadow: 0 0 10px rgba(255, 200, 120, 0.9);
+    margin-bottom: 15px;
+}
+
+.quadrant p,
+.quadrant li {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+/* ================================
+   ELEMENTI SPECIALI
+================================ */
+.iframe-3d {
+    width: 100%;
+    height: 260px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 200, 120, 0.5);
+    margin-top: 15px;
+}
+
+.battle-preview img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 20px;
+    opacity: 0.9;
+}
+
+/* ================================
+   QUADRANTE CASTELLO (TITOLO ORO)
+================================ */
+.castle-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 🔥 Prima era height:180px → CAUSA DEL PROBLEMA */
+    min-height: 260px;
+
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffe7b3;
+    text-shadow: 0 0 12px rgba(255, 200, 120, 0.9);
+    cursor: pointer;
+}
+
+.castle-card:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 35px rgba(255, 210, 140, 0.8),
+        0 0 80px rgba(255, 120, 60, 0.4),
+        inset 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+/* ================================
+   DASHBOARD (SOLO PER CITTADINO)
 ================================ */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; 
-    height: 50px;
+    width: 100%;
+    height: 54px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 12px; 
-    background: #150a05; 
-    border-bottom: 1px solid rgba(255, 231, 179, 0.2);
-    box-sizing: border-box; 
+    padding: 8px 18px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.85);
     z-index: 9999;
 }
 
-.logo-title { color: #ffe7b3; font-weight: bold; font-size: 14px; }
-.nav-desktop { display: none; }
-.lang-switcher button { background: transparent; border: none; font-size: 14px; cursor: pointer; }
-.home-btn { background: rgba(255, 231, 179, 0.1); border: 1px solid #ffe7b3; border-radius: 4px; color: #ffe7b3; font-size: 11px; padding: 2px 8px; }
-
-/* LAYOUT GENERALI */
-.castle-layout {
-    box-sizing: border-box;
-    width: 100%;
-    padding-top: 55px; 
-    display: flex;
-    flex-direction: column;
-}
-
-.castle-container-2col {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-/* ================================
-   📱 DISPOSIZIONE MOBILE VERTICALE
-================================ */
-.column-left {
-    position: relative;
-    width: 100%;
-    height: 48vh; /* Contenitore superiore bilanciato per i due media */
-    margin-bottom: 10px;
-}
-
-/* 🏰 Castello in alto sulla sinistra */
-.castle-media-box {
-    position: absolute;
-    top: 5px;
-    left: 4%;
-    width: 50%;
-    height: 65%;
-}
-
-.castle-main-video, .castle-main {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transform: scale(1.6); /* Il tuo maestoso iper-zoom */
-    transform-origin: left center;
-    filter: drop-shadow(0 0 20px rgba(255, 231, 179, 0.4));
-}
-
-/* 🎬 Box Castellana sfalsato in basso a destra */
-.castellana-interactive-box {
-    position: absolute;
-    bottom: 5px;
-    right: 4%;
-    width: 42%;
-    height: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.castellana-video {
-    width: 100%;
-    height: 78%;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid #ffe7b3;
-    box-shadow: 0 0 15px rgba(255, 231, 179, 0.3);
-}
-
-/* 🪙 Pulsante alla stessa identica altezza della base inferiore a sinistra */
-.castellana-button-container {
-    width: 100%;
-    height: 22%;
-    display: flex;
-    align-items: center;
-    margin-top: 4px;
-}
-
-#castellanaButton {
-    width: 100%;
-    height: 100%;
-    max-height: 32px;
-    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-    border: 1px solid #ffe7b3;
-    border-radius: 12px;
-    color: #000;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
+.dashboard button {
+    background: rgba(255, 215, 160, 0.35);
+    border: 1px solid rgba(255, 215, 160, 0.9);
+    border-radius: 8px;
+    color: #ffe7b3;
+    font-size: 16px;
+    padding: 6px 12px;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(255, 231, 179, 0.4);
+    box-shadow: 0 0 12px rgba(255, 215, 160, 0.6);
 }
 
-/* 📜 INFORMAZIONI A TUTTO SCHERMO IN BASSO */
-.column-right {
-    width: 100%;
-    padding: 0 10px;
-    box-sizing: border-box;
+.dashboard button:hover {
+    background: rgba(255, 215, 160, 0.5);
 }
-
-.castle-panel {
-    background: rgba(15, 10, 8, 0.9);
-    border: 1px solid #ffe7b3;
-    border-radius: 16px;
-    padding: 16px;
-    display: flex;
-    gap: 10px;
-    box-shadow: inset 0 0 10px rgba(255, 231, 179, 0.1);
-}
-
-.castle-text { flex: 1; font-size: 13px; line-height: 1.5; color: #ffe7b3; }
-.castle-text h2 { font-size: 18px; margin-top: 0; margin-bottom: 8px; color: #ffe7b3; }
-.castle-dress { width: 45px; flex-shrink: 0; }
-.castle-dress img { width: 100%; height: auto; }
-
-/* ================================
-   🔄 📱 MOBILE ORIZZONTALE (LANDSCAPE)
-   Proporzionato, simmetrico e maestoso
-================================ */
-@media screen and (max-width: 950px) and (orientation: landscape) {
-    .castle-layout { padding-top: 55px; }
-    
-    .column-left {
-        height: 72vh; /* Aumentiamo lo spazio per far svettare i media */
-        display: flex;
-        flex-direction: row !important;
-        justify-content: space-around;
-        align-items: center;
-        padding: 0 20px;
-        box-sizing: border-box;
-    }
-
-    /* Rigeneriamo le posizioni assolute per metterle in riga fluida */
-    .castle-media-box {
-        position: relative !important;
-        top: auto !important; left: auto !important;
-        width: 45% !important;
-        height: 100% !important;
-    }
-
-    .castle-main-video, .castle-main {
-        transform: scale(1.5) !important; /* Zoom calibrato per l'orizzontale */
-        transform-origin: center center;
-    }
-
-    .castellana-interactive-box {
-        position: relative !important;
-        bottom: auto !important; right: auto !important;
-        width: 40% !important;
-        height: 100% !important;
-    }
-
-    .castellana-video {
-        height: 80% !important;
-    }
-
-    .castellana-button-container {
-        height: 18% !important;
-        margin-top: 6px !important;
-    }
-
-    #castellanaButton {
-        max-height: 36px !important;
-        font-size: 11px !important;
-    }
-
-    .column-right {
-        width: 100% !important;
-        margin-top: 15px;
-    }
-}
-
-/* ================================
-   💻 CONFIGURAZIONE PC DESKTOP
-================================ */
-@media screen and (min-width: 1024px) {
-    .nav-desktop { display: flex; gap: 20px; }
-    .nav-desktop a { color: #ffe7b3; text-decoration: none; font-size: 14px; }
-    .castle-container-2col { max-width: 1200px; flex-direction: row !important; margin: 0 auto; gap: 40px; padding: 20px; }
-    .column-left { width: 50%; height: auto; display: flex; flex-direction: row; gap: 20px; }
-    .castle-media-box, .castellana-interactive-box { position: relative !important; top: auto; left: auto; bottom: auto; right: auto; width: 50% !important; height: auto !important; }
-    .castle-main-video, .castle-main { transform: none !important; }
-    .castellana-video { height: 350px !important; }
-    .column-right { width: 50%; }
-}
-
-/* PANNELLO CHAT */
-.chat-panel { position: fixed; bottom: 0; left: 0; width: 100%; height: 60vh; background: #0a0503; border-top: 2px solid #bf953f; display: none; z-index: 99999; }
-.chat-panel.visible { display: block; }
