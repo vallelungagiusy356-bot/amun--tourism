@@ -84,15 +84,14 @@ html, body {
 }
 
 /* ================================
-   GABBIA VERTICALE (IL TUO LAYOUT PREFERITO)
+   GABBIA MOBILE VERTICALE (BLINDATA E PERFETTA)
 ================================ */
 .column-left {
     width: 100%;
     display: flex;
-    flex-direction: column; /* Costringe il pulsante a stare SOTTO al castello */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* Diamo l'altezza fissa ottimale basata sul tuo codice ideale */
     height: 40vh !important; 
     min-height: 320px;
     position: relative;
@@ -100,14 +99,13 @@ html, body {
     overflow: visible; 
 }
 
-/* 🚀 IL CASTELLO TORNA MAESTOSO ED ESPANSO IN VERTICALE */
+/* Il castello imponente e gigante in verticale */
 .castle-main-video, .castle-main {
     height: 100% !important; 
     width: auto !important; 
     display: block;
     background: transparent;
     
-    /* Ripristinato il mega zoom hardware del tuo codice perfetto */
     transform: scale(1.9) translateZ(0);
     -webkit-transform: scale(1.9) translateZ(0);
     transform-origin: center center;
@@ -118,9 +116,9 @@ html, body {
     margin: 0 auto;
 }
 
-/* IL PULSANTE RESPIRA: Posizionato perfettamente sotto lo zoom del castello */
+/* Il pulsante posizionato sotto lo zoom in verticale */
 .castellana-button-container {
-    margin-top: 65px; /* Crea lo spazio vitale per non sovrapporsi allo zoom del castello */
+    margin-top: 65px; 
     width: 100%;
     display: flex;
     justify-content: center;
@@ -144,13 +142,8 @@ html, body {
     text-align: center;
 }
 
-#castellanaButton:active {
-    background: rgba(255, 231, 179, 0.1);
-    box-shadow: 0 0 22px rgba(255, 231, 179, 0.5);
-}
-
 /* ================================
-   RETTANGOLO TESTO (In fondo a tutto in verticale)
+   RETTANGOLO TESTO (Sotto in verticale)
 ================================ */
 .column-right {
     width: 100%;
@@ -208,7 +201,7 @@ html, body {
 }
 
 /* ================================
-   OVERLAY CHAT E VIDEO INTERNI
+   OVERLAY CHAT E VIDEO (Comportamento Mobile Verticale)
 ================================ */
 .castellana-video {
     position: fixed;
@@ -239,49 +232,85 @@ html, body {
     display: block; 
 }
 
+
 /* ================================
-   🔄 ATTIVAZIONE AUTOMATICA: ORIZZONTALE (LANDSCAPE SMARTPHONE)
+   🔄 NEW SMARTPHONE IN ORIZZONTALE (LANDSCAPE)
+   Cabina di Regia Simmetrica: Castello a SX, Video + Pulsante Oro a DX
 ================================ */
 @media screen and (max-width: 1023px) and (orientation: landscape) {
     .castle-layout {
-        padding-top: 70px;
+        padding-top: 75px;
     }
 
-    /* La parte superiore si sdoppia AUTOMATICAMENTE di lato */
+    /* La parte alta diventa un contenitore orizzontale simmetrico */
     .column-left {
-        flex-direction: row !important; /* Trasforma la colonna in riga affiancata */
-        justify-content: space-around !important;
+        flex-direction: row !important; 
+        justify-content: space-evenly !important;
         align-items: center !important;
-        height: 60vh !important; /* Diamo massima altezza per far svettare il castello coricato */
+        height: 60vh !important; /* Massima estensione verticale per entrambi i media */
         min-height: auto !important;
-        margin-bottom: 10px;
+        margin-bottom: 20px !important;
+        gap: 15px !important;
     }
 
+    /* 🏰 CASTELLO GIGANTE A SINISTRA */
     .castle-main-video, .castle-main {
         height: 100% !important;
-        width: auto !important;
-        transform: scale(1.6) translateZ(0) !important; /* Zoom perfetto calibrato per l'orizzontale */
+        width: 45% !important; /* Occupa quasi metà del layout flessibile */
+        max-width: 280px !important;
+        transform: scale(1.6) translateZ(0) !important; /* Zoom importante e imponente */
         margin: 0 !important;
     }
 
+    /* 🎬 VIDEO DELLA CASTELLANA AFFIANCATO A DESTRA (PROPORZIONATO) */
+    .castellana-video {
+        position: relative !important; /* Esce dalla modalità "a tutto schermo" fissa */
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        display: block !important; /* Diventa un elemento nativo del layout orizzontale */
+        height: 100% !important; 
+        width: 45% !important; /* Stessa identica proporzione del castello! */
+        max-width: 280px !important;
+        border-radius: 16px !important;
+        border: 2px solid #ffe7b3 !important;
+        box-shadow: 0 0 25px rgba(255, 231, 179, 0.4) !important;
+        object-fit: cover !important;
+    }
+
+    /* SPOSTAMENTO LOGICO DEL PULSANTEDENTRO L'ORIZZONTALE */
     .castellana-button-container {
-        width: auto !important;
-        margin-top: 0 !important; /* Annulla il distanziamento del verticale */
-        flex-shrink: 0;
+        position: absolute !important;
+        bottom: -25px !important;
+        right: 5% !important;
+        width: 45% !important;
+        max-width: 280px !important;
+        margin-top: 0 !important;
+        justify-content: center !important;
     }
 
+    /* ✨ PULSANTE CLICK CHAT IN ORO LUCIDO E DEFINITO */
     #castellanaButton {
-        width: 180px !important; /* Dimensione compatta ed elegante a fianco del castello */
-        padding: 12px 15px !important;
-        font-size: 14px !important;
+        width: 100% !important;
+        background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%) !important;
+        border: 1px solid #ffe7b3 !important;
+        color: #000000 !important; /* Testo nero scuro per contrasto con l'oro lucido */
+        font-weight: 700 !important;
+        font-size: 13px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        padding: 10px 12px !important;
+        border-radius: 20px !important;
+        box-shadow: 0 0 15px rgba(255, 231, 179, 0.6) !important;
     }
 
-    /* Il testo scivola sotto a tutta larghezza in modo naturale */
+    /* 📜 IL TESTO CON LE INFO SCIVOLA SOTTO IN MODO NATURALE */
     .column-right {
         width: 100% !important;
-        margin-top: 15px !important;
+        margin-top: 40px !important; /* Spazio per far respirare il blocco multimediale sopra */
     }
 }
+
 
 /* ================================
    💻 CONFIGURAZIONE PERFETTA DESKTOP (PC)
@@ -296,34 +325,26 @@ html, body {
         text-decoration: none;
         font-size: 14px;
     }
-    
-    /* Layout classico a due colonne reali ed eleganti */
     .castle-container-2col {
         max-width: 1100px !important;
         flex-direction: row !important; 
-        gap: 60px;
+        gap: 50px;
         padding: 0 40px;
         align-items: flex-start;
     }
-    
-    /* Sinistra: Castello e sotto il bottone (allineamento nativo) */
     .column-left {
         width: 45%;
         height: auto !important;
     }
-    
     .castle-main-video, .castle-main {
         width: 100% !important;
         height: auto !important;
         transform: none !important; 
         margin: 0;
     }
-    
     .castellana-button-container {
         margin-top: 30px;
     }
-
-    /* Destra: Il testo affiancato */
     .column-right {
         width: 55%;
         margin-top: 0;
