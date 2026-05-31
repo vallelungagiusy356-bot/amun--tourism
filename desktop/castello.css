@@ -61,7 +61,7 @@ html, body {
 }
 
 /* ================================
-   STRUTTURA LAYOUT
+   STRUTTURA LAYOUT GENERALE
 ================================ */
 .castle-layout {
     box-sizing: border-box;
@@ -84,13 +84,15 @@ html, body {
 }
 
 /* ================================
-   GABBIA DEL CASTELLO (Area Espansa Mobile Verticale)
+   GABBIA VERTICALE (IL TUO LAYOUT PREFERITO)
 ================================ */
 .column-left {
     width: 100%;
     display: flex;
+    flex-direction: column; /* Costringe il pulsante a stare SOTTO al castello */
     justify-content: center;
     align-items: center;
+    /* Diamo l'altezza fissa ottimale basata sul tuo codice ideale */
     height: 40vh !important; 
     min-height: 320px;
     position: relative;
@@ -98,13 +100,14 @@ html, body {
     overflow: visible; 
 }
 
-/* 🚀 IL CASTELLO IN VERTICALE (PERFETTO) */
+/* 🚀 IL CASTELLO TORNA MAESTOSO ED ESPANSO IN VERTICALE */
 .castle-main-video, .castle-main {
     height: 100% !important; 
     width: auto !important; 
     display: block;
     background: transparent;
     
+    /* Ripristinato il mega zoom hardware del tuo codice perfetto */
     transform: scale(1.9) translateZ(0);
     -webkit-transform: scale(1.9) translateZ(0);
     transform-origin: center center;
@@ -115,15 +118,46 @@ html, body {
     margin: 0 auto;
 }
 
+/* IL PULSANTE RESPIRA: Posizionato perfettamente sotto lo zoom del castello */
+.castellana-button-container {
+    margin-top: 65px; /* Crea lo spazio vitale per non sovrapporsi allo zoom del castello */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 20;
+}
+
+#castellanaButton {
+    width: 100%;
+    max-width: 340px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #ffe7b3;
+    border-radius: 30px; 
+    color: #ffe7b3;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px 20px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 231, 179, 0.35);
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+#castellanaButton:active {
+    background: rgba(255, 231, 179, 0.1);
+    box-shadow: 0 0 22px rgba(255, 231, 179, 0.5);
+}
+
 /* ================================
-   RETTANGOLO TESTO 
+   RETTANGOLO TESTO (In fondo a tutto in verticale)
 ================================ */
 .column-right {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 65px; 
+    margin-top: 25px; 
     position: relative;
     z-index: 10;
 }
@@ -174,37 +208,7 @@ html, body {
 }
 
 /* ================================
-   PULSANTE OVALE IN BASSO
-================================ */
-.castellana-button-container {
-    margin-top: 25px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-#castellanaButton {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid #ffe7b3;
-    border-radius: 30px; 
-    color: #ffe7b3;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 14px 20px;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(255, 231, 179, 0.35);
-    transition: all 0.2s ease;
-    text-align: center;
-}
-
-#castellanaButton:active {
-    background: rgba(255, 231, 179, 0.1);
-    box-shadow: 0 0 22px rgba(255, 231, 179, 0.5);
-}
-
-/* ================================
-   OVERLAY CHAT E VIDEO
+   OVERLAY CHAT E VIDEO INTERNI
 ================================ */
 .castellana-video {
     position: fixed;
@@ -236,80 +240,51 @@ html, body {
 }
 
 /* ================================
-   🔄 SMARTPHONE IN ORIZZONTALE (LANDSCAPE) - FORZATO
+   🔄 ATTIVAZIONE AUTOMATICA: ORIZZONTALE (LANDSCAPE SMARTPHONE)
 ================================ */
 @media screen and (max-width: 1023px) and (orientation: landscape) {
     .castle-layout {
-        padding-top: 70px !important;
-        padding-bottom: 20px !important;
+        padding-top: 70px;
     }
-    
-    /* Costringiamo il contenitore principale a comportarsi da colonna singola per macro-aree */
-    .castle-container-2col {
-        flex-direction: column !important;
-        gap: 15px !important;
-        padding: 0 16px !important;
-        width: 100% !important;
-    }
-    
-    /* FORZATURA: La parte superiore DEVE diventare una riga affiancata */
+
+    /* La parte superiore si sdoppia AUTOMATICAMENTE di lato */
     .column-left {
-        width: 100% !important;
-        height: 60vh !important; /* Diamo massima altezza per il castello */
-        display: flex !important;
-        flex-direction: row !important; /* Affianca Castello e Pulsante */
+        flex-direction: row !important; /* Trasforma la colonna in riga affiancata */
         justify-content: space-around !important;
         align-items: center !important;
-        margin-bottom: 5px !important;
-        overflow: visible !important;
+        height: 60vh !important; /* Diamo massima altezza per far svettare il castello coricato */
+        min-height: auto !important;
+        margin-bottom: 10px;
     }
-    
-    /* Il castello si prende tutto il 60vh in altezza */
+
     .castle-main-video, .castle-main {
         height: 100% !important;
         width: auto !important;
-        position: relative !important;
-        transform: scale(1.6) translateZ(0) !important; /* Zoom imponente ma sicuro */
-        -webkit-transform: scale(1.6) translateZ(0) !important;
+        transform: scale(1.6) translateZ(0) !important; /* Zoom perfetto calibrato per l'orizzontale */
         margin: 0 !important;
     }
-    
-    /* Il pulsante si affianca stabilmente a destra del castello */
+
     .castellana-button-container {
         width: auto !important;
-        margin-top: 0 !important;
-        flex-shrink: 0 !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
+        margin-top: 0 !important; /* Annulla il distanziamento del verticale */
+        flex-shrink: 0;
     }
-    
+
     #castellanaButton {
-        width: 170px !important; /* Dimensione fissa perfetta per il landscape */
-        padding: 12px 10px !important;
+        width: 180px !important; /* Dimensione compatta ed elegante a fianco del castello */
+        padding: 12px 15px !important;
         font-size: 14px !important;
-        box-sizing: border-box !important;
     }
-    
-    /* Il testo si posiziona sotto a tutta larghezza */
+
+    /* Il testo scivola sotto a tutta larghezza in modo naturale */
     .column-right {
         width: 100% !important;
         margin-top: 15px !important;
-        position: relative !important;
-        z-index: 10 !important;
-    }
-    
-    .castle-panel {
-        padding: 14px 16px !important;
-    }
-    
-    .castle-text h2 {
-        font-size: 22px !important;
     }
 }
 
 /* ================================
-   MEDIA QUERY DESKTOP (PC) - ISOLATA
+   💻 CONFIGURAZIONE PERFETTA DESKTOP (PC)
 ================================ */
 @media screen and (min-width: 1024px) {
     .nav-desktop {
@@ -321,33 +296,36 @@ html, body {
         text-decoration: none;
         font-size: 14px;
     }
-    .castle-layout {
-        justify-content: center;
-        padding-top: 90px;
-    }
+    
+    /* Layout classico a due colonne reali ed eleganti */
     .castle-container-2col {
         max-width: 1100px !important;
-        flex-direction: row !important; /* Affiancato su PC */
-        gap: 50px;
+        flex-direction: row !important; 
+        gap: 60px;
         padding: 0 40px;
+        align-items: flex-start;
     }
+    
+    /* Sinistra: Castello e sotto il bottone (allineamento nativo) */
     .column-left {
         width: 45%;
         height: auto !important;
-        margin-bottom: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
     }
-    .column-right {
-        width: 55%;
-        margin-top: 0;
-    }
+    
     .castle-main-video, .castle-main {
         width: 100% !important;
         height: auto !important;
         transform: none !important; 
-        -webkit-transform: none !important;
         margin: 0;
+    }
+    
+    .castellana-button-container {
+        margin-top: 30px;
+    }
+
+    /* Destra: Il testo affiancato */
+    .column-right {
+        width: 55%;
+        margin-top: 0;
     }
 }
