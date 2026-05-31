@@ -30,14 +30,24 @@
         <div class="castle-container-2col">
             
             <div class="column-left">
-                <video autoplay loop muted playsinline webkit-playsinline class="castle-main-video">
-                    <source src="img/castello_2.webm" type="video/webm">
-                    <img src="img/castello 2 (1).webp" alt="Castello di Caccamo" class="castle-main">
-                </video>
-
-                <div class="castellana-button-container">
-                    <button id="castellanaButton">Parla con la Castellana</button>
+                
+                <div class="castle-media-box">
+                    <video autoplay loop muted playsinline webkit-playsinline class="castle-main-video">
+                        <source src="img/castello_2.webm" type="video/webm">
+                        <img src="img/castello 2 (1).webp" alt="Castello di Caccamo" class="castle-main">
+                    </video>
                 </div>
+
+                <div class="castellana-interactive-box">
+                    <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline>
+                        <source src="img/benvenuto_castellana.webm" type="video/webm">
+                    </video>
+                    
+                    <div class="castellana-button-container">
+                        <button id="castellanaButton">Parla con la Castellana</button>
+                    </div>
+                </div>
+
             </div>
 
             <div class="column-right">
@@ -66,10 +76,6 @@
 
         <div class="chat-panel">
         </div>
-
-        <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline style="display:none;">
-            <source src="img/benvenuto_castellana.webm" type="video/webm">
-        </video>
     </section>
 
     <script>
@@ -97,10 +103,13 @@
     <script>
     document.getElementById("castellanaButton").addEventListener("click", () => {
         const video = document.getElementById("castellanaVideo");
-        video.style.display = "block";
+        
+        // Aggiungiamo la classe per gestire l'apparizione fluida via CSS
+        video.classList.add("playing");
         video.play();
+        
         video.onended = () => {
-            video.style.display = "none";
+            video.classList.remove("playing");
             document.querySelector(".chat-panel")?.classList.add("visible");
         };
     });
