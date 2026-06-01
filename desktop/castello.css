@@ -105,7 +105,7 @@ html, body {
 .castle-layout {
     box-sizing: border-box;
     width: 100%;
-    padding: 90px 14px 30px 14px; 
+    padding: 100px 14px 30px 14px; /* Aumentato il padding superiore per dare respiro */
     display: flex;
     flex-direction: column;
     gap: 35px;
@@ -119,12 +119,13 @@ html, body {
     align-items: flex-end; 
     width: 100%;
     position: relative;
+    min-height: 180px; /* Evita il collasso dell'altezza con elementi in absolute/scaled */
 }
 
-/* 🎬 WRAPPER INTERATTIVO CASTELLANA (Spostato a SINISTRA) */
+/* 🎬 WRAPPER INTERATTIVO CASTELLANA (A SINISTRA) */
 .castellana-video-wrapper {
     position: relative;
-    width: 38%; 
+    width: 42%; 
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -147,25 +148,25 @@ html, body {
     transform: scale(1.03);
 }
 
-/* IL TOOLTIP (TOP TILK) — Dimensioni contenute per "Click to Chat" */
+/* IL TOOLTIP (TOP TICK) — Riposizionato per essere visibile sopra la testa */
 .castellana-tooltip {
     position: absolute;
-    top: -38px; 
+    top: -25px; 
     left: 50%;
     transform: translateX(-50%);
-    padding: 4px 8px; 
-    background: rgba(0, 0, 0, 0.75);
+    padding: 5px 10px; 
+    background: rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(255, 215, 160, 0.9);
     border-radius: 6px; 
     color: #ffd78f;
-    font-size: 0.65rem; 
+    font-size: 0.7rem; 
     font-weight: 700;
     text-shadow: 0 0 8px rgba(255, 215, 160, 1);
-    box-shadow: 0 0 15px rgba(255, 215, 160, 0.6), inset 0 0 6px rgba(255, 215, 160, 0.3);
+    box-shadow: 0 0 15px rgba(255, 215, 160, 0.6);
     cursor: pointer;
     white-space: nowrap;
     animation: clickHerePulse 2.6s ease-in-out infinite;
-    z-index: 25;
+    z-index: 30;
 }
 
 @keyframes clickHerePulse {
@@ -175,25 +176,26 @@ html, body {
     100% { opacity: 0; transform: translateX(-50%) scale(0.95); }
 }
 
-/* 🏰 BOX CASTELLO (Spostato a DESTRA, Abbassato) */
+/* 🏰 BOX CASTELLO (Spostato a DESTRA e abbassato per evitare tagli in alto) */
 .castle-media-box {
-    width: 58%;
+    width: 50%;
     display: flex;
     justify-content: flex-end; 
-    align-self: flex-end; /* Sposta il box in basso rispetto alla linea della Castellana */
-    margin-top: 20px; /* Incrementa lo spazio dall'alto */
-    overflow: visible; /* Permette allo zoom di rompere il bordo senza tagliare l'immagine */
+    align-self: flex-end; 
+    margin-top: 40px; /* Abbassa l'intero blocco dalla dashboard */
+    padding-bottom: 10px;
+    overflow: visible; 
 }
 
-/* ZOOM E RIPOSIZIONAMENTO IMMAGINE/VIDEO NATIVI */
+/* CORREZIONE STRUTTURALE DELLO ZOOM IN PORTRAIT */
 .castle-main-video, .castle-main {
     width: 100%;
     height: auto;
     object-fit: contain;
-    /* Aumentato lo zoom a 2.1 per compensare l'immagine piccola; modificati gli assi per spingere a destra e in basso */
-    transform: scale(2.1) translate(5px, 8px); 
-    transform-origin: right bottom; /* L'ancoraggio in basso a destra evita la fuga verso l'alto e il centro */
-    filter: drop-shadow(0 0 20px rgba(255, 215, 160, 0.4));
+    /* Ricalibrato lo zoom a 1.6 e raddrizzato l'asse Y per abbassarlo (translateY) senza farlo toccare in alto */
+    transform: scale(1.6) translate(0px, 15px); 
+    transform-origin: right bottom; 
+    filter: drop-shadow(0 0 15px rgba(255, 215, 160, 0.35));
 }
 
 /* ==========================================
@@ -377,41 +379,45 @@ html, body {
 ========================================== */
 @media screen and (max-width: 950px) and (orientation: landscape) {
     .castle-layout {
-        padding-top: 85px;
+        padding-top: 90px;
         gap: 25px;
     }
 
     .multimedia-wrapper {
         align-items: flex-end;
-        height: 160px; 
-    }
-
-    .castle-media-box {
-        width: 50%;
-        align-self: flex-end;
-    }
-
-    .castle-main-video, .castle-main {
-        transform: scale(1.8) translate(8px, 5px);
-        transform-origin: right bottom;
+        height: 170px; 
+        justify-content: space-between;
     }
 
     .castellana-video-wrapper {
-        width: 25vw;
+        width: 30vw;
         height: 100%;
         justify-content: flex-end;
     }
 
     .castellana-video {
-        max-height: 130px; 
+        max-height: 140px; 
         width: auto !important;
         object-fit: contain !important;
     }
 
     .castellana-tooltip {
-        top: -30px;
-        font-size: 0.6rem;
-        padding: 3px 6px;
+        top: -32px;
+        font-size: 0.65rem;
+    }
+
+    /* SISTEMAZIONE IN LANDSCAPE COME DA SCREENSHOT 1000084095.jpg */
+    .castle-media-box {
+        width: 45%;
+        align-self: flex-end;
+        margin-top: 0;
+        justify-content: flex-end;
+    }
+
+    .castle-main-video, .castle-main {
+        /* Abbassato notevolmente (35px) per non toccare la barra nera e spostato a destra (15px) */
+        transform: scale(1.6) translate(15px, 35px);
+        transform-origin: right bottom;
     }
 
     .chat-desktop {
@@ -427,7 +433,7 @@ html, body {
 }
 
 /* ==========================================
-   💻 VERSIONE PC DESKTOP (Glow Forte Completo)
+   💻 VERSIONE PC DESKTOP / GRANDI SCHERMI
 ========================================== */
 @media screen and (min-width: 900px) {
     .dashboard {
@@ -470,39 +476,38 @@ html, body {
     .castle-layout {
         max-width: 1200px;
         margin: 0 auto;
-        padding-top: 110px;
+        padding-top: 120px;
     }
 
     .multimedia-wrapper {
         justify-content: space-between;
-        padding-left: 4%;
-        padding-right: 4%;
+        padding-left: 2%;
+        padding-right: 2%;
         align-items: flex-end;
+        min-height: 220px;
     }
 
     .castellana-video-wrapper {
         width: 25vw;
-        padding-left: 0;
     }
 
     .castellana-tooltip {
-        top: -40px;
+        top: -35px;
         left: 50%;
         transform: translateX(-50%);
-        padding: 12px 26px;
-        font-size: 1.1rem;
+        padding: 8px 20px;
+        font-size: 0.95rem;
     }
 
-    /* Ottimizzazione Desktop per il Castello ingrandito */
+    /* Ottimizzazione Desktop: Grande, a destra, ben distanziato dall'alto */
     .castle-media-box {
         width: 45%;
         align-self: flex-end;
-        margin-bottom: -10px; /* Lo adagia ancora più in basso */
     }
 
     .castle-main-video, .castle-main {
-        /* Zoom massiccio per i grandi schermi e traslazione asse X (destra) e asse Y (basso) */
-        transform: scale(2.4) translate(15px, 12px); 
+        /* Zoom bilanciato a 2.0 per evitare sfocature o pixel eccessivi, abbassato e spostato a destra */
+        transform: scale(2.0) translate(20px, 40px); 
         transform-origin: right bottom;
     }
     
@@ -527,7 +532,7 @@ html, body {
     }
 
     .castle-info-panel {
-        margin-top: 40px;
+        margin-top: 50px;
         padding: 25px 40px;
     }
 
