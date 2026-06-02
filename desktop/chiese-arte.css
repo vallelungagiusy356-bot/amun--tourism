@@ -69,25 +69,39 @@ html, body {
     padding: 5px 15px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;
 }
 
-/* SATELLITI */
+/* 🏛️ SATELLITI TRIPLICATI (Portati da 140px a 380px) */
 .monument-satellite {
-    position: absolute; width: 140px; height: auto; z-index: 5; cursor: pointer; text-align: center;
-    transform: translate(0, 0) scale(0); opacity: 0;
-    transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.2), opacity 0.4s ease;
+    position: absolute; 
+    width: 380px; /* Triplicata la dimensione dei modelli per valorizzare i render */
+    height: auto; 
+    z-index: 5; 
+    cursor: pointer; 
+    text-align: center;
+    transform: translate(0, 0) scale(0); 
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.5s ease;
 }
-.satellite-webm { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 12px rgba(0,0,0,0.6)); }
-.satellite-label { display: block; font-size: 0.8rem; color: #ffd78f; font-weight: 600; margin-top: 4px; text-shadow: 0 0 8px #000; }
+.satellite-webm { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 22px rgba(0,0,0,0.85)); }
+.satellite-label { 
+    display: block; 
+    font-size: 1.1rem; /* Ingrandito il font per bilanciare i nuovi modelli */
+    color: #ffd78f; 
+    font-weight: 700; 
+    margin-top: -5px; 
+    text-shadow: 0 2px 8px #000, 0 0 10px rgba(255, 215, 160, 0.5); 
+}
 
-/* EFFETTO SPLIT RADIALE */
+/* 🔥 EFFETTO SPLIT RADIALE AMPLIATO (Nuove coordinate per evitare collisioni) */
 .interactive-center.exploded .monument-satellite { opacity: 1; }
-.interactive-center.exploded .item-castello { transform: translate(0px, -240px) scale(1); }
-.interactive-center.exploded .item-cappuccini { transform: translate(270px, -130px) scale(1); }
-.interactive-center.exploded .item-sangiorgio { transform: translate(270px, 110px) scale(1); }
-.interactive-center.exploded .item-sandomenico { transform: translate(0px, 230px) scale(1); }
-.interactive-center.exploded .item-annunziata { transform: translate(-270px, 110px) scale(1); }
-.interactive-center.exploded .item-badia { transform: translate(-270px, -130px) scale(1); }
+.interactive-center.exploded .item-castello   { transform: translate(0px, -370px) scale(1); }
+.interactive-center.exploded .item-cappuccini  { transform: translate(450px, -210px) scale(1); }
+.interactive-center.exploded .item-sangiorgio  { transform: translate(450px, 170px) scale(1); }
+.interactive-center.exploded .item-sandomenico { transform: translate(0px, 360px) scale(1); }
+.interactive-center.exploded .item-annunziata  { transform: translate(-450px, 170px) scale(1); }
+.interactive-center.exploded .item-badia       { transform: translate(-450px, -210px) scale(1); }
 
-.monument-satellite:hover { transform: scale(1.1) !important; z-index: 12; }
+/* Hover sul monumento ingrandito con z-index dominante */
+.monument-satellite:hover { transform: scale(1.08) !important; z-index: 20; }
 
 /* INTERFACCIA CHAT */
 .hub-chat-box {
