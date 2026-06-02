@@ -8,16 +8,15 @@
 </head>
 <body>
 
-    <!-- 🎬 SFONDO DINAMICO A TUTTO SCHERMO -->
-        <div class="scene-background-container">
+    <!-- 🎬 SFONDO DINAMICO -->
+    <div class="scene-background-container">
         <video autoplay loop muted playsinline class="scene-background-video">
             <source src="img/video_castello_turisti (1).mp4" type="video/mp4">
         </video>
         <div class="scene-overlay"></div>
     </div>
 
-
-    <!-- 👑 DASHBOARD DESKTOP PREMIUM -->
+    <!-- 👑 DASHBOARD -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         
@@ -28,7 +27,6 @@
         </nav>
         
         <div class="header-right-actions">
-            <!-- 🌍 SELETTORE LINGUA -->
             <div class="lang-switcher">
                 <button data-lang="it" class="active">🇮🇹</button>
                 <button data-lang="en">🇬🇧</button>
@@ -40,10 +38,10 @@
         </div>
     </header>
 
-    <!-- 🏰 CORPO PRINCIPALE DEL LAYOUT -->
+    <!-- 🏰 CORPO PRINCIPALE -->
     <main class="castle-layout">
         
-        <!-- 📝 COLONNA SINISTRA: TESTI DISPOSTI IN VERTICALE -->
+        <!-- 📝 COLONNA SINISTRA: TESTI + ABITO INTEGRATO -->
         <section class="castle-info-panel">
             <div class="info-panel-header">
                 <span class="category-tag">Monumenti Storici</span>
@@ -56,6 +54,13 @@
                     Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
                     Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
                 </p>
+
+                <!-- 👗 ABITO INTEGRATO NEL TESTO -->
+                <div class="castle-dress-inline">
+                    <img src="img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
+                    <p class="dress-caption-inline">L'abito della Castellana</p>
+                </div>
+
                 <p class="text-paragraph">
                     Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
                 </p>
@@ -65,20 +70,9 @@
             </div>
         </section>
 
-        <!-- 👑 COLONNA DESTRA: ELEMENTI ANCORATI IN BASSO SUL FONDO -->
+        <!-- 👑 COLONNA DESTRA: CASTELLANA + CHAT -->
         <section class="castle-interactive-zone">
             
-            <!-- CONTENITORE ABITO STORICO -->
-            <div class="castle-dress-box">
-                <div class="castle-dress-card">
-                    <div class="castle-dress">
-                        <img src="img/abito_clean.png" alt="Abito d’epoca della Castellana" class="dress-img">
-                    </div>
-                </div>
-                <p class="dress-caption" data-i18n="castle.dress-caption">Abito Storico</p>
-            </div>
-
-            <!-- CONTENITORE AVATAR CASTELLANA -->
             <div class="castellana-video-container">
                 <div class="castellana-video-wrapper">
                     <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat-tooltip">Click to Chat</div>
@@ -88,7 +82,7 @@
                 </div>
             </div>
 
-            <!-- 💬 INTERFACCIA CHAT FLOATING COMPLETA -->
+            <!-- 💬 CHAT -->
             <div class="chat-desktop" id="chatDesktop">
                 <div class="chat-header">
                     <div class="avatar-status-dot"></div>
@@ -109,12 +103,10 @@
                     </div>
                 </div>
             </div>
-
         </section>
-
     </main>
 
-    <!-- 🌍 SCRIPT MULTILINGUA PRESERVATO ED ESTESO -->
+    <!-- 🌍 SCRIPT MULTILINGUA -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
     
@@ -148,7 +140,7 @@
     });
     </script>
 
-    <!-- 🛠️ LOGICA ATTIVAZIONE INTERFACCIA CHAT -->
+    <!-- 🛠️ LOGICA CHAT -->
     <script>
     const castellanaVideo = document.getElementById("castellanaVideo");
     const castellanaTooltip = document.getElementById("castellanaTooltip");
