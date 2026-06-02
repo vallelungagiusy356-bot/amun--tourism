@@ -1,0 +1,95 @@
+html, body {
+    margin: 0; padding: 0; width: 100%; height: 100vh;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background-color: #050302; color: #ffe7b3; overflow: hidden;
+}
+
+/* SFONDO */
+.hub-bg-container { position: fixed; inset: 0; z-index: -10; overflow: hidden; }
+.hub-bg-video { width: 100%; height: 100%; object-fit: cover; }
+.hub-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(2px); }
+
+/* HEADER */
+.premium-header { position: fixed; top: 0; left: 0; width: 100%; height: 65px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-sizing: border-box; z-index: 99; }
+.brand-title { font-size: 1.4rem; font-weight: 700; color: #ffd78f; text-shadow: 0 0 12px #ffd78f; }
+.exit-btn { background: none; border: 1px solid #ffd78f; color: #ffd78f; padding: 6px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+
+/* 🔮 IL CONTENITORE CENTRALE */
+.hub-container {
+    width: 100%; height: calc(100vh - 65px); margin-top: 65px;
+    display: flex; align-items: center; justify-content: center; position: relative;
+}
+.interactive-center {
+    position: relative; width: 350px; height: 450px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* AVATAR CASTELLANA IN MEZZO */
+.avatar-center-wrapper {
+    position: relative; width: 260px; z-index: 10; cursor: pointer;
+}
+.castellana-hub-video { width: 100%; height: auto; filter: drop-shadow(0 0 20px rgba(0,0,0,0.9)); }
+.hub-tooltip {
+    position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+    background: #000; border: 1px solid #ffd78f; color: #ffd78f;
+    padding: 5px 15px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;
+}
+
+/* 🏛️ I MONUMENTI SATELLITE (NATIVI E LEGGERI) */
+.monument-satellite {
+    position: absolute;
+    width: 160px; /* Dimensioni native e pulite */
+    height: auto;
+    z-index: 5;
+    cursor: pointer;
+    text-align: center;
+    /* Stato iniziale: collassati al centro dietro la castellana */
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+}
+.satellite-webm { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
+.satellite-label { display: block; font-size: 0.85rem; color: #ffd78f; font-weight: 600; margin-top: 5px; text-shadow: 0 0 8px #000; }
+
+/* 💥 EFFETTO ESPLOSIONE RADIALE (Quando si clicca la Castellana) */
+.interactive-center.exploded .monument-satellite {
+    opacity: 1;
+}
+/* Posizionamento geometrico calcolato attorno al centro */
+.interactive-center.exploded .item-1 { transform: translate(-280px, -80px) scale(1); } /* Castello a sinistra in alto */
+.interactive-center.exploded .item-2 { transform: translate(280px, -80px) scale(1); }  /* Cappuccini a destra in alto */
+.interactive-center.exploded .item-3 { transform: translate(0px, -240px) scale(1); }   /* Terzo monumento sopra la testa */
+
+/* Animazione di oscillazione/rotazione morbida per i satelliti attivi */
+.interactive-center.exploded .monument-satellite:hover {
+    transform: scale(1.1) translateY(-10px);
+    z-index: 12;
+}
+
+/* 💬 CHAT FLOATING A DESTRA */
+.hub-chat-box {
+    position: fixed; bottom: 40px; right: 40px;
+    width: 380px; height: 500px;
+    background: rgba(0, 0, 0, 0.92); border: 2px solid #ffd78f; border-radius: 16px;
+    display: none; flex-direction: column; z-index: 999;
+    box-shadow: 0 0 40px rgba(255, 215, 160, 0.4); overflow: hidden;
+}
+.hub-chat-box.open { display: flex; animation: slideIn 0.3s ease-out; }
+
+.chat-header { background: rgba(255,215,160,0.1); padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ffd78f; color: #ffd78f; font-weight: 600; }
+.close-chat-btn { background: none; border: none; color: #ffd78f; font-size: 1.5rem; cursor: pointer; }
+.chat-body { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+
+.chat-bubble.guide { background: rgba(255,215,160,0.07); border: 1px solid rgba(255,215,160,0.3); padding: 15px; border-radius: 12px; font-size: 0.95rem; line-height: 1.5; color: #fff; }
+
+/* PULSANTE BLOCCO PREMIUM */
+.premium-lock-action { text-align: center; margin-top: 10px; }
+.unlock-premium-btn {
+    background: linear-gradient(135deg, #ffd78f 0%, #b38f43 100%);
+    border: none; color: #000; font-weight: 700; padding: 12px 24px;
+    border-radius: 8px; cursor: pointer; font-size: 0.95rem;
+    box-shadow: 0 0 15px rgba(255, 215, 160, 0.4); transition: 0.3s;
+}
+.unlock-premium-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px #ffd78f; }
+
+@keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
