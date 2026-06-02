@@ -7,103 +7,96 @@ html, body {
 /* 🖼️ GESTIONE SFONDO */
 .hub-bg-container { position: fixed; inset: 0; z-index: -10; overflow: hidden; }
 .hub-bg-image { width: 100%; height: 100%; object-fit: cover; display: block; }
-.hub-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.78); backdrop-filter: blur(2px); }
+.hub-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.72); backdrop-filter: blur(2px); }
 
 /* 👑 DASHBOARD PREMIUM ORIZZONTALE */
 .premium-header { 
     position: fixed; top: 0; left: 0; width: 100%; height: 75px; 
     display: flex; align-items: center; justify-content: space-between; 
     padding: 0 40px; box-sizing: border-box; z-index: 999;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.82);
     border-bottom: 2px solid rgba(255, 215, 160, 0.85);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
 }
 .brand-title { font-size: 1.5rem; font-weight: 700; color: #ffd78f; text-shadow: 0 0 12px #ffd78f; }
 
-/* NAVBAR CENTRALE */
 .nav-links-pc { display: flex; gap: 30px; }
 .nav-item {
     color: #ffd78f; text-decoration: none; font-weight: 600; font-size: 0.95rem;
     padding: 8px 16px; transition: 0.3s ease; border-radius: 6px;
 }
-.nav-item:hover {
-    background: rgba(255, 215, 160, 0.15); text-shadow: 0 0 8px #ffd78f;
-}
+.nav-item:hover { background: rgba(255, 215, 160, 0.15); text-shadow: 0 0 8px #ffd78f; }
 
-/* BLOCCO LINGUE E RETRO */
 .header-right-zone { display: flex; align-items: center; gap: 20px; }
+.lang-switcher-pc { display: flex; gap: 5px; background: rgba(0,0,0,0.5); padding: 3px; border-radius: 6px; border: 1px solid rgba(255, 215, 160, 0.4); }
+.lang-btn { background: none; border: none; color: #b38f43; font-weight: 700; font-size: 0.8rem; padding: 5px 10px; cursor: pointer; border-radius: 4px; transition: 0.2s; }
+.lang-btn.active, .lang-btn:hover { background: #ffd78f; color: #000; }
 
-.lang-switcher-pc {
-    display: flex; gap: 5px; background: rgba(0,0,0,0.5); padding: 3px; border-radius: 6px; border: 1px solid rgba(255, 215, 160, 0.4);
-}
-.lang-btn {
-    background: none; border: none; color: #b38f43; font-weight: 700; font-size: 0.8rem;
-    padding: 5px 10px; cursor: pointer; border-radius: 4px; transition: 0.2s;
-}
-.lang-btn.active, .lang-btn:hover {
-    background: #ffd78f; color: #000;
-}
-
-.exit-btn { 
-    background: none; border: 1px solid #ffd78f; color: #ffd78f; 
-    padding: 6px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: 0.3s;
-}
-.exit-btn:hover { background: rgba(255, 215, 160, 0.2); box-shadow: 0 0 10px #ffd78f; }
-
-/* CONTENITORE CENTRALE HUB */
+/* ⚓ CONTENITORE ANCORATO CENTRALE SCHERMO */
 .hub-container {
     width: 100%; height: calc(100vh - 75px); margin-top: 75px;
     display: flex; align-items: center; justify-content: center; position: relative;
 }
 .interactive-center {
-    position: relative; width: 350px; height: 450px;
-    display: flex; align-items: center; justify-content: center;
+    position: relative; 
+    width: 100%; 
+    height: 100%;
+    max-width: 1200px; /* Evita dispersioni eccessive */
 }
 
-/* AVATAR DELLA CASTELLANA */
-.avatar-center-wrapper { position: relative; width: 250px; z-index: 10; cursor: pointer; }
-.castellana-hub-video { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 20px rgba(0,0,0,0.9)); }
+/* 👑 AVATAR DELLA CASTELLANA PERFETTAMENTE ANCORATO AL CENTRO */
+.avatar-center-wrapper { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 280px; 
+    z-index: 10; 
+    cursor: pointer; 
+}
+.castellana-hub-video { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 25px rgba(0,0,0,0.95)); }
 .hub-tooltip {
-    position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+    position: absolute; top: -35px; left: 50%; transform: translateX(-50%);
     background: #000; border: 1px solid #ffd78f; color: #ffd78f;
     padding: 5px 15px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;
 }
 
-/* 🏛️ SATELLITI TRIPLICATI (Portati da 140px a 380px) */
+/* 🏛️ STRUTTURA DEI SATELLITI (Tutti impilati al centro esatto prima dell'esplosione) */
 .monument-satellite {
     position: absolute; 
-    width: 380px; /* Triplicata la dimensione dei modelli per valorizzare i render */
+    top: 50%; 
+    left: 50%;
+    width: 380px; /* Dimensione proporzionata confermata */
     height: auto; 
     z-index: 5; 
     cursor: pointer; 
     text-align: center;
-    transform: translate(0, 0) scale(0); 
+    /* Centrati sopra l'origine e invisibili */
+    transform: translate(-50%, -50%) scale(0); 
     opacity: 0;
     transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.5s ease;
 }
-.satellite-webm { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 22px rgba(0,0,0,0.85)); }
+.satellite-webm { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 20px rgba(0,0,0,0.9)); }
 .satellite-label { 
-    display: block; 
-    font-size: 1.1rem; /* Ingrandito il font per bilanciare i nuovi modelli */
-    color: #ffd78f; 
-    font-weight: 700; 
-    margin-top: -5px; 
-    text-shadow: 0 2px 8px #000, 0 0 10px rgba(255, 215, 160, 0.5); 
+    display: block; font-size: 1.1rem; color: #ffd78f; font-weight: 700; margin-top: -10px; 
+    text-shadow: 0 3px 6px #000, 0 0 10px rgba(255, 215, 160, 0.6); 
 }
 
-/* 🔥 EFFETTO SPLIT RADIALE AMPLIATO (Nuove coordinate per evitare collisioni) */
+/* 🔥 EFFETTO ESPLOSIONE GEOMETRICA REALE (Rispetto all'asse centrale -50%, -50%) */
 .interactive-center.exploded .monument-satellite { opacity: 1; }
-.interactive-center.exploded .item-castello   { transform: translate(0px, -370px) scale(1); }
-.interactive-center.exploded .item-cappuccini  { transform: translate(450px, -210px) scale(1); }
-.interactive-center.exploded .item-sangiorgio  { transform: translate(450px, 170px) scale(1); }
-.interactive-center.exploded .item-sandomenico { transform: translate(0px, 360px) scale(1); }
-.interactive-center.exploded .item-annunziata  { transform: translate(-450px, 170px) scale(1); }
-.interactive-center.exploded .item-badia       { transform: translate(-450px, -210px) scale(1); }
 
-/* Hover sul monumento ingrandito con z-index dominante */
-.monument-satellite:hover { transform: scale(1.08) !important; z-index: 20; }
+/* Calcoli matematici spaziali puri per distribuire i 380px radialmente */
+.interactive-center.exploded .item-castello   { transform: translate(-50%, -150%) scale(1); }
+.interactive-center.exploded .item-cappuccini  { transform: translate(60%, -100%) scale(1); }
+.interactive-center.exploded .item-sangiorgio  { transform: translate(60%, 10%) scale(1); }
+.interactive-center.exploded .item-sandomenico { transform: translate(-50%, 60%) scale(1); }
+.interactive-center.exploded .item-annunziata  { transform: translate(-160%, 10%) scale(1); }
+.interactive-center.exploded .item-badia       { transform: translate(-160%, -100%) scale(1); }
 
-/* INTERFACCIA CHAT */
+/* Hover sul monumento singolo mantenendo la centratura di base */
+.monument-satellite:hover { transform: scale(1.06) !important; z-index: 20; }
+
+/* INTERFACCIA CHAT (Invariata) */
 .hub-chat-box {
     position: fixed; bottom: 40px; right: 40px; width: 380px; height: 500px;
     background: rgba(0, 0, 0, 0.93); border: 2px solid #ffd78f; border-radius: 16px;
@@ -111,12 +104,10 @@ html, body {
     box-shadow: 0 0 45px rgba(255, 215, 160, 0.35); overflow: hidden;
 }
 .hub-chat-box.open { display: flex; animation: slideIn 0.3s ease-out; }
-
 .chat-header { background: rgba(255,215,160,0.1); padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ffd78f; color: #ffd78f; font-weight: 600; }
 .close-chat-btn { background: none; border: none; color: #ffd78f; font-size: 1.5rem; cursor: pointer; }
 .chat-body { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
 .chat-bubble.guide { background: rgba(255,215,160,0.07); border: 1px solid rgba(255,215,160,0.3); padding: 15px; border-radius: 12px; font-size: 0.95rem; line-height: 1.5; color: #fff; }
-
 .premium-lock-action { text-align: center; margin-top: 10px; }
 .unlock-premium-btn {
     background: linear-gradient(135deg, #ffd78f 0%, #b38f43 100%);
