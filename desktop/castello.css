@@ -105,13 +105,13 @@ html, body {
 .castle-layout {
     box-sizing: border-box;
     width: 100%;
-    padding: 100px 14px 30px 14px; /* Aumentato il padding superiore per dare respiro */
+    padding: 100px 14px 30px 14px;
     display: flex;
     flex-direction: column;
     gap: 35px;
 }
 
-/* Contenitore della parte multimediale alta */
+/* Contenitore alto che ospita Castellana e Castello */
 .multimedia-wrapper {
     display: flex;
     flex-direction: row;
@@ -119,7 +119,7 @@ html, body {
     align-items: flex-end; 
     width: 100%;
     position: relative;
-    min-height: 180px; /* Evita il collasso dell'altezza con elementi in absolute/scaled */
+    min-height: 180px; 
 }
 
 /* 🎬 WRAPPER INTERATTIVO CASTELLANA (A SINISTRA) */
@@ -148,18 +148,18 @@ html, body {
     transform: scale(1.03);
 }
 
-/* IL TOOLTIP (TOP TICK) — Riposizionato per essere visibile sopra la testa */
+/* IL TOOLTIP "CLICK TO CHAT" — Visibile e centrato sopra la testa */
 .castellana-tooltip {
     position: absolute;
-    top: -25px; 
+    top: -30px; 
     left: 50%;
     transform: translateX(-50%);
-    padding: 5px 10px; 
-    background: rgba(0, 0, 0, 0.8);
+    padding: 6px 12px; 
+    background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(255, 215, 160, 0.9);
     border-radius: 6px; 
     color: #ffd78f;
-    font-size: 0.7rem; 
+    font-size: 0.75rem; 
     font-weight: 700;
     text-shadow: 0 0 8px rgba(255, 215, 160, 1);
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.6);
@@ -176,26 +176,26 @@ html, body {
     100% { opacity: 0; transform: translateX(-50%) scale(0.95); }
 }
 
-/* 🏰 BOX CASTELLO (Spostato a DESTRA e abbassato per evitare tagli in alto) */
+/* 🏰 BOX CASTELLO (Spostato a DESTRA e riproprozionato) */
 .castle-media-box {
-    width: 50%;
+    width: 48%;
     display: flex;
     justify-content: flex-end; 
     align-self: flex-end; 
-    margin-top: 40px; /* Abbassa l'intero blocco dalla dashboard */
-    padding-bottom: 10px;
     overflow: visible; 
+    /* Gestione dello Zoom e dell'asse Y direttamente sul box per evitare tagli */
+    transform: scale(1.5) translate(0px, 12px); 
+    transform-origin: right bottom; 
+    filter: drop-shadow(0 0 15px rgba(255, 215, 160, 0.35));
 }
 
-/* CORREZIONE STRUTTURALE DELLO ZOOM IN PORTRAIT */
-.castle-main-video, .castle-main {
+/* I figli occupano lo spazio del box scalato in modo fluido */
+.castle-media-box video, 
+.castle-media-box img {
     width: 100%;
     height: auto;
     object-fit: contain;
-    /* Ricalibrato lo zoom a 1.6 e raddrizzato l'asse Y per abbassarlo (translateY) senza farlo toccare in alto */
-    transform: scale(1.6) translate(0px, 15px); 
-    transform-origin: right bottom; 
-    filter: drop-shadow(0 0 15px rgba(255, 215, 160, 0.35));
+    display: block;
 }
 
 /* ==========================================
@@ -273,15 +273,13 @@ html, body {
 .chat-desktop {
     position: fixed;
     bottom: 0;
-    right: 0;
+    left: 0;
     width: 100%;
     height: 50vh; 
     background: rgba(255, 255, 255, 0.03) !important;
     backdrop-filter: blur(15px) brightness(1.15) contrast(0.85) !important;
     -webkit-backdrop-filter: blur(15px) brightness(1.15) contrast(0.85) !important;
     border-top: 2px solid rgba(255, 215, 160, 0.9);
-    border-left: 2px solid rgba(255, 215, 160, 0.9);
-    border-right: 2px solid rgba(255, 215, 160, 0.9);
     border-radius: 26px 26px 0 0;
     box-shadow: 0 -10px 45px rgba(255, 215, 160, 0.6);
     padding: 20px;
@@ -385,38 +383,27 @@ html, body {
 
     .multimedia-wrapper {
         align-items: flex-end;
-        height: 170px; 
-        justify-content: space-between;
+        height: 150px; 
     }
 
     .castellana-video-wrapper {
-        width: 30vw;
-        height: 100%;
-        justify-content: flex-end;
+        width: 28vw;
     }
 
     .castellana-video {
-        max-height: 140px; 
+        max-height: 130px; 
         width: auto !important;
-        object-fit: contain !important;
     }
 
     .castellana-tooltip {
-        top: -32px;
+        top: -28px;
         font-size: 0.65rem;
     }
 
-    /* SISTEMAZIONE IN LANDSCAPE COME DA SCREENSHOT 1000084095.jpg */
+    /* Sistemazione del castello in Landscape per non farlo tagliare in alto */
     .castle-media-box {
         width: 45%;
-        align-self: flex-end;
-        margin-top: 0;
-        justify-content: flex-end;
-    }
-
-    .castle-main-video, .castle-main {
-        /* Abbassato notevolmente (35px) per non toccare la barra nera e spostato a destra (15px) */
-        transform: scale(1.6) translate(15px, 35px);
+        transform: scale(1.5) translate(5px, 28px);
         transform-origin: right bottom;
     }
 
@@ -424,6 +411,7 @@ html, body {
         height: 65vh;
         width: 360px;
         left: auto;
+        right: 0;
         border-left: 2px solid rgba(255, 215, 160, 0.9);
     }
     
@@ -480,34 +468,22 @@ html, body {
     }
 
     .multimedia-wrapper {
-        justify-content: space-between;
-        padding-left: 2%;
-        padding-right: 2%;
-        align-items: flex-end;
-        min-height: 220px;
+        min-height: 240px;
     }
 
     .castellana-video-wrapper {
-        width: 25vw;
+        width: 22vw;
     }
 
     .castellana-tooltip {
         top: -35px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 8px 20px;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
-    /* Ottimizzazione Desktop: Grande, a destra, ben distanziato dall'alto */
+    /* Ottimizzazione Desktop */
     .castle-media-box {
-        width: 45%;
-        align-self: flex-end;
-    }
-
-    .castle-main-video, .castle-main {
-        /* Zoom bilanciato a 2.0 per evitare sfocature o pixel eccessivi, abbassato e spostato a destra */
-        transform: scale(2.0) translate(20px, 40px); 
+        width: 42%;
+        transform: scale(1.9) translate(10px, 35px); 
         transform-origin: right bottom;
     }
     
@@ -520,6 +496,7 @@ html, body {
         position: absolute;
         top: 220px;
         right: 4%;
+        left: auto;
         bottom: auto;
         width: 340px;
         height: 320px;
