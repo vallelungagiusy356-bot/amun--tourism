@@ -79,7 +79,7 @@
             width: 110px;
             text-align: center;
             opacity: 0;
-            transform: scale(0.4);
+            transform: scale(0.6);
             transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             z-index: 35;
@@ -117,7 +117,7 @@
 
     <!-- 🖼️ SFONDO DINAMICO: Il video dei turisti ai Cappuccini -->
     <video class="scene-background-video" autoplay muted loop playsinline>
-        <source src="video/video_cappuccini.webm" type="video/webm">
+        <source src="img/video_cappuccini.webm" type="video/webm">
     </video>
     <div class="video-overlay"></div>
 
@@ -156,7 +156,7 @@
 
     <!-- 🐍 PERCORSO A SERPENTE (La linea SVG si dispiega, poi compaiono i monumenti) -->
     <div class="svg-path-container">
-        <svg viewBox="0 0 1000 600" fill="none" xmlns="http://www.w3.org/2000/svg" class="snake-svg">
+        <svg viewBox="0 0 600 1000" fill="none" xmlns="http://www.w3.org/2000/svg" class="snake-svg">
             <!-- La linea parte con stroke-dashoffset uguale a stroke-dasharray per risultare totalmente invisibile -->
             <path id="snakePath" d="M 100,150 Q 300,50 500,200 T 900,150 T 500,450 T 100,450" 
                   stroke="#ffd78f" stroke-width="4" stroke-dasharray="2000" stroke-dashoffset="2000" 
@@ -164,12 +164,7 @@
         </svg>
 
         <!-- Monumenti 3D/WebM agganciati al percorso -->
-        <div class="path-monument item-1" id="mon1" onclick="selectMonument('castello')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/castello_2.webm" type="video/webm"></video>
-            <span class="satellite-label">Castello</span>
-        </div>
-
-        <div class="path-monument item-2" id="mon2" onclick="selectMonument('cappuccini')">
+         <div class="path-monument item-2" id="mon2" onclick="selectMonument('cappuccini')">
             <video autoplay loop muted playsinline class="satellite-webm"><source src="img/cappuccini_2.webm" type="video/webm"></video>
             <span class="satellite-label">I Cappuccini</span>
         </div>
