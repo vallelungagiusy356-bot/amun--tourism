@@ -104,12 +104,11 @@
         }
 
         /* Coordinate custom dei 6 monumenti agganciati al flusso visivo dell'SVG */
-        .item-1 { top: 6%; left: 8%; }
-        .item-2 { top: 12%;  left: 18%; }
-        .item-3 { top: 25%; left: 45%; }
-        .item-4 { top: 42%; left: 30%; }
-        .item-5 { top: 62%; left: 18%; }
-        .item-6 { top: 48%; left: 8%; }
+        .item-1 { top: 12%;  left: 18%; }
+        .item-2 { top: 25%; left: 45%; }
+        .item-3 { top: 42%; left: 30%; }
+        .item-4 { top: 62%; left: 18%; }
+        .item-5 { top: 48%; left: 8%; }
     </style>
 </head>
 
@@ -164,27 +163,27 @@
         </svg>
 
         <!-- Monumenti 3D/WebM agganciati al percorso -->
-         <div class="path-monument item-2" id="mon2" onclick="selectMonument('cappuccini')">
+         <div class="path-monument item-1" id="mon1" onclick="selectMonument('cappuccini')">
             <video autoplay loop muted playsinline class="satellite-webm"><source src="img/cappuccini_2.webm" type="video/webm"></video>
             <span class="satellite-label">I Cappuccini</span>
         </div>
 
-        <div class="path-monument item-3" id="mon3" onclick="selectMonument('sangiorgio')">
+        <div class="path-monument item-2" id="mon2" onclick="selectMonument('sangiorgio')">
             <video autoplay loop muted playsinline class="satellite-webm"><source src="img/san_giorgio_martire.webm" type="video/webm"></video>
             <span class="satellite-label">S. Giorgio</span>
         </div>
 
-        <div class="path-monument item-4" id="mon4" onclick="selectMonument('sandomenico')">
+        <div class="path-monument item-3" id="mon3" onclick="selectMonument('sandomenico')">
             <video autoplay loop muted playsinline class="satellite-webm"><source src="img/san_domenico.webm" type="video/webm"></video>
             <span class="satellite-label">S. Domenico</span>
         </div>
 
-        <div class="path-monument item-5" id="mon5" onclick="selectMonument('annunziata')">
+        <div class="path-monument item-4" id="mon4" onclick="selectMonument('annunziata')">
             <video autoplay loop muted playsinline class="satellite-webm"><source src="img/annunziata_2.webm" type="video/webm"></video>
             <span class="satellite-label">L'Annunziata</span>
         </div>
 
-        <div class="path-monument item-6" id="mon6" onclick="selectMonument('badia')">
+        <div class="path-monument item-5" id="mon5" onclick="selectMonument('badia')">
             <video autoplay loop muted playsinline class="satellite-webm"><source src="img/dettagli_badia.webm" type="video/webm"></video>
             <span class="satellite-label">Badia</span>
         </div>
@@ -237,8 +236,8 @@
         let label = "";
         let desc = "";
         switch(type) {
-            case 'castello': label = "Il Castello"; desc = "Il castello è un gioiello medievale abbarbicato sulla roccia viva."; break;
-            case 'cappuccini': label = "I Cappuccini"; desc = "Questo luogo sacro racchiude un'atmosfera di quiete d'altri tempi."; break;
+        
+            case 'cappuccini': label = "I Cappuccini"; desc = "Questo luogo sacro racchiude un'atmosfera di quiete d'altri tempi e una vista panoramica mozzafiato."; break;
             case 'sangiorgio': label = "San Giorgio"; desc = "La maestosa chiesa madre, cuore pulsante del barocco locale."; break;
             case 'sandomenico': label = "San Domenico"; desc = "Un tesoro artistico prezioso custodito all'interno del borgo."; break;
             case 'annunziata': label = "L'Annunziata"; desc = "Splendido esempio di architettura sacra ricca di devozione."; break;
