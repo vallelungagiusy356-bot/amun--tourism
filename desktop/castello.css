@@ -32,7 +32,6 @@ html, body {
 .scene-overlay {
     position: absolute;
     inset: 0;
-    /* Gradiente scuro laterale per favorire la leggibilità del testo a sinistra */
     background: linear-gradient(90deg, 
         rgba(5, 3, 2, 0.92) 0%, 
         rgba(5, 3, 2, 0.65) 55%, 
@@ -94,7 +93,6 @@ html, body {
     gap: 20px;
 }
 
-/* SELETTORE LINGUA RIFINITO */
 .lang-switcher {
     display: flex;
     gap: 6px;
@@ -152,7 +150,7 @@ html, body {
 }
 
 /* ==========================================================================
-   5. COLONNA SINISTRA: DISPOSIZIONE TESTI IN VERTICALE
+   5. COLONNA SINISTRA: TESTI + ABITO INTEGRATO
    ========================================================================== */
 .castle-info-panel {
     flex: 1;
@@ -190,7 +188,6 @@ html, body {
     width: 80%;
 }
 
-/* GESTIONE PARAGRAFI DEL TESTO */
 .castle-text-content {
     display: flex;
     flex-direction: column;
@@ -223,64 +220,18 @@ html, body {
 }
 
 /* ==========================================================================
-   6. COLONNA DESTRA: ANCORAGGIO ELEMENTI IN BASSO SUL FONDO
+   6. COLONNA DESTRA: SOLO CASTELLANA
    ========================================================================== */
 .castle-interactive-zone {
     flex: 1;
     max-width: 50%;
     display: flex;
-    align-items: flex-end; /* Spinge tutto rigidamente sul fondo */
-    justify-content: flex-end; /* Allinea a destra della schermata */
+    align-items: flex-end;
+    justify-content: flex-end;
     position: relative;
     padding-bottom: 10px;
-    gap: 35px;
 }
 
-/* CONTENITORE E SCHEDA ABITO STORICO */
-.castle-dress-box {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.castle-dress-card {
-    background: rgba(5, 3, 2, 0.65);
-    border: 1px solid rgba(255, 215, 160, 0.25);
-    padding: 12px;
-    border-radius: 14px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
-    transition: transform 0.3s ease;
-}
-
-.castle-dress-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255, 215, 160, 0.5);
-}
-
-.castle-dress {
-    width: 140px;
-    height: auto;
-    overflow: hidden;
-}
-
-.dress-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
-}
-
-.dress-caption {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #ffd78f;
-    margin-top: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* VIDEO E INVESTITURA AVATAR CASTELLANA */
 .castellana-video-container {
     display: flex;
     align-items: flex-end;
@@ -322,11 +273,40 @@ html, body {
 }
 
 /* ==========================================================================
-   7. INTERFACCIA CHAT FLOATING ELEGANTE (SOVRACHAMATA)
+   6.1. STILE ABITO INTEGRATO (Modifica richiesta)
+   ========================================================================== */
+.castle-dress-inline {
+    width: 100%;
+    margin: 15px 0;
+    text-align: center;
+    background: rgba(255, 215, 160, 0.05);
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.dress-img-inline {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+
+.dress-caption-inline {
+    font-size: 0.85rem;
+    color: #ffd78f;
+    font-weight: 600;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   7. INTERFACCIA CHAT FLOATING
    ========================================================================== */
 .chat-desktop {
     position: absolute;
-    bottom: 290px; /* Posizionata sopra la testa dell'avatar */
+    bottom: 290px;
     right: 0;
     width: 380px;
     height: 400px;
@@ -358,7 +338,7 @@ html, body {
 .avatar-status-dot {
     width: 8px;
     height: 8px;
-    background-color: #26e663; /* Verde attivo splendente */
+    background-color: #26e663;
     border-radius: 50%;
     margin-right: 10px;
     box-shadow: 0 0 8px #26e663;
@@ -384,7 +364,6 @@ html, body {
     color: #fff;
 }
 
-/* CONTAINER MESSAGGI */
 .chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -404,7 +383,6 @@ html, body {
     color: #fff;
 }
 
-/* RIFINITURA INPUT BAR CHAT */
 .chat-input-row {
     padding: 14px;
     display: flex;
@@ -430,11 +408,6 @@ html, body {
     border-color: #ffd78f;
 }
 
-.input-actions {
-    display: flex;
-    align-items: center;
-}
-
 .mic-btn {
     background: transparent;
     border: 1px solid #ffd78f;
@@ -453,24 +426,12 @@ html, body {
    8. ANIMAZIONI INTERNE
    ========================================================================== */
 @keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse {
-    0% {
-        box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25);
-    }
-    50% {
-        box-shadow: 0 4px 25px rgba(255, 215, 160, 0.5);
-    }
-    100% {
-        box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25);
-    }
+    0% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
+    50% { box-shadow: 0 4px 25px rgba(255, 215, 160, 0.5); }
+    100% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
 }
