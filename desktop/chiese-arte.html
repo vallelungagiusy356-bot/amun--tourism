@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amunì Premium - I Monumenti</title>
+    <link rel="stylesheet" href="hub-premium.css">
+</head>
+<body>
+
+    <!-- 🎬 SFONDO GENERALE IN LOOP -->
+    <div class="hub-bg-container">
+        <video autoplay loop muted playsinline webkit-playsinline class="hub-bg-video">
+            <source src="img/volo_generale_borgo.webm" type="video/webm">
+        </video>
+        <div class="hub-overlay"></div>
+    </div>
+
+    <!-- 👑 HEADER -->
+    <header class="premium-header">
+        <div class="brand-title">Amunì Tourism - Le Meraviglie</div>
+        <button class="exit-btn" onclick="window.location.href='index.html'">Home</button>
+    </header>
+
+    <!-- 🔮 CENTRO MAGICO: CASTELLANA + MONUMENTI SATELLITE -->
+    <div class="hub-container">
+        <div class="interactive-center" id="hubCore">
+            
+            <!-- L'AVATAR CENTRALE -->
+            <div class="avatar-center-wrapper">
+                <div class="hub-tooltip">Scopri le Meraviglie</div>
+                <video id="castellanaHub" autoplay loop muted playsinline webkit-playsinline class="castellana-hub-video">
+                    <source src="img/benvenuto_castellana.webm" type="video/webm">
+                </video>
+            </div>
+
+            <!-- 🏛️ MONUMENTI SATELLITE (Inizialmente nascosti dentro la Castellana) -->
+            <!-- Monumento 1: Castello -->
+            <div class="monument-satellite item-1" onclick="selectMonument('castello')">
+                <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                    <source src="img/rendering_3d_castello.webm" type="video/webm">
+                </video>
+                <span class="satellite-label">Castello</span>
+            </div>
+
+            <!-- Monumento 2: Cappuccini -->
+            <div class="monument-satellite item-2" onclick="selectMonument('cappuccini')">
+                <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                    <source src="img/rendering_3d_cappuccini.webm" type="video/webm">
+                </video>
+                <span class="satellite-label">I Cappuccini</span>
+            </div>
+
+            <!-- Monumento 3: Altro Monumento esempio -->
+            <div class="monument-satellite item-3" onclick="selectMonument('chiesa')">
+                <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                    <source src="img/rendering_3d_chiesa.webm" type="video/webm">
+                </video>
+                <span class="satellite-label">Matrice</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 💬 INTERFACCIA CHAT PREMIUM FLOATING (Destra) -->
+    <div class="hub-chat-box" id="hubChat">
+        <div class="chat-header">
+            <span id="chatTitle">La Castellana</span>
+            <button class="close-chat-btn" id="closeHubChat">×</button>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            <!-- Il messaggio iniziale cambierà dinamicamente via JS -->
+        </div>
+
+        <div class="chat-footer" id="chatFooter">
+            <!-- Input o Bottone di attivazione premium -->
+        </div>
+    </div>
+
+    <!-- 📜 LOGICA DI APERTURA RADIALE E GESTIONE DEL DIALOGO -->
+    <script>
+        const hubCore = document.getElementById("hubCore");
+        const castellanaHub = document.getElementById("castellanaHub");
+        const hubChat = document.getElementById("hubChat");
+        const closeHubChat = document.getElementById("closeHubChat");
+        const chatBody = document.getElementById("chatBody");
+        const chatFooter = document.getElementById("chatFooter");
+        const chatTitle = document.getElementById("chatTitle");
+
+        // Messaggio iniziale dell'Hub generale
+        const welcomeHubHTML = `
+            <div class="chat-bubble guide">
+                <p><strong>La Castellana:</strong> Ciao viandante, quale di queste meraviglie vuoi scoprire? Accedi alla versione premium per saperne di più.</p>
+            </div>
+            <div class="premium-lock-action">
+                <button class="unlock-premium-btn">Attiva Versione Premium</button>
+            </div>
+        `;
+
+        // 1. Click sulla Castellana: Escono i monumenti attorno a lei e si apre la chat
+        castellanaHub.addEventListener("click", () => {
+            hubCore.classList.add("exploded"); // Fa esplodere i monumenti in cerchio
+            hubChat.classList.add("open");
+            chatTitle.innerText = "La Castellana";
+            chatBody.innerHTML = welcomeHubHTML;
+            chatFooter.style.display = "none"; // Nascondiamo l'input standard per l'invito premium
+        });
+
+        // 2. Click su un singolo monumento satellite
+        function selectMonument(type) {
+            chatFooter.style.display = "none";
+            
+            if(type === 'castello') {
+                chatTitle.innerText = "Focus: Il Castello";
+                chatBody.innerHTML = `
+                    <div class="chat-bubble guide">
+                        <p><strong>La Castellana:</strong> Come vedi viandante, il castello è proprio un gioiello da non lasciarsi scappare, ti va di saperne di più? Accedi alla versione premium.</p>
+                    </div>
+                    <div class="premium-lock-action">
+                        <button class="unlock-premium-btn">Sblocca Storia Castello (Premium)</button>
+                    </div>
+                `;
+            } else if(type === 'cappuccini') {
+                chatTitle.innerText = "Focus: I Cappuccini";
+                chatBody.innerHTML = `
+                    <div class="chat-bubble guide">
+                        <p><strong>La Castellana:</strong> Il Convento dei Cappuccini nasconde segreti e una pace d'altri tempi... Vuoi addentrarti nelle sue storie? Accedi alla versione premium.</p>
+                    </div>
+                    <div class="premium-lock-action">
+                        <button class="unlock-premium-btn">Sblocca Sezione Cappuccini (Premium)</button>
+                    </div>
+                `;
+            }
+        }
+
+        closeHubChat.addEventListener("click", () => {
+            hubChat.classList.remove("open");
+            hubCore.classList.remove("exploded");
+        });
+    </script>
+</body>
+</html>
