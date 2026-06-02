@@ -8,85 +8,115 @@
 </head>
 <body>
 
-    <div class="scene-background"></div>
+    <!-- 🎬 SFONDO DINAMICO A TUTTO SCHERMO -->
+    <div class="scene-background-container">
+        <video autoplay loop muted playsinline class="scene-background-video">
+            <source src="img/Video_castello_turisti (1).mp4" type="video/mp4">
+        </video>
+        <div class="scene-overlay"></div>
+    </div>
 
+    <!-- 👑 DASHBOARD DESKTOP PREMIUM -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+        
         <nav class="nav-desktop">
-            <a href="about.html" data-i18n="menu.about">About</a>
-            <a href="contact.html" data-i18n="menu.contact">Contact</a>
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item" data-i18n="menu.about">About</a>
+            <a href="contact.html" class="nav-item" data-i18n="menu.contact">Contact</a>
         </nav>
-        <div class="lang-switcher">
-            <button data-lang="it">🇮🇹</button>
-            <button data-lang="en">🇬🇧</button>
-            <button data-lang="fr">🇫🇷</button>
-            <button data-lang="de">🇩🇪</button>
-            <button data-lang="es">🇪🇸</button>
+        
+        <div class="header-right-actions">
+            <!-- 🌍 SELETTORE LINGUA -->
+            <div class="lang-switcher">
+                <button data-lang="it" class="active">🇮🇹</button>
+                <button data-lang="en">🇬🇧</button>
+                <button data-lang="fr">🇫🇷</button>
+                <button data-lang="de">🇩🇪</button>
+                <button data-lang="es">🇪🇸</button>
+            </div>
+            <button class="home-btn" onclick="window.location.href='index.html'">Indietro</button>
         </div>
-        <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
     </header>
 
+    <!-- 🏰 CORPO PRINCIPALE DEL LAYOUT -->
     <main class="castle-layout">
         
-        <div class="multimedia-wrapper">
-            
-            <div class="castellana-video-wrapper">
-                <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat-tooltip">Click to Chat</div>
-                <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
-                    <source src="img/benvenuto_castellana.webm" type="video/webm">
-                </video>
-            </div>
-
-            <div class="castle-media-box">
-    <video autoplay loop muted playsinline webkit-playsinline>
-        <source src="img/castello_2.webm" type="video/webm">
-        <img src="img/castello 2 (1).webp" alt="Castello di Caccamo">
-    </video>
-</div>
-
-        </div>
-
+        <!-- 📝 COLONNA SINISTRA: TESTI DISPOSTI IN VERTICALE -->
         <section class="castle-info-panel">
-            <div class="install-left">
+            <div class="info-panel-header">
+                <span class="category-tag">Monumenti Storici</span>
                 <h2 data-i18n="castle.title">Il Castello di Caccamo</h2>
-                <div class="castle-text-content">
-                    <p>
-                        Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
-                        Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
-                    </p>
-                    <p>
-                        Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
-                    </p>
-                    <p>
-                        Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
-                    </p>
-                </div>
+                <hr class="gold-divider">
             </div>
-            <div class="install-right">
-                <div class="castle-dress">
-                    <img src="img/abito_clean.png" alt="Abito d’epoca della Castellana" class="dress-img">
-                </div>
-                <p data-i18n="castle.dress-caption">Abito Storico</p>
+            
+            <div class="castle-text-content">
+                <p class="text-paragraph leading-para">
+                    Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
+                    Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
+                </p>
+                <p class="text-paragraph">
+                    Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
+                </p>
+                <p class="text-paragraph highlight-para">
+                    Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
+                </p>
             </div>
         </section>
 
-        <div class="chat-desktop" id="chatDesktop">
-            <button class="close-chat-btn" id="closeChatBtn">×</button>
-            <div class="chat-messages">
-                <div class="message">
-                    <strong>La Castellana:</strong> Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure.
+        <!-- 👑 COLONNA DESTRA: ELEMENTI ANCORATI IN BASSO SUL FONDO -->
+        <section class="castle-interactive-zone">
+            
+            <!-- CONTENITORE ABITO STORICO -->
+            <div class="castle-dress-box">
+                <div class="castle-dress-card">
+                    <div class="castle-dress">
+                        <img src="img/abito_clean.png" alt="Abito d’epoca della Castellana" class="dress-img">
+                    </div>
+                </div>
+                <p class="dress-caption" data-i18n="castle.dress-caption">Abito Storico</p>
+            </div>
+
+            <!-- CONTENITORE AVATAR CASTELLANA -->
+            <div class="castellana-video-container">
+                <div class="castellana-video-wrapper">
+                    <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat-tooltip">Click to Chat</div>
+                    <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
+                        <source src="img/benvenuto_castellana.webm" type="video/webm">
+                    </video>
                 </div>
             </div>
-            <div class="chat-input-row">
-                <input type="text" placeholder="Scrivi alla Castellana..." id="chatInput">
-                <button class="mic-btn">🎤</button>
+
+            <!-- 💬 INTERFACCIA CHAT FLOATING COMPLETA -->
+            <div class="chat-desktop" id="chatDesktop">
+                <div class="chat-header">
+                    <div class="avatar-status-dot"></div>
+                    <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
+                    <button class="close-chat-btn" id="closeChatBtn">✕</button>
+                </div>
+                
+                <div class="chat-messages" id="chatMessagesBox">
+                    <div class="message system-msg">
+                        <strong>La Castellana:</strong> Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure.
+                    </div>
+                </div>
+                
+                <div class="chat-input-row">
+                    <input type="text" placeholder="Scrivi alla Castellana..." id="chatInput" data-i18n-placeholder="chat.placeholder">
+                    <div class="input-actions">
+                        <button class="mic-btn" title="Attiva Microfono">🎤</button>
+                    </div>
+                </div>
             </div>
-        </div>
+
+        </section>
 
     </main>
 
+    <!-- 🌍 SCRIPT MULTILINGUA PRESERVATO ED ESTESO -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
+    
     function loadLanguage(lang) {
          fetch(`../lang/${lang}.json`)
             .then(res => res.json())
@@ -96,17 +126,28 @@
                     const text = key.split('.').reduce((o,i)=>o[i], data);
                     if (text) el.innerHTML = text;
                 });
+                document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                    const key = el.getAttribute("data-i18n-placeholder");
+                    const text = key.split('.').reduce((o,i)=>o[i], data);
+                    if (text) el.placeholder = text;
+                });
             });
         localStorage.setItem("lang", lang);
     }
+    
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".lang-switcher button").forEach(btn => {
-            btn.addEventListener("click", () => { loadLanguage(btn.dataset.lang); });
+            btn.addEventListener("click", () => { 
+                document.querySelectorAll(".lang-switcher button").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                loadLanguage(btn.dataset.lang); 
+            });
         });
         loadLanguage(currentLang);
     });
     </script>
 
+    <!-- 🛠️ LOGICA ATTIVAZIONE INTERFACCIA CHAT -->
     <script>
     const castellanaVideo = document.getElementById("castellanaVideo");
     const castellanaTooltip = document.getElementById("castellanaTooltip");
