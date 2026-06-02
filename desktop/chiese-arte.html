@@ -2,107 +2,114 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Amunì Tourism - Chiese e Arte</title>
     <link rel="stylesheet" href="css_style2_v2.css">
 </head>
 <body>
 
-    <div class="hub-bg-container">
-        <img src="img/tuo_nuovo_sfondo.jpeg" class="hub-bg-image" alt="Sfondo Borgo">
-        <div class="hub-overlay"></div>
-    </div>
+    <!-- 🔮 MASTER WRAPPER: Blocca tutto lo schermo ed evita lo scorrimento verticale -->
+    <div class="hub-master-viewport">
 
-    <header class="premium-header">
-        <div class="brand-title" data-i18n="menu.title">Amunì Tourism</div>
-
-        <nav class="nav-links-pc">
-            <a href="index.html" class="nav-item">Home</a>
-            <a href="#" class="nav-item" data-i18n="menu.about">Chi Siamo</a>
-            <a href="cittadino.html" class="nav-item" data-i18n="menu.citizen">Cittadino del Borgo</a>
-        </nav>
-
-        <div class="header-right-zone">
-            <div class="lang-switcher-pc">
-                <button class="lang-btn active" data-lang="it">🇮🇹</button>
-                <button class="lang-btn" data-lang="en">🇬🇧</button>
-                <button class="lang-btn" data-lang="fr">🇫🇷</button>
-                <button class="lang-btn" data-lang="de">🇩🇪</button>
-                <button class="lang-btn" data-lang="es">🇪🇸</button>
-            </div>
-        </div>
-    </header>
-
-    <div class="hub-container">
-        <div class="interactive-center" id="hubCore">
-            
-            <div class="avatar-center-wrapper" id="chat-open-btn">
-                <div class="hub-tooltip">Click to chat</div>
-                <video class="castellana-hub-video" id="castellanaHub" autoplay muted loop playsinline>
-                    <source src="img/castellana_alpha.webm" type="video/webm">
-                </video>
-            </div>
-
-            <div class="monument-satellite item-castello" onclick="selectMonument('castello')">
-                <video autoplay loop muted playsinline class="satellite-webm">
-                    <source src="img/castello_2.webm" type="video/webm">
-                </video>
-                <span class="satellite-label">Castello</span>
-            </div>
-
-            <div class="monument-satellite item-cappuccini" onclick="selectMonument('cappuccini')">
-                <video autoplay loop muted playsinline class="satellite-webm">
-                    <source src="img/cappuccini_2.webm" type="video/webm">
-                </video>
-                <span class="satellite-label">I Cappuccini</span>
-            </div>
-
-            <div class="monument-satellite item-sangiorgio" onclick="selectMonument('sangiorgio')">
-                <video autoplay loop muted playsinline class="satellite-webm">
-                    <source src="img/san_giorgio_martire.webm" type="video/webm">
-                </video>
-                <span class="satellite-label">S. Giorgio Martire</span>
-            </div>
-
-            <div class="monument-satellite item-sandomenico" onclick="selectMonument('sandomenico')">
-                <video autoplay loop muted playsinline class="satellite-webm">
-                    <source src="img/san_domenico.webm" type="video/webm">
-                </video>
-                <span class="satellite-label">San Domenico</span>
-            </div>
-
-            <div class="monument-satellite item-annunziata" onclick="selectMonument('annunziata')">
-                <video autoplay loop muted playsinline class="satellite-webm">
-                    <source src="img/annunziata_2.webm" type="video/webm">
-                </video>
-                <span class="satellite-label">L'Annunziata</span>
-            </div>
-
-            <div class="monument-satellite item-badia" onclick="selectMonument('badia')">
-                <video autoplay loop muted playsinline class="satellite-webm">
-                    <source src="img/dettagli_badia.webm" type="video/webm">
-                </video>
-                <span class="satellite-label">Dettagli Badia</span>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="hub-chat-box" id="chat-desktop">
-        <div class="chat-header">
-            <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
-            <button id="close-chat" class="close-chat-btn">✕</button>
+        <!-- 🖼️ GESTIONE SFONDO AMBIENTALE -->
+        <div class="hub-bg-container">
+            <img src="img/tuo_nuovo_sfondo.jpeg" class="hub-bg-image" alt="Tramonto Caccamo">
+            <div class="hub-overlay"></div>
         </div>
 
-        <div class="chat-messages" id="chatBody">
+        <!-- 👑 DASHBOARD PREMIUM -->
+        <header class="premium-header">
+            <div class="brand-title" data-i18n="menu.title">Amunì Tourism</div>
+            <nav class="nav-links-pc">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="#" class="nav-item" data-i18n="menu.about">Chi Siamo</a>
+                <a href="cittadino.html" class="nav-item" data-i18n="menu.citizen">Cittadino del Borgo</a>
+            </nav>
+            <div class="header-right-zone">
+                <div class="lang-switcher-pc">
+                    <button class="lang-btn active" data-lang="it">🇮🇹</button>
+                    <button class="lang-btn" data-lang="en">🇬🇧</button>
+                    <button class="lang-btn" data-lang="fr">🇫🇷</button>
+                    <button class="lang-btn" data-lang="de">🇩🇪</button>
+                    <button class="lang-btn" data-lang="es">🇪🇸</button>
+                </div>
             </div>
+        </header>
 
-        <div class="chat-input-row">
-            <input type="text" placeholder="" data-i18n-placeholder="chat.placeholder">
-            <button class="mic-btn">🎤</button>
+        <!-- ⚓ HUB CENTRALE GEOMETRICO ANCORATO -->
+        <div class="hub-container">
+            <div class="interactive-center" id="hubCore">
+                
+                <!-- ⭐ AVATAR DELLA CASTELLANA (CENTRO PERFETTO) -->
+                <div class="avatar-center-wrapper" id="chat-open-btn">
+                    <div class="hub-tooltip">Click to chat</div>
+                    <video class="castellana-hub-video" id="castellanaHub" autoplay muted loop playsinline webkit-playsinline>
+                        <source src="img/castellana_alpha.webm" type="video/webm">
+                    </video>
+                </div>
+
+                <!-- 🏛️ I 6 SATELLITI MONUMENTALI (GESTITI IN ABSOLUTE) -->
+                <div class="monument-satellite item-castello" onclick="selectMonument('castello')">
+                    <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                        <source src="img/castello_2.webm" type="video/webm">
+                    </video>
+                    <span class="satellite-label">Castello</span>
+                </div>
+
+                <div class="monument-satellite item-cappuccini" onclick="selectMonument('cappuccini')">
+                    <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                        <source src="img/cappuccini_2.webm" type="video/webm">
+                    </video>
+                    <span class="satellite-label">I Cappuccini</span>
+                </div>
+
+                <div class="monument-satellite item-sangiorgio" onclick="selectMonument('sangiorgio')">
+                    <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                        <source src="img/san_giorgio_martire.webm" type="video/webm">
+                    </video>
+                    <span class="satellite-label">S. Giorgio Martire</span>
+                </div>
+
+                <div class="monument-satellite item-sandomenico" onclick="selectMonument('sandomenico')">
+                    <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                        <source src="img/san_domenico.webm" type="video/webm">
+                    </video>
+                    <span class="satellite-label">San Domenico</span>
+                </div>
+
+                <div class="monument-satellite item-annunziata" onclick="selectMonument('annunziata')">
+                    <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                        <source src="img/annunziata_2.webm" type="video/webm">
+                    </video>
+                    <span class="satellite-label">L'Annunziata</span>
+                </div>
+
+                <div class="monument-satellite item-badia" onclick="selectMonument('badia')">
+                    <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                        <source src="img/dettagli_badia.webm" type="video/webm">
+                    </video>
+                    <span class="satellite-label">Dettagli Badia</span>
+                </div>
+
+            </div>
         </div>
-    </div>
 
+        <!-- 💬 PANNELLO CHAT INTERATTIVO -->
+        <div class="hub-chat-box" id="chat-desktop">
+            <div class="chat-header">
+                <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
+                <button id="close-chat" class="close-chat-btn">✕</button>
+            </div>
+            <div class="chat-messages" id="chatBody"></div>
+            <div class="chat-input-row">
+                <input type="text" placeholder="" data-i18n-placeholder="chat.placeholder">
+                <button class="mic-btn">🎤</button>
+            </div>
+        </div>
+
+    </div> <!-- FINE MASTER WRAPPER -->
+
+    <!-- 🛠️ INTERAZIONE JS -->
     <script>
     document.addEventListener("DOMContentLoaded", () => {
         const hubCore = document.getElementById("hubCore");
@@ -117,11 +124,10 @@
                 <p><strong>La Castellana:</strong> Ciao viandante quale di queste meraviglie vuoi scoprire? accedi alla versione premium per saperne di più.</p>
             </div>
             <div class="premium-lock-action">
-                <button class="unlock-premium-btn">Attiva Versione Premium</button>
+                <button class="unlock-premium-btn" style="background:linear-gradient(135deg, #ffd78f 0%, #b38f43 100%); border:none; color:#000; font-weight:700; padding:10px 20px; border-radius:8px; cursor:pointer;">Attiva Versione Premium</button>
             </div>
         `;
 
-        // Al click sulla Castellana: si attiva la raggiera ed entra la chat
         openBtn.addEventListener("click", () => {
             hubCore.classList.add("exploded");
             chat.classList.add("open");
@@ -129,65 +135,33 @@
             chatBody.innerHTML = welcomeHTML;
         });
 
-        // Chiusura chat e reset raggiera satelliti
         closeBtn.addEventListener("click", () => {
             chat.classList.remove("open");
             hubCore.classList.remove("exploded");
         });
 
-        // Selezione interattiva dei singoli monumenti giganti
         window.selectMonument = function(type) {
             let message = "";
             let btnText = "";
-            
             switch(type) {
-                case 'castello':
-                    chatTitle.innerText = "Il Castello";
-                    message = "Come vedi viandante il castello è proprio un gioiello da non lasciarsi scappare, ti va di saperne di più? accedi alla versione premium.";
-                    btnText = "Sblocca Storia Castello";
-                    break;
-                case 'cappuccini':
-                    chatTitle.innerText = "I Cappuccini";
-                    message = "Il Convento dei Cappuccini custodisce una quiete antica e storie affascinanti. Accedi alla versione premium.";
-                    btnText = "Sblocca Sezione Cappuccini";
-                    break;
-                case 'sangiorgio':
-                    chatTitle.innerText = "San Giorgio Martire";
-                    message = "La monumentale Chiesa di San Giorgio Martire è il cuore barocco della nostra identità. Accedi alla versione premium.";
-                    btnText = "Sblocca San Giorgio";
-                    break;
-                case 'sandomenico':
-                    chatTitle.innerText = "San Domenico";
-                    message = "La Chiesa di San Domenico racchiude tesori d'arte unici e un fascino senza tempo. Accedi alla versione premium.";
-                    btnText = "Sblocca San Domenico";
-                    break;
-                case 'annunziata':
-                    chatTitle.innerText = "L'Annunziata";
-                    message = "L'Annunziata accoglie storie di profonda devozione e bellezza. Accedi alla versione premium.";
-                    btnText = "Sblocca L'Annunziata";
-                    break;
-                case 'badia':
-                    chatTitle.innerText = "Dettagli Badia";
-                    message = "I dettagli della Badia rivelano la maestria di antichi artigiani impressa nella pietra. Accedi alla versione premium.";
-                    btnText = "Sblocca Dettagli Badia";
-                    break;
+                case 'castello': chatTitle.innerText = "Il Castello"; message = "Come vedi viandante il castello è proprio un gioiello da non lasciarsi scappare, ti va di saperne di più? accedi alla versione premium."; btnText = "Sblocca Storia Castello"; break;
+                case 'cappuccini': chatTitle.innerText = "I Cappuccini"; message = "Il Convento dei Cappuccini custodisce una quiete antica e storie affascinanti. Accedi alla versione premium."; btnText = "Sblocca Sezione Cappuccini"; break;
+                case 'sangiorgio': chatTitle.innerText = "San Giorgio Martire"; message = "La monumentale Chiesa di San Giorgio Martire è il cuore barocco della nostra identità. Accedi alla versione premium."; btnText = "Sblocca San Giorgio"; break;
+                case 'sandomenico': chatTitle.innerText = "San Domenico"; message = "La Chiesa di San Domenico racchiude tesori d'arte unici e un fascino senza tempo. Accedi alla versione premium."; btnText = "Sblocca San Domenico"; break;
+                case 'annunziata': chatTitle.innerText = "L'Annunziata"; message = "L'Annunziata accoglie storie di profonda devozione e bellezza. Accedi alla versione premium."; btnText = "Sblocca L'Annunziata"; break;
+                case 'badia': chatTitle.innerText = "Dettagli Badia"; message = "I dettagli della Badia rivelano la maestria di antichi artigiani impressa nella pietra. Accedi alla versione premium."; btnText = "Sblocca Dettagli Badia"; break;
             }
-
             chatBody.innerHTML = `
-                <div class="chat-bubble guide">
-                    <p><strong>La Castellana:</strong> ${message}</p>
-                </div>
-                <div class="premium-lock-action">
-                    <button class="unlock-premium-btn">${btnText}</button>
-                </div>
+                <div class="chat-bubble guide"><p><strong>La Castellana:</strong> ${message}</p></div>
+                <div class="premium-lock-action"><button class="unlock-premium-btn" style="background:linear-gradient(135deg, #ffd78f 0%, #b38f43 100%); border:none; color:#000; font-weight:700; padding:10px 20px; border-radius:8px; cursor:pointer;">${btnText}</button></div>
             `;
         };
     });
     </script>
 
+    <!-- 🌍 INTERNAZIONALIZZAZIONE -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
-
     function loadLanguage(lang) {
         fetch(`../lang/${lang}.json`)
             .then(res => res.json())
@@ -205,11 +179,9 @@
             });
         localStorage.setItem("lang", lang);
     }
-
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".lang-switcher-pc button").forEach(btn => {
             btn.addEventListener("click", () => {
-                // Rimuove la classe attiva da tutti e la assegna al premuto
                 document.querySelectorAll(".lang-switcher-pc button").forEach(b => b.classList.remove("active"));
                 btn.classList.add("active");
                 loadLanguage(btn.dataset.lang);
