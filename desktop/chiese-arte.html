@@ -3,30 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amunì Premium - I Monumenti</title>
-    <link rel="stylesheet" href="hub-premium.css">
+    <title>Amunì Premium - Chiese e Arte</title>
+    <link rel="stylesheet" href="chiese-arte.css">
 </head>
 <body>
 
-    <!-- 🎬 SFONDO GENERALE IN LOOP -->
     <div class="hub-bg-container">
-        <video autoplay loop muted playsinline webkit-playsinline class="hub-bg-video">
-            <source src="img/volo_generale_borgo.webm" type="video/webm">
-        </video>
+        <img src="img/tuo_nuovo_sfondo.jpeg" alt="Sfondo Borgo" class="hub-bg-image">
         <div class="hub-overlay"></div>
     </div>
 
-    <!-- 👑 HEADER -->
     <header class="premium-header">
-        <div class="brand-title">Amunì Tourism - Le Meraviglie</div>
-        <button class="exit-btn" onclick="window.location.href='index.html'">Home</button>
+        <div class="brand-title">Amunì Tourism</div>
+        
+        <nav class="nav-links-pc">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="chi-siamo.html" class="nav-item">Chi Siamo</a>
+            <a href="cittadino-borgo.html" class="nav-item">Cittadino del Borgo</a>
+        </nav>
+
+        <div class="header-right-zone">
+            <div class="lang-switcher-pc">
+                <button class="lang-btn active">IT</button>
+                <button class="lang-btn">EN</button>
+            </div>
+            <button class="exit-btn" onclick="window.location.href='index.html'">Indietro</button>
+        </div>
     </header>
 
-    <!-- 🔮 CENTRO MAGICO: CASTELLANA + MONUMENTI SATELLITE -->
     <div class="hub-container">
         <div class="interactive-center" id="hubCore">
             
-            <!-- L'AVATAR CENTRALE -->
             <div class="avatar-center-wrapper">
                 <div class="hub-tooltip">Scopri le Meraviglie</div>
                 <video id="castellanaHub" autoplay loop muted playsinline webkit-playsinline class="castellana-hub-video">
@@ -34,104 +41,132 @@
                 </video>
             </div>
 
-            <!-- 🏛️ MONUMENTI SATELLITE (Inizialmente nascosti dentro la Castellana) -->
-            <!-- Monumento 1: Castello -->
-            <div class="monument-satellite item-1" onclick="selectMonument('castello')">
+            <div class="monument-satellite item-castello" onclick="selectMonument('castello')">
                 <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
-                    <source src="img/rendering_3d_castello.webm" type="video/webm">
+                    <source src="img/castello_2.webm" type="video/webm">
                 </video>
                 <span class="satellite-label">Castello</span>
             </div>
 
-            <!-- Monumento 2: Cappuccini -->
-            <div class="monument-satellite item-2" onclick="selectMonument('cappuccini')">
+            <div class="monument-satellite item-cappuccini" onclick="selectMonument('cappuccini')">
                 <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
-                    <source src="img/rendering_3d_cappuccini.webm" type="video/webm">
+                    <source src="img/cappuccini_2.webm" type="video/webm">
                 </video>
                 <span class="satellite-label">I Cappuccini</span>
             </div>
 
-            <!-- Monumento 3: Altro Monumento esempio -->
-            <div class="monument-satellite item-3" onclick="selectMonument('chiesa')">
+            <div class="monument-satellite item-sangiorgio" onclick="selectMonument('sangiorgio')">
                 <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
-                    <source src="img/rendering_3d_chiesa.webm" type="video/webm">
+                    <source src="img/san_giorgio_martire.webm" type="video/webm">
                 </video>
-                <span class="satellite-label">Matrice</span>
+                <span class="satellite-label">S. Giorgio Martire</span>
+            </div>
+
+            <div class="monument-satellite item-sandomenico" onclick="selectMonument('sandomenico')">
+                <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                    <source src="img/san_domenico.webm" type="video/webm">
+                </video>
+                <span class="satellite-label">San Domenico</span>
+            </div>
+
+            <div class="monument-satellite item-annunziata" onclick="selectMonument('annunziata')">
+                <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                    <source src="img/annunziata_2.webm" type="video/webm">
+                </video>
+                <span class="satellite-label">L'Annunziata</span>
+            </div>
+
+            <div class="monument-satellite item-badia" onclick="selectMonument('badia')">
+                <video autoplay loop muted playsinline webkit-playsinline class="satellite-webm">
+                    <source src="img/dettagli_badia.webm" type="video/webm">
+                </video>
+                <span class="satellite-label">Dettagli Badia</span>
             </div>
 
         </div>
     </div>
 
-    <!-- 💬 INTERFACCIA CHAT PREMIUM FLOATING (Destra) -->
     <div class="hub-chat-box" id="hubChat">
         <div class="chat-header">
             <span id="chatTitle">La Castellana</span>
             <button class="close-chat-btn" id="closeHubChat">×</button>
         </div>
         
-        <div class="chat-body" id="chatBody">
-            <!-- Il messaggio iniziale cambierà dinamicamente via JS -->
-        </div>
-
-        <div class="chat-footer" id="chatFooter">
-            <!-- Input o Bottone di attivazione premium -->
-        </div>
+        <div class="chat-body" id="chatBody"></div>
+        <div class="chat-footer" id="chatFooter"></div>
     </div>
 
-    <!-- 📜 LOGICA DI APERTURA RADIALE E GESTIONE DEL DIALOGO -->
     <script>
         const hubCore = document.getElementById("hubCore");
+        const staticBackground = document.querySelector(".hub-bg-image");
         const castellanaHub = document.getElementById("castellanaHub");
         const hubChat = document.getElementById("hubChat");
         const closeHubChat = document.getElementById("closeHubChat");
         const chatBody = document.getElementById("chatBody");
-        const chatFooter = document.getElementById("chatFooter");
         const chatTitle = document.getElementById("chatTitle");
 
-        // Messaggio iniziale dell'Hub generale
         const welcomeHubHTML = `
             <div class="chat-bubble guide">
-                <p><strong>La Castellana:</strong> Ciao viandante, quale di queste meraviglie vuoi scoprire? Accedi alla versione premium per saperne di più.</p>
+                <p><strong>La Castellana:</strong> Ciao viandante quale di queste meraviglie vuoi scoprire? accedi alla versione premium per saperne di più.</p>
             </div>
             <div class="premium-lock-action">
                 <button class="unlock-premium-btn">Attiva Versione Premium</button>
             </div>
         `;
 
-        // 1. Click sulla Castellana: Escono i monumenti attorno a lei e si apre la chat
+        // Al click sulla castellana: "esplosione" e apertura chat
         castellanaHub.addEventListener("click", () => {
-            hubCore.classList.add("exploded"); // Fa esplodere i monumenti in cerchio
+            hubCore.classList.add("exploded");
             hubChat.classList.add("open");
             chatTitle.innerText = "La Castellana";
             chatBody.innerHTML = welcomeHubHTML;
-            chatFooter.style.display = "none"; // Nascondiamo l'input standard per l'invito premium
         });
 
-        // 2. Click su un singolo monumento satellite
         function selectMonument(type) {
-            chatFooter.style.display = "none";
+            let message = "";
+            let buttonText = "";
             
-            if(type === 'castello') {
-                chatTitle.innerText = "Focus: Il Castello";
-                chatBody.innerHTML = `
-                    <div class="chat-bubble guide">
-                        <p><strong>La Castellana:</strong> Come vedi viandante, il castello è proprio un gioiello da non lasciarsi scappare, ti va di saperne di più? Accedi alla versione premium.</p>
-                    </div>
-                    <div class="premium-lock-action">
-                        <button class="unlock-premium-btn">Sblocca Storia Castello (Premium)</button>
-                    </div>
-                `;
-            } else if(type === 'cappuccini') {
-                chatTitle.innerText = "Focus: I Cappuccini";
-                chatBody.innerHTML = `
-                    <div class="chat-bubble guide">
-                        <p><strong>La Castellana:</strong> Il Convento dei Cappuccini nasconde segreti e una pace d'altri tempi... Vuoi addentrarti nelle sue storie? Accedi alla versione premium.</p>
-                    </div>
-                    <div class="premium-lock-action">
-                        <button class="unlock-premium-btn">Sblocca Sezione Cappuccini (Premium)</button>
-                    </div>
-                `;
+            switch(type) {
+                case 'castello':
+                    chatTitle.innerText = "Il Castello";
+                    message = "Come vedi viandante il castello è proprio un gioiello da non lasciarsi skappare,ti va di saperne di più?accedi alla versione premium";
+                    buttonText = "Sblocca Storia Castello";
+                    break;
+                case 'cappuccini':
+                    chatTitle.innerText = "I Cappuccini";
+                    message = "Il Convento dei Cappuccini custodisce una quiete antica e storie affascinanti. Ti va di saperne di più? Accedi alla versione premium.";
+                    buttonText = "Sblocca Sezione Cappuccini";
+                    break;
+                case 'sangiorgio':
+                    chatTitle.innerText = "San Giorgio Martire";
+                    message = "La monumentale Chiesa di San Giorgio Martire è il cuore barocco della nostra identità. Ti va di scoprirne i segreti? Accedi alla versione premium.";
+                    buttonText = "Sblocca San Giorgio";
+                    break;
+                case 'sandomenico':
+                    chatTitle.innerText = "San Domenico";
+                    message = "La Chiesa di San Domenico racchiude tesori d'arte unici e un fascino senza tempo. Vuoi approfondire? Accedi alla versione premium.";
+                    buttonText = "Sblocca San Domenico";
+                    break;
+                case 'annunziata':
+                    chatTitle.innerText = "L'Annunziata";
+                    message = "L'Annunziata, con la sua magnifica struttura, accoglie storie di profonda devozione e bellezza. Ti va di saperne di più? Accedi alla versione premium.";
+                    buttonText = "Sblocca L'Annunziata";
+                    break;
+                case 'badia':
+                    chatTitle.innerText = "Dettagli Badia";
+                    message = "I dettagli della Badia rivelano la maestria di antichi artigiani impressa nella pietra. Vuoi svelare la loro storia? Accedi alla versione premium.";
+                    buttonText = "Sblocca Dettagli Badia";
+                    break;
             }
+
+            chatBody.innerHTML = `
+                <div class="chat-bubble guide">
+                    <p><strong>La Castellana:</strong> ${message}</p>
+                </div>
+                <div class="premium-lock-action">
+                    <button class="unlock-premium-btn">${buttonText}</button>
+                </div>
+            `;
         }
 
         closeHubChat.addEventListener("click", () => {
