@@ -55,7 +55,7 @@ html, body {
 }
 
 .nav-desktop {
-    display: none; /* Si attiva solo nella media query desktop */
+    display: none;
 }
 
 /* INTERRUTTORE LINGUE */
@@ -105,13 +105,13 @@ html, body {
 .castle-layout {
     box-sizing: border-box;
     width: 100%;
-    padding: 100px 14px 30px 14px;
+    padding: 110px 14px 30px 14px; /* Aumentato lo spazio per spingere giù la struttura */
     display: flex;
     flex-direction: column;
     gap: 35px;
 }
 
-/* Contenitore alto che ospita Castellana e Castello */
+/* Contenitore flessibile alto */
 .multimedia-wrapper {
     display: flex;
     flex-direction: row;
@@ -119,13 +119,13 @@ html, body {
     align-items: flex-end; 
     width: 100%;
     position: relative;
-    min-height: 180px; 
+    min-height: 220px; /* Alzata l'altezza minima per dare spazio verticale al castello */
 }
 
 /* 🎬 WRAPPER INTERATTIVO CASTELLANA (A SINISTRA) */
 .castellana-video-wrapper {
     position: relative;
-    width: 42%; 
+    width: 35%; /* Ridotto leggermente per cedere spazio al castello */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -144,14 +144,10 @@ html, body {
     border-radius: 16px;
 }
 
-.castellana-video:hover {
-    transform: scale(1.03);
-}
-
-/* IL TOOLTIP "CLICK TO CHAT" — Visibile e centrato sopra la testa */
+/* TOOLTIP "CLICK TO CHAT" */
 .castellana-tooltip {
     position: absolute;
-    top: -30px; 
+    top: -32px; 
     left: 50%;
     transform: translateX(-50%);
     padding: 6px 12px; 
@@ -176,20 +172,20 @@ html, body {
     100% { opacity: 0; transform: translateX(-50%) scale(0.95); }
 }
 
-/* 🏰 BOX CASTELLO (Spostato a DESTRA e riproprozionato) */
+/* 🏰 BOX CASTELLO PORTRAIT — RISOLUZIONE GRANDEZZA E ALTEZZA */
 .castle-media-box {
-    width: 48%;
+    width: 60%; /* Allargato per permettere un'espansione nativa maggiore */
     display: flex;
     justify-content: flex-end; 
     align-self: flex-end; 
     overflow: visible; 
-    /* Gestione dello Zoom e dell'asse Y direttamente sul box per evitare tagli */
-    transform: scale(1.5) translate(0px, 12px); 
+    /* Zoom potente a 2.6, abbassato vistosamente con 42px sull'asse Y e allineato a destra */
+    transform: scale(2.6) translate(2px, 42px); 
     transform-origin: right bottom; 
     filter: drop-shadow(0 0 15px rgba(255, 215, 160, 0.35));
+    z-index: 5;
 }
 
-/* I figli occupano lo spazio del box scalato in modo fluido */
 .castle-media-box video, 
 .castle-media-box img {
     width: 100%;
@@ -367,43 +363,33 @@ html, body {
     box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
 }
 
-.mic-btn:hover {
-    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-    background: rgba(255, 215, 160, 0.15);
-}
-
 /* ==========================================
    🔄 📱 MOBILE ORIZZONTALE (Landscape)
 ========================================== */
 @media screen and (max-width: 950px) and (orientation: landscape) {
     .castle-layout {
-        padding-top: 90px;
+        padding-top: 95px;
         gap: 25px;
     }
 
     .multimedia-wrapper {
         align-items: flex-end;
-        height: 150px; 
+        height: 180px; 
     }
 
     .castellana-video-wrapper {
-        width: 28vw;
+        width: 25vw;
     }
 
     .castellana-video {
-        max-height: 130px; 
+        max-height: 140px; 
         width: auto !important;
     }
 
-    .castellana-tooltip {
-        top: -28px;
-        font-size: 0.65rem;
-    }
-
-    /* Sistemazione del castello in Landscape per non farlo tagliare in alto */
+    /* Bilanciamento Landscape: Grosso, abbassato e a destra */
     .castle-media-box {
-        width: 45%;
-        transform: scale(1.5) translate(5px, 28px);
+        width: 55%;
+        transform: scale(2.4) translate(8px, 45px);
         transform-origin: right bottom;
     }
 
@@ -464,11 +450,11 @@ html, body {
     .castle-layout {
         max-width: 1200px;
         margin: 0 auto;
-        padding-top: 120px;
+        padding-top: 130px;
     }
 
     .multimedia-wrapper {
-        min-height: 240px;
+        min-height: 280px;
     }
 
     .castellana-video-wrapper {
@@ -480,10 +466,10 @@ html, body {
         font-size: 0.9rem;
     }
 
-    /* Ottimizzazione Desktop */
+    /* Ricalibrazione Desktop: Imponente, distanziato dal menu e agganciato a destra */
     .castle-media-box {
-        width: 42%;
-        transform: scale(1.9) translate(10px, 35px); 
+        width: 55%;
+        transform: scale(2.8) translate(12px, 55px); 
         transform-origin: right bottom;
     }
     
@@ -509,7 +495,7 @@ html, body {
     }
 
     .castle-info-panel {
-        margin-top: 50px;
+        margin-top: 60px;
         padding: 25px 40px;
     }
 
