@@ -8,42 +8,41 @@
 </head>
 <body>
 
-    <!-- 🖼️ SFONDO ORIGINALE -->
-    <div class="scene-background"></div>
+    <div class="hub-bg-container">
+        <img src="img/tuo_nuovo_sfondo.jpeg" class="hub-bg-image" alt="Sfondo Borgo">
+        <div class="hub-overlay"></div>
+    </div>
 
-    <!-- 👑 DASHBOARD DESKTOP ORIGINALE INTEGRATA -->
-    <header class="dashboard">
-        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+    <header class="premium-header">
+        <div class="brand-title" data-i18n="menu.title">Amunì Tourism</div>
 
-        <nav class="nav-desktop">
+        <nav class="nav-links-pc">
             <a href="index.html" class="nav-item">Home</a>
-            <a href="#" data-i18n="menu.about">Chi Siamo</a>
-            <a href="cittadino.html" data-i18n="menu.citizen">Cittadino del Borgo</a>
+            <a href="#" class="nav-item" data-i18n="menu.about">Chi Siamo</a>
+            <a href="cittadino.html" class="nav-item" data-i18n="menu.citizen">Cittadino del Borgo</a>
         </nav>
 
-        <!-- 🌍 SELETTORE LINGUA ORIGINALE -->
-        <div class="lang-switcher">
-            <button data-lang="it">🇮🇹</button>
-            <button data-lang="en">🇬🇧</button>
-            <button data-lang="fr">🇫🇷</button>
-            <button data-lang="de">🇩🇪</button>
-            <button data-lang="es">🇪🇸</button>
+        <div class="header-right-zone">
+            <div class="lang-switcher-pc">
+                <button class="lang-btn active" data-lang="it">🇮🇹</button>
+                <button class="lang-btn" data-lang="en">🇬🇧</button>
+                <button class="lang-btn" data-lang="fr">🇫🇷</button>
+                <button class="lang-btn" data-lang="de">🇩🇪</button>
+                <button class="lang-btn" data-lang="es">🇪🇸</button>
+            </div>
         </div>
     </header>
 
-    <!-- 🔮 HUB CENTRALE RADIALE -->
     <div class="hub-container">
         <div class="interactive-center" id="hubCore">
             
-            <!-- ⭐ VIDEO CASTELLANA ORIGINALE (CENTRO) -->
-            <div class="castellana-video-wrapper" id="chat-open-btn">
-                <div class="castellana-tooltip">Click to chat</div>
-                <video class="castellana-video" id="castellanaHub" autoplay muted loop playsinline>
+            <div class="avatar-center-wrapper" id="chat-open-btn">
+                <div class="hub-tooltip">Click to chat</div>
+                <video class="castellana-hub-video" id="castellanaHub" autoplay muted loop playsinline>
                     <source src="img/castellana_alpha.webm" type="video/webm">
                 </video>
             </div>
 
-            <!-- 🏛️ I 6 MONUMENTI SATELLITE (TRIPLICATI NELLE DIMENSIONI) -->
             <div class="monument-satellite item-castello" onclick="selectMonument('castello')">
                 <video autoplay loop muted playsinline class="satellite-webm">
                     <source src="img/castello_2.webm" type="video/webm">
@@ -89,16 +88,14 @@
         </div>
     </div>
 
-    <!-- 💬 CHAT DESKTOP STRUTTURATA SUL TUO STILE -->
-    <div class="chat-desktop" id="chat-desktop">
+    <div class="hub-chat-box" id="chat-desktop">
         <div class="chat-header">
             <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
 
         <div class="chat-messages" id="chatBody">
-            <!-- Il contenuto viene iniettato dinamicamente dai click -->
-        </div>
+            </div>
 
         <div class="chat-input-row">
             <input type="text" placeholder="" data-i18n-placeholder="chat.placeholder">
@@ -106,7 +103,6 @@
         </div>
     </div>
 
-    <!-- 🛠️ LOGICA INTERATTIVA -->
     <script>
     document.addEventListener("DOMContentLoaded", () => {
         const hubCore = document.getElementById("hubCore");
@@ -117,24 +113,29 @@
         const chatTitle = document.getElementById("chatTitle");
 
         const welcomeHTML = `
-            <div class="message"><strong>La Castellana:</strong> Ciao viandante quale di queste meraviglie vuoi scoprire? accedi alla versione premium per saperne di più.</div>
-            <div style="text-align:center; margin-top:15px;">
-                <button class="unlock-premium-btn" style="background:linear-gradient(135deg, #ffd78f 0%, #b38f43 100%); border:none; color:#000; font-weight:700; padding:10px 20px; border-radius:8px; cursor:pointer;">Attiva Versione Premium</button>
+            <div class="chat-bubble guide">
+                <p><strong>La Castellana:</strong> Ciao viandante quale di queste meraviglie vuoi scoprire? accedi alla versione premium per saperne di più.</p>
+            </div>
+            <div class="premium-lock-action">
+                <button class="unlock-premium-btn">Attiva Versione Premium</button>
             </div>
         `;
 
+        // Al click sulla Castellana: si attiva la raggiera ed entra la chat
         openBtn.addEventListener("click", () => {
             hubCore.classList.add("exploded");
-            chat.classList.add("active");
+            chat.classList.add("open");
             chatTitle.innerText = "La Castellana";
             chatBody.innerHTML = welcomeHTML;
         });
 
+        // Chiusura chat e reset raggiera satelliti
         closeBtn.addEventListener("click", () => {
-            chat.classList.remove("active");
+            chat.classList.remove("open");
             hubCore.classList.remove("exploded");
         });
 
+        // Selezione interattiva dei singoli monumenti giganti
         window.selectMonument = function(type) {
             let message = "";
             let btnText = "";
@@ -173,16 +174,17 @@
             }
 
             chatBody.innerHTML = `
-                <div class="message"><strong>La Castellana:</strong> ${message}</div>
-                <div style="text-align:center; margin-top:15px;">
-                    <button class="unlock-premium-btn" style="background:linear-gradient(135deg, #ffd78f 0%, #b38f43 100%); border:none; color:#000; font-weight:700; padding:10px 20px; border-radius:8px; cursor:pointer;">${btnText}</button>
+                <div class="chat-bubble guide">
+                    <p><strong>La Castellana:</strong> ${message}</p>
+                </div>
+                <div class="premium-lock-action">
+                    <button class="unlock-premium-btn">${btnText}</button>
                 </div>
             `;
         };
     });
     </script>
 
-    <!-- SCRIPT MULTILINGUA PRESERVATO -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
 
@@ -205,8 +207,11 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".lang-switcher button").forEach(btn => {
+        document.querySelectorAll(".lang-switcher-pc button").forEach(btn => {
             btn.addEventListener("click", () => {
+                // Rimuove la classe attiva da tutti e la assegna al premuto
+                document.querySelectorAll(".lang-switcher-pc button").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
                 loadLanguage(btn.dataset.lang);
             });
         });
