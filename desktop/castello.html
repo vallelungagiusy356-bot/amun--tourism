@@ -9,12 +9,27 @@
 <body>
 
     <!-- 🎬 SFONDO DINAMICO -->
-    <div class="scene-background-container">
+        <div class="scene-background-container">
         <video autoplay loop muted playsinline class="scene-background-video">
             <source src="img/video_castello.mp4" type="video/mp4">
         </video>
+        
+        <script>
+            const video = document.querySelector('.scene-background-video');
+            video.addEventListener('loadedmetadata', () => {
+                console.log("✅ Successo: Il video è stato caricato correttamente.");
+            });
+            video.addEventListener('error', (e) => {
+                console.error("❌ Errore Video:");
+                console.error("Dettaglio:", video.error ? video.error.code : "Nessun codice");
+                const src = video.querySelector('source').src;
+                console.warn("Il browser sta cercando il video qui:", src);
+            });
+        </script>
+        
         <div class="scene-overlay"></div>
     </div>
+
 
     <!-- 👑 DASHBOARD -->
     <header class="dashboard">
