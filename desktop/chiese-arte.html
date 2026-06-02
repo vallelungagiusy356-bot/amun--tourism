@@ -1,311 +1,334 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <!-- Manteniamo lo stesso viewport fisso che usi per bloccare il layout desktop su mobile -->
-    <meta name="viewport" content="width=1024">
-    <title>Amunì Tourism - Chiese e Arte</title>
-    <link rel="stylesheet" href="chiese-arte.css">
-    
-    <!-- 🎨 Stile locale integrato per gestire l'animazione specifica del percorso a serpente -->
-    <style>
-        /* Sfondo video immersivo dei Cappuccini */
-        .scene-background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -2;
-        }
-        
-        .video-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(5, 3, 2, 0.75);
-            backdrop-filter: blur(1px);
-            z-index: -1;
-        }
+/* ==========================================================================
+   1. RESET E BLOCCO STRUTTURALE (Blindato per Mobile/Desktop)
+   ========================================================================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #050302;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+}
 
-        /* 🔘 Bottone Start Oro posizionato al centro dello schermo */
-        .start-journey-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 45;
-        }
-        .gold-start-btn {
-            background: linear-gradient(135deg, #ffd78f 0%, #b38f43 100%);
-            border: none;
-            color: #000;
-            font-weight: 800;
-            font-size: 1.3rem;
-            padding: 15px 45px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 0 25px rgba(255, 215, 160, 0.6);
-            transition: transform 0.2s ease;
-            letter-spacing: 2px;
-        }
-        .gold-start-btn:hover {
-            transform: scale(1.1);
-        }
+/* ==========================================================================
+   2. SFONDO VIDEO DINAMICO FLUIDO (I Cappuccini)
+   ========================================================================== */
+.scene-background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -2;
+}
 
-        /* 🐍 Container per la linea del serpente e i monumenti */
-        .svg-path-container {
-            position: absolute;
-            top: 15vh;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 85%;
-            max-width: 1100px;
-            height: 70vh;
-            z-index: 10;
-            pointer-events: none; /* Permette di cliccare sui monumenti sotto la maschera dell'SVG */
-        }
-        .snake-svg {
-            width: 100%;
-            height: 100%;
-        }
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 3, 2, 0.78); /* Atmosfera scura per far brillare l'oro */
+    backdrop-filter: blur(1px);
+    z-index: -1;
+}
 
-        /* Monumenti posizionati lungo le curve del tracciato */
-        .path-monument {
-            position: absolute;
-            width: 110px;
-            text-align: center;
-            opacity: 0;
-            transform: scale(0.4);
-            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            z-index: 35;
-            pointer-events: auto; /* Riattiva i click sui singoli elementi */
-        }
-        .path-monument.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .satellite-webm {
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));
-        }
-        .satellite-label {
-            display: block;
-            font-size: 0.8rem;
-            color: #ffd78f;
-            margin-top: 5px;
-            font-weight: 700;
-            text-shadow: 0 2px 4px #000, 0 0 5px rgba(255, 215, 160, 0.3);
-        }
+/* ==========================================================================
+   3. DASHBOARD (Sincronizzata e clonata dalla Home)
+   ========================================================================== */
+.dashboard { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 40px;
+    box-sizing: border-box;
+    z-index: 999;
+    background: rgba(5, 3, 2, 0.85);
+    border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+}
 
-        /* Coordinate custom dei 6 monumenti agganciati al flusso visivo dell'SVG */
-        .item-1 { top: 12%; left: 8%; }
-        .item-2 { top: 6%;  left: 42%; }
-        .item-3 { top: 25%; left: 80%; }
-        .item-4 { top: 68%; left: 52%; }
-        .item-5 { top: 62%; left: 18%; }
-        .item-6 { top: 42%; left: 34%; }
-    </style>
-</head>
+.logo-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffd78f;
+    text-shadow: 0 0 12px rgba(255, 215, 143, 0.6);
+}
 
-<body>
+.nav-desktop {
+    display: flex;
+    gap: 30px;
+}
 
-    <!-- 🖼️ SFONDO DINAMICO: Il video dei turisti ai Cappuccini -->
-    <video class="scene-background-video" autoplay muted loop playsinline>
-        <source src="video/video_cappuccini_turisti (1).webm" type="video/webm">
-    </video>
-    <div class="video-overlay"></div>
+.nav-desktop a {
+    color: #ffd78f;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
 
-    <!-- 👑 DASHBOARD (Identica alla Home) -->
-    <header class="dashboard">
-        <div class="logo-title" data-i18n="menu.title"></div>
+.nav-desktop a:hover {
+    background: rgba(255, 215, 160, 0.15);
+    color: #fff;
+    text-shadow: 0 0 8px #ffd78f;
+}
 
-        <nav class="nav-desktop">
-            <a href="index.html">Home</a> <!-- Link di ritorno dinamico -->
-            <a href="cittadino.html" data-i18n="menu.citizen"></a>
-            <a href="#" data-i18n="menu.about"></a>
-            <a href="#" data-i18n="menu.contact"></a>
-        </nav>
+/* SELETTORE LINGUA */
+.lang-switcher {
+    display: flex;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 160, 0.3);
+}
 
-        <div class="lang-switcher">
-            <button data-lang="it">🇮🇹</button>
-            <button data-lang="en">🇬🇧</button>
-            <button data-lang="fr">🇫🇷</button>
-            <button data-lang="de">🇩🇪</button>
-            <button data-lang="es">🇪🇸</button>
-        </div>
-    </header>
+.lang-switcher button {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: transform 0.2s, background-color 0.2s;
+}
 
-    <!-- 👩‍💼 VIDEO CASTELLANA + TOOLTIP (Identici per dimensioni e posizione alla Home) -->
-    <div class="castellana-video-wrapper">
-        <video class="castellana-video" autoplay muted loop playsinline>
-            <source src="img/castellana_alpha.webm" type="video/webm">
-        </video>
-        <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
-    </div>
+.lang-switcher button:hover {
+    background: rgba(255, 215, 160, 0.2);
+    transform: scale(1.08);
+}
 
-    <!-- 🔘 BOTTONE START ORO -->
-    <div class="start-journey-container" id="startContainer">
-        <button class="gold-start-btn" onclick="startSnakePath()">START</button>
-    </div>
+/* ==========================================================================
+   4. LA CASTELLANA (Identica per Dimensioni e Posizione alla Home)
+   ========================================================================== */
+.castellana-video-wrapper {
+    position: absolute;
+    bottom: 20px;
+    left: 40px; /* Ancorata a sinistra esattamente come nell'index */
+    width: 250px; 
+    z-index: 99;
+}
 
-    <!-- 🐍 PERCORSO A SERPENTE (La linea SVG si dispiega, poi compaiono i monumenti) -->
-    <div class="svg-path-container">
-        <svg viewBox="0 0 1000 600" fill="none" xmlns="http://www.w3.org/2000/svg" class="snake-svg">
-            <!-- La linea parte con stroke-dashoffset uguale a stroke-dasharray per risultare totalmente invisibile -->
-            <path id="snakePath" d="M 100,150 Q 300,50 500,200 T 900,150 T 500,450 T 100,450" 
-                  stroke="#ffd78f" stroke-width="4" stroke-dasharray="2000" stroke-dashoffset="2000" 
-                  style="transition: stroke-dashoffset 4s linear;" />
-        </svg>
+.castellana-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.9));
+}
 
-        <!-- Monumenti 3D/WebM agganciati al percorso -->
-        <div class="path-monument item-1" id="mon1" onclick="selectMonument('castello')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/castello_2.webm" type="video/webm"></video>
-            <span class="satellite-label">Castello</span>
-        </div>
+/* TOOLTIP DELLA CHAT "CLICK TO CHAT" */
+.castellana-tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #050302;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25);
+    cursor: pointer;
+}
 
-        <div class="path-monument item-2" id="mon2" onclick="selectMonument('cappuccini')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/cappuccini_2.webm" type="video/webm"></video>
-            <span class="satellite-label">I Cappuccini</span>
-        </div>
+/* ==========================================================================
+   5. BOTTONE START ORO (Al centro perfetto dello schermo)
+   ========================================================================== */
+.start-journey-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 45;
+}
 
-        <div class="path-monument item-3" id="mon3" onclick="selectMonument('sangiorgio')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/san_giorgio_martire.webm" type="video/webm"></video>
-            <span class="satellite-label">S. Giorgio</span>
-        </div>
+.gold-start-btn {
+    background: linear-gradient(135deg, #ffd78f 0%, #b38f43 100%);
+    border: 1px solid #ffd78f;
+    color: #050302;
+    font-weight: 800;
+    font-size: 1.4rem;
+    padding: 15px 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255, 215, 160, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    letter-spacing: 3px;
+}
 
-        <div class="path-monument item-4" id="mon4" onclick="selectMonument('sandomenico')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/san_domenico.webm" type="video/webm"></video>
-            <span class="satellite-label">S. Domenico</span>
-        </div>
+.gold-start-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(255, 215, 160, 0.7);
+}
 
-        <div class="path-monument item-5" id="mon5" onclick="selectMonument('annunziata')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/annunziata_2.webm" type="video/webm"></video>
-            <span class="satellite-label">L'Annunziata</span>
-        </div>
+/* ==========================================================================
+   6. IL PERCORSO A SERPENTE SVG E I SATELLITI
+   ========================================================================== */
+.svg-path-container {
+    position: absolute;
+    top: 18vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 1100px;
+    height: 68vh;
+    z-index: 10;
+    pointer-events: none; /* Impedisce alla scatola SVG di bloccare i click sui video */
+}
 
-        <div class="path-monument item-6" id="mon6" onclick="selectMonument('badia')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/dettagli_badia.webm" type="video/webm"></video>
-            <span class="satellite-label">Badia</span>
-        </div>
-    </div>
+.snake-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.3));
+}
 
-    <!-- 💬 CHAT DESKTOP (Sincronizzata graficamente con la Home) -->
-    <div class="chat-desktop" id="chat-desktop">
-        <div class="chat-header">
-            <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
-            <button id="close-chat" class="close-chat-btn">✕</button>
-        </div>
+/* Struttura base dei Monumenti (Nascondi all'avvio) */
+.path-monument {
+    position: absolute;
+    width: 115px;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.3) rotate(-10deg);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    z-index: 35;
+    pointer-events: auto; /* Riattiva i click sui singoli video dei monumenti */
+}
 
-        <div class="chat-messages" id="chatBody">
-            <div class="message" data-i18n="chat.msg1"></div>
-            <div class="message" data-i18n="chat.msg2"></div>
-        </div>
+/* Classe attivata da JS al passaggio del serpente */
+.path-monument.visible {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
 
-        <div class="chat-input-row">
-            <input type="text" placeholder="" data-i18n-placeholder="chat.placeholder">
-            <button class="mic-btn">🎤</button>
-        </div>
-    </div>
+.path-monument:hover {
+    transform: scale(1.12) !important;
+    z-index: 40;
+}
 
-    <!-- 🧠 CORE LOGIC & ANIMAZIONI -->
-    <script>
-    // 🎬 Funzione per attivare il percorso a serpente e la comparsa sequenziale dei monumenti
-    function startSnakePath() {
-        document.getElementById('startContainer').style.display = 'none';
-        
-        // Riduce l'offset a 0 per far avanzare la linea dorata progressivamente
-        const path = document.getElementById('snakePath');
-        path.style.strokeDashoffset = '0';
+.satellite-webm {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 6px 15px rgba(0,0,0,0.8));
+}
 
-        // Timer scaglionati che seguono l'avanzamento visivo della linea
-        setTimeout(() => { document.getElementById('mon1').classList.add('visible'); }, 400);
-        setTimeout(() => { document.getElementById('mon2').classList.add('visible'); }, 1100);
-        setTimeout(() => { document.getElementById('mon3').classList.add('visible'); }, 1800);
-        setTimeout(() => { document.getElementById('mon4').classList.add('visible'); }, 2500);
-        setTimeout(() => { document.getElementById('mon5').classList.add('visible'); }, 3200);
-        setTimeout(() => { document.getElementById('mon6').classList.add('visible'); }, 3900);
-    }
+.satellite-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #ffd78f;
+    margin-top: 6px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px #000, 0 0 6px rgba(255, 215, 160, 0.4);
+}
 
-    // 💬 Logica interazione Monumenti -> Chat Premium
-    function selectMonument(type) {
-        const chat = document.getElementById("chat-desktop");
-        const chatTitle = document.getElementById("chatTitle");
-        const chatBody = document.getElementById("chatBody");
-        chat.classList.add("active");
-        
-        let label = "";
-        let desc = "";
-        switch(type) {
-            case 'castello': label = "Il Castello"; desc = "Il castello è un gioiello medievale abbarbicato sulla roccia viva."; break;
-            case 'cappuccini': label = "I Cappuccini"; desc = "Questo luogo sacro racchiude un'atmosfera di quiete d'altri tempi."; break;
-            case 'sangiorgio': label = "San Giorgio"; desc = "La maestosa chiesa madre, cuore pulsante del barocco locale."; break;
-            case 'sandomenico': label = "San Domenico"; desc = "Un tesoro artistico prezioso custodito all'interno del borgo."; break;
-            case 'annunziata': label = "L'Annunziata"; desc = "Splendido esempio di architettura sacra ricca di devozione."; break;
-            case 'badia': label = "Dettagli Badia"; desc = "I finissimi intagli e dettagli unici visibili sulla pietra antica."; break;
-        }
-        
-        chatTitle.innerText = label;
-        chatBody.innerHTML = `
-            <div class="message"><strong>La Castellana:</strong> Benvenuto viandante. ${desc} Per sbloccare la narrazione completa e i segreti di questo luogo, attiva la versione Premium!</div>
-            <div style="text-align:center; margin-top:10px;">
-                <button style="background:linear-gradient(135deg, #ffd78f 0%, #b38f43 100%); border:none; color:#000; font-weight:700; padding:8px 16px; border-radius:6px; cursor:pointer; font-size:0.85rem;">Attiva Premium</button>
-            </div>
-        `;
-    }
+/* 🗺️ Coordinate fisse e fluide dei 6 monumenti lungo le curve del serpente */
+.item-1 { top: 12%; left: 8%; }
+.item-2 { top: 5%;  left: 44%; }
+.item-3 { top: 23%; left: 80%; }
+.item-4 { top: 68%; left: 53%; }
+.item-5 { top: 62%; left: 16%; }
+.item-6 { top: 40%; left: 34%; }
 
-    // Gestione nativa Apertura/Chiusura Chat tramite gli elementi ereditati dalla Home
-    document.addEventListener("DOMContentLoaded", () => {
-        const chat = document.getElementById("chat-desktop");
-        const closeBtn = document.getElementById("close-chat");
-        const openBtn = document.getElementById("chat-open-btn");
+/* ==========================================================================
+   7. INTERFACCIA CHAT FLOATING (Eredita lo stile pulito della Home)
+   ========================================================================== */
+.chat-desktop {
+    position: absolute;
+    bottom: 240px; /* Posizionata sopra l'avatar a sinistra */
+    left: 40px;
+    width: 380px;
+    height: 400px;
+    background: rgba(5, 3, 2, 0.97);
+    border: 2px solid #ffd78f;
+    border-radius: 16px;
+    display: none;
+    flex-direction: column;
+    z-index: 1000; /* Sopra a ogni cosa */
+    box-shadow: 0 0 40px rgba(255, 215, 160, 0.2);
+    overflow: hidden;
+}
 
-        openBtn.addEventListener("click", () => {
-            chat.classList.add("active");
-        });
+.chat-desktop.active {
+    display: flex;
+}
 
-        closeBtn.addEventListener("click", () => {
-            chat.classList.remove("active");
-        });
-    });
-    </script>
+.chat-header {
+    background: rgba(255, 215, 160, 0.08);
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255, 215, 160, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffd78f;
+    font-weight: 600;
+}
 
-    <!-- 🌍 SCRIPT MULTILINGUA (Identico alla Home) -->
-    <script>
-    let currentLang = localStorage.getItem("lang") || "it";
+.close-chat-btn {
+    background: none;
+    border: none;
+    color: #ffd78f;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
 
-    function loadLanguage(lang) {
-        fetch(`../lang/${lang}.json`)
-            .then(res => res.json())
-            .then(data => {
-                document.querySelectorAll("[data-i18n]").forEach(el => {
-                    const key = el.getAttribute("data-i18n");
-                    const text = key.split('.').reduce((o,i)=>o[i], data);
-                    if (text) el.innerHTML = text;
-                });
-                document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-                    const key = el.getAttribute("data-i18n-placeholder");
-                    const text = key.split('.').reduce((o,i)=>o[i], data);
-                    if (text) el.placeholder = text;
-                });
-            });
-        localStorage.setItem("lang", lang);
-    }
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
 
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".lang-switcher button").forEach(btn => {
-            btn.addEventListener("click", () => {
-                loadLanguage(btn.dataset.lang);
-            });
-        });
-        loadLanguage(currentLang);
-    });
-    </script>
+.message {
+    background: rgba(255, 215, 160, 0.05);
+    border: 1px solid rgba(255, 215, 160, 0.15);
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #fff;
+}
 
-</body>
-</html>
+.chat-input-row {
+    padding: 14px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(255, 215, 160, 0.15);
+    background: #000;
+}
+
+.chat-input-row input {
+    flex: 1;
+    background: #111;
+    border: 1px solid rgba(255, 215, 160, 0.4);
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+}
+
+.mic-btn {
+    background: transparent;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
