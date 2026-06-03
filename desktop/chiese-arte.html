@@ -13,11 +13,26 @@
         </video>
     </div>
 
+    <!-- 👑 DASHBOARD -->
     <header class="dashboard">
-        <div class="logo-title">Amunì Tourism</div>
+        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+        
         <nav class="nav-desktop">
             <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item" data-i18n="menu.about">About</a>
+            <a href="contact.html" class="nav-item" data-i18n="menu.contact">Contact</a>
         </nav>
+        
+        <div class="header-right-actions">
+            <div class="lang-switcher">
+                <button data-lang="it" class="active">🇮🇹</button>
+                <button data-lang="en">🇬🇧</button>
+                <button data-lang="fr">🇫🇷</button>
+                <button data-lang="de">🇩🇪</button>
+                <button data-lang="es">🇪🇸</button>
+            </div>
+            <button class="home-btn" onclick="window.location.href='index.html'">Indietro</button>
+        </div>
     </header>
 
     <main class="castle-layout">
