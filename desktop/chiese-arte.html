@@ -101,6 +101,46 @@
             </div>
         </div>
     </section>
+    <!-- SCRIPT: MUSICA PARTE AL PRIMO TOCCO -->
+    <script>
+        const audio = document.getElementById("bg-music");
+        audio.volume = 0.5;
+
+        let musicStarted = false;
+
+        function startMusic() {
+            if (!musicStarted) {
+                audio.play().then(() => {
+                    musicStarted = true;
+                }).catch(() => {
+                    setTimeout(() => {
+                        audio.play();
+                    }, 200);
+                });
+
+                document.removeEventListener("touchstart", startMusic);
+                document.removeEventListener("click", startMusic);
+            }
+        }
+
+        document.addEventListener("touchstart", startMusic, { once: true });
+        document.addEventListener("click", startMusic, { once: true });
+    </script>
+
+    <!-- SCRIPT: CONTROLLO AUDIO ON/OFF -->
+    <script>
+        const toggleBtn = document.getElementById("toggle-music");
+
+        toggleBtn.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play();
+                toggleBtn.textContent = "🔈";
+            } else {
+                audio.pause();
+                toggleBtn.textContent = "🔇";
+            }
+        });
+    </script>
 
     <!-- Script Multilingua -->
     <script>
