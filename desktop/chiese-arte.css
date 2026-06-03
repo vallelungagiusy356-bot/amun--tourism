@@ -1,42 +1,32 @@
 /* ==========================================================================
    1. RESET E IMPOSTAZIONI DI BASE
    ========================================================================== */
-html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 100vh; /* Cambiato da height a min-height */
+    min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
     color: #ffe7b3;
-    background-color: #050302; 
-    overflow-x: hidden; 
-    position: relative; /* Fondamentale per mantenere il posizionamento dei figli */
+    background-color: transparent; 
 }
 
-/* 2. SFONDO VIDEO DINAMICO FLUIDO */
+/* ==========================================================================
+   2. SFONDO VIDEO DINAMICO FLUIDO
+   ========================================================================== */
 .scene-background-container {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100vw;   /* 100% della larghezza della finestra */
-    height: 100vh;  /* 100% dell'altezza della finestra */
+    position: fixed;
+    inset: 0;
     z-index: -9999;
     overflow: hidden;
 }
 
 .scene-background-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Fondamentale: riempie lo spazio ritagliando se necessario */
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
     display: block;
 }
-
 
 .scene-overlay {
     position: absolute;
@@ -144,7 +134,8 @@ body {
     background: #ffd78f;
     color: #050302;
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
-    }
+}
+
 /* 4. COLONNA DESTRA: CASTELLANA E CHAT */
 .castle-interactive-zone {
     position: fixed;   
