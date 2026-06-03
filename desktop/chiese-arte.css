@@ -6,31 +6,53 @@ html, body {
     overflow-x: hidden; /* Blocca lo scorrimento laterale che crea lo spazio bianco */
 }
 
-/* Assicura che anche il contenitore del video non crei bordi bianchi */
+/* Sfondo dinamico: z-index negativo forzato */
 .scene-background-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1; /* Mette il video SOTTO tutto il resto */
+    pointer-events: none; /* Permette ai click di passare "attraverso" il video */
     overflow: hidden;
 }
 
-.scene-background-video { width: 100vw; height: 100vh; object-fit: cover; }
+.scene-background-video {
+    width: 100vw; height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+/* Castellana: z-index positivo per stare SOPRA */
+.castellana-video-container {
+    position: relative;
+    z-index: 10; /* Deve essere maggiore di -1 */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+}
 
 /* DASHBOARD E LAYOUT (Copiali IDENTICI dal castello.css) */
 .dashboard {
     position: fixed;
-    top: 0;
-    left: 0; /* Aggiunto */
+    top: 0; left: 0;
     width: 100%;
     height: 75px;
-    z-index: 9999; /* Aumentato per stare sopra TUTTO */
-    background: rgba(5, 3, 2, 0.95); /* Leggermente più scuro per coprire meglio */
+    z-index: 999;
+    background: rgba(5, 3, 2, 0.85);
     display: flex;
-    align-items: center;
-    padding: 0 40px; /* Spazio interno per non attaccare il logo ai bordi */
-    box-sizing: border-box; /* Fondamentale: impedisce alla dashboard di "sforare" */
+    align-items: center; /* Allinea in verticale */
+    padding: 0 40px;
+    box-sizing: border-box; /* Evita che il padding rompa la larghezza */
+    color: white; /* Assicuriamoci che il testo sia visibile */
+}
+
+/* Sistema il link della Home */
+.nav-item {
+    color: #fff; /* Bianco, così stacca sul nero */
+    text-decoration: none;
+    font-size: 1.2rem;
 }
 
 /* GLASS CARD (Il tuo stile) */
