@@ -1,15 +1,15 @@
 /* ==========================================================================
    1. RESET E IMPOSTAZIONI DI BASE
    ========================================================================== */
-body {
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh; /* Forza l'altezza a non superare lo schermo */
-    overflow-x: hidden; /* Evita barre di scorrimento orizzontali */
-    position: relative;
+    min-height: 100vh;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #ffe7b3;
+    background-color: transparent; 
 }
-
 
 /* ==========================================================================
    2. SFONDO VIDEO DINAMICO FLUIDO
