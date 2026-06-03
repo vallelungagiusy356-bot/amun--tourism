@@ -2,19 +2,21 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Amunì Tourism - Chiese e Arte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="castle.title">Le Chiese</title>
     <link rel="stylesheet" href="chiese-arte.css">
 </head>
 <body>
 
-    <!-- Sfondo dinamico -->
-    <div class="scene-background-container">
-        <video autoplay loop muted playsinline class="scene-background-video">
-            <source src="img/video_cappuccini.webm" type="video/webm">
-        </video>
-    </div>
+    <!-- 🎬 SFONDO DINAMICO -->
+        <div class="scene-background-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -9999; background: black;">
+    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+        <source src="img/video_cappuccini.webm" type="video/mp4">
+    </video>
+</div>
 
-    <!-- Dashboard superiore -->
+
+    <!-- 👑 DASHBOARD -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         
@@ -35,7 +37,6 @@
             <button class="home-btn" onclick="window.location.href='index.html'">Indietro</button>
         </div>
     </header>
-
     <!-- Griglia Monumenti -->
     <main class="monuments-grid">
         <section class="glass-card">
