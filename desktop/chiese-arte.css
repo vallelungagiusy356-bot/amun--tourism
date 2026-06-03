@@ -206,3 +206,39 @@ html, body {
     align-items: center;
     width: 100%;
 }
+
+/* Container a diamante */
+.monuments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonne sopra */
+    gap: 40px;
+    padding: 100px 50px;
+    margin-top: 50px;
+}
+
+/* Distribuzione specifica per il diamante 3-2 */
+.monuments-grid .glass-card:nth-child(4),
+.monuments-grid .glass-card:nth-child(5) {
+    grid-column: span 1.5; /* Centra le ultime due sotto le prime tre */
+    justify-self: center;
+}
+
+.glass-card {
+    background: rgba(0, 0, 0, 0.4); /* Sfondo più scuro per risaltare l'oro */
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 215, 160, 0.5); /* Cornice oro sottile */
+    border-radius: 25px;
+    padding: 30px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0 10px rgba(255, 215, 160, 0.1);
+}
+
+/* Effetto Glow al passaggio del mouse */
+.glass-card:hover {
+    border-color: rgba(255, 215, 160, 1);
+    box-shadow: 0 0 30px rgba(255, 215, 160, 0.4), 
+                inset 0 0 15px rgba(255, 215, 160, 0.2);
+    transform: scale(1.05);
+}
