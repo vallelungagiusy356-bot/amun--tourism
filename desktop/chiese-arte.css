@@ -3,17 +3,20 @@
    ========================================================================== */
 html {
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh; /* Forza l'altezza al 100% della finestra */
+    min-height: 100vh; /* Cambiato da height a min-height */
     font-family: "Segoe UI", system-ui, sans-serif;
     color: #ffe7b3;
-    background-color: #050302; /* Colore di fondo solido */
-    overflow-x: hidden; /* Blocca lo scroll orizzontale */
+    background-color: #050302; 
+    overflow-x: hidden; 
+    position: relative; /* Fondamentale per mantenere il posizionamento dei figli */
 }
 
 /* 2. SFONDO VIDEO DINAMICO FLUIDO */
