@@ -135,18 +135,35 @@ html, body {
     color: #050302;
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
     }
-    /* ==========================================================================
-   4. COLONNA DESTRA: CASTELLANA
-   ========================================================================== */
+/* 4. COLONNA DESTRA: CASTELLANA */
 .castle-interactive-zone {
-    flex: 1;
-    max-width: 50%;
+    position: fixed;   /* FONDAMENTALE: La toglie dal flusso del documento */
+    bottom: 20px;      /* Distanza dal bordo inferiore */
+    right: 20px;       /* Distanza dal bordo destro */
+    z-index: 1000;     /* La tiene sopra tutto */
+    width: 250px;      /* Larghezza fissa per la Castellana */
     display: flex;
+    flex-direction: column;
     align-items: flex-end;
-    justify-content: flex-end;
-    position: relative;
-    padding-bottom: 10px;
 }
+
+/* Rimuovi la gestione della posizione della chat da dentro la zona */
+.chat-desktop {
+    position: absolute; 
+    bottom: 280px;      /* La chat apparirà sopra la Castellana */
+    right: 0;
+    width: 380px;
+    height: 400px;
+    background: rgba(5, 3, 2, 0.97);
+    border: 2px solid #ffd78f;
+    border-radius: 16px;
+    display: none;
+    flex-direction: column;
+    z-index: 99;
+    box-shadow: 0 0 40px rgba(255, 215, 160, 0.2);
+    overflow: hidden;
+}
+
 
 .castellana-video-container {
     display: flex;
