@@ -19,8 +19,19 @@ html, body {
 .scene-background-video { width: 100vw; height: 100vh; object-fit: cover; }
 
 /* DASHBOARD E LAYOUT (Copiali IDENTICI dal castello.css) */
-.dashboard { position: fixed; top: 0; width: 100%; height: 75px; z-index: 999; background: rgba(5, 3, 2, 0.85); }
-.castle-layout { display: flex; padding: 100px 60px; z-index: 10; }
+.dashboard {
+    position: fixed;
+    top: 0;
+    left: 0; /* Aggiunto */
+    width: 100%;
+    height: 75px;
+    z-index: 9999; /* Aumentato per stare sopra TUTTO */
+    background: rgba(5, 3, 2, 0.95); /* Leggermente più scuro per coprire meglio */
+    display: flex;
+    align-items: center;
+    padding: 0 40px; /* Spazio interno per non attaccare il logo ai bordi */
+    box-sizing: border-box; /* Fondamentale: impedisce alla dashboard di "sforare" */
+}
 
 /* GLASS CARD (Il tuo stile) */
 .glass-card {
