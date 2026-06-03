@@ -181,3 +181,25 @@ html, body {
     gap: 15px;
 }
 .card-video { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; }
+
+/* La Gabbia della Castellana (Il wrapper) */
+.castellana-video-wrapper {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    z-index: 100;
+    width: 250px;       /* DIMENSIONE FISSA: non può superare questo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* La Castellana stessa: deve obbedire al wrapper */
+.castellana-video {
+    width: 100%;        /* Prende tutto lo spazio del wrapper (250px) */
+    height: auto;       /* Mantiene le proporzioni */
+    cursor: pointer;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
+    transition: 0.25s;
+    display: block;     /* Evita spazi bianchi sotto il video */
+}
