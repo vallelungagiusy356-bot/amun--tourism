@@ -13,7 +13,6 @@
         </video>
     </div>
 
-    <!-- 👑 DASHBOARD -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         
@@ -35,41 +34,36 @@
         </div>
     </header>
 
-    <main class="castle-layout">
-        
-        <section class="castle-info-panel">
-            <h2>Arte e Chiese</h2>
-            <div class="castle-text-content">
-                <section class="glass-card">
-                    <video autoplay muted loop playsinline class="card-video"><source src="img/cappuccini_2.webm" type="video/webm"></video>
-                    <div class="card-content">
-                        <h3>I Cappuccini</h3>
-                        <p>Quiete e vista mozzafiato.</p>
-                    </div>
-                </section>
-                <section class="glass-card">
-                    <video autoplay muted loop playsinline class="card-video"><source src="img/san_giorgio_martire.webm" type="video/webm"></video>
-                    <div class="card-content">
-                        <h3>S. Giorgio</h3>
-                        <p>Cuore del barocco locale.</p>
-                    </div>
-                </section>
-            </div>
+    <main class="monuments-grid">
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video"><source src="img/cappuccini_2.webm" type="video/webm"></video>
+            <div class="card-content"><h3>I Cappuccini</h3><p>Quiete e vista mozzafiato.</p></div>
         </section>
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video"><source src="img/san_giorgio_martire.webm" type="video/webm"></video>
+            <div class="card-content"><h3>S. Giorgio</h3><p>Cuore del barocco locale.</p></div>
+        </section>
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video"><source src="img/badia.webm" type="video/webm"></video>
+            <div class="card-content"><h3>Badia</h3><p>Storia e spiritualità.</p></div>
+        </section>
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video"><source src="img/annunziata.webm" type="video/webm"></video>
+            <div class="card-content"><h3>Annunziata</h3><p>Dettagli artistici.</p></div>
+        </section>
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video"><source src="img/santa_maria_angeli.webm" type="video/webm"></video>
+            <div class="card-content"><h3>S. Maria Angeli</h3><p>Luogo senza tempo.</p></div>
+        </section>
+    </main>
 
-        <section class="castle-interactive-zone">
-            <div class="castellana-video-container">
-                    <div class="castellana-video-wrapper">
+    <section class="castellana-video-wrapper">
+        <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
         <video class="castellana-video" autoplay muted loop playsinline>
             <source src="img/castellana_alpha.webm" type="video/webm">
         </video>
+        <div class="chat-desktop" id="chatDesktop">...</div>
+    </section>
 
-        <!-- ⭐ NUOVO BOTTONE CLICK HERE ⭐ -->
-        <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
-    </div>
-
-            <div class="chat-desktop" id="chatDesktop">...</div>
-        </section>
-    </main>
 </body>
 </html>
