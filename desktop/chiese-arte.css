@@ -181,27 +181,3 @@ html, body {
     gap: 15px;
 }
 .card-video { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; }
-
-/* 1. Limitiamo il contenitore della Castellana */
-.castellana-video-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    width: 100%;
-}
-
-/* 2. "Gabbia" per il video della Castellana */
-.castellana-video {
-    width: 100%; 
-    max-width: 250px; /* La Castellana non supererà mai i 250px di larghezza */
-    height: auto;     /* Mantiene le proporzioni originali */
-    display: block;
-}
-
-/* 3. Assicuriamoci che il wrapper non forzi dimensioni strane */
-.castellana-video-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
