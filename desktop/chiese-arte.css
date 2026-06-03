@@ -1,64 +1,40 @@
-/* 1. RESET E SFONDO (Pulito e unico) */
+/* 1. Forza il body a non avere colori che coprono il video */
 html, body {
     margin: 0; padding: 0; width: 100%; height: 100%;
-    background-color: #050302;
+    background: transparent !important; 
     overflow: hidden;
-    font-family: sans-serif;
 }
 
+/* 2. Il tuo CSS del video (che funzionava) con una piccola aggiunta di sicurezza */
 .bg-video {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    object-fit: cover; 
-    z-index: -100; /* Deve stare sul fondo assoluto */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    object-fit: cover;
+    z-index: -10;
+    display: block !important; /* Forza il browser a mostrarlo */
 }
 
-.video-overlay {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(5, 3, 2, 0.4);
-    z-index: -50;
-}
-
-/* 2. DASHBOARD */
-.dashboard {
-    position: absolute; top: 0; width: 100%; height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 20px; box-sizing: border-box;
-    background: rgba(5, 3, 2, 0.6);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.3);
-    z-index: 100;
-}
-
-/* 3. CASTELLANA */
-.castellana-wrapper {
-    position: absolute; top: 15vh; left: 2vw; width: 30vw; max-width: 130px;
-    z-index: 50;
-}
-.castellana-video { width: 100%; height: auto; }
-
-/* 4. MONUMENTI */
-.monument-list {
-    position: absolute; top: 12vh; right: 2vw; width: 55vw; max-width: 280px;
-    display: flex; flex-direction: column; gap: 10px;
-    z-index: 50;
-}
-
+/* 3. Card Effetto Vetro (Le tue originali) */
 .glass-card {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 215, 160, 0.4);
-    border-radius: 15px; padding: 8px;
-    display: flex; align-items: center; gap: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 160, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    z-index: 10; /* Le mettiamo sopra al video */
 }
 
-.card-video { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid #ffd78f; }
-.card-content h2 { color: #ffd78f; font-size: 0.8rem; margin: 0; }
-.card-content p { color: #fff; font-size: 0.6rem; margin: 0; }
-
-/* 5. CHAT PREMIUM */
-.chat-premium {
-    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-    width: 90%; background: rgba(0,0,0,0.85); border: 1px solid #ffd78f;
-    padding: 15px; border-radius: 15px; text-align: center; color: #fff;
-    z-index: 1000;
+/* Glow Oro */
+.glass-card:hover {
+    box-shadow: 0 0 20px rgba(255, 215, 160, 0.5);
 }
+
+.card-video { width: 100px; height: 100px; border-radius: 10px; object-fit: cover; }
