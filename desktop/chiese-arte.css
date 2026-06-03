@@ -1,116 +1,140 @@
-
-/* RESET E SFONDO (Copri e incolla dal file castello.css) */
+/* ==========================================================================
+   1. RESET E IMPOSTAZIONI DI BASE
+   ========================================================================== */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* Blocca lo scorrimento laterale che crea lo spazio bianco */
+    min-height: 100vh;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #ffe7b3;
+    background-color: transparent; 
 }
 
-/* Sfondo dinamico: z-index negativo forzato */
+/* ==========================================================================
+   2. SFONDO VIDEO DINAMICO FLUIDO
+   ========================================================================== */
 .scene-background-container {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: -1; /* Mette il video SOTTO tutto il resto */
-    pointer-events: none; /* Permette ai click di passare "attraverso" il video */
+    inset: 0;
+    z-index: -9999;
     overflow: hidden;
 }
 
 .scene-background-video {
-    width: 100vw; height: 100vh;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
-    position: absolute;
-    top: 0; left: 0;
+    display: block;
 }
 
-   /* ============================
-       DASHBOARD ELEGANTE NERA + ORO
-       ============================ */
-    .dashboard {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 70px;
-        background: rgba(0, 0, 0, 0.65);
-        border-bottom: 2px solid rgba(255, 215, 160, 0.85);
-        backdrop-filter: blur(18px) saturate(200%);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 40px;
-        z-index: 20;
-        box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
-    }
+.scene-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        rgba(5, 3, 2, 0.92) 0%, 
+        rgba(5, 3, 2, 0.65) 55%, 
+        rgba(5, 3, 2, 0.85) 100%);
+    backdrop-filter: blur(1px);
+    z-index: -9998;
+}
 
-    .dashboard .logo-title {
-        font-size: 1.55rem;
-        font-weight: 700;
-        color: #ffd78f;
-        text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
-    }
+/* ==========================================================================
+   3. DASHBOARD DESKTOP PREMIUM
+   ========================================================================== */
+.dashboard { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 40px;
+    box-sizing: border-box;
+    z-index: 999;
+    background: rgba(5, 3, 2, 0.85);
+    border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+}
 
-    /* LINK MENU (Chi siamo, Cittadino del borgo, Contatti) */
-    .nav-desktop {
-        display: flex;
-        gap: 22px;
-    }
+.logo-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffd78f;
+    text-shadow: 0 0 12px rgba(255, 215, 143, 0.6);
+}
 
-    .nav-desktop a {
-        color: #ffd78f;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 10px 18px;
-        border-radius: 12px;
-        background: rgba(0, 0, 0, 0.55);
-        border: 1px solid rgba(255, 215, 160, 0.75);
-        box-shadow:
-            0 0 14px rgba(255, 215, 160, 0.55),
-            inset 0 0 8px rgba(255, 215, 160, 0.35);
-        transition: 0.2s;
-    }
+.nav-desktop {
+    display: flex;
+    gap: 30px;
+}
 
-    .nav-desktop a:hover {
-        background: rgba(255, 215, 160, 0.15);
-        box-shadow:
-            0 0 22px rgba(255, 215, 160, 0.85),
-            inset 0 0 12px rgba(255, 215, 160, 0.45);
-        transform: scale(1.05);
-    }
+.nav-item {
+    color: #ffd78f;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
 
-    /* ============================
-       PULSANTI LINGUA — NERI + ORO
-       ============================ */
-    .lang-switcher {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-    }
+.nav-item:hover {
+    background: rgba(255, 215, 160, 0.15);
+    color: #fff;
+    text-shadow: 0 0 8px #ffd78f;
+}
 
-    .lang-switcher button {
-        width: 42px;
-        height: 42px;
-        font-size: 1.2rem;
-        border-radius: 10px;
-        background: rgba(0, 0, 0, 0.65);
-        border: 1px solid rgba(255, 215, 160, 0.85);
-        color: #ffd78f;
-        cursor: pointer;
-        box-shadow:
-            0 0 14px rgba(255, 215, 160, 0.55),
-            inset 0 0 8px rgba(255, 215, 160, 0.45);
-        transition: 0.2s;
-    }
+.header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
-    .lang-switcher button:hover {
-        background: rgba(255, 215, 160, 0.15);
-        box-shadow:
-            0 0 22px rgba(255, 215, 160, 0.85),
-            inset 0 0 12px rgba(255, 215, 160, 0.55);
-        transform: scale(1.05);
-    }
+.lang-switcher {
+    display: flex;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 160, 0.3);
+}
 
+.lang-switcher button {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.lang-switcher button:hover,
+.lang-switcher button.active {
+    background: rgba(255, 215, 160, 0.2);
+    transform: scale(1.08);
+}
+
+.home-btn {
+    background: transparent;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+    background: #ffd78f;
+    color: #050302;
+    box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
+    }
     /* ============================
        VIDEO CASTELLANA + TOOLTIP
        ============================ */
