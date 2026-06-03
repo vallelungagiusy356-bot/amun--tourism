@@ -1,63 +1,25 @@
-/* ==========================================================================
-   CHIESE-ARTE.CSS - VERSIONE COMPLETA E OTTIMIZZATA
-   ========================================================================== */
+/* RESET E SFONDO (Copri e incolla dal file castello.css) */
+html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: transparent; }
 
-/* 1. RESET E BASE */
-html, body {
-    margin: 0; padding: 0; width: 100%; min-height: 100vh;
-    background-color: #050302;
-    font-family: "Segoe UI", sans-serif;
-    color: #ffe7b3;
+.scene-background-container {
+    position: fixed; inset: 0; z-index: -9999; overflow: hidden;
 }
+.scene-background-video { width: 100vw; height: 100vh; object-fit: cover; }
 
-/* 2. SFONDO VIDEO DINAMICO (Il cuore che non doveva sparire) */
-.bg-video {
-    position: fixed; inset: 0;
-    width: 100vw; height: 100vh;
-    object-fit: cover;
-    z-index: -10;
-    display: block;
-}
+/* DASHBOARD E LAYOUT (Copiali IDENTICI dal castello.css) */
+.dashboard { position: fixed; top: 0; width: 100%; height: 75px; z-index: 999; background: rgba(5, 3, 2, 0.85); }
+.castle-layout { display: flex; padding: 100px 60px; z-index: 10; }
 
-/* 3. DASHBOARD (Ripresa dallo stile Castello) */
-.dashboard { 
-    position: fixed; top: 0; left: 0; width: 100%; height: 75px; 
-    display: flex; align-items: center; justify-content: space-between; 
-    padding: 0 40px; box-sizing: border-box;
-    z-index: 999;
-    background: rgba(5, 3, 2, 0.85);
-    border-bottom: 2px solid rgba(255, 215, 160, 0.85);
-}
-
-.logo-title { font-size: 1.5rem; font-weight: 700; color: #ffd78f; }
-
-/* 4. LAYOUT MAIN (Griglia a due colonne) */
-.chiese-layout {
-    display: flex;
-    padding: 100px 5% 50px 5%;
-    gap: 50px;
-    align-items: flex-start;
-    min-height: calc(100vh - 75px);
-}
-
-.monument-panel { flex: 1; display: flex; flex-direction: column; gap: 20px; }
-
-/* 5. GLASS CARD (Stile raffinato) */
+/* GLASS CARD (Il tuo stile) */
 .glass-card {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 215, 160, 0.3);
-    border-radius: 15px;
+    border-radius: 20px;
     padding: 15px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
-
-.card-video { width: 100px; height: 100px; border-radius: 10px; object-fit: cover; }
-.card-content h3 { margin: 0; color: #ffd78f; }
-.card-content p { margin: 5px 0 0; font-size: 0.9rem; }
-
-/* 6. CASTELLANA (Colonna destra) */
-.interactive-zone { flex: 1; display: flex; justify-content: center; position: sticky; top: 100px; }
-.castellana-video { width: 300px; height: auto; }
+.card-video { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; }
