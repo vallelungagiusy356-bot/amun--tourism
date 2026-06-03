@@ -29,11 +29,16 @@ body {
 }
 
 .scene-background-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Garantisce il riempimento totale senza distorsioni */
-    display: block;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
 }
+
 
 .scene-overlay {
     position: absolute;
