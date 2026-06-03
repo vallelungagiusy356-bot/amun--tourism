@@ -1,40 +1,63 @@
-/* 1. Forza il body a non avere colori che coprono il video */
+/* ==========================================================================
+   CHIESE-ARTE.CSS - VERSIONE COMPLETA E OTTIMIZZATA
+   ========================================================================== */
+
+/* 1. RESET E BASE */
 html, body {
-    margin: 0; padding: 0; width: 100%; height: 100%;
-    background: transparent !important; 
-    overflow: hidden;
+    margin: 0; padding: 0; width: 100%; min-height: 100vh;
+    background-color: #050302;
+    font-family: "Segoe UI", sans-serif;
+    color: #ffe7b3;
 }
 
-/* 2. Il tuo CSS del video (che funzionava) con una piccola aggiunta di sicurezza */
+/* 2. SFONDO VIDEO DINAMICO (Il cuore che non doveva sparire) */
 .bg-video {
-    position: fixed;
-    top: 0; left: 0;
+    position: fixed; inset: 0;
     width: 100vw; height: 100vh;
     object-fit: cover;
     z-index: -10;
-    display: block !important; /* Forza il browser a mostrarlo */
+    display: block;
 }
 
-/* 3. Card Effetto Vetro (Le tue originali) */
+/* 3. DASHBOARD (Ripresa dallo stile Castello) */
+.dashboard { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 75px; 
+    display: flex; align-items: center; justify-content: space-between; 
+    padding: 0 40px; box-sizing: border-box;
+    z-index: 999;
+    background: rgba(5, 3, 2, 0.85);
+    border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+}
+
+.logo-title { font-size: 1.5rem; font-weight: 700; color: #ffd78f; }
+
+/* 4. LAYOUT MAIN (Griglia a due colonne) */
+.chiese-layout {
+    display: flex;
+    padding: 100px 5% 50px 5%;
+    gap: 50px;
+    align-items: flex-start;
+    min-height: calc(100vh - 75px);
+}
+
+.monument-panel { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+
+/* 5. GLASS CARD (Stile raffinato) */
 .glass-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 215, 160, 0.3);
-    border-radius: 20px;
-    padding: 20px;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 500px;
+    border-radius: 15px;
+    padding: 15px;
     display: flex;
     align-items: center;
-    gap: 15px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    z-index: 10; /* Le mettiamo sopra al video */
-}
-
-/* Glow Oro */
-.glass-card:hover {
-    box-shadow: 0 0 20px rgba(255, 215, 160, 0.5);
+    gap: 20px;
 }
 
 .card-video { width: 100px; height: 100px; border-radius: 10px; object-fit: cover; }
+.card-content h3 { margin: 0; color: #ffd78f; }
+.card-content p { margin: 5px 0 0; font-size: 0.9rem; }
+
+/* 6. CASTELLANA (Colonna destra) */
+.interactive-zone { flex: 1; display: flex; justify-content: center; position: sticky; top: 100px; }
+.castellana-video { width: 300px; height: auto; }
