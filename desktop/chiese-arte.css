@@ -114,38 +114,22 @@ html, body {
        VIDEO CASTELLANA + TOOLTIP
        ============================ */
     .castellana-video-wrapper {
-    position: relative;
-    width: 100%;
-    margin-top: 300px;
+    position: fixed; /* La mantiene fissa mentre scrolli */
+    top: 80px;       /* La sposta subito sotto la dashboard (che è alta 70px) */
+    right: 20px;     /* La ancora a destra */
     display: flex;
-    justify-content: flex-start;
-    padding-left: 6%;
-    z-index: 10 !important;
-    }
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;    /* Assicura che sia sopra ogni cosa */
+}
 
-    .castellana-video {
-        width: 28vw;          /* più piccola */
-        max-width: 320px;
-        cursor: pointer;
-        z-index: 11;
-        background: transparent !important;
-        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4)); /* ombra morbida, niente glow dorato */
-        transition: 0.25s;
-    }
-
-    .castellana-video:hover {
-        transform: scale(1.03);
-    }
-
-    .castellana-tooltip {
+/* Facciamo in modo che il tooltip "Click to chat" non si sovrapponga */
+.castellana-tooltip {
     position: absolute;
-    top: -40px;
-    left: 6%;
-    padding: 12px 26px;
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.9);
-    border-radius: 14px;
-
+    top: -50px;      /* Spostato leggermente più in alto */
+    left: auto;
+    right: 0;        /* Allineato a destra come la Castellana */
+    white-space: nowrap; /* Impedisce al testo di andare a capo */
     color: #ffd78f;
     font-size: 1.1rem;
     font-weight: 700;
@@ -161,13 +145,29 @@ html, body {
     z-index: 25;
     }
 
-/* Effetto pulsazione */
-@keyframes clickHerePulse {
+   /* Effetto pulsazione */
+   @keyframes clickHerePulse {
     0% { opacity: 0; transform: scale(0.95); }
     20% { opacity: 1; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.05); }
     100% { opacity: 0; transform: scale(0.95); }
 
+
+    .castellana-video {
+        width: 28vw;          /* più piccola */
+        max-width: 320px;
+        cursor: pointer;
+        z-index: 11;
+        background: transparent !important;
+        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4)); /* ombra morbida, niente glow dorato */
+        transition: 0.25s;
+    }
+
+    .castellana-video:hover {
+        transform: scale(1.03);
+    }
+
+    
 /* GLASS CARD (Il tuo stile) */
 .glass-card {
     background: rgba(255, 255, 255, 0.1);
