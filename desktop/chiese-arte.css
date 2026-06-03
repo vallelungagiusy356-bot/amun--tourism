@@ -135,101 +135,61 @@ html, body {
     color: #050302;
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
     }
-    /* ============================
-       VIDEO CASTELLANA + TOOLTIP
-       ============================ */
-    .castellana-video-wrapper {
-    position: fixed; /* La mantiene fissa mentre scrolli */
-    top: 80px;       /* La sposta subito sotto la dashboard (che è alta 70px) */
-    right: 20px;     /* La ancora a destra */
+    /* ==========================================================================
+   6. COLONNA DESTRA: CASTELLANA
+   ========================================================================== */
+.castle-interactive-zone {
+    flex: 1;
+    max-width: 50%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 100;    /* Assicura che sia sopra ogni cosa */
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: relative;
+    padding-bottom: 10px;
 }
 
-/* Facciamo in modo che il tooltip "Click to chat" non si sovrapponga */
-.castellana-tooltip {
-    position: absolute;
-    top: -50px;      /* Spostato leggermente più in alto */
-    left: auto;
-    right: 0;        /* Allineato a destra come la Castellana */
-    white-space: nowrap; /* Impedisce al testo di andare a capo */
-    color: #ffd78f;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-shadow: 0 0 12px rgba(255, 215, 160, 1);
-
-    box-shadow:
-        0 0 22px rgba(255, 215, 160, 0.85),
-        inset 0 0 12px rgba(255, 215, 160, 0.45);
-
-    cursor: pointer;
-    opacity: 1;
-    animation: clickHerePulse 2.6s ease-in-out infinite;
-    z-index: 25;
-    }
-
-   /* Effetto pulsazione */
-   @keyframes clickHerePulse {
-    0% { opacity: 0; transform: scale(0.95); }
-    20% { opacity: 1; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 0; transform: scale(0.95); }
-
-
-    .castellana-video {
-        width: 28vw;          /* più piccola */
-        max-width: 320px;
-        cursor: pointer;
-        z-index: 11;
-        background: transparent !important;
-        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4)); /* ombra morbida, niente glow dorato */
-        transition: 0.25s;
-    }
-
-    .castellana-video:hover {
-        transform: scale(1.03);
-    }
-
-    
-/* GLASS CARD (Il tuo stile) */
-.glass-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 160, 0.3);
-    border-radius: 20px;
-    padding: 15px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-.card-video { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; }
-
-/* 1. Limitiamo il contenitore della Castellana */
 .castellana-video-container {
     display: flex;
-    justify-content: center;
     align-items: flex-end;
-    width: 100%;
 }
 
-/* 2. "Gabbia" per il video della Castellana */
-.castellana-video {
-    width: 100%; 
-    max-width: 250px; /* La Castellana non supererà mai i 250px di larghezza */
-    height: auto;     /* Mantiene le proporzioni originali */
-    display: block;
-}
-
-/* 3. Assicuriamoci che il wrapper non forzi dimensioni strane */
 .castellana-video-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    width: 250px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
+.castellana-video-wrapper:hover {
+    transform: scale(1.05);
+}
+
+/* FORZATURA DIMENSIONI CASTELLANA */
+.castellana-video {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.9));
+}
+
+.castellana-tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #050302;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25);
+    animation: pulse 2s infinite;
+}
+    
+
 
 /* Container a diamante */
 .monuments-grid {
