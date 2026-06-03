@@ -2,70 +2,57 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - Chiese e Arte</title>
     <link rel="stylesheet" href="chiese-arte.css">
 </head>
 <body>
 
-    <video class="bg-video" autoplay muted loop playsinline>
-        <source src="img/video_cappuccini.webm" type="video/webm">
-    </video>
+    <div class="scene-background-container">
+        <video autoplay loop muted playsinline class="scene-background-video">
+            <source src="img/video_cappuccini.webm" type="video/webm">
+        </video>
+    </div>
 
     <header class="dashboard">
         <div class="logo-title">Amunì Tourism</div>
-        <nav>
-            <a href="cittadino.html">Cittadino</a>
-            <a href="#">Chi siamo</a>
-            <a href="#">Contatti</a>
-            <div class="lang-switcher">🇮🇹 🇬🇧 🇫🇷 🇩🇪</div>
+        <nav class="nav-desktop">
+            <a href="index.html" class="nav-item">Home</a>
         </nav>
     </header>
 
-    <main class="chiese-layout">
+    <main class="castle-layout">
         
-        <section class="monument-panel">
-            <h2 style="color: #ffd78f;">Arte e Chiese</h2>
-            
-            <section class="glass-card">
-                <video autoplay muted loop playsinline class="card-video"><source src="img/cappuccini_2.webm" type="video/webm"></video>
-                <div class="card-content">
-                    <h3>I Cappuccini</h3>
-                    <p>Quiete e vista mozzafiato.</p>
-                </div>
-            </section>
-
-            <section class="glass-card">
-                <video autoplay muted loop playsinline class="card-video"><source src="img/san_giorgio_martire.webm" type="video/webm"></video>
-                <div class="card-content">
-                    <h3>S. Giorgio</h3>
-                    <p>Cuore del barocco locale.</p>
-                </div>
-            </section>
-
-            <section class="glass-card">
-                <video autoplay muted loop playsinline class="card-video"><source src="img/san_domenico.webm" type="video/webm"></video>
-                <div class="card-content">
-                    <h3>S. Domenico</h3>
-                    <p>Un tesoro nel borgo.</p>
-                </div>
-            </section>
-        </section>
-
-        <section class="interactive-zone">
-            <div class="castellana-wrapper" id="chat-open-btn">
-                <div class="tooltip">Click to chat</div>
-                <video class="castellana-video" autoplay muted loop playsinline>
-                    <source src="img/benvenuto_castellana.webm" type="video/webm">
-                </video>
+        <section class="castle-info-panel">
+            <h2>Arte e Chiese</h2>
+            <div class="castle-text-content">
+                <section class="glass-card">
+                    <video autoplay muted loop playsinline class="card-video"><source src="img/cappuccini_2.webm" type="video/webm"></video>
+                    <div class="card-content">
+                        <h3>I Cappuccini</h3>
+                        <p>Quiete e vista mozzafiato.</p>
+                    </div>
+                </section>
+                <section class="glass-card">
+                    <video autoplay muted loop playsinline class="card-video"><source src="img/san_giorgio_martire.webm" type="video/webm"></video>
+                    <div class="card-content">
+                        <h3>S. Giorgio</h3>
+                        <p>Cuore del barocco locale.</p>
+                    </div>
+                </section>
             </div>
         </section>
+
+        <section class="castle-interactive-zone">
+            <div class="castellana-video-container">
+                <div class="castellana-video-wrapper" id="chat-open-btn">
+                    <div class="castellana-tooltip">Click to Chat</div>
+                    <video id="castellanaVideo" class="castellana-video" autoplay loop muted playsinline>
+                        <source src="img/benvenuto_castellana.webm" type="video/webm">
+                    </video>
+                </div>
+            </div>
+            <div class="chat-desktop" id="chatDesktop">...</div>
+        </section>
     </main>
-
-    <div class="chat-premium" id="chat-box">
-        <p>Guarda quanta storia e arte! Ti va di saperne di più? Accedi alla versione Premium!</p>
-        <button>Accedi Premium</button>
-    </div>
-
 </body>
 </html>
