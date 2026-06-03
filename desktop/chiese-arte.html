@@ -2,76 +2,48 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - Chiese e Arte</title>
     <link rel="stylesheet" href="chiese-arte.css">
-    <style>
-        /* Animazione linea */
-        @keyframes draw { to { stroke-dashoffset: 0; } }
-        .animate-path { animation: draw 4s ease-in-out forwards; }
-    </style>
 </head>
-
 <body>
-    <!-- 🖼️ SFONDO VIDEO: Manteniamo il video fuori da ogni altro contenitore -->
-    <video class="scene-background-video" autoplay muted loop playsinline>
-    <source src="img/video_cappuccini.webm" type="video/webm">
-</video>
 
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="img/video_cappuccini.webm" type="video/webm">
+    </video>
     <div class="video-overlay"></div>
 
-    <!-- 👑 DASHBOARD -->
     <header class="dashboard">
-        <div class="logo-title">Amunì Tourism</div>
-        <nav class="nav-desktop">
-            <a href="index.html">Home</a>
+        <div class="logo">Amunì Tourism</div>
+        <nav>
             <a href="cittadino.html">Cittadino</a>
+            <a href="#">Chi siamo</a>
+            <a href="#">Contatti</a>
+            <div class="lang-switcher">🇮🇹 🇬🇧 🇫🇷 🇩🇪</div>
         </nav>
     </header>
 
-    <!-- 🔘 BOTTONE START (Ripristinato come nella tua versione) -->
-    <div class="start-journey-container" id="startContainer">
-        <button class="gold-start-btn" onclick="startSnakePath()">START</button>
+    <div class="castellana-wrapper" id="chat-open-btn">
+        <video class="castellana-video" autoplay muted loop playsinline>
+            <source src="img/benvenuto_castellana.webm" type="video/webm">
+        </video>
+        <div class="tooltip">Click to chat</div>
     </div>
 
-    <!-- 🐍 PERCORSO E MONUMENTI -->
-    <div class="svg-path-container">
-        <svg viewBox="0 0 600 1000" class="snake-svg">
-            <path id="snakePath" d="M 100,150 Q 300,50 500,200 T 900,150 T 500,450 T 100,450" 
-                  stroke="#ffd78f" stroke-width="4" fill="none" 
-                  stroke-dasharray="2000" stroke-dashoffset="2000" />
-        </svg>
+    <main class="monument-list">
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video"><source src="img/cappuccini_2.webm" type="video/webm"></video>
+            <div class="card-content">
+                <h2>I Cappuccini</h2>
+                <p>Descrizione del luogo...</p>
+            </div>
+        </section>
+        </main>
 
-        <!-- Monumenti (Rimetto le tue classi originali) -->
-        <div class="path-monument item-1" id="mon1" onclick="selectMonument('cappuccini')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/cappuccini_2.webm" type="video/webm"></video>
-            <span class="satellite-label">I Cappuccini</span>
-        </div>
-        <div class="path-monument item-2" id="mon2" onclick="selectMonument('sangiorgio')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/san_giorgio_martire.webm" type="video/webm"></video>
-            <span class="satellite-label">S. Giorgio</span>
-        </div>
-        <div class="path-monument item-3" id="mon3" onclick="selectMonument('sandomenico')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/san_domenico.webm" type="video/webm"></video>
-            <span class="satellite-label">S. Domenico</span>
-        </div>
-        <div class="path-monument item-4" id="mon4" onclick="selectMonument('annunziata')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/annunziata_2.webm" type="video/webm"></video>
-            <span class="satellite-label">L'Annunziata</span>
-        </div>
-        <div class="path-monument item-5" id="mon5" onclick="selectMonument('badia')">
-            <video autoplay loop muted playsinline class="satellite-webm"><source src="img/dettagli_badia.webm" type="video/webm"></video>
-            <span class="satellite-label">Badia</span>
-        </div>
+    <div class="chat-premium" id="chat-box">
+        <p>Guarda quanta storia e arte! Ti va di saperne di più? Accedi alla versione Premium!</p>
+        <button>Accedi Premium</button>
     </div>
 
-    <script>
-        function startSnakePath() {
-            document.getElementById('startContainer').style.display = 'none';
-            document.getElementById('snakePath').classList.add('animate-path');
-            const mons = ['mon1', 'mon2', 'mon3', 'mon4', 'mon5'];
-            mons.forEach((id, i) => setTimeout(() => document.getElementById(id).classList.add('visible'), 700 * (i + 1)));
-        }
-    </script>
 </body>
 </html>
