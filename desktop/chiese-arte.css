@@ -227,15 +227,17 @@ html, body {
     padding-right: 5px;
 }
 
+/* FUMETTO MEGLIO CORRETTO AD ALTO CONTRASTO (Mini Glass-Card) */
 .message {
-    background: rgba(255, 215, 160, 0.1) !important;
-    border: 1px solid rgba(255, 215, 160, 0.2);
-    padding: 10px 14px;
-    border-radius: 12px;
+    background: rgba(15, 12, 8, 0.85) !important;
+    border: 1px solid rgba(255, 215, 160, 0.6);
+    padding: 12px 16px;
+    border-radius: 14px;
     margin-bottom: 12px;
-    color: #f7f2e9;
-    font-size: 0.9rem;
-    line-height: 1.4;
+    color: #fff2d9;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .chat-input-row {
@@ -312,74 +314,6 @@ html, body {
     pointer-events: auto;
 }
 
-// 1. GESTIONE DEL TOOLTIP AL CARICAMENTO DELLA GRIGLIA
-// Questa funzione va chiamata nel momento esatto in cui la griglia dei monumenti diventa visibile
-function attivaInvitoCastellana() {
-    const tooltip = document.querySelector('.castellana-tooltip');
-    
-    if (tooltip) {
-        // Cambiamo il testo del tooltip per invitare a cliccare le card
-        tooltip.textContent = "Clicca sulle mie card per esplorarle con me! ✨";
-        
-        // Forza la comparsa del tooltip nel caso fosse nascosto
-        tooltip.style.display = "block"; 
-        tooltip.style.opacity = "1";
-    }
-}
-
-// 2. COLLEGAMENTO DELLE CARD ALLA CHAT
-// Mappatura dei testi che la Castellana dirà per ogni monumento
-const storieMonumenti = {
-    "I Cappuccini": "Benvenuto ai Cappuccini! Questo luogo racchiude storie secolari e un'atmosfera di profonda spiritualità. Guardando il modello, puoi notare la struttura originaria...",
-    "Annunziata": "Ecco l'Annunziata, un gioiello architettonico che custodisce tracce indelebili del nostro passato. La sua facciata e i dettagli interni sono stati ricostruiti per mostrarti...",
-    "S. Benedetto della Badia": "Ti trovi davanti a S. Benedetto della Badia. Questo complesso monastico ha attraversato i secoli. Osserva la finezza dei dettagli del render, che richiamano...",
-    "Santa Maria degli Angeli": "Questa è la Chiesa di Santa Maria degli Angeli. Un luogo di culto straordinario, la cui pianta e le cui decorazioni raccontano l'arte e la devozione di un'intera epoca...",
-    "Chiesa San Giorgio Martire": "Il Duomo di San Giorgio Martire! Il cuore pulsante della nostra comunità, maestoso e dominante. Nota come la luce d'oro del render esalta le linee della cupola e del campanile..."
-};
-
-// Funzione per gestire il click su una card
-document.querySelectorAll('.glass-card').forEach(card => {
-    card.addEventListener('click', () => {
-        // Recuperiamo il titolo h3 interno alla card cliccata
-        const titoloMonumento = card.querySelector('h3').textContent.trim();
-        
-        // Recuperiamo la storia corrispondente (se esiste)
-        const testoStoria = storieMonumenti[titoloMonumento];
-        
-        if (testoStoria) {
-            // Apriamo la chat desktop aggiungendo la classe active
-            const chatBox = document.querySelector('.chat-desktop');
-            if (chatBox) {
-                chatBox.classList.add('active');
-                chatBox.style.display = 'flex'; // Garantisce la visualizzazione corretta
-            }
-            
-            // Inseriamo il messaggio della Castellana nella chat
-            inviaMessaggioCastellana(testoStoria);
-        }
-    });
-});
-
-// Funzione di supporto per stampare il messaggio nel box chat
-function inviaMessaggioCastellana(testo) {
-    const chatMessages = document.querySelector('.chat-messages');
-    if (chatMessages) {
-        // Puliamo i messaggi precedenti se vuoi che mostri solo la storia attuale, 
-        // oppure commenta la riga sotto se vuoi mantenere la cronologia
-        chatMessages.innerHTML = ''; 
-        
-        // Creiamo il fumetto del messaggio
-        const nuovoMessaggio = document.createElement('div');
-        nuovoMessaggio.className = 'message';
-        nuovoMessaggio.textContent = testo;
-        
-        // Lo aggiungiamo alla chat e scrolliamo verso il basso
-        chatMessages.appendChild(nuovoMessaggio);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-}
-
-
 .glass-card {
     width: 320px;
     height: 500px;
@@ -442,19 +376,19 @@ function inviaMessaggioCastellana(testo) {
 .badia-video { transform: scale(1.25) translateY(5px); }
 .glass-card:hover .badia-video { transform: scale(1.35) translateY(0px); }
 
-/* 2. CHIESA SAN GIORGIO / DUOMO (Abbassato e scalato per non tagliare la punta) */
+/* 2. CHIESA SAN GIORGIO / DUOMO */
 .duomo-video { transform: scale(1.4) translateY(15px); }
 .glass-card:hover .duomo-video { transform: scale(1.5) translateY(10px); }
 
-/* 3. I CAPPUCCINI (Contenuto lateralmente) */
+/* 3. I CAPPUCCINI */
 .cappuccini-video { transform: scale(1.45) translateY(10px); }
 .glass-card:hover .cappuccini-video { transform: scale(1.55) translateY(5px); }
 
-/* 4. ANNUNZIATA (Ingrandito per recuperare lo sfondo vuoto) */
+/* 4. ANNUNZIATA */
 .annunziata-video { transform: scale(2.2) translateY(-5px); }
 .glass-card:hover .annunziata-video { transform: scale(2.3) translateY(-10px); }
 
-/* 5. SANTA MARIA DEGLI ANGELI (Ingrandito per omogeneità) */
+/* 5. SANTA MARIA DEGLI ANGELI */
 .angeli-video { transform: scale(2.2) translateY(-5px); }
 .glass-card:hover .angeli-video { transform: scale(2.3) translateY(-10px); }
 
@@ -489,6 +423,5 @@ function inviaMessaggioCastellana(testo) {
         max-width: 340px;
         height: 460px;
     }
-    /* Scaliamo leggermente i video su mobile per garantire la responsività */
     .card-video { height: 65%; }
 }
