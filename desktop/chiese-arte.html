@@ -38,14 +38,40 @@
         <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/duomo.webm" type="video/webm"></video><div class="card-content"><h3>Duomo</h3></div></section>
     </main>
 
-    <!-- 🧙‍♀️ CASTELLANA -->
-    <section class="castle-interactive-zone">
-        <div class="castellana-video-container">
-            <video id="castellanaVideo" class="castellana-video" playsinline autoplay loop muted>
-                <source src="img/castellana_alpha.webm" type="video/webm">
-            </video>
-        </div>
-    </section>
+    <!-- 👑 COLONNA DESTRA: CASTELLANA + CHAT -->
+        <section class="castle-interactive-zone">
+            
+            <div class="castellana-video-container">
+                <div class="castellana-video-wrapper">
+                    <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat-tooltip">Click to Chat</div>
+                    <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
+                        <source src="img/benvenuto_castellana.webm" type="video/webm">
+                    </video>
+                </div>
+            </div>
+
+            <!-- 💬 CHAT -->
+            <div class="chat-desktop" id="chatDesktop">
+                <div class="chat-header">
+                    <div class="avatar-status-dot"></div>
+                    <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
+                    <button class="close-chat-btn" id="closeChatBtn">✕</button>
+                </div>
+                
+                <div class="chat-messages" id="chatMessagesBox">
+                    <div class="message system-msg">
+                        <strong>La Castellana:</strong> Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure.
+                    </div>
+                </div>
+                
+                <div class="chat-input-row">
+                    <input type="text" placeholder="Scrivi alla Castellana..." id="chatInput" data-i18n-placeholder="chat.placeholder">
+                    <div class="input-actions">
+                        <button class="mic-btn" title="Attiva Microfono">🎤</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot.mp3" type="audio/mpeg">
