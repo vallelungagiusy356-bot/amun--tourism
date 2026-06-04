@@ -194,15 +194,6 @@ html, body {
     100% { opacity: 0; transform: scale(0.95); }
 }
 
-/* FORZATURA DIMENSIONI CASTELLANA */
-.castellana-video {
-    width: 100% !important;
-    height: auto !important;
-    display: block;
-    filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.9));
-}
-
-
 .castle-dress-inline {
     width: 100%;
     margin: 15px 0;
@@ -239,6 +230,7 @@ html, body {
     right: 6%;
     width: 330px;
     height: 300px;
+    }
 
     /* Vetro cristallino reale */
     background: rgba(255, 255, 255, 0.03) !important;
@@ -373,22 +365,38 @@ html, body {
     100% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
 }
 
-@keyframes slideInRight {
-    0% { transform: translateX(120%); opacity: 0; }
-    60% { transform: translateX(-10%); opacity: 1; }
-    100% { transform: translateX(0); opacity: 1; }
-}
 
 /* ==========================================================================
    7. GRIGLIA MONUMENTI (ON-DEMAND)
    ========================================================================== */
+/* Posizionamento del bottone Start al centro dello schermo */
+#startButton {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    padding: 20px 40px;
+    font-size: 1.5rem;
+    opacity: 0; /* Inizialmente invisibile */
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+/* Griglia Monumenti: ora centrata e fluida */
 .monuments-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
-    padding: 120px 20px 50px 20px;
-    
+    align-items: center;
+    gap: 40px;
+    padding: 100px 20px;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
     /* Stato iniziale nascosto */
     opacity: 0; 
     pointer-events: none;
