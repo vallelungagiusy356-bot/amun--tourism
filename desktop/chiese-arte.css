@@ -359,24 +359,32 @@ html, body {
     /* Portiamo lo zoom a 2.5 per dare il doppio della presenza visiva */
     transform: scale(2.5); 
     
-    filter: drop-shadow(0 0 15px rgba(255, 215, 160, 0.4)); 
+    /* GLOW BASE POTENZIATO: Più visibile anche senza mouse sopra */
+    filter: drop-shadow(0 0 25px rgba(255, 215, 160, 0.55)); 
     transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* Effetto hover per i monumenti normali (zoom extra e super glow) */
+/* Effetto hover per i monumenti normali (SUPER GLOW 4K) */
 .glass-card:hover .card-video {
-    filter: drop-shadow(0 0 35px rgba(255, 215, 160, 0.9)); 
+    /* Un doppio livello di drop-shadow fuso insieme rende l'oro caldissimo e intenso */
+    filter: drop-shadow(0 0 30px rgba(255, 200, 120, 0.8)) 
+            drop-shadow(0 0 50px rgba(255, 180, 80, 0.4)); 
     transform: scale(2.7) translateY(-5px); 
 }
 
 /* ==========================================================================
-   ECCEZIONE PER LA BADIA (Mantiene le sue proporzioni senza zoom esagerato)
+   ECCEZIONE PER LA BADIA (Mantiene le sue proporzioni con SUPER GLOW)
    ========================================================================== */
 .badia-video {
     transform: scale(1.3) !important; /* Mantiene la dimensione ottimale attuale */
+    /* Glow base abbinato */
+    filter: drop-shadow(0 0 25px rgba(255, 215, 160, 0.55)) !important;
 }
 
 .glass-card:hover .badia-video {
+    /* Super Glow abbinato anche per la Badia al passaggio del mouse */
+    filter: drop-shadow(0 0 30px rgba(255, 200, 120, 0.8)) 
+            drop-shadow(0 0 50px rgba(255, 180, 80, 0.4)) !important;
     transform: scale(1.4) translateY(-5px) !important;
 }
 
