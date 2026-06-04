@@ -90,34 +90,42 @@
     </audio>
 
     <script>
-        const audio = document.getElementById("bg-music");
-        const startBtn = document.getElementById('startButton');
-        const grid = document.getElementById('monumentsGrid');
-        const cards = document.querySelectorAll('.glass-card');
-        const toggleBtn = document.getElementById("toggle-music");
+    const audio = document.getElementById("bg-music");
+    const startBtn = document.getElementById('startButton');
+    const grid = document.getElementById('monumentsGrid');
+    const cards = document.querySelectorAll('.glass-card');
+    const toggleBtn = document.getElementById("toggle-music");
 
-        // Audio al primo click
-        window.addEventListener('click', () => {
-            if (audio.paused) audio.play();
-        }, { once: true });
+    // 1. Audio parte al primo click ovunque sulla pagina
+    window.addEventListener('click', () => {
+        if (audio.paused) audio.play();
+    }, { once: true });
 
-        // Attivazione Tour
-        startBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            grid.style.opacity = '1';
-            grid.style.pointerEvents = 'auto';
-            cards.forEach((card, i) => {
-                setTimeout(() => card.classList.add('fade-in'), 200 * i);
-            });
-            startBtn.style.display = 'none';
+    // 2. Il bottone appare solo dopo 40 secondi
+    setTimeout(() => {
+        startBtn.style.opacity = '1';
+        startBtn.style.pointerEvents = 'auto';
+    }, 40000);
+
+    // 3. Al click sul bottone, mostra la griglia
+    startBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        startBtn.style.display = 'none';
+        grid.style.opacity = '1';
+        grid.style.pointerEvents = 'auto';
+        
+        cards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('fade-in'), 200 * i);
         });
+    });
 
-        // Toggle Audio
-        toggleBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; }
-            else { audio.pause(); toggleBtn.textContent = "🔇"; }
-        });
-    </script>
+    // 4. Toggle Audio (Icona)
+    toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; }
+        else { audio.pause(); toggleBtn.textContent = "🔇"; }
+    });
+</script>
+
 </body>
 </html>
