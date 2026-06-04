@@ -38,17 +38,15 @@
         <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/duomo.webm" type="video/webm"></video><div class="card-content"><h3>Duomo</h3></div></section>
     </main>
 
-    <!-- 👑 COLONNA DESTRA: CASTELLANA + CHAT -->
-        <section class="castle-interactive-zone">
-            
-            <div class="castellana-video-container">
-                <div class="castellana-video-wrapper">
-                    <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat-tooltip">Click to Chat</div>
-                    <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
-                        <source src="img/benvenuto_castellana.webm" type="video/webm">
-                    </video>
-                </div>
-            </div>
+    <!-- VIDEO CASTELLANA + BOTTONE CLICK HERE -->
+    <div class="castellana-video-wrapper">
+        <video class="castellana-video" autoplay muted loop playsinline>
+            <source src="img/castellana_alpha.webm" type="video/webm">
+        </video>
+
+        <!-- ⭐ NUOVO BOTTONE CLICK HERE ⭐ -->
+        <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
+    </div>
 
             <!-- 💬 CHAT -->
             <div class="chat-desktop" id="chatDesktop">
