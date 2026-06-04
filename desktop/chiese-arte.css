@@ -268,7 +268,7 @@ html, body {
 }
 
 /* ==========================================================================
-   7. GRIGLIA MONUMENTI E STILE CARD COME DA SCREENSHOT
+   7. GRIGLIA MONUMENTI PREMIUM (ZOOM WEBM, GLOW ORO E RESPOSIVE)
    ========================================================================== */
 #startButton {
     position: fixed;
@@ -289,18 +289,19 @@ html, body {
 #startButton:hover {
     background: #ffd78f;
     color: #000;
+    box-shadow: 0 0 20px rgba(255, 215, 160, 0.6);
 }
 
-/* Layout a Diamante (Croce) */
+/* Griglia fluida ed elegante, perfetta sia su Desktop che Mobile */
 .monuments-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 320px); /* 3 colonne da 320px */
-    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    gap: 40px;
     width: 100%;
     min-height: 100vh;
-    padding: 100px 20px 40px 20px;
+    padding: 120px 5% 80px 5%; /* Spazio dai bordi per non toccare la dashboard */
     box-sizing: border-box;
     opacity: 0; 
     pointer-events: none;
@@ -312,28 +313,21 @@ html, body {
     pointer-events: auto;
 }
 
-/* Posizioni per formare il diamante con 5 card */
-.glass-card:nth-child(1) { grid-column: 2; grid-row: 1; } /* Su */
-.glass-card:nth-child(2) { grid-column: 1; grid-row: 2; } /* Sinistra */
-.glass-card:nth-child(3) { grid-column: 2; grid-row: 2; } /* Centro */
-.glass-card:nth-child(4) { grid-column: 3; grid-row: 2; } /* Destra */
-.glass-card:nth-child(5) { grid-column: 2; grid-row: 3; } /* Giù */
-
-/* STILE DELLE CARD IDENTICO ALLO SCREENSHOT */
+/* Stile delle Card slanciate */
 .glass-card {
-    height: 480px; /* Card alta e rettangolare */
-    background: rgba(10, 8, 5, 0.6); /* Sfondo scuro elegante */
+    width: 320px;
+    height: 500px;
+    background: rgba(10, 8, 5, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 215, 160, 0.3); /* Bordino sottile oro */
-    border-radius: 18px; /* Angoli stondati */
+    border: 1px solid rgba(255, 215, 160, 0.3);
+    border-radius: 18px;
     position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     overflow: hidden;
-    
-    /* Stato iniziale animazione */
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -345,22 +339,39 @@ html, body {
 }
 
 .glass-card:hover {
-    border-color: rgba(255, 215, 160, 0.8);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transform: scale(1.02) translateY(-5px);
+    border-color: rgba(255, 215, 160, 0.9);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 
+                inset 0 0 20px rgba(255, 215, 160, 0.1);
+    transform: scale(1.03) translateY(-10px);
+    z-index: 10;
 }
 
-/* Il video 3D fluttuante al centro */
+/* Modelli video ingranditi e con GLOW DORATO */
 .card-video {
-    width: 85%;
-    max-height: 60%;
-    object-fit: contain;
+    width: 100%;
+    height: 75%; 
+    object-fit: contain; 
     background: transparent;
-    pointer-events: none;
-    margin-bottom: 40px; /* Lo solleva un po' dal testo in basso */
+    pointer-events: none; /* I click passano oltre il video */
+    margin-top: 10px;
+    
+    /* Zoom digitale del 40% per rendere grandi i monumenti piccoli */
+    transform: scale(1.4); 
+    
+    /* Glow base dorato soft */
+    filter: drop-shadow(0 0 15px rgba(255, 215, 160, 0.4)); 
+    transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* Testo posizionato in basso a sinistra come da foto */
+/* Effetto dinamico quando l'utente passa il mouse sulla card */
+.glass-card:hover .card-video {
+    /* Glow dorato intenso stile "4K" */
+    filter: drop-shadow(0 0 35px rgba(255, 215, 160, 0.9)); 
+    /* Ulteriore zoom controllato del monumento */
+    transform: scale(1.5) translateY(-5px); 
+}
+
+/* Testo posizionato in basso a sinistra */
 .card-content {
     position: absolute;
     bottom: 25px;
@@ -372,22 +383,21 @@ html, body {
 .card-content h3 {
     margin: 0;
     color: #ffd78f;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(255, 215, 160, 0.5); /* Testo luminoso */
 }
 
-/* Regola per schermi più piccoli: disattiva il diamante e le mette in colonna */
-@media (max-width: 1100px) {
+/* Ottimizzazione Mobile: trasforma la griglia in una colonna ordinata e pulita */
+@media (max-width: 900px) {
     .monuments-grid {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 80px;
+        padding-top: 100px;
+        gap: 30px;
     }
     .glass-card {
-        flex: 0 0 300px;
+        width: 90%;
+        max-width: 350px;
+        height: 450px;
     }
 }
-
-
-
