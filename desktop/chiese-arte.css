@@ -358,14 +358,6 @@ html, body {
     transform: translateY(0);
 }
 
-/* Mantieni il tuo effetto hover separato */
-.glass-card:hover {
-    border-color: rgba(255, 215, 160, 1);
-    box-shadow: 0 0 30px rgba(255, 215, 160, 0.4), 
-                inset 0 0 15px rgba(255, 215, 160, 0.2);
-    transform: scale(1.05);
-}
-
 /* Effetto Glow al passaggio del mouse */
 .glass-card:hover {
     border-color: rgba(255, 215, 160, 1);
