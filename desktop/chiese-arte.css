@@ -1,3 +1,17 @@
+.start-overlay {
+    position: fixed; /* Lo fissa rispetto alla finestra, non al documento */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Forza l'altezza al 100% della viewport */
+    background: #050302;
+    z-index: 9999; /* Garantisce che stia sopra ogni altro elemento */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease; /* Gestisce la scomparsa fluida */
+}
+
 /* ==========================================================================
    1. RESET E IMPOSTAZIONI DI BASE
    ========================================================================== */
