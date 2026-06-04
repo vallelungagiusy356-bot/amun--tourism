@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="castle.title">Le Chiese</title>
+    <title>Le Chiese di Caccamo</title>
     <link rel="stylesheet" href="chiese-arte.css">
 </head>
 <body>
+
     <div id="start-overlay" class="start-overlay">
         <div class="start-content">
             <h1>Benvenuti a Caccamo</h1>
@@ -26,192 +27,47 @@
 
     <header class="dashboard">
         <div class="logo-title">Amunì Tourism</div>
-        <div class="header-right-actions">
-            <button id="toggle-music" class="home-btn">🔈</button>
-            </div>
-    </header>
-
-    <main class="monuments-grid" id="monumentsGrid">
-        </main>
-    
-    </body>
-    
-</button>
-    <!-- AUDIO EPICO -->
-    <audio id="bg-music" loop>
-        <source src="audio/more-epic-lorem-ipsum-by-ende-dot.mp3" type="audio/mpeg">
-    </audio>
-    
-    <!-- 🎬 SFONDO DINAMICO -->
-        <div class="scene-background-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -9999; background: black;">
-    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
-        <source src="img/video_cappuccini.webm" type="video/mp4">
-    </video>
-</div>
-
-
-    <!-- 👑 DASHBOARD -->
-    <header class="dashboard">
-        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
-        
         <nav class="nav-desktop">
             <a href="index.html" class="nav-item">Home</a>
-            <a href="about.html" class="nav-item" data-i18n="menu.about">About</a>
-            <a href="contact.html" class="nav-item" data-i18n="menu.contact">Contact</a>
         </nav>
-        
         <div class="header-right-actions">
-            <div class="lang-switcher">
-                <button data-lang="it" class="active">🇮🇹</button>
-                <button data-lang="en">🇬🇧</button>
-                <button data-lang="fr">🇫🇷</button>
-                <button data-lang="de">🇩🇪</button>
-                <button data-lang="es">🇪🇸</button>
-            </div>
+            <button id="toggle-music" class="home-btn">🔈</button>
             <button class="home-btn" onclick="window.location.href='index.html'">Indietro</button>
         </div>
     </header>
-    <!-- Griglia Monumenti -->
-    <main class="monuments-grid">
-        <section class="glass-card">
-            <video autoplay muted loop playsinline class="card-video"><source src="img/cappuccini_2.webm" type="video/webm"></video>
-            <div class="card-content"><h3>I Cappuccini</h3><p>Quiete e vista mozzafiato.</p></div>
-        </section>
-        <section class="glass-card">
-            <video autoplay muted loop playsinline class="card-video"><source src="img/san_giorgio_martire.webm" type="video/webm"></video>
-            <div class="card-content"><h3>S. Giorgio</h3><p>Cuore del barocco locale.</p></div>
-        </section>
-        <section class="glass-card">
-            <video autoplay muted loop playsinline class="card-video"><source src="img/badia.webm" type="video/webm"></video>
-            <div class="card-content"><h3>Badia</h3><p>Storia e spiritualità.</p></div>
-        </section>
+
+    <main class="monuments-grid" id="monumentsGrid">
+        <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/cappuccini_2.webm" type="video/webm"></video><div class="card-content"><h3>I Cappuccini</h3></div></section>
+        <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/annunziata.webm" type="video/webm"></video><div class="card-content"><h3>Annunziata</h3></div></section>
+        <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/san_giorgio_martire.webm" type="video/webm"></video><div class="card-content"><h3>S. Giorgio</h3></div></section>
+        <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/san_domenico.webm" type="video/webm"></video><div class="card-content"><h3>San Domenico</h3></div></section>
+        <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/duomo.webm" type="video/webm"></video><div class="card-content"><h3>Duomo</h3></div></section>
     </main>
 
-    <!-- Castellana e Chat (esterni alla griglia) -->
-    <section class="castle-interactive-zone">
-        <div class="castellana-video-container">
-            <div class="castellana-video-wrapper">
-                <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat-tooltip">Click to Chat</div>
-                <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
-                   <source src="img/castellana_alpha.webm" type="video/webm">
-                </video>
-            </div>
-        </div>
-
-        <div class="chat-desktop" id="chatDesktop">
-            <div class="chat-header">
-                <div class="avatar-status-dot"></div>
-                <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
-                <button class="close-chat-btn" id="closeChatBtn">✕</button>
-            </div>
-            
-            <div class="chat-messages" id="chatMessagesBox">
-                <div class="message system-msg">
-                    <strong>La Castellana:</strong> Benvenuto tra i gioielli artistici di Caccamo, forestiero. Vuoi che ti sveli i piccoli tesori che troverai dentro queste mura sacre? Chiedimi pure.
-                </div>
-            </div>
-            
-            <div class="chat-input-row">
-                <input type="text" placeholder="Scrivi alla Castellana..." id="chatInput" data-i18n-placeholder="chat.placeholder">
-                <div class="input-actions">
-                    <button class="mic-btn" title="Attiva Microfono">🎤</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- SCRIPT: MUSICA PARTE AL PRIMO TOCCO -->
     <script>
         const audio = document.getElementById("bg-music");
-        audio.volume = 0.5;
-
-        let musicStarted = false;
-
-        function startMusic() {
-            if (!musicStarted) {
-                audio.play().then(() => {
-                    musicStarted = true;
-                }).catch(() => {
-                    setTimeout(() => {
-                        audio.play();
-                    }, 200);
-                });
-
-                document.removeEventListener("touchstart", startMusic);
-                document.removeEventListener("click", startMusic);
-            }
-        }
-
-        document.addEventListener("touchstart", startMusic, { once: true });
-        document.addEventListener("click", startMusic, { once: true });
-    </script>
-
-    <!-- SCRIPT: CONTROLLO AUDIO ON/OFF -->
-    <script>
+        const startBtn = document.getElementById('startButton');
+        const overlay = document.getElementById('start-overlay');
+        const grid = document.getElementById('monumentsGrid');
+        const cards = document.querySelectorAll('.glass-card');
         const toggleBtn = document.getElementById("toggle-music");
 
-        toggleBtn.addEventListener("click", () => {
-            if (audio.paused) {
-                audio.play();
-                toggleBtn.textContent = "🔈";
-            } else {
-                audio.pause();
-                toggleBtn.textContent = "🔇";
-            }
-        });
-    </script>
-
-    <!-- Script Multilingua -->
-    <script>
-        let currentLang = localStorage.getItem("lang") || "it";
-        
-        function loadLanguage(lang) {
-             fetch(`../lang/${lang}.json`)
-                .then(res => res.json())
-                .then(data => {
-                    document.querySelectorAll("[data-i18n]").forEach(el => {
-                        const key = el.getAttribute("data-i18n");
-                        const text = key.split('.').reduce((o,i)=>o[i], data);
-                        if (text) el.innerHTML = text;
-                    });
-                    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-                        const key = el.getAttribute("data-i18n-placeholder");
-                        const text = key.split('.').reduce((o,i)=>o[i], data);
-                        if (text) el.placeholder = text;
-                    });
-                });
-            localStorage.setItem("lang", lang);
-        }
-        
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll(".lang-switcher button").forEach(btn => {
-                btn.addEventListener("click", () => { 
-                    document.querySelectorAll(".lang-switcher button").forEach(b => b.classList.remove("active"));
-                    btn.classList.add("active");
-                    loadLanguage(btn.dataset.lang); 
-                });
+        // Avvio Tour
+        startBtn.addEventListener('click', () => {
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.style.display = 'none', 1000);
+            audio.play();
+            grid.classList.add('visible');
+            cards.forEach((card, i) => {
+                setTimeout(() => card.classList.add('fade-in'), 500 + (i * 200));
             });
-            loadLanguage(currentLang);
+        });
+
+        // Toggle Audio
+        toggleBtn.addEventListener("click", () => {
+            if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; }
+            else { audio.pause(); toggleBtn.textContent = "🔇"; }
         });
     </script>
-
-    <!-- Logica Chat -->
-    <script>
-        const castellanaVideo = document.getElementById("castellanaVideo");
-        const castellanaTooltip = document.getElementById("castellanaTooltip");
-        const chatDesktop = document.getElementById("chatDesktop");
-        const closeChatBtn = document.getElementById("closeChatBtn");
-
-        function openChat() {
-            chatDesktop.classList.add("active");
-        }
-
-        castellanaVideo.addEventListener("click", openChat);
-        castellanaTooltip.addEventListener("click", openChat);
-
-        closeChatBtn.addEventListener("click", () => {
-            chatDesktop.classList.remove("active");
-        });
-    </script>
-
 </body>
 </html>
