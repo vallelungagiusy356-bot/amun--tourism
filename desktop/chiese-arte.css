@@ -322,32 +322,48 @@ html, body {
     100% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
 }
 
-/* Container a diamante */
+/* 7. AGGIUNTE PER EFFETTO DIAMANTE E APPARIZIONE */
+
 .monuments-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonne sopra */
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     padding: 100px 50px;
     margin-top: 50px;
+    opacity: 0; /* Aggiunto */
+    transition: opacity 1s ease-in-out; /* Aggiunto */
 }
 
-/* Distribuzione specifica per il diamante 3-2 */
-.monuments-grid .glass-card:nth-child(4),
-.monuments-grid .glass-card:nth-child(5) {
-    grid-column: span 1.5; /* Centra le ultime due sotto le prime tre */
-    justify-self: center;
+.monuments-grid.visible {
+    opacity: 1;
 }
 
 .glass-card {
-    background: rgba(0, 0, 0, 0.4); /* Sfondo più scuro per risaltare l'oro */
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 215, 160, 0.5); /* Cornice oro sottile */
+    border: 2px solid rgba(255, 215, 160, 0.5);
     border-radius: 25px;
     padding: 30px;
-    transition: all 0.4s ease;
-    cursor: pointer;
     position: relative;
     box-shadow: 0 0 10px rgba(255, 215, 160, 0.1);
+    
+    /* Proprietà per l'animazione */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.glass-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mantieni il tuo effetto hover separato */
+.glass-card:hover {
+    border-color: rgba(255, 215, 160, 1);
+    box-shadow: 0 0 30px rgba(255, 215, 160, 0.4), 
+                inset 0 0 15px rgba(255, 215, 160, 0.2);
+    transform: scale(1.05);
 }
 
 /* Effetto Glow al passaggio del mouse */
