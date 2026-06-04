@@ -3,40 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Chiese di Caccamo</title>
+    <title data-i18n="castle.title">Le Chiese</title>
     <link rel="stylesheet" href="chiese-arte.css">
 </head>
 <body>
 
-    <div id="start-overlay" class="start-overlay">
-        <div class="start-content">
-            <h1>Benvenuti a Caccamo</h1>
-            <button id="startButton" class="home-btn">Inizia il Tour</button>
-        </div>
-    </div>
-
-    <audio id="bg-music" loop>
-        <source src="audio/more-epic-lorem-ipsum-by-ende-dot.mp3" type="audio/mpeg">
-    </audio>
-
+    <!-- 🎬 SFONDO DINAMICO -->
     <div class="scene-background-container">
         <video autoplay loop muted playsinline class="scene-background-video">
             <source src="img/video_cappuccini.webm" type="video/mp4">
         </video>
     </div>
 
+    <!-- 👑 DASHBOARD -->
     <header class="dashboard">
-        <div class="logo-title">Amunì Tourism</div>
+        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         <nav class="nav-desktop">
             <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item" data-i18n="menu.about">About</a>
         </nav>
         <div class="header-right-actions">
             <button id="toggle-music" class="home-btn">🔈</button>
+            <button id="startButton" class="home-btn">Inizia il Tour</button>
             <button class="home-btn" onclick="window.location.href='index.html'">Indietro</button>
         </div>
     </header>
 
-    <main class="monuments-grid" id="monumentsGrid">
+    <!-- 🏺 GRIGLIA MONUMENTI (Inizialmente nascosta) -->
+    <main class="monuments-grid" id="monumentsGrid" style="opacity: 0; pointer-events: none;">
         <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/cappuccini_2.webm" type="video/webm"></video><div class="card-content"><h3>I Cappuccini</h3></div></section>
         <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/annunziata.webm" type="video/webm"></video><div class="card-content"><h3>Annunziata</h3></div></section>
         <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/san_giorgio_martire.webm" type="video/webm"></video><div class="card-content"><h3>S. Giorgio</h3></div></section>
@@ -44,27 +38,45 @@
         <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/duomo.webm" type="video/webm"></video><div class="card-content"><h3>Duomo</h3></div></section>
     </main>
 
+    <!-- 🧙‍♀️ CASTELLANA -->
+    <section class="castle-interactive-zone">
+        <div class="castellana-video-container">
+            <video id="castellanaVideo" class="castellana-video" playsinline autoplay loop muted>
+                <source src="img/castellana_alpha.webm" type="video/webm">
+            </video>
+        </div>
+    </section>
+
+    <audio id="bg-music" loop>
+        <source src="audio/more-epic-lorem-ipsum-by-ende-dot.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         const audio = document.getElementById("bg-music");
         const startBtn = document.getElementById('startButton');
-        const overlay = document.getElementById('start-overlay');
         const grid = document.getElementById('monumentsGrid');
         const cards = document.querySelectorAll('.glass-card');
         const toggleBtn = document.getElementById("toggle-music");
 
-        // Avvio Tour
-        startBtn.addEventListener('click', () => {
-            overlay.style.opacity = '0';
-            setTimeout(() => overlay.style.display = 'none', 1000);
-            audio.play();
-            grid.classList.add('visible');
+        // Audio al primo click
+        window.addEventListener('click', () => {
+            if (audio.paused) audio.play();
+        }, { once: true });
+
+        // Attivazione Tour
+        startBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            grid.style.opacity = '1';
+            grid.style.pointerEvents = 'auto';
             cards.forEach((card, i) => {
-                setTimeout(() => card.classList.add('fade-in'), 500 + (i * 200));
+                setTimeout(() => card.classList.add('fade-in'), 200 * i);
             });
+            startBtn.style.display = 'none';
         });
 
         // Toggle Audio
-        toggleBtn.addEventListener("click", () => {
+        toggleBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
             if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; }
             else { audio.pause(); toggleBtn.textContent = "🔇"; }
         });
