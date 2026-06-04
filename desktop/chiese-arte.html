@@ -32,41 +32,41 @@
     </button>
 
     <main class="monuments-grid" id="monumentsGrid">
-    <section class="glass-card">
-        <video autoplay muted loop playsinline class="card-video cappuccini-video">
-            <source src="img/cappuccini_2.webm" type="video/webm">
-        </video>
-        <div class="card-content"><h3>I Cappuccini</h3></div>
-    </section>
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video cappuccini-video">
+                <source src="img/cappuccini_2.webm" type="video/webm">
+            </video>
+            <div class="card-content"><h3>I Cappuccini</h3></div>
+        </section>
 
-    <section class="glass-card">
-        <video autoplay muted loop playsinline class="card-video annunziata-video">
-            <source src="img/annunziata_2.webm" type="video/webm">
-        </video>
-        <div class="card-content"><h3>Annunziata</h3></div>
-    </section>
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video annunziata-video">
+                <source src="img/annunziata_2.webm" type="video/webm">
+            </video>
+            <div class="card-content"><h3>Annunziata</h3></div>
+        </section>
 
-    <section class="glass-card">
-        <video autoplay muted loop playsinline class="card-video badia-video">
-            <source src="img/dettagli_badia.webm" type="video/webm">
-        </video>
-        <div class="card-content"><h3>S. Benedetto della Badia</h3></div>
-    </section>
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video badia-video">
+                <source src="img/dettagli_badia.webm" type="video/webm">
+            </video>
+            <div class="card-content"><h3>S. Benedetto della Badia</h3></div>
+        </section>
 
-    <section class="glass-card">
-        <video autoplay muted loop playsinline class="card-video angeli-video">
-            <source src="img/san_domenico.webm" type="video/webm">
-        </video>
-        <div class="card-content"><h3>Santa Maria degli Angeli</h3></div>
-    </section>
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video angeli-video">
+                <source src="img/san_domenico.webm" type="video/webm">
+            </video>
+            <div class="card-content"><h3>Santa Maria degli Angeli</h3></div>
+        </section>
 
-    <section class="glass-card">
-        <video autoplay muted loop playsinline class="card-video duomo-video">
-            <source src="img/san_giorgio_martire.webm" type="video/webm">
-        </video>
-        <div class="card-content"><h3>Chiesa San Giorgio Martire</h3></div>
-    </section>
-</main>
+        <section class="glass-card">
+            <video autoplay muted loop playsinline class="card-video duomo-video">
+                <source src="img/san_giorgio_martire.webm" type="video/webm">
+            </video>
+            <div class="card-content"><h3>Chiesa San Giorgio Martire</h3></div>
+        </section>
+    </main>
 
     <div class="castellana-video-wrapper">
         <video class="castellana-video" autoplay muted loop playsinline>
@@ -113,23 +113,38 @@
         const chatBtn = document.getElementById('chat-open-btn');
         const chatBox = document.getElementById('chatDesktop');
         const closeChat = document.getElementById('closeChatBtn');
+        const chatMessagesBox = document.getElementById('chatMessagesBox');
+
+        // Mappatura delle storie raccontate dalla Castellana al click sulle card
+        const storieMonumenti = {
+            "I Cappuccini": "Benvenuto ai Cappuccini! Questo luogo racchiude storie secolari e un'atmosfera di profonda spiritualità. Guardando il modello, puoi notare la struttura originaria...",
+            "Annunziata": "Ecco l'Annunziata, un gioiello architettonico che custodisce tracce indelebili del nostro passato. La sua facciata e i dettagli interni sono stati ricostruiti per mostrarti...",
+            "S. Benedetto della Badia": "Ti trovi davanti a S. Benedetto della Badia. Questo complesso monastico ha attraversato i secoli. Osserva la finezza dei dettagli del render, che richiamano...",
+            "Santa Maria degli Angeli": "Questa è la Chiesa di Santa Maria degli Angeli. Un luogo di culto straordinario, la cui pianta e le cui decorazioni raccontano l'arte e la devozione di un'intera epoca...",
+            "Chiesa San Giorgio Martire": "Il Duomo di San Giorgio Martire! Il cuore pulsante della nostra comunità, maestoso e dominante. Nota come la luce d'oro del render esalta le linee della cupola e del campanile..."
+        };
 
         // 1. Audio parte al primo click ovunque sulla pagina
         window.addEventListener('click', () => {
             if (audio.paused) audio.play();
         }, { once: true });
 
-        // 2. Il bottone Inizia Tour appare dopo 5 secondi (Ho messo 5s per farti testare, rimetti 40000 per 40s)
+        // 2. Il bottone Inizia Tour appare dopo 5 secondi
         setTimeout(() => {
             startBtn.style.opacity = '1';
             startBtn.style.pointerEvents = 'auto';
         }, 5000); 
 
-        // 3. Al click sul bottone, mostra la griglia
+        // 3. Al click sul bottone, mostra la griglia e aggiorna l'invito della Castellana
         startBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             startBtn.style.display = 'none';
             grid.classList.add('visible');
+            
+            // Cambia l'invito della Castellana non appena appare la griglia
+            if (chatBtn) {
+                chatBtn.textContent = "Clicca sulle mie card per esplorarle con me! ✨";
+            }
             
             cards.forEach((card, i) => {
                 setTimeout(() => card.classList.add('fade-in'), 200 * i);
@@ -148,7 +163,7 @@
             }
         });
 
-        // 5. Apertura e Chiusura Chat
+        // 5. Apertura e Chiusura Chat manuale
         chatBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             chatBox.classList.add('active');
@@ -157,6 +172,35 @@
         closeChat.addEventListener('click', (e) => {
             e.stopPropagation();
             chatBox.classList.remove('active');
+        });
+
+        // 6. Logica del click sulle Card collegate alla Chat
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                // Prende il titolo esatto contenuto nella card h3
+                const titolo = card.querySelector('h3').textContent.trim();
+                const storia = storieMonumenti[titolo];
+
+                if (storia) {
+                    // Apre la chat simulando il click dell'utente
+                    chatBox.classList.add('active');
+
+                    // Svuota i vecchi messaggi della Castellana per mostrare la descrizione fresca
+                    chatMessagesBox.innerHTML = '';
+
+                    // Crea e appende il nuovo messaggio
+                    const nuovoMessaggio = document.createElement('div');
+                    nuovoMessaggio.className = 'message';
+                    nuovoMessaggio.innerHTML = `<strong>La Castellana:</strong> ${storia}`;
+                    
+                    chatMessagesBox.appendChild(nuovoMessaggio);
+                    
+                    // Forza lo scroll automatico verso il basso
+                    chatMessagesBox.scrollTop = chatMessagesBox.scrollHeight;
+                }
+            });
         });
     </script>
 </body>
