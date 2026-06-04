@@ -336,31 +336,48 @@ html, body {
     100% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
 }
 
-/* 7. AGGIUNTE PER EFFETTO DIAMANTE E APPARIZIONE */
-
+/* ==========================================================================
+   7. GRIGLIA MONUMENTI (ON-DEMAND)
+   ========================================================================== */
 .monuments-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    padding: 100px 50px;
-    margin-top: 50px;
-    opacity: 0; /* Aggiunto */
-    transition: opacity 1s ease-in-out; /* Aggiunto */
-}
-
-.monuments-grid.visible {
-    opacity: 1;
+    display: flex;
+    flex-wrap: wrap; /* Fondamentale: le card vanno a capo automaticamente */
+    justify-content: center; /* Centra le 5 card */
+    gap: 30px;
+    padding: 120px 20px 50px 20px; /* Spazio extra in alto per non coprire la dashboard */
+    
+    /* Gestione apparizione chirurgica */
+    opacity: 0; 
+    pointer-events: none; /* Impedisce clic quando è invisibile */
+    transition: opacity 0.8s ease-in-out;
 }
 
 .glass-card {
+    flex: 0 0 300px; /* Larghezza fissa per ogni card */
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(15px);
     border: 2px solid rgba(255, 215, 160, 0.5);
     border-radius: 25px;
-    padding: 30px;
+    padding: 20px;
     position: relative;
-    box-shadow: 0 0 10px rgba(255, 215, 160, 0.1);
     
+    /* Animazione di entrata */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.glass-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 215, 160, 1);
+    transform: scale(1.02); /* Leggero zoom invece di valori estremi */
+    box-shadow: 0 0 30px rgba(255, 215, 160, 0.3);
+}
+
     /* Proprietà per l'animazione */
     opacity: 0;
     transform: translateY(30px);
