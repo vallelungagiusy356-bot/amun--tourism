@@ -137,25 +137,24 @@ html, body {
 }
 
 /* ==========================================================================
-   4. COLONNA DESTRA: CASTELLANA
+   4. COLONNA DESTRA: CASTELLANA (ORA FISSA IN BASSO)
    ========================================================================== */
 .castellana-video-wrapper {
-    position: relative;
-    width: 100%;
-    margin-top: 300px;
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 6%;
-    z-index: 10 !important;
+    position: fixed;
+    bottom: -10px; /* Ancorata in basso, non sballa più la pagina */
+    right: 2%;     /* Spostata in basso a destra */
+    width: auto;
+    z-index: 1000 !important; /* Sopra a tutto il resto */
+    pointer-events: none; /* Lascia passare i click dove non c'è il video */
 }
 
 .castellana-video {
-    width: 28vw; /* più piccola */
-    max-width: 320px;
+    width: 25vw;
+    max-width: 280px;
     cursor: pointer;
-    z-index: 11;
+    pointer-events: auto; /* Rende cliccabile solo la castellana */
     background: transparent !important;
-    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4)); /* ombra morbida, niente glow dorato */
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
     transition: 0.25s;
 }
 
@@ -165,26 +164,21 @@ html, body {
 
 .castellana-tooltip {
     position: absolute;
-    top: -40px;
-    left: 6%;
-    padding: 12px 26px;
-    background: rgba(0, 0, 0, 0.55);
+    top: 20px;
+    left: -40px;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.75);
     border: 1px solid rgba(255, 215, 160, 0.9);
     border-radius: 14px;
     color: #ffd78f;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    text-shadow: 0 0 12px rgba(255, 215, 160, 1);
-    box-shadow:
-        0 0 22px rgba(255, 215, 160, 0.85),
-        inset 0 0 12px rgba(255, 215, 160, 0.45);
     cursor: pointer;
-    opacity: 1;
+    pointer-events: auto;
     animation: clickHerePulse 2.6s ease-in-out infinite;
-    z-index: 25;
+    z-index: 1001;
 }
 
-/* Effetto pulsazione */
 @keyframes clickHerePulse {
     0% { opacity: 0; transform: scale(0.95); }
     20% { opacity: 1; transform: scale(1); }
@@ -192,104 +186,55 @@ html, body {
     100% { opacity: 0; transform: scale(0.95); }
 }
 
-.castle-dress-inline {
-    width: 100%;
-    margin: 15px 0;
-    text-align: center;
-    background: rgba(255, 215, 160, 0.05);
-    border: 1px solid rgba(255, 215, 160, 0.2);
-    border-radius: 12px;
-    padding: 15px;
-}
-
-.dress-img-inline {
-    width: 180px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
-}
-
-.dress-caption-inline {
-    font-size: 0.85rem;
-    color: #ffd78f;
-    font-weight: 600;
-    margin-top: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
 /* ==========================================================================
    5. CHAT — VETRO CRISTALLINO
    ========================================================================== */
 .chat-desktop {
-    position: absolute;
-    top: 300px;
-    right: 6%;
+    position: fixed; /* Deve essere fixed, non absolute */
+    bottom: 20px;
+    right: 320px; /* Si apre alla sinistra della Castellana */
     width: 330px;
-    height: 300px;
-    /* Vetro cristallino reale */
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(5px) brightness(3.05) contrast(0.85) !important;
-    -webkit-backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
-    border: 2px solid rgba(255, 215, 160, 0.9);
-    border-radius: 26px 26px 0 0;
-    box-shadow:
-        0 0 55px rgba(255, 215, 160, 1),
-        0 0 95px rgba(255, 215, 160, 0.75),
-        inset 0 0 35px rgba(255, 215, 160, 0.45);
+    height: 350px;
+    background: rgba(10, 10, 10, 0.6) !important; /* Sfondo scuro come le card */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 215, 160, 0.5);
+    border-radius: 20px 20px 0 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
     padding: 18px;
     display: none;
-    z-index: 30;
+    z-index: 1002;
+    flex-direction: column;
 }
 
 .chat-desktop.active {
-    display: block;
-    animation: slideInRight 0.55s ease forwards;
+    display: flex; /* Uso flex per gestire l'altezza interna */
+    animation: slideInRight 0.4s ease forwards;
 }
 
-/* X DI CHIUSURA — A DESTRA, NERA, ORO */
 .close-chat-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 32px;
-    height: 32px;
-    background: #000;
-    border: 2px solid #ffd78f;
-    border-radius: 8px;
+    background: transparent;
+    border: none;
     color: #ffd78f;
     font-size: 1.2rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
-    transition: 0.2s;
-    z-index: 40;
-}
-
-.close-chat-btn:hover {
-    background: rgba(255, 215, 160, 0.15);
-    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
 }
 
 .chat-messages {
-    height: 150px;
+    flex-grow: 1;
     overflow-y: auto;
-    padding-right: 6px;
+    margin-top: 15px;
+    padding-right: 5px;
 }
 
 .message {
-    background: rgba(0, 0, 0, 0.55) !important;
-    border: 1px solid rgba(255, 215, 160, 0.55);
+    background: rgba(255, 215, 160, 0.1) !important;
+    border: 1px solid rgba(255, 215, 160, 0.2);
     padding: 10px 14px;
     border-radius: 12px;
     margin-bottom: 12px;
     color: #f7f2e9;
-    box-shadow:
-        0 0 12px rgba(255, 215, 160, 0.35),
-        inset 0 0 8px rgba(255, 215, 160, 0.25);
+    font-size: 0.9rem;
     line-height: 1.4;
 }
 
@@ -301,86 +246,63 @@ html, body {
 
 .chat-input-row input {
     flex: 1;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 215, 160, 0.55);
-    background: rgba(0, 0, 0, 0.35);
-    color: #ffd78f;
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 160, 0.3);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
 }
 
 .mic-btn {
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 215, 160, 0.75);
+    background: rgba(255, 215, 160, 0.1);
+    border: 1px solid rgba(255, 215, 160, 0.4);
     color: #ffd78f;
-    padding: 10px 14px;
+    padding: 10px;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
 }
 
-.mic-btn:hover {
-    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-    background: rgba(255, 215, 160, 0.15);
-}
-
-/* Animazione slide-in da destra */
 @keyframes slideInRight {
-    0% {
-        transform: translateX(120%);
-        opacity: 0;
-    }
-    60% {
-        transform: translateX(-10%);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+    0% { transform: translateX(50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
 }
 
 /* ==========================================================================
-   6. ANIMAZIONI INTERNE
+   7. GRIGLIA MONUMENTI E STILE CARD COME DA SCREENSHOT
    ========================================================================== */
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
-    50% { box-shadow: 0 4px 25px rgba(255, 215, 160, 0.5); }
-    100% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
-}
-
-/* ==========================================================================
-   7. GRIGLIA MONUMENTI (ON-DEMAND)
-   ========================================================================== */
-/* Posizionamento del bottone Start al centro dello schermo */
 #startButton {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2000;
-    padding: 20px 40px;
-    font-size: 1.5rem;
-    opacity: 0; /* Inizialmente invisibile */
-    pointer-events: none;
-    transition: opacity 1s ease;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    background: rgba(0,0,0,0.7);
+    color: #ffd78f;
+    border: 1px solid #ffd78f;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Griglia Monumenti: ora centrata e fluida */
+#startButton:hover {
+    background: #ffd78f;
+    color: #000;
+}
+
+/* Layout a Diamante (Croce) */
 .monuments-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 320px); /* 3 colonne da 320px */
+    gap: 30px;
     justify-content: center;
-    align-items: center;
-    gap: 40px;
-    padding: 100px 20px;
+    align-content: center;
     width: 100%;
-    opacity: 0; /* Stato iniziale nascosto */
+    min-height: 100vh;
+    padding: 100px 20px 40px 20px;
+    box-sizing: border-box;
+    opacity: 0; 
     pointer-events: none;
     transition: opacity 0.8s ease-in-out;
 }
@@ -390,18 +312,31 @@ html, body {
     pointer-events: auto;
 }
 
+/* Posizioni per formare il diamante con 5 card */
+.glass-card:nth-child(1) { grid-column: 2; grid-row: 1; } /* Su */
+.glass-card:nth-child(2) { grid-column: 1; grid-row: 2; } /* Sinistra */
+.glass-card:nth-child(3) { grid-column: 2; grid-row: 2; } /* Centro */
+.glass-card:nth-child(4) { grid-column: 3; grid-row: 2; } /* Destra */
+.glass-card:nth-child(5) { grid-column: 2; grid-row: 3; } /* Giù */
+
+/* STILE DELLE CARD IDENTICO ALLO SCREENSHOT */
 .glass-card {
-    flex: 0 0 300px;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 215, 160, 0.5);
-    border-radius: 25px;
-    padding: 20px;
+    height: 480px; /* Card alta e rettangolare */
+    background: rgba(10, 8, 5, 0.6); /* Sfondo scuro elegante */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 215, 160, 0.3); /* Bordino sottile oro */
+    border-radius: 18px; /* Angoli stondati */
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
     /* Stato iniziale animazione */
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .glass-card.fade-in {
@@ -410,8 +345,49 @@ html, body {
 }
 
 .glass-card:hover {
-    border-color: rgba(255, 215, 160, 1);
-    box-shadow: 0 0 30px rgba(255, 215, 160, 0.4), 
-                inset 0 0 15px rgba(255, 215, 160, 0.2);
-    transform: scale(1.05);
+    border-color: rgba(255, 215, 160, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(1.02) translateY(-5px);
 }
+
+/* Il video 3D fluttuante al centro */
+.card-video {
+    width: 85%;
+    max-height: 60%;
+    object-fit: contain;
+    background: transparent;
+    pointer-events: none;
+    margin-bottom: 40px; /* Lo solleva un po' dal testo in basso */
+}
+
+/* Testo posizionato in basso a sinistra come da foto */
+.card-content {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    width: calc(100% - 50px);
+    text-align: left;
+}
+
+.card-content h3 {
+    margin: 0;
+    color: #ffd78f;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Regola per schermi più piccoli: disattiva il diamante e le mette in colonna */
+@media (max-width: 1100px) {
+    .monuments-grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 80px;
+    }
+    .glass-card {
+        flex: 0 0 300px;
+    }
+}
+
+
+
