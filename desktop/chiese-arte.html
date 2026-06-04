@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="castle.title"> Le Chiese di Caccamo</title>
+    <title data-i18n="castle.title">Le Chiese di Caccamo</title>
     <link rel="stylesheet" href="chiese-arte.css">
 </head>
 <body>
 
-    <!-- 🎬 SFONDO DINAMICO -->
-        <div class="scene-background-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -9999; background: black;">
-    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
-        <source src="img/video_cappuccini.webm" type="video/mp4">
-    </video>
-</div>
+    <div class="scene-background-container">
+        <video autoplay loop muted playsinline class="scene-background-video">
+            <source src="img/video_cappuccini.webm" type="video/mp4">
+        </video>
+        <div class="scene-overlay"></div> 
+    </div>
 
-    <!-- 👑 DASHBOARD -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         <nav class="nav-desktop">
@@ -28,23 +27,11 @@
         </div>
     </header>
 
-    <body>
-    <div class="scene-background-container">...</div>
+    <button id="startButton" class="home-btn" style="opacity: 0; pointer-events: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; font-size: 1.5rem; padding: 20px 40px;">
+        Inizia il Tour
+    </button>
 
-    <header class="dashboard">...</header>
-
-    <button id="startButton" class="home-btn" style="opacity: 0; pointer-events: none;">Inizia il Tour</button>
-
-    <main class="monuments-grid" id="monumentsGrid">...</main>
-    
-    <script>
-        /* Incolla qui il codice JavaScript che abbiamo definito */
-    </script>
-</body>
-
-
-    <!-- 🏺 GRIGLIA MONUMENTI (Inizialmente nascosta) -->
-    <main class="monuments-grid" id="monumentsGrid" style="opacity: 0; pointer-events: none;">
+    <main class="monuments-grid" id="monumentsGrid">
         <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/cappuccini_2.webm" type="video/webm"></video><div class="card-content"><h3>I Cappuccini</h3></div></section>
         <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/annunziata.webm" type="video/webm"></video><div class="card-content"><h3>Annunziata</h3></div></section>
         <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/san_giorgio_martire.webm" type="video/webm"></video><div class="card-content"><h3>S. Giorgio</h3></div></section>
@@ -52,80 +39,96 @@
         <section class="glass-card"><video autoplay muted loop playsinline class="card-video"><source src="img/duomo.webm" type="video/webm"></video><div class="card-content"><h3>Duomo</h3></div></section>
     </main>
 
-    <!-- VIDEO CASTELLANA + BOTTONE CLICK HERE -->
     <div class="castellana-video-wrapper">
         <video class="castellana-video" autoplay muted loop playsinline>
             <source src="img/castellana_alpha.webm" type="video/webm">
         </video>
-
-        <!-- ⭐ NUOVO BOTTONE CLICK HERE ⭐ -->
         <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
     </div>
 
-            <!-- 💬 CHAT -->
-            <div class="chat-desktop" id="chatDesktop">
-                <div class="chat-header">
-                    <div class="avatar-status-dot"></div>
-                    <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
-                    <button class="close-chat-btn" id="closeChatBtn">✕</button>
-                </div>
-                
-                <div class="chat-messages" id="chatMessagesBox">
-                    <div class="message system-msg">
-                        <strong>La Castellana:</strong> Benvenuto nel cuore della sacralità di Caccamo, forestiero. Vuoi che ti sveli i segreti di queste mura vive? Chiedimi pure.
-                    </div>
-                </div>
-                
-                <div class="chat-input-row">
-                    <input type="text" placeholder="Scrivi alla Castellana..." id="chatInput" data-i18n-placeholder="chat.placeholder">
-                    <div class="input-actions">
-                        <button class="mic-btn" title="Attiva Microfono">🎤</button>
-                    </div>
-                </div>
+    <div class="chat-desktop" id="chatDesktop">
+        <div class="chat-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <div>
+                <div class="avatar-status-dot" style="display: inline-block; width: 10px; height: 10px; background: #4caf50; border-radius: 50%; margin-right: 5px;"></div>
+                <strong id="chatTitle" data-i18n="chat.title" style="color: #ffd78f;">La Castellana</strong>
             </div>
-        </section>
+            <button class="close-chat-btn" id="closeChatBtn">✕</button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessagesBox">
+            <div class="message system-msg">
+                <strong>La Castellana:</strong> Benvenuto nel cuore della sacralità di Caccamo, forestiero. Vuoi che ti sveli i segreti di queste mura vive? Chiedimi pure.
+            </div>
+        </div>
+        
+        <div class="chat-input-row">
+            <input type="text" placeholder="Scrivi alla Castellana..." id="chatInput" data-i18n-placeholder="chat.placeholder">
+            <div class="input-actions">
+                <button class="mic-btn" title="Attiva Microfono">🎤</button>
+            </div>
+        </div>
+    </div>
 
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-    const audio = document.getElementById("bg-music");
-    const startBtn = document.getElementById('startButton');
-    const grid = document.getElementById('monumentsGrid');
-    const cards = document.querySelectorAll('.glass-card');
-    const toggleBtn = document.getElementById("toggle-music");
-
-    // 1. Audio parte al primo click ovunque sulla pagina
-    window.addEventListener('click', () => {
-        if (audio.paused) audio.play();
-    }, { once: true });
-
-    // 2. Il bottone appare solo dopo 40 secondi
-    setTimeout(() => {
-        startBtn.style.opacity = '1';
-        startBtn.style.pointerEvents = 'auto';
-    }, 40000);
-
-    // 3. Al click sul bottone, mostra la griglia
-    startBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        startBtn.style.display = 'none';
-        grid.style.opacity = '1';
-        grid.style.pointerEvents = 'auto';
+        const audio = document.getElementById("bg-music");
+        const startBtn = document.getElementById('startButton');
+        const grid = document.getElementById('monumentsGrid');
+        const cards = document.querySelectorAll('.glass-card');
+        const toggleBtn = document.getElementById("toggle-music");
         
-        cards.forEach((card, i) => {
-            setTimeout(() => card.classList.add('fade-in'), 200 * i);
+        // Elementi Chat
+        const chatBtn = document.getElementById('chat-open-btn');
+        const chatBox = document.getElementById('chatDesktop');
+        const closeChat = document.getElementById('closeChatBtn');
+
+        // 1. Audio parte al primo click ovunque sulla pagina
+        window.addEventListener('click', () => {
+            if (audio.paused) audio.play();
+        }, { once: true });
+
+        // 2. Il bottone Inizia Tour appare dopo 5 secondi (Ho messo 5s per farti testare, rimetti 40000 per 40s)
+        setTimeout(() => {
+            startBtn.style.opacity = '1';
+            startBtn.style.pointerEvents = 'auto';
+        }, 5000); 
+
+        // 3. Al click sul bottone, mostra la griglia
+        startBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            startBtn.style.display = 'none';
+            grid.classList.add('visible');
+            
+            cards.forEach((card, i) => {
+                setTimeout(() => card.classList.add('fade-in'), 200 * i);
+            });
         });
-    });
 
-    // 4. Toggle Audio (Icona)
-    toggleBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; }
-        else { audio.pause(); toggleBtn.textContent = "🔇"; }
-    });
-</script>
+        // 4. Toggle Audio (Icona)
+        toggleBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (audio.paused) { 
+                audio.play(); 
+                toggleBtn.textContent = "🔈"; 
+            } else { 
+                audio.pause(); 
+                toggleBtn.textContent = "🔇"; 
+            }
+        });
 
+        // 5. Apertura e Chiusura Chat
+        chatBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            chatBox.classList.add('active');
+        });
+
+        closeChat.addEventListener('click', (e) => {
+            e.stopPropagation();
+            chatBox.classList.remove('active');
+        });
+    </script>
 </body>
 </html>
