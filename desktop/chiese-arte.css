@@ -312,6 +312,74 @@ html, body {
     pointer-events: auto;
 }
 
+// 1. GESTIONE DEL TOOLTIP AL CARICAMENTO DELLA GRIGLIA
+// Questa funzione va chiamata nel momento esatto in cui la griglia dei monumenti diventa visibile
+function attivaInvitoCastellana() {
+    const tooltip = document.querySelector('.castellana-tooltip');
+    
+    if (tooltip) {
+        // Cambiamo il testo del tooltip per invitare a cliccare le card
+        tooltip.textContent = "Clicca sulle mie card per esplorarle con me! ✨";
+        
+        // Forza la comparsa del tooltip nel caso fosse nascosto
+        tooltip.style.display = "block"; 
+        tooltip.style.opacity = "1";
+    }
+}
+
+// 2. COLLEGAMENTO DELLE CARD ALLA CHAT
+// Mappatura dei testi che la Castellana dirà per ogni monumento
+const storieMonumenti = {
+    "I Cappuccini": "Benvenuto ai Cappuccini! Questo luogo racchiude storie secolari e un'atmosfera di profonda spiritualità. Guardando il modello, puoi notare la struttura originaria...",
+    "Annunziata": "Ecco l'Annunziata, un gioiello architettonico che custodisce tracce indelebili del nostro passato. La sua facciata e i dettagli interni sono stati ricostruiti per mostrarti...",
+    "S. Benedetto della Badia": "Ti trovi davanti a S. Benedetto della Badia. Questo complesso monastico ha attraversato i secoli. Osserva la finezza dei dettagli del render, che richiamano...",
+    "Santa Maria degli Angeli": "Questa è la Chiesa di Santa Maria degli Angeli. Un luogo di culto straordinario, la cui pianta e le cui decorazioni raccontano l'arte e la devozione di un'intera epoca...",
+    "Chiesa San Giorgio Martire": "Il Duomo di San Giorgio Martire! Il cuore pulsante della nostra comunità, maestoso e dominante. Nota come la luce d'oro del render esalta le linee della cupola e del campanile..."
+};
+
+// Funzione per gestire il click su una card
+document.querySelectorAll('.glass-card').forEach(card => {
+    card.addEventListener('click', () => {
+        // Recuperiamo il titolo h3 interno alla card cliccata
+        const titoloMonumento = card.querySelector('h3').textContent.trim();
+        
+        // Recuperiamo la storia corrispondente (se esiste)
+        const testoStoria = storieMonumenti[titoloMonumento];
+        
+        if (testoStoria) {
+            // Apriamo la chat desktop aggiungendo la classe active
+            const chatBox = document.querySelector('.chat-desktop');
+            if (chatBox) {
+                chatBox.classList.add('active');
+                chatBox.style.display = 'flex'; // Garantisce la visualizzazione corretta
+            }
+            
+            // Inseriamo il messaggio della Castellana nella chat
+            inviaMessaggioCastellana(testoStoria);
+        }
+    });
+});
+
+// Funzione di supporto per stampare il messaggio nel box chat
+function inviaMessaggioCastellana(testo) {
+    const chatMessages = document.querySelector('.chat-messages');
+    if (chatMessages) {
+        // Puliamo i messaggi precedenti se vuoi che mostri solo la storia attuale, 
+        // oppure commenta la riga sotto se vuoi mantenere la cronologia
+        chatMessages.innerHTML = ''; 
+        
+        // Creiamo il fumetto del messaggio
+        const nuovoMessaggio = document.createElement('div');
+        nuovoMessaggio.className = 'message';
+        nuovoMessaggio.textContent = testo;
+        
+        // Lo aggiungiamo alla chat e scrolliamo verso il basso
+        chatMessages.appendChild(nuovoMessaggio);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+}
+
+
 .glass-card {
     width: 320px;
     height: 500px;
