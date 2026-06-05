@@ -34,61 +34,27 @@
     "legends_desc": "Die ältesten Geschichten des Dorfes, über Generationen hinweg überliefert.",
     "legend_felicia": "Die Legende der Schwester Felicia",
     "legend_pizzarrone": "Die Legende des Turms von Pizzarrone",
-
     "audio_title": "Gebete und Erzählungen im Dialekt anhören",
     "transcription": "Automatische Transkription",
-
     "castle_title": "Das Schloss",
     "castle_desc": "Eine tausendjährige Festung: Verschwörungen, Schießscharten, geheime Tunnel, Gefängnisse und epische Schlachten.",
     "castle_more": "Das Schloss entdecken",
-
     "church_title": "Kirchen und Kunst",
     "church_desc": "Eine Reise durch Katakomben, Traditionen, Schutzheilige und alte Andachten.",
     "church_catacombs": "Die verborgenen Katakomben und Krypten",
     "church_sangiuseppe": "Der rote Auflauf des heiligen Josef",
     "church_sepolcri": "Die Gräber mit keimendem Weizen",
-
     "food_title": "Essen und Veranstaltungen",
     "food_desc": "Authentische Aromen, Orte zum Essen und Erleben des Dorfes.",
     "food_arancine": "Wo man ausgezeichnete Arancine probieren kann",
     "food_cocktail": "Cocktails mit DJ das ganze Jahr",
     "food_aperitivo": "Panoramische Aperitifs (nur Sommer)",
-
     "events_title": "Veranstaltungen",
     "event_castellana": "Die Kastellanin",
     "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Wurstfest",
     "event_beato": "Fest des Seligen Giovanni"
   },
-
-  "castle": {
-    "title": "Das Schloss von Caccamo",
-    "position": "Eine Festung auf einem Felsvorsprung mit Blick über das Tal.",
-    "defense": "Schießscharten, dicke Mauern und Wehrgänge erzählen von ihrer Verteidigungsfunktion.",
-    "conspiracy": "Geheime Räume und Adelssäle waren Schauplatz mittelalterlicher Intrigen.",
-    "prisons": "Die unterirdischen Gefängnisse bewahren noch Spuren alter Haftzeiten.",
-    "legend_brothers": "Die Legende der zwei Brüder erzählt von einem tödlichen Duell um die Liebe einer Dame."
-  },
-  "monuments": {
-  "title": "Denkmäler des Dorfes",
-
-  "castle_title": "Schloss von Caccamo",
-  "castle_desc": "Einer der größten mittelalterlichen Burgen Siziliens, mit Blick über das Tal des San Leonardo. Diese normannische Festung aus dem 11. Jahrhundert bewahrt Gefängnisse, historische Säle und faszinierende Legenden.",
-  "castle_button": "Seite besuchen",
-
-  "annunziata_title": "Kirche SS. Annunziata und San Benedetto della Badia",
-  "annunziata_desc": "Zwei benachbarte Kirchen, Symbole der lokalen Frömmigkeit. Die Annunziata besitzt elegante barocke Stuckarbeiten, während die Badia Krypten und einen wunderschönen Majolika‑Boden beherbergt.",
-
-  "sangiorgio_title": "Kirche des Heiligen Georgs Märtyrer",
-  "sangiorgio_desc": "Eine der ältesten Kirchen des Dorfes, mit einer normannisch‑gotischen Fassade und wertvollen Holzskulpturen, überragt vom Schloss im Hintergrund.",
-
-  "angeli_title": "Kirche Santa Maria degli Angeli",
-  "angeli_desc": "Eine kleine franziskanische Kirche in stiller Atmosphäre, mit einem Marmoraltar und den Reliquien des Seligen Giovanni, einer sehr verehrten geistlichen Persönlichkeit.",
-
-  "cappuccini_title": "Kapuzinerkloster",
-  "cappuccini_desc": "Im 16. Jahrhundert gegründet, beherbergt es einen schlichten Kreuzgang und eine historische Bibliothek. Es bietet einen Panoramablick über das Tal."
-  },
-}
 
   "castle": {
     "title": "Die Burg von Caccamo",
@@ -101,17 +67,29 @@
     "welcomemsg_felicia": "Willkommen auf der Burg von Caccamo, Fremder. Ich bin Schwester Felicia. Möchten Sie, dass ich Ihnen die Geheimnisse des Saals der Verschwörungen enthülle, oder möchten Sie lieber den alten Legenden der Burg lauschen? Fragen Sie mich gern."
   },
 
-    "monuments": {
+  "monuments": {
+    "title": "Denkmäler des Dorfes",
     "title_page": "Die Kirchen von Caccamo",
     "start_tour": "Tour starten",
     "chat_tooltip": "Hier klicken zum Chatten",
     "chat_hint": "Klicke auf meine Karten, um sie mit mir zu erkunden! ✨",
     "welcomemsg_churches": "<strong>Die Castellana:</strong> Willkommen im Herzen der Sakralität von Caccamo, Fremder. Möchtest du, dass ich dir die Geheimnisse dieser lebendigen Mauern enthülle? Frage mich ruhig.",
+    "castle_title": "Schloss von Caccamo",
+    "castle_desc": "Einer der größten mittelalterlichen Burgen Siziliens, mit Blick über das Tal des San Leonardo. Diese normannische Festung aus dem 11. Jahrhundert bewahrt Gefängnisse, historische Säle und faszinierende Legenden.",
+    "castle_button": "Seite besuchen",
     "cappuccini_name": "Die Kapuziner",
     "annunziata_name": "Annunziata",
     "badia_name": "Hl. Benedikt der Badia",
     "angeli_name": "Heilige Maria der Engel",
     "duomo_name": "Kirche des Hl. Georg des Märtyrers",
+    "annunziata_title": "Kirche SS. Annunziata und San Benedetto della Badia",
+    "annunziata_desc": "Zwei benachbarte Kirchen, Symbole der lokalen Frömmigkeit. Die Annunziata besitzt elegante barocke Stuckarbeiten, während die Badia Krypten und einen wunderschönen Majolika‑Boden beherbergt.",
+    "sangiorgio_title": "Kirche des Heiligen Georgs Märtyrer",
+    "sangiorgio_desc": "Eine der ältesten Kirchen des Dorfes, mit einer normannisch‑gotischen Fassade und wertvollen Holzskulpturen, überragt vom Schloss im Hintergrund.",
+    "angeli_title": "Kirche Santa Maria degli Angeli",
+    "angeli_desc": "Eine kleine franziskanische Kirche in stiller Atmosphäre, mit einem Marmoraltar und den Reliquien des Seligen Giovanni, einer sehr verehrten geistlichen Persönlichkeit.",
+    "cappuccini_title": "Kapuzinerkloster",
+    "cappuccini_desc": "Im 16. Jahrhundert gegründet, beherbergt es einen schlichten Kreuzgang und eine historische Bibliothek. Es bietet einen Panoramablick über das Tal.",
     "storie": {
       "cappuccini": "Willkommen bei den Kapuzinern! Dieser Ort birgt jahrhundertealte Geschichten und eine Atmosphäre tiefer Spiritualität. Wenn du das Modell betrachtest, kannst du die ursprüngliche Struktur erkennen...",
       "annunziata": "Hier ist die Annunziata, ein architektonisches Juwel, das unauslöschliche Spuren unserer Vergangenheit bewahrt. Ihre Fassade und die inneren Details wurden rekonstruiert, um dir zu zeigen...",
@@ -120,3 +98,4 @@
       "duomo": "Der Dom San Giorgio Martire! Das pulsierende Herz unserer Gemeinschaft, majestätisch und dominierend. Beachte, wie das goldene Licht des Renders die Linien der Kuppel und des Glockenturms hervorhebt..."
     }
   }
+}
