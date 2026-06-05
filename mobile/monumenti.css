@@ -248,7 +248,7 @@ body {
     /* Fondo quasi impercettibile (cristallo puro) */
     background: rgba(255, 255, 255, 0.02);
     
-    /* Aumentiamo il blur per dare l'effetto rifrangente del vetro spesso */
+    /* Riduzione backdrop blur per dare l'effetto rifrangente del vetro  */
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     
