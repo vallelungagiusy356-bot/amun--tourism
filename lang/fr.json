@@ -118,6 +118,15 @@
       "badia": "Vous vous trouvez devant Saint-Benoît de la Badia. Ce complexe monastique a traversé les siècles. Observez la finesse des détails du rendu, qui rappellent...",
       "angeli": "C'est l'Église de Santa Maria degli Angeli. Un lieu de culte extraordinaire, dont le plan et les décorations racontent l'art et la dévotion de toute une époque...",
       "duomo": "Le Duomo de San Giorgio Martire ! Le cœur battant de notre communauté, majestueux et dominant. Remarquez comment la lumière dorée du rendu sublime les lignes de la coupole et du clocher..."
-    }
+    },
+        "castello": "Château de Caccamo",
+    "santamaria": "Église Sainte-Marie des Anges",
+    "sangiorgio": "Église Saint-Georges le Martyr",
+    "cappuccini": "Couvent des Frères Capucins",
+    "annunziata": "Paroisse de la SS. Annunziata",
+    "sanbenedetto": "Église Saint-Benoît de la Badia",
+    "go_to_map": "Aller à la Carte"
   }
 }
+}
+
