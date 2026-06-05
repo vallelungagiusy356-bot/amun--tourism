@@ -99,5 +99,25 @@
     "para_3": "Entre histoire et légende, l'esprit de Sœur Felicia protège encore le village. La Castellana vous attend dans le chat pour vous révéler tous les secrets de ce lieu intemporel.",
     "chat_tooltip": "Cliquez pour Chatter",
     "welcomemsg_felicia": "Bienvenue au Château de Caccamo, étranger. Je suis Sœur Felicia. Voulez-vous que je vous dévoile les secrets de la Salle des Conjurations ou préférez-vous écouter les anciennes légendes du manoir ? N'hésitez pas à me demander."
+  },
+
+  "monuments": {
+    "title_page": "Les Églises de Caccamo",
+    "start_tour": "Commencer la Visite",
+    "chat_tooltip": "Cliquez pour chatter",
+    "chat_hint": "Cliquez sur mes cartes for les explorer avec moi ! ✨",
+    "welcomemsg_churches": "<strong>La Castellana:</strong> Bienvenue au cœur de la sacralité de Caccamo, étranger. Voulez-vous que je vous dévoile les secrets de ces murs vivants ? N'hésitez pas à me demander.",
+    "cappuccini_name": "Les Capucins",
+    "annunziata_name": "Annunziata",
+    "badia_name": "Saint-Benoît de la Badia",
+    "angeli_name": "Sainte-Marie des Anges",
+    "duomo_name": "Église Saint-Georges le Martyr",
+    "storie": {
+      "cappuccini": "Bienvenue chez les Capucins ! Ce lieu renferme des histoires séculaires et une atmosphère de profonde spiritualité. En regardant le modèle, vous pouvez remarquer la structure d'origine...",
+      "annunziata": "Voici l'Annunziata, un joyau architectural qui conserve des traces indélébiles de notre passé. Sa façade et ses détails intérieurs ont été reconstruits pour vous montrer...",
+      "badia": "Vous vous trouvez devant Saint-Benoît de la Badia. Ce complexe monastique a traversé les siècles. Observez la finesse des détails du rendu, qui rappellent...",
+      "angeli": "C'est l'Église de Santa Maria degli Angeli. Un lieu de culte extraordinaire, dont le plan et les décorations racontent l'art et la dévotion de toute une époque...",
+      "duomo": "Le Duomo de San Giorgio Martire ! Le cœur battant de notre communauté, majestueux et dominant. Remarquez comment la lumière dorée du rendu sublime les lignes de la coupole et du clocher..."
+    }
   }
-}
+
