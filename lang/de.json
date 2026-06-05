@@ -89,3 +89,14 @@
   "cappuccini_desc": "Im 16. Jahrhundert gegründet, beherbergt es einen schlichten Kreuzgang und eine historische Bibliothek. Es bietet einen Panoramablick über das Tal."
   }
 }
+
+  "castle": {
+    "title": "Die Burg von Caccamo",
+    "category": "Historische Denkmäler",
+    "leading_para": "Die Burg von Caccamo gehört zu den größten und besterhaltenen normannischen Festungen Siziliens. Seit dem 11. Jahrhundert auf dem nackten Felsen thronend, beherrscht sie das San-Leonardo-Tal als jahrtausendealtes strategisches Bollwerk.",
+    "dress_caption": "Das Kleid der Castellana",
+    "para_2": "Jede Ecke dieses Herrensitzes strahlt Charme und Geheimnis aus: vom berühmten Saal der Verschwörungen, dem Schauplatz von Intrigen und Pakten zwischen mittelalterlichen Adligen, bis hin zu den alten, in den Stein gehauenen Gefängnissen der Inquisition.",
+    "para_3": "Zwischen Geschichte und Legende beschützt der Geist von Schwester Felicia noch heute das Dorf. Die Castellana erwartet Sie im Chat, um Ihnen ogni Geheimnis dieses zeitlosen Ortes zu enthüllen.",
+    "chat_tooltip": "Hier klicken zum Chatten",
+    "welcomemsg_felicia": "Willkommen auf der Burg von Caccamo, Fremder. Ich bin Schwester Felicia. Möchten Sie, dass ich Ihnen die Geheimnisse des Saals der Verschwörungen enthülle, oder möchten Sie lieber den alten Legenden der Burg lauschen? Fragen Sie mich gern."
+  }
