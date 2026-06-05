@@ -90,3 +90,14 @@
     "cappuccini_desc": "Fondato nel XVI secolo, ospita un chiostro sobrio e una biblioteca storica. Vista panoramica sulla valle."
 }
 }
+
+  "castle": {
+    "title": "Il Castello di Caccamo",
+    "category": "Monumenti Storici",
+    "leading_para": "Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.",
+    "dress_caption": "L'abito della Castellana",
+    "para_2": "Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.",
+    "para_3": "Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.",
+    "chat_tooltip": "Click to Chat",
+    "welcomemsg_felicia": "Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure."
+  }
