@@ -89,3 +89,15 @@
   "cappuccini_desc": "Founded in the 16th century, it houses a sober cloister and a historic library. It offers a panoramic view over the valley."
   }
 }
+
+  "castle": {
+    "title": "The Castle of Caccamo",
+    "category": "Historical Monuments",
+    "leading_para": "The Castle of Caccamo is among the largest and best-preserved Norman fortresses in Sicily. Perched on the living rock since the 11th century, it dominates the San Leonardo valley as a millenary strategic bulwark.",
+    "dress_caption": "The Castellana's Dress",
+    "para_2": "Every corner of this manor exudes charm and mystery: from the famous Conspiracy Hall, the theater of intrigues and pacts between medieval nobles, to the ancient Inquisition prisons carved into the stone.",
+    "para_3": "Between history and legend, the spirit of Sister Felicia still protects the village. The Castellana awaits you in chat to reveal every secret of this timeless place.",
+    "chat_tooltip": "Click to Chat",
+    "welcomemsg_felicia": "Welcome to the Castle of Caccamo, stranger. I am Sister Felicia. Would you like me to reveal the secrets of the Conspiracy Hall, or do you prefer to listen to the ancient legends of the manor? Just ask me."
+  }
+
