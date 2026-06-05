@@ -1,111 +1,76 @@
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ==========================================
+   PAGINA HUB MONUMENTI - GRIGLIA BAROCCA MOBILE
+   ========================================== */
+
+/* Sfondo della sezione monumenti: oscurato per dare risalto alle card */
+.monumento-bg {
+    filter: brightness(0.40) contrast(1.1) saturate(1.0) !important;
 }
 
-body {
-    font-family: system-ui, sans-serif;
-    background: #000;
-    color: #f7f2e9;
-    overflow-x: hidden;
+.layout-monumenti {
+    gap: 20px;
 }
 
-/* SFONDO */
-.scene-background {
-    position: fixed;
-    inset: 0;
-    background-image: url("img/tuo_nuovo_sfondo.jpeg");
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.72) contrast(1.15) saturate(1.15);
-    z-index: 0;
-}
-
-/* DASHBOARD */
-.dashboard {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 58px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    background: rgba(0, 0, 0, 0.40);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.55);
-    z-index: 3;
-}
-
-.logo-title {
-    font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.btn-home {
-    font-size: 22px;
-    color: gold;
-    text-decoration: none;
-    padding: 6px 10px;
-    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.7));
-}
-
-/* LAYOUT */
-.monuments-layout {
-    margin-top: 80px;
-    padding: 16px;
+/* Griglia responsive a due colonne simmetriche */
+.monumenti-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 10px;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
-.monuments-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #ffd78f;
+/* Card ad Effetto Vetro (Glassmorphism) con Forte Glow Oro */
+.card-monumento-hub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin-bottom: 26px;
-    text-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
-}
-
-/* CARD MONUMENTO */
-.monument-card {
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 215, 160, 0.85);
+    min-height: 130px;
+    padding: 14px 10px;
+    background: rgba(0, 0, 0, 0.45); /* Base scura trasparente */
+    border: 2px solid #ffd78f;       /* Bordo oro */
     border-radius: 18px;
-    box-shadow:
-        0 0 40px rgba(255, 215, 160, 0.55),
-        inset 0 0 25px rgba(255, 215, 160, 0.25);
-    padding: 20px;
-    margin-bottom: 26px;
-    color: #fffaf0;
+    text-decoration: none;           /* Rimuove sottolineatura del link */
+    
+    backdrop-filter: blur(15px);     /* Sfocatura vetro */
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Box shadow con bagliore oro esterno ed interno combinato */
+    box-shadow: 0 0 20px rgba(255, 215, 160, 0.4), 
+                inset 0 0 10px rgba(255, 215, 160, 0.15);
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.monument-card:active {
-    transform: scale(0.98);
-    transition: transform 0.15s ease;
+/* Effetto di feedback visivo al tocco o click */
+.card-monumento-hub:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 28px rgba(255, 215, 160, 0.75), 
+                inset 0 0 15px rgba(255, 215, 160, 0.3);
 }
 
-.monument-card h3 {
-    font-size: 1.2rem;
-    color: #ffd78f;
-    margin-bottom: 10px;
-    text-shadow: 0 0 6px rgba(255, 215, 160, 0.4);
+/* Icona/Emoji decorativa all'interno della card */
+.card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 6px rgba(255, 215, 160, 0.3));
 }
 
-.monument-card p {
-    font-size: 0.95rem;
-    line-height: 1.4;
+/* Titolo del monumento dentro la card */
+.card-monumento-hub h2 {
+    color: #f7f2e9;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
 }
 
-/* BOTTONE CHAT WEB */
-.btn-castellana {
-    display: block;
-    margin: 20px auto;
-    width: 90%;
+/* Bottone "Vai alla Mappa" coordinato con lo stile .btn-castellana */
+.btn-mappa {
     background: rgba(0, 0, 0, 0.55);
     border: 2px solid #ffd78f;
     border-radius: 18px;
@@ -115,18 +80,14 @@ body {
     font-weight: 600;
     font-size: 1rem;
     box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
+    text-decoration: none;
+    position: relative;
+    z-index: 20;
+    margin-top: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn-visit {
-    display: block;
-    margin-top: 14px;
-    padding: 12px;
-    background: rgba(255, 215, 160, 0.25);
-    border: 1px solid rgba(255, 215, 160, 0.8);
-    border-radius: 14px;
-    color: #ffd78f;
-    font-weight: 700;
-    text-align: center;
-    font-size: 1rem;
-    box-shadow: 0 0 14px rgba(255, 215, 160, 0.4);
+.btn-mappa:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 18px rgba(255, 215, 160, 0.6);
 }
