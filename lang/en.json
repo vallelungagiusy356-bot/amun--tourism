@@ -117,8 +117,16 @@
       "badia": "You stand before St. Benedict of the Badia. This monastic complex has spanned centuries. Observe the refinement of the rendering details, which recall...",
       "angeli": "This is the Church of Santa Maria degli Angeli. An extraordinary place of worship, whose layout and decorations tell the story of the art and devotion of an entire era...",
       "duomo": "The Cathedral of St. George the Martyr! The beating heart of our community, majestic and dominant. Notice how the golden light of the rendering enhances the lines of the dome and the bell tower..."
-    }
+    },
+        "castello": "Castle of Caccamo",
+    "santamaria": "Church of St. Mary of the Angels",
+    "sangiorgio": "Church of St. George the Martyr",
+    "cappuccini": "Capuchin Friars Convent",
+    "annunziata": "SS. Annunziata Parish",
+    "sanbenedetto": "Church of St. Benedict of the Badia",
+    "go_to_map": "Go to Map"
   }
+}
 }
 
 
