@@ -4,37 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - Monumenti</title>
-
-    <!-- PWA: Manifest -->
     <link rel="manifest" href="./manifest.json?v=2">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- PWA: Colore barra superiore -->
     <meta name="theme-color" content="#000000">
 </head>
 <body>
 
-    <!-- TRIGGER AUDIO INVISIBILE -->
     <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
     
-    <!-- AUDIO EPICO -->
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- SFONDO CON FILTRO SCURO -->
     <div class="scene-background monumento-bg"></div>
 
-    <!-- DASHBOARD MOBILE -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title"></div>
-
-        <!-- 🔊 BOTTONE AUDIO -->
         <button id="toggle-music" class="btn-audio">🔈</button>
-
-        <!-- 🌍 SELETTORE LINGUA -->
         <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
@@ -44,103 +30,71 @@
         </div>
     </header>
 
-    <!-- LAYOUT MOBILE -->
     <div class="mobile-layout layout-monumenti">
-
-        <!-- GRIGLIA A DUE COLONNE PER FRUIZIONE MOBILE -->
-        <div class="monumenti-grid">
+        
+        <main class="monumenti-grid">
             
-            <!-- 1. Castello di Caccamo -->
-            <a href="monumento-castello.html" class="card-monumento-hub">
+            <section class="quadrant-mobile" onclick="window.location.href='monumento-castello.html'">
                 <div class="card-icon">🏰</div>
-                <div class="info-monumento">
-                    <span data-i18n="monumenti.castello">Castello di Caccamo</span>
-                </div>
-            </a>
+                <h2 data-i18n="monumenti.castello">Castello di Caccamo</h2>
+            </section>
 
-            <!-- 2. Chiesa Santa Maria degli Angeli -->
-            <a href="monumento-santamaria.html" class="card-monumento-hub">
+            <section class="quadrant-mobile" onclick="window.location.href='monumento-santamaria.html'">
                 <div class="card-icon">⛪</div>
-                <div class="info-monumento">
-                    <span data-i18n="monumenti.santamaria">Chiesa S. Maria degli Angeli</span>
-                </div>
-            </a>
+                <h2 data-i18n="monumenti.santamaria">Chiesa S. Maria degli Angeli</h2>
+            </section>
 
-            <!-- 3. Chiesa San Giorgio Martire -->
-            <a href="monumento-sangiorgio.html" class="card-monumento-hub">
+            <section class="quadrant-mobile" onclick="window.location.href='monumento-sangiorgio.html'">
                 <div class="card-icon">⛪</div>
-                <div class="info-monumento">
-                    <span data-i18n="monumenti.sangiorgio">Chiesa San Giorgio Martire</span>
-                </div>
-            </a>
+                <h2 data-i18n="monumenti.sangiorgio">Chiesa San Giorgio Martire</h2>
+            </section>
 
-            <!-- 4. Convento dei Frati Cappuccini -->
-            <a href="monumento-cappuccini.html" class="card-monumento-hub">
+            <section class="quadrant-mobile" onclick="window.location.href='monumento-cappuccini.html'">
                 <div class="card-icon">📜</div>
-                <div class="info-monumento">
-                    <span data-i18n="monumenti.cappuccini">Convento Frati Cappuccini</span>
-                </div>
-            </a>
+                <h2 data-i18n="monumenti.cappuccini">Convento Frati Cappuccini</h2>
+            </section>
 
-            <!-- 5. Parrocchia SS. Annunziata -->
-            <a href="monumento-annunziata.html" class="card-monumento-hub">
+            <section class="quadrant-mobile" onclick="window.location.href='monumento-annunziata.html'">
                 <div class="card-icon">⛪</div>
-                <div class="info-monumento">
-                    <span data-i18n="monumenti.annunziata">Parrocchia SS. Annunziata</span>
-                </div>
-            </a>
+                <h2 data-i18n="monumenti.annunziata">Parrocchia SS. Annunziata</h2>
+            </section>
 
-            <!-- 6. Chiesa San Benedict della Badia -->
-            <a href="monumento-sanbenedetto.html" class="card-monumento-hub">
+            <section class="quadrant-mobile" onclick="window.location.href='monumento-sanbenedetto.html'">
                 <div class="card-icon">✨</div>
-                <div class="info-monumento">
-                    <span data-i18n="monumenti.sanbenedetto">Chiesa S. Benedetto della Badia</span>
-                </div>
-            </a>
+                <h2 data-i18n="monumenti.sanbenedetto">Chiesa S. Benedetto della Badia</h2>
+            </section>
 
-        </div>
+        </main>
 
-        <!-- BOTTONE VAI ALLA MAPPA (Stile Barocco coordinato) -->
         <a href="mappa.html" class="btn-mappa">
             🌐 <span data-i18n="monumenti.go_to_map">Vai alla Mappa</span>
         </a>
 
-        <!-- BOTTONE CHAT WEB (Identico alla Home) -->
         <a href="../desktop/index.html" class="btn-castellana">
             <span data-i18n="home.talk_castellana">Parla con la Castellana</span>
         </a>
 
     </div>
 
-    <!-- GESTIONE AUDIO E MULTILINGUA -->
     <script>
         const audio = document.getElementById("bg-music");
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
-        
         audio.volume = 0.5;
-        let musicStarted = false;
 
         function startMusic() {
-            if (!musicStarted) {
-                audio.play().then(() => {
-                    musicStarted = true;
-                    if(trigger) trigger.remove();
-                }).catch(() => {
-                    setTimeout(() => audio.play(), 200);
-                });
-            }
+            audio.play().then(() => {
+                if(trigger) trigger.remove();
+            }).catch(() => {
+                setTimeout(() => audio.play(), 200);
+            });
         }
-
-        document.addEventListener("touchstart", startMusic, { once: true });
-        document.addEventListener("click", startMusic, { once: true });
         if(trigger) {
             trigger.addEventListener("click", startMusic);
             trigger.addEventListener("touchstart", startMusic);
         }
 
-        toggleBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
+        toggleBtn.addEventListener("click", () => {
             if (audio.paused) {
                 audio.play();
                 toggleBtn.textContent = "🔈";
@@ -150,7 +104,6 @@
             }
         });
 
-        // Multilingua
         let currentLang = localStorage.getItem("lang") || "it";
         function loadLanguage(lang) {
             fetch(`../lang/${lang}.json`)
