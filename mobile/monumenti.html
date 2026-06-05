@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - Monumenti</title>
     <link rel="manifest" href="./manifest.json?v=2">
+    
+    <!-- IMPORTAZIONE DEL FONT BAROCCO REFINED -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="monumenti.css">
     <meta name="theme-color" content="#000000">
 </head>
@@ -19,7 +25,7 @@
     <div class="scene-background monumento-bg"></div>
 
     <header class="dashboard">
-        <div class="logo-title" data-i18n="menu.title"></div>
+        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         <button id="toggle-music" class="btn-audio">🔈</button>
         <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
@@ -35,32 +41,26 @@
         <main class="monumenti-grid">
             
             <section class="quadrant-mobile" onclick="window.location.href='monumento-castello.html'">
-                <div class="card-icon">🏰</div>
                 <h2 data-i18n="monumenti.castello">Castello di Caccamo</h2>
             </section>
 
             <section class="quadrant-mobile" onclick="window.location.href='monumento-santamaria.html'">
-                <div class="card-icon">⛪</div>
                 <h2 data-i18n="monumenti.santamaria">Chiesa S. Maria degli Angeli</h2>
             </section>
 
             <section class="quadrant-mobile" onclick="window.location.href='monumento-sangiorgio.html'">
-                <div class="card-icon">⛪</div>
                 <h2 data-i18n="monumenti.sangiorgio">Chiesa San Giorgio Martire</h2>
             </section>
 
             <section class="quadrant-mobile" onclick="window.location.href='monumento-cappuccini.html'">
-                <div class="card-icon">📜</div>
                 <h2 data-i18n="monumenti.cappuccini">Convento Frati Cappuccini</h2>
             </section>
 
             <section class="quadrant-mobile" onclick="window.location.href='monumento-annunziata.html'">
-                <div class="card-icon">⛪</div>
                 <h2 data-i18n="monumenti.annunziata">Parrocchia SS. Annunziata</h2>
             </section>
 
             <section class="quadrant-mobile" onclick="window.location.href='monumento-sanbenedetto.html'">
-                <div class="card-icon">✨</div>
                 <h2 data-i18n="monumenti.sanbenedetto">Chiesa S. Benedetto della Badia</h2>
             </section>
 
