@@ -118,6 +118,15 @@
       "badia": "Te encuentras ante San Benito de la Badia. Este complejo monástico ha atravesado los siglos. Observa la finura de los detalles del render, que recuerdan a...",
       "angeli": "Esta es la Iglesia de Santa María de los Ángeles. Un lugar de culto extraordinario, cuya planta y decoraciones relatan el arte y la devoción de toda una época...",
       "duomo": "¡El Duomo de San Jorge Mártir! El corazón palpitante de nuestra comunidad, majestuoso y dominante. Mira cómo la luz dorada del render resalta las líneas de la cúpula y del campanario..."
-    }
+    },
+        "castello": "Castillo de Caccamo",
+    "santamaria": "Iglesia de Santa María de los Ángeles",
+    "sangiorgio": "Iglesia de San Jorge Mártir",
+    "cappuccini": "Convento de los Frailes Capuchinos",
+    "annunziata": "Parroquia de la SS. Anunciación",
+    "sanbenedetto": "Iglesia de San Benito de la Badia",
+    "go_to_map": "Ir al Mapa"
   }
 }
+}
+
