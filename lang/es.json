@@ -69,6 +69,7 @@
     "prisons": "Las prisiones subterráneas aún conservan huellas de antiguas detenciones.",
     "legend_brothers": "La leyenda de los dos hermanos cuenta un duelo fatal por el amor de una dama."
   },
+  
   "monuments": {
   "title": "Monumentos del Pueblo",
 
@@ -87,8 +88,7 @@
 
   "cappuccini_title": "Convento de los Capuchinos",
   "cappuccini_desc": "Fundado en el siglo XVI, alberga un claustro sobrio y una biblioteca histórica. Ofrece una vista panorámica del valle."
-  }
-},
+  },
 
   "castle": {
     "title": "El Castillo de Caccamo",
