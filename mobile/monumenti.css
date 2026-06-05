@@ -91,3 +91,104 @@
     transform: scale(0.98);
     box-shadow: 0 0 18px rgba(255, 215, 160, 0.6);
 }
+
+/* =======================================================
+   HUB MONUMENTI: STRUTTURA A 2 COLONNE, VETRO E GLOW ORO
+   ======================================================= */
+
+/* Sfondo scurito per risaltare il glow delle card */
+.monumento-bg {
+    filter: brightness(0.35) contrast(1.1) saturate(1.0) !important;
+}
+
+/* Margine e spaziatura del layout */
+.layout-monumenti {
+    margin-top: 75px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Griglia forzata a due colonne affiancate su mobile */
+.monumenti-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    position: relative;
+    z-index: 20;
+}
+
+/* Card Effetto Vetro (Glassmorphism) e forte Glow Oro */
+.card-monumento-hub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 125px;
+    padding: 12px 8px;
+    background: rgba(0, 0, 0, 0.55); /* Vetro scuro trasparente */
+    border: 2px solid #ffd78f;       /* Bordo oro barocco */
+    border-radius: 16px;
+    text-decoration: none !important; /* Rimuove il blu sottolineato */
+    
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Glow oro esterno radioso e riflesso interno */
+    box-shadow: 0 0 18px rgba(255, 215, 160, 0.45), 
+                inset 0 0 10px rgba(255, 215, 160, 0.15);
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Feedback tattile al click/tocco su mobile */
+.card-monumento-hub:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 25px rgba(255, 215, 160, 0.75);
+}
+
+/* Icona barocca dentro le card */
+.card-icon {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    filter: drop-shadow(0 0 4px rgba(255, 215, 160, 0.3));
+}
+
+/* Testo del monumento: addio scritte blu, benvenuto oro elegante */
+.info-monumento span {
+    font-family: system-ui, sans-serif !important;
+    color: #ffd78f !important; /* Forza il colore oro barocco */
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: none !important;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+    display: block;
+}
+
+/* Bottone "Vai alla Mappa" coordinato con lo stile .btn-castellana della Home */
+.btn-mappa {
+    background: rgba(0, 0, 0, 0.55);
+    border: 2px solid #ffd78f;
+    border-radius: 18px;
+    padding: 14px;
+    text-align: center;
+    color: #ffd78f;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
+    text-decoration: none !important;
+    position: relative;
+    z-index: 20;
+    margin-top: 5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-mappa:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 18px rgba(255, 215, 160, 0.6);
+}
+
