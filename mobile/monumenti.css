@@ -20,16 +20,15 @@ body {
 .scene-background {
     position: fixed;
     inset: 0;
-    background-image: url('img/tuo_nuovo_sfondo.jpeg');
+    background: url("./img/tuo_nuovo_sfondo.jpeg") no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
     filter: brightness(0.78) contrast(1.1) saturate(1.1);
     z-index: 0;
 }
 
-/* Modificatore specifico per la pagina Monumenti (Sfondo più scuro) */
+/* Sfondo specifico per la pagina Monumenti (Mantiene l'atmosfera ma dà risalto ai vetri lucidi) */
 .monumento-bg {
-    filter: brightness(0.35) contrast(1.1) saturate(1.0) !important;
+    filter: brightness(0.45) contrast(1.15) saturate(1.1) !important;
 }
 
 /* =======================================================
@@ -44,20 +43,21 @@ body {
     display: flex;
     align-items: center;
     padding: 0 16px;
-    background: rgba(0, 0, 0, 0.40);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.55);
-    z-index: 30; /* Alzato per stare sopra a tutto */
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.85);
+    z-index: 9999;
 }
 
 .logo-title {
     font-size: 1.15rem;
     font-weight: 600;
     letter-spacing: 0.5px;
+    color: #ffe7b3;
+    text-shadow: 0 0 10px rgba(255, 200, 120, 0.6);
 }
 
-/* Tasto Audio della Dashboard */
 .btn-audio {
     margin-left: auto;
     background: none;
@@ -69,11 +69,6 @@ body {
     transition: transform 0.2s ease;
 }
 
-.btn-audio:hover {
-    transform: scale(1.2);
-}
-
-/* Selettore della Lingua */
 .lang-switcher {
     display: flex;
     gap: 4px;
@@ -99,20 +94,15 @@ body {
     z-index: 2;
 }
 
-/* Layout specifico per la pagina dei monumenti */
 .layout-monumenti {
-    margin-top: 75px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    margin-top: 70px;
+    padding: 12px;
+    gap: 16px;
 }
 
 /* =======================================================
    5. COMPONENTI ESCLUSIVI DELLA HOME
    ======================================================= */
-
-/* Video Avatar Castellana Alpha */
 .video-container {
     width: 100%;
     height: 300px;
@@ -147,7 +137,6 @@ body {
     100% { transform: translateX(-50%) translateY(0); }
 }
 
-/* Griglia Bottoni Neri (Home) */
 .buttons-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -179,7 +168,6 @@ body {
     box-shadow: 0 0 10px rgba(255, 215, 160, 0.25);
 }
 
-/* Sezione Box Amunì */
 .amuni-box {
     margin-top: 20px;
     background: rgba(0, 0, 0, 0.55);
@@ -205,7 +193,6 @@ body {
     text-align: center;
 }
 
-/* Sezione Installa App PWA (Home) */
 .install-app {
     margin-top: 25px;
     background: rgba(0, 0, 0, 0.55);
@@ -243,115 +230,111 @@ body {
     border: 2px solid rgba(255, 215, 160, 0.45);
 }
 
-.qr-section p {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #f7f2e9;
-}
-
 /* =======================================================
-   6. NUOVA SEZIONE: ELENCO HUB MONUMENTI (A 2 COLONNE)
+   6. NUOVA GRIGLIA 2 COLONNE: GLOW ORO & VETRO DESKTOP
    ======================================================= */
 
-/* Griglia forzata su 2 colonne simmetriche affiancate */
 .monumenti-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr 1fr; /* Forza le due colonne simmetriche su mobile */
+    gap: 14px;
     width: 100%;
     position: relative;
     z-index: 20;
 }
 
-/* Card Effetto Vetro (Glassmorphism) e forte Glow Oro */
-.card-monumento-hub {
+/* Quadranti adattati dal Desktop: Trasparenza Bianca 0.08 e Triplo Glow Barocco */
+.quadrant-mobile {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 200, 120, 0.7);
+    padding: 16px 8px;
+    
+    /* Altezza bilanciata per i display dei telefoni */
+    min-height: 140px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 125px;
-    padding: 12px 8px;
-    background: rgba(0, 0, 0, 0.55); /* Vetro scuro trasparente */
-    border: 2px solid #ffd78f;       /* Spessore e colore oro coordinato */
-    border-radius: 16px;
-    text-decoration: none !important; /* Blocca definitivamente le sottolineature blu dei link */
-    
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    
-    /* Bagliore oro radioso all'esterno e luce soffusa all'interno */
-    box-shadow: 0 0 18px rgba(255, 215, 160, 0.45), 
-                inset 0 0 10px rgba(255, 215, 160, 0.15);
+    cursor: pointer;
+
+    /* Il triplo box shadow originale del tuo file desktop per un bagliore intenso */
+    box-shadow:
+        0 0 22px rgba(255, 200, 120, 0.45),
+        0 0 50px rgba(255, 120, 60, 0.25),
+        inset 0 0 15px rgba(255, 255, 255, 0.15);
     
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Risposta animata al tocco del dito su smartphone */
-.card-monumento-hub:active {
+/* Effetto di pressione al tocco su schermo mobile */
+.quadrant-mobile:active {
     transform: scale(0.96);
-    box-shadow: 0 0 25px rgba(255, 215, 160, 0.75);
+    box-shadow:
+        0 0 30px rgba(255, 210, 140, 0.8),
+        0 0 70px rgba(255, 120, 60, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.25);
 }
 
-/* Icona/Emoji posizionata sopra il titolo */
+/* Icona sopra il titolo */
 .card-icon {
-    font-size: 1.6rem;
-    margin-bottom: 6px;
-    filter: drop-shadow(0 0 4px rgba(255, 215, 160, 0.3));
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 8px rgba(255, 200, 120, 0.8));
 }
 
-/* Stile del testo dentro le card per bypassare i colori nativi del browser */
-.info-monumento span {
-    font-family: system-ui, sans-serif !important;
-    color: #ffd78f !important; /* Colore oro fisso per tutti i titoli */
-    font-size: 0.85rem;
+/* Titoli h2 ereditati dal desktop: Font Oro Chiaro e forte Text-Shadow */
+.quadrant-mobile h2 {
+    font-family: system-ui, sans-serif;
+    font-size: 0.92rem;
     font-weight: 600;
+    color: #ffe7b3; /* Colore oro identico alla versione desktop */
+    text-shadow: 0 0 10px rgba(255, 200, 120, 0.9);
     line-height: 1.3;
-    text-decoration: none !important;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
-    display: block;
+    margin: 0;
 }
 
 /* =======================================================
-   7. BOTTONI DI NAVIGAZIONE INFERIORI (STILE COMUNE)
+   7. BOTTONI DI NAVIGAZIONE INFERIORI
    ======================================================= */
-
-/* Bottone "Parla con la Castellana" (Home e Monumenti) */
 .btn-castellana {
-    margin-top: 10px;
+    margin-top: 5px;
     background: rgba(0, 0, 0, 0.55);
-    border: 2px solid #ffd78f;
+    border: 2px solid rgba(255, 200, 120, 0.7);
     border-radius: 18px;
     padding: 14px;
     text-align: center;
-    color: #ffd78f;
+    color: #ffe7b3;
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none !important;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
+    text-shadow: 0 0 8px rgba(255, 200, 120, 0.8);
+    box-shadow: 0 0 15px rgba(255, 200, 120, 0.4);
     position: relative;
     z-index: 20;
 }
 
-/* Nuovo Bottone "Vai alla Mappa" (Sincronizzato sul modello Castellana) */
 .btn-mappa {
     background: rgba(0, 0, 0, 0.55);
-    border: 2px solid #ffd78f;
+    border: 2px solid rgba(255, 200, 120, 0.7);
     border-radius: 18px;
     padding: 14px;
     text-align: center;
-    color: #ffd78f;
+    color: #ffe7b3;
     font-weight: 600;
     font-size: 1rem;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
+    text-shadow: 0 0 8px rgba(255, 200, 120, 0.8);
+    box-shadow: 0 0 15px rgba(255, 200, 120, 0.4);
     text-decoration: none !important;
     position: relative;
     z-index: 20;
-    margin-top: 5px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+    transition: transform 0.2s ease;
 }
 
 .btn-mappa:active {
     transform: scale(0.98);
-    box-shadow: 0 0 18px rgba(255, 215, 160, 0.6);
 }
