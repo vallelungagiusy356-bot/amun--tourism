@@ -69,6 +69,7 @@
     "prisons": "Les prisons souterraines conservent encore les traces d’anciennes détentions.",
     "legend_brothers": "La légende des deux frères raconte un duel fatal pour l’amour d’une dame."
   },
+  
   "monuments": {
   "title": "Monuments du Bourg",
 
@@ -87,9 +88,8 @@
 
   "cappuccini_title": "Couvent des Capucins",
   "cappuccini_desc": "Fondé au XVIᵉ siècle, il abrite un cloître sobre et une bibliothèque historique. Il offre une vue panoramique sur la vallée."
-  }
-},
- 
+  },
+
 "castle": {
     "title": "Le Château de Caccamo",
     "category": "Monuments Historiques",
@@ -120,4 +120,4 @@
       "duomo": "Le Duomo de San Giorgio Martire ! Le cœur battant de notre communauté, majestueux et dominant. Remarquez comment la lumière dorée du rendu sublime les lignes de la coupole et du clocher..."
     }
   }
-
+}
