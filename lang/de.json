@@ -99,5 +99,24 @@
     "para_3": "Zwischen Geschichte und Legende beschützt der Geist von Schwester Felicia noch heute das Dorf. Die Castellana erwartet Sie im Chat, um Ihnen ogni Geheimnis dieses zeitlosen Ortes zu enthüllen.",
     "chat_tooltip": "Hier klicken zum Chatten",
     "welcomemsg_felicia": "Willkommen auf der Burg von Caccamo, Fremder. Ich bin Schwester Felicia. Möchten Sie, dass ich Ihnen die Geheimnisse des Saals der Verschwörungen enthülle, oder möchten Sie lieber den alten Legenden der Burg lauschen? Fragen Sie mich gern."
+  },
+
+    "monuments": {
+    "title_page": "Die Kirchen von Caccamo",
+    "start_tour": "Tour starten",
+    "chat_tooltip": "Hier klicken zum Chatten",
+    "chat_hint": "Klicke auf meine Karten, um sie mit mir zu erkunden! ✨",
+    "welcomemsg_churches": "<strong>Die Castellana:</strong> Willkommen im Herzen der Sakralität von Caccamo, Fremder. Möchtest du, dass ich dir die Geheimnisse dieser lebendigen Mauern enthülle? Frage mich ruhig.",
+    "cappuccini_name": "Die Kapuziner",
+    "annunziata_name": "Annunziata",
+    "badia_name": "Hl. Benedikt der Badia",
+    "angeli_name": "Heilige Maria der Engel",
+    "duomo_name": "Kirche des Hl. Georg des Märtyrers",
+    "storie": {
+      "cappuccini": "Willkommen bei den Kapuzinern! Dieser Ort birgt jahrhundertealte Geschichten und eine Atmosphäre tiefer Spiritualität. Wenn du das Modell betrachtest, kannst du die ursprüngliche Struktur erkennen...",
+      "annunziata": "Hier ist die Annunziata, ein architektonisches Juwel, das unauslöschliche Spuren unserer Vergangenheit bewahrt. Ihre Fassade und die inneren Details wurden rekonstruiert, um dir zu zeigen...",
+      "badia": "Du stehst vor Hl. Benedikt der Badia. Dieser Klosterkomplex hat die Jahrhunderte überdauert. Beachte die Feinheit der Render-Details, die an... erinnern.",
+      "angeli": "Dies ist die Kirche Santa Maria degli Angeli. Ein außergewöhnliches Gotteshaus, dessen Grundriss und Dekorationen von der Kunst und Frömmigkeit einer ganzen Epoche erzählen...",
+      "duomo": "Der Dom San Giorgio Martire! Das pulsierende Herz unserer Gemeinschaft, majestätisch und dominierend. Beachte, wie das goldene Licht des Renders die Linien der Kuppel und des Glockenturms hervorhebt..."
+    }
   }
-}
