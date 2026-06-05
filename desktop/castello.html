@@ -9,13 +9,11 @@
 <body>
 
     <!-- 🎬 SFONDO DINAMICO -->
-        <div class="scene-background-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -9999; background: black;">
-    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
-        <source src="img/video_castello.webm" type="video/mp4">
-    </video>
-</div>
-
-
+    <div class="scene-background-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -9999; background: black;">
+        <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="img/video_castello.webm" type="video/mp4">
+        </video>
+    </div>
 
     <!-- 👑 DASHBOARD -->
     <header class="dashboard">
@@ -45,13 +43,13 @@
         <!-- 📝 COLONNA SINISTRA: TESTI + ABITO INTEGRATO -->
         <section class="castle-info-panel">
             <div class="info-panel-header">
-                <span class="category-tag">Monumenti Storici</span>
+                <span class="category-tag" data-i18n="castle.category">Monumenti Storici</span>
                 <h2 data-i18n="castle.title">Il Castello di Caccamo</h2>
                 <hr class="gold-divider">
             </div>
             
             <div class="castle-text-content">
-                <p class="text-paragraph leading-para">
+                <p class="text-paragraph leading-para" data-i18n="castle.leading_para">
                     Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
                     Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
                 </p>
@@ -59,13 +57,13 @@
                 <!-- 👗 ABITO INTEGRATO NEL TESTO -->
                 <div class="castle-dress-inline">
                     <img src="img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
-                    <p class="dress-caption-inline">L'abito della Castellana</p>
+                    <p class="dress-caption-inline" data-i18n="castle.dress_caption">L'abito della Castellana</p>
                 </div>
 
-                <p class="text-paragraph">
-                    Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
+                <p class="text-paragraph" data-i18n="castle.para_2">
+                    Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
                 </p>
-                <p class="text-paragraph highlight-para">
+                <p class="text-paragraph highlight-para" data-i18n="castle.para_3">
                     Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
                 </p>
             </div>
@@ -76,7 +74,7 @@
             
             <div class="castellana-video-container">
                 <div class="castellana-video-wrapper">
-                    <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat-tooltip">Click to Chat</div>
+                    <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
                     <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
                         <source src="img/benvenuto_castellana.webm" type="video/webm">
                     </video>
@@ -92,7 +90,7 @@
                 </div>
                 
                 <div class="chat-messages" id="chatMessagesBox">
-                    <div class="message system-msg">
+                    <div class="message system-msg" data-i18n="castle.welcomemsg_felicia">
                         <strong>La Castellana:</strong> Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure.
                     </div>
                 </div>
