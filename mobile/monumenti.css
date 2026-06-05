@@ -1,107 +1,105 @@
-/* ==========================================
-   PAGINA HUB MONUMENTI - GRIGLIA BAROCCA MOBILE
-   ========================================== */
-
-/* Sfondo della sezione monumenti: oscurato per dare risalto alle card */
-.monumento-bg {
-    filter: brightness(0.40) contrast(1.1) saturate(1.0) !important;
-}
-
-.layout-monumenti {
-    gap: 20px;
-}
-
-/* Griglia responsive a due colonne simmetriche */
-.monumenti-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 10px;
-    position: relative;
-    z-index: 20;
-}
-
-/* Card ad Effetto Vetro (Glassmorphism) con Forte Glow Oro */
-.card-monumento-hub {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 130px;
-    padding: 14px 10px;
-    background: rgba(0, 0, 0, 0.45); /* Base scura trasparente */
-    border: 2px solid #ffd78f;       /* Bordo oro */
-    border-radius: 18px;
-    text-decoration: none;           /* Rimuove sottolineatura del link */
-    
-    backdrop-filter: blur(15px);     /* Sfocatura vetro */
-    -webkit-backdrop-filter: blur(15px);
-    
-    /* Box shadow con bagliore oro esterno ed interno combinato */
-    box-shadow: 0 0 20px rgba(255, 215, 160, 0.4), 
-                inset 0 0 10px rgba(255, 215, 160, 0.15);
-    
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Effetto di feedback visivo al tocco o click */
-.card-monumento-hub:active {
-    transform: scale(0.96);
-    box-shadow: 0 0 28px rgba(255, 215, 160, 0.75), 
-                inset 0 0 15px rgba(255, 215, 160, 0.3);
-}
-
-/* Icona/Emoji decorativa all'interno della card */
-.card-icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-    filter: drop-shadow(0 0 6px rgba(255, 215, 160, 0.3));
-}
-
-/* Titolo del monumento dentro la card */
-.card-monumento-hub h2 {
-    color: #f7f2e9;
-    font-size: 0.9rem;
-    font-weight: 600;
-    line-height: 1.3;
+/* =======================================================
+   1. RESET GENERALE E STILI DI BASE
+   ======================================================= */
+* {
     margin: 0;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Bottone "Vai alla Mappa" coordinato con lo stile .btn-castellana */
-.btn-mappa {
-    background: rgba(0, 0, 0, 0.55);
-    border: 2px solid #ffd78f;
-    border-radius: 18px;
-    padding: 14px;
-    text-align: center;
-    color: #ffd78f;
-    font-weight: 600;
-    font-size: 1rem;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
-    text-decoration: none;
-    position: relative;
-    z-index: 20;
-    margin-top: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-mappa:active {
-    transform: scale(0.98);
-    box-shadow: 0 0 18px rgba(255, 215, 160, 0.6);
+body {
+    font-family: system-ui, sans-serif;
+    background: #000;
+    color: #f7f2e9;
+    overflow-x: hidden;
 }
 
 /* =======================================================
-   HUB MONUMENTI: STRUTTURA A 2 COLONNE, VETRO E GLOW ORO
+   2. SFONDO COMUNE (ELEMENTO FISSO)
    ======================================================= */
+.scene-background {
+    position: fixed;
+    inset: 0;
+    background-image: url('img/tuo_nuovo_sfondo.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.78) contrast(1.1) saturate(1.1);
+    z-index: 0;
+}
 
-/* Sfondo scurito per risaltare il glow delle card */
+/* Modificatore specifico per la pagina Monumenti (Sfondo più scuro) */
 .monumento-bg {
     filter: brightness(0.35) contrast(1.1) saturate(1.0) !important;
 }
 
-/* Margine e spaziatura del layout mobile */
+/* =======================================================
+   3. DASHBOARD MOBILE (NAVBAR SUPERIORE)
+   ======================================================= */
+.dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background: rgba(0, 0, 0, 0.40);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.55);
+    z-index: 30; /* Alzato per stare sopra a tutto */
+}
+
+.logo-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Tasto Audio della Dashboard */
+.btn-audio {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #ffd78f;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 6px;
+    transition: transform 0.2s ease;
+}
+
+.btn-audio:hover {
+    transform: scale(1.2);
+}
+
+/* Selettore della Lingua */
+.lang-switcher {
+    display: flex;
+    gap: 4px;
+}
+
+.lang-switcher button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* =======================================================
+   4. LAYOUT E CONTENITORI PRINCIPALI
+   ======================================================= */
+.mobile-layout {
+    margin-top: 75px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Layout specifico per la pagina dei monumenti */
 .layout-monumenti {
     margin-top: 75px;
     padding: 16px;
@@ -110,7 +108,152 @@
     gap: 20px;
 }
 
-/* Griglia forzata a due colonne affiancate su mobile */
+/* =======================================================
+   5. COMPONENTI ESCLUSIVI DELLA HOME
+   ======================================================= */
+
+/* Video Avatar Castellana Alpha */
+.video-container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-bottom: 2px solid rgba(255, 215, 160, 0.5);
+    border-radius: 0 0 18px 18px;
+    position: relative;
+    pointer-events: none;
+}
+
+.castellana-avatar {
+    position: absolute;
+    bottom: -110px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    max-width: 300px;
+    z-index: 10;
+    pointer-events: none;
+    animation: fadeIn 1.2s ease-out, breathe 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35));
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes breathe {
+    0%   { transform: translateX(-50%) translateY(0); }
+    50%  { transform: translateX(-50%) translateY(-6px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* Griglia Bottoni Neri (Home) */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 20;
+}
+
+.buttons-row-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    position: relative;
+    z-index: 20;
+}
+
+.btn-barocco {
+    display: inline-block;
+    background: #000;
+    border: 2px solid #d4a84f;
+    border-radius: 14px;
+    padding: 14px 6px;
+    text-align: center;
+    color: #ffd78f;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(255, 215, 160, 0.25);
+}
+
+/* Sezione Box Amunì */
+.amuni-box {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.45);
+    border-radius: 18px;
+    padding: 18px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.amuni-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffd78f;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.amuni-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #f7f2e9;
+    text-align: center;
+}
+
+/* Sezione Installa App PWA (Home) */
+.install-app {
+    margin-top: 25px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.45);
+    border-radius: 18px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.install-app h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffd78f;
+    margin-bottom: 14px;
+    text-shadow: 0 0 6px rgba(255, 215, 160, 0.35);
+}
+
+.install-app .btn-barocco {
+    display: block;
+    margin: 10px auto;
+    width: 90%;
+    font-size: 1rem;
+}
+
+.qr-section {
+    margin-top: 18px;
+}
+
+.qr {
+    width: 160px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
+    border: 2px solid rgba(255, 215, 160, 0.45);
+}
+
+.qr-section p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #f7f2e9;
+}
+
+/* =======================================================
+   6. NUOVA SEZIONE: ELENCO HUB MONUMENTI (A 2 COLONNE)
+   ======================================================= */
+
+/* Griglia forzata su 2 colonne simmetriche affiancate */
 .monumenti-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -130,37 +273,37 @@
     min-height: 125px;
     padding: 12px 8px;
     background: rgba(0, 0, 0, 0.55); /* Vetro scuro trasparente */
-    border: 2px solid #ffd78f;       /* Bordo oro barocco */
+    border: 2px solid #ffd78f;       /* Spessore e colore oro coordinato */
     border-radius: 16px;
-    text-decoration: none !important; /* Rimuove definitivamente la sottolineatura */
+    text-decoration: none !important; /* Blocca definitivamente le sottolineature blu dei link */
     
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     
-    /* Glow oro esterno radioso e riflesso interno */
+    /* Bagliore oro radioso all'esterno e luce soffusa all'interno */
     box-shadow: 0 0 18px rgba(255, 215, 160, 0.45), 
                 inset 0 0 10px rgba(255, 215, 160, 0.15);
     
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Feedback tattile al click/tocco su mobile */
+/* Risposta animata al tocco del dito su smartphone */
 .card-monumento-hub:active {
     transform: scale(0.96);
     box-shadow: 0 0 25px rgba(255, 215, 160, 0.75);
 }
 
-/* Icona barocca dentro le card */
+/* Icona/Emoji posizionata sopra il titolo */
 .card-icon {
     font-size: 1.6rem;
     margin-bottom: 6px;
     filter: drop-shadow(0 0 4px rgba(255, 215, 160, 0.3));
 }
 
-/* Testo del monumento: forza lo stile senza ereditare i link blu del browser */
+/* Stile del testo dentro le card per bypassare i colori nativi del browser */
 .info-monumento span {
     font-family: system-ui, sans-serif !important;
-    color: #ffd78f !important; /* Colore oro coordinato */
+    color: #ffd78f !important; /* Colore oro fisso per tutti i titoli */
     font-size: 0.85rem;
     font-weight: 600;
     line-height: 1.3;
@@ -169,7 +312,28 @@
     display: block;
 }
 
-/* Bottone "Vai alla Mappa" coordinato con lo stile .btn-castellana della Home */
+/* =======================================================
+   7. BOTTONI DI NAVIGAZIONE INFERIORI (STILE COMUNE)
+   ======================================================= */
+
+/* Bottone "Parla con la Castellana" (Home e Monumenti) */
+.btn-castellana {
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 2px solid #ffd78f;
+    border-radius: 18px;
+    padding: 14px;
+    text-align: center;
+    color: #ffd78f;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none !important;
+    box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
+    position: relative;
+    z-index: 20;
+}
+
+/* Nuovo Bottone "Vai alla Mappa" (Sincronizzato sul modello Castellana) */
 .btn-mappa {
     background: rgba(0, 0, 0, 0.55);
     border: 2px solid #ffd78f;
