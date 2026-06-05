@@ -99,5 +99,23 @@
     "para_3": "Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.",
     "chat_tooltip": "Click to Chat",
     "welcomemsg_felicia": "Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure."
+  },
+    "monuments": {
+    "title_page": "Le Chiese di Caccamo",
+    "start_tour": "Inizia il Tour",
+    "chat_tooltip": "Click to chat",
+    "chat_hint": "Clicca sulle mie card per esplorarle con me! ✨",
+    "welcomemsg_churches": "<strong>La Castellana:</strong> Benvenuto nel cuore della sacralità di Caccamo, forestiero. Vuoi che ti sveli i segreti di queste mura vive? Chiedimi pure.",
+    "cappuccini_name": "I Cappuccini",
+    "annunziata_name": "Annunziata",
+    "badia_name": "S. Benedetto della Badia",
+    "angeli_name": "Santa Maria degli Angeli",
+    "duomo_name": "Chiesa San Giorgio Martire",
+    "storie": {
+      "cappuccini": "Benvenuto ai Cappuccini! Questo luogo racchiude storie secolari e un'atmosfera di profonda spiritualità. Guardando il modello, puoi notare la struttura originaria...",
+      "annunziata": "Ecco l'Annunziata, un gioiello architettonico che custodisce tracce indelebili del nostro passato. La sua facciata e i dettagli interni sono stati ricostruiti per mostrarti...",
+      "badia": "Ti trovi davanti a S. Benedetto della Badia. Questo complesso monastico ha attraversato i secoli. Osserva la finezza dei dettagli del render, che richiamano...",
+      "angeli": "Questa è la Chiesa di Santa Maria degli Angeli. Un luogo di culto straordinario, la cui pianta e le cui decorazioni raccontano l'arte e la devozione di un'intera epoca...",
+      "duomo": "Il Duomo di San Giorgio Martire! Il cuore pulsante della nostra comunità, maestoso e dominante. Nota come la luce d'oro del render esalta le linee della cupola e del campanile..."
+    }
   }
-}
