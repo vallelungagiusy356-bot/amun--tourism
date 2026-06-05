@@ -249,8 +249,8 @@ body {
     background: rgba(255, 255, 255, 0.02);
     
     /* Aumentiamo il blur per dare l'effetto rifrangente del vetro spesso */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     
     border-radius: 16px;
     
