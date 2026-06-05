@@ -99,5 +99,25 @@
     "para_3": "Entre la historia y la leyenda, el espíritu de Sor Felicia sigue protegiendo el pueblo. La Castellana te espera en el chat para revelarte cada secreto de este lugar atemporal.",
     "chat_tooltip": "Haz clic para Chatear",
     "welcomemsg_felicia": "Bienvenido al Castillo de Caccamo, forastero. Yo soy Sor Felicia. ¿Quieres que te revele los secretos de la Sala de las Conjuras o prefieres escuchar las antiguas leyendas del palacio? Pregúntame lo que desees."
+  },
+
+  "monuments": {
+    "title_page": "Las Iglesias de Caccamo",
+    "start_tour": "Iniciar el Tour",
+    "chat_tooltip": "Haz clic para chatear",
+    "chat_hint": "¡Haz clic en mis tarjetas para explorarlas conmigo! ✨",
+    "welcomemsg_churches": "<strong>La Castellana:</strong> Bienvenido al corazón de la sacralidad de Caccamo, forastero. ¿Quieres que te revele los secretos de estas paredes vivas? Pregúntame lo que desees.",
+    "cappuccini_name": "Los Capuchinos",
+    "annunziata_name": "Anunciación",
+    "badia_name": "San Benito de la Badia",
+    "angeli_name": "Santa María de los Ángeles",
+    "duomo_name": "Iglesia de San Jorge Mártir",
+    "storie": {
+      "cappuccini": "¡Bienvenido a los Capuchinos! Este lugar alberga historias seculares y una atmósfera de profunda espiritualidad. Al mirar el modelo, puedes notar la estructura original...",
+      "annunziata": "Aquí está la Anunciación, una joya arquitectónica que conserva huellas indelebles de nuestro pasado. Su fachada y detalles internos han sido reconstruidos para mostrarte...",
+      "badia": "Te encuentras ante San Benito de la Badia. Este complejo monástico ha atravesado los siglos. Observa la finura de los detalles del render, que recuerdan a...",
+      "angeli": "Esta es la Iglesia de Santa María de los Ángeles. Un lugar de culto extraordinario, cuya planta y decoraciones relatan el arte y la devoción de toda una época...",
+      "duomo": "¡El Duomo de San Jorge Mártir! El corazón palpitante de nuestra comunidad, majestuoso y dominante. Mira cómo la luz dorada del render resalta las líneas de la cúpula y del campanario..."
+    }
   }
-}
+
