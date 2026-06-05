@@ -96,6 +96,15 @@
       "badia": "Du stehst vor Hl. Benedikt der Badia. Dieser Klosterkomplex hat die Jahrhunderte überdauert. Beachte die Feinheit der Render-Details, die an... erinnern.",
       "angeli": "Dies ist die Kirche Santa Maria degli Angeli. Ein außergewöhnliches Gotteshaus, dessen Grundriss und Dekorationen von der Kunst und Frömmigkeit einer ganzen Epoche erzählen...",
       "duomo": "Der Dom San Giorgio Martire! Das pulsierende Herz unserer Gemeinschaft, majestätisch und dominierend. Beachte, wie das goldene Licht des Renders die Linien der Kuppel und des Glockenturms hervorhebt..."
-    }
+    },
+        "castello": "Schloss von Caccamo",
+    "santamaria": "Kirche Hl. Maria der Engel",
+    "sangiorgio": "Kirche des Hl. Georg des Märtyrers",
+    "cappuccini": "Kapuzinerbrüder-Kloster",
+    "annunziata": "Pfarrei SS. Annunziata",
+    "sanbenedetto": "Kirche des Hl. Benedikt der Badia",
+    "go_to_map": "Zur Karte gehen"
   }
 }
+}
+  
