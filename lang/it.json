@@ -117,6 +117,14 @@
       "badia": "Ti trovi davanti a S. Benedetto della Badia. Questo complesso monastico ha attraversato i secoli. Osserva la finezza dei dettagli del render, che richiamano...",
       "angeli": "Questa è la Chiesa di Santa Maria degli Angeli. Un luogo di culto straordinario, la cui pianta e le cui decorazioni raccontano l'arte e la devozione di un'intera epoca...",
       "duomo": "Il Duomo di San Giorgio Martire! Il cuore pulsante della nostra comunità, maestoso e dominante. Nota come la luce d'oro del render esalta le linee della cupola e del campanile..."
+    },
+          "castello": "Castello di Caccamo",
+    "santamaria": "Chiesa S. Maria degli Angeli",
+    "sangiorgio": "Chiesa San Giorgio Martire",
+    "cappuccini": "Convento Frati Cappuccini",
+    "annunziata": "Parrocchia SS. Annunziata",
+    "sanbenedetto": "Chiesa S. Benedetto della Badia",
+    "go_to_map": "Vai alla Mappa"
     }
   }
 }
