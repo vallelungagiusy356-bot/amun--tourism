@@ -22,7 +22,7 @@ body {
     inset: 0;
     background: url("./img/tuo_nuovo_sfondo.jpeg") no-repeat center center fixed;
     background-size: cover;
-    filter: brightness(0.78) contrast(2.1) saturate(1.5);
+    filter: brightness(0.90) contrast(1.5) saturate(1.1);
     z-index: 0;
 }
 
