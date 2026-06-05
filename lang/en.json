@@ -99,6 +99,26 @@
     "para_3": "Between history and legend, the spirit of Sister Felicia still protects the village. The Castellana awaits you in chat to reveal every secret of this timeless place.",
     "chat_tooltip": "Click to Chat",
     "welcomemsg_felicia": "Welcome to the Castle of Caccamo, stranger. I am Sister Felicia. Would you like me to reveal the secrets of the Conspiracy Hall, or do you prefer to listen to the ancient legends of the manor? Just ask me."
+  },
+
+  "monuments": {
+    "title_page": "The Churches of Caccamo",
+    "start_tour": "Start the Tour",
+    "chat_tooltip": "Click to chat",
+    "chat_hint": "Click on my cards to explore them with me! ✨",
+    "welcomemsg_churches": "<strong>The Castellana:</strong> Welcome to the heart of Caccamo's sacredness, stranger. Would you like me to reveal the secrets of these living walls? Just ask me.",
+    "cappuccini_name": "The Capuchins",
+    "annunziata_name": "Annunziata",
+    "badia_name": "St. Benedict of the Badia",
+    "angeli_name": "Holy Mary of the Angels",
+    "duomo_name": "Church of St. George the Martyr",
+    "storie": {
+      "cappuccini": "Welcome to the Capuchin Convent! This place holds centuries-old stories and an atmosphere of deep spirituality. Looking at the model, you can notice the original structure...",
+      "annunziata": "Here is the Annunziata, an architectural jewel that preserves indelible traces of our past. Its facade and interior details have been reconstructed to show you...",
+      "badia": "You stand before St. Benedict of the Badia. This monastic complex has spanned centuries. Observe the refinement of the rendering details, which recall...",
+      "angeli": "This is the Church of Santa Maria degli Angeli. An extraordinary place of worship, whose layout and decorations tell the story of the art and devotion of an entire era...",
+      "duomo": "The Cathedral of St. George the Martyr! The beating heart of our community, majestic and dominant. Notice how the golden light of the rendering enhances the lines of the dome and the bell tower..."
+    }
   }
-}
+
 
