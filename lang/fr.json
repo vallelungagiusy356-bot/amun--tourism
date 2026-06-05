@@ -89,3 +89,14 @@
   "cappuccini_desc": "Fondé au XVIᵉ siècle, il abrite un cloître sobre et une bibliothèque historique. Il offre une vue panoramique sur la vallée."
   }
 }
+ 
+"castle": {
+    "title": "Le Château de Caccamo",
+    "category": "Monuments Historiques",
+    "leading_para": "Le Château de Caccamo est l'une des forteresses normandes les plus grandes et le mieux conservées de Sicile. Perché sur la roche vive depuis le XIe siècle, il domine la vallée du San Leonardo comme un bastion stratégique millénaire.",
+    "dress_caption": "La robe de la Castellana",
+    "para_2": "Chaque recoin de ce manoir respire le charme et le mystère : de la célèbre Salle des Conjurations, théâtre d'intrigues et de pactes entre nobles médiévaux, aux anciennes prisons de l'Inquisition creusées dans la pierre.",
+    "para_3": "Entre histoire et légende, l'esprit de Sœur Felicia protège encore le village. La Castellana vous attend dans le chat pour vous révéler tous les secrets de ce lieu intemporel.",
+    "chat_tooltip": "Cliquez pour Chatter",
+    "welcomemsg_felicia": "Bienvenue au Château de Caccamo, étranger. Je suis Sœur Felicia. Voulez-vous que je vous dévoile les secrets de la Salle des Conjurations ou préférez-vous écouter les anciennes légendes du manoir ? N'hésitez pas à me demander."
+  }
