@@ -16,17 +16,9 @@
 </head>
 <body>
 
-    <button id="audio-trigger" style="
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    opacity:0;
-    border:none;
-    background:transparent;
-    z-index:9999;">
-</button>
+    <!-- TRIGGER AUDIO INVISIBILE -->
+    <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
+    
     <!-- AUDIO EPICO -->
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
@@ -76,8 +68,8 @@
 
         <!-- BOTTONE CHAT WEB -->
         <a href="../desktop/index.html" class="btn-castellana">
-    <span data-i18n="home.talk_castellana"></span>
-</a>
+            <span data-i18n="home.talk_castellana"></span>
+        </a>
 
         <!-- SEZIONE AMUNI -->
         <div class="amuni-box">
@@ -109,37 +101,37 @@
 
     </div>
 
-    <!-- SCRIPT: MUSICA PARTE AL PRIMO TOCCO -->
+    <!-- SCRIPT UNIFICATO: GESTIONE AUDIO (SENZA ERRORI DI DUPLICATI) -->
     <script>
         const audio = document.getElementById("bg-music");
+        const trigger = document.getElementById("audio-trigger");
+        const toggleBtn = document.getElementById("toggle-music");
+        
         audio.volume = 0.5;
-
         let musicStarted = false;
 
         function startMusic() {
             if (!musicStarted) {
                 audio.play().then(() => {
                     musicStarted = true;
+                    if(trigger) trigger.remove(); // Rimuove il bottone invisibile a tutto schermo
                 }).catch(() => {
-                    setTimeout(() => {
-                        audio.play();
-                    }, 200);
+                    setTimeout(() => audio.play(), 200);
                 });
-
-                document.removeEventListener("touchstart", startMusic);
-                document.removeEventListener("click", startMusic);
             }
         }
 
+        // Avvia al primo tocco ovunque sulla pagina
         document.addEventListener("touchstart", startMusic, { once: true });
         document.addEventListener("click", startMusic, { once: true });
-    </script>
+        if(trigger) {
+            trigger.addEventListener("click", startMusic);
+            trigger.addEventListener("touchstart", startMusic);
+        }
 
-    <!-- SCRIPT: CONTROLLO AUDIO ON/OFF -->
-    <script>
-        const toggleBtn = document.getElementById("toggle-music");
-
-        toggleBtn.addEventListener("click", () => {
+        // Controllo manuale Bottone ON/OFF
+        toggleBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Evita di attivare altri listener
             if (audio.paused) {
                 audio.play();
                 toggleBtn.textContent = "🔈";
@@ -186,24 +178,6 @@
                 .then(() => console.log("Service Worker registrato"))
                 .catch(err => console.log("Errore SW:", err));
         }
-    </script>
-
-    <script>
-    const audio = document.getElementById("bg-music");
-    const trigger = document.getElementById("audio-trigger");
-
-    audio.volume = 0.5;
-
-    function startMusic() {
-        audio.play().then(() => {
-            trigger.remove(); // Rimuove il trigger invisibile
-        }).catch(() => {
-            setTimeout(() => audio.play(), 200);
-        });
-    }
-
-    trigger.addEventListener("click", startMusic);
-    trigger.addEventListener("touchstart", startMusic);
     </script>
 </body>
 </html>
