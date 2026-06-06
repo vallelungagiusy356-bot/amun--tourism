@@ -56,48 +56,48 @@
     "event_beato": "Fest des Seligen Giovanni"
   },
 
-  "castle": {
-    "title": "Die Burg von Caccamo",
+    "castle": {
+    "title": "Das Schloss von Caccamo",
     "category": "Historische Denkmäler",
-    "leading_para": "Die Burg von Caccamo gehört zu den größten und besterhaltenen normannischen Festungen Siziliens. Seit dem 11. Jahrhundert auf dem nackten Felsen thronend, beherrscht sie das San-Leonardo-Tal als jahrtausendealtes strategisches Bollwerk.",
+    "leading_para": "Das Schloss von Caccamo ist eine der größten und am besten erhaltenen normannischen Festungen in Sizilien. Seit dem 11. Jahrhundert thront es auf einem steilen Felsen und beherrscht das San-Leonardo-Tal als jahrtausendealtes strategisches Bollwerk.",
     "dress_caption": "Das Kleid der Castellana",
-    "para_2": "Jede Ecke dieses Herrensitzes strahlt Charme und Geheimnis aus: vom berühmten Saal der Verschwörungen, dem Schauplatz von Intrigen und Pakten zwischen mittelalterlichen Adligen, bis hin zu den alten, in den Stein gehauenen Gefängnissen der Inquisition.",
-    "para_3": "Zwischen Geschichte und Legende beschützt der Geist von Schwester Felicia noch heute das Dorf. Die Castellana erwartet Sie im Chat, um Ihnen ogni Geheimnis dieses zeitlosen Ortes zu enthüllen.",
-    "chat_tooltip": "Hier klicken zum Chatten",
-    "welcomemsg_felicia": "Willkommen auf der Burg von Caccamo, Fremder. Ich bin Schwester Felicia. Möchten Sie, dass ich Ihnen die Geheimnisse des Saals der Verschwörungen enthülle, oder möchten Sie lieber den alten Legenden der Burg lauschen? Fragen Sie mich gern."
+    "para_2": "Jede Ecke dieses Herrenhauses strahlt Charme und Geheimnis aus: vom berühmten Verschwörungssaal, dem Schauplatz von Intrigen und Pakten zwischen mittelalterlichen Adligen, bis hin zu den alten, in den Stein gehauenen Gefängnissen der Inquisition.",
+    "para_3": "Zwischen Geschichte und Legende beschützt der Geist von Schwester Felicia noch heute das Dorf. Die Castellana erwartet Sie im Chat, um Ihnen jedes Geheimnis dieses zeitlosen Ortes zu enthüllen.",
+    "chat_tooltip": "Klicken um zu chatten",
+    "welcomemsg_felicia": "Willkommen im Schloss von Caccamo, Fremder. Ich bin Schwester Felicia. Möchten Sie, dass ich Ihnen die Geheimnisse des Verschwörungssaals enthülle, oder möchten Sie lieber den alten Legenden des Schlosses lauschen? Fragen Sie mich ruhig."
   },
 
   "monuments": {
     "title": "Denkmäler des Dorfes",
-    "title_page": "Die Kirchen von Caccamo",
-    "start_tour": "Tour starten",
-    "chat_tooltip": "Hier klicken zum Chatten",
-    "chat_hint": "Klicke auf meine Karten, um sie mit mir zu erkunden! ✨",
-    "welcomemsg_churches": "<strong>Die Castellana:</strong> Willkommen im Herzen der Sakralität von Caccamo, Fremder. Möchtest du, dass ich dir die Geheimnisse dieser lebendigen Mauern enthülle? Frage mich ruhig.",
     "castle_title": "Schloss von Caccamo",
-    "castle_desc": "Einer der größten mittelalterlichen Burgen Siziliens, mit Blick über das Tal des San Leonardo. Diese normannische Festung aus dem 11. Jahrhundert bewahrt Gefängnisse, historische Säle und faszinierende Legenden.",
+    "castle_desc": "Eines der größten mittelalterlichen Schlösser Siziliens mit Blick auf das Tal von San Leonardo. Diese normannische Festung aus dem 11. Jahrhundert bewahrt Gefängnisse, historische Säle und faszinierende Legenden.",
     "castle_button": "Seite besuchen",
-    "cappuccini_name": "Die Kapuziner",
-    "annunziata_name": "Annunziata",
-    "badia_name": "Hl. Benedikt der Badia",
-    "angeli_name": "Heilige Maria der Engel",
-    "duomo_name": "Kirche des Hl. Georg des Märtyrers",
     "annunziata_title": "Kirche SS. Annunziata und San Benedetto della Badia",
-    "annunziata_desc": "Zwei benachbarte Kirchen, Symbole der lokalen Frömmigkeit. Die Annunziata besitzt elegante barocke Stuckarbeiten, während die Badia Krypten und einen wunderschönen Majolika‑Boden beherbergt.",
-    "sangiorgio_title": "Kirche des Heiligen Georgs Märtyrer",
-    "sangiorgio_desc": "Eine der ältesten Kirchen des Dorfes, mit einer normannisch‑gotischen Fassade und wertvollen Holzskulpturen, überragt vom Schloss im Hintergrund.",
+    "annunziata_desc": "Zwei benachbarte Kirchen, Symbole lokaler Frömmigkeit. Die Annunziata besticht durch elegante Barockstuckaturen, während die Badia Krypten und einen wunderschönen Majolikaboden beherbergt.",
+    "sangiorgio_title": "Kirche des Heiligen Georg des Märtyrers",
+    "sangiorgio_desc": "Eine der ältesten Kirchen des Dorfes mit einer normannisch-gotischen Fassade und wertvollen Holzskulpturen, dominiert vom Schloss im Hintergrund.",
     "angeli_title": "Kirche Santa Maria degli Angeli",
-    "angeli_desc": "Eine kleine franziskanische Kirche in stiller Atmosphäre, mit einem Marmoraltar und den Reliquien des Seligen Giovanni, einer sehr verehrten geistlichen Persönlichkeit.",
+    "angeli_desc": "Eine kleine Franziskanerkirche in ruhiger Atmosphäre mit einem Marmoraltar und den Reliquien des seligen Giovanni, einer hochverehrten spirituellen Figur.",
     "cappuccini_title": "Kapuzinerkloster",
     "cappuccini_desc": "Im 16. Jahrhundert gegründet, beherbergt es einen schlichten Kreuzgang und eine historische Bibliothek. Es bietet einen Panoramablick über das Tal.",
+    "title_page": "Die Kirchen von Caccamo",
+    "start_tour": "Tour starten",
+    "chat_tooltip": "Klicken um zu chatten",
+    "chat_hint": "Klicken Sie auf meine Karten, um sie mit mir zu erkunden! ✨",
+    "welcomemsg_churches": "<strong>Die Castellana:</strong> Willkommen im Herzen von Caccamos Heiligkeit, Fremder. Möchten Sie, dass ich Ihnen die Geheimnisse dieser lebendigen Mauern enthülle? Fragen Sie mich einfach.",
+    "cappuccini_name": "Die Kapuziner",
+    "annunziata_name": "Annunziata",
+    "badia_name": "Heiliger Benedikt der Badia",
+    "angeli_name": "Heilige Maria der Engel",
+    "duomo_name": "Kirche des Hl. Georg des Märtyrers",
     "storie": {
-      "cappuccini": "Willkommen bei den Kapuzinern! Dieser Ort birgt jahrhundertealte Geschichten und eine Atmosphäre tiefer Spiritualität. Wenn du das Modell betrachtest, kannst du die ursprüngliche Struktur erkennen...",
-      "annunziata": "Hier ist die Annunziata, ein architektonisches Juwel, das unauslöschliche Spuren unserer Vergangenheit bewahrt. Ihre Fassade und die inneren Details wurden rekonstruiert, um dir zu zeigen...",
-      "badia": "Du stehst vor Hl. Benedikt der Badia. Dieser Klosterkomplex hat die Jahrhunderte überdauert. Beachte die Feinheit der Render-Details, die an... erinnern.",
-      "angeli": "Dies ist die Kirche Santa Maria degli Angeli. Ein außergewöhnliches Gotteshaus, dessen Grundriss und Dekorationen von der Kunst und Frömmigkeit einer ganzen Epoche erzählen...",
-      "duomo": "Der Dom San Giorgio Martire! Das pulsierende Herz unserer Gemeinschaft, majestätisch und dominierend. Beachte, wie das goldene Licht des Renders die Linien der Kuppel und des Glockenturms hervorhebt..."
+      "cappuccini": "Willkommen im Kapuzinerkloster! Dieser Ort birgt jahrhundertealte Geschichten und eine Atmosphäre tiefer Spiritualität. Wenn Sie das Modell betrachten, können Sie die ursprüngliche Struktur erkennen...",
+      "annunziata": "Hier ist die Annunziata, ein architektonisches Juwel, das unauslöschliche Spuren unserer Vergangenheit bewahrt. Ihre Fassade und Innendetails wurden rekonstruiert, um Ihnen zu zeigen...",
+      "badia": "Sie stehen vor dem Hl. Benedikt der Badia. Dieser Klosterkomplex hat Jahrhunderte überdauert. Betrachten Sie die Feinheit der Rendering-Details, die an... erinnern.",
+      "angeli": "Dies ist die Kirche Santa Maria degli Angeli. Ein außergewöhnlicher Ort der Anbetung, dessen Grundriss und Dekorationen von der Kunst und Hingabe einer ganzen Ära erzählen...",
+      "duomo": "Die Kathedrale des Hl. Georg des Märtyrers! Das schlagende Herz unserer Gemeinde, majestätisch und dominant. Sehen Sie, wie das goldene Licht des Renderings die Linien der Kuppel und des Glockenturms hervorhebt..."
     },
-        "castello": "Schloss von Caccamo",
+    "castello": "Schloss von Caccamo",
     "santamaria": "Kirche Hl. Maria der Engel",
     "sangiorgio": "Kirche des Hl. Georg des Märtyrers",
     "cappuccini_mobile": "Kapuzinerbrüder-Kloster",
@@ -106,5 +106,3 @@
     "go_to_map": "Zur Karte gehen"
   }
 }
-}
-  
