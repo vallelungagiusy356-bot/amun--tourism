@@ -5,114 +5,112 @@
     "about": "Über uns",
     "contact": "Kontakte",
     "eat": "Essen",
-    "sleep": "Schlafen",
-    "transport": "Transport",
-    "events": "Veranstaltungen",
+    "sleep": "Übernachten",
+    "transport": "Verkehrsmittel",
+    "events": "Events",
     "monuments": "Denkmäler"
   },
-
   "home": {
-    "chat_web": "Sprich mit der Kastellanin auf der Website",
+    "chat_web": "Sprechen Sie mit der Castellana auf der Website",
     "amuni_title": "Die Bedeutung von Amunì",
-    "amuni_text": "In Sizilien ist „Amunì“ mehr als nur „los geht’s“. Es ist eine sanfte Einladung, ein begleitendes Lächeln. Es ist die Stimme unseres Landes, die sagt: bewege dich, lebe, entdecke, träume.",
-    "install_app": "Amunì Tourism App installieren",
+    "amuni_text": "In Sizilien ist „Amunì“ nicht nur ein „Lass uns gehen“. Es ist eine herzliche Einladung, ein Lächeln, das Sie begleitet. Es ist die Stimme unserer Heimat, die Ihnen sagt: Bewege dich, lebe, entdecke, träume.",
+    "install_app": "Installieren Sie die Amunì Tourism App",
     "download_apk": "App herunterladen (APK)",
     "open_webapp": "Web App öffnen",
-    "scan_qr": "QR-Code scannen, um die App zu installieren",
-    "talk_castellana": "Sprich mit der Castellana"
+    "scan_qr": "Scannen Sie den QR-Code, um die App zu installieren",
+    "talk_castellana": "Sprechen Sie mit der Castellana"
   },
-
   "chat": {
-    "title": "Kastellanin von Caccamo",
-    "msg1": "Willkommen, Reisender, in diesem Land voller Kunst, Geschichte und Traditionen.",
-    "msg2": "Bereit, dich führen zu lassen? Kunst, goldenes Öl und süße Mandeln erwarten dich.",
-    "placeholder": "Nachricht schreiben..."
+    "title": "Castellana von Caccamo",
+    "msg1": "Willkommen, Wanderer, in diesem Land reich an Kunst, Geschichte und Traditionen.",
+    "msg2": "Sind Sie bereit, sich führen zu lassen? Kunst, goldenes Olivenöl und süße Mandeln werden Sie begeistern.",
+    "placeholder": "Schreiben Sie eine Nachricht..."
   },
-
   "citizen": {
     "legends_title": "Legenden und Wurzeln",
-    "legends_desc": "Die ältesten Geschichten des Dorfes, über Generationen hinweg überliefert.",
-    "legend_felicia": "Die Legende der Schwester Felicia",
-    "legend_pizzarrone": "Die Legende des Turms von Pizzarrone",
-    "audio_title": "Gebete und Erzählungen im Dialekt anhören",
+    "legends_desc": "Die ältesten Geschichten des Dorfes, von Generation zu Generation weitergegeben.",
+    "legend_felicia": "Die Legende von Schwester Felicia",
+    "legend_pizzarrone": "Die Legende vom Pizzarrone-Turm",
+    "audio_title": "Hören Sie Gebete und Geschichten im Dialekt",
     "transcription": "Automatische Transkription",
     "castle_title": "Das Schloss",
-    "castle_desc": "Eine tausendjährige Festung: Verschwörungen, Schießscharten, geheime Tunnel, Gefängnisse und epische Schlachten.",
-    "castle_more": "Das Schloss entdecken",
+    "castle_desc": "Eine jahrtausendealte Festung: Verschwörungen, Schießscharten, geheime Tunnel, Gefängnisse und epische Schlachten.",
+    "castle_more": "Entdecken Sie das Schloss",
     "church_title": "Kirchen und Kunst",
-    "church_desc": "Eine Reise durch Katakomben, Traditionen, Schutzheilige und alte Andachten.",
-    "church_catacombs": "Die verborgenen Katakomben und Krypten",
-    "church_sangiuseppe": "Der rote Auflauf des heiligen Josef",
-    "church_sepolcri": "Die Gräber mit keimendem Weizen",
-    "food_title": "Essen und Veranstaltungen",
+    "church_desc": "Eine Reise durch Katakomben, Traditionen, Patrone und alte Frömmigkeit.",
+    "church_catacombs": "Versteckte Katakomben und Krypten",
+    "church_sangiuseppe": "Die rote Gratinata von San Giuseppe",
+    "church_sepolcri": "Die Gräber mit blühendem Weizen",
+    "food_title": "Essen und Events",
     "food_desc": "Authentische Aromen, Orte zum Essen und Erleben des Dorfes.",
-    "food_arancine": "Wo man ausgezeichnete Arancine probieren kann",
-    "food_cocktail": "Cocktails mit DJ das ganze Jahr",
-    "food_aperitivo": "Panoramische Aperitifs (nur Sommer)",
-    "events_title": "Veranstaltungen",
-    "event_castellana": "Die Kastellanin",
+    "food_arancine": "Wo man exzellente Arancine probieren kann",
+    "food_cocktail": "Cocktails mit DJ das ganze Jahr über",
+    "food_aperitivo": "Panorama-Aperitifs (nur im Sommer)",
+    "events_title": "Events",
+    "event_castellana": "Die Castellana",
     "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Wurstfest",
-    "event_beato": "Fest des Seligen Giovanni"
+    "event_beato": "Fest des Beato Giovanni"
   },
-
-    "castle": {
+  "castle": {
     "title": "Das Schloss von Caccamo",
+    "position": "Eine Festung auf einem Felsvorsprung mit dominierendem Blick über das Tal.",
+    "defense": "Schießscharten, dicke Mauern und Wehrgänge zeugen von seiner Verteidigungsfunktion.",
+    "conspiracy": "Geheime Säle und Adelszimmer waren Schauplatz mittelalterlicher Verschwörungen und Intrigen.",
+    "prisons": "Die unterirdischen Gefängnisse bergen noch heute die Spuren alter Gefangenschaft.",
+    "legend_brothers": "Die Legende der zwei Brüder erzählt von einem tödlichen Duell um die Liebe einer Dame.",
     "category": "Historische Denkmäler",
-    "leading_para": "Das Schloss von Caccamo ist eine der größten und am besten erhaltenen normannischen Festungen in Sizilien. Seit dem 11. Jahrhundert thront es auf einem steilen Felsen und beherrscht das San-Leonardo-Tal als jahrtausendealtes strategisches Bollwerk.",
+    "leading_para": "Das Schloss von Caccamo gehört zu den größten und am besten erhaltenen normannischen Festungen auf Sizilien. Seit dem 11. Jahrhundert auf dem nackten Fels erbaut, dominiert es das San Leonardo-Tal als jahrtausendealtes strategisches Bollwerk.",
     "dress_caption": "Das Kleid der Castellana",
-    "para_2": "Jede Ecke dieses Herrenhauses strahlt Charme und Geheimnis aus: vom berühmten Verschwörungssaal, dem Schauplatz von Intrigen und Pakten zwischen mittelalterlichen Adligen, bis hin zu den alten, in den Stein gehauenen Gefängnissen der Inquisition.",
-    "para_3": "Zwischen Geschichte und Legende beschützt der Geist von Schwester Felicia noch heute das Dorf. Die Castellana erwartet Sie im Chat, um Ihnen jedes Geheimnis dieses zeitlosen Ortes zu enthüllen.",
-    "chat_tooltip": "Klicken um zu chatten",
-    "welcomemsg_felicia": "Willkommen im Schloss von Caccamo, Fremder. Ich bin Schwester Felicia. Möchten Sie, dass ich Ihnen die Geheimnisse des Verschwörungssaals enthülle, oder möchten Sie lieber den alten Legenden des Schlosses lauschen? Fragen Sie mich ruhig."
+    "para_2": "Jede Ecke dieses Schlosses strahlt Charme und Geheimnis aus: vom berühmten Verschwörungsraum, Schauplatz von Intrigen und Pakten zwischen mittelalterlichen Adligen, bis zu den alten Gefängnissen der Inquisition, die in den Stein gehauen wurden.",
+    "para_3": "Zwischen Geschichte und Legende schützt der Geist von Schwester Felicia noch heute das Dorf. Die Castellana erwartet Sie im Chat, um Ihnen jedes Geheimnis dieses zeitlosen Ortes zu enthüllen.",
+    "chat_tooltip": "Hier klicken zum Chatten",
+    "welcomemsg_felicia": "Willkommen im Schloss von Caccamo, Fremder. Ich bin Schwester Felicia. Möchten Sie, dass ich Ihnen die Geheimnisse des Verschwörungsraums enthülle, oder möchten Sie lieber den alten Legenden des Schlosses lauschen? Fragen Sie mich ruhig."
   },
-
-      "monuments": {
+  "monuments": {
     "hours_label": "Öffnungszeiten",
     "tickets_label": "Tickets",
     "view_map": "Karte öffnen",
     "btn_buy_tickets": "Ticket buchen / kaufen",
-    "btn_comune_info": "Gemeinde-Info",
+    "btn_comune_info": "Institutionelle Infos der Gemeinde",
     "btn_contact_turismo": "Tourismusbüro kontaktieren",
-    "btn_dindondan": "Kirchen auf Din Don Dan erkunden",
-    "church_notice": "⚠️ Hinweis: Diese Gotteshäuser sind aktiv und liturgischen Funktionen gewidmet. Für touristische Besichtigungen respektieren Sie bitte die empfohlenen Zeiten und vermeiden Sie die Zeiten der internen Feiern.",
+    "btn_dindondan": "Kirchen auf Din Don Dan entdecken",
+    "church_notice": "⚠️ Hinweis: Die Gotteshäuser sind aktiv und liturgischen Funktionen gewidmet. Für touristische Besichtigungen respektieren Sie bitte die empfohlenen Zeiten und vermeiden Sie Momente interner Feierlichkeiten.",
     "mobile": {
       "go_to_map": "Zur Karte"
     },
     "castello": {
-      "title": "Burg von Caccamo",
-      "description": "Die Burg von Caccamo gehört zu den größten und am besten erhaltenen normannischen Festungen Siziliens. Seit dem 11. Jahrhundert auf dem nackten Felsen thronend, dominiert sie das San Leonardo-Tal mit ihren imposanten Mauern und Wachtürmen.",
-      "hours": "Täglich: 09:30 – 13:00 / 15:00 – 19:00",
-      "tickets": "Normal € 6,00 | Ermäßigt € 4,50 (Ausschließlich mit Online-Buchung)"
+      "title": "Das Schloss von Caccamo",
+      "description": "Das Schloss von Caccamo ist eine der größten und am besten erhaltenen normannischen Festungen Siziliens. Seit dem 11. Jahrhundert thront es auf dem lebenden Fels und dominiert das San-Leonardo-Tal mit seinen imposanten Mauern, Wachtürmen und eindrucksvollen Innensälen, die an Jahrhunderte feudaler Geschichte und Ritterlegenden erinnern.",
+      "hours": "Täglich: 09:30 – 13:00 Uhr / 15:00 – 19:00 Uhr",
+      "tickets": "Erwachsene € 6,00 | Ermäßigt € 4,50 (Ausschließlich mit Online-Buchung)"
     },
     "badia": {
       "title": "Kirche San Benedetto alla Badia",
-      "description": "Ein wahres Juwel des sizilianischen Barocks. Die Kirche ist weltweit berühmt für ihren außergewöhnlichen, vollständig aus Majolika des 18. Jahrhunderts gefertigten Fußboden, der allegorische Szenen von seltener Meisterschaft zeigt.",
-      "hours": "Di - So: 09:00 – 12:30 | Mo: 14:30 – 18:30 (Keine reguläre Messe, ideal für Besichtigungen)",
-      "tickets": "Normal € 2,00 | Ermäßigt € 1,00 (EU-Jugendliche 18-25 Jahre oder mit Burg-Ticket am selben Tag) | Kostenlos unter 18 Jahren"
+      "description": "Als wahres Juwel des sizilianischen Barocks ist die Kirche weltweit für ihren außergewöhnlichen, vollständig aus Majolika des 18. Jahrhunderts gefertigten Fußboden bekannt, der allegorische Szenen und naturalistische Motive von seltener Meisterschaft darstellt. Ein zeitloses Meisterwerk der visuellen Kunst.",
+      "hours": "Di - So: 09:00 – 12:30 Uhr | Mo: 14:30 – 18:30 Uhr (Keine regulären Gottesdienste, ideal für Besichtigungen)",
+      "tickets": "Erwachsene € 2,00 | Ermäßigt € 1,00 (EU-Jugendliche 18-25 Jahre oder mit Schloss-Ticket am selben Tag) | Kostenlos unter 18 Jahren"
     },
     "santamaria": {
       "title": "Kirche Santa Maria degli Angeli",
-      "description": "Im 15. Jahrhundert zusammen mit dem Dominikanerkloster gegründet, ist sie eines der wichtigsten spirituellen Zentren des Ortes. Sie bewahrt die Gebeine des Seligen Giovanni Liccio, des Schutzpatrons von Caccamo. Im Inneren befinden sich prachtvolle Marmoraltäre.",
-      "hours": "Öffnung & Besichtigungen: Samstag von 16:00 bis 17:30 Uhr | Sonntag von 09:00 bis 10:00 Uhr und von 11:00 bis 12:30 Uhr. (Heilige Messen: Samstag um 17:30 Uhr | Sonntag um 10:00 Uhr)."
+      "description": "Die im 15. Jahrhundert zusammen mit dem Dominikanerkloster gegründete Kirche Santa Maria degli Angeli ist eines der wichtigsten spirituellen Zentren des Dorfes. Sie hütet die Gebeine und Reliquien des Beato Giovanni Liccio, dem Schutzpatron von Caccamo. Im Inneren kann man prächtige Marmoraltäre und sakrale Kunstwerke bewundern, die von Jahrhunderten tiefer Frömmigkeit und Wallfahrten zeugen.",
+      "hours": "Öffnung und Besichtigungen: Samstag von 16:00 bis 17:30 Uhr | Sonntag von 09:00 bis 10:00 Uhr und von 11:00 bis 12:30 Uhr. (Heilige Messen: Samstag um 17:30 Uhr | Sonntag um 10:00 Uhr)."
     },
     "sangiorgio": {
       "title": "Kirche San Giorgio Martire",
-      "description": "Die Mutterkirche von Caccamo, dem Märtyrer Sankt Georg gewidmet, ist ein monumentales Meisterwerk unterhalb der Burg. Sie wurde in der normannischen Ära gegründet und bewahrt Gemälde des flämischen Malers Matthias Stom.",
-      "hours": "Besichtigungszeiten: Samstag und Sonntag 09:30 – 10:45 Uhr und 16:00 – 18:00 Uhr. (Während der Sonntagsmesse um 11:00 Uhr sind Besichtigungen ausgesetzt)."
+      "description": "Die Mutterkirche von Caccamo, gewidmet San Giorgio Martire, ist ein monumentales Meisterwerk, das den Platz unterhalb des Schlosses dominiert. In der normannischen Ära gegründet und 1614 umgebaut, bewahrt sie ein immenses künstlerisches Erbe: von Skulpturen der Gagini-Schule über wertvolle Gemälde aus dem 17. Jahrhundert des flämischen Malers Matthias Stom bis hin zu prunkvollen, mit polychromem Marmor verzierten Kapellen.",
+      "hours": "Zeitfenster für Besichtigungen: Samstag und Sonntag 09:30 – 10:45 Uhr und 16:00 – 18:00 Uhr. (Der touristische Empfang ist während der sonntäglichen Heiligen Messe um 11:00 Uhr ausgesetzt)."
     },
     "annunziata": {
       "title": "Pfarrei SS. Annunziata",
-      "description": "Eingebettet in das mittelalterliche Stadtbild, zeichnet sich die Kirche durch ihre Fassade und eine Atmosphäre tiefer Spiritualität aus. Sie bewahrt fein dekorierte Altäre und wertvolle Kunstgegenstände.",
-      "hours": "Mo - Sa: 09:00 – 12:00 | Werktagsmessen um 18:00 Uhr. Sonn- und Feiertage: 08:30 - 09:30 Uhr und 10:30 - 12:00 Uhr (Festmessen um 09:30, 12:00, 19:00 Uhr)."
+      "description": "Eingebettet in das mittelalterliche Stadtbild besticht die Kirche durch ihre Fassade und die Atmosphäre tiefer Spiritualität im Inneren. Sie bewahrt fein verzierte Altäre und künstlerische Artefakte, die Besucher und Gläubige gleichermaßen anziehen.",
+      "hours": "Mo - Sa: 09:00 – 12:00 Uhr | Werktagsmessen um 18:00 Uhr. Sonn- und Feiertags Besichtigungen in den Zeitfenstern: 08:30 - 09:30 Uhr und 10:30 - 12:00 Uhr (Feiertagsmessen um 09:30, 12:00, 19:00 Uhr)."
     },
     "cappuccini": {
       "title": "Kapuzinerkloster",
-      "description": "Ein Ort der Stille, Meditation und Geschichte. Die Klosterstrukturen sind tief mit der franziskanischen Tradition in Sizilien verbunden und bieten einen authentischen Einblick in das mönchische Leben.",
-      "hours": "Zugänglich hauptsächlich auf Anfrage oder während franziskanischer Feierlichkeiten. Kontaktieren Sie das Tourismusbüro.",
-      "secret_info": "💡 Die verborgenen Schätze von Caccamo: Das Dorf beherbergt 33 Kirchen. Nutzen Sie die Karte von Din Don Dan, um Echtzeit-Öffnungszeiten weniger bekannter Schätze wie der Kirche San Rocco zu entdecken."
-     }
+      "description": "Ein Ort der Stille, der Meditation und der Geschichte. Die Strukturen des Klosters sind tief mit der franziskanischen Tradition auf Sizilien verbunden. Neben der klösterlichen Struktur bietet das Areal einen authentischen Einblick in das monastische Leben und die Volksfrömmigkeit.",
+      "hours": "Zugänglich hauptsächlich auf Anfrage oder während franziskanischer Gedenktage. Kontaktieren Sie das Tourismusbüro.",
+      "secret_info": "💡 Die verborgenen Juwelen von Caccamo: Das Dorf beherbergt nicht weniger als 33 Kirchen. Nutzen Sie die Karte von Din Don Dan und zoomen Sie auf Caccamo, um in Echtzeit die Öffnungszeiten von weniger bekannten Schätzen wie der Kirche San Rocco und anderen kleinen, verstreuten Meisterwerken zu entdecken."
+    }
   }
 }
-
-  
