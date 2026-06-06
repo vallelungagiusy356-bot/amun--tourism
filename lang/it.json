@@ -34,26 +34,21 @@
     "legends_desc": "Le storie più antiche del borgo, tramandate di generazione in generazione.",
     "legend_felicia": "La leggenda di Suor Felicia",
     "legend_pizzarrone": "La leggenda della Torre del Pizzarrone",
-
     "audio_title": "Ascolta le preghiere e i cunti in dialetto",
     "transcription": "Trascrizione automatica",
-
     "castle_title": "Il Castello",
     "castle_desc": "Una fortezza millenaria: congiure, feritoie, tunnel segreti, prigioni e battaglie epiche.",
     "castle_more": "Scopri il Castello",
-
     "church_title": "Chiese e Arte",
     "church_desc": "Un viaggio tra catacombe, tradizioni, patroni e antiche devozioni.",
     "church_catacombs": "Le catacombe e le cripte nascoste",
     "church_sangiuseppe": "La gratinata rossa di San Giuseppe",
     "church_sepolcri": "I sepolcri con il grano in fiore",
-
     "food_title": "Cibo e Eventi",
     "food_desc": "Sapori autentici, luoghi dove mangiare e vivere il borgo.",
     "food_arancine": "Dove gustare ottime arancine",
     "food_cocktail": "Cocktail con DJ tutto l’anno",
     "food_aperitivo": "Aperitivi panoramici (solo estate)",
-
     "events_title": "Eventi",
     "event_castellana": "La Castellana",
     "event_signuruzzu": "U Signuruzzu a Cavaddu",
@@ -67,64 +62,56 @@
     "defense": "Feritoie, mura spesse e camminamenti di ronda raccontano la sua funzione difensiva.",
     "conspiracy": "Sale segrete e stanze nobiliari furono teatro di congiure e intrighi medievali.",
     "prisons": "Le prigioni sotterranee custodiscono ancora le tracce delle antiche detenzioni.",
-    "legend_brothers": "La leggenda dei due fratelli narra di un duello fatale per l’amore di una dama."
-  },
-  
-"monuments": {
-    "title": "Monumenti del Borgo",
-
-    "castle_title": "Castello di Caccamo",
-    "castle_desc": "Tra i più grandi castelli medievali di Sicilia, domina la valle del San Leonardo. Fortezza normanna dell’XI secolo, conserva prigioni, sale storiche e leggende affascinanti.",
-    "castle_button": "Visita la pagina",
-
-    "annunziata_title": "Chiesa SS. Annunziata e San Benedetto della Badia",
-    "annunziata_desc": "Due chiese adiacenti, simbolo della devozione caccamese. L’Annunziata custodisce stucchi barocchi; la Badia conserva cripte e un meraviglioso pavimento in maiolica.",
-
-    "sangiorgio_title": "Chiesa di San Giorgio Martire",
-    "sangiorgio_desc": "Tra le più antiche del borgo, con facciata gotico‑normanna e statue lignee di grande pregio, con il castello alle sue spalle.",
-
-    "angeli_title": "Chiesa di Santa Maria degli Angeli",
-    "angeli_desc": "Piccola chiesa francescana immersa nel silenzio, con altare marmoreo e le spoglie del Beato Giovanni, figura sacra molto amata dalla cittadinanza.",
-
-    "cappuccini_title": "Convento dei Cappuccini",
-    "cappuccini_desc": "Fondato nel XVI secolo, ospita un chiostro sobrio e una biblioteca storica. Vista panoramica sulla valle."
-},
-
-  "castle": {
-    "title": "Il Castello di Caccamo",
+    "legend_brothers": "La leggenda dei due fratelli narra di un duello fatale per l’amore di una dama.",
     "category": "Monumenti Storici",
     "leading_para": "Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.",
     "dress_caption": "L'abito della Castellana",
-    "para_2": "Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.",
-    "para_3": "Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.",
+    "para_2": "Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.",
+    "para_3": "Tra storia e legenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.",
     "chat_tooltip": "Click to Chat",
     "welcomemsg_felicia": "Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure."
   },
-    "monuments": {
-    "title_page": "Le Chiese di Caccamo",
-    "start_tour": "Inizia il Tour",
-    "chat_tooltip": "Click to chat",
-    "chat_hint": "Clicca sulle mie card per esplorarle con me! ✨",
-    "welcomemsg_churches": "<strong>La Castellana:</strong> Benvenuto nel cuore della sacralità di Caccamo, forestiero. Vuoi che ti sveli i segreti di queste mura vive? Chiedimi pure.",
-    "cappuccini_name": "I Cappuccini",
-    "annunziata_name": "Annunziata",
-    "badia_name": "S. Benedetto della Badia",
-    "angeli_name": "Santa Maria degli Angeli",
-    "duomo_name": "Chiesa San Giorgio Martire",
-    "storie": {
-      "cappuccini": "Benvenuto ai Cappuccini! Questo luogo racchiude storie secolari e un'atmosfera di profonda spiritualità. Guardando il modello, puoi notare la struttura originaria...",
-      "annunziata": "Ecco l'Annunziata, un gioiello architettonico che custodisce tracce indelebili del nostro passato. La sua facciata e i dettagli interni sono stati ricostruiti per mostrarti...",
-      "badia": "Ti trovi davanti a S. Benedetto della Badia. Questo complesso monastico ha attraversato i secoli. Osserva la finezza dei dettagli del render, che richiamano...",
-      "angeli": "Questa è la Chiesa di Santa Maria degli Angeli. Un luogo di culto straordinario, la cui pianta e le cui decorazioni raccontano l'arte e la devozione di un'intera epoca...",
-      "duomo": "Il Duomo di San Giorgio Martire! Il cuore pulsante della nostra comunità, maestoso e dominante. Nota come la luce d'oro del render esalta le linee della cupola e del campanile..."
+
+  "monuments": {
+    "desktop": {
+      "title": "Monumenti del Borgo",
+      "castle_title": "Castello di Caccamo",
+      "castle_desc": "Tra i più grandi castelli medievali di Sicilia, domina la valle del San Leonardo. Fortezza normanna dell’XI secolo, conserva prigioni, sale storiche e leggende affascinanti.",
+      "castle_button": "Visita la pagina",
+      "annunziata_title": "Chiesa SS. Annunziata e San Benedetto della Badia",
+      "annunziata_desc": "Due chiese adiacenti, simbolo della devozione caccamese. L’Annunziata custodisce stucchi barocchi; la Badia conserva cripte e un meraviglioso pavimento in maiolica.",
+      "sangiorgio_title": "Chiesa di San Giorgio Martire",
+      "sangiorgio_desc": "Tra le più antiche del borgo, con facciata gotico‑normanna e statue lignee di grande pregio, con il castello alle sue spalle.",
+      "angeli_title": "Chiesa di Santa Maria degli Angeli",
+      "angeli_desc": "Piccola chiesa francescana immersa nel silenzio, con altare marmoreo e le spoglie del Beato Giovanni, figura sacra molto amata dalla cittadinanza.",
+      "cappuccini_title": "Convento dei Cappuccini",
+      "cappuccini_desc": "Fondato nel XVI secolo, ospita un chiostro sobrio e una biblioteca storica. Vista panoramica sulla valle.",
+      "title_page": "Le Chiese di Caccamo",
+      "start_tour": "Inizia il Tour",
+      "chat_tooltip": "Click to chat",
+      "chat_hint": "Clicca sulle mie card per esplorarle con me! ✨",
+      "welcomemsg_churches": "<strong>La Castellana:</strong> Benvenuto nel cuore della sacralità di Caccamo, forestiero. Vuoi che ti sveli i segreti di queste mura vive? Chiedimi pure.",
+      "cappuccini_name": "I Cappuccini",
+      "annunziata_name": "Annunziata",
+      "badia_name": "S. Benedetto della Badia",
+      "angeli_name": "Santa Maria degli Angeli",
+      "duomo_name": "Chiesa San Giorgio Martire",
+      "storie": {
+        "cappuccini": "Benvenuto ai Cappuccini! Questo luogo racchiude storie secolari e un'atmosfera di profonda spiritualità. Guardando il modello, puoi notare la struttura originaria...",
+        "annunziata": "Ecco l'Annunziata, un gioiello architettonico che custodisce tracce indelebili del nostro passato. La sua facciata e i dettagli interni sono stati ricostruiti per mostrarti...",
+        "badia": "Ti trovi davanti a S. Benedetto della Badia. Questo complesso monastico ha attraversato i secoli. Osserva la finezza dei dettagli del render, che richiamano...",
+        "angeli": "Questa è la Chiesa di Santa Maria degli Angeli. Un luogo di culto straordinario, la cui pianta e le cui decorazioni raccontano l'arte e la devozione di un'intera epoca...",
+        "duomo": "Il Duomo di San Giorgio Martire! Il cuore pulsante della nostra comunità, majestoso e dominante. Nota come la luce d'oro del render esalta le linee della cupola e del campanile..."
+      }
     },
-          "castello": "Castello di Caccamo",
-    "santamaria": "Chiesa S. Maria degli Angeli",
-    "sangiorgio": "Chiesa San Giorgio Martire",
-    "cappuccini_mobile": "Convento Frati Cappuccini",
-    "annunziata": "Parrocchia SS. Annunziata",
-    "sanbenedetto": "Chiesa S. Benedetto della Badia",
-    "go_to_map": "Vai alla Mappa"
+    "mobile": {
+      "castello": "Castello di Caccamo",
+      "santamaria": "Chiesa S. Maria degli Angeli",
+      "sangiorgio": "Chiesa San Giorgio Martire",
+      "cappuccini": "Convento Frati Cappuccini",
+      "annunziata": "Parrocchia SS. Annunziata",
+      "sanbenedetto": "Chiesa S. Benedetto della Badia",
+      "go_to_map": "Vai alla Mappa"
     }
   }
 }
