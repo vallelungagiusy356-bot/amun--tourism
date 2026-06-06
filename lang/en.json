@@ -1,120 +1,116 @@
 {
   "menu": {
     "title": "Amunì Tourism",
-    "citizen": "Town Citizen",
+    "citizen": "Village Citizen",
     "about": "About Us",
-    "contact": "Contacts",
-    "eat": "Eat",
-    "sleep": "Sleep",
+    "contact": "Contact",
+    "eat": "Where to Eat",
+    "sleep": "Where to Stay",
     "transport": "Transport",
     "events": "Events",
     "monuments": "Monuments"
   },
-
   "home": {
-    "chat_web": "Talk with the Castellana on the website",
-    "amuni_title": "The meaning of Amunì",
-    "amuni_text": "In Sicily, “Amunì” is more than just “let’s go”. It’s a gentle invitation, a smile that accompanies you. It’s the voice of our land saying: move, live, discover, dream.",
-    "install_app": "Install the Amunì Tourism App",
-    "download_apk": "Download the App (APK)",
+    "chat_web": "Speak with the Castellana on the website",
+    "amuni_title": "The Meaning of Amunì",
+    "amuni_text": "In Sicily, “Amunì” is not just “let's go”. It is a gentle invitation, a smile that accompanies you. It is the voice of our land telling you: move, live, discover, dream.",
+    "install_app": "Install the Amunì Tourism app",
+    "download_apk": "Download the app (APK)",
     "open_webapp": "Open the Web App",
-    "scan_qr": "Scan the QR to install the app",
-    "talk_castellana": "Talk with the Castellana"
+    "scan_qr": "Scan the QR code to install the app",
+    "talk_castellana": "Speak with the Castellana"
   },
-
   "chat": {
     "title": "Castellana of Caccamo",
-    "msg1": "Welcome, traveler, to this land rich in art, history and traditions.",
-    "msg2": "Are you ready to be guided? Art, golden oil and sweet almonds await you.",
+    "msg1": "Welcome, traveler, to this land rich in art, history, and traditions.",
+    "msg2": "Are you ready to be guided? Art, golden olive oil, and sweet almonds will delight you.",
     "placeholder": "Write a message..."
   },
-
   "citizen": {
     "legends_title": "Legends and Roots",
-    "legends_desc": "The oldest stories of the village, passed down through generations.",
+    "legends_desc": "The oldest stories of the village, passed down from generation to generation.",
     "legend_felicia": "The Legend of Sister Felicia",
     "legend_pizzarrone": "The Legend of the Pizzarrone Tower",
-
     "audio_title": "Listen to prayers and tales in dialect",
     "transcription": "Automatic transcription",
-
     "castle_title": "The Castle",
-    "castle_desc": "A thousand‑year‑old fortress: conspiracies, arrow slits, secret tunnels, prisons and epic battles.",
+    "castle_desc": "A thousand-year-old fortress: conspiracies, loopholes, secret tunnels, prisons, and epic battles.",
     "castle_more": "Discover the Castle",
-
     "church_title": "Churches and Art",
-    "church_desc": "A journey through catacombs, traditions, patrons and ancient devotions.",
-    "church_catacombs": "The hidden catacombs and crypts",
-    "church_sangiuseppe": "The red gratin of Saint Joseph",
-    "church_sepolcri": "The sepulchres with sprouting wheat",
-
+    "church_desc": "A journey through catacombs, traditions, patrons, and ancient devotions.",
+    "church_catacombs": "Hidden catacombs and crypts",
+    "church_sangiuseppe": "The red gratinata of San Giuseppe",
+    "church_sepolcri": "The sepulchers with blooming wheat",
     "food_title": "Food and Events",
     "food_desc": "Authentic flavors, places to eat and experience the village.",
     "food_arancine": "Where to taste excellent arancine",
     "food_cocktail": "Cocktails with DJ all year round",
     "food_aperitivo": "Panoramic aperitifs (summer only)",
-
     "events_title": "Events",
     "event_castellana": "The Castellana",
     "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Sausage Festival",
-    "event_beato": "Feast of Blessed Giovanni"
+    "event_beato": "Feast of Beato Giovanni"
   },
   "castle": {
     "title": "The Castle of Caccamo",
+    "position": "A fortress perched on a rocky outcrop, with a dominant view over the valley.",
+    "defense": "Loopholes, thick walls, and patrol walkways tell of its defensive function.",
+    "conspiracy": "Secret rooms and noble halls were the scene of medieval conspiracies and intrigues.",
+    "prisons": "The underground prisons still preserve the traces of ancient detentions.",
+    "legend_brothers": "The legend of the two brothers tells of a fatal duel for the love of a lady.",
     "category": "Historical Monuments",
-    "leading_para": "The Castle of Caccamo is one of the largest and best-preserved Norman fortresses in Sicily. Standing on a sheer rock since the 11th century, it dominates the San Leonardo valley as a millenary strategic bulwark.",
-    "dress_caption": "The dress of the Castellana",
-    "para_2": "Every corner of this manor exudes charm and mystery: from the famous Conspiracy Hall, the scene of intrigues and pacts between medieval nobles, to the ancient prisons carved into the stone used by the Inquisition.",
-    "para_3": "Between history and legend, the spirit of Sister Felicia still protects the village today. The Castellana awaits you in chat to reveal every secret of this timeless place.",
-    "chat_tooltip": "Click to chat",
-    "welcomemsg_felicia": "Welcome to the Castle of Caccamo, stranger. I am Sister Felicia. Would you like me to reveal the secrets of the Conspiracy Hall, or would you rather listen to the ancient legends of the castle? Feel free to ask."
+    "leading_para": "The Castle of Caccamo is among the largest and best-preserved Norman fortresses in Sicily. Perched on the living rock since the 11th century, it dominates the San Leonardo valley as a millenary strategic bulwark.",
+    "dress_caption": "The Dress of the Castellana",
+    "para_2": "Every corner of this manor exudes charm and mystery: from the famous Conspiracy Hall, scene of intrigues and pacts among medieval nobles, to the ancient Inquisition prisons carved into the stone.",
+    "para_3": "Between history and legend, the spirit of Sister Felicia still protects the village. The Castellana awaits you in chat to reveal every secret of this timeless place.",
+    "chat_tooltip": "Click to Chat",
+    "welcomemsg_felicia": "Welcome to the Castle of Caccamo, stranger. I am Sister Felicia. Would you like me to reveal the secrets of the Conspiracy Hall or do you prefer to listen to the ancient legends of the manor? Just ask me."
   },
-
-      "monuments": {
+  "monuments": {
     "hours_label": "Opening Hours",
     "tickets_label": "Tickets",
     "view_map": "Open Map",
     "btn_buy_tickets": "Book / Buy Ticket",
-    "btn_comune_info": "Municipality Info",
+    "btn_comune_info": "Municipal Institutional Info",
     "btn_contact_turismo": "Contact Tourism Office",
     "btn_dindondan": "Explore Churches on Din Don Dan",
-    "church_notice": "⚠️ Note: These are active places of worship dedicated to liturgical functions. For tourist visits, please respect the recommended times and avoid times of internal celebration.",
+    "church_notice": "⚠️ Note: Places of worship are active and dedicated to liturgical functions. For tourist visits, please respect the recommended hours and avoid moments of internal celebration.",
     "mobile": {
       "go_to_map": "Go to Map"
     },
     "castello": {
-      "title": "Caccamo Castle",
-      "description": "Caccamo Castle is among the largest and best-preserved Norman fortresses in Sicily. Perched on bare rock since the 11th century, it dominates the San Leonardo valley with its imposing walls, watchtowers, and suggestive internal halls that evoke centuries of feudal history and chivalric legends.",
-      "hours": "Every day: 09:30 – 13:00 / 15:00 – 19:00",
-      "tickets": "Full € 6.00 | Reduced € 4.50 (Exclusively with online booking)"
+      "title": "The Castle of Caccamo",
+      "description": "The Castle of Caccamo is one of the largest and best-preserved Norman fortresses in Sicily. Perched on living rock since the 11th century, it dominates the San Leonardo valley with its imposing walls, watchtowers, and suggestive internal halls that evoke centuries of feudal history and chivalric legends.",
+      "hours": "Every day: 09:30 AM – 01:00 PM / 03:00 PM – 07:00 PM",
+      "tickets": "Full price € 6.00 | Reduced € 4.50 (Exclusively with online booking)"
     },
     "badia": {
       "title": "Church of San Benedetto alla Badia",
-      "description": "A true jewel of Sicilian Baroque, this church is world-famous for its extraordinary floor entirely made of 18th-century majolica, depicting allegorical scenes and naturalistic motifs of rare mastery. A masterpiece of visual art suspended in time.",
-      "hours": "Tue - Sun: 09:00 – 12:30 | Mon: 14:30 – 18:30 (No regular mass, ideal for visits)",
-      "tickets": "Full € 2.00 | Reduced € 1.00 (EU Youth 18-25 or with Castle ticket on the same day) | Free under 18"
+      "description": "A true jewel of Sicilian Baroque, the church is world-famous for its extraordinary floor entirely made of 18th-century majolica, depicting allegorical scenes and naturalistic motifs of rare mastery. A masterpiece of visual art suspended in time.",
+      "hours": "Tue - Sun: 09:00 AM – 12:30 PM | Mon: 02:30 PM – 06:30 PM (No regular services, ideal for visits)",
+      "tickets": "Full price € 2.00 | Reduced € 1.00 (EU youth 18-25 or with Castle ticket on the same day) | Free under 18"
     },
     "santamaria": {
       "title": "Church of Santa Maria degli Angeli",
-      "description": "Founded in the XV century together with the Dominican convent, the Church of Santa Maria degli Angeli is one of the most important spiritual centers of the village. It houses the remains and relics of Blessed Giovanni Liccio, Patron Saint of Caccamo. Inside, you can admire splendid marble altars and sacred art pieces.",
-      "hours": "Opening & Visits: Saturday from 16:00 to 17:30 | Sunday from 09:00 to 10:00 and from 11:00 to 12:30. (Holy Mass: Saturday at 17:30 | Sunday at 10:00)."
+      "description": "Founded in the 15th century along with the Dominican convent, the Church of Santa Maria degli Angeli is one of the most important spiritual centers of the village. It houses the remains and relics of Beato Giovanni Liccio, Patron of Caccamo. Inside, you can admire splendid marble altars and sacred artworks that bear witness to centuries of deep devotion and pilgrimages.",
+      "hours": "Opening and Visits: Saturday from 04:00 PM to 05:30 PM | Sunday from 09:00 AM to 10:00 AM and from 11:00 AM to 12:30 PM. (Holy Masses: Saturday at 05:30 PM | Sunday at 10:00 AM)."
     },
     "sangiorgio": {
       "title": "Church of San Giorgio Martire",
-      "description": "The Mother Church of Caccamo, dedicated to Saint George the Martyr, is an imposing masterpiece dominating the monumental square below the Castle. Founded in the Norman era and rebuilt in 1614, it preserves an immense artistic heritage: from Gaginian school sculptures to precious 17th-century paintings by Flemish artist Matthias Stom.",
-      "hours": "Visiting Hours: Saturday and Sunday 09:30 – 10:45 and 16:00 – 18:00. (Tourist admission is suspended during Sunday Holy Mass at 11:00)."
+      "description": "The Mother Church of Caccamo, dedicated to San Giorgio Martire, is an imposing masterpiece that dominates the monumental square below the Castle. Founded in the Norman era and rebuilt in 1614, it preserves an immense artistic heritage: from Gaginiano school sculptures to precious 17th-century canvases by the Flemish painter Matthias Stom, up to rich chapels decorated in mixed marbles.",
+      "hours": "Visit Time Slots: Saturday and Sunday 09:30 AM – 10:45 AM and 04:00 PM – 06:00 PM. (Tourist reception is suspended during the Sunday Holy Mass at 11:00 AM)."
     },
     "annunziata": {
-      "title": "SS. Annunziata Parish",
-      "description": "Set within the medieval urban fabric, the church stands out for its facade and the atmosphere of deep spirituality inside. It preserves finely decorated altars and artistic artifacts that attract visitors and devotees.",
-      "hours": "Mon - Sat: 09:00 – 12:00 | Weekday Mass at 18:00. Sunday and Holidays visiting hours: 08:30 - 09:30 and 10:30 - 12:00 (Festive Masses at 09:30, 12:00, 19:00)."
+      "title": "SS. Annunziata Parish Church",
+      "description": "Nestled within the medieval urban fabric, the church stands out for its facade and for the atmosphere of deep spirituality felt inside. It preserves finely decorated altars and artistic artifacts that attract visitors and worshipers alike.",
+      "hours": "Mon - Sat: 09:00 AM – 12:00 PM | Weekday Masses at 06:00 PM. Sundays and Holidays visits in the slots: 08:30 AM - 09:30 AM and 10:30 AM - 12:00 PM (Holiday Masses at 09:30 AM, 12:00 PM, 07:00 PM)."
     },
     "cappuccini": {
       "title": "Convent of the Capuchin Friars",
-      "description": "A place of silence, meditation, and history, the Convent structures are deeply linked to the Franciscan tradition in Sicily. Beyond the conventual building, the area offers an authentic glimpse into monastic life and popular devotion.",
-      "hours": "Accessible mainly upon request or during Franciscan celebrations. Contact the Tourism Office.",
-      "secret_info": "💡 The Hidden Jewels of Caccamo: The village hosts 33 churches. Use the Din Don Dan map and zoom in on Caccamo to discover real-time hours and openings of lesser-known treasures like the Church of San Rocco."
-     }
+      "description": "A place of silence, meditation, and history, the structures of the Convent are deeply linked to the Franciscan tradition in Sicily. In addition to the conventual structure, the area offers an authentic glimpse of monastic life and popular devotion.",
+      "hours": "Accessible mainly upon request or during Franciscan anniversaries. Contact the Tourism Office.",
+      "secret_info": "💡 The Hidden Jewels of Caccamo: The village is home to no less than 33 churches. Use the Din Don Dan map and zoom in on Caccamo to discover real-time opening hours and availability of lesser-known treasures like the Church of San Rocco and other small scattered masterpieces."
+    }
   }
 }
