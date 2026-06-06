@@ -72,38 +72,7 @@
     "welcomemsg_felicia": "Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure."
   },
 
-    "monuments": {
-    "desktop": {
-      "title": "Monumenti del Borgo",
-      "castle_title": "Castello di Caccamo",
-      "castle_desc": "Tra i più grandi castelli medievali di Sicilia, domina la valle del San Leonardo. Fortezza normanna dell’XI secolo, conserva prigioni, sale storiche e leggende affascinanti.",
-      "castle_button": "Visita la pagina",
-      "annunziata_title": "Chiesa SS. Annunziata e San Benedetto della Badia",
-      "annunziata_desc": "Due chiese adiacenti, simbolo della devozione caccamese. L’Annunziata custodisce stucchi barocchi; la Badia conserva cripte e un meraviglioso pavimento in maiolica.",
-      "sangiorgio_title": "Chiesa di San Giorgio Martire",
-      "sangiorgio_desc": "Tra le più antiche del borgo, con facciata gotico‑normanna e statue lignee di grande pregio, con il castello alle sue spalle.",
-      "angeli_title": "Chiesa di Santa Maria degli Angeli",
-      "angeli_desc": "Piccola chiesa francescana immersa nel silenzio, con altare marmoreo e le spoglie del Beato Giovanni, figura sacra molto amata dalla cittadinanza.",
-      "cappuccini_title": "Convento dei Cappuccini",
-      "cappuccini_desc": "Fondato nel XVI secolo, ospita un chiostro sobrio e una biblioteca storica. Vista panoramica sulla valle.",
-      "title_page": "Le Chiese di Caccamo",
-      "start_tour": "Inizia il Tour",
-      "chat_tooltip": "Click to chat",
-      "chat_hint": "Clicca sulle mie card per esplorarle con me! ✨",
-      "welcomemsg_churches": "<strong>La Castellana:</strong> Benvenuto nel cuore della sacralità di Caccamo, forestiero. Vuoi che ti sveli i segreti di queste mura vive? Chiedimi pure.",
-      "cappuccini_name": "I Cappuccini",
-      "annunziata_name": "Annunziata",
-      "badia_name": "S. Benedetto della Badia",
-      "angeli_name": "Santa Maria degli Angeli",
-      "duomo_name": "Chiesa San Giorgio Martire",
-      "storie": {
-        "cappuccini": "Benvenuto ai Cappuccini! Questo luogo racchiude storie secolari e un'atmosfera di profonda spiritualità. Guardando il modello, puoi notare la struttura originaria...",
-        "annunziata": "Ecco l'Annunziata, un gioiello architettonico che custodisce tracce indelebili del nostro passato. La sua facciata e i dettagli interni sono stati ricostruiti per mostrarti...",
-        "badia": "Ti trovi davanti a S. Benedetto della Badia. Questo complesso monastico ha attraversato i secoli. Osserva la finezza dei dettagli del render, che richiamano...",
-        "angeli": "Questa è la Chiesa di Santa Maria degli Angeli. Un luogo di culto straordinario, la cui pianta e le cui decorazioni raccontano l'arte e la devozione di un'intera epoca...",
-        "duomo": "Il Duomo di San Giorgio Martire! Il cuore pulsante della nostra comunità, majestoso e dominante. Nota come la luce d'oro del render esalta le linee della cupola e del campanile..."
-      }
-    },
+      "monuments": {
     "hours_label": "Orari",
     "tickets_label": "Biglietti",
     "view_map": "Apri la Mappa",
@@ -111,7 +80,7 @@
     "btn_comune_info": "Info Istituzionali Comune",
     "btn_contact_turismo": "Contatta Ufficio Turismo",
     "btn_dindondan": "Esplora Chiese su Din Don Dan",
-    "church_notice": "⚠️ Nota: Questo luogo di culto è fruibile prevalentemente nelle fasce antecedenti le funzioni religiose. Per visite mirate o per gruppi, si consiglia di concordare l'accesso con l'Ufficio Turismo.",
+    "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momenti di celebrazione interna.",
     "mobile": {
       "go_to_map": "Vai alla Mappa"
     },
@@ -124,28 +93,28 @@
     "badia": {
       "title": "Chiesa di San Benedetto alla Badia",
       "description": "Vero gioiello del barocco siciliano, la chiesa è celebre in tutto il mondo per il suo straordinario pavimento interamente realizzato in maiolica del Settecento, che raffigura scene allegoriche e motivi naturalistici di rara maestria. Un capolavoro d'arte visiva sospeso nel tempo.",
-      "hours": "Mar - Dom: 09:00 – 12:30 | Lun: 14:30 – 18:30 (Nessuna funzione regolare)",
+      "hours": "Mar - Dom: 09:00 – 12:30 | Lun: 14:30 – 18:30 (Nessuna funzione regolare, ideale per visite)",
       "tickets": "Intero € 2,00 | Ridotto € 1,00 (Giovani UE 18-25 anni o con ticket Castello stesso giorno) | Gratuito under 18"
     },
     "santamaria": {
       "title": "Chiesa di Santa Maria degli Angeli",
-      "description": "Conosciuta anche per il suo legame con il complesso domenicano, questa chiesa custodisce importanti testimonianze della devozione locale. Al suo interno si possono ammirare dettagli architettonici di pregio e opere che raccontano il ruolo centrale del sito nella storia religiosa del borgo.",
-      "hours": "Accessibile nei momenti antecedenti le celebrazioni."
+      "description": "Fondata nel XV secolo insieme al convento domenicano, la Chiesa di Santa Maria degli Angeli è uno dei centri spirituali più importanti del borgo. Custodisce le spoglie e le reliquie del Beato Giovanni Liccio, Patrono di Caccamo. All'interno si possono ammirare splendidi altari marmorei e opere d'arte sacra che testimoniano secoli di profonda devozione e pellegrinaggi.",
+      "hours": "Apertura e Visite: Sabato dalle 16:00 alle 17:30 | Domenica dalle 09:00 alle 10:00 e dalle 11:00 alle 12:30. (Sante Messe: Sabato ore 17:30 | Domenica ore 10:00)."
     },
     "sangiorgio": {
       "title": "Chiesa di San Giorgio Martire",
-      "description": "La Chiesa Madre di Caccamo si erge maestosa sulla scenografica piazza monumentale. Ricca di tesori sacri, tele di scuola siciliana e pregevoli sculture, rappresenta il cuore pulsante della fede caccamese e un punto di riferimento per l'architettura sacra del territorio.",
-      "hours": "Domenica e Festivi: ore 11:00 (in concomitanza con la Santa Messa)."
+      "description": "La Chiesa Madre di Caccamo, dedicata a San Giorgio Martire, è un imponente capolavoro che domina la monumentale piazza sottostante il Castello. Fondata in epoca normanna e rifatta nel 1614, conserva un immenso patrimonio artistico: dalle sculture di scuola gaginiana alle preziose tele seicentesche del pittore fiammingo Matthias Stom, fino alle ricche cappelle decorate in marmi mischi.",
+      "hours": "Fasce Orarie Visite: Sabato e Domenica ore 09:30 – 10:45 e ore 16:00 – 18:00. (La reiezione turistica è sospesa durante la Santa Messa domenicale delle ore 11:00)."
     },
     "annunziata": {
       "title": "Parrocchia SS. Annunziata",
       "description": "Incastonata nel tessuto urbano medievale, la chiesa si distingue per la sua facciata e per l'atmosfera di profonda spiritualità che si respira al suo interno. Conserva altari finemente decorati e manufatti artistici che attirano visitatori e fedeli.",
-      "hours": "Lun - Sab: 09:00 – 12:00 (Messe feriali ore 18:00 | Festivi ore 09:30, 12:00, 19:00)."
+      "hours": "Lun - Sab: 09:00 – 12:00 | Messe feriali ore 18:00. Domenica e Festivi visite nelle fasce: 08:30 - 09:30 e 10:30 - 12:00 (Messe festive ore 09:30, 12:00, 19:00)."
     },
     "cappuccini": {
       "title": "Convento dei Frati Cappuccini",
-      "description": "Luogo di silenzio, meditazione e storia, il Convento si lega profondamente alla traditione francescana in Sicilia. Oltre alla struttura conventuale, l'area offre uno spaccato autentico di vita monastica e devozione popolare.",
+      "description": "Luogo di silenzio, meditazione e storia, le strutture del Convento si legano profondamente alla tradizione francescana in Sicilia. Oltre alla struttura conventuale, l'area offre uno spaccato autentico di vita monastica e devozione popolare.",
+      "hours": "Accessibile principalmente su richiesta o durante le ricorrenze francescane. Contattare l'Ufficio Turismo.",
       "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti come la Chiesa di San Rocco e altri piccoli capolavori diffusi."
     }
   }
-}
