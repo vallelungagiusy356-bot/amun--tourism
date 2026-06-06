@@ -72,7 +72,7 @@
     "welcomemsg_felicia": "Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure."
   },
 
-  "monuments": {
+    "monuments": {
     "desktop": {
       "title": "Monumenti del Borgo",
       "castle_title": "Castello di Caccamo",
@@ -104,14 +104,48 @@
         "duomo": "Il Duomo di San Giorgio Martire! Il cuore pulsante della nostra comunità, majestoso e dominante. Nota come la luce d'oro del render esalta le linee della cupola e del campanile..."
       }
     },
+    "hours_label": "Orari",
+    "tickets_label": "Biglietti",
+    "view_map": "Apri la Mappa",
+    "btn_buy_tickets": "Prenota / Acquista Biglietto",
+    "btn_comune_info": "Info Istituzionali Comune",
+    "btn_contact_turismo": "Contatta Ufficio Turismo",
+    "btn_dindondan": "Esplora Chiese su Din Don Dan",
+    "church_notice": "⚠️ Nota: Questo luogo di culto è fruibile prevalentemente nelle fasce antecedenti le funzioni religiose. Per visite mirate o per gruppi, si consiglia di concordare l'accesso con l'Ufficio Turismo.",
     "mobile": {
-      "castello": "Castello di Caccamo",
-      "santamaria": "Chiesa S. Maria degli Angeli",
-      "sangiorgio": "Chiesa San Giorgio Martire",
-      "cappuccini": "Convento Frati Cappuccini",
-      "annunziata": "Parrocchia SS. Annunziata",
-      "sanbenedetto": "Chiesa S. Benedetto della Badia",
       "go_to_map": "Vai alla Mappa"
+    },
+    "castello": {
+      "title": "Il Castello di Caccamo",
+      "description": "Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. Arroccato sulla roccia viva fin dall'XI secolo, domina la valle del San Leonardo con le sue imponenti mura, le torri di avvistamento e i suggestivi saloni interni che rievocano secoli di storia feudale e leggende cavalleresche.",
+      "hours": "Tutti i giorni: 09:30 – 13:00 / 15:00 – 19:00",
+      "tickets": "Intero € 6,00 | Ridotto € 4,50 (Esclusivamente con prenotazione online)"
+    },
+    "badia": {
+      "title": "Chiesa di San Benedetto alla Badia",
+      "description": "Vero gioiello del barocco siciliano, la chiesa è celebre in tutto il mondo per il suo straordinario pavimento interamente realizzato in maiolica del Settecento, che raffigura scene allegoriche e motivi naturalistici di rara maestria. Un capolavoro d'arte visiva sospeso nel tempo.",
+      "hours": "Mar - Dom: 09:00 – 12:30 | Lun: 14:30 – 18:30 (Nessuna funzione regolare)",
+      "tickets": "Intero € 2,00 | Ridotto € 1,00 (Giovani UE 18-25 anni o con ticket Castello stesso giorno) | Gratuito under 18"
+    },
+    "santamaria": {
+      "title": "Chiesa di Santa Maria degli Angeli",
+      "description": "Conosciuta anche per il suo legame con il complesso domenicano, questa chiesa custodisce importanti testimonianze della devozione locale. Al suo interno si possono ammirare dettagli architettonici di pregio e opere che raccontano il ruolo centrale del sito nella storia religiosa del borgo.",
+      "hours": "Accessibile nei momenti antecedenti le celebrazioni."
+    },
+    "sangiorgio": {
+      "title": "Chiesa di San Giorgio Martire",
+      "description": "La Chiesa Madre di Caccamo si erge maestosa sulla scenografica piazza monumentale. Ricca di tesori sacri, tele di scuola siciliana e pregevoli sculture, rappresenta il cuore pulsante della fede caccamese e un punto di riferimento per l'architettura sacra del territorio.",
+      "hours": "Domenica e Festivi: ore 11:00 (in concomitanza con la Santa Messa)."
+    },
+    "annunziata": {
+      "title": "Parrocchia SS. Annunziata",
+      "description": "Incastonata nel tessuto urbano medievale, la chiesa si distingue per la sua facciata e per l'atmosfera di profonda spiritualità che si respira al suo interno. Conserva altari finemente decorati e manufatti artistici che attirano visitatori e fedeli.",
+      "hours": "Lun - Sab: 09:00 – 12:00 (Messe feriali ore 18:00 | Festivi ore 09:30, 12:00, 19:00)."
+    },
+    "cappuccini": {
+      "title": "Convento dei Frati Cappuccini",
+      "description": "Luogo di silenzio, meditazione e storia, il Convento si lega profondamente alla traditione francescana in Sicilia. Oltre alla struttura conventuale, l'area offre uno spaccato autentico di vita monastica e devozione popolare.",
+      "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti come la Chiesa di San Rocco e altri piccoli capolavori diffusi."
     }
   }
 }
