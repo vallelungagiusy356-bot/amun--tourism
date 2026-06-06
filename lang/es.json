@@ -101,42 +101,79 @@
     "welcomemsg_felicia": "Bienvenido al Castillo de Caccamo, forastero. Soy la hermana Felicia. ¿Quiere que le revele los secretos de la Sala de la Conspiración, o prefiere escuchar las antiguas leyendas del castillo? Pregúnteme lo que desee."
   },
 
-  "monuments": {
-    "title": "Monumentos del Pueblo",
-    "castle_title": "Castillo de Caccamo",
-    "castle_desc": "Uno de los castillos medievales más grandes de Sicilia, con vistas al valle del San Leonardo. Esta fortaleza normanda del siglo XI conserva prisiones, salas historiques y leyendas fascinantes.",
-    "castle_button": "Visitar página",
-    "annunziata_title": "Iglesia de la SS. Anunciación y San Benito de la Badia",
-    "annunziata_desc": "Dos iglesias contiguas, símbolos de la devoción local. La Anunciación cuenta con elegantes estucos barrocos, mientras que la Badia alberga criptas y un hermoso suelo de mayólica.",
-    "sangiorgio_title": "Iglesia de San Jorge Mártir",
-    "sangiorgio_desc": "Una de las iglesias más antiguas del pueblo, con una fachada normando-gótica y valiosas esculturas de madera, dominada por el castillo al fondo.",
-    "angeli_title": "Iglesia de Santa María de los Ángeles",
-    "angeli_desc": "Una pequeña iglesia franciscana en un ambiente tranquilo, con un altar de mármol y las reliquias del Beato Giovanni, una figura espiritual muy venerada.",
-    "cappuccini_title": "Convento de los Capuchinos",
-    "cappuccini_desc": "Fundado en el siglo XVI, alberga un claustro sencillo y una biblioteca histórica. Ofrece una vista panorámica del valle.",
-    "title_page": "Las Iglesias de Caccamo",
-    "start_tour": "Iniciar el Tour",
-    "chat_tooltip": "Haz clic para chatear",
-    "chat_hint": "¡Haz clic en mis tarjetas para explorarlas conmigo! ✨",
-    "welcomemsg_churches": "<strong>La Castellana:</strong> Bienvenido al corazón de la sacralidad de Caccamo, forastero. ¿Quieres que te revele los secretos de estas paredes vivas? Pregúntame lo que desees.",
-    "cappuccini_name": "Los Capuchinos",
-    "annunziata_name": "Anunciación",
-    "badia_name": "San Benito de la Badia",
-    "angeli_name": "Santa María de los Ángeles",
-    "duomo_name": "Iglesia de San Jorge Mártir",
-    "storie": {
-      "cappuccini": "¡Bienvenido a los Capuchinos! Este lugar alberga historias seculares y una atmósfera de profunda espiritualidad. Al mirar el modelo, puedes notar la estructura original...",
-      "annunziata": "Aquí está la Anunciación, una joya arquitectónica que conserva huellas indelebiles de nuestro pasado. Su fachada y detalles internos han sido reconstruidos para mostrarte...",
-      "badia": "Te encuentras ante San Benito de la Badia. Este complejo monástico ha atravesado los siglos. Observa la finura de los detalles del render, que recuerdan a...",
-      "angeli": "Esta es la Iglesia de Santa María de los Ángeles. Un lugar de culto extraordinario, cuya planta y decoraciones relatan el arte y la devoción de toda una época...",
-      "duomo": "¡El Duomo de San Jorge Mártir! El corazón palpitante de nuestra comunidad, majestuoso y dominante. Mira cómo la luz dorada del render resalta las líneas de la cúpula y del campanario..."
+    "monuments": {
+    "desktop": {
+      "title": "Monumentos del Pueblo",
+      "castle_title": "Castillo de Caccamo",
+      "castle_desc": "Entre los castillos medievales más grandes de Sicilia, dominando el valle de San Leonardo. Fortaleza normanda del siglo XI, conserva prisiones, salas históricas y leyendas fascinantes.",
+      "castle_button": "Visitar la página",
+      "annunziata_title": "Iglesia SS. Annunziata y San Benedetto della Badia",
+      "annunziata_desc": "Dos iglesias contiguas, símbolos de la devoción de Caccamo. L’Annunziata alberga estucos barrocos; la Badia conserva criptas y un maravilloso suelo de mayólica.",
+      "sangiorgio_title": "Iglesia de San Giorgio Martire",
+      "sangiorgio_desc": "Entre las más antiguas del pueblo, con fachada gótico-normanda y estatuas de madera de gran valor, con el castillo a sus espaldas.",
+      "angeli_title": "Iglesia de Santa Maria degli Angeli",
+      "angeli_desc": "Pequeña iglesia franciscana inmersa en el silencio, con altar de mármol y los restos del Beato Giovanni, figura sagrada muy querida por los ciudadanos.",
+      "cappuccini_title": "Convento de los Capuchinos",
+      "cappuccini_desc": "Fundado en el siglo XVI, alberga un claustro sobrio y una biblioteca histórica. Vista panorámica sobre el valle.",
+      "title_page": "Las Iglesias de Caccamo",
+      "start_tour": "Iniciar el Tour",
+      "chat_tooltip": "Haga clic para chatear",
+      "chat_hint": "¡Haga clic en mis tarjetas para explorarlas conmigo! ✨",
+      "welcomemsg_churches": "<strong>La Castellana:</strong> Bienvenido al corazón de la sacralidad de Caccamo, forastero. ¿Quieres que te revele los secretos de estas paredes vivas? Pregúntame.",
+      "cappuccini_name": "Los Capuchinos",
+      "annunziata_name": "Annunziata",
+      "badia_name": "S. Benedetto della Badia",
+      "angeli_name": "Santa Maria degli Angeli",
+      "duomo_name": "Iglesia San Giorgio Martire",
+      "storie": {
+        "cappuccini": "¡Bienvenido a los Capuchinos! Este lugar alberga historias seculares y una atmósfera de profunda espiritualidad. Mirando el modelo, puedes notar la estructura original...",
+        "annunziata": "Aquí está la Annunziata, una joya arquitectónica que conserva huellas indelebles de nuestro pasado. Su fachada y detalles interiores han sido reconstruidos para mostrarte...",
+        "badia": "Te encuentras ante S. Benedetto della Badia. Este complejo monástico ha atravesado los siglos. Observa la finura de los detalles del render, que recuerdan...",
+        "angeli": "Esta es la Iglesia de Santa Maria degli Angeli. Un lugar de culto extraordinario, cuya planta y decoraciones narran el arte y la devoción de toda una época...",
+        "duomo": "¡El Duomo de San Giorgio Martire! El corazón de nuestra comunidad, majestuoso y dominante. Nota cómo la luz dorada del render resalta las líneas de la cúpula y del campanario..."
+      }
     },
-    "castello": "Castillo de Caccamo",
-    "santamaria": "Iglesia de Santa María de los Ángeles",
-    "sangiorgio": "Iglesia de San Jorge Mártir",
-    "cappuccini_mobile": "Convento de los Frailes Capuchinos",
-    "annunziata": "Parroquia de la SS. Anunciación",
-    "sanbenedetto": "Iglesia de San Benito de la Badia",
-    "go_to_map": "Ir al Mapa"
+    "hours_label": "Horarios",
+    "tickets_label": "Entradas",
+    "view_map": "Abrir el Mapa",
+    "btn_buy_tickets": "Reservar / Comprar Entrada Online",
+    "btn_comune_info": "Info Oficial del Municipio",
+    "btn_contact_turismo": "Contactar Oficina de Turismo",
+    "btn_dindondan": "Explorar Iglesias en Din Don Dan",
+    "church_notice": "⚠️ Nota: Este lugar de culto es accesible principalmente antes de los servicios religiosos. Para visitas guiadas o de grupos, se recomienda coordinar el acceso con la Oficina de Turismo.",
+    "mobile": {
+      "go_to_map": "Ir al Mapa"
+    },
+    "castello": {
+      "title": "El Castillo de Caccamo",
+      "description": "El Castillo de Caccamo se encuentra entre las fortalezas normandas más grandes y mejor conservadas de Sicilia. Encaramado sobre la roca viva desde el siglo XI, domina el valle de San Leonardo con sus imponentes murallas, torres de vigilancia y sugerentes salones internos que evocan siglos de historia feudal y leyendas caballerescas.",
+      "hours": "Todos los días: 09:30 – 13:00 / 15:00 – 19:00",
+      "tickets": "General 6,00 € | Reducida 4,50 € (Exclusivamente con reserva online)"
+    },
+    "badia": {
+      "title": "Iglesia de San Benedetto alla Badia",
+      "description": "Verdadera obra maestra del barroco siciliano, la iglesia es famosa en todo el mundo por su extraordinario suelo realizado íntegramente en mayólica del siglo XVIII, que representa escenas alegóricas y motivos naturalistas de rara maestría. Una obra maestra del arte visual suspendida en el tiempo.",
+      "hours": "Mar - Dom: 09:00 – 12:30 | Lun: 14:30 – 18:30 (Sin servicios regulares)",
+      "tickets": "General 2,00 € | Reducida 1,00 € (Jóvenes UE 18-25 años o con entrada del Castillo el mismo día) | Gratis menores de 18 años"
+    },
+    "santamaria": {
+      "title": "Iglesia de Santa Maria degli Angeli",
+      "description": "También conocida por su vínculo con el complejo dominico, esta iglesia conserva importantes testimonios de la devoción local. En su interior se pueden admirar valiosos detalles arquitectónicos y obras que narran el papel central del sitio en la historia religiosa del pueblo.",
+      "hours": "Accesible en los momentos previos a las celebraciones."
+    },
+    "sangiorgio": {
+      "title": "Iglesia de San Giorgio Martire",
+      "description": "La Iglesia Matriz de Caccamo se erige majestuosa en la pintoresca plaza monumental. Rica en tesoros sagrados, lienzos de la escuela siciliana y valiosas esculturas, representa el corazón de la fe de Caccamo y un referente para la arquitectura sacra del territorio.",
+      "hours": "Domingos y Festivos: 11:00 AM (en coincidencia con la Santa Misa)."
+    },
+    "annunziata": {
+      "title": "Parroquia SS. Annunziata",
+      "description": "Engastada en el tejido urbano medieval, la iglesia destaca por su fachada y por la atmósfera de profunda espiritualidad que se respira en su interior. Conserva altares finamente decorados y objetos artísticos que atraen a visitantes y fieles.",
+      "hours": "Lun - Sáb: 09:00 – 12:00 (Misas laborables a las 18:00 | Festivos a las 09:30, 12:00, 19:00)."
+    },
+    "cappuccini": {
+      "title": "Convento de los Frailes Capuchinos",
+      "description": "Lugar de silencio, meditación e historia, el Convento está profundamente ligado a la tradición franciscana en Sicilia. Además de la estructura conventual, el área ofrece una visión auténtica de la vida monástica y la devoción popular.",
+      "secret_info": "💡 Los Tesoros Ocultos de Caccamo: El pueblo alberga 33 iglesias. Utiliza el mapa de Din Don Dan y amplía la zona de Caccamo para descubrir en tiempo real los horarios y aperturas de tesoros menos conocidos como la Iglesia de San Rocco y otras pequeñas joyas."
+    }
   }
-}
