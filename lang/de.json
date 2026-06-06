@@ -67,42 +67,79 @@
     "welcomemsg_felicia": "Willkommen im Schloss von Caccamo, Fremder. Ich bin Schwester Felicia. Möchten Sie, dass ich Ihnen die Geheimnisse des Verschwörungssaals enthülle, oder möchten Sie lieber den alten Legenden des Schlosses lauschen? Fragen Sie mich ruhig."
   },
 
-  "monuments": {
-    "title": "Denkmäler des Dorfes",
-    "castle_title": "Schloss von Caccamo",
-    "castle_desc": "Eines der größten mittelalterlichen Schlösser Siziliens mit Blick auf das Tal von San Leonardo. Diese normannische Festung aus dem 11. Jahrhundert bewahrt Gefängnisse, historische Säle und faszinierende Legenden.",
-    "castle_button": "Seite besuchen",
-    "annunziata_title": "Kirche SS. Annunziata und San Benedetto della Badia",
-    "annunziata_desc": "Zwei benachbarte Kirchen, Symbole lokaler Frömmigkeit. Die Annunziata besticht durch elegante Barockstuckaturen, während die Badia Krypten und einen wunderschönen Majolikaboden beherbergt.",
-    "sangiorgio_title": "Kirche des Heiligen Georg des Märtyrers",
-    "sangiorgio_desc": "Eine der ältesten Kirchen des Dorfes mit einer normannisch-gotischen Fassade und wertvollen Holzskulpturen, dominiert vom Schloss im Hintergrund.",
-    "angeli_title": "Kirche Santa Maria degli Angeli",
-    "angeli_desc": "Eine kleine Franziskanerkirche in ruhiger Atmosphäre mit einem Marmoraltar und den Reliquien des seligen Giovanni, einer hochverehrten spirituellen Figur.",
-    "cappuccini_title": "Kapuzinerkloster",
-    "cappuccini_desc": "Im 16. Jahrhundert gegründet, beherbergt es einen schlichten Kreuzgang und eine historische Bibliothek. Es bietet einen Panoramablick über das Tal.",
-    "title_page": "Die Kirchen von Caccamo",
-    "start_tour": "Tour starten",
-    "chat_tooltip": "Klicken um zu chatten",
-    "chat_hint": "Klicken Sie auf meine Karten, um sie mit mir zu erkunden! ✨",
-    "welcomemsg_churches": "<strong>Die Castellana:</strong> Willkommen im Herzen von Caccamos Heiligkeit, Fremder. Möchten Sie, dass ich Ihnen die Geheimnisse dieser lebendigen Mauern enthülle? Fragen Sie mich einfach.",
-    "cappuccini_name": "Die Kapuziner",
-    "annunziata_name": "Annunziata",
-    "badia_name": "Heiliger Benedikt der Badia",
-    "angeli_name": "Heilige Maria der Engel",
-    "duomo_name": "Kirche des Hl. Georg des Märtyrers",
-    "storie": {
-      "cappuccini": "Willkommen im Kapuzinerkloster! Dieser Ort birgt jahrhundertealte Geschichten und eine Atmosphäre tiefer Spiritualität. Wenn Sie das Modell betrachten, können Sie die ursprüngliche Struktur erkennen...",
-      "annunziata": "Hier ist die Annunziata, ein architektonisches Juwel, das unauslöschliche Spuren unserer Vergangenheit bewahrt. Ihre Fassade und Innendetails wurden rekonstruiert, um Ihnen zu zeigen...",
-      "badia": "Sie stehen vor dem Hl. Benedikt der Badia. Dieser Klosterkomplex hat Jahrhunderte überdauert. Betrachten Sie die Feinheit der Rendering-Details, die an... erinnern.",
-      "angeli": "Dies ist die Kirche Santa Maria degli Angeli. Ein außergewöhnlicher Ort der Anbetung, dessen Grundriss und Dekorationen von der Kunst und Hingabe einer ganzen Ära erzählen...",
-      "duomo": "Die Kathedrale des Hl. Georg des Märtyrers! Das schlagende Herz unserer Gemeinde, majestätisch und dominant. Sehen Sie, wie das goldene Licht des Renderings die Linien der Kuppel und des Glockenturms hervorhebt..."
+    "monuments": {
+    "desktop": {
+      "title": "Denkmäler des Dorfes",
+      "castle_title": "Burg von Caccamo",
+      "castle_desc": "Zählt zu den größten mittelalterlichen Burgen Siziliens und beherrscht das San-Leonardo-Tal. Eine normannische Festung aus dem 11. Jahrhundert, die Gefängnisse, historische Säle und faszinierende Legenden bewahrt.",
+      "castle_button": "Seite besuchen",
+      "annunziata_title": "Kirche SS. Annunziata und San Benedetto della Badia",
+      "annunziata_desc": "Zwei nebeneinander liegende Kirchen, Symbole der Frömmigkeit von Caccamo. Die Annunziata birgt barocken Stuck; die Badia bewahrt Krypten und einen wunderschönen Majolikaboden.",
+      "sangiorgio_title": "Kirche San Giorgio Martire",
+      "sangiorgio_desc": "Gehört zu den ältesten des Dorfes, mit gotisch-normannischer Fassade und wertvollen Holzstatuen, direkt vor der Burg gelegen.",
+      "angeli_title": "Kirche Santa Maria degli Angeli",
+      "angeli_desc": "Kleine, in Stille gehüllte Franziskanerkirche mit Marmoraltar und den Gebeinen des Seligen Giovanni, einer von den Bürgern sehr verehrten heiligen Figur.",
+      "cappuccini_title": "Kapuzinerkloster",
+      "cappuccini_desc": "Im 16. Jahrhundert gegründet, beherbergt es einen schlichten Kreuzgang und eine historische Bibliothek. Panoramablick über das Tal.",
+      "title_page": "Die Kirchen von Caccamo",
+      "start_tour": "Tour starten",
+      "chat_tooltip": "Klicken zum Chatten",
+      "chat_hint": "Klicken Sie auf meine Karten, um sie mit mir zu erkunden! ✨",
+      "welcomemsg_churches": "<strong>La Castellana:</strong> Willkommen im Herzen von Caccamos Sakralität, Fremder. Möchtest du, dass ich dir die Geheimnisse dieser lebendigen Mauern enthülle? Frage mich einfach.",
+      "cappuccini_name": "Die Kapuziner",
+      "annunziata_name": "Annunziata",
+      "badia_name": "S. Benedetto della Badia",
+      "angeli_name": "Santa Maria degli Angeli",
+      "duomo_name": "Kirche San Giorgio Martire",
+      "storie": {
+        "cappuccini": "Willkommen bei den Kapuzinern! Dieser Ort birgt jahrhundertealte Geschichten und eine Atmosphäre tiefer Spiritualität. Wenn Sie das Modell betrachten, können Sie die ursprüngliche Struktur erkennen...",
+        "annunziata": "Hier ist die Annunziata, ein architektonisches Juwel, das unauslöschliche Spuren unserer Vergangenheit bewahrt. Ihre Fassade und die Innendetails wurden rekonstruiert, um Ihnen zu zeigen...",
+        "badia": "Sie stehen vor S. Benedetto della Badia. Dieser Klosterkomplex hat die Jahrhunderte überdauert. Betrachten Sie die Feinheit der Render-Details, die an... erinnern.",
+        "angeli": "Dies ist die Kirche Santa Maria degli Angeli. Ein außergewöhnlicher Ort der Verehrung, dessen Grundriss und Dekorationen von der Kunst und Frömmigkeit einer ganzen Epoche erzählen...",
+        "duomo": "Der Dom von San Giorgio Martire! Das schlagende Herz unserer Gemeinschaft, majestätisch und dominant. Beachten Sie, wie das goldene Licht des Renders die Linien der Kuppel und des Glockenturms hervorhebt..."
+      }
     },
-    "castello": "Schloss von Caccamo",
-    "santamaria": "Kirche Hl. Maria der Engel",
-    "sangiorgio": "Kirche des Hl. Georg des Märtyrers",
-    "cappuccini_mobile": "Kapuzinerbrüder-Kloster",
-    "annunziata": "Pfarrei SS. Annunziata",
-    "sanbenedetto": "Kirche des Hl. Benedikt der Badia",
-    "go_to_map": "Zur Karte gehen"
+    "hours_label": "Öffnungszeiten",
+    "tickets_label": "Tickets",
+    "view_map": "Karte öffnen",
+    "btn_buy_tickets": "Online buchen / Ticket kaufen",
+    "btn_comune_info": "Offizielle Infos der Gemeinde",
+    "btn_contact_turismo": "Tourismusbüro kontaktieren",
+    "btn_dindondan": "Kirchen auf Din Don Dan erkunden",
+    "church_notice": "⚠️ Hinweis: Dieses Gotteshaus ist hauptsächlich vor den religiösen Feiern zugänglich. Für gezielte Besichtigungen oder Gruppen wird empfohlen, den Zugang mit dem Tourismusbüro abzusprechen.",
+    "mobile": {
+      "go_to_map": "Zur Karte"
+    },
+    "castello": {
+      "title": "Die Burg von Caccamo",
+      "description": "Die Burg von Caccamo gehört zu den größten und am besten erhaltenen normannischen Festungen Siziliens. Seit dem 11. Jahrhundert auf dem nackten Felsen thronend, beherrscht sie das San-Leonardo-Tal mit ihren imposanten Mauern, Wachtürmen und eindrucksvollen Innensälen, die an Jahrhunderte feudaler Geschichte und Ritterlegenden erinnern.",
+      "hours": "Täglich: 09:30 – 13:00 / 15:00 – 19:00",
+      "tickets": "Normaltarif € 6,00 | Ermäßigt € 4,50 (Ausschließlich bei Online-Buchung)"
+    },
+    "badia": {
+      "title": "Kirche San Benedetto alla Badia",
+      "description": "Als wahres Meisterwerk des sizilianischen Barocks ist die Kirche weltweit bekannt für ihren außergewöhnlichen Fußboden aus Majolika-Fliesen des 18. Jahrhunderts, der allegorische Szenen und naturalistische Motive von seltener Meisterschaft darstellt. Ein in der Zeit schwebendes Meisterwerk der visuellen Kunst.",
+      "hours": "Di - So: 09:00 – 12:30 | Mo: 14:30 – 18:30 (Keine regulären Gottesdienste)",
+      "tickets": "Normaltarif € 2,00 | Ermäßigt € 1,00 (EU-Jugendliche 18-25 Jahre oder mit Burg-Ticket am selben Tag) | Kostenlos unter 18 Jahren"
+    },
+    "santamaria": {
+      "title": "Kirche Santa Maria degli Angeli",
+      "description": "Diese Kirche, die auch für ihre Verbindung zum Dominikanerkomplex bekannt ist, bewahrt wichtige Zeugnisse der lokalen Frömmigkeit. Im Inneren kann man wertvolle architektonische Details und Kunstwerke bewundern, die von der zentralen Rolle der Stätte in der Religionsgeschichte des Dorfes erzählen.",
+      "hours": "Zugänglich in den Momenten vor den Feierlichkeiten."
+    },
+    "sangiorgio": {
+      "title": "Kirche San Giorgio Martire",
+      "description": "Die Mutterkirche von Caccamo erhebt sich majestätisch auf dem malerischen monumentalen Platz. Reich an sakralen Schätzen, Gemälden der sizilianischen Schule und wertvollen Skulpturen, repräsentiert sie das schlagende Herz von Caccamos Glauben und ein Wahrzeichen der Sakralarchitektur der Region.",
+      "hours": "Sonn- und Feiertage: 11:00 Uhr (in Verbindung mit der Heiligen Messe)."
+    },
+    "annunziata": {
+      "title": "Pfarrei SS. Annunziata",
+      "description": "Eingebettet in das mittelalterliche Stadtgebiet, zeichnet sich die Kirche durch ihre Fassade und die im Inneren spürbare Atmosphäre tiefer Spiritualität aus. Sie bewahrt fein verzierte Altäre und künstlerische Artefakte, die Besucher und Gläubige anziehen.",
+      "hours": "Mo - Sa: 09:00 – 12:00 (Werktagsmessen um 18:00 Uhr | Feiertage um 09:30, 12:00, 19:00 Uhr)."
+    },
+    "cappuccini": {
+      "title": "Kloster der Kapuzinermönche",
+      "description": "Als Ort der Stille, der Meditation und der Geschichte ist das Kloster tief mit der franziskanischen Tradition in Sizilien verbunden. Neben der klösterlichen Struktur bietet die Anlage einen authentischen Einblick in das Mönchsleben und die Volksfrömmigkeit.",
+      "secret_info": "💡 Caccamos verborgene Schätze: Das Dorf beherbergt 33 Kirchen. Nutzen Sie die Karte von Din Don Dan und zoomen Sie auf Caccamo, um in Echtzeit die Öffnungszeiten von weniger bekannten Schätzen wie der Kirche San Rocco und anderen verstreuten Meisterwerken zu entdecken."
+    }
   }
-}
