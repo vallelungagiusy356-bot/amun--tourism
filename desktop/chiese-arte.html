@@ -85,9 +85,8 @@
         </div>
         
         <div class="chat-messages" id="chatMessagesBox">
-            <div class="message system-msg" data-i18n="monuments.welcomemsg_churches">
-                <strong>La Castellana:</strong> Benvenuto nel cuore della sacralità di Caccamo, forestiero. Vuoi che ti sveli i segreti di queste mura vive? Chiedimi pure.
-            </div>
+            <!-- Testo inizialmente svuotato per favorire la corretta iniezione multilingua -->
+            <div class="message system-msg" data-i18n="monuments.welcomemsg_churches"></div>
         </div>
         
         <div class="chat-input-row">
@@ -117,7 +116,6 @@
         let currentLang = localStorage.getItem("lang") || "it";
         let langData = {};
 
-        // Caricamento asincrono delle traduzioni centralizzato
         function loadLanguage(lang) {
             return fetch(`../lang/${lang}.json`)
                 .then(res => res.json())
@@ -134,14 +132,12 @@
                         if (text) el.placeholder = text;
                     });
                     
-                    // Gestione stato dinamico del tooltip se il tour è già avviato
                     if (grid.classList.contains('visible') && data.monuments?.chat_hint) {
                         chatBtn.textContent = data.monuments.chat_hint;
                     }
                 });
         }
 
-        // Carica la lingua iniziale al DOMContentLoaded
         document.addEventListener("DOMContentLoaded", () => {
             loadLanguage(currentLang);
         });
@@ -190,12 +186,12 @@
             chatBox.classList.remove('active');
         });
 
-        // Selezione delle storie basata sugli attributi data-monument estratti dal JSON localizzato
+        // Corretto selettore per puntare alla struttura piatta del JSON
         cards.forEach(card => {
             card.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const idMonumento = card.getAttribute('data-monument');
-                const storia = langData.monuments?.storie?.[idMonumento];
+                const storia = langData.monuments?.[idMonumento];
 
                 if (storia) {
                     chatBox.classList.add('active');
