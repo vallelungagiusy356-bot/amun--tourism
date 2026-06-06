@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <title>Amunì Tourism</title>
     <script>
-        // Rileva smartphone o tablet e reindirizza alla cartella corretta
-        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth <= 768) {
-            window.location.href = "mobile/";
-        } else {
-            window.location.href = "desktop/";
+        // Inizializza il controllo dei parametri URL
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Se NON è presente il bypass, esegui lo smistamento automatico per dispositivo
+        if (!urlParams.get('bypass')) {
+            if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+                window.location.href = "mobile/";
+            } else {
+                window.location.href = "desktop/";
+            }
         }
     </script>
 </head>
@@ -17,8 +22,11 @@
     <h2>Benvenuto su Amunì Tourism</h2>
     <p>Scegli la versione:</p>
 
+    <!-- Il link mobile punta alla cartella normalmente -->
     <p><a href="mobile/">📱 Versione Mobile</a></p>
-    <p><a href="desktop/">🖥️ Versione Desktop</a></p>
+    
+    <!-- Il link desktop include il bypass per consentire l'accesso forzato da qualsiasi dispositivo -->
+    <p><a href="desktop/index.html?bypass=true">🖥️ Versione Desktop (Premium)</a></p>
 
 </body>
 </html>
