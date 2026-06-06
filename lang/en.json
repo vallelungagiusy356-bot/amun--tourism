@@ -60,47 +60,30 @@
     "event_salsiccia": "Sausage Festival",
     "event_beato": "Feast of Blessed Giovanni"
   },
-
-  "castle": {
-    "title": "The Castle of Caccamo",
-    "position": "A fortress perched on a rocky spur, overlooking the valley.",
-    "defense": "Arrow slits, thick walls and walkways tell its defensive purpose.",
-    "conspiracy": "Secret rooms and noble halls were the stage of medieval intrigues.",
-    "prisons": "The underground prisons still preserve traces of ancient detentions.",
-    "legend_brothers": "The legend of the two brothers tells of a fatal duel for the love of a lady."
-  },
-  "monuments": {
-  "title": "Monuments of the Village",
-
-  "castle_title": "Castle of Caccamo",
-  "castle_desc": "One of the largest medieval castles in Sicily, overlooking the San Leonardo valley. This Norman fortress from the 11th century preserves prisons, historic halls, and fascinating legends.",
-  "castle_button": "Visit the page",
-
-  "annunziata_title": "Church of SS. Annunziata and San Benedetto della Badia",
-  "annunziata_desc": "Two adjacent churches, symbols of local devotion. The Annunziata features refined Baroque stuccoes, while the Badia preserves crypts and a beautiful majolica floor.",
-
-  "sangiorgio_title": "Church of Saint George the Martyr",
-  "sangiorgio_desc": "One of the oldest churches in the village, with a Norman‑Gothic façade and precious wooden statues, standing with the castle rising behind it.",
-
-  "angeli_title": "Church of Santa Maria degli Angeli",
-  "angeli_desc": "A small Franciscan church immersed in silence, featuring a marble altar and the remains of Blessed Giovanni, a deeply beloved spiritual figure.",
-
-  "cappuccini_title": "Capuchin Convent",
-  "cappuccini_desc": "Founded in the 16th century, it houses a sober cloister and a historic library. It offers a panoramic view over the valley."
-  },
-
   "castle": {
     "title": "The Castle of Caccamo",
     "category": "Historical Monuments",
-    "leading_para": "The Castle of Caccamo is among the largest and best-preserved Norman fortresses in Sicily. Perched on the living rock since the 11th century, it dominates the San Leonardo valley as a millenary strategic bulwark.",
-    "dress_caption": "The Castellana's Dress",
-    "para_2": "Every corner of this manor exudes charm and mystery: from the famous Conspiracy Hall, the theater of intrigues and pacts between medieval nobles, to the ancient Inquisition prisons carved into the stone.",
-    "para_3": "Between history and legend, the spirit of Sister Felicia still protects the village. The Castellana awaits you in chat to reveal every secret of this timeless place.",
-    "chat_tooltip": "Click to Chat",
-    "welcomemsg_felicia": "Welcome to the Castle of Caccamo, stranger. I am Sister Felicia. Would you like me to reveal the secrets of the Conspiracy Hall, or do you prefer to listen to the ancient legends of the manor? Just ask me."
+    "leading_para": "The Castle of Caccamo is one of the largest and best-preserved Norman fortresses in Sicily. Standing on a sheer rock since the 11th century, it dominates the San Leonardo valley as a millenary strategic bulwark.",
+    "dress_caption": "The dress of the Castellana",
+    "para_2": "Every corner of this manor exudes charm and mystery: from the famous Conspiracy Hall, the scene of intrigues and pacts between medieval nobles, to the ancient prisons carved into the stone used by the Inquisition.",
+    "para_3": "Between history and legend, the spirit of Sister Felicia still protects the village today. The Castellana awaits you in chat to reveal every secret of this timeless place.",
+    "chat_tooltip": "Click to chat",
+    "welcomemsg_felicia": "Welcome to the Castle of Caccamo, stranger. I am Sister Felicia. Would you like me to reveal the secrets of the Conspiracy Hall, or would you rather listen to the ancient legends of the castle? Feel free to ask."
   },
 
   "monuments": {
+    "title": "Monuments of the Village",
+    "castle_title": "Castle of Caccamo",
+    "castle_desc": "One of the largest medieval castles in Sicily, overlooking the valley of San Leonardo. This 11th-century Norman fortress preserves prisons, historical halls, and fascinating legends.",
+    "castle_button": "Visit page",
+    "annunziata_title": "Church of SS. Annunziata and San Benedict della Badia",
+    "annunziata_desc": "Two adjacent churches, symbols of local devotion. The Annunziata features elegant Baroque stuccoes, while the Badia houses crypts and a beautiful majolica floor.",
+    "sangiorgio_title": "Church of Saint George the Martyr",
+    "sangiorgio_desc": "One of the oldest churches in the village, with a Norman-Gothic facade and valuable wooden sculptures, dominated by the castle in the background.",
+    "angeli_title": "Church of Santa Maria degli Angeli",
+    "angeli_desc": "A small Franciscan church in a quiet atmosphere, with a marble altar and the relics of Blessed Giovanni, a highly revered spiritual figure.",
+    "cappuccini_title": "Capuchin Convent",
+    "cappuccini_desc": "Founded in the 16th century, it houses a simple cloister and a historical library. It offers a panoramic view over the valley.",
     "title_page": "The Churches of Caccamo",
     "start_tour": "Start the Tour",
     "chat_tooltip": "Click to chat",
@@ -118,7 +101,7 @@
       "angeli": "This is the Church of Santa Maria degli Angeli. An extraordinary place of worship, whose layout and decorations tell the story of the art and devotion of an entire era...",
       "duomo": "The Cathedral of St. George the Martyr! The beating heart of our community, majestic and dominant. Notice how the golden light of the rendering enhances the lines of the dome and the bell tower..."
     },
-        "castello": "Castle of Caccamo",
+    "castello": "Castle of Caccamo",
     "santamaria": "Church of St. Mary of the Angels",
     "sangiorgio": "Church of St. George the Martyr",
     "cappuccini_mobile": "Capuchin Friars Convent",
@@ -127,6 +110,5 @@
     "go_to_map": "Go to Map"
   }
 }
-}
 
-
+  
