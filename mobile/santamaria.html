@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="monuments.santamaria.title"></title>
+    <link rel="stylesheet" href="monumento_shared.css">
+</head>
+<body>
+    <header class="dashboard-mobile">
+        <div class="logo-title">Amunì Tourism</div>
+        <div class="lang-switcher">
+            <button data-lang="it">🇮🇹</button>
+            <button data-lang="en">🇬🇧</button>
+            <button data-lang="fr">🇫🇷</button>
+            <button data-lang="de">🇩🇪</button>
+            <button data-lang="es">🇪🇸</button>
+        </div>
+        <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
+    </header>
+
+    <div class="monument-render-container">
+        <img src="img/san_domenico.gif" alt="Chiesa Santa Maria degli Angeli" class="monument-gif">
+    </div>
+
+    <main class="info-card-mobile">
+        <div class="card-header">
+            <h1 data-i18n="monuments.santamaria.title"></h1>
+            <img src="img/avatar_castellana.png" alt="Castellana" class="avatar-mini">
+        </div>
+        <p class="description" data-i18n="monuments.santamaria.description"></p>
+        <div class="logistics-details">
+            <p><strong>🕒 <span data-i18n="monuments.hours_label"></span>:</strong> <span data-i18n="monuments.santamaria.hours"></span></p>
+            <p class="church-note" data-i18n="monuments.church_notice"></p>
+        </div>
+        <div class="action-buttons">
+            <button class="btn-map" onclick="window.location.href='https://maps.google.com/?q=Chiesa+di+Santa+Maria+degli+Angeli+Caccamo'">📍 <span data-i18n="monuments.view_map"></span></button>
+            <button class="btn-action-specific" onclick="window.location.href='tel:0918148111'">📞 <span data-i18n="monuments.btn_contact_turismo"></span></button>
+        </div>
+    </main>
+
+    <script src="monument_translation.js"></script>
+</body>
+</html>
+
