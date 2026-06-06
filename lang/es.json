@@ -90,18 +90,30 @@
   "cappuccini_desc": "Fundado en el siglo XVI, alberga un claustro sobrio y una biblioteca histórica. Ofrece una vista panorámica del valle."
   },
 
-  "castle": {
+    "castle": {
     "title": "El Castillo de Caccamo",
     "category": "Monumentos Históricos",
-    "leading_para": "El Castillo de Caccamo es una de las fortalezas normandas más grandes y mejor conservadas de Sicilia. Encaramado sobre la roca viva desde el siglo XI, domina el valle del San Leonardo como un baluarte estratégico milenario.",
+    "leading_para": "El Castillo de Caccamo es una de las fortalezas normandas más grandes y mejor conservadas de Sicilia. Erigido sobre una roca escarpada desde el siglo XI, domina el valle del San Leonardo como un baluarte estratégico milenario.",
     "dress_caption": "El vestido de la Castellana",
-    "para_2": "Cada rincón de este palacio emana encanto y misterio: desde la famosa Sala de las Conjuras, escenario de intrigas y pactos entre nobles medievales, hasta las antiguas prisiones de la Inquisición excavadas en la piedra.",
-    "para_3": "Entre la historia y la leyenda, el espíritu de Sor Felicia sigue protegiendo el pueblo. La Castellana te espera en el chat para revelarte cada secreto de este lugar atemporal.",
-    "chat_tooltip": "Haz clic para Chatear",
-    "welcomemsg_felicia": "Bienvenido al Castillo de Caccamo, forastero. Yo soy Sor Felicia. ¿Quieres que te revele los secretos de la Sala de las Conjuras o prefieres escuchar las antiguas leyendas del palacio? Pregúntame lo que desees."
+    "para_2": "Cada rincón de casa casa señorial emana encanto y misterio: desde la famosa Sala de la Conspiración, escenario de intrigas y pactos entre nobles medievales, hasta las antiguas prisiones excavadas en la roca utilizadas por la Inquisición.",
+    "para_3": "Entre la historia y la leyenda, el espíritu de la hermana Felicia sigue protegiendo el pueblo hoy en día. La Castellana le espera en el chat para revelarle cada secreto de este lugar atemporal.",
+    "chat_tooltip": "Haga clic para chatear",
+    "welcomemsg_felicia": "Bienvenido al Castillo de Caccamo, forastero. Soy la hermana Felicia. ¿Quiere que le revele los secretos de la Sala de la Conspiración, o prefiere escuchar las antiguas leyendas del castillo? Pregúnteme lo que desee."
   },
 
   "monuments": {
+    "title": "Monumentos del Pueblo",
+    "castle_title": "Castillo de Caccamo",
+    "castle_desc": "Uno de los castillos medievales más grandes de Sicilia, con vistas al valle del San Leonardo. Esta fortaleza normanda del siglo XI conserva prisiones, salas historiques y leyendas fascinantes.",
+    "castle_button": "Visitar página",
+    "annunziata_title": "Iglesia de la SS. Anunciación y San Benito de la Badia",
+    "annunziata_desc": "Dos iglesias contiguas, símbolos de la devoción local. La Anunciación cuenta con elegantes estucos barrocos, mientras que la Badia alberga criptas y un hermoso suelo de mayólica.",
+    "sangiorgio_title": "Iglesia de San Jorge Mártir",
+    "sangiorgio_desc": "Una de las iglesias más antiguas del pueblo, con una fachada normando-gótica y valiosas esculturas de madera, dominada por el castillo al fondo.",
+    "angeli_title": "Iglesia de Santa María de los Ángeles",
+    "angeli_desc": "Una pequeña iglesia franciscana en un ambiente tranquilo, con un altar de mármol y las reliquias del Beato Giovanni, una figura espiritual muy venerada.",
+    "cappuccini_title": "Convento de los Capuchinos",
+    "cappuccini_desc": "Fundado en el siglo XVI, alberga un claustro sencillo y una biblioteca histórica. Ofrece una vista panorámica del valle.",
     "title_page": "Las Iglesias de Caccamo",
     "start_tour": "Iniciar el Tour",
     "chat_tooltip": "Haz clic para chatear",
@@ -114,12 +126,12 @@
     "duomo_name": "Iglesia de San Jorge Mártir",
     "storie": {
       "cappuccini": "¡Bienvenido a los Capuchinos! Este lugar alberga historias seculares y una atmósfera de profunda espiritualidad. Al mirar el modelo, puedes notar la estructura original...",
-      "annunziata": "Aquí está la Anunciación, una joya arquitectónica que conserva huellas indelebles de nuestro pasado. Su fachada y detalles internos han sido reconstruidos para mostrarte...",
+      "annunziata": "Aquí está la Anunciación, una joya arquitectónica que conserva huellas indelebiles de nuestro pasado. Su fachada y detalles internos han sido reconstruidos para mostrarte...",
       "badia": "Te encuentras ante San Benito de la Badia. Este complejo monástico ha atravesado los siglos. Observa la finura de los detalles del render, que recuerdan a...",
       "angeli": "Esta es la Iglesia de Santa María de los Ángeles. Un lugar de culto extraordinario, cuya planta y decoraciones relatan el arte y la devoción de toda una época...",
       "duomo": "¡El Duomo de San Jorge Mártir! El corazón palpitante de nuestra comunidad, majestuoso y dominante. Mira cómo la luz dorada del render resalta las líneas de la cúpula y del campanario..."
     },
-        "castello": "Castillo de Caccamo",
+    "castello": "Castillo de Caccamo",
     "santamaria": "Iglesia de Santa María de los Ángeles",
     "sangiorgio": "Iglesia de San Jorge Mártir",
     "cappuccini_mobile": "Convento de los Frailes Capuchinos",
@@ -128,5 +140,3 @@
     "go_to_map": "Ir al Mapa"
   }
 }
-}
-
