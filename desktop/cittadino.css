@@ -129,9 +129,18 @@ body {
     backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 215, 160, 0.85);
     z-index: 9999;
+    box-sizing: border-box; /* Previene overflow laterali */
 }
 
-.dashboard button {
+/* Gestione del layout del menu interno */
+.nav-desktop {
+    display: flex;
+    gap: 15px; /* Spazia i pulsanti About e Contact */
+}
+
+/* Stile unico per bottoni REALI e LINK configurati come bottoni */
+.dashboard button, 
+.dashboard .home-btn {
     background: rgba(255, 215, 160, 0.35);
     border: 1px solid rgba(255, 215, 160, 0.9);
     border-radius: 8px;
@@ -140,8 +149,16 @@ body {
     padding: 6px 12px;
     cursor: pointer;
     box-shadow: 0 0 12px rgba(255, 215, 160, 0.6);
+    text-decoration: none; /* Rimuove la sottolineatura blu dei link */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    transition: background 0.2s ease;
 }
 
-.dashboard button:hover {
+.dashboard button:hover, 
+.dashboard .home-btn:hover {
     background: rgba(255, 215, 160, 0.5);
 }
+
