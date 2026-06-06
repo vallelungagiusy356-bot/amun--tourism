@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Amunì Tourism</title>
+    <script>
+        // Rileva smartphone o tablet e reindirizza alla cartella corretta
+        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+            window.location.href = "mobile/";
+        } else {
+            window.location.href = "desktop/";
+        }
+    </script>
 </head>
 <body style="font-family: sans-serif; padding: 40px;">
 
