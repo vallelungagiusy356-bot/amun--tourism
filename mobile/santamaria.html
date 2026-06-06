@@ -3,43 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="monuments.santamaria.title"></title>
-    <link rel="stylesheet" href="monumento_shared.css">
+    <title data-i18n="monuments.santamaria.title">Chiesa di Santa Maria degli Angeli</title>
+    <!-- Google Fonts Barocco -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Collegamento al CSS unificato -->
+    <link rel="stylesheet" href="monumento_dettaglio.css">
 </head>
 <body>
-    <header class="dashboard-mobile">
-        <div class="logo-title">Amunì Tourism</div>
-        <div class="lang-switcher">
+
+    <!-- DASHBOARD SUPERIORE CON SELETTORE LINGUA -->
+    <header class="dashboard">
+        <span class="logo-title" data-i18n="menu.title">Amunì Tourism</span>
+        <div class="lang-switcher" style="margin-left: auto;">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
             <button data-lang="fr">🇫🇷</button>
             <button data-lang="de">🇩🇪</button>
             <button data-lang="es">🇪🇸</button>
         </div>
-        <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
     </header>
 
-    <div class="monument-render-container">
-        <img src="img/san_domenico.gif" alt="Chiesa Santa Maria degli Angeli" class="monument-gif">
-    </div>
-
-    <main class="info-card-mobile">
-        <div class="card-header">
+    <!-- CONTENITORE LAYOUT MOBILE -->
+    <main class="mobile-layout-detail">
+        
+        <!-- 1. INTESTAZIONE TITOLO -->
+        <header class="monument-header">
             <h1 data-i18n="monuments.santamaria.title"></h1>
-            <img src="img/avatar_castellana.png" alt="Castellana" class="avatar-mini">
+        </header>
+
+        <!-- 2. IMMAGINE / RENDERING HERO -->
+        <img src="img/san_domenico.gif" alt="Chiesa Santa Maria degli Angeli" class="monument-hero-image">
+
+        <!-- 3. TECA CRISTALLO: DESCRIZIONE STORICA -->
+        <section class="teca-cristallo descrittiva">
+            <p data-i18n="monuments.santamaria.description"></p>
+        </section>
+
+        <!-- 4. TECA CRISTALLO: AVVISO LUOGHI DI CULTO ATTIVI -->
+        <section class="teca-cristallo teca-avviso">
+            <p data-i18n="monuments.church_notice"></p>
+        </section>
+
+        <!-- 5. TECA CRISTALLO: LOGISTICA ORARI -->
+        <section class="teca-cristallo teca-logistica">
+            <div class="info-row">
+                <span class="info-label" data-i18n="monuments.hours_label"></span>
+                <span class="info-value" data-i18n="monuments.santamaria.hours"></span>
+            </div>
+        </section>
+
+        <!-- 6. BOTTONI D'AZIONE BAROCCHI -->
+        <div class="actions-container">
+            <button class="btn-barocco-action" onclick="window.location.href='https://maps.google.com/?q=Chiesa+di+Santa+Maria+degli+Angeli+Caccamo'">
+                🌐 <span data-i18n="monuments.view_map"></span>
+            </button>
+            
+            <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='tel:0918148111'">
+                📞 <span data-i18n="monuments.btn_contact_turismo"></span>
+            </button>
         </div>
-        <p class="description" data-i18n="monuments.santamaria.description"></p>
-        <div class="logistics-details">
-            <p><strong>🕒 <span data-i18n="monuments.hours_label"></span>:</strong> <span data-i18n="monuments.santamaria.hours"></span></p>
-            <p class="church-note" data-i18n="monuments.church_notice"></p>
-        </div>
-        <div class="action-buttons">
-            <button class="btn-map" onclick="window.location.href='https://maps.google.com/?q=Chiesa+di+Santa+Maria+degli+Angeli+Caccamo'">📍 <span data-i18n="monuments.view_map"></span></button>
-            <button class="btn-action-specific" onclick="window.location.href='tel:0918148111'">📞 <span data-i18n="monuments.btn_contact_turismo"></span></button>
-        </div>
+
+        <!-- UTILITY: RITORNO ALLA LISTA MONUMENTI -->
+        <a href="monuments.html" class="btn-back-home">← Torna ai Monumenti</a>
+
     </main>
 
+    <!-- SFONDO FISSO DIETRO LE TECHE GESTITO VIA CSS -->
+    <div class="scene-background"></div>
+
+    <!-- SCRIPT DI TRADUZIONE AUTOMATICA -->
     <script src="monument_translation.js"></script>
 </body>
 </html>
-
