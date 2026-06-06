@@ -72,7 +72,7 @@
     "welcomemsg_felicia": "Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure."
   },
 
-      "monuments": {
+  "monuments": {
     "hours_label": "Orari",
     "tickets_label": "Biglietti",
     "view_map": "Apri la Mappa",
@@ -80,7 +80,7 @@
     "btn_comune_info": "Info Istituzionali Comune",
     "btn_contact_turismo": "Contatta Ufficio Turismo",
     "btn_dindondan": "Esplora Chiese su Din Don Dan",
-    "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momenti di celebrazione interna.",
+    "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momentos di celebrazione interna.",
     "mobile": {
       "go_to_map": "Vai alla Mappa"
     },
@@ -104,7 +104,7 @@
     "sangiorgio": {
       "title": "Chiesa di San Giorgio Martire",
       "description": "La Chiesa Madre di Caccamo, dedicata a San Giorgio Martire, è un imponente capolavoro che domina la monumentale piazza sottostante il Castello. Fondata in epoca normanna e rifatta nel 1614, conserva un immenso patrimonio artistico: dalle sculture di scuola gaginiana alle preziose tele seicentesche del pittore fiammingo Matthias Stom, fino alle ricche cappelle decorate in marmi mischi.",
-      "hours": "Fasce Orarie Visite: Sabato e Domenica ore 09:30 – 10:45 e ore 16:00 – 18:00. (La reiezione turistica è sospesa durante la Santa Messa domenicale delle ore 11:00)."
+      "hours": "Fasce Orarie Visite: Sabato e Domenica ore 09:30 – 10:45 e ore 16:00 – 18:00. (La ricezione turistica è sospesa durante la Santa Messa domenicale delle ore 11:00)."
     },
     "annunziata": {
       "title": "Parrocchia SS. Annunziata",
@@ -119,4 +119,3 @@
     }
   }
 }
-
