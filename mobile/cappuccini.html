@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="monuments.cappuccini.title"></title>
+    <link rel="stylesheet" href="monumento_shared.css">
+</head>
+<body>
+    <header class="dashboard-mobile">
+        <div class="logo-title">Amunì Tourism</div>
+        <div class="lang-switcher">
+            <button data-lang="it">🇮🇹</button>
+            <button data-lang="en">🇬🇧</button>
+            <button data-lang="fr">🇫🇷</button>
+            <button data-lang="de">🇩🇪</button>
+            <button data-lang="es">🇪🇸</button>
+        </div>
+        <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
+    </header>
+
+    <div class="monument-render-container">
+        <img src="img/cappuccini_cacc.gif" alt="Convento Cappuccini" class="monument-gif">
+    </div>
+
+    <main class="info-card-mobile">
+        <div class="card-header">
+            <h1 data-i18n="monuments.cappuccini.title"></h1>
+            <img src="img/avatar_castellana.png" alt="Castellana" class="avatar-mini">
+        </div>
+        <p class="description" data-i18n="monuments.cappuccini.description"></p>
+        <div class="logistics-details">
+            <p class="explore-note" data-i18n="monuments.cappuccini.secret_info"></p>
+        </div>
+        <div class="action-buttons">
+            <button class="btn-map" onclick="window.location.href='https://maps.google.com/?q=Convento+Frati+Cappuccini+Caccamo'">📍 <span data-i18n="monuments.view_map"></span></button>
+            <button class="btn-action-specific" onclick="window.location.href='https://dindondan.app/orarimesse/'">🗺️ <span data-i18n="monuments.btn_dindondan"></span></button>
+        </div>
+    </main>
+
+    <script src="monument_translation.js"></script>
+</body>
+</html>
+
