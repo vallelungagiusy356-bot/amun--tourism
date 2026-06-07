@@ -387,3 +387,27 @@ body {
     20% { left: 150%; }
     100% { left: 150%; }
 }
+
+/* =======================================================
+   8. PERSONALIZZAZIONI ALTEZZA E ZOOM MONUMENTI SPECIFICI
+   ======================================================= */
+
+/* 1. Parrocchia SS. Annunziata: Slanciata e d'impatto */
+.monument-hero-image.img-annunziata {
+    height: 340px; 
+    object-fit: cover;
+}
+
+/* 2. Convento dei Frati Cappuccini: Altezza maggiorata e leggero zoom */
+.monument-hero-image.img-cappuccini {
+    height: 320px;
+    object-fit: cover;
+    transform: scale(1.05); /* Zoom calibrato per esaltare i dettagli */
+}
+
+/* 3. Il Castello di Caccamo: Imponente, maestoso ed elevato */
+.monument-hero-image.img-castello {
+    height: 380px;
+    object-fit: cover;
+    object-position: center 35%; /* Centra la visuale sulla rocca del Castello */
+}
