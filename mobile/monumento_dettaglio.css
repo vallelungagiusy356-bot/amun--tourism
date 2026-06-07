@@ -237,16 +237,9 @@ body {
 }
 
 /* =======================================================
-   5. BOTTONI D'AZIONE BAROCCHI (CALL TO ACTION)
+/* =======================================================
+   REVISIONE SEZIONE 5: PULSANTI CON EFFETTO DIAGONALE
    ======================================================= */
-.actions-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 8px;
-}
-
-/* MODIFICA: IMPLEMENTAZIONE ANIMAZIONE PULSE GLOW (EFFETTO DOMINO RADAR) */
 .btn-barocco-action {
     display: flex;
     align-items: center;
@@ -262,26 +255,104 @@ body {
     text-decoration: none;
     text-shadow: 0 0 8px rgba(255, 200, 120, 0.8);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease;
     
-    /* Attivazione dell'effetto domino automatico continuo */
+    /* Necessario per contenere il raggio diagonale interno */
     position: relative;
-    animation: dominoPulse 2.6s infinite ease-in-out;
+    overflow: hidden; 
 }
 
-/* Ritardo strategico sul secondo pulsante della colonna per generare il "passaggio a domino" visivo */
-.btn-secondary-action {
-    border-color: rgba(255, 215, 160, 0.45);
-    background: rgba(0, 0, 0, 0.4);
-    font-size: 0.9rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    animation-delay: 0.4s !important; /* Parte un istante dopo il primo pulsante */
+/* Il raggio di luce diagonale che attraversa il pulsante */
+.btn-barocco-action::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right, 
+        rgba(255, 215, 160, 0) 0%, 
+        rgba(255, 215, 160, 0.5) 50%, 
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg); /* Inclinazione diagonale perfetta */
+    animation: diagonalGlow 3.5s infinite ease-in-out;
+}
+
+/* Ritardo a effetto domino sul secondo pulsante della colonna */
+.btn-secondary-action::before {
+    animation-delay: 0.6s !important; /* L'onda si propaga in diagonale dopo il primo pulsante */
 }
 
 .btn-barocco-action:active {
     transform: scale(0.98);
-    background: rgba(255, 215, 160, 0.15);
 }
+
+
+/* =======================================================
+   REVISIONE SEZIONE 7: ANIMAZIONI (SLOW MOTION & DIAGONAL)
+   ======================================================= */
+
+/* 1. EFFETTO SLOW MOTION CINEMATICO EVOLUTO SULL'IMMAGINE/GIF */
+.monument-hero-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 215, 160, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    
+    /* Tempo dilatato a 2.5 secondi con transizione morbida e progressiva */
+    animation: advancedSlowMotion 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes advancedSlowMotion {
+    0% {
+        opacity: 0;
+        transform: scale(1.04);
+        filter: brightness(0.2) contrast(1.5) blur(8px) grayscale(100%);
+    }
+    40% {
+        opacity: 0.6;
+        filter: brightness(0.6) contrast(1.2) blur(3px) grayscale(50%);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1) contrast(1) blur(0px) grayscale(0%);
+    }
+}
+
+/* 2. TRANSIZIONE DEL RAGGIO LUMINOSO IN DIAGONALE */
+@keyframes diagonalGlow {
+    0% {
+        left: -60%;
+    }
+    30% {
+        left: 140%; /* Attraversa interamente il corpo del pulsante */
+    }
+    100% {
+        left: 140%;
+    }
+}
+
+/* Rimane invariata la teca segreta */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 200, 120, 0.25);
+        border-color: rgba(255, 200, 120, 0.6);
+    }
+    50% {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 210, 140, 0.45);
+        border-color: rgba(255, 215, 160, 0.85);
+    }
+    100% {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 200, 120, 0.25);
+        border-color: rgba(255, 200, 120, 0.6);
+    }
+}
+
 
 /* =======================================================
    6. UTILITY E PULSANTI DI RITORNO
