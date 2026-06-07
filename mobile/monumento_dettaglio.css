@@ -137,7 +137,7 @@ body {
     pointer-events: none;
 }
 
-/* IMMAGINE HERO CON SLOW MOTION */
+/* IMMAGINE HERO CON SLOW MOTION POTENZIATO */
 .monument-hero-image {
     width: 100%;
     height: 200px;
@@ -145,8 +145,10 @@ body {
     border-radius: 16px;
     border: 1px solid rgba(255, 215, 160, 0.4);
     display: block;
-    animation: advancedSlowMotion 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    /* Portata a 4.5s con una curva bezier ancora più morbida e cinematografica */
+    animation: advancedSlowMotion 4.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
 }
+
 
 /* =======================================================
    3. LE TECHE DI CRISTALLO (PULITE, FERME E LEGGIBILI)
@@ -362,19 +364,20 @@ body {
 @keyframes advancedSlowMotion {
     0% {
         opacity: 0;
-        transform: scale(1.04);
-        filter: brightness(0.2) contrast(1.5) blur(8px) grayscale(100%);
+        transform: scale(1.15); /* Parte più zoomato per un movimento slow-mo più evidente */
+        filter: brightness(0.1) contrast(1.6) blur(12px) grayscale(100%);
     }
-    40% {
-        opacity: 0.6;
-        filter: brightness(0.6) contrast(1.2) blur(3px) grayscale(50%);
+    50% {
+        opacity: 0.7;
+        filter: brightness(0.7) contrast(1.2) blur(4px) grayscale(30%);
     }
     100% {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1); /* Torna perfettamente alla dimensione originale */
         filter: brightness(1) contrast(1) blur(0px) grayscale(0%);
     }
 }
+
 
 @keyframes diagonalGlow {
     0% { left: -60%; }
