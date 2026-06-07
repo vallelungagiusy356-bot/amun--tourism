@@ -395,20 +395,19 @@ body {
    8. PERSONALIZZAZIONI ALTEZZA E ZOOM MONUMENTI SPECIFICI
    ======================================================= */
 
-/* 1. Parrocchia SS. Annunziata: FORZATURA TOTALE */
+/* 1. Parrocchia SS. Annunziata: ULTRA-FORZATURA PER ELIMINARE SPAZIO VUOTO */
 .monument-hero-image.img-annunziata {
-    height: 440px !important; 
+    height: 460px !important; 
     object-fit: cover !important;
-    transform: scale(1.35) !important; /* Spinge lo zoom al 135% per riempire ogni spazio vuoto */
-    transform-origin: center center;    /* Mantiene lo zoom perfettamente centrato */
+    transform: scale(1.65) !important; /* Spinge lo zoom al 155% per tagliare via i bordi vuoti della GIF */
+    transform-origin: center 45%;      /* Centra l'inquadratura leggermente più in alto sulla facciata */
 }
-
 
 /* 2. Convento dei Frati Cappuccini */
 .monument-hero-image.img-cappuccini {
     height: 380px;
     object-fit: cover;
-    transform: scale(1.15);
+    transform: scale(1.35);
 }
 
 /* 3. Il Castello di Caccamo */
@@ -418,18 +417,17 @@ body {
     object-position: center 35%; 
 }
 
-/* 4. Chiesa di San Giorgio Martire: Altezza super e zoom per valorizzare la facciata */
+/* 4. Chiesa di San Giorgio Martire */
 .monument-hero-image.img-sangiorgio {
     height: 400px;
     object-fit: cover;
-    transform: scale(1.15); /* Avvicina la struttura riempiendo magnificamente la teca */
+    transform: scale(1.35);
 }
 
-/* 5. Chiesa di San Domenico (Santa Maria degli Angeli): Monumentale e slanciata */
+/* 5. Chiesa di San Domenico (Santa Maria degli Angeli): FORZATURA ANALOGA */
 .monument-hero-image.img-sandomenico {
-    height: 420px;
-    object-fit: cover;
-    transform: scale(1.12); /* Calibrato per esaltare i dettagli del complesso domenicano */
+    height: 460px !important;
+    object-fit: cover !important;
+    transform: scale(1.48) !important; /* Zoom aggressivo al 148% per eliminare le bande vuote */
+    transform-origin: center center;    /* Mantiene lo zoom perfettamente bilanciato al centro */
 }
-
-
