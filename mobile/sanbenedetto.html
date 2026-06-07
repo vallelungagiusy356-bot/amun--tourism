@@ -23,37 +23,35 @@
     <main class="mobile-layout-detail">
         
         <header class="monument-header">
-            <h1 data-i18n="monuments.badia.title"></h1>
+            <h1 data-i18n="monuments.badia.title">Chiesa di San Benedetto alla Badia</h1>
         </header>
 
-        <img src="img/dettagli_badia.gif" alt="San Benedetto alla Badia" class="monument-hero-image">
+        <div class="monument-render-container" style="width: 100%; text-align: center;">
+            <img src="img/dettagli_badia.gif" alt="San Benedetto alla Badia" class="monument-hero-image" style="width: 100%; max-width: 100%; height: 350px; object-fit: cover; border-radius: 12px;" onerror="this.src='img/avatar_castellana.png';">
+        </div>
 
         <section class="teca-cristallo descrittiva">
-            <p data-i18n="monuments.badia.description"></p>
-        </section>
-
-        <section class="teca-cristallo teca-avviso">
-            <p data-i18n="monuments.church_notice"></p>
+            <p data-i18n="monuments.badia.description">Vero gioiello del barocco siciliano, la chiesa è celebre in tutto il mondo per il seu straordinario pavimento interamente realizzato in maiolica del Settecento...</p>
         </section>
 
         <section class="teca-cristallo teca-logistica">
             <div class="info-row">
-                <span class="info-label" data-i18n="monuments.hours_label"></span>
-                <span class="info-value" data-i18n="monuments.badia.hours"></span>
+                <span class="info-label" data-i18n="monuments.hours_label">Orari:</span>
+                <span class="info-value" data-i18n="monuments.badia.hours">Mar - Dom: 09:00 – 12:30 | Lun: 14:30 – 18:30</span>
             </div>
-            <div class="info-row">
-                <span class="info-label" data-i18n="monuments.tickets_label"></span>
-                <span class="info-value" data-i18n="monuments.badia.tickets"></span>
+            <div class="info-row" style="margin-top: 10px;">
+                <span class="info-label" data-i18n="monuments.tickets_label">Biglietti:</span>
+                <span class="info-value" data-i18n="monuments.badia.tickets">Intero € 2,00 | Ridotto € 1,00</span>
             </div>
         </section>
 
         <div class="actions-container">
-            <button class="btn-barocco-action" onclick="window.location.href='https://maps.google.com/?q=Chiesa+di+San+Benedetto+alla+Badia+Caccamo'">
-                🌐 <span data-i18n="monuments.view_map"></span>
+            <button class="btn-barocco-action" onclick="window.location.href='mappa.html?focus=badia'">
+                🌐 <span data-i18n="monuments.view_map">Apri la Mappa</span>
             </button>
             
-            <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='https://comune.caccamo.pa.it/vivere-il-comune/luoghi/chiesa-di-san-benedetto-alla-badia/'">
-                🏛️ <span data-i18n="monuments.btn_comune_info"></span>
+            <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='tel:0918148111'">
+                📞 <span data-i18n="monuments.btn_contact_turismo">Contatta Ufficio Turismo</span>
             </button>
         </div>
 
@@ -62,7 +60,6 @@
     </main>
 
     <div class="scene-background"></div>
-
     <script src="monument_translation.js"></script>
 </body>
 </html>
