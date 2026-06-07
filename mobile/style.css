@@ -75,19 +75,21 @@ body {
 /* VIDEO CASTELLANA */
 .video-container {
     width: 100%;
-    height: 260px;
+    height: 300px; /* Sincronizzato sul valore maggiore */
     overflow: hidden;
     border-bottom: 2px solid rgba(255, 215, 160, 0.5);
     border-radius: 0 0 18px 18px;
     position: relative;
 }
 
-/* BOTTONI BAROCCHI */
+/* BOTTONI BAROCCHI CON RIFLESSO DIAGONALE */
 .buttons-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
     margin-top: 10px;
+    position: relative;
+    z-index: 20;
 }
 
 .btn-barocco {
@@ -100,6 +102,29 @@ body {
     font-weight: 600;
     font-size: 0.9rem;
     box-shadow: 0 0 10px rgba(255, 215, 160, 0.25);
+    position: relative;
+    overflow: hidden; /* Taglia nettamente la luce sui bordi del tasto */
+    display: block;
+    text-decoration: none;
+}
+
+/* Lama di luce diagonale per i tasti standard */
+.btn-barocco::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -70%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right, 
+        rgba(255, 215, 160, 0) 0%, 
+        rgba(255, 215, 160, 0.4) 50%, 
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: homeButtonGlow 4s infinite ease-in-out;
+    pointer-events: none;
 }
 
 /* BOTTONI SECONDA FILA */
@@ -107,9 +132,16 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
+    position: relative;
+    z-index: 20;
 }
 
-/* BOTTONE CHAT WEB */
+/* Sfalsiamo leggermente l'animazione della seconda fila per un effetto più naturale */
+.buttons-row-2 .btn-barocco::before {
+    animation-delay: 0.5s;
+}
+
+/* BOTTONE CHAT WEB CON RIFLESSO DEDICATO */
 .btn-castellana {
     margin-top: 10px;
     background: rgba(0, 0, 0, 0.55);
@@ -121,6 +153,28 @@ body {
     font-weight: 600;
     font-size: 1rem;
     box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Lama di luce per il tastone della Castellana */
+.btn-castellana::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -70%;
+    width: 25%;
+    height: 200%;
+    background: linear-gradient(
+        to right, 
+        rgba(255, 215, 160, 0) 0%, 
+        rgba(255, 215, 160, 0.5) 50%, 
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: homeButtonGlow 4.5s infinite ease-in-out;
+    animation-delay: 1s; /* Parte dopo i tasti piccoli */
+    pointer-events: none;
 }
 
 /* SEZIONE AMUNI */
@@ -148,9 +202,9 @@ body {
     text-align: center;
 }
 
-/* ============================
-   CASTELLANA — VIDEO AVATAR
-   ============================ */
+/* =======================================================
+   CASTELLANA — VIDEO AVATAR CON EFFETTO LUMINOSO BAROCCO
+   ======================================================= */
 .castellana-avatar {
     position: absolute;
     bottom: -110px;
@@ -161,34 +215,14 @@ body {
     z-index: 10;
     pointer-events: none;
 
-    animation: fadeIn 1.2s ease-out, breathe 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35));
+    /* Uniamo la respirazione, la comparsa e il magico bagliore della luce riflessa */
+    animation: 
+        fadeIn 1.2s ease-out, 
+        breathe 4s ease-in-out infinite,
+        castellanaGlowReflection 6s ease-in-out infinite;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-@keyframes breathe {
-    0%   { transform: translateX(-50%) translateY(0); }
-    50%  { transform: translateX(-50%) translateY(-6px); }
-    100% { transform: translateX(-50%) translateY(0); }
-}
-
-/* Aumento altezza contenitore video */
-.video-container {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    border-bottom: 2px solid rgba(255, 215, 160, 0.5);
-    border-radius: 0 0 18px 18px;
-    position: relative;
-}
-
-/* ============================
-   SEZIONE INSTALLA APP
-   ============================ */
+/* SEZIONE INSTALLA APP */
 .install-app {
     margin-top: 25px;
     background: rgba(0, 0, 0, 0.55);
@@ -229,13 +263,13 @@ body {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #f7f2e9;
-    }
+}
 
-/* Rende cliccabili i bottoni */
+/* GESTIONE LIVELLI E CLICK BLINDATI */
 .dashboard,
 .buttons-grid,
 .buttons-row-2,
-.btn-chat-web {
+.btn-castellana {
     position: relative;
     z-index: 20;
 }
@@ -244,4 +278,43 @@ body {
 .video-container,
 .castellana-avatar {
     pointer-events: none;
+}
+
+/* =======================================================
+   KEYFRAMES ANIMAZIONI HOME PAGE
+   ======================================================= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes breathe {
+    0%   { transform: translateX(-50%) translateY(0); }
+    50%  { transform: translateX(-50%) translateY(-6px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* Movimento diagonale della luce sui bottoni */
+@keyframes homeButtonGlow {
+    0% { left: -70%; }
+    25% { left: 130%; }
+    100% { left: 130%; }
+}
+
+/* Il riflesso di luce che accarezza l'avatar della Castellana (Luminosità + Ombra dorata) */
+@keyframes castellanaGlowReflection {
+    0% {
+        filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35)) brightness(1);
+    }
+    30% {
+        /* Il riflesso passa: l'avatar si illumina e l'ombra dorata diventa vivida */
+        filter: drop-shadow(0 0 25px rgba(255, 230, 180, 0.7)) brightness(1.25) contrast(1.1);
+    }
+    45% {
+        /* Ritorno morbido alla normalità */
+        filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35)) brightness(1);
+    }
+    100% {
+        filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35)) brightness(1);
+    }
 }
