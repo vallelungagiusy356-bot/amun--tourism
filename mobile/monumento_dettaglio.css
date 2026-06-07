@@ -27,7 +27,7 @@ body {
 
 /* Layout contenitore mobile per i dettagli */
 .mobile-layout-detail {
-    margin-top: 75px;
+    margin-top: 20px; /* Ridotto leggermente per bilanciare l'altezza della dashboard */
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -35,6 +35,56 @@ body {
     position: relative;
     z-index: 2;
     padding-bottom: 40px;
+}
+
+/* INSERIMENTO: DASHBOARD SUPERIORE BLINDATA */
+.dashboard {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(18, 12, 8, 0.95); /* Profondo scuro barocco */
+    border-bottom: 2px solid #d4af37; /* Linea d'oro */
+    position: sticky;
+    top: 0;
+    z-index: 9999; /* Sempre in primo piano sopra ogni elemento */
+    box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.logo-title {
+    color: #d4af37 !important;
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 6px;
+}
+
+.lang-switcher button {
+    background: transparent;
+    border: 1px solid transparent;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 3px 6px;
+    transition: transform 0.2s, background-color 0.2s;
+    border-radius: 6px;
+}
+
+.lang-switcher button:active {
+    transform: scale(0.9);
+}
+
+.lang-switcher button.active {
+    border-color: #d4af37;
+    background: rgba(212, 175, 55, 0.15);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
 /* =======================================================
@@ -56,6 +106,7 @@ body {
     line-height: 1.3;
 }
 
+/* MODIFICA: APPLICAZIONE SLOW MOTION CINEMATICO SULLE IMMAGINI/GIF */
 .monument-hero-image {
     width: 100%;
     height: 200px;
@@ -63,6 +114,8 @@ body {
     border-radius: 16px;
     border: 1px solid rgba(255, 215, 160, 0.4);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    /* Effetto dissolvenza morbida all'apertura per non scattare */
+    animation: smoothFadeIn 1.8s ease-out;
 }
 
 /* =======================================================
@@ -193,6 +246,7 @@ body {
     margin-top: 8px;
 }
 
+/* MODIFICA: IMPLEMENTAZIONE ANIMAZIONE PULSE GLOW (EFFETTO DOMINO RADAR) */
 .btn-barocco-action {
     display: flex;
     align-items: center;
@@ -207,21 +261,26 @@ body {
     font-size: 0.95rem;
     text-decoration: none;
     text-shadow: 0 0 8px rgba(255, 200, 120, 0.8);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 200, 120, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    
+    /* Attivazione dell'effetto domino automatico continuo */
+    position: relative;
+    animation: dominoPulse 2.6s infinite ease-in-out;
 }
 
-.btn-barocco-action:active {
-    transform: scale(0.98);
-    background: rgba(255, 215, 160, 0.15);
-    box-shadow: 0 0 18px rgba(255, 200, 120, 0.6);
-}
-
+/* Ritardo strategico sul secondo pulsante della colonna per generare il "passaggio a domino" visivo */
 .btn-secondary-action {
     border-color: rgba(255, 215, 160, 0.45);
     background: rgba(0, 0, 0, 0.4);
     font-size: 0.9rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation-delay: 0.4s !important; /* Parte un istante dopo il primo pulsante */
+}
+
+.btn-barocco-action:active {
+    transform: scale(0.98);
+    background: rgba(255, 215, 160, 0.15);
 }
 
 /* =======================================================
@@ -255,5 +314,32 @@ body {
     100% {
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 200, 120, 0.25);
         border-color: rgba(255, 200, 120, 0.6);
+    }
+}
+
+/* NUOVA ANIMAZIONE: SLOW MOTION DI CARICAMENTO IMMAGINI/GIF */
+@keyframes smoothFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+        filter: brightness(0.6);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+/* NUOVA ANIMAZIONE: IMPULSO A DOMINO PER I PULSANTI D'AZIONE */
+@keyframes dominoPulse {
+    0% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(212, 175, 55, 0.7);
+    }
+    60% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 12px rgba(212, 175, 55, 0);
+    }
+    100% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(212, 175, 55, 0);
     }
 }
