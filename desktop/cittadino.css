@@ -21,7 +21,7 @@ body {
 }
 
 /* ================================
-   QUADRANTI IN VETRO + GLOW ORO & RIFLESSO MORBIDO
+   QUADRANTI IN VETRO + GLOW ORO & RIFLESSO ULTRA-MORBIDO
 ================================ */
 .quadrant {
     background: rgba(255, 255, 255, 0.08);
@@ -39,7 +39,7 @@ body {
         0 0 60px rgba(255, 120, 60, 0.25),
         inset 0 0 20px rgba(255, 255, 255, 0.15);
 
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     cursor: pointer;
     
     position: relative; /* Necessario per il riflesso */
@@ -57,11 +57,11 @@ body {
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.22) 50%,
-        rgba(255, 215, 160, 0) 100
+        rgba(255, 215, 160, 0.14) 50%, /* Abbassata l'intensità per massima fusione col vetro */
+        rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: citizenGlowLoop 10s infinite ease-in-out;
+    animation: citizenGlowLoop 11s infinite ease-in-out; /* Sviluppo lentissimo */
     pointer-events: none;
 }
 
@@ -73,9 +73,9 @@ body {
         inset 0 0 25px rgba(255, 255, 255, 0.25);
 }
 
-/* 🔥 MODIFICA: Il riflesso attraversa i quadranti in ben 0.85 secondi con transizione vellutata */
+/* 🔥 MODIFICA: Il riflesso attraversa i quadranti in modo setoso in 1.15s */
 .quadrant:hover::before {
-    animation: citizenHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ================================
@@ -122,14 +122,12 @@ body {
 }
 
 /* ================================
-   QUADRANTE CASTELLO (TITOLO ORO) WITH SOFT REFLECTION
+   QUADRANTE CASTELLO (TITOLO ORO) WITH ULTRA-SOFT REFLECTION
 ================================ */
 .castle-card {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* 🔥 Prima era height:180px → CAUSA DEL PROBLEMA */
     min-height: 260px;
 
     font-size: 32px;
@@ -149,7 +147,7 @@ body {
         0 0 25px rgba(255, 200, 120, 0.45),
         0 0 60px rgba(255, 120, 60, 0.25),
         inset 0 0 20px rgba(255, 255, 255, 0.15);
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Riflesso morbido sulla card del Castello */
@@ -163,12 +161,12 @@ body {
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.22) 50%,
+        rgba(255, 215, 160, 0.14) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: citizenGlowLoop 10s infinite ease-in-out;
-    animation-delay: 2.5s; /* Sfalsato rispetto agli altri */
+    animation: citizenGlowLoop 11s infinite ease-in-out;
+    animation-delay: 2.5s; 
     pointer-events: none;
 }
 
@@ -180,9 +178,9 @@ body {
         inset 0 0 25px rgba(255, 255, 255, 0.25);
 }
 
-/* 🔥 MODIFICA: Rallentata l'animazione di svelamento anche sulla carta Castello */
+/* 🔥 MODIFICA: Rallentata e ammorbidita l'animazione di svelamento hover sulla carta Castello */
 .castle-card:hover::before {
-    animation: citizenHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ================================
@@ -227,7 +225,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: sans-serif;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     
     position: relative;
     overflow: hidden;
@@ -245,11 +243,11 @@ body {
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.25) 50%,
+        rgba(255, 215, 160, 0.16) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: citizenGlowLoop 7s infinite ease-in-out;
+    animation: citizenGlowLoop 7.5s infinite ease-in-out;
     pointer-events: none;
 }
 
@@ -259,24 +257,24 @@ body {
     transform: scale(1.04);
 }
 
-/* 🔥 MODIFICA: Rallentato l'effetto sui bottoni della barra superiore per una risposta vellutata */
+/* 🔥 MODIFICA: Rallentato l'effetto sui bottoni superiori per una risposta vellutata */
 .dashboard button:hover::before, 
 .dashboard .home-btn:hover::before {
-    animation: citizenHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* =======================================================
-   🔥 KEYFRAMES RICALIBRATI PER EFFETTO MORBIDO ED ELEGANTE
+   🔥 KEYFRAMES RICALIBRATI PER MASSIMA MORBIDEZZA VISIVA
    ======================================================= */
 
-/* 1. Loop lento automatico di sottofondo (portato a 10s per rilassare la vista) */
+/* 1. Loop lento automatico di sottofondo portatato a 11s */
 @keyframes citizenGlowLoop {
     0% { left: -120%; }
-    15% { left: 150%; }
+    16% { left: 150%; }
     100% { left: 150%; }
 }
 
-/* 2. 🔥 Effetto Hover Morbido: Una carezza di luce dorata da 0.85 secondi */
+/* 2. 🔥 Effetto Hover Morbido: Una carezza di luce dorata da 1.15 secondi */
 @keyframes citizenHoverFlash {
     0% { left: -120%; }
     100% { left: 150%; }
