@@ -40,7 +40,7 @@ html, body {
 }
 
 /* ==========================================================================
-   3. DASHBOARD DESKTOP PREMIUM WITH REFLECTIONS
+   3. DASHBOARD DESKTOP PREMIUM WITH SOFT REFLECTIONS
    ========================================================================== */
 .dashboard { 
     position: fixed;
@@ -77,28 +77,28 @@ html, body {
     font-weight: 600;
     font-size: 0.95rem;
     padding: 8px 16px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     border-radius: 6px;
     position: relative;
     overflow: hidden; /* Contiene la lama di luce nei bordi del link */
 }
 
-/* Luce continua di sottofondo per i link del menu */
+/* Luce continua e soffusa di sottofondo per i link del menu */
 .nav-item::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -100%;
-    width: 30%;
+    left: -120%;
+    width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.3) 50%,
+        rgba(255, 215, 160, 0.22) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: castleGlowLoop 7s infinite ease-in-out;
+    animation: castleGlowLoop 10s infinite ease-in-out;
     pointer-events: none;
 }
 
@@ -108,9 +108,9 @@ html, body {
     text-shadow: 0 0 8px #ffd78f;
 }
 
-/* Sferzata fulminea all'hover del mouse */
+/* 🔥 MODIFICA: Transizione all'hover vellutata e distesa (0.85s) */
 .nav-item:hover::before {
-    animation: castleHoverFlash 0.45s ease-out forwards;
+    animation: castleHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .header-right-actions {
@@ -153,27 +153,27 @@ html, body {
     cursor: pointer;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     position: relative;
     overflow: hidden;
 }
 
-/* Riflesso sul bottone Home */
+/* Riflesso morbido sul bottone Home */
 .home-btn::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -100%;
-    width: 30%;
+    left: -120%;
+    width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.4) 50%,
+        rgba(255, 215, 160, 0.25) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: castleGlowLoop 6s infinite ease-in-out;
+    animation: castleGlowLoop 9s infinite ease-in-out;
     animation-delay: 1s;
     pointer-events: none;
 }
@@ -184,8 +184,9 @@ html, body {
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
 }
 
+/* 🔥 MODIFICA: Rallentato l'effetto riflesso sul tasto Home */
 .home-btn:hover::before {
-    animation: castleHoverFlash 0.45s ease-out forwards;
+    animation: castleHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ==========================================================================
@@ -275,22 +276,22 @@ html, body {
     overflow: hidden;
 }
 
-/* Riflesso automatico sul paragrafo in evidenza */
+/* Riflesso automatico sul paragrafo in evidenza (più morbido) */
 .highlight-para::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -100%;
-    width: 25%;
+    left: -120%;
+    width: 30%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.15) 50%,
+        rgba(255, 215, 160, 0.12) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: castleGlowLoop 9s infinite ease-in-out;
+    animation: castleGlowLoop 11s infinite ease-in-out;
     pointer-events: none;
 }
 
@@ -306,22 +307,22 @@ html, body {
     overflow: hidden;
 }
 
-/* Riflesso elegante sullo scrigno dell'abito in linea */
+/* Riflesso elegante e vellutato sullo scrigno dell'abito in linea */
 .castle-dress-inline::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -100%;
-    width: 25%;
+    left: -120%;
+    width: 30%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.18) 50%,
+        rgba(255, 215, 160, 0.15) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: castleGlowLoop 8s infinite ease-in-out;
+    animation: castleGlowLoop 9s infinite ease-in-out;
     animation-delay: 2.5s;
     pointer-events: none;
 }
@@ -368,23 +369,23 @@ html, body {
     width: 250px;
     position: relative;
     cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     overflow: hidden;
     border-radius: 16px; /* Protegge i bordi dell'avatar */
 }
 
-/* Riflesso di luce diagonale che attraversa l'avatar quando ci si passa sopra */
+/* Riflesso di luce diagonale vellutato che attraversa l'avatar all'hover */
 .castellana-video-wrapper::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -120%;
-    width: 30%;
+    left: -130%;
+    width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.35) 50%,
+        rgba(255, 215, 160, 0.25) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
@@ -396,8 +397,9 @@ html, body {
     transform: scale(1.05);
 }
 
+/* 🔥 MODIFICA: Rallentato il riflesso sulla Castellana a 0.85 secondi con ingresso morbido */
 .castellana-video-wrapper:hover::before {
-    animation: castleHoverFlash 0.5s ease-out forwards;
+    animation: castleHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* FORZATURA DIMENSIONI CASTELLANA */
@@ -449,7 +451,7 @@ html, body {
 
 .chat-desktop.active {
     display: flex;
-    animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation: slideUp 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .chat-header {
@@ -542,12 +544,12 @@ html, body {
     padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     position: relative;
     overflow: hidden;
 }
 
-/* Riflesso anche sul pulsante microfono all'hover */
+/* Riflesso morbido sul pulsante microfono all'hover */
 .mic-btn::before {
     content: '';
     position: absolute;
@@ -558,7 +560,7 @@ html, body {
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.5) 50%,
+        rgba(255, 215, 160, 0.3) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
@@ -569,8 +571,9 @@ html, body {
     background: rgba(255, 215, 160, 0.15);
 }
 
+/* 🔥 MODIFICA: Rallentato il riflesso sul microfono all'hover */
 .mic-btn:hover::before {
-    animation: castleHoverFlash 0.45s ease-out forwards;
+    animation: castleHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ==========================================================================
@@ -588,18 +591,18 @@ html, body {
 }
 
 /* ==========================================================================
-   9. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI BAROCCHI
+   9. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI CALIBRATI
    ========================================================================== */
 
-/* Passaggio automatico e morbido di sottofondo */
+/* Passaggio automatico morbido di sottofondo (portato a 10s) */
 @keyframes castleGlowLoop {
-    0% { left: -110%; }
-    12% { left: 140%; }
-    100% { left: 140%; }
+    0% { left: -120%; }
+    15% { left: 150%; }
+    100% { left: 150%; }
 }
 
-/* Sferzata fulminea e specchiata prodotta dal mouse */
+/* 🔥 Effetto Hover Morbido: carezza d'oro da 0.85 secondi e ampie sponde esterne */
 @keyframes castleHoverFlash {
-    0% { left: -110%; }
-    100% { left: 140%; }
+    0% { left: -120%; }
+    100% { left: 150%; }
 }
