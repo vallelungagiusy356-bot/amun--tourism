@@ -21,7 +21,7 @@ body {
 }
 
 /* ================================
-   QUADRANTI IN VETRO + GLOW ORO
+   QUADRANTI IN VETRO + GLOW ORO & RIFLESSO
 ================================ */
 .quadrant {
     background: rgba(255, 255, 255, 0.08);
@@ -41,6 +41,28 @@ body {
 
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     cursor: pointer;
+    
+    position: relative; /* Necessario per il riflesso */
+    overflow: hidden;   /* Contiene la lama di luce nei bordi arrotondati */
+}
+
+/* Lama di luce diagonale di sottofondo per i quadranti */
+.quadrant::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.25) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: citizenGlowLoop 8s infinite ease-in-out;
+    pointer-events: none;
 }
 
 .quadrant:hover {
@@ -51,6 +73,11 @@ body {
         inset 0 0 25px rgba(255, 255, 255, 0.25);
 }
 
+/* Sferzata fulminea all'hover del mouse sui quadranti */
+.quadrant:hover::before {
+    animation: citizenHoverFlash 0.55s ease-out forwards;
+}
+
 /* ================================
    TITOLI E TESTI
 ================================ */
@@ -59,6 +86,8 @@ body {
     color: #ffe7b3;
     text-shadow: 0 0 10px rgba(255, 200, 120, 0.9);
     margin-bottom: 15px;
+    position: relative;
+    z-index: 2; /* Mantiene il testo sopra il riflesso */
 }
 
 .quadrant p,
@@ -66,6 +95,8 @@ body {
     font-size: 18px;
     line-height: 1.6;
     color: #ffffff;
+    position: relative;
+    z-index: 2; /* Mantiene il testo sopra il riflesso */
 }
 
 /* ================================
@@ -77,6 +108,8 @@ body {
     border-radius: 15px;
     border: 2px solid rgba(255, 200, 120, 0.5);
     margin-top: 15px;
+    position: relative;
+    z-index: 3; /* Sopra ogni effetto visivo per garantire interazione */
 }
 
 .battle-preview img {
@@ -84,6 +117,8 @@ body {
     border-radius: 15px;
     margin-top: 20px;
     opacity: 0.9;
+    position: relative;
+    z-index: 2;
 }
 
 /* ================================
@@ -102,6 +137,39 @@ body {
     color: #ffe7b3;
     text-shadow: 0 0 12px rgba(255, 200, 120, 0.9);
     cursor: pointer;
+    
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px; /* Uniformato ai quadranti */
+    border: 2px solid rgba(255, 200, 120, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow:
+        0 0 25px rgba(255, 200, 120, 0.45),
+        0 0 60px rgba(255, 120, 60, 0.25),
+        inset 0 0 20px rgba(255, 255, 255, 0.15);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Riflesso anche sulla card del Castello */
+.castle-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.3) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: citizenGlowLoop 8s infinite ease-in-out;
+    animation-delay: 2s; /* Sfalsato rispetto agli altri */
+    pointer-events: none;
 }
 
 .castle-card:hover {
@@ -110,6 +178,10 @@ body {
         0 0 35px rgba(255, 210, 140, 0.8),
         0 0 80px rgba(255, 120, 60, 0.4),
         inset 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+.castle-card:hover::before {
+    animation: citizenHoverFlash 0.55s ease-out forwards;
 }
 
 /* ================================
@@ -129,13 +201,13 @@ body {
     backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 215, 160, 0.85);
     z-index: 9999;
-    box-sizing: border-box; /* Previene overflow laterali */
+    box-sizing: border-box; 
 }
 
 /* Gestione del layout del menu interno */
 .nav-desktop {
     display: flex;
-    gap: 15px; /* Spazia i pulsanti About e Contact */
+    gap: 15px; 
 }
 
 /* Stile unico per bottoni REALI e LINK configurati come bottoni */
@@ -149,16 +221,61 @@ body {
     padding: 6px 12px;
     cursor: pointer;
     box-shadow: 0 0 12px rgba(255, 215, 160, 0.6);
-    text-decoration: none; /* Rimuove la sottolineatura blu dei link */
+    text-decoration: none; 
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-family: sans-serif;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
+    
+    position: relative;
+    overflow: hidden;
+}
+
+/* Riflesso sui bottoni della dashboard */
+.dashboard button::before, 
+.dashboard .home-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -120%;
+    width: 35%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.4) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: citizenGlowLoop 6s infinite ease-in-out;
+    pointer-events: none;
 }
 
 .dashboard button:hover, 
 .dashboard .home-btn:hover {
     background: rgba(255, 215, 160, 0.5);
+    transform: scale(1.02);
 }
 
+.dashboard button:hover::before, 
+.dashboard .home-btn:hover::before {
+    animation: citizenHoverFlash 0.45s ease-out forwards;
+}
+
+/* =======================================================
+   ANIMAZIONI SPECIFICHE PER LA PAGINA CITTADINO
+   ======================================================= */
+
+/* 1. Loop lento automatico di sottofondo */
+@keyframes citizenGlowLoop {
+    0% { left: -110%; }
+    12% { left: 140%; }
+    100% { left: 140%; }
+}
+
+/* 2. Sferzata fulminea all'hover del mouse */
+@keyframes citizenHoverFlash {
+    0% { left: -110%; }
+    100% { left: 140%; }
+}
