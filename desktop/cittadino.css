@@ -21,7 +21,7 @@ body {
 }
 
 /* ================================
-   QUADRANTI IN VETRO + GLOW ORO & RIFLESSO
+   QUADRANTI IN VETRO + GLOW ORO & RIFLESSO MORBIDO
 ================================ */
 .quadrant {
     background: rgba(255, 255, 255, 0.08);
@@ -39,29 +39,29 @@ body {
         0 0 60px rgba(255, 120, 60, 0.25),
         inset 0 0 20px rgba(255, 255, 255, 0.15);
 
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     cursor: pointer;
     
     position: relative; /* Necessario per il riflesso */
     overflow: hidden;   /* Contiene la lama di luce nei bordi arrotondati */
 }
 
-/* Lama di luce diagonale di sottofondo per i quadranti */
+/* Lama di luce diagonale sfumata e soffusa di sottofondo per i quadranti */
 .quadrant::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -100%;
-    width: 30%;
+    left: -120%;
+    width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.25) 50%,
-        rgba(255, 215, 160, 0) 100%
+        rgba(255, 215, 160, 0.22) 50%,
+        rgba(255, 215, 160, 0) 100
     );
     transform: rotate(-45deg);
-    animation: citizenGlowLoop 8s infinite ease-in-out;
+    animation: citizenGlowLoop 10s infinite ease-in-out;
     pointer-events: none;
 }
 
@@ -73,9 +73,9 @@ body {
         inset 0 0 25px rgba(255, 255, 255, 0.25);
 }
 
-/* Sferzata fulminea all'hover del mouse sui quadranti */
+/* 🔥 MODIFICA: Il riflesso attraversa i quadranti in ben 0.85 secondi con transizione vellutata */
 .quadrant:hover::before {
-    animation: citizenHoverFlash 0.55s ease-out forwards;
+    animation: citizenHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ================================
@@ -122,7 +122,7 @@ body {
 }
 
 /* ================================
-   QUADRANTE CASTELLO (TITOLO ORO)
+   QUADRANTE CASTELLO (TITOLO ORO) WITH SOFT REFLECTION
 ================================ */
 .castle-card {
     display: flex;
@@ -140,7 +140,7 @@ body {
     
     position: relative;
     overflow: hidden;
-    border-radius: 22px; /* Uniformato ai quadranti */
+    border-radius: 22px; 
     border: 2px solid rgba(255, 200, 120, 0.7);
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(5px);
@@ -149,26 +149,26 @@ body {
         0 0 25px rgba(255, 200, 120, 0.45),
         0 0 60px rgba(255, 120, 60, 0.25),
         inset 0 0 20px rgba(255, 255, 255, 0.15);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Riflesso anche sulla card del Castello */
+/* Riflesso morbido sulla card del Castello */
 .castle-card::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -100%;
-    width: 30%;
+    left: -120%;
+    width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.3) 50%,
+        rgba(255, 215, 160, 0.22) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: citizenGlowLoop 8s infinite ease-in-out;
-    animation-delay: 2s; /* Sfalsato rispetto agli altri */
+    animation: citizenGlowLoop 10s infinite ease-in-out;
+    animation-delay: 2.5s; /* Sfalsato rispetto agli altri */
     pointer-events: none;
 }
 
@@ -180,8 +180,9 @@ body {
         inset 0 0 25px rgba(255, 255, 255, 0.25);
 }
 
+/* 🔥 MODIFICA: Rallentata l'animazione di svelamento anche sulla carta Castello */
 .castle-card:hover::before {
-    animation: citizenHoverFlash 0.55s ease-out forwards;
+    animation: citizenHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ================================
@@ -204,7 +205,7 @@ body {
     box-sizing: border-box; 
 }
 
-/* Gestione del layout del menu interno */
+/* Menu interno */
 .nav-desktop {
     display: flex;
     gap: 15px; 
@@ -226,13 +227,13 @@ body {
     align-items: center;
     justify-content: center;
     font-family: sans-serif;
-    transition: background 0.2s ease, transform 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     
     position: relative;
     overflow: hidden;
 }
 
-/* Riflesso sui bottoni della dashboard */
+/* Sfumatura fluttuante sui bottoni della dashboard */
 .dashboard button::before, 
 .dashboard .home-btn::before {
     content: '';
@@ -244,38 +245,39 @@ body {
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.4) 50%,
+        rgba(255, 215, 160, 0.25) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: citizenGlowLoop 6s infinite ease-in-out;
+    animation: citizenGlowLoop 7s infinite ease-in-out;
     pointer-events: none;
 }
 
 .dashboard button:hover, 
 .dashboard .home-btn:hover {
     background: rgba(255, 215, 160, 0.5);
-    transform: scale(1.02);
+    transform: scale(1.04);
 }
 
+/* 🔥 MODIFICA: Rallentato l'effetto sui bottoni della barra superiore per una risposta vellutata */
 .dashboard button:hover::before, 
 .dashboard .home-btn:hover::before {
-    animation: citizenHoverFlash 0.45s ease-out forwards;
+    animation: citizenHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* =======================================================
-   ANIMAZIONI SPECIFICHE PER LA PAGINA CITTADINO
+   🔥 KEYFRAMES RICALIBRATI PER EFFETTO MORBIDO ED ELEGANTE
    ======================================================= */
 
-/* 1. Loop lento automatico di sottofondo */
+/* 1. Loop lento automatico di sottofondo (portato a 10s per rilassare la vista) */
 @keyframes citizenGlowLoop {
-    0% { left: -110%; }
-    12% { left: 140%; }
-    100% { left: 140%; }
+    0% { left: -120%; }
+    15% { left: 150%; }
+    100% { left: 150%; }
 }
 
-/* 2. Sferzata fulminea all'hover del mouse */
+/* 2. 🔥 Effetto Hover Morbido: Una carezza di luce dorata da 0.85 secondi */
 @keyframes citizenHoverFlash {
-    0% { left: -110%; }
-    100% { left: 140%; }
+    0% { left: -120%; }
+    100% { left: 150%; }
 }
