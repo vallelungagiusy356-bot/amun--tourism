@@ -392,24 +392,39 @@ body {
    8. PERSONALIZZAZIONI ALTEZZA E ZOOM MONUMENTI SPECIFICI
    ======================================================= */
 
-/* 1. Parrocchia SS. Annunziata: Portata a 390px con zoom deciso per valorizzarla */
+/* 1. Parrocchia SS. Annunziata */
 .monument-hero-image.img-annunziata {
     height: 390px; 
     object-fit: cover;
-    transform: scale(1.18); /* Zoom del 18% per avvicinare i dettagli della facciata */
+    transform: scale(1.18);
 }
 
-/* 2. Convento dei Frati Cappuccini: Portato a 380px e zoomato per riempire lo schermo */
+/* 2. Convento dei Frati Cappuccini */
 .monument-hero-image.img-cappuccini {
     height: 380px;
     object-fit: cover;
-    transform: scale(1.15); /* Zoom del 15% per eliminare l'effetto "lontano" */
+    transform: scale(1.15);
 }
 
-/* 3. Il Castello di Caccamo: Confermato Spettacolare! */
+/* 3. Il Castello di Caccamo */
 .monument-hero-image.img-castello {
     height: 380px;
     object-fit: cover;
     object-position: center 35%; 
 }
+
+/* 4. Chiesa di San Giorgio Martire: Altezza super e zoom per valorizzare la facciata */
+.monument-hero-image.img-sangiorgio {
+    height: 400px;
+    object-fit: cover;
+    transform: scale(1.15); /* Avvicina la struttura riempiendo magnificamente la teca */
+}
+
+/* 5. Chiesa di San Domenico (Santa Maria degli Angeli): Monumentale e slanciata */
+.monument-hero-image.img-sandomenico {
+    height: 420px;
+    object-fit: cover;
+    transform: scale(1.12); /* Calibrato per esaltare i dettagli del complesso domenicano */
+}
+
 
