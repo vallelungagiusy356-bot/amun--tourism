@@ -40,7 +40,7 @@ html, body {
 }
 
 /* ==========================================================================
-   3. DASHBOARD DESKTOP PREMIUM
+   3. DASHBOARD DESKTOP PREMIUM WITH REFLECTIONS
    ========================================================================== */
 .dashboard { 
     position: fixed;
@@ -79,12 +79,38 @@ html, body {
     padding: 8px 16px;
     transition: all 0.3s ease;
     border-radius: 6px;
+    position: relative;
+    overflow: hidden; /* Contiene la lama di luce nei bordi del link */
+}
+
+/* Luce continua di sottofondo per i link del menu */
+.nav-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.3) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: castleGlowLoop 7s infinite ease-in-out;
+    pointer-events: none;
 }
 
 .nav-item:hover {
     background: rgba(255, 215, 160, 0.15);
     color: #fff;
     text-shadow: 0 0 8px #ffd78f;
+}
+
+/* Sferzata fulminea all'hover del mouse */
+.nav-item:hover::before {
+    animation: castleHoverFlash 0.45s ease-out forwards;
 }
 
 .header-right-actions {
@@ -128,12 +154,38 @@ html, body {
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Riflesso sul bottone Home */
+.home-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.4) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: castleGlowLoop 6s infinite ease-in-out;
+    animation-delay: 1s;
+    pointer-events: none;
 }
 
 .home-btn:hover {
     background: #ffd78f;
     color: #050302;
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
+}
+
+.home-btn:hover::before {
+    animation: castleHoverFlash 0.45s ease-out forwards;
 }
 
 /* ==========================================================================
@@ -150,7 +202,7 @@ html, body {
 }
 
 /* ==========================================================================
-   5. COLONNA SINISTRA: TESTI + ABITO INTEGRATO
+   5. COLONNA SINISTRA: TESTI + ABITO INTEGRATO WITH REFLECTIONS
    ========================================================================== */
 .castle-info-panel {
     flex: 1;
@@ -200,6 +252,8 @@ html, body {
     color: #e6e0d4;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
     margin: 0;
+    position: relative;
+    z-index: 2; /* Testi sempre protetti sopra il riflesso */
 }
 
 .leading-para {
@@ -217,6 +271,79 @@ html, body {
     padding-top: 8px;
     padding-bottom: 8px;
     border-radius: 0 8px 8px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Riflesso automatico sul paragrafo in evidenza */
+.highlight-para::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 25%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.15) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: castleGlowLoop 9s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.castle-dress-inline {
+    width: 100%;
+    margin: 15px 0;
+    text-align: center;
+    background: rgba(255, 215, 160, 0.05);
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    border-radius: 12px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Riflesso elegante sullo scrigno dell'abito in linea */
+.castle-dress-inline::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 25%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.18) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: castleGlowLoop 8s infinite ease-in-out;
+    animation-delay: 2.5s;
+    pointer-events: none;
+}
+
+.dress-img-inline {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+    position: relative;
+    z-index: 2;
+}
+
+.dress-caption-inline {
+    font-size: 0.85rem;
+    color: #ffd78f;
+    font-weight: 600;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
 }
 
 /* ==========================================================================
@@ -242,10 +369,35 @@ html, body {
     position: relative;
     cursor: pointer;
     transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+    border-radius: 16px; /* Protegge i bordi dell'avatar */
+}
+
+/* Riflesso di luce diagonale che attraversa l'avatar quando ci si passa sopra */
+.castellana-video-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -120%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.35) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    pointer-events: none;
+    z-index: 3;
 }
 
 .castellana-video-wrapper:hover {
     transform: scale(1.05);
+}
+
+.castellana-video-wrapper:hover::before {
+    animation: castleHoverFlash 0.5s ease-out forwards;
 }
 
 /* FORZATURA DIMENSIONI CASTELLANA */
@@ -254,6 +406,8 @@ html, body {
     height: auto !important;
     display: block;
     filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.9));
+    position: relative;
+    z-index: 2;
 }
 
 .castellana-tooltip {
@@ -271,32 +425,7 @@ html, body {
     white-space: nowrap;
     box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25);
     animation: pulse 2s infinite;
-}
-
-.castle-dress-inline {
-    width: 100%;
-    margin: 15px 0;
-    text-align: center;
-    background: rgba(255, 215, 160, 0.05);
-    border: 1px solid rgba(255, 215, 160, 0.2);
-    border-radius: 12px;
-    padding: 15px;
-}
-
-.dress-img-inline {
-    width: 180px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
-}
-
-.dress-caption-inline {
-    font-size: 0.85rem;
-    color: #ffd78f;
-    font-weight: 600;
-    margin-top: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    z-index: 25;
 }
 
 /* ==========================================================================
@@ -414,10 +543,34 @@ html, body {
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Riflesso anche sul pulsante microfono all'hover */
+.mic-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -120%;
+    width: 35%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.5) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    pointer-events: none;
 }
 
 .mic-btn:hover {
     background: rgba(255, 215, 160, 0.15);
+}
+
+.mic-btn:hover::before {
+    animation: castleHoverFlash 0.45s ease-out forwards;
 }
 
 /* ==========================================================================
@@ -432,4 +585,21 @@ html, body {
     0% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
     50% { box-shadow: 0 4px 25px rgba(255, 215, 160, 0.5); }
     100% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
+}
+
+/* ==========================================================================
+   9. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI BAROCCHI
+   ========================================================================== */
+
+/* Passaggio automatico e morbido di sottofondo */
+@keyframes castleGlowLoop {
+    0% { left: -110%; }
+    12% { left: 140%; }
+    100% { left: 140%; }
+}
+
+/* Sferzata fulminea e specchiata prodotta dal mouse */
+@keyframes castleHoverFlash {
+    0% { left: -110%; }
+    100% { left: 140%; }
 }
