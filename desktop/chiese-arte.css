@@ -77,28 +77,28 @@ html, body {
     font-weight: 600;
     font-size: 0.95rem;
     padding: 8px 16px;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     border-radius: 6px;
     position: relative;
     overflow: hidden;
 }
 
-/* Loop riflesso lento di sottofondo */
+/* Loop riflesso lento di sottofondo ammorbidito */
 .nav-item::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -100%;
-    width: 30%;
+    left: -120%;
+    width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.2) 50%,
+        rgba(255, 215, 160, 0.13) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: monumentGlowLoop 10s infinite ease-in-out;
+    animation: monumentGlowLoop 11s infinite ease-in-out;
     pointer-events: none;
 }
 
@@ -108,9 +108,8 @@ html, body {
     text-shadow: 0 0 8px #ffd78f;
 }
 
-/* 🔥 MODIFICA: Transizione Hover rallentata e morbida (0.9s cubic-bezier) */
 .nav-item:hover::before {
-    animation: monumentHoverFlash 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: monumentHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .header-right-actions {
@@ -153,7 +152,7 @@ html, body {
     cursor: pointer;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     position: relative;
     overflow: hidden;
 }
@@ -162,17 +161,17 @@ html, body {
     content: '';
     position: absolute;
     top: -50%;
-    left: -100%;
-    width: 30%;
+    left: -120%;
+    width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.3) 50%,
+        rgba(255, 215, 160, 0.13) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: monumentGlowLoop 8s infinite ease-in-out;
+    animation: monumentGlowLoop 9s infinite ease-in-out;
     animation-delay: 1.5s;
     pointer-events: none;
 }
@@ -183,35 +182,64 @@ html, body {
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
 }
 
-/* 🔥 MODIFICA: Transizione Hover rallentata e morbida */
 .home-btn:hover::before {
-    animation: monumentHoverFlash 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: monumentHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ==========================================================================
-   4. COLONNA DESTRA: CASTELLANA
+   4. COLONNA DESTRA: CASTELLANA — CON RIFLESSO ATTIVATO SOPRA IL VIDEO
    ========================================================================== */
 .castellana-video-wrapper {
     position: fixed;
     bottom: -10px; 
     right: 2%;     
-    width: auto;
+    width: 25vw;
+    max-width: 280px;
     z-index: 1000 !important; 
-    pointer-events: none; 
+    overflow: hidden;    /* Forza il ritaglio della luce sui confini della card avatar */
+    border-radius: 18px;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: auto; /* Sbloccato per sentire i click */
+}
+
+/* Strato di luce dorata e vellutata sopra l'avatar */
+.castellana-video-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -130%;
+    width: 35%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.16) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    pointer-events: none;
+    z-index: 3; /* Indispensabile: fluttua sopra il tag video */
+    animation: monumentGlowLoop 12s infinite ease-in-out;
+    animation-delay: 3.5s;
+}
+
+.castellana-video-wrapper:hover {
+    transform: scale(1.03);
+}
+
+.castellana-video-wrapper:hover::before {
+    animation: monumentHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .castellana-video {
-    width: 25vw;
-    max-width: 280px;
-    cursor: pointer;
-    pointer-events: auto; 
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    position: relative;
+    z-index: 1; /* Sotto la luce */
     background: transparent !important;
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
-    transition: 0.25s;
-}
-
-.castellana-video:hover {
-    transform: scale(1.03);
 }
 
 .castellana-tooltip {
@@ -239,7 +267,7 @@ html, body {
 }
 
 /* ==========================================================================
-   5. CHAT — VETRO CRISTALLINO
+   5. CHAT — VETRO CRISTALLINO WITH REFLECTIONS
    ========================================================================== */
 .chat-desktop {
     position: fixed; 
@@ -297,13 +325,13 @@ html, body {
     content: '';
     position: absolute;
     top: -50%;
-    left: -100%;
-    width: 20%;
+    left: -120%;
+    width: 25%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.12) 50%,
+        rgba(255, 215, 160, 0.11) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
@@ -318,6 +346,7 @@ html, body {
 }
 
 .chat-input-row input {
+    box-sizing: border-box;
     flex: 1;
     padding: 10px 15px;
     border-radius: 10px;
@@ -335,6 +364,7 @@ html, body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .mic-btn::before {
@@ -342,12 +372,12 @@ html, body {
     position: absolute;
     top: -50%;
     left: -120%;
-    width: 30%;
+    width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.4) 50%,
+        rgba(255, 215, 160, 0.35) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
@@ -355,7 +385,7 @@ html, body {
 }
 
 .mic-btn:hover::before {
-    animation: monumentHoverFlash 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: monumentHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes slideInRight {
@@ -408,10 +438,10 @@ html, body {
     pointer-events: auto;
 }
 
-/* 🔥 MODIFICA: Teche più larghe (da 320px a 360px) */
+/* 🔥 MODIFICA: Teche allargate orizzontalmente (Larghezza: 390px, Altezza proporzionata: 500px) */
 .glass-card {
-    width: 360px;
-    height: 520px; /* Incrementato leggermente per mantenere le proporzioni divine */
+    width: 390px;
+    height: 500px; 
     background: rgba(10, 8, 5, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -428,18 +458,18 @@ html, body {
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Riflesso Diagonale Continuo sulle Glass Card */
+/* Riflesso Diagonale Continuo e ultra-morbido sulle Glass Card */
 .glass-card::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -110%;
-    width: 30%;
+    left: -120%;
+    width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.2) 50%,
+        rgba(255, 215, 160, 0.13) 50%, /* Opacità ribassata per fluidità visiva */
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
@@ -457,17 +487,17 @@ html, body {
     border-color: rgba(255, 215, 160, 0.9);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 
                 inset 0 0 20px rgba(255, 215, 160, 0.1);
-    transform: scale(1.03) translateY(-10px);
+    transform: scale(1.02) translateY(-8px); /* Scala impercettibile e regale */
     z-index: 10;
 }
 
-/* 🔥 MODIFICA: Transizione Hover sulle card rallentata a 1.1 secondi per massima morbidezza */
+/* 🔥 MODIFICA: Transizione all'hover sulle card rallentata a 1.2 secondi per massima fluidità */
 .glass-card:hover::before {
-    animation: monumentHoverFlash 1.1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: monumentHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ==========================================================================
-   🔥 GESTIONE VIDEO, SLOW MOTION MAGGIORE E FORZATURA SPAZIO VUOTO (TRIMMING)
+   🔥 GESTIONE VIDEO, SLOW MOTION RIDOTTO (RITMO CINEMATOGRAFICO) E TRIMMING
    ========================================================================== */
 .card-video {
     position: absolute;  
@@ -480,8 +510,8 @@ html, body {
     pointer-events: none; 
     z-index: 1;          
     
-    /* 🔥 MODIFICA: Slow motion aumentato portando il ciclo d'animazione a ben 5 secondi */
-    animation: desktopSlowMo 5s ease-in-out infinite alternate;
+    /* 🔥 MODIFICA: Slow motion ridotto accorciando il ciclo a 3.8s per dare più ritmo all'oro fuso */
+    animation: desktopSlowMo 3.8s ease-in-out infinite alternate;
     filter: drop-shadow(0 0 20px rgba(255, 215, 160, 0.5));
     transition: filter 0.4s ease, transform 0.4s ease;
 }
@@ -492,27 +522,27 @@ html, body {
 }
 
 @keyframes desktopSlowMo {
-    0% { filter: drop-shadow(0 0 15px rgba(255, 215, 160, 0.35)) brightness(0.92); }
-    100% { filter: drop-shadow(0 0 30px rgba(255, 215, 160, 0.65)) brightness(1.08); }
+    0% { filter: drop-shadow(0 0 15px rgba(255, 215, 160, 0.35)) brightness(0.94); }
+    100% { filter: drop-shadow(0 0 28px rgba(255, 215, 160, 0.6)) brightness(1.06); }
 }
 
 /* ==========================================================================
-   CALIBRAZIONE BILANCIATA (RICAIBRATA PER LE NUOVE DIMENSIONI DELLA TECA)
+   CALIBRAZIONE BILANCIATA (RICALIBRATA SULLE NUOVE DIMENSIONI RETTANGOLARI)
    ========================================================================== */
-.badia-video { transform: scale(1.1) translateY(0px); }
-.glass-card:hover .badia-video { transform: scale(1.2) translateY(-5px); }
+.badia-video { transform: scale(1.05) translateY(0px); }
+.glass-card:hover .badia-video { transform: scale(1.12) translateY(-2px); }
 
-.duomo-video { transform: scale(1.2) translateY(5px); }
-.glass-card:hover .duomo-video { transform: scale(1.3) translateY(0px); }
+.duomo-video { transform: scale(1.15) translateY(0px); }
+.glass-card:hover .duomo-video { transform: scale(1.22) translateY(-2px); }
 
-.cappuccini-video { transform: scale(1.25) translateY(5px); }
-.glass-card:hover .cappuccini-video { transform: scale(1.35) translateY(0px); }
+.cappuccini-video { transform: scale(1.18) translateY(0px); }
+.glass-card:hover .cappuccini-video { transform: scale(1.25) translateY(-2px); }
 
-.annunziata-video { transform: scale(1.6) translateY(-15px); }
-.glass-card:hover .annunziata-video { transform: scale(1.7) translateY(-20px); }
+.annunziata-video { transform: scale(1.5) translateY(-10px); }
+.glass-card:hover .annunziata-video { transform: scale(1.58) translateY(-12px); }
 
-.angeli-video { transform: scale(1.6) translateY(-15px); }
-.glass-card:hover .angeli-video { transform: scale(1.7) translateY(-20px); }
+.angeli-video { transform: scale(1.5) translateY(-10px); }
+.glass-card:hover .angeli-video { transform: scale(1.58) translateY(-12px); }
 
 /* ==========================================================================
    TESTI E REQUISITI MOBILE
@@ -548,15 +578,15 @@ html, body {
 }
 
 /* ==========================================================================
-   10. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI (RALLENTATI)
+   10. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI (ULTRA-MORBIDI)
    ========================================================================== */
 @keyframes monumentGlowLoop {
-    0% { left: -120%; }
-    15% { left: 150%; }
-    100% { left: 150%; }
+    0% { left: -130%; }
+    16% { left: 160%; }
+    100% { left: 160%; }
 }
 
 @keyframes monumentHoverFlash {
-    0% { left: -120%; }
-    100% { left: 150%; }
+    0% { left: -130%; }
+    100% { left: 160%; }
 }
