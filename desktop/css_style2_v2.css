@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VERSIONE DESKTOP — GLOW FORTE + RIFLESSI DIAGONALI MORBIDI
+   VERSIONE DESKTOP — GLOW FORTE + RIFLESSI DIAGONALI ULTRA-MORBIDI
    ========================================================================== */
 @media screen and (min-width: 900px) {
 
@@ -66,27 +66,27 @@
         box-shadow:
             0 0 14px rgba(255, 215, 160, 0.55),
             inset 0 0 8px rgba(255, 215, 160, 0.35);
-        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         position: relative; 
         overflow: hidden;   
     }
 
-    /* Strato di luce soffuso per i link del menu */
+    /* Strato di luce ultra-soffuso per i link del menu */
     .nav-desktop a::before {
         content: '';
         position: absolute;
         top: -50%;
-        left: -100%;
+        left: -110%;
         width: 35%;
         height: 200%;
         background: linear-gradient(
             to right,
             rgba(255, 215, 160, 0) 0%,
-            rgba(255, 215, 160, 0.22) 50%,
+            rgba(255, 215, 160, 0.14) 50%, /* Opacità abbassata per massima discrezione */
             rgba(255, 215, 160, 0) 100%
         );
         transform: rotate(-45deg);
-        animation: desktopGlowLoop 9s infinite ease-in-out;
+        animation: desktopGlowLoop 10s infinite ease-in-out;
         pointer-events: none;
     }
 
@@ -98,9 +98,9 @@
         transform: scale(1.05);
     }
 
-    /* 🔥 MODIFICA: Al passaggio del mouse il riflesso attraversa in modo vellutato e morbido (0.85s) */
+    /* Passaggio della luce all'hover rallentato e ammorbidito */
     .nav-desktop a:hover::before {
-        animation: desktopHoverFlasher 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
     /* ==========================================================================
@@ -124,7 +124,7 @@
         box-shadow:
             0 0 14px rgba(255, 215, 160, 0.55),
             inset 0 0 8px rgba(255, 215, 160, 0.45);
-        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         position: relative;
         overflow: hidden;
     }
@@ -134,17 +134,17 @@
         content: '';
         position: absolute;
         top: -50%;
-        left: -100%;
+        left: -110%;
         width: 35%;
         height: 200%;
         background: linear-gradient(
             to right,
             rgba(255, 215, 160, 0) 0%,
-            rgba(255, 215, 160, 0.2) 50%,
+            rgba(255, 215, 160, 0.14) 50%,
             rgba(255, 215, 160, 0) 100%
         );
         transform: rotate(-45deg);
-        animation: desktopGlowLoop 10s infinite ease-in-out;
+        animation: desktopGlowLoop 11s infinite ease-in-out;
         animation-delay: 2s; 
         pointer-events: none;
     }
@@ -157,41 +157,69 @@
         transform: scale(1.05);
     }
 
-    /* 🔥 MODIFICA: Rallentato il flash sui selettori lingua */
     .lang-switcher button:hover::before {
-        animation: desktopHoverFlasher 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
     /* ==========================================================================
-       VIDEO CASTELLANA + TOOLTIP
+       🔥 VIDEO CASTELLANA CON INTERFACCIA RIFLESSO INTEGRATA
        ========================================================================== */
     .castellana-video-wrapper {
         position: relative;
-        width: 100%;
+        width: 28vw;          
+        max-width: 320px;
         margin-top: 300px;
-        display: flex;
-        justify-content: flex-start;
-        padding-left: 6%;
+        margin-left: 6%;
+        display: block;
+        border-radius: 20px; /* Arrotonda l'area per contenere in diagonale la luce */
+        overflow: hidden;    /* Taglia via la luce quando supera i confini dell'avatar */
         z-index: 10 !important;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        cursor: pointer;
+    }
+
+    /* Lo strato riflettente della luce dorata fluttua SOPRA il canale alfa del video (z-index: 3) */
+    .castellana-video-wrapper::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -120%;
+        width: 35%;
+        height: 200%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 215, 160, 0) 0%,
+            rgba(255, 215, 160, 0.20) 50%, /* Intensità bilanciata per tessuti e vestiario */
+            rgba(255, 215, 160, 0) 100%
+        );
+        transform: rotate(-45deg);
+        pointer-events: none;
+        z-index: 3; /* Sovrasta lo z-index interno del tag video */
+        animation: desktopGlowLoop 12s infinite ease-in-out;
+        animation-delay: 3s;
+    }
+
+    .castellana-video-wrapper:hover {
+        transform: scale(1.03);
+    }
+
+    /* Attivazione del riflesso morbido rallentato all'hover del mouse sull'avatar */
+    .castellana-video-wrapper:hover::before {
+        animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
     .castellana-video {
-        width: 28vw;          
-        max-width: 320px;
-        cursor: pointer;
-        z-index: 11;
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+        z-index: 1; /* Sotto la lama di luce dorata */
         background: transparent !important;
-        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4)); 
-        transition: 0.25s;
-    }
-
-    .castellana-video:hover {
-        transform: scale(1.03);
+        filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.5)); 
     }
 
     .castellana-tooltip {
         position: absolute;
-        top: -40px;
+        top: 260px; /* Riposizionato dinamicamente rispetto alla testa */
         left: 6%;
         padding: 12px 26px;
         background: rgba(0, 0, 0, 0.55);
@@ -210,16 +238,7 @@
         z-index: 25;
     }
 
-    @keyframes clickHerePulse {
-        0% { opacity: 0; transform: scale(0.95); }
-        20% { opacity: 1; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.05); }
-        100% { opacity: 0; transform: scale(0.95); }
-    }
-
-    /* ==========================================================================
-       SEZIONE INSTALLA APP — WITH REFLECTION
-       ========================================================================== */
+    /* Sezione installazione app */
     .install-app-desktop {
         position: absolute;
         top: 950px; 
@@ -270,7 +289,7 @@
         box-shadow:
             0 0 10px rgba(255, 215, 160, 0.35),
             inset 0 0 6px rgba(255, 215, 160, 0.25);
-        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         position: relative;
         overflow: hidden;
     }
@@ -280,17 +299,17 @@
         content: '';
         position: absolute;
         top: -50%;
-        left: -100%;
+        left: -110%;
         width: 30%;
         height: 200%;
         background: linear-gradient(
             to right,
             rgba(255, 215, 160, 0) 0%,
-            rgba(255, 215, 160, 0.25) 50%,
+            rgba(255, 215, 160, 0.16) 50%,
             rgba(255, 215, 160, 0) 100%
         );
         transform: rotate(-45deg);
-        animation: desktopGlowLoop 8s infinite ease-in-out;
+        animation: desktopGlowLoop 8.5s infinite ease-in-out;
         animation-delay: 0.8s;
         pointer-events: none;
     }
@@ -301,9 +320,8 @@
         transform: scale(1.03);
     }
 
-    /* 🔥 MODIFICA: Rallentato il riflesso all'hover del bottone app */
     .btn-desktop:hover::before {
-        animation: desktopHoverFlasher 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
     .install-right {
@@ -335,7 +353,6 @@
         right: 6%;
         width: 330px;
         height: 300px;
-
         background: rgba(255, 255, 255, 0.03) !important;
         backdrop-filter: blur(5px) brightness(3.05) contrast(0.85) !important;
         -webkit-backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
@@ -444,16 +461,16 @@
        🔥 KEYFRAMES RICALIBRATI PER MASSIMA MORBIDEZZA VISIVA
        ========================================================================== */
     
-    /* 1. Loop autonomo rallentato (da 6s a 9s/10s) con sponde esterne ampie */
+    /* 1. Loop autonomo lentissimo (10-12s) */
     @keyframes desktopGlowLoop {
-        0% { left: -110%; }
-        18% { left: 140%; }
+        0% { left: -120%; }
+        16% { left: 140%; }
         100% { left: 140%; }
     }
 
-    /* 2. 🔥 Effetto Hover Rallentato: non più una sferzata fulminea, ma un velo d'oro fluido */
+    /* 2. Effetto Hover Vellutato: una scivolata d'oro morbida da 1.15 secondi */
     @keyframes desktopHoverFlasher {
-        0% { left: -110%; }
+        0% { left: -120%; }
         100% { left: 140%; }
     }
 
