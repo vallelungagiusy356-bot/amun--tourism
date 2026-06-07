@@ -40,7 +40,7 @@ html, body {
 }
 
 /* ==========================================================================
-   3. DASHBOARD DESKTOP PREMIUM WITH SOFT REFLECTIONS
+   3. DASHBOARD DESKTOP PREMIUM WITH ULTRA-SOFT REFLECTIONS
    ========================================================================== */
 .dashboard { 
     position: fixed;
@@ -77,28 +77,28 @@ html, body {
     font-weight: 600;
     font-size: 0.95rem;
     padding: 8px 16px;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     border-radius: 6px;
     position: relative;
-    overflow: hidden; /* Contiene la lama di luce nei bordi del link */
+    overflow: hidden; 
 }
 
-/* Luce continua e soffusa di sottofondo per i link del menu */
+/* Luce continua e ammorbidita di sottofondo per i link del menu */
 .nav-item::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -120%;
+    left: -130%;
     width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.22) 50%,
+        rgba(255, 215, 160, 0.13) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: castleGlowLoop 10s infinite ease-in-out;
+    animation: castleGlowLoop 11s infinite ease-in-out;
     pointer-events: none;
 }
 
@@ -108,9 +108,9 @@ html, body {
     text-shadow: 0 0 8px #ffd78f;
 }
 
-/* 🔥 MODIFICA: Transizione all'hover vellutata e distesa (0.85s) */
+/* 🔥 MODIFICA: Effetto riflesso ammorbidito e rallentato a 1.2s per massima fluidità */
 .nav-item:hover::before {
-    animation: castleHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: castleHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .header-right-actions {
@@ -153,7 +153,7 @@ html, body {
     cursor: pointer;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     position: relative;
     overflow: hidden;
 }
@@ -163,18 +163,18 @@ html, body {
     content: '';
     position: absolute;
     top: -50%;
-    left: -120%;
+    left: -130%;
     width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.25) 50%,
+        rgba(255, 215, 160, 0.13) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
     animation: castleGlowLoop 9s infinite ease-in-out;
-    animation-delay: 1s;
+    animation-delay: 1.5s;
     pointer-events: none;
 }
 
@@ -184,9 +184,9 @@ html, body {
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
 }
 
-/* 🔥 MODIFICA: Rallentato l'effetto riflesso sul tasto Home */
+/* 🔥 MODIFICA: Rallentato l'effetto riflesso a 1.2s sul tasto Home */
 .home-btn:hover::before {
-    animation: castleHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: castleHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ==========================================================================
@@ -254,7 +254,7 @@ html, body {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
     margin: 0;
     position: relative;
-    z-index: 2; /* Testi sempre protetti sopra il riflesso */
+    z-index: 2; 
 }
 
 .leading-para {
@@ -281,17 +281,17 @@ html, body {
     content: '';
     position: absolute;
     top: -50%;
-    left: -120%;
+    left: -130%;
     width: 30%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.12) 50%,
+        rgba(255, 215, 160, 0.11) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: castleGlowLoop 11s infinite ease-in-out;
+    animation: castleGlowLoop 12s infinite ease-in-out;
     pointer-events: none;
 }
 
@@ -312,18 +312,18 @@ html, body {
     content: '';
     position: absolute;
     top: -50%;
-    left: -120%;
+    left: -130%;
     width: 30%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.15) 50%,
+        rgba(255, 215, 160, 0.13) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: castleGlowLoop 9s infinite ease-in-out;
-    animation-delay: 2.5s;
+    animation: castleGlowLoop 10s infinite ease-in-out;
+    animation-delay: 2s;
     pointer-events: none;
 }
 
@@ -348,7 +348,7 @@ html, body {
 }
 
 /* ==========================================================================
-   6. COLONNA DESTRA: CASTELLANA
+   6. COLONNA DESTRA: CASTELLANA — CON RIFLESSO AMMORBIDITO ATTIVATO SOPRA IL VIDEO
    ========================================================================== */
 .castle-interactive-zone {
     flex: 1;
@@ -371,10 +371,10 @@ html, body {
     cursor: pointer;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     overflow: hidden;
-    border-radius: 16px; /* Protegge i bordi dell'avatar */
+    border-radius: 16px; 
 }
 
-/* Riflesso di luce diagonale vellutato che attraversa l'avatar all'hover */
+/* 🔥 MODIFICA: Strato pseudo-elemento impostato a z-index: 3 (Sopra il tag video) con opacità ammorbidita al 18% */
 .castellana-video-wrapper::before {
     content: '';
     position: absolute;
@@ -385,31 +385,33 @@ html, body {
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.25) 50%,
+        rgba(255, 215, 160, 0.18) 50%, 
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
     pointer-events: none;
-    z-index: 3;
+    z-index: 3; /* Salta sopra il layer del video mp4 */
+    animation: castleGlowLoop 12s infinite ease-in-out;
+    animation-delay: 3s;
 }
 
 .castellana-video-wrapper:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
-/* 🔥 MODIFICA: Rallentato il riflesso sulla Castellana a 0.85 secondi con ingresso morbido */
+/* 🔥 MODIFICA: Rallentata la carezza d'oro all'hover a 1.2s per un ingresso vellutato */
 .castellana-video-wrapper:hover::before {
-    animation: castleHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: castleHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* FORZATURA DIMENSIONI CASTELLANA */
+/* Sotto lo strato di luce (Z-Index calibrati) */
 .castellana-video {
     width: 100% !important;
     height: auto !important;
     display: block;
     filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.9));
     position: relative;
-    z-index: 2;
+    z-index: 1; /* Rimane sotto lo scorrimento del riflesso */
 }
 
 .castellana-tooltip {
@@ -544,7 +546,7 @@ html, body {
     padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     position: relative;
     overflow: hidden;
 }
@@ -554,13 +556,13 @@ html, body {
     content: '';
     position: absolute;
     top: -50%;
-    left: -120%;
+    left: -130%;
     width: 35%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.3) 50%,
+        rgba(255, 215, 160, 0.18) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
@@ -571,9 +573,9 @@ html, body {
     background: rgba(255, 215, 160, 0.15);
 }
 
-/* 🔥 MODIFICA: Rallentato il riflesso sul microfono all'hover */
+/* 🔥 MODIFICA: Rallentato il riflesso sul microfono a 1.2s all'hover */
 .mic-btn:hover::before {
-    animation: castleHoverFlash 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: castleHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ==========================================================================
@@ -591,18 +593,18 @@ html, body {
 }
 
 /* ==========================================================================
-   9. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI CALIBRATI
+   9. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI CALIBRATI E MORBIDI
    ========================================================================== */
 
-/* Passaggio automatico morbido di sottofondo (portato a 10s) */
+/* Passaggio automatico extra-morbido di sottofondo */
 @keyframes castleGlowLoop {
-    0% { left: -120%; }
-    15% { left: 150%; }
-    100% { left: 150%; }
+    0% { left: -130%; }
+    16% { left: 160%; }
+    100% { left: 160%; }
 }
 
-/* 🔥 Effetto Hover Morbido: carezza d'oro da 0.85 secondi e ampie sponde esterne */
+/* 🔥 Effetto Hover Morbido: carezza d'oro da 1.2 secondi con curve regali */
 @keyframes castleHoverFlash {
-    0% { left: -120%; }
-    100% { left: 150%; }
+    0% { left: -130%; }
+    100% { left: 160%; }
 }
