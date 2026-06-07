@@ -181,6 +181,44 @@ body {
     font-style: italic;
 }
 
+/* REFLEX ELEGANTE SULLA TECA DESCRITTIVA */
+.teca-cristallo.descrittiva {
+    position: relative;
+    overflow: hidden; /* Taglia il raggio luminoso quando esce dai bordi */
+}
+
+/* La lama di luce diagonale per la teca */
+.teca-cristallo.descrittiva::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -150%;
+    width: 40%; /* Più largo per un effetto più morbido e cinematico */
+    height: 300%;
+    background: linear-gradient(
+        to right, 
+        rgba(255, 215, 160, 0) 0%, 
+        rgba(255, 215, 160, 0.25) 50%, /* Trasparenza più delicata (0.25) per non coprire il testo */
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    /* Animazione continua ogni 5 secondi, un po' più lenta dei pulsanti */
+    animation: tecaDiagonalGlow 5s infinite ease-in-out;
+}
+
+/* Movimento del riflesso sulla teca */
+@keyframes tecaDiagonalGlow {
+    0% {
+        left: -150%;
+    }
+    25% {
+        left: 150%; /* Attraversa tutta la teca */
+    }
+    100% {
+        left: 150%;
+    }
+}
+
 /* =======================================================
    4. TECA GIOIELLI NASCOSTI (SECRET INFO & EASTER EGGS)
    ======================================================= */
