@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="monuments.sangiorgio.title">Chiesa di San Giorgio Martire</title>
-    <!-- Google Fonts Barocco -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
-    <!-- Collegamento al CSS unificato -->
     <link rel="stylesheet" href="monumento_dettaglio.css">
 </head>
 <body>
 
-    <!-- DASHBOARD SUPERIORE CON SELETTORE LINGUA -->
     <header class="dashboard">
         <span class="logo-title" data-i18n="menu.title">Amunì Tourism</span>
         <div class="lang-switcher" style="margin-left: auto;">
@@ -23,55 +20,46 @@
         </div>
     </header>
 
-    <!-- CONTENITORE LAYOUT MOBILE -->
     <main class="mobile-layout-detail">
         
-        <!-- 1. INTESTAZIONE TITOLO -->
         <header class="monument-header">
-            <h1 data-i18n="monuments.sangiorgio.title"></h1>
+            <h1 data-i18n="monuments.sangiorgio.title">Chiesa di San Giorgio Martire</h1>
         </header>
 
-        <!-- 2. IMMAGINE / RENDERING HERO -->
-        <img src="img/san_giorgio_martire.gif" alt="San Giorgio" class="monument-hero-image">
+        <div class="monument-render-container" style="width: 100%; text-align: center;">
+            <img src="img/san_giorgio_martire.gif" alt="San Giorgio" class="monument-hero-image" style="width: 100%; max-width: 100%; height: 320px; object-fit: cover; border-radius: 12px;">
+        </div>
 
-        <!-- 3. TECA CRISTALLO: DESCRIZIONE STORICA -->
         <section class="teca-cristallo descrittiva">
-            <p data-i18n="monuments.sangiorgio.description"></p>
+            <p data-i18n="monuments.sangiorgio.description">La Chiesa Madre di Caccamo, dedicata a San Giorgio Martire, è un imponente capolavoro che domina la monumentale piazza sottostante il Castello...</p>
         </section>
 
-        <!-- 4. TECA CRISTALLO: AVVISO LUOGHI DI CULTO ATTIVI -->
         <section class="teca-cristallo teca-avviso">
-            <p data-i18n="monuments.church_notice"></p>
+            <p data-i18n="monuments.church_notice">⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche...</p>
         </section>
 
-        <!-- 5. TECA CRISTALLO: LOGISTICA ORARI -->
         <section class="teca-cristallo teca-logistica">
             <div class="info-row">
-                <span class="info-label" data-i18n="monuments.hours_label"></span>
-                <span class="info-value" data-i18n="monuments.sangiorgio.hours"></span>
+                <span class="info-label" data-i18n="monuments.hours_label">Orari:</span>
+                <span class="info-value" data-i18n="monuments.sangiorgio.hours">Fasce Orarie Visite: Sabato e Domenica...</span>
             </div>
         </section>
 
-        <!-- 6. BOTTONI D'AZIONE BAROCCHI -->
         <div class="actions-container">
-            <button class="btn-barocco-action" onclick="window.location.href='https://maps.google.com/?q=Chiesa+di+San+Giorgio+Martire+Caccamo'">
-                🌐 <span data-i18n="monuments.view_map"></span>
+            <button class="btn-barocco-action" onclick="window.location.href='mappa.html?focus=sangiorgio'">
+                🌐 <span data-i18n="monuments.view_map">Apri la Mappa</span>
             </button>
             
             <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='tel:0918148111'">
-                📞 <span data-i18n="monuments.btn_contact_turismo"></span>
+                📞 <span data-i18n="monuments.btn_contact_turismo">Contatta Ufficio Turismo</span>
             </button>
         </div>
 
-        <!-- UTILITY: RITORNO ALLA LISTA MONUMENTI -->
         <a href="monuments.html" class="btn-back-home">← Torna ai Monumenti</a>
 
     </main>
 
-    <!-- SFONDO FISSO DIETRO LE TECHE GESTITO VIA CSS -->
     <div class="scene-background"></div>
-
-    <!-- SCRIPT DI TRADUZIONE AUTOMATICA -->
     <script src="monument_translation.js"></script>
 </body>
 </html>
