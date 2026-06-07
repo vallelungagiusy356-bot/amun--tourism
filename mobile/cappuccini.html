@@ -23,38 +23,35 @@
     <main class="mobile-layout-detail">
         
         <header class="monument-header">
-            <h1 data-i18n="monuments.cappuccini.title"></h1>
+            <h1 data-i18n="monuments.cappuccini.title">Convento dei Frati Cappuccini</h1>
         </header>
 
-        <img src="img/cappuccini_cacc.gif" alt="Convento Cappuccini" class="monument-hero-image">
+        <div class="monument-render-container" style="width: 100%; text-align: center;">
+            <img src="img/cappuccini.gif" alt="Convento dei Frati Cappuccini" class="monument-hero-image" style="width: 100%; max-width: 100%; height: 350px; object-fit: cover; border-radius: 12px;" onerror="this.src='img/avatar_castellana.png';">
+        </div>
 
         <section class="teca-cristallo descrittiva">
-            <p data-i18n="monuments.cappuccini.description"></p>
-        </section>
-
-        <section class="teca-cristallo teca-avviso">
-            <p data-i18n="monuments.church_notice"></p>
+            <p data-i18n="monuments.cappuccini.description">Luogo di silenzio, meditazione e storia, le strutture del Convento si legano profondamente alla tradizione francescana in Sicile...</p>
         </section>
 
         <section class="teca-cristallo teca-logistica">
             <div class="info-row">
-                <span class="info-label" data-i18n="monuments.hours_label"></span>
-                <span class="info-value" data-i18n="monuments.cappuccini.hours"></span>
+                <span class="info-label" data-i18n="monuments.hours_label">Accesso:</span>
+                <span class="info-value" data-i18n="monuments.cappuccini.hours">Accessibile principalmente su richiesta o durante le ricorrenze francescane.</span>
             </div>
         </section>
 
-        <section class="teca-segreta">
-            <div class="teca-segreta-badge">Segreto</div>
-            <p data-i18n="monuments.cappuccini.secret_info"></p>
+        <section class="teca-cristallo teca-avviso" style="border-left: 4px solid var(--barocco-gold);">
+            <p data-i18n="monuments.cappuccini.secret_info">💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan...</p>
         </section>
 
         <div class="actions-container">
-            <button class="btn-barocco-action" onclick="window.location.href='http://maps.google.com/?q=Convento+Frati+Cappuccini+Caccamo'">
-                🌐 <span data-i18n="monuments.view_map"></span>
+            <button class="btn-barocco-action" onclick="window.location.href='mappa.html?focus=cappuccini'">
+                🌐 <span data-i18n="monuments.view_map">Apri la Mappa</span>
             </button>
             
-            <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='https://dindondan.app/orarimesse/'">
-                🔔 <span data-i18n="monuments.btn_dindondan"></span>
+            <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='tel:0918148111'">
+                📞 <span data-i18n="monuments.btn_contact_turismo">Contatta Ufficio Turismo</span>
             </button>
         </div>
 
@@ -63,7 +60,6 @@
     </main>
 
     <div class="scene-background"></div>
-
     <script src="monument_translation.js"></script>
 </body>
 </html>
