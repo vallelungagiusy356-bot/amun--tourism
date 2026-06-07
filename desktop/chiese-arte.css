@@ -40,7 +40,7 @@ html, body {
 }
 
 /* ==========================================================================
-   3. DASHBOARD DESKTOP PREMIUM WITH REFLECTIONS
+   3. DASHBOARD DESKTOP PREMIUM WITH AMBIENT REFLECTIONS
    ========================================================================== */
 .dashboard { 
     position: fixed;
@@ -83,7 +83,7 @@ html, body {
     overflow: hidden;
 }
 
-/* Loop riflesso lento per i link del menu */
+/* Loop riflesso lento di sottofondo */
 .nav-item::before {
     content: '';
     position: absolute;
@@ -94,11 +94,11 @@ html, body {
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.3) 50%,
+        rgba(255, 215, 160, 0.2) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: monumentGlowLoop 7s infinite ease-in-out;
+    animation: monumentGlowLoop 10s infinite ease-in-out;
     pointer-events: none;
 }
 
@@ -108,8 +108,9 @@ html, body {
     text-shadow: 0 0 8px #ffd78f;
 }
 
+/* 🔥 MODIFICA: Transizione Hover rallentata e morbida (0.9s cubic-bezier) */
 .nav-item:hover::before {
-    animation: monumentHoverFlash 0.45s ease-out forwards;
+    animation: monumentHoverFlash 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .header-right-actions {
@@ -157,7 +158,6 @@ html, body {
     overflow: hidden;
 }
 
-/* Riflesso sul bottone Home */
 .home-btn::before {
     content: '';
     position: absolute;
@@ -168,12 +168,12 @@ html, body {
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.4) 50%,
+        rgba(255, 215, 160, 0.3) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: monumentGlowLoop 6s infinite ease-in-out;
-    animation-delay: 1.2s;
+    animation: monumentGlowLoop 8s infinite ease-in-out;
+    animation-delay: 1.5s;
     pointer-events: none;
 }
 
@@ -183,12 +183,13 @@ html, body {
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
 }
 
+/* 🔥 MODIFICA: Transizione Hover rallentata e morbida */
 .home-btn:hover::before {
-    animation: monumentHoverFlash 0.45s ease-out forwards;
+    animation: monumentHoverFlash 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ==========================================================================
-   4. COLONNA DESTRA: CASTELLANA (ORA FISSA IN BASSO)
+   4. COLONNA DESTRA: CASTELLANA
    ========================================================================== */
 .castellana-video-wrapper {
     position: fixed;
@@ -278,7 +279,6 @@ html, body {
     padding-right: 5px;
 }
 
-/* FUMETTO MEGLIO CORRETTO AD ALTO CONTRASTO (Mini Glass-Card) */
 .message {
     background: rgba(15, 12, 8, 0.85) !important;
     border: 1px solid rgba(255, 215, 160, 0.6);
@@ -293,7 +293,6 @@ html, body {
     overflow: hidden;
 }
 
-/* Riflesso sui fumetti dei messaggi */
 .message::before {
     content: '';
     position: absolute;
@@ -304,11 +303,11 @@ html, body {
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.15) 50%,
+        rgba(255, 215, 160, 0.12) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: monumentGlowLoop 9s infinite ease-in-out;
+    animation: monumentGlowLoop 12s infinite ease-in-out;
     pointer-events: none;
 }
 
@@ -356,7 +355,7 @@ html, body {
 }
 
 .mic-btn:hover::before {
-    animation: monumentHoverFlash 0.45s ease-out forwards;
+    animation: monumentHoverFlash 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes slideInRight {
@@ -365,7 +364,7 @@ html, body {
 }
 
 /* ==========================================================================
-   7. GRIGLIA MONUMENTI PREMIUM (FLESSIBILE DESKTOP & MOBILE)
+   7. GRIGLIA MONUMENTI PREMIUM
    ========================================================================== */
 #startButton {
     position: fixed;
@@ -409,9 +408,10 @@ html, body {
     pointer-events: auto;
 }
 
+/* 🔥 MODIFICA: Teche più larghe (da 320px a 360px) */
 .glass-card {
-    width: 320px;
-    height: 500px;
+    width: 360px;
+    height: 520px; /* Incrementato leggermente per mantenere le proporzioni divine */
     background: rgba(10, 8, 5, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -428,7 +428,7 @@ html, body {
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Riflesso Diagonale Continuo sulle Glass Card dei Monumenti */
+/* Riflesso Diagonale Continuo sulle Glass Card */
 .glass-card::before {
     content: '';
     position: absolute;
@@ -439,13 +439,13 @@ html, body {
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.25) 50%,
+        rgba(255, 215, 160, 0.2) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: monumentGlowLoop 8s infinite ease-in-out;
+    animation: monumentGlowLoop 11s infinite ease-in-out;
     pointer-events: none;
-    z-index: 4; /* Sopra il video, sotto ai testi di descrizione */
+    z-index: 4;
 }
 
 .glass-card.fade-in {
@@ -461,66 +461,58 @@ html, body {
     z-index: 10;
 }
 
-/* Sferzata di luce istantanea all'hover del mouse sulla card */
+/* 🔥 MODIFICA: Transizione Hover sulle card rallentata a 1.1 secondi per massima morbidezza */
 .glass-card:hover::before {
-    animation: monumentHoverFlash 0.55s ease-out forwards;
+    animation: monumentHoverFlash 1.1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* ==========================================================================
-   🔥 GESTIONE VIDEO, SLOW MOTION E FORZATURA SPAZIO VUOTO (TRIMMING)
+   🔥 GESTIONE VIDEO, SLOW MOTION MAGGIORE E FORZATURA SPAZIO VUOTO (TRIMMING)
    ========================================================================== */
 .card-video {
-    position: absolute;  /* 🔥 Forzatura 1: Sganciato dal flusso per coprire l'intera card */
+    position: absolute;  
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;        /* 🔥 Forzatura 2: Esteso al 100% elimina i vuoti orizzontali/verticali */
-    object-fit: cover;   /* 🔥 Forzatura 3: Riempie la card ritagliando le aree vuote native delle gif */
+    height: 100%;        
+    object-fit: cover;   
     background: transparent;
     pointer-events: none; 
-    z-index: 1;          /* Sotto lo strato riflettente e il contenuto testuale */
+    z-index: 1;          
     
-    /* 🔥 SLOW MOTION VISIVO E TRANSITION MORBIDA */
-    animation: desktopSlowMo 3.5s ease-in-out infinite alternate;
+    /* 🔥 MODIFICA: Slow motion aumentato portando il ciclo d'animazione a ben 5 secondi */
+    animation: desktopSlowMo 5s ease-in-out infinite alternate;
     filter: drop-shadow(0 0 20px rgba(255, 215, 160, 0.5));
     transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* Doppio filtro drop-shadow fuso in Hover per l'effetto oro fuso */
 .glass-card:hover .card-video {
     filter: drop-shadow(0 0 25px rgba(255, 200, 120, 0.85)) 
             drop-shadow(0 0 45px rgba(255, 170, 60, 0.45)); 
 }
 
-/* Animazione simulata slow motion combinata (se usi animazioni CSS o gif cicliche) */
 @keyframes desktopSlowMo {
-    0% { filter: drop-shadow(0 0 15px rgba(255, 215, 160, 0.4)) brightness(0.95); }
-    100% { filter: drop-shadow(0 0 25px rgba(255, 215, 160, 0.6)) brightness(1.05); }
+    0% { filter: drop-shadow(0 0 15px rgba(255, 215, 160, 0.35)) brightness(0.92); }
+    100% { filter: drop-shadow(0 0 30px rgba(255, 215, 160, 0.65)) brightness(1.08); }
 }
 
 /* ==========================================================================
-   CALIBRAZIONE BILANCIATA E SPOSTAMENTI MIRATI PER EVITARE TAGLI
+   CALIBRAZIONE BILANCIATA (RICAIBRATA PER LE NUOVE DIMENSIONI DELLA TECA)
    ========================================================================== */
+.badia-video { transform: scale(1.1) translateY(0px); }
+.glass-card:hover .badia-video { transform: scale(1.2) translateY(-5px); }
 
-/* 1. LA BADIA */
-.badia-video { transform: scale(1.15) translateY(0px); }
-.glass-card:hover .badia-video { transform: scale(1.25) translateY(-5px); }
+.duomo-video { transform: scale(1.2) translateY(5px); }
+.glass-card:hover .duomo-video { transform: scale(1.3) translateY(0px); }
 
-/* 2. CHIESA SAN GIORGIO / DUOMO */
-.duomo-video { transform: scale(1.25) translateY(5px); }
-.glass-card:hover .duomo-video { transform: scale(1.35) translateY(0px); }
+.cappuccini-video { transform: scale(1.25) translateY(5px); }
+.glass-card:hover .cappuccini-video { transform: scale(1.35) translateY(0px); }
 
-/* 3. I CAPPUCCINI */
-.cappuccini-video { transform: scale(1.3) translateY(5px); }
-.glass-card:hover .cappuccini-video { transform: scale(1.4) translateY(0px); }
+.annunziata-video { transform: scale(1.6) translateY(-15px); }
+.glass-card:hover .annunziata-video { transform: scale(1.7) translateY(-20px); }
 
-/* 4. ANNUNZIATA */
-.annunziata-video { transform: scale(1.8) translateY(-20px); }
-.glass-card:hover .annunziata-video { transform: scale(1.9) translateY(-25px); }
-
-/* 5. SANTA MARIA DEGLI ANGELI */
-.angeli-video { transform: scale(1.8) translateY(-20px); }
-.glass-card:hover .angeli-video { transform: scale(1.9) translateY(-25px); }
+.angeli-video { transform: scale(1.6) translateY(-15px); }
+.glass-card:hover .angeli-video { transform: scale(1.7) translateY(-20px); }
 
 /* ==========================================================================
    TESTI E REQUISITI MOBILE
@@ -531,19 +523,18 @@ html, body {
     left: 25px;
     width: calc(100% - 50px);
     text-align: left;
-    z-index: 5; /* Assicura che il testo fluttui sopra il video e sopra il riflesso */
+    z-index: 5; 
 }
 
 .card-content h3 {
     margin: 0;
     color: #ffd78f;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: 0.5px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9); /* Ombra scura per staccare dal video dorato */
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95); 
 }
 
-/* Ottimizzazione Mobile fluida */
 @media (max-width: 900px) {
     .monuments-grid {
         padding-top: 110px;
@@ -557,15 +548,15 @@ html, body {
 }
 
 /* ==========================================================================
-   10. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI MONUMENTI
+   10. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI (RALLENTATI)
    ========================================================================== */
 @keyframes monumentGlowLoop {
-    0% { left: -110%; }
-    12% { left: 140%; }
-    100% { left: 140%; }
+    0% { left: -120%; }
+    15% { left: 150%; }
+    100% { left: 150%; }
 }
 
 @keyframes monumentHoverFlash {
-    0% { left: -110%; }
-    100% { left: 140%; }
+    0% { left: -120%; }
+    100% { left: 150%; }
 }
