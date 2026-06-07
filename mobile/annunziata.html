@@ -11,7 +11,7 @@
 
     <header class="dashboard">
         <span class="logo-title" data-i18n="menu.title">Amunì Tourism</span>
-        <div class="lang-switcher" style="margin-left: auto;">
+        <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
             <button data-lang="fr">🇫🇷</button>
@@ -26,22 +26,22 @@
             <h1 data-i18n="monuments.annunziata.title">Parrocchia SS. Annunziata</h1>
         </header>
 
-        <div class="monument-render-container" style="width: 100%; text-align: center;">
-            <img src="img/annunziata.gif" alt="Parrocchia SS. Annunziata" class="monument-hero-image" style="width: 100%; max-width: 100%; height: 400px; object-fit: cover; border-radius: 12px;" onerror="this.src='img/avatar_castellana.png';">
+        <div class="monument-render-container" style="width: 100%; min-height: 400px; text-align: center; overflow: hidden; border-radius: 12px;">
+            <img src="img/annunziata.gif" alt="Parrocchia SS. Annunziata" class="monument-hero-image" style="width: 100%; max-width: 100%; height: 400px; object-fit: cover; display: block;" onerror="this.src='img/avatar_castellana.png';">
         </div>
 
         <section class="teca-cristallo descrittiva">
-            <p data-i18n="monuments.annunziata.description">Incastonata nel tessuto urbano medievale, la chiesa si distingue per la sua facciata e per l'atmosfera di profonda spiritualità che si respira al suo interno...</p>
+            <p data-i18n="monuments.annunziata.description">Incastonata nel tessuto urbano medievale, la chiesa si distingue per la sua facciata e per l'atmosfera di profonda spiritualità che si respira al suo interno. Conserva altari finemente decorati e manufatti artistici che attirano visitatori e fedeli.</p>
         </section>
 
         <section class="teca-cristallo teca-avviso">
-            <p data-i18n="monuments.church_notice">⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche...</p>
+            <p data-i18n="monuments.church_notice">⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momentos di celebrazione interna.</p>
         </section>
 
         <section class="teca-cristallo teca-logistica">
             <div class="info-row">
-                <span class="info-label" data-i18n="monuments.hours_label">Orari:</span>
-                <span class="info-value" data-i18n="monuments.annunziata.hours">Lun - Sab: 09:00 – 12:00...</span>
+                <span class="info-label" data-i18n="monuments.hours_label">Orari</span>
+                <span class="info-value" data-i18n="monuments.annunziata.hours">Lun - Sab: 09:00 – 12:00 | Messe feriali ore 18:00. Domenica e Festivi visite nelle fasce: 08:30 - 09:30 e 10:30 - 12:00 (Messe festive ore 09:30, 12:00, 19:00).</span>
             </div>
         </section>
 
@@ -60,6 +60,7 @@
     </main>
 
     <div class="scene-background"></div>
+    
     <script src="monument_translation.js"></script>
 </body>
 </html>
