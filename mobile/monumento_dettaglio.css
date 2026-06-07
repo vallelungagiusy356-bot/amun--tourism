@@ -392,12 +392,14 @@ body {
    8. PERSONALIZZAZIONI ALTEZZA E ZOOM MONUMENTI SPECIFICI
    ======================================================= */
 
-/* 1. Parrocchia SS. Annunziata */
+/* 1. Parrocchia SS. Annunziata: FORZATURA TOTALE */
 .monument-hero-image.img-annunziata {
-    height: 390px; 
-    object-fit: cover;
-    transform: scale(1.18);
+    height: 440px !important; 
+    object-fit: cover !important;
+    transform: scale(1.35) !important; /* Spinge lo zoom al 135% per riempire ogni spazio vuoto */
+    transform-origin: center center;    /* Mantiene lo zoom perfettamente centrato */
 }
+
 
 /* 2. Convento dei Frati Cappuccini */
 .monument-hero-image.img-cappuccini {
