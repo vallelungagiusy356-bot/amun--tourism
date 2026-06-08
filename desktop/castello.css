@@ -13,7 +13,7 @@ html, body {
 }
 
 /* ==========================================================================
-   2. SFONDO VIDEO DINAMICO E OVERLAY
+   2. SFONDO VIDEO DINAMICO E OVERLAY ELEGANTE
    ========================================================================== */
 .scene-background-container {
     position: fixed;
@@ -60,7 +60,7 @@ html, body {
     background: rgba(5, 3, 2, 0.85);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.4);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.3);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
 }
 
@@ -68,10 +68,11 @@ html, body {
     font-size: 1.3rem;
     font-weight: 700;
     color: #ffd78f;
+    text-shadow: 0 0 12px rgba(255, 215, 143, 0.4);
 }
 
 .nav-desktop { display: flex; gap: 20px; }
-.nav-item { color: #ffd78f; text-decoration: none; font-weight: 600; padding: 6px 14px; }
+.nav-item { color: #ffd78f; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 6px 14px; }
 .header-right-actions { display: flex; align-items: center; gap: 15px; }
 
 .lang-switcher {
@@ -86,10 +87,14 @@ html, body {
 .lang-switcher button {
     background: none;
     border: none;
-    color: #fff;
-    cursor: pointer;
+    font-size: 1.1rem;
     padding: 2px 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: transform 0.2s;
 }
+
+.lang-switcher button.active { background: rgba(255, 215, 160, 0.2); }
 
 .home-btn {
     background: rgba(255, 215, 160, 0.25);
@@ -99,26 +104,26 @@ html, body {
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
+    font-size: 0.9rem;
 }
 
 /* ==========================================================================
-   4. STRUTTURA LAYOUT (TITOLO A TUTTO SCHERMO + COLONNA TESTO)
+   4. STRUTTURA LAYOUT (TITOLO FULL-WIDTH E COLONNA DI SINISTRA)
    ========================================================================== */
 .castle-layout {
     width: 100%;
     box-sizing: border-box;
-    padding: 90px 5% 40px 5%; /* Spazio superiore per non andare sotto la dashboard */
+    padding: 100px 5% 40px 5%;
     position: relative;
     z-index: 1;
     display: flex;
-    flex-direction: column; /* Forziamo lo sviluppo verticale: prima i titoli, poi i contenuti */
-    gap: 25px;
+    flex-direction: column;
+    gap: 30px;
 }
 
-/* Intestazione monoblocco a tutto schermo */
+/* Titolo esteso su tutto lo schermo */
 .castle-header-fullwidth {
     width: 100%;
-    text-align: left;
 }
 
 .category-tag {
@@ -143,36 +148,30 @@ html, body {
     border: none;
     height: 2px;
     background: linear-gradient(90deg, #ffd78f 0%, transparent 100%);
-    margin-bottom: 15px;
     width: 100%;
+    margin: 0;
 }
 
-/* Contenitore principale: solo una colonna a sinistra libera e pulita */
+/* Contenitore e pannello testuale pulito */
 .castle-main-content {
-    display: flex;
     width: 100%;
+    display: flex;
 }
 
 .castle-info-panel {
     width: 100%;
-    max-width: 600px; /* Dimensione ideale per la lettura su desktop, si adatta su mobile */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    max-width: 650px; /* Larghezza ottimizzata per la lettura su desktop */
     background: rgba(5, 3, 2, 0.55); 
-    padding: 25px;
+    padding: 30px;
     border-radius: 16px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 215, 160, 0.15);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     box-sizing: border-box;
-}
-
-.castle-text-content {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
 }
 
 .text-paragraph {
@@ -190,25 +189,26 @@ html, body {
 
 .highlight-para {
     border-left: 3px solid #ffd78f;
-    padding: 10px 15px;
+    padding: 12px 15px;
     color: #ffd78f;
     background: rgba(255, 215, 160, 0.05);
     border-radius: 0 8px 8px 0;
 }
 
 /* ==========================================================================
-   5. LA TECA DELL'ABITO (INSERITA NELLA COLONNA DI SINISTRA)
+   5. LA TECA DELL'ABITO (INTEGRATA PERFETTAMENTE DENTRO IL TESTO)
    ========================================================================== */
 .castle-dress-inline {
     width: 100%;
-    max-width: 280px;
-    margin: 15px auto; /* Centrata dentro il pannello di testo */
+    max-width: 260px;
+    margin: 10px auto; 
     text-align: center;
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 215, 160, 0.25);
     border-radius: 12px;
-    padding: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    padding: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 .dress-img-inline {
@@ -221,72 +221,90 @@ html, body {
     font-size: 0.8rem;
     color: #ffd78f;
     font-weight: 700;
-    margin-top: 8px;
+    margin: 10px 0 0 0;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 /* ==========================================================================
-   6. L'AVATAR DELLA CASTELLANA (RIDOTTA DI 4 VOLTE, ADESSO È UN PULSANTE CHAT)
+   6. CASTELLANA WIDGET (RIDOTTA DI 4 VOLTE, STILE ASSISTENTE VIRTUALE)
    ========================================================================== */
-.castellana-video-container {
+.castellana-widget-area {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999; /* Sempre in primo piano sopra a tutto */
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.castellana-video-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .castellana-video-wrapper {
-    width: 65px; /* 💡 RIDOTTA DI 4 VOLTE: Passa da 260px a 65px per essere un'icona perfetta */
+    width: 65px;   /* 💡 PERFETTA: Ridotta a 65px per non impattare sul mobile */
     height: 65px;
     position: relative;
     cursor: pointer;
-    border-radius: 50%; /* Diventa un cerchio perfetto stile widget di assistenza */
+    border-radius: 50%;
     border: 2px solid #ffd78f;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
     overflow: hidden;
     background: #000;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .castellana-video-wrapper:hover {
-    transform: scale(1.1);
+    transform: scale(1.08);
     box-shadow: 0 0 15px #ffd78f;
 }
 
-/* Forza il video interno a coprire il cerchio senza deformarsi */
-.castellana-video-wrapper video, 
-.castellana-video-wrapper img {
+.castellana-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Scritta di aiuto fluttuante opzionale rimossa o rimpicciolita */
-.click-to-chat-tip {
-    display: none; /* Nascondiamo scritte ingombranti su mobile */
+/* Tooltip "Click to Chat" rimpicciolito ed elegante all'hover */
+.castellana-tooltip {
+    position: absolute;
+    top: -35px;
+    right: 0;
+    background: #ffd78f;
+    color: #050302;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.castellana-video-wrapper:hover .castellana-tooltip {
+    opacity: 1;
 }
 
 /* ==========================================================================
-   7. INTERFACCIA CHAT FLOATING
+   7. CHAT FLOATING PREMIUM
    ========================================================================== */
 .chat-desktop {
-    position: fixed;
-    bottom: 95px; /* Posizionata esattamente sopra il cerchio dell'avatar */
-    right: 20px;
-    width: 350px;
+    width: 360px;
     height: 420px;
     background: rgba(5, 3, 2, 0.98);
     border: 2px solid #ffd78f;
     border-radius: 16px;
     display: none;
     flex-direction: column;
-    z-index: 1000;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85);
     overflow: hidden;
+    margin-bottom: 15px; /* Spazio per staccarsi dall'avatar sotto */
 }
 
 .chat-desktop.active {
@@ -297,7 +315,7 @@ html, body {
 .chat-header {
     background: rgba(255, 215, 160, 0.08);
     padding: 12px 16px;
-    border-bottom: 1px solid rgba(255, 215, 160, 0.3);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.2);
     display: flex;
     align-items: center;
     color: #ffd78f;
@@ -309,7 +327,7 @@ html, body {
     height: 8px;
     background-color: #26e663;
     border-radius: 50%;
-    margin-right: 8px;
+    margin-right: 10px;
     box-shadow: 0 0 6px #26e663;
 }
 
@@ -317,6 +335,7 @@ html, body {
 .close-chat-btn { background: none; border: none; color: #ffd78f; font-size: 1.2rem; cursor: pointer; }
 .chat-messages { flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 10px; }
 .message { background: rgba(255, 215, 160, 0.06); border: 1px solid rgba(255, 215, 160, 0.15); padding: 10px 12px; border-radius: 10px; font-size: 0.9rem; color: #fff; }
+
 .chat-input-row { padding: 10px; display: flex; gap: 6px; border-top: 1px solid rgba(255, 215, 160, 0.15); background: #000; }
 .chat-input-row input { flex: 1; background: #111; border: 1px solid rgba(255, 215, 160, 0.4); padding: 8px 12px; border-radius: 6px; color: #fff; outline: none; }
 .chat-input-row input:focus { border-color: #ffd78f; }
@@ -332,30 +351,38 @@ html, body {
 }
 
 /* ==========================================================================
-   9. MEDIA QUERIES (MOBILE OPTIMIZATION)
+   9. MEDIA QUERIES (OTTIMIZZAZIONE SMARTPHONE E TABLET)
    ========================================================================== */
 @media (max-width: 768px) {
     .dashboard { padding: 0 15px; }
     .nav-desktop { display: none; }
     
     .castle-layout {
-        padding: 80px 16px 20px 16px;
+        padding: 85px 16px 20px 16px;
+        gap: 20px;
     }
     
     .castle-header-fullwidth h2 {
-        font-size: 2.1rem;
+        font-size: 2.2rem;
     }
     
     .castle-info-panel {
-        padding: 16px;
+        padding: 20px;
     }
-    
+
+    .castellana-widget-area {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    /* La chat copre lo schermo in modo ottimizzato sui dispositivi piccoli */
     .chat-desktop {
+        position: fixed;
         bottom: 95px;
-        left: 16px;
-        right: 16px;
+        left: 15px;
+        right: 15px;
         width: auto;
-        max-width: none;
-        height: 60vh;
+        height: 55vh;
+        margin-bottom: 0;
     }
 }
