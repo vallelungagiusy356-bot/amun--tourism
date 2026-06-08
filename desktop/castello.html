@@ -8,7 +8,6 @@
 </head>
 <body>
 
-    <!-- 🎬 SFONDO DINAMICO RIPRISTINATO -->
     <div class="scene-background-container">
         <video autoplay loop muted playsinline webkit-playsinline class="scene-background-video">
             <source src="img/video_castello.webm" type="video/webm">
@@ -38,17 +37,14 @@
 
     <main class="castle-layout">
         
-        <!-- 🏛️ TITOLO DELLA PAGINA A TUTTO SCHERMO -->
         <div class="castle-header-fullwidth">
             <span class="category-tag" data-i18n="castle.category">Monumenti Storici</span>
             <h2 data-i18n="castle.title">Il Castello di Caccamo</h2>
             <hr class="gold-divider">
         </div>
 
-                <!-- 📝 CONTENUTO: TESTO E ABITO SEPARATI -->
         <div class="castle-main-content">
 
-            <!-- 🏛️ LA TECA ADESSO CONTIENE SOLO IL TESTO -->
             <section class="castle-info-panel">
                 
                 <p class="text-paragraph leading-para" data-i18n="castle.leading_para">
@@ -66,7 +62,6 @@
                 
             </section>
 
-            <!-- 👗 L'ABITO ADESSO È FUORI DALLA TECA DEL TESTO, IN UNA COLONNA DEDICATA -->
             <div class="castle-dress-column">
                 <div class="castle-dress-inline">
                     <img src="img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
@@ -77,10 +72,8 @@
         </div>
 
 
-        <!-- 💬 WIDGET INTERATTIVO: AVATAR RIDOTTO E CHAT FLOATING (FISSI IN BASSO A DESTRA) -->
         <div class="castellana-widget-area">
             
-            <!-- CHAT WINDOW (POSIZIONATA SOPRA IL CERCHIO DELL'AVATAR) -->
             <div class="chat-desktop" id="chatDesktop">
                 <div class="chat-header">
                     <div class="avatar-status-dot"></div>
@@ -101,7 +94,6 @@
                 </div>
             </div>
 
-            <!-- AREA AVATAR VIDEO (RIDOTTO DI 4 VOLTE) -->
             <div class="castellana-video-container">
                 <div class="castellana-video-wrapper">
                     <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
@@ -115,7 +107,6 @@
 
     </main>
 
-    <!-- 🌐 SCRIPT MULTILINGUA -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
     
@@ -159,29 +150,30 @@
     });
     </script>
 
-    // Script finale ottimizzato per la gestione dell'apertura
-const castellanaVideo = document.getElementById("castellanaVideo");
-const castellanaTooltip = document.getElementById("castellanaTooltip");
-const chatDesktop = document.getElementById("chatDesktop");
-const closeChatBtn = document.getElementById("closeChatBtn");
+    <script>
+    const castellanaVideo = document.getElementById("castellanaVideo");
+    const castellanaTooltip = document.getElementById("castellanaTooltip");
+    const chatDesktop = document.getElementById("chatDesktop");
+    const closeChatBtn = document.getElementById("closeChatBtn");
 
-function openChat(e) {
-    e.stopPropagation();
-    chatDesktop.classList.add("active");
-    // Auto scroll messaggi all'apertura
-    setTimeout(() => {
-        const box = document.getElementById("chatMessagesBox");
-        box.scrollTop = box.scrollHeight;
-    }, 50);
-}
+    function openChat(e) {
+        e.stopPropagation();
+        chatDesktop.classList.add("active");
+        // Auto scroll messaggi all'apertura
+        setTimeout(() => {
+            const box = document.getElementById("chatMessagesBox");
+            if (box) box.scrollTop = box.scrollHeight;
+        }, 50);
+    }
 
-castellanaVideo.addEventListener("click", openChat);
-castellanaTooltip.addEventListener("click", openChat);
+    castellanaVideo.addEventListener("click", openChat);
+    castellanaTooltip.addEventListener("click", openChat);
 
-closeChatBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    chatDesktop.classList.remove("active");
-});
+    closeChatBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        chatDesktop.classList.remove("active");
+    });
+    </script>
 
 </body>
 </html>
