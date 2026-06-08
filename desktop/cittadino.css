@@ -97,7 +97,7 @@ html, body {
 }
 
 .citizen-intro-container {
-    max-width: 650px; /* Consente al testo di estendersi armoniosamente senza stringersi */
+    max-width: 650px;
 }
 
 .category-tag {
@@ -142,15 +142,15 @@ html, body {
 }
 
 /* ==========================================================================
-   4. CARD INGRANDITE, ABBASSATE E CENTRATE AL CENTRO DELLA PAGINA
+   4. CARD INGRANDITE, ABBASSATE E CENTRATE AL CENTRO DELLA PAGINA (DESKTOP)
    ========================================================================== */
 .citizen-centered-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;                     /* Più spazio tra le card */
+    gap: 30px;                     
     width: 100%;
-    max-width: 960px;              /* Griglia allargata ed equilibrata */
-    margin: 50px auto 40px auto;   /* Spinta verso il basso (50px) e centrata perfettamente */
+    max-width: 960px;              
+    margin: 50px auto 40px auto;   
     padding: 0 20px;
     box-sizing: border-box;
 }
@@ -160,13 +160,13 @@ html, body {
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(255, 215, 160, 0.35);
     border-radius: 16px;
-    padding: 32px 28px;            /* Card decisamente più grandi e ariose */
+    padding: 32px 28px;            
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 145px;             /* Altezza minima strutturata */
+    min-height: 145px;             
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
     transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.35s ease;
 }
@@ -185,7 +185,7 @@ html, body {
 }
 
 .card-text-block h2 {
-    font-size: 1.35rem;            /* Titoli più leggibili e grandi */
+    font-size: 1.35rem;            
     color: #ffd78f;
     margin: 0 0 10px 0;
     font-weight: 600;
@@ -193,20 +193,20 @@ html, body {
 }
 
 .card-description {
-    font-size: 0.95rem;            /* Testo descrittivo ingrandito */
+    font-size: 0.95rem;            
     line-height: 1.5;
     color: #e6dcc8;
     margin: 0;
 }
 
 /* ==========================================================================
-   5. 👑 CASTELLANA SPOSTATA MOLTO PIÙ A DESTRA E ABBASSATA
+   5. CASTELLANA DESKTOP
    ========================================================================== */
 .castellana-video-wrapper {
     position: fixed;
-    bottom: 30px;               /* 💡 Abbassata vicino al bordo inferiore dello schermo */
-    right: 2%;                  /* 💡 Spinta drasticamente sul lato destro esterno */
-    width: 200px;               /* Dimensione prominente e definita */
+    bottom: 30px;               
+    right: 2%;                  
+    width: 200px;               
     height: auto;
     z-index: 100 !important;
     transition: transform 0.3s ease;
@@ -224,7 +224,6 @@ html, body {
     filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.8));
 }
 
-/* TOOLTIP CHAT POSIZIONATO IN ALTO RISPETTO AL VIDEO */
 .castellana-tooltip {
     position: absolute;
     top: -35px;
@@ -243,7 +242,7 @@ html, body {
 }
 
 /* ==========================================================================
-   6. INTERFACCIA CHAT FLOATING (LATERALE DESTRA)
+   6. INTERFACCIA CHAT FLOATING (DESKTOP BASE)
    ========================================================================== */
 .chat-desktop {
     position: fixed;
@@ -276,8 +275,128 @@ html, body {
 .chat-input-row input { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid rgba(255, 215, 160, 0.5); background: rgba(0,0,0,0.4); color: #fff; }
 .mic-btn { background: none; border: 1px solid #ffd78f; color: #ffd78f; border-radius: 8px; padding: 0 10px; cursor: pointer; }
 
+
 /* ==========================================================================
-   7. ANIMAZIONI & ADATTAMENTO RESPONSIVE
+   7. INTERVENTO SENIOR RESPONSIVE & ORIENTATION MANAGEMENT
+   ========================================================================== */
+
+/* 📱 SEZIONE A: MOBILE IN VERTICALE (Portrait) */
+@media screen and (max-width: 900px) and (orientation: portrait) {
+    .dashboard { padding: 0 20px; }
+    .nav-desktop { display: none; }
+
+    .citizen-frame-layout {
+        padding: 95px 16px 0px 16px;
+    }
+
+    .main-title { font-size: 2.2rem; text-align: center; }
+    .text-paragraph { text-align: center; font-size: 1rem; }
+    .gold-divider { background: linear-gradient(90deg, transparent 0%, #ffd78f 50%, transparent 100%); }
+
+    /* Centratura totale, espansione per riempire lo schermo ed eliminazione vuoti */
+    .citizen-centered-grid {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+        width: 100%;
+        max-width: 100%;
+        margin: 35px auto 160px auto; /* Ampio margine sotto per l'avatar raddoppiato */
+        padding: 0 10px;
+    }
+
+    .quadrant {
+        min-height: 125px;
+        padding: 26px 20px;
+    }
+
+    /* 💡 Raddoppio effettivo della grandezza dell'avatar su mobile verticale */
+    .castellana-video-wrapper {
+        position: fixed;
+        bottom: 15px;
+        right: 4%;
+        left: auto;
+        top: auto;
+        width: 150px; 
+        height: auto;
+    }
+
+    .castellana-tooltip { display: none; } /* Meno ingombro testuale sul telefono */
+
+    .chat-desktop {
+        position: fixed;
+        bottom: 180px;
+        left: 16px;
+        right: 16px;
+        width: auto;
+        height: 45vh;
+    }
+}
+
+/* 🔄 SEZIONE B: MOBILE IN ORIZZONTALE (Landscape) */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    /* Ottimizzazione Header ridotto */
+    .dashboard { height: 52px; padding: 0 20px; }
+    .dashboard .logo-title { font-size: 1.2rem; }
+    .nav-desktop { display: none; }
+    .lang-switcher button { width: 34px; height: 34px; font-size: 1rem; }
+    .dashboard .home-btn { padding: 6px 14px; font-size: 0.8rem; }
+
+    .citizen-frame-layout { padding: 65px 20px 0px 20px; }
+    .main-title { font-size: 1.8rem; }
+    .leading-para { font-size: 0.95rem; }
+
+    /* 🔑 CONFIGURAZIONE CARD FISSE ED ESPANSE (Disposizione compatta a sinistra) */
+    .citizen-centered-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        width: 100%;
+        max-width: 70%; /* Vincola rigidamente le card al 70% sinistro dello schermo */
+        margin: 20px 0 30px 20px; /* Rigorosamente fisse a sinistra */
+        padding: 0;
+    }
+
+    .quadrant {
+        min-height: 90px;
+        padding: 16px 20px;
+    }
+
+    .card-text-block h2 { font-size: 1.1rem; margin-bottom: 4px; }
+    .card-description { font-size: 0.85rem; line-height: 1.3; }
+
+    /* 🔑 CONFIGURAZIONE ANCORAGGIO FISSO CASTELLANA IN BASSO A DESTRA */
+    .castellana-video-wrapper {
+        position: fixed;
+        bottom: 15px;               /* Abbassata sul fondo */
+        right: 2%;                  /* Spinta totalmente a destra */
+        top: auto;
+        left: auto;
+        width: 140px;               /* Dimensione proporzionata per il landscape */
+        height: auto;
+    }
+
+    /* 🔑 LA CHAT SI APRE A SINISTRA DELLA CASTELLANA E SOTTO LE CARD */
+    .chat-desktop {
+        position: fixed;
+        bottom: 15px;               /* Allineata perfettamente al fondo dell'avatar */
+        right: calc(2% + 150px);    /* Calcolo matematico spaziale: margine destro + larghezza dell'avatar */
+        left: auto;
+        top: auto;
+        width: 270px;
+        height: 165px;              /* Profilo ribassato per scivolare sotto la linea inferiore delle card */
+        background: rgba(5, 3, 2, 0.98) !important;
+        box-shadow: -10px 4px 30px rgba(0, 0, 0, 0.9);
+    }
+
+    /* Adattamento micro-interfaccia chat per schermi schiacciati */
+    .chat-header { margin-bottom: 6px; font-size: 0.85rem; }
+    .close-chat-btn { top: 8px; right: 8px; width: 22px; height: 22px; font-size: 0.8rem; }
+    .chat-messages { margin-bottom: 8px; }
+    .message { padding: 6px 10px; font-size: 0.78rem; }
+    .chat-input-row { gap: 4px; }
+    .chat-input-row input { padding: 6px; font-size: 0.8rem; }
+}
+
+/* ==========================================================================
+   8. ANIMAZIONI COMUNI
    ========================================================================== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -287,12 +406,4 @@ html, body {
 @keyframes tooltipPulse {
     0%, 100% { transform: translateX(-50%) scale(1); }
     50% { transform: translateX(-50%) scale(1.05); }
-}
-
-@media (max-width: 900px) {
-    .dashboard { padding: 0 20px; }
-    .nav-desktop { display: none; }
-    .citizen-centered-grid { grid-template-columns: 1fr; margin-top: 30px; }
-    .castellana-video-wrapper { position: static; margin: 20px auto; width: 140px; }
-    .chat-desktop { position: fixed; bottom: 20px; left: 16px; right: 16px; width: auto; }
 }
