@@ -14,15 +14,13 @@ html, body {
 }
 
 /* ==========================================================================
-   2. SFONDO VIDEO DINAMICO E OVERLAY ELEGANTE
+   2. SFONDO VIDEO DINAMICO E OVERLAY ELEGANTE (LUMINOSITÀ OTTIMIZZATA)
    ========================================================================== */
 .scene-background-container {
     position: fixed;
     inset: 0;
-    /* 💡 RISOLTO: Spostato a -5 per garantire che stia sotto il corpo trasparente */
     z-index: -5 !important;
     overflow: hidden;
-    /* Fallback di sicurezza nero: si attiva solo se il video fallisce o è in caricamento */
     background-color: #000; 
 }
 
@@ -37,12 +35,14 @@ html, body {
     content: '';
     position: absolute;
     inset: 0;
-    /* Gradiente calibrato per incorniciare senza scurire l'azione centrale del borgo */
-    background: linear-gradient(90deg, rgba(5, 3, 2, 0.6) 0%, rgba(5, 3, 2, 0) 50%),
-                linear-gradient(180deg, rgba(5, 3, 2, 0.7) 0%, rgba(5, 3, 2, 0.3) 100%);
-    z-index: 1; /* Sopra il tag video interno, ma sotto i testi della pagina */
+    /* 💡 OPACITÀ QUASI DIMEZZATA: Passati da 0.6/0.7 a 0.35/0.4 
+       Il video respira e si vede chiaramente, ma il testo a sinistra resta leggibile */
+    background: linear-gradient(90deg, rgba(5, 3, 2, 0.35) 0%, rgba(5, 3, 2, 0) 40%),
+                linear-gradient(180deg, rgba(5, 3, 2, 0.4) 0%, rgba(5, 3, 2, 0.1) 100%);
+    z-index: 1; 
     pointer-events: none; 
 }
+
 
 /* ==========================================================================
    3. DASHBOARD DESKTOP PREMIUM
