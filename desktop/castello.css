@@ -108,7 +108,7 @@ html, body {
 }
 
 /* ==========================================================================
-   4. STRUTTURA LAYOUT (TITOLO FULL-WIDTH E COLONNA DI SINISTRA)
+   4. STRUTTURA LAYOUT (TITOLO FULL-WIDTH E STRUTTURA CONTENUTI)
    ========================================================================== */
 .castle-layout {
     width: 100%;
@@ -152,15 +152,19 @@ html, body {
     margin: 0;
 }
 
-/* Contenitore e pannello testuale pulito */
+/* Contenitore principale flessibile per affiancamento desktop */
 .castle-main-content {
     width: 100%;
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5%;
 }
 
+/* La teca scura: contiene ed evidenzia solo la parte testuale */
 .castle-info-panel {
-    width: 100%;
-    max-width: 580px; /* 💡 Ridotto del 5% per ottimizzare lo spazio */
+    flex: 1;
+    max-width: 580px; 
     background: rgba(5, 3, 2, 0.55); 
     padding: 30px;
     border-radius: 16px;
@@ -195,40 +199,48 @@ html, body {
     border-radius: 0 8px 8px 0;
 }
 
+/* Colonna contenitore per l'abito staccato dalla teca */
+.castle-dress-column {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 15px;
+}
+
 /* ==========================================================================
-   5. L'ABITO STORICO (COMPLETAMENTE LIBERO DA TECHE, PIÙ VERTICALE)
+   5. L'ABITO STORICO (LIBERO, TRASPARENTE E SLANCIATO)
    ========================================================================== */
 .castle-dress-inline {
     width: 100%;
-    max-width: 180px; 
-    margin: 10px 0;   
+    max-width: 170px; 
     text-align: center;
     background: none !important; 
     border: none !important;     
     box-shadow: none !important; 
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
 .dress-img-inline {
     width: 100%;
-    max-height: 220px; 
+    max-height: 270px; 
     object-fit: contain;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6)); 
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.8)); 
 }
 
 .dress-caption-inline {
     font-size: 0.75rem;
     color: #ffd78f;
     font-weight: 700;
-    margin: 6px 0 0 0;
+    margin: 10px 0 0 0;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); 
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9); 
 }
 
 /* ==========================================================================
-   6. CASTELLANA WIDGET (MISURA OTTIMIZZATA A 150PX)
+   6. CASTELLANA WIDGET (AVATAR VIDEO)
    ========================================================================== */
 .castellana-widget-area {
     position: fixed;
@@ -247,7 +259,7 @@ html, body {
 }
 
 .castellana-video-wrapper {
-    width: 250px;   /* 💡 Ottima scelta, ora è ben visibile! */
+    width: 250px;   
     height: 250px;
     position: relative;
     cursor: pointer;
@@ -260,7 +272,7 @@ html, body {
 }
 
 .castellana-video-wrapper:hover {
-    transform: scale(1.04); /* Un pizzico più soft visto che è più grande */
+    transform: scale(1.04); 
     box-shadow: 0 0 15px #ffd78f;
 }
 
@@ -273,7 +285,7 @@ html, body {
 /* Tooltip "Click to Chat" sopra la testa dell'avatar */
 .castellana-tooltip {
     position: absolute;
-    top: -35px; /* 💡 Sistemato: ora fluttua sopra il cerchio senza nascondersi */
+    top: -35px; 
     right: 0;
     background: #ffd78f;
     color: #050302;
@@ -352,23 +364,45 @@ html, body {
 }
 
 /* ==========================================================================
-   9. MEDIA QUERIES (OTTIMIZZAZIONE SMARTPHONE E TABLET)
+   9. MEDIA QUERIES (PERFETTA OTTIMIZZAZIONE RESPONSIVE)
    ========================================================================== */
 @media (max-width: 768px) {
     .dashboard { padding: 0 15px; }
     .nav-desktop { display: none; }
     
+    /* Gestione layout mobile: gli elementi passano in colonna */
     .castle-layout {
         padding: 85px 16px 20px 16px;
-        gap: 20px;
+        gap: 25px;
     }
     
     .castle-header-fullwidth h2 {
         font-size: 2.2rem;
     }
+
+    .castle-main-content {
+        flex-direction: column; /* Cambia l'affiancamento in verticale */
+        align-items: center;
+        gap: 30px;
+    }
     
     .castle-info-panel {
+        max-width: 100%; /* La teca testo usa tutta la larghezza dello schermo */
         padding: 20px;
+    }
+
+    .castle-dress-column {
+        width: 100%;
+        justify-content: center; /* Centra l'abito in basso sotto il testo */
+        padding-top: 0;
+    }
+
+    .castle-dress-inline {
+        max-width: 180px; /* Ripristina la dimensione dell'abito per essere ben visibile */
+    }
+
+    .dress-img-inline {
+        max-height: 260px;
     }
 
     .castellana-widget-area {
@@ -376,15 +410,15 @@ html, body {
         right: 15px;
     }
 
-    /* Su mobile l'avatar si riduce un filo automaticamente a 100px per non rubare troppo schermo */
+    /* Ridimensionamento bilanciato dell'avatar per smartphone */
     .castellana-video-wrapper {
-        width: 100px;
-        height: 100px;
+        width: 85px;  /* Evita l'effetto invasivo visto negli screenshot */
+        height: 85px;
     }
 
     .chat-desktop {
         position: fixed;
-        bottom: 130px; /* Alzata leggermente per non sovrapporsi all'avatar da 100px */
+        bottom: 115px; /* Adattata perfettamente al nuovo diametro dell'avatar */
         left: 15px;
         right: 15px;
         width: auto;
