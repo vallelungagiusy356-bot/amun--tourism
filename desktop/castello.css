@@ -348,6 +348,7 @@ html, body {
     margin-top: auto; /* Spinge l'avatar sul fondo della pagina */
     margin-left: auto; /* Lo allinea perfettamente a destra */
     z-index: 10;
+    position: relative; /* 💡 FONDAMENTALE: Fa da ancora per la chat fluttuante */
 }
 
 .castellana-video-wrapper {
@@ -358,12 +359,13 @@ html, body {
     overflow: hidden;
     border-radius: 16px; 
 }
+
 /* ==========================================================================
    7. INTERFACCIA CHAT FLOATING PREMIUM
    ========================================================================== */
 .chat-desktop {
     position: absolute;
-    bottom: 275px; 
+    bottom: 220px; /* 💡 RISOLTO: Adesso si alza esattamente da sopra la testa dell'avatar */
     right: 0;
     width: 380px;
     height: 400px;
