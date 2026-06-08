@@ -209,16 +209,24 @@ html, body {
 }
 
 /* ==========================================================================
-   5. COLONNA SINISTRA: TESTI + ABITO INTEGRATO
+   5. COLONNA SINISTRA: TESTI E STORIA (PULITA)
    ========================================================================== */
 .castle-info-panel {
     flex: 1;
-    max-width: 50%;
+    max-width: 45%; /* Ridotto leggermente per dare più respiro allo sfondo al centro */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-right: 40px;
+    padding-right: 20px;
     box-sizing: border-box;
+    /* RISOLTO: Un velo leggerissimo e sfocato che rende leggibile il testo ma mostra il video dietro */
+    background: rgba(5, 3, 2, 0.45); 
+    padding: 30px;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 215, 160, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .category-tag {
@@ -258,7 +266,7 @@ html, body {
     font-size: 1.05rem;
     line-height: 1.65;
     color: #e6e0d4;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     margin: 0;
 }
 
@@ -279,54 +287,6 @@ html, body {
     border-radius: 0 8px 8px 0;
     position: relative;
     overflow: hidden;
-}
-
-.highlight-para::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -130%;
-    width: 30%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.11) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: castleGlowLoop 12s infinite ease-in-out;
-    pointer-events: none;
-}
-
-.castle-dress-inline {
-    width: 100%;
-    max-width: 340px;
-    margin: 10px 0;
-    text-align: center;
-    background: rgba(5, 3, 2, 0.6);
-    border: 1px solid rgba(255, 215, 160, 0.25);
-    backdrop-filter: blur(4px);
-    border-radius: 12px;
-    padding: 12px;
-    position: relative;
-    overflow: hidden;
-}
-
-.dress-img-inline {
-    width: 150px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
-}
-
-.dress-caption-inline {
-    font-size: 0.8rem;
-    color: #ffd78f;
-    font-weight: 600;
-    margin-top: 6px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 /* ==========================================================================
