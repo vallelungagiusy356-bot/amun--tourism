@@ -12,7 +12,6 @@ html, body {
     overflow-x: hidden;
 }
 
-/* SFONDO - ERIDITATO DA VERSIONE DESKTOP PREMIUM HOME */
 .scene-background {
     position: fixed;
     inset: 0;
@@ -20,13 +19,13 @@ html, body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: brightness(0.75) contrast(1.1) saturate(1.1);
+    filter: brightness(0.70) contrast(1.1) saturate(1.1); /* Leggermente più scuro per staccare i testi */
     z-index: -5 !important;
     pointer-events: none;
 }
 
 /* ==========================================================================
-   2. DASHBOARD DESKTOP NERA + ORO (COERENTE HOME)
+   2. DASHBOARD DESKTOP NERA + ORO
    ========================================================================== */
 .dashboard {
     position: fixed;
@@ -74,9 +73,7 @@ html, body {
     transform: scale(1.05);
 }
 
-/* SELETTORE LINGUA */
 .lang-switcher { display: flex; gap: 12px; align-items: center; }
-
 .lang-switcher button {
     width: 42px;
     height: 42px;
@@ -89,14 +86,13 @@ html, body {
     box-shadow: 0 0 14px rgba(255, 215, 160, 0.55), inset 0 0 8px rgba(255, 215, 160, 0.45);
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
 .lang-switcher button:hover {
     background: rgba(255, 215, 160, 0.15);
     box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
 }
 
 /* ==========================================================================
-   3. STRUTTURA INTERFACCIA A CORNICE (LAYOUT SINISTRO)
+   3. STRUTTURA LAYOUT INTERFACCIA A CORNICE (SINISTRA)
    ========================================================================== */
 .citizen-frame-layout {
     width: 100%;
@@ -111,15 +107,23 @@ html, body {
 
 .citizen-left-column {
     width: 100%;
-    max-width: 580px; /* Impone una colonna fissa ed elegante lasciando libero lo sfondo al centro */
+    max-width: 680px; /* Allargata la colonna per far spazio al gruppo Descrizione + Castellana */
     display: flex;
     flex-direction: column;
+    gap: 25px;
+}
+
+/* RIGA SUPERIORE: AFFIANCAMENTO PERFETTO */
+.citizen-top-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end; /* Allinea la base della Castellana alla base del testo */
     gap: 30px;
 }
 
-/* INTRODUZIONE NARRATIVA (SENZA TECA) */
 .citizen-intro-container {
-    width: 100%;
+    flex: 1; /* Prende lo spazio necessario a sinistra */
 }
 
 .category-tag {
@@ -164,7 +168,51 @@ html, body {
 }
 
 /* ==========================================================================
-   4. GRID INTERATTIVA QUADRANTI PREMIUM 
+   4. NUOVA CASTELLANA INLINE (INSERITA A DESTRA DEL TESTO, NON PIÙ IN MEZZO)
+   ========================================================================== */
+.castellana-inline-wrapper {
+    position: relative;
+    width: 160px;          /* 💡 Dimensione aumentata e bilanciata */
+    min-width: 160px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 10;
+}
+
+.castellana-inline-wrapper:hover {
+    transform: scale(1.05);
+}
+
+.castellana-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.85));
+}
+
+/* TOOLTIP CHAT INTEGRATO SOPRA L'AVATAR */
+.castellana-tooltip {
+    position: absolute;
+    top: -40px; 
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 14px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 215, 160, 0.9);
+    border-radius: 8px;
+    color: #ffd78f;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    animation: clickHerePulse 2.6s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   5. GRID DELLE CARD (COLLOCATA SOTTO LA CASTELLANA E IL TESTO)
    ========================================================================== */
 .citizen-grid {
     display: grid;
@@ -233,92 +281,30 @@ html, body {
 }
 
 /* ==========================================================================
-   5. 🔥 VIDEO CASTELLANA 3D GRANDE (PROPORZIONI PERFETTE DELLA HOME)
-   ========================================================================== */
-.castellana-video-wrapper {
-    position: fixed;
-    top: 100px;          
-    left: 55%;           /* Stesso identico posizionamento asimmetrico spaziale della Home */
-    width: 28vw;          
-    max-width: 120px;
-    border-radius: 20px; 
-    overflow: hidden;    
-    z-index: 10 !important;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    cursor: pointer;
-}
-
-.castellana-video-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -120%;
-    width: 35%;
-    height: 200%;
-    background: linear-gradient(to right, rgba(255, 215, 160, 0) 0%, rgba(255, 215, 160, 0.20) 50%, rgba(255, 215, 160, 0) 100%);
-    transform: rotate(-45deg);
-    pointer-events: none;
-    z-index: 3; 
-    animation: desktopGlowLoop 12s infinite ease-in-out;
-}
-
-.castellana-video-wrapper:hover {
-    transform: scale(1.03);
-}
-
-.castellana-video {
-    width: 100% !important;
-    height: auto !important;
-    display: block;
-    z-index: 1; 
-    background: transparent !important;
-    filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.5)); 
-}
-
-/* TOOLTIP CHAT COERENTE */
-.castellana-tooltip {
-    position: absolute;
-    top: 260px; 
-    left: 6%;
-    padding: 12px 26px;
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.9);
-    border-radius: 14px;
-    color: #ffd78f;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-shadow: 0 0 12px rgba(255, 215, 160, 1);
-    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85), inset 0 0 12px rgba(255, 215, 160, 0.45);
-    cursor: pointer;
-    animation: clickHerePulse 2.6s ease-in-out infinite;
-    z-index: 25;
-}
-
-/* ==========================================================================
-   6. INTERFACCIA CHAT FLOATING CRISTALLINA (DESTRA)
+   6. INTERFACCIA CHAT FLOATING (AGGANCIATA A DESTRA DELLA SCHERMATA)
    ========================================================================== */
 .chat-desktop {
-    position: absolute;
-    top: 200px;
-    right: 6%;
-    width: 330px;
-    height: 320px;
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
-    -webkit-backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
+    position: fixed;
+    bottom: 40px;
+    right: 4%;
+    width: 340px;
+    height: 380px;
+    background: rgba(5, 3, 2, 0.95) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border: 2px solid rgba(255, 215, 160, 0.9);
-    border-radius: 26px;
-    box-shadow: 0 0 55px rgba(255, 215, 160, 1), inset 0 0 35px rgba(255, 215, 160, 0.45);
-    padding: 18px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    padding: 16px;
     display: none;
-    z-index: 30;
+    z-index: 999;
     box-sizing: border-box;
 }
 
 .chat-desktop.active {
     display: flex;
     flex-direction: column;
-    animation: slideInRight 0.55s ease forwards;
+    animation: slideInRight 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .chat-header {
@@ -341,80 +327,39 @@ html, body {
 
 .close-chat-btn {
     position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 28px;
-    height: 28px;
+    top: 12px;
+    right: 12px;
+    width: 26px;
+    height: 26px;
     background: #000;
     border: 1px solid #ffd78f;
-    border-radius: 8px;
+    border-radius: 6px;
     color: #ffd78f;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
-    transition: 0.2s;
 }
 
-.close-chat-btn:hover { background: rgba(255, 215, 160, 0.2); }
-
-.chat-messages {
-    flex: 1;
-    overflow-y: auto;
-    margin-bottom: 12px;
-}
-
-.message {
-    background: rgba(0, 0, 0, 0.55) !important;
-    border: 1px solid rgba(255, 215, 160, 0.55);
-    padding: 10px 14px;
-    border-radius: 12px;
-    color: #f7f2e9;
-    font-size: 0.88rem;
-    line-height: 1.4;
-}
-
+.chat-messages { flex: 1; overflow-y: auto; margin-bottom: 12px; }
+.message { background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255, 215, 160, 0.3); padding: 10px 14px; border-radius: 12px; color: #f7f2e9; font-size: 0.88rem; }
 .chat-input-row { display: flex; gap: 8px; }
-
-.chat-input-row input {
-    flex: 1;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 215, 160, 0.55);
-    background: rgba(0, 0, 0, 0.35);
-    color: #ffd78f;
-}
-
-.mic-btn {
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 215, 160, 0.75);
-    color: #ffd78f;
-    padding: 0 12px;
-    border-radius: 10px;
-    cursor: pointer;
-}
+.chat-input-row input { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid rgba(255, 215, 160, 0.55); background: rgba(0, 0, 0, 0.35); color: #ffd78f; }
+.mic-btn { background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 215, 160, 0.75); color: #ffd78f; padding: 0 12px; border-radius: 10px; cursor: pointer; }
 
 /* ==========================================================================
-   7. ANIMAZIONI & MEDIA QUERIES (RESPONSIVE ADAPTING)
+   7. ANIMAZIONI & MEDIA QUERIES
    ========================================================================== */
-@keyframes desktopGlowLoop {
-    0% { left: -120%; }
-    16% { left: 140%; }
-    100% { left: 140%; }
-}
-
 @keyframes slideInRight {
-    0% { transform: translateX(50px); opacity: 0; }
+    0% { transform: translateX(30px); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes clickHerePulse {
-    0% { scale: 1; }
-    50% { scale: 1.03; box-shadow: 0 0 25px rgba(255, 215, 160, 0.8); }
-    100% { scale: 1; }
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.05); }
+    100% { transform: translateX(-50%) scale(1); }
 }
 
 @media (max-width: 900px) {
@@ -426,33 +371,27 @@ html, body {
         padding: 90px 16px 20px 16px;
     }
 
-    .citizen-left-column {
-        max-width: 100%;
+    .citizen-left-column { max-width: 100%; }
+
+    .citizen-top-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
     }
 
-    .citizen-grid {
-        grid-template-columns: 1fr; /* Una sola colonna per card leggibili su smartphone */
+    .gold-divider { background: linear-gradient(90deg, transparent 0%, #ffd78f 50%, transparent 100%); }
+
+    .castellana-inline-wrapper {
+        width: 120px;
+        min-width: 120px;
     }
 
-    /* Su schermi piccoli l'avatar si sgancia e passa in modalità widget discreto */
-    .castellana-video-wrapper {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        top: auto;
-        left: auto;
-        width: 85px;
-        height: 85px;
-        border-radius: 50%;
-        border: 2px solid #ffd78f;
-    }
-
-    .castellana-tooltip { display: none; } /* Rimuove la scritta ingombrante su mobile */
+    .citizen-grid { grid-template-columns: 1fr; }
 
     .chat-desktop {
         position: fixed;
-        bottom: 120px;
-        top: auto;
+        bottom: 20px;
         left: 16px;
         right: 16px;
         width: auto;
