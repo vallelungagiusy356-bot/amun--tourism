@@ -2,25 +2,22 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <!-- CORREZIONE: Sbloccato il viewport per rendere la pagina reattiva al 100% su smartphone -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="citizen.title"></title>
+    <meta name="viewport" content="width=1024">
+    <title data-i18n="citizen.title">Amunì Tourism - Cittadino del Borgo</title>
     <link rel="stylesheet" href="cittadino.css">
 </head>
 <body>
 
-    <!-- DASHBOARD DESKTOP COMPLETA -->
-    <header class="dashboard">
-        <!-- TITOLO / LOGO -->
-        <div class="logo-title" data-i18n="menu.title"></div>
+    <div class="scene-background"></div>
 
-        <!-- MENU DESKTOP UNIFORMATO -->
+    <header class="dashboard">
+        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+
         <nav class="nav-desktop">
-            <a href="about.html" class="home-btn" data-i18n="menu.about"></a>
-            <a href="contact.html" class="home-btn" data-i18n="menu.contact"></a>
+            <a href="about.html" data-i18n="menu.about">About</a>
+            <a href="contact.html" data-i18n="menu.contact">Contact</a>
         </nav>
 
-        <!-- SELETTORE LINGUE -->
         <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
@@ -29,69 +26,112 @@
             <button data-lang="es">🇪🇸</button>
         </div>
 
-        <!-- PULSANTE HOME -->
         <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
     </header>
 
-    <!-- INTRODUZIONE NARRATIVA (Dà un senso e un'anima alla pagina prima della griglia) -->
-    <div class="citizen-intro-container">
-        <span class="category-tag" data-i18n="citizen.tag"></span>
-        <h1 class="main-title" data-i18n="citizen.main_heading"></h1>
-        <div class="gold-divider"></div>
-        <p class="text-paragraph leading-para" data-i18n="citizen.intro_text"></p>
+    <div class="citizen-frame-layout">
+        
+        <div class="citizen-left-column">
+            <div class="citizen-intro-container">
+                <span class="category-tag" data-i18n="citizen.tag">Diventa parte del borgo</span>
+                <h1 class="main-title" data-i18n="citizen.main_heading">Cittadino del Borgo</h1>
+                <div class="gold-divider"></div>
+                <p class="text-paragraph leading-para" data-i18n="citizen.intro_text">
+                    Esplora le tradizioni storiche, la cucina tipica e l'artigianato locale di Caccamo. Scegli un quadrante per iniziare il tuo viaggio.
+                </p>
+            </div>
+
+            <main class="citizen-grid">
+                
+                <section class="quadrant" onclick="window.location.href='castello.html'" role="button" tabindex="0">
+                    <div class="card-glow-effect"></div>
+                    <div class="card-icon-wrapper">
+                        <img src="img/icone/tradizioni.webp" alt="" loading="lazy" class="citizen-icon">
+                    </div>
+                    <div class="card-text-block">
+                        <h2 data-i18n="citizen.legends_title">Tradizioni e Leggende</h2>
+                        <p class="card-description" data-i18n="citizen.legends_desc">I racconti popolari e i miti tramandati nel tempo.</p>
+                    </div>
+                </section>
+
+                <section class="quadrant" onclick="window.location.href='castello.html'" role="button" tabindex="0">
+                    <div class="card-glow-effect"></div>
+                    <div class="card-icon-wrapper">
+                        <img src="img/icone/cucina.webp" alt="" loading="lazy" class="citizen-icon">
+                    </div>
+                    <div class="card-text-block">
+                        <h2 data-i18n="citizen.castle_title">Enogastronomia</h2>
+                        <p class="card-description" data-i18n="citizen.castle_desc">I sapori autentici e le ricette storiche del borgo.</p>
+                    </div>
+                </section>
+
+                <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
+                    <div class="card-glow-effect"></div>
+                    <div class="card-icon-wrapper">
+                        <img src="img/icone/artigianato.webp" alt="" loading="lazy" class="citizen-icon">
+                    </div>
+                    <div class="card-text-block">
+                        <h2 data-i18n="citizen.church_title">Artigianato Storico</h2>
+                        <p class="card-description" data-i18n="citizen.church_desc">Le antiche arti manuali dei maestri di Caccamo.</p>
+                    </div>
+                </section>
+
+                <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
+                    <div class="card-glow-effect"></div>
+                    <div class="card-icon-wrapper">
+                        <img src="img/icone/eventi.webp" alt="" loading="lazy" class="citizen-icon">
+                    </div>
+                    <div class="card-text-block">
+                        <h2 data-i18n="citizen.food_title">Eventi e Folklore</h2>
+                        <p class="card-description" data-i18n="citizen.food_desc">Le rievocazioni storiche e le feste patronali.</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+
     </div>
 
-    <!-- MAIN CON CSS GRID E STRUTTURA CARD PREMIUM -->
-    <main class="citizen-grid">
-        
-        <!-- 1° QUADRANTE — LEGGENDE -->
-        <section class="quadrant" onclick="window.location.href='castello.html'" role="button" tabindex="0">
-            <div class="card-glow-effect"></div>
-            <div class="card-icon-wrapper">
-                <img src="img/icone/tradizioni.webp" alt="" loading="lazy" class="citizen-icon">
-            </div>
-            <div class="card-text-block">
-                <h2 data-i18n="citizen.legends_title"></h2>
-                <p class="card-description" data-i18n="citizen.legends_desc"></p>
-            </div>
-        </section>
+    <div id="castellana-3d"></div>
 
-        <!-- 2° QUADRANTE — CASTELLO -->
-        <section class="quadrant castle-card" onclick="window.location.href='castello.html'" role="button" tabindex="0">
-            <div class="card-glow-effect"></div>
-            <div class="card-icon-wrapper">
-                <img src="img/icone/cucina.webp" alt="" loading="lazy" class="citizen-icon">
-            </div>
-            <div class="card-text-block">
-                <h2 data-i18n="citizen.castle_title"></h2>
-                <p class="card-description" data-i18n="citizen.castle_desc"></p>
-            </div>
-        </section>
+    <div class="castellana-video-wrapper" id="chat-open-btn">
+        <video class="castellana-video" autoplay muted loop playsinline>
+            <source src="img/castellana_alpha.webm" type="video/webm">
+        </video>
+        <div class="castellana-tooltip">Click to chat</div>
+    </div>
 
-        <!-- 3° QUADRANTE — CHIESE -->
-        <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
-            <div class="card-glow-effect"></div>
-            <div class="card-icon-wrapper">
-                <img src="img/icone/artigianato.webp" alt="" loading="lazy" class="citizen-icon">
-            </div>
-            <div class="card-text-block">
-                <h2 data-i18n="citizen.church_title"></h2>
-                <p class="card-description" data-i18n="citizen.church_desc"></p>
-            </div>
-        </section>
+    <div class="chat-desktop" id="chat-desktop">
+        <div class="chat-header">
+            <span data-i18n="chat.title">La Castellana</span>
+            <button id="close-chat" class="close-chat-btn">✕</button>
+        </div>
 
-        <!-- 4° QUADRANTE — CIBO + EVENTI -->
-        <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
-            <div class="card-glow-effect"></div>
-            <div class="card-icon-wrapper">
-                <img src="img/icone/eventi.webp" alt="" loading="lazy" class="citizen-icon">
-            </div>
-            <div class="card-text-block">
-                <h2 data-i18n="citizen.food_title"></h2>
-                <p class="card-description" data-i18n="citizen.food_desc"></p>
-            </div>
-        </section>
-    </main>
+        <div class="chat-messages">
+            <div class="message" data-i18n="chat.citizen_msg1">Benvenuto nella sezione del cittadino! Esplora le card a sinistra o chiedimi dettagli su eventi e tradizioni del borgo.</div>
+        </div>
+
+        <div class="chat-input-row">
+            <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+            <button class="mic-btn">🎤</button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const chat = document.getElementById("chat-desktop");
+        const closeBtn = document.getElementById("close-chat");
+        const openBtn = document.getElementById("chat-open-btn");
+
+        openBtn.addEventListener("click", () => {
+            chat.classList.add("active");
+        });
+
+        closeBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Impedisce al click di attivare anche il wrapper superiore
+            chat.classList.remove("active");
+        });
+    });
+    </script>
 
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
@@ -105,14 +145,17 @@
                     const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
                     if (text) el.innerHTML = text;
                 });
-
+                document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                    const key = el.getAttribute("data-i18n-placeholder");
+                    const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                    if (text) el.placeholder = text;
+                });
                 document.querySelectorAll(".lang-switcher button").forEach(btn => {
                     if (btn.dataset.lang === lang) btn.classList.add("active");
                     else btn.classList.remove("active");
                 });
             })
             .catch(err => console.error("Errore nel file lingua:", err));
-
         localStorage.setItem("lang", lang);
     }
 
