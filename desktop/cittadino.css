@@ -237,10 +237,10 @@ html, body {
    ========================================================================== */
 .castellana-video-wrapper {
     position: fixed;
-    top: 200px;          
+    top: 100px;          
     left: 55%;           /* Stesso identico posizionamento asimmetrico spaziale della Home */
     width: 28vw;          
-    max-width: 320px;
+    max-width: 120px;
     border-radius: 20px; 
     overflow: hidden;    
     z-index: 10 !important;
@@ -252,7 +252,7 @@ html, body {
     content: '';
     position: absolute;
     top: -50%;
-    left: -120%;
+    right: -120%;
     width: 35%;
     height: 200%;
     background: linear-gradient(to right, rgba(255, 215, 160, 0) 0%, rgba(255, 215, 160, 0.20) 50%, rgba(255, 215, 160, 0) 100%);
