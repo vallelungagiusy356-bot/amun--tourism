@@ -27,9 +27,15 @@ html, body {
     height: 100vh;
     object-fit: cover;
     display: block;
-    opacity: 1; /* ✨ Riportato a 1: il video torna totalmente visibile sopra l'oro */
+    
+    /* ✨ REGOLA L'OPACITÀ QUI: */
+    opacity: 1; /* Portala a 1 per vedere lo sfondo originale nitido, senza coperture dell'oro */
+    
+    /* Comandi di accelerazione hardware per il caricamento istantaneo */
     will-change: transform;
+    transform: translate3d(0, 0, 0);
 }
+
 
 
 /* ==========================================================================
