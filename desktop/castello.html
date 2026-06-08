@@ -8,14 +8,12 @@
 </head>
 <body>
 
-    <!-- 🎬 SFONDO DINAMICO -->
     <div class="scene-background-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -9999; background: black;">
         <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
-            <source src="img/video_castello.webm" type="video/mp4">
+            <source src="img/video_castello.webm" type="video/webm">
         </video>
     </div>
 
-    <!-- 👑 DASHBOARD -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         
@@ -37,10 +35,8 @@
         </div>
     </header>
 
-    <!-- 🏰 CORPO PRINCIPALE -->
     <main class="castle-layout">
         
-        <!-- 📝 COLONNA SINISTRA: TESTI + ABITO INTEGRATO -->
         <section class="castle-info-panel">
             <div class="info-panel-header">
                 <span class="category-tag" data-i18n="castle.category">Monumenti Storici</span>
@@ -54,7 +50,6 @@
                     Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
                 </p>
 
-                <!-- 👗 ABITO INTEGRATO NEL TESTO -->
                 <div class="castle-dress-inline">
                     <img src="img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
                     <p class="dress-caption-inline" data-i18n="castle.dress_caption">L'abito della Castellana</p>
@@ -64,12 +59,11 @@
                     Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
                 </p>
                 <p class="text-paragraph highlight-para" data-i18n="castle.para_3">
-                    Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
+                    Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per revelar ti ogni segreto di questo luogo senza tempo.
                 </p>
             </div>
         </section>
 
-        <!-- 👑 COLONNA DESTRA: CASTELLANA + CHAT -->
         <section class="castle-interactive-zone">
             
             <div class="castellana-video-container">
@@ -81,7 +75,6 @@
                 </div>
             </div>
 
-            <!-- 💬 CHAT -->
             <div class="chat-desktop" id="chatDesktop">
                 <div class="chat-header">
                     <div class="avatar-status-dot"></div>
@@ -90,7 +83,6 @@
                 </div>
                 
                 <div class="chat-messages" id="chatMessagesBox">
-                    <!-- Svuotato il testo cablato: viene gestito totalmente dal JSON multilingua -->
                     <div class="message system-msg" data-i18n="castle.welcomemsg_felicia"></div>
                 </div>
                 
@@ -98,19 +90,27 @@
                     <input type="text" placeholder="Scrivi alla Castellana..." id="chatInput" data-i18n-placeholder="chat.placeholder">
                     <div class="input-actions">
                         <button class="mic-btn" title="Attiva Microfono">🎤</button>
+                        <button class="send-btn" id="sendMsgBtn" title="Invia Messaggio">➔</button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 🌍 SCRIPT MULTILINGUA -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
     
     function loadLanguage(lang) {
-         fetch(`../lang/${lang}.json`)
-            .then(res => res.json())
+         // Nota: Se la cartella lang è nella root insieme a index.html, usa lo stesso percorso (es: `lang/${lang}.json`)
+         fetch(`lang/${lang}.json`)
+            .then(res => {
+                if (!res.ok) throw new Error("File non trovato con il percorso standard, provo con il percorso relativo superiore...");
+                return res.json();
+            })
+            .catch(() => {
+                // Fallback di sicurezza: se la pagina è dentro una sottocartella, prova a risalire
+                return fetch(`../lang/${lang}.json`).then(res => res.json());
+            })
             .then(data => {
                 document.querySelectorAll("[data-i18n]").forEach(el => {
                     const key = el.getAttribute("data-i18n");
@@ -123,13 +123,12 @@
                     if (text) el.placeholder = text;
                 });
                 
-                // Mantiene sincronizzato lo stato visivo dei bottoni lingua
                 document.querySelectorAll(".lang-switcher button").forEach(btn => {
                     if(btn.dataset.lang === lang) btn.classList.add("active");
                     else btn.classList.remove("active");
                 });
             })
-            .catch(err => console.error("Errore nel caricamento della lingua:", err));
+            .catch(err => console.error("Impossibile caricare il dizionario multilingua:", err));
         localStorage.setItem("lang", lang);
     }
     
@@ -143,7 +142,6 @@
     });
     </script>
 
-    <!-- 🛠️ LOGICA CHAT -->
     <script>
     const castellanaVideo = document.getElementById("castellanaVideo");
     const castellanaTooltip = document.getElementById("castellanaTooltip");
