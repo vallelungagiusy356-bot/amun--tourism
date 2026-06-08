@@ -29,81 +29,63 @@
         <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
     </header>
 
+    <!-- Struttura centrale per il testo introduttivo -->
     <div class="citizen-frame-layout">
-        
-        <div class="citizen-left-column">
-            
-            <!-- 🏛️ NUOVA RIGA SUPERIORE: Testo a sinistra e Castellana a destra affiancati -->
-            <div class="citizen-top-row">
-                <div class="citizen-intro-container">
-                    <span class="category-tag" data-i18n="citizen.tag">Diventa parte del borgo</span>
-                    <h1 class="main-title" data-i18n="citizen.main_heading">Cittadino del Borgo</h1>
-                    <div class="gold-divider"></div>
-                    <p class="text-paragraph leading-para" data-i18n="citizen.intro_text">
-                        Esplora le tradizioni storiche, la cucina tipica e l'artigianato locale di Caccamo. Scegli un quadrante per iniziare il tuo viaggio.
-                    </p>
-                </div>
-
-                <!-- 🔑 La Castellana integrata nel flusso accanto al testo -->
-                <div class="castellana-inline-wrapper" id="chat-open-btn">
-                    <video class="castellana-video" autoplay muted loop playsinline>
-                        <source src="img/castellana_alpha.webm" type="video/webm">
-                    </video>
-                    <div class="castellana-tooltip">Click to chat</div>
-                </div>
-            </div>
-
-            <!-- 🗂️ GRID DELLE CARD DISPOSTE SOTTO -->
-            <main class="citizen-grid">
-                <section class="quadrant" onclick="window.location.href='castello.html'" role="button" tabindex="0">
-                    <div class="card-glow-effect"></div>
-                    <div class="card-icon-wrapper">
-                        <img src="img/icone/tradizioni.webp" alt="" loading="lazy" class="citizen-icon">
-                    </div>
-                    <div class="card-text-block">
-                        <h2 data-i18n="citizen.legends_title">Tradizioni e Leggende</h2>
-                        <p class="card-description" data-i18n="citizen.legends_desc">I racconti popolari e i miti tramandati nel tempo.</p>
-                    </div>
-                </section>
-
-                <section class="quadrant" onclick="window.location.href='castello.html'" role="button" tabindex="0">
-                    <div class="card-glow-effect"></div>
-                    <div class="card-icon-wrapper">
-                        <img src="img/icone/cucina.webp" alt="" loading="lazy" class="citizen-icon">
-                    </div>
-                    <div class="card-text-block">
-                        <h2 data-i18n="citizen.castle_title">Enogastronomia</h2>
-                        <p class="card-description" data-i18n="citizen.castle_desc">I sapori autentici e le ricette storiche del borgo.</p>
-                    </div>
-                </section>
-
-                <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
-                    <div class="card-glow-effect"></div>
-                    <div class="card-icon-wrapper">
-                        <img src="img/icone/artigianato.webp" alt="" loading="lazy" class="citizen-icon">
-                    </div>
-                    <div class="card-text-block">
-                        <h2 data-i18n="citizen.church_title">Artigianato Storico</h2>
-                        <p class="card-description" data-i18n="citizen.church_desc">Le antiche arti manuali dei maestri di Caccamo.</p>
-                    </div>
-                </section>
-
-                <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
-                    <div class="card-glow-effect"></div>
-                    <div class="card-icon-wrapper">
-                        <img src="img/icone/eventi.webp" alt="" loading="lazy" class="citizen-icon">
-                    </div>
-                    <div class="card-text-block">
-                        <h2 data-i18n="citizen.food_title">Eventi e Folklore</h2>
-                        <p class="card-description" data-i18n="citizen.food_desc">Le rievocazioni storiche e le feste patronali.</p>
-                    </div>
-                </section>
-            </main>
+        <div class="citizen-intro-container">
+            <span class="category-tag" data-i18n="citizen.tag">Diventa parte del borgo</span>
+            <h1 class="main-title" data-i18n="citizen.main_heading">Cittadino del Borgo</h1>
+            <div class="gold-divider"></div>
+            <p class="text-paragraph leading-para" data-i18n="citizen.intro_text">
+                Esplora le tradizioni storiche, la cucina tipica e l'artigianato locale di Caccamo. Scegli un quadrante per iniziare il tuo viaggio.
+            </p>
         </div>
-
     </div>
 
-    <!-- CHAT FLOATING PREMIUM -->
+    <!-- 🗂️ GRID AL CENTRO DELLA PAGINA (Abbassata, allargata e senza immagini rotte) -->
+    <main class="citizen-centered-grid">
+        
+        <section class="quadrant" onclick="window.location.href='castello.html'" role="button" tabindex="0">
+            <div class="card-glow-effect"></div>
+            <div class="card-text-block">
+                <h2 data-i18n="citizen.legends_title">Tradizioni e Leggende</h2>
+                <p class="card-description" data-i18n="citizen.legends_desc">I racconti popolari e i miti tramandati nel tempo.</p>
+            </div>
+        </section>
+
+        <section class="quadrant" onclick="window.location.href='castello.html'" role="button" tabindex="0">
+            <div class="card-glow-effect"></div>
+            <div class="card-text-block">
+                <h2 data-i18n="citizen.castle_title">Enogastronomia</h2>
+                <p class="card-description" data-i18n="citizen.castle_desc">I sapori autentici e le ricette storiche del borgo.</p>
+            </div>
+        </section>
+
+        <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
+            <div class="card-glow-effect"></div>
+            <div class="card-text-block">
+                <h2 data-i18n="citizen.church_title">Artigianato Storico</h2>
+                <p class="card-description" data-i18n="citizen.church_desc">Le antiche arti manuali dei maestri di Caccamo.</p>
+            </div>
+        </section>
+
+        <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
+            <div class="card-glow-effect"></div>
+            <div class="card-text-block">
+                <h2 data-i18n="citizen.food_title">Eventi e Folklore</h2>
+                <p class="card-description" data-i18n="citizen.food_desc">Le rievocazioni storiche e le feste patronali.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 👑 LA CASTELLANA: Spostata molto più a destra e abbassata -->
+    <div class="castellana-video-wrapper" id="chat-open-btn">
+        <video class="castellana-video" autoplay muted loop playsinline>
+            <source src="img/castellana_alpha.webm" type="video/webm">
+        </video>
+        <div class="castellana-tooltip">Click to chat</div>
+    </div>
+
+    <!-- Interfaccia Chat Fluttuante -->
     <div class="chat-desktop" id="chat-desktop">
         <div class="chat-header">
             <div class="avatar-status-dot"></div>
@@ -111,7 +93,7 @@
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
         <div class="chat-messages">
-            <div class="message" data-i18n="chat.citizen_msg1">Benvenuto nella sezione del cittadino! Esplora le card a sinistra o chiedimi dettagli su eventi e tradizioni del borgo.</div>
+            <div class="message" data-i18n="chat.citizen_msg1">Benvenuto nella sezione del cittadino! Esplora le card al centro o chiedimi dettagli su eventi e tradizioni del borgo.</div>
         </div>
         <div class="chat-input-row">
             <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
@@ -119,7 +101,6 @@
         </div>
     </div>
 
-    <!-- I tuoi script JavaScript rimangono invariati qui sotto -->
     <script>
     document.addEventListener("DOMContentLoaded", () => {
         const chat = document.getElementById("chat-desktop");
@@ -136,6 +117,7 @@
         });
     });
     </script>
+
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
     function loadLanguage(lang) {
@@ -160,6 +142,7 @@
             .catch(err => console.error("Errore nel file lingua:", err));
         localStorage.setItem("lang", lang);
     }
+
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".lang-switcher button").forEach(btn => {
             btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
