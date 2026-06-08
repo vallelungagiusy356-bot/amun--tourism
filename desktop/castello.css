@@ -160,7 +160,7 @@ html, body {
 
 .castle-info-panel {
     width: 100%;
-    max-width: 650px; /* Larghezza ottimizzata per la lettura su desktop */
+    max-width: 580px; /* 💡 Ridotto del 5% per occupare meno spazio su desktop e stringere il layout */
     background: rgba(5, 3, 2, 0.55); 
     padding: 30px;
     border-radius: 16px;
@@ -173,6 +173,7 @@ html, body {
     flex-direction: column;
     gap: 20px;
 }
+
 
 .text-paragraph {
     font-size: 1.05rem;
