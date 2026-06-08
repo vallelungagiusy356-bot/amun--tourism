@@ -8,7 +8,8 @@ html, body {
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
     color: #ffe7b3;
-    background: #000; 
+    /* 💡 RISOLTO: Impostato trasparente per permettere al video sottostante di vedersi */
+    background: transparent !important; 
     overflow-x: hidden;
 }
 
@@ -18,8 +19,11 @@ html, body {
 .scene-background-container {
     position: fixed;
     inset: 0;
-    z-index: -2;
+    /* 💡 RISOLTO: Spostato a -5 per garantire che stia sotto il corpo trasparente */
+    z-index: -5 !important;
     overflow: hidden;
+    /* Fallback di sicurezza nero: si attiva solo se il video fallisce o è in caricamento */
+    background-color: #000; 
 }
 
 .scene-background-video {
@@ -33,10 +37,10 @@ html, body {
     content: '';
     position: absolute;
     inset: 0;
-    /* Un gradiente più calibrato sui lati per non scurire il centro dell'azione */
+    /* Gradiente calibrato per incorniciare senza scurire l'azione centrale del borgo */
     background: linear-gradient(90deg, rgba(5, 3, 2, 0.6) 0%, rgba(5, 3, 2, 0) 50%),
                 linear-gradient(180deg, rgba(5, 3, 2, 0.7) 0%, rgba(5, 3, 2, 0.3) 100%);
-    z-index: -1;
+    z-index: 1; /* Sopra il tag video interno, ma sotto i testi della pagina */
     pointer-events: none; 
 }
 
@@ -165,7 +169,7 @@ html, body {
 /* 🏛️ LA TECA DIETRO LA SCRITTA È STATA COMPLETAMENTE ELIMINATA */
 .castle-info-panel {
     width: 100%;
-    max-width: 380px; /* 💡 Larghezza ridotta per forzare lo sviluppo verticale e stretto */
+    max-width: 380px; /* Larghezza ridotta per forzare lo sviluppo verticale e stretto */
     background: none !important; 
     padding: 0 !important;
     border-radius: 0 !important;
@@ -240,7 +244,7 @@ html, body {
 }
 
 /* ==========================================================================
-   6. CASTELLANA WIDGET (DIMENSIONI RIDOTTE - PIXEL CONTENUTI)
+   6. CASTELLANA WIDGET (PULSANTE CHAT DA 110PX)
    ========================================================================== */
 .castellana-widget-area {
     position: fixed;
@@ -258,7 +262,6 @@ html, body {
     justify-content: center;
 }
 
-/* 💡 Ridotti i pixel drasticamente da 250px a 110px per non coprire lo sfondo */
 .castellana-video-wrapper {
     width: 110px;   
     height: 110px;
@@ -380,7 +383,7 @@ html, body {
 
     .castle-main-content {
         flex-direction: column; 
-        align-items: flex-start; /* Mantiene l'allineamento a sinistra della cornice */
+        align-items: flex-start; 
         gap: 20px;
     }
     
@@ -398,7 +401,6 @@ html, body {
         right: 15px;
     }
 
-    /* Avatar microscopico e pulito per non impattare sul mobile */
     .castellana-video-wrapper {
         width: 70px;  
         height: 70px;
