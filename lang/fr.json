@@ -1,7 +1,7 @@
 {
   "menu": {
     "title": "Amunì Tourism",
-    "citizen": "Citoyen du bourg",
+    "citizen": "Communauté Locale",
     "about": "Qui sommes-nous",
     "contact": "Contacts",
     "eat": "Manger",
@@ -26,7 +26,7 @@
     "msg2": "Êtes-vous prêt à vous laisser guider ? L'art, l'huile d'olive dorée et les amandes douces vous raviront.",
     "placeholder": "Écrivez un message..."
   },
-    "citizen": {
+  "citizen": {
     "tag": "Communauté Locale",
     "main_heading": "Citoyen du Bourg",
     "intro_text": "Le cœur battant d'Amunì réside en ceux qui vivent le bourg au quotidien. Gardiens d'histoires anciennes, de saveurs transmises et de secrets cachés entre les pierres des ruelles.",
@@ -55,7 +55,6 @@
     "event_salsiccia": "Fête de la Saucisse",
     "event_beato": "Fête du Bienheureux Giovanni"
   },
-
   "castle": {
     "title": "Le Château de Caccamo",
     "position": "Une forteresse perchée sur un éperon rocheux, avec une vue dominante sur la vallée.",
@@ -85,7 +84,7 @@
     },
     "castello": {
       "title": "Le Château de Caccamo",
-      "description": "Le Château de Caccamo est l'une des plus grandes et des mieux conservées des forteresses normandes de Sicile. Perché sur la roche vive depuis le XIe siècle, il domine la vallée du San Leonardo avec ses remparts imposants, ses tours de guet et ses salons intérieurs suggestifs qui évoquent des siècles d'histoire féodale et de légendes chevaleresques.",
+      "description": "Le Château de Caccamo est l'un des plus grandes et des mieux conservées des forteresses normandes de Sicile. Perché sur la roche vive depuis le XIe siècle, il domine la vallée du San Leonardo avec ses remparts imposants, ses tours de guet et ses salons intérieurs suggestifs qui évoquent des siècles d'histoire féodale et de légendes chevaleresques.",
       "hours": "Tous les jours : 09h30 – 13h00 / 15h00 – 19h00",
       "tickets": "Plein tarif 6,00 € | Tarif réduit 4,50 € (Exclusivement sur réservation en ligne)"
     },
