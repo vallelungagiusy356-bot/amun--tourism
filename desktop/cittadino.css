@@ -206,18 +206,28 @@ html, body {
 
 .castellana-tooltip {
     position: absolute;
-    top: -35px;
+    top: -40px;
     left: 50%;
     transform: translateX(-50%);
     padding: 6px 14px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(255, 215, 160, 0.9);
     border-radius: 8px;
     color: #ffd78f;
     font-size: 0.75rem;
     font-weight: 700;
     white-space: nowrap;
+    opacity: 0; /* Inizialmente nascosto */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    z-index: 9999;
     animation: tooltipPulse 2.6s ease-in-out infinite;
+}
+
+/* 🛠️ RITOCCO: Mostra il tooltip quando si passa sopra con il mouse */
+.castellana-video-wrapper:hover .castellana-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-3px);
 }
 
 .chat-desktop {
@@ -253,50 +263,88 @@ html, body {
 
 /* 📱 MODALITÀ: VERTICALE SMARTPHONE (Portrait) */
 @media screen and (max-width: 900px) and (orientation: portrait) {
-    .nav-desktop { display: none; }
-    .dashboard { padding: 0 20px; }
+    /* 🛠️ RITOCCO: Ristrutturazione dashboard per evitare sovrapposizioni e sbloccare il tasto Home */
+    .dashboard { 
+        flex-direction: column; 
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 10px;
+        height: auto; 
+        position: relative;
+    }
+    
+    .dashboard .logo-title {
+        font-size: 1.3rem;
+        margin-bottom: 2px;
+    }
 
-    .citizen-frame-layout { padding: 100px 16px 0px 16px; }
+    .nav-desktop { display: none; }
+    
+    .lang-switcher {
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .lang-switcher button {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .dashboard .home-btn {
+        width: 100%;
+        max-width: 200px;
+        padding: 8px 0;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .citizen-frame-layout { padding: 30px 16px 0px 16px; }
     .main-title { font-size: 2.1rem; text-align: center; }
     .text-paragraph { text-align: center; font-size: 1rem; }
 
-    /* Le card occupano tutto lo schermo, eliminando i vuoti laterali del desktop */
     .citizen-centered-grid {
         grid-template-columns: 1fr;
         gap: 18px;
         width: 100%;
         max-width: 100%;
-        margin: 30px auto 180px auto; /* Spazio sul fondo per l'avatar gigante */
+        margin: 30px auto 160px auto; 
         padding: 0 12px;
     }
 
     .quadrant { min-height: 120px; padding: 24px 20px; }
 
-    /* Raddoppio volumetrico dell'avatar della Castellana in verticale */
+    /* 🛠️ RITOCCO: Castellana bloccata rigidamente e stabilmente in fondo allo schermo */
     .castellana-video-wrapper {
-        position: fixed;
-        bottom: 15px;
-        right: 4%;
-        width: 160px; /* Dimensione raddoppiata e visibile rispetto al bug */
+        position: fixed !important;
+        bottom: 0px !important;
+        right: 0px !important;
+        left: auto !important;
+        top: auto !important;
+        width: 140px; 
         height: auto;
         z-index: 1000;
     }
-    .castellana-tooltip { display: none; }
+    
+    /* Mantiene il tooltip nascosto per usabilità sui touchscreen verticali */
+    .castellana-video-wrapper:hover .castellana-tooltip { display: none; opacity: 0; }
 
     /* Gestione Chat Mobile */
     .chat-desktop {
         position: fixed;
-        bottom: 190px;
+        bottom: 150px;
         left: 12px;
         right: 12px;
         width: auto;
-        height: 40vh;
+        height: 45vh;
+        z-index: 9999;
     }
 }
 
 /* 🔄 MODALITÀ: ORIZZONTALE SMARTPHONE (Landscape) */
 @media screen and (max-height: 600px) and (orientation: landscape) {
-    .dashboard { height: 50px; padding: 0 20px; }
+    .dashboard { height: 50px; padding: 0 20px; position: fixed; }
     .dashboard .logo-title { font-size: 1.15rem; }
     .nav-desktop { display: none; }
     .lang-switcher button { width: 32px; height: 32px; font-size: 0.95rem; }
@@ -306,12 +354,11 @@ html, body {
     .main-title { font-size: 1.6rem; }
     .leading-para { font-size: 0.9rem; }
 
-    /* CARD FISSE disposte sul lato sinistro */
     .citizen-centered-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 14px;
         width: 100%;
-        max-width: 68%; /* Blocco rigido per lasciare spazio a destra */
+        max-width: 68%; 
         margin: 15px 0 25px 20px;
         padding: 0;
     }
@@ -320,7 +367,6 @@ html, body {
     .card-text-block h2 { font-size: 1.05rem; margin-bottom: 3px; }
     .card-description { font-size: 0.8rem; line-height: 1.3; }
 
-    /* CASTELLANA FISSA: Ancorata rigidamente in basso a destra delle card */
     .castellana-video-wrapper {
         position: fixed;
         bottom: 12px;
@@ -331,22 +377,22 @@ html, body {
         height: auto;
         z-index: 1000;
     }
-    .castellana-tooltip { display: none; }
+    
+    /* Mantiene il tooltip nascosto anche in landscape per non intascare l'interfaccia stretta */
+    .castellana-video-wrapper:hover .castellana-tooltip { display: none; opacity: 0; }
 
-    /* CHAT FISSA: Si apre a SINISTRA della Castellana e SOTTO la linea delle card */
     .chat-desktop {
         position: fixed;
-        bottom: 12px; /* Allineamento millimetrico al fondo dell'avatar */
-        right: calc(2% + 140px); /* Margine destro + larghezza totale dell'involucro video */
+        bottom: 12px; 
+        right: calc(2% + 140px); 
         left: auto;
         top: auto;
         width: 280px;
-        height: 160px; /* Bassa per scivolare sotto i quadranti delle card */
+        height: 160px; 
         background: rgba(10, 6, 4, 0.98) !important;
         box-shadow: -12px 0 35px rgba(0, 0, 0, 0.85);
     }
 
-    /* Adattamento micro-interfaccia chat landscape */
     .chat-header { margin-bottom: 4px; font-size: 0.8rem; }
     .close-chat-btn { top: 6px; right: 6px; font-size: 0.75rem; }
     .chat-messages { margin-bottom: 6px; }
