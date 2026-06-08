@@ -247,8 +247,8 @@ html, body {
 }
 
 .castellana-video-wrapper {
-    width: 150px;   /* 💡 Ottima scelta, ora è ben visibile! */
-    height: 150px;
+    width: 250px;   /* 💡 Ottima scelta, ora è ben visibile! */
+    height: 250px;
     position: relative;
     cursor: pointer;
     border-radius: 50%;
