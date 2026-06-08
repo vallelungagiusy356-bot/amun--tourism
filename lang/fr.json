@@ -26,7 +26,10 @@
     "msg2": "Êtes-vous prêt à vous laisser guider ? L'art, l'huile d'olive dorée et les amandes douces vous raviront.",
     "placeholder": "Écrivez un message..."
   },
-  "citizen": {
+    "citizen": {
+    "tag": "Communauté Locale",
+    "main_heading": "Citoyen du Bourg",
+    "intro_text": "Le cœur battant d'Amunì réside en ceux qui vivent le bourg au quotidien. Gardiens d'histoires anciennes, de saveurs transmises et de secrets cachés entre les pierres des ruelles.",
     "legends_title": "Légendes et Racines",
     "legends_desc": "Les histoires les plus anciennes du bourg, transmises de génération en génération.",
     "legend_felicia": "La légende de Sœur Felicia",
@@ -37,12 +40,12 @@
     "castle_desc": "Une forteresse millénaire : conjurations, meurtrières, tunnels secrets, prisons et batailles épiques.",
     "castle_more": "Découvrez le Château",
     "church_title": "Églises et Art",
-    "church_desc": "Un voyage entre catacombes, traditions, patrons et anciennes dévotions.",
+    "church_desc": "Un voyage à travers les catacombes, les traditions, les saints patrons et les dévotions anciennes.",
     "church_catacombs": "Les catacombes et les cryptes cachées",
-    "church_sangiuseppe": "La gratinata rouge de Saint Joseph",
-    "church_sepolcri": "Les sépulcres avec le blé en fleur",
+    "church_sangiuseppe": "La gratinata rouge de San Giuseppe",
+    "church_sepolcri": "Les sépulcres avec du blé en fleur",
     "food_title": "Nourriture et Événements",
-    "food_desc": "Saveurs authentiques, lieux où manger et vivre le bourg.",
+    "food_desc": "Saveurs authentiques, endroits où manger et vivre l'atmosphère du bourg.",
     "food_arancine": "Où déguster d'excellentes arancine",
     "food_cocktail": "Cocktails avec DJ toute l'année",
     "food_aperitivo": "Apéritifs panoramiques (été seulement)",
@@ -50,8 +53,9 @@
     "event_castellana": "La Castellana",
     "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Fête de la Saucisse",
-    "event_beato": "Fête du Beato Giovanni"
+    "event_beato": "Fête du Bienheureux Giovanni"
   },
+
   "castle": {
     "title": "Le Château de Caccamo",
     "position": "Une forteresse perchée sur un éperon rocheux, avec une vue dominante sur la vallée.",
