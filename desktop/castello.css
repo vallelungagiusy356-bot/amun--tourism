@@ -290,88 +290,74 @@ html, body {
 }
 
 /* ==========================================================================
-   6. COLONNA DESTRA: AREA CASTELLANA INTERATTIVA
+   6. COLONNA DESTRA: INTERATTIVA (TECA IN ALTO, AVATAR IN BASSO)
    ========================================================================== */
 .castle-interactive-zone {
     flex: 1;
     max-width: 50%;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+    flex-direction: column; /* Incolonna gli elementi verticalmente */
+    align-items: center;    /* Centra gli elementi nella sua metà schermo */
+    justify-content: space-between; /* Mette l'abito su e il video giù */
     position: relative;
-    padding-bottom: 10px;
+    padding-left: 40px;
+    box-sizing: border-box;
 }
 
+/* Teca dell'abito fluttuante, molto trasparente sul video di sfondo */
+.castle-dress-inline {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
+    text-align: center;
+    background: rgba(5, 3, 2, 0.35); /* Super trasparente per far godere il panorama */
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.castle-dress-inline:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 215, 160, 0.5);
+}
+
+.dress-img-inline {
+    width: 100%;
+    max-height: 200px; /* Evita che diventi gigantesco a schermo intero */
+    object-fit: contain;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.8));
+}
+
+.dress-caption-inline {
+    font-size: 0.85rem;
+    color: #ffd78f;
+    font-weight: 700;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Container Video Avatar ancorato sul fondo destro */
 .castellana-video-container {
     display: flex;
     align-items: flex-end;
+    margin-top: auto; /* Spinge l'avatar sul fondo della pagina */
+    margin-left: auto; /* Lo allinea perfettamente a destra */
     z-index: 10;
 }
 
 .castellana-video-wrapper {
-    width: 240px;
+    width: 200px; /* Dimensione bilanciata e pulita */
     position: relative;
     cursor: pointer;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     overflow: hidden;
     border-radius: 16px; 
 }
-
-.castellana-video-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -130%;
-    width: 35%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.18) 50%, 
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    pointer-events: none;
-    z-index: 3;
-    animation: castleGlowLoop 12s infinite ease-in-out;
-    animation-delay: 3s;
-}
-
-.castellana-video-wrapper:hover {
-    transform: scale(1.04);
-}
-
-.castellana-video-wrapper:hover::before {
-    animation: castleHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-.castellana-video {
-    width: 100% !important;
-    height: auto !important;
-    display: block;
-    filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.9));
-    position: relative;
-    z-index: 1;
-}
-
-.castellana-tooltip {
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #050302;
-    border: 1px solid #ffd78f;
-    color: #ffd78f;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25);
-    animation: pulse 2s infinite;
-    z-index: 25;
-}
-
 /* ==========================================================================
    7. INTERFACCIA CHAT FLOATING PREMIUM
    ========================================================================== */
