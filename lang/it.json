@@ -30,6 +30,10 @@
   },
 
   "citizen": {
+    "citizen": {
+    "tag": "Comunità Locale",
+    "main_heading": "Cittadino del Borgo",
+    "intro_text": "Il cuore pulsante di Amunì risiede in chi vive il borgo ogni giorno. Custodi di storie antiche, sapori tramandati e segreti nascosti tra le pietre e i vicoli.",
     "legends_title": "Leggende e Radici",
     "legends_desc": "Le storie più antiche del borgo, tramandate di generazione in generazione.",
     "legend_felicia": "La leggenda di Suor Felicia",
