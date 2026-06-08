@@ -9,13 +9,11 @@
 <body>
 
     <!-- 🎬 SFONDO DINAMICO RIPRISTINATO -->
-<div class="scene-background-container">
-    <video autoplay loop muted playsinline webkit-playsinline class="scene-background-video">
-        <source src="img/video_castello.webm" type="video/webm">
-    </video>
-</div>
-
-
+    <div class="scene-background-container">
+        <video autoplay loop muted playsinline webkit-playsinline class="scene-background-video">
+            <source src="img/video_castello.webm" type="video/webm">
+        </video>
+    </div>
 
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
@@ -40,6 +38,7 @@
 
     <main class="castle-layout">
         
+        <!-- COLONNA SINISTRA (SOLO TESTI - OCCUPA METÀ SCHERMO) -->
         <section class="castle-info-panel">
             <div class="info-panel-header">
                 <span class="category-tag" data-i18n="castle.category">Monumenti Storici</span>
@@ -53,22 +52,26 @@
                     Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
                 </p>
 
-                <div class="castle-dress-inline">
-                    <img src="img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
-                    <p class="dress-caption-inline" data-i18n="castle.dress_caption">L'abito della Castellana</p>
-                </div>
-
                 <p class="text-paragraph" data-i18n="castle.para_2">
                     Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
                 </p>
+                
                 <p class="text-paragraph highlight-para" data-i18n="castle.para_3">
                     Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per revelar ti ogni segreto di questo luogo senza tempo.
                 </p>
             </div>
         </section>
 
+        <!-- COLONNA DESTRA (TECA + VIDEO CASTELLANA INTERATTIVA) -->
         <section class="castle-interactive-zone">
             
+            <!-- 👗 LA TECA SPOSTATA QUI (METÀ SCHERMO SULLO SFONDO) -->
+            <div class="castle-dress-inline">
+                <img src="img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
+                <p class="dress-caption-inline" data-i18n="castle.dress_caption">L'abito della Castellana</p>
+            </div>
+
+            <!-- AREA AVATAR VIDEO -->
             <div class="castellana-video-container">
                 <div class="castellana-video-wrapper">
                     <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
@@ -78,6 +81,7 @@
                 </div>
             </div>
 
+            <!-- CHAT WINDOW -->
             <div class="chat-desktop" id="chatDesktop">
                 <div class="chat-header">
                     <div class="avatar-status-dot"></div>
@@ -104,14 +108,12 @@
     let currentLang = localStorage.getItem("lang") || "it";
     
     function loadLanguage(lang) {
-         // Nota: Se la cartella lang è nella root insieme a index.html, usa lo stesso percorso (es: `lang/${lang}.json`)
          fetch(`lang/${lang}.json`)
             .then(res => {
-                if (!res.ok) throw new Error("File non trovato con il percorso standard, provo con il percorso relativo superiore...");
+                if (!res.ok) throw new Error("File non trovato");
                 return res.json();
             })
             .catch(() => {
-                // Fallback di sicurezza: se la pagina è dentro una sottocartella, prova a risalire
                 return fetch(`../lang/${lang}.json`).then(res => res.json());
             })
             .then(data => {
