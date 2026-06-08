@@ -159,24 +159,29 @@
     });
     </script>
 
-    <!-- ⚡ SCRIPT INTERAZIONE CHAT -->
-    <script>
-    const castellanaVideo = document.getElementById("castellanaVideo");
-    const castellanaTooltip = document.getElementById("castellanaTooltip");
-    const chatDesktop = document.getElementById("chatDesktop");
-    const closeChatBtn = document.getElementById("closeChatBtn");
+    // Script finale ottimizzato per la gestione dell'apertura
+const castellanaVideo = document.getElementById("castellanaVideo");
+const castellanaTooltip = document.getElementById("castellanaTooltip");
+const chatDesktop = document.getElementById("chatDesktop");
+const closeChatBtn = document.getElementById("closeChatBtn");
 
-    function openChat() {
-        chatDesktop.classList.add("active");
-    }
+function openChat(e) {
+    e.stopPropagation();
+    chatDesktop.classList.add("active");
+    // Auto scroll messaggi all'apertura
+    setTimeout(() => {
+        const box = document.getElementById("chatMessagesBox");
+        box.scrollTop = box.scrollHeight;
+    }, 50);
+}
 
-    castellanaVideo.addEventListener("click", openChat);
-    castellanaTooltip.addEventListener("click", openChat);
+castellanaVideo.addEventListener("click", openChat);
+castellanaTooltip.addEventListener("click", openChat);
 
-    closeChatBtn.addEventListener("click", () => {
-        chatDesktop.classList.remove("active");
-    });
-    </script>
+closeChatBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    chatDesktop.classList.remove("active");
+});
 
 </body>
 </html>
