@@ -2,15 +2,15 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024">
+    <!-- CORREZIONE: Sbloccato il viewport per rendere la pagina reattiva al 100% su smartphone -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="citizen.title"></title>
     <link rel="stylesheet" href="cittadino.css">
 </head>
 <body>
 
-        <!-- DASHBOARD DESKTOP COMPLETA -->
+    <!-- DASHBOARD DESKTOP COMPLETA -->
     <header class="dashboard">
-
         <!-- TITOLO / LOGO -->
         <div class="logo-title" data-i18n="menu.title"></div>
 
@@ -31,29 +31,65 @@
 
         <!-- PULSANTE HOME -->
         <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
-
     </header>
 
+    <!-- INTRODUZIONE NARRATIVA (Dà un senso e un'anima alla pagina prima della griglia) -->
+    <div class="citizen-intro-container">
+        <span class="category-tag" data-i18n="citizen.tag"></span>
+        <h1 class="main-title" data-i18n="citizen.main_heading"></h1>
+        <div class="gold-divider"></div>
+        <p class="text-paragraph leading-para" data-i18n="citizen.intro_text"></p>
+    </div>
 
+    <!-- MAIN CON CSS GRID E STRUTTURA CARD PREMIUM -->
     <main class="citizen-grid">
-        <!-- 1° QUADRANTE — LEGGENDE (Rimanda a Home o Castello dove Felicia ne parla) -->
-        <section class="quadrant" onclick="window.location.href='castello.html'">
-            <h2 data-i18n="citizen.legends_title"></h2>
+        
+        <!-- 1° QUADRANTE — LEGGENDE -->
+        <section class="quadrant" onclick="window.location.href='castello.html'" role="button" tabindex="0">
+            <div class="card-glow-effect"></div>
+            <div class="card-icon-wrapper">
+                <img src="img/icone/tradizioni.webp" alt="" loading="lazy" class="citizen-icon">
+            </div>
+            <div class="card-text-block">
+                <h2 data-i18n="citizen.legends_title"></h2>
+                <p class="card-description" data-i18n="citizen.legends_desc"></p>
+            </div>
         </section>
 
         <!-- 2° QUADRANTE — CASTELLO -->
-        <section class="quadrant castle-card" onclick="window.location.href='castello.html'">
-            <h2 data-i18n="citizen.castle_title"></h2>
+        <section class="quadrant castle-card" onclick="window.location.href='castello.html'" role="button" tabindex="0">
+            <div class="card-glow-effect"></div>
+            <div class="card-icon-wrapper">
+                <img src="img/icone/cucina.webp" alt="" loading="lazy" class="citizen-icon">
+            </div>
+            <div class="card-text-block">
+                <h2 data-i18n="citizen.castle_title"></h2>
+                <p class="card-description" data-i18n="citizen.castle_desc"></p>
+            </div>
         </section>
 
         <!-- 3° QUADRANTE — CHIESE -->
-        <section class="quadrant" onclick="window.location.href='chiese-arte.html'">
-            <h2 data-i18n="citizen.church_title"></h2>
+        <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
+            <div class="card-glow-effect"></div>
+            <div class="card-icon-wrapper">
+                <img src="img/icone/artigianato.webp" alt="" loading="lazy" class="citizen-icon">
+            </div>
+            <div class="card-text-block">
+                <h2 data-i18n="citizen.church_title"></h2>
+                <p class="card-description" data-i18n="citizen.church_desc"></p>
+            </div>
         </section>
 
-        <!-- 4° QUADRANTE — CIBO + EVENTI (Rimanda alle Chiese/Borgo) -->
-        <section class="quadrant" onclick="window.location.href='chiese-arte.html'">
-            <h2 data-i18n="citizen.food_title"></h2>
+        <!-- 4° QUADRANTE — CIBO + EVENTI -->
+        <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
+            <div class="card-glow-effect"></div>
+            <div class="card-icon-wrapper">
+                <img src="img/icone/eventi.webp" alt="" loading="lazy" class="citizen-icon">
+            </div>
+            <div class="card-text-block">
+                <h2 data-i18n="citizen.food_title"></h2>
+                <p class="card-description" data-i18n="citizen.food_desc"></p>
+            </div>
         </section>
     </main>
 
