@@ -13,7 +13,7 @@ html, body {
 }
 
 /* ==========================================================================
-   2. SFONDO VIDEO DINAMICO CON FILTRO AMBRA-ORO PREMIUM
+   2. SFONDO VIDEO DINAMICO CON OVERLAY TRAMONTO ORO MAGNETICO
    ========================================================================== */
 .scene-background-container {
     position: fixed;
@@ -28,20 +28,42 @@ html, body {
     height: 100vh;
     object-fit: cover;
     display: block;
-    /* ✨ FILTRO ORO ANTICO: Trasforma i toni freddi in un'atmosfera calda e metallica */
-    filter: sepia(0.65) hue-rotate(5deg) contrast(1.15) brightness(0.85);
+    /* ✨ Pulito: via il sepia grigiastro, teniamo solo un leggero contrasto */
+    filter: contrast(1.1) brightness(0.9);
 }
 
 .scene-background-container::after {
     content: '';
     position: absolute;
     inset: 0;
-    /* Vignettatura calda e progressiva per accentuare la profondità storica */
-    background: radial-gradient(circle, rgba(5, 3, 2, 0.1) 30%, rgba(5, 3, 2, 0.6) 100%),
-                linear-gradient(90deg, rgba(5, 3, 2, 0.4) 0%, rgba(5, 3, 2, 0) 50%);
+    /* 🔥 IL SEGRETO DEL TRAMONTO: Un gradiente ambra, oro vivo e arancio caldo */
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 165, 0, 0.35) 0%,    /* Arancio Ambra vivido */
+        rgba(212, 175, 55, 0.25) 50%,  /* Oro Lucido */
+        rgba(5, 3, 2, 0.5) 100%        /* Ombra scura per dare profondità alla teca di testo */
+    );
+    /* 🎨 Fonde il colore direttamente con i pixel del video, accendendo i riflessi */
+    mix-blend-mode: color-burn; 
     z-index: 1; 
     pointer-events: none; 
 }
+
+/* 🌟 Secondo livello di overlay per dare l'effetto bagliore dorato (Glow) */
+.scene-background-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 70% 30%, 
+        rgba(255, 215, 0, 0.2) 0%, 
+        transparent 70%
+    );
+    mix-blend-mode: overlay;
+    z-index: 2;
+    pointer-events: none;
+}
+
 
 /* ==========================================================================
    3. DASHBOARD DESKTOP PREMIUM
