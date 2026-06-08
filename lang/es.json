@@ -26,23 +26,26 @@
     "msg2": "Anímate a que te guíen. El arte, el aceite de oliva dorado y las dulces almendras te deleitarán.",
     "placeholder": "Escribe un mensaje..."
   },
-  "citizen": {
+    "citizen": {
+    "tag": "Comunidad Local",
+    "main_heading": "Ciudadano del Borgo",
+    "intro_text": "El corazón palpitante de Amunì reside en quienes viven en el pueblo día a día. Guardianes de historias antiguas, sabores transmitidos y secretos escondidos entre las piedras de los callejones.",
     "legends_title": "Leyendas y Raíces",
     "legends_desc": "Las historias más antiguas del pueblo, transmitidas de generación en generación.",
     "legend_felicia": "La leyenda de Sor Felicia",
     "legend_pizzarrone": "La leyenda de la Torre del Pizzarrone",
-    "audio_title": "Escucha las oraciones y los cunti en dialecto",
+    "audio_title": "Escucha oraciones y relatos en dialecto",
     "transcription": "Transcripción automática",
     "castle_title": "El Castillo",
     "castle_desc": "Una fortaleza milenaria: conjuras, saeteras, túneles secretos, prisiones y batallas épicas.",
     "castle_more": "Descubre el Castillo",
     "church_title": "Iglesias y Arte",
     "church_desc": "Un viaje entre catacumbas, tradiciones, patrones y antiguas devociones.",
-    "church_catacombs": "Las catacombes y las criptas ocultas",
-    "church_sangiuseppe": "La gratinata roja de San José",
-    "church_sepolcri": "Los sepulcros con el trigo en flor",
+    "church_catacombs": "Las catacumbas y las criptas ocultas",
+    "church_sangiuseppe": "La gratinata roja de San Giuseppe",
+    "church_sepolcri": "Los sepulcros con trigo en flor",
     "food_title": "Comida y Eventos",
-    "food_desc": "Sabores auténticos, lugares donde comer y vivir el pueblo.",
+    "food_desc": "Sabores auténticos, lugares donde comer y vivir el ambiente del pueblo.",
     "food_arancine": "Dónde degustar excelentes arancine",
     "food_cocktail": "Cócteles con DJ todo el año",
     "food_aperitivo": "Aperitivos panorámicos (solo verano)",
@@ -52,6 +55,7 @@
     "event_salsiccia": "Fiesta de la Salchicha",
     "event_beato": "Fiesta del Beato Giovanni"
   },
+
   "castle": {
     "title": "El Castillo de Caccamo",
     "position": "Una fortaleza encaramada en un espolón rocoso, con vistas dominantes sobre el valle.",
