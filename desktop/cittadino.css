@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. RESET, IMPOSTAZIONI DI BASE E SFONDO TRAMONTO
+   1. RESET E IMPOSTAZIONI DI BASE
    ========================================================================== */
 html, body {
     margin: 0;
@@ -7,353 +7,455 @@ html, body {
     width: 100%;
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
-    color: #ffe7b3;
-    /* Opzione B: Il gradiente scuro dall'alto si fonde con la tua immagine sottostante */
-    background: linear-gradient(
-        to bottom, 
-        rgba(0, 0, 0, 0.55) 0%,    /* Scurisce la fascia alta dietro la dashboard e l'occhiello */
-        rgba(0, 0, 0, 0.20) 35%,   /* Si attenua scendendo sulla linea dell'orizzonte */
-        rgba(0, 0, 0, 0) 65%       /* Svanisce completamente lasciando il castello nitido */
-    ), url("./img/tuo_nuovo_sfondo.jpeg") no-repeat center center fixed;
-    background-size: cover;
+    color: #ffd78f;
+    background: transparent !important;
     overflow-x: hidden;
 }
 
+/* SFONDO - ERIDITATO DA VERSIONE DESKTOP PREMIUM HOME */
+.scene-background {
+    position: fixed;
+    inset: 0;
+    background-image: url('img/tuo_nuovo_sfondo.jpeg') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.75) contrast(1.1) saturate(1.1);
+    z-index: -5 !important;
+    pointer-events: none;
+}
+
 /* ==========================================================================
-   2. DASHBOARD (OTTIMIZZATA E FLUIDA)
+   2. DASHBOARD DESKTOP NERA + ORO (COERENTE HOME)
    ========================================================================== */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 54px;
+    height: 70px;
+    background: rgba(0, 0, 0, 0.65);
+    border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+    backdrop-filter: blur(18px) saturate(200%);
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    padding: 8px 18px;
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.85);
+    padding: 0 40px;
     z-index: 9999;
-    box-sizing: border-box; 
+    box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
+    box-sizing: border-box;
 }
 
-.nav-desktop {
-    display: flex;
-    gap: 15px; 
+.dashboard .logo-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #ffd78f;
+    text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
 }
 
-/* Stile unico per bottoni REALI e LINK configurati come bottoni */
-.dashboard button, 
-.dashboard .home-btn {
-    background: rgba(255, 215, 160, 0.35);
-    border: 1px solid rgba(255, 215, 160, 0.9);
-    border-radius: 8px;
-    color: #ffe7b3;
-    font-size: 16px;
-    padding: 6px 12px;
-    cursor: pointer;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.6);
-    text-decoration: none; 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.nav-desktop { display: flex; gap: 22px; }
+
+.nav-desktop a, .dashboard .home-btn {
+    color: #ffd78f;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.75);
+    box-shadow: 0 0 14px rgba(255, 215, 160, 0.55), inset 0 0 8px rgba(255, 215, 160, 0.35);
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    position: relative;
-    overflow: hidden;
-    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
 }
 
-/* Sfumatura fluttuante sui bottoni della dashboard */
-.dashboard button::before, 
-.dashboard .home-btn::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -120%;
-    width: 35%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.16) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: citizenGlowLoop 7.5s infinite ease-in-out;
-    pointer-events: none;
+.nav-desktop a:hover, .dashboard .home-btn:hover {
+    background: rgba(255, 215, 160, 0.15);
+    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85), inset 0 0 12px rgba(255, 215, 160, 0.45);
+    transform: scale(1.05);
 }
 
-.dashboard button:hover, 
-.dashboard .home-btn:hover {
-    background: rgba(255, 215, 160, 0.5);
-    transform: scale(1.04);
+/* SELETTORE LINGUA */
+.lang-switcher { display: flex; gap: 12px; align-items: center; }
+
+.lang-switcher button {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 215, 160, 0.85);
+    color: #ffd78f;
+    cursor: pointer;
+    box-shadow: 0 0 14px rgba(255, 215, 160, 0.55), inset 0 0 8px rgba(255, 215, 160, 0.45);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.dashboard button:hover::before, 
-.dashboard .home-btn:hover::before {
-    animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+.lang-switcher button:hover {
+    background: rgba(255, 215, 160, 0.15);
+    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
 }
 
 /* ==========================================================================
-   3. NUOVA INTRODUZIONE NARRATIVA (INTEGRAZIONE PER I NUOVI TESTI JSON)
+   3. STRUTTURA INTERFACCIA A CORNICE (LAYOUT SINISTRO)
    ========================================================================== */
-.citizen-intro-container {
-    margin-top: 100px; /* Evita la sovrapposizione con la dashboard fissa */
-    padding: 0 24px;
+.citizen-frame-layout {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
     box-sizing: border-box;
-    max-width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 110px 4% 40px 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.citizen-left-column {
+    width: 100%;
+    max-width: 580px; /* Impone una colonna fissa ed elegante lasciando libero lo sfondo al centro */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* INTRODUZIONE NARRATIVA (SENZA TECA) */
+.citizen-intro-container {
+    width: 100%;
 }
 
 .category-tag {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: #ffd28c;
     font-weight: 700;
+    margin-bottom: 5px;
     display: inline-block;
-    /* AGGIORNATO: Aggiunto un secondo alone diffuso per staccare le lettere dall'arancione del sole */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
 .main-title {
-    font-size: 2.2rem;
-    color: #ffe7b3;
-    margin: 6px 0 12px 0;
+    font-size: 2.6rem;
+    color: #ffd78f;
+    margin: 0 0 12px 0;
     font-weight: 700;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
 }
 
 .gold-divider {
     border: none;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(255, 215, 160, 0.8) 0%, transparent 90%);
-    margin-bottom: 20px;
-    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, #ffd78f 0%, transparent 90%);
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.text-paragraph {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #f0e6d2;
+    margin: 0;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
 }
 
 .leading-para {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #ffffff;
-    /* AGGIORNATO: Potenziato il raggio di sfocatura dell'ombra per massima leggibilità su smartphone */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6), 0 0 12px rgba(0, 0, 0, 0.4);
-    margin: 0;
-    max-width: 800px;
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 500;
 }
 
 /* ==========================================================================
-   4. GRIGLIA ADATTIVA ED ESPERIENZIALE (MONO su mobile, 2x2 su desktop)
+   4. GRID INTERATTIVA QUADRANTI PREMIUM 
    ========================================================================== */
 .citizen-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Default smartphone: evita sovrapposizioni orizzontali */
-    gap: 24px;                  /* Leggermente compattato per schermi piccoli */
-    max-width: 1300px;
-    margin: 40px auto;          /* Gestito dinamicamente grazie all'intro container */
-    padding: 0 24px;
-    box-sizing: border-box;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
 }
 
-/* ==========================================================================
-   5. QUADRANTI IN VETRO + GLOW ORO & RIFLESSO ULTRA-MORBIDO
-   ========================================================================== */
 .quadrant {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-radius: 22px;
-    border: 2px solid rgba(255, 200, 120, 0.7);
-    padding: 30px;
-    min-height: 260px; /* Mantenuta l'altezza uniforme originale */
-    box-shadow:
-        0 0 25px rgba(255, 200, 120, 0.45),
-        0 0 60px rgba(255, 120, 60, 0.25),
-        inset 0 0 20px rgba(255, 255, 255, 0.15);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.4);
+    border-radius: 16px;
+    padding: 20px;
+    box-sizing: border-box;
     cursor: pointer;
-    position: relative; 
-    overflow: hidden;   
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Lama di luce diagonale sfumata e soffusa */
-.quadrant::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -120%;
-    width: 35%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.14) 50%, 
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: citizenGlowLoop 11s infinite ease-in-out; 
-    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 215, 160, 0.1);
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease;
+    overflow: hidden;
 }
 
 .quadrant:hover {
-    transform: scale(1.03);
-    box-shadow:
-        0 0 35px rgba(255, 210, 140, 0.8),
-        0 0 80px rgba(255, 120, 60, 0.4),
-        inset 0 0 25px rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(255, 215, 160, 0.25), inset 0 0 15px rgba(255, 215, 160, 0.2);
+    border-color: rgba(255, 215, 160, 0.85);
 }
 
-.quadrant:hover::before {
-    animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+.card-glow-effect {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 215, 160, 0.08) 0%, transparent 100%);
+    pointer-events: none;
 }
 
-/* Feedback tattile per smartphone al click/tap */
-.quadrant:active {
-    transform: scale(0.98);
-    box-shadow: 0 0 15px rgba(255, 200, 120, 0.6);
-}
-
-/* Titoli e testi interni alle card */
-.quadrant h2 {
-    font-size: 28px;
-    color: #ffe7b3;
-    text-shadow: 0 0 10px rgba(255, 200, 120, 0.9);
-    margin-top: 0;
-    margin-bottom: 15px;
-    position: relative;
-    z-index: 2; 
-}
-
-.quadrant p,
-.quadrant li {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #ffffff;
-    position: relative;
-    z-index: 2; 
-}
-
-/* ==========================================================================
-   6. ELEMENTI SPECIALI INTERNI
-   ========================================================================== */
-.iframe-3d {
-    width: 100%;
-    height: 260px;
-    border-radius: 15px;
-    border: 2px solid rgba(255, 200, 120, 0.5);
-    margin-top: 15px;
-    position: relative;
-    z-index: 3; 
-}
-
-.battle-preview img {
-    width: 100%;
-    border-radius: 15px;
-    margin-top: 20px;
-    opacity: 0.9;
-    position: relative;
-    z-index: 2;
-}
-
-/* ==========================================================================
-   7. QUADRANTE CASTELLO (TITOLO ORO SPECIFICO)
-   ========================================================================== */
-.castle-card {
+.card-icon-wrapper {
+    width: 45px;
+    height: 45px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 260px;
-    font-size: 32px;
-    font-weight: 600;
-    color: #ffe7b3;
-    text-shadow: 0 0 12px rgba(255, 200, 120, 0.9);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    border-radius: 22px; 
-    border: 2px solid rgba(255, 200, 120, 0.7);
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    box-shadow:
-        0 0 25px rgba(255, 200, 120, 0.45),
-        0 0 60px rgba(255, 120, 60, 0.25),
-        inset 0 0 20px rgba(255, 255, 255, 0.15);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    -webkit-tap-highlight-color: transparent;
+    justify-content: center;
 }
 
-.castle-card::before {
+.citizen-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(255, 215, 160, 0.4));
+}
+
+.card-text-block h2 {
+    font-size: 1.15rem;
+    color: #ffd78f;
+    margin: 0 0 6px 0;
+    font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.card-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #e6dcc8;
+    margin: 0;
+}
+
+/* ==========================================================================
+   5. 🔥 VIDEO CASTELLANA 3D GRANDE (PROPORZIONI PERFETTE DELLA HOME)
+   ========================================================================== */
+.castellana-video-wrapper {
+    position: fixed;
+    top: 200px;          
+    left: 55%;           /* Stesso identico posizionamento asimmetrico spaziale della Home */
+    width: 28vw;          
+    max-width: 320px;
+    border-radius: 20px; 
+    overflow: hidden;    
+    z-index: 10 !important;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+}
+
+.castellana-video-wrapper::before {
     content: '';
     position: absolute;
     top: -50%;
     left: -120%;
     width: 35%;
     height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.14) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
+    background: linear-gradient(to right, rgba(255, 215, 160, 0) 0%, rgba(255, 215, 160, 0.20) 50%, rgba(255, 215, 160, 0) 100%);
     transform: rotate(-45deg);
-    animation: citizenGlowLoop 11s infinite ease-in-out;
-    animation-delay: 2.5s; 
     pointer-events: none;
+    z-index: 3; 
+    animation: desktopGlowLoop 12s infinite ease-in-out;
 }
 
-.castle-card:hover {
-    transform: scale(1.05);
-    box-shadow:
-        0 0 35px rgba(255, 210, 140, 0.8),
-        0 0 80px rgba(255, 120, 60, 0.4),
-        inset 0 0 25px rgba(255, 255, 255, 0.25);
+.castellana-video-wrapper:hover {
+    transform: scale(1.03);
 }
 
-.castle-card:hover::before {
-    animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+.castellana-video {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    z-index: 1; 
+    background: transparent !important;
+    filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.5)); 
 }
 
-.castle-card:active {
-    transform: scale(0.98);
+/* TOOLTIP CHAT COERENTE */
+.castellana-tooltip {
+    position: absolute;
+    top: 260px; 
+    left: 6%;
+    padding: 12px 26px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.9);
+    border-radius: 14px;
+    color: #ffd78f;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(255, 215, 160, 1);
+    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85), inset 0 0 12px rgba(255, 215, 160, 0.45);
+    cursor: pointer;
+    animation: clickHerePulse 2.6s ease-in-out infinite;
+    z-index: 25;
 }
 
 /* ==========================================================================
-   8. MEDIA QUERIES (IL COINVOLGIMENTO DESKTOP 2x2 ORIGINALE)
+   6. INTERFACCIA CHAT FLOATING CRISTALLINA (DESTRA)
    ========================================================================== */
-@media (min-width: 768px) {
-    .citizen-intro-container {
-        padding: 0 40px;
-        margin-top: 120px; /* Più respiro su schermi grandi */
-    }
+.chat-desktop {
+    position: absolute;
+    top: 200px;
+    right: 6%;
+    width: 330px;
+    height: 320px;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
+    -webkit-backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
+    border: 2px solid rgba(255, 215, 160, 0.9);
+    border-radius: 26px;
+    box-shadow: 0 0 55px rgba(255, 215, 160, 1), inset 0 0 35px rgba(255, 215, 160, 0.45);
+    padding: 18px;
+    display: none;
+    z-index: 30;
+    box-sizing: border-box;
+}
+
+.chat-desktop.active {
+    display: flex;
+    flex-direction: column;
+    animation: slideInRight 0.55s ease forwards;
+}
+
+.chat-header {
+    color: #ffd78f;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.avatar-status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #26e663;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 8px #26e663;
+}
+
+.close-chat-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    background: #000;
+    border: 1px solid #ffd78f;
+    border-radius: 8px;
+    color: #ffd78f;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
+    transition: 0.2s;
+}
+
+.close-chat-btn:hover { background: rgba(255, 215, 160, 0.2); }
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 12px;
+}
+
+.message {
+    background: rgba(0, 0, 0, 0.55) !important;
+    border: 1px solid rgba(255, 215, 160, 0.55);
+    padding: 10px 14px;
+    border-radius: 12px;
+    color: #f7f2e9;
+    font-size: 0.88rem;
+    line-height: 1.4;
+}
+
+.chat-input-row { display: flex; gap: 8px; }
+
+.chat-input-row input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 160, 0.55);
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffd78f;
+}
+
+.mic-btn {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 215, 160, 0.75);
+    color: #ffd78f;
+    padding: 0 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   7. ANIMAZIONI & MEDIA QUERIES (RESPONSIVE ADAPTING)
+   ========================================================================== */
+@keyframes desktopGlowLoop {
+    0% { left: -120%; }
+    16% { left: 140%; }
+    100% { left: 140%; }
+}
+
+@keyframes slideInRight {
+    0% { transform: translateX(50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes clickHerePulse {
+    0% { scale: 1; }
+    50% { scale: 1.03; box-shadow: 0 0 25px rgba(255, 215, 160, 0.8); }
+    100% { scale: 1; }
+}
+
+@media (max-width: 900px) {
+    .dashboard { padding: 0 20px; }
+    .nav-desktop { display: none; }
     
-    .main-title {
-        font-size: 3rem;
+    .citizen-frame-layout {
+        flex-direction: column;
+        padding: 90px 16px 20px 16px;
+    }
+
+    .citizen-left-column {
+        max-width: 100%;
     }
 
     .citizen-grid {
-        grid-template-columns: 1fr 1fr; /* Ritorna la splendida griglia 2x2 originale */
-        gap: 40px;
-        padding: 0 40px;
-        margin: 50px auto 120px auto;
+        grid-template-columns: 1fr; /* Una sola colonna per card leggibili su smartphone */
     }
-}
 
-/* ==========================================================================
-   9. KEYFRAMES ORIGINALI (PRESERVATI AL 100%)
-   ========================================================================== */
-@keyframes citizenGlowLoop {
-    0% { left: -120%; }
-    16% { left: 150%; }
-    100% { left: 150%; }
-}
+    /* Su schermi piccoli l'avatar si sgancia e passa in modalità widget discreto */
+    .castellana-video-wrapper {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        top: auto;
+        left: auto;
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        border: 2px solid #ffd78f;
+    }
 
-@keyframes citizenHoverFlash {
-    0% { left: -120%; }
-    100% { left: 150%; }
+    .castellana-tooltip { display: none; } /* Rimuove la scritta ingombrante su mobile */
+
+    .chat-desktop {
+        position: fixed;
+        bottom: 120px;
+        top: auto;
+        left: 16px;
+        right: 16px;
+        width: auto;
+        height: 45vh;
+    }
 }
