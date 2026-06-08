@@ -217,14 +217,13 @@ html, body {
     font-size: 0.75rem;
     font-weight: 700;
     white-space: nowrap;
-    opacity: 0; /* Inizialmente nascosto */
+    opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
     z-index: 9999;
     animation: tooltipPulse 2.6s ease-in-out infinite;
 }
 
-/* 🛠️ RITOCCO: Mostra il tooltip quando si passa sopra con il mouse */
 .castellana-video-wrapper:hover .castellana-tooltip {
     opacity: 1;
     transform: translateX(-50%) translateY(-3px);
@@ -256,14 +255,12 @@ html, body {
 .chat-input-row input { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid rgba(255, 215, 160, 0.5); background: rgba(0,0,0,0.4); color: #fff; }
 .mic-btn { background: none; border: 1px solid #ffd78f; color: #ffd78f; border-radius: 8px; padding: 0 10px; cursor: pointer; }
 
-
 /* ==========================================================================
-   6. SEZIONE RESPONSIVE COMPLETA ED ESCLUSIVA (Risoluzione Bug Mobile)
+   6. SEZIONE RESPONSIVE COMPLETA ED ESCLUSIVA (Ottimizzazione Dispositivi)
    ========================================================================== */
 
 /* 📱 MODALITÀ: VERTICALE SMARTPHONE (Portrait) */
 @media screen and (max-width: 900px) and (orientation: portrait) {
-    /* 🛠️ RITOCCO: Ristrutturazione dashboard per evitare sovrapposizioni e sbloccare il tasto Home */
     .dashboard { 
         flex-direction: column; 
         align-items: center;
@@ -315,22 +312,26 @@ html, body {
 
     .quadrant { min-height: 120px; padding: 24px 20px; }
 
-    /* 🛠️ RITOCCO: Castellana bloccata rigidamente e stabilmente in fondo allo schermo */
+    /* 🔑 QUI ANDAVA INSERITO IL BLOCCO: Forzato all'angolo assoluto dello schermo */
     .castellana-video-wrapper {
         position: fixed !important;
-        bottom: 0px !important;
-        right: 0px !important;
+        bottom: 0 !important;
+        right: 0 !important;
         left: auto !important;
         top: auto !important;
-        width: 140px; 
-        height: auto;
-        z-index: 1000;
+        width: 130px !important; 
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        z-index: 1000 !important;
     }
     
-    /* Mantiene il tooltip nascosto per usabilità sui touchscreen verticali */
-    .castellana-video-wrapper:hover .castellana-tooltip { display: none; opacity: 0; }
+    /* 🛠️ RISOLTO IL CONFLITTO: Nascondiamo totalmente il tooltip su mobile verticale */
+    .castellana-video-wrapper:hover .castellana-tooltip { 
+        display: none !important; 
+        opacity: 0 !important; 
+    }
 
-    /* Gestione Chat Mobile */
     .chat-desktop {
         position: fixed;
         bottom: 150px;
@@ -378,8 +379,11 @@ html, body {
         z-index: 1000;
     }
     
-    /* Mantiene il tooltip nascosto anche in landscape per non intascare l'interfaccia stretta */
-    .castellana-video-wrapper:hover .castellana-tooltip { display: none; opacity: 0; }
+    /* 🛠️ RISOLTO IL CONFLITTO: Nascondiamo il tooltip anche in orizzontale */
+    .castellana-video-wrapper:hover .castellana-tooltip { 
+        display: none !important; 
+        opacity: 0 !important; 
+    }
 
     .chat-desktop {
         position: fixed;
@@ -401,7 +405,7 @@ html, body {
 }
 
 /* ==========================================================================
-   7. ANIMAZIONI
+   7. ANIMAZIONI COMUNI
    ========================================================================== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
