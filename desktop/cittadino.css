@@ -19,7 +19,7 @@ html, body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: brightness(0.70) contrast(1.1) saturate(1.1); /* Leggermente più scuro per staccare i testi */
+    filter: brightness(0.75) contrast(1.1) saturate(1.1);
     z-index: -5 !important;
     pointer-events: none;
 }
@@ -53,7 +53,6 @@ html, body {
 }
 
 .nav-desktop { display: flex; gap: 22px; }
-
 .nav-desktop a, .dashboard .home-btn {
     color: #ffd78f;
     font-weight: 600;
@@ -66,10 +65,9 @@ html, body {
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     cursor: pointer;
 }
-
 .nav-desktop a:hover, .dashboard .home-btn:hover {
     background: rgba(255, 215, 160, 0.15);
-    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85), inset 0 0 12px rgba(255, 215, 160, 0.45);
+    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
     transform: scale(1.05);
 }
 
@@ -83,47 +81,23 @@ html, body {
     border: 1px solid rgba(255, 215, 160, 0.85);
     color: #ffd78f;
     cursor: pointer;
-    box-shadow: 0 0 14px rgba(255, 215, 160, 0.55), inset 0 0 8px rgba(255, 215, 160, 0.45);
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.lang-switcher button:hover {
-    background: rgba(255, 215, 160, 0.15);
-    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
 }
 
 /* ==========================================================================
-   3. STRUTTURA LAYOUT INTERFACCIA A CORNICE (SINISTRA)
+   3. TESTO INTRODUTTIVO SUPERIORE REVISIONATO
    ========================================================================== */
 .citizen-frame-layout {
     width: 100%;
-    max-width: 1440px;
+    max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 110px 4% 40px 4%;
+    padding: 120px 20px 0px 20px;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-}
-
-.citizen-left-column {
-    width: 100%;
-    max-width: 680px; /* Allargata la colonna per far spazio al gruppo Descrizione + Castellana */
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-/* RIGA SUPERIORE: AFFIANCAMENTO PERFETTO */
-.citizen-top-row {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end; /* Allinea la base della Castellana alla base del testo */
-    gap: 30px;
+    justify-content: flex-start;
 }
 
 .citizen-intro-container {
-    flex: 1; /* Prende lo spazio necessario a sinistra */
+    max-width: 650px; /* Consente al testo di estendersi armoniosamente senza stringersi */
 }
 
 .category-tag {
@@ -138,9 +112,9 @@ html, body {
 }
 
 .main-title {
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     color: #ffd78f;
-    margin: 0 0 12px 0;
+    margin: 0 0 10px 0;
     font-weight: 700;
     text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
 }
@@ -154,7 +128,7 @@ html, body {
 }
 
 .text-paragraph {
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.6;
     color: #f0e6d2;
     margin: 0;
@@ -162,139 +136,125 @@ html, body {
 }
 
 .leading-para {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: #fff;
     font-weight: 500;
 }
 
 /* ==========================================================================
-   4. NUOVA CASTELLANA INLINE (INSERITA A DESTRA DEL TESTO, NON PIÙ IN MEZZO)
+   4. CARD INGRANDITE, ABBASSATE E CENTRATE AL CENTRO DELLA PAGINA
    ========================================================================== */
-.castellana-inline-wrapper {
-    position: relative;
-    width: 160px;          /* 💡 Dimensione aumentata e bilanciata */
-    min-width: 160px;
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    z-index: 10;
+.citizen-centered-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;                     /* Più spazio tra le card */
+    width: 100%;
+    max-width: 960px;              /* Griglia allargata ed equilibrata */
+    margin: 50px auto 40px auto;   /* Spinta verso il basso (50px) e centrata perfettamente */
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-.castellana-inline-wrapper:hover {
-    transform: scale(1.05);
+.quadrant {
+    position: relative;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 215, 160, 0.35);
+    border-radius: 16px;
+    padding: 32px 28px;            /* Card decisamente più grandi e ariose */
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 145px;             /* Altezza minima strutturata */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.35s ease;
+}
+
+.quadrant:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(255, 215, 160, 0.85);
+    box-shadow: 0 16px 40px rgba(255, 215, 160, 0.2);
+}
+
+.card-glow-effect {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 215, 160, 0.05) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.card-text-block h2 {
+    font-size: 1.35rem;            /* Titoli più leggibili e grandi */
+    color: #ffd78f;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.card-description {
+    font-size: 0.95rem;            /* Testo descrittivo ingrandito */
+    line-height: 1.5;
+    color: #e6dcc8;
+    margin: 0;
+}
+
+/* ==========================================================================
+   5. 👑 CASTELLANA SPOSTATA MOLTO PIÙ A DESTRA E ABBASSATA
+   ========================================================================== */
+.castellana-video-wrapper {
+    position: fixed;
+    bottom: 30px;               /* 💡 Abbassata vicino al bordo inferiore dello schermo */
+    right: 2%;                  /* 💡 Spinta drasticamente sul lato destro esterno */
+    width: 200px;               /* Dimensione prominente e definita */
+    height: auto;
+    z-index: 100 !important;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.castellana-video-wrapper:hover {
+    transform: scale(1.04);
 }
 
 .castellana-video {
     width: 100%;
     height: auto;
     display: block;
-    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.85));
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.8));
 }
 
-/* TOOLTIP CHAT INTEGRATO SOPRA L'AVATAR */
+/* TOOLTIP CHAT POSIZIONATO IN ALTO RISPETTO AL VIDEO */
 .castellana-tooltip {
     position: absolute;
-    top: -40px; 
+    top: -35px;
     left: 50%;
     transform: translateX(-50%);
     padding: 6px 14px;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(255, 215, 160, 0.9);
     border-radius: 8px;
     color: #ffd78f;
     font-size: 0.75rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    animation: clickHerePulse 2.6s ease-in-out infinite;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    animation: tooltipPulse 2.6s ease-in-out infinite;
 }
 
 /* ==========================================================================
-   5. GRID DELLE CARD (COLLOCATA SOTTO LA CASTELLANA E IL TESTO)
-   ========================================================================== */
-.citizen-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    width: 100%;
-}
-
-.quadrant {
-    position: relative;
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.4);
-    border-radius: 16px;
-    padding: 20px;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 215, 160, 0.1);
-    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease;
-    overflow: hidden;
-}
-
-.quadrant:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 12px 30px rgba(255, 215, 160, 0.25), inset 0 0 15px rgba(255, 215, 160, 0.2);
-    border-color: rgba(255, 215, 160, 0.85);
-}
-
-.card-glow-effect {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 215, 160, 0.08) 0%, transparent 100%);
-    pointer-events: none;
-}
-
-.card-icon-wrapper {
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.citizen-icon {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(255, 215, 160, 0.4));
-}
-
-.card-text-block h2 {
-    font-size: 1.15rem;
-    color: #ffd78f;
-    margin: 0 0 6px 0;
-    font-weight: 600;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-}
-
-.card-description {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: #e6dcc8;
-    margin: 0;
-}
-
-/* ==========================================================================
-   6. INTERFACCIA CHAT FLOATING (AGGANCIATA A DESTRA DELLA SCHERMATA)
+   6. INTERFACCIA CHAT FLOATING (LATERALE DESTRA)
    ========================================================================== */
 .chat-desktop {
     position: fixed;
-    bottom: 40px;
-    right: 4%;
-    width: 340px;
-    height: 380px;
+    bottom: 240px;
+    right: 2%;
+    width: 320px;
+    height: 350px;
     background: rgba(5, 3, 2, 0.95) !important;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 215, 160, 0.9);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 215, 160, 0.85);
+    border-radius: 18px;
     padding: 16px;
     display: none;
     z-index: 999;
@@ -304,97 +264,35 @@ html, body {
 .chat-desktop.active {
     display: flex;
     flex-direction: column;
-    animation: slideInRight 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: fadeIn 0.3s ease forwards;
 }
 
-.chat-header {
-    color: #ffd78f;
-    font-weight: 700;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.avatar-status-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #26e663;
-    border-radius: 50%;
-    margin-right: 10px;
-    box-shadow: 0 0 8px #26e663;
-}
-
-.close-chat-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 26px;
-    height: 26px;
-    background: #000;
-    border: 1px solid #ffd78f;
-    border-radius: 6px;
-    color: #ffd78f;
-    font-size: 0.9rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+.chat-header { color: #ffd78f; font-weight: 700; display: flex; align-items: center; margin-bottom: 12px; }
+.avatar-status-dot { width: 8px; height: 8px; background-color: #26e663; border-radius: 50%; margin-right: 10px; }
+.close-chat-btn { position: absolute; top: 12px; right: 12px; background: none; border: none; color: #ffd78f; font-size: 1.1rem; cursor: pointer; }
 .chat-messages { flex: 1; overflow-y: auto; margin-bottom: 12px; }
-.message { background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255, 215, 160, 0.3); padding: 10px 14px; border-radius: 12px; color: #f7f2e9; font-size: 0.88rem; }
+.message { background: rgba(255, 215, 160, 0.1); padding: 10px; border-radius: 10px; color: #f7f2e9; font-size: 0.9rem; }
 .chat-input-row { display: flex; gap: 8px; }
-.chat-input-row input { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid rgba(255, 215, 160, 0.55); background: rgba(0, 0, 0, 0.35); color: #ffd78f; }
-.mic-btn { background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 215, 160, 0.75); color: #ffd78f; padding: 0 12px; border-radius: 10px; cursor: pointer; }
+.chat-input-row input { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid rgba(255, 215, 160, 0.5); background: rgba(0,0,0,0.4); color: #fff; }
+.mic-btn { background: none; border: 1px solid #ffd78f; color: #ffd78f; border-radius: 8px; padding: 0 10px; cursor: pointer; }
 
 /* ==========================================================================
-   7. ANIMAZIONI & MEDIA QUERIES
+   7. ANIMAZIONI & ADATTAMENTO RESPONSIVE
    ========================================================================== */
-@keyframes slideInRight {
-    0% { transform: translateX(30px); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes clickHerePulse {
-    0% { transform: translateX(-50%) scale(1); }
+@keyframes tooltipPulse {
+    0%, 100% { transform: translateX(-50%) scale(1); }
     50% { transform: translateX(-50%) scale(1.05); }
-    100% { transform: translateX(-50%) scale(1); }
 }
 
 @media (max-width: 900px) {
     .dashboard { padding: 0 20px; }
     .nav-desktop { display: none; }
-    
-    .citizen-frame-layout {
-        flex-direction: column;
-        padding: 90px 16px 20px 16px;
-    }
-
-    .citizen-left-column { max-width: 100%; }
-
-    .citizen-top-row {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 15px;
-    }
-
-    .gold-divider { background: linear-gradient(90deg, transparent 0%, #ffd78f 50%, transparent 100%); }
-
-    .castellana-inline-wrapper {
-        width: 120px;
-        min-width: 120px;
-    }
-
-    .citizen-grid { grid-template-columns: 1fr; }
-
-    .chat-desktop {
-        position: fixed;
-        bottom: 20px;
-        left: 16px;
-        right: 16px;
-        width: auto;
-        height: 45vh;
-    }
+    .citizen-centered-grid { grid-template-columns: 1fr; margin-top: 30px; }
+    .castellana-video-wrapper { position: static; margin: 20px auto; width: 140px; }
+    .chat-desktop { position: fixed; bottom: 20px; left: 16px; right: 16px; width: auto; }
 }
