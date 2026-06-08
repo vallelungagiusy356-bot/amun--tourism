@@ -528,9 +528,8 @@ html, body {
     0% { left: -130%; }
     100% { left: 160%; }
 }
-
 /* ==========================================================================
-   9. MEDIA QUERIES PER RESPONSIVE DESIGN (MOBILE & TABLET)
+   9. MEDIA QUERIES PER RESPONSIVE DESIGN (MOBILE & LANDSCAPE)
    ========================================================================== */
 @media (max-width: 1024px) {
     .dashboard {
@@ -544,13 +543,13 @@ html, body {
 
     .castle-layout {
         flex-direction: column; 
-        padding: 24px 16px;
+        padding: 20px 16px;
     }
 
     .castle-info-panel {
         max-width: 100%;
-        padding-right: 0;
-        margin-bottom: 35px;
+        padding-right: 30px; /* Ripristina il padding interno corretto */
+        margin-bottom: 25px;
     }
 
     .castle-info-panel h2 {
@@ -560,21 +559,25 @@ html, body {
     .gold-divider {
         width: 100%;
     }
-    
-    .castle-dress-inline {
-        max-width: 100%;
-        box-sizing: border-box;
-    }
 
     .castle-interactive-zone {
         max-width: 100%;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 20px;
+        padding-left: 0;
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .castle-dress-inline {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .castellana-video-container {
+        margin: 0 auto; /* Centra l'avatar su mobile in verticale */
     }
 
     .castellana-video-wrapper {
-        width: 190px;
+        width: 180px;
     }
 
     .chat-desktop {
@@ -588,13 +591,37 @@ html, body {
         height: 65vh;
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.95);
     }
-    
-    .chat-desktop.active {
-        animation: slideUpMobile 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    }
 }
 
-@keyframes slideUpMobile {
-    from { opacity: 0; transform: translate(-50%, 30px); }
-    to { opacity: 1; transform: translate(-50%, 0); }
+/* Ottimizzazione specifica quando si gira il telefono in orizzontale (Landscape mobile) */
+@media screen and (max-height: 550px) and (orientation: landscape) {
+    .castle-layout {
+        flex-direction: row !important;
+        padding: 15px 3%;
+    }
+    .castle-info-panel {
+        max-width: 48%;
+        padding: 15px;
+    }
+    .castle-info-panel h2 {
+        font-size: 1.8rem;
+    }
+    .castle-interactive-zone {
+        max-width: 48%;
+        flex-direction: row; /* Mette affiancati abito e video per risparmiare altezza */
+        justify-content: center;
+        align-items: flex-end;
+        gap: 15px;
+    }
+    .castle-dress-inline {
+        max-width: 150px;
+        margin: 0;
+        padding: 8px;
+    }
+    .dress-img-inline {
+        max-height: 100px;
+    }
+    .castellana-video-wrapper {
+        width: 130px;
+    }
 }
