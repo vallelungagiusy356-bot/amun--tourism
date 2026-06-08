@@ -30,7 +30,6 @@
   },
 
   "citizen": {
-    "citizen": {
     "tag": "Comunità Locale",
     "main_heading": "Cittadino del Borgo",
     "intro_text": "Il cuore pulsante di Amunì risiede in chi vive il borgo ogni giorno. Custodi di storie antiche, sapori tramandati e segreti nascosti tra le pietre e i vicoli.",
@@ -63,7 +62,7 @@
   "castle": {
     "title": "Il Castello di Caccamo",
     "position": "Una fortezza arroccata su uno sperone roccioso, con vista dominante sulla valle.",
-    "defense": "Feritoie, mura spesse e camminamenti di ronda raccontano la sua funzione difensiva.",
+    "defense": "Feritoie, mura spesse e camminamenti di ronda raccontano la sua função difensiva.",
     "conspiracy": "Sale segrete e stanze nobiliari furono teatro di congiure e intrighi medievali.",
     "prisons": "Le prigioni sotterranee custodiscono ancora le tracce delle antiche detenzioni.",
     "legend_brothers": "La leggenda dei due fratelli narra di un duello fatale per l’amore di una dama.",
@@ -71,7 +70,7 @@
     "leading_para": "Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.",
     "dress_caption": "L'abito della Castellana",
     "para_2": "Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.",
-    "para_3": "Tra storia e legenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.",
+    "para_3": "Tra storia e legenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per revelar ti ogni segreto di questo luogo senza tempo.",
     "chat_tooltip": "Click to Chat",
     "welcomemsg_felicia": "Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure."
   },
@@ -117,7 +116,7 @@
     },
     "cappuccini": {
       "title": "Convento dei Frati Cappuccini",
-      "description": "Luogo di silenzio, meditazione e storia, le strutture del Convento si legano profondamente alla tradizione francescana in Sicilia. Oltre alla struttura conventuale, l'area offre uno spaccato autentico di vita monastica e devozione popolare.",
+      "description": "Luogo di silenzio, meditazione e storia, le strutture del Convento si legano profundamente alla tradizione francescana in Sicilia. Oltre alla struttura conventuale, l'area offre uno spaccato autentico di vita monastica e devozione popolare.",
       "hours": "Accessibile principalmente su richiesta o durante le ricorrenze francescane. Contattare l'Ufficio Turismo.",
       "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti come la Chiesa di San Rocco e altri piccoli capolavori diffusi."
     }
