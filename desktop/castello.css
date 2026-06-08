@@ -20,28 +20,31 @@ html, body {
     inset: 0;
     z-index: -9999;
     overflow: hidden;
-    background: #000;
+    background-color: #000;
 }
 
-/* Risolto: Il gradiente ora scurisce la colonna sinistra per dare leggibilità massima ai testi */
-.scene-background-container::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, 
-        rgba(5, 3, 2, 0.95) 0%, 
-        rgba(5, 3, 2, 0.75) 40%, 
-        rgba(5, 3, 2, 0.40) 70%,
-        rgba(5, 3, 2, 0.85) 100%);
-    z-index: 1;
-}
-
-.scene-background-container video {
+/* Forziamo il video a prendersi tutto lo schermo senza deformarsi */
+.scene-background-video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
     display: block;
 }
+
+/* L'overlay scuro ora è un livello separato che si appoggia sopra il video */
+.scene-background-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        rgba(5, 3, 2, 0.88) 0%, 
+        rgba(5, 3, 2, 0.60) 40%, 
+        rgba(5, 3, 2, 0.30) 70%,
+        rgba(5, 3, 2, 0.75) 100%);
+    z-index: 2;
+    pointer-events: none; /* Evita di bloccare i tocchi sullo schermo */
+}
+
 
 /* ==========================================================================
    3. DASHBOARD DESKTOP PREMIUM (SINCRONIZZATA CON CITTA' DEL BORGO)
