@@ -8,59 +8,65 @@ html, body {
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
     color: #ffe7b3;
-    background-color: transparent; 
+    background-color: #000; 
+    overflow-x: hidden;
 }
 
 /* ==========================================================================
-   2. SFONDO VIDEO DINAMICO FLUIDO
+   2. SFONDO VIDEO DINAMICO E OVERLAY DI CONTRASTO ELEGANTE
    ========================================================================== */
 .scene-background-container {
     position: fixed;
     inset: 0;
     z-index: -9999;
     overflow: hidden;
+    background: #000;
 }
 
-.scene-background-video {
+/* Risolto: Il gradiente ora scurisce la colonna sinistra per dare leggibilità massima ai testi */
+.scene-background-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        rgba(5, 3, 2, 0.95) 0%, 
+        rgba(5, 3, 2, 0.75) 40%, 
+        rgba(5, 3, 2, 0.40) 70%,
+        rgba(5, 3, 2, 0.85) 100%);
+    z-index: 1;
+}
+
+.scene-background-container video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
     display: block;
 }
 
-.scene-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, 
-        rgba(5, 3, 2, 0.92) 0%, 
-        rgba(5, 3, 2, 0.65) 55%, 
-        rgba(5, 3, 2, 0.85) 100%);
-    backdrop-filter: blur(1px);
-    z-index: -9998;
-}
-
 /* ==========================================================================
-   3. DASHBOARD DESKTOP PREMIUM WITH ULTRA-SOFT REFLECTIONS
+   3. DASHBOARD DESKTOP PREMIUM (SINCRONIZZATA CON CITTA' DEL BORGO)
    ========================================================================== */
 .dashboard { 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 75px; 
+    height: 60px; 
     display: flex;
     align-items: center;
     justify-content: space-between; 
-    padding: 0 40px;
+    padding: 0 30px;
     box-sizing: border-box;
-    z-index: 999;
-    background: rgba(5, 3, 2, 0.85);
-    border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+    z-index: 9999;
+    background: rgba(5, 3, 2, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.85);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
 }
 
 .logo-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: #ffd78f;
     text-shadow: 0 0 12px rgba(255, 215, 143, 0.6);
@@ -68,7 +74,7 @@ html, body {
 
 .nav-desktop {
     display: flex;
-    gap: 30px;
+    gap: 20px;
 }
 
 .nav-item {
@@ -76,14 +82,13 @@ html, body {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    padding: 8px 16px;
+    padding: 6px 14px;
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     border-radius: 6px;
     position: relative;
     overflow: hidden; 
 }
 
-/* Luce continua e ammorbidita di sottofondo per i link del menu */
 .nav-item::before {
     content: '';
     position: absolute;
@@ -108,7 +113,6 @@ html, body {
     text-shadow: 0 0 8px #ffd78f;
 }
 
-/* 🔥 MODIFICA: Effetto riflesso ammorbidito e rallentato a 1.2s per massima fluidità */
 .nav-item:hover::before {
     animation: castleHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
@@ -116,12 +120,12 @@ html, body {
 .header-right-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .lang-switcher {
     display: flex;
-    gap: 6px;
+    gap: 4px;
     background: rgba(0, 0, 0, 0.5);
     padding: 4px;
     border-radius: 8px;
@@ -132,7 +136,7 @@ html, body {
     background: none;
     border: none;
     font-size: 1.1rem;
-    padding: 4px 8px;
+    padding: 2px 6px;
     cursor: pointer;
     border-radius: 4px;
     transition: transform 0.2s, background-color 0.2s;
@@ -145,10 +149,10 @@ html, body {
 }
 
 .home-btn {
-    background: transparent;
+    background: rgba(255, 215, 160, 0.25);
     border: 1px solid #ffd78f;
     color: #ffd78f;
-    padding: 8px 18px;
+    padding: 6px 14px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
@@ -158,7 +162,6 @@ html, body {
     overflow: hidden;
 }
 
-/* Riflesso morbido sul bottone Home */
 .home-btn::before {
     content: '';
     position: absolute;
@@ -184,7 +187,6 @@ html, body {
     box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
 }
 
-/* 🔥 MODIFICA: Rallentato l'effetto riflesso a 1.2s sul tasto Home */
 .home-btn:hover::before {
     animation: castleHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
@@ -194,16 +196,17 @@ html, body {
    ========================================================================== */
 .castle-layout {
     width: 100%;
-    min-height: calc(100vh - 75px);
-    margin-top: 75px;
+    min-height: calc(100vh - 60px);
+    margin-top: 60px;
     display: flex;
     box-sizing: border-box;
-    padding: 50px 60px;
+    padding: 40px 5%;
     position: relative;
+    z-index: 2; /* Salta sopra il video di sfondo */
 }
 
 /* ==========================================================================
-   5. COLONNA SINISTRA: TESTI + ABITO INTEGRATO WITH REFLECTIONS
+   5. COLONNA SINISTRA: TESTI + ABITO INTEGRATO
    ========================================================================== */
 .castle-info-panel {
     flex: 1;
@@ -211,7 +214,7 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-right: 50px;
+    padding-right: 40px;
     box-sizing: border-box;
 }
 
@@ -219,10 +222,11 @@ html, body {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #b38f43;
+    color: #ffd28c;
     font-weight: 700;
     margin-bottom: 5px;
     display: inline-block;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
 .castle-info-panel h2 {
@@ -230,14 +234,14 @@ html, body {
     color: #ffd78f;
     margin: 5px 0 15px 0;
     font-weight: 700;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
 }
 
 .gold-divider {
     border: none;
     height: 2px;
     background: linear-gradient(90deg, #ffd78f 0%, transparent 90%);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     width: 80%;
 }
 
@@ -248,17 +252,16 @@ html, body {
 }
 
 .text-paragraph {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     line-height: 1.65;
     color: #e6e0d4;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    /* Ottimizzato contrasto con doppio alone scuro per i testi storici */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
     margin: 0;
-    position: relative;
-    z-index: 2; 
 }
 
 .leading-para {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: #fff;
     font-weight: 500;
     line-height: 1.6;
@@ -268,15 +271,14 @@ html, body {
     border-left: 3px solid #ffd78f;
     padding-left: 15px;
     color: #ffd78f;
-    background: rgba(255, 215, 160, 0.04);
-    padding-top: 8px;
-    padding-bottom: 8px;
+    background: rgba(255, 215, 160, 0.05);
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 0 8px 8px 0;
     position: relative;
     overflow: hidden;
 }
 
-/* Riflesso automatico sul paragrafo in evidenza (più morbido) */
 .highlight-para::before {
     content: '';
     position: absolute;
@@ -297,58 +299,36 @@ html, body {
 
 .castle-dress-inline {
     width: 100%;
-    margin: 15px 0;
+    max-width: 340px;
+    margin: 10px 0;
     text-align: center;
-    background: rgba(255, 215, 160, 0.05);
-    border: 1px solid rgba(255, 215, 160, 0.2);
+    background: rgba(5, 3, 2, 0.6);
+    border: 1px solid rgba(255, 215, 160, 0.25);
+    backdrop-filter: blur(4px);
     border-radius: 12px;
-    padding: 15px;
+    padding: 12px;
     position: relative;
     overflow: hidden;
 }
 
-/* Riflesso elegante e vellutato sullo scrigno dell'abito in linea */
-.castle-dress-inline::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -130%;
-    width: 30%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.13) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: castleGlowLoop 10s infinite ease-in-out;
-    animation-delay: 2s;
-    pointer-events: none;
-}
-
 .dress-img-inline {
-    width: 180px;
+    width: 150px;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
-    position: relative;
-    z-index: 2;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
 }
 
 .dress-caption-inline {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #ffd78f;
     font-weight: 600;
-    margin-top: 8px;
+    margin-top: 6px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    position: relative;
-    z-index: 2;
 }
 
 /* ==========================================================================
-   6. COLONNA DESTRA: CASTELLANA — CON RIFLESSO AMMORBIDITO ATTIVATO SOPRA IL VIDEO
+   6. COLONNA DESTRA: AREA CASTELLANA INTERATTIVA
    ========================================================================== */
 .castle-interactive-zone {
     flex: 1;
@@ -363,10 +343,11 @@ html, body {
 .castellana-video-container {
     display: flex;
     align-items: flex-end;
+    z-index: 10;
 }
 
 .castellana-video-wrapper {
-    width: 250px;
+    width: 240px;
     position: relative;
     cursor: pointer;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -374,7 +355,6 @@ html, body {
     border-radius: 16px; 
 }
 
-/* 🔥 MODIFICA: Strato pseudo-elemento impostato a z-index: 3 (Sopra il tag video) con opacità ammorbidita al 18% */
 .castellana-video-wrapper::before {
     content: '';
     position: absolute;
@@ -390,7 +370,7 @@ html, body {
     );
     transform: rotate(-45deg);
     pointer-events: none;
-    z-index: 3; /* Salta sopra il layer del video mp4 */
+    z-index: 3;
     animation: castleGlowLoop 12s infinite ease-in-out;
     animation-delay: 3s;
 }
@@ -399,19 +379,17 @@ html, body {
     transform: scale(1.04);
 }
 
-/* 🔥 MODIFICA: Rallentata la carezza d'oro all'hover a 1.2s per un ingresso vellutato */
 .castellana-video-wrapper:hover::before {
     animation: castleHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Sotto lo strato di luce (Z-Index calibrati) */
 .castellana-video {
     width: 100% !important;
     height: auto !important;
     display: block;
     filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.9));
     position: relative;
-    z-index: 1; /* Rimane sotto lo scorrimento del riflesso */
+    z-index: 1;
 }
 
 .castellana-tooltip {
@@ -433,22 +411,23 @@ html, body {
 }
 
 /* ==========================================================================
-   7. INTERFACCIA CHAT FLOATING
+   7. INTERFACCIA CHAT FLOATING PREMIUM
    ========================================================================== */
 .chat-desktop {
     position: absolute;
-    bottom: 290px;
+    bottom: 275px; /* Agganciata elegantemente sopra la testa dell'avatar */
     right: 0;
     width: 380px;
     height: 400px;
-    background: rgba(5, 3, 2, 0.97);
+    background: rgba(5, 3, 2, 0.96);
     border: 2px solid #ffd78f;
     border-radius: 16px;
     display: none;
     flex-direction: column;
-    z-index: 99;
-    box-shadow: 0 0 40px rgba(255, 215, 160, 0.2);
+    z-index: 999;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85);
     overflow: hidden;
+    backdrop-filter: blur(8px);
 }
 
 .chat-desktop.active {
@@ -498,16 +477,16 @@ html, body {
 .chat-messages {
     flex: 1;
     overflow-y: auto;
-    padding: 18px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
 }
 
 .message {
-    background: rgba(255, 215, 160, 0.05);
+    background: rgba(255, 215, 160, 0.06);
     border: 1px solid rgba(255, 215, 160, 0.15);
-    padding: 14px;
+    padding: 12px 14px;
     border-radius: 12px;
     font-size: 0.95rem;
     line-height: 1.55;
@@ -515,9 +494,9 @@ html, body {
 }
 
 .chat-input-row {
-    padding: 14px;
+    padding: 12px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     border-top: 1px solid rgba(255, 215, 160, 0.15);
     background: #000;
     align-items: center;
@@ -539,6 +518,12 @@ html, body {
     border-color: #ffd78f;
 }
 
+/* Nuove classi allineate all'HTML aggiornato */
+.input-actions {
+    display: flex;
+    gap: 6px;
+}
+
 .mic-btn {
     background: transparent;
     border: 1px solid #ffd78f;
@@ -546,40 +531,34 @@ html, body {
     padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 0.95rem;
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Riflesso morbido sul pulsante microfono all'hover */
-.mic-btn::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -130%;
-    width: 35%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.18) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    pointer-events: none;
 }
 
 .mic-btn:hover {
     background: rgba(255, 215, 160, 0.15);
 }
 
-/* 🔥 MODIFICA: Rallentato il riflesso sul microfono a 1.2s all'hover */
-.mic-btn:hover::before {
-    animation: castleHoverFlash 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+.send-btn {
+    background: #ffd78f;
+    border: 1px solid #ffd78f;
+    color: #050302;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.send-btn:hover {
+    background: #fff;
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 /* ==========================================================================
-   8. ANIMAZIONI INTERNE
+   8. ANIMAZIONI INTERNE E KEYFRAMES
    ========================================================================== */
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -592,19 +571,83 @@ html, body {
     100% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
 }
 
-/* ==========================================================================
-   9. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI CALIBRATI E MORBIDI
-   ========================================================================== */
-
-/* Passaggio automatico extra-morbido di sottofondo */
 @keyframes castleGlowLoop {
     0% { left: -130%; }
     16% { left: 160%; }
     100% { left: 160%; }
 }
 
-/* 🔥 Effetto Hover Morbido: carezza d'oro da 1.2 secondi con curve regali */
 @keyframes castleHoverFlash {
     0% { left: -130%; }
     100% { left: 160%; }
+}
+
+/* ==========================================================================
+   9. MEDIA QUERIES PER RESPONSIVE DESIGN (MOBILE & TABLET COMPLETATE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .dashboard {
+        padding: 0 20px;
+        height: 60px;
+    }
+    
+    .nav-desktop {
+        display: none; /* Ottimizza spazio su mobile */
+    }
+
+    .castle-layout {
+        flex-direction: column; /* Incolonna gli elementi su schermi verticali */
+        padding: 24px 16px;
+    }
+
+    .castle-info-panel {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 35px;
+    }
+
+    .castle-info-panel h2 {
+        font-size: 2.1rem;
+    }
+    
+    .gold-divider {
+        width: 100%;
+    }
+    
+    .castle-dress-inline {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .castle-interactive-zone {
+        max-width: 100%;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 20px;
+    }
+
+    .castellana-video-wrapper {
+        width: 190px;
+    }
+
+    .chat-desktop {
+        position: fixed; /* Si ancora come applicazione nativa a schermo intero/popup fissa */
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        width: calc(100% - 32px);
+        max-width: 360px;
+        height: 65vh;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.95);
+    }
+    
+    .chat-desktop.active {
+        animation: slideUpMobile 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+}
+
+@keyframes slideUpMobile {
+    from { opacity: 0; transform: translate(-50%, 30px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
 }
