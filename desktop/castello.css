@@ -8,7 +8,8 @@ html, body {
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
     color: #ffe7b3;
-    background-color: #000; 
+    /* RISOLTO: Trasparenza per evitare che il body copra il video su mobile */
+    background: transparent; 
     overflow-x: hidden;
 }
 
@@ -18,12 +19,11 @@ html, body {
 .scene-background-container {
     position: fixed;
     inset: 0;
-    z-index: -9999;
+    z-index: -2; /* Posizionato sotto tutti i contenuti */
     overflow: hidden;
-    background-color: #000;
+    background-color: #000; /* Fallback nero se il video non si carica */
 }
 
-/* Forziamo il video a prendersi tutto lo schermo senza deformarsi */
 .scene-background-video {
     width: 100vw;
     height: 100vh;
@@ -31,23 +31,22 @@ html, body {
     display: block;
 }
 
-/* L'overlay scuro ora è un livello separato che si appoggia sopra il video */
+/* L'overlay scuro si frappone perfettamente tra il video e i testi */
 .scene-background-container::after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(90deg, 
-        rgba(5, 3, 2, 0.88) 0%, 
-        rgba(5, 3, 2, 0.60) 40%, 
-        rgba(5, 3, 2, 0.30) 70%,
-        rgba(5, 3, 2, 0.75) 100%);
-    z-index: 2;
-    pointer-events: none; /* Evita di bloccare i tocchi sullo schermo */
+        rgba(5, 3, 2, 0.92) 0%, 
+        rgba(5, 3, 2, 0.70) 40%, 
+        rgba(5, 3, 2, 0.40) 70%,
+        rgba(5, 3, 2, 0.85) 100%);
+    z-index: -1; /* RISOLTO: Sopra il video, ma rigorosamente SOTTO i testi e l'interfaccia */
+    pointer-events: none; 
 }
 
-
 /* ==========================================================================
-   3. DASHBOARD DESKTOP PREMIUM (SINCRONIZZATA CON CITTA' DEL BORGO)
+   3. DASHBOARD DESKTOP PREMIUM (INCLUSO)
    ========================================================================== */
 .dashboard { 
     position: fixed;
@@ -205,7 +204,8 @@ html, body {
     box-sizing: border-box;
     padding: 40px 5%;
     position: relative;
-    z-index: 2; /* Salta sopra il video di sfondo */
+    z-index: 1; /* Forza i contenuti sopra lo sfondo senza bloccare la trasparenza */
+    background: transparent; /* RISOLTO: Impedisce la creazione di blocchi neri solidi su mobile */
 }
 
 /* ==========================================================================
@@ -258,7 +258,6 @@ html, body {
     font-size: 1.05rem;
     line-height: 1.65;
     color: #e6e0d4;
-    /* Ottimizzato contrasto con doppio alone scuro per i testi storici */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
     margin: 0;
 }
@@ -418,7 +417,7 @@ html, body {
    ========================================================================== */
 .chat-desktop {
     position: absolute;
-    bottom: 275px; /* Agganciata elegantemente sopra la testa dell'avatar */
+    bottom: 275px; 
     right: 0;
     width: 380px;
     height: 400px;
@@ -521,7 +520,6 @@ html, body {
     border-color: #ffd78f;
 }
 
-/* Nuove classi allineate all'HTML aggiornato */
 .input-actions {
     display: flex;
     gap: 6px;
@@ -586,7 +584,7 @@ html, body {
 }
 
 /* ==========================================================================
-   9. MEDIA QUERIES PER RESPONSIVE DESIGN (MOBILE & TABLET COMPLETATE)
+   9. MEDIA QUERIES PER RESPONSIVE DESIGN (MOBILE & TABLET)
    ========================================================================== */
 @media (max-width: 1024px) {
     .dashboard {
@@ -595,11 +593,11 @@ html, body {
     }
     
     .nav-desktop {
-        display: none; /* Ottimizza spazio su mobile */
+        display: none; 
     }
 
     .castle-layout {
-        flex-direction: column; /* Incolonna gli elementi su schermi verticali */
+        flex-direction: column; 
         padding: 24px 16px;
     }
 
@@ -634,7 +632,7 @@ html, body {
     }
 
     .chat-desktop {
-        position: fixed; /* Si ancora come applicazione nativa a schermo intero/popup fissa */
+        position: fixed; 
         bottom: 16px;
         left: 50%;
         transform: translateX(-50%);
