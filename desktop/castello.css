@@ -8,20 +8,19 @@ html, body {
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
     color: #ffe7b3;
-    /* 💡 RISOLTO: Impostato trasparente per permettere al video sottostante di vedersi */
     background: transparent !important; 
     overflow-x: hidden;
 }
 
 /* ==========================================================================
-   2. SFONDO VIDEO DINAMICO E OVERLAY ELEGANTE (LUMINOSITÀ OTTIMIZZATA)
+   2. SFONDO VIDEO DINAMICO CON FILTRO AMBRA-ORO PREMIUM
    ========================================================================== */
 .scene-background-container {
     position: fixed;
     inset: 0;
     z-index: -5 !important;
     overflow: hidden;
-    background-color: #000; 
+    background-color: #050302; 
 }
 
 .scene-background-video {
@@ -29,20 +28,20 @@ html, body {
     height: 100vh;
     object-fit: cover;
     display: block;
+    /* ✨ FILTRO ORO ANTICO: Trasforma i toni freddi in un'atmosfera calda e metallica */
+    filter: sepia(0.65) hue-rotate(5deg) contrast(1.15) brightness(0.85);
 }
 
 .scene-background-container::after {
     content: '';
     position: absolute;
     inset: 0;
-    /* 💡 OPACITÀ QUASI DIMEZZATA: Passati da 0.6/0.7 a 0.35/0.4 
-       Il video respira e si vede chiaramente, ma il testo a sinistra resta leggibile */
-    background: linear-gradient(90deg, rgba(5, 3, 2, 0.35) 0%, rgba(5, 3, 2, 0) 40%),
-                linear-gradient(180deg, rgba(5, 3, 2, 0.4) 0%, rgba(5, 3, 2, 0.1) 100%);
+    /* Vignettatura calda e progressiva per accentuare la profondità storica */
+    background: radial-gradient(circle, rgba(5, 3, 2, 0.1) 30%, rgba(5, 3, 2, 0.6) 100%),
+                linear-gradient(90deg, rgba(5, 3, 2, 0.4) 0%, rgba(5, 3, 2, 0) 50%);
     z-index: 1; 
     pointer-events: none; 
 }
-
 
 /* ==========================================================================
    3. DASHBOARD DESKTOP PREMIUM
@@ -110,7 +109,7 @@ html, body {
 }
 
 /* ==========================================================================
-   4. STRUTTURA LAYOUT (CORNICE FISSA - VERTICALE ED ELEGANTE)
+   4. STRUTTURA LAYOUT
    ========================================================================== */
 .castle-layout {
     width: 100%;
@@ -156,7 +155,6 @@ html, body {
     margin: 0;
 }
 
-/* Disposizione contenuti: testo stretto a sinistra che fa da cornice */
 .castle-main-content {
     width: 100%;
     display: flex;
@@ -166,15 +164,11 @@ html, body {
     margin-top: 10px;
 }
 
-/* 🏛️ LA TECA DIETRO LA SCRITTA È STATA COMPLETAMENTE ELIMINATA */
 .castle-info-panel {
     width: 100%;
-    max-width: 380px; /* Larghezza ridotta per forzare lo sviluppo verticale e stretto */
+    max-width: 380px; 
     background: none !important; 
     padding: 0 !important;
-    border-radius: 0 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
     border: none !important;
     box-shadow: none !important;
     display: flex;
@@ -182,7 +176,6 @@ html, body {
     gap: 18px;
 }
 
-/* Ombreggiatura netta sui testi per assicurarne la leggibilità senza lo sfondo scuro */
 .text-paragraph {
     font-size: 0.95rem;
     line-height: 1.6;
@@ -202,7 +195,6 @@ html, body {
     padding: 6px 0 6px 15px;
     color: #ffd78f;
     background: transparent; 
-    border-radius: 0;
 }
 
 .castle-dress-column {
@@ -213,7 +205,7 @@ html, body {
 }
 
 /* ==========================================================================
-   5. L'ABITO STORICO (FLUTTUANTE AFFIANCATO AL TESTO)
+   5. L'ABITO STORICO
    ========================================================================== */
 .castle-dress-inline {
     width: 100%;
@@ -244,7 +236,7 @@ html, body {
 }
 
 /* ==========================================================================
-   6. CASTELLANA WIDGET (PULSANTE CHAT DA 110PX)
+   6. CASTELLANA WIDGET (OTTIMIZZATO PER AFFIANCAMENTO CHAT IN DESKTOP)
    ========================================================================== */
 .castellana-widget-area {
     position: fixed;
@@ -252,8 +244,10 @@ html, body {
     right: 25px;
     z-index: 9999;
     display: flex;
-    flex-direction: column;
+    /* 🏛️ Cambiato in riga orizzontale invertita: la chat va a SINISTRA del cerchio */
+    flex-direction: row-reverse;
     align-items: flex-end;
+    gap: 15px;
 }
 
 .castellana-video-container {
@@ -319,12 +313,13 @@ html, body {
     flex-direction: column;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
     overflow: hidden;
-    margin-bottom: 12px; 
+    /* 🏛️ Tolto il margin bottom perché ora si affiancano sulla riga */
+    margin-bottom: 0; 
 }
 
 .chat-desktop.active {
     display: flex;
-    animation: slideUp 0.3s ease-out;
+    animation: slideRight 0.3s ease-out;
 }
 
 .chat-header {
@@ -360,13 +355,18 @@ html, body {
 /* ==========================================================================
    8. ANIMAZIONI
    ========================================================================== */
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(10px); }
+@keyframes slideRight {
+    from { opacity: 0; transform: translateX(15px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideUpMobile {
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 /* ==========================================================================
-   9. MEDIA QUERIES (OTTIMIZZAZIONE COERENTE SMARTPHONE)
+   9. MEDIA QUERIES (STRATEGIA CITTADINO FLUIDA ED EVOLUTA)
    ========================================================================== */
 @media (max-width: 768px) {
     .dashboard { padding: 0 15px; }
@@ -396,22 +396,60 @@ html, body {
         justify-content: center; 
     }
 
-    .castellana-widget-area {
-        bottom: 15px;
-        right: 15px;
+    /* 📱 DISPOSITIVI VERTICALI (Ritratto - Portrait): Chat SOPRA l'Avatar */
+    @media (orientation: portrait) {
+        .castellana-widget-area {
+            bottom: 15px;
+            right: 15px;
+            flex-direction: column; /* Cambia in verticale */
+            align-items: flex-end;
+            gap: 10px;
+            width: calc(100% - 30px); /* Sfrutta la larghezza per accentrare la chat */
+            pointer-events: none; /* Lascia passare i tocchi sullo sfondo video se chiusa */
+        }
+
+        .castellana-video-container, .chat-desktop {
+            pointer-events: auto; /* Riattiva i tocchi sugli elementi effettivi */
+        }
+
+        .castellana-video-wrapper {
+            width: 75px;  
+            height: 75px;
+        }
+
+        .chat-desktop {
+            width: 100%; /* Si adatta simmetricamente allo schermo dello smartphone */
+            max-width: 360px;
+            height: 40vh; /* Non soffoca la vista del castello */
+            margin-bottom: 0;
+        }
+        
+        .chat-desktop.active {
+            animation: slideUpMobile 0.3s ease-out;
+        }
     }
 
-    .castellana-video-wrapper {
-        width: 70px;  
-        height: 70px;
-    }
+    /* 📱 DISPOSITIVI ORIZZONTALI (Panorama - Landscape): Chat AFFIANCATA A SINISTRA */
+    @media (orientation: landscape) {
+        .castellana-widget-area {
+            bottom: 10px;
+            right: 15px;
+            flex-direction: row-reverse; /* Resta affiancata */
+            gap: 12px;
+        }
 
-    .chat-desktop {
-        position: fixed;
-        bottom: 100px; 
-        left: 15px;
-        right: 15px;
-        width: auto;
-        height: 45vh;
+        .castellana-video-wrapper {
+            width: 65px;  
+            height: 65px;
+        }
+
+        .chat-desktop {
+            width: 290px;
+            height: 60vh; /* Bilanciato per gli schermi bassi e larghi */
+        }
+        
+        .chat-desktop.active {
+            animation: slideRight 0.3s ease-out;
+        }
     }
 }
