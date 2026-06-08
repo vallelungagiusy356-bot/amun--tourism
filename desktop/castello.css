@@ -8,17 +8,18 @@ html, body {
     height: 100vh;
     overflow: hidden; /* Blocca tassativamente lo scorrimento della pagina */
     font-family: "Segoe UI", system-ui, sans-serif;
-    background: #050302;
+    background: #bd924a; /* Sfondo oro di backup immediato */
 }
 
 /* ==========================================================================
-   2. SFONDO VIDEO DINAMICO CON OVERLAY TRAMONTO ORO MAGNETICO
+   2. SFONDO VIDEO DINAMICO PURO (FILTRI E OVERLAY COMPLETAMENTE RIMOSSI)
    ========================================================================== */
 .scene-background-container {
     position: fixed;
     inset: 0;
     z-index: -5 !important;
     overflow: hidden;
+    background-color: #bd924a;
 }
 
 .scene-background-video {
@@ -26,36 +27,8 @@ html, body {
     height: 100vh;
     object-fit: cover;
     display: block;
-    filter: contrast(1.15) brightness(0.85);
-}
-
-.scene-background-container::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        135deg, 
-        rgba(255, 140, 0, 0.3) 0%,    
-        rgba(212, 175, 55, 0.2) 50%,  
-        rgba(5, 3, 2, 0.6) 100%        
-    );
-    mix-blend-mode: color-burn; 
-    z-index: 1; 
-    pointer-events: none; 
-}
-
-.scene-background-container::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle at 70% 30%, 
-        rgba(255, 215, 0, 0.2) 0%, 
-        transparent 70%
-    );
-    mix-blend-mode: overlay;
-    z-index: 2;
-    pointer-events: none;
+    opacity: 0.95; /* Leggera trasparenza per scaldare le ombre con l'oro sottostante */
+    will-change: opacity;
 }
 
 /* ==========================================================================
@@ -127,14 +100,14 @@ html, body {
    4. LAYOUT BLINDATO E FISSO (ZONA TESTI - NIENTE SCROLL)
    ========================================================================== */
 .castle-layout {
-    position: fixed; /* Mantiene la struttura rigida e ferma sullo schermo */
+    position: fixed; 
     inset: 0;
     padding: 90px 4% 30px 4%;
     z-index: 2;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    pointer-events: none; /* Permette interazione con lo sfondo video nelle aree vuote */
+    pointer-events: none; 
 }
 
 .castle-header-fullwidth {
@@ -172,10 +145,10 @@ html, body {
 .castle-main-content {
     width: 100%;
     display: flex;
-    flex-direction: column; /* Cambiato a colonna per far scendere l'abito sotto il testo */
+    flex-direction: column; 
     align-items: flex-start;
     margin-top: 5px;
-    max-width: 440px; /* Area testi stretta e precisa per liberare lo sfondo a destra */
+    max-width: 440px; 
     pointer-events: auto;
 }
 
@@ -186,15 +159,14 @@ html, body {
     gap: 16px;
 }
 
-/* 🌟 OMBREGGIATURA DI CONTRASTO PROFONDA SUI TESTI DI CORTE */
 .text-paragraph {
     font-size: 1rem;
     line-height: 1.5;
     color: #ffffff;
     margin: 0;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 1), 
-                 0 4px 12px rgba(0, 0, 0, 1), 
-                 0 0 20px rgba(0, 0, 0, 0.7);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1), 
+                 0 2px 8px rgba(0, 0, 0, 0.95), 
+                 0 0 15px rgba(0, 0, 0, 0.9);
 }
 
 .leading-para {
@@ -235,7 +207,14 @@ html, body {
 }
 
 .dress-img-inline {
-    height: 65px; /* Dimensioni orizzontali compatte per la colonna sinistra */
+    height: 65px; 
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8)); 
+}
+
+.dress-img-inline {
+    height: 65px; 
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8)); 
@@ -252,7 +231,7 @@ html, body {
 }
 
 /* ==========================================================================
-   6. CASTELLANA WIDGET (CHATS A SINISTRA DEL VIDEO, SENZA SCRITTE TOOLTIP)
+   6. CASTELLANA WIDGET (CON SCRITTA "CHAT" FISSA IN ORO)
    ========================================================================== */
 .castellana-widget-area {
     position: fixed;
@@ -260,16 +239,31 @@ html, body {
     right: 25px;
     z-index: 9999;
     display: flex;
-    flex-direction: row-reverse; /* Forza lo sviluppo della chat a sinistra dell'avatar */
+    flex-direction: row-reverse; 
     align-items: flex-end;
     gap: 15px;
     pointer-events: auto;
 }
 
+/* Container verticale dell'avatar per ospitare la scritta superiore */
 .castellana-video-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 6px;
+}
+
+/* ✨ LA SCRITTA CHAT IN ORO (Scolpita e sempre visibile) */
+.castellana-video-container::before {
+    content: 'CHAT';
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #ffd78f;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 1), 0 0 8px rgba(0, 0, 0, 0.8);
+    display: block;
+    line-height: 1;
 }
 
 .castellana-video-wrapper {
@@ -295,7 +289,6 @@ html, body {
     object-fit: cover;
 }
 
-/* Pulito: l'elemento esiste solo come layer cliccabile invisibile */
 .castellana-tooltip {
     position: absolute;
     inset: 0;
@@ -352,7 +345,6 @@ html, body {
 .chat-input-row { padding: 8px; display: flex; gap: 6px; border-top: 1px solid rgba(255, 215, 160, 0.15); background: #000; }
 .chat-input-row input { flex: 1; background: #111; border: 1px solid rgba(255, 215, 160, 0.3); padding: 6px 10px; border-radius: 4px; color: #fff; outline: none; font-size: 0.85rem; }
 .chat-input-row input:focus { border-color: #ffd78f; }
-.mic-btn { background: transparent; border: 1px solid #ffd78f; color: #ffd78f; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
 .send-btn { background: #ffd78f; border: none; color: #050302; padding: 4px 10px; border-radius: 4px; font-weight: 700; cursor: pointer; }
 
 /* ==========================================================================
@@ -383,7 +375,7 @@ html, body {
     /* 📱 DISPOSITIVI VERTICALI (Portrait): TESTI CON COMPRESSIONE DEI CARATTERI */
     @media (orientation: portrait) {
         .castle-header-fullwidth h2 {
-            font-size: 1.45rem; /* Caratteri ridotti drasticamente */
+            font-size: 1.45rem; 
         }
         
         .category-tag {
@@ -391,7 +383,7 @@ html, body {
         }
 
         .text-paragraph {
-            font-size: 0.82rem; /* Testo compatto per non riempire lo schermo */
+            font-size: 0.82rem; 
             line-height: 1.4;
         }
         
@@ -430,7 +422,7 @@ html, body {
         .chat-desktop {
             width: 100%;
             max-width: 330px;
-            height: 32vh; /* Finestra chat ribassata per non coprire i testi */
+            height: 32vh; 
         }
         
         .chat-desktop.active {
@@ -451,7 +443,7 @@ html, body {
             line-height: 1.3; 
         }
         .castle-dress-column { 
-            display: none; /* Nasconde l'abito in landscape mobile per ottimizzare gli spazi */
+            display: none; 
         } 
         .castellana-widget-area {
             bottom: 10px;
