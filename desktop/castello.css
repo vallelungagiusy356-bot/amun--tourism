@@ -12,14 +12,14 @@ html, body {
 }
 
 /* ==========================================================================
-   2. SFONDO VIDEO DINAMICO PURO (FILTRI E OVERLAY COMPLETAMENTE RIMOSSI)
+   2. SFONDO VIDEO DINAMICO PURO (RIPRISTINATO AL 100% DI VISIBILITÀ)
    ========================================================================== */
 .scene-background-container {
     position: fixed;
     inset: 0;
     z-index: -5 !important;
     overflow: hidden;
-    background-color: #bd924a;
+    background-color: #bd924a; /* L'oro rimane sotto, pronto a coprire i tempi di caricamento */
 }
 
 .scene-background-video {
@@ -27,9 +27,10 @@ html, body {
     height: 100vh;
     object-fit: cover;
     display: block;
-    opacity: 0.95; /* Leggera trasparenza per scaldare le ombre con l'oro sottostante */
-    will-change: opacity;
+    opacity: 1; /* ✨ Riportato a 1: il video torna totalmente visibile sopra l'oro */
+    will-change: transform;
 }
+
 
 /* ==========================================================================
    3. DASHBOARD DESKTOP PREMIUM
