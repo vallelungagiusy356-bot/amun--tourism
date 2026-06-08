@@ -109,18 +109,6 @@ html, body {
     margin-right: auto;
 }
 
-./* ==========================================================================
-   3. NUOVA INTRODUZIONE NARRATIVA (INTEGRAZIONE PER I NUOVI TESTI JSON)
-   ========================================================================== */
-.citizen-intro-container {
-    margin-top: 100px; /* Evita la sovrapposizione con la dashboard fissa */
-    padding: 0 24px;
-    box-sizing: border-box;
-    max-width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .category-tag {
     font-size: 0.8rem;
     text-transform: uppercase;
@@ -157,7 +145,6 @@ html, body {
     margin: 0;
     max-width: 800px;
 }
-
 
 /* ==========================================================================
    4. GRIGLIA ADATTIVA ED ESPERIENZIALE (MONO su mobile, 2x2 su desktop)
