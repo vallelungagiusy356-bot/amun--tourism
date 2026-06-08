@@ -47,33 +47,43 @@
 
             <section class="castle-info-panel">
                 
-                <p class="text-paragraph leading-para" data-i18n="castle.leading_para">
-                    Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. 
-                    Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.
+                <!-- Testi impostati con le nuove chiavi per la versione in rima -->
+                <p class="text-paragraph leading-para" data-i18n="castle.rhyme_1">
+                    Benvenuti, o viandanti, al maniero possente,<br>
+                    che scruta la valle e la storia presente.<br>
+                    Arroccato sul monte di viva pietra fiero,<br>
+                    custode di sogni, di gloria e mistero.
                 </p>
 
-                <p class="text-paragraph" data-i18n="castle.para_2">
-                    Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
+                <p class="text-paragraph" data-i18n="castle.rhyme_2">
+                    Tra queste sue mura che sfidano il tempo,<br>
+                    passaron dinastie come soffio nel vento.<br>
+                    Dai fieri Chiaramonte ai Despuches d'onore,<br>
+                    ogni stanza racconta di patti e splendore.
                 </p>
                 
-                <p class="text-paragraph highlight-para" data-i18n="castle.para_3">
-                    Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per revelar ti ogni segreto di questo luogo senza tempo.
+                <p class="text-paragraph highlight-para" data-i18n="castle.rhyme_3">
+                    Non cercate le date nel freddo volume,<br>
+                    ma l'ombra che danza al calar del lumicino.<br>
+                    La Castellana vi attende, tra i passi e la via,<br>
+                    per svelarvi il segreto di Suor Felicia.
                 </p>
+                
+                <!-- 👗 ABITO SPOSTATO QUI: Ora è sotto il testo, liberando lo sfondo in desktop -->
+                <div class="castle-dress-column">
+                    <div class="castle-dress-inline">
+                        <img src="img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
+                        <p class="dress-caption-inline" data-i18n="castle.dress_caption">L'abito della Castellana</p>
+                    </div>
+                </div>
                 
             </section>
 
-            <div class="castle-dress-column">
-                <div class="castle-dress-inline">
-                    <img src="img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
-                    <p class="dress-caption-inline" data-i18n="castle.dress_caption">L'abito della Castellana</p>
-                </div>
-            </div>
-
         </div>
-
 
         <div class="castellana-widget-area">
             
+            <!-- La chat ora si trova strutturalmente prima del video (sarà affiancata a sinistra in desktop) -->
             <div class="chat-desktop" id="chatDesktop">
                 <div class="chat-header">
                     <div class="avatar-status-dot"></div>
@@ -95,9 +105,10 @@
             </div>
 
             <div class="castellana-video-container">
-                <div class="castellana-video-wrapper">
-                    <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
-                    <video id="castellanaVideo" class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
+                <div class="castellana-video-wrapper" id="castellanaVideo">
+                    <!-- Tolto il testo dentro il tooltip, rimane solo come elemento per il clic -->
+                    <div class="castellana-tooltip" id="castellanaTooltip"></div>
+                    <video class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
                         <source src="img/benvenuto_castellana.webm" type="video/webm">
                     </video>
                 </div>
@@ -159,7 +170,6 @@
     function openChat(e) {
         e.stopPropagation();
         chatDesktop.classList.add("active");
-        // Auto scroll messaggi all'apertura
         setTimeout(() => {
             const box = document.getElementById("chatMessagesBox");
             if (box) box.scrollTop = box.scrollHeight;
