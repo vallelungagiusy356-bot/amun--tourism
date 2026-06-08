@@ -27,14 +27,17 @@
     "placeholder": "Write a message..."
   },
   "citizen": {
+    "tag": "Local Community",
+    "main_heading": "Citizen of the Village",
+    "intro_text": "The beating heart of Amunì lies in those who live in the village every day. Guardians of ancient stories, passed-down flavors, and secrets hidden among the stones of the alleys.",
     "legends_title": "Legends and Roots",
     "legends_desc": "The oldest stories of the village, passed down from generation to generation.",
-    "legend_felicia": "The Legend of Sister Felicia",
-    "legend_pizzarrone": "The Legend of the Pizzarrone Tower",
+    "legend_felicia": "The legend of Sister Felicia",
+    "legend_pizzarrone": "The legend of the Pizzarrone Tower",
     "audio_title": "Listen to prayers and tales in dialect",
     "transcription": "Automatic transcription",
     "castle_title": "The Castle",
-    "castle_desc": "A thousand-year-old fortress: conspiracies, loopholes, secret tunnels, prisons, and epic battles.",
+    "castle_desc": "A millenary fortress: conspiracies, loopholes, secret tunnels, prisons, and epic battles.",
     "castle_more": "Discover the Castle",
     "church_title": "Churches and Art",
     "church_desc": "A journey through catacombs, traditions, patrons, and ancient devotions.",
@@ -42,7 +45,7 @@
     "church_sangiuseppe": "The red gratinata of San Giuseppe",
     "church_sepolcri": "The sepulchers with blooming wheat",
     "food_title": "Food and Events",
-    "food_desc": "Authentic flavors, places to eat and experience the village.",
+    "food_desc": "Authentic flavors, places to eat, and ways to experience the village.",
     "food_arancine": "Where to taste excellent arancine",
     "food_cocktail": "Cocktails with DJ all year round",
     "food_aperitivo": "Panoramic aperitifs (summer only)",
@@ -50,8 +53,9 @@
     "event_castellana": "The Castellana",
     "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Sausage Festival",
-    "event_beato": "Feast of Beato Giovanni"
+    "event_beato": "Feast of Blessed Giovanni"
   },
+
   "castle": {
     "title": "The Castle of Caccamo",
     "position": "A fortress perched on a rocky outcrop, with a dominant view over the valley.",
