@@ -246,8 +246,8 @@ html, body {
 }
 
 .castellana-video-wrapper {
-    width: 65px;   /* 💡 PERFETTA: Ridotta a 65px per non impattare sul mobile */
-    height: 65px;
+    width: 150px;   /* 💡 PERFETTA: Ridotta a 65px per non impattare sul mobile */
+    height: 150px;
     position: relative;
     cursor: pointer;
     border-radius: 50%;
@@ -272,7 +272,7 @@ html, body {
 /* Tooltip "Click to Chat" rimpicciolito ed elegante all'hover */
 .castellana-tooltip {
     position: absolute;
-    top: -35px;
+    top: 15px;
     right: 0;
     background: #ffd78f;
     color: #050302;
