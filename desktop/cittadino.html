@@ -32,17 +32,29 @@
     <div class="citizen-frame-layout">
         
         <div class="citizen-left-column">
-            <div class="citizen-intro-container">
-                <span class="category-tag" data-i18n="citizen.tag">Diventa parte del borgo</span>
-                <h1 class="main-title" data-i18n="citizen.main_heading">Cittadino del Borgo</h1>
-                <div class="gold-divider"></div>
-                <p class="text-paragraph leading-para" data-i18n="citizen.intro_text">
-                    Esplora le tradizioni storiche, la cucina tipica e l'artigianato locale di Caccamo. Scegli un quadrante per iniziare il tuo viaggio.
-                </p>
+            
+            <!-- 🏛️ NUOVA RIGA SUPERIORE: Testo a sinistra e Castellana a destra affiancati -->
+            <div class="citizen-top-row">
+                <div class="citizen-intro-container">
+                    <span class="category-tag" data-i18n="citizen.tag">Diventa parte del borgo</span>
+                    <h1 class="main-title" data-i18n="citizen.main_heading">Cittadino del Borgo</h1>
+                    <div class="gold-divider"></div>
+                    <p class="text-paragraph leading-para" data-i18n="citizen.intro_text">
+                        Esplora le tradizioni storiche, la cucina tipica e l'artigianato locale di Caccamo. Scegli un quadrante per iniziare il tuo viaggio.
+                    </p>
+                </div>
+
+                <!-- 🔑 La Castellana integrata nel flusso accanto al testo -->
+                <div class="castellana-inline-wrapper" id="chat-open-btn">
+                    <video class="castellana-video" autoplay muted loop playsinline>
+                        <source src="img/castellana_alpha.webm" type="video/webm">
+                    </video>
+                    <div class="castellana-tooltip">Click to chat</div>
+                </div>
             </div>
 
+            <!-- 🗂️ GRID DELLE CARD DISPOSTE SOTTO -->
             <main class="citizen-grid">
-                
                 <section class="quadrant" onclick="window.location.href='castello.html'" role="button" tabindex="0">
                     <div class="card-glow-effect"></div>
                     <div class="card-icon-wrapper">
@@ -91,31 +103,23 @@
 
     </div>
 
-    <div id="castellana-3d"></div>
-
-    <div class="castellana-video-wrapper" id="chat-open-btn">
-        <video class="castellana-video" autoplay muted loop playsinline>
-            <source src="img/castellana_alpha.webm" type="video/webm">
-        </video>
-        <div class="castellana-tooltip">Click to chat</div>
-    </div>
-
+    <!-- CHAT FLOATING PREMIUM -->
     <div class="chat-desktop" id="chat-desktop">
         <div class="chat-header">
+            <div class="avatar-status-dot"></div>
             <span data-i18n="chat.title">La Castellana</span>
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
-
         <div class="chat-messages">
             <div class="message" data-i18n="chat.citizen_msg1">Benvenuto nella sezione del cittadino! Esplora le card a sinistra o chiedimi dettagli su eventi e tradizioni del borgo.</div>
         </div>
-
         <div class="chat-input-row">
             <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
             <button class="mic-btn">🎤</button>
         </div>
     </div>
 
+    <!-- I tuoi script JavaScript rimangono invariati qui sotto -->
     <script>
     document.addEventListener("DOMContentLoaded", () => {
         const chat = document.getElementById("chat-desktop");
@@ -127,15 +131,13 @@
         });
 
         closeBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); // Impedisce al click di attivare anche il wrapper superiore
+            e.stopPropagation();
             chat.classList.remove("active");
         });
     });
     </script>
-
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
-
     function loadLanguage(lang) {
         fetch(`../lang/${lang}.json`)
             .then(res => res.json())
@@ -158,7 +160,6 @@
             .catch(err => console.error("Errore nel file lingua:", err));
         localStorage.setItem("lang", lang);
     }
-
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".lang-switcher button").forEach(btn => {
             btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
