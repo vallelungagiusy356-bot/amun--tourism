@@ -1,191 +1,21 @@
-/* ================================
-   SFONDO TRAMONTO (SOLO PER CITTADINO)
-================================ */
-body {
-    background: url("./img/tuo_nuovo_sfondo.jpeg") no-repeat center center fixed;
-    background-size: cover;
+/* ==========================================================================
+   1. RESET, IMPOSTAZIONI DI BASE E SFONDO TRAMONTO
+   ========================================================================== */
+html, body {
     margin: 0;
     padding: 0;
-}
-
-/* ================================
-   GRIGLIA 2×2 CENTRALE
-================================ */
-.citizen-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    max-width: 1300px;
-    margin: 120px auto;
-    padding: 0 40px;
-}
-
-/* ================================
-   QUADRANTI IN VETRO + GLOW ORO & RIFLESSO ULTRA-MORBIDO
-================================ */
-.quadrant {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-radius: 22px;
-    border: 2px solid rgba(255, 200, 120, 0.7);
-    padding: 30px;
-
-    /* 🔥 Altezza uniforme per TUTTI i quadranti */
-    min-height: 260px;
-
-    box-shadow:
-        0 0 25px rgba(255, 200, 120, 0.45),
-        0 0 60px rgba(255, 120, 60, 0.25),
-        inset 0 0 20px rgba(255, 255, 255, 0.15);
-
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    cursor: pointer;
-    
-    position: relative; /* Necessario per il riflesso */
-    overflow: hidden;   /* Contiene la lama di luce nei bordi arrotondati */
-}
-
-/* Lama di luce diagonale sfumata e soffusa di sottofondo per i quadranti */
-.quadrant::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -120%;
-    width: 35%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.14) 50%, /* Abbassata l'intensità per massima fusione col vetro */
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: citizenGlowLoop 11s infinite ease-in-out; /* Sviluppo lentissimo */
-    pointer-events: none;
-}
-
-.quadrant:hover {
-    transform: scale(1.03);
-    box-shadow:
-        0 0 35px rgba(255, 210, 140, 0.8),
-        0 0 80px rgba(255, 120, 60, 0.4),
-        inset 0 0 25px rgba(255, 255, 255, 0.25);
-}
-
-/* 🔥 MODIFICA: Il riflesso attraversa i quadranti in modo setoso in 1.15s */
-.quadrant:hover::before {
-    animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-/* ================================
-   TITOLI E TESTI
-================================ */
-.quadrant h2 {
-    font-size: 28px;
-    color: #ffe7b3;
-    text-shadow: 0 0 10px rgba(255, 200, 120, 0.9);
-    margin-bottom: 15px;
-    position: relative;
-    z-index: 2; /* Mantiene il testo sopra il riflesso */
-}
-
-.quadrant p,
-.quadrant li {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #ffffff;
-    position: relative;
-    z-index: 2; /* Mantiene il testo sopra il riflesso */
-}
-
-/* ================================
-   ELEMENTI SPECIALI
-================================ */
-.iframe-3d {
     width: 100%;
-    height: 260px;
-    border-radius: 15px;
-    border: 2px solid rgba(255, 200, 120, 0.5);
-    margin-top: 15px;
-    position: relative;
-    z-index: 3; /* Sopra ogni effetto visivo per garantire interazione */
-}
-
-.battle-preview img {
-    width: 100%;
-    border-radius: 15px;
-    margin-top: 20px;
-    opacity: 0.9;
-    position: relative;
-    z-index: 2;
-}
-
-/* ================================
-   QUADRANTE CASTELLO (TITOLO ORO) WITH ULTRA-SOFT REFLECTION
-================================ */
-.castle-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 260px;
-
-    font-size: 32px;
-    font-weight: 600;
+    min-height: 100vh;
+    font-family: "Segoe UI", system-ui, sans-serif;
     color: #ffe7b3;
-    text-shadow: 0 0 12px rgba(255, 200, 120, 0.9);
-    cursor: pointer;
-    
-    position: relative;
-    overflow: hidden;
-    border-radius: 22px; 
-    border: 2px solid rgba(255, 200, 120, 0.7);
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    box-shadow:
-        0 0 25px rgba(255, 200, 120, 0.45),
-        0 0 60px rgba(255, 120, 60, 0.25),
-        inset 0 0 20px rgba(255, 255, 255, 0.15);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    background: url("./img/tuo_nuovo_sfondo.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
 }
 
-/* Riflesso morbido sulla card del Castello */
-.castle-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -120%;
-    width: 35%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.14) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: citizenGlowLoop 11s infinite ease-in-out;
-    animation-delay: 2.5s; 
-    pointer-events: none;
-}
-
-.castle-card:hover {
-    transform: scale(1.05);
-    box-shadow:
-        0 0 35px rgba(255, 210, 140, 0.8),
-        0 0 80px rgba(255, 120, 60, 0.4),
-        inset 0 0 25px rgba(255, 255, 255, 0.25);
-}
-
-/* 🔥 MODIFICA: Rallentata e ammorbidita l'animazione di svelamento hover sulla carta Castello */
-.castle-card:hover::before {
-    animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-/* ================================
-   DASHBOARD (SOLO PER CITTADINO)
-================================ */
+/* ==========================================================================
+   2. DASHBOARD (OTTIMIZZATA E FLUIDA)
+   ========================================================================== */
 .dashboard {
     position: fixed;
     top: 0;
@@ -198,12 +28,12 @@ body {
     padding: 8px 18px;
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 215, 160, 0.85);
     z-index: 9999;
     box-sizing: border-box; 
 }
 
-/* Menu interno */
 .nav-desktop {
     display: flex;
     gap: 15px; 
@@ -224,11 +54,10 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: sans-serif;
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    
     position: relative;
     overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Sfumatura fluttuante sui bottoni della dashboard */
@@ -257,24 +86,265 @@ body {
     transform: scale(1.04);
 }
 
-/* 🔥 MODIFICA: Rallentato l'effetto sui bottoni superiori per una risposta vellutata */
 .dashboard button:hover::before, 
 .dashboard .home-btn:hover::before {
     animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* =======================================================
-   🔥 KEYFRAMES RICALIBRATI PER MASSIMA MORBIDEZZA VISIVA
-   ======================================================= */
+/* ==========================================================================
+   3. NUOVA INTRODUZIONE NARRATIVA (INTEGRAZIONE PER I NUOVI TESTI JSON)
+   ========================================================================== */
+.citizen-intro-container {
+    margin-top: 100px; /* Evita la sovrapposizione con la dashboard fissa */
+    padding: 0 24px;
+    box-sizing: border-box;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-/* 1. Loop lento automatico di sottofondo portatato a 11s */
+.category-tag {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffd28c;
+    font-weight: 700;
+    display: inline-block;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.main-title {
+    font-size: 2.2rem;
+    color: #ffe7b3;
+    margin: 6px 0 12px 0;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.gold-divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 215, 160, 0.8) 0%, transparent 90%);
+    margin-bottom: 20px;
+    width: 50%;
+}
+
+.leading-para {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ffffff;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+    margin: 0;
+    max-width: 800px;
+}
+
+/* ==========================================================================
+   4. GRIGLIA ADATTIVA ED ESPERIENZIALE (MONO su mobile, 2x2 su desktop)
+   ========================================================================== */
+.citizen-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default smartphone: evita sovrapposizioni orizzontali */
+    gap: 24px;                  /* Leggermente compattato per schermi piccoli */
+    max-width: 1300px;
+    margin: 40px auto;          /* Gestito dinamicamente grazie all'intro container */
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   5. QUADRANTI IN VETRO + GLOW ORO & RIFLESSO ULTRA-MORBIDO
+   ========================================================================== */
+.quadrant {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 22px;
+    border: 2px solid rgba(255, 200, 120, 0.7);
+    padding: 30px;
+    min-height: 260px; /* Mantenuta l'altezza uniforme originale */
+    box-shadow:
+        0 0 25px rgba(255, 200, 120, 0.45),
+        0 0 60px rgba(255, 120, 60, 0.25),
+        inset 0 0 20px rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    position: relative; 
+    overflow: hidden;   
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Lama di luce diagonale sfumata e soffusa */
+.quadrant::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -120%;
+    width: 35%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.14) 50%, 
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: citizenGlowLoop 11s infinite ease-in-out; 
+    pointer-events: none;
+}
+
+.quadrant:hover {
+    transform: scale(1.03);
+    box-shadow:
+        0 0 35px rgba(255, 210, 140, 0.8),
+        0 0 80px rgba(255, 120, 60, 0.4),
+        inset 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+.quadrant:hover::before {
+    animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Feedback tattile per smartphone al click/tap */
+.quadrant:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 15px rgba(255, 200, 120, 0.6);
+}
+
+/* Titoli e testi interni alle card */
+.quadrant h2 {
+    font-size: 28px;
+    color: #ffe7b3;
+    text-shadow: 0 0 10px rgba(255, 200, 120, 0.9);
+    margin-top: 0;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2; 
+}
+
+.quadrant p,
+.quadrant li {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ffffff;
+    position: relative;
+    z-index: 2; 
+}
+
+/* ==========================================================================
+   6. ELEMENTI SPECIALI INTERNI
+   ========================================================================== */
+.iframe-3d {
+    width: 100%;
+    height: 260px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 200, 120, 0.5);
+    margin-top: 15px;
+    position: relative;
+    z-index: 3; 
+}
+
+.battle-preview img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 20px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   7. QUADRANTE CASTELLO (TITOLO ORO SPECIFICO)
+   ========================================================================== */
+.castle-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 260px;
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffe7b3;
+    text-shadow: 0 0 12px rgba(255, 200, 120, 0.9);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px; 
+    border: 2px solid rgba(255, 200, 120, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow:
+        0 0 25px rgba(255, 200, 120, 0.45),
+        0 0 60px rgba(255, 120, 60, 0.25),
+        inset 0 0 20px rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.castle-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -120%;
+    width: 35%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.14) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: citizenGlowLoop 11s infinite ease-in-out;
+    animation-delay: 2.5s; 
+    pointer-events: none;
+}
+
+.castle-card:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 35px rgba(255, 210, 140, 0.8),
+        0 0 80px rgba(255, 120, 60, 0.4),
+        inset 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+.castle-card:hover::before {
+    animation: citizenHoverFlash 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.castle-card:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================================
+   8. MEDIA QUERIES (IL COINVOLGIMENTO DESKTOP 2x2 ORIGINALE)
+   ========================================================================== */
+@media (min-width: 768px) {
+    .citizen-intro-container {
+        padding: 0 40px;
+        margin-top: 120px; /* Più respiro su schermi grandi */
+    }
+    
+    .main-title {
+        font-size: 3rem;
+    }
+
+    .citizen-grid {
+        grid-template-columns: 1fr 1fr; /* Ritorna la splendida griglia 2x2 originale */
+        gap: 40px;
+        padding: 0 40px;
+        margin: 50px auto 120px auto;
+    }
+}
+
+/* ==========================================================================
+   9. KEYFRAMES ORIGINALI (PRESERVATI AL 100%)
+   ========================================================================== */
 @keyframes citizenGlowLoop {
     0% { left: -120%; }
     16% { left: 150%; }
     100% { left: 150%; }
 }
 
-/* 2. 🔥 Effetto Hover Morbido: Una carezza di luce dorata da 1.15 secondi */
 @keyframes citizenHoverFlash {
     0% { left: -120%; }
     100% { left: 150%; }
