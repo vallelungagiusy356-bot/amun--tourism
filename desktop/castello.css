@@ -212,7 +212,7 @@ html, body {
    ========================================================================== */
 .castle-dress-inline {
     width: 100%;
-    max-width: 170px; 
+    max-width: 150px; 
     text-align: center;
     background: none !important; 
     border: none !important;     
@@ -224,7 +224,7 @@ html, body {
 
 .dress-img-inline {
     width: 100%;
-    max-height: 270px; 
+    max-height: 250px; 
     object-fit: contain;
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.8)); 
 }
@@ -259,8 +259,8 @@ html, body {
 }
 
 .castellana-video-wrapper {
-    width: 250px;   
-    height: 250px;
+    width: 150px;   
+    height: 150px;
     position: relative;
     cursor: pointer;
     border-radius: 50%;
