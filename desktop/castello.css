@@ -1,25 +1,25 @@
 /* ==========================================================================
-   1. RESET E IMPOSTAZIONI DI BASE (BLOCCO TOTAL SCROLL - STRUTTURA FISSA)
+/* ==========================================================================
+   1. RESET E IMPOSTAZIONI DI BASE (SFONDO NEUTRO)
    ========================================================================== */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100vh;
-    overflow: hidden; /* Blocca tassativamente lo scorrimento della pagina */
+    overflow: hidden; 
     font-family: "Segoe UI", system-ui, sans-serif;
-    background: #bd924a; /* Sfondo oro di backup immediato */
+    background: #050302; /* Torniamo a un fondo scuro neutro invisibile */
 }
 
 /* ==========================================================================
-   2. SFONDO VIDEO DINAMICO PURO (RIPRISTINATO AL 100% DI VISIBILITÀ)
+   2. SFONDO DINAMICO + FILTRO BRILLANTE "MONDO INCANTATO"
    ========================================================================== */
 .scene-background-container {
     position: fixed;
     inset: 0;
     z-index: -5 !important;
     overflow: hidden;
-    background-color: #bd924a; /* L'oro rimane sotto, pronto a coprire i tempi di caricamento */
 }
 
 .scene-background-video {
@@ -27,14 +27,32 @@ html, body {
     height: 100vh;
     object-fit: cover;
     display: block;
-    
-    /* ✨ REGOLA L'OPACITÀ QUI: */
-    opacity: 1; /* Portala a 1 per vedere lo sfondo originale nitido, senza coperture dell'oro */
-    
-    /* Comandi di accelerazione hardware per il caricamento istantaneo */
+    opacity: 1; /* Sfondo visibile al 100%, cristallino */
     will-change: transform;
     transform: translate3d(0, 0, 0);
 }
+
+/* ✨ IL SEGRETO DEL MONDO INCANTATO: Un velo di luce brillante e polvere dorata */
+.scene-background-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    
+    /* 🌟 Bagliore radiale: luce oro/bianca al centro che sfuma nel trasparente totale */
+    background: radial-gradient(
+        circle at 50% 50%, 
+        rgba(255, 240, 200, 0.25) 0%,   /* Luce calda centrale */
+        rgba(255, 215, 0, 0.08) 40%,    /* Riflesso oro leggerissimo */
+        transparent 80%                 /* Trasparenza totale sui bordi per non coprire nulla */
+    );
+    
+    /* Accende i colori dell'immagine e dona quell'effetto fatato e vivido */
+    backdrop-filter: brightness(1.8) saturate(1.05);
+    -webkit-backdrop-filter: brightness(1.1) saturate(1.05);
+}
+
 
 
 
