@@ -8,8 +8,17 @@ html, body {
     height: 100vh;
     overflow: hidden; 
     font-family: "Segoe UI", system-ui, sans-serif;
-    background: #050302;
+    background: red !important; /* TEST: Se lo vedi rosso, la cache è superata! */
 }
+
+.scene-background-container {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    border: 5px solid lime !important; /* TEST: Un bordo verde evidenzierà il container dello sfondo */
+}
+
 
 /* ==========================================================================
    2. SFONDO DINAMICO + FILTRO BRILLANTE "MONDO INCANTATO" (RISOLTO)
