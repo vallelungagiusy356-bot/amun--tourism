@@ -86,6 +86,7 @@ html, body {
     text-shadow: 0 0 12px var(--gold-soft);
 }
 
+/* NAVIGATION */
 .nav-desktop {
     display: flex;
     gap: 30px;
@@ -108,11 +109,9 @@ html, body {
     text-shadow: 0 0 8px var(--gold);
 }
 
-/* Effetto barocco ottimizzato */
+/* Riflesso diagonale barocco */
 .nav-item::before,
-.home-btn::before,
-.mic-btn::before,
-.castellana-video-wrapper::before {
+.home-btn::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -130,10 +129,56 @@ html, body {
 }
 
 .nav-item:hover::before,
-.home-btn:hover::before,
-.mic-btn:hover::before,
-.castellana-video-wrapper:hover::before {
+.home-btn:hover::before {
     animation: castleHoverFlash 0.45s ease-out forwards;
+}
+
+/* LANG SWITCHER */
+.lang-switcher {
+    display: flex;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 160, 0.3);
+}
+
+.lang-switcher button {
+    background: transparent;
+    border: 1px solid rgba(255, 215, 160, 0.3);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--gold);
+}
+
+.lang-switcher button:hover,
+.lang-switcher button.active {
+    background: rgba(255, 215, 160, 0.2);
+    box-shadow: 0 0 10px rgba(255, 215, 160, 0.3);
+}
+
+/* HOME BUTTON */
+.home-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+    box-shadow: 0 0 15px var(--gold-soft);
 }
 
 /* ============================================================
@@ -257,6 +302,27 @@ html, body {
     transform: scale(1.05);
 }
 
+.castellana-video-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -120%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.35) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    pointer-events: none;
+}
+
+.castellana-video-wrapper:hover::before {
+    animation: castleHoverFlash 0.45s ease-out forwards;
+}
+
 .castellana-video {
     width: 100%;
     filter:
@@ -316,16 +382,35 @@ html, body {
     .castle-layout {
         flex-direction: column;
         padding: 30px 20px;
+        margin-top: 75px;
     }
+
     .castle-info-panel,
     .castle-interactive-zone {
         max-width: 100%;
+        padding-right: 0;
     }
+
+    .castle-text-content {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
     .castellana-video-wrapper {
-        margin: 0 auto;
+        width: 180px;
+        margin: 20px auto;
     }
+
     .chat-desktop {
-        bottom: 180px;
+        bottom: 120px;
         width: 90%;
+        height: auto;
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .scene-background-container video {
+        object-fit: cover;
+        height: 100%;
     }
 }
