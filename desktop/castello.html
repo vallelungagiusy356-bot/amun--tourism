@@ -43,47 +43,45 @@
             <hr class="gold-divider">
         </div>
 
-        <div class="castle-main-content">
+        <!-- Area a scorrimento verticale isolata per i testi -->
+        <div class="castle-scrollable-content">
+            <div class="castle-main-content">
+                <section class="castle-info-panel">
+                    
+                    <p class="text-paragraph leading-para" data-i18n="castle.rhyme_1">
+                        Benvenuti, o viandanti, al maniero possente,<br>
+                        che scruta la valle e la storia presente.<br>
+                        Arroccato sul monte di viva pietra fiero,<br>
+                        custode di sogni, di gloria e mistero.
+                    </p>
 
-            <section class="castle-info-panel">
-                
-                <!-- Testi impostati con le nuove chiavi per la versione in rima -->
-                <p class="text-paragraph leading-para" data-i18n="castle.rhyme_1">
-                    Benvenuti, o viandanti, al maniero possente,<br>
-                    che scruta la valle e la storia presente.<br>
-                    Arroccato sul monte di viva pietra fiero,<br>
-                    custode di sogni, di gloria e mistero.
-                </p>
-
-                <p class="text-paragraph" data-i18n="castle.rhyme_2">
-                    Tra queste sue mura che sfidano il tempo,<br>
-                    passaron dinastie come soffio nel vento.<br>
-                    Dai fieri Chiaramonte ai Despuches d'onore,<br>
-                    ogni stanza racconta di patti e splendore.
-                </p>
-                
-                <p class="text-paragraph highlight-para" data-i18n="castle.rhyme_3">
-                    Non cercate le date nel freddo volume,<br>
-                    ma l'ombra che danza al calar del lumicino.<br>
-                    La Castellana vi attende, tra i passi e la via,<br>
-                    per svelarvi il segreto di Suor Felicia.
-                </p>
-                
-                <!-- 👗 ABITO SPOSTATO QUI: Ora è sotto il testo, liberando lo sfondo in desktop -->
-                <div class="castle-dress-column">
-                    <div class="castle-dress-inline">
-                        <img src="img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
-                        <p class="dress-caption-inline" data-i18n="castle.dress_caption">L'abito della Castellana</p>
+                    <p class="text-paragraph" data-i18n="castle.rhyme_2">
+                        Tra queste sue mura che sfidano il tempo,<br>
+                        passaron dinastie come soffio nel vento.<br>
+                        Dai fieri Chiaramonte ai Despuches d'onore,<br>
+                        ogni stanza racconta di patti e splendore.
+                    </p>
+                    
+                    <p class="text-paragraph highlight-para" data-i18n="castle.rhyme_3">
+                        Non cercate le date nel freddo volume,<br>
+                        ma l'ombra che danza al calar del lumicino.<br>
+                        La Castellana vi attende, tra i passi e la via,<br>
+                        per svelarvi il segreto di Suor Felicia.
+                    </p>
+                    
+                    <div class="castle-dress-column">
+                        <div class="castle-dress-inline">
+                            <img src="img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
+                            <p class="dress-caption-inline" data-i18n="castle.dress_caption">L'abito della Castellana</p>
+                        </div>
                     </div>
-                </div>
-                
-            </section>
-
+                    
+                </section>
+            </div>
         </div>
 
         <div class="castellana-widget-area">
             
-            <!-- La chat ora si trova strutturalmente prima del video (sarà affiancata a sinistra in desktop) -->
             <div class="chat-desktop" id="chatDesktop">
                 <div class="chat-header">
                     <div class="avatar-status-dot"></div>
@@ -98,7 +96,6 @@
                 <div class="chat-input-row">
                     <input type="text" placeholder="Scrivi alla Castellana..." id="chatInput" data-i18n-placeholder="chat.placeholder">
                     <div class="input-actions">
-                        <button class="mic-btn" title="Attiva Microfono">🎤</button>
                         <button class="send-btn" id="sendMsgBtn" title="Invia Messaggio">➔</button>
                     </div>
                 </div>
@@ -106,7 +103,6 @@
 
             <div class="castellana-video-container">
                 <div class="castellana-video-wrapper" id="castellanaVideo">
-                    <!-- Tolto il testo dentro il tooltip, rimane solo come elemento per il clic -->
                     <div class="castellana-tooltip" id="castellanaTooltip"></div>
                     <video class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
                         <source src="img/benvenuto_castellana.webm" type="video/webm">
