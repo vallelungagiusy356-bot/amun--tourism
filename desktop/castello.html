@@ -8,13 +8,14 @@
 </head>
 <body>
 
+    <!-- CONTAINER SFONDO DINAMICO -->
     <div class="scene-background-container">
-    <video autoplay loop muted playsinline webkit-playsinline class="scene-background-video">
-        <source src="./img/video_castello.webm" type="video/webm">
-    </video>
-</div>
+        <video autoplay loop muted playsinline webkit-playsinline class="scene-background-video">
+            <source src="./img/video_castello.webm" type="video/webm">
+        </video>
+    </div>
 
-
+    <!-- DASHBOARD PREMIUM -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
         
@@ -36,14 +37,17 @@
         </div>
     </header>
 
+    <!-- LAYOUT PRINCIPALE -->
     <main class="castle-layout">
         
+        <!-- Intestazione Fissa -->
         <div class="castle-header-fullwidth">
             <span class="category-tag" data-i18n="castle.category">Monumenti Storici</span>
             <h2 data-i18n="castle.title">Il Castello di Caccamo</h2>
             <hr class="gold-divider">
         </div>
 
+        <!-- Contenuto Scrollabile Autonomo -->
         <div class="castle-scrollable-content">
             <div class="castle-main-content">
                 <section class="castle-info-panel">
@@ -68,29 +72,28 @@
                         La Castellana vi attende, tra i passi e la via,<br>
                         per svelarvi il segreto di Suor Felicia.
                     </p>
+
                     <div class="castle-dress-column">
-    <div class="castle-dress-inline">
-        <img src="./img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
-        <p class="dress-caption-inline" data-i18n="castle.dress_caption">L'abito della Castellana</p>
-    </div>
-</div>
+                        <div class="castle-dress-inline">
+                            <img src="./img/abito_clean.png" alt="Abito Storico" class="dress-img-inline">
+                            <p class="dress-caption-inline" data-i18n="castle.dress_caption">L'abito della Castellana</p>
+                        </div>
+                    </div>
 
                 </section>
             </div>
         </div>
 
+        <!-- AREA WIDGET CASTELLANA PULITA (Chat a sinistra, Icona a destra) -->
         <div class="castellana-widget-area">
             
+            <!-- Box Chat Desktop -->
             <div class="chat-desktop" id="chatDesktop">
-               <div class="castellana-video-container">
-    <div class="castellana-video-wrapper" id="castellanaVideo">
-        <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
-        <video class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
-            <source src="./img/benvenuto_castellana.webm" type="video/webm">
-        </video>
-    </div>
-</div>
-
+                <div class="chat-header">
+                    <div class="avatar-status-dot"></div>
+                    <span id="chatTitle" data-i18n="chat.title">Castellana di Caccamo</span>
+                    <button class="close-chat-btn" id="closeChatBtn">✕</button>
+                </div>
                 
                 <div class="chat-messages" id="chatMessagesBox">
                     <div class="message system-msg" data-i18n="castle.welcomemsg_felicia">
@@ -98,65 +101,42 @@
                     </div>
                 </div>
                 
-                <!--  VERSIONE CORRETTA AL 100% -->
-<div class="castellana-widget-area">
-    
-    <!-- Box Chat Desktop (Si apre a SINISTRA dell'icona) -->
-    <div class="chat-desktop" id="chatDesktop">
-        <div class="chat-header">
-            <div class="avatar-status-dot"></div>
-            <span id="chatTitle" data-i18n="chat.title">Castellana di Caccamo</span>
-            <button class="close-chat-btn" id="closeChatBtn">✕</button>
-        </div>
-        
-        <div class="chat-messages" id="chatMessagesBox">
-            <!-- Messaggio di benvenuto pescato dal nodo castle -->
-            <div class="message system-msg" data-i18n="castle.welcomemsg_felicia">
-                Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia...
+                <div class="chat-input-row">
+                    <input type="text" id="chatInput" data-i18n-placeholder="chat.placeholder" placeholder="Scrivi un messaggio...">
+                    <div class="input-actions">
+                        <button class="send-btn" id="sendMsgBtn">➔</button>
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <div class="chat-input-row">
-            <input type="text" id="chatInput" data-i18n-placeholder="chat.placeholder" placeholder="Scrivi un messaggio...">
-            <div class="input-actions">
-                <button class="send-btn" id="sendMsgBtn">➔</button>
+
+            <!-- Icona Circolare Video-Avatar -->
+            <div class="castellana-video-container">
+                <div class="castellana-video-wrapper" id="castellanaVideo">
+                    <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
+                    <video class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
+                        <source src="./img/benvenuto_castellana.webm" type="video/webm">
+                    </video>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Icona Circolare Video-Avatar (ESTERNA alla chat) -->
-    <div class="castellana-video-container">
-        <div class="castellana-video-wrapper" id="castellanaVideo">
-            <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
-            <video class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
-                <source src="./img/benvenuto_castellana.webm" type="video/webm">
-            </video>
-        </div>
-    </div>
-
-</div>
-
 
         </div>
 
     </main>
 
+    <!-- SCRIPT MULTILINGUA ANTI-CRASH -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
     
     function loadLanguage(lang) {
-        // Cerca il file di traduzione partendo dalla cartella locale
         fetch(`lang/${lang}.json`)
             .then(res => {
                 if (!res.ok) throw new Error("Percorso lineare fallito");
                 return res.json();
             })
             .catch(() => {
-                // Tentativo di fallback se la struttura cartelle varia
                 return fetch(`../lang/${lang}.json`).then(res => res.json());
             })
             .then(data => {
-                // Traduzione elementi standard text
                 document.querySelectorAll("[data-i18n]").forEach(el => {
                     const key = el.getAttribute("data-i18n");
                     if (!key) return;
@@ -164,7 +144,6 @@
                     if (text) el.innerHTML = text;
                 });
                 
-                // Traduzione attributi placeholder (Input Chat)
                 document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
                     const key = el.getAttribute("data-i18n-placeholder");
                     if (!key) return;
@@ -172,31 +151,28 @@
                     if (text) el.placeholder = text;
                 });
                 
-                // Gestione stato attivo sui pulsanti bandiera
                 document.querySelectorAll(".lang-switcher button").forEach(btn => {
                     if(btn.dataset.lang === lang) btn.classList.add("active");
                     else btn.classList.remove("active");
                 });
             })
-            .catch(err => console.error("Dizionario multilingua non caricato o non valido. Controllo sintassi JSON eseguito.", err));
+            .catch(err => console.error("Errore nel caricamento del dizionario JSON locale.", err));
         
         localStorage.setItem("lang", lang);
     }
     
     document.addEventListener("DOMContentLoaded", () => {
-        // Assegna i click alle bandierine
         document.querySelectorAll(".lang-switcher button").forEach(btn => {
             btn.addEventListener("click", () => { 
                 loadLanguage(btn.dataset.lang); 
             });
         });
-        // Carica la lingua salvata o quella di default
         loadLanguage(currentLang);
     });
     </script>
 
+    <!-- SCRIPT GESTIONE EVENTI CHAT -->
     <script>
-    // GESTIONE EVENTI APERTURA/CHIUSURA CHAT FLOATING
     const castellanaVideo = document.getElementById("castellanaVideo");
     const chatDesktop = document.getElementById("chatDesktop");
     const closeChatBtn = document.getElementById("closeChatBtn");
@@ -206,7 +182,6 @@
         e.stopPropagation();
         if (chatDesktop) {
             chatDesktop.classList.add("active");
-            // Auto scroll in fondo ai messaggi quando si apre
             setTimeout(() => {
                 if (boxMessages) boxMessages.scrollTop = boxMessages.scrollHeight;
             }, 60);
