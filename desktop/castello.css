@@ -32,59 +32,57 @@ html, body {
     background: transparent;
 }
 
-/* ==========================================================================
-   2. SFONDO VIDEO DINAMICO FLUIDO
-   ========================================================================== */
+/* ============================================================
+   2. VIDEO BACKGROUND CINEMATICO
+   ============================================================ */
 .scene-background-container {
     position: fixed;
     inset: 0;
-    z-index: -9999;
+    z-index: -1;
     overflow: hidden;
 }
 
-.scene-background-video {
-    width: 100vw;
-    height: 100vh;
+.scene-background-container video {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    display: block;
+    pointer-events: none;
 }
 
 .scene-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, 
-        rgba(5, 3, 2, 0.92) 0%, 
-        rgba(5, 3, 2, 0.65) 55%, 
-        rgba(5, 3, 2, 0.85) 100%);
+    background: linear-gradient(90deg,
+        var(--dark-overlay-1) 0%,
+        var(--dark-overlay-2) 55%,
+        var(--dark-overlay-1) 100%
+    );
     backdrop-filter: blur(1px);
-    z-index: -9998;
+    z-index: -1;
 }
-
-/* ==========================================================================
-   3. DASHBOARD DESKTOP PREMIUM WITH REFLECTIONS
-   ========================================================================== */
-.dashboard { 
+/* ============================================================
+   3. DASHBOARD PREMIUM
+   ============================================================ */
+.dashboard {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 75px; 
+    height: 75px;
+    padding: 0 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between; 
-    padding: 0 40px;
-    box-sizing: border-box;
+    justify-content: space-between;
+    background: var(--dark-soft);
+    border-bottom: 2px solid var(--gold);
+    box-shadow: 0 4px 30px var(--shadow-strong);
     z-index: 999;
-    background: rgba(5, 3, 2, 0.85);
-    border-bottom: 2px solid rgba(255, 215, 160, 0.85);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
 }
 
 .logo-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffd78f;
-    text-shadow: 0 0 12px rgba(255, 215, 143, 0.6);
+    color: var(--gold);
+    text-shadow: 0 0 12px var(--gold-soft);
 }
 
 .nav-desktop {
@@ -93,280 +91,94 @@ html, body {
 }
 
 .nav-item {
-    color: #ffd78f;
+    color: var(--gold);
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem;
     padding: 8px 16px;
-    transition: all 0.3s ease;
     border-radius: 6px;
     position: relative;
-    overflow: hidden; /* Contiene la lama di luce nei bordi del link */
-}
-
-/* Luce continua di sottofondo per i link del menu */
-.nav-item::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -100%;
-    width: 30%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.3) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: castleGlowLoop 7s infinite ease-in-out;
-    pointer-events: none;
+    overflow: hidden;
+    transition: var(--transition);
 }
 
 .nav-item:hover {
-    background: rgba(255, 215, 160, 0.15);
-    color: #fff;
-    text-shadow: 0 0 8px #ffd78f;
+    background: var(--gold-soft);
+    color: var(--text-strong);
+    text-shadow: 0 0 8px var(--gold);
 }
-
-/* Sferzata fulminea all'hover del mouse */
-.nav-item:hover::before {
-    animation: castleHoverFlash 0.45s ease-out forwards;
-}
-
-.header-right-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.lang-switcher {
-    display: flex;
-    gap: 6px;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 4px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 215, 160, 0.3);
-}
-
-.lang-switcher button {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    padding: 4px 8px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: transform 0.2s, background-color 0.2s;
-}
-
-.lang-switcher button:hover,
-.lang-switcher button.active {
-    background: rgba(255, 215, 160, 0.2);
-    transform: scale(1.08);
-}
-
-.home-btn {
-    background: transparent;
-    border: 1px solid #ffd78f;
-    color: #ffd78f;
-    padding: 8px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Riflesso sul bottone Home */
-.home-btn::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -100%;
-    width: 30%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.4) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: castleGlowLoop 6s infinite ease-in-out;
-    animation-delay: 1s;
-    pointer-events: none;
-}
-
-.home-btn:hover {
-    background: #ffd78f;
-    color: #050302;
-    box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
-}
-
-.home-btn:hover::before {
-    animation: castleHoverFlash 0.45s ease-out forwards;
-}
-
-/* ==========================================================================
-   4. STRUTTURA LAYOUT PRINCIPALE
-   ========================================================================== */
+/* ============================================================
+   4. LAYOUT PRINCIPALE
+   ============================================================ */
 .castle-layout {
-    width: 100%;
-    min-height: calc(100vh - 75px);
-    margin-top: 75px;
     display: flex;
-    box-sizing: border-box;
     padding: 50px 60px;
-    position: relative;
+    margin-top: 75px;
+    min-height: calc(100vh - 75px);
+    box-sizing: border-box;
 }
 
-/* ==========================================================================
-   5. COLONNA SINISTRA: TESTI + ABITO INTEGRATO WITH REFLECTIONS
-   ========================================================================== */
+before {
+/* ============================================================
+   5. COLONNA SINISTRA — TESTI + ABITO
+   ============================================================ */
 .castle-info-panel {
     flex: 1;
     max-width: 50%;
+    padding-right: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-right: 50px;
-    box-sizing: border-box;
 }
 
 .category-tag {
     font-size: 0.85rem;
-    text-transform: uppercase;
     letter-spacing: 2px;
     color: #b38f43;
     font-weight: 700;
     margin-bottom: 5px;
-    display: inline-block;
 }
 
 .castle-info-panel h2 {
     font-size: 2.6rem;
-    color: #ffd78f;
-    margin: 5px 0 15px 0;
-    font-weight: 700;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+    color: var(--gold);
+    margin: 5px 0 15px;
+    text-shadow: 0 2px 12px var(--shadow-strong);
 }
 
 .gold-divider {
-    border: none;
     height: 2px;
-    background: linear-gradient(90deg, #ffd78f 0%, transparent 90%);
-    margin-bottom: 30px;
     width: 80%;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    border: none;
+    margin-bottom: 30px;
 }
 
 .castle-text-content {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    animation: fadeIn 0.8s ease-out;
 }
 
 .text-paragraph {
     font-size: 1.1rem;
     line-height: 1.65;
-    color: #e6e0d4;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-    margin: 0;
-    position: relative;
-    z-index: 2; /* Testi sempre protetti sopra il riflesso */
+    color: var(--text-light);
+    text-shadow: 1px 1px 4px var(--shadow-strong);
 }
 
 .leading-para {
     font-size: 1.25rem;
-    color: #fff;
+    color: var(--text-strong);
     font-weight: 500;
-    line-height: 1.6;
 }
 
 .highlight-para {
-    border-left: 3px solid #ffd78f;
-    padding-left: 15px;
-    color: #ffd78f;
-    background: rgba(255, 215, 160, 0.04);
-    padding-top: 8px;
-    padding-bottom: 8px;
+    border-left: 3px solid var(--gold);
+    padding: 8px 15px;
+    background: var(--gold-bg);
     border-radius: 0 8px 8px 0;
-    position: relative;
-    overflow: hidden;
 }
-
-/* Riflesso automatico sul paragrafo in evidenza */
-.highlight-para::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -100%;
-    width: 25%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.15) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: castleGlowLoop 9s infinite ease-in-out;
-    pointer-events: none;
-}
-
-.castle-dress-inline {
-    width: 100%;
-    margin: 15px 0;
-    text-align: center;
-    background: rgba(255, 215, 160, 0.05);
-    border: 1px solid rgba(255, 215, 160, 0.2);
-    border-radius: 12px;
-    padding: 15px;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Riflesso elegante sullo scrigno dell'abito in linea */
-.castle-dress-inline::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -100%;
-    width: 25%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.18) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: castleGlowLoop 8s infinite ease-in-out;
-    animation-delay: 2.5s;
-    pointer-events: none;
-}
-
-.dress-img-inline {
-    width: 180px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
-    position: relative;
-    z-index: 2;
-}
-
-.dress-caption-inline {
-    font-size: 0.85rem;
-    color: #ffd78f;
-    font-weight: 600;
-    margin-top: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    z-index: 2;
-}
-
 /* ==========================================================================
    6. COLONNA DESTRA: CASTELLANA
    ========================================================================== */
