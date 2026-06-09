@@ -1,156 +1,605 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="castle.title">Il Castello di Caccamo</title>
+/* ==========================================================================
+   1. RESET E IMPOSTAZIONI DI BASE
+   ========================================================================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #ffe7b3;
+    background-color: transparent; 
+}
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="castello.css">
+/* ==========================================================================
+   2. SFONDO VIDEO DINAMICO FLUIDO
+   ========================================================================== */
+.scene-background-container {
+    position: fixed;
+    inset: 0;
+    z-index: -9999;
+    overflow: hidden;
+}
 
-    <!-- SEO -->
-    <meta name="description" content="Il Castello di Caccamo: storia, leggende e misteri raccontati dalla Castellana. Vivi un'esperienza immersiva tra poesia, video e chat interattiva.">
-</head>
+.scene-background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+}
 
-<body>
+.scene-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        rgba(5, 3, 2, 0.92) 0%, 
+        rgba(5, 3, 2, 0.65) 55%, 
+        rgba(5, 3, 2, 0.85) 100%);
+    backdrop-filter: blur(1px);
+    z-index: -9998;
+}
 
-    <!-- 🎬 SFONDO VIDEO + OVERLAY -->
-    <div class="scene-background-container">
-        <video autoplay loop muted playsinline>
-            <source src="img/video_castello.webm" type="video/webm">
-            <source src="img/video_castello.mp4" type="video/mp4">
-        </video>
-        <div class="scene-overlay"></div>
-    </div>
+/* ==========================================================================
+   3. DASHBOARD DESKTOP PREMIUM WITH REFLECTIONS
+   ========================================================================== */
+.dashboard { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 40px;
+    box-sizing: border-box;
+    z-index: 999;
+    background: rgba(5, 3, 2, 0.85);
+    border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+}
 
-    <!-- 👑 DASHBOARD -->
-    <header class="dashboard">
-        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+.logo-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffd78f;
+    text-shadow: 0 0 12px rgba(255, 215, 143, 0.6);
+}
 
-        <nav class="nav-desktop">
-            <a href="index.html" class="nav-item">Home</a>
-            <a href="about.html" class="nav-item" data-i18n="menu.about">About</a>
-            <a href="contact.html" class="nav-item" data-i18n="menu.contact">Contact</a>
-        </nav>
+.nav-desktop {
+    display: flex;
+    gap: 30px;
+}
 
-        <div class="header-right-actions">
-            <div class="lang-switcher">
-                <button data-lang="it" class="active">🇮🇹</button>
-                <button data-lang="en">🇬🇧</button>
-                <button data-lang="fr">🇫🇷</button>
-                <button data-lang="de">🇩🇪</button>
-                <button data-lang="es">🇪🇸</button>
-            </div>
+.nav-item {
+    color: #ffd78f;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden; /* Contiene la lama di luce nei bordi del link */
+}
 
-            <button class="home-btn" onclick="location.href='index.html'">
-                <span data-i18n="menu.back">Indietro</span>
-            </button>
-        </div>
-    </header>
+/* Luce continua di sottofondo per i link del menu */
+.nav-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.3) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: castleGlowLoop 7s infinite ease-in-out;
+    pointer-events: none;
+}
 
-    <!-- 🏰 LAYOUT PRINCIPALE -->
-    <main class="castle-layout">
+.nav-item:hover {
+    background: rgba(255, 215, 160, 0.15);
+    color: #fff;
+    text-shadow: 0 0 8px #ffd78f;
+}
 
-        <!-- 📜 COLONNA SINISTRA -->
-        <section class="castle-info-panel">
+/* Sferzata fulminea all'hover del mouse */
+.nav-item:hover::before {
+    animation: castleHoverFlash 0.45s ease-out forwards;
+}
 
-            <header class="info-panel-header">
-                <span class="category-tag" data-i18n="castle.category">Monumenti Storici</span>
-                <h1 data-i18n="castle.title">Il Castello di Caccamo</h1>
-                <hr class="gold-divider">
-            </header>
+.header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
-            <div class="castle-text-content">
+.lang-switcher {
+    display: flex;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 160, 0.3);
+}
 
-                <p class="text-paragraph leading-para" data-i18n="castle.rhyme_1">
-                    Benvenuti, o viandanti, al maniero possente,<br>
-                    che scruta la valle e la storia presente.<br>
-                    Arroccato sul monte di viva pietra fiero,<br>
-                    custode di sogni, di gloria e mistero.
-                </p>
+.lang-switcher button {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: transform 0.2s, background-color 0.2s;
+}
 
-                <p class="text-paragraph" data-i18n="castle.rhyme_2">
-                    Tra queste sue mura che sfidano il tempo,<br>
-                    passaron dinastie come soffio nel vento.<br>
-                    Dai fieri Chiaramonte ai Despuches d'onore,<br>
-                    ogni stanza racconta di patti e splendore.
-                </p>
+.lang-switcher button:hover,
+.lang-switcher button.active {
+    background: rgba(255, 215, 160, 0.2);
+    transform: scale(1.08);
+}
 
-                <p class="text-paragraph highlight-para" data-i18n="castle.rhyme_3">
-                    Non cercate le date nel freddo volume,<br>
-                    ma l'ombra che danza al calar del lumicino.<br>
-                    La Castellana vi attende, tra i passi e la via,<br>
-                    per svelarvi il segreto di Suor Felicia.
-                </p>
+.home-btn {
+    background: transparent;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
 
-                <!-- 👗 ABITO INTEGRATO -->
-                <figure class="castle-dress-inline">
-                    <img src="img/abito_clean.png" alt="Abito storico della Castellana" class="dress-img-inline" loading="lazy">
-                    <figcaption class="dress-caption-inline" data-i18n="castle.dress_caption">
-                        L'abito della Castellana
-                    </figcaption>
-                </figure>
+/* Riflesso sul bottone Home */
+.home-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.4) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: castleGlowLoop 6s infinite ease-in-out;
+    animation-delay: 1s;
+    pointer-events: none;
+}
 
-                <p class="text-paragraph" data-i18n="castle.para_2">
-                    Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
-                </p>
+.home-btn:hover {
+    background: #ffd78f;
+    color: #050302;
+    box-shadow: 0 0 15px rgba(255, 215, 160, 0.4);
+}
 
-                <p class="text-paragraph highlight-para" data-i18n="castle.para_3">
-                    Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo.  
-                    La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
-                </p>
+.home-btn:hover::before {
+    animation: castleHoverFlash 0.45s ease-out forwards;
+}
 
-            </div>
-        </section>
+/* ==========================================================================
+   4. STRUTTURA LAYOUT PRINCIPALE
+   ========================================================================== */
+.castle-layout {
+    width: 100%;
+    min-height: calc(100vh - 75px);
+    margin-top: 75px;
+    display: flex;
+    box-sizing: border-box;
+    padding: 50px 60px;
+    position: relative;
+}
 
-        <!-- 👑 COLONNA DESTRA — CASTELLANA + CHAT -->
-        <section class="castle-interactive-zone">
+/* ==========================================================================
+   5. COLONNA SINISTRA: TESTI + ABITO INTEGRATO WITH REFLECTIONS
+   ========================================================================== */
+.castle-info-panel {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 50px;
+    box-sizing: border-box;
+}
 
-            <!-- Avatar video -->
-            <div class="castellana-video-container">
-                <div class="castellana-video-wrapper" id="castellanaTrigger">
-                    <div class="castellana-tooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
+.category-tag {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #b38f43;
+    font-weight: 700;
+    margin-bottom: 5px;
+    display: inline-block;
+}
 
-                    <video class="castellana-video" autoplay loop muted playsinline>
-                        <source src="img/benvenuto_castellana.webm" type="video/webm">
-                        <source src="img/benvenuto_castellana.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
+.castle-info-panel h2 {
+    font-size: 2.6rem;
+    color: #ffd78f;
+    margin: 5px 0 15px 0;
+    font-weight: 700;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+}
 
-            <!-- Chat -->
-            <aside class="chat-desktop" id="chatDesktop">
-                <header class="chat-header">
-                    <div class="avatar-status-dot"></div>
-                    <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
-                    <button class="close-chat-btn" id="closeChatBtn">✕</button>
-                </header>
+.gold-divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, #ffd78f 0%, transparent 90%);
+    margin-bottom: 30px;
+    width: 80%;
+}
 
-                <div class="chat-messages" id="chatMessagesBox">
-                    <div class="message system-msg" data-i18n="castle.welcomemsg_felicia"></div>
-                </div>
+.castle-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
 
-                <div class="chat-input-row">
-                    <input type="text" id="chatInput" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
-                    <button class="mic-btn">🎤</button>
-                </div>
-            </aside>
+.text-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: #e6e0d4;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    margin: 0;
+    position: relative;
+    z-index: 2; /* Testi sempre protetti sopra il riflesso */
+}
 
-        </section>
-    </main>
+.leading-para {
+    font-size: 1.25rem;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.6;
+}
 
-    <!-- 🌍 MULTILINGUA -->
-    <script src="../js/lang.js"></script>
+.highlight-para {
+    border-left: 3px solid #ffd78f;
+    padding-left: 15px;
+    color: #ffd78f;
+    background: rgba(255, 215, 160, 0.04);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+    overflow: hidden;
+}
 
-    <!-- 💬 CHAT LOGIC -->
-    <script>
-        const chat = document.getElementById("chatDesktop");
-        const trigger = document.getElementById("castellanaTrigger");
-        const closeBtn = document.getElementById("closeChatBtn");
+/* Riflesso automatico sul paragrafo in evidenza */
+.highlight-para::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 25%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.15) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: castleGlowLoop 9s infinite ease-in-out;
+    pointer-events: none;
+}
 
-        trigger.addEventListener("click", () => chat.classList.add("active"));
-        closeBtn.addEventListener("click", () => chat.classList.remove("active"));
-    </script>
+.castle-dress-inline {
+    width: 100%;
+    margin: 15px 0;
+    text-align: center;
+    background: rgba(255, 215, 160, 0.05);
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    border-radius: 12px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+}
 
-</body>
-</html>
+/* Riflesso elegante sullo scrigno dell'abito in linea */
+.castle-dress-inline::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 25%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.18) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: castleGlowLoop 8s infinite ease-in-out;
+    animation-delay: 2.5s;
+    pointer-events: none;
+}
+
+.dress-img-inline {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+    position: relative;
+    z-index: 2;
+}
+
+.dress-caption-inline {
+    font-size: 0.85rem;
+    color: #ffd78f;
+    font-weight: 600;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   6. COLONNA DESTRA: CASTELLANA
+   ========================================================================== */
+.castle-interactive-zone {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.castellana-video-container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.castellana-video-wrapper {
+    width: 250px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+    border-radius: 16px; /* Protegge i bordi dell'avatar */
+}
+
+/* Riflesso di luce diagonale che attraversa l'avatar quando ci si passa sopra */
+.castellana-video-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -120%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.35) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.castellana-video-wrapper:hover {
+    transform: scale(1.05);
+}
+
+.castellana-video-wrapper:hover::before {
+    animation: castleHoverFlash 0.5s ease-out forwards;
+}
+
+/* FORZATURA DIMENSIONI CASTELLANA */
+.castellana-video {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.9));
+    position: relative;
+    z-index: 2;
+}
+
+.castellana-tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #050302;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25);
+    animation: pulse 2s infinite;
+    z-index: 25;
+}
+
+/* ==========================================================================
+   7. INTERFACCIA CHAT FLOATING
+   ========================================================================== */
+.chat-desktop {
+    position: absolute;
+    bottom: 290px;
+    right: 0;
+    width: 380px;
+    height: 400px;
+    background: rgba(5, 3, 2, 0.97);
+    border: 2px solid #ffd78f;
+    border-radius: 16px;
+    display: none;
+    flex-direction: column;
+    z-index: 99;
+    box-shadow: 0 0 40px rgba(255, 215, 160, 0.2);
+    overflow: hidden;
+}
+
+.chat-desktop.active {
+    display: flex;
+    animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.chat-header {
+    background: rgba(255, 215, 160, 0.08);
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255, 215, 160, 0.3);
+    display: flex;
+    align-items: center;
+    color: #ffd78f;
+    font-weight: 600;
+}
+
+.avatar-status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #26e663;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 8px #26e663;
+}
+
+#chatTitle {
+    font-size: 1rem;
+    flex: 1;
+}
+
+.close-chat-btn {
+    background: none;
+    border: none;
+    color: #ffd78f;
+    font-size: 1.3rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.close-chat-btn:hover {
+    color: #fff;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.message {
+    background: rgba(255, 215, 160, 0.05);
+    border: 1px solid rgba(255, 215, 160, 0.15);
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #fff;
+}
+
+.chat-input-row {
+    padding: 14px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(255, 215, 160, 0.15);
+    background: #000;
+    align-items: center;
+}
+
+.chat-input-row input {
+    flex: 1;
+    background: #111;
+    border: 1px solid rgba(255, 215, 160, 0.4);
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.chat-input-row input:focus {
+    border-color: #ffd78f;
+}
+
+.mic-btn {
+    background: transparent;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Riflesso anche sul pulsante microfono all'hover */
+.mic-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -120%;
+    width: 35%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.5) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    pointer-events: none;
+}
+
+.mic-btn:hover {
+    background: rgba(255, 215, 160, 0.15);
+}
+
+.mic-btn:hover::before {
+    animation: castleHoverFlash 0.45s ease-out forwards;
+}
+
+/* ==========================================================================
+   8. ANIMAZIONI INTERNE
+   ========================================================================== */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
+    50% { box-shadow: 0 4px 25px rgba(255, 215, 160, 0.5); }
+    100% { box-shadow: 0 4px 15px rgba(255, 215, 160, 0.25); }
+}
+
+/* ==========================================================================
+   9. KEYFRAMES ANIMAZIONI RIFLESSI DIAGONALI BAROCCHI
+   ========================================================================== */
+
+/* Passaggio automatico e morbido di sottofondo */
+@keyframes castleGlowLoop {
+    0% { left: -110%; }
+    12% { left: 140%; }
+    100% { left: 140%; }
+}
+
+/* Sferzata fulminea e specchiata prodotta dal mouse */
+@keyframes castleHoverFlash {
+    0% { left: -110%; }
+    100% { left: 140%; }
+}
