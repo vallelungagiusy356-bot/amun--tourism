@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. RESET E IMPOSTAZIONI DI BASE (SFONDO NEUTRO INTERNO)
+   1. RESET E IMPOSTAZIONI DI BASE
    ========================================================================== */
 html, body {
     margin: 0;
@@ -12,12 +12,12 @@ html, body {
 }
 
 /* ==========================================================================
-   2. SFONDO DINAMICO + FILTRO BRILLANTE "MONDO INCANTATO" (FIXED)
+   2. SFONDO DINAMICO + FILTRO BRILLANTE "MONDO INCANTATO" (RISOLTO)
    ========================================================================== */
 .scene-background-container {
     position: fixed;
     inset: 0;
-    z-index: -1; /* Cambiato da -5 !important a -1: ora sta sopra il body nero e non viene oscurato */
+    z-index: -1; /* Posizionato sopra il corpo ma rigorosamente sotto i contenuti */
     overflow: hidden;
 }
 
@@ -27,10 +27,12 @@ html, body {
     object-fit: cover;
     display: block;
     opacity: 1; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Primo livello interno */
     will-change: transform;
     transform: translate3d(0, 0, 0);
-    position: relative;
-    z-index: 1; /* Definisce il livello base per il video internamente al container */
 }
 
 .scene-background-container::after {
@@ -40,7 +42,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2; /* Forzato a 2: ora si appoggia ESATTAMENTE sopra il video, lasciandolo visibile */
+    z-index: 2; /* Livello superiore interno: si appoggia sopra il video sbloccandolo */
     pointer-events: none;
     
     background: radial-gradient(
@@ -54,7 +56,6 @@ html, body {
     -webkit-backdrop-filter: brightness(1.2) saturate(1.05);
     transform: translateZ(0);
 }
-
 
 /* ==========================================================================
    3. DASHBOARD DESKTOP PREMIUM
@@ -122,28 +123,28 @@ html, body {
 }
 
 /* ==========================================================================
-   4. LAYOUT FISSO E GESTIONE AREA SCROLLABILE COERENTE
+   4. LAYOUT FISSO E GESTIONE AREA SCROLLABILE RISOLTA
    ========================================================================== */
 .castle-layout {
     position: fixed; 
     inset: 0;
     padding: 90px 4% 30px 4%;
-    z-index: 2;
+    z-index: 5;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    pointer-events: none; 
+    pointer-events: none; /* Consente ai click di passare sullo sfondo dove vuoto */
 }
 
 .castle-header-fullwidth {
     width: 100%;
-    pointer-events: auto;
+    pointer-events: auto; /* Riattiva i click sul titolo principale */
 }
 
 .castle-scrollable-content {
     flex: 1;
     overflow-y: auto;
-    pointer-events: auto;
+    pointer-events: auto; /* SBLOCCATO: permette lo scorrimento fluido dei testi */
     max-width: 460px;
     padding-right: 10px;
     scrollbar-width: none;
@@ -261,7 +262,7 @@ html, body {
 }
 
 /* ==========================================================================
-   6. CASTELLANA WIDGET (CON SCRITTA "CHAT" FISSA IN ORO)
+   6. CASTELLANA WIDGET (ALLINEAMENTO ORIZZONTALE A SINISTRA CORRETTO)
    ========================================================================== */
 .castellana-widget-area {
     position: fixed;
@@ -269,10 +270,10 @@ html, body {
     right: 25px;
     z-index: 9999;
     display: flex;
-    flex-direction: row-reverse; 
+    flex-direction: row-reverse; /* Inverte l'asse orizzontale: spinge la chat a SINISTRA dell'icona */
     align-items: flex-end;
     gap: 15px;
-    pointer-events: auto;
+    pointer-events: auto; /* Riattiva i click su tutta l'area del widget */
 }
 
 .castellana-video-container {
@@ -327,7 +328,7 @@ html, body {
 }
 
 /* ==========================================================================
-   7. CHAT FLOATING ACCANTO ALL'ICONA
+   7. CHAT FLOATING AFFIANCATA A SINISTRA
    ========================================================================== */
 .chat-desktop {
     width: 320px;
@@ -335,7 +336,7 @@ html, body {
     background: rgba(5, 3, 2, 0.96);
     border: 2px solid #ffd78f;
     border-radius: 12px;
-    display: none;
+    display: none; /* Gestito via script aggiungendo la classe .active */
     flex-direction: column;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
     margin-bottom: 0; 
@@ -343,7 +344,7 @@ html, body {
 
 .chat-desktop.active {
     display: flex;
-    animation: slideRight 0.3s ease-out;
+    animation: slideLeft 0.3s ease-out;
 }
 
 .chat-header {
@@ -376,9 +377,9 @@ html, body {
 .send-btn { background: #ffd78f; border: none; color: #050302; padding: 4px 10px; border-radius: 4px; font-weight: 700; cursor: pointer; }
 
 /* ==========================================================================
-   8. ANIMAZIONI
+   8. ANIMAZIONI ORIZZONTALI
    ========================================================================== */
-@keyframes slideRight {
+@keyframes slideLeft {
     from { opacity: 0; transform: translateX(15px); }
     to { opacity: 1; transform: translateX(0); }
 }
@@ -389,7 +390,7 @@ html, body {
 }
 
 /* ==========================================================================
-   9. MEDIA QUERIES (OTTIMIZZAZIONE RESTRITTIVA PORTRAIT / LANDSCAPE)
+   9. MEDIA QUERIES (OTTIMIZZAZIONE RESPONSIVE AUTOMATICA)
    ========================================================================== */
 @media (max-width: 768px) {
     .dashboard { padding: 0 15px; }
@@ -401,35 +402,18 @@ html, body {
     }
 
     @media (orientation: portrait) {
-        .castle-header-fullwidth h2 {
-            font-size: 1.45rem; 
-        }
-        
-        .category-tag {
-            font-size: 0.65rem;
-        }
-
-        .text-paragraph {
-            font-size: 0.82rem; 
-            line-height: 1.4;
-        }
-        
-        .leading-para {
-            font-size: 0.88rem;
-        }
+        .castle-header-fullwidth h2 { font-size: 1.45rem; }
+        .category-tag { font-size: 0.65rem; }
+        .text-paragraph { font-size: 0.82rem; line-height: 1.4; }
+        .leading-para { font-size: 0.88rem; }
 
         .castle-scrollable-content {
             max-width: 100%;
             max-height: calc(100vh - 240px);
         }
 
-        .castle-dress-inline {
-            padding: 4px 10px;
-        }
-        
-        .dress-img-inline {
-            height: 45px;
-        }
+        .castle-dress-inline { padding: 4px 10px; }
+        .dress-img-inline { height: 45px; }
 
         .castellana-widget-area {
             bottom: 15px;
@@ -441,14 +425,8 @@ html, body {
             pointer-events: none;
         }
 
-        .castellana-video-container, .chat-desktop {
-            pointer-events: auto;
-        }
-
-        .castellana-video-wrapper {
-            width: 75px;  
-            height: 75px;
-        }
+        .castellana-video-container, .chat-desktop { pointer-events: auto; }
+        .castellana-video-wrapper { width: 75px; height: 75px; }
 
         .chat-desktop {
             width: 100%;
@@ -462,35 +440,19 @@ html, body {
     }
 
     @media (orientation: landscape) {
-        .castle-layout {
-            padding: 70px 20px 10px 20px;
-        }
-        .castle-header-fullwidth h2 { 
-            font-size: 1.4rem; 
-        }
-        .castle-scrollable-content {
-            max-width: 60%;
-        }
-        .text-paragraph { 
-            font-size: 0.75rem; 
-            line-height: 1.3; 
-        }
-        .castle-dress-column { 
-            display: none; 
-        } 
+        .castle-layout { padding: 70px 20px 10px 20px; }
+        .castle-header-fullwidth h2 { font-size: 1.4rem; }
+        .castle-scrollable-content { max-width: 60%; }
+        .text-paragraph { font-size: 0.75rem; line-height: 1.3; }
+        .castle-dress-column { display: none; } 
+        
         .castellana-widget-area {
             bottom: 10px;
             right: 15px;
             flex-direction: row-reverse;
             gap: 12px;
         }
-        .castellana-video-wrapper {
-            width: 60px;  
-            height: 60px;
-        }
-        .chat-desktop {
-            width: 280px;
-            height: 52vh;
-        }
+        .castellana-video-wrapper { width: 60px; height: 60px; }
+        .chat-desktop { width: 280px; height: 52vh; }
     }
 }
