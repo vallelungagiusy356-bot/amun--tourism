@@ -61,18 +61,18 @@
 
   "castle": {
     "title": "Il Castello di Caccamo",
+    "category": "Monumenti Storici",
+    "rhyme_1": "Benvenuti, o viandanti, al maniero possente,<br>che scruta la valle e la storia presente.<br>Arroccato sul monte di viva pietra fiero,<br>custode di sogni, di gloria e mistero.",
+    "rhyme_2": "Tra queste sue mura che sfidano il tempo,<br>passaron dinastie come soffio nel vento.<br>Dai fieri Chiaramonte ai Despuches d'onore,<br>ogni stanza racconta di patti e splendore.",
+    "rhyme_3": "Non cercate le date nel freddo volume,<br>ma l'ombra che danza al calar del lumicino.<br>La Castellana vi attende, tra i passi e la via,<br>per svelarvi il segreto di Suor Felicia.",
+    "dress_caption": "L'abito della Castellana",
+    "chat_tooltip": "Click to Chat",
+    "welcomemsg_felicia": "Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure.",
     "position": "Una fortezza arroccata su uno sperone roccioso, con vista dominante sulla valle.",
-    "defense": "Feritoie, mura spesse e camminamenti di ronda raccontano la sua função difensiva.",
+    "defense": "Feritoie, mura spesse e camminamenti di ronda raccontano la sua funzione difensiva.",
     "conspiracy": "Sale segrete e stanze nobiliari furono teatro di congiure e intrighi medievali.",
     "prisons": "Le prigioni sotterranee custodiscono ancora le tracce delle antiche detenzioni.",
-    "legend_brothers": "La leggenda dei due fratelli narra di un duello fatale per l’amore di una dama.",
-    "category": "Monumenti Storici",
-    "leading_para": "Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. Arroccato sulla roccia viva fin dall’XI secolo, domina la valle del San Leonardo come baluardo strategico millenario.",
-    "dress_caption": "L'abito della Castellana",
-    "para_2": "Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobles medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.",
-    "para_3": "Tra storia e legenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per revelar ti ogni segreto di questo luogo senza tempo.",
-    "chat_tooltip": "Click to Chat",
-    "welcomemsg_felicia": "Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia. Vuoi che ti sveli i segreti della Sala delle Congiure o preferisci ascoltare le antiche leggende del maniero? Chiedimi pure."
+    "legend_brothers": "La leggenda dei due fratelli narra di un duello fatale per l’amore di una dama."
   },
 
   "monuments": {
@@ -83,7 +83,7 @@
     "btn_comune_info": "Info Istituzionali Comune",
     "btn_contact_turismo": "Contatta Ufficio Turismo",
     "btn_dindondan": "Esplora Chiese su Din Don Dan",
-    "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momentos di celebrazione interna.",
+    "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momenti di celebrazione interna.",
     "mobile": {
       "go_to_map": "Vai alla Mappa"
     },
@@ -116,7 +116,7 @@
     },
     "cappuccini": {
       "title": "Convento dei Frati Cappuccini",
-      "description": "Luogo di silenzio, meditazione e storia, le strutture del Convento si legano profundamente alla tradizione francescana in Sicilia. Oltre alla struttura conventuale, l'area offre uno spaccato autentico di vita monastica e devozione popolare.",
+      "description": "Luogo di silenzio, meditazione e storia, le strutture del Convento si legano profondamente alla tradizione francescana in Sicilia. Oltre alla struttura conventuale, l'area offre uno spaccato autentico di vita monastica e devozione popolare.",
       "hours": "Accessibile principalmente su richiesta o durante le ricorrenze francescane. Contattare l'Ufficio Turismo.",
       "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti come la Chiesa di San Rocco e altri piccoli capolavori diffusi."
     }
