@@ -369,48 +369,4 @@ html, body {
     0% { left: -110%; }
     100% { left: 140%; }
 }
-
-/* ============================================================
-   9. RESPONSIVE
-   ============================================================ */
-@media (max-width: 1400px) {
-    .castle-layout { padding: 40px; }
-    .castle-info-panel { padding-right: 30px; }
-}
-
-@media (max-width: 900px) {
-    .castle-layout {
-        flex-direction: column;
-        padding: 30px 20px;
-        margin-top: 75px;
-    }
-
-    .castle-info-panel,
-    .castle-interactive-zone {
-        max-width: 100%;
-        padding-right: 0;
-    }
-
-    .castle-text-content {
-        font-size: 1rem;
-        line-height: 1.5;
-    }
-
-    .castellana-video-wrapper {
-        width: 180px;
-        margin: 20px auto;
-    }
-
-    .chat-desktop {
-        bottom: 120px;
-        width: 90%;
-        height: auto;
-        right: 50%;
-        transform: translateX(50%);
-    }
-
-    .scene-background-container video {
-        object-fit: cover;
-        height: 100%;
-    }
 }
