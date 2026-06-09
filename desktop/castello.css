@@ -444,7 +444,85 @@ html, body {
         height: 45vh;
         z-index: 9999;
     }
-       }
+
+   /* ============================================================
+   RESPONSIVE CASTELLO — SMARTPHONE LANDSCAPE
+   ============================================================ */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+
+    /* DASHBOARD */
+    .dashboard {
+        height: 50px;
+        padding: 0 20px;
+    }
+
+    .dashboard .logo-title {
+        font-size: 1.15rem;
+    }
+
+    .nav-desktop { display: none; }
+
+    .lang-switcher button {
+        width: 32px;
+        height: 32px;
+        font-size: 0.95rem;
+    }
+
+    .home-btn {
+        padding: 5px 12px;
+        font-size: 0.78rem;
+    }
+
+    /* LAYOUT CASTELLO */
+    .castle-layout {
+        flex-direction: row;
+        padding: 60px 20px 0 20px;
+        margin-top: 50px;
+        gap: 20px;
+    }
+
+    .castle-info-panel {
+        max-width: 60%;
+        padding-right: 20px;
+    }
+
+    .castle-info-panel h1 {
+        font-size: 1.8rem;
+    }
+
+    .leading-para {
+        font-size: 1rem;
+    }
+
+    /* CASTELLANA LANDSCAPE */
+    .castellana-video-wrapper {
+        position: fixed;
+        bottom: 12px;
+        right: 2%;
+        width: 130px;
+        height: auto;
+        z-index: 1000;
+    }
+
+    .castellana-tooltip {
+        display: none !important;
+    }
+
+    /* CHAT LANDSCAPE */
+    .chat-desktop {
+        position: fixed;
+        bottom: 12px;
+        right: calc(2% + 140px);
+        width: 280px;
+        height: 160px;
+        background: rgba(10, 6, 4, 0.98) !important;
+        box-shadow: -12px 0 35px rgba(0, 0, 0, 0.85);
+    }
+
+    .chat-header { font-size: 0.8rem; }
+    .message { font-size: 0.75rem; padding: 5px 8px; }
+    .chat-input-row input { font-size: 0.75rem; padding: 5px; }
+}
 
 /* ============================================================
    8. ANIMAZIONI
