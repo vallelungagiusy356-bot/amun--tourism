@@ -82,11 +82,15 @@
         <div class="castellana-widget-area">
             
             <div class="chat-desktop" id="chatDesktop">
-                <div class="chat-header">
-                    <div class="avatar-status-dot"></div>
-                    <span id="chatTitle" data-i18n="chat.title">Castellana di Caccamo</span>
-                    <button class="close-chat-btn" id="closeChatBtn">✕</button>
-                </div>
+               <div class="castellana-video-container">
+    <div class="castellana-video-wrapper" id="castellanaVideo">
+        <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
+        <video class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
+            <source src="./img/benvenuto_castellana.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+
                 
                 <div class="chat-messages" id="chatMessagesBox">
                     <div class="message system-msg" data-i18n="castle.welcomemsg_felicia">
