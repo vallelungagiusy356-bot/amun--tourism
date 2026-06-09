@@ -1,18 +1,40 @@
-/* ==========================================================================
-   1. STRUTTURA DESKTOP NATIVA (LA TUA VISIONE PRINCIPALE)
-   ========================================================================== */
+/* ============================================================
+   1. RESET + VARIABILI GLOBALI
+   ============================================================ */
+:root {
+    --gold: #ffd78f;
+    --gold-soft: rgba(255, 215, 160, 0.15);
+    --gold-strong: rgba(255, 215, 160, 0.4);
+    --gold-bg: rgba(255, 215, 160, 0.05);
+
+    --dark: #050302;
+    --dark-soft: rgba(5, 3, 2, 0.85);
+    --dark-overlay-1: rgba(5, 3, 2, 0.92);
+    --dark-overlay-2: rgba(5, 3, 2, 0.65);
+
+    --text-light: #e6e0d4;
+    --text-strong: #fff;
+
+    --shadow-strong: rgba(0, 0, 0, 0.9);
+    --shadow-soft: rgba(0, 0, 0, 0.5);
+
+    --radius: 12px;
+    --transition: 0.3s ease;
+}
+
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh;
-    overflow: hidden; 
+    min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
-    background: #050302;
-    box-sizing: border-box;
+    color: var(--text-light);
+    background: transparent;
 }
 
-/* Sfondo Dinamico Desktop */
+/* ============================================================
+   2. VIDEO BACKGROUND CINEMATICO
+   ============================================================ */
 .scene-background-container {
     position: fixed;
     inset: 0;
@@ -20,71 +42,101 @@ html, body {
     overflow: hidden;
 }
 
-.scene-background-video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-/* Filtro Mondo Incantato */
-.scene-background-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+.scene-background-container video {
     width: 100%;
     height: 100%;
-    z-index: 2;
+    object-fit: cover;
     pointer-events: none;
-    background: radial-gradient(
-        circle at 50% 50%, 
-        rgba(255, 240, 200, 0.20) 0%,   
-        rgba(255, 215, 0, 0.05) 40%,    
-        transparent 80%                 
-    );
-    backdrop-filter: brightness(1.2) saturate(1.05);
-    -webkit-backdrop-filter: brightness(1.2) saturate(1.05);
 }
 
-/* Header Premium Desktop */
-.dashboard { 
+.scene-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+        var(--dark-overlay-1) 0%,
+        var(--dark-overlay-2) 55%,
+        var(--dark-overlay-1) 100%
+    );
+    backdrop-filter: blur(1px);
+    z-index: -1;
+}
+
+/* ============================================================
+   3. DASHBOARD PREMIUM
+   ============================================================ */
+.dashboard {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 60px; 
+    height: 75px;
+    padding: 0 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between; 
-    padding: 0 30px;
-    box-sizing: border-box;
-    z-index: 9999;
-    background: rgba(5, 3, 2, 0.85);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+    justify-content: space-between;
+    background: var(--dark-soft);
+    border-bottom: 2px solid var(--gold);
+    box-shadow: 0 4px 30px var(--shadow-strong);
+    z-index: 999;
 }
 
 .logo-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #ffd78f;
-    text-shadow: 0 0 12px rgba(255, 215, 143, 0.4);
+    color: var(--gold);
+    text-shadow: 0 0 12px var(--gold-soft);
 }
 
-.nav-desktop { display: flex; gap: 20px; }
-.nav-item { color: #ffd78f; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 6px 14px; }
-.header-right-actions { display: flex; align-items: center; gap: 15px; }
+/* NAVIGATION */
+.nav-desktop {
+    display: flex;
+    gap: 30px;
+}
 
+.nav-item {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.nav-item:hover {
+    background: var(--gold-soft);
+    color: var(--text-strong);
+    text-shadow: 0 0 8px var(--gold);
+}
+
+/* Riflesso diagonale barocco */
+.nav-item::before,
+.home-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -120%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.35) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    pointer-events: none;
+}
+
+.nav-item:hover::before,
+.home-btn:hover::before {
+    animation: castleHoverFlash 0.45s ease-out forwards;
+}
+
+/* LANG SWITCHER */
 .lang-switcher {
     display: flex;
-    gap: 4px;
+    gap: 6px;
     background: rgba(0, 0, 0, 0.5);
     padding: 4px;
     border-radius: 8px;
@@ -92,289 +144,273 @@ html, body {
 }
 
 .lang-switcher button {
-    background: none;
-    border: none;
+    background: transparent;
+    border: 1px solid rgba(255, 215, 160, 0.3);
+    border-radius: 6px;
+    padding: 4px 8px;
     font-size: 1.1rem;
-    padding: 2px 6px;
     cursor: pointer;
-    border-radius: 4px;
+    transition: all 0.3s ease;
+    color: var(--gold);
 }
 
-.lang-switcher button.active { background: rgba(255, 215, 160, 0.2); }
+.lang-switcher button:hover,
+.lang-switcher button.active {
+    background: rgba(255, 215, 160, 0.2);
+    box-shadow: 0 0 10px rgba(255, 215, 160, 0.3);
+}
+
+/* HOME BUTTON */
 .home-btn {
-    background: rgba(255, 215, 160, 0.25);
-    border: 1px solid #ffd78f;
-    color: #ffd78f;
-    padding: 6px 14px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 18px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
     font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Layout Desktop dei Contenuti */
+.home-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+    box-shadow: 0 0 15px var(--gold-soft);
+}
+
+/* ============================================================
+   4. LAYOUT PRINCIPALE
+   ============================================================ */
 .castle-layout {
-    position: absolute; 
-    inset: 0;
-    padding: 100px 6% 30px 6%;
-    z-index: 5;
+    display: flex;
+    padding: 50px 60px;
+    margin-top: 75px;
+    min-height: calc(100vh - 75px);
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   5. COLONNA SINISTRA — TESTI + ABITO
+   ============================================================ */
+.castle-info-panel {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 50px;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    pointer-events: none; 
-    width: 100%;
-    height: 100%;
-}
-
-.castle-header-fullwidth {
-    width: 100%;
-    pointer-events: auto; 
+    justify-content: center;
 }
 
 .category-tag {
-    font-size: 0.8rem;
-    text-transform: uppercase;
+    font-size: 0.85rem;
     letter-spacing: 2px;
-    color: #ffd28c;
+    color: #b38f43;
     font-weight: 700;
-    margin-bottom: 3px;
-    display: inline-block;
-    text-shadow: 0 2px 4px rgba(0,0,0,1);
+    margin-bottom: 5px;
 }
 
-.castle-header-fullwidth h2 {
-    font-size: 2.5rem;
-    color: #ffd78f;
-    margin: 0 0 10px 0;
-    font-weight: 700;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 1);
+.castle-info-panel h1 {
+    font-size: 2.6rem;
+    color: var(--gold);
+    margin: 5px 0 15px;
+    text-shadow: 0 2px 12px var(--shadow-strong);
 }
 
 .gold-divider {
+    height: 2px;
+    width: 80%;
+    background: linear-gradient(90deg, var(--gold), transparent);
     border: none;
-    height: 1px;
-    background: linear-gradient(90deg, #ffd78f 0%, transparent 70%);
-    width: 100%;
-    margin: 0 0 20px 0;
+    margin-bottom: 30px;
 }
 
-/* Area Testo Scrollabile Desktop */
-.castle-scrollable-content {
-    flex: 1;
-    overflow-y: auto;
-    pointer-events: auto; 
-    max-width: 500px;
-    padding-right: 15px;
-    scrollbar-width: none;
-}
-
-.castle-scrollable-content::-webkit-scrollbar { display: none; }
-
-.castle-main-content {
-    width: 100%;
-    display: flex;
-    flex-direction: column; 
-}
-
-.castle-info-panel {
+.castle-text-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
+    animation: fadeIn 0.8s ease-out;
 }
 
 .text-paragraph {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: #ffffff;
-    margin: 0;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1), 0 2px 8px rgba(0, 0, 0, 0.95);
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: var(--text-light);
+    text-shadow: 1px 1px 4px var(--shadow-strong);
+    background: rgba(0,0,0,0.15);
+    padding: 4px 8px;
+    border-radius: 6px;
 }
 
 .leading-para {
-    font-size: 1.15rem;
-    color: #ffd78f;
-    font-style: italic;
-    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--text-strong);
+    font-weight: 500;
 }
 
 .highlight-para {
-    border-left: 3px solid #ffd78f;
-    padding-left: 15px;
+    border-left: 3px solid var(--gold);
+    padding: 8px 15px;
+    background: var(--gold-bg);
+    border-radius: 0 8px 8px 0;
 }
 
-/* Box Abito Desktop */
-.castle-dress-column {
-    margin-top: 10px;
-    width: 100%;
-}
-
+/* Abito */
 .castle-dress-inline {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    background: rgba(5, 3, 2, 0.5);
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 215, 160, 0.2);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-soft);
+    border-radius: var(--radius);
+    padding: 15px;
+    text-align: center;
 }
 
 .dress-img-inline {
-    height: 70px; 
-    width: auto;
-    object-fit: contain;
+    width: 180px;
+    filter: drop-shadow(0 4px 10px var(--shadow-soft));
 }
 
 .dress-caption-inline {
-    font-size: 0.78rem;
-    color: #ffd78f;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-top: 8px;
     letter-spacing: 1px;
 }
 
-/* Area Widget Desktop (Ancorata a destra) */
-.castellana-widget-area {
-    position: fixed;
-    bottom: 30px;
-    right: 40px;
-    z-index: 9999;
+/* ============================================================
+   6. COLONNA DESTRA — CASTELLANA
+   ============================================================ */
+.castle-interactive-zone {
+    flex: 1;
+    max-width: 50%;
     display: flex;
-    flex-direction: row-reverse; 
+    justify-content: flex-end;
     align-items: flex-end;
-    gap: 20px;
-    pointer-events: auto; 
-}
-
-.castellana-video-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.castellana-video-container::before {
-    content: 'CHAT';
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: #ffd78f;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
 }
 
 .castellana-video-wrapper {
-    width: 110px;   
-    height: 110px;
-    position: relative;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 2px solid #ffd78f;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.9);
+    width: 250px;
+    border-radius: 16px;
     overflow: hidden;
-    background: #000;
-    transition: transform 0.2s ease-out;
+    cursor: pointer;
+    transition: transform var(--transition);
+    position: relative;
 }
 
-.castellana-video-wrapper:hover { transform: scale(1.05); }
-.castellana-video { width: 100%; height: 100%; object-fit: cover; }
+.castellana-video-wrapper:hover {
+    transform: scale(1.05);
+}
 
-/* Box Chat Desktop */
+.castellana-video-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -120%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.35) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    pointer-events: none;
+}
+
+.castellana-video-wrapper:hover::before {
+    animation: castleHoverFlash 0.45s ease-out forwards;
+}
+
+.castellana-video {
+    width: 100%;
+    filter:
+        drop-shadow(0 0 25px var(--shadow-strong))
+        drop-shadow(0 0 10px rgba(255, 215, 160, 0.25));
+}
+
+/* ============================================================
+   7. CHAT
+   ============================================================ */
 .chat-desktop {
-    width: 335px;
-    height: 400px;
-    background: rgba(5, 3, 2, 0.96);
-    border: 2px solid #ffd78f;
-    border-radius: 12px;
-    display: none; 
+    position: absolute;
+    bottom: 260px;
+    right: 0;
+    width: 360px;
+    height: 380px;
+    background: var(--dark);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    display: none;
     flex-direction: column;
-    box-shadow: 0 10px 45px rgba(0, 0, 0, 0.95);
+    box-shadow: 0 0 40px var(--gold-soft);
 }
 
-.chat-desktop.active { display: flex; animation: slideLeft 0.3s ease-out; }
-.chat-header { background: rgba(255, 215, 160, 0.08); padding: 12px 16px; border-bottom: 1px solid rgba(255, 215, 160, 0.2); display: flex; align-items: center; color: #ffd78f; font-weight: 600; }
-.avatar-status-dot { width: 9px; height: 9px; background-color: #26e663; border-radius: 50%; margin-right: 10px; box-shadow: 0 0 6px #26e663; }
-#chatTitle { font-size: 0.9rem; flex: 1; }
-.close-chat-btn { background: none; border: none; color: #ffd78f; font-size: 1.2rem; cursor: pointer; }
-.chat-messages { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
-.message { background: rgba(255, 215, 160, 0.06); border: 1px solid rgba(255, 215, 160, 0.15); padding: 10px 12px; border-radius: 6px; font-size: 0.88rem; color: #fff; line-height: 1.4; }
-.chat-input-row { padding: 10px; display: flex; gap: 8px; border-top: 1px solid rgba(255, 215, 160, 0.15); background: #000; }
-.chat-input-row input { flex: 1; background: #111; border: 1px solid rgba(255, 215, 160, 0.3); padding: 8px 12px; border-radius: 5px; color: #fff; outline: none; font-size: 0.88rem; }
-.chat-input-row input:focus { border-color: #ffd78f; }
-.send-btn { background: #ffd78f; border: none; color: #050302; padding: 6px 14px; border-radius: 5px; font-weight: 700; cursor: pointer; }
-
-@keyframes slideLeft { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes slideUpMobile { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-
-/* ==========================================================================
-   2. ADATTAMENTO REATTIVO PER AGGIUSTARSI AL MOBILE (SENZA STRIPBORDO)
-   ========================================================================== */
-@media (max-width: 1024px) {
-    /* Riduce leggermente le dimensioni generali se lo schermo si restringe (tablet/smartphone) */
-    .castle-header-fullwidth h2 { font-size: 1.8rem; }
-    .castle-scrollable-content { max-width: 420px; }
+.chat-desktop.active {
+    display: flex;
+    animation: slideUp 0.4s ease-out;
 }
 
-@media (max-width: 768px) {
-    /* La pagina desktop si "addomestica" per entrare nello schermo dello smartphone */
-    html, body {
-        width: 100vw;
-        max-width: 100vw;
-    }
-    
-    .dashboard { padding: 0 15px; height: 50px; }
-    .logo-title { font-size: 1.05rem; }
-    .nav-desktop { display: none; } /* Nasconde il menu orizzontale ingombrante */
-    
+/* ============================================================
+   8. ANIMAZIONI
+   ============================================================ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes castleHoverFlash {
+    0% { left: -110%; }
+    100% { left: 140%; }
+}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width: 1400px) {
+    .castle-layout { padding: 40px; }
+    .castle-info-panel { padding-right: 30px; }
+}
+
+@media (max-width: 900px) {
     .castle-layout {
-        padding: 75px 15px 15px 15px;
-        width: 100vw;
-        max-width: 100vw;
+        flex-direction: column;
+        padding: 30px 20px;
+        margin-top: 75px;
     }
 
-    .castle-header-fullwidth h2 { font-size: 1.4rem; }
-    
-    /* Il testo Desktop si auto-vincola per non sfondare lateralmente */
-    .castle-scrollable-content {
+    .castle-info-panel,
+    .castle-interactive-zone {
         max-width: 100%;
-        width: 100%;
         padding-right: 0;
-        /* Impedisce ai testi di finire incastrati fisicamente sotto l'avatar sul fondo */
-        margin-bottom: 130px; 
-        max-height: calc(100vh - 250px);
     }
 
-    .text-paragraph { font-size: 0.88rem; line-height: 1.45; }
-    .leading-para { font-size: 0.95rem; }
-    .dress-img-inline { height: 50px; }
-    .dress-caption-inline { font-size: 0.7rem; }
-
-    /* Il widget si sposta sul fondo per far respirare il layout desktop convertito */
-    .castellana-widget-area {
-        position: fixed;
-        bottom: 15px;
-        right: 15px;
-        left: 15px;
-        flex-direction: column; 
-        align-items: flex-end;
-        gap: 10px;
-        pointer-events: none;
-        width: auto;
+    .castle-text-content {
+        font-size: 1rem;
+        line-height: 1.5;
     }
 
-    .castellana-video-container { pointer-events: auto; }
-    .castellana-video-wrapper { width: 75px; height: 75px; }
+    .castellana-video-wrapper {
+        width: 180px;
+        margin: 20px auto;
+    }
 
-    /* La chat riempie lo spazio orizzontale dello schermo senza debordare */
     .chat-desktop {
-        width: 100%;
-        max-width: 100%;
-        height: 230px; 
-        pointer-events: auto;
+        bottom: 120px;
+        width: 90%;
+        height: auto;
+        right: 50%;
+        transform: translateX(50%);
     }
-    
-    .chat-desktop.active {
-        animation: slideUpMobile 0.25s ease-out;
+
+    .scene-background-container video {
+        object-fit: cover;
+        height: 100%;
     }
 }
