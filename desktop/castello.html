@@ -98,23 +98,44 @@
                     </div>
                 </div>
                 
-                <div class="chat-input-row">
-                    <input type="text" id="chatInput" data-i18n-placeholder="chat.placeholder" placeholder="Scrivi un messaggio...">
-                    <div class="input-actions">
-                        <button class="send-btn" id="sendMsgBtn">➔</button>
-                    </div>
-                </div>
+                <!--  VERSIONE CORRETTA AL 100% -->
+<div class="castellana-widget-area">
+    
+    <!-- Box Chat Desktop (Si apre a SINISTRA dell'icona) -->
+    <div class="chat-desktop" id="chatDesktop">
+        <div class="chat-header">
+            <div class="avatar-status-dot"></div>
+            <span id="chatTitle" data-i18n="chat.title">Castellana di Caccamo</span>
+            <button class="close-chat-btn" id="closeChatBtn">✕</button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessagesBox">
+            <!-- Messaggio di benvenuto pescato dal nodo castle -->
+            <div class="message system-msg" data-i18n="castle.welcomemsg_felicia">
+                Benvenuto al Castello di Caccamo, forestiero. Io sono Suor Felicia...
             </div>
+        </div>
+        
+        <div class="chat-input-row">
+            <input type="text" id="chatInput" data-i18n-placeholder="chat.placeholder" placeholder="Scrivi un messaggio...">
+            <div class="input-actions">
+                <button class="send-btn" id="sendMsgBtn">➔</button>
+            </div>
+        </div>
+    </div>
 
-            <div class="castellana-video-container">
-                <div class="castellana-video-wrapper" id="castellanaVideo">
-                    <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
-                    <video class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
-                        <source src="benvenuto_castellana.webm" type="video/webm">
-                        <source src="img/benvenuto_castellana.webm" type="video/webm">
-                    </video>
-                </div>
-            </div>
+    <!-- Icona Circolare Video-Avatar (ESTERNA alla chat) -->
+    <div class="castellana-video-container">
+        <div class="castellana-video-wrapper" id="castellanaVideo">
+            <div class="castellana-tooltip" id="castellanaTooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
+            <video class="castellana-video" playsinline webkit-playsinline autoplay loop muted>
+                <source src="./img/benvenuto_castellana.webm" type="video/webm">
+            </video>
+        </div>
+    </div>
+
+</div>
+
 
         </div>
 
