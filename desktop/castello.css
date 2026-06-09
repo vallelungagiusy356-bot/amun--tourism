@@ -12,12 +12,12 @@ html, body {
 }
 
 /* ==========================================================================
-   2. SFONDO DINAMICO + FILTRO BRILLANTE "MONDO INCANTATO"
+   2. SFONDO DINAMICO + FILTRO BRILLANTE "MONDO INCANTATO" (FIXED)
    ========================================================================== */
 .scene-background-container {
     position: fixed;
     inset: 0;
-    z-index: -5 !important;
+    z-index: -1; /* Cambiato da -5 !important a -1: ora sta sopra il body nero e non viene oscurato */
     overflow: hidden;
 }
 
@@ -29,6 +29,8 @@ html, body {
     opacity: 1; 
     will-change: transform;
     transform: translate3d(0, 0, 0);
+    position: relative;
+    z-index: 1; /* Definisce il livello base per il video internamente al container */
 }
 
 .scene-background-container::after {
@@ -38,7 +40,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 2; /* Forzato a 2: ora si appoggia ESATTAMENTE sopra il video, lasciandolo visibile */
     pointer-events: none;
     
     background: radial-gradient(
@@ -52,6 +54,7 @@ html, body {
     -webkit-backdrop-filter: brightness(1.2) saturate(1.05);
     transform: translateZ(0);
 }
+
 
 /* ==========================================================================
    3. DASHBOARD DESKTOP PREMIUM
