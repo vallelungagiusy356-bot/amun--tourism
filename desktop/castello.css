@@ -1,14 +1,35 @@
-/* ==========================================================================
-   1. RESET E IMPOSTAZIONI DI BASE
-   ========================================================================== */
+/* ============================================================
+   1. RESET + VARIABILI GLOBALI
+   ============================================================ */
+:root {
+    --gold: #ffd78f;
+    --gold-soft: rgba(255, 215, 160, 0.15);
+    --gold-strong: rgba(255, 215, 160, 0.4);
+    --gold-bg: rgba(255, 215, 160, 0.05);
+
+    --dark: #050302;
+    --dark-soft: rgba(5, 3, 2, 0.85);
+    --dark-overlay-1: rgba(5, 3, 2, 0.92);
+    --dark-overlay-2: rgba(5, 3, 2, 0.65);
+
+    --text-light: #e6e0d4;
+    --text-strong: #fff;
+
+    --shadow-strong: rgba(0, 0, 0, 0.9);
+    --shadow-soft: rgba(0, 0, 0, 0.5);
+
+    --radius: 12px;
+    --transition: 0.3s ease;
+}
+
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
-    color: #ffe7b3;
-    background-color: transparent; 
+    color: var(--text-light);
+    background: transparent;
 }
 
 /* ==========================================================================
