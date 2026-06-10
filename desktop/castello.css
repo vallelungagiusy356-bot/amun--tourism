@@ -449,13 +449,20 @@ html, body {
    RESPONSIVE CASTELLO — SMARTPHONE LANDSCAPE
    ============================================================ */
 @media screen and (max-height: 600px) and (orientation: landscape) {
-@media screen and (max-height: 600px) and (orientation: landscape) {
+
+    /* CASTELLANA RIDOTTA (90px) */
     .castellana-video-wrapper {
         width: 90px !important;
         bottom: 12px !important;
         right: 2% !important;
+        height: auto !important;
+        z-index: 1000 !important;
     }
-}
+
+    .castellana-tooltip {
+        display: none !important;
+    }
+
     /* DASHBOARD */
     .dashboard {
         height: 50px;
@@ -500,16 +507,11 @@ html, body {
         font-size: 1rem;
     }
 
-    
-    .castellana-tooltip {
-        display: none !important;
-    }
-
     /* CHAT LANDSCAPE */
     .chat-desktop {
         position: fixed;
         bottom: 12px;
-        right: calc(2% + 140px);
+        right: calc(2% + 100px); /* 90px Castellana + 10px margine */
         width: 280px;
         height: 160px;
         background: rgba(10, 6, 4, 0.98) !important;
