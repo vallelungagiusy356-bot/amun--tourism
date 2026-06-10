@@ -160,53 +160,64 @@ html, body {
     animation: castleHoverFlash 0.45s ease-out forwards;
 }
 
-/* LANG SWITCHER */
+/* ============================================================
+   PULSANTI LINGUA — NERI + ORO (EFFETTO RIFLESSO)
+   ============================================================ */
 .lang-switcher {
     display: flex;
-    gap: 6px;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 4px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 215, 160, 0.3);
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
 }
 
 .lang-switcher button {
-    background: transparent;
-    border: 1px solid rgba(255, 215, 160, 0.3);
-    border-radius: 6px;
-    padding: 4px 8px;
-    font-size: 1.1rem;
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 215, 160, 0.85);
+    color: #ffd78f;
     cursor: pointer;
-    transition: all 0.3s ease;
-    color: var(--gold);
-}
-
-.lang-switcher button:hover,
-.lang-switcher button.active {
-    background: rgba(255, 215, 160, 0.2);
-    box-shadow: 0 0 10px rgba(255, 215, 160, 0.3);
-}
-
-/* HOME BUTTON */
-.home-btn {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 8px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+    box-shadow:
+        0 0 14px rgba(255, 215, 160, 0.55),
+        inset 0 0 8px rgba(255, 215, 160, 0.45);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     position: relative;
     overflow: hidden;
 }
 
-.home-btn:hover {
-    background: var(--gold);
-    color: var(--dark);
-    box-shadow: 0 0 15px var(--gold-soft);
+/* Riflesso diagonale ammorbidito */
+.lang-switcher button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -110%;
+    width: 35%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.14) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: desktopGlowLoop 11s infinite ease-in-out;
+    animation-delay: 2s;
+    pointer-events: none;
 }
+
+.lang-switcher button:hover {
+    background: rgba(255, 215, 160, 0.15);
+    box-shadow:
+        0 0 22px rgba(255, 215, 160, 0.85),
+        inset 0 0 12px rgba(255, 215, 160, 0.55);
+    transform: scale(1.05);
+}
+
+.lang-switcher button:hover::before {
+    animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+             }
 
 /* ============================================================
    4. LAYOUT PRINCIPALE
