@@ -1,289 +1,85 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="monuments.title_page">Le Chiese di Caccamo</title>
-  <meta name="description" content="Tour virtuale delle chiese di Caccamo con render, video e assistente interattivo." />
-  <link rel="stylesheet" href="chiese-arte.css" />
+  <meta charset="UTF-8">
+  <title>Le Chiese di Caccamo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- SFONDO VIDEO -->
+  <video class="bg-video" src="immagini/video_cappuccini.webm"
+         autoplay muted loop playsinline></video>
 
-  <!-- HERO BACKGROUND VIDEO (usa castello_2.webm come sfondo hero) -->
-  <div class="scene-background-container" aria-hidden="true">
-    <video
-      class="scene-background-video"
-      autoplay
-      loop
-      muted
-      playsinline
-      preload="metadata"
-      poster="img/posters/castello_2_poster.webp"
-      aria-hidden="true"
-    >
-      <source src="img/castello_2.webm" type="video/webm" />
-      <!-- Optional fallback MP4: <source src="img/castello_2.mp4" type="video/mp4" /> -->
-    </video>
-    <div class="scene-overlay" aria-hidden="true"></div>
-  </div>
+  <div class="overlay"></div>
 
   <!-- HEADER -->
-  <header class="dashboard" role="banner" aria-label="Intestazione Amunì Tourism">
-    <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
-
-    <nav class="nav-desktop" role="navigation" aria-label="Menu principale">
-      <a href="index.html" class="nav-item">Home</a>
-      <a href="about.html" class="nav-item" data-i18n="menu.about">About</a>
+  <header class="top-bar">
+    <div class="logo">Amuní Tourism</div>
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <button class="btn-back">
+        <span>Indietro</span>
+        🔊
+      </button>
     </nav>
-
-    <div class="header-right-actions" role="group" aria-label="Azioni intestazione">
-      <button id="toggle-music" class="home-btn" aria-pressed="false" title="Attiva o disattiva musica">🔈</button>
-      <button class="home-btn" onclick="window.location.href='index.html'">Indietro</button>
-    </div>
   </header>
 
-  <!-- HERO CONTENT -->
-  <section class="hero" role="region" aria-label="Hero">
-    <div class="hero-inner">
-      <h1 class="hero-title" data-i18n="monuments.title_page">Le Chiese di Caccamo</h1>
-      <p class="hero-subtitle" data-i18n="monuments.subtitle">Scopri le meravigliose chiese di Caccamo</p>
-
-      <button
-        id="startButton"
-        class="cta-btn"
-        data-i18n="monuments.start_tour"
-        aria-label="Inizia il tour"
-        style="opacity:0; pointer-events:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2000; font-size:1.25rem; padding:16px 32px; border-radius:10px;"
-      >
-        Inizia il Tour
-      </button>
+  <!-- HERO CENTRALE -->
+  <main class="hero">
+    <div class="hero-text">
+      <h1>Le Chiese di Caccamo</h1>
+      <p>Scopri le meravigliose chiese di Caccamo</p>
+      <button class="btn-primary">Inizia il Tour</button>
     </div>
-  </section>
 
-  <!-- MAIN GRID: card con i tuoi WebM -->
-  <main id="monumentsGrid" class="monuments-grid" role="main" aria-live="polite">
-    <!-- Cappuccini -->
-    <section class="glass-card" data-monument="cappuccini" tabindex="0" role="button" aria-label="I Cappuccini">
-      <video class="card-video cappuccini-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/cappuccini_2_poster.webp">
-        <source src="img/cappuccini_2.webm" type="video/webm" />
-        <!-- Optional fallback MP4: <source src="img/cappuccini_2.mp4" type="video/mp4" /> -->
-      </video>
-      <div class="card-content"><h3 data-i18n="monuments.cappuccini_name">I Cappuccini</h3></div>
-    </section>
+    <!-- CARD MONUMENTI -->
+    <section class="cards">
+      <article class="card">
+        <video src="immagini/cappuccini_2.webm" autoplay muted loop playsinline></video>
+        <h3>I Cappuccini</h3>
+      </article>
 
-    <!-- Annunziata -->
-    <section class="glass-card" data-monument="annunziata" tabindex="0" role="button" aria-label="Annunziata">
-      <video class="card-video annunziata-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/annunziata_2_poster.webp">
-        <source src="img/annunziata_2.webm" type="video/webm" />
-        <!-- Optional fallback MP4: <source src="img/annunziata_2.mp4" type="video/mp4" /> -->
-      </video>
-      <div class="card-content"><h3 data-i18n="monuments.annunziata_name">Annunziata</h3></div>
-    </section>
+      <article class="card">
+        <video src="immagini/annunziata_2.webm" autoplay muted loop playsinline></video>
+        <h3>Annunziata</h3>
+      </article>
 
-    <!-- Badia -->
-    <section class="glass-card" data-monument="badia" tabindex="0" role="button" aria-label="S. Benedetto della Badia">
-      <video class="card-video badia-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/dettagli_badia_poster.webp">
-        <source src="img/dettagli_badia.webm" type="video/webm" />
-        <!-- Optional fallback MP4: <source src="img/dettagli_badia.mp4" type="video/mp4" /> -->
-      </video>
-      <div class="card-content"><h3 data-i18n="monuments.badia_name">S. Benedetto della Badia</h3></div>
-    </section>
+      <article class="card">
+        <video src="immagini/dettagli_badia.webm" autoplay muted loop playsinline></video>
+        <h3>S. Benedetto della Badia</h3>
+      </article>
 
-    <!-- Angeli (San Domenico) -->
-    <section class="glass-card" data-monument="angeli" tabindex="0" role="button" aria-label="Santa Maria degli Angeli">
-      <video class="card-video angeli-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/san_domenico_poster.webp">
-        <source src="img/san_domenico.webm" type="video/webm" />
-        <!-- Optional fallback MP4: <source src="img/san_domenico.mp4" type="video/mp4" /> -->
-      </video>
-      <div class="card-content"><h3 data-i18n="monuments.angeli_name">Santa Maria degli Angeli</h3></div>
-    </section>
+      <article class="card">
+        <video src="immagini/san_domenico.webm" autoplay muted loop playsinline></video>
+        <h3>San Domenico</h3>
+      </article>
 
-    <!-- Duomo (San Giorgio Martire) -->
-    <section class="glass-card" data-monument="duomo" tabindex="0" role="button" aria-label="Chiesa San Giorgio Martire">
-      <video class="card-video duomo-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/san_giorgio_martire_poster.webp">
-        <source src="img/san_giorgio_martire.webm" type="video/webm" />
-        <!-- Optional fallback MP4: <source src="img/san_giorgio_martire.mp4" type="video/mp4" /> -->
-      </video>
-      <div class="card-content"><h3 data-i18n="monuments.duomo_name">Chiesa San Giorgio Martire</h3></div>
+      <article class="card">
+        <video src="immagini/san_giorgio_martire.webm" autoplay muted loop playsinline></video>
+        <h3>San Giorgio Martire</h3>
+      </article>
     </section>
   </main>
 
-  <!-- CASTELLANA + CHAT TRIGGER (uso lo stesso file castello_2.webm come mini-video) -->
-  <div class="castellana-video-wrapper" aria-hidden="false">
-    <video class="castellana-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/castello_2_poster.webp">
-      <source src="img/castello_2.webm" type="video/webm" />
-      <!-- Optional fallback MP4: <source src="img/castello_2.mp4" type="video/mp4" /> -->
-    </video>
-    <button id="chat-open-btn" class="castellana-tooltip" data-i18n="monuments.chat_tooltip" aria-haspopup="dialog" aria-controls="chatDesktop">Click to chat</button>
-  </div>
-
-  <!-- CHAT PANEL -->
-  <aside class="chat-desktop" id="chatDesktop" role="dialog" aria-label="Chat La Castellana" aria-hidden="true">
-    <div class="chat-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <div class="avatar-status-dot" aria-hidden="true" style="width:10px;height:10px;background:#4caf50;border-radius:50%;"></div>
-        <strong id="chatTitle" data-i18n="chat.title" style="color:#ffd78f;">La Castellana</strong>
-      </div>
-      <button class="close-chat-btn" id="closeChatBtn" aria-label="Chiudi chat">✕</button>
+  <!-- CHAT CASTELLANA -->
+  <section class="castellana-widget">
+    <div class="castellana-header">
+      <video class="avatar" src="immagini/benvenuto_castellana.webm"
+             autoplay muted loop playsinline></video>
+      <span>La Castellana</span>
     </div>
-
-    <div class="chat-messages" id="chatMessagesBox" role="log" aria-live="polite">
-      <div class="message system-msg" data-i18n="monuments.welcomemsg_churches"></div>
+    <div class="castellana-body">
+      <p>Benvenuti! Posso aiutarvi a scoprire le bellezze delle chiese di Caccamo?</p>
     </div>
-
-    <div class="chat-input-row" role="group" aria-label="Invio messaggio">
-      <input id="chatInput" type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder" aria-label="Scrivi alla Castellana" />
-      <div class="input-actions">
-        <button class="mic-btn" title="Attiva Microfono" aria-label="Attiva microfono">🎤</button>
-      </div>
+    <div class="castellana-input">
+      <input type="text" placeholder="Scrivi alla Castellana">
+      <button>Invia</button>
     </div>
-  </aside>
+  </section>
 
-  <!-- BACKGROUND AUDIO -->
-  <audio id="bg-music" loop preload="none">
-    <source src="audio/more-epic-lorem-ipsum-by-ende-dot.mp3" type="audio/mpeg" />
-  </audio>
+  <button class="castellana-fab">Click to chat</button>
 
-  <!-- SCRIPT: accessibilità, lazy play e gestione UI -->
-  <script defer>
-    (function () {
-      const audio = document.getElementById("bg-music");
-      const startBtn = document.getElementById("startButton");
-      const grid = document.getElementById("monumentsGrid");
-      const cards = document.querySelectorAll(".glass-card");
-      const toggleBtn = document.getElementById("toggle-music");
-      const chatBtn = document.getElementById("chat-open-btn");
-      const chatBox = document.getElementById("chatDesktop");
-      const closeChat = document.getElementById("closeChatBtn");
-      const chatMessagesBox = document.getElementById("chatMessagesBox");
-
-      let currentLang = localStorage.getItem("lang") || "it";
-      let langData = {};
-
-      async function loadLanguage(lang) {
-        try {
-          const res = await fetch(`../lang/${lang}.json`);
-          if (!res.ok) return;
-          const data = await res.json();
-          langData = data;
-          document.querySelectorAll("[data-i18n]").forEach(el => {
-            const key = el.getAttribute("data-i18n");
-            const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
-            if (text) el.innerHTML = text;
-          });
-          document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-            const key = el.getAttribute("data-i18n-placeholder");
-            const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
-            if (text) el.placeholder = text;
-          });
-          if (grid.classList.contains("visible") && data.monuments?.chat_hint) {
-            chatBtn.textContent = data.monuments.chat_hint;
-          }
-        } catch (err) {
-          console.warn("i18n load failed", err);
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        loadLanguage(currentLang);
-        setTimeout(() => {
-          if (startBtn) {
-            startBtn.style.opacity = "1";
-            startBtn.style.pointerEvents = "auto";
-          }
-        }, 900);
-      });
-
-      window.addEventListener("click", () => {
-        if (audio && audio.paused) {
-          audio.play().catch(()=>{});
-        }
-      }, { once: true });
-
-      if (startBtn) {
-        startBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          startBtn.style.display = "none";
-          grid.classList.add("visible");
-          if (chatBtn && langData.monuments?.chat_hint) {
-            chatBtn.textContent = langData.monuments.chat_hint;
-          }
-          cards.forEach((card, i) => {
-            setTimeout(() => card.classList.add("fade-in"), 180 * i);
-          });
-        });
-      }
-
-      if (toggleBtn) {
-        toggleBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          if (!audio) return;
-          if (audio.paused) {
-            audio.play().catch(()=>{});
-            toggleBtn.textContent = "🔈";
-            toggleBtn.setAttribute("aria-pressed", "true");
-          } else {
-            audio.pause();
-            toggleBtn.textContent = "🔇";
-            toggleBtn.setAttribute("aria-pressed", "false");
-          }
-        });
-      }
-
-      if (chatBtn && chatBox) {
-        chatBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          chatBox.classList.add("active");
-          chatBox.setAttribute("aria-hidden", "false");
-        });
-      }
-      if (closeChat && chatBox) {
-        closeChat.addEventListener("click", (e) => {
-          e.stopPropagation();
-          chatBox.classList.remove("active");
-          chatBox.setAttribute("aria-hidden", "true");
-        });
-      }
-
-      cards.forEach(card => {
-        card.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const idMonumento = card.getAttribute("data-monument");
-          const storia = langData.monuments?.[idMonumento] || "";
-          chatBox.classList.add("active");
-          chatBox.setAttribute("aria-hidden", "false");
-          chatMessagesBox.innerHTML = "";
-          const nuovoMessaggio = document.createElement("div");
-          nuovoMessaggio.className = "message";
-          nuovoMessaggio.innerHTML = `<strong>${langData.chat?.title || "La Castellana"}:</strong> ${storia}`;
-          chatMessagesBox.appendChild(nuovoMessaggio);
-          chatMessagesBox.scrollTop = chatMessagesBox.scrollHeight;
-        });
-
-        card.addEventListener("keydown", (ev) => {
-          if (ev.key === "Enter" || ev.key === " ") {
-            ev.preventDefault();
-            card.click();
-          }
-        });
-      });
-
-      // Pause card videos when not visible to save CPU/bandwidth
-      const cardVideos = document.querySelectorAll(".card-video");
-      if ("IntersectionObserver" in window && cardVideos.length) {
-        const vObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            const v = entry.target;
-            if (entry.isIntersecting) {
-              v.play().catch(()=>{});
-            } else {
-              v.pause();
-            }
-          });
-        }, { threshold: 0.25 });
-        cardVideos.forEach(v => vObserver.observe(v));
-      }
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
