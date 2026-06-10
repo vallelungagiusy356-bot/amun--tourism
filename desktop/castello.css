@@ -219,6 +219,7 @@ html, body {
     animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
              }
 .home-btn {
+   position: relative;
     background: transparent;
     border: 1px solid var(--gold);
     color: var(--gold);
