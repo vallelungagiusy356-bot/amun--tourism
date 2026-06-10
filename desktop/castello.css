@@ -348,6 +348,79 @@ html, body {
 }
 
 /* ============================================================
+   6B. CASTELLANA — AVATAR TONDO PREMIUM
+   ============================================================ */
+
+/* Area che contiene avatar + chat */
+.castellana-widget-area {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: auto;
+}
+
+/* Testo CHAT sopra l’avatar */
+.castellana-video-container::before {
+    content: 'CHAT';
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0,0,0,1);
+    margin-bottom: 4px;
+}
+
+/* Avatar tondo */
+.castellana-video-wrapper {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--gold);
+    background: #000;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.9);
+    cursor: pointer;
+    transition: transform 0.2s ease-out;
+}
+
+.castellana-video-wrapper:hover {
+    transform: scale(1.05);
+}
+
+/* Video interno */
+.castellana-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Chat (già presente, ma la riposizioniamo qui per coerenza) */
+.chat-desktop {
+    width: 335px;
+    height: 400px;
+    background: rgba(5, 3, 2, 0.96);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 10px 45px rgba(0,0,0,0.95);
+    position: fixed;
+    bottom: 150px;
+    right: 40px;
+    z-index: 9999;
+}
+
+.chat-desktop.active {
+    display: flex;
+    animation: slideUp 0.3s ease-out;
+}
+
+/* ============================================================
    RESPONSIVE CASTELLO — SMARTPHONE PORTRAIT
    ============================================================ */
 @media screen and (max-width: 900px) and (orientation: portrait) {
