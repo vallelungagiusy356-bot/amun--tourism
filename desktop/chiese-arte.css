@@ -12,7 +12,7 @@ body {
   overflow: hidden;
 }
 
-/* SFONDO VIDEO */
+/* 🌅 SFONDO VIDEO CON FILTRO AMBRATO */
 .bg-video {
   position: fixed;
   inset: 0;
@@ -20,12 +20,13 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -2;
+  filter: brightness(1.2) saturate(1.3) sepia(0.4) hue-rotate(-10deg);
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at top, rgba(0,0,0,0.2), rgba(0,0,0,0.75));
+  background: radial-gradient(circle at top, rgba(255,180,80,0.25), rgba(0,0,0,0.7));
   z-index: -1;
 }
 
@@ -59,22 +60,26 @@ body {
   cursor: pointer;
 }
 
-/* HERO */
+/* HERO CENTRALE */
 .hero {
-  display: grid;
-  grid-template-columns: 1.2fr 1.8fr;
-  padding: 1rem 2.5rem 2.5rem;
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 2.5rem;
 }
 
 .hero-text h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   margin-bottom: 0.5rem;
+  color: #d4a64a;
+  text-shadow: 0 0 10px rgba(255,200,100,0.4);
 }
 
 .hero-text p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 1.5rem;
+  color: #f7f2e9;
 }
 
 .btn-primary {
@@ -85,17 +90,22 @@ body {
   border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* CARDS MONUMENTI */
+/* 🏛️ CARD MONUMENTI IN FILA */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  justify-content: center;
   gap: 1rem;
-  align-content: start;
+  margin-top: 2rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
 }
 
 .card {
+  flex: 0 0 220px;
   background: rgba(0,0,0,0.55);
   border-radius: 1rem;
   overflow: hidden;
@@ -103,6 +113,7 @@ body {
   backdrop-filter: blur(6px);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  scroll-snap-align: center;
 }
 
 .card video {
@@ -115,6 +126,7 @@ body {
 .card h3 {
   padding: 0.6rem 0.8rem 0.8rem;
   font-size: 0.95rem;
+  color: #f7f2e9;
 }
 
 .card:hover {
@@ -122,47 +134,43 @@ body {
   box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* CHAT CASTELLANA */
-.castellana-widget {
+/* 💬 CHAT CASTELLANA */
+#chat-desktop {
   position: fixed;
   right: 1.5rem;
   bottom: 5rem;
-  width: 280px;
-  background: rgba(10,6,2,0.9);
+  width: 300px;
+  background: rgba(20,10,0,0.9);
   border-radius: 1rem;
-  border: 1px solid rgba(212,166,74,0.7);
+  border: 1px solid #d4a64a;
   backdrop-filter: blur(10px);
-  display: none; /* verrà aperta da JS */
+  display: none;
   flex-direction: column;
   overflow: hidden;
+  z-index: 10;
 }
 
-.castellana-header {
+.chat-header {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  justify-content: space-between;
   padding: 0.6rem 0.8rem;
   border-bottom: 1px solid rgba(212,166,74,0.4);
+  color: #d4a64a;
 }
 
-.castellana-header .avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  object-fit: cover;
-}
-
-.castellana-body {
+.chat-messages {
   padding: 0.8rem;
   font-size: 0.9rem;
+  color: #f7f2e9;
 }
 
-.castellana-input {
+.chat-input-row {
   display: flex;
   border-top: 1px solid rgba(212,166,74,0.4);
 }
 
-.castellana-input input {
+.chat-input-row input {
   flex: 1;
   border: none;
   padding: 0.5rem 0.7rem;
@@ -170,22 +178,49 @@ body {
   color: #f7f2e9;
 }
 
-.castellana-input button {
+.chat-input-row button {
   background: #d4a64a;
   border: none;
   padding: 0.5rem 0.8rem;
   cursor: pointer;
 }
 
-/* FAB “CLICK TO CHAT” */
-.castellana-fab {
+/* 🎥 AVATAR CASTELLANA */
+.castellana-video-wrapper {
   position: fixed;
   right: 1.5rem;
   bottom: 1.5rem;
-  background: linear-gradient(135deg, #d4a64a, #f28b3c);
-  border: none;
-  border-radius: 999px;
-  padding: 0.7rem 1.2rem;
-  font-weight: 600;
   cursor: pointer;
+  text-align: center;
+}
+
+.castellana-video {
+  width: 80px;
+  height: 80px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid #d4a64a;
+}
+
+.castellana-tooltip {
+  background: linear-gradient(135deg, #d4a64a, #f28b3c);
+  color: #1b1308;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-top: 0.3rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+  .cards {
+    gap: 0.6rem;
+  }
+  .card {
+    flex: 0 0 180px;
+  }
 }
