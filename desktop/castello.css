@@ -29,7 +29,8 @@ html, body {
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
     color: var(--text-light);
-    background: transparent;
+    background: var(--dark); /* Sfondo di fallback se il video non carica */
+    overflow-x: hidden; /* Evita scorrimenti orizzontali indesiderati */
 }
 
 /* ============================================================
@@ -71,7 +72,6 @@ html, body {
     pointer-events: none;
     z-index: 2;
 
-    /* Aura dorata centrale */
     background: radial-gradient(
         circle at 50% 50%,
         rgba(255, 240, 200, 0.20) 0%,
@@ -80,11 +80,8 @@ html, body {
         transparent 85%
     );
 
-    /* Effetto “mondo incantato” */
     backdrop-filter: brightness(1.18) saturate(1.08);
     -webkit-backdrop-filter: brightness(1.18) saturate(1.08);
-
-    /* Leggero bagliore dorato */
     box-shadow: inset 0 0 120px rgba(255, 215, 160, 0.15);
 }
 
@@ -94,6 +91,7 @@ html, body {
 .dashboard {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: 75px;
     padding: 0 40px;
@@ -104,6 +102,7 @@ html, body {
     border-bottom: 2px solid var(--gold);
     box-shadow: 0 4px 30px var(--shadow-strong);
     z-index: 999;
+    box-sizing: border-box;
 }
 
 .logo-title {
@@ -113,85 +112,68 @@ html, body {
     text-shadow: 0 0 12px var(--gold-soft);
 }
 
-/* NAVIGATION */
+/* LINK MENU WITH AMBIENT REFLECTION */
 .nav-desktop {
     display: flex;
-    gap: 30px;
+    gap: 22px;
 }
 
-.nav-item {
-    color: var(--gold);
-    text-decoration: none;
+.nav-desktop a {
+    color: #ffd78f;
     font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 6px;
-    position: relative;
-    overflow: hidden;
-    transition: var(--transition);
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.75);
+    box-shadow:
+        0 0 14px rgba(255, 215, 160, 0.55),
+        inset 0 0 8px rgba(255, 215, 160, 0.35);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative; 
+    overflow: hidden;   
 }
 
-.nav-item:hover {
-    background: var(--gold-soft);
-    color: var(--text-strong);
-    text-shadow: 0 0 8px var(--gold);
+/* Strato di luce per i link */
+.nav-desktop a::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -110%;
+    width: 35%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.2) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: desktopGlowLoop 8s infinite ease-in-out;
+    pointer-events: none;
 }
 
-/* LINK MENU WITH AMBIENT REFLECTION */
-    .nav-desktop {
-        display: flex;
-        gap: 22px;
-    }
+.nav-desktop a:hover {
+    background: rgba(255, 215, 160, 0.15);
+    box-shadow:
+        0 0 22px rgba(255, 215, 160, 0.85),
+        inset 0 0 12px rgba(255, 215, 160, 0.45);
+    transform: scale(1.05);
+}
 
-    .nav-desktop a {
-        color: #ffd78f;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 10px 18px;
-        border-radius: 12px;
-        background: rgba(0, 0, 0, 0.55);
-        border: 1px solid rgba(255, 215, 160, 0.75);
-        box-shadow:
-            0 0 14px rgba(255, 215, 160, 0.55),
-            inset 0 0 8px rgba(255, 215, 160, 0.35);
-        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        position: relative; 
-        overflow: hidden;   
-    }
+.nav-desktop a:hover::before {
+    animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
 
-    /* Strato di luce ultra-soffuso per i link del menu */
-    .nav-desktop a::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -110%;
-        width: 35%;
-        height: 200%;
-        background: linear-gradient(
-            to right,
-            rgba(255, 215, 160, 0) 0%,
-            rgba(255, 215, 160, 0.14) 50%, /* Opacità abbassata per massima discrezione */
-            rgba(255, 215, 160, 0) 100%
-        );
-        transform: rotate(-45deg);
-        animation: desktopGlowLoop 10s infinite ease-in-out;
-        pointer-events: none;
-    }
-
-    .nav-desktop a:hover {
-        background: rgba(255, 215, 160, 0.15);
-        box-shadow:
-            0 0 22px rgba(255, 215, 160, 0.85),
-            inset 0 0 12px rgba(255, 215, 160, 0.45);
-        transform: scale(1.05);
-    }
-
-    /* Passaggio della luce all'hover rallentato e ammorbidito */
-    .nav-desktop a:hover::before {
-        animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-       }
+/* GRUPPO DI AZIONI DESTRE (LINGUE + TORNA INDIETRO) */
+.header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
 /* ============================================================
-   PULSANTI LINGUA — NERI + ORO (EFFETTO RIFLESSO)
+   PULSANTI LINGUA
    ============================================================ */
 .lang-switcher {
     display: flex;
@@ -203,7 +185,7 @@ html, body {
 .lang-switcher button {
     width: 42px;
     height: 42px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.65);
     border: 1px solid rgba(255, 215, 160, 0.85);
@@ -217,22 +199,21 @@ html, body {
     overflow: hidden;
 }
 
-/* Riflesso diagonale ammorbidito */
 .lang-switcher button::before {
     content: '';
     position: absolute;
     top: -50%;
     left: -110%;
-    width: 35%;
+    width: 45%;
     height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.14) 50%,
+        rgba(255, 215, 160, 0.2) 50%,
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
-    animation: desktopGlowLoop 11s infinite ease-in-out;
+    animation: desktopGlowLoop 10s infinite ease-in-out;
     animation-delay: 2s;
     pointer-events: none;
 }
@@ -247,9 +228,9 @@ html, body {
 
 .lang-switcher button:hover::before {
     animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-             }
+}
+
 .home-btn {
-   position: relative;
     background: transparent;
     border: 1px solid var(--gold);
     color: var(--gold);
@@ -259,8 +240,6 @@ html, body {
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
 }
 
 .home-btn:hover {
@@ -270,33 +249,31 @@ html, body {
 }
 
 /* ==========================================================================
-   4. LAYOUT FISSO ANTI-STRIPBORDO (CORRETTO PER SFONDO)
+   4. LAYOUT STRUTTURALE FLUIDO (CORRETTO PER SCROLL)
    ========================================================================== */
 .castle-layout {
-    position: absolute; 
-    inset: 0;
-    padding: 100px 6% 30px 6%;
-    z-index: 5; /* Mantiene i testi sopra il video... */
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    pointer-events: none; 
+    position: relative; 
     width: 100%;
-    height: 100%;
-    background: transparent !important; /* 🔥 FONDAMENTALE: Rende il livello trasparente per mostrare il video sottostante */
+    min-height: 100vh;
+    padding: 120px 6% 60px 6%;
+    z-index: 5;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    background: transparent !important;
 }
 
-
 /* ============================================================
-   5. COLONNA SINISTRA — TESTI + ABITO
+   5. COLONNA SINISTRA — TESTI
    ============================================================ */
 .castle-info-panel {
     flex: 1;
-    max-width: 50%;
-    padding-right: 50px;
+    max-width: 55%;
+    padding-right: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    pointer-events: auto; /* Permette la selezione del testo e click */
 }
 
 .category-tag {
@@ -308,7 +285,7 @@ html, body {
 }
 
 .castle-info-panel h1 {
-    font-size: 2.6rem;
+    font-size: clamp(2rem, 4vw, 3.2rem); /* Fluido in base allo schermo */
     color: var(--gold);
     margin: 5px 0 15px;
     text-shadow: 0 2px 12px var(--shadow-strong);
@@ -316,10 +293,11 @@ html, body {
 
 .gold-divider {
     height: 2px;
-    width: 80%;
+    width: 100%;
+    max-width: 400px;
     background: linear-gradient(90deg, var(--gold), transparent);
     border: none;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .castle-text-content {
@@ -328,18 +306,16 @@ html, body {
     gap: 18px;
     animation: fadeIn 0.8s ease-out;
 }
-/* Margine anti-sovrapposizione avatar */
-.castle-text-content {
-    margin-bottom: 180px; /* spazio per l’avatar tondo */
-}
+
 .text-paragraph {
     font-size: 1.1rem;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--text-light);
     text-shadow: 1px 1px 4px var(--shadow-strong);
-    background: rgba(0,0,0,0.15);
-    padding: 4px 8px;
-    border-radius: 6px;
+    background: rgba(5, 3, 2, 0.4);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 160, 0.05);
 }
 
 .leading-para {
@@ -350,18 +326,19 @@ html, body {
 
 .highlight-para {
     border-left: 3px solid var(--gold);
-    padding: 8px 15px;
+    padding: 12px 15px;
     background: var(--gold-bg);
     border-radius: 0 8px 8px 0;
 }
 
-/* Abito */
+/* Contenitore Abito */
 .castle-dress-inline {
     background: var(--gold-bg);
     border: 1px solid var(--gold-soft);
     border-radius: var(--radius);
     padding: 15px;
     text-align: center;
+    margin-top: 15px;
 }
 
 .dress-img-inline {
@@ -372,32 +349,15 @@ html, body {
 .dress-caption-inline {
     font-size: 0.85rem;
     color: var(--gold);
-    margin-top: 8px;
+    margin-top: 10px;
     letter-spacing: 1px;
+    font-style: italic;
+    text-shadow: 0 2px 4px var(--shadow-strong);
 }
 
 /* ============================================================
-   7. CHAT
+   6. CASTELLANA — WIDGET AREA (AVATAR + CHAT)
    ============================================================ */
-.chat-desktop {
-    background: var(--dark);
-    border: 2px solid var(--gold);
-    border-radius: 16px;
-    display: none;
-    flex-direction: column;
-    box-shadow: 0 0 40px var(--gold-soft);
-}
-
-.chat-desktop.active {
-    display: flex;
-    animation: slideUp 0.4s ease-out;
-}
-
-/* ============================================================
-   6B. CASTELLANA — AVATAR TONDO PREMIUM
-   ============================================================ */
-
-/* Area che contiene avatar + chat */
 .castellana-widget-area {
     position: fixed;
     bottom: 30px;
@@ -410,18 +370,22 @@ html, body {
     pointer-events: auto;
 }
 
-/* Testo CHAT sopra l’avatar */
+.castellana-video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .castellana-video-container::before {
-    content: 'CHAT';
-    font-size: 0.75rem;
+    content: 'LA CASTELLANA';
+    font-size: 0.7rem;
     font-weight: 800;
     color: var(--gold);
     letter-spacing: 2px;
     text-shadow: 0 2px 4px rgba(0,0,0,1);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
-/* Avatar tondo */
 .castellana-video-wrapper {
     width: 110px;
     height: 110px;
@@ -438,25 +402,24 @@ html, body {
     transform: scale(1.05);
 }
 
-/* Video interno */
 .castellana-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Chat (già presente, ma la riposizioniamo qui per coerenza) */
+/* Chat box */
 .chat-desktop {
-    width: 335px;
-    height: 400px;
+    width: 340px;
+    height: 420px;
     background: rgba(5, 3, 2, 0.96);
     border: 2px solid var(--gold);
-    border-radius: 12px;
+    border-radius: 14px;
     display: none;
     flex-direction: column;
     box-shadow: 0 10px 45px rgba(0,0,0,0.95);
     position: fixed;
-    bottom: 150px;
+    bottom: 165px;
     right: 40px;
     z-index: 9999;
 }
@@ -467,54 +430,156 @@ html, body {
 }
 
 /* ============================================================
-   RESPONSIVE CASTELLO — SMARTPHONE PORTRAIT
+   6B. COMPONENTI INTERNI DELLA CHAT (INTEGRATI)
+   ============================================================ */
+.chat-header {
+    background: rgba(255, 215, 160, 0.08);
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--gold-soft);
+    position: relative;
+}
+
+.avatar-status-dot {
+    width: 8px;
+    height: 8px;
+    background: #00ff66;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 8px #00ff66;
+}
+
+#chatTitle {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.close-chat-btn {
+    position: absolute;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-chat-btn:hover {
+    color: var(--gold);
+    transform: scale(1.1);
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.message {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 10px 14px;
+    border-radius: 8px;
+    max-width: 85%;
+    word-wrap: break-word;
+}
+
+.system-msg {
+    background: rgba(255, 215, 160, 0.05);
+    color: var(--text-light);
+    border-left: 2px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+}
+
+.chat-input-row {
+    padding: 12px;
+    display: flex;
+    gap: 8px;
+    border-top: 1px solid rgba(255, 215, 160, 0.05);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.chat-input-row input {
+    flex: 1;
+    background: rgba(5, 3, 2, 0.8);
+    border: 1px solid var(--gold-soft);
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: var(--text-strong);
+    font-size: 0.88rem;
+    transition: var(--transition);
+}
+
+.chat-input-row input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 8px var(--gold-bg);
+}
+
+.mic-btn {
+    background: transparent;
+    border: 1px solid var(--gold-soft);
+    color: var(--gold);
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.mic-btn:hover {
+    background: var(--gold-soft);
+    border-color: var(--gold);
+}
+
+/* ============================================================
+   RESPONSIVE — SMARTPHONE PORTRAIT (VERTICALE)
    ============================================================ */
 @media screen and (max-width: 900px) and (orientation: portrait) {
-    .castle-text-content {
-        margin-bottom: 200px !important;
-    }
-
+    
     .dashboard { 
         flex-direction: column; 
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        padding: 12px 10px;
+        gap: 8px;
+        padding: 12px;
         height: auto;
         position: relative;
     }
 
-    .dashboard .logo-title {
-        font-size: 1.3rem;
-        margin-bottom: 2px;
+    .nav-desktop { display: none; } /* Nascosto su mobile */
+
+    .header-right-actions {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
     }
 
-    .nav-desktop { display: none; }
-
-    .lang-switcher {
-        justify-content: center;
-        gap: 8px;
+    .dashboard .logo-title {
+        font-size: 1.3rem;
     }
 
     .lang-switcher button {
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
         font-size: 1rem;
-    }
-
-    .home-btn {
-        width: 100%;
-        max-width: 200px;
-        padding: 8px 0;
-        text-align: center;
-        font-size: 0.9rem;
     }
 
     .castle-layout {
         flex-direction: column;
-        padding: 120px 16px 0 16px;
+        padding: 40px 20px 140px 20px; /* Spazio inferiore anti-sfondamento per l'avatar */
         text-align: center;
-        gap: 30px;
     }
 
     .castle-info-panel {
@@ -522,130 +587,100 @@ html, body {
         padding-right: 0;
     }
 
-    .castle-info-panel h1 {
-        font-size: 2.1rem;
+    .gold-divider {
+        margin: 0 auto 20px auto;
     }
 
     .text-paragraph {
         font-size: 1rem;
-        text-align: center;
+        text-align: justify;
     }
 
-    .castle-dress-inline {
-        margin: 0 auto;
-        max-width: 90%;
+    /* Riposizionamento sicuro e bloccato dell'avatar */
+    .castellana-widget-area {
+        bottom: 20px;
+        right: 20px;
+        gap: 4px;
     }
 
     .castellana-video-wrapper {
-        position: fixed !important;
-        bottom: 0 !important;
-        right: 0 !important;
-        width: 90px !important;
-        height: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        z-index: 1000 !important;
-    }
-
-    .castellana-tooltip {
-        display: none !important;
-        opacity: 0 !important;
+        width: 85px;
+        height: 85px; /* Sfera perfetta */
     }
 
     .chat-desktop {
         position: fixed;
-        bottom: 150px;
-        left: 12px;
-        right: 12px;
+        bottom: 120px;
+        left: 15px;
+        right: 15px;
         width: auto;
-        height: 45vh;
-        z-index: 9999;
+        height: 50vh;
     }
 }
 
 /* ============================================================
-   RESPONSIVE CASTELLO — SMARTPHONE LANDSCAPE
+   RESPONSIVE — SMARTPHONE LANDSCAPE (ORIZZONTALE)
    ============================================================ */
 @media screen and (max-height: 600px) and (orientation: landscape) {
-
-    .castellana-video-wrapper {
-        width: 90px !important;
-        bottom: 12px !important;
-        right: 2% !important;
-        height: auto !important;
-        z-index: 1000 !important;
-    }
-
-    /* Sposta il contenuto sotto la dashboard in landscape */
-    .castle-layout {
-        margin-top: 70px !important;
-        padding-top: 20px !important;
-    }
-}
-
-    .castellana-tooltip {
-        display: none !important;
-    }
-
+    
     .dashboard {
-        height: 50px;
+        height: 55px;
         padding: 0 20px;
-    }
-
-    .dashboard .logo-title {
-        font-size: 1.15rem;
+        position: fixed;
     }
 
     .nav-desktop { display: none; }
 
-    .lang-switcher button {
-        width: 32px;
-        height: 32px;
-        font-size: 0.95rem;
+    .header-right-actions {
+        flex-direction: row;
+        gap: 15px;
     }
 
-    .home-btn {
-        padding: 5px 12px;
-        font-size: 0.78rem;
+    .dashboard .logo-title {
+        font-size: 1.2rem;
+    }
+
+    .lang-switcher button {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
     }
 
     .castle-layout {
         flex-direction: row;
-        padding: 60px 20px 0 20px;
-        margin-top: 50px;
-        gap: 20px;
+        padding: 80px 20px 30px 20px;
     }
 
     .castle-info-panel {
-        max-width: 60%;
-        padding-right: 20px;
+        max-width: 65%;
+        padding-right: 15px;
     }
 
-    .castle-info-panel h1 {
-        font-size: 1.8rem;
+    .text-paragraph {
+        font-size: 0.95rem;
     }
 
-    .leading-para {
-        font-size: 1rem;
+    .castellana-widget-area {
+        bottom: 15px;
+        right: 20px;
+    }
+
+    .castellana-video-wrapper {
+        width: 75px;
+        height: 75px;
     }
 
     .chat-desktop {
         position: fixed;
-        bottom: 12px;
-        right: calc(2% + 100px);
-        width: 280px;
-        height: 160px;
-        background: rgba(10, 6, 4, 0.98) !important;
-        box-shadow: -12px 0 35px rgba(0, 0, 0, 0.85);
+        bottom: 15px;
+        right: 110px;
+        width: 300px;
+        height: 70vh;
     }
-
-    .chat-header { font-size: 0.8rem; }
-    .message { font-size: 0.75rem; padding: 5px 8px; }
-    .chat-input-row input { font-size: 0.75rem; padding: 5px; }
 }
 
 /* ============================================================
-   8. ANIMAZIONI
+   8. ANIMAZIONI + CORREZIONE KEYFRAMES RIFLESSO
    ============================================================ */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -657,7 +692,15 @@ html, body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes castleHoverFlash {
+/* Loop automatico lento di fondo */
+@keyframes desktopGlowLoop {
+    0% { left: -110%; }
+    10% { left: 140%; }
+    100% { left: 140%; }
+}
+
+/* Flash rapido ed elegante all'hover dell'utente */
+@keyframes desktopHoverFlasher {
     0% { left: -110%; }
     100% { left: 140%; }
 }
