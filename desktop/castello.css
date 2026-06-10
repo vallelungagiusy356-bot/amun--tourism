@@ -218,6 +218,25 @@ html, body {
 .lang-switcher button:hover::before {
     animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
              }
+.home-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+    box-shadow: 0 0 15px var(--gold-soft);
+}
 
 /* ============================================================
    4. LAYOUT PRINCIPALE
