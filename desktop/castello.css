@@ -449,7 +449,13 @@ html, body {
    RESPONSIVE CASTELLO — SMARTPHONE LANDSCAPE
    ============================================================ */
 @media screen and (max-height: 600px) and (orientation: landscape) {
-
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .castellana-video-wrapper {
+        width: 90px !important;
+        bottom: 12px !important;
+        right: 2% !important;
+    }
+}
     /* DASHBOARD */
     .dashboard {
         height: 50px;
