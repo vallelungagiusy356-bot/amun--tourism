@@ -13,26 +13,11 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-}
-
-/* ============================================================
-   SFONDO VIDEO AMBRATO
-============================================================ */
-.bg-video {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-  filter: brightness(1.2) saturate(1.3) sepia(0.4) hue-rotate(-10deg);
-}
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(255,180,80,0.25), rgba(0,0,0,0.7));
-  z-index: -1;
+  
+  /* === NUOVO SFONDO CON IMMAGINE E OVERLAY AMBRATO === */
+  background: radial-gradient(circle at top, rgba(255,180,80,0.25), rgba(0,0,0,0.7)), 
+              url('img/sfondo.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
 /* ============================================================
