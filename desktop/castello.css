@@ -29,8 +29,8 @@ html, body {
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
     color: var(--text-light);
-    background: var(--dark); /* Sfondo di fallback se il video non carica */
-    overflow-x: hidden; /* Evita scorrimenti orizzontali indesiderati */
+    background: transparent !important; /* 🔥 Sostituisci qui: forza la trasparenza per mostrare il video sottostante */
+    overflow-x: hidden;
 }
 
 /* ============================================================
