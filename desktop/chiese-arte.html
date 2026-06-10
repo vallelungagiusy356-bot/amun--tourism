@@ -3,83 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <title>Le Chiese di Caccamo</title>
+
+  <!-- FONT ELEGANTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="chiese-arte.css">
 </head>
-<body>
-  <!-- SFONDO VIDEO -->
-  <video class="bg-video" src="img/video_cappuccini.webm"
-         autoplay muted loop playsinline></video>
 
+<body>
+
+  <!-- SFONDO VIDEO -->
+  <video class="bg-video" src="img/video_cappuccini.webm" autoplay muted loop playsinline></video>
   <div class="overlay"></div>
 
-  <!-- HEADER -->
-  <header class="top-bar">
-    <div class="logo">Amuní Tourism</div>
-    <nav class="nav">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <button class="btn-back">
-        <span>Indietro</span>
-        🔊
-      </button>
-    </nav>
+  <!-- DASHBOARD BAROCCA -->
+  <header class="dashboard">
+      <div class="logo-title">Amuní Tourism</div>
+
+      <nav class="nav-desktop">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Contatti</a>
+      </nav>
+
+      <div class="lang-switcher">
+          <button>IT</button>
+          <button>EN</button>
+      </div>
   </header>
 
   <!-- HERO CENTRALE -->
   <main class="hero">
-    <div class="hero-text">
-      <h1>Le Chiese di Caccamo</h1>
-      <p>Scopri le meravigliose chiese di Caccamo</p>
-      <button class="btn-primary">Inizia il Tour</button>
-    </div>
+      <div class="hero-text">
+          <h1>Le Chiese di Caccamo</h1>
+          <p>Scopri le meravigliose chiese di Caccamo</p>
+          <button class="btn-primary">Inizia il Tour</button>
+      </div>
 
-    <!-- CARD MONUMENTI -->
-    <section class="cards">
-      <article class="card">
-        <video src="img/cappuccini_2.webm" autoplay muted loop playsinline></video>
-        <h3>I Cappuccini</h3>
-      </article>
+      <!-- CARD MONUMENTI -->
+      <section class="cards">
+          <article class="card">
+              <video src="img/cappuccini_2.webm" autoplay muted loop playsinline></video>
+              <h3>I Cappuccini</h3>
+          </article>
 
-      <article class="card">
-        <video src="img/annunziata_2.webm" autoplay muted loop playsinline></video>
-        <h3>Annunziata</h3>
-      </article>
+          <article class="card">
+              <video src="img/annunziata_2.webm" autoplay muted loop playsinline></video>
+              <h3>Annunziata</h3>
+          </article>
 
-      <article class="card">
-        <video src="img/dettagli_badia.webm" autoplay muted loop playsinline></video>
-        <h3>S. Benedetto della Badia</h3>
-      </article>
+          <article class="card">
+              <video src="img/dettagli_badia.webm" autoplay muted loop playsinline></video>
+              <h3>S. Benedetto della Badia</h3>
+          </article>
 
-      <article class="card">
-        <video src="img/san_domenico.webm" autoplay muted loop playsinline></video>
-        <h3>San Domenico</h3>
-      </article>
+          <article class="card">
+              <video src="img/san_domenico.webm" autoplay muted loop playsinline></video>
+              <h3>San Domenico</h3>
+          </article>
 
-      <article class="card">
-        <video src="img/san_giorgio_martire.webm" autoplay muted loop playsinline></video>
-        <h3>San Giorgio Martire</h3>
-      </article>
-    </section>
+          <article class="card">
+              <video src="img/san_giorgio_martire.webm" autoplay muted loop playsinline></video>
+              <h3>San Giorgio Martire</h3>
+          </article>
+      </section>
   </main>
 
-  <!-- CHAT CASTELLANA -->
-  <section class="castellana-widget">
-    <div class="castellana-header">
-      <video class="avatar" src="img/benvenuto_castellana.webm"
-             autoplay muted loop playsinline></video>
-      <span>La Castellana</span>
-    </div>
-    <div class="castellana-body">
-      <p>Benvenuti! Posso aiutarvi a scoprire le bellezze delle chiese di Caccamo?</p>
-    </div>
-    <div class="castellana-input">
-      <input type="text" placeholder="Scrivi alla Castellana">
-      <button>Invia</button>
-    </div>
-  </section>
+  <!-- CHAT CASTELLANA (NUOVA VERSIONE) -->
+  <div class="castellana-video-wrapper" id="chat-open-btn">
+      <video class="castellana-video" autoplay muted loop playsinline>
+          <source src="img/castellana_alpha.webm" type="video/webm">
+      </video>
+      <div class="castellana-tooltip">Click to chat</div>
+  </div>
 
-  <button class="castellana-fab">Click to chat</button>
+  <div class="chat-desktop" id="chat-desktop">
+      <div class="chat-header">
+          <div class="avatar-status-dot"></div>
+          <span>La Castellana</span>
+          <button id="close-chat" class="close-chat-btn">✕</button>
+      </div>
 
-  <script src="script.js"></script>
+      <div class="chat-messages">
+          <div class="message">
+              Benvenuto nella sezione del cittadino! Esplora le card al centro o chiedimi dettagli su eventi e tradizioni del borgo.
+          </div>
+      </div>
+
+      <div class="chat-input-row">
+          <input type="text" placeholder="Scrivi alla Castellana...">
+          <button class="mic-btn">🎤</button>
+      </div>
+  </div>
+
+  <!-- SCRIPT CHAT -->
+  <script>
+      const chatBtn = document.getElementById('chat-open-btn');
+      const chatBox = document.getElementById('chat-desktop');
+      const closeChat = document.getElementById('close-chat');
+
+      chatBtn.addEventListener('click', () => {
+          chatBox.style.display = 'flex';
+      });
+
+      closeChat.addEventListener('click', () => {
+          chatBox.style.display = 'none';
+      });
+  </script>
+
 </body>
 </html>
