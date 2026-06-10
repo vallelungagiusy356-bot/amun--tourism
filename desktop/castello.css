@@ -500,16 +500,7 @@ html, body {
         font-size: 1rem;
     }
 
-    /* CASTELLANA LANDSCAPE */
-    .castellana-video-wrapper {
-        position: fixed;
-        bottom: 12px;
-        right: 2%;
-        width: 130px;
-        height: auto;
-        z-index: 1000;
-    }
-
+    
     .castellana-tooltip {
         display: none !important;
     }
