@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="chiese-arte.css" />
 </head>
 <body>
-  <!-- HERO BACKGROUND VIDEO -->
+
+  <!-- HERO BACKGROUND VIDEO (usa castello_2.webm come sfondo hero) -->
   <div class="scene-background-container" aria-hidden="true">
     <video
       class="scene-background-video"
@@ -17,11 +18,11 @@
       muted
       playsinline
       preload="metadata"
+      poster="img/posters/castello_2_poster.webp"
       aria-hidden="true"
     >
-      <source src="img/video_cappuccini.webm" type="video/webm" />
-      <!-- fallback source (optional) -->
-      <!-- <source src="img/video_cappuccini.mp4" type="video/mp4" /> -->
+      <source src="img/castello_2.webm" type="video/webm" />
+      <!-- Optional fallback MP4: <source src="img/castello_2.mp4" type="video/mp4" /> -->
     </video>
     <div class="scene-overlay" aria-hidden="true"></div>
   </div>
@@ -41,7 +42,7 @@
     </div>
   </header>
 
-  <!-- CENTERED HERO CONTENT -->
+  <!-- HERO CONTENT -->
   <section class="hero" role="region" aria-label="Hero">
     <div class="hero-inner">
       <h1 class="hero-title" data-i18n="monuments.title_page">Le Chiese di Caccamo</h1>
@@ -59,48 +60,59 @@
     </div>
   </section>
 
-  <!-- MAIN GRID -->
+  <!-- MAIN GRID: card con i tuoi WebM -->
   <main id="monumentsGrid" class="monuments-grid" role="main" aria-live="polite">
+    <!-- Cappuccini -->
     <section class="glass-card" data-monument="cappuccini" tabindex="0" role="button" aria-label="I Cappuccini">
-      <video class="card-video cappuccini-video" autoplay muted loop playsinline preload="metadata">
+      <video class="card-video cappuccini-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/cappuccini_2_poster.webp">
         <source src="img/cappuccini_2.webm" type="video/webm" />
+        <!-- Optional fallback MP4: <source src="img/cappuccini_2.mp4" type="video/mp4" /> -->
       </video>
       <div class="card-content"><h3 data-i18n="monuments.cappuccini_name">I Cappuccini</h3></div>
     </section>
 
+    <!-- Annunziata -->
     <section class="glass-card" data-monument="annunziata" tabindex="0" role="button" aria-label="Annunziata">
-      <video class="card-video annunziata-video" autoplay muted loop playsinline preload="metadata">
+      <video class="card-video annunziata-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/annunziata_2_poster.webp">
         <source src="img/annunziata_2.webm" type="video/webm" />
+        <!-- Optional fallback MP4: <source src="img/annunziata_2.mp4" type="video/mp4" /> -->
       </video>
       <div class="card-content"><h3 data-i18n="monuments.annunziata_name">Annunziata</h3></div>
     </section>
 
+    <!-- Badia -->
     <section class="glass-card" data-monument="badia" tabindex="0" role="button" aria-label="S. Benedetto della Badia">
-      <video class="card-video badia-video" autoplay muted loop playsinline preload="metadata">
+      <video class="card-video badia-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/dettagli_badia_poster.webp">
         <source src="img/dettagli_badia.webm" type="video/webm" />
+        <!-- Optional fallback MP4: <source src="img/dettagli_badia.mp4" type="video/mp4" /> -->
       </video>
       <div class="card-content"><h3 data-i18n="monuments.badia_name">S. Benedetto della Badia</h3></div>
     </section>
 
+    <!-- Angeli (San Domenico) -->
     <section class="glass-card" data-monument="angeli" tabindex="0" role="button" aria-label="Santa Maria degli Angeli">
-      <video class="card-video angeli-video" autoplay muted loop playsinline preload="metadata">
+      <video class="card-video angeli-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/san_domenico_poster.webp">
         <source src="img/san_domenico.webm" type="video/webm" />
+        <!-- Optional fallback MP4: <source src="img/san_domenico.mp4" type="video/mp4" /> -->
       </video>
       <div class="card-content"><h3 data-i18n="monuments.angeli_name">Santa Maria degli Angeli</h3></div>
     </section>
 
+    <!-- Duomo (San Giorgio Martire) -->
     <section class="glass-card" data-monument="duomo" tabindex="0" role="button" aria-label="Chiesa San Giorgio Martire">
-      <video class="card-video duomo-video" autoplay muted loop playsinline preload="metadata">
+      <video class="card-video duomo-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/san_giorgio_martire_poster.webp">
         <source src="img/san_giorgio_martire.webm" type="video/webm" />
+        <!-- Optional fallback MP4: <source src="img/san_giorgio_martire.mp4" type="video/mp4" /> -->
       </video>
       <div class="card-content"><h3 data-i18n="monuments.duomo_name">Chiesa San Giorgio Martire</h3></div>
     </section>
   </main>
 
-  <!-- CASTELLANA + CHAT TRIGGER -->
+  <!-- CASTELLANA + CHAT TRIGGER (uso lo stesso file castello_2.webm come mini-video) -->
   <div class="castellana-video-wrapper" aria-hidden="false">
-    <video class="castellana-video" autoplay muted loop playsinline preload="metadata">
-      <source src="img/castellana_alpha.webm" type="video/webm" />
+    <video class="castellana-video" autoplay muted loop playsinline preload="metadata" poster="img/posters/castello_2_poster.webp">
+      <source src="img/castello_2.webm" type="video/webm" />
+      <!-- Optional fallback MP4: <source src="img/castello_2.mp4" type="video/mp4" /> -->
     </video>
     <button id="chat-open-btn" class="castellana-tooltip" data-i18n="monuments.chat_tooltip" aria-haspopup="dialog" aria-controls="chatDesktop">Click to chat</button>
   </div>
@@ -132,7 +144,7 @@
     <source src="audio/more-epic-lorem-ipsum-by-ende-dot.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- SCRIPT: miglioramenti accessibilità, lazy play e gestione UI -->
+  <!-- SCRIPT: accessibilità, lazy play e gestione UI -->
   <script defer>
     (function () {
       const audio = document.getElementById("bg-music");
@@ -172,7 +184,6 @@
         }
       }
 
-      // show start button after small delay
       document.addEventListener("DOMContentLoaded", () => {
         loadLanguage(currentLang);
         setTimeout(() => {
@@ -183,14 +194,12 @@
         }, 900);
       });
 
-      // play audio on first user gesture
       window.addEventListener("click", () => {
         if (audio && audio.paused) {
           audio.play().catch(()=>{});
         }
       }, { once: true });
 
-      // start tour
       if (startBtn) {
         startBtn.addEventListener("click", (e) => {
           e.stopPropagation();
@@ -205,7 +214,6 @@
         });
       }
 
-      // toggle music with aria-pressed
       if (toggleBtn) {
         toggleBtn.addEventListener("click", (e) => {
           e.stopPropagation();
@@ -222,7 +230,6 @@
         });
       }
 
-      // chat open/close
       if (chatBtn && chatBox) {
         chatBtn.addEventListener("click", (e) => {
           e.stopPropagation();
@@ -238,7 +245,6 @@
         });
       }
 
-      // card click: inject content into chat panel
       cards.forEach(card => {
         card.addEventListener("click", (e) => {
           e.stopPropagation();
@@ -254,7 +260,6 @@
           chatMessagesBox.scrollTop = chatMessagesBox.scrollHeight;
         });
 
-        // keyboard accessibility
         card.addEventListener("keydown", (ev) => {
           if (ev.key === "Enter" || ev.key === " ") {
             ev.preventDefault();
@@ -263,7 +268,7 @@
         });
       });
 
-      // Optional: pause card videos when not visible to save CPU/bandwidth
+      // Pause card videos when not visible to save CPU/bandwidth
       const cardVideos = document.querySelectorAll(".card-video");
       if ("IntersectionObserver" in window && cardVideos.length) {
         const vObserver = new IntersectionObserver((entries) => {
