@@ -62,6 +62,33 @@ html, body {
 }
 
 /* ============================================================
+   2B. FILTRO MAGICO — AURA DORATA CINEMATICA
+   ============================================================ */
+.scene-background-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+
+    /* Aura dorata centrale */
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 240, 200, 0.20) 0%,
+        rgba(255, 215, 120, 0.10) 35%,
+        rgba(255, 200, 80, 0.05) 55%,
+        transparent 85%
+    );
+
+    /* Effetto “mondo incantato” */
+    backdrop-filter: brightness(1.18) saturate(1.08);
+    -webkit-backdrop-filter: brightness(1.18) saturate(1.08);
+
+    /* Leggero bagliore dorato */
+    box-shadow: inset 0 0 120px rgba(255, 215, 160, 0.15);
+}
+
+/* ============================================================
    3. DASHBOARD PREMIUM
    ============================================================ */
 .dashboard {
