@@ -239,16 +239,23 @@ html, body {
     box-shadow: 0 0 15px var(--gold-soft);
 }
 
-/* ============================================================
-   4. LAYOUT PRINCIPALE
-   ============================================================ */
+/* ==========================================================================
+   4. LAYOUT FISSO ANTI-STRIPBORDO (CORRETTO PER SFONDO)
+   ========================================================================== */
 .castle-layout {
+    position: absolute; 
+    inset: 0;
+    padding: 100px 6% 30px 6%;
+    z-index: 5; /* Mantiene i testi sopra il video... */
     display: flex;
-    padding: 50px 60px;
-    margin-top: 75px;
-    min-height: calc(100vh - 75px);
+    flex-direction: column;
     box-sizing: border-box;
+    pointer-events: none; 
+    width: 100%;
+    height: 100%;
+    background: transparent !important; /* 🔥 FONDAMENTALE: Rende il livello trasparente per mostrare il video sottostante */
 }
+
 
 /* ============================================================
    5. COLONNA SINISTRA — TESTI + ABITO
