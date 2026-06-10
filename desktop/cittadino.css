@@ -432,13 +432,28 @@ html, body {
 }
 
 /* ==========================================================================
-   7. ANIMAZIONI COMUNI
+   7. ANIMAZIONI COMUNI (Inclusi i Keyframes del riflesso Premium)
    ========================================================================== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
 @keyframes tooltipPulse {
     0%, 100% { transform: translateX(-50%) scale(1); }
     50% { transform: translateX(-50%) scale(1.05); }
 }
+
+/* Loop continuo e soft (passa una volta ogni 8 secondi) */
+@keyframes desktopGlowLoop {
+    0% { left: -110%; }
+    12% { left: 130%; }
+    100% { left: 130%; }
+}
+
+/* Flash istantaneo al trigger dell'hover */
+@keyframes desktopHoverFlasher {
+    0% { left: -110%; }
+    100% { left: 130%; }
+}
+
