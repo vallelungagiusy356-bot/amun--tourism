@@ -103,22 +103,38 @@
             </div>
         </section>
 
-        <!-- 👑 COLONNA DESTRA — CASTELLANA + CHAT -->
-        <section class="castle-interactive-zone">
+        <!-- 👑 CASTELLANA + CHAT (VERSIONE AVATAR TONDO) -->
+<div class="castellana-widget-area">
 
-            <!-- Avatar video -->
-            <div class="castellana-video-container">
-                <div class="castellana-video-wrapper" id="castellanaTrigger">
-                    <div class="castellana-tooltip" data-i18n="castle.chat_tooltip">Click to Chat</div>
+    <div class="castellana-video-container">
+        <div class="castellana-video-wrapper" id="castellanaTrigger">
+            <video class="castellana-video" autoplay loop muted playsinline>
+                <source src="img/benvenuto_castellana.webm" type="video/webm">
+                <source src="img/benvenuto_castellana.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
-                    <video class="castellana-video" autoplay loop muted playsinline>
-                        <source src="img/benvenuto_castellana.webm" type="video/webm">
-                        <source src="img/benvenuto_castellana.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
+    <aside class="chat-desktop" id="chatDesktop">
+        <header class="chat-header">
+            <div class="avatar-status-dot"></div>
+            <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
+            <button class="close-chat-btn" id="closeChatBtn">✕</button>
+        </header>
 
-            <!-- Chat -->
+        <div class="chat-messages" id="chatMessagesBox">
+            <div class="message system-msg" data-i18n="castle.welcomemsg_felicia"></div>
+        </div>
+
+        <div class="chat-input-row">
+            <input type="text" id="chatInput" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+            <button class="mic-btn">🎤</button>
+        </div>
+    </aside>
+
+</div>
+
+           <!-- Chat -->
             <aside class="chat-desktop" id="chatDesktop">
                 <header class="chat-header">
                     <div class="avatar-status-dot"></div>
