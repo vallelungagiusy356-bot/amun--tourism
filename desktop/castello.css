@@ -290,7 +290,10 @@ html, body {
     gap: 18px;
     animation: fadeIn 0.8s ease-out;
 }
-
+/* Margine anti-sovrapposizione avatar */
+.castle-text-content {
+    margin-bottom: 180px; /* spazio per l’avatar tondo */
+}
 .text-paragraph {
     font-size: 1.1rem;
     line-height: 1.65;
@@ -481,6 +484,9 @@ html, body {
    RESPONSIVE CASTELLO — SMARTPHONE PORTRAIT
    ============================================================ */
 @media screen and (max-width: 900px) and (orientation: portrait) {
+    .castle-text-content {
+        margin-bottom: 200px !important;
+    }
 
     .dashboard { 
         flex-direction: column; 
