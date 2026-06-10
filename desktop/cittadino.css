@@ -231,7 +231,7 @@ html, body {
     filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.8));
 }
 
-.castellana-tooltip {
+..castellana-tooltip {
     position: absolute;
     top: -40px;
     left: 50%;
@@ -244,11 +244,22 @@ html, body {
     font-size: 0.75rem;
     font-weight: 700;
     white-space: nowrap;
+    
+    /* MODIFICA QUI: Nascondilo di base sia con opacità che con display */
+    display: none; 
     opacity: 0;
+    
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
     z-index: 9999;
     animation: tooltipPulse 2.6s ease-in-out infinite;
+}
+
+/* Mostralo al passaggio del mouse */
+.castellana-video-wrapper:hover .castellana-tooltip {
+    display: block; /* Forzi la comparsa del blocco */
+    opacity: 1;
+    transform: translateX(-50%) translateY(-3px);
 }
 
 .castellana-video-wrapper:hover .castellana-tooltip {
