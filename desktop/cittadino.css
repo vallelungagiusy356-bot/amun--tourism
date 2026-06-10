@@ -131,7 +131,7 @@ html, body {
 .leading-para { font-size: 1.2rem; color: #fff; font-weight: 500; }
 
 /* ==========================================================================
-   4. GRIGLIA CARD DESKTOP (Grandi e Centrate)
+   4. GRIGLIA CARD DESKTOP (Grandi e Centrate) - CON EFFETTO PREMIUM
    ========================================================================== */
 .citizen-centered-grid {
     display: grid;
@@ -158,12 +158,39 @@ html, body {
     min-height: 145px;             
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
     transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.35s ease;
+    
+    /* Cruciale: impedisce alla luce di uscire dai bordi arrotondati della card */
+    overflow: hidden; 
+}
+
+/* Strato di luce ambientale per le card (Copiato dal Premium Menu) */
+.quadrant::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -110%;
+    width: 35%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.2) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: desktopGlowLoop 8s infinite ease-in-out;
+    pointer-events: none;
 }
 
 .quadrant:hover {
     transform: translateY(-5px) scale(1.02);
     border-color: rgba(255, 215, 160, 0.85);
     box-shadow: 0 16px 40px rgba(255, 215, 160, 0.2);
+}
+
+/* Flash rapido al passaggio del mouse */
+.quadrant:hover::before {
+    animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .card-glow-effect {
