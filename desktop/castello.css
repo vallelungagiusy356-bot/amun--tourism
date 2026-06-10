@@ -279,7 +279,7 @@ html, body {
 }
 
 /* ============================================================
-   6. COLONNA DESTRA — CASTELLANA
+   6. COLONNA DESTRA — CASTELLANA (DA RIMUOVERE DOPO)
    ============================================================ */
 .castle-interactive-zone {
     flex: 1;
@@ -352,7 +352,6 @@ html, body {
    ============================================================ */
 @media screen and (max-width: 900px) and (orientation: portrait) {
 
-    /* DASHBOARD MOBILE */
     .dashboard { 
         flex-direction: column; 
         align-items: center;
@@ -389,7 +388,6 @@ html, body {
         font-size: 0.9rem;
     }
 
-    /* LAYOUT CASTELLO */
     .castle-layout {
         flex-direction: column;
         padding: 120px 16px 0 16px;
@@ -411,18 +409,16 @@ html, body {
         text-align: center;
     }
 
-    /* ABITO */
     .castle-dress-inline {
         margin: 0 auto;
         max-width: 90%;
     }
 
-    /* CASTELLANA MOBILE */
     .castellana-video-wrapper {
         position: fixed !important;
         bottom: 0 !important;
         right: 0 !important;
-        width: 130px !important;
+        width: 90px !important;
         height: auto !important;
         margin: 0 !important;
         padding: 0 !important;
@@ -434,7 +430,6 @@ html, body {
         opacity: 0 !important;
     }
 
-    /* CHAT MOBILE */
     .chat-desktop {
         position: fixed;
         bottom: 150px;
@@ -444,13 +439,13 @@ html, body {
         height: 45vh;
         z-index: 9999;
     }
+}
 
-   /* ============================================================
+/* ============================================================
    RESPONSIVE CASTELLO — SMARTPHONE LANDSCAPE
    ============================================================ */
 @media screen and (max-height: 600px) and (orientation: landscape) {
 
-    /* CASTELLANA RIDOTTA (90px) */
     .castellana-video-wrapper {
         width: 90px !important;
         bottom: 12px !important;
@@ -463,7 +458,6 @@ html, body {
         display: none !important;
     }
 
-    /* DASHBOARD */
     .dashboard {
         height: 50px;
         padding: 0 20px;
@@ -486,7 +480,6 @@ html, body {
         font-size: 0.78rem;
     }
 
-    /* LAYOUT CASTELLO */
     .castle-layout {
         flex-direction: row;
         padding: 60px 20px 0 20px;
@@ -507,11 +500,10 @@ html, body {
         font-size: 1rem;
     }
 
-    /* CHAT LANDSCAPE */
     .chat-desktop {
         position: fixed;
         bottom: 12px;
-        right: calc(2% + 100px); /* 90px Castellana + 10px margine */
+        right: calc(2% + 100px);
         width: 280px;
         height: 160px;
         background: rgba(10, 6, 4, 0.98) !important;
@@ -539,5 +531,4 @@ html, body {
 @keyframes castleHoverFlash {
     0% { left: -110%; }
     100% { left: 140%; }
-}
 }
