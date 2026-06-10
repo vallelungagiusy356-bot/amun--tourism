@@ -546,6 +546,13 @@ html, body {
         z-index: 1000 !important;
     }
 
+    /* Sposta il contenuto sotto la dashboard in landscape */
+    .castle-layout {
+        margin-top: 70px !important;
+        padding-top: 20px !important;
+    }
+}
+
     .castellana-tooltip {
         display: none !important;
     }
