@@ -1,4 +1,6 @@
-/* styles.css */
+/* ============================================================
+   RESET
+============================================================ */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,10 +11,13 @@
 body {
   color: #f7f2e9;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-/* 🌅 SFONDO VIDEO CON FILTRO AMBRATO */
+/* ============================================================
+   SFONDO VIDEO AMBRATO
+============================================================ */
 .bg-video {
   position: fixed;
   inset: 0;
@@ -30,56 +35,108 @@ body {
   z-index: -1;
 }
 
-/* HEADER */
-.top-bar {
+/* ============================================================
+   DASHBOARD BAROCCA NERA + ORO
+============================================================ */
+.dashboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: rgba(0, 0, 0, 0.65);
+  border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+  backdrop-filter: blur(18px) saturate(200%);
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 2.5rem;
-  color: #f7f2e9;
+  padding: 0 40px;
+  z-index: 20;
+  box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
 }
 
-.logo {
+.dashboard .logo-title {
+  font-size: 1.55rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  color: #ffd78f;
+  text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
 }
 
-.nav a {
-  margin-right: 1.5rem;
-  text-decoration: none;
-  color: #f7f2e9;
-  font-size: 0.95rem;
-}
-
-.btn-back {
-  background: rgba(0,0,0,0.5);
-  border: 1px solid #d4a64a;
-  color: #f7f2e9;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-/* HERO CENTRALE */
-.hero {
+/* MENU */
+.nav-desktop {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 22px;
+}
+
+.nav-desktop a {
+  color: #ffd78f;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 215, 160, 0.75);
+  box-shadow:
+    0 0 14px rgba(255, 215, 160, 0.55),
+    inset 0 0 8px rgba(255, 215, 160, 0.35);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-desktop a::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -110%;
+  width: 35%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 215, 160, 0) 0%,
+    rgba(255, 215, 160, 0.14) 50%,
+    rgba(255, 215, 160, 0) 100%
+  );
+  transform: rotate(-45deg);
+  animation: desktopGlowLoop 10s infinite ease-in-out;
+  pointer-events: none;
+}
+
+.nav-desktop a:hover {
+  background: rgba(255, 215, 160, 0.15);
+  box-shadow:
+    0 0 22px rgba(255, 215, 160, 0.85),
+    inset 0 0 12px rgba(255, 215, 160, 0.45);
+  transform: scale(1.05);
+}
+
+.nav-desktop a:hover::before {
+  animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* ============================================================
+   HERO CENTRALE
+============================================================ */
+.hero {
+  margin-top: 120px;
   text-align: center;
-  padding: 2rem 2.5rem;
+  padding: 2rem;
 }
 
 .hero-text h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  color: #d4a64a;
-  text-shadow: 0 0 10px rgba(255,200,100,0.4);
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  color: #ffd78f;
+  text-shadow: 0 0 14px rgba(255, 215, 160, 0.85);
 }
 
-.hero-text p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #f7f2e9;
+.hero-text::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 2px;
+  margin: 1rem auto 2rem;
+  background: linear-gradient(90deg, transparent, #ffd78f, transparent);
 }
 
 .btn-primary {
@@ -90,10 +147,11 @@ body {
   border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* 🏛️ CARD MONUMENTI IN FILA */
+/* ============================================================
+   CARD MONUMENTI IN FILA
+============================================================ */
 .cards {
   display: flex;
   justify-content: center;
@@ -112,7 +170,6 @@ body {
   border: 1px solid rgba(212,166,74,0.6);
   backdrop-filter: blur(6px);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   scroll-snap-align: center;
 }
 
@@ -120,78 +177,18 @@ body {
   width: 100%;
   height: 130px;
   object-fit: cover;
-  display: block;
 }
 
-.card h3 {
-  padding: 0.6rem 0.8rem 0.8rem;
-  font-size: 0.95rem;
-  color: #f7f2e9;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-/* 💬 CHAT CASTELLANA */
-#chat-desktop {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 5rem;
-  width: 300px;
-  background: rgba(20,10,0,0.9);
-  border-radius: 1rem;
-  border: 1px solid #d4a64a;
-  backdrop-filter: blur(10px);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 10;
-}
-
-.chat-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.6rem 0.8rem;
-  border-bottom: 1px solid rgba(212,166,74,0.4);
-  color: #d4a64a;
-}
-
-.chat-messages {
-  padding: 0.8rem;
-  font-size: 0.9rem;
-  color: #f7f2e9;
-}
-
-.chat-input-row {
-  display: flex;
-  border-top: 1px solid rgba(212,166,74,0.4);
-}
-
-.chat-input-row input {
-  flex: 1;
-  border: none;
-  padding: 0.5rem 0.7rem;
-  background: transparent;
-  color: #f7f2e9;
-}
-
-.chat-input-row button {
-  background: #d4a64a;
-  border: none;
-  padding: 0.5rem 0.8rem;
-  cursor: pointer;
-}
-
-/* 🎥 AVATAR CASTELLANA */
+/* ============================================================
+   CHAT CASTELLANA
+============================================================ */
 .castellana-video-wrapper {
   position: fixed;
   right: 1.5rem;
   bottom: 1.5rem;
   cursor: pointer;
   text-align: center;
+  z-index: 30;
 }
 
 .castellana-video {
@@ -209,18 +206,19 @@ body {
   border-radius: 999px;
   font-weight: 600;
   margin-top: 0.3rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* 📱 RESPONSIVE */
-@media (max-width: 768px) {
-  .hero-text h1 {
-    font-size: 2.2rem;
-  }
-  .cards {
-    gap: 0.6rem;
-  }
-  .card {
-    flex: 0 0 180px;
-  }
+#chat-desktop {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 5rem;
+  width: 300px;
+  background: rgba(20,10,0,0.9);
+  border-radius: 1rem;
+  border: 1px solid #d4a64a;
+  backdrop-filter: blur(10px);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 40;
 }
