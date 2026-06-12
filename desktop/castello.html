@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="castle.title">Il Castello di Caccamo</title>
 
-    <!-- Google Fonts integrato per uniformità tipografica -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts integrato con Playfair Display e Cormorant Garamond per uniformità con chiese-arte -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="castello.css">
 
     <!-- SEO -->
@@ -83,7 +83,7 @@
                 </p>
             </div>
 
-            <!-- 👗 ABITO STORICO INLINE INTEGRATO NEL FLUSSO -->
+            <!-- 1858 ABITO STORICO INLINE INTEGRATO NEL FLUSSO -->
             <figure class="castle-dress-inline">
                 <img src="img/abito_clean.png" alt="Abito storico della Castellana" class="dress-img-inline" loading="lazy">
                 <figcaption class="dress-caption-inline" data-i18n="castle.dress_caption">
@@ -98,7 +98,7 @@
 
                 <p class="highlight-para" data-i18n="castle.para_3">
                     Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo.  
-                    La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
+                    La Castellana ti aspetta in chat per revelarmi ogni segreto di questo luogo senza tempo.
                 </p>
             </div>
 
@@ -106,33 +106,35 @@
         </section>
     </main>
 
-    <!-- 👑 CASTELLANA WIDGET AREA (AVATAR TONDO) -->
+    <!-- 👑 CASTELLANA WIDGET AREA (STRUTTURA UNIFORMATA VIA DI MEZZO) -->
     <div class="castellana-widget-area">
-        <div class="castellana-video-container">
-            <div class="castellana-video-wrapper" id="castellanaTrigger">
-                <video class="castellana-video" autoplay loop muted playsinline>
-                    <source src="img/benvenuto_castellana.webm" type="video/webm">
-                    <source src="img/benvenuto_castellana.mp4" type="video/mp4">
-                </video>
+        <!-- Aggiornato file video e struttura classi come in chiese-arte -->
+        <div class="castellana-video-wrapper" id="castellanaTrigger">
+            <video class="castellana-video" autoplay loop muted playsinline>
+                <source src="img/castellana_alpha.webm" type="video/webm">
+            </video>
+        </div>
+        <div class="castellana-tooltip">Click to chat</div>
+    </div>
+
+    <!-- FIANCO CHAT ADATTATO SOPRA L'ICONA -->
+    <div class="chat-desktop" id="chatDesktop">
+        <header class="chat-header">
+            <div class="avatar-status-dot"></div>
+            <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
+            <button class="close-chat-btn" id="closeChatBtn">✕</button>
+        </header>
+
+        <div class="chat-messages" id="chatMessagesBox">
+            <div class="message system-msg" data-i18n="castle.welcomemsg_felicia">
+                Benvenuto al Castello di Caccamo! Sono la tua guida custode. Chiedimi pure della Sala delle Congiure o dei fantasmi che abitano queste mura...
             </div>
         </div>
 
-        <aside class="chat-desktop" id="chatDesktop">
-            <header class="chat-header">
-                <div class="avatar-status-dot"></div>
-                <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
-                <button class="close-chat-btn" id="closeChatBtn">✕</button>
-            </header>
-
-            <div class="chat-messages" id="chatMessagesBox">
-                <div class="message system-msg" data-i18n="castle.welcomemsg_felicia"></div>
-            </div>
-
-            <div class="chat-input-row">
-                <input type="text" id="chatInput" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
-                <button class="mic-btn">🎤</button>
-            </div>
-        </aside>
+        <div class="chat-input-row">
+            <input type="text" id="chatInput" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+            <button class="mic-btn">🎤</button>
+        </div>
     </div>
 
     <!-- 🌍 MULTILINGUA -->
@@ -144,8 +146,13 @@
         const trigger = document.getElementById("castellanaTrigger");
         const closeBtn = document.getElementById("closeChatBtn");
 
-        trigger.addEventListener("click", () => chat.classList.add("active"));
-        closeBtn.addEventListener("click", () => chat.classList.remove("active"));
+        trigger.addEventListener("click", () => {
+            chat.style.display = 'flex';
+        });
+        
+        closeBtn.addEventListener("click", () => {
+            chat.style.display = 'none';
+        });
     </script>
 
 </body>
