@@ -205,10 +205,10 @@ html, body {
 }
 
 /* ============================================================
-   4. LAYOUT STRUTTURALE CENTRATO (HERO + EFFETTO BERGMAN)
+   4. LAYOUT STRUTTURALE CENTRATO (PULITO E FLUIDO)
 ============================================================ */
 .hero {
-    margin-top: 190px; /* Spazio per dashboard mobile a più righe */
+    margin-top: 130px; /* Aumentato per evitare che la dashboard copra il titolo (Vedi 1000086713.jpg) */
     text-align: center;
     padding: 1.5rem;
     flex-grow: 1;
@@ -222,107 +222,114 @@ html, body {
 .category-tag {
     font-size: 0.85rem;
     letter-spacing: 2px;
-    color: #b38f43;
+    color: #ffd78f; /* Oro più luminoso per risaltare sullo sfondo */
     font-weight: 700;
     margin-bottom: 5px;
     display: block;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-text h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 5vw, 3.2rem);
     color: var(--gold);
-    text-shadow: 0 2px 14px rgba(255, 215, 160, 0.85);
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.95), 0 4px 25px rgba(255, 215, 160, 0.3);
     margin-bottom: 0.5rem;
 }
 
 .hero-text::after {
     content: "";
     display: block;
-    width: 40%;
-    height: 2px;
-    margin: 0.5rem auto 1.5rem;
+    width: 30%;
+    height: 1px;
+    margin: 0.8rem auto 2rem;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
-/* CONTENITORE POESIA & STORIA UNIFICATO PER MOBILE */
+/* 
+   ELIMINATA LA TECA INVASIVA (Riferimento screenshot 1000086712.jpg)
+   Ora il testo è libero e fluttua sul video in modo elegante
+*/
 .poesia-container {
-    max-width: 750px;
+    max-width: 800px;
     margin: 0 auto 2.5rem auto;
-    padding: 1.5rem 1rem;
-    background: rgba(0, 0, 0, 0.3); /* Velo leggero di base */
-    border-radius: 22px;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 215, 160, 0.1);
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 1rem 1.5rem;
+    background: transparent; /* Rimosso il box scuro */
+    border: none;             /* Rimossi i bordi della teca */
+    backdrop-filter: none;    /* Rimossa la sfocatura di blocco */
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
     pointer-events: auto;
 }
 
 .poesia-corpo p {
     font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--text-light);
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem); /* Dinamico e leggibile */
+    line-height: 1.8;
+    color: #fff; /* Bianco puro per il massimo contrasto */
     font-style: italic;
-    margin-bottom: 1.2rem;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.95), 1px 1px 10px rgba(0, 0, 0, 0.9);
+    margin-bottom: 1.8rem;
+    /* La vera magia per la leggibilità senza teca: una doppia ombra netta e profonda */
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 1), 
+        -2px -2px 4px rgba(0, 0, 0, 1),
+        0 0 15px rgba(0, 0, 0, 0.9);
 }
 
-/* Paragrafi descrittivi staccati dalle rime */
+/* Paragrafi storici descrittivi */
 .descrizione-storica p {
     font-style: normal;
     font-family: 'Segoe UI', system-ui, sans-serif;
-    font-size: 1rem;
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
 }
 
+/* Evidenziato minimalista senza bordi laterali eccessivi */
 .highlight-para {
-    border-left: 3px solid var(--gold);
-    border-right: 3px solid var(--gold);
-    padding: 8px 12px;
-    background: var(--gold-bg);
+    padding: 10px 20px;
+    background: rgba(255, 215, 160, 0.04); /* Un velo dorato impercettibile solo sotto il testo */
     border-radius: 8px;
     display: inline-block;
-    max-width: 90%;
+    max-width: 95%;
     margin: 0 auto;
 }
 
-/* INTEGRAZIONE ELEGANTE DELL'ABITO STORICO */
+/* INTEGRAZIONE SNELLA DELL'ABITO STORICO */
 .castle-dress-inline {
     background: transparent;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
-    margin: 1.5rem auto;
+    margin: 2rem auto;
 }
 
 .dress-img-inline {
-    width: 150px;
-    filter: drop-shadow(0 4px 15px var(--shadow-strong));
+    width: 140px; /* Leggermente ridimensionato per non rubare spazio nei display landscape */
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,1));
     transition: transform 0.4s ease;
 }
 
 .dress-img-inline:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 .dress-caption-inline {
     font-family: 'Playfair Display', serif;
     font-size: 0.85rem;
     color: var(--gold);
-    margin-top: 10px;
+    margin-top: 12px;
     letter-spacing: 1px;
     font-style: italic;
-    text-shadow: 0 2px 4px var(--shadow-strong);
+    text-shadow: 0 2px 6px rgba(0,0,0,1);
 }
 
 .poesia-outro {
     font-family: 'Garamond', 'Georgia', serif;
     font-style: italic;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--gold);
-    margin-top: 1rem;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.95);
+    margin-top: 1.5rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
 }
+
 
 /* ============================================================
    5. CASTELLANA INTERFACCIA ED AVATAR
