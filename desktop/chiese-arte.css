@@ -14,11 +14,12 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   
-  /* === NUOVO SFONDO CON IMMAGINE E OVERLAY AMBRATO === */
+  /* === AGGIORNATO IL NOME DEL FILE DI SFONDO === */
   background: radial-gradient(circle at top, rgba(255,180,80,0.25), rgba(0,0,0,0.7)), 
-              url('img/sfondo.png') no-repeat center center fixed;
+              url('img/tuo_nuovo_sfondo.jpeg') no-repeat center center fixed;
   background-size: cover;
 }
+
 
 /* ============================================================
    DASHBOARD BAROCCA NERA + ORO
