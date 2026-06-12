@@ -156,7 +156,6 @@ html, body {
     gap: 15px;
 }
 
-/* INTERFACCIA SELETTORE LINGUE MINIMAL (RIMOSSE EMOJI) */
 .lang-switcher {
     display: flex;
     gap: 6px;
@@ -205,10 +204,10 @@ html, body {
 }
 
 /* ============================================================
-   4. LAYOUT STRUTTURALE CENTRATO (PULITO E FLUIDO)
+   4. LAYOUT STRUTTURALE CENTRATO & POESIA (CORMORANT GARAMOND)
 ============================================================ */
 .hero {
-    margin-top: 130px; /* Aumentato per evitare che la dashboard copra il titolo (Vedi 1000086713.jpg) */
+    margin-top: 190px; 
     text-align: center;
     padding: 1.5rem;
     flex-grow: 1;
@@ -222,7 +221,7 @@ html, body {
 .category-tag {
     font-size: 0.85rem;
     letter-spacing: 2px;
-    color: #ffd78f; /* Oro più luminoso per risaltare sullo sfondo */
+    color: #ffd78f; 
     font-weight: 700;
     margin-bottom: 5px;
     display: block;
@@ -246,54 +245,54 @@ html, body {
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
-/* 
-   ELIMINATA LA TECA INVASIVA (Riferimento screenshot 1000086712.jpg)
-   Ora il testo è libero e fluttua sul video in modo elegante
-*/
 .poesia-container {
     max-width: 800px;
     margin: 0 auto 2.5rem auto;
     padding: 1rem 1.5rem;
-    background: transparent; /* Rimosso il box scuro */
-    border: none;             /* Rimossi i bordi della teca */
-    backdrop-filter: none;    /* Rimossa la sfocatura di blocco */
+    background: transparent; 
+    border: none;             
+    backdrop-filter: none;    
     -webkit-backdrop-filter: none;
     box-shadow: none;
     pointer-events: auto;
 }
 
 .poesia-corpo p {
-    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
-    font-size: clamp(1.1rem, 2.5vw, 1.35rem); /* Dinamico e leggibile */
+    /* Uniformato all'eleganza di chiese-arte con Cormorant Garamond */
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.6vw, 1.45rem); 
     line-height: 1.8;
-    color: #fff; /* Bianco puro per il massimo contrasto */
+    color: #fff; 
     font-style: italic;
     margin-bottom: 1.8rem;
-    /* La vera magia per la leggibilità senza teca: una doppia ombra netta e profonda */
     text-shadow: 
         2px 2px 4px rgba(0, 0, 0, 1), 
         -2px -2px 4px rgba(0, 0, 0, 1),
         0 0 15px rgba(0, 0, 0, 0.9);
 }
 
-/* Paragrafi storici descrittivi */
-.descrizione-storica p {
+.poesia-corpo strong {
+    color: #ffd78f;
     font-style: normal;
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 215, 160, 0.6);
 }
 
-/* Evidenziato minimalista senza bordi laterali eccessivi */
+.descrizione-storica p {
+    font-style: normal;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.15rem, 2.3vw, 1.3rem);
+}
+
 .highlight-para {
     padding: 10px 20px;
-    background: rgba(255, 215, 160, 0.04); /* Un velo dorato impercettibile solo sotto il testo */
+    background: rgba(255, 215, 160, 0.04); 
     border-radius: 8px;
     display: inline-block;
     max-width: 95%;
     margin: 0 auto;
 }
 
-/* INTEGRAZIONE SNELLA DELL'ABITO STORICO */
 .castle-dress-inline {
     background: transparent;
     padding: 10px;
@@ -302,7 +301,7 @@ html, body {
 }
 
 .dress-img-inline {
-    width: 140px; /* Leggermente ridimensionato per non rubare spazio nei display landscape */
+    width: 140px; 
     filter: drop-shadow(0 4px 20px rgba(0,0,0,1));
     transition: transform 0.4s ease;
 }
@@ -322,94 +321,108 @@ html, body {
 }
 
 .poesia-outro {
-    font-family: 'Garamond', 'Georgia', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--gold);
     margin-top: 1.5rem;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
 }
 
-
 /* ============================================================
-   5. CASTELLANA INTERFACCIA ED AVATAR
+   5. CASTELLANA INTERFACCIA ED AVATAR (STILE CHIESE-ARTE)
 ============================================================ */
 .castellana-widget-area {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    right: 1.2rem;
+    bottom: 1.2rem;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     pointer-events: auto;
 }
 
-.castellana-video-container::before {
-    content: 'LA CASTELLANA';
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: var(--gold);
-    letter-spacing: 2px;
-    text-shadow: 0 2px 4px rgba(0,0,0,1);
-    margin-bottom: 4px;
-    display: block;
-    text-align: center;
-}
-
+/* DIAMETRO VIA DI MEZZO PER MOBILE */
 .castellana-video-wrapper {
-    width: 85px;
-    height: 85px;
+    width: 78px;   
+    height: 78px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid var(--gold);
+    border: 3px solid #ffd78f;
     background: #000;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.9);
+    box-shadow: 0 0 20px rgba(255, 215, 160, 0.4), 0 4px 15px rgba(0,0,0,0.6);
     cursor: pointer;
-    transition: transform 0.2s ease-out;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+    position: relative;
+}
+
+.castellana-video-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #ffd78f;
+    opacity: 0.5;
+    animation: widgetPulse 2.5s infinite alternate ease-in-out;
+    pointer-events: none;
 }
 
 .castellana-video-wrapper:hover {
-    transform: scale(1.05);
+    transform: scale(1.06);
+    box-shadow: 0 0 30px rgba(255, 215, 160, 0.85);
 }
 
+/* PROPORZIONE VISO CORRETTA (NON TAGLIATO) */
 .castellana-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 15%; 
 }
 
+.castellana-tooltip {
+    background: linear-gradient(135deg, #ffd78f, #e5b25d);
+    color: #050302;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+/* CHAT ORIENTATA CORRETTAMENTE SOPRA IL WIDGET */
 .chat-desktop {
-    width: 290px;
-    height: 340px;
-    background: rgba(5, 3, 2, 0.96);
-    border: 2px solid var(--gold);
-    border-radius: 14px;
-    display: none;
-    flex-direction: column;
-    box-shadow: 0 10px 45px rgba(0,0,0,0.95);
     position: fixed;
-    bottom: 130px;
-    left: 15px;
-    right: 15px;
-    width: auto;
-    z-index: 9999;
-    padding: 12px;
-}
-
-.chat-desktop.active {
-    display: flex;
-    animation: slideUp 0.3s ease-out;
+    right: 1.5rem;
+    bottom: 125px; 
+    width: 290px;
+    height: 330px;
+    background: rgba(10, 6, 4, 0.97);
+    border-radius: 1rem;
+    border: 2px solid #ffd78f;
+    backdrop-filter: blur(12px);
+    display: none; /* Regolata da JS flex/none */
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 99999;
+    padding: 14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
 }
 
 .chat-header {
     display: flex;
     justify-content: space-between;
-    color: var(--gold);
+    color: #ffd78f;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     align-items: center;
+    border-bottom: 1px solid rgba(255, 215, 160, 0.2);
+    padding-bottom: 6px;
 }
 
 .avatar-status-dot {
@@ -425,22 +438,27 @@ html, body {
 .close-chat-btn {
     background: transparent;
     border: none;
-    color: var(--gold);
+    color: #ffd78f;
     cursor: pointer;
     font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.close-chat-btn:hover {
+    color: #fff;
 }
 
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
     font-size: 0.9rem;
-    line-height: 1.4;
-    margin-bottom: 10px;
-    color: var(--text-light);
+    line-height: 1.45;
+    margin-bottom: 12px;
+    color: #f7f2e9;
 }
 
 .system-msg {
-    border-left: 2px solid var(--gold);
+    border-left: 2px solid #ffd78f;
     padding-left: 8px;
 }
 
@@ -451,20 +469,31 @@ html, body {
 
 .chat-input-row input {
     flex-grow: 1;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(255, 215, 160, 0.4);
-    padding: 6px 10px;
-    border-radius: 6px;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(255, 215, 160, 0.3);
+    padding: 8px 12px;
+    border-radius: 8px;
     color: #fff;
+    font-size: 0.85rem;
+}
+
+.chat-input-row input:focus {
+    outline: none;
+    border-color: #ffd78f;
 }
 
 .mic-btn {
-    background: rgba(255, 215, 160, 0.2);
-    border: 1px solid var(--gold);
-    border-radius: 6px;
-    padding: 0 8px;
+    background: rgba(255, 215, 160, 0.15);
+    border: 1px solid #ffd78f;
+    border-radius: 8px;
+    padding: 0 10px;
     cursor: pointer;
-    color: var(--gold);
+    transition: background 0.2s;
+    color: #ffd78f;
+}
+
+.mic-btn:hover {
+    background: rgba(255, 215, 160, 0.3);
 }
 
 /* ============================================================
@@ -480,7 +509,7 @@ html, body {
     }
 
     .dashboard .logo-title {
-        font-size: 1.5rem;
+        font-size: 1.55rem;
     }
 
     .nav-desktop {
@@ -500,7 +529,6 @@ html, body {
         font-size: 3.2rem;
     }
 
-    /* EFFETTO BERGMAN: COMPLETAMENTE FLUIDO SU DESKTOP */
     .poesia-container {
         background: transparent;
         border: 1px solid transparent;
@@ -508,7 +536,6 @@ html, body {
         padding: 24px 40px;
     }
 
-    /* Il velo scuro e sfocato compare solo all'avvicinamento */
     .poesia-container:hover {
         background: rgba(5, 3, 2, 0.55);
         border: 1px solid rgba(255, 215, 160, 0.2);
@@ -518,44 +545,65 @@ html, body {
     }
 
     .poesia-corpo p {
-        font-size: 1.2rem;
+        font-size: 1.45rem;
     }
 
     .descrizione-storica p {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
 
     .dress-img-inline {
         width: 180px;
     }
 
+    /* VIA DI MEZZO DESKTOP UNIFORMATA */
     .castellana-widget-area {
-        bottom: 30px;
-        right: 40px;
+        right: 2rem;
+        bottom: 2rem;
+        gap: 8px;
     }
 
     .castellana-video-wrapper {
-        width: 110px;
+        width: 110px;  
         height: 110px;
+        border: 3px solid #ffd78f;
     }
 
-    .chat-desktop {
-        width: 340px;
-        height: 420px;
-        position: fixed;
-        bottom: 165px;
-        right: 40px;
+    .castellana-tooltip {
+        font-size: 0.75rem;
+        padding: 0.4rem 1rem;
+    }
+
+    #chatDesktop {
+        right: 2rem;
+        bottom: 175px; 
+        width: 320px;
+        height: 400px;
     }
 }
 
-/* ANIMAZIONI */
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* SCENARIO INTERMEDIO TABLET */
+@media (min-width: 601px) and (max-width: 899px) {
+    .hero {
+        margin-top: 150px;
+    }
+    .castellana-video-wrapper {
+        width: 95px;
+        height: 95px;
+    }
+    #chatDesktop {
+        bottom: 150px;
+    }
 }
 
+/* ANIMAZIONI ACCLARATE */
 @keyframes desktopGlowLoop {
     0% { left: -110%; }
     15% { left: 140%; }
     100% { left: 140%; }
+}
+
+@keyframes widgetPulse {
+    0% { box-shadow: 0 0 10px rgba(255, 215, 160, 0.3); transform: scale(1); }
+    100% { box-shadow: 0 0 25px rgba(255, 215, 160, 0.7); transform: scale(1.02); }
 }
