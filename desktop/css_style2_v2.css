@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VERSIONE DESKTOP — GLOW FORTE + RIFLESSI DIAGONALI ULTRA-MORBIDI
+   VERSIONE DESKTOP — OTTIMIZZATA PER SPAZIATURA E BILANCIAMENTO
    ========================================================================== */
 @media screen and (min-width: 900px) {
 
@@ -21,7 +21,7 @@
     }
 
     /* ==========================================================================
-       DASHBOARD ELEGANTE NERA + ORO
+       DASHBOARD ELEGANTE NERA + ORO (FIX COMPATEZZA)
        ========================================================================== */
     .dashboard {
         position: fixed;
@@ -29,19 +29,19 @@
         left: 0;
         width: 100%;
         height: 70px;
-        background: rgba(0, 0, 0, 0.65);
+        background: rgba(0, 0, 0, 0.75);
         border-bottom: 2px solid rgba(255, 215, 160, 0.85);
         backdrop-filter: blur(18px) saturate(200%);
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 40px;
+        padding: 0 20px; /* Ridotto per non tagliare le bandierine a destra */
         z-index: 20;
         box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
     }
 
     .dashboard .logo-title {
-        font-size: 1.55rem;
+        font-size: 1.35rem; /* Leggermente ridotto per sicurezza */
         font-weight: 700;
         color: #ffd78f;
         text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
@@ -49,14 +49,14 @@
 
     .nav-desktop {
         display: flex;
-        gap: 22px;
+        gap: 12px; /* Ridotto il gap tra i bottoni del menu */
     }
 
     .nav-desktop a {
         color: #ffd78f;
         font-weight: 600;
         text-decoration: none;
-        padding: 10px 18px;
+        padding: 8px 14px; /* Più compatto */
         border-radius: 12px;
         background: rgba(0, 0, 0, 0.55);
         border: 1px solid rgba(255, 215, 160, 0.75);
@@ -94,77 +94,48 @@
         transform: scale(1.05);
     }
 
-    .nav-desktop a:hover::before {
-        animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    }
-
     /* ==========================================================================
-       PULSANTI LINGUA — NERI + ORO
+       PULSANTI LINGUA (RISOLUZIONE BANDIERINA SPAGNOLA)
        ========================================================================== */
     .lang-switcher {
         display: flex;
-        gap: 12px;
+        gap: 6px; /* Più stretto per far entrare tutte le bandiere */
         align-items: center;
     }
 
     .lang-switcher button {
-        width: 42px;
-        height: 42px;
-        font-size: 1.2rem;
-        border-radius: 10px;
+        width: 36px; /* Ridotto da 42px a 36px per evitare il ritaglio */
+        height: 36px;
+        font-size: 1.1rem;
+        border-radius: 8px;
         background: rgba(0, 0, 0, 0.65);
         border: 1px solid rgba(255, 215, 160, 0.85);
         color: #ffd78f;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         box-shadow:
-            0 0 14px rgba(255, 215, 160, 0.55),
-            inset 0 0 8px rgba(255, 215, 160, 0.45);
+            0 0 10px rgba(255, 215, 160, 0.4),
+            inset 0 0 6px rgba(255, 215, 160, 0.3);
         transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .lang-switcher button::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -110%;
-        width: 35%;
-        height: 200%;
-        background: linear-gradient(
-            to right,
-            rgba(255, 215, 160, 0) 0%,
-            rgba(255, 215, 160, 0.14) 50%,
-            rgba(255, 215, 160, 0) 100%
-        );
-        transform: rotate(-45deg);
-        animation: desktopGlowLoop 11s infinite ease-in-out;
-        animation-delay: 2s; 
-        pointer-events: none;
     }
 
     .lang-switcher button:hover {
         background: rgba(255, 215, 160, 0.15);
-        box-shadow:
-            0 0 22px rgba(255, 215, 160, 0.85),
-            inset 0 0 12px rgba(255, 215, 160, 0.55);
+        box-shadow: 0 0 15px rgba(255, 215, 160, 0.7);
         transform: scale(1.05);
     }
 
-    .lang-switcher button:hover::before {
-        animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    }
-
     /* ==========================================================================
-       🔥 VIDEO CASTELLANA CON INTERFACCIA RIFLESSO INTEGRATA
+       VIDEO CASTELLANA CON INTERFACCIA RIFLESSO INTEGRATA
        ========================================================================== */
     .castellana-video-wrapper {
-        position: relative;
-        width: 28vw;          
-        max-width: 320px;
-        margin-top: 300px;
-        margin-left: 6%;
-        display: block;
+        position: absolute;
+        top: 260px;
+        left: 4%;
+        width: 26vw;          
+        max-width: 280px;
         border-radius: 20px; 
         overflow: hidden;    
         z-index: 10 !important;
@@ -172,101 +143,68 @@
         cursor: pointer;
     }
 
-    .castellana-video-wrapper::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -120%;
-        width: 35%;
-        height: 200%;
-        background: linear-gradient(
-            to right,
-            rgba(255, 215, 160, 0) 0%,
-            rgba(255, 215, 160, 0.20) 50%, 
-            rgba(255, 215, 160, 0) 100%
-        );
-        transform: rotate(-45deg);
-        pointer-events: none;
-        z-index: 3; 
-        animation: desktopGlowLoop 12s infinite ease-in-out;
-        animation-delay: 3s;
-    }
-
-    .castellana-video-wrapper:hover {
-        transform: scale(1.03);
-    }
-
-    .castellana-video-wrapper:hover::before {
-        animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    }
-
     .castellana-video {
         width: 100% !important;
         height: auto !important;
         display: block;
-        z-index: 1; 
         background: transparent !important;
         filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.5)); 
     }
 
     .castellana-tooltip {
         position: absolute;
-        top: 260px; 
-        left: 6%;
-        padding: 12px 26px;
-        background: rgba(0, 0, 0, 0.55);
+        top: 220px; 
+        left: 4%;
+        padding: 10px 20px;
+        background: rgba(0, 0, 0, 0.65);
         border: 1px solid rgba(255, 215, 160, 0.9);
         border-radius: 14px;
         color: #ffd78f;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 700;
         text-shadow: 0 0 12px rgba(255, 215, 160, 1);
-        box-shadow:
-            0 0 22px rgba(255, 215, 160, 0.85),
-            inset 0 0 12px rgba(255, 215, 160, 0.45);
+        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
         cursor: pointer;
-        opacity: 1;
-        animation: clickHerePulse 2.6s ease-in-out infinite;
         z-index: 25;
     }
 
     /* ==========================================================================
-       ⭐ INTRODUZIONE POETICA CENTRALE (AGGIUNTA)
+       ⭐ INTRODUZIONE POETICA CENTRALE (SPOSTATA A DESTRA E VERTICALIZZATA)
        ========================================================================== */
     .home-welcome-poetry {
         position: absolute;
-        top: 300px;
-        left: 50%;
+        top: 260px;
+        left: 58%; /* Spostata decisamente a destra rispetto al centro vecchio (50%) */
         transform: translateX(-50%);
-        width: 36vw;
-        max-width: 460px;
+        width: 38vw;
+        max-width: 440px;
         text-align: center;
-        padding: 28px;
-        background: rgba(0, 0, 0, 0.5);
+        padding: 24px 30px;
+        background: rgba(0, 0, 0, 0.55);
         backdrop-filter: blur(14px) saturate(180%);
         -webkit-backdrop-filter: blur(14px) saturate(180%);
-        border: 1px solid rgba(255, 215, 160, 0.65);
+        border: 1px solid rgba(255, 215, 160, 0.7);
         border-radius: 22px;
         box-shadow: 
-            0 0 40px rgba(255, 215, 160, 0.25),
-            inset 0 0 20px rgba(255, 215, 160, 0.15);
-        z-index: 10;
+            0 0 40px rgba(255, 215, 160, 0.35),
+            inset 0 0 20px rgba(255, 215, 160, 0.20);
+        z-index: 5;
         animation: fadeInPoetry 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
     .home-welcome-poetry h1 {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
         color: #ffd78f;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
         font-weight: 700;
         text-shadow: 0 0 12px rgba(255, 215, 160, 0.7);
         letter-spacing: 0.5px;
     }
 
     .home-welcome-poetry p {
-        font-size: 1.12rem;
+        font-size: 1.05rem; /* Un pelo più piccolo e verticale */
         color: #f7f2e9;
-        line-height: 1.65;
+        line-height: 1.7;
         font-style: italic;
     }
 
@@ -275,22 +213,20 @@
        ========================================================================== */
     .install-app-desktop {
         position: absolute;
-        top: 950px; 
+        top: 920px; 
         left: 50%;
         transform: translateX(-50%);
-        width: 70%;          
-        max-width: 900px;
-        height: auto;
+        width: 75%;          
+        max-width: 850px;
         background: rgba(255, 255, 255, 0.03) !important;
-        backdrop-filter: blur(5px) brightness(1.15) contrast(0.85) !important;
+        backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
         -webkit-backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
         border: 2px solid rgba(255, 215, 160, 0.9);
         border-radius: 20px;
         box-shadow:
-            0 0 55px rgba(255, 215, 160, 1),
-            0 0 95px rgba(255, 215, 160, 0.75),
-            inset 0 0 35px rgba(255, 215, 160, 0.45);
-        padding: 25px 40px;
+            0 0 45px rgba(255, 215, 160, 0.85),
+            inset 0 0 25px rgba(255, 215, 160, 0.35);
+        padding: 20px 35px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -299,99 +235,56 @@
 
     .install-left h2 {
         color: #ffd78f;
-        font-size: 1.6rem;
-        margin-bottom: 16px;
+        font-size: 1.45rem;
+        margin-bottom: 12px;
         text-shadow: 0 0 12px rgba(255,215,160,0.55);
-        text-align: center;
     }
 
     .btn-desktop {
         display: block;
-        width: 85%;
-        margin: 12px auto;
+        width: 90%;
+        margin: 10px auto;
         padding: 10px 14px;
-        background: rgba(0, 0, 0, 0.45);
+        background: rgba(0, 0, 0, 0.55);
         border: 1px solid rgba(255, 215, 160, 0.85);
         border-radius: 12px;
         color: #ffd78f;
         font-weight: 600;
-        font-size: 0.92rem;
+        font-size: 0.9rem;
         text-align: center;
-        box-shadow:
-            0 0 10px rgba(255, 215, 160, 0.35),
-            inset 0 0 6px rgba(255, 215, 160, 0.25);
         transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-desktop::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -110%;
-        width: 30%;
-        height: 200%;
-        background: linear-gradient(
-            to right,
-            rgba(255, 215, 160, 0) 0%,
-            rgba(255, 215, 160, 0.16) 50%,
-            rgba(255, 215, 160, 0) 100%
-        );
-        transform: rotate(-45deg);
-        animation: desktopGlowLoop 8.5s infinite ease-in-out;
-        animation-delay: 0.8s;
-        pointer-events: none;
     }
 
     .btn-desktop:hover {
-        background: rgba(255, 215, 160, 0.12);
+        background: rgba(255, 215, 160, 0.15);
         box-shadow: 0 0 18px rgba(255, 215, 160, 0.75);
-        transform: scale(1.03);
-    }
-
-    .btn-desktop:hover::before {
-        animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    }
-
-    .install-right {
-        text-align: center;
+        transform: scale(1.02);
     }
 
     .qr-desktop {
-        width: 140px; 
+        width: 120px; 
         display: block;
-        margin: 12px auto;
+        margin: 0 auto;
         border-radius: 12px;
         border: 2px solid rgba(255,215,160,0.45);
-        box-shadow: 0 0 12px rgba(255,215,160,0.35);
     }
 
     .install-right p {
         margin-top: 8px;
         color: #f7f2e9;
-        font-size: 1rem;
-        text-align: center;
+        font-size: 0.9rem;
     }
 
-    /* ==========================================================================
-       CHAT — VETRO CRISTALLINO
-       ========================================================================== */
+    /* CHAT DESKTOP STYLES */
     .chat-desktop {
         position: absolute;
-        top: 300px;
-        right: 6%;
-        width: 330px;
+        top: 260px;
+        right: 4%;
+        width: 310px;
         height: 300px;
         background: rgba(255, 255, 255, 0.03) !important;
-        backdrop-filter: blur(5px) brightness(3.05) contrast(0.85) !important;
-        -webkit-backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
         border: 2px solid rgba(255, 215, 160, 0.9);
         border-radius: 26px 26px 0 0;
-        box-shadow:
-            0 0 55px rgba(255, 215, 160, 1),
-            0 0 95px rgba(255, 215, 160, 0.75),
-            inset 0 0 35px rgba(255, 215, 160, 0.45);
         padding: 18px;
         display: none;
         z-index: 30;
@@ -401,109 +294,15 @@
         display: block;
     }
 
-    .close-chat-btn {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        width: 32px;
-        height: 32px;
-        background: #000;
-        border: 2px solid #ffd78f;
-        border-radius: 8px;
-        color: #ffd78f;
-        font-size: 1.2rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
-        transition: 0.2s;
-        z-index: 40;
-    }
-
-    .close-chat-btn:hover {
-        background: rgba(255, 215, 160, 0.15);
-        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-    }
-
-    .chat-messages {
-        height: 150px;
-        overflow-y: auto;
-        padding-right: 6px;
-    }
-
-    .message {
-        background: rgba(0, 0, 0, 0.55) !important;
-        border: 1px solid rgba(255, 215, 160, 0.55);
-        padding: 10px 14px;
-        border-radius: 12px;
-        margin-bottom: 12px;
-        color: #f7f2e9;
-        box-shadow:
-            0 0 12px rgba(255, 215, 160, 0.35),
-            inset 0 0 8px rgba(255, 215, 160, 0.25);
-        line-height: 1.4;
-    }
-
-    .chat-input-row {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
-    }
-
-    .chat-input-row input {
-        flex: 1;
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px solid rgba(255, 215, 160, 0.55);
-        background: rgba(0, 0, 0, 0.35);
-        color: #ffd78f;
-        backdrop-filter: blur(10px);
-    }
-
-    .mic-btn {
-        background: rgba(0, 0, 0, 0.45);
-        border: 1px solid rgba(255, 215, 160, 0.75);
-        color: #ffd78f;
-        padding: 10px 14px;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: 0 0 12px rgba(255, 215, 160, 0.55);
-    }
-
-    .mic-btn:hover {
-        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-        background: rgba(255, 215, 160, 0.15);
-    }
-
-    @keyframes slideInRight {
-        0% { transform: translateX(120%); opacity: 0; }
-        60% { transform: translateX(-10%); opacity: 1; }
-        100% { transform: translateX(0); opacity: 1; }
-    }
-
-    .chat-desktop.active {
-        animation: slideInRight 0.55s ease forwards;
-    }
-
-    /* ==========================================================================
-       🔥 KEYFRAMES RICALIBRATI
-       ========================================================================== */
+    /* KEYFRAMES RICALIBRATI */
     @keyframes desktopGlowLoop {
         0% { left: -120%; }
         16% { left: 140%; }
         100% { left: 140%; }
     }
 
-    @keyframes desktopHoverFlasher {
-        0% { left: -120%; }
-        100% { left: 140%; }
-    }
-
     @keyframes fadeInPoetry {
-        0% { opacity: 0; transform: translate(-50%, 25px); }
+        0% { opacity: 0; transform: translate(-50%, 20px); }
         100% { opacity: 1; transform: translate(-50%, 0); }
     }
-
 }
