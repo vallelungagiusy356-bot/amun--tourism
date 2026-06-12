@@ -3,77 +3,78 @@
     "title": "Amunì Tourism",
     "citizen": "Ciudadano del pueblo",
     "about": "Quiénes somos",
-    "contact": "Contactos",
-    "eat": "Dónde comer",
-    "sleep": "Dónde dormir",
+    "contact": "Contacto",
+    "eat": "Dónde Comer",
+    "sleep": "Dónde Dormir",
     "transport": "Transportes",
     "events": "Eventos",
     "monuments": "Monumentos"
   },
 
-    "home": {
+  "home": {
     "chat_web": "Habla con la Castellana en el sitio web",
     "amuni_title": "Bienvenido, oh caminante...",
-    "amuni_text": "Bienvenido, oh caminante, al confín del tiempo,<br>donde la historia respira en cada soplo de viento.<br>Siente el llamado de piedras milenarias y severas,<br>custodias de relatos, de damas, de antiguas plegarias.<br><br>No detengas tu paso, reflejo de esta magia,<br><strong>Amunì, ven, te indico la vía.</strong>",
-    "install_app": "Instala la app Amunì Tourism",
-    "download_apk": "Descarga la app (APK)",
-    "open_webapp": "Abre la Web App",
-    "scan_qr": "Escanea el código QR para instalar la app",
-    "talk_castellana": "Habla con la Castellana"
+    "amuni_text": "Bienvenido, oh caminante, al umbral del pasado,<br>donde la historia respira en el viento sagrado.<br>Siente el eco de piedras milenarias y severas,<br>guardianas de leyendas, de damas y antiguas plegarias.<br><br>No detengas tus pasos, ríndete a esta poesía,<br><strong>Amunì, ven conmigo, yo te muestro la vía.</strong>",
+    "castellana_intro_title": "Vive la Caccamo más auténtica",
+    "castellana_intro_text": "Habla con la <strong>Castellana</strong>: tu guía turística multilingüe para descubrir historias ocultas, datos inéditos y rutas gastronómicas entre las maravillas del pueblo y sus alrededores.",
+    "install_app": "Instala la aplicación Amunì Tourism",
+    "download_apk": "Descarga la aplicación (APK)",
+    "open_webapp": "Abrir la Web App",
+    "scan_qr": "Escanea el código QR para instalar la aplicación",
+    "talk_castellana": "Hablar con la Castellana"
   },
-
 
   "chat": {
     "title": "Castellana de Caccamo",
     "msg1": "Bienvenido, caminante, a esta tierra rica en arte, historia y tradiciones.",
-    "msg2": "¿Estás listo para dejarte guiar? El arte, el aceite de oliva dorado y las almendras dulces te deleitarán.",
+    "msg2": "¿Estás listo para dejarte guiar? El arte, el aceite dorado y las almendras dulces te deleitarán.",
     "placeholder": "Escribe un mensaje..."
   },
 
   "citizen": {
-    "tag": "Comunidad Locale",
+    "tag": "Comunidad Local",
     "main_heading": "Ciudadano del Pueblo",
-    "intro_text": "El corazón palpitante de Amunì reside en quienes viven en el pueblo cada día. Custodios de historias antiguas, sabores transmitidos y secretos escondidos entre las piedras y los callejones.",
+    "intro_text": "El corazón latente de Amunì reside en quienes viven en el pueblo cada día. Guardianes de historias antiguas, sabores heredados y secretos escondidos entre las piedras y los callejones.",
     "legends_title": "Leyendas y Raíces",
     "legends_desc": "Las historias más antiguas del pueblo, transmitidas de generación en generación.",
     "legend_felicia": "La leyenda de Sor Felicia",
     "legend_pizzarrone": "La leyenda de la Torre del Pizzarrone",
-    "audio_title": "Escucha las oraciones y los relatos en dialecto",
+    "audio_title": "Escucha las oraciones y relatos en el dialecto local",
     "transcription": "Transcripción automática",
     "castle_title": "El Castillo",
-    "castle_desc": "Una fortaleza milenaria: conjuras, troneras, túneles secretos, prisiones y batallas épicas.",
+    "castle_desc": "Una fortaleza milenaria: conspiraciones, saeteras, túneles secretos, prisiones y batallas épicas.",
     "castle_more": "Descubre el Castillo",
     "church_title": "Iglesias y Arte",
-    "church_desc": "Un viaje entre catacumbas, tradiciones, patrones y antiguas devociones.",
-    "church_catacombs": "Las catacumbas y las criptas ocultas",
-    "church_sangiuseppe": "La gratinata roja de San José",
-    "church_sepolcri": "Los sepulcros con el trigo en flor",
+    "church_desc": "Un viaje a través de catacumbas, tradiciones, santos patrones y antiguas devociones.",
+    "church_catacombs": "Las catacumbas y criptas ocultas",
+    "church_sangiuseppe": "La 'gratinata' roja de San José",
+    "church_sepolcri": "Los sepulcros con trigo en flor",
     "food_title": "Comida y Eventos",
     "food_desc": "Sabores auténticos, lugares donde comer y vivir el pueblo.",
     "food_arancine": "Dónde degustar excelentes arancine",
-    "food_cocktail": "Cócteles con DJ todo el año",
-    "food_aperitivo": "Aperitivos panorámicos (solo verano)",
+    "food_cocktail": "Cócteles con DJ en vivo todo el año",
+    "food_aperitivo": "Aperitivos panorámicos (solo en verano)",
     "events_title": "Eventos",
     "event_castellana": "La Castellana",
     "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Fiesta de la Salchicha",
-    "event_beato": "Fiesta del Beato Juan"
+    "event_beato": "Fiesta del Beato Giovanni"
   },
 
   "castle": {
     "title": "El Castillo de Caccamo",
     "category": "Monumentos Históricos",
-    "rhyme_1": "Bienvenidos, viajeros, al castillo imponente,<br>que vigila la llanura y la historia presente.<br>Erigido en el monte de roca viva y fiera,<br>guardián de mil misterios y gloria duradera.",
-    "rhyme_2": "Entre estos grandes muros que desafían el viento,<br>pasaron dinastías como un soplo en el tiempo.<br>Del noble Chiaramonte a Despuches de honor,<br>cada sala relata pactos de gran esplendor.",
-    "rhyme_3": "No busquéis las fechas en un libro olvidado,<br>sino la sombra tenue que danza en el pasado.<br>La Castellana os espera, con paso decidido,<br>para contaros de Sor Felicia el secreto escondido.",
+    "rhyme_1": "Bienvenido, oh caminante, al castillo imponente,<br>que domina los valles y la historia presente.<br>Erigido en el monte de piedra altanera,<br>guardián de misterios y de fe verdadera.",
+    "rhyme_2": "Entre estos sus muros que desafían el viento,<br>pasaron dinastías como un soplo en el tiempo.<br>Desde los fiers Chiaramonte a nobles de honor,<br>cada sala relata pactos llenos de esplendor.",
+    "rhyme_3": "No busques las fechas en el libro olvidado,<br>mira el baile de sombras que la noche ha dejado.<br>La Castellana te espera en la vieja vía,<br>para confiarte el secreto de Sor Felicia.",
     "dress_caption": "El vestido de la Castellana",
     "chat_tooltip": "Haz clic para Chatear",
-    "welcomemsg_felicia": "Bienvenido al Castillo de Caccamo, forastero. Yo soy Sor Felicia. ¿Quieres que te devele los secretos de la Sala de las Conjuras o prefieres escuchar las antiguas leyendas del castillo? Pregúntame lo que quieras.",
-    "position": "Una fortaleza colgada en un espolón rocoso, con vistas dominantes sobre el valle.",
-    "defense": "Troneras, muros gruesos y caminos de ronda narran su función defensiva.",
-    "conspiracy": "Salas secretas y estancias de la nobleza fueron escenario de conjuras e intrigas medievales.",
-    "prisons": "Las prisiones subterráneas custodian aún las huellas de los antiguos cautiverios.",
-    "legend_brothers": "La leyenda de los dos hermanos narra un duelo fatal por el amor de una dama."
+    "welcomemsg_felicia": "Bienvenido al Castillo de Caccamo, forastero. Yo soy Sor Felicia. ¿Quieres que te revele los secretos de la Sala de las Conspiraciones o prefieres escuchar las antiguas leyendas del castillo? Pregúntame lo que quieras.",
+    "position": "Una fortaleza encaramada sobre un espolón rocoso, con vistas dominantes sobre el valle.",
+    "defense": "Saeteras, gruesos muros y paseos de ronda narran su función defensiva.",
+    "conspiracy": "Salas secretas y estancias nobiliarias fueron escenario de conspiraciones e intrigas medievales.",
+    "prisons": "Las prisiones subterráneas aún conservan las huellas de los antiguos cautiverios.",
+    "legend_brothers": "La leyenda de los dos hermanos relata un duelo fatal por el amor de una dama."
   },
 
   "monuments": {
@@ -81,7 +82,7 @@
     "tickets_label": "Entradas",
     "view_map": "Abrir el Mapa",
     "btn_buy_tickets": "Reservar / Comprar Entrada",
-    "btn_comune_info": "Info Institucional del Municipio",
+    "btn_comune_info": "Información Institucional Ayuntamiento",
     "btn_contact_turismo": "Contactar Oficina de Turismo",
     "btn_dindondan": "Explorar Iglesias en Din Don Dan",
     "church_notice": "⚠️ Nota: Los lugares de culto están activos y dedicados a las funciones litúrgicas. Para visitas turísticas, se ruega respetar los horarios recomendados y evitar los momentos de celebración interna.",
@@ -90,47 +91,47 @@
     },
     "castello": {
       "title": "El Castillo de Caccamo",
-      "description": "El Castillo de Caccamo es una de las fortalezas normandas más grandes y mejor conservadas de Sicilia. Arraigado en la roca viva desde el siglo XI, domina el valle del San Leonardo con sus imponentes murallas, torres de vigilancia y salones internos de gran belleza.",
+      "description": "El Castillo de Caccamo se encuentra entre las fortalezas normandas más grandes y mejor conservadas de Sicilia. Encaramado sobre la roca viva desde el siglo XI, domina el valle del San Leonardo con sus imponentes murallas, torres de vigilancia y sugerentes salones internos que evocan siglos de historia feudal y leyendas caballerescas.",
       "hours": "Todos los días: 09:30 – 13:00 / 15:00 – 19:00",
       "tickets": "General € 6,00 | Reducida € 4,50 (Exclusivamente con reserva online)"
     },
     "badia": {
       "title": "Iglesia de San Benedetto alla Badia",
-      "description": "Verdadera joya del barroco siciliano, la iglesia es famosa en todo el mundo por su extraordinario suelo realizado completamente en mayólica del siglo XVIII, que representa escenas alegóricas de rara maestría.",
+      "description": "Verdadero tesoro del barroco siciliano, la iglesia es célebre en todo el mundo por su extraordinario suelo realizado completamente en mayólica del siglo XVIII, que representa escenas alegóricas y motivos naturalistas de rara maestría. Una obra maestra del arte visual suspendida en el tiempo.",
       "hours": "Mar - Dom: 09:00 – 12:30 | Lun: 14:30 – 18:30 (Sin funciones regulares, ideal para visitas)",
-      "tickets": "General € 2,00 | Reducida € 1,00 (Jóvenes UE 18-25 años o con entrada del Castillo el mismo día) | Gratuito menores de 18"
+      "tickets": "General € 2,00 | Reducida € 1,00 (Jóvenes UE 18-25 años o con entrada del Castillo el mismo día) | Gratuito menores de 18 años"
     },
     "santamaria": {
       "title": "Iglesia de Santa Maria degli Angeli",
-      "description": "Fundada en el siglo XV junto con el convento dominico, la Iglesia de Santa María de los Ángeles es uno de los centros espirituales más importantes del pueblo. Custodia los restos y reliquias del Beato Juan Liccio, Patrón de Caccamo.",
-      "hours": "Apertura y Visitas: Sábado de 16:00 a 17:30 | Domingo de 09:00 a 10:00 y de 11:00 a 12:30. (Santas Misas: Sábado 17:30 | Domingo 10:00)."
+      "description": "Fundada en el siglo XV junto con el convento dominico, la Iglesia de Santa Maria degli Angeli es uno de los centros espirituales más importantes del pueblo. Custodia los restos y reliquias del Beato Giovanni Liccio, Patrón de Caccamo. En su interior se pueden admirar espléndidos altares de mármol y obras de arte sacro que testimonian siglos de profunda devoción y peregrinaciones.",
+      "hours": "Apertura y Visitas: Sábado de 16:00 a 17:30 | Domingo de 09:00 to 10:00 y de 11:00 a 12:30. (Santas Misas: Sábado 17:30 | Domingo 10:00)."
     },
     "sangiorgio": {
       "title": "Iglesia de San Giorgio Martire",
-      "description": "La Iglesia Matriz de Caccamo, dedicada a San Jorge Mártir, es una obra maestra imponente que domina la plaza monumental bajo el Castillo. Conserva un inmenso patrimonio artístico: desde esculturas de la escuela gaginiana hasta lienzos del pintor flamenco Matthias Stom.",
-      "hours": "Visitas: Sábado y Domingo 09:30 – 10:45 y 16:00 – 18:00. (La recepción turística se suspende durante la Santa Misa dominical de las 11:00)."
+      "description": "La Iglesia Matriz de Caccamo, dedicada a San Jorge Mártir, es una obra maestra imponente que domina la plaza monumental bajo el Castillo. Fundada en la época normanda y reformada en 1614, conserva un inmenso patrimonio artístico: desde esculturas de la escuela gaginiana hasta valiosos lienzos del siglo XVII del pintor flamenco Matthias Stom, pasando por ricas capillas decoradas con mármoles polícromos.",
+      "hours": "Franjas Horarias Visitas: Sábado y Domingo 09:30 – 10:45 y 16:00 – 18:00. (La recepción turística se suspende durante la Santa Misa dominical de las 11:00)."
     },
     "annunziata": {
       "title": "Parroquia SS. Annunziata",
-      "description": "Engastada en el tejido urbano medieval, la iglesia destaca por su fachada y por la atmósfera de profunda espiritualidad que se respira en su interior. Conserva altares finamente decorados que atraen a visitantes.",
-      "hours": "Lun - Sáb: 09:00 – 12:00 | Misas feriales a las 18:00. Domingos y Festivos visitas: 08:30 - 09:30 y 10:30 - 12:00 (Misas festivas a las 09:30, 12:00, 19:00)."
+      "description": "Engastada en el tejido urbano medieval, la iglesia destaca por su fachada y por la atmósfera de profunda espiritualidad que se respira en su interior. Conserva altares finamente decorados y manufacturas artísticas que atraen a visitantes y fieles.",
+      "hours": "Lun - Sáb: 09:00 – 12:00 | Misas los días laborables a las 18:00. Domingos y Festivos visitas en las franjas: 08:30 - 09:30 y 10:30 - 12:00 (Misas festivas a las 09:30, 12:00, 19:00)."
     },
     "cappuccini": {
       "title": "Convento de los Frailes Capuchinos",
-      "description": "Lugar de silencio, meditación e historia, las estructuras del Convento se ligan profundamente a la tradición franciscana en Sicilia. El área ofrece una mirada auténtica a la vida monástica.",
+      "description": "Lugar de silencio, meditación e historia, las estructuras del Convento se vinculan profundamente a la tradición franciscana en Sicilia. Además de la estructura conventual, el área ofrece una visión auténtica de la vida monástica y la devoción popular.",
       "hours": "Accesible principalmente bajo petición o durante las festividades franciscanas. Contactar con la Oficina de Turismo.",
-      "secret_info": "💡 Las Joyas Ocultas de Caccamo: El pueblo alberga 33 iglesias. Utiliza el mapa de Din Don Dan y haz zoom en Caccamo para descubrir en tiempo real los horarios de tesoros menos conocidos como la Iglesia de San Rocco."
+      "secret_info": "💡 Las Joyas Ocultas de Caccamo: El pueblo alberga nada menos que 33 iglesias. Utiliza el mapa de Din Don Dan y amplía sobre Caccamo para descubrir en tiempo real los horarios y aperturas de tesoros menos conocidos como la Iglesia de San Rocco y otras pequeñas obras maestras distribuidas."
     }
   },
 
   "chiese_page": {
     "page_title": "Las Iglesias de Caccamo",
-    "poesia_intro": "Cinque templos de piedra, de fe y de memoria,<br>abren sus puertas a una secular historia.",
-    "verse_angeli": "En los <strong>Angeli</strong> descansa, en el silencio más sagrado,<br>el Beato Juan, por su pueblo siempre amado.",
-    "verse_badia": "Si hacia la <strong>Badia</strong> tus pasos van bajando,<br>un tapiz de mayólica a tus pies irá brotando.",
-    "verse_duomo": "Entra en el gran <strong>Duomo</strong>, majestuoso y sereno,<br>donde el arte de Stom ve el mármol gaginiano de arte lleno.",
-    "verse_annunziata": "La <strong>Annunziata</strong> muestra sus bóvedas pintadas,<br>junto a la torre-campanario de murallas vigiladas.",
-    "verse_cappuccini": "Sube en fin a <strong>Cappuccini</strong>, colina de luz vestida,<br>entre un Retablo antiguo y una vista desmedida.",
-    "poesia_outro": "Déjate llevar donde el tiempo se ha detenido..."
+    "poesia_intro": "Cinque templos de piedra, de fe y de memoria,<br>abren las puertas hacia una centenaria historia.",
+    "verse_angeli": "En los <strong>Angeli</strong> descansa, en el silencio más sacro,<br>el Beato Giovanni, del pueblo simulacro.",
+    "verse_badia": "Si bajas a la <strong>Badia</strong>, la tierra se vuelve flor<br>en el bordado de mayólica de raro esplendor.",
+    "verse_duomo": "Entra en el gran <strong>Duomo</strong>, majestuoso y solemne,<br>entre mármoles de Gagini y el Stomer perenne.",
+    "verse_annunziata": "Luego la <strong>Annunziata</strong> devela sus bóvedas pintadas,<br>y la torre del campanario de las guardias nunca ganadas.",
+    "verse_cappuccini": "Sube al fin a los <strong>Cappuccini</strong>, en el monte radiante,<br>entre un retablo sagrado y un panorama gigante.",
+    "poesia_outro": "Déjate guiar donde el tiempo se ha detenido..."
   }
 }
