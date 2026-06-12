@@ -1,5 +1,208 @@
 /* ==========================================================================
-   VERSIONE DESKTOP — OTTIMIZZATA PER SPAZIATURA E BILANCIAMENTO
+   PARTE 1: STILI BASE E PER DISPOSITIVI MOBILI (PRIME ~200 RIGHE)
+   ========================================================================== */
+
+/* RESET E BINDING */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #0d0d0d;
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* SFONDO GENERALE (MOBILE) */
+.scene-background {
+    position: fixed;
+    inset: 0;
+    background-image: url('img/tuo_nuovo_sfondo.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.5) contrast(1.2);
+    z-index: -10;
+}
+
+/* HEADER / NAVBAR MOBILE */
+.dashboard {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.85);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard .logo-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffd78f;
+    text-shadow: 0 0 8px rgba(255, 215, 160, 0.6);
+}
+
+.nav-desktop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-desktop a {
+    color: #ffd78f;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 160, 0.5);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.lang-switcher button {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #ffd78f;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* VIDEO CASTELLANA MOBILE */
+.castellana-video-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 260px;
+}
+
+.castellana-video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.castellana-tooltip {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* POESIA MOBILE */
+.home-welcome-poetry {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 215, 160, 0.5);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.home-welcome-poetry h1 {
+    font-size: 1.4rem;
+    color: #ffd78f;
+    margin-bottom: 12px;
+}
+
+.home-welcome-poetry p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #f7f2e9;
+    font-style: italic;
+}
+
+/* BOX APPLICAZIONE MOBILE */
+.install-app-desktop {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ffd78f;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.install-left h2 {
+    color: #ffd78f;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.btn-desktop {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background: #000;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.install-right {
+    margin-top: 20px;
+}
+
+.qr-desktop {
+    width: 110px;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 10px;
+}
+
+.install-right p {
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+/* CHAT MOBILE BASE */
+.chat-desktop {
+    width: 90%;
+    margin: 20px auto;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #ffd78f;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    color: #ffd78f;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.chat-messages {
+    height: 120px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================================================
+   PARTE 2: VERSIONE DESKTOP — ABILITATA DA 900PX IN SU (OTTIMIZZATA)
    ========================================================================== */
 @media screen and (min-width: 900px) {
 
@@ -20,9 +223,7 @@
         background: transparent !important;
     }
 
-    /* ==========================================================================
-       DASHBOARD ELEGANTE NERA + ORO (FIX COMPATEZZA)
-       ========================================================================== */
+    /* DASHBOARD ELEGANTE NERA + ORO (FIX COMPATEZZA) */
     .dashboard {
         position: fixed;
         top: 0;
@@ -33,15 +234,16 @@
         border-bottom: 2px solid rgba(255, 215, 160, 0.85);
         backdrop-filter: blur(18px) saturate(200%);
         display: flex;
+        flex-direction: row; /* Ripristina riga su desktop */
         align-items: center;
         justify-content: space-between;
-        padding: 0 20px; /* Ridotto per non tagliare le bandierine a destra */
+        padding: 0 20px; /* Ridotto per far entrare tutte le bandierine */
         z-index: 20;
         box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
     }
 
     .dashboard .logo-title {
-        font-size: 1.35rem; /* Leggermente ridotto per sicurezza */
+        font-size: 1.35rem;
         font-weight: 700;
         color: #ffd78f;
         text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
@@ -49,14 +251,14 @@
 
     .nav-desktop {
         display: flex;
-        gap: 12px; /* Ridotto il gap tra i bottoni del menu */
+        gap: 12px; /* Ridotto spazio tra link */
     }
 
     .nav-desktop a {
         color: #ffd78f;
         font-weight: 600;
         text-decoration: none;
-        padding: 8px 14px; /* Più compatto */
+        padding: 8px 14px;
         border-radius: 12px;
         background: rgba(0, 0, 0, 0.55);
         border: 1px solid rgba(255, 215, 160, 0.75);
@@ -94,17 +296,16 @@
         transform: scale(1.05);
     }
 
-    /* ==========================================================================
-       PULSANTI LINGUA (RISOLUZIONE BANDIERINA SPAGNOLA)
-       ========================================================================== */
+    /* PULSANTI LINGUA (RISOLUZIONE BANDIERINA SPAGNOLA) */
     .lang-switcher {
         display: flex;
-        gap: 6px; /* Più stretto per far entrare tutte le bandiere */
+        gap: 6px; /* Più compatto */
+        margin-top: 0;
         align-items: center;
     }
 
     .lang-switcher button {
-        width: 36px; /* Ridotto da 42px a 36px per evitare il ritaglio */
+        width: 36px; /* Ridotto da 42px a 36px per evitare tagli a destra */
         height: 36px;
         font-size: 1.1rem;
         border-radius: 8px;
@@ -127,15 +328,14 @@
         transform: scale(1.05);
     }
 
-    /* ==========================================================================
-       VIDEO CASTELLANA CON INTERFACCIA RIFLESSO INTEGRATA
-       ========================================================================== */
+    /* VIDEO CASTELLANA DESKTOP */
     .castellana-video-wrapper {
         position: absolute;
         top: 260px;
         left: 4%;
         width: 26vw;          
         max-width: 280px;
+        margin: 0; /* Resetta i margini automatici del mobile */
         border-radius: 20px; 
         overflow: hidden;    
         z-index: 10 !important;
@@ -155,6 +355,7 @@
         position: absolute;
         top: 220px; 
         left: 4%;
+        margin-top: 0;
         padding: 10px 20px;
         background: rgba(0, 0, 0, 0.65);
         border: 1px solid rgba(255, 215, 160, 0.9);
@@ -168,16 +369,15 @@
         z-index: 25;
     }
 
-    /* ==========================================================================
-       ⭐ INTRODUZIONE POETICA CENTRALE (SPOSTATA A DESTRA E VERTICALIZZATA)
-       ========================================================================== */
+    /* INTRODUZIONE POETICA DESKTOP (SPOSTATA A DESTRA E VERTICALIZZATA) */
     .home-welcome-poetry {
         position: absolute;
         top: 260px;
-        left: 58%; /* Spostata decisamente a destra rispetto al centro vecchio (50%) */
+        left: 58%; /* Spostata a destra per non coprire più l'avatar */
         transform: translateX(-50%);
         width: 38vw;
         max-width: 440px;
+        margin: 0;
         text-align: center;
         padding: 24px 30px;
         background: rgba(0, 0, 0, 0.55);
@@ -202,15 +402,13 @@
     }
 
     .home-welcome-poetry p {
-        font-size: 1.05rem; /* Un pelo più piccolo e verticale */
+        font-size: 1.05rem;
         color: #f7f2e9;
         line-height: 1.7;
         font-style: italic;
     }
 
-    /* ==========================================================================
-       Sezione installazione app
-       ========================================================================== */
+    /* SEZIONE INSTALLAZIONE APP DESKTOP */
     .install-app-desktop {
         position: absolute;
         top: 920px; 
@@ -218,6 +416,7 @@
         transform: translateX(-50%);
         width: 75%;          
         max-width: 850px;
+        margin: 0;
         background: rgba(255, 255, 255, 0.03) !important;
         backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
         -webkit-backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
@@ -228,8 +427,10 @@
             inset 0 0 25px rgba(255, 215, 160, 0.35);
         padding: 20px 35px;
         display: flex;
+        flex-direction: row; /* Elementi affiancati */
         justify-content: space-between;
         align-items: center;
+        text-align: left;
         z-index: 15;
     }
 
@@ -238,12 +439,13 @@
         font-size: 1.45rem;
         margin-bottom: 12px;
         text-shadow: 0 0 12px rgba(255,215,160,0.55);
+        text-align: left;
     }
 
     .btn-desktop {
         display: block;
         width: 90%;
-        margin: 10px auto;
+        margin: 10px 0;
         padding: 10px 14px;
         background: rgba(0, 0, 0, 0.55);
         border: 1px solid rgba(255, 215, 160, 0.85);
@@ -261,6 +463,11 @@
         transform: scale(1.02);
     }
 
+    .install-right {
+        margin-top: 0;
+        text-align: center;
+    }
+
     .qr-desktop {
         width: 120px; 
         display: block;
@@ -275,13 +482,14 @@
         font-size: 0.9rem;
     }
 
-    /* CHAT DESKTOP STYLES */
+    /* CHAT DESKTOP INTERFACCIA COMPLETA */
     .chat-desktop {
         position: absolute;
         top: 260px;
         right: 4%;
         width: 310px;
         height: 300px;
+        margin: 0;
         background: rgba(255, 255, 255, 0.03) !important;
         border: 2px solid rgba(255, 215, 160, 0.9);
         border-radius: 26px 26px 0 0;
@@ -292,9 +500,10 @@
 
     .chat-desktop.active {
         display: block;
+        animation: slideInRight 0.55s ease forwards;
     }
 
-    /* KEYFRAMES RICALIBRATI */
+    /* KEYFRAMES E ANIMAZIONI */
     @keyframes desktopGlowLoop {
         0% { left: -120%; }
         16% { left: 140%; }
@@ -304,5 +513,11 @@
     @keyframes fadeInPoetry {
         0% { opacity: 0; transform: translate(-50%, 20px); }
         100% { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    @keyframes slideInRight {
+        0% { transform: translateX(120%); opacity: 0; }
+        60% { transform: translateX(-10%); opacity: 1; }
+        100% { transform: translateX(0); opacity: 1; }
     }
 }
