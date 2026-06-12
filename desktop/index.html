@@ -2,17 +2,15 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism</title>
     <link rel="stylesheet" href="css_style2_v2.css">
 </head>
 
 <body>
 
-    <!-- SFONDO -->
     <div class="scene-background"></div>
 
-    <!-- DASHBOARD DESKTOP -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title"></div>
 
@@ -22,7 +20,6 @@
             <a href="#" data-i18n="menu.contact"></a>
         </nav>
 
-        <!-- 🌍 SELETTORE LINGUA -->
         <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
@@ -32,41 +29,34 @@
         </div>
     </header>
 
-    <!-- CONTENITORE 3D (per ora invisibile) -->
     <div id="castellana-3d"></div>
 
-    <!-- VIDEO CASTELLANA + BOTTONE CLICK HERE -->
     <div class="castellana-video-wrapper">
         <video class="castellana-video" autoplay muted loop playsinline>
             <source src="img/castellana_alpha.webm" type="video/webm">
         </video>
 
-        <!-- ⭐ NUOVO BOTTONE CLICK HERE ⭐ -->
         <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
     </div>
 
-    <!-- ⭐ NUOVA SEZIONE: POESIA DELLA CASTELLANA ⭐ -->
     <section class="home-welcome-poetry">
         <h1 data-i18n="home.amuni_title"></h1>
         <p data-i18n="home.amuni_text"></p>
+        <p style="margin-top: 15px; font-weight: bold;">Lasciati guidare oltre le soglie del tempo...</p>
     </section>
-            <p class="poesia-outro">Lasciati guidare oltre le soglie del tempo...</p>
-        </section> <section class="castellana-intro-card">
-        <!-- 👑 SEZIONE INTRODUTTIVA CASTELLANA GUIDE -->
-<section class="castellana-intro-card">
-    <div class="intro-card-content">
-        <h3 data-i18n="home.castellana_intro_title">Vivi la Caccamo più autentica</h3>
-        <p data-i18n="home.castellana_intro_text">
-            Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto tra le meraviglie del borgo e del territorio circostante.
-        </p>
-        <div class="languages-badge">
-            <span>IT</span> • <span>EN</span> • <span>FR</span> • <span>DE</span> • <span>ES</span>
+
+    <section class="castellana-intro-card">
+        <div class="intro-card-content">
+            <h3 data-i18n="home.castellana_intro_title">Vivi la Caccamo più autentica</h3>
+            <p data-i18n="home.castellana_intro_text">
+                Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto tra le meraviglie del borgo e del territorio circostante.
+            </p>
+            <div class="languages-badge">
+                <span>IT</span> • <span>EN</span> • <span>FR</span> • <span>DE</span> • <span>ES</span>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-    <!-- ⭐ SEZIONE INSTALLA APP — DESKTOP ⭐ -->
     <section class="install-app-desktop">
 
         <div class="install-left">
@@ -92,12 +82,11 @@
 
     </section>
 
-    <!-- ⭐ CHAT DESKTOP ⭐ -->
     <div class="chat-desktop" id="chat-desktop">
         
         <div class="chat-header">
             <span data-i18n="chat.title"></span>
-            <button id="close-chat" class="close-chat-btn">✕</button>
+            <button id="close-chat" class="close-chat-btn" style="background: transparent; border: none; color: #ffd78f; cursor: pointer; font-size: 1.1rem;">✕</button>
         </div>
 
         <div class="chat-messages">
@@ -112,7 +101,6 @@
 
     </div>
 
-    <!-- ⭐ SCRIPT APERTURA/CHIUSURA CHAT ⭐ -->
     <script>
     document.addEventListener("DOMContentLoaded", () => {
 
@@ -131,7 +119,6 @@
     });
     </script>
 
-    <!-- SCRIPT MULTILINGUA -->
     <script>
     let currentLang = localStorage.getItem("lang") || "it";
 
