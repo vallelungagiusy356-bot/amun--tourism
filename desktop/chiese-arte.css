@@ -13,16 +13,17 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   
-  /* === AGGIORNATO IL NOME DEL FILE DI SFONDO === */
+  /* === NUOVO SFONDO CON IMMAGINE E OVERLAY AMBRATO === */
   background: radial-gradient(circle at top, rgba(255,180,80,0.25), rgba(0,0,0,0.7)), 
               url('img/tuo_nuovo_sfondo.jpeg') no-repeat center center fixed;
   background-size: cover;
 }
 
-
 /* ============================================================
-   DASHBOARD BAROCCA NERA + ORO
+   DASHBOARD BAROCCA NERA + ORO (INVARIATA)
 ============================================================ */
 .dashboard {
   position: fixed;
@@ -96,17 +97,17 @@ body {
   transform: scale(1.05);
 }
 
-.nav-desktop a:hover::before {
-  animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
 /* ============================================================
    HERO CENTRALE
 ============================================================ */
 .hero {
-  margin-top: 120px;
+  margin-top: 100px;
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-text h1 {
@@ -133,40 +134,65 @@ body {
   border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
+  margin-bottom: 2rem;
 }
 
 /* ============================================================
-   CARD MONUMENTI IN FILA
+   MODIFICATO: GRIGLIA INTELLIGENTE CON EFFETTO GLOW ORO
 ============================================================ */
 .cards {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Dispone tutte e 5 le card visibili su un'unica riga desktop */
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .card {
-  flex: 0 0 220px;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.65);
   border-radius: 1rem;
   overflow: hidden;
-  border: 1px solid rgba(212,166,74,0.6);
+  border: 1px solid rgba(255, 215, 160, 0.4);
   backdrop-filter: blur(6px);
   cursor: pointer;
-  scroll-snap-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* === EFFETTO GLOW DI BASE === */
+  box-shadow: 0 0 15px rgba(212, 166, 74, 0.3);
+  display: flex;
+  flex-direction: column;
 }
 
-.card video {
+.card:hover {
+  transform: translateY(-5px);
+  /* === EFFETTO GLOW INTENSO AL PASSAGGIO DEL MOUSE === */
+  box-shadow: 0 0 25px rgba(255, 215, 160, 0.75), inset 0 0 10px rgba(255, 215, 160, 0.2);
+  border-color: rgba(255, 215, 160, 0.8);
+}
+
+/* Evita che i tetti o i lati dei modelli vengano tagliati malamente */
+.card img {
   width: 100%;
-  height: 130px;
-  object-fit: cover;
+  height: 160px; /* Altezza aumentata per mostrare interamente i prospetti verticali */
+  object-fit: contain; /* 'contain' assicura che il disegno 3D sia interamente visibile senza tagliati */
+  background: rgba(255, 215, 160, 0.03); /* Sottile tono caldo dietro i modelli */
+  padding: 8px; /* Evita che i bordi tocchino la cornice */
+  display: block;
+}
+
+.card h3 {
+  font-size: 0.95rem;
+  padding: 0.8rem 0.5rem;
+  color: #ffd78f;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  margin-top: auto;
 }
 
 /* ============================================================
-   CHAT CASTELLANA
+   CHAT CASTELLANA (INVARIATA)
 ============================================================ */
 .castellana-video-wrapper {
   position: fixed;
@@ -207,4 +233,67 @@ body {
   flex-direction: column;
   overflow: hidden;
   z-index: 40;
+}
+
+/* ============================================================
+   NUOVO ADATTAMENTO MOBILE RESPONSIVE
+============================================================ */
+@media (max-width: 990px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr); /* 3 colonne sui tablet */
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 0 15px;
+  }
+  .dashboard .logo-title {
+    font-size: 1.15rem;
+  }
+  .nav-desktop {
+    gap: 6px;
+  }
+  .nav-desktop a {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .hero {
+    margin-top: 85px;
+    justify-content: flex-start; /* Distribuisce i testi ordinatamente senza ammassarli in alto */
+  }
+
+  .hero-text h1 {
+    font-size: 2.1rem;
+  }
+
+  /* Risolve lo scorrimento: su mobile si dispongono in una griglia 2x2 pulita ed estesa in verticale */
+  .cards {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 0.8rem;
+    padding-bottom: 7rem; /* Margine inferiore per evitare la sovrapposizione con il pulsante chat */
+  }
+
+  .card img {
+    height: 120px; /* Altezza ottimizzata per schermi piccoli */
+    padding: 4px;
+  }
+
+  .card h3 {
+    font-size: 0.85rem;
+  }
+
+  .castellana-video-wrapper {
+    right: 1rem;
+    bottom: 1rem;
+  }
+  .castellana-video {
+    width: 65px;
+    height: 65px;
+  }
+  .castellana-tooltip {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
 }
