@@ -12,8 +12,6 @@
         background-position: center;
         background-repeat: no-repeat;
         filter: brightness(0.78) contrast(1.1) saturate(1.1);
-
-        /* correzione fondamentale */
         z-index: -5 !important;
         pointer-events: none;
     }
@@ -49,7 +47,6 @@
         text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
     }
 
-    /* LINK MENU WITH AMBIENT REFLECTION */
     .nav-desktop {
         display: flex;
         gap: 22px;
@@ -71,7 +68,6 @@
         overflow: hidden;   
     }
 
-    /* Strato di luce ultra-soffuso per i link del menu */
     .nav-desktop a::before {
         content: '';
         position: absolute;
@@ -82,7 +78,7 @@
         background: linear-gradient(
             to right,
             rgba(255, 215, 160, 0) 0%,
-            rgba(255, 215, 160, 0.14) 50%, /* Opacità abbassata per massima discrezione */
+            rgba(255, 215, 160, 0.14) 50%,
             rgba(255, 215, 160, 0) 100%
         );
         transform: rotate(-45deg);
@@ -98,7 +94,6 @@
         transform: scale(1.05);
     }
 
-    /* Passaggio della luce all'hover rallentato e ammorbidito */
     .nav-desktop a:hover::before {
         animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
@@ -129,7 +124,6 @@
         overflow: hidden;
     }
 
-    /* Riflesso sui bottoni lingua ammorbidito */
     .lang-switcher button::before {
         content: '';
         position: absolute;
@@ -171,14 +165,13 @@
         margin-top: 300px;
         margin-left: 6%;
         display: block;
-        border-radius: 20px; /* Arrotonda l'area per contenere in diagonale la luce */
-        overflow: hidden;    /* Taglia via la luce quando supera i confini dell'avatar */
+        border-radius: 20px; 
+        overflow: hidden;    
         z-index: 10 !important;
         transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         cursor: pointer;
     }
 
-    /* Lo strato riflettente della luce dorata fluttua SOPRA il canale alfa del video (z-index: 3) */
     .castellana-video-wrapper::before {
         content: '';
         position: absolute;
@@ -189,12 +182,12 @@
         background: linear-gradient(
             to right,
             rgba(255, 215, 160, 0) 0%,
-            rgba(255, 215, 160, 0.20) 50%, /* Intensità bilanciata per tessuti e vestiario */
+            rgba(255, 215, 160, 0.20) 50%, 
             rgba(255, 215, 160, 0) 100%
         );
         transform: rotate(-45deg);
         pointer-events: none;
-        z-index: 3; /* Sovrasta lo z-index interno del tag video */
+        z-index: 3; 
         animation: desktopGlowLoop 12s infinite ease-in-out;
         animation-delay: 3s;
     }
@@ -203,7 +196,6 @@
         transform: scale(1.03);
     }
 
-    /* Attivazione del riflesso morbido rallentato all'hover del mouse sull'avatar */
     .castellana-video-wrapper:hover::before {
         animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
@@ -212,14 +204,14 @@
         width: 100% !important;
         height: auto !important;
         display: block;
-        z-index: 1; /* Sotto la lama di luce dorata */
+        z-index: 1; 
         background: transparent !important;
         filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.5)); 
     }
 
     .castellana-tooltip {
         position: absolute;
-        top: 260px; /* Riposizionato dinamicamente rispetto alla testa */
+        top: 260px; 
         left: 6%;
         padding: 12px 26px;
         background: rgba(0, 0, 0, 0.55);
@@ -238,7 +230,49 @@
         z-index: 25;
     }
 
-    /* Sezione installazione app */
+    /* ==========================================================================
+       ⭐ INTRODUZIONE POETICA CENTRALE (AGGIUNTA)
+       ========================================================================== */
+    .home-welcome-poetry {
+        position: absolute;
+        top: 300px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 36vw;
+        max-width: 460px;
+        text-align: center;
+        padding: 28px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(14px) saturate(180%);
+        -webkit-backdrop-filter: blur(14px) saturate(180%);
+        border: 1px solid rgba(255, 215, 160, 0.65);
+        border-radius: 22px;
+        box-shadow: 
+            0 0 40px rgba(255, 215, 160, 0.25),
+            inset 0 0 20px rgba(255, 215, 160, 0.15);
+        z-index: 10;
+        animation: fadeInPoetry 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    .home-welcome-poetry h1 {
+        font-size: 1.7rem;
+        color: #ffd78f;
+        margin-bottom: 16px;
+        font-weight: 700;
+        text-shadow: 0 0 12px rgba(255, 215, 160, 0.7);
+        letter-spacing: 0.5px;
+    }
+
+    .home-welcome-poetry p {
+        font-size: 1.12rem;
+        color: #f7f2e9;
+        line-height: 1.65;
+        font-style: italic;
+    }
+
+    /* ==========================================================================
+       Sezione installazione app
+       ========================================================================== */
     .install-app-desktop {
         position: absolute;
         top: 950px; 
@@ -247,18 +281,15 @@
         width: 70%;          
         max-width: 900px;
         height: auto;
-
         background: rgba(255, 255, 255, 0.03) !important;
         backdrop-filter: blur(5px) brightness(1.15) contrast(0.85) !important;
         -webkit-backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
         border: 2px solid rgba(255, 215, 160, 0.9);
         border-radius: 20px;
-
         box-shadow:
             0 0 55px rgba(255, 215, 160, 1),
             0 0 95px rgba(255, 215, 160, 0.75),
             inset 0 0 35px rgba(255, 215, 160, 0.45);
-
         padding: 25px 40px;
         display: flex;
         justify-content: space-between;
@@ -294,7 +325,6 @@
         overflow: hidden;
     }
 
-    /* Riflesso sui bottoni installazione ammorbidito */
     .btn-desktop::before {
         content: '';
         position: absolute;
@@ -458,20 +488,22 @@
     }
 
     /* ==========================================================================
-       🔥 KEYFRAMES RICALIBRATI PER MASSIMA MORBIDEZZA VISIVA
+       🔥 KEYFRAMES RICALIBRATI
        ========================================================================== */
-    
-    /* 1. Loop autonomo lentissimo (10-12s) */
     @keyframes desktopGlowLoop {
         0% { left: -120%; }
         16% { left: 140%; }
         100% { left: 140%; }
     }
 
-    /* 2. Effetto Hover Vellutato: una scivolata d'oro morbida da 1.15 secondi */
     @keyframes desktopHoverFlasher {
         0% { left: -120%; }
         100% { left: 140%; }
+    }
+
+    @keyframes fadeInPoetry {
+        0% { opacity: 0; transform: translate(-50%, 25px); }
+        100% { opacity: 1; transform: translate(-50%, 0); }
     }
 
 }
