@@ -212,7 +212,7 @@ body {
 }
 
 /* ============================================================
-   GRIGLIA DELLE CARTE ADATTIVA CON SUPER GLOW SUI MONUMENTI
+   GRIGLIA DELLE CARTE ADATTIVA CON SUPER GLOW POTENZIATO
 ============================================================ */
 .cards {
   display: grid;
@@ -225,16 +225,17 @@ body {
 }
 
 .card {
-  background: rgba(5, 3, 2, 0.75);
+  background: rgba(5, 3, 2, 0.85); /* Leggermente più opaco per far risaltare il glow */
   border-radius: 1rem;
   overflow: hidden;
-  border: 1px solid rgba(255, 215, 160, 0.3);
+  border: 1px solid rgba(255, 215, 160, 0.25);
   backdrop-filter: blur(8px);
   cursor: pointer;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
               box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
-              border-color 0.4s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+              border-color 0.4s ease,
+              filter 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -243,14 +244,14 @@ body {
 .card-img-wrapper {
   width: 100%;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5);
   transition: all 0.4s ease;
 }
 
 .card img {
   width: 100%;
   height: 140px;
-  object-fit: cover; /* Ripristinato un taglio fotografico immersivo */
+  object-fit: cover;
   display: block;
   transition: transform 0.5s ease, filter 0.4s ease;
 }
@@ -260,33 +261,38 @@ body {
   padding: 1rem 0.5rem;
   color: #f7f2e9;
   text-align: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   border-top: 1px solid rgba(255, 215, 160, 0.15);
   margin-top: auto;
   transition: all 0.4s ease;
 }
 
-/* 🌟 EFFETTO SUPER GLOW AVANZATO AL PASSAGGIO DEL MOUSE */
+/* 🌟 EFFETTO SUPER GLOW DRASTICO ED ELEGANTE */
 .card:hover {
   transform: translateY(-8px);
-  border-color: rgba(255, 215, 160, 0.95);
-  /* Unione di un glow esterno massiccio dorato e un glow interno morbido */
+  border-color: rgba(255, 215, 160, 1);
+  
+  /* Combinazione di ombre multiple dense e sature per un effetto "neon dorato" */
   box-shadow: 
-    0 0 30px rgba(255, 215, 160, 0.65), 
-    0 0 50px rgba(212, 166, 74, 0.25),
-    inset 0 0 15px rgba(255, 215, 160, 0.2);
+    0 0 25px rgba(255, 215, 160, 0.8), 
+    0 0 50px rgba(212, 166, 74, 0.4),
+    inset 0 0 15px rgba(255, 215, 160, 0.3);
+  
+  /* Forza l'intero elemento a risplendere sui bordi */
+  filter: drop-shadow(0 0 10px rgba(255, 215, 160, 0.5));
 }
 
 .card:hover img {
-  transform: scale(1.06);
-  filter: brightness(1.1);
+  transform: scale(1.05);
+  filter: brightness(1.15) contrast(1.05);
 }
 
 .card:hover h3 {
   color: #ffd78f;
-  background: rgba(0, 0, 0, 0.8);
-  text-shadow: 0 0 10px rgba(255, 215, 160, 0.85);
+  background: rgba(0, 0, 0, 0.85);
+  text-shadow: 0 0 10px rgba(255, 215, 160, 0.9);
 }
+
 
 /* ============================================================
    WIDGET AREA & ICONA INGRANDITA DELLA CASTELLANA
