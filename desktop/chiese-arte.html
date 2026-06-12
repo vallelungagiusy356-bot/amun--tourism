@@ -51,36 +51,37 @@
           </div>
       </div>
 
+      <!-- CARDS CLICCABILI -->
       <section class="cards">
-          <article class="card">
+          <article class="card" data-img="img/cappuccini.jpg" data-title="I Cappuccini">
               <div class="card-img-wrapper">
                   <img src="img/cappuccini.jpg" alt="I Cappuccini">
               </div>
               <h3>I Cappuccini</h3>
           </article>
 
-          <article class="card">
+          <article class="card" data-img="img/parrocchia annunziata.jpg" data-title="Chiesa dell'Annunziata">
              <div class="card-img-wrapper">
                   <img src="img/parrocchia annunziata.jpg" alt="Chiesa dell'Annunziata">
              </div>
              <h3>Annunziata</h3>
           </article>
 
-          <article class="card">
+          <article class="card" data-img="img/sanbenedettodellabadia.jpg" data-title="S. Benedetto della Badia">
               <div class="card-img-wrapper">
                   <img src="img/sanbenedettodellabadia.jpg" alt="S. Benedetto della Badia">
               </div>
               <h3>S. Benedetto della Badia</h3>
           </article>
 
-          <article class="card">
+          <article class="card" data-img="img/santamariadegliangeli.jpg" data-title="Santa Maria degli Angeli">
               <div class="card-img-wrapper">
                   <img src="img/santamariadegliangeli.jpg" alt="Santa Maria degli Angeli">
               </div>
               <h3>S. Maria degli Angeli</h3>
           </article>
 
-          <article class="card">
+          <article class="card" data-img="img/sangiorgiomartire.jpg" data-title="San Giorgio Martire">
               <div class="card-img-wrapper">
                   <img src="img/sangiorgiomartire.jpg" alt="San Giorgio Martire">
               </div>
@@ -88,6 +89,15 @@
           </article>
       </section>
   </main>
+
+  <!-- STRUTTURA DELLA FINESTRA COMPARSA (MODAL) PER IMMAGINE IN GRANDE -->
+  <div id="image-modal" class="modal">
+      <button class="modal-close" id="modal-close-btn">✕</button>
+      <div class="modal-content-wrapper">
+          <img class="modal-img" id="modal-target-img" src="" alt="">
+          <h2 class="modal-title" id="modal-target-title"></h2>
+      </div>
+  </div>
 
   <!-- WIDGET CASTELLANA INTEGRATO E INGRANDITO -->
   <div class="castellana-widget-area">
@@ -120,6 +130,7 @@
   </div>
 
   <script>
+      // Logica gestione Apertura/Chiusura Chat della Castellana
       const chatBtn = document.getElementById('chat-open-btn');
       const chatBox = document.getElementById('chat-desktop');
       const closeChat = document.getElementById('close-chat');
@@ -130,6 +141,38 @@
 
       closeChat.addEventListener('click', () => {
           chatBox.style.display = 'none';
+      });
+
+      // NUOVA LOGICA: Apertura immagine monumento in grande (Modal)
+      const cards = document.querySelectorAll('.card');
+      const modal = document.getElementById('image-modal');
+      const modalImg = document.getElementById('modal-target-img');
+      const modalTitle = document.getElementById('modal-target-title');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+
+      cards.forEach(card => {
+          card.addEventListener('click', () => {
+              const imgSrc = card.getAttribute('data-img');
+              const imgTitle = card.getAttribute('data-title');
+              
+              modalImg.src = imgSrc;
+              modalImg.alt = imgTitle;
+              modalTitle.textContent = imgTitle;
+              
+              modal.classList.add('active');
+          });
+      });
+
+      // Chiusura cliccando sulla X
+      modalCloseBtn.addEventListener('click', () => {
+          modal.classList.remove('active');
+      });
+
+      // Chiusura di sicurezza cliccando sullo sfondo scuro fuori dall'immagine
+      modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+              modal.classList.remove('active');
+          }
       });
   </script>
 
