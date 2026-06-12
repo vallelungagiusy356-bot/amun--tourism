@@ -130,7 +130,7 @@ body {
 }
 
 /* ============================================================
-   HERO CENTRALE & STRUTTURA POESIA (STILE BERGMAN)
+   HERO CENTRALE & POESIA ELEGANTE (CORMORANT GARAMOND)
 ============================================================ */
 .hero {
   margin-top: 190px;
@@ -172,7 +172,6 @@ body {
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* APPLICATO IL NUOVO FONT 'Cormorant Garamond' ESTREMAMENTE ELEGANTE */
 .poesia-intro {
   font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-size: 1.35rem;
@@ -212,7 +211,7 @@ body {
 }
 
 /* ============================================================
-   GRIGLIA DELLE CARTE ADATTIVA CON SUPER GLOW POTENZIATO
+   GRIGLIA CARTE CON SUPER GLOW POTENZIATO
 ============================================================ */
 .cards {
   display: grid;
@@ -225,7 +224,7 @@ body {
 }
 
 .card {
-  background: rgba(5, 3, 2, 0.85); /* Leggermente più opaco per far risaltare il glow */
+  background: rgba(5, 3, 2, 0.85);
   border-radius: 1rem;
   overflow: hidden;
   border: 1px solid rgba(255, 215, 160, 0.25);
@@ -267,18 +266,14 @@ body {
   transition: all 0.4s ease;
 }
 
-/* 🌟 EFFETTO SUPER GLOW DRASTICO ED ELEGANTE */
+/* EFFETTO SUPER GLOW AL PASSAGGIO MOUSE */
 .card:hover {
   transform: translateY(-8px);
   border-color: rgba(255, 215, 160, 1);
-  
-  /* Combinazione di ombre multiple dense e sature per un effetto "neon dorato" */
   box-shadow: 
     0 0 25px rgba(255, 215, 160, 0.8), 
     0 0 50px rgba(212, 166, 74, 0.4),
     inset 0 0 15px rgba(255, 215, 160, 0.3);
-  
-  /* Forza l'intero elemento a risplendere sui bordi */
   filter: drop-shadow(0 0 10px rgba(255, 215, 160, 0.5));
 }
 
@@ -293,9 +288,8 @@ body {
   text-shadow: 0 0 10px rgba(255, 215, 160, 0.9);
 }
 
-
 /* ============================================================
-   WIDGET AREA & ICONA INGRANDITA DELLA CASTELLANA
+   WIDGET AREA & CASTELLANA (VIA DI MEZZO E VISO PROPORZIONATO)
 ============================================================ */
 .castellana-widget-area {
   position: fixed;
@@ -308,10 +302,9 @@ body {
   gap: 6px;
 }
 
-/* CIRCONFERENZA DELLA CASTELLANA SIGNIFICATIVAMENTE AUMENTATA */
 .castellana-video-wrapper {
-  width: 90px;  /* Ingrandito su mobile (era 65px) */
-  height: 90px; /* Ingrandito su mobile */
+  width: 78px;   /* Dimensione bilanciata su mobile */
+  height: 78px;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid #ffd78f;
@@ -322,7 +315,6 @@ body {
   position: relative;
 }
 
-/* Leggera animazione di pulsazione aura dorata attorno al cerchio */
 .castellana-video-wrapper::after {
   content: '';
   position: absolute;
@@ -343,6 +335,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 15%; /* Sposta l'inquadratura in alto per NON tagliare la testa */
 }
 
 .castellana-tooltip {
@@ -351,18 +344,17 @@ body {
   padding: 0.3rem 0.8rem;
   border-radius: 999px;
   font-weight: 700;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
   pointer-events: none;
 }
 
-/* CHAT AREA DESKTOP */
 #chat-desktop {
   position: fixed;
   right: 1.5rem;
-  bottom: 140px; /* Adattato per non sovrapporsi all'icona ingrandita */
+  bottom: 125px; /* Perfettamente spaziata sopra il widget */
   width: 290px;
   height: 330px;
   background: rgba(10, 6, 4, 0.97);
@@ -486,7 +478,6 @@ body {
     font-size: 3.2rem;
   }
 
-  /* EFFETTO BERGMAN CON CARATTERE LUSSUOSO SU DESKTOP */
   .poesia-container {
     background: rgba(0, 0, 0, 0);
     border: 1px solid transparent;
@@ -516,7 +507,6 @@ body {
     font-size: 1.35rem;
   }
 
-  /* Griglia monumenti definita a 5 colonne */
   .cards {
     grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
@@ -531,7 +521,7 @@ body {
     font-size: 0.95rem;
   }
 
-  /* ICONA DELLA CASTELLANA MASSIMIZZATA SU DESKTOP */
+  /* VIA DI MEZZO DESKTOP PER LA CASTELLANA */
   .castellana-widget-area {
     right: 2rem;
     bottom: 2rem;
@@ -539,8 +529,8 @@ body {
   }
 
   .castellana-video-wrapper {
-    width: 135px;  /* Notevole aumento di diametro (era 80px) */
-    height: 135px; /* Notevole aumento di diametro */
+    width: 110px;  /* Perfetta via di mezzo per desktop */
+    height: 110px;
     border: 3px solid #ffd78f;
   }
 
@@ -551,7 +541,7 @@ body {
 
   #chat-desktop {
     right: 2rem;
-    bottom: 200px; /* Spostato più in alto per lasciare spazio alla grande icona tonda */
+    bottom: 175px; /* Adattato per stare sopra l'icona desktop */
     width: 320px;
     height: 400px;
   }
@@ -566,15 +556,15 @@ body {
     margin-top: 150px;
   }
   .castellana-video-wrapper {
-    width: 110px;
-    height: 110px;
+    width: 95px;
+    height: 95px;
   }
   #chat-desktop {
-    bottom: 170px;
+    bottom: 150px;
   }
 }
 
-/* ANIMAZIONI */
+/* TIMING ANIMAZIONI ACCLARATE */
 @keyframes desktopGlowLoop {
   0% { left: -120%; }
   16% { left: 140%; }
