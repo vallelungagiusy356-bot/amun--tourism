@@ -211,7 +211,7 @@ body {
 }
 
 /* ============================================================
-   GRIGLIA CARTE CON SUPER GLOW POTENZIATO
+   GRIGLIA CARTE CON GLOW POTENZIATO E FISSO DI BASE
 ============================================================ */
 .cards {
   display: grid;
@@ -224,27 +224,30 @@ body {
 }
 
 .card {
-  background: rgba(5, 3, 2, 0.85);
+  background: rgba(12, 8, 5, 0.9);
   border-radius: 1rem;
   overflow: hidden;
-  border: 1px solid rgba(255, 215, 160, 0.25);
+  /* MODIFICA: Il bordo dorato e il glow sono caricate FISSI fin da subito */
+  border: 1px solid rgba(255, 215, 160, 0.9);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 160, 0.6), 
+    0 0 40px rgba(212, 166, 74, 0.3),
+    inset 0 0 12px rgba(255, 215, 160, 0.25);
+  filter: drop-shadow(0 0 8px rgba(255, 215, 160, 0.4));
+  
   backdrop-filter: blur(8px);
   cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
-              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
-              border-color 0.4s ease,
-              filter 0.4s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .card-img-wrapper {
   width: 100%;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.5);
-  transition: all 0.4s ease;
 }
 
 .card img {
@@ -258,34 +261,108 @@ body {
 .card h3 {
   font-size: 0.9rem;
   padding: 1rem 0.5rem;
-  color: #f7f2e9;
+  color: #ffd78f; /* Colore oro fisso di base */
   text-align: center;
-  background: rgba(0, 0, 0, 0.6);
-  border-top: 1px solid rgba(255, 215, 160, 0.15);
+  background: rgba(0, 0, 0, 0.75);
+  border-top: 1px solid rgba(255, 215, 160, 0.3);
   margin-top: auto;
-  transition: all 0.4s ease;
+  text-shadow: 0 0 8px rgba(255, 215, 160, 0.8);
 }
 
-/* EFFETTO SUPER GLOW AL PASSAGGIO MOUSE */
+/* Al tocco/hover la carta fa solo un elegante scatto verso l'alto e l'immagine zooma */
 .card:hover {
   transform: translateY(-8px);
-  border-color: rgba(255, 215, 160, 1);
   box-shadow: 
-    0 0 25px rgba(255, 215, 160, 0.8), 
-    0 0 50px rgba(212, 166, 74, 0.4),
+    0 0 30px rgba(255, 215, 160, 0.9), 
+    0 0 60px rgba(212, 166, 74, 0.55),
     inset 0 0 15px rgba(255, 215, 160, 0.3);
-  filter: drop-shadow(0 0 10px rgba(255, 215, 160, 0.5));
 }
 
 .card:hover img {
   transform: scale(1.05);
-  filter: brightness(1.15) contrast(1.05);
+  filter: brightness(1.15);
 }
 
-.card:hover h3 {
+/* ============================================================
+   STRUTTURA FINESTRA SCHERMO INTERO (MODAL LIGHTBOX)
+============================================================ */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 3, 2, 0.93);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 999999; /* Sopra a ogni cosa */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content-wrapper {
+  max-width: 90%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.modal.active .modal-content-wrapper {
+  transform: scale(1);
+}
+
+.modal-img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 2px solid #ffd78f;
+  box-shadow: 0 0 40px rgba(255, 215, 160, 0.5);
+}
+
+.modal-title {
+  font-family: 'Playfair Display', serif;
   color: #ffd78f;
-  background: rgba(0, 0, 0, 0.85);
-  text-shadow: 0 0 10px rgba(255, 215, 160, 0.9);
+  font-size: 1.8rem;
+  margin-top: 15px;
+  text-shadow: 0 0 12px rgba(255, 215, 160, 0.8);
+  text-align: center;
+}
+
+/* Pulsante di Chiusura elegante a cerchio */
+.modal-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #ffd78f;
+  color: #ffd78f;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 215, 160, 0.3);
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: #ffd78f;
+  color: #050302;
+  box-shadow: 0 0 25px #ffd78f;
+  transform: rotate(90deg);
 }
 
 /* ============================================================
@@ -303,7 +380,7 @@ body {
 }
 
 .castellana-video-wrapper {
-  width: 78px;   /* Dimensione bilanciata su mobile */
+  width: 78px;   
   height: 78px;
   border-radius: 50%;
   overflow: hidden;
@@ -335,7 +412,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%; /* Sposta l'inquadratura in alto per NON tagliare la testa */
+  object-position: center 15%; 
 }
 
 .castellana-tooltip {
@@ -354,7 +431,7 @@ body {
 #chat-desktop {
   position: fixed;
   right: 1.5rem;
-  bottom: 125px; /* Perfettamente spaziata sopra il widget */
+  bottom: 125px; 
   width: 290px;
   height: 330px;
   background: rgba(10, 6, 4, 0.97);
@@ -521,7 +598,6 @@ body {
     font-size: 0.95rem;
   }
 
-  /* VIA DI MEZZO DESKTOP PER LA CASTELLANA */
   .castellana-widget-area {
     right: 2rem;
     bottom: 2rem;
@@ -529,7 +605,7 @@ body {
   }
 
   .castellana-video-wrapper {
-    width: 110px;  /* Perfetta via di mezzo per desktop */
+    width: 110px;  
     height: 110px;
     border: 3px solid #ffd78f;
   }
@@ -541,9 +617,13 @@ body {
 
   #chat-desktop {
     right: 2rem;
-    bottom: 175px; /* Adattato per stare sopra l'icona desktop */
+    bottom: 175px; 
     width: 320px;
     height: 400px;
+  }
+
+  .modal-img {
+    max-height: 75vh;
   }
 }
 
