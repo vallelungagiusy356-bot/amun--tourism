@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="castle.title">Il Castello di Caccamo</title>
 
-    <!-- CSS -->
+    <!-- Google Fonts integrato per uniformità tipografica -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="castello.css">
 
     <!-- SEO -->
@@ -23,7 +24,7 @@
         <div class="scene-overlay"></div>
     </div>
 
-    <!-- 👑 DASHBOARD -->
+    <!-- 👑 DASHBOARD UNIFORMATA -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
@@ -34,12 +35,13 @@
         </nav>
 
         <div class="header-right-actions">
+            <!-- Selettore lingue testuale compatto identico alla home e a chiese-arte -->
             <div class="lang-switcher">
-                <button data-lang="it" class="active">🇮🇹</button>
-                <button data-lang="en">🇬🇧</button>
-                <button data-lang="fr">🇫🇷</button>
-                <button data-lang="de">🇩🇪</button>
-                <button data-lang="es">🇪🇸</button>
+                <button data-lang="it" class="active" title="Italiano">IT</button>
+                <button data-lang="en" title="English">EN</button>
+                <button data-lang="fr" title="Français">FR</button>
+                <button data-lang="de" title="Deutsch">DE</button>
+                <button data-lang="es" title="Español">ES</button>
             </div>
 
             <button class="home-btn" onclick="location.href='index.html'">
@@ -48,92 +50,90 @@
         </div>
     </header>
 
-    <!-- 🏰 LAYOUT PRINCIPALE -->
-    <main class="castle-layout">
-
-        <!-- 📜 COLONNA SINISTRA -->
-        <section class="castle-info-panel">
-
-            <header class="info-panel-header">
-                <span class="category-tag" data-i18n="castle.category">Monumenti Storici</span>
-                <h1 data-i18n="castle.title">Il Castello di Caccamo</h1>
-                <hr class="gold-divider">
-            </header>
-
-            <div class="castle-text-content">
-
-                <p class="text-paragraph leading-para" data-i18n="castle.rhyme_1">
+    <!-- 🏰 LAYOUT CENTRATO STILE HERO -->
+    <main class="hero">
+        <div class="hero-text">
+            <span class="category-tag" data-i18n="castle.category">Monumenti Storici</span>
+            <h1 data-i18n="castle.title">Il Castello di Caccamo</h1>
+        </div>
+        
+        <!-- Contenitore unico ed elegante per rime e approfondimenti -->
+        <section class="poesia-container">
+            
+            <div class="poesia-corpo">
+                <p data-i18n="castle.rhyme_1">
                     Benvenuti, o viandanti, al maniero possente,<br>
                     che scruta la valle e la storia presente.<br>
                     Arroccato sul monte di viva pietra fiero,<br>
                     custode di sogni, di gloria e mistero.
                 </p>
 
-                <p class="text-paragraph" data-i18n="castle.rhyme_2">
+                <p data-i18n="castle.rhyme_2">
                     Tra queste sue mura che sfidano il tempo,<br>
                     passaron dinastie come soffio nel vento.<br>
                     Dai fieri Chiaramonte ai Despuches d'onore,<br>
                     ogni stanza racconta di patti e splendore.
                 </p>
 
-                <p class="text-paragraph highlight-para" data-i18n="castle.rhyme_3">
+                <p class="highlight-para" data-i18n="castle.rhyme_3">
                     Non cercate le date nel freddo volume,<br>
                     ma l'ombra che danza al calar del lumicino.<br>
                     La Castellana vi attende, tra i passi e la via,<br>
                     per svelarvi il segreto di Suor Felicia.
                 </p>
+            </div>
 
-                <!-- 👗 ABITO INTEGRATO -->
-                <figure class="castle-dress-inline">
-                    <img src="img/abito_clean.png" alt="Abito storico della Castellana" class="dress-img-inline" loading="lazy">
-                    <figcaption class="dress-caption-inline" data-i18n="castle.dress_caption">
-                        L'abito della Castellana
-                    </figcaption>
-                </figure>
+            <!-- 👗 ABITO STORICO INLINE INTEGRATO NEL FLUSSO -->
+            <figure class="castle-dress-inline">
+                <img src="img/abito_clean.png" alt="Abito storico della Castellana" class="dress-img-inline" loading="lazy">
+                <figcaption class="dress-caption-inline" data-i18n="castle.dress_caption">
+                    L'abito della Castellana
+                </figcaption>
+            </figure>
 
-                <p class="text-paragraph" data-i18n="castle.para_2">
+            <div class="poesia-corpo descrizione-storica">
+                <p data-i18n="castle.para_2">
                     Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
                 </p>
 
-                <p class="text-paragraph highlight-para" data-i18n="castle.para_3">
+                <p class="highlight-para" data-i18n="castle.para_3">
                     Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo.  
                     La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
                 </p>
-
             </div>
+
+            <p class="poesia-outro">Lasciati guidare oltre le soglie del tempo...</p>
         </section>
-
-        <!-- 👑 CASTELLANA + CHAT (VERSIONE AVATAR TONDO) -->
-<div class="castellana-widget-area">
-
-    <div class="castellana-video-container">
-        <div class="castellana-video-wrapper" id="castellanaTrigger">
-            <video class="castellana-video" autoplay loop muted playsinline>
-                <source src="img/benvenuto_castellana.webm" type="video/webm">
-                <source src="img/benvenuto_castellana.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-
-    <aside class="chat-desktop" id="chatDesktop">
-        <header class="chat-header">
-            <div class="avatar-status-dot"></div>
-            <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
-            <button class="close-chat-btn" id="closeChatBtn">✕</button>
-        </header>
-
-        <div class="chat-messages" id="chatMessagesBox">
-            <div class="message system-msg" data-i18n="castle.welcomemsg_felicia"></div>
-        </div>
-
-        <div class="chat-input-row">
-            <input type="text" id="chatInput" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
-            <button class="mic-btn">🎤</button>
-        </div>
-    </aside>
-
-</div>
     </main>
+
+    <!-- 👑 CASTELLANA WIDGET AREA (AVATAR TONDO) -->
+    <div class="castellana-widget-area">
+        <div class="castellana-video-container">
+            <div class="castellana-video-wrapper" id="castellanaTrigger">
+                <video class="castellana-video" autoplay loop muted playsinline>
+                    <source src="img/benvenuto_castellana.webm" type="video/webm">
+                    <source src="img/benvenuto_castellana.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <aside class="chat-desktop" id="chatDesktop">
+            <header class="chat-header">
+                <div class="avatar-status-dot"></div>
+                <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
+                <button class="close-chat-btn" id="closeChatBtn">✕</button>
+            </header>
+
+            <div class="chat-messages" id="chatMessagesBox">
+                <div class="message system-msg" data-i18n="castle.welcomemsg_felicia"></div>
+            </div>
+
+            <div class="chat-input-row">
+                <input type="text" id="chatInput" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+                <button class="mic-btn">🎤</button>
+            </div>
+        </aside>
+    </div>
 
     <!-- 🌍 MULTILINGUA -->
     <script src="../js/lang.js"></script>
