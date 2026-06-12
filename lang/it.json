@@ -11,17 +11,18 @@
     "monuments": "Monumenti"
   },
 
-    "home": {
+  "home": {
     "chat_web": "Parla con la Castellana sul sito web",
     "amuni_title": "Benvenuto, o viandante...",
     "amuni_text": "Benvenuto, o viandante, al limitare del tempo,<br>dove la storia respira in ogni soffio di vento.<br>Senti il richiamo di pietre millenarie e severe,<br>custodi di cunti, di dame, di antiche preghiere.<br><br>Non fermare il tuo passo, specchiati in questa magia,<br><strong>Amunì, vieni, ti indico la via.</strong>",
+    "castellana_intro_title": "Vivi la Caccamo più autentica",
+    "castellana_intro_text": "Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto tra le meraviglie del borgo e del territorio circostante.",
     "install_app": "Installa l’app Amunì Tourism",
     "download_apk": "Scarica l’app (APK)",
     "open_webapp": "Apri la Web App",
     "scan_qr": "Scansiona il QR per installare l’app",
     "talk_castellana": "Parla con la Castellana"
   },
-
 
   "chat": {
     "title": "Castellana di Caccamo",
@@ -64,7 +65,7 @@
     "title": "Il Castello di Caccamo",
     "category": "Monumenti Storici",
     "rhyme_1": "Benvenuti, o viandanti, al maniero possente,<br>che scruta la valle e la storia presente.<br>Arroccato sul monte di viva pietra fiero,<br>custode di sogni, di gloria e mistero.",
-    "rhyme_2": "Tra queste sue mura che sfidano il tempo,<br>passaron dinastie come soffio nel vento.<br>Dai fieri Chiaramonte ai Despuches d'onore,<br>ogni stanza racconta di patti e splendore.",
+    "rhyme_2": "Tra queste sue mura che sfidano il tempo,<br>passaron dinastie come soffio nel vento.<br>Dai fieri Chiaramonte avventurosi,<br>ogni stanza racconta di patti e splendore.",
     "rhyme_3": "Non cercate le date nel freddo volume,<br>ma l'ombra che danza al calar del lumicino.<br>La Castellana vi attende, tra i passi e la via,<br>per svelarvi il segreto di Suor Felicia.",
     "dress_caption": "L'abito della Castellana",
     "chat_tooltip": "Click to Chat",
@@ -84,7 +85,7 @@
     "btn_comune_info": "Info Istituzionali Comune",
     "btn_contact_turismo": "Contatta Ufficio Turismo",
     "btn_dindondan": "Esplora Chiese su Din Don Dan",
-    "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momentos di celebrazione interna.",
+    "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momenti di celebrazione interna.",
     "mobile": {
       "go_to_map": "Vai alla Mappa"
     },
@@ -125,7 +126,7 @@
 
   "chiese_page": {
     "page_title": "Le Chiese di Caccamo",
-    "poesia_intro": "Cinque templi di pietra, di fece e di memoria,<br>aprono le porte su una secolare storia.",
+    "poesia_intro": "Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.",
     "verse_angeli": "Agli <strong>Angeli</strong> riposa, nel silenzio più sacro,<br>il Beato Giovanni, del borgo simulacro.",
     "verse_badia": "Se scendi alla <strong>Badia</strong>, la terra si fa fiore<br>nel ricamo in maiolica di raro splendore.",
     "verse_duomo": "Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne.",
