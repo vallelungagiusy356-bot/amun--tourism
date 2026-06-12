@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Le Chiese di Caccamo</title>
 
-  <!-- Google Fonts completato con Garamond/Georgia integrati via CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts completato con Playfair Display e il raffinatissimo Cormorant Garamond per la poesia -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="chiese-arte.css">
 </head>
 
@@ -17,9 +17,9 @@
       <div class="logo-title">Amunì Tourism</div>
 
       <nav class="nav-desktop">
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Contatti</a>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contatti</a>
       </nav>
 
       <!-- SELETTORE LINGUE COMPLETO -->
@@ -47,44 +47,55 @@
                   <p>Sali infine ai <strong>Cappuccini</strong>, sul colle radioso,<br>tra una Pala d'altare e un panorama maestoso.</p>
               </div>
               
-              <!-- Corretto il refuso della classe in poesia-outro -->
               <p class="poesia-outro">Lasciati guidare dove il tempo si è fermato...</p>
           </div>
       </div>
 
       <section class="cards">
           <article class="card">
-              <img src="img/cappuccini.jpg" alt="I Cappuccini">
+              <div class="card-img-wrapper">
+                  <img src="img/cappuccini.jpg" alt="I Cappuccini">
+              </div>
               <h3>I Cappuccini</h3>
           </article>
 
           <article class="card">
-             <img src="img/parrocchia annunziata.jpg" alt="Chiesa dell'Annunziata">
+             <div class="card-img-wrapper">
+                  <img src="img/parrocchia annunziata.jpg" alt="Chiesa dell'Annunziata">
+             </div>
              <h3>Annunziata</h3>
           </article>
 
           <article class="card">
-              <img src="img/sanbenedettodellabadia.jpg" alt="S. Benedetto della Badia">
+              <div class="card-img-wrapper">
+                  <img src="img/sanbenedettodellabadia.jpg" alt="S. Benedetto della Badia">
+              </div>
               <h3>S. Benedetto della Badia</h3>
           </article>
 
           <article class="card">
-              <img src="img/santamariadegliangeli.jpg" alt="Santa Maria degli Angeli">
+              <div class="card-img-wrapper">
+                  <img src="img/santamariadegliangeli.jpg" alt="Santa Maria degli Angeli">
+              </div>
               <h3>S. Maria degli Angeli</h3>
           </article>
 
           <article class="card">
-              <img src="img/sangiorgiomartire.jpg" alt="San Giorgio Martire">
+              <div class="card-img-wrapper">
+                  <img src="img/sangiorgiomartire.jpg" alt="San Giorgio Martire">
+              </div>
               <h3>San Giorgio Martire</h3>
           </article>
       </section>
   </main>
 
-  <!-- VIDEO CASTELLANA -->
-  <div class="castellana-video-wrapper" id="chat-open-btn">
-      <video class="castellana-video" autoplay muted loop playsinline>
-          <source src="img/castellana_alpha.webm" type="video/webm">
-      </video>
+  <!-- WIDGET CASTELLANA INTEGRATO E INGRANDITO -->
+  <div class="castellana-widget-area">
+      <div class="castellana-video-wrapper" id="chat-open-btn">
+          <video class="castellana-video" autoplay muted loop playsinline>
+              <source src="img/castellana_alpha.webm" type="video/webm">
+          </video>
+      </div>
       <div class="castellana-tooltip">Click to chat</div>
   </div>
 
@@ -97,7 +108,6 @@
       </div>
 
       <div class="chat-messages">
-          <!-- Messaggio di benvenuto allineato al brand -->
           <div class="message">
               Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo o chiedimi dettagli sulla storia e sulle tradizioni di queste splendide chiese.
           </div>
