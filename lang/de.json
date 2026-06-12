@@ -11,16 +11,17 @@
     "monuments": "Denkmäler"
   },
 
-  "home": {
+    "home": {
     "chat_web": "Chatten Sie mit der Castellana auf der Website",
-    "amuni_title": "Die Bedeutung von Amunì",
-    "amuni_text": "In Sizilien ist „Amunì“ nicht nur ein einfaches „Auf geht's“. Es ist eine herzliche Einladung, ein Lächeln, das Sie begleitet. Es ist die Stimme unseres Landes, die Ihnen sagt: Bewegen Sie sich, leben Sie, entdecken Sie, träumen Sie.",
+    "amuni_title": "Willkommen, o Wanderer...",
+    "amuni_text": "Willkommen, o Wanderer, am Rande der Zeit,<br>wo Geschichte im Hauch des Windes verweilt.<br>Spür den Ruf der alten Steine, stolz und erhaben,<br>die Legenden, Damen und alte Gebete in sich tragen.<br><br>Halte deinen Schritt nicht ein, tauch ein in diese Magie,<br><strong>Amunì, komm, ich zeige dir den Weg.</strong>",
     "install_app": "Installieren Sie die Amunì Tourism App",
     "download_apk": "App herunterladen (APK)",
     "open_webapp": "Web-App öffnen",
     "scan_qr": "Scannen Sie den QR-Code, um die App zu installieren",
     "talk_castellana": "Sprechen Sie mit der Castellana"
   },
+
 
   "chat": {
     "title": "Castellana von Caccamo",
