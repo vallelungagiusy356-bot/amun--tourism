@@ -369,44 +369,69 @@ body {
         z-index: 25;
     }
 
-    /* INTRODUZIONE POETICA DESKTOP (SPOSTATA A DESTRA E VERTICALIZZATA) */
+        /* ==========================================================================
+       ⭐ INTRODUZIONE POETICA DESKTOP — STILE BERGMAN / MINIMAL ELEGANT
+       ========================================================================== */
     .home-welcome-poetry {
         position: absolute;
         top: 260px;
-        left: 58%; /* Spostata a destra per non coprire più l'avatar */
+        left: 58%;
         transform: translateX(-50%);
         width: 38vw;
         max-width: 440px;
         margin: 0;
         text-align: center;
         padding: 24px 30px;
-        background: rgba(0, 0, 0, 0.55);
-        backdrop-filter: blur(14px) saturate(180%);
-        -webkit-backdrop-filter: blur(14px) saturate(180%);
-        border: 1px solid rgba(255, 215, 160, 0.7);
+        
+        /* Eliminiamo il box ingombrante: sfondo trasparente di base */
+        background: rgba(0, 0, 0, 0);
+        border: 1px solid transparent;
         border-radius: 22px;
-        box-shadow: 
-            0 0 40px rgba(255, 215, 160, 0.35),
-            inset 0 0 20px rgba(255, 215, 160, 0.20);
+        box-shadow: none;
+        
         z-index: 5;
         animation: fadeInPoetry 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        
+        /* Transizione fluida per l'effetto hover */
+        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
+    /* EFFETTO HOVER: compare un velo scuro e soffuso solo quando ti avvicini con il mouse */
+    .home-welcome-poetry:hover {
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(8px) saturate(120%);
+        -webkit-backdrop-filter: blur(8px) saturate(120%);
+        border: 1px solid rgba(255, 215, 160, 0.25);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    /* TITOLO DELLA POESIA (SERIF D'IMPATTO) */
     .home-welcome-poetry h1 {
-        font-size: 1.6rem;
+        font-family: 'Georgia', 'Times New Roman', Times, serif; /* Forziamo lo stile Serif storico */
+        font-size: 1.75rem;
         color: #ffd78f;
-        margin-bottom: 14px;
+        margin-bottom: 16px;
         font-weight: 700;
-        text-shadow: 0 0 12px rgba(255, 215, 160, 0.7);
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
+        /* Forte ombra scura dietro i caratteri per renderli leggibili anche senza box */
+        text-shadow: 
+            2px 2px 8px rgba(0, 0, 0, 0.95),
+            0 0 15px rgba(255, 215, 160, 0.3);
     }
 
+    /* CORPO DEL TESTO (SERIF ELEGANTE E LEGGIBILE) */
     .home-welcome-poetry p {
-        font-size: 1.05rem;
+        font-family: 'Garamond', 'Georgia', 'Times New Roman', serif; /* Serif per i versi */
+        font-size: 1.1rem;
         color: #f7f2e9;
-        line-height: 1.7;
+        line-height: 1.75;
         font-style: italic;
+        /* Ombra netta e definita su ogni singola lettera per staccare dallo sfondo */
+        text-shadow: 
+            1px 1px 6px rgba(0, 0, 0, 0.95),
+            2px 2px 12px rgba(0, 0, 0, 0.9);
     }
+
 
     /* SEZIONE INSTALLAZIONE APP DESKTOP */
     .install-app-desktop {
