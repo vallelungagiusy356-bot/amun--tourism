@@ -83,7 +83,7 @@
     "btn_comune_info": "Info Istituzionali Comune",
     "btn_contact_turismo": "Contatta Ufficio Turismo",
     "btn_dindondan": "Esplora Chiese su Din Don Dan",
-    "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momenti di celebrazione interna.",
+    "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momentos di celebrazione interna.",
     "mobile": {
       "go_to_map": "Vai alla Mappa"
     },
@@ -120,5 +120,16 @@
       "hours": "Accessibile principalmente su richiesta o durante le ricorrenze francescane. Contattare l'Ufficio Turismo.",
       "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti come la Chiesa di San Rocco e altri piccoli capolavori diffusi."
     }
+  },
+
+  "chiese_page": {
+    "page_title": "Le Chiese di Caccamo",
+    "poesia_intro": "Cinque templi di pietra, di fece e di memoria,<br>aprono le porte su una secolare storia.",
+    "verse_angeli": "Agli <strong>Angeli</strong> riposa, nel silenzio più sacro,<br>il Beato Giovanni, del borgo simulacro.",
+    "verse_badia": "Se scendi alla <strong>Badia</strong>, la terra si fa fiore<br>nel ricamo in maiolica di raro splendore.",
+    "verse_duomo": "Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne.",
+    "verse_annunziata": "Poi l'<strong>Annunziata</strong> svela le sue volte dipinte,<br>e la torre campanaria dalle guardie mai vinte.",
+    "verse_cappuccini": "Sali infine ai <strong>Cappuccini</strong>, sul colle radioso,<br>tra una Pala d'altare e un panorama maestoso.",
+    "poesia_outro": "Lasciati guidare dove il tempo si è fermato..."
   }
 }
