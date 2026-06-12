@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PARTE 1: STILI BASE E PER DISPOSITIVI MOBILI (PRIME ~200 RIGHE)
+   PARTE 1: STILI BASE E PER DISPOSITIVI MOBILI 
    ========================================================================== */
 
 /* RESET E BINDING */
@@ -111,7 +111,7 @@ body {
     width: 90%;
     margin: 20px auto;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.35); /* Velo molto leggero per non appesantire */
+    background: rgba(0, 0, 0, 0.35); 
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 215, 160, 0.2);
@@ -120,7 +120,7 @@ body {
 }
 
 .home-welcome-poetry h1 {
-    font-family: 'Georgia', 'Times New Roman', Times, serif; /* Coerenza Serif mobile */
+    font-family: 'Georgia', 'Times New Roman', Times, serif; 
     font-size: 1.4rem;
     color: #ffd78f;
     margin-bottom: 12px;
@@ -128,15 +128,79 @@ body {
 }
 
 .home-welcome-poetry p {
-    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif; /* Coerenza Serif mobile */
+    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif; 
     font-size: 1rem;
     line-height: 1.6;
     color: #f7f2e9;
     font-style: italic;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95); /* Leggibilità garantita sul cielo */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95); 
 }
 
+/* BOX INTRODUTTIVO CASTELLANA (HOME) - STRUTTURA BASE / MOBILE */
+.castellana-intro-card {
+    width: 90%;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: all 0.4s ease;
+}
 
+.castellana-intro-card:hover {
+    background: rgba(5, 3, 2, 0.6);
+    border-color: rgba(255, 215, 160, 0.4);
+    box-shadow: 0 12px 35px rgba(255, 215, 160, 0.1);
+    transform: translateY(-2px);
+}
+
+.intro-card-content h3 {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    color: #ffd78f;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.intro-card-content p {
+    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    line-height: 1.6;
+    color: #e6e0d4;
+    margin-bottom: 1.2rem;
+    font-style: italic;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.intro-card-content strong {
+    color: #ffd78f;
+    font-weight: 600;
+}
+
+/* Badge delle 5 lingue */
+.languages-badge {
+    display: inline-block;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffd78f;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 160, 0.2);
+}
+
+.languages-badge span {
+    opacity: 0.85;
+}
 
 /* BOX APPLICAZIONE MOBILE */
 .install-app-desktop {
@@ -231,7 +295,7 @@ body {
         background: transparent !important;
     }
 
-    /* DASHBOARD ELEGANTE NERA + ORO (FIX COMPATEZZA) */
+    /* DASHBOARD ELEGANTE NERA + ORO */
     .dashboard {
         position: fixed;
         top: 0;
@@ -304,7 +368,7 @@ body {
         transform: scale(1.05);
     }
 
-    /* PULSANTI LINGUA (RISOLUZIONE BANDIERINA SPAGNOLA) */
+    /* PULSANTI LINGUA */
     .lang-switcher {
         display: flex;
         gap: 6px;
@@ -377,15 +441,15 @@ body {
         z-index: 25;
     }
 
-    /* INTRODUZIONE POETICA DESKTOP — STILE BERGMAN / MINIMAL ELEGANT */
+    /* INTRODUZIONE POETICA DESKTOP — BERGMAN STYLE (FLUSSO CORRETTO) */
     .home-welcome-poetry {
-        position: absolute;
-        top: 260px;
-        left: 58%;
-        transform: translateX(-50%);
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
         width: 38vw;
         max-width: 440px;
-        margin: 0;
+        margin: 180px auto 20px auto; 
         text-align: center;
         padding: 24px 30px;
         background: rgba(0, 0, 0, 0);
@@ -393,16 +457,8 @@ body {
         border-radius: 22px;
         box-shadow: none;
         z-index: 5;
-        animation: fadeInPoetry 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        animation: fadeInPoetryDesktop 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .home-welcome-poetry:hover {
-        background: rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(8px) saturate(120%);
-        -webkit-backdrop-filter: blur(8px) saturate(120%);
-        border: 1px solid rgba(255, 215, 160, 0.25);
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
     }
 
     .home-welcome-poetry h1 {
@@ -428,15 +484,65 @@ body {
             2px 2px 12px rgba(0, 0, 0, 0.9);
     }
 
-    /* SEZIONE INSTALLAZIONE APP DESKTOP */
+    /* BOX INTRODUTTIVO CASTELLANA DESKTOP — STRUTTURATA SOTTO LA POESIA */
+    .castellana-intro-card {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 38vw;                 
+        max-width: 440px;            
+        margin: 0 auto 50px auto;    
+        text-align: center;
+        padding: 24px 30px;          
+        background: rgba(0, 0, 0, 0);
+        border: 1px solid transparent;
+        border-radius: 22px;
+        box-shadow: none;
+        z-index: 5;
+        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Uniformità effetti hover per Poesia e Guida */
+    .home-welcome-poetry:hover,
+    .castellana-intro-card:hover {
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(8px) saturate(120%);
+        -webkit-backdrop-filter: blur(8px) saturate(120%);
+        border: 1px solid rgba(255, 215, 160, 0.25);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+        transform: none;
+    }
+
+    /* Uniformità font interni della guida con la poesia */
+    .intro-card-content h3 {
+        font-family: 'Georgia', 'Times New Roman', Times, serif;
+        font-size: 1.75rem;
+        color: #ffd78f;
+        margin-bottom: 16px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.95);
+    }
+
+    .intro-card-content p {
+        font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
+        font-size: 1.1rem;
+        color: #f7f2e9;
+        line-height: 1.75;
+        font-style: italic;
+        text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.95);
+    }
+
+    /* SEZIONE INSTALLAZIONE APP DESKTOP (POSIZIONAMENTO RELATIVO COERENTE) */
     .install-app-desktop {
-        position: absolute;
-        top: 920px; 
-        left: 50%;
-        transform: translateX(-50%);
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
         width: 75%;          
         max-width: 850px;
-        margin: 0;
+        margin: 40px auto;
         background: rgba(255, 255, 255, 0.03) !important;
         backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
         -webkit-backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
@@ -523,82 +629,16 @@ body {
         animation: slideInRight 0.55s ease forwards;
     }
 
-   /* ============================================================
-   BOX INTRODUTTIVO CASTELLANA (HOME)
-   ============================================================ */
-.castellana-intro-card {
-    max-width: 700px;
-    margin: 2.5rem auto;
-    padding: 1.5rem;
-    background: rgba(5, 3, 2, 0.4);
-    border: 1px solid rgba(255, 215, 160, 0.2);
-    border-radius: 12px;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    transition: all 0.4s ease;
-}
-
-.castellana-intro-card:hover {
-    background: rgba(5, 3, 2, 0.6);
-    border-color: rgba(255, 215, 160, 0.4);
-    box-shadow: 0 12px 35px rgba(255, 215, 160, 0.1);
-    transform: translateY(-2px);
-}
-
-.intro-card-content h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 3vw, 1.8rem);
-    color: #ffd78f;
-    margin-top: 0;
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-}
-
-.intro-card-content p {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    font-size: clamp(1rem, 2.2vw, 1.1rem);
-    line-height: 1.6;
-    color: #e6e0d4;
-    margin-bottom: 1.2rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-}
-
-.intro-card-content strong {
-    color: #ffd78f;
-    font-weight: 600;
-}
-
-/* Badge delle 5 lingue per dare impatto visivo immediato */
-.languages-badge {
-    display: inline-block;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #ffd78f;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 6px 16px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 215, 160, 0.2);
-}
-
-.languages-badge span {
-    opacity: 0.85;
-}
-
-        /* KEYFRAMES E ANIMAZIONI (CORRETTE E COMPLETE) */
+    /* KEYFRAMES E ANIMAZIONI */
     @keyframes desktopGlowLoop {
         0% { left: -110%; }
         16% { left: 140%; }
         100% { left: 140%; }
     }
 
-    @keyframes fadeInPoetry {
-        0% { opacity: 0; transform: translate(-50%, 20px); }
-        100% { opacity: 1; transform: translate(-50%, 0); }
+    @keyframes fadeInPoetryDesktop {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
     }
 
     @keyframes slideInRight {
@@ -606,4 +646,4 @@ body {
         60% { transform: translateX(-10%); opacity: 1; }
         100% { transform: translateX(0); opacity: 1; }
     }
-
+}
