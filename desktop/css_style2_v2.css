@@ -106,28 +106,34 @@ body {
     text-align: center;
 }
 
-/* POESIA MOBILE */
+/* POESIA MOBILE — OTTIMIZZATA MINIMAL ED ELEGANTE */
 .home-welcome-poetry {
     width: 90%;
     margin: 20px auto;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.75);
-    border: 1px solid rgba(255, 215, 160, 0.5);
+    background: rgba(0, 0, 0, 0.35); /* Velo molto leggero per non appesantire */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 215, 160, 0.2);
     border-radius: 15px;
     text-align: center;
 }
 
 .home-welcome-poetry h1 {
+    font-family: 'Georgia', 'Times New Roman', Times, serif; /* Coerenza Serif mobile */
     font-size: 1.4rem;
     color: #ffd78f;
     margin-bottom: 12px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 .home-welcome-poetry p {
+    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif; /* Coerenza Serif mobile */
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
     color: #f7f2e9;
     font-style: italic;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95); /* Leggibilità garantita sul cielo */
 }
 
 /* BOX APPLICAZIONE MOBILE */
@@ -234,10 +240,10 @@ body {
         border-bottom: 2px solid rgba(255, 215, 160, 0.85);
         backdrop-filter: blur(18px) saturate(200%);
         display: flex;
-        flex-direction: row; /* Ripristina riga su desktop */
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        padding: 0 20px; /* Ridotto per far entrare tutte le bandierine */
+        padding: 0 20px;
         z-index: 20;
         box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
     }
@@ -251,7 +257,7 @@ body {
 
     .nav-desktop {
         display: flex;
-        gap: 12px; /* Ridotto spazio tra link */
+        gap: 12px;
     }
 
     .nav-desktop a {
@@ -299,13 +305,13 @@ body {
     /* PULSANTI LINGUA (RISOLUZIONE BANDIERINA SPAGNOLA) */
     .lang-switcher {
         display: flex;
-        gap: 6px; /* Più compatto */
+        gap: 6px;
         margin-top: 0;
         align-items: center;
     }
 
     .lang-switcher button {
-        width: 36px; /* Ridotto da 42px a 36px per evitare tagli a destra */
+        width: 36px;
         height: 36px;
         font-size: 1.1rem;
         border-radius: 8px;
@@ -335,7 +341,7 @@ body {
         left: 4%;
         width: 26vw;          
         max-width: 280px;
-        margin: 0; /* Resetta i margini automatici del mobile */
+        margin: 0;
         border-radius: 20px; 
         overflow: hidden;    
         z-index: 10 !important;
@@ -369,9 +375,7 @@ body {
         z-index: 25;
     }
 
-        /* ==========================================================================
-       ⭐ INTRODUZIONE POETICA DESKTOP — STILE BERGMAN / MINIMAL ELEGANT
-       ========================================================================== */
+    /* INTRODUZIONE POETICA DESKTOP — STILE BERGMAN / MINIMAL ELEGANT */
     .home-welcome-poetry {
         position: absolute;
         top: 260px;
@@ -382,21 +386,15 @@ body {
         margin: 0;
         text-align: center;
         padding: 24px 30px;
-        
-        /* Eliminiamo il box ingombrante: sfondo trasparente di base */
         background: rgba(0, 0, 0, 0);
         border: 1px solid transparent;
         border-radius: 22px;
         box-shadow: none;
-        
         z-index: 5;
         animation: fadeInPoetry 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        
-        /* Transizione fluida per l'effetto hover */
         transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* EFFETTO HOVER: compare un velo scuro e soffuso solo quando ti avvicini con il mouse */
     .home-welcome-poetry:hover {
         background: rgba(0, 0, 0, 0.45);
         backdrop-filter: blur(8px) saturate(120%);
@@ -405,33 +403,28 @@ body {
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
     }
 
-    /* TITOLO DELLA POESIA (SERIF D'IMPATTO) */
     .home-welcome-poetry h1 {
-        font-family: 'Georgia', 'Times New Roman', Times, serif; /* Forziamo lo stile Serif storico */
+        font-family: 'Georgia', 'Times New Roman', Times, serif;
         font-size: 1.75rem;
         color: #ffd78f;
         margin-bottom: 16px;
         font-weight: 700;
         letter-spacing: 1px;
-        /* Forte ombra scura dietro i caratteri per renderli leggibili anche senza box */
         text-shadow: 
             2px 2px 8px rgba(0, 0, 0, 0.95),
             0 0 15px rgba(255, 215, 160, 0.3);
     }
 
-    /* CORPO DEL TESTO (SERIF ELEGANTE E LEGGIBILE) */
     .home-welcome-poetry p {
-        font-family: 'Garamond', 'Georgia', 'Times New Roman', serif; /* Serif per i versi */
+        font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
         font-size: 1.1rem;
         color: #f7f2e9;
         line-height: 1.75;
         font-style: italic;
-        /* Ombra netta e definita su ogni singola lettera per staccare dallo sfondo */
         text-shadow: 
             1px 1px 6px rgba(0, 0, 0, 0.95),
             2px 2px 12px rgba(0, 0, 0, 0.9);
     }
-
 
     /* SEZIONE INSTALLAZIONE APP DESKTOP */
     .install-app-desktop {
@@ -452,7 +445,7 @@ body {
             inset 0 0 25px rgba(255, 215, 160, 0.35);
         padding: 20px 35px;
         display: flex;
-        flex-direction: row; /* Elementi affiancati */
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         text-align: left;
