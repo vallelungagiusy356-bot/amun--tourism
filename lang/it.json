@@ -11,16 +11,17 @@
     "monuments": "Monumenti"
   },
 
-  "home": {
+    "home": {
     "chat_web": "Parla con la Castellana sul sito web",
-    "amuni_title": "Il significato di Amunì",
-    "amuni_text": "In Sicilia, “Amunì” non è solo un “andiamo”. È un invito gentile, un sorriso che ti accompagna. È la voce della nostra terra che ti dice: muoviti, vivi, scopri, sogna.",
+    "amuni_title": "Benvenuto, o viandante...",
+    "amuni_text": "Benvenuto, o viandante, al limitare del tempo,<br>dove la storia respira in ogni soffio di vento.<br>Senti il richiamo di pietre millenarie e severe,<br>custodi di cunti, di dame, di antiche preghiere.<br><br>Non fermare il tuo passo, specchiati in questa magia,<br><strong>Amunì, vieni, ti indico la via.</strong>",
     "install_app": "Installa l’app Amunì Tourism",
     "download_apk": "Scarica l’app (APK)",
     "open_webapp": "Apri la Web App",
     "scan_qr": "Scansiona il QR per installare l’app",
     "talk_castellana": "Parla con la Castellana"
   },
+
 
   "chat": {
     "title": "Castellana di Caccamo",
