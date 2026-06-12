@@ -587,20 +587,14 @@ body {
         animation: slideInRight 0.55s ease forwards;
     }
 
-    /* KEYFRAMES E ANIMAZIONI */
+        /* KEYFRAMES E ANIMAZIONI (CORRETTE E COMPLETE) */
     @keyframes desktopGlowLoop {
-        0% { left: -120%; }
+        0% { left: -110%; }
         16% { left: 140%; }
         100% { left: 140%; }
     }
 
-   @keyframes desktopGlowLoop {
-    0% { left: -110%; }
-    15% { left: 120%; }
-    100% { left: 120%; }
-}
-
-   @keyframes fadeInPoetry {
+    @keyframes fadeInPoetry {
         0% { opacity: 0; transform: translate(-50%, 20px); }
         100% { opacity: 1; transform: translate(-50%, 0); }
     }
@@ -610,4 +604,4 @@ body {
         60% { transform: translateX(-10%); opacity: 1; }
         100% { transform: translateX(0); opacity: 1; }
     }
-}
+
