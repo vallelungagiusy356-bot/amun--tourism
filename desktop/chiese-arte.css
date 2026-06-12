@@ -98,7 +98,7 @@ body {
 }
 
 /* ============================================================
-   HERO CENTRALE
+   HERO CENTRALE & STRUTTURA DEL TESTO POETICO
 ============================================================ */
 .hero {
   margin-top: 100px;
@@ -108,6 +108,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .hero-text h1 {
@@ -115,34 +116,64 @@ body {
   font-size: 3.2rem;
   color: #ffd78f;
   text-shadow: 0 0 14px rgba(255, 215, 160, 0.85);
+  margin-bottom: 0.5rem;
 }
 
 .hero-text::after {
   content: "";
   display: block;
-  width: 60%;
+  width: 40%;
   height: 2px;
-  margin: 1rem auto 2rem;
+  margin: 0.5rem auto 1.5rem;
   background: linear-gradient(90deg, transparent, #ffd78f, transparent);
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #d4a64a, #f28b3c);
-  border: none;
-  color: #1b1308;
-  padding: 0.8rem 1.6rem;
-  border-radius: 999px;
+/* === REGOLE PER RENDERE IL TESTO LEGGIBILE SU QUALSIASI SFONDO === */
+.poesia-container {
+  font-family: 'Playfair Display', serif;
+  max-width: 750px;
+  margin: 0 auto 2.5rem auto;
+  padding: 1.5rem 2rem;
+  background: rgba(0, 0, 0, 0.45); /* Scurisce lo sfondo sotto il testo per farlo risaltare */
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 215, 160, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.poesia-intro {
+  font-size: 1.3rem;
   font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 2rem;
+  color: #ffd78f;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.poesia-corpo p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #f7f2e9;
+  margin-bottom: 1rem;
+}
+
+.poesia-corpo strong {
+  color: #ffd78f;
+  text-shadow: 0 0 8px rgba(255, 215, 160, 0.3);
+}
+
+.poesia-outro {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #ffd78f;
+  margin-top: 0.8rem;
 }
 
 /* ============================================================
-   MODIFICATO: GRIGLIA INTELLIGENTE CON EFFETTO GLOW ORO
+   GRIGLIA INTERA SENZA SCROLL DISCREZIONALE (GLOW INCLUSO)
 ============================================================ */
 .cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Dispone tutte e 5 le card visibili su un'unica riga desktop */
+  grid-template-columns: repeat(5, 1fr);
   gap: 1.2rem;
   width: 100%;
   max-width: 1200px;
@@ -159,7 +190,7 @@ body {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
-  /* === EFFETTO GLOW DI BASE === */
+  /* === EFFETTO GLOW ORO DI BASE === */
   box-shadow: 0 0 15px rgba(212, 166, 74, 0.3);
   display: flex;
   flex-direction: column;
@@ -167,18 +198,17 @@ body {
 
 .card:hover {
   transform: translateY(-5px);
-  /* === EFFETTO GLOW INTENSO AL PASSAGGIO DEL MOUSE === */
+  /* === GLOW INTENSIFICATO IN HOVER === */
   box-shadow: 0 0 25px rgba(255, 215, 160, 0.75), inset 0 0 10px rgba(255, 215, 160, 0.2);
   border-color: rgba(255, 215, 160, 0.8);
 }
 
-/* Evita che i tetti o i lati dei modelli vengano tagliati malamente */
 .card img {
   width: 100%;
-  height: 160px; /* Altezza aumentata per mostrare interamente i prospetti verticali */
-  object-fit: contain; /* 'contain' assicura che il disegno 3D sia interamente visibile senza tagliati */
-  background: rgba(255, 215, 160, 0.03); /* Sottile tono caldo dietro i modelli */
-  padding: 8px; /* Evita che i bordi tocchino la cornice */
+  height: 160px; /* Altezza ottimale per contenere l'edificio intero */
+  object-fit: contain; /* Garantisce che i tetti non vengano tagliati */
+  background: rgba(255, 215, 160, 0.03);
+  padding: 8px;
   display: block;
 }
 
@@ -236,11 +266,11 @@ body {
 }
 
 /* ============================================================
-   NUOVO ADATTAMENTO MOBILE RESPONSIVE
+   RESPONSIVE ADATTIVO MOBILE
 ============================================================ */
 @media (max-width: 990px) {
   .cards {
-    grid-template-columns: repeat(3, 1fr); /* 3 colonne sui tablet */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -261,22 +291,38 @@ body {
 
   .hero {
     margin-top: 85px;
-    justify-content: flex-start; /* Distribuisce i testi ordinatamente senza ammassarli in alto */
+    justify-content: flex-start;
   }
 
   .hero-text h1 {
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
 
-  /* Risolve lo scorrimento: su mobile si dispongono in una griglia 2x2 pulita ed estesa in verticale */
+  /* Ottimizzazioni per la leggibilità del testo su mobile */
+  .poesia-container {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .poesia-intro {
+    font-size: 1.1rem;
+  }
+  .poesia-corpo p {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+  .poesia-outro {
+    font-size: 0.9rem;
+  }
+
+  /* Distribuzione card su mobile in verticale senza scorrere */
   .cards {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
-    padding-bottom: 7rem; /* Margine inferiore per evitare la sovrapposizione con il pulsante chat */
+    padding-bottom: 7rem;
   }
 
   .card img {
-    height: 120px; /* Altezza ottimizzata per schermi piccoli */
+    height: 120px;
     padding: 4px;
   }
 
