@@ -136,6 +136,72 @@ body {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95); /* Leggibilità garantita sul cielo */
 }
 
+/* ============================================================
+   BOX INTRODUTTIVO CASTELLANA (HOME)
+   ============================================================ */
+.castellana-intro-card {
+    max-width: 700px;
+    margin: 2.5rem auto;
+    padding: 1.5rem;
+    background: rgba(5, 3, 2, 0.4);
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.castellana-intro-card:hover {
+    background: rgba(5, 3, 2, 0.6);
+    border-color: rgba(255, 215, 160, 0.4);
+    box-shadow: 0 12px 35px rgba(255, 215, 160, 0.1);
+    transform: translateY(-2px);
+}
+
+.intro-card-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    color: #ffd78f;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.intro-card-content p {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    line-height: 1.6;
+    color: #e6e0d4;
+    margin-bottom: 1.2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.intro-card-content strong {
+    color: #ffd78f;
+    font-weight: 600;
+}
+
+/* Badge delle 5 lingue per dare impatto visivo immediato */
+.languages-badge {
+    display: inline-block;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffd78f;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 160, 0.2);
+}
+
+.languages-badge span {
+    opacity: 0.85;
+}
+
 /* BOX APPLICAZIONE MOBILE */
 .install-app-desktop {
     width: 90%;
