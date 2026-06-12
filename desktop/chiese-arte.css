@@ -1,11 +1,11 @@
 /* ============================================================
-   RESET
+   RESET & FONT DI BASE
 ============================================================ */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: system-ui, sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 body {
@@ -15,51 +15,52 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  
-  /* === NUOVO SFONDO CON IMMAGINE E OVERLAY AMBRATO === */
   background: radial-gradient(circle at top, rgba(255,180,80,0.25), rgba(0,0,0,0.7)), 
               url('img/tuo_nuovo_sfondo.jpeg') no-repeat center center fixed;
   background-size: cover;
 }
 
 /* ============================================================
-   DASHBOARD BAROCCA NERA + ORO (INVARIATA)
+   DASHBOARD STRUTTURA GENERALE ED ELEGANTE (MOBILE FIRST)
 ============================================================ */
 .dashboard {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.85);
   border-bottom: 2px solid rgba(255, 215, 160, 0.85);
   backdrop-filter: blur(18px) saturate(200%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 15px 20px;
+  gap: 12px;
   z-index: 20;
   box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
 }
 
 .dashboard .logo-title {
-  font-size: 1.55rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #ffd78f;
   text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
 }
 
-/* MENU */
 .nav-desktop {
   display: flex;
-  gap: 22px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
 .nav-desktop a {
   color: #ffd78f;
   font-weight: 600;
   text-decoration: none;
-  padding: 10px 18px;
+  font-size: 0.9rem;
+  padding: 6px 14px;
   border-radius: 12px;
   background: rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(255, 215, 160, 0.75);
@@ -82,7 +83,7 @@ body {
     to right,
     rgba(255, 215, 160, 0) 0%,
     rgba(255, 215, 160, 0.14) 50%,
-    rgba(255, 215, 160, 0) 100%
+    rgba(255, 215, 160, 0) 100
   );
   transform: rotate(-45deg);
   animation: desktopGlowLoop 10s infinite ease-in-out;
@@ -97,11 +98,43 @@ body {
   transform: scale(1.05);
 }
 
+/* INTERFACCIA SELETTORE LINGUE COMPATTO */
+.lang-switcher {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.lang-switcher button {
+  width: 36px;
+  height: 36px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 215, 160, 0.85);
+  color: #ffd78f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 10px rgba(255, 215, 160, 0.4),
+    inset 0 0 6px rgba(255, 215, 160, 0.3);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.lang-switcher button:hover {
+  background: rgba(255, 215, 160, 0.15);
+  box-shadow: 0 0 15px rgba(255, 215, 160, 0.7);
+  transform: scale(1.05);
+}
+
 /* ============================================================
-   HERO CENTRALE & STRUTTURA DEL TESTO POETICO
+   HERO CENTRALE & STRUTTURA POESIA (STILE BERGMAN)
 ============================================================ */
 .hero {
-  margin-top: 100px;
+  margin-top: 190px; /* Spazio aumentato per la dashboard mobile a più righe */
   text-align: center;
   padding: 1.5rem;
   flex-grow: 1;
@@ -113,7 +146,7 @@ body {
 
 .hero-text h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
+  font-size: 2.2rem;
   color: #ffd78f;
   text-shadow: 0 0 14px rgba(255, 215, 160, 0.85);
   margin-bottom: 0.5rem;
@@ -128,57 +161,65 @@ body {
   background: linear-gradient(90deg, transparent, #ffd78f, transparent);
 }
 
-/* === REGOLE PER RENDERE IL TESTO LEGGIBILE SU QUALSIASI SFONDO === */
+/* OTTIMIZZAZIONE MINIMAL DELLA POESIA SU MOBILE */
 .poesia-container {
-  font-family: 'Playfair Display', serif;
   max-width: 750px;
   margin: 0 auto 2.5rem auto;
-  padding: 1.5rem 2rem;
-  background: rgba(0, 0, 0, 0.45); /* Scurisce lo sfondo sotto il testo per farlo risaltare */
-  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  background: rgba(0, 0, 0, 0.3); /* Velo impercettibile di base */
+  border-radius: 22px;
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 215, 160, 0.15);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 215, 160, 0.1);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .poesia-intro {
-  font-size: 1.3rem;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #ffd78f;
   line-height: 1.6;
   margin-bottom: 1.2rem;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.95);
 }
 
 .poesia-corpo p {
-  font-size: 1.15rem;
+  font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
+  font-size: 1rem;
   line-height: 1.7;
   color: #f7f2e9;
+  font-style: italic;
   margin-bottom: 1rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.95), 1px 1px 10px rgba(0, 0, 0, 0.9);
 }
 
 .poesia-corpo strong {
   color: #ffd78f;
-  text-shadow: 0 0 8px rgba(255, 215, 160, 0.3);
+  font-style: normal;
+  text-shadow: 0 0 8px rgba(255, 215, 160, 0.5);
 }
 
 .poesia-outro {
+  font-family: 'Garamond', 'Georgia', serif;
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #ffd78f;
   margin-top: 0.8rem;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.95);
 }
 
 /* ============================================================
-   GRIGLIA INTERA SENZA SCROLL DISCREZIONALE (GLOW INCLUSO)
+   GRIGLIA DELLE CARTE ADATTIVA
 ============================================================ */
 .cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1rem 7rem 1rem;
 }
 
 .card {
@@ -189,8 +230,6 @@ body {
   backdrop-filter: blur(6px);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
-  /* === EFFETTO GLOW ORO DI BASE === */
   box-shadow: 0 0 15px rgba(212, 166, 74, 0.3);
   display: flex;
   flex-direction: column;
@@ -198,22 +237,21 @@ body {
 
 .card:hover {
   transform: translateY(-5px);
-  /* === GLOW INTENSIFICATO IN HOVER === */
   box-shadow: 0 0 25px rgba(255, 215, 160, 0.75), inset 0 0 10px rgba(255, 215, 160, 0.2);
   border-color: rgba(255, 215, 160, 0.8);
 }
 
 .card img {
   width: 100%;
-  height: 160px; /* Altezza ottimale per contenere l'edificio intero */
-  object-fit: contain; /* Garantisce che i tetti non vengano tagliati */
+  height: 120px;
+  object-fit: contain;
   background: rgba(255, 215, 160, 0.03);
-  padding: 8px;
+  padding: 6px;
   display: block;
 }
 
 .card h3 {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   padding: 0.8rem 0.5rem;
   color: #ffd78f;
   text-align: center;
@@ -222,20 +260,20 @@ body {
 }
 
 /* ============================================================
-   CHAT CASTELLANA (INVARIATA)
+   CHAT E WIDGET CASTELLANA
 ============================================================ */
 .castellana-video-wrapper {
   position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
+  right: 1rem;
+  bottom: 1rem;
   cursor: pointer;
   text-align: center;
   z-index: 30;
 }
 
 .castellana-video {
-  width: 80px;
-  height: 80px;
+  width: 65px;
+  height: 65px;
   border-radius: 999px;
   object-fit: cover;
   border: 2px solid #d4a64a;
@@ -244,18 +282,20 @@ body {
 .castellana-tooltip {
   background: linear-gradient(135deg, #d4a64a, #f28b3c);
   color: #1b1308;
-  padding: 0.4rem 0.8rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 999px;
   font-weight: 600;
   margin-top: 0.3rem;
+  font-size: 0.7rem;
 }
 
 #chat-desktop {
   position: fixed;
   right: 1.5rem;
   bottom: 5rem;
-  width: 300px;
-  background: rgba(20,10,0,0.9);
+  width: 290px;
+  height: 320px;
+  background: rgba(20,10,0,0.95);
   border-radius: 1rem;
   border: 1px solid #d4a64a;
   backdrop-filter: blur(10px);
@@ -263,83 +303,172 @@ body {
   flex-direction: column;
   overflow: hidden;
   z-index: 40;
+  padding: 12px;
 }
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  color: #ffd78f;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.close-chat-btn {
+  background: transparent;
+  border: none;
+  color: #ffd78f;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: #f7f2e9;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 6px;
+}
+
+.chat-input-row input {
+  flex-grow: 1;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255, 215, 160, 0.4);
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.mic-btn {
+  background: rgba(255, 215, 160, 0.2);
+  border: 1px solid #ffd78f;
+  border-radius: 6px;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
 
 /* ============================================================
-   RESPONSIVE ADATTIVO MOBILE
+   MEDIA QUERY: OTTIMIZZAZIONE DESKTOP (DA 900PX IN SU)
 ============================================================ */
-@media (max-width: 990px) {
-  .cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
+@media screen and (min-width: 900px) {
+  
   .dashboard {
-    padding: 0 15px;
+    height: 70px;
+    flex-direction: row;
+    padding: 0 40px;
+    gap: 0;
   }
+
   .dashboard .logo-title {
-    font-size: 1.15rem;
+    font-size: 1.55rem;
   }
+
   .nav-desktop {
-    gap: 6px;
+    gap: 22px;
   }
+
   .nav-desktop a {
-    padding: 6px 10px;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    padding: 10px 18px;
   }
 
   .hero {
-    margin-top: 85px;
-    justify-content: flex-start;
+    margin-top: 100px;
   }
 
   .hero-text h1 {
-    font-size: 2rem;
+    font-size: 3.2rem;
   }
 
-  /* Ottimizzazioni per la leggibilità del testo su mobile */
+  /* EFFETTO BERGMAN ELEGANTE SU DESKTOP */
   .poesia-container {
-    padding: 1rem;
-    margin-bottom: 1.5rem;
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid transparent;
+    box-shadow: none;
+    padding: 24px 30px;
   }
+
+  /* Hover dinamico: compare il velo scuro sfocato solo quando ci si avvicina */
+  .poesia-container:hover {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 215, 160, 0.25);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+  }
+
   .poesia-intro {
+    font-size: 1.35rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.95), 0 0 15px rgba(255, 215, 160, 0.3);
+  }
+
+  .poesia-corpo p {
+    font-size: 1.15rem;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.95), 2px 2px 12px rgba(0, 0, 0, 0.9);
+  }
+
+  .poesia-outro {
     font-size: 1.1rem;
   }
-  .poesia-corpo p {
-    font-size: 0.95rem;
-    margin-bottom: 0.8rem;
-  }
-  .poesia-outro {
-    font-size: 0.9rem;
-  }
 
-  /* Distribuzione card su mobile in verticale senza scorrere */
+  /* Ripristino griglia a 5 colonne su schermi grandi */
   .cards {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-    padding-bottom: 7rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.2rem;
+    padding-bottom: 2rem;
   }
 
   .card img {
-    height: 120px;
-    padding: 4px;
+    height: 160px;
+    padding: 8px;
   }
 
   .card h3 {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
   }
 
   .castellana-video-wrapper {
-    right: 1rem;
-    bottom: 1rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
   }
+
   .castellana-video {
-    width: 65px;
-    height: 65px;
+    width: 80px;
+    height: 80px;
   }
+
   .castellana-tooltip {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
   }
+
+  #chat-desktop {
+    right: 1.5rem;
+    bottom: 5rem;
+    width: 300px;
+  }
+}
+
+/* SCENARIO INTERMEDIO TABLET */
+@media (min-width: 601px) and (max-width: 899px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .hero {
+    margin-top: 150px;
+  }
+}
+
+/* ANIMAZIONE GLOW NELLA NAVBAR */
+@keyframes desktopGlowLoop {
+  0% { left: -120%; }
+  16% { left: 140%; }
+  100% { left: 140%; }
 }
