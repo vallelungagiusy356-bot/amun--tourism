@@ -5,27 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - Mobile</title>
 
+    <!-- PWA: Manifest -->
     <link rel="manifest" href="./manifest.json?v=2">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- PWA: Colore barra superiore -->
     <meta name="theme-color" content="#000000">
 </head>
 <body>
 
+    <!-- TRIGGER AUDIO INVISIBILE -->
     <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
     
+    <!-- AUDIO EPICO -->
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- SFONDO -->
     <div class="scene-background"></div>
 
+    <!-- DASHBOARD MOBILE -->
     <header class="dashboard">
-        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+        <div class="logo-title" data-i18n="menu.title"></div>
 
+        <!-- 🔊 BOTTONE AUDIO -->
         <button id="toggle-music" class="btn-audio">🔈</button>
 
+        <!-- 🌍 SELETTORE LINGUA -->
         <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
@@ -35,55 +44,65 @@
         </div>
     </header>
 
+    <!-- LAYOUT MOBILE -->
     <div class="mobile-layout">
 
+        <!-- VIDEO CASTELLANA -->
         <div class="video-container">
             <video autoplay muted loop playsinline class="castellana-avatar">
                 <source src="img/castellana_alpha.webm" type="video/webm">
             </video>
         </div>
 
+        <!-- BOTTONI BAROCCHI -->
         <div class="buttons-grid">
-            <a href="mangiare.html" class="btn-barocco" data-i18n="menu.eat">Mangiare</a>
-            <a href="dormire.html" class="btn-barocco" data-i18n="menu.sleep">Dormire</a>
-            <a href="trasporti.html" class="btn-barocco" data-i18n="menu.transport">Trasporti</a>
+            <a href="mangiare.html" class="btn-barocco" data-i18n="menu.eat"></a>
+            <a href="dormire.html" class="btn-barocco" data-i18n="menu.sleep"></a>
+            <a href="trasporti.html" class="btn-barocco" data-i18n="menu.transport"></a>
         </div>
 
         <div class="buttons-row-2">
-            <a href="eventi.html" class="btn-barocco" data-i18n="menu.events">Eventi</a>
-            <a href="monumenti.html" class="btn-barocco" data-i18n="menu.monuments">Monumenti</a>
+            <a href="eventi.html" class="btn-barocco" data-i18n="menu.events"></a>
+            <a href="monumenti.html" class="btn-barocco" data-i18n="menu.monuments"></a>
         </div>
 
+        <!-- BOTTONE CHAT WEB -->
         <a href="../desktop/index.html" class="btn-castellana">
-            <span data-i18n="home.talk_castellana">Parla con la Castellana</span>
+            <span data-i18n="home.talk_castellana"></span>
         </a>
 
+        <!-- SEZIONE AMUNI -->
         <div class="amuni-box">
-            <div class="amuni-title" data-i18n="home.amuni_title">Amunì Tourism</div>
-            <div class="amuni-text" data-i18n="home.amuni_text">Il borgo ti aspetta.</div>
+            <div class="amuni-title" data-i18n="home.amuni_title"></div>
+            <div class="amuni-text" data-i18n="home.amuni_text"></div>
         </div>
 
+        <!-- ⭐ SEZIONE INSTALLA APP ⭐ -->
         <section class="install-app">
-            <h2 data-i18n="home.install_app">Installa l'App</h2>
+            <h2 data-i18n="home.install_app"></h2>
 
+            <!-- Scarica APK -->
             <a href="https://raw.githubusercontent.com/vallelungagiusy356-bot/amun--tourism/main/app-release-signed.apk" class="btn-barocco">
-                📲 <span data-i18n="home.download_apk">Scarica APK</span>
+                📲 <span data-i18n="home.download_apk"></span>
             </a>
 
+            <!-- Apri la Web App -->
             <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/" class="btn-barocco">
-                🌐 <span data-i18n="home.open_webapp">Apri Web App</span>
+                🌐 <span data-i18n="home.open_webapp"></span>
             </a>
 
+            <!-- QR Code -->
             <div class="qr-section">
                 <img src="https://vallelungagiusy356-bot.github.io/amun--tourism/qr.png" alt="QR code Amunì Tourism" class="qr">
-                <p data-i18n="home.scan_qr">Scansiona il QR</p>
+                <p data-i18n="home.scan_qr"></p>
             </div>
         </section>
+        <!-- ⭐ FINE SEZIONE INSTALLA APP ⭐ -->
 
     </div>
 
+    <!-- SCRIPT UNIFICATO: GESTIONE AUDIO (SENZA ERRORI DI DUPLICATI) -->
     <script>
-        // Audio Logic
         const audio = document.getElementById("bg-music");
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
@@ -95,18 +114,24 @@
             if (!musicStarted) {
                 audio.play().then(() => {
                     musicStarted = true;
-                    if(trigger) trigger.remove();
+                    if(trigger) trigger.remove(); // Rimuove il bottone invisibile a tutto schermo
                 }).catch(() => {
                     setTimeout(() => audio.play(), 200);
                 });
             }
         }
 
+        // Avvia al primo tocco ovunque sulla pagina
         document.addEventListener("touchstart", startMusic, { once: true });
         document.addEventListener("click", startMusic, { once: true });
+        if(trigger) {
+            trigger.addEventListener("click", startMusic);
+            trigger.addEventListener("touchstart", startMusic);
+        }
 
+        // Controllo manuale Bottone ON/OFF
         toggleBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
+            e.stopPropagation(); // Evita di attivare altri listener
             if (audio.paused) {
                 audio.play();
                 toggleBtn.textContent = "🔈";
@@ -115,38 +140,43 @@
                 toggleBtn.textContent = "🔇";
             }
         });
+    </script>
 
-        // Multilanguage Logic
-        let currentLang = localStorage.getItem("lang") || "it";
+    <!-- SCRIPT MULTILINGUA -->
+    <script>
+    let currentLang = localStorage.getItem("lang") || "it";
 
-        function loadLanguage(lang) {
-            fetch(`../lang/${lang}.json`)
-                .then(res => res.json())
-                .then(data => {
-                    document.querySelectorAll("[data-i18n]").forEach(el => {
-                        const key = el.getAttribute("data-i18n");
-                        // Navigazione sicura nell'oggetto JSON
-                        const text = key.split('.').reduce((o, i) => (o ? o[i] : null), data);
-                        if (text) el.innerHTML = text;
-                    });
-                })
-                .catch(err => console.error("Errore caricamento lingua:", err));
-
-            localStorage.setItem("lang", lang);
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll(".lang-switcher button").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    loadLanguage(btn.dataset.lang);
+    function loadLanguage(lang) {
+        fetch(`../lang/${lang}.json`)
+            .then(res => res.json())
+            .then(data => {
+                document.querySelectorAll("[data-i18n]").forEach(el => {
+                    const key = el.getAttribute("data-i18n");
+                    const text = key.split('.').reduce((o,i)=>o[i], data);
+                    if (text) el.innerHTML = text;
                 });
             });
-            loadLanguage(currentLang);
+
+        localStorage.setItem("lang", lang);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".lang-switcher button").forEach(btn => {
+            btn.addEventListener("click", () => {
+                loadLanguage(btn.dataset.lang);
+            });
         });
 
-        // PWA
+        loadLanguage(currentLang);
+    });
+    </script>
+
+    <!-- PWA: Registrazione Service Worker -->
+    <script>
         if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("./service-worker.js");
+            navigator.serviceWorker.register("./service-worker.js")
+                .then(() => console.log("Service Worker registrato"))
+                .catch(err => console.log("Errore SW:", err));
         }
     </script>
 </body>
