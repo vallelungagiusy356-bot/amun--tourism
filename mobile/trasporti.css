@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - MODULE: TRASPORTI (CSS DEFINITIVO - ADEGUATO ALL'HTML)
+   AMUNÌ TOURISM - MODULE: TRASPORTI (VERSIONE FULL IMMERSIVE NO-CARD)
    ========================================================================== */
 
 /* 1. RESET E STRUTTURA DI BASE */
@@ -17,7 +17,7 @@ body {
     min-height: 100vh;
 }
 
-/* 2. GESTIONE SFONDO CINEMATOGRAFICO (RIPRISTINATO TRAMITE DIV HTML) */
+/* 2. GESTIONE SFONDO CINEMATOGRAFICO PIÙ LUMINOSO */
 .scene-background {
     position: fixed;
     inset: 0;
@@ -25,17 +25,18 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: brightness(0.5) contrast(1.2);
+    /* Schiarito a 0.75 per mostrare nettamente le sfumature dello sfondo */
+    filter: brightness(0.75) contrast(1.1); 
     z-index: -10;
 }
 
-/* 3. DASHBOARD MOBILE BAROCCA COMPATTA (MONO-RIGA, ALTEZZA FISSA) */
+/* 3. DASHBOARD MOBILE BAROCCA COMPATTA */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 58px; /* Dimensione fissa e snella identica alla Home */
+    height: 58px;
     display: flex;
     align-items: center;
     padding: 0 16px;
@@ -55,7 +56,6 @@ body {
     margin-left: 6px;
 }
 
-/* TASTO INDIETRO PERFETTAMENTE ALLINEATO A SINISTRA */
 .btn-back-dashboard {
     background: none;
     border: none;
@@ -68,9 +68,8 @@ body {
     justify-content: center;
 }
 
-/* ELEMENTI AUDIO E LINGUE SPINTI SULLA DESTRA (STESSA LINEA) */
 .btn-audio {
-    margin-left: auto; /* Trucco flexbox per isolare i comandi a destra */
+    margin-left: auto;
     background: none;
     border: none;
     color: #ffd78f;
@@ -93,15 +92,15 @@ body {
     padding: 2px;
 }
 
-/* 4. AREA DI SCROLL CON STACCO DI SICUREZZA CALIBRATO */
+/* 4. AREA DI SCROLL MOBILE CONTENUTI VIA CARD */
 .scroll-content {
     position: relative;
     z-index: 2;
-    margin-top: 85px; /* Lo stacco perfetto: la dashboard non copre più i testi */
+    margin-top: 85px;
     padding: 16px 20px 40px 20px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 28px;
     align-items: center;
     width: 100%;
     min-height: calc(100vh - 85px);
@@ -117,39 +116,69 @@ body {
     transform: translateY(0);
 }
 
-/* 5. NUOVA SCHEDA ELEGANTE (LOGICA EREDITATA DA HOME-WELCOME-POETRY) */
+/* 5. BLOCCO TESTO TOTALMENTE LIBERO (SENZA CARD O SFONDI OPACHI) */
 .home-welcome-poetry {
     width: 100%;
     max-width: 700px;
-    padding: 24px;
-    background: rgba(0, 0, 0, 0.35); /* Trasparenza soffusa "Bergman Style" */
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 215, 160, 0.2);
-    border-radius: 15px;
+    padding: 10px 15px;
+    background: transparent; /* Card dissolta! */
+    border: none;
+    box-shadow: none;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* Ombreggiatura accentuata per proteggere la lettura dal sole dello sfondo */
 .home-welcome-poetry h1 {
     font-family: 'Georgia', 'Times New Roman', Times, serif; 
-    font-size: 1.4rem;
+    font-size: 1.45rem;
     color: #ffd78f;
-    margin-bottom: 12px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    margin-bottom: 16px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1), 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 .home-welcome-poetry p {
     font-family: 'Garamond', 'Georgia', 'Times New Roman', serif; 
-    font-size: 1.05rem;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.65;
     color: #f7f2e9;
     font-style: italic;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95); 
-    margin-bottom: 10px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 1), 1px 1px 4px rgba(0, 0, 0, 0.9); 
+    margin-bottom: 14px;
 }
 
-/* 6. BOTTONI BAROCCHI CON EFFETTO LUCCICHIO */
+/* BOX FERMATE MINIMALE INTEGRATO FLUTTUANTE */
+.stops-box {
+    text-align: left;
+    background: rgba(0, 0, 0, 0.2); /* Un velo appena accennato per la lista */
+    padding: 18px;
+    border-radius: 12px;
+    border-left: 2px solid rgba(255, 215, 160, 0.5);
+    margin: 25px 0 10px 0;
+}
+
+.stops-box h3 {
+    font-family: 'Georgia', serif;
+    font-size: 1.15rem;
+    color: #ffd78f;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+}
+
+.stops-box ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.stops-box li {
+    font-family: 'Garamond', 'Georgia', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: #e6e0d4;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+/* 6. BOTTONI BAROCCHI */
 .transport-buttons {
     display: flex;
     flex-direction: column;
@@ -161,7 +190,7 @@ body {
 }
 
 .transport-buttons .btn-barocco {
-    background: #000;
+    background: rgba(0, 0, 0, 0.8); /* Leggermente trasparente per integrarsi */
     border: 1px solid #ffd78f;
     border-radius: 10px;
     padding: 14px 6px;
@@ -177,6 +206,7 @@ body {
     justify-content: center;
     gap: 10px;
     transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .transport-buttons .btn-barocco::before {
@@ -201,17 +231,14 @@ body {
     animation-delay: 0.5s;
 }
 
-
 /* ==========================================================================
-   7. VERSIONE DESKTOP (DA 900PX IN SU) - LAYOUT FLUTTUANTE DA HOME
+   7. VERSIONE DESKTOP (DA 900PX IN SU)
    ========================================================================== */
 @media screen and (min-width: 900px) {
-
     .scene-background {
-        filter: brightness(0.7) contrast(1.1);
+        filter: brightness(0.8) contrast(1.1);
     }
 
-    /* Dashboard orizzontale estesa ad alto impatto visivo */
     .dashboard {
         height: 70px;
         background: rgba(0, 0, 0, 0.75);
@@ -248,36 +275,22 @@ body {
         transform: scale(1.05);
     }
 
-    /* Stacco desktop proporzionato */
     .scroll-content {
         margin-top: 130px; 
         min-height: calc(100vh - 130px);
         padding: 24px 30px;
     }
 
-    /* La scheda fluttua in trasparenza totale e si accende quando ci passi sopra */
     .home-welcome-poetry {
-        width: 38vw;
-        max-width: 440px;
-        background: rgba(0, 0, 0, 0);
-        border: 1px solid transparent;
-        box-shadow: none;
-        transition: all 0.6s ease;
+        width: 45vw;
+        max-width: 550px;
     }
 
-    .home-welcome-poetry:hover {
-        background: rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(8px) saturate(120%);
-        -webkit-backdrop-filter: blur(8px) saturate(120%);
-        border: 1px solid rgba(255, 215, 160, 0.25);
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-    }
-
-    .home-welcome-poetry h1 { font-size: 1.75rem; }
-    .home-welcome-poetry p { font-size: 1.1rem; line-height: 1.75; }
+    .home-welcome-poetry h1 { font-size: 1.85rem; }
+    .home-welcome-poetry p { font-size: 1.15rem; line-height: 1.75; }
 
     .transport-buttons .btn-barocco {
-        background: rgba(0, 0, 0, 0.55);
+        background: rgba(0, 0, 0, 0.65);
         border: 1px solid rgba(255, 215, 160, 0.75);
     }
     
@@ -287,7 +300,6 @@ body {
     }
 }
 
-/* KEYFRAMES LUCCICHIO */
 @keyframes homeButtonGlow {
     0% { left: -70%; }
     25% { left: 130%; }
