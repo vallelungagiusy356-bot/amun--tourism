@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SEZIONE DOVE MANGIARE & MOVIDA (Amunì Tourism)
+   SEZIONE DOVE MANGIARE & MOVIDA (Amunì Tourism) - VERSIONE ELEGANTE
    File: mangiare.css
    ========================================================================== */
 
@@ -11,38 +11,55 @@
 
 body {
     font-family: system-ui, sans-serif;
-    background: transparent; /* Cambio: da #000 a transparent */
+    background-color: #000; /* Nero di base */
     color: #f7f2e9;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* SFONDO */
+/* SFONDO - Fissato e dietro tutto */
 .scene-background {
     position: fixed;
     inset: 0;
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.78) contrast(1.1) saturate(1.1);
-    z-index: -1; /* <--- AGGIUNGI QUESTA RIGA */
+    filter: brightness(0.6) contrast(1.1); /* Leggermente più scuro per far risaltare il testo */
+    z-index: -1; 
 }
 
-/* NUOVI WRAPPER PER IL LAYERING */
+/* DASHBOARD (Header) - Effetto Vetro, Fisso */
 .dashboard {
-    position: relative;
-    z-index: 2; /* Sta sopra tutto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* CONTENUTO - Spazio per l'header e z-index */
 .scroll-content {
     position: relative;
-    z-index: 1; /* Sta sopra lo sfondo, ma sotto la dashboard */
+    z-index: 1;
+    margin-top: 80px; /* Spazio per l'header fisso */
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Contenitore della Barra di Ricerca */
+/* BARRA DI RICERCA */
 .search-container {
     max-width: 600px;
-    margin: 2rem auto 3rem auto;
-    padding: 0 1rem;
+    margin: 0 auto 3rem auto;
     position: relative;
 }
 
@@ -50,44 +67,43 @@ body {
     width: 100%;
     padding: 12px 20px 12px 45px;
     font-size: 1rem;
-    border: 2px solid #e0dcd3; /* Tonalità neutra calda */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 30px;
-    background-color: #fff;
-    color: #333;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(5px);
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
+
+.search-input::placeholder { color: rgba(255, 255, 255, 0.6); }
 
 .search-input:focus {
     outline: none;
-    border-color: #8c1d40; /* Rosso bordeaux d'accento */
-    box-shadow: 0 4px 12px rgba(140, 29, 64, 0.15);
+    border-color: #8c1d40;
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Icona all'interno della barra di ricerca */
 .search-container::before {
     content: "🔍";
     position: absolute;
-    left: 28px;
+    left: 20px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.1rem;
-    opacity: 0.6;
-    pointer-events: none;
+    opacity: 0.8;
 }
 
-/* Titoli delle Sotto-Sezioni (Ristoranti, Pizzerie & Bar / Movida & Serate) */
+/* TITOLI SEZIONE */
 .food-section-title {
     font-family: 'Georgia', serif;
-    color: #2b2b2b;
+    color: #fff;
     font-size: 1.8rem;
     margin: 2.5rem 0 1.5rem 0;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid #f1ebd9;
-    text-align: left;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* Griglia delle Card */
+/* GRIGLIA CARD */
 .food-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -95,33 +111,27 @@ body {
     margin-bottom: 3rem;
 }
 
-/* Struttura della Singola Card dei Locali */
+/* CARD "GLASS" */
 .food-card {
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.08); /* Trasparenza */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
     display: flex;
     flex-direction: column;
-    border: 1px solid #f5f2eb;
+    text-decoration: none; /* Rimuove sottolineatura link */
+    overflow: hidden;
 }
 
 .food-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(140, 29, 64, 0.12);
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.12);
 }
 
-/* Contenitore Immagine Attività */
-.food-card-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-    background-color: #f9f7f2; /* Sfondo neutro di fallback */
-}
-
-/* Contenuto Testuale della Card */
+/* CONTENUTO CARD */
 .food-card-content {
     padding: 1.5rem;
     display: flex;
@@ -129,120 +139,59 @@ body {
     flex-grow: 1;
 }
 
-/* Intestazione interna alla Card (Allineamento Titolo e Badge) */
-.food-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 0.8rem;
-}
-
 .food-card-title {
     font-family: 'Georgia', serif;
     font-size: 1.3rem;
-    color: #1a1a1a;
+    color: #ffffff;
     margin: 0;
-    line-height: 1.3;
 }
 
-/* Sistema dei Badge Tipologia Locale */
-.badge {
-    padding: 4px 10px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-radius: 20px;
-    white-space: nowrap;
-}
-
-/* Classi di colore specifiche per i Badge */
-.badge-restaurant {
-    background-color: #f7e6eb;
-    color: #8c1d40; /* Rosso bordeaux */
-}
-
-.badge-pizzeria {
-    background-color: #e3f2fd;
-    color: #0d47a1; /* Blu scuro */
-}
-
-.badge-bar {
-    background-color: #fef3e2;
-    color: #b57c1e; /* Tonalità oro/ambra */
-}
-
-.badge-pub {
-    background-color: #ede7f6;
-    color: #4a148c; /* Viola profondo */
-}
-
-/* Badge Stagionale Speciale (es. "Solo Estate") */
-.badge-summer {
-    background-color: #fff3e0;
-    color: #e65100; /* Arancione vibrante */
-    border: 1px solid #ffb74d;
-}
-
-/* Descrizione della Card */
 .food-card-desc {
     font-size: 0.95rem;
-    color: #555;
+    color: #d1cfc7;
     line-height: 1.5;
-    margin: 0 0 1.5rem 0;
-    flex-grow: 1; /* Spinge il pulsante sul fondo per tenerli tutti allineati */
+    margin: 1rem 0;
+    flex-grow: 1;
 }
 
-/* Bottone Link Esterno o Mappa */
+/* BADGE */
+.badge {
+    padding: 4px 10px;
+    font-size: 0.70rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Colori badge rivisti per look scuro */
+.badge-restaurant { background: rgba(140, 29, 64, 0.3); color: #ffbccf; }
+.badge-pizzeria { background: rgba(13, 71, 161, 0.3); color: #bbdefb; }
+.badge-bar { background: rgba(181, 124, 30, 0.3); color: #ffe0b2; }
+.badge-pub { background: rgba(74, 20, 140, 0.3); color: #e1bee7; }
+.badge-summer { background: rgba(230, 81, 0, 0.3); color: #ffe0b2; }
+
+/* BOTTONE */
 .food-card-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
     padding: 10px 15px;
-    background-color: #fdfbf7;
-    color: #8c1d40;
-    border: 1px solid #8c1d40;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
-    font-size: 0.9rem;
     font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .food-card-btn:hover {
     background-color: #8c1d40;
-    color: #ffffff;
+    border-color: #8c1d40;
 }
 
-/* Feedback visivo per nessun locale corrispondente ai filtri della barra */
-.no-results-msg {
-    text-align: center;
-    color: #777;
-    font-size: 1.1rem;
-    margin: 3rem 0;
-    display: none;
-}
-
-/* ==========================================================================
-   MEDIA QUERIES (Ottimizzazione Mobile)
-   ========================================================================== */
-
+/* MEDIA QUERIES */
 @media (max-width: 768px) {
-    .food-section-title {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-    
-    .food-grid {
-        grid-template-columns: 1fr; /* Colonna singola per la massima leggibilità */
-        gap: 1.5rem;
-        padding: 0 0.5rem;
-    }
-    
-    .food-card-image {
-        height: 180px; /* Riduzione proporzionale per non occupare troppo spazio verticale */
-    }
+    .food-section-title { font-size: 1.5rem; text-align: center; }
+    .food-grid { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 0.5rem; }
 }
