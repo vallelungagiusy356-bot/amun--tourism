@@ -108,7 +108,7 @@
     },
     "sangiorgio": {
       "title": "Chiesa di San Giorgio Martire",
-      "description": "La Chiesa Madre di Caccamo, dedicata a San Giorgio Martire, è un imponente capolavoro che domina la monumentale piazza sottostante il Castello. Fondata in epoca normanna e rifatta nel 1614, conserva un immenso patrimonio artistico: dalle sculture di scuola gaginiana alle preziose tele seicentesche del pittore fiammingo Matthias Stom, fino alle ricche cappelle decorate in marmi mischi.",
+      "description": "La Chiesa Madre di Caccamo, dedicata a San Giorgio Martire, è un imponente capolavoro che domina la monumentale piazza sottostante il Castello. Fondata in epoca normanna e rifatta nel 614, conserva un immenso patrimonio artistico: dalle sculture di scuola gaginiana alle preziose tele seicentesche del pittore fiammingo Matthias Stom, fino alle ricche cappelle decorate in marmi mischi.",
       "hours": "Fasce Orarie Visite: Sabato e Domenica ore 09:30 – 10:45 e ore 16:00 – 18:00. (La ricezione turistica è sospesa durante la Santa Messa domenicale delle ore 11:00)."
     },
     "annunziata": {
@@ -169,7 +169,31 @@
     "intro": "Benvenuto viandante nella sezione dedicata ai sapori del luogo e alle serate in compagnia.",
     "search_placeholder": "Cerca un locale o un sapore...",
     "sec_movida": "Movida e Serate",
-    "sec_eat": "Ristoranti, Pizzerie e Bar"
+    "sec_eat": "Ristoranti, Pizzerie e Bar",
+    "listings": {
+      "movida": [
+        { "name": "The Castle", "category": "Pub", "desc": "Divertimento e serate a tema nella magica cornice notturna all'ombra del castello medievale.", "link": "https://www.facebook.com/share/18vZG4MXRW/" },
+        { "name": "Kittipigghi", "category": "Pub", "desc": "Il punto di riferimento per le tue serate nel borgo. Eventi, musica e intrattenimento attivo tutto l'anno.", "link": "https://www.kitipigghi.it/" },
+        { "name": "Chiosco San Francesco", "category": "Solo Estate", "desc": "Rinfresca le tue serate estive all'aperto, tra cocktail, ottima compagnia e atmosfera gioviale all'interno di una villa comunale recuperata e riadattata.", "link": "https://www.facebook.com/share/1B4aAYCLgD/" }
+      ],
+      "restaurants": [
+        { "name": "Al Maniero", "category": "Ristorante", "desc": "Cucina curata e piatti della tradizione in un'atmosfera calda con vista castello.", "link": "https://www.facebook.com/share/18u3GL8zLz/" },
+        { "name": "Il Borgo", "category": "Ristorante", "desc": "Un viaggio gastronomico tra i sapori veri ed eccellenze culinarie della nostra terra.", "link": "https://www.ilborgoristorante.it/" },
+        { "name": "A Castellana", "category": "Ristorante", "desc": "Un'esperienza culinaria ricercata nel cuore del borgo, dove la tradizione incontra l'eleganza.", "link": "https://www.castellana.it/" },
+        { "name": "Caffè Royal", "category": "Bar Pasticceria", "desc": "Dalla colazione artigianale ai dolci della tradizione siciliana più raffinata.", "link": "https://www.pasticceriacafferoyal.it/" },
+        { "name": "La Bottega dei Sapori", "category": "Pizzeria Asporto", "desc": "Pizze d'asporto fragranti e sfiziose preparate al momento con ingredienti genuini.", "link": "https://www.facebook.com/share/1JBduVFioY/" },
+        { "name": "L'officina dei golosi", "category": "Bar Pasticceria", "desc": "Dolci artigianali, colazioni ricche e pause caffè golose per coccolare il palato ogni giorno.", "link": "https://www.facebook.com/share/18mYX4eM55/" },
+        { "name": "Strapizzami", "category": "Pizzeria Panineria", "desc": "Pizze croccanti, sfiziose e realizzate con ingredienti locali accuratamente selezionati.", "link": "https://www.google.com/amp/s/restaurantguru.it/amp/Strapizzami-Di-La-Corte-Caccamo" },
+        { "name": "Pasticceria Fratelli Scimeca", "category": "Pasticceria", "desc": "I maestri dei dolci tipici e dei sapori tradizionali che raccontano la nostra storia nel mondo.", "link": "https://www.pasticceriascimeca.it/it/" },
+        { "name": "Dolci Tentazioni", "category": "Bar", "desc": "Il posto ideale per una pausa rigenerante, ottimi caffè e il gelato artigianale", "link": "https://www.facebook.com/share/17U43rMe2E/" },
+        { "name": "Bar Ribaudo", "category": "Bar", "desc": "Assolutamente da provare la loro mattonella, il panino con la milza, i loro polli arrosto.", "link": "https://www.facebook.com/share/18ac66cyJw/" },
+        { "name": "Bar del Carmine", "category": "Bar", "desc": "Caffetteria storica ideale per un ottimo espresso o un gelato rinfrescante in totale relax.", "link": "https://www.facebook.com/share/18iwTg9A2x/" },
+        { "name": "Spiga d'oro food and drink", "category": "Ristorante", "desc": "Sfornati freschi, taglieri tipici e un'ampia scelta di specialità pronte da gustare.", "link": "https://www.facebook.com/share/1DdAPmbUN8/" },
+        { "name": "Cafè 40", "category": "Bar", "desc": "Ambiente moderno e accogliente, ideale per incontri e colazioni.", "link": "https://www.facebook.com/share/1LT4v9c3Kj/" },
+        { "name": "Il dolce", "category": "Bar", "desc": "Ambiente moderno e accogliente, ideale dolci tipici, rosticceria,tipico cibo da street food siciliano.", "link": "https://www.facebook.com/share/18xrPta97K/" },
+        { "name": "Bar Muscarella", "category": "Bar & Caffè", "desc": "Tappa ideale per un caffè rigenerante, un gelato artigianale o un aperitivo in relax.", "link": "https://restaurantguru.it/amp/Bar-Muscarella-Caccamo" }
+      ]
+    }
   },
 
   "sleep_page": {
