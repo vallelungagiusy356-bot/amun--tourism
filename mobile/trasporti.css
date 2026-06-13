@@ -1,8 +1,105 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - MODULE: TRANSPORT SYSTEM
+   AMUNÌ TOURISM - COMPONENTE TRASPORTI (ARCHITETTURA REALE & COERENTE)
    ========================================================================== */
 
-/* 1. SCENA E SUPPORTO VIDEO */
+/* RESET E BODY COERENTI CON LA HOME */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    background: #000;
+    color: #f7f2e9;
+    overflow-x: hidden;
+}
+
+/* SFONDO ORIGINALE DELLA HOME (COERENZA 100%) */
+.scene-background {
+    position: fixed;
+    inset: 0;
+    background-image: url('img/tuo_nuovo_sfondo.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.78) contrast(1.1) saturate(1.1); /* Filtro esatto della tua Home */
+    z-index: 0;
+}
+
+/* DASHBOARD MOBILE BAROCCA (SPECULARE ALLA HOME) */
+.dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background: rgba(0, 0, 0, 0.40);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.55); /* Il tuo iconico bordo dorato */
+    z-index: 100; /* Livello alto per sovrastare lo scroll del testo */
+}
+
+.logo-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #f7f2e9;
+}
+
+/* PULSANTE INDIETRO COERENTE CON LO STILE AUDIO DELLA DASHBOARD */
+.btn-back-dashboard {
+    background: none;
+    border: none;
+    color: #ffd78f; /* Oro della dashboard */
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 6px;
+    margin-right: 8px;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.btn-back-dashboard:hover {
+    transform: scale(1.2);
+}
+
+/* 🔊 BOTTONE AUDIO ORIGINALE */
+.btn-audio {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #ffd78f;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 6px;
+    transition: transform 0.2s ease;
+}
+
+.btn-audio:hover {
+    transform: scale(1.2);
+}
+
+/* SELETTORE LINGUA IN LINEA */
+.lang-switcher {
+    margin-left: 12px;
+    display: flex;
+    gap: 6px;
+}
+
+.lang-switcher button {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 2px;
+}
+
+/* CONTENITORE VIDEO PERGAMENA */
 .pergamena-container {
     position: fixed;
     inset: 0;
@@ -12,7 +109,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    pointer-events: none; /* Inibisce blocchi sui click */
+    pointer-events: none;
 }
 
 .pergamena-container video {
@@ -21,20 +118,22 @@
     object-fit: cover;
 }
 
-/* 2. OVERLAY CONTENUTI (OPACITY ANIMATION CONTROLLED) */
+/* LAYOUT DI SCROLL (Inizialmente trasparente per il video) */
 .scroll-content {
     position: relative;
     z-index: 2;
-    width: 100%;
-    min-height: 100vh;
+    margin-top: 75px; /* Sincronizzato con il margine dei contenuti della Home */
+    padding: 16px;
     display: flex;
     flex-direction: column;
+    gap: 22px;
     align-items: center;
-    padding: 78px 24px 40px 24px; /* Ottimizzato per contenere la dashboard da 58px */
-    box-sizing: border-box;
+    width: 100%;
+    min-height: calc(100vh - 75px);
     opacity: 0;
     transform: translateY(15px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Velocizzato a 0.8s per migliore reattività percepita */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    box-sizing: border-box;
 }
 
 .scroll-content.visible {
@@ -42,133 +141,117 @@
     transform: translateY(0);
 }
 
-/* 3. SCHEDA INFORMATIVA (PERGAMENA STYLE) */
+/* SCHEDA INFORMATIVA (TESTO SPESSO E LEGGIBILE SULLA PERGAMENA) */
 .info-card {
     width: 100%;
     max-width: 360px;
-    color: #3d2314; /* Marrone seppia scuro per massima leggibilità su pergamena */
+    color: #2b1408; /* Marrone "Bruciato" molto scuro per staccare nettamente */
     font-family: 'Georgia', serif;
     line-height: 1.6;
     text-align: center;
-    margin-bottom: 24px;
 }
 
 .info-card p {
-    margin-bottom: 16px;
-    font-size: 1.02rem;
-}
-
-.info-card hr {
-    border: 0;
-    border-top: 1px dashed rgba(61, 35, 20, 0.4);
-    margin: 22px 0;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    font-weight: 700; /* Tratto marcato richiesto per contrastare la texture */
+    text-shadow: 0.2px 0.2px 0px rgba(43, 20, 8, 0.2); /* Rinforzo visivo antialiasing */
 }
 
 .info-card h2 {
     font-size: 1.35rem;
-    font-weight: 700;
+    font-weight: 800; /* Tratto deciso per il titolo della compagnia */
+    color: #421d06;
     margin-bottom: 12px;
-    color: #5c3a21;
 }
 
-/* HUB DELLE FERMATE AUTOMOBILISTICHE */
+/* BOX DELLE FERMATE IN STILE SEPPIA INTEGRATO */
 .stops-box {
     text-align: left;
-    background: rgba(61, 35, 20, 0.05); /* Tintura seppia leggerissima */
+    background: rgba(61, 35, 20, 0.09); /* Leggermente più scuro per dare contrasto */
     padding: 16px;
     border-radius: 12px;
-    border-left: 3px solid #8b5a2b;
-    margin: 24px 0;
+    border-left: 4px solid #5c3a21;
+    margin: 20px 0;
 }
 
 .stops-box h3 {
     margin-top: 0;
     margin-bottom: 12px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #5c3a21;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #421d06;
 }
 
 .stops-box ul {
-    padding-left: 18px;
+    padding-left: 20px;
     margin: 0;
 }
 
 .stops-box li {
     margin-bottom: 10px;
-    font-size: 0.95rem;
-    list-style-type: square; /* Sostituisce i bullet generici con un design più geometrico */
+    font-size: 0.98rem;
+    font-weight: 700; /* Tratto rinforzato per le singole fermate */
+    color: #2b1408;
 }
 
-/* Override interno per le stringhe i18n che iniettano tag strong */
-.stops-box li strong {
-    color: #5c3a21;
-}
-
-/* 4. BOTTONI ED ELEMENTI DI NAVIGAZIONE */
-.btn-back-dashboard {
-    background: none;
-    border: none;
-    font-size: 1.3rem;
-    color: #ffd78f; /* Sincronizzato con il colore dell'icona audio */
-    cursor: pointer;
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-}
-
-.btn-back-dashboard:active {
-    transform: scale(0.9); /* Feedback di pressione nativo per mobile */
-}
-
+/* STRUTTURA BOTTONI BAROCCHI IDENTICI ALLA HOME (CON RIFLESSO) */
 .transport-buttons {
     display: flex;
     flex-direction: column;
     gap: 14px;
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
+    position: relative;
+    z-index: 20;
 }
 
-/* Forza la conformità dei bottoni barocchi dentro la pergamena */
 .transport-buttons .btn-barocco {
-    width: 100%;
+    background: #000;
+    border: 2px solid #d4a84f;
+    border-radius: 14px;
+    padding: 14px 6px;
+    text-align: center;
+    color: #ffd78f;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 0 10px rgba(255, 215, 160, 0.25);
+    position: relative;
+    overflow: hidden; /* Taglia la luce diagonale sui bordi del tasto */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 14px; /* Calibrato per Touch Target Mobile a 50px+ */
-    font-size: 0.95rem;
-    background: #000000; /* Assicura il fondo nero barocco contrastante con la pergamena */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
 }
 
-/* Sfasamento temporale dei riflessi per le due CTA */
-.transport-buttons a:nth-child(1).btn-barocco::before {
-    animation-delay: 0.2s;
+/* Lama di luce diagonale originale dei tuoi tasti */
+.transport-buttons .btn-barocco::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -70%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(
+        to right, 
+        rgba(255, 215, 160, 0) 0%, 
+        rgba(255, 215, 160, 0.4) 50%, 
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(-45deg);
+    animation: homeButtonGlow 4s infinite ease-in-out;
+    pointer-events: none;
 }
+
+/* Sfasamento del riflesso del secondo bottone (come nel foglio originale) */
 .transport-buttons a:nth-child(2).btn-barocco::before {
-    animation-delay: 0.8s;
+    animation-delay: 0.5s;
 }
 
-/* CORREZIONE STRUTTURALE DEL SELETTORE LINGUA IN DASHBOARD (MOBILE COMPACT) */
-.lang-switcher {
-    margin-left: 10px;
-    display: flex;
-    gap: 4px;
-}
-
-.lang-switcher button {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    padding: 2px;
-    opacity: 0.6;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.lang-switcher button:active {
-    transform: scale(0.85);
+/* KEYFRAME ORIGINALE DELLA LUCE DIAGONALE DELLA HOME */
+@keyframes homeButtonGlow {
+    0% { left: -70%; }
+    25% { left: 130%; }
+    100% { left: 130%; }
 }
