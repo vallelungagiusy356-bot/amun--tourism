@@ -1,8 +1,8 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - MODULE: TRASPORTI (VERSIONE CON FIX SFONDO E ELEGANZA)
+   AMUNÌ TOURISM - MODULE: TRASPORTI (CSS DEFINITIVO - ADEGUATO ALL'HTML)
    ========================================================================== */
 
-/* 1. RESET E STRUTTURA DI BASE (SFONDO FIXATO SUL BODY) */
+/* 1. RESET E STRUTTURA DI BASE */
 * {
     margin: 0;
     padding: 0;
@@ -15,100 +15,96 @@ body {
     color: #fff;
     overflow-x: hidden;
     min-height: 100vh;
-    
-    /* FIX: Applichiamo lo sfondo direttamente al body così è visibile ovunque */
+}
+
+/* 2. GESTIONE SFONDO CINEMATOGRAFICO (RIPRISTINATO TRAMITE DIV HTML) */
+.scene-background {
+    position: fixed;
+    inset: 0;
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Lo tiene fermo ed evita scatti su mobile */
+    filter: brightness(0.5) contrast(1.2);
+    z-index: -10;
 }
 
-/* Applichiamo il filtro cinematografico scuro direttamente al body tramite un overlay elegante */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45); /* Scurisce lo sfondo per far brillare il testo oro */
-    backdrop-filter: brightness(0.5) contrast(1.2);
-    -webkit-backdrop-filter: brightness(0.5) contrast(1.2);
-    z-index: -1; /* Lo mette dietro a tutto il testo */
-    pointer-events: none;
-}
-
-/* 2. DASHBOARD MOBILE BAROCCA (SPECULARE AL 100% ALLA HOME) */
+/* 3. DASHBOARD MOBILE BAROCCA COMPATTA (MONO-RIGA, ALTEZZA FISSA) */
 .dashboard {
-    width: 100%;
-    padding: 15px 20px;
-    background: rgba(0, 0, 0, 0.85);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.4);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    position: fixed; /* Fissata per gestire correttamente lo scroll del testo sotto di essa */
+    position: fixed;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 58px; /* Dimensione fissa e snella identica alla Home */
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.4);
     z-index: 100;
 }
 
 .dashboard .logo-title {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     color: #ffd78f;
-    text-shadow: 0 0 8px rgba(255, 215, 160, 0.6);
+    text-shadow: 0 0 8px rgba(255, 215, 160, 0.4);
+    margin-left: 6px;
 }
 
-/* TASTO INDIETRO COORDINATO */
+/* TASTO INDIETRO PERFETTAMENTE ALLINEATO A SINISTRA */
 .btn-back-dashboard {
     background: none;
     border: none;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #ffd78f;
     cursor: pointer;
-    padding: 5px;
-    align-self: flex-start; /* Lo tiene allineato a sinistra su mobile */
-    margin-bottom: -35px; /* Compensazione estetica su layout colonna mobile */
-    position: relative;
-    z-index: 105;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* 🔊 BOTTONE AUDIO ORIGINALE DALLA HOME */
+/* ELEMENTI AUDIO E LINGUE SPINTI SULLA DESTRA (STESSA LINEA) */
 .btn-audio {
+    margin-left: auto; /* Trucco flexbox per isolare i comandi a destra */
     background: none;
     border: none;
     color: #ffd78f;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     cursor: pointer;
-    padding: 6px;
+    padding: 4px;
 }
 
 .lang-switcher {
     display: flex;
-    gap: 8px;
-    margin-top: 5px;
+    gap: 6px;
+    margin-left: 10px;
 }
 
 .lang-switcher button {
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #ffd78f;
-    padding: 5px;
-    border-radius: 5px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
     cursor: pointer;
+    padding: 2px;
 }
 
-/* 3. AREA DI SCROLL MOBILE CONTENUTI */
+/* 4. AREA DI SCROLL CON STACCO DI SICUREZZA CALIBRATO */
 .scroll-content {
     position: relative;
     z-index: 2;
-    margin-top: 130px; /* Lascia spazio alla dashboard a due righe su mobile */
+    margin-top: 85px; /* Lo stacco perfetto: la dashboard non copre più i testi */
     padding: 16px 20px 40px 20px;
     display: flex;
     flex-direction: column;
     gap: 24px;
     align-items: center;
     width: 100%;
-    min-height: calc(100vh - 130px);
+    min-height: calc(100vh - 85px);
     box-sizing: border-box;
     
     opacity: 0;
@@ -121,89 +117,39 @@ body::before {
     transform: translateY(0);
 }
 
-/* 4. SCHEDA TRASPORTI — CLONATA PERFETTAMENTE DALLO STILE WELCOME POETRY / INTRO CARD */
-.info-card {
-    width: 90%;
+/* 5. NUOVA SCHEDA ELEGANTE (LOGICA EREDITATA DA HOME-WELCOME-POETRY) */
+.home-welcome-poetry {
+    width: 100%;
     max-width: 700px;
-    margin: 0 auto;
     padding: 24px;
-    background: rgba(0, 0, 0, 0.35); /* Trasparenza minimal ed elegante della Home */
+    background: rgba(0, 0, 0, 0.35); /* Trasparenza soffusa "Bergman Style" */
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 215, 160, 0.2);
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: all 0.4s ease;
 }
 
-.info-card:hover {
-    background: rgba(5, 3, 2, 0.6);
-    border-color: rgba(255, 215, 160, 0.4);
-    box-shadow: 0 12px 35px rgba(255, 215, 160, 0.1);
-}
-
-/* TITOLI STILE GEORGIA HOME */
-.info-card h2 {
+.home-welcome-poetry h1 {
     font-family: 'Georgia', 'Times New Roman', Times, serif; 
     font-size: 1.4rem;
     color: #ffd78f;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
-    letter-spacing: 0.5px;
 }
 
-/* PARAGRAFI POETICI STILE GARAMOND HOME */
-.info-card p {
+.home-welcome-poetry p {
     font-family: 'Garamond', 'Georgia', 'Times New Roman', serif; 
     font-size: 1.05rem;
     line-height: 1.6;
     color: #f7f2e9;
     font-style: italic;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95); 
-    margin-bottom: 12px;
-}
-
-.info-card hr {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255, 215, 160, 0.4), transparent);
-    margin: 18px 0;
-}
-
-/* BOX DELLE FERMATE IN STILE POETICO SOFT */
-.stops-box {
-    text-align: left;
-    background: rgba(0, 0, 0, 0.25);
-    padding: 18px;
-    border-radius: 12px;
-    border-left: 3px solid rgba(255, 215, 160, 0.6);
-    margin: 20px 0;
-}
-
-.stops-box h3 {
-    font-family: 'Georgia', serif;
-    font-size: 1.15rem;
-    color: #ffd78f;
     margin-bottom: 10px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
 }
 
-.stops-box ul {
-    padding-left: 20px;
-    margin: 0;
-}
-
-.stops-box li {
-    font-family: 'Garamond', 'Georgia', serif;
-    font-size: 1.02rem;
-    font-style: italic;
-    color: #e6e0d4;
-    margin-bottom: 8px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
-}
-
-/* 5. BOTTONI BAROCCHI CON RIFLESSO DIAGONALE */
+/* 6. BOTTONI BAROCCHI CON EFFETTO LUCCICHIO */
 .transport-buttons {
     display: flex;
     flex-direction: column;
@@ -257,64 +203,34 @@ body::before {
 
 
 /* ==========================================================================
-   PARTE 3: VERSIONE DESKTOP — ABILITATA DA 900PX IN SU (ADATTAMENTO HOME)
+   7. VERSIONE DESKTOP (DA 900PX IN SU) - LAYOUT FLUTTUANTE DA HOME
    ========================================================================== */
 @media screen and (min-width: 900px) {
 
     .scene-background {
-        position: fixed;
-        inset: 0;
-        background-image: url('img/tuo_nuovo_sfondo.jpeg') !important;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        filter: brightness(0.78) contrast(1.1) saturate(1.1);
-        z-index: -5 !important;
-        pointer-events: none;
+        filter: brightness(0.7) contrast(1.1);
     }
 
-    body {
-        background: transparent !important;
-    }
-
-    /* DASHBOARD ORIZZONTALE ELEGANTE */
+    /* Dashboard orizzontale estesa ad alto impatto visivo */
     .dashboard {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
         height: 70px;
         background: rgba(0, 0, 0, 0.75);
         border-bottom: 2px solid rgba(255, 215, 160, 0.85);
-        backdrop-filter: blur(18px) saturate(200%);
-        display: flex;
         flex-direction: row;
-        align-items: center;
         justify-content: space-between;
         padding: 0 20px;
-        z-index: 100;
         box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
     }
 
     .dashboard .logo-title {
         font-size: 1.35rem;
         text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
-    }
-
-    .btn-back-dashboard {
-        align-self: center;
-        margin-bottom: 0;
-    }
-
-    .lang-switcher {
-        margin-top: 0;
-        align-items: center;
+        margin-left: 0;
     }
 
     .lang-switcher button {
         width: 36px;
         height: 36px;
-        font-size: 1.1rem;
         border-radius: 8px;
         background: rgba(0, 0, 0, 0.65);
         border: 1px solid rgba(255, 215, 160, 0.85);
@@ -322,8 +238,8 @@ body::before {
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 10px rgba(255, 215, 160, 0.4), inset 0 0 6px rgba(255, 215, 160, 0.3);
-        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: 0 0 10px rgba(255, 215, 160, 0.4);
+        transition: all 0.4s ease;
     }
 
     .lang-switcher button:hover {
@@ -332,23 +248,24 @@ body::before {
         transform: scale(1.05);
     }
 
-    /* SCROLL CONTENT IN FLUSSO DESKTOP CORRETTO */
+    /* Stacco desktop proporzionato */
     .scroll-content {
-        margin-top: 150px; 
+        margin-top: 130px; 
+        min-height: calc(100vh - 130px);
         padding: 24px 30px;
-        min-height: calc(100vh - 150px);
     }
 
-    /* AMPLIA LO SPAZIO SCHEDA SU SCHERMI GRANDI */
-    .info-card {
-        width: 45vw;
-        max-width: 600px;
-        background: rgba(0, 0, 0, 0); /* Inizia trasparente e si rivela con l'hover stile Home */
+    /* La scheda fluttua in trasparenza totale e si accende quando ci passi sopra */
+    .home-welcome-poetry {
+        width: 38vw;
+        max-width: 440px;
+        background: rgba(0, 0, 0, 0);
         border: 1px solid transparent;
         box-shadow: none;
+        transition: all 0.6s ease;
     }
 
-    .info-card:hover {
+    .home-welcome-poetry:hover {
         background: rgba(0, 0, 0, 0.45);
         backdrop-filter: blur(8px) saturate(120%);
         -webkit-backdrop-filter: blur(8px) saturate(120%);
@@ -356,30 +273,21 @@ body::before {
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
     }
 
-    .info-card h2 {
-        font-size: 1.75rem;
-    }
+    .home-welcome-poetry h1 { font-size: 1.75rem; }
+    .home-welcome-poetry p { font-size: 1.1rem; line-height: 1.75; }
 
-    .info-card p {
-        font-size: 1.1rem;
-        line-height: 1.75;
-    }
-
-    /* BOTTONI VERSIONE DESKTOP CURATI */
     .transport-buttons .btn-barocco {
         background: rgba(0, 0, 0, 0.55);
         border: 1px solid rgba(255, 215, 160, 0.75);
-        box-shadow: 0 0 14px rgba(255, 215, 160, 0.55);
     }
-
+    
     .transport-buttons .btn-barocco:hover {
-        background: rgba(255, 215, 160, 0.15);
-        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
         transform: scale(1.05);
+        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
     }
 }
 
-/* KEYFRAMES */
+/* KEYFRAMES LUCCICHIO */
 @keyframes homeButtonGlow {
     0% { left: -70%; }
     25% { left: 130%; }
