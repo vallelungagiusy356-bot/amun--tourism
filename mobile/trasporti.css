@@ -1,6 +1,6 @@
 /* ==========================================================================
    AMUNÌ TOURISM - MODULE: TRASPORTI 
-   (Layout unificato basato sul Design System originale della Home)
+   (Layout unificato con Pergamena Statica PNG)
    ========================================================================== */
 
 /* 1. RESET E STRUTTURA DI BASE (IDENTICI ALLA HOME) */
@@ -41,7 +41,7 @@ body {
     background: rgba(0, 0, 0, 0.40);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 215, 160, 0.55);
-    z-index: 100; /* Innalzato a 100 per blindarlo sopra lo scroll del testo */
+    z-index: 100; /* Blindato sopra lo scroll del testo e della mappa */
 }
 
 .logo-title {
@@ -101,43 +101,48 @@ body {
     padding: 2px;
 }
 
-/* 3. POTENZIAMENTO DIMENSIONI VIDEO PERGAMENA (PIÙ SPAZIO IN LARGHEZZA E LUNGHEZZA) */
+/* 3. IMPOSTAZIONE PERGAMENA STATICA PNG (COPRE PIÙ SPAZIO REGOLARE) */
 .pergamena-container {
     position: fixed;
-    inset: -5% -5% -5% -5%; /* Espande l'area oltre i limiti del viewport per dare respiro al video */
-    width: 110vw;
-    height: 110vh;
+    inset: 0;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     pointer-events: none;
+    padding-top: 58px; /* Impedisce ai rulli superiori di finire sotto la dashboard */
 }
 
-.pergamena-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: fill; /* Forza il video a distendersi occupando tutto lo spazio di sfondo allocato senza ritagli */
+/* Rendering dell'immagine statica ad alta definizione */
+.pergamena-container::before {
+    content: "";
+    width: 100vw;
+    height: calc(100vh - 58px);
+    background-image: url('img/pergamena.png');
+    background-size: contain; /* Mantiene l'intera pergamena e i dettagli intatti su ogni display mobile */
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
 }
 
-/* 4. AREA DI SCROLL MOBILE (SINCRONIZZATA SUI CORRETTI LIVELLI) */
+/* 4. AREA DI SCROLL MOBILE (CENTRATA SULLA TEXTURE DELLA MAPPA) */
 .scroll-content {
     position: relative;
     z-index: 2;
-    margin-top: 75px; /* Sincronizzato sul valore di layout della Home */
-    padding: 16px 24px 40px 24px;
+    margin-top: 105px; /* Spostiamo l'inizio del testo più in basso per centrarlo nel corpo della pergamena */
+    padding: 0 42px 40px 42px; /* Ampi margini laterali per evitare che il testo tocchi i bordi arricciati */
     display: flex;
     flex-direction: column;
     gap: 22px;
     align-items: center;
     width: 100%;
-    min-height: calc(100vh - 75px);
+    min-height: calc(100vh - 105px);
     box-sizing: border-box;
     
-    /* Effetto comparsa fluida gestito dal JS al termine del video */
+    /* Forza la visibilità immediata (il controllo aspetta solo il DOMContentLoaded istantaneo) */
     opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .scroll-content.visible {
@@ -148,55 +153,55 @@ body {
 /* 5. SCHEDA INFORMATIVA SULLA PERGAMENA (TESTO SPESSO E MARNATO) */
 .info-card {
     width: 100%;
-    max-width: 360px;
-    color: #2b1408; /* Marrone brunito molto intenso per un super contrasto */
+    max-width: 330px; /* Perfetto per restare all'interno dei disegni della mappa */
+    color: #231207; /* Marrone scurissimo "bruciato" per un contrasto perfetto sulla carta antica */
     font-family: 'Georgia', serif;
-    line-height: 1.6;
+    line-height: 1.5;
     text-align: center;
 }
 
 .info-card p {
-    margin-bottom: 15px;
-    font-size: 1.05rem;
-    font-weight: 700; /* Tratto marcato per sconfiggere l'effetto sbiadito su mobile */
-    text-shadow: 0.2px 0.2px 0px rgba(43, 20, 8, 0.2);
+    margin-bottom: 14px;
+    font-size: 1.02rem;
+    font-weight: 700; /* Spessore marcato antialiasing contro la sgranatura mobile */
+    text-shadow: 0.2px 0.2px 0px rgba(35, 18, 7, 0.2);
 }
 
 .info-card h2 {
-    font-size: 1.35rem;
+    font-size: 1.28rem;
     font-weight: 800;
-    color: #421d06;
+    color: #3d1b04;
     margin-bottom: 12px;
 }
 
 /* BOX DELLE FERMATE INTERNO ALLA PERGAMENA */
 .stops-box {
     text-align: left;
-    background: rgba(61, 35, 20, 0.09);
-    padding: 16px;
+    background: rgba(35, 18, 7, 0.07); /* Sfondo ambrato leggero per separare l'elenco */
+    padding: 15px;
     border-radius: 12px;
     border-left: 4px solid #5c3a21;
-    margin: 20px 0;
+    margin: 18px 0;
 }
 
 .stops-box h3 {
     margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 1.15rem;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
     font-weight: 800;
-    color: #421d06;
+    color: #3d1b04;
 }
 
 .stops-box ul {
-    padding-left: 20px;
+    padding-left: 18px;
     margin: 0;
 }
 
 .stops-box li {
-    margin-bottom: 10px;
-    font-size: 0.98rem;
+    margin-bottom: 8px;
+    font-size: 0.96rem;
     font-weight: 700;
-    color: #2b1408;
+    color: #231207;
 }
 
 /* 6. BOTTONI BAROCCHI CON RIFLESSO DIAGONALE (REPLICATI ESATTAMENTE DALLA HOME) */
@@ -208,6 +213,7 @@ body {
     max-width: 340px;
     position: relative;
     z-index: 20;
+    margin-top: 5px;
 }
 
 .transport-buttons .btn-barocco {
