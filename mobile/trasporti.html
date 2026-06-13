@@ -16,8 +16,6 @@
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="pergamena-container"></div>
-
     <header class="dashboard">
         <button class="btn-back-dashboard" onclick="window.history.back()" aria-label="Torna indietro">⬅️</button>
         
@@ -68,8 +66,10 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const content = document.getElementById("scroll-content");
-            // La pergamena è statica: mostriamo subito il contenuto in modo fluido all'avvio
-            content.classList.add("visible");
+            // Un micro-timeout assicura che il CSS sia renderizzato prima che parta l'effetto fade-in fluido
+            setTimeout(() => {
+                content.classList.add("visible");
+            }, 50);
         });
     </script>
 
