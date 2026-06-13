@@ -1,111 +1,68 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - COMPONENTE TRASPORTI (ARCHITETTURA REALE & COERENTE)
+   AMUNÌ TOURISM - TRASPORTI DEFINTIVE CSS
+   (Risoluzione Bug Visivi con Ereditarietà Home.css)
    ========================================================================== */
 
-/* RESET E BODY COERENTI CON LA HOME */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* 1. AGGIUNTA DELLO SFONDO REALE DELLA HOME SOTTO LA PERGAMENA */
 body {
-    font-family: system-ui, sans-serif;
-    background: #000;
-    color: #f7f2e9;
-    overflow-x: hidden;
-}
-
-/* SFONDO ORIGINALE DELLA HOME (COERENZA 100%) */
-.scene-background {
-    position: fixed;
-    inset: 0;
+    background-color: #000000;
+    /* Inseriamo lo stesso identico sfondo della home come immagine di base del body,
+       così se la pergamena non copre tutto lo schermo o l'utente scrolla, sotto si vede il borgo */
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.78) contrast(1.1) saturate(1.1); /* Filtro esatto della tua Home */
-    z-index: 0;
+    background-attachment: fixed;
+    /* Applichiamo lo stesso identico filtro barocco della home */
+    filter: brightness(0.78) contrast(1.1) saturate(1.1); 
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
-/* DASHBOARD MOBILE BAROCCA (SPECULARE ALLA HOME) */
+/* 2. PROTEZIONE DELLA DASHBOARD BAROCCA (Z-INDEX & OVERLAP FIXED) */
 .dashboard {
     position: fixed;
+    width: 100%;
     top: 0;
     left: 0;
-    width: 100%;
+    /* Forziamo un livello di rendering superiore a tutto il resto per non farla coprire dal video o dal testo */
+    z-index: 100 !important; 
+    /* Recuperiamo lo stile barocco sfocato e con bordo dorato dal tuo design system */
+    background: rgba(0, 0, 0, 0.40) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.55);
     height: 58px;
     display: flex;
     align-items: center;
-    padding: 0 16px;
-    background: rgba(0, 0, 0, 0.40);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.55); /* Il tuo iconico bordo dorato */
-    z-index: 100; /* Livello alto per sovrastare lo scroll del testo */
+    box-sizing: border-box;
 }
 
-.logo-title {
-    font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    color: #f7f2e9;
-}
-
-/* PULSANTE INDIETRO COERENTE CON LO STILE AUDIO DELLA DASHBOARD */
+/* Tasto indietro inserito nell'HTML coerente con l'oro dei pulsanti audio */
 .btn-back-dashboard {
     background: none;
     border: none;
-    color: #ffd78f; /* Oro della dashboard */
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    color: #ffd78f;
     cursor: pointer;
-    padding: 6px;
-    margin-right: 8px;
-    transition: transform 0.2s ease;
+    padding: 5px;
     display: flex;
     align-items: center;
-}
-
-.btn-back-dashboard:hover {
-    transform: scale(1.2);
-}
-
-/* 🔊 BOTTONE AUDIO ORIGINALE */
-.btn-audio {
-    margin-left: auto;
-    background: none;
-    border: none;
-    color: #ffd78f;
-    font-size: 1.4rem;
-    cursor: pointer;
-    padding: 6px;
+    justify-content: center;
     transition: transform 0.2s ease;
 }
 
-.btn-audio:hover {
-    transform: scale(1.2);
+.btn-back-dashboard:active {
+    transform: scale(0.9);
 }
 
-/* SELETTORE LINGUA IN LINEA */
-.lang-switcher {
-    margin-left: 12px;
-    display: flex;
-    gap: 6px;
-}
-
-.lang-switcher button {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    padding: 2px;
-}
-
-/* CONTENITORE VIDEO PERGAMENA */
+/* 3. IL CONTENITORE VIDEO DELLA PERGAMENA */
 .pergamena-container {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
+    z-index: 1; /* Sta sopra lo sfondo del body ma sotto la dashboard e il testo */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,22 +75,22 @@ body {
     object-fit: cover;
 }
 
-/* LAYOUT DI SCROLL (Inizialmente trasparente per il video) */
+/* 4. AREA DI SCROLL DEI CONTENUTI (OPACITY FLUIDA DA JS) */
 .scroll-content {
     position: relative;
-    z-index: 2;
-    margin-top: 75px; /* Sincronizzato con il margine dei contenuti della Home */
-    padding: 16px;
+    z-index: 2; /* Sta sopra al video */
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 22px;
     align-items: center;
-    width: 100%;
-    min-height: calc(100vh - 75px);
+    /* I 90px in alto proteggono la dashboard impedendo alle scritte di salirci sopra all'avvio */
+    padding: 90px 25px 40px 25px; 
+    box-sizing: border-box;
+    
     opacity: 0;
     transform: translateY(15px);
     transition: opacity 1s ease-out, transform 1s ease-out;
-    box-sizing: border-box;
 }
 
 .scroll-content.visible {
@@ -141,37 +98,40 @@ body {
     transform: translateY(0);
 }
 
-/* SCHEDA INFORMATIVA (TESTO SPESSO E LEGGIBILE SULLA PERGAMENA) */
+/* 5. CORREZIONE SPESSORE CARATTERI SULLA PERGAMENA (MASSIMA LEGGIBILITÀ) */
 .info-card {
     width: 100%;
     max-width: 360px;
-    color: #2b1408; /* Marrone "Bruciato" molto scuro per staccare nettamente */
+    /* Marrone "Inchiostro Bruciato" molto scuro per un contrasto perfetto sulla texture chiara */
+    color: #2b1408; 
     font-family: 'Georgia', serif;
     line-height: 1.6;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .info-card p {
     margin-bottom: 15px;
     font-size: 1.05rem;
-    font-weight: 700; /* Tratto marcato richiesto per contrastare la texture */
-    text-shadow: 0.2px 0.2px 0px rgba(43, 20, 8, 0.2); /* Rinforzo visivo antialiasing */
+    /* Trasformiamo il tratto in grassetto/ispessito per contrastare la sgranatura dello schermo mobile */
+    font-weight: 700; 
+    text-shadow: 0.3px 0.3px 0px rgba(43, 20, 8, 0.15); /* Tecnica di antialiasing per rendere il testo più marcato */
 }
 
 .info-card h2 {
     font-size: 1.35rem;
-    font-weight: 800; /* Tratto deciso per il titolo della compagnia */
+    font-weight: 800; /* Tratto molto marcato per il titolo delle Autolinee */
     color: #421d06;
     margin-bottom: 12px;
 }
 
-/* BOX DELLE FERMATE IN STILE SEPPIA INTEGRATO */
+/* IL BOX DELLE FERMATE SULLA PERGAMENA */
 .stops-box {
     text-align: left;
-    background: rgba(61, 35, 20, 0.09); /* Leggermente più scuro per dare contrasto */
+    background: rgba(61, 35, 20, 0.09); /* Sfondo seppia leggermente più marcato per staccare */
     padding: 16px;
     border-radius: 12px;
-    border-left: 4px solid #5c3a21;
+    border-left: 4px solid #5c3a21; /* Bordo decorativo più spesso */
     margin: 20px 0;
 }
 
@@ -191,41 +151,40 @@ body {
 .stops-box li {
     margin-bottom: 10px;
     font-size: 0.98rem;
-    font-weight: 700; /* Tratto rinforzato per le singole fermate */
+    font-weight: 700; /* Ispessimento applicato anche all'elenco puntato delle fermate */
     color: #2b1408;
 }
 
-/* STRUTTURA BOTTONI BAROCCHI IDENTICI ALLA HOME (CON RIFLESSO) */
+/* 6. BOTTONI ORARIO E BIGLIETTI IN STILE BAROCCO REALE (IDENTICI ALLA HOME) */
 .transport-buttons {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 15px;
     width: 100%;
-    max-width: 340px;
-    position: relative;
-    z-index: 20;
+    max-width: 320px;
 }
 
+/* Aggancio perfetto alle classi .btn-barocco presenti nel tuo HTML */
 .transport-buttons .btn-barocco {
-    background: #000;
-    border: 2px solid #d4a84f;
-    border-radius: 14px;
-    padding: 14px 6px;
-    text-align: center;
-    color: #ffd78f;
-    font-weight: 600;
-    font-size: 0.9rem;
-    box-shadow: 0 0 10px rgba(255, 215, 160, 0.25);
-    position: relative;
-    overflow: hidden; /* Taglia la luce diagonale sui bordi del tasto */
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     text-decoration: none;
+    gap: 10px;
+    padding: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    /* Stile Barocco originale: Fondo nero lucido e bordo dorato */
+    background: #000000; 
+    border: 2px solid #d4a84f;
+    border-radius: 14px;
+    color: #ffd78f;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 215, 160, 0.15);
+    position: relative;
+    overflow: hidden; /* Taglia il bagliore sui bordi arrotondati */
 }
 
-/* Lama di luce diagonale originale dei tuoi tasti */
+/* Ricostruzione del riflesso della lama di luce diagonale animata della tua Home */
 .transport-buttons .btn-barocco::before {
     content: '';
     position: absolute;
@@ -236,7 +195,7 @@ body {
     background: linear-gradient(
         to right, 
         rgba(255, 215, 160, 0) 0%, 
-        rgba(255, 215, 160, 0.4) 50%, 
+        rgba(255, 215, 160, 0.35) 50%, 
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
@@ -244,14 +203,14 @@ body {
     pointer-events: none;
 }
 
-/* Sfasamento del riflesso del secondo bottone (come nel foglio originale) */
+/* Sfasamento temporale dell'animazione della luce tra il primo e il secondo bottone */
 .transport-buttons a:nth-child(2).btn-barocco::before {
-    animation-delay: 0.5s;
+    animation-delay: 0.6s;
 }
 
-/* KEYFRAME ORIGINALE DELLA LUCE DIAGONALE DELLA HOME */
+/* Se l'animazione @keyframes non è già attiva globalmente tramite home.css, la dichiariamo qui */
 @keyframes homeButtonGlow {
     0% { left: -70%; }
-    25% { left: 130%; }
+    23% { left: 130%; }
     100% { left: 130%; }
 }
