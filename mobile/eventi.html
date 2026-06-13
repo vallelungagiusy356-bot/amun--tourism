@@ -10,7 +10,6 @@
 </head>
 <body>
 
-    <!-- Sfondo cinematografico strutturale -->
     <div class="scene-background"></div>
 
     <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
@@ -40,9 +39,8 @@
             
             <hr class="barocco-divider">
             
-            <!-- SEZIONE PASQUA -->
             <div class="event-section">
-                <h2 class="event-season-title">🌸 Il Periodo Pasquale</h2>
+                <h2 class="event-season-title">🌸 <span data-i18n="citizen.church_sepolcri">Il Periodo Pasquale</span></h2>
                 
                 <div class="event-detail-box">
                     <h3 data-i18n="events_page.signuruzzu_title">U Signuruzzu a Cavaddu</h3>
@@ -55,21 +53,19 @@
                 </div>
             </div>
 
-            <!-- SEZIONE MAGGIO -->
             <div class="event-section">
-                <h2 class="event-season-title">🌿 Maggio</h2>
+                <h2 class="event-season-title">🌿 <span data-i18n="citizen.events_title">Maggio</span></h2>
                 <div class="event-detail-box">
                     <h3 data-i18n="events_page.giovanni_title">Festa del Beato Giovanni</h3>
                     <p data-i18n="events_page.giovanni_desc">Una ricorrenza profondamente sentita e vissuta dall'intera comunità, che si stringe attorno al suo Beato in un clima di grande devozione e calore popolare.</p>
                 </div>
             </div>
 
-            <!-- SEZIONE AGOSTO -->
             <div class="event-section">
-                <h2 class="event-season-title">☀️ Agosto</h2>
+                <h2 class="event-season-title">☀️ <span data-i18n="citizen.food_aperitivo">Agosto</span></h2>
                 <div class="event-detail-box">
                     <h3 data-i18n="events_page.castellana_title">Elezione della Castellana & Corteo Storico</h3>
-                    <p data-i18n="events_page.castellana_desc">Il borgo si rituffa nel suo glorioso passato medievale. Un maestoso corteo storico in abiti d'epoca attraversa le strade, culminando con la solenne elezione della Castellana del maniero.</p>
+                    <p data-i18n="events_page.castellana_desc">Il borgo si rituffa nel suo glorioso passato medievale. Un maestoso corteo storico in abiti d'epoca attraversa le strands, culminando con la solenne elezione della Castellana del maniero.</p>
                 </div>
                 <div class="event-detail-box">
                     <h3 data-i18n="events_page.nicasio_title">Festa di San Nicasio e il Palio</h3>
@@ -77,9 +73,8 @@
                 </div>
             </div>
 
-            <!-- SEZIONE OTTOBRE -->
             <div class="event-section">
-                <h2 class="event-season-title">🍂 Ottobre</h2>
+                <h2 class="event-season-title">🍂 <span data-i18n="citizen.food_desc">Ottobre</span></h2>
                 <div class="event-detail-box">
                     <h3 data-i18n="events_page.sagra_title">Sagra della Salsiccia (12 Ottobre)</h3>
                     <p data-i18n="events_page.sagra_desc">Ogni anno, il 12 ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità.</p>
@@ -87,18 +82,15 @@
             </div>
         </main>
 
-        <!-- BOTTONI DI AZIONE CON INVITO ALLA CASTELLANA -->
         <div class="event-buttons">
-            <!-- Bottone Speciale Avatar Interattivo -->
             <button onclick="openCastellanaChat()" class="btn-barocco btn-avatar-special">
-                👑 <span>Parla con La Castellana</span> ➡️
+                👑 <span data-i18n="home.talk_castellana">Parla con La Castellana</span> ➡️
             </button>
             <p class="desktop-tip">Per scoprire ogni minimo dettaglio storico, curiosità o per consultare il programma completo dei giorni dei festeggiamenti, passa alla versione desktop o chiedi alla Castellana!</p>
         </div>
 
     </div>
 
-        <!-- Script Audio, Animazione e Lingue -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const content = document.getElementById("scroll-content");
@@ -124,7 +116,7 @@
             // Cambia l'attributo lang del tag <html> per accessibilità
             document.documentElement.lang = lingua;
 
-            // Fai il fetch del file JSON corrispondente (es: it.json, en.json...)
+            // Fai il fetch del file JSON corrispondente (es: locales/it.json)
             fetch(`locales/${lingua}.json`)
                 .then(response => {
                     if (!response.ok) throw new Error("File di lingua non trovato");
@@ -133,12 +125,12 @@
                 .then(data => {
                     // Cerca TUTTI gli elementi nella pagina che hanno un attributo data-i18n
                     document.querySelectorAll('[data-i18n]').forEach(elemento => {
-                        const percorsoChiave = elemento.getAttribute('data-i18n'); // es: "events_page.title"
+                        const percorsoChiave = elemento.getAttribute('data-i18n');
                         
                         // Divide la stringa (es: ["events_page", "title"])
                         const chiavi = percorsoChiave.split('.'); 
                         
-                        // Naviga nel JSON (data.events_page.title) SENZA passare per la lingua intermedia
+                        // Naviga nel JSON in modo ricorsivo
                         let testoTradotto = data;
                         chiavi.forEach(chiave => {
                             if (testoTradotto) {
@@ -146,7 +138,7 @@
                             }
                         });
 
-                        // Se ha trovato la traduzione, aggiorna l'HTML dell'elemento
+                        // Aggiorna l'HTML dell'elemento con il testo tradotto trovato
                         if (testoTradotto) {
                             elemento.innerHTML = testoTradotto;
                         }
@@ -160,7 +152,6 @@
         }
     </script>
 
-    <!-- GESTIONE AUDIO / MUSICA -->
     <script>
         const bgMusic = document.getElementById('bg-music');
         const toggleMusicBtn = document.getElementById('toggle-music');
