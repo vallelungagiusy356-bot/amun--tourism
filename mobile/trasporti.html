@@ -2,134 +2,11 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Amunì Tourism - Trasporti</title>
 
+    <link rel="stylesheet" href="home.css"> 
     <link rel="stylesheet" href="trasporti.css">
-
-    <style>
-        /* --- STILI SPECIFICI PER LA PAGINA TRASPORTI --- */
-        body {
-            background-color: #000000;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Contenitore Video Pergamena Trasparente */
-        .pergamena-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none; /* Impedisce al video di bloccare i click sui link */
-        }
-
-        .pergamena-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Sovrapposizione dei Contenuti (Inizialmente invisibili) */
-        .scroll-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 90px 25px 40px 25px; /* Spazio in alto per non coprire la dashboard fissa */
-            box-sizing: border-box;
-            
-            /* Effetto comparsa fluida */
-            opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        /* Classe attivata via JS al termine del video */
-        .scroll-content.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Scheda Informativa in Stile Antico per Scrittura su Pergamena */
-        .info-card {
-            width: 100%;
-            max-width: 360px;
-            color: #3d2314; /* Marrone seppia scuro per leggibilità sulla pergamena */
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .info-card p {
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
-
-        .stops-box {
-            text-align: left;
-            background: rgba(61, 35, 20, 0.06);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 3px solid #8b5a2b;
-            margin: 20px 0;
-        }
-
-        .stops-box h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.15rem;
-            color: #5c3a21;
-        }
-
-        .stops-box ul {
-            padding-left: 20px;
-            margin: 0;
-        }
-
-        .stops-box li {
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-
-        /* Bottoni d'Azione Trasporti (Ereditano la classe .btn-barocco del tuo foglio di stile) */
-        .transport-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            max-width: 320px;
-        }
-
-        .transport-buttons .btn-barocco {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            gap: 10px;
-            padding: 12px;
-            font-size: 1rem;
-        }
-
-        /* Pulsante Indietro personalizzato */
-        .btn-back-dashboard {
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            cursor: pointer;
-            padding: 5px;
-        }
-    </style>
 </head>
 <body>
 
@@ -145,8 +22,8 @@
         </video>
     </div>
 
-    <header class="dashboard" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 10;">
-        <button class="btn-back-dashboard" onclick="window.history.back()">⬅️</button>
+    <header class="dashboard">
+        <button class="btn-back-dashboard" onclick="window.history.back()" aria-label="Torna indietro">⬅️</button>
         
         <div class="logo-title" data-i18n="menu.transport"></div>
 
@@ -166,9 +43,9 @@
         <main class="info-card">
             <p data-i18n="transport_page.welcome"></p>
             
-            <hr style="border: 0; border-top: 1px dashed #3d2314; margin: 20px 0;">
+            <hr>
             
-            <h2 style="font-size: 1.4rem; margin-bottom: 10px;" data-i18n="transport_page.company_title"></h2>
+            <h2 data-i18n="transport_page.company_title"></h2>
             <p data-i18n="transport_page.company_desc"></p>
 
             <div class="stops-box">
@@ -197,12 +74,11 @@
             const video = document.getElementById("pergamena-video");
             const content = document.getElementById("scroll-content");
 
-            // Quando il video finisce l'esecuzione (la pergamena è aperta)
             video.onended = () => {
                 content.classList.add("visible");
             };
 
-            // Sicurezza: Se il video fallisce o tarda ad avviarsi, mostra i contenuti dopo 1.8 secondi
+            // Fail-safe per evitare blocchi utente su browser restrittivi
             setTimeout(() => {
                 content.classList.add("visible");
             }, 1800);
@@ -251,7 +127,6 @@
     let currentLang = localStorage.getItem("lang") || "it";
 
     function loadLanguage(lang) {
-        // Percorso modificato con '../' per pescare correttamente la cartella lang fuori da mobile
         fetch(`../lang/${lang}.json`)
             .then(res => res.json())
             .then(data => {
