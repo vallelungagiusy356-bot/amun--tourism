@@ -1,9 +1,8 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - MODULE: TRASPORTI 
-   (Layout unificato con Pergamena Statica PNG)
+   AMUNÌ TOURISM - MODULE: TRASPORTI (FIX DIAGONALE PER SFONDO E LEGGIBILITÀ)
    ========================================================================== */
 
-/* 1. RESET E STRUTTURA DI BASE (IDENTICI ALLA HOME) */
+/* 1. RESET E STRUTTURA DI BASE */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +16,7 @@ body {
     overflow-x: hidden;
 }
 
-/* SFONDO CONDIVISO DELLA HOME (SOTTO LA PERGAMENA) */
+/* SFONDO DELLA HOME (SOTTO LA PERGAMENA) */
 .scene-background {
     position: fixed;
     inset: 0;
@@ -41,7 +40,7 @@ body {
     background: rgba(0, 0, 0, 0.40);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 215, 160, 0.55);
-    z-index: 100; /* Blindato sopra lo scroll del testo e della mappa */
+    z-index: 100;
 }
 
 .logo-title {
@@ -51,7 +50,6 @@ body {
     color: #f7f2e9;
 }
 
-/* TASTO INDIETRO COORDINATO ALL'ORO DELLA DASHBOARD */
 .btn-back-dashboard {
     background: none;
     border: none;
@@ -63,14 +61,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s ease;
 }
 
-.btn-back-dashboard:active {
-    transform: scale(0.9);
-}
-
-/* 🔊 BOTTONE AUDIO ORIGINALE */
 .btn-audio {
     margin-left: auto;
     background: none;
@@ -79,14 +71,8 @@ body {
     font-size: 1.4rem;
     cursor: pointer;
     padding: 6px;
-    transition: transform 0.2s ease;
 }
 
-.btn-audio:hover {
-    transform: scale(1.2);
-}
-
-/* SELETTORE LINGUA */
 .lang-switcher {
     margin-left: 12px;
     display: flex;
@@ -101,45 +87,40 @@ body {
     padding: 2px;
 }
 
-/* 3. IMPOSTAZIONE PERGAMENA STATICA PNG (COPRE PIÙ SPAZIO REGOLARE) */
+/* 3. PERGAMENA COMPLETA A TUTTO SCHERMO (FIX BACKGROUND) */
 .pergamena-container {
     position: fixed;
     inset: 0;
     z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     pointer-events: none;
-    padding-top: 58px; /* Impedisce ai rulli superiori di finire sotto la dashboard */
 }
 
-/* Rendering dell'immagine statica ad alta definizione */
 .pergamena-container::before {
     content: "";
-    width: 100vw;
-    height: calc(100vh - 58px);
+    position: absolute;
+    inset: 0;
     background-image: url('img/pergamena.png');
-    background-size: contain; /* Mantiene l'intera pergamena e i dettagli intatti su ogni display mobile */
-    background-position: center;
+    background-size: cover; /* Forza l'immagine ad espandersi e coprire l'intero display mobile */
+    background-position: center top; /* Mantiene i rulli superiori ben visibili in alto vicino alla dashboard */
     background-repeat: no-repeat;
+    filter: brightness(0.92) contrast(1.05); /* Ottimizza la luminosità della mappa per staccare dal testo */
     display: block;
 }
 
-/* 4. AREA DI SCROLL MOBILE (CENTRATA SULLA TEXTURE DELLA MAPPA) */
+/* 4. AREA DI SCROLL MOBILE (OTTIMIZZATA PER LA LEGGIBILITÀ) */
 .scroll-content {
     position: relative;
     z-index: 2;
-    margin-top: 105px; /* Spostiamo l'inizio del testo più in basso per centrarlo nel corpo della pergamena */
-    padding: 0 42px 40px 42px; /* Ampi margini laterali per evitare che il testo tocchi i bordi arricciati */
+    margin-top: 70px; /* Ridotto leggermente per far fluire meglio il testo nei display stretti */
+    padding: 20px 32px 50px 32px; /* Margini calibrati al millesimo */
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 24px;
     align-items: center;
     width: 100%;
-    min-height: calc(100vh - 105px);
+    min-height: calc(100vh - 70px);
     box-sizing: border-box;
     
-    /* Forza la visibilità immediata (il controllo aspetta solo il DOMContentLoaded istantaneo) */
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
@@ -150,46 +131,62 @@ body {
     transform: translateY(0);
 }
 
-/* 5. SCHEDA INFORMATIVA SULLA PERGAMENA (TESTO SPESSO E MARNATO) */
+/* 5. SCHEDA INFORMATIVA CON VELO PROTETTIVO ANTIALIASING */
 .info-card {
     width: 100%;
-    max-width: 330px; /* Perfetto per restare all'interno dei disegni della mappa */
-    color: #231207; /* Marrone scurissimo "bruciato" per un contrasto perfetto sulla carta antica */
+    max-width: 340px;
+    color: #1a0d05; /* Inchiostro scuro quasi nero per un contrasto netto e pulito */
     font-family: 'Georgia', serif;
-    line-height: 1.5;
+    line-height: 1.6;
     text-align: center;
+    
+    /* Velo ambrato ultra-sfumato che neutralizza il rumore visivo della mappa senza nasconderla */
+    background: rgba(24df, 238, 222, 0.45); 
+    background: radial-gradient(circle, rgba(247, 242, 233, 0.75) 0%, rgba(247, 242, 233, 0) 100%);
+    padding: 10px 5px;
+    border-radius: 20px;
 }
 
 .info-card p {
     margin-bottom: 14px;
-    font-size: 1.02rem;
-    font-weight: 700; /* Spessore marcato antialiasing contro la sgranatura mobile */
-    text-shadow: 0.2px 0.2px 0px rgba(35, 18, 7, 0.2);
+    font-size: 1.05rem;
+    font-weight: 800; /* Tratto decisamente marcato per vincere lo sfondo mobile */
+    /* Doppia ombra di rinforzo per una definizione perfetta */
+    text-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, 0.6), -0.2px -0.2px 0px rgba(26, 13, 5, 0.2);
 }
 
 .info-card h2 {
-    font-size: 1.28rem;
-    font-weight: 800;
-    color: #3d1b04;
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #2b1303;
     margin-bottom: 12px;
+    text-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, 0.5);
 }
 
-/* BOX DELLE FERMATE INTERNO ALLA PERGAMENA */
+.info-card hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #2b1303, transparent);
+    margin: 15px 0;
+}
+
+/* BOX FERMATE AD ALTO CONTRASTO */
 .stops-box {
     text-align: left;
-    background: rgba(35, 18, 7, 0.07); /* Sfondo ambrato leggero per separare l'elenco */
-    padding: 15px;
-    border-radius: 12px;
-    border-left: 4px solid #5c3a21;
-    margin: 18px 0;
+    background: rgba(43, 19, 3, 0.08); /* Sfondo leggermente più brunito per far staccare l'elenco */
+    padding: 16px;
+    border-radius: 14px;
+    border-left: 4px solid #421d06;
+    margin: 20px 0;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.03);
 }
 
 .stops-box h3 {
     margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: #3d1b04;
+    margin-bottom: 12px;
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #2b1303;
 }
 
 .stops-box ul {
@@ -198,13 +195,14 @@ body {
 }
 
 .stops-box li {
-    margin-bottom: 8px;
-    font-size: 0.96rem;
-    font-weight: 700;
-    color: #231207;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1a0d05;
+    text-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, 0.5);
 }
 
-/* 6. BOTTONI BAROCCHI CON RIFLESSO DIAGONALE (REPLICATI ESATTAMENTE DALLA HOME) */
+/* 6. BOTTONI BAROCCHI CON RIFLESSO DIAGONALE */
 .transport-buttons {
     display: flex;
     flex-direction: column;
@@ -213,7 +211,7 @@ body {
     max-width: 340px;
     position: relative;
     z-index: 20;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .transport-buttons .btn-barocco {
@@ -227,7 +225,7 @@ body {
     font-size: 0.9rem;
     box-shadow: 0 0 10px rgba(255, 215, 160, 0.25);
     position: relative;
-    overflow: hidden; /* Taglia nettamente la luce sui bordi del tasto */
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -235,7 +233,6 @@ body {
     text-decoration: none;
 }
 
-/* Lama di luce diagonale per i tasti standard */
 .transport-buttons .btn-barocco::before {
     content: '';
     position: absolute;
@@ -254,21 +251,17 @@ body {
     pointer-events: none;
 }
 
-/* Sfalsiamo l'animazione del secondo bottone (come nella riga 2 della home) */
 .transport-buttons a:nth-child(2).btn-barocco::before {
     animation-delay: 0.5s;
 }
 
-/* GESTIONE LIVELLI DI SICUREZZA PER EVENTI DI CLICK */
+/* SICUREZZA LIVELLI */
 .dashboard,
 .transport-buttons .btn-barocco {
     position: relative;
     z-index: 20;
 }
 
-/* =======================================================
-   ANIMAZIONE LAMA DI LUCE DIAGONALE (DAL TUO CSS ORIGINAL)
-   ======================================================= */
 @keyframes homeButtonGlow {
     0% { left: -70%; }
     25% { left: 130%; }
