@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Amunì Tourism - Dove Mangiare nel Borgo
+    <title>Amunì Tourism - Dove Mangiare nel Borgo</title>
     <link rel="stylesheet" href="mangiare.css">
 </head>
 <body>
@@ -311,7 +311,8 @@
             localStorage.setItem('linguaSelezionata', lingua);
             document.documentElement.lang = lingua;
 
-            fetch(`locales/${lingua}.json`)
+            // Corretto percorso per la cartella 'lang' nella root
+            fetch(`../lang/${lingua}.json`)
                 .then(response => {
                     if (!response.ok) throw new Error("File non trovato");
                     return response.json();
