@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - MODULE: TRASPORTI (VERSIONE FULL BACKGROUND HOME)
+   AMUNÌ TOURISM - MODULE: TRASPORTI (ELEGANZA INTEGRATA DALLA HOME)
    ========================================================================== */
 
 /* 1. RESET E STRUTTURA DI BASE (IDENTICI ALLA HOME) */
@@ -7,45 +7,52 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-family: system-ui, sans-serif;
-    background: #000;
-    color: #f7f2e9;
+    background: #0d0d0d;
+    color: #fff;
     overflow-x: hidden;
-    
-    /* SFONDO REALE DELLA HOME APPLICATO DIRETTAMENTE SUL BODY */
+    min-height: 100vh;
+}
+
+/* SFONDO GENERALE (MOBILE) */
+.scene-background {
+    position: fixed;
+    inset: 0;
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Mantiene lo sfondo fermo durante lo scroll del testo */
+    background-repeat: no-repeat;
+    filter: brightness(0.5) contrast(1.2);
+    z-index: -10;
 }
 
 /* 2. DASHBOARD MOBILE BAROCCA (SPECULARE AL 100% ALLA HOME) */
 .dashboard {
-    position: fixed;
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.85);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: fixed; /* Fissata per gestire correttamente lo scroll del testo sotto di essa */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 58px;
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    background: rgba(0, 0, 0, 0.50); /* Scurita leggermente per staccare dal background statico */
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.55);
-    z-index: 100; /* Sempre in cima a tutto */
+    z-index: 100;
 }
 
-.logo-title {
-    font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    color: #f7f2e9;
+.dashboard .logo-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffd78f;
+    text-shadow: 0 0 8px rgba(255, 215, 160, 0.6);
 }
 
-/* TASTO INDIETRO COORDINATO ALL'ORO DELLA DASHBOARD */
+/* TASTO INDIETRO COORDINATO */
 .btn-back-dashboard {
     background: none;
     border: none;
@@ -53,15 +60,14 @@ body {
     color: #ffd78f;
     cursor: pointer;
     padding: 5px;
-    margin-right: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    align-self: flex-start; /* Lo tiene allineato a sinistra su mobile */
+    margin-bottom: -35px; /* Compensazione estetica su layout colonna mobile */
+    position: relative;
+    z-index: 105;
 }
 
-/* 🔊 BOTTONE AUDIO ORIGINALE */
+/* 🔊 BOTTONE AUDIO ORIGINALE DALLA HOME */
 .btn-audio {
-    margin-left: auto;
     background: none;
     border: none;
     color: #ffd78f;
@@ -70,44 +76,37 @@ body {
     padding: 6px;
 }
 
-/* SELETTORE LINGUA */
 .lang-switcher {
-    margin-left: 12px;
     display: flex;
-    gap: 6px;
+    gap: 8px;
+    margin-top: 5px;
 }
 
 .lang-switcher button {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #ffd78f;
+    padding: 5px;
+    border-radius: 5px;
     cursor: pointer;
-    padding: 2px;
 }
 
-/* 3. DISATTIVAZIONE VECCHIO CONTENITORE PERGAMENA */
-.pergamena-container {
-    display: none !important;
-}
-
-/* 4. AREA DI SCROLL MOBILE CONTENUTI */
+/* 3. AREA DI SCROLL MOBILE CONTENUTI */
 .scroll-content {
     position: relative;
     z-index: 2;
-    margin-top: 75px; /* Sincronizzato con il layout della Home */
+    margin-top: 130px; /* Lascia spazio alla dashboard a due righe su mobile */
     padding: 16px 20px 40px 20px;
     display: flex;
     flex-direction: column;
     gap: 24px;
     align-items: center;
     width: 100%;
-    min-height: calc(100vh - 75px);
+    min-height: calc(100vh - 130px);
     box-sizing: border-box;
     
-    /* Transizione fluida all'avvio della pagina */
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    transform: translateY(15px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .scroll-content.visible {
@@ -115,30 +114,46 @@ body {
     transform: translateY(0);
 }
 
-/* 5. SCHEDA INFORMATIVA AD ALTA LEGGIBILITÀ (STILE NOTTURNO BAROCCO) */
+/* 4. SCHEDA TRASPORTI — CLONATA PERFETTAMENTE DALLO STILE WELCOME POETRY / INTRO CARD */
 .info-card {
-    width: 100%;
-    max-width: 350px;
-    color: #f7f2e9; /* Testo chiaro "avorio" per contrastare perfettamente lo sfondo scuro */
-    line-height: 1.6;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.60); /* Box scuro elegante che fa risaltare le scritte */
-    padding: 20px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 215, 160, 0.2); /* Sottile linea dorata di contorno */
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.35); /* Trasparenza minimal ed elegante della Home */
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
 }
 
-.info-card p {
-    margin-bottom: 14px;
-    font-size: 1rem;
-    font-weight: 500;
+.info-card:hover {
+    background: rgba(5, 3, 2, 0.6);
+    border-color: rgba(255, 215, 160, 0.4);
+    box-shadow: 0 12px 35px rgba(255, 215, 160, 0.1);
 }
 
+/* TITOLI STILE GEORGIA HOME */
 .info-card h2 {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #ffd78f; /* Titolo in oro lucido */
+    font-family: 'Georgia', 'Times New Roman', Times, serif; 
+    font-size: 1.4rem;
+    color: #ffd78f;
+    margin-bottom: 14px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    letter-spacing: 0.5px;
+}
+
+/* PARAGRAFI POETICI STILE GARAMOND HOME */
+.info-card p {
+    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif; 
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #f7f2e9;
+    font-style: italic;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95); 
     margin-bottom: 12px;
 }
 
@@ -146,39 +161,42 @@ body {
     border: 0;
     height: 1px;
     background: linear-gradient(to right, transparent, rgba(255, 215, 160, 0.4), transparent);
-    margin: 15px 0;
+    margin: 18px 0;
 }
 
-/* BOX DELLE FERMATE INTEGRATO */
+/* BOX DELLE FERMATE IN STILE POETICO SOFT */
 .stops-box {
     text-align: left;
-    background: rgba(255, 215, 160, 0.05); /* Leggero riflesso dorato di fondo */
-    padding: 14px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 18px;
     border-radius: 12px;
-    border-left: 3px solid #d4a84f; /* Bordo sinistro color oro */
-    margin-top: 15px;
+    border-left: 3px solid rgba(255, 215, 160, 0.6);
+    margin: 20px 0;
 }
 
 .stops-box h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-family: 'Georgia', serif;
+    font-size: 1.15rem;
     color: #ffd78f;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 .stops-box ul {
-    padding-left: 18px;
+    padding-left: 20px;
     margin: 0;
 }
 
 .stops-box li {
+    font-family: 'Garamond', 'Georgia', serif;
+    font-size: 1.02rem;
+    font-style: italic;
+    color: #e6e0d4;
     margin-bottom: 8px;
-    font-size: 0.95rem;
-    color: #f7f2e9;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
 }
 
-/* 6. BOTTONI BAROCCHI CON RIFLESSO DIAGONALE (SPECULARI ALLA HOME) */
+/* 5. BOTTONI BAROCCHI CON RIFLESSO DIAGONALE */
 .transport-buttons {
     display: flex;
     flex-direction: column;
@@ -191,24 +209,23 @@ body {
 
 .transport-buttons .btn-barocco {
     background: #000;
-    border: 2px solid #d4a84f;
-    border-radius: 14px;
+    border: 1px solid #ffd78f;
+    border-radius: 10px;
     padding: 14px 6px;
     text-align: center;
     color: #ffd78f;
     font-weight: 600;
     font-size: 0.9rem;
-    box-shadow: 0 0 10px rgba(255, 215, 160, 0.25);
+    text-decoration: none;
     position: relative;
-    overflow: hidden; /* Taglia nettamente il riflesso sui bordi del tasto */
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    text-decoration: none;
+    transition: all 0.4s ease;
 }
 
-/* Lama di luce diagonale originale dei tuoi tasti */
 .transport-buttons .btn-barocco::before {
     content: '';
     position: absolute;
@@ -219,7 +236,7 @@ body {
     background: linear-gradient(
         to right, 
         rgba(255, 215, 160, 0) 0%, 
-        rgba(255, 215, 160, 0.4) 50%, 
+        rgba(255, 215, 160, 0.3) 50%, 
         rgba(255, 215, 160, 0) 100%
     );
     transform: rotate(-45deg);
@@ -227,19 +244,135 @@ body {
     pointer-events: none;
 }
 
-/* Sfasamento dell'animazione del secondo bottone */
 .transport-buttons a:nth-child(2).btn-barocco::before {
     animation-delay: 0.5s;
 }
 
-/* GESTIONE LIVELLI DI SICUREZZA PER EVENTI DI CLICK */
-.dashboard,
-.transport-buttons .btn-barocco {
-    position: relative;
-    z-index: 20;
+
+/* ==========================================================================
+   PARTE 3: VERSIONE DESKTOP — ABILITATA DA 900PX IN SU (ADATTAMENTO HOME)
+   ========================================================================== */
+@media screen and (min-width: 900px) {
+
+    .scene-background {
+        position: fixed;
+        inset: 0;
+        background-image: url('img/tuo_nuovo_sfondo.jpeg') !important;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: brightness(0.78) contrast(1.1) saturate(1.1);
+        z-index: -5 !important;
+        pointer-events: none;
+    }
+
+    body {
+        background: transparent !important;
+    }
+
+    /* DASHBOARD ORIZZONTALE ELEGANTE */
+    .dashboard {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background: rgba(0, 0, 0, 0.75);
+        border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+        backdrop-filter: blur(18px) saturate(200%);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        z-index: 100;
+        box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
+    }
+
+    .dashboard .logo-title {
+        font-size: 1.35rem;
+        text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
+    }
+
+    .btn-back-dashboard {
+        align-self: center;
+        margin-bottom: 0;
+    }
+
+    .lang-switcher {
+        margin-top: 0;
+        align-items: center;
+    }
+
+    .lang-switcher button {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.65);
+        border: 1px solid rgba(255, 215, 160, 0.85);
+        color: #ffd78f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 10px rgba(255, 215, 160, 0.4), inset 0 0 6px rgba(255, 215, 160, 0.3);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .lang-switcher button:hover {
+        background: rgba(255, 215, 160, 0.15);
+        box-shadow: 0 0 15px rgba(255, 215, 160, 0.7);
+        transform: scale(1.05);
+    }
+
+    /* SCROLL CONTENT IN FLUSSO DESKTOP CORRETTO */
+    .scroll-content {
+        margin-top: 150px; 
+        padding: 24px 30px;
+        min-height: calc(100vh - 150px);
+    }
+
+    /* AMPLIA LO SPAZIO SCHEDA SU SCHERMI GRANDI */
+    .info-card {
+        width: 45vw;
+        max-width: 600px;
+        background: rgba(0, 0, 0, 0); /* Inizia trasparente e si rivela con l'hover stile Home */
+        border: 1px solid transparent;
+        box-shadow: none;
+    }
+
+    .info-card:hover {
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(8px) saturate(120%);
+        -webkit-backdrop-filter: blur(8px) saturate(120%);
+        border: 1px solid rgba(255, 215, 160, 0.25);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .info-card h2 {
+        font-size: 1.75rem;
+    }
+
+    .info-card p {
+        font-size: 1.1rem;
+        line-height: 1.75;
+    }
+
+    /* BOTTONI VERSIONE DESKTOP CURATI */
+    .transport-buttons .btn-barocco {
+        background: rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(255, 215, 160, 0.75);
+        box-shadow: 0 0 14px rgba(255, 215, 160, 0.55);
+    }
+
+    .transport-buttons .btn-barocco:hover {
+        background: rgba(255, 215, 160, 0.15);
+        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
+        transform: scale(1.05);
+    }
 }
 
-/* KEYFRAME ANIMAZIONE RIFLESSO DIAGONALE DELLA HOME */
+/* KEYFRAMES */
 @keyframes homeButtonGlow {
     0% { left: -70%; }
     25% { left: 130%; }
