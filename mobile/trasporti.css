@@ -1,0 +1,141 @@
+/* ==========================================================================
+   AMUNÌ TOURISM - TRANSPORT SYSTEM (MOBILE ARCHITECTURE)
+   Coherence Module matching Home Page Token System
+   ========================================================================== */
+
+/* NOTE PER IL DEPLOY: 
+   I blocchi RESET, BODY e .scene-background sono ereditati dal core globale. 
+   Questo file estende l'ecosistema partendo dal .mobile-layout. */
+
+/* 1. SEZIONE INTRODUTTIVA (WELCOME BOX)
+   Eredita lo stile speculare dell' .amuni-box per coerenza narrativa */
+.transport-welcome-box {
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.45);
+    border-radius: 18px;
+    padding: 18px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.transport-welcome-box p {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: #f7f2e9;
+}
+
+/* 2. SCHEDA VETRINA - COMPAGNIA DI TRASPORTI
+   Configurata come una 'Card' immersiva con focus gerarchico sul Brand */
+.company-card {
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.45);
+    border-radius: 18px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.company-card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffd78f;
+    margin-bottom: 12px;
+    text-shadow: 0 0 6px rgba(255, 215, 160, 0.35);
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 215, 160, 0.25);
+    padding-bottom: 8px;
+}
+
+.company-card .description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #f7f2e9;
+}
+
+.company-card .description strong {
+    color: #ffd78f; /* Accentatura dorata per i nodi critici (Palermo, Termini, Vetrana) */
+}
+
+/* 3. SEZIONE FERMATE (STOPS HUB)
+   Layout verticale ottimizzato per il touch-target mobile */
+.stops-container {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 215, 160, 0.3);
+    border-radius: 18px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.stops-main-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffd78f;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+}
+
+/* LISTA DELLE FERMATE: Design atomico per singola fermata */
+.stop-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 215, 160, 0.04);
+    border-left: 3px solid #d4a84f; /* Identificatore barocco verticale */
+    border-radius: 4px 12px 12px 4px;
+    transition: background 0.2s ease;
+}
+
+.stop-item:active {
+    background: rgba(255, 215, 160, 0.1); /* Feedback aptico visivo per dispositivi mobili */
+}
+
+.stop-icon {
+    font-size: 1.1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.stop-details {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #f7f2e9;
+}
+
+.stop-details strong {
+    color: #ffd78f;
+    display: block; /* Mette in risalto il nome della fermata (es. Porta Euracea) rispetto alla descrizione */
+    margin-bottom: 2px;
+}
+
+/* 4. SEZIONE CALL TO ACTION (BOTTONI CONVERTITI)
+   Ereditano la struttura barocca della Home con allineamento ad una colonna per Mobile */
+.transport-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+/* Estensione e riutilizzo del pattern .btn-barocco della home */
+.transport-actions .btn-barocco {
+    width: 100%;
+    padding: 16px; /* Touch target aumentato a 54px per conformità alle linee guida di usabilità mobile (WCAG) */
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Applicazione della sfasatura del riflesso diagonale per le Cta dei trasporti */
+.transport-actions .btn-barocco::before {
+    animation: homeButtonGlow 5s infinite ease-in-out;
+}
+
+.transport-actions a:nth-child(2).btn-barocco::before {
+    animation-delay: 0.7s; /* Evita la sovrapposizione temporale dei bagliori */
+}
+
