@@ -133,5 +133,17 @@
     "verse_annunziata": "Poi l'<strong>Annunziata</strong> svela le sue volte dipinte,<br>e la torre campanaria dalle guardie mai vinte.",
     "verse_cappuccini": "Sali infine ai <strong>Cappuccini</strong>, sul colle radioso,<br>tra una Pala d'altare e un panorama maestoso.",
     "poesia_outro": "Lasciati guidare dove il tempo si è fermato..."
+  },
+
+  "transport_page": {
+    "welcome": "Benvenuto, o viandante, nella sezione Trasporti. Qui troverai le informazioni necessarie per muovere i tuoi passi nei dintorni del borgo.",
+    "company_title": "Autolinee Randazzo di Gesù",
+    "company_desc": "Le autolinee collegano Caccamo a <strong>Termini Imerese</strong> e <strong>Palermo</strong> tutto l'anno. Sfruttando la corsa pomeridiana verso Palermo è possibile scendere alla <strong>Vetrana</strong>, rinomata zona balneare. Da Termini Imerese potrai inoltre prendere il treno per <strong>Cefalù</strong> e altre mete turistiche.",
+    "stops_title": "📍 Le Fermate nel Borgo",
+    "stop_1": "<strong>Porta Euracea:</strong> di fronte al Bar Giallombardo e al negozio di materiali edili.",
+    "stop_2": "<strong>Viale Regione Siciliana:</strong> sopra il parco giochi 'Roberta' (in prossimità dell'agenzia assicurativa Axa).",
+    "stop_3": "<strong>Piazza Cappuccini:</strong> all'ombra dell'antico Convento.",
+    "btn_schedule": "📅 Vedi Orari delle Corse",
+    "btn_tickets": "🎫 Acquista Biglietti Online"
   }
 }
