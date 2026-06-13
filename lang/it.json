@@ -5,7 +5,7 @@
     "about": "Chi siamo",
     "contact": "Contatti",
     "eat": "Mangiare",
-    "eat_movida": "Dove Mangiare & Movida",
+    "sleep": "Dormire",
     "transport": "Trasporti",
     "events": "Eventi",
     "monuments": "Monumenti"
@@ -13,8 +13,8 @@
 
   "home": {
     "chat_web": "Parla con la Castellana sul sito web",
-    "amuni_title": "Benvenuto, o viandante...",
-    "amuni_text": "Benvenuto, o viandante, al limitare del tempo,<br>dove la storia respira in ogni soffio di vento.<br>Senti il richiamo di pietre millenarie e severe,<br>custodi di cunti, di dame, di antiche preghiere.<br><br>Non fermare il tuo passo, specchiati in questa magia,<br><strong>Amunì, vieni, ti indico la via.</strong>",
+    "amuni_title": "Amunì: un viaggio insieme",
+    "amuni_text": "Amunì non è solo un invito a partire, è l'abbraccio della nostra terra. Significa 'facciamolo insieme': non guardare da lontano, ma entra nel battito del borgo. Quando diciamo Amunì, stiamo cancellando il confine tra chi arriva e chi resta, per fare di ogni passo una scoperta condivisa.",
     "castellana_intro_title": "Vivi la Caccamo più autentica",
     "castellana_intro_text": "Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto tra le meraviglie del borgo e del territorio circostante.",
     "install_app": "Installa l’app Amunì Tourism",
@@ -170,5 +170,11 @@
     "search_placeholder": "Cerca un locale o un sapore...",
     "sec_movida": "Movida e Serate",
     "sec_eat": "Ristoranti, Pizzerie e Bar"
+  },
+
+  "sleep_page": {
+    "title": "Dove Dormire",
+    "intro": "Benvenuto, viandante. Trova ristoro nelle nostre accoglienti strutture, dove la storia e l'ospitalità si fondono per regalarti un riposo sereno nel cuore di Caccamo.",
+    "placeholder": "Cerca una struttura ricettiva..."
   }
 }
