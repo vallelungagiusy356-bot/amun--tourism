@@ -16,11 +16,7 @@
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="pergamena-container">
-        <video id="pergamena-video" autoplay muted playsinline>
-            <source src="img/pergamena.webm" type="video/webm">
-        </video>
-    </div>
+    <div class="pergamena-container"></div>
 
     <header class="dashboard">
         <button class="btn-back-dashboard" onclick="window.history.back()" aria-label="Torna indietro">⬅️</button>
@@ -71,17 +67,9 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const video = document.getElementById("pergamena-video");
             const content = document.getElementById("scroll-content");
-
-            video.onended = () => {
-                content.classList.add("visible");
-            };
-
-            // Fail-safe per evitare blocchi utente su browser restrittivi
-            setTimeout(() => {
-                content.classList.add("visible");
-            }, 1800);
+            // La pergamena è statica: mostriamo subito il contenuto in modo fluido all'avvio
+            content.classList.add("visible");
         });
     </script>
 
