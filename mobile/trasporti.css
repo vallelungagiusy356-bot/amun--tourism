@@ -1,141 +1,174 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - TRANSPORT SYSTEM (MOBILE ARCHITECTURE)
-   Coherence Module matching Home Page Token System
+   AMUNÌ TOURISM - MODULE: TRANSPORT SYSTEM
    ========================================================================== */
 
-/* NOTE PER IL DEPLOY: 
-   I blocchi RESET, BODY e .scene-background sono ereditati dal core globale. 
-   Questo file estende l'ecosistema partendo dal .mobile-layout. */
-
-/* 1. SEZIONE INTRODUTTIVA (WELCOME BOX)
-   Eredita lo stile speculare dell' .amuni-box per coerenza narrativa */
-.transport-welcome-box {
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.45);
-    border-radius: 18px;
-    padding: 18px;
-    backdrop-filter: blur(10px);
-    text-align: center;
+/* 1. SCENA E SUPPORTO VIDEO */
+.pergamena-container {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* Inibisce blocchi sui click */
 }
 
-.transport-welcome-box p {
-    font-size: 0.95rem;
-    line-height: 1.45;
-    color: #f7f2e9;
+.pergamena-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* 2. SCHEDA VETRINA - COMPAGNIA DI TRASPORTI
-   Configurata come una 'Card' immersiva con focus gerarchico sul Brand */
-.company-card {
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.45);
-    border-radius: 18px;
-    padding: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.company-card h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #ffd78f;
-    margin-bottom: 12px;
-    text-shadow: 0 0 6px rgba(255, 215, 160, 0.35);
-    text-align: center;
-    border-bottom: 1px solid rgba(255, 215, 160, 0.25);
-    padding-bottom: 8px;
-}
-
-.company-card .description {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #f7f2e9;
-}
-
-.company-card .description strong {
-    color: #ffd78f; /* Accentatura dorata per i nodi critici (Palermo, Termini, Vetrana) */
-}
-
-/* 3. SEZIONE FERMATE (STOPS HUB)
-   Layout verticale ottimizzato per il touch-target mobile */
-.stops-container {
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 215, 160, 0.3);
-    border-radius: 18px;
-    padding: 18px;
+/* 2. OVERLAY CONTENUTI (OPACITY ANIMATION CONTROLLED) */
+.scroll-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    align-items: center;
+    padding: 78px 24px 40px 24px; /* Ottimizzato per contenere la dashboard da 58px */
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Velocizzato a 0.8s per migliore reattività percepita */
 }
 
-.stops-main-title {
+.scroll-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3. SCHEDA INFORMATIVA (PERGAMENA STYLE) */
+.info-card {
+    width: 100%;
+    max-width: 360px;
+    color: #3d2314; /* Marrone seppia scuro per massima leggibilità su pergamena */
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.info-card p {
+    margin-bottom: 16px;
+    font-size: 1.02rem;
+}
+
+.info-card hr {
+    border: 0;
+    border-top: 1px dashed rgba(61, 35, 20, 0.4);
+    margin: 22px 0;
+}
+
+.info-card h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #5c3a21;
+}
+
+/* HUB DELLE FERMATE AUTOMOBILISTICHE */
+.stops-box {
+    text-align: left;
+    background: rgba(61, 35, 20, 0.05); /* Tintura seppia leggerissima */
+    padding: 16px;
+    border-radius: 12px;
+    border-left: 3px solid #8b5a2b;
+    margin: 24px 0;
+}
+
+.stops-box h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
     font-size: 1.1rem;
-    font-weight: 600;
-    color: #ffd78f;
-    margin-bottom: 4px;
-    letter-spacing: 0.3px;
+    font-weight: 700;
+    color: #5c3a21;
 }
 
-/* LISTA DELLE FERMATE: Design atomico per singola fermata */
-.stop-item {
+.stops-box ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.stops-box li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    list-style-type: square; /* Sostituisce i bullet generici con un design più geometrico */
+}
+
+/* Override interno per le stringhe i18n che iniettano tag strong */
+.stops-box li strong {
+    color: #5c3a21;
+}
+
+/* 4. BOTTONI ED ELEMENTI DI NAVIGAZIONE */
+.btn-back-dashboard {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #ffd78f; /* Sincronizzato con il colore dell'icona audio */
+    cursor: pointer;
+    padding: 6px;
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px;
-    background: rgba(255, 215, 160, 0.04);
-    border-left: 3px solid #d4a84f; /* Identificatore barocco verticale */
-    border-radius: 4px 12px 12px 4px;
-    transition: background 0.2s ease;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
 }
 
-.stop-item:active {
-    background: rgba(255, 215, 160, 0.1); /* Feedback aptico visivo per dispositivi mobili */
+.btn-back-dashboard:active {
+    transform: scale(0.9); /* Feedback di pressione nativo per mobile */
 }
 
-.stop-icon {
-    font-size: 1.1rem;
-    margin-top: 2px;
-    flex-shrink: 0;
-}
-
-.stop-details {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: #f7f2e9;
-}
-
-.stop-details strong {
-    color: #ffd78f;
-    display: block; /* Mette in risalto il nome della fermata (es. Porta Euracea) rispetto alla descrizione */
-    margin-bottom: 2px;
-}
-
-/* 4. SEZIONE CALL TO ACTION (BOTTONI CONVERTITI)
-   Ereditano la struttura barocca della Home con allineamento ad una colonna per Mobile */
-.transport-actions {
+.transport-buttons {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    margin-top: 8px;
+    width: 100%;
+    max-width: 320px;
 }
 
-/* Estensione e riutilizzo del pattern .btn-barocco della home */
-.transport-actions .btn-barocco {
+/* Forza la conformità dei bottoni barocchi dentro la pergamena */
+.transport-buttons .btn-barocco {
     width: 100%;
-    padding: 16px; /* Touch target aumentato a 54px per conformità alle linee guida di usabilità mobile (WCAG) */
-    font-size: 0.98rem;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    padding: 14px; /* Calibrato per Touch Target Mobile a 50px+ */
+    font-size: 0.95rem;
+    background: #000000; /* Assicura il fondo nero barocco contrastante con la pergamena */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Applicazione della sfasatura del riflesso diagonale per le Cta dei trasporti */
-.transport-actions .btn-barocco::before {
-    animation: homeButtonGlow 5s infinite ease-in-out;
+/* Sfasamento temporale dei riflessi per le due CTA */
+.transport-buttons a:nth-child(1).btn-barocco::before {
+    animation-delay: 0.2s;
+}
+.transport-buttons a:nth-child(2).btn-barocco::before {
+    animation-delay: 0.8s;
 }
 
-.transport-actions a:nth-child(2).btn-barocco::before {
-    animation-delay: 0.7s; /* Evita la sovrapposizione temporale dei bagliori */
+/* CORREZIONE STRUTTURALE DEL SELETTORE LINGUA IN DASHBOARD (MOBILE COMPACT) */
+.lang-switcher {
+    margin-left: 10px;
+    display: flex;
+    gap: 4px;
 }
 
+.lang-switcher button {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 2px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.lang-switcher button:active {
+    transform: scale(0.85);
+}
