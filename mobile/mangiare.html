@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Amunì Tourism - Dove Mangiare</title>
+
+    <link rel="stylesheet" href="home.css"> 
+    <link rel="stylesheet" href="eventi.css"> 
+    <style>
+        .search-container {
+            width: 100%;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        .search-bar {
+            width: 90%;
+            max-width: 500px;
+            padding: 12px 20px;
+            border: 2px solid #d4af37;
+            border-radius: 25px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        .search-bar:focus {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            border-color: #fff;
+        }
+        .section-group-title {
+            color: #d4af37;
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
+            text-align: left;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        .activity-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease;
+        }
+        .activity-card:hover {
+            transform: scale(1.02);
+        }
+        .badge-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+        }
+        .badge-type {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .badge-eat { background-color: #8b0000; color: #fff; }
+        .badge-movida { background-color: #6a1b9a; color: #fff; }
+        .badge-info { background-color: #d4af37; color: #000; font-size: 0.75rem; }
+        .badge-season { background-color: #e65100; color: #fff; font-size: 0.75rem; }
+
+        .activity-card.hidden, .section-block.hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scene-background"></div>
+
+    <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
+    
+    <audio id="bg-music" loop>
+        <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- DASHBOARD -->
+    <header class="dashboard">
+        <button class="btn-back-dashboard" onclick="window.history.back()" aria-label="Torna indietro">⬅️</button>
+        <div class="logo-title" data-i18n="menu.food_sleep">Dove Mangiare</div>
+        <button id="toggle-music" class="btn-audio">🔈</button>
+        <div class="lang-switcher">
+            <button data-lang="it">🇮🇹</button>
+            <button data-lang="en">🇬🇧</button>
+            <button data-lang="fr">🇫🇷</button>
+            <button data-lang="de">🇩🇪</button>
+            <button data-lang="es">🇪🇸</button>
+        </div>
+    </header>
+
+    <div class="scroll-content" id="scroll-content">
+        
+        <main class="home-welcome-poetry">
+            <h1 data-i18n="food_page.title">Gusto e Compagnia nel Borgo</h1>
+            <p data-i18n="food_page.intro">Benvenuto viandante nella sezione dedicata ai sapori del luogo e alle serate in compagnia.</p>
+            
+            <hr class="barocco-divider">
+
+            <!-- BARRA DI RICERCA -->
+            <div class="search-container">
+                <input type="text" id="search-bar" class="search-bar" placeholder="Cerca un locale o un sapore..." data-i18n-placeholder="food_page.search_placeholder">
+            </div>
+
+            <!-- ================= CATEGORIA: MOVIDA ================= -->
+            <div class="section-block" id="block-movida">
+                <h2 class="section-group-title">🎉 <span data-i18n="food_page.sec_movida">Movida e Serate</span></h2>
+                <div class="activity-list">
+                    <a href="https://www.kitipigghi.it/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container">
+                            <span class="badge-type badge-movida">Movida</span>
+                            <span class="badge-type badge-info">🎉 Aperto tutto l'anno</span>
+                        </div>
+                        <h3 class="activity-name">Kittipigghi</h3>
+                        <p>Il punto di riferimento per le tue serate nel borgo. Eventi, musica e intrattenimento attivo tutto l'anno.</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/18gpLJiNes/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container">
+                            <span class="badge-type badge-movida">Movida</span>
+                            <span class="badge-type badge-season">☀️ Apertura Estiva</span>
+                        </div>
+                        <h3 class="activity-name">Chiosco San Francesco</h3>
+                        <p>Rinfresca le tue serate estive all'aperto, tra cocktail, ottima compagnia e atmosfera gioviale.</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/18u3GL8zLz/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container">
+                            <span class="badge-type badge-movida">Movida</span>
+                            <span class="badge-type badge-season">☀️ Apertura Estiva</span>
+                        </div>
+                        <h3 class="activity-name">The Castle</h3>
+                        <p>Divertimento e serate a tema nella magica cornice estiva all'ombra del castello medievale.</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ================= CATEGORIA: MANGIARE E BERE ================= -->
+            <div class="section-block" id="block-eat">
+                <h2 class="section-group-title">🍴 <span data-i18n="food_page.sec_eat">Ristoranti, Pizzerie e Bar</span></h2>
+                <div class="activity-list">
+                    <!-- LA CASTELLANA INSERITA CORRETTAMENTE COME RISTORANTE -->
+                    <a href="https://www.castellana.it/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Ristorante</span></div>
+                        <h3 class="activity-name">La Castellana</h3>
+                        <p>Un'esperienza culinaria ricercata nel cuore del borgo, dove la tradizione incontra l'eleganza.</p>
+                    </a>
+
+                    <a href="https://www.ilborgoristorante.it/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Ristorante</span></div>
+                        <h3 class="activity-name">Ristorante Il Borgo</h3>
+                        <p>Un viaggio gastronomico tra i sapori veri ed eccellenze culinarie della nostra terra.</p>
+                    </a>
+
+                    <a href="https://www.pasticceriacafferoyal.it/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Pasticceria & Caffetteria</span></div>
+                        <h3 class="activity-name">Caffè Royal</h3>
+                        <p>Dalla colazione artigianale ai dolci della tradizione siciliana più raffinata.</p>
+                    </a>
+
+                    <a href="https://www.google.com/amp/s/restaurantguru.it/amp/Strapizzami-Di-La-Corte-Caccamo" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Pizzeria</span></div>
+                        <h3 class="activity-name">Strapizzami di La Corte</h3>
+                        <p>Pizze croccanti, sfiziose e realizzate con ingredienti locali accuratamente selezionati.</p>
+                    </a>
+
+                    <a href="https://www.pasticceriascimeca.it/it/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Pasticceria Artigianale</span></div>
+                        <h3 class="activity-name">Pasticceria Scimeca</h3>
+                        <p>I maestri dei dolci tipici e dei sapori tradizionali che raccontano la nostra storia.</p>
+                    </a>
+
+                    <a href="https://restaurantguru.it/amp/Bar-Muscarella-Caccamo" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Bar & Caffè</span></div>
+                        <h3 class="activity-name">Bar Muscarella</h3>
+                        <p>Tappa ideale per un caffè rigenerante, un gelato artigianale o un aperitivo in relax.</p>
+                    </a>
+
+                    <a href="https://share.google/6OSjjQ53V9D2n7Xtd" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Locale Tipico</span></div>
+                        <h3 class="activity-name">A Tipica Putia</h3>
+                        <p>Il luogo perfetto in cui assaporare i prodotti tipici, lo street food e le eccellenze locali.</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/18xC19dWKB/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Ristorazione & Pub</span></div>
+                        <h3 class="activity-name">The Queen Pub</h3>
+                        <p>Birre selezionate, panini gourmet e piatti sfiziosi in un ambiente caldo e accogliente.</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/1Dp55tLDoE/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Trattoria del Viandante</span></div>
+                        <h3 class="activity-name">A Nuciara</h3>
+                        <p>Cucina casereccia e ricette storiche tramandate di generazione in generazione.</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/14eeSkwfWpN/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Gastronomia</span></div>
+                        <h3 class="activity-name">La Spiga d'Oro</h3>
+                        <p>Sfornati caldi, rosticceria siciliana e prelibatezze pronte da gustare a ogni ora.</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/1CKeRik2aF/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Punto Ristoro</span></div>
+                        <h3 class="activity-name">L'Ancora e il Timone</h3>
+                        <p>Specialità marinare e piatti alternativi per variare il menù nel cuore dell'entroterra.</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/18iwTg9A2x/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Rosticceria & Pizza</span></div>
+                        <h3 class="activity-name">L'Artigiano della Pizza</h3>
+                        <p>Pizza al taglio e d'asporto preparata con farine pregiate e ingredienti freschi.</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/1D23ZyAUdT/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Osteria Tipica</span></div>
+                        <h3 class="activity-name">U' Sapuritu</h3>
+                        <p>Taglieri di salumi locali, formaggi delle Madonie e un buon calice di vino siciliano.</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/1ExjYPsuPk/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Bar Tabacchi</span></div>
+                        <h3 class="activity-name">Caffè del Corso</h3>
+                        <p>Colazioni veloci, ottimi caffè e servizi per il cittadino e il turista in transito.</p>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/1ERUD3bwQk/" target="_blank" class="activity-card event-detail-box">
+                        <div class="badge-container"><span class="badge-type badge-eat">Ristorante Pizzeria</span></div>
+                        <h3 class="activity-name">La Tavernetta</h3>
+                        <p>Ambiente intimo ideale per cene di famiglia alla scoperta dei piatti tradizionali del borgo.</p>
+                    </a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const content = document.getElementById("scroll-content");
+            setTimeout(() => { content.classList.add("visible"); }, 50);
+
+            const linguaSalvata = localStorage.getItem('linguaSelezionata') || 'it';
+            caricaLingua(linguaSalvata);
+
+            document.querySelectorAll('.lang-switcher button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const linguaScelta = button.getAttribute('data-lang');
+                    caricaLingua(linguaScelta);
+                });
+            });
+
+            // RICERCA REAL-TIME INTERNA AI BLOCCHI
+            const searchBar = document.getElementById('search-bar');
+            searchBar.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const blocks = document.querySelectorAll('.section-block');
+
+                blocks.forEach(block => {
+                    const cards = block.querySelectorAll('.activity-card');
+                    let visibleCardsInBlock = 0;
+
+                    cards.forEach(card => {
+                        const name = card.querySelector('.activity-name').textContent.toLowerCase();
+                        const desc = card.querySelector('p').textContent.toLowerCase();
+                        const badge = card.querySelector('.badge-type').textContent.toLowerCase();
+                        
+                        if (name.includes(query) || desc.includes(query) || badge.includes(query)) {
+                            card.classList.remove('hidden');
+                            visibleCardsInBlock++;
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+
+                    if (visibleCardsInBlock === 0 && query !== '') {
+                        block.classList.add('hidden');
+                    } else {
+                        block.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+
+        function caricaLingua(lingua) {
+            localStorage.setItem('linguaSelezionata', lingua);
+            document.documentElement.lang = lingua;
+
+            fetch(`locales/${lingua}.json`)
+                .then(response => {
+                    if (!response.ok) throw new Error("File non trovato");
+                    return response.json();
+                })
+                .then(data => {
+                    document.querySelectorAll('[data-i18n]').forEach(elemento => {
+                        const percorsoChiave = elemento.getAttribute('data-i18n');
+                        const chiavi = percorsoChiave.split('.'); 
+                        
+                        let testoTradotto = data;
+                        chiavi.forEach(chiave => {
+                            if (testoTradotto) {
+                                testoTradotto = testoTradotto[chiave];
+                            }
+                        });
+
+                        if (testoTradotto) {
+                            elemento.innerHTML = testoTradotto;
+                        }
+                    });
+
+                    const searchInput = document.getElementById('search-bar');
+                    if (searchInput) {
+                        const placeholderKey = searchInput.getAttribute('data-i18n-placeholder');
+                        if (placeholderKey) {
+                            const keys = placeholderKey.split('.');
+                            let placeholderText = data;
+                            keys.forEach(k => { if (placeholderText) placeholderText = placeholderText[k]; });
+                            if (placeholderText) searchInput.placeholder = placeholderText;
+                        }
+                    }
+                })
+                .catch(error => console.error("Errore internazionalizzazione:", error));
+        }
+    </script>
+
+    <!-- AUDIO -->
+    <script>
+        const bgMusic = document.getElementById('bg-music');
+        const toggleMusicBtn = document.getElementById('toggle-music');
+        const audioTrigger = document.getElementById('audio-trigger');
+
+        if (audioTrigger) {
+            audioTrigger.addEventListener('click', () => {
+                bgMusic.play().then(() => {
+                    toggleMusicBtn.textContent = "🔊";
+                    audioTrigger.remove();
+                }).catch(err => console.log("Audio bloccato"));
+            });
+        }
+
+        toggleMusicBtn.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                toggleMusicBtn.textContent = "🔊";
+            } else {
+                bgMusic.pause();
+                toggleMusicBtn.textContent = "🔈";
+            }
+        });
+    </script>
+</body>
+</html>
