@@ -1,77 +1,82 @@
 {
   "menu": {
-    "title": "Amunì Tourism",
+    "title": "Amunì Tourismus",
     "citizen": "Dorfbewohner",
     "about": "Über uns",
-    "contact": "Kontakte",
+    "contact": "Kontakt",
     "eat": "Essen",
-    "sleep": "Schlafen",
+    "sleep": "Übernachten",
     "transport": "Transport",
     "events": "Veranstaltungen",
     "monuments": "Sehenswürdigkeiten"
   },
+
   "home": {
-    "chat_web": "Sprechen Sie auf der Website mit der Castellana",
-    "amuni_title": "Amunì: eine gemeinsame Reise",
-    "amuni_text": "Amunì ist nicht nur eine Einladung zur Reise, es ist die Umarmung unseres Landes. Es bedeutet 'lass es uns gemeinsam tun': Schau nicht aus der Ferne zu, sondern tauche ein in den Puls des Dorfes. Wenn wir Amunì sagen, heben wir die Grenze zwischen denen auf, die ankommen, und denen, die bleiben, um jeden Schritt zu einer gemeinsamen Entdeckung zu machen.",
-    "castellana_intro_title": "Erleben Sie das authentischste Caccamo",
-    "castellana_intro_text": "Sprechen Sie mit der <strong>Castellana</strong>: Ihre mehrsprachige Reiseführerin, um Geschichten, Geheimtipps und Gourmetrouten inmitten der Wunder des Dorfes und der Umgebung zu entdecken.",
-    "install_app": "Installieren Sie die Amunì Tourism App",
+    "chat_web": "Sprich mit der Castellana auf der Website",
+    "amuni_title": "Amunì: Eine gemeinsame Reise",
+    "amuni_text": "Amunì ist nicht nur eine Einladung zur Reise, es ist die Umarmung unseres Landes. Es bedeutet 'Lass es uns gemeinsam tun': Schau nicht von weitem zu, sondern tauche ein in den Herzschlag des Dorfes. Wenn wir Amunì sagen, löschen wir die Grenze zwischen denen, die ankommen, und denen, die bleiben, um jeden Schritt zu einer gemeinsamen Entdeckung zu machen.",
+    "castellana_intro_title": "Erlebe das authentischste Caccamo",
+    "castellana_intro_text": "Sprich mit der <strong>Castellana</strong>: Deine mehrsprachige Reiseleiterin, um Geschichten, Geheimtipps und kulinarische Routen inmitten der Wunder des Dorfes und der Umgebung zu entdecken.",
+    "install_app": "Installiere die Amunì Tourism App",
     "download_apk": "App herunterladen (APK)",
     "open_webapp": "Web-App öffnen",
     "scan_qr": "QR-Code scannen, um die App zu installieren",
-    "talk_castellana": "Sprechen Sie mit der Castellana"
+    "talk_castellana": "Sprich mit der Castellana"
   },
+
   "chat": {
     "title": "Castellana von Caccamo",
-    "msg1": "Willkommen, Reisender, in diesem Land voller Kunst, Geschichte und Traditionen.",
-    "msg2": "Sind Sie bereit, sich führen zu lassen? Kunst, goldenes Olivenöl und süße Mandeln werden Sie begeistern.",
-    "placeholder": "Nachricht schreiben..."
+    "msg1": "Willkommen, Wanderer, in diesem Land, das reich an Kunst, Geschichte und Traditionen ist.",
+    "msg2": "Bist du bereit, dich führen zu lassen? Kunst, goldenes Öl und süße Mandeln werden dich begeistern.",
+    "placeholder": "Schreibe eine Nachricht..."
   },
+
   "citizen": {
     "tag": "Lokale Gemeinschaft",
     "main_heading": "Dorfbewohner",
-    "intro_text": "Das schlagende Herz von Amunì liegt in denen, die das Dorf jeden Tag erleben. Hüter alter Geschichten, überlieferter Aromen und Geheimnisse, die zwischen den Steinen und Gassen verborgen sind.",
+    "intro_text": "Das schlagende Herz von Amunì liegt bei denen, die das Dorf jeden Tag leben. Hüter alter Geschichten, überlieferter Aromen und Geheimnisse, die zwischen den Steinen und Gassen verborgen liegen.",
     "legends_title": "Legenden und Wurzeln",
-    "legends_desc": "Die ältesten Geschichten des Dorfes, die von Generation zu Generation weitergegeben wurden.",
+    "legends_desc": "Die ältesten Geschichten des Dorfes, von Generation zu Generation weitergegeben.",
     "legend_felicia": "Die Legende von Schwester Felicia",
     "legend_pizzarrone": "Die Legende vom Turm des Pizzarrone",
-    "audio_title": "Hören Sie sich Gebete und Geschichten im Dialekt an",
+    "audio_title": "Höre Gebete und Geschichten im Dialekt",
     "transcription": "Automatische Transkription",
     "castle_title": "Das Schloss",
     "castle_desc": "Eine jahrtausendealte Festung: Verschwörungen, Schießscharten, geheime Tunnel, Gefängnisse und epische Schlachten.",
-    "castle_more": "Entdecken Sie das Schloss",
+    "castle_more": "Entdecke das Schloss",
     "church_title": "Kirchen und Kunst",
     "church_desc": "Eine Reise durch Katakomben, Traditionen, Schutzheilige und alte Andachten.",
-    "church_catacombs": "Die versteckten Katakomben und Krypten",
-    "church_sangiuseppe": "Der rote Gratin von San Giuseppe",
-    "church_sepolcri": "Die Gräber mit blühendem Weizen",
+    "church_catacombs": "Die Katakomben und versteckten Krypten",
+    "church_sangiuseppe": "Das rote Gratin des heiligen Joseph",
+    "church_sepolcri": "Die 'Sepolcri' mit blühendem Weizen",
     "food_title": "Essen und Veranstaltungen",
-    "food_desc": "Authentische Aromen, Orte zum Essen und Erleben des Dorfes.",
-    "food_arancine": "Wo man exzellente Arancine probieren kann",
+    "food_desc": "Authentische Aromen, Orte zum Essen und um das Dorf zu erleben.",
+    "food_arancine": "Wo man ausgezeichnete Arancine probieren kann",
     "food_cocktail": "Cocktails mit DJ das ganze Jahr über",
     "food_aperitivo": "Panoramische Aperitifs (nur im Sommer)",
     "events_title": "Veranstaltungen",
     "event_castellana": "Die Castellana",
     "event_signuruzzu": "U Signuruzzu a Cavaddu",
-    "event_salsiccia": "Wurstfest (Sagra della Salsiccia)",
+    "event_salsiccia": "Salsiccia-Fest",
     "event_beato": "Fest des seligen Giovanni"
   },
+
   "castle": {
     "title": "Das Schloss von Caccamo",
     "category": "Historische Denkmäler",
-    "rhyme_1": "Willkommen, Wanderer, an der mächtigen Burg,<br>die das Tal und die Geschichte beobachtet.<br>Auf dem Berg aus stolzem lebendigem Stein thronend,<br>Hüterin der Träume, des Ruhms und des Geheimnisses.",
-    "rhyme_2": "In diesen Mauern, die der Zeit trotzen,<br>gingen Dynastien vorbei wie ein Hauch im Wind.<br>Von den stolzen, abenteuerlustigen Chiaramonte,<br>erzählt jeder Raum von Verträgen und Pracht.",
-    "rhyme_3": "Suchen Sie nicht nach Daten in einem kalten Buch,<br>sondern nach dem Schatten, der tanzt, wenn das Kerzenlicht schwindet.<br>Die Castellana erwartet Sie, bei Ihren Schritten und auf Ihrem Weg,<br>um Ihnen das Geheimnis von Schwester Felicia zu enthüllen.",
+    "rhyme_1": "Willkommen, o Wanderer, im mächtigen Schloss,<br>das das Tal und die Geschichte betrachtet.<br>Auf dem Berg aus stolzem lebendigem Stein thronend,<br>Hüter von Träumen, von Ruhm und Geheimnis.",
+    "rhyme_2": "Innerhalb dieser Mauern, die der Zeit trotzen,<br>zogen Dynastien vorbei wie ein Hauch im Wind.<br>Von den stolzen abenteuerlustigen Chiaramontes,<br>erzählt jeder Raum von Verträgen und Pracht.",
+    "rhyme_3": "Sucht die Daten nicht in einem kalten Band,<br>sondern den Schatten, der im Kerzenschein tanzt.<br>Die Castellana erwartet dich, auf Schritt und Tritt,<br>um dir das Geheimnis von Schwester Felicia zu enthüllen.",
     "dress_caption": "Das Kleid der Castellana",
     "chat_tooltip": "Zum Chatten klicken",
-    "welcomemsg_felicia": "Willkommen im Schloss von Caccamo, Fremder. Ich bin Schwester Felicia. Möchten Sie, dass ich Ihnen die Geheimnisse der Verschwörungskammer enthülle, oder hören Sie lieber die alten Legenden der Burg? Fragen Sie mich einfach.",
+    "welcomemsg_felicia": "Willkommen im Schloss von Caccamo, Fremder. Ich bin Schwester Felicia. Möchtest du, dass ich dir die Geheimnisse des Verschwörungssaals enthülle, oder ziehst du es vor, die alten Legenden des Schlosses zu hören? Frag mich einfach.",
     "position": "Eine Festung auf einem Felsvorsprung, mit einem beherrschenden Blick über das Tal.",
     "defense": "Schießscharten, dicke Mauern und Wehrgänge zeugen von ihrer Verteidigungsfunktion.",
-    "conspiracy": "Geheime Räume und herrschaftliche Kammern waren Schauplatz mittelalterlicher Verschwörungen und Intrigen.",
-    "prisons": "Die unterirdischen Gefängnisse bewahren noch immer die Spuren alter Inhaftierungen.",
-    "legend_brothers": "Die Legende der beiden Brüder erzählt von einem tödlichen Duell um die Liebe einer Dame."
+    "conspiracy": "Geheime Säle und herrschaftliche Räume waren Schauplatz mittelalterlicher Verschwörungen und Intrigen.",
+    "prisons": "Die unterirdischen Gefängnisse bewahren noch heute Spuren alter Haftzeiten.",
+    "legend_brothers": "Die Legende der zwei Brüder erzählt von einem tödlichen Duell um die Liebe einer Dame."
   },
+
   "monuments": {
     "hours_label": "Öffnungszeiten",
     "tickets_label": "Tickets",
@@ -80,91 +85,120 @@
     "btn_comune_info": "Institutionelle Infos der Gemeinde",
     "btn_contact_turismo": "Tourismusbüro kontaktieren",
     "btn_dindondan": "Kirchen auf Din Don Dan erkunden",
-    "church_notice": "⚠️ Hinweis: Die Kultstätten sind aktiv und für liturgische Funktionen bestimmt. Bitte respektieren Sie bei touristischen Besuchen die empfohlenen Zeiten und vermeiden Sie Zeiten interner Feierlichkeiten.",
+    "church_notice": "⚠️ Hinweis: Die religiösen Stätten sind aktiv und für liturgische Feiern bestimmt. Bitte respektieren Sie für touristische Besuche die empfohlenen Zeiten und vermeiden Sie Zeiten interner Feierlichkeiten.",
     "mobile": {
       "go_to_map": "Zur Karte gehen"
     },
     "castello": {
       "title": "Das Schloss von Caccamo",
-      "description": "Das Schloss von Caccamo gehört zu den größten und am besten erhaltenen normannischen Festungen Siziliens. Seit dem 11. Jahrhundert auf dem lebendigen Felsen thronend, dominiert es mit seinen imposanten Mauern, Wachtürmen und eindrucksvollen Innenräumen, die von jahrhundertelanger feudaler Geschichte und ritterlichen Legenden künden, das Tal von San Leonardo.",
-      "hours": "Täglich: 09:30 – 13:00 / 15:00 – 19:00",
-      "tickets": "Vollpreis € 6,00 | Ermäßigt € 4,50 (Nur mit Online-Buchung)"
+      "description": "Das Schloss von Caccamo gehört zu den größten und am besten erhaltenen normannischen Festungen Siziliens. Seit dem 11. Jahrhundert auf dem lebendigen Felsen thronend, beherrscht es das Tal des San Leonardo mit seinen imposanten Mauern, Wachtürmen und eindrucksvollen Innenräumen, die an Jahrhunderte feudaler Geschichte und ritterliche Legenden erinnern.",
+      "hours": "Jeden Tag: 09:30 – 13:00 / 15:00 – 19:00",
+      "tickets": "Vollpreis € 6,00 | Ermäßigt € 4,50 (Ausschließlich mit Online-Buchung)"
     },
     "badia": {
       "title": "Kirche San Benedetto alla Badia",
-      "description": "Ein wahres Juwel des sizilianischen Barocks. Die Kirche ist weltweit berühmt für ihren außergewöhnlichen Boden aus Majolika des 18. Jahrhunderts, der allegorische Szenen und naturalistische Motive von seltener Meisterschaft darstellt. Ein Meisterwerk visueller Kunst, das in der Zeit stillzustehen scheint.",
-      "hours": "Di - So: 09:00 – 12:30 | Mo: 14:30 – 18:30 (Keine regulären Messen, ideal für Besichtigungen)",
-      "tickets": "Vollpreis € 2,00 | Ermäßigt € 1,00 (EU-Jugendliche 18-25 Jahre oder mit Schloss-Ticket vom selben Tag) | Kostenlos unter 18"
+      "description": "Ein wahres Juwel des sizilianischen Barocks, die Kirche ist weltweit berühmt für ihren außergewöhnlichen Boden, der vollständig aus Majolika des 18. Jahrhunderts gefertigt ist und allegorische Szenen und naturalistische Motive von seltener Meisterschaft darstellt. Ein Meisterwerk visueller Kunst, das in der Zeit schwebt.",
+      "hours": "Di - So: 09:00 – 12:30 | Mo: 14:30 – 18:30 (Keine regelmäßigen Gottesdienste, ideal für Besuche)",
+      "tickets": "Vollpreis € 2,00 | Ermäßigt € 1,00 (EU-Jugendliche 18-25 Jahre oder mit Schloss-Ticket am selben Tag) | Kostenlos unter 18 Jahren"
     },
     "santamaria": {
       "title": "Kirche Santa Maria degli Angeli",
-      "description": "Im 15. Jahrhundert zusammen mit dem Dominikanerkloster gegründet, ist die Kirche Santa Maria degli Angeli eines der spirituellen Zentren des Dorfes. Sie bewahrt die Überreste und Reliquien des seligen Giovanni Liccio, Schutzpatron von Caccamo. Im Inneren können Sie prächtige Marmoraltäre und sakrale Kunstwerke bewundern, die von jahrhundertelanger tiefer Frömmigkeit und Pilgerfahrten zeugen.",
-      "hours": "Öffnung und Besichtigung: Samstag von 16:00 bis 17:30 Uhr | Sonntag von 09:00 bis 10:00 Uhr und von 11:00 bis 12:30 Uhr. (Heilige Messen: Samstag 17:30 Uhr | Sonntag 10:00 Uhr)."
+      "description": "Im 15. Jahrhundert zusammen mit dem Dominikanerkloster gegründet, ist die Kirche Santa Maria degli Angeli eines der wichtigsten spirituellen Zentren des Dorfes. Sie beherbergt die Überreste und Reliquien des seligen Giovanni Liccio, Schutzpatron von Caccamo. Im Inneren können Sie herrliche Marmoraltäre und sakrale Kunstwerke bewundern, die von Jahrhunderten tiefer Andacht und Pilgerreisen zeugen.",
+      "hours": "Öffnungszeiten und Besuche: Samstag von 16:00 bis 17:30 Uhr | Sonntag von 09:00 bis 10:00 Uhr und von 11:00 bis 12:30 Uhr. (Heilige Messen: Samstag 17:30 Uhr | Sonntag 10:00 Uhr)."
     },
     "sangiorgio": {
       "title": "Kirche San Giorgio Martire",
-      "description": "Die Mutterkirche von Caccamo, dem Heiligen Georg dem Märtyrer geweiht, ist ein imposantes Meisterwerk, das den monumentalen Platz unterhalb des Schlosses dominiert. Gegründet in der normannischen Zeit und 1614 umgebaut, bewahrt sie ein immenses künstlerisches Erbe: von Skulpturen der Gagini-Schule bis zu wertvollen Gemälden des flämischen Malers Matthias Stom aus dem 17. Jahrhundert sowie reichen, mit gemischtem Marmor verzierten Kapellen.",
-      "hours": "Besuchszeiten: Samstag und Sonntag 09:30 – 10:45 und 16:00 – 18:00 Uhr. (Der touristische Empfang ist während der Sonntagsmesse um 11:00 Uhr ausgesetzt)."
+      "description": "Die Mutterkirche von Caccamo, dem heiligen Georg dem Märtyrer gewidmet, ist ein imposantes Meisterwerk, das den monumentalen Platz unterhalb des Schlosses beherrscht. Gegründet in der normannischen Zeit und 1614 umgebaut, bewahrt sie ein immenses künstlerisches Erbe: von Skulpturen der Gagini-Schule bis zu wertvollen Gemälden des flämischen Malers Matthias Stom aus dem 17. Jahrhundert, bis hin zu den reichen, mit gemischtem Marmor verzierten Kapellen.",
+      "hours": "Besuchszeiten: Samstag und Sonntag 09:30 – 10:45 Uhr und 16:00 – 18:00 Uhr. (Der touristische Empfang ist während der sonntäglichen Heiligen Messe um 11:00 Uhr ausgesetzt)."
     },
     "annunziata": {
       "title": "Pfarrei SS. Annunziata",
-      "description": "In die mittelalterliche Stadtstruktur eingebettet, besticht die Kirche durch ihre Fassade und die Atmosphäre tiefer Spiritualität, die man im Inneren verspürt. Sie bewahrt fein verzierte Altäre und künstlerische Artefakte, die Besucher und Gläubige anziehen.",
-      "hours": "Mo - Sa: 09:00 – 12:00 Uhr | Wochentagsmessen 18:00 Uhr. Sonntags und an Feiertagen Besuche in den Zeiten: 08:30 - 09:30 Uhr und 10:30 - 12:00 Uhr (Feiertagsmessen 09:30, 12:00, 19:00 Uhr)."
+      "description": "In die mittelalterliche Stadtstruktur eingebettet, zeichnet sich die Kirche durch ihre Fassade und die Atmosphäre tiefer Spiritualität aus, die man im Inneren atmet. Sie bewahrt fein verzierte Altäre und künstlerische Artefakte, die Besucher und Gläubige anziehen.",
+      "hours": "Mo - Sa: 09:00 – 12:00 Uhr | Wochentagsmessen um 18:00 Uhr. Sonntags und an Feiertagen Besuche zu den Zeiten: 08:30 - 09:30 Uhr und 10:30 - 12:00 Uhr (Feiertagsmessen um 09:30, 12:00, 19:00 Uhr)."
     },
     "cappuccini": {
       "title": "Kapuzinerkloster",
-      "description": "Ein Ort der Stille, Meditation und Geschichte. Die Strukturen des Klosters sind eng mit der franziskanischen Tradition in Sizilien verbunden. Neben der Klosteranlage bietet das Gebiet einen authentischen Einblick in das klösterliche Leben und die Volksfrömmigkeit.",
-      "hours": "Zugang hauptsächlich auf Anfrage oder während franziskanischer Feierlichkeiten. Kontaktieren Sie das Tourismusbüro.",
-      "secret_info": "💡 Die verborgenen Schätze von Caccamo: Das Dorf beherbergt 33 Kirchen. Nutzen Sie die Din Don Dan-Karte und zoomen Sie auf Caccamo, um die Echtzeit-Öffnungszeiten weniger bekannter Schätze wie die Kirche San Rocco und andere kleine, verstreute Meisterwerke zu entdecken."
+      "description": "Ein Ort der Stille, Meditation und Geschichte, die Strukturen des Klosters sind tief mit der franziskanischen Tradition in Sizilien verbunden. Neben der Klosteranlage bietet das Gebiet einen authentischen Einblick in das klösterliche Leben und die Volksfrömmigkeit.",
+      "hours": "Hauptsächlich auf Anfrage oder während franziskanischer Gedenktage zugänglich. Kontaktieren Sie das Tourismusbüro.",
+      "secret_info": "💡 Die verborgenen Juwelen von Caccamo: Das Dorf beherbergt 33 Kirchen. Nutzen Sie die Karte von Din Don Dan und zoomen Sie auf Caccamo, um die Echtzeit-Öffnungszeiten von weniger bekannten Schätzen wie der Kirche San Rocco und anderen kleinen Meisterwerken in der Umgebung zu entdecken."
     }
   },
+
   "chiese_page": {
     "page_title": "Die Kirchen von Caccamo",
-    "poesia_intro": "Fünf Tempel aus Stein, aus Glauben und Erinnerung,<br>öffnen ihre Türen zu einer jahrhundertealten Geschichte.",
-    "verse_angeli": "In den <strong>Angeli</strong> ruht, im heiligsten Schweigen,<br>der selige Giovanni, das Abbild des Dorfes.",
-    "verse_badia": "Wenn Sie zur <strong>Badia</strong> hinabsteigen, wird die Erde zur Blume<br>in der Majolika-Stickerei von seltener Pracht.",
-    "verse_duomo": "Betreten Sie den großen <strong>Dom</strong>, majestätisch und feierlich,<br>zwischen Gaginis Marmor und dem zeitlosen Stomer.",
+    "poesia_intro": "Fünf Tempel aus Stein, des Glaubens und der Erinnerung,<br>öffnen ihre Tore für eine jahrhundertealte Geschichte.",
+    "verse_angeli": "In den <strong>Angeli</strong> ruht, in heiligster Stille,<br>der selige Giovanni, das Abbild des Dorfes.",
+    "verse_badia": "Wenn du zur <strong>Badia</strong> hinabsteigst, wird die Erde zur Blüte<br>im Majolika-Stickerei von seltener Pracht.",
+    "verse_duomo": "Betrete den großen <strong>Dom</strong>, majestätisch und feierlich,<br>zwischen den Marmorarbeiten von Gagini und dem ewigen Stomer.",
     "verse_annunziata": "Dann enthüllt die <strong>Annunziata</strong> ihre bemalten Gewölbe,<br>und den Glockenturm, der nie von Wachen besiegt wurde.",
-    "verse_cappuccini": "Steigen Sie schließlich zu den <strong>Cappuccini</strong> auf dem strahlenden Hügel hinauf,<br>zwischen einem Altarbild und einem majestätischen Panorama.",
-    "poesia_outro": "Lassen Sie sich dorthin führen, wo die Zeit stillsteht..."
+    "verse_cappuccini": "Steige schließlich zu den <strong>Cappuccini</strong> auf dem strahlenden Hügel,<br>zwischen einem Altarbild und einem majestätischen Panorama.",
+    "poesia_outro": "Lasse dich dorthin führen, wo die Zeit stehen geblieben ist..."
   },
+
   "transport_page": {
-    "welcome": "Willkommen, Wanderer, im Bereich Transport. Hier finden Sie die notwendigen Informationen, um sich in der Umgebung des Dorfes fortzubewegen.",
+    "welcome": "Willkommen, Wanderer, im Transport-Bereich. Hier findest du die notwendigen Informationen, um dich in der Umgebung des Dorfes zu bewegen.",
     "company_title": "Autolinee Randazzo di Gesù",
-    "company_desc": "Die Buslinien verbinden Caccamo das ganze Jahr über mit <strong>Termini Imerese</strong> und <strong>Palermo</strong>. Wenn Sie die Nachmittagsfahrt Richtung Palermo nutzen, können Sie in <strong>Vetrana</strong>, einem bekannten Badeort, aussteigen. Von Termini Imerese aus können Sie außerdem den Zug nach <strong>Cefalù</strong> und zu anderen touristischen Zielen nehmen.",
+    "company_desc": "Die Buslinien verbinden Caccamo das ganze Jahr über mit <strong>Termini Imerese</strong> und <strong>Palermo</strong>. Wenn du die Nachmittagsfahrt nach Palermo nimmst, kannst du in <strong>Vetrana</strong> aussteigen, einem bekannten Küstengebiet. Von Termini Imerese aus kannst du zudem den Zug nach <strong>Cefalù</strong> und zu anderen touristischen Zielen nehmen.",
     "stops_title": "📍 Die Haltestellen im Dorf",
-    "stop_1": "<strong>Porta Euracea:</strong> vor der Bar Giallombardo und dem Baustoffhandel.",
-    "stop_2": "<strong>Viale Regione Siciliana:</strong> oberhalb des Spielplatzes 'Roberta' (in der Nähe der Versicherungsagentur Axa).",
+    "stop_1": "<strong>Porta Euracea:</strong> gegenüber der Bar Giallombardo und dem Baustoffgeschäft.",
+    "stop_2": "<strong>Viale Regione Siciliana:</strong> oberhalb des Spielplatzes 'Roberta' (in der Nähe der Axa-Versicherungsagentur).",
     "stop_3": "<strong>Piazza Cappuccini:</strong> im Schatten des alten Klosters.",
     "btn_schedule": "📅 Fahrpläne ansehen",
     "btn_tickets": "🎫 Tickets online kaufen"
   },
+
   "events_page": {
     "title": "Riten und Feste des Dorfes",
-    "intro": "Erleben Sie die authentischste Seele unseres Dorfes durch seine jahrhundertealten Traditionen, wo Glaube, Geschichte und Folklore in einzigartigen und bewegenden Momenten miteinander verschmelzen.",
+    "intro": "Erlebe die authentischste Seele unseres Dorfes durch seine jahrhundertealten Traditionen, wo Glaube, Geschichte und Folklore in einzigartigen und aufregenden Momenten verschmelzen.",
     "signuruzzu_title": "U Signuruzzu a Cavaddu",
-    "signuruzzu_desc": "Am Palmsonntag verkörpert ein Kind aus dem Ort Jesus und zieht auf einem geschmückten Esel durch die mit Palmen festlich geschmückten Straßen des Dorfes. Der Umzug macht für den stimmungsvollen Segen Halt vor der Kirche Santa Maria degli Angeli und dem Dom San Giorgio Martire.",
+    "signuruzzu_desc": "Am Palmsonntag verkörpert ein einheimisches Kind Jesus und zieht auf einem geschmückten Esel durch die Straßen des Dorfes, die festlich mit Palmen geschmückt sind. Der Umzug hält vor der Kirche Santa Maria degli Angeli und dem Dom San Giorgio Martire für den stimmungsvollen Segen.",
     "venerdi_title": "Die Riten der Karwoche",
-    "venerdi_desc": "Die Atmosphäre wird tiefgründig mit den Altären, die in den Kirchen für den Karfreitag aufgebaut werden, angereichert mit den typischen Gerichten aus im Dunkeln gekeimtem Weizen. Es folgen die feierliche und bewegende Prozession und der städtische Kreuzweg.",
+    "venerdi_desc": "Die Atmosphäre wird tiefgründig mit den Altären, die für den Karfreitag in den Kirchen aufgebaut werden, bereichert mit den typischen Gerichten aus im Dunkeln gekeimtem Weizen. Es folgen die feierliche und bewegende Prozession und der Kreuzweg der Stadt.",
     "giovanni_title": "Fest des seligen Giovanni",
-    "giovanni_desc": "Ein zutiefst gefühlter Feiertag, den die gesamte Gemeinschaft erlebt, die sich in einer Atmosphäre großer Hingabe und Volksnähe um ihren Seligen schart.",
+    "giovanni_desc": "Ein tief empfundenes Ereignis, das von der gesamten Gemeinschaft gelebt wird, die sich in einem Klima großer Andacht und Volksnähe um ihren Seligen schart.",
     "castellana_title": "Wahl der Castellana & Historischer Umzug",
-    "castellana_desc": "Das Dorf taucht in seine glorreiche mittelalterliche Vergangenheit ein. Ein majestätischer historischer Umzug in Kostümen der Epoche zieht durch die Straßen, der mit der feierlichen Wahl der Castellana der Burg gipfelt.",
-    "nicasio_title": "Fest des Heiligen Nicasio und der Palio",
-    "nicasio_desc": "Lebhafte Feierlichkeiten zu Ehren des Heiligen, bereichert durch den lang ersehnten und fesselnden städtischen Palio, der den Ehrgeiz und die Begeisterung von Jung und Alt entfacht.",
-    "sagra_title": "Wurstfest (12. Oktober)",
-    "sagra_desc": "Jedes Jahr am 12. Oktober ziehen die Düfte der Tradition durch das Dorf. Ein kulinarischer Pflichttermin, um die authentische lokale Wurst bei Gesang, Wein und Geselligkeit zu genießen."
+    "castellana_desc": "Das Dorf taucht wieder in seine glorreiche mittelalterliche Vergangenheit ein. Ein majestätischer historischer Umzug in historischen Kostümen durchquert die Straßen und gipfelt in der feierlichen Wahl der Castellana des Schlosses.",
+    "nicasio_title": "Fest des heiligen Nicasio und der Palio",
+    "nicasio_desc": "Lebhafte Feierlichkeiten zu Ehren des Heiligen, bereichert durch den mit Spannung erwarteten und mitreißenden städtischen Palio, der den Wettbewerb und die Begeisterung von Jung und Alt entfacht.",
+    "sagra_title": "Salsiccia-Fest (12. Oktober)",
+    "sagra_desc": "Jedes Jahr am 12. Oktober durchdringen die Düfte der Tradition das Dorf. Ein unverzichtbarer gastronomischer Termin, um die authentische lokale Wurst zwischen Liedern, Wein und Geselligkeit zu genießen."
   },
+
   "food_page": {
-    "title": "Geschmack und Gesellschaft im Dorf",
-    "intro": "Willkommen, Wanderer, in dem Bereich, der den lokalen Aromen und Abenden in guter Gesellschaft gewidmet ist.",
-    "search_placeholder": "Suche nach einem Lokal oder Geschmack...",
+    "title": "Genuss und Gesellschaft im Dorf",
+    "intro": "Willkommen, Wanderer, in dem Bereich, der den lokalen Aromen und geselligen Abenden gewidmet ist.",
+    "search_placeholder": "Suche nach einem Ort oder einem Geschmack...",
     "sec_movida": "Nachtleben und Abende",
-    "sec_eat": "Restaurants, Pizzerien und Bars"
+    "sec_eat": "Restaurants, Pizzerien und Bars",
+    "listings": {
+      "movida": [
+        { "name": "The Castle", "category": "Pub", "desc": "Spaß und Themenabende in der magischen nächtlichen Kulisse im Schatten der mittelalterlichen Burg.", "link": "https://www.facebook.com/share/18vZG4MXRW/" },
+        { "name": "Kittipigghi", "category": "Pub", "desc": "Der Anlaufpunkt für deine Abende im Dorf. Veranstaltungen, Musik und Unterhaltung das ganze Jahr über.", "link": "https://www.kitipigghi.it/" },
+        { "name": "Chiosco San Francesco", "category": "Nur Sommer", "desc": "Erfrische deine Sommerabende im Freien mit Cocktails, toller Gesellschaft und einer geselligen Atmosphäre in einer restaurierten und umgenutzten Gemeindevilla.", "link": "https://www.facebook.com/share/1B4aAYCLgD/" }
+      ],
+      "restaurants": [
+        { "name": "Al Maniero", "category": "Restaurant", "desc": "Gepflegte Küche und traditionelle Gerichte in einer warmen Atmosphäre mit Blick auf das Schloss.", "link": "https://www.facebook.com/share/18u3GL8zLz/" },
+        { "name": "Il Borgo", "category": "Restaurant", "desc": "Eine gastronomische Reise durch die wahren Aromen und kulinarischen Spitzenleistungen unseres Landes.", "link": "https://www.ilborgoristorante.it/" },
+        { "name": "A Castellana", "category": "Restaurant", "desc": "Ein raffiniertes kulinarisches Erlebnis im Herzen des Dorfes, wo Tradition auf Eleganz trifft.", "link": "https://www.castellana.it/" },
+        { "name": "Caffè Royal", "category": "Konditorei Bar", "desc": "Vom handwerklichen Frühstück bis zu den raffiniertesten traditionellen sizilianischen Süßigkeiten.", "link": "https://www.pasticceriacafferoyal.it/" },
+        { "name": "La Bottega dei Sapori", "category": "Pizzeria zum Mitnehmen", "desc": "Duftende und leckere Pizzen zum Mitnehmen, die vor Ort mit echten Zutaten zubereitet werden.", "link": "https://www.facebook.com/share/1JBduVFioY/" },
+        { "name": "L'officina dei golosi", "category": "Konditorei Bar", "desc": "Handwerkliche Süßigkeiten, reichhaltiges Frühstück und leckere Kaffeepausen, um den Gaumen jeden Tag zu verwöhnen.", "link": "https://www.facebook.com/share/18mYX4eM55/" },
+        { "name": "Strapizzami", "category": "Pizzeria Sandwich-Shop", "desc": "Knusprige, leckere Pizzen, hergestellt mit sorgfältig ausgewählten lokalen Zutaten.", "link": "https://www.google.com/amp/s/restaurantguru.it/amp/Strapizzami-Di-La-Corte-Caccamo" },
+        { "name": "Pasticceria Fratelli Scimeca", "category": "Konditorei", "desc": "Meister der typischen Süßigkeiten und traditionellen Aromen, die unsere Geschichte in die Welt tragen.", "link": "https://www.pasticceriascimeca.it/it/" },
+        { "name": "Dolci Tentazioni", "category": "Bar", "desc": "Der ideale Ort für eine regenerierende Pause, exzellenten Kaffee und handwerkliches Eis.", "link": "https://www.facebook.com/share/17U43rMe2E/" },
+        { "name": "Bar Ribaudo", "category": "Bar", "desc": "Ein Muss: ihre 'Mattonella', das Milz-Sandwich, ihre gebratenen Hähnchen.", "link": "https://www.facebook.com/share/18ac66cyJw/" },
+        { "name": "Bar del Carmine", "category": "Bar", "desc": "Historische Cafeteria, ideal für einen exzellenten Espresso oder ein erfrischendes Eis in völliger Entspannung.", "link": "https://www.facebook.com/share/18iwTg9A2x/" },
+        { "name": "Spiga d'oro food and drink", "category": "Restaurant", "desc": "Frisch gebacken, typische Platten und eine große Auswahl an Spezialitäten, bereit zum Genießen.", "link": "https://www.facebook.com/share/1DdAPmbUN8/" },
+        { "name": "Cafè 40", "category": "Bar", "desc": "Moderne und einladende Umgebung, ideal für Treffen und Frühstücke.", "link": "https://www.facebook.com/share/1LT4v9c3Kj/" },
+        { "name": "Il dolce", "category": "Bar", "desc": "Moderne und einladende Umgebung, ideal für typische Süßigkeiten, Rotisserie, typisches sizilianisches Street Food.", "link": "https://www.facebook.com/share/18xrPta97K/" },
+        { "name": "Bar Muscarella", "category": "Bar & Café", "desc": "Idealer Stopp für einen regenerierenden Kaffee, ein handwerkliches Eis oder einen Aperitif zur Entspannung.", "link": "https://restaurantguru.it/amp/Bar-Muscarella-Caccamo" }
+      ]
+    }
   },
+
   "sleep_page": {
-    "title": "Unterkünfte",
-    "intro": "Willkommen, Wanderer. Finden Sie Erholung in unseren gemütlichen Unterkünften, wo Geschichte und Gastfreundschaft verschmelzen, um Ihnen eine ruhige Erholung im Herzen von Caccamo zu bieten.",
+    "title": "Übernachtungsmöglichkeiten",
+    "intro": "Willkommen, Wanderer. Finde Ruhe in unseren einladenden Unterkünften, wo Geschichte und Gastfreundschaft verschmelzen, um dir einen erholsamen Schlaf im Herzen von Caccamo zu schenken.",
     "placeholder": "Suche nach einer Unterkunft..."
   }
 }
