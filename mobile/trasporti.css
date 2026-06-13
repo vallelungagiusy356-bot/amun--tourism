@@ -1,8 +1,8 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - MODULE: TRASPORTI (ELEGANZA INTEGRATA DALLA HOME)
+   AMUNÌ TOURISM - MODULE: TRASPORTI (VERSIONE CON FIX SFONDO E ELEGANZA)
    ========================================================================== */
 
-/* 1. RESET E STRUTTURA DI BASE (IDENTICI ALLA HOME) */
+/* 1. RESET E STRUTTURA DI BASE (SFONDO FIXATO SUL BODY) */
 * {
     margin: 0;
     padding: 0;
@@ -15,18 +15,25 @@ body {
     color: #fff;
     overflow-x: hidden;
     min-height: 100vh;
-}
-
-/* SFONDO GENERALE (MOBILE) */
-.scene-background {
-    position: fixed;
-    inset: 0;
+    
+    /* FIX: Applichiamo lo sfondo direttamente al body così è visibile ovunque */
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: brightness(0.5) contrast(1.2);
-    z-index: -10;
+    background-attachment: fixed; /* Lo tiene fermo ed evita scatti su mobile */
+}
+
+/* Applichiamo il filtro cinematografico scuro direttamente al body tramite un overlay elegante */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45); /* Scurisce lo sfondo per far brillare il testo oro */
+    backdrop-filter: brightness(0.5) contrast(1.2);
+    -webkit-backdrop-filter: brightness(0.5) contrast(1.2);
+    z-index: -1; /* Lo mette dietro a tutto il testo */
+    pointer-events: none;
 }
 
 /* 2. DASHBOARD MOBILE BAROCCA (SPECULARE AL 100% ALLA HOME) */
