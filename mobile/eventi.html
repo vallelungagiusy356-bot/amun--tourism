@@ -98,20 +98,93 @@
 
     </div>
 
-    <!-- Script Audio, Animazione e Lingue (Identici alla Home/Trasporti) -->
+        <!-- Script Audio, Animazione e Lingue -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const content = document.getElementById("scroll-content");
             setTimeout(() => { content.classList.add("visible"); }, 50);
+
+            // Carica la lingua salvata in precedenza, oppure parte in italiano
+            const linguaSalvata = localStorage.getItem('linguaSelezionata') || 'it';
+            caricaLingua(linguaSalvata);
+
+            // Configura i click sui pulsanti delle bandiere
+            document.querySelectorAll('.lang-switcher button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const linguaScelta = button.getAttribute('data-lang');
+                    caricaLingua(linguaScelta);
+                });
+            });
         });
 
+        function caricaLingua(lingua) {
+            // Salva la scelta così se l'utente naviga tra le pagine la ricorda
+            localStorage.setItem('linguaSelezionata', lingua);
+
+            // Cambia l'attributo lang del tag <html> per accessibilità
+            document.documentElement.lang = lingua;
+
+            // Fai il fetch del file JSON corrispondente (es: it.json, en.json...)
+            fetch(`locales/${lingua}.json`)
+                .then(response => {
+                    if (!response.ok) throw new Error("File di lingua non trovato");
+                    return response.json();
+                })
+                .then(data => {
+                    // Cerca TUTTI gli elementi nella pagina che hanno un attributo data-i18n
+                    document.querySelectorAll('[data-i18n]').forEach(elemento => {
+                        const percorsoChiave = elemento.getAttribute('data-i18n'); // es: "events_page.title"
+                        
+                        // Divide la stringa (es: ["events_page", "title"])
+                        const chiavi = percorsoChiave.split('.'); 
+                        
+                        // Naviga nel JSON (data.events_page.title) SENZA passare per la lingua intermedia
+                        let testoTradotto = data;
+                        chiavi.forEach(chiave => {
+                            if (testoTradotto) {
+                                testoTradotto = testoTradotto[chiave];
+                            }
+                        });
+
+                        // Se ha trovato la traduzione, aggiorna l'HTML dell'elemento
+                        if (testoTradotto) {
+                            elemento.innerHTML = testoTradotto;
+                        }
+                    });
+                })
+                .catch(error => console.error("Errore nel caricamento della lingua:", error));
+        }
+
         function openCastellanaChat() {
-            // Qui andrà la logica per aprire il chatbot dell'avatar (es. mostrare il widget)
             alert("La Castellana è pronta a svelarti le cronache storiche e i dettagli degli eventi del borgo!");
         }
     </script>
-    
-    <!-- (Inserisci qui sotto i tuoi due script standard per la gestione della musica e del fetch lang.json) -->
 
+    <!-- GESTIONE AUDIO / MUSICA -->
+    <script>
+        const bgMusic = document.getElementById('bg-music');
+        const toggleMusicBtn = document.getElementById('toggle-music');
+        const audioTrigger = document.getElementById('audio-trigger');
+
+        // Logica per aggirare il blocco dell'autoplay dei browser
+        if (audioTrigger) {
+            audioTrigger.addEventListener('click', () => {
+                bgMusic.play().then(() => {
+                    toggleMusicBtn.textContent = "🔊";
+                    audioTrigger.remove(); // Rimuove il bottone invisibile una volta attivato
+                }).catch(err => console.log("Audio in attesa di interazione"));
+            });
+        }
+
+        toggleMusicBtn.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                toggleMusicBtn.textContent = "🔊";
+            } else {
+                bgMusic.pause();
+                toggleMusicBtn.textContent = "🔈";
+            }
+        });
+    </script>
 </body>
 </html>
