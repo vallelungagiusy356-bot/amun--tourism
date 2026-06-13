@@ -21,7 +21,7 @@
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="scene-background monumento-bg"></div>
+    <div class="scene-background"></div>
 
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
@@ -35,47 +35,29 @@
         </div>
     </header>
 
-    <div class="mobile-layout layout-monumenti">
+    <main class="scroll-content">
         
-        <main class="monumenti-grid">
-    
-    <section class="quadrant-mobile" onclick="window.location.href='castello_di_caccamo.html'">
-        <h2 data-i18n="monuments.mobile.castello">Castello di Caccamo</h2>
-    </section>
+        <div class="home-welcome-poetry">
+            <h1 data-i18n="monuments.title">I Nostri Monumenti</h1>
+        </div>
 
-    <section class="quadrant-mobile" onclick="window.location.href='santamaria.html'">
-        <h2 data-i18n="monuments.mobile.santamaria">Chiesa S. Maria degli Angeli</h2>
-    </section>
+        <div class="event-buttons">
+            <a href="castello_di_caccamo.html" class="btn-barocco" data-i18n="monuments.mobile.castello">Castello di Caccamo</a>
+            <a href="santamaria.html" class="btn-barocco" data-i18n="monuments.mobile.santamaria">Chiesa S. Maria degli Angeli</a>
+            <a href="sangiorgio.html" class="btn-barocco" data-i18n="monuments.mobile.sangiorgio">Chiesa San Giorgio Martire</a>
+            <a href="cappuccini.html" class="btn-barocco" data-i18n="monuments.mobile.cappuccini">Convento Frati Cappuccini</a>
+            <a href="annunziata.html" class="btn-barocco" data-i18n="monuments.mobile.annunziata">Parrocchia SS. Annunziata</a>
+            <a href="sanbenedetto.html" class="btn-barocco" data-i18n="monuments.mobile.sanbenedetto">Chiesa S. Benedetto della Badia</a>
+        </div>
 
-    <section class="quadrant-mobile" onclick="window.location.href='sangiorgio.html'">
-        <h2 data-i18n="monuments.mobile.sangiorgio">Chiesa San Giorgio Martire</h2>
-    </section>
+        <div class="event-buttons" style="margin-top: 20px;">
+            <a href="mappa.html" class="btn-barocco" style="border-color: #79a6d2;">🌐 <span data-i18n="monuments.go_to_map">Vai alla Mappa</span></a>
+            <a href="../desktop/index.html?bypass=true" class="btn-barocco btn-avatar-special">
+                <span data-i18n="home.talk_castellana">Parla con la Castellana</span>
+            </a>
+        </div>
 
-    <section class="quadrant-mobile" onclick="window.location.href='cappuccini.html'">
-        <h2 data-i18n="monuments.mobile.cappuccini">Convento Frati Cappuccini</h2>
-    </section>
-
-    <section class="quadrant-mobile" onclick="window.location.href='annunziata.html'">
-        <h2 data-i18n="monuments.mobile.annunziata">Parrocchia SS. Annunziata</h2>
-    </section>
-
-    <section class="quadrant-mobile" onclick="window.location.href='sanbenedetto.html'">
-        <h2 data-i18n="monuments.mobile.sanbenedetto">Chiesa S. Benedetto della Badia</h2>
-    </section>
-
-</main>
-
-
-        <a href="mappa.html" class="btn-mappa">
-    🌐 <span data-i18n="monuments.go_to_map">Vai alla Mappa</span>
-</a>
-
-<a href="../desktop/index.html?bypass=true" class="btn-castellana">
-    <span data-i18n="home.talk_castellana">Parla con la Castellana</span>
-</a>
-
-
-    </div>
+    </main>
 
     <script>
         const audio = document.getElementById("bg-music");
@@ -84,29 +66,16 @@
         audio.volume = 0.5;
 
         function startMusic() {
-            audio.play().then(() => {
-                if(trigger) trigger.remove();
-            }).catch(() => {
-                setTimeout(() => audio.play(), 200);
-            });
+            audio.play().then(() => { if(trigger) trigger.remove(); }).catch(() => { setTimeout(() => audio.play(), 200); });
         }
-        if(trigger) {
-            trigger.addEventListener("click", startMusic);
-            trigger.addEventListener("touchstart", startMusic);
-        }
+        if(trigger) { trigger.addEventListener("click", startMusic); trigger.addEventListener("touchstart", startMusic); }
 
         toggleBtn.addEventListener("click", () => {
-            if (audio.paused) {
-                audio.play();
-                toggleBtn.textContent = "🔈";
-            } else {
-                audio.pause();
-                toggleBtn.textContent = "🔇";
-            }
+            if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; }
+            else { audio.pause(); toggleBtn.textContent = "🔇"; }
         });
 
         let currentLang = localStorage.getItem("lang") || "it";
-        
         function loadLanguage(lang) {
             fetch(`../lang/${lang}.json`)
                 .then(res => res.json())
@@ -116,14 +85,7 @@
                         const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
                         if (text) el.innerHTML = text;
                     });
-
-                    // Sincronizzazione classe attiva sui pulsanti lingua
-                    document.querySelectorAll(".lang-switcher button").forEach(btn => {
-                        if (btn.dataset.lang === lang) btn.classList.add("active");
-                        else btn.classList.remove("active");
-                    });
-                })
-                .catch(err => console.error("Errore caricamento lingua:", err));
+                });
             localStorage.setItem("lang", lang);
         }
 
@@ -132,6 +94,8 @@
                 btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
             });
             loadLanguage(currentLang);
+            // Effetto entrata
+            setTimeout(() => document.querySelector('.scroll-content').classList.add('visible'), 100);
         });
     </script>
 </body>
