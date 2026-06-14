@@ -234,8 +234,8 @@ body {
 /* =======================================================
    8. PERSONALIZZAZIONI IMMAGINI (INTATTE)
    ======================================================= */
-.monument-hero-image.img-annunziata { height: 260px !important; transform: scale(1.65) !important; transform-origin: center 45%; }
+.monument-hero-image.img-annunziata { height: 160px !important; transform: scale(1.65) !important; transform-origin: center 45%; }
 .monument-hero-image.img-cappuccini { height: 180px; transform: scale(1.35); }
 .monument-hero-image.img-castello { height: 280px; object-position: center 35%; }
 .monument-hero-image.img-sangiorgio { height: 300px; transform: scale(1.35); }
-.monument-hero-image.img-sandomenico { height: 260px !important; transform: scale(1.48) !important; transform-origin: center center; }
+.monument-hero-image.img-sandomenico { height: 160px !important; transform: scale(1.48) !important; transform-origin: center center; }
