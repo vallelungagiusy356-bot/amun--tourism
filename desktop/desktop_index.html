@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amunì Tourism</title>
+    <title>Amunì Tourism | Il cuore di Caccamo</title>
     <link rel="stylesheet" href="css_style2_v2.css">
 </head>
 
@@ -12,12 +12,12 @@
     <div class="scene-background"></div>
 
     <header class="dashboard">
-        <div class="logo-title" data-i18n="menu.title"></div>
+        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
         <nav class="nav-desktop">
-            <a href="cittadino.html" data-i18n="menu.citizen"></a>
-            <a href="#" data-i18n="menu.about"></a>
-            <a href="#" data-i18n="menu.contact"></a>
+            <a href="cittadino.html" data-i18n="menu.citizen">Cittadino del borgo</a>
+            <a href="#" data-i18n="menu.about">Chi siamo</a>
+            <a href="#" data-i18n="menu.contact">Contatti</a>
         </nav>
 
         <div class="lang-switcher">
@@ -29,106 +29,130 @@
         </div>
     </header>
 
-    <div id="castellana-3d"></div>
-
-    <div class="castellana-video-wrapper">
-        <video class="castellana-video" autoplay muted loop playsinline>
-            <source src="img/castellana_alpha.webm" type="video/webm">
-        </video>
-        <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
-    </div>
-
-    <section class="home-welcome-poetry">
-        <h1 data-i18n="home.amuni_title"></h1>
-        <p data-i18n="home.amuni_text"></p>
-        <p style="margin-top: 15px; font-weight: bold;">Lasciati guidare oltre le soglie del tempo...</p>
-    </section>
-
-    <section class="castellana-intro-card">
-        <div class="intro-card-content">
-            <h3 data-i18n="home.castellana_intro_title">Vivi la Caccamo più autentica</h3>
-            <p data-i18n="home.castellana_intro_text">
-                Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto.
-            </p>
-            <div class="languages-badge">
-                <span>IT</span> • <span>EN</span> • <span>FR</span> • <span>DE</span> • <span>ES</span>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div id="castellana-3d"></div>
+            <div class="castellana-video-wrapper">
+                <video class="castellana-video" autoplay muted loop playsinline>
+                    <source src="img/castellana_alpha.webm" type="video/webm">
+                </video>
+                <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
             </div>
-        </div>
-    </section>
 
-    <section class="install-section">
-        <div class="install-left">
-            <h2 data-i18n="home.install_app"></h2>
-            <a href="https://raw.githubusercontent.com/vallelungagiusy356-bot/amun--tourism/main/app-release-signed.apk" class="btn-desktop">
-                📲 <span data-i18n="home.download_apk"></span>
-            </a>
-            <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/" class="btn-desktop">
-                🌐 <span data-i18n="home.open_webapp"></span>
-            </a>
-        </div>
-        <div class="install-right">
-            <img src="https://vallelungagiusy356-bot.github.io/amun--tourism/qr.png" alt="QR Amunì Tourism" class="qr-desktop">
-            <p data-i18n="home.scan_qr"></p>
-        </div>
-    </section>
+            <div class="home-welcome-poetry">
+                <h1 data-i18n="home.amuni_title">Benvenuto, o viandante...</h1>
+                <p data-i18n="home.amuni_text">
+                    Benvenuto, o viandante, al limitare del tempo,<br>
+                    dove la storia respira in ogni soffio di vento.<br>
+                    Senti il richiamo di pietre millenarie e severe,<br>
+                    custodi di cunti, di dame, di antiche preghiere.<br><br>
+                    Non fermare il tuo passo, specchiati in questa magia,<br>
+                    <strong>Amunì, vieni, ti indico la via.</strong>
+                </p>
+            </div>
+        </section>
 
+        <!-- Stats Bar: Aggiunge professionalità -->
+        <section class="stats-bar">
+            <div class="stat-item"><strong>33</strong><span>Chiese storiche</span></div>
+            <div class="stat-item"><strong>XI Sec.</strong><span>Origine Normanna</span></div>
+            <div class="stat-item"><strong>12 Ott.</strong><span>Sagra Salsiccia</span></div>
+        </section>
+
+        <!-- Highlights Grid -->
+        <section class="features-grid">
+            <article class="feature-card">
+                <h3>Storia & Arte</h3>
+                <p>Esplora il castello e i tesori gaginiani nascosti tra i vicoli del borgo.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Sapori Locali</h3>
+                <p>Dal pane cunzato alle eccellenze dolciarie, il gusto della tradizione.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Esperienze</h3>
+                <p>Vivi i riti della Settimana Santa e le rievocazioni storiche.</p>
+            </article>
+        </section>
+
+        <!-- App Download Section -->
+        <section class="install-section">
+            <div class="install-left">
+                <h2 data-i18n="home.install_app">Porta Amunì con te</h2>
+                <p>Scarica l'app ufficiale per navigare offline e accedere ai percorsi guidati.</p>
+                <div class="btn-group">
+                    <a href="#" class="btn-desktop">📲 <span data-i18n="home.download_apk">Scarica APK</span></a>
+                    <a href="#" class="btn-desktop">🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span></a>
+                </div>
+            </div>
+            <div class="install-right">
+                <img src="https://vallelungagiusy356-bot.github.io/amun--tourism/qr.png" alt="QR Amunì" class="qr-desktop">
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> | <a href="#">Note Legali</a>
+        </div>
+    </footer>
+
+    <!-- Chat Interface -->
     <div class="chat-interface" id="chat-box">
         <div class="chat-header">
-            <span data-i18n="chat.title"></span>
-            <button id="close-chat" class="close-chat-btn" style="background: transparent; border: none; color: #ffd78f; cursor: pointer; font-size: 1.1rem;">✕</button>
+            <span data-i18n="chat.title">Chiedi alla Castellana</span>
+            <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
         <div class="chat-messages">
-            <div class="message" data-i18n="chat.msg1"></div>
-            <div class="message" data-i18n="chat.msg2"></div>
+            <div class="message" data-i18n="chat.msg1">Ciao! Sono la Castellana.</div>
+            <div class="message" data-i18n="chat.msg2">Cosa desideri scoprire oggi?</div>
         </div>
         <div class="chat-input-row">
-            <input type="text" placeholder="" data-i18n-placeholder="chat.placeholder">
+            <input type="text" placeholder="Scrivi qui..." data-i18n-placeholder="chat.placeholder">
             <button class="mic-btn">🎤</button>
         </div>
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const chat = document.getElementById("chat-box"); // Aggiornato ID
-        const closeBtn = document.getElementById("close-chat");
-        const openBtn = document.getElementById("chat-open-btn");
+        document.addEventListener("DOMContentLoaded", () => {
+            const chat = document.getElementById("chat-box");
+            const closeBtn = document.getElementById("close-chat");
+            const openBtn = document.getElementById("chat-open-btn");
 
-        openBtn.addEventListener("click", () => {
-            chat.classList.add("active");
+            openBtn.addEventListener("click", () => chat.classList.add("active"));
+            closeBtn.addEventListener("click", () => chat.classList.remove("active"));
         });
 
-        closeBtn.addEventListener("click", () => {
-            chat.classList.remove("active");
-        });
-    });
-    </script>
+        // Gestione Lingue
+        let currentLang = localStorage.getItem("lang") || "it";
+        function loadLanguage(lang) {
+            fetch(`lang/${lang}.json`)
+                .then(res => res.json())
+                .then(data => {
+                    const content = data.desktop || data;
+                    document.querySelectorAll("[data-i18n]").forEach(el => {
+                        const key = el.getAttribute("data-i18n");
+                        const text = key.split('.').reduce((o,i) => (o && o[i] !== undefined) ? o[i] : null, content);
+                        if (text) el.innerHTML = text;
+                    });
+                    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                        const key = el.getAttribute("data-i18n-placeholder");
+                        const text = key.split('.').reduce((o,i) => (o && o[i] !== undefined) ? o[i] : null, content);
+                        if (text) el.placeholder = text;
+                    });
+                }).catch(console.error);
+            localStorage.setItem("lang", lang);
+        }
 
-    <script>
-    /* ... Il tuo script per la lingua resta invariato ... */
-    let currentLang = localStorage.getItem("lang") || "it";
-    function loadLanguage(lang) {
-        fetch(`../lang/${lang}.json`)
-            .then(res => res.json())
-            .then(data => {
-                document.querySelectorAll("[data-i18n]").forEach(el => {
-                    const key = el.getAttribute("data-i18n");
-                    const text = key.split('.').reduce((o,i)=>o[i], data);
-                    if (text) el.innerHTML = text;
-                });
-                document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-                    const key = el.getAttribute("data-i18n-placeholder");
-                    const text = key.split('.').reduce((o,i)=>o[i], data);
-                    if (text) el.placeholder = text;
-                });
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
             });
-        localStorage.setItem("lang", lang);
-    }
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".lang-switcher button").forEach(btn => {
-            btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
+            loadLanguage(currentLang);
         });
-        loadLanguage(currentLang);
-    });
     </script>
 </body>
 </html>
