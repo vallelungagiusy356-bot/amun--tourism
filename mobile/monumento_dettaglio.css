@@ -397,7 +397,7 @@ body {
 
 /* 1. Parrocchia SS. Annunziata: ULTRA-FORZATURA PER ELIMINARE SPAZIO VUOTO */
 .monument-hero-image.img-annunziata {
-    height: 460px !important; 
+    height: 260px !important; 
     object-fit: cover !important;
     transform: scale(1.65) !important; /* Spinge lo zoom al 155% per tagliare via i bordi vuoti della GIF */
     transform-origin: center 45%;      /* Centra l'inquadratura leggermente più in alto sulla facciata */
@@ -405,28 +405,28 @@ body {
 
 /* 2. Convento dei Frati Cappuccini */
 .monument-hero-image.img-cappuccini {
-    height: 380px;
+    height: 180px;
     object-fit: cover;
     transform: scale(1.35);
 }
 
 /* 3. Il Castello di Caccamo */
 .monument-hero-image.img-castello {
-    height: 380px;
+    height: 280px;
     object-fit: cover;
     object-position: center 35%; 
 }
 
 /* 4. Chiesa di San Giorgio Martire */
 .monument-hero-image.img-sangiorgio {
-    height: 400px;
+    height: 300px;
     object-fit: cover;
     transform: scale(1.35);
 }
 
 /* 5. Chiesa di San Domenico (Santa Maria degli Angeli): FORZATURA ANALOGA */
 .monument-hero-image.img-sandomenico {
-    height: 460px !important;
+    height: 260px !important;
     object-fit: cover !important;
     transform: scale(1.48) !important; /* Zoom aggressivo al 148% per eliminare le bande vuote */
     transform-origin: center center;    /* Mantiene lo zoom perfettamente bilanciato al centro */
