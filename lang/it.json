@@ -10,7 +10,6 @@
     "events": "Eventi",
     "monuments": "Monumenti"
   },
-
   "home": {
     "chat_web": "Parla con la Castellana sul sito web",
     "amuni_title": "Amunì: un viaggio insieme",
@@ -23,14 +22,12 @@
     "scan_qr": "Scansiona il QR per installare l’app",
     "talk_castellana": "Parla con la Castellana"
   },
-
   "chat": {
     "title": "Castellana di Caccamo",
     "msg1": "Benvenuto, viandante in questa terra ricca di arte, storia e tradizioni.",
     "msg2": "Sei pronto a farti guidare? Arte, olio dorato e dolci mandorle ti delizieranno.",
     "placeholder": "Scrivi un messaggio..."
   },
-
   "citizen": {
     "tag": "Comunità Locale",
     "main_heading": "Cittadino del Borgo",
@@ -48,19 +45,18 @@
     "church_desc": "Un viaggio tra catacombe, tradizioni, patroni e antiche devozioni.",
     "church_catacombs": "Le catacombe e le cripte nascoste",
     "church_sangiuseppe": "La gratinata rossa di San Giuseppe",
-    "church_sepolcri": "I sepolcri con il grano in fiore",
+    "church_sepolcri": "Il Periodo Pasquale",
     "food_title": "Cibo e Eventi",
-    "food_desc": "Sapori autentici, luoghi dove mangiare e vivere il borgo.",
+    "food_desc": "Ottobre",
     "food_arancine": "Dove gustare ottime arancine",
     "food_cocktail": "Cocktail con DJ tutto l’anno",
-    "food_aperitivo": "Aperitivi panoramici (solo estate)",
-    "events_title": "Eventi",
+    "food_aperitivo": "Agosto",
+    "events_title": "Maggio",
     "event_castellana": "La Castellana",
     "event_signuruzzu": "U Signuruzzu a Cavaddu",
     "event_salsiccia": "Sagra della Salsiccia",
     "event_beato": "Festa del Beato Giovanni"
   },
-
   "castle": {
     "title": "Il Castello di Caccamo",
     "category": "Monumenti Storici",
@@ -76,7 +72,6 @@
     "prisons": "Le prigioni sotterranee custodiscono ancora le tracce delle antiche detenzioni.",
     "legend_brothers": "La leggenda dei due fratelli narra di un duello fatale per l’amore di una dama."
   },
-
   "monuments": {
     "hours_label": "Orari",
     "tickets_label": "Biglietti",
@@ -123,7 +118,6 @@
       "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti come la Chiesa di San Rocco e altri piccoli capolavori diffusi."
     }
   },
-
   "chiese_page": {
     "page_title": "Le Chiese di Caccamo",
     "poesia_intro": "Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.",
@@ -134,7 +128,6 @@
     "verse_cappuccini": "Sali infine ai <strong>Cappuccini</strong>, sul colle radioso,<br>tra una Pala d'altare e un panorama maestoso.",
     "poesia_outro": "Lasciati guidare dove il tempo si è fermato..."
   },
-
   "transport_page": {
     "welcome": "Benvenuto, o viandante, nella sezione Trasporti. Qui troverai le informazioni necessarie per muovere i tuoi passi nei dintorni del borgo.",
     "company_title": "Autolinee Randazzo di Gesù",
@@ -146,10 +139,9 @@
     "btn_schedule": "📅 Vedi Orari delle Corse",
     "btn_tickets": "🎫 Acquista Biglietti Online"
   },
-
   "events_page": {
     "title": "Riti e Feste del Borgo",
-    "intro": "Vivi l'anima più autentica del nostro borgo attraverso le sue secolari tradizioni, dove fede, storia e folklore si intrecciano in moments unici ed emozionanti.",
+    "intro": "Vivi l'anima più autentica del nostro borgo attraverso le sue secolari tradizioni, dove fede, storia e folklore si intrecciano in momenti unici ed emozionanti.",
     "signuruzzu_title": "U Signuruzzu a Cavaddu",
     "signuruzzu_desc": "La Domenica delle Palme, un bambino del luogo impersona Gesù e sfila su un asinello bardato tra le vie del borgo addobbate a festa con le palme. Il corteo fa sosta davanti alla Chiesa di Santa Maria degli Angeli e al Duomo di San Giorgio Martire per la suggestiva benedizione.",
     "venerdi_title": "I Riti della Settimana Santa",
@@ -163,7 +155,6 @@
     "sagra_title": "Sagra della Salsiccia (12 Ottobre)",
     "sagra_desc": "Ogni anno, il 12 ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità."
   },
-
   "food_page": {
     "title": "Gusto e Compagnia nel Borgo",
     "intro": "Benvenuto viandante nella sezione dedicata ai sapori del luogo e alle serate in compagnia.",
@@ -195,7 +186,6 @@
       ]
     }
   },
-
   "sleep_page": {
     "title": "Dove Dormire",
     "intro": "Benvenuto, viandante. Trova ristoro nelle nostre accoglienti strutture, dove la storia e l'ospitalità si fondono per regalarti un riposo sereno nel cuore di Caccamo.",
