@@ -180,6 +180,26 @@ body {
     animation: fadeInPoetryDesktop 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
+/* CARD FLUTTUANTI (Stile Omogeneo) */
+.floating-info-card {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    border: 1px solid rgba(255, 215, 160, 0.25);
+    border-radius: 22px;
+    padding: 20px;
+    color: #f7f2e9;
+    /* Assicuriamo che abbiano lo stesso stile delle altre card */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+.floating-info-card h3 {
+    color: #ffd78f;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-bottom: 10px;
+}
+
 
 .home-welcome-poetry:hover,
 .castellana-intro-card:hover {
