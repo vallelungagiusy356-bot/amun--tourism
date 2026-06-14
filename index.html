@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <title>Amunì Tourism</title>
     <script>
-        // Inizializza il controllo dei parametri URL
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        // Se NON è presente il bypass, esegui lo smistamento automatico per dispositivo
-        if (!urlParams.get('bypass')) {
-            if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth <= 768) {
-                window.location.href = "mobile/";
-            } else {
-                window.location.href = "desktop/";
-            }
+    // Inizializza il controllo dei parametri URL
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Se NON è presente il bypass, esegui lo smistamento
+    if (!urlParams.get('bypass')) {
+        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+            window.location.href = "mobile/mobile_index.html"; 
+        } else {
+            window.location.href = "desktop/desktop_index.html";
         }
-    </script>
+    }
+</script>
+
 </head>
 <body style="font-family: sans-serif; padding: 40px;">
 
