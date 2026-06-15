@@ -222,49 +222,6 @@ body {
         castellanaGlowReflection 6s ease-in-out infinite;
 }
 
-/* SEZIONE INSTALLA APP */
-.install-app {
-    margin-top: 25px;
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.45);
-    border-radius: 18px;
-    padding: 20px;
-    backdrop-filter: blur(10px);
-    text-align: center;
-}
-
-.install-app h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #ffd78f;
-    margin-bottom: 14px;
-    text-shadow: 0 0 6px rgba(255, 215, 160, 0.35);
-}
-
-.install-app .btn-barocco {
-    display: block;
-    margin: 10px auto;
-    width: 90%;
-    font-size: 1rem;
-}
-
-.qr-section {
-    margin-top: 18px;
-}
-
-.qr {
-    width: 160px;
-    border-radius: 12px;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
-    border: 2px solid rgba(255, 215, 160, 0.45);
-}
-
-.qr-section p {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #f7f2e9;
-}
-
 /* GESTIONE LIVELLI E CLICK BLINDATI */
 .dashboard,
 .buttons-grid,
