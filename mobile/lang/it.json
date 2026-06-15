@@ -1,119 +1,121 @@
 {
   "home": {
-      "amuni_title": "Benvenuto, o viandante...",
-      "amuni_text": "Benvenuto, o viandante, al limitare del tempo,<br>dove la storia respira in ogni soffio di vento.<br>Senti il richiamo di pietre millenarie e severe,<br>custodi di cunti, di dame, di antiche preghiere.<br><br>Non fermare il tuo passo, specchiati in questa magia,<br><strong>Amunì, vieni, ti indico la via.</strong>",
-      "btn_mangiare": "Mangiare",
-      "btn_dormire": "Dormire",
-      "btn_transport": "Trasporti",
-      "btn_events": "Eventi",
-      "btn_monuments": "Monumenti",
-      "btn_desktop_redirect": "Vai alla versione Desktop"
+    "talk_castellana": "Parla con la Castellana",
+    "amuni_title": "Amunì: l'invito al viaggio",
+    "amuni_text": "Amunì, in dialetto siciliano, significa <strong>'andiamo'</strong>. È un invito caloroso a muoversi, a esplorare e a lasciarsi guidare tra le nostre pietre millenarie, custodi di cunti, dame e antiche preghiere.<br><br>Non fermare il tuo passo, specchiati in questa magia: <strong>Amunì, vieni, ti indico la via.</strong>",
+    "btn_mangiare": "Mangiare",
+    "btn_dormire": "Dormire",
+    "btn_transport": "Trasporti",
+    "btn_events": "Eventi",
+    "btn_monuments": "Monumenti",
+    "btn_desktop_redirect": "Vai alla versione Desktop"
+  },
+  "pages": {
+    "food_page": {
+      "title": "Gusto e Compagnia nel Borgo",
+      "intro": "Benvenuto viandante nella sezione dedicata ai sapori del luogo e alle serate in compagnia.",
+      "search_placeholder": "Cerca un locale o un sapore...",
+      "sec_movida": "Movida e Serate",
+      "sec_eat": "Ristoranti, Pizzerie e Bar",
+      "no_results": "Nessun locale o sapore trovato corrispondente alla ricerca.",
+      "cards": {
+        "the_castle": "Divertimento e serate a tema nella magica cornice notturna all'ombra del castello medievale.",
+        "kittipigghi": "Il punto di riferimento per le tue serate nel borgo. Eventi, musica e intrattenimento attivo tutto l'anno.",
+        "chiosco_san_francesco": "Rinfresca le tue serate estive all'aperto, tra cocktail, ottima compagnia e atmosfera gioviale all'interno di una villa comunale recuperata e riadattata.",
+        "al_maniero": "Cucina curata e piatti della tradizione in un'atmosfera calda con vista castello.",
+        "il_borgo": "Un viaggio gastronomico tra i sapori veri ed eccellenze culinarie della nostra terra.",
+        "a_castellana": "Un'esperienza culinaria ricercata nel cuore del borgo, dove la tradizione incontra l'eleganza.",
+        "caffè_royal": "Dalla colazione artigianale ai dolci della tradizione siciliana più raffinata.",
+        "la_bottega_dei_sapori": "Pizze d'asporto fragranti e sfiziose preparate al momento con ingredienti genuini.",
+        "l_officina_dei_golosi": "Dolci artigianali, colazioni ricche e pause caffè golose per coccolare il palato ogni giorno.",
+        "strapizzami": "Pizze croccanti, sfiziose e realizzate con ingredienti locali accuratamente selezionati.",
+        "pasticceria_fratelli_scimeca": "I maestri dei dolci tipici e dei sapori tradizionali che raccontano la nostra storia nel mondo.",
+        "dolci_tentazioni": "Il posto ideale per una pausa rigenerante, ottimi caffè e il gelato artigianale",
+        "bar_ribaudo": "Assolutamente da provare la loro mattonella, il panino con la milza, i loro polli arrosto.",
+        "bar_del_carmine": "Caffetteria storica ideale per un ottimo espresso o un gelato rinfrescante in totale relax.",
+        "spiga_d_oro_food_and_drink": "Sfornati freschi, taglieri tipici e un'ampia scelta di specialità pronte da gustare.",
+        "cafè_40": "Ambiente moderno e accogliente, ideale per incontri e colazioni.",
+        "il_dolce": "Ambiente moderno e accogliente, ideale dolci tipici, rosticceria, tipico cibo da street food siciliano.",
+        "bar_muscarella": "Tappa ideale per un caffè rigenerante, un gelato artigianale o un aperitivo in relax."
+      }
     },
-    "pages": {
-      "food_page": {
-        "title": "Gusto e Compagnia nel Borgo",
-        "intro": "Benvenuto viandante nella sezione dedicata ai sapori del luogo e alle serate in compagnia.",
-        "search_placeholder": "Cerca un locale o un sapore...",
-        "sec_movida": "Movida e Serate",
-        "sec_eat": "Ristoranti, Pizzerie e Bar",
-        "no_results": "Nessun locale o sapore trovato corrispondente alla ricerca.",
-        "cards": {
-          "the_castle": "Divertimento e serate a tema nella magica cornice notturna all'ombra del castello medievale.",
-          "kittipigghi": "Il punto di riferimento per le tue serate nel borgo. Eventi, musica e intrattenimento attivo tutto l'anno.",
-          "chiosco_san_francesco": "Rinfresca le tue serate estive all'aperto, tra cocktail, ottima compagnia e atmosfera gioviale all'interno di una villa comunale recuperata e riadattata.",
-          "al_maniero": "Cucina curata e piatti della tradizione in un'atmosfera calda con vista castello.",
-          "il_borgo": "Un viaggio gastronomico tra i sapori veri ed eccellenze culinarie della nostra terra.",
-          "a_castellana": "Un'esperienza culinaria ricercata nel cuore del borgo, dove la tradizione incontra l'eleganza.",
-          "caffè_royal": "Dalla colazione artigianale ai dolci della tradizione siciliana più raffinata.",
-          "la_bottega_dei_sapori": "Pizze d'asporto fragranti e sfiziose preparate al momento con ingredienti genuini.",
-          "l_officina_dei_golosi": "Dolci artigianali, colazioni ricche e pause caffè golose per coccolare il palato ogni giorno.",
-          "strapizzami": "Pizze croccanti, sfiziose e realizzate con ingredienti locali accuratamente selezionati.",
-          "pasticceria_fratelli_scimeca": "I maestri dei dolci tipici e dei sapori tradizionali che raccontano la nostra storia nel mondo.",
-          "dolci_tentazioni": "Il posto ideale per una pausa rigenerante, ottimi caffè e il gelato artigianale",
-          "bar_ribaudo": "Assolutamente da provare la loro mattonella, il panino con la milza, i loro polli arrosto.",
-          "bar_del_carmine": "Caffetteria storica ideale per un ottimo espresso o un gelato rinfrescante in totale relax.",
-          "spiga_d_oro_food_and_drink": "Sfornati freschi, taglieri tipici e un'ampia scelta di specialità pronte da gustare.",
-          "cafè_40": "Ambiente moderno e accogliente, ideale per incontri e colazioni.",
-          "il_dolce": "Ambiente moderno e accogliente, ideale dolci tipici, rosticceria, tipico cibo da street food siciliano.",
-          "bar_muscarella": "Tappa ideale per un caffè rigenerante, un gelato artigianale o un aperitivo in relax."
-        }
+    "sleep_page": {
+      "title": "Dove Dormire",
+      "intro": "Benvenuto, viandante. Trova ristoro nelle nostre accoglienti strutture, dove la storia e l'ospitalità si fondono per regalarti un riposo sereno nel cuore di Caccamo.",
+      "placeholder": "Cerca una struttura ricettiva..."
+    },
+    "transport_page": {
+      "welcome": "Benvenuto, o viandante, nella sezione Trasporti. Qui troverai le informazioni necessarie per muovere i tuoi passi nei dintorni del borgo.",
+      "company_title": "Autolinee Randazzo di Gesù",
+      "company_desc": "Le autolinee collegano Caccamo a <strong>Termini Imerese</strong> e <strong>Palermo</strong> tutto l'anno. Sfruttando la corsa pomeridiana verso Palermo è possibile scendere alla <strong>Vetrana</strong>, rinomata zona balneare. Da Termini Imerese potrai inoltre prendere il treno per <strong>Cefalù</strong> e altre mete turistiche.",
+      "stops_title": "📍 Le Fermate nel Borgo",
+      "stop_1": "<strong>Porta Euracea:</strong> di fronte al Bar Giallombardo e al negozio di materiali edili.",
+      "stop_2": "<strong>Viale Regione Siciliana:</strong> sopra il parco giochi 'Roberta' (in prossimità dell'agenzia assicurativa Axa).",
+      "stop_3": "<strong>Piazza Cappuccini:</strong> all'ombra dell'antico Convento.",
+      "btn_schedule": "📅 Vedi Orari delle Corse",
+      "btn_tickets": "🎫 Acquista Biglietti Online"
+    },
+    "events_page": {
+      "title": "Riti e Feste del Borgo",
+      "intro": "Vivi l'anima più autentica del nostro borgo attraverso le sue secolari tradizioni, dove fede, storia e folklore si intrecciano in momenti unici ed emozionanti.",
+      "signuruzzu_title": "U Signuruzzu a Cavaddu",
+      "signuruzzu_desc": "La Domenica delle Palme, un bambino del luogo impersona Gesù e sfila su un asinello bardato tra le vie del borgo addobbate a festa con le palme. Il corteo fa sosta davanti alla Chiesa di Santa Maria degli Angeli e al Duomo di San Giorgio Martire per la suggestiva benedizione.",
+      "venerdi_title": "I Riti della Settimana Santa",
+      "venerdi_desc": "L'atmosfera si fa profonda con gli altari allestiti nelle chiese per il Venerdì Santo, arricchiti con i tipici piatti di grano germogliato al buio. Seguono la solenne e commovente Processione e la Via Crucis cittadina.",
+      "giovanni_title": "Festa del Beato Giovanni",
+      "giovanni_desc": "Una ricorrenza profondamente sentita e vissuta dall'intera comunità, che si stringe attorno al suo Beato in un clima di grande devozione e calore popolare.",
+      "castellana_title": "Elezione della Castellana & Corteo Storico",
+      "castellana_desc": "Il borgo si rituffa nel suo glorioso passato medievale. Un maestoso corteo storico in abiti d'epoca attraversa le strade, culminando con la solenne elezione della Castellana del maniero.",
+      "nicasio_title": "Festa di San Nicasio e il Palio",
+      "nicasio_desc": "Celebrazioni vibranti in onore del Santo, arricchite dall'attesissimo e avvincente Palio cittadino che accende la sfida e l'entusiasmo di grandi e piccini.",
+      "sagra_title": "Sagra della Salsiccia (12 Ottobre)",
+      "sagra_desc": "Ogni anno, il 12 ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità."
+    },
+    "monuments_pages": {
+      "labels": {
+        "hours": "Orari",
+        "tickets": "Biglietti",
+        "view_map": "Apri la Mappa",
+        "btn_buy_tickets": "Prenota / Acquista Biglietto",
+        "btn_comune_info": "Info Istituzionali Comune",
+        "btn_contact_turismo": "Contatta Ufficio Turismo",
+        "btn_dindondan": "Esplora Chiese su Din Don Dan",
+        "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momenti di celebrazione interna.",
+        "go_to_map": "Vai alla Mappa"
       },
-      "sleep_page": {
-        "title": "Dove Dormire",
-        "intro": "Benvenuto, viandante. Trova ristoro nelle nostre accoglienti strutture, dove la storia e l'ospitalità si fondono per regalarti un riposo sereno nel cuore di Caccamo.",
-        "placeholder": "Cerca una struttura ricettiva..."
+      "castello": {
+        "title": "Il Castello di Caccamo",
+        "description": "Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. Arroccato sulla roccia viva fin dall'XI secolo, domina la valle del San Leonardo con le sue imponenti mura, le torri di avvistamento e i suggestivi saloni interni che rievocano secoli di storia feudale e leggende cavalleresche.",
+        "hours": "Tutti i giorni: 09:30 – 13:00 / 15:00 – 19:00",
+        "tickets": "Intero € 6,00 | Ridotto € 4,50 (Esclusivamente con prenotazione online)"
       },
-      "transport_page": {
-        "welcome": "Benvenuto, o viandante, nella sezione Trasporti. Qui troverai le informazioni necessarie per muovere i tuoi passi nei dintorni del borgo.",
-        "company_title": "Autolinee Randazzo di Gesù",
-        "company_desc": "Le autolinee collegano Caccamo a <strong>Termini Imerese</strong> e <strong>Palermo</strong> tutto l'anno. Sfruttando la corsa pomeridiana verso Palermo è possibile scendere alla <strong>Vetrana</strong>, rinomata zona balneare. Da Termini Imerese potrai inoltre prendere il treno per <strong>Cefalù</strong> e altre mete turistiche.",
-        "stops_title": "📍 Le Fermate nel Borgo",
-        "stop_1": "<strong>Porta Euracea:</strong> di fronte al Bar Giallombardo e al negozio di materiali edili.",
-        "stop_2": "<strong>Viale Regione Siciliana:</strong> sopra il parco giochi 'Roberta' (in prossimità dell'agenzia assicurativa Axa).",
-        "stop_3": "<strong>Piazza Cappuccini:</strong> all'ombra dell'antico Convento.",
-        "btn_schedule": "📅 Vedi Orari delle Corse",
-        "btn_tickets": "🎫 Acquista Biglietti Online"
+      "badia": {
+        "title": "Chiesa di San Benedetto alla Badia",
+        "description": "Vero gioiello del barocco siciliano, la chiesa è celebre in tutto il mondo per il suo straordinario pavimento interamente realizzato in maiolica del Settecento, che raffigura scene allegoriche e motifs naturalistici di rara maestria. Un capolavoro d'arte visiva sospeso nel tempo.",
+        "hours": "Mar - Dom: 09:00 – 12:30 | Lun: 14:30 – 18:30 (Nessuna funzione regolare, ideale per visite)",
+        "tickets": "Intero € 2,00 | Ridotto € 1,00 (Giovani UE 18-25 anni o con ticket Castello stesso giorno) | Gratuito under 18"
       },
-      "events_page": {
-        "title": "Riti e Feste del Borgo",
-        "intro": "Vivi l'anima più autentica del nostro borgo attraverso le sue secolari tradizioni, dove fede, storia e folklore si intrecciano in momenti unici ed emozionanti.",
-        "signuruzzu_title": "U Signuruzzu a Cavaddu",
-        "signuruzzu_desc": "La Domenica delle Palme, un bambino del luogo impersona Gesù e sfila su un asinello bardato tra le vie del borgo addobbate a festa con le palme. Il corteo fa sosta davanti alla Chiesa di Santa Maria degli Angeli e al Duomo di San Giorgio Martire per la suggestiva benedizione.",
-        "venerdi_title": "I Riti della Settimana Santa",
-        "venerdi_desc": "L'atmosfera si fa profonda con gli altari allestiti nelle chiese per il Venerdì Santo, arricchiti con i tipici piatti di grano germogliato al buio. Seguono la solenne e commovente Processione e la Via Crucis cittadina.",
-        "giovanni_title": "Festa del Beato Giovanni",
-        "giovanni_desc": "Una ricorrenza profondamente sentita e vissuta dall'intera comunità, che si stringe attorno al suo Beato in un clima di grande devozione e calore popolare.",
-        "castellana_title": "Elezione della Castellana & Corteo Storico",
-        "castellana_desc": "Il borgo si rituffa nel suo glorioso passato medievale. Un maestoso corteo storico in abiti d'epoca attraversa le strade, culminando con la solenne elezione della Castellana del maniero.",
-        "nicasio_title": "Festa di San Nicasio e il Palio",
-        "nicasio_desc": "Celebrazioni vibranti in onore del Santo, arricchite dall'attesissimo e avvincente Palio cittadino che accende la sfida e l'entusiasmo di grandi e piccini.",
-        "sagra_title": "Sagra della Salsiccia (12 Ottobre)",
-        "sagra_desc": "Ogni anno, il 12 ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità."
+      "santamaria": {
+        "title": "Chiesa di Santa Maria degli Angeli",
+        "description": "Fondata nel XV secolo insieme al convento domenicano, la Chiesa di Santa Maria degli Angeli è uno dei centri spirituali più importanti del borgo. Custodisce le spoglie e le reliquie del Beato Giovanni Liccio, Patrono di Caccamo. All'interno si possono ammirare splendidi altari marmorei e opere d'arte sacra che testimoniano secoli di profonda devozione e pellegrinaggi.",
+        "hours": "Apertura e Visite: Sabato dalle 16:00 alle 17:30 | Domenica dalle 09:00 alle 10:00 e dalle 11:00 alle 12:30. (Sante Messe: Sabato ore 17:30 | Domenica ore 10:00)."
       },
-      "monuments_pages": {
-        "labels": {
-          "hours": "Orari",
-          "tickets": "Biglietti",
-          "view_map": "Apri la Mappa",
-          "btn_buy_tickets": "Prenota / Acquista Biglietto",
-          "btn_comune_info": "Info Istituzionali Comune",
-          "btn_contact_turismo": "Contatta Ufficio Turismo",
-          "btn_dindondan": "Esplora Chiese su Din Don Dan",
-          "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli orari consigliati ed evitare i momenti di celebrazione interna.",
-          "go_to_map": "Vai alla Mappa"
-        },
-        "castello": {
-          "title": "Il Castello di Caccamo",
-          "description": "Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. Arroccato sulla roccia viva fin dall'XI secolo, domina la valle del San Leonardo con le sue imponenti mura, le torri di avvistamento e i suggestivi saloni interni che rievocano secoli di storia feudale e leggende cavalleresche.",
-          "hours": "Tutti i giorni: 09:30 – 13:00 / 15:00 – 19:00",
-          "tickets": "Intero € 6,00 | Ridotto € 4,50 (Esclusivamente con prenotazione online)"
-        },
-        "badia": {
-          "title": "Chiesa di San Benedetto alla Badia",
-          "description": "Vero gioiello del barocco siciliano, la chiesa è celebre in tutto il mondo per il suo straordinario pavimento interamente realizzato in maiolica del Settecento, che raffigura scene allegoriche e motifs naturalistici di rara maestria. Un capolavoro d'arte visiva sospeso nel tempo.",
-          "hours": "Mar - Dom: 09:00 – 12:30 | Lun: 14:30 – 18:30 (Nessuna funzione regolare, ideale per visite)",
-          "tickets": "Intero € 2,00 | Ridotto € 1,00 (Giovani UE 18-25 anni o con ticket Castello stesso giorno) | Gratuito under 18"
-        },
-        "santamaria": {
-          "title": "Chiesa di Santa Maria degli Angeli",
-          "description": "Fondata nel XV secolo insieme al convento domenicano, la Chiesa di Santa Maria degli Angeli è uno dei centri spirituali più importanti del borgo. Custodisce le spoglie e le reliquie del Beato Giovanni Liccio, Patrono di Caccamo. All'interno si possono ammirare splendidi altari marmorei e opere d'arte sacra che testimoniano secoli di profonda devozione e pellegrinaggi.",
-          "hours": "Apertura e Visite: Sabato dalle 16:00 alle 17:30 | Domenica dalle 09:00 alle 10:00 e dalle 11:00 alle 12:30. (Sante Messe: Sabato ore 17:30 | Domenica ore 10:00)."
-        },
-        "sangiorgio": {
-          "title": "Chiesa di San Giorgio Martire",
-          "description": "La Chiesa Madre di Caccamo, dedicata a San Giorgio Martire, è un imponente capolavoro che domina la monumentale piazza sottostante il Castello. Fondata in epoca normanna e rifatta nel 1614, conserva un immenso patrimonio artistico: dalle sculture di scuola gaginiana alle preziose tele seicentesche del pittore fiammingo Matthias Stom, fino alle ricche cappelle decorate in marmi mischi.",
-          "hours": "Fasce Orarie Visite: Sabato e Domenica ore 09:30 – 10:45 e ore 16:00 – 18:00. (La ricezione turistica è sospesa durante la Santa Messa domenicale delle ore 11:00)."
-        },
-        "annunziata": {
-          "title": "Parrocchia SS. Annunziata",
-          "description": "Incastonata nel tessuto urbano medievale, la chiesa si distingue per la sua facciata e per l'atmosfera di profonda spiritualità che si respira al suo interno. Conserva altari finemente decorati e manufatti artistici che attirano visitatori e fedeli.",
-          "hours": "Lun - Sab: 09:00 – 12:00 | Messe feriali ore 18:00. Domenica e Festivi visite nelle fasce: 08:30 - 09:30 e 10:30 - 12:00 (Messe festive ore 09:30, 12:00, 19:00)."
-        },
-        "cappuccini": {
-          "title": "Convento dei Frati Cappuccini",
-          "description": "Luogo di silenzio, meditazione e storia, le strutture del Convento si legano profondamente alla tradizione francescana in Sicilia. Oltre alla struttura conventuale, l'area offre uno spaccato autentico di vita monastica e devozione popolare.",
-          "hours": "Accessibile principalmente su richiesta o durante le ricorrenze francescane. Contattare l'Ufficio Turismo.",
-          "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti come la Chiesa di San Rocco e altri piccoli capolavori diffusi."
-        }
+      "sangiorgio": {
+        "title": "Chiesa di San Giorgio Martire",
+        "description": "La Chiesa Madre di Caccamo, dedicata a San Giorgio Martire, è un imponente capolavoro che domina la monumentale piazza sottostante il Castello. Fondata in epoca normanna e rifatta nel 1614, conserva un immenso patrimonio artistico: dalle sculture di scuola gaginiana alle preziose tele seicentesche del pittore fiammingo Matthias Stom, fino alle ricche cappelle decorate in marmi mischi.",
+        "hours": "Fasce Orarie Visite: Sabato e Domenica ore 09:30 – 10:45 e ore 16:00 – 18:00. (La ricezione turistica è sospesa durante la Santa Messa domenicale delle ore 11:00)."
+      },
+      "annunziata": {
+        "title": "Parrocchia SS. Annunziata",
+        "description": "Incastonata nel tessuto urbano medievale, la chiesa si distingue per la sua facciata e per l'atmosfera di profonda spiritualità che si respira al suo interno. Conserva altari finemente decorati e manufatti artistici che attirano visitatori e fedeli.",
+        "hours": "Lun - Sab: 09:00 – 12:00 | Messe feriali ore 18:00. Domenica e Festivi visite nelle fasce: 08:30 - 09:30 e 10:30 - 12:00 (Messe festive ore 09:30, 12:00, 19:00)."
+      },
+      "cappuccini": {
+        "title": "Convento dei Frati Cappuccini",
+        "description": "Luogo di silenzio, meditazione e storia, le strutture del Convento si legano profondamente alla tradizione francescana in Sicilia. Oltre alla struttura conventuale, l'area offre uno spaccato autentico di vita monastica e devozione popolare.",
+        "hours": "Accessibile principalmente su richiesta o durante le ricorrenze francescane. Contattare l'Ufficio Turismo.",
+        "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti come la Chiesa di San Rocco e altri piccoli capolavori diffusi."
       }
     }
+  }
+}
