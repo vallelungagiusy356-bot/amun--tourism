@@ -3,94 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Le Chiese di Caccamo</title>
+  <title data-i18n="pages.chiese_page.page_title">Le Chiese di Caccamo</title>
 
-  <!-- Google Fonts completato con Playfair Display e il raffinatissimo Cormorant Garamond per la poesia -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="chiese-arte.css">
 </head>
 
 <body>
 
-  <!-- DASHBOARD IDENTICA ALLA HOME -->
   <header class="dashboard">
-      <div class="logo-title">Amunì Tourism</div>
+      <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
       <nav class="nav-desktop">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contatti</a>
+          <a href="index.html" data-i18n="menu.home">Home</a>
+          <a href="about.html" data-i18n="menu.about">About</a>
+          <a href="contact.html" data-i18n="menu.contact">Contatti</a>
       </nav>
 
-      <!-- SELETTORE LINGUE COMPLETO -->
       <div class="lang-switcher">
-          <button title="Italiano">IT</button>
-          <button title="English">EN</button>
-          <button title="Deutsch">DE</button>
-          <button title="Español">ES</button>
-          <button title="Français">FR</button>
+          <button data-lang="it" title="Italiano">IT</button>
+          <button data-lang="en" title="English">EN</button>
+          <button data-lang="de" title="Deutsch">DE</button>
+          <button data-lang="es" title="Español">ES</button>
+          <button data-lang="fr" title="Français">FR</button>
       </div>
   </header>
 
   <main class="hero">
       <div class="hero-text">
-          <h1>Le Chiese di Caccamo</h1>
+          <h1 data-i18n="pages.chiese_page.page_title">Le Chiese di Caccamo</h1>
           
           <div class="poesia-container">
-              <p class="poesia-intro">Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.</p>
+              <p class="poesia-intro" data-i18n="pages.chiese_page.poesia_intro">Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.</p>
               
               <div class="poesia-corpo">
-                  <p>Agli <strong>Angeli</strong> riposa, nel silenzio più sacro,<br>il Beato Giovanni, del borgo simulacro.</p>
-                  <p>Se scendi alla <strong>Badia</strong>, la terra si fa fiore<br>nel ricamo in maiolica di raro splendore.</p>
-                  <p>Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne.</p>
-                  <p>Poi l'<strong>Annunziata</strong> svela le sue volte dipinte,<br>e la torre campanaria dalle guardie mai vinte.</p>
-                  <p>Sali infine ai <strong>Cappuccini</strong>, sul colle radioso,<br>tra una Pala d'altare e un panorama maestoso.</p>
+                  <p data-i18n="pages.chiese_page.verse_angeli">Agli <strong>Angeli</strong> riposa, nel silenzio più sacro,<br>il Beato Giovanni, del borgo simulacro.</p>
+                  <p data-i18n="pages.chiese_page.verse_badia">Se scendi alla <strong>Badia</strong>, la terra si fa fiore<br>nel ricamo in maiolica di raro splendore.</p>
+                  <p data-i18n="pages.chiese_page.verse_duomo">Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne.</p>
+                  <p data-i18n="pages.chiese_page.verse_annunziata">Poi l'<strong>Annunziata</strong> svela le sue volte dipinte,<br>e la torre campanaria dalle guardie mai vinte.</p>
+                  <p data-i18n="pages.chiese_page.verse_cappuccini">Sali infine ai <strong>Cappuccini</strong>, sul colle radioso,<br>tra una Pala d'altare e un panorama maestoso.</p>
               </div>
               
-              <p class="poesia-outro">Lasciati guidare dove il tempo si è fermato...</p>
+              <p class="poesia-outro" data-i18n="pages.chiese_page.poesia_outro">Lasciati guidare dove il tempo si è fermato...</p>
           </div>
       </div>
 
-      <!-- CARDS CLICCABILI -->
       <section class="cards">
           <article class="card" data-img="img/cappuccini.jpg" data-title="I Cappuccini">
-              <div class="card-img-wrapper">
-                  <img src="img/cappuccini.jpg" alt="I Cappuccini">
-              </div>
-              <h3>I Cappuccini</h3>
+              <div class="card-img-wrapper"><img src="img/cappuccini.jpg" alt="I Cappuccini"></div>
+              <h3 data-i18n="pages.chiese_page.cappuccini">I Cappuccini</h3>
           </article>
-
           <article class="card" data-img="img/parrocchia annunziata.jpg" data-title="Chiesa dell'Annunziata">
-             <div class="card-img-wrapper">
-                  <img src="img/parrocchia annunziata.jpg" alt="Chiesa dell'Annunziata">
-             </div>
-             <h3>Annunziata</h3>
+             <div class="card-img-wrapper"><img src="img/parrocchia annunziata.jpg" alt="Chiesa dell'Annunziata"></div>
+             <h3 data-i18n="pages.chiese_page.annunziata">Annunziata</h3>
           </article>
-
           <article class="card" data-img="img/sanbenedettodellabadia.jpg" data-title="S. Benedetto della Badia">
-              <div class="card-img-wrapper">
-                  <img src="img/sanbenedettodellabadia.jpg" alt="S. Benedetto della Badia">
-              </div>
-              <h3>S. Benedetto della Badia</h3>
+              <div class="card-img-wrapper"><img src="img/sanbenedettodellabadia.jpg" alt="S. Benedetto della Badia"></div>
+              <h3 data-i18n="pages.chiese_page.badia">S. Benedetto della Badia</h3>
           </article>
-
           <article class="card" data-img="img/santamariadegliangeli.jpg" data-title="Santa Maria degli Angeli">
-              <div class="card-img-wrapper">
-                  <img src="img/santamariadegliangeli.jpg" alt="Santa Maria degli Angeli">
-              </div>
-              <h3>S. Maria degli Angeli</h3>
+              <div class="card-img-wrapper"><img src="img/santamariadegliangeli.jpg" alt="Santa Maria degli Angeli"></div>
+              <h3 data-i18n="pages.chiese_page.angeli">S. Maria degli Angeli</h3>
           </article>
-
           <article class="card" data-img="img/sangiorgiomartire.jpg" data-title="San Giorgio Martire">
-              <div class="card-img-wrapper">
-                  <img src="img/sangiorgiomartire.jpg" alt="San Giorgio Martire">
-              </div>
-              <h3>San Giorgio Martire</h3>
+              <div class="card-img-wrapper"><img src="img/sangiorgiomartire.jpg" alt="San Giorgio Martire"></div>
+              <h3 data-i18n="pages.chiese_page.sangiorgio">San Giorgio Martire</h3>
           </article>
       </section>
   </main>
 
-  <!-- STRUTTURA DELLA FINESTRA COMPARSA (MODAL) PER IMMAGINE IN GRANDE -->
   <div id="image-modal" class="modal">
       <button class="modal-close" id="modal-close-btn">✕</button>
       <div class="modal-content-wrapper">
@@ -99,82 +80,80 @@
       </div>
   </div>
 
-  <!-- WIDGET CASTELLANA INTEGRATO E INGRANDITO -->
   <div class="castellana-widget-area">
       <div class="castellana-video-wrapper" id="chat-open-btn">
           <video class="castellana-video" autoplay muted loop playsinline>
               <source src="img/castellana_alpha.webm" type="video/webm">
           </video>
       </div>
-      <div class="castellana-tooltip">Click to chat</div>
+      <div class="castellana-tooltip" data-i18n="chat.tooltip">Click to chat</div>
   </div>
 
-  <!-- CHAT DESKTOP -->
   <div class="chat-desktop" id="chat-desktop">
       <div class="chat-header">
           <div class="avatar-status-dot"></div>
-          <span>La Castellana</span>
+          <span data-i18n="chat.title">La Castellana</span>
           <button id="close-chat" class="close-chat-btn">✕</button>
       </div>
-
       <div class="chat-messages">
-          <div class="message">
-              Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo o chiedimi dettagli sulla storia e sulle tradizioni di queste splendide chiese.
-          </div>
+          <div class="message" data-i18n="chat.chiese_msg">Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo...</div>
       </div>
-
       <div class="chat-input-row">
-          <input type="text" placeholder="Scrivi alla Castellana...">
+          <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
           <button class="mic-btn">🎤</button>
       </div>
   </div>
 
   <script>
-      // Logica gestione Apertura/Chiusura Chat della Castellana
+      // --- LOGICA CHAT ---
       const chatBtn = document.getElementById('chat-open-btn');
       const chatBox = document.getElementById('chat-desktop');
       const closeChat = document.getElementById('close-chat');
+      chatBtn.addEventListener('click', () => chatBox.style.display = 'flex');
+      closeChat.addEventListener('click', () => chatBox.style.display = 'none');
 
-      chatBtn.addEventListener('click', () => {
-          chatBox.style.display = 'flex';
-      });
-
-      closeChat.addEventListener('click', () => {
-          chatBox.style.display = 'none';
-      });
-
-      // NUOVA LOGICA: Apertura immagine monumento in grande (Modal)
+      // --- LOGICA MODAL ---
       const cards = document.querySelectorAll('.card');
       const modal = document.getElementById('image-modal');
       const modalImg = document.getElementById('modal-target-img');
       const modalTitle = document.getElementById('modal-target-title');
       const modalCloseBtn = document.getElementById('modal-close-btn');
-
       cards.forEach(card => {
           card.addEventListener('click', () => {
-              const imgSrc = card.getAttribute('data-img');
-              const imgTitle = card.getAttribute('data-title');
-              
-              modalImg.src = imgSrc;
-              modalImg.alt = imgTitle;
-              modalTitle.textContent = imgTitle;
-              
+              modalImg.src = card.getAttribute('data-img');
+              modalTitle.textContent = card.getAttribute('data-title');
               modal.classList.add('active');
           });
       });
+      modalCloseBtn.addEventListener('click', () => modal.classList.remove('active'));
+      modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 
-      // Chiusura cliccando sulla X
-      modalCloseBtn.addEventListener('click', () => {
-          modal.classList.remove('active');
-      });
-
-      // Chiusura di sicurezza cliccando sullo sfondo scuro fuori dall'immagine
-      modal.addEventListener('click', (e) => {
-          if (e.target === modal) {
-              modal.classList.remove('active');
-          }
+      // --- LOGICA LINGUA (STANDARD) ---
+      let currentLang = localStorage.getItem("lang") || "it";
+      function loadLanguage(lang) {
+          fetch(`./lang/${lang}.json`)
+              .then(res => res.json())
+              .then(data => {
+                  document.querySelectorAll("[data-i18n]").forEach(el => {
+                      const key = el.getAttribute("data-i18n");
+                      const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                      if (text) el.innerHTML = text;
+                  });
+                  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                      const key = el.getAttribute("data-i18n-placeholder");
+                      const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                      if (text) el.placeholder = text;
+                  });
+              })
+              .catch(err => console.error("Errore lingua:", err));
+          localStorage.setItem("lang", lang);
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+          document.querySelectorAll(".lang-switcher button").forEach(btn => {
+              btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
+          });
+          loadLanguage(currentLang);
       });
   </script>
-
 </body>
 </html>
