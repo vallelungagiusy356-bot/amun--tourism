@@ -34,14 +34,18 @@
     },
     "pages": {
       "castle_page": {
-        "title": "Il Castello di Caccamo",
-        "category": "Monumenti Storici",
-        "rhyme_1": "Benvenuti, o viandanti, al maniero possente,<br>che scruta la valle e la storia presente.<br>Arroccato sul monte di viva pietra fiero,<br>custode di sogni, di gloria e mistero.",
-        "rhyme_2": "Tra queste sue mura che sfidano il tempo,<br>passaron dinastie come soffio nel vento.<br>Dai fieri Chiaramonte avventurosi,<br>ogni stanza racconta di patti e splendore.",
-        "rhyme_3": "Non cercate le date nel freddo volume,<br>ma l'ombra che danza al calar del lumicino.<br>La Castellana vi attende, tra i passi e la via,<br>per svelarvi il segreto di Suor Felicia.",
-        "dress_caption": "L'abito della Castellana",
-        "chat_tooltip": "Click to Chat"
-      },
+  "title": "Il Castello di Caccamo",
+  "category": "Monumenti Storici",
+  "rhyme_1": "Benvenuti, o viandanti, al maniero possente,<br>che scruta la valle e la storia presente.<br>Arroccato sul monte di viva pietra fiero,<br>custode di sogni, di gloria e mistero.",
+  "rhyme_2": "Tra queste sue mura che sfidano il tempo,<br>passaron dinastie come soffio nel vento.<br>Dai fieri Chiaramonte avventurosi,<br>ogni stanza racconta di patti e splendore.",
+  "rhyme_3": "Non cercate le date nel freddo volume,<br>ma l'ombra che danza al calar del lumicino.<br>La Castellana vi attende, tra i passi e la via,<br>per svelarvi il segreto di Suor Felicia.",
+  "dress_caption": "L'abito della Castellana",
+  "chat_tooltip": "Click to Chat",
+  "para_2": "Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.",
+  "para_3": "Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo. La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.",
+  "welcomemsg_felicia": "Benvenuto al Castello di Caccamo! Sono la tua guida custode. Chiedimi pure della Sala delle Congiure o dei fantasmi che abitano queste mura..."
+},
+
       "chiese_page": {
   "page_title": "Le Chiese di Caccamo",
   "poesia_intro": "Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.",
