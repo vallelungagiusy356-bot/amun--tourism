@@ -1,7 +1,8 @@
 /* ==========================================================================
-   CODICE DEFINITIVO - AMUNÌ TOURISM
+   CODICE INTEGRALE - AMUNÌ TOURISM (MANTENUTO ORIGINALE)
    ========================================================================== */
 
+/* RESET E BINDING */
 * {
     margin: 0;
     padding: 0;
@@ -38,6 +39,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    z-index: 100;
 }
 
 .dashboard .logo-title {
@@ -135,7 +137,7 @@ body {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95);
 }
 
-/* BOX INTRODUTTIVO */
+/* BOX INTRODUTTIVO CASTELLANA */
 .castellana-intro-card {
     max-width: 700px;
     margin: 2.5rem auto;
@@ -146,10 +148,11 @@ body {
     backdrop-filter: blur(6px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     text-align: center;
+    transition: all 0.4s ease;
 }
 
-/* BOX APPLICAZIONE MOBILE */
-.install-app-desktop {
+/* BOX APPLICAZIONE (Collegato alla classe .install-section del tuo HTML) */
+.install-section {
     width: 90%;
     margin: 30px auto;
     padding: 20px;
@@ -159,14 +162,57 @@ body {
     text-align: center;
 }
 
-/* CHAT MOBILE */
-.chat-desktop {
+.install-left h2 {
+    color: #ffd78f;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.btn-desktop {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background: #000;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.qr-desktop {
+    width: 110px;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 10px;
+}
+
+/* CHAT MOBILE (Collegato alla classe .chat-interface del tuo HTML) */
+.chat-interface {
     width: 90%;
     margin: 20px auto;
     background: rgba(0, 0, 0, 0.9);
     border: 1px solid #ffd78f;
     border-radius: 15px;
     padding: 15px;
+    display: none; /* Nascosta di default */
+}
+
+.chat-interface.active { display: block; } /* Mostrata via JS */
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    color: #ffd78f;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.chat-messages {
+    height: 120px;
+    overflow-y: auto;
+    margin-bottom: 10px;
 }
 
 /* ==========================================================================
@@ -194,14 +240,14 @@ body {
         z-index: 20;
     }
 
-    /* POSIZIONAMENTI ASSOLUTI (Il cuore del layout) */
+    /* Video e Poesia */
     .castellana-video-wrapper {
         position: absolute;
         top: 260px;
         left: 4%;
         width: 26vw;
         max-width: 280px;
-        z-index: 10 !important;
+        margin: 0;
     }
 
     .home-welcome-poetry {
@@ -212,31 +258,57 @@ body {
         width: 38vw;
         max-width: 440px;
         background: rgba(0, 0, 0, 0);
-        z-index: 5;
+        margin: 0;
     }
 
-    .install-app-desktop {
+    /* Installazione Desktop */
+    .install-section {
         position: absolute;
-        top: 920px; /* <--- OCCHIO QUI: Se il contenuto sopra si allunga, questo si sovrappone */
+        top: 920px;
         left: 50%;
         transform: translateX(-50%);
         width: 75%;
         max-width: 850px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
     }
 
-    .chat-desktop {
+    /* Chat Desktop */
+    .chat-interface {
         position: absolute;
         top: 260px;
         right: 4%;
         width: 310px;
         height: 300px;
+        margin: 0;
+        border-radius: 26px 26px 0 0;
+        display: none;
         z-index: 30;
     }
 
-    /* KEYFRAMES */
+    .chat-interface.active {
+        display: block;
+        animation: slideInRight 0.55s ease forwards;
+    }
+
+    /* Keyframes */
     @keyframes desktopGlowLoop {
         0% { left: -110%; }
         15% { left: 120%; }
         100% { left: 120%; }
+    }
+
+    @keyframes fadeInPoetry {
+        0% { opacity: 0; transform: translate(-50%, 20px); }
+        100% { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    @keyframes slideInRight {
+        0% { transform: translateX(120%); opacity: 0; }
+        60% { transform: translateX(-10%); opacity: 1; }
+        100% { transform: translateX(0); opacity: 1; }
     }
 }
