@@ -29,9 +29,10 @@ html, body {
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
     color: var(--text-light);
-    background: transparent !important;
+    background: #050302 !important; /* Aggiunto colore scuro di fallback */
     overflow-x: hidden;
 }
+
 
 /* ============================================================
    2. VIDEO BACKGROUND CINEMATICO & SFONDO AURA
@@ -39,7 +40,7 @@ html, body {
 .scene-background-container {
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: 0; /* Modificato da -1 a 0 */
     overflow: hidden;
 }
 
@@ -59,7 +60,7 @@ html, body {
         var(--dark-overlay-1) 100%
     );
     backdrop-filter: blur(1px);
-    z-index: -1;
+    z-index: 1; /* Modificato da -1 a 1 */
 }
 
 .scene-background-container::after {
