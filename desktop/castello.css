@@ -40,7 +40,7 @@ html, body {
 .scene-background-container {
     position: fixed;
     inset: 0;
-    z-index: 0; /* Modificato da -1 a 0 */
+    z-index: -1; 
     overflow: hidden;
 }
 
@@ -55,12 +55,11 @@ html, body {
     position: absolute;
     inset: 0;
     background: linear-gradient(90deg,
-        var(--dark-overlay-1) 0%,
-        var(--dark-overlay-2) 55%,
-        var(--dark-overlay-1) 100%
+        rgba(5, 3, 2, 0.6) 0%,
+        rgba(5, 3, 2, 0.4) 55%,
+        rgba(5, 3, 2, 0.6) 100%
     );
     backdrop-filter: blur(1px);
-    z-index: 1; /* Modificato da -1 a 1 */
 }
 
 .scene-background-container::after {
