@@ -80,6 +80,12 @@ body {
     cursor: pointer;
 }
 
+/* HERO SECTION (Contenitore) */
+.hero-section {
+    position: relative; /* Fondamentale per mantenere gli elementi assoluti dentro */
+    width: 100%;
+}
+
 /* VIDEO CASTELLANA MOBILE */
 .castellana-video-wrapper {
     display: flex;
@@ -137,21 +143,7 @@ body {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95);
 }
 
-/* BOX INTRODUTTIVO CASTELLANA */
-.castellana-intro-card {
-    max-width: 700px;
-    margin: 2.5rem auto;
-    padding: 1.5rem;
-    background: rgba(5, 3, 2, 0.4);
-    border: 1px solid rgba(255, 215, 160, 0.2);
-    border-radius: 12px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    transition: all 0.4s ease;
-}
-
-/* BOX APPLICAZIONE (Collegato alla classe .install-section del tuo HTML) */
+/* BOX APPLICAZIONE */
 .install-section {
     width: 90%;
     margin: 30px auto;
@@ -188,7 +180,7 @@ body {
     border-radius: 10px;
 }
 
-/* CHAT MOBILE (Collegato alla classe .chat-interface del tuo HTML) */
+/* CHAT MOBILE */
 .chat-interface {
     width: 90%;
     margin: 20px auto;
@@ -196,10 +188,10 @@ body {
     border: 1px solid #ffd78f;
     border-radius: 15px;
     padding: 15px;
-    display: none; /* Nascosta di default */
+    display: none;
 }
 
-.chat-interface.active { display: block; } /* Mostrata via JS */
+.chat-interface.active { display: block; }
 
 .chat-header {
     display: flex;
@@ -219,6 +211,11 @@ body {
    VERS. DESKTOP (900PX+)
    ========================================================================== */
 @media screen and (min-width: 900px) {
+
+    /* Questa è la correzione chiave: diamo un'altezza alla sezione hero */
+    .hero-section {
+        min-height: 600px; 
+    }
 
     .scene-background {
         filter: brightness(0.78) contrast(1.1) saturate(1.1);
@@ -240,10 +237,10 @@ body {
         z-index: 20;
     }
 
-    /* Video e Poesia */
+    /* Video e Poesia (Tutto uguale al tuo originale) */
     .castellana-video-wrapper {
         position: absolute;
-        top: 260px;
+        top: 150px;
         left: 4%;
         width: 26vw;
         max-width: 280px;
@@ -252,7 +249,7 @@ body {
 
     .home-welcome-poetry {
         position: absolute;
-        top: 260px;
+        top: 150px;
         left: 58%;
         transform: translateX(-50%);
         width: 38vw;
@@ -263,10 +260,9 @@ body {
 
     /* Installazione Desktop */
     .install-section {
-        position: absolute;
-        top: 920px;
-        left: 50%;
-        transform: translateX(-50%);
+        /* Tolto 'position: absolute' qui per permettere il flusso naturale sotto */
+        position: relative;
+        margin: 50px auto; 
         width: 75%;
         max-width: 850px;
         display: flex;
@@ -279,7 +275,7 @@ body {
     /* Chat Desktop */
     .chat-interface {
         position: absolute;
-        top: 260px;
+        top: 150px;
         right: 4%;
         width: 310px;
         height: 300px;
