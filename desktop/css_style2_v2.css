@@ -1,115 +1,294 @@
 /* ==========================================================================
-   CSS UNIFICATO - AMUNÌ TOURISM (STRUTTURA STABILE E RESPONSIVA)
+   AMUNÌ TOURISM - CSS DEFINITIVO (LAYOUT A POSIZIONAMENTO ASSOLUTO)
    ========================================================================== */
 
-:root {
-    --gold: #ffd78f;
-    --bg-dark: #000000;
-    --glass: rgba(0, 0, 0, 0.7);
-    --blur: blur(18px) saturate(200%);
-    --shadow-gold: 0 0 22px rgba(255, 215, 160, 0.85);
+/* 1. RESET E BINDING */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body {
+    background: #0d0d0d;
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
 
-body { background: var(--bg-dark); min-height: 100vh; overflow-x: hidden; color: #fff; }
-
-/* 1. SFONDO (Fisso, non interferisce col layout) */
+/* SFONDO GENERALE (MOBILE) */
 .scene-background {
-    position: fixed; inset: 0; z-index: -5;
+    position: fixed;
+    inset: 0;
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
-    background-size: cover; background-position: center;
-    filter: brightness(0.78) contrast(1.1) saturate(1.1);
-    pointer-events: none;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.5) contrast(1.2);
+    z-index: -10;
 }
 
-/* 2. DASHBOARD (Fissa in alto) */
+/* HEADER / NAVBAR MOBILE */
 .dashboard {
-    position: fixed; top: 0; width: 100%; height: 70px;
-    background: var(--glass); border-bottom: 2px solid var(--gold);
-    backdrop-filter: var(--blur); display: flex; align-items: center; justify-content: space-between;
-    padding: 0 20px; z-index: 1000;
-}
-
-/* 3. HERO SECTION (Il cuore del problema risolto) */
-main { padding-top: 100px; } /* Spazio per la dashboard */
-
-.hero-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: 50vh;
-}
-
-.castellana-video-wrapper {
-    position: relative;
     width: 100%;
-    max-width: 300px; /* Larghezza controllata */
-    border-radius: 20px;
-    overflow: hidden;
-    border: 2px solid var(--gold);
-    flex-shrink: 0; /* Non si schiaccia */
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.85);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.castellana-video { width: 100%; display: block; }
+.dashboard .logo-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffd78f;
+    text-shadow: 0 0 8px rgba(255, 215, 160, 0.6);
+}
+
+.nav-desktop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-desktop a {
+    color: #ffd78f;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 160, 0.5);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.lang-switcher button {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #ffd78f;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* VIDEO CASTELLANA MOBILE */
+.castellana-video-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 260px;
+}
+
+.castellana-video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
 
 .castellana-tooltip {
-    position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
-    width: 100%; padding: 10px; text-align: center;
-    background: rgba(0,0,0,0.8); border: 1px solid var(--gold);
-    border-radius: 14px; color: var(--gold); z-index: 25;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
 }
 
+/* POESIA MOBILE */
 .home-welcome-poetry {
-    flex: 1; /* Occupa lo spazio rimanente */
-    max-width: 600px;
-    padding: 30px;
-    background: rgba(0,0,0,0.4);
-    border-radius: 20px;
-    backdrop-filter: blur(5px);
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    border-radius: 15px;
+    text-align: center;
 }
 
-/* 4. STATS E FEATURES (Griglia pulita) */
-.stats-bar {
-    display: flex; justify-content: center; gap: 40px; margin: 40px auto;
-    max-width: 800px;
+.home-welcome-poetry h1 {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 1.4rem;
+    color: #ffd78f;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 }
 
-.features-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px; max-width: 1000px; margin: 0 auto; padding: 20px;
+.home-welcome-poetry p {
+    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #f7f2e9;
+    font-style: italic;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95);
 }
 
-.feature-card {
-    background: rgba(0,0,0,0.6); padding: 20px; border-radius: 15px;
-    border: 1px solid rgba(255,215,160,0.2);
+/* BOX APPLICAZIONE MOBILE */
+.install-app-desktop {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ffd78f;
+    border-radius: 15px;
+    text-align: center;
 }
 
-/* 5. INSTALLAZIONE APP */
-.install-section {
-    display: flex; justify-content: space-around; align-items: center;
-    max-width: 800px; margin: 40px auto; padding: 30px;
-    background: rgba(255,255,255,0.05); border: 1px solid var(--gold);
-    border-radius: 20px;
+.install-left h2 {
+    color: #ffd78f;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
 }
 
-/* 6. CHAT (Posizionamento fisso) */
-.chat-interface {
-    position: fixed; bottom: 20px; right: 20px;
-    width: 310px; height: 350px;
-    background: var(--bg-dark); border: 2px solid var(--gold);
-    border-radius: 20px; display: none; z-index: 1000;
-    flex-direction: column; padding: 20px;
+.btn-desktop {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background: #000;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
 }
 
-.chat-interface.active { display: flex; }
+.install-right {
+    margin-top: 20px;
+}
 
-/* 7. MOBILE RESPONSIVE (Fondamentale) */
-@media (max-width: 768px) {
-    .hero-section { flex-direction: column; text-align: center; }
-    .install-section { flex-direction: column; gap: 20px; text-align: center; }
+.qr-desktop {
+    width: 110px;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 10px;
+}
+
+.install-right p {
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+/* CHAT MOBILE */
+.chat-desktop {
+    width: 90%;
+    margin: 20px auto;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #ffd78f;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    color: #ffd78f;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.chat-messages {
+    height: 120px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   VERS. DESKTOP (900PX+)
+   ========================================================================== */
+@media screen and (min-width: 900px) {
+
+    .scene-background {
+        filter: brightness(0.78) contrast(1.1) saturate(1.1);
+        z-index: -5 !important;
+    }
+
+    body { background: transparent !important; }
+
+    .dashboard {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 70px;
+        background: rgba(0, 0, 0, 0.75);
+        border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+        backdrop-filter: blur(18px) saturate(200%);
+        flex-direction: row;
+        padding: 0 20px;
+        z-index: 20;
+        box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
+    }
+
+    .nav-desktop a {
+        background: rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(255, 215, 160, 0.75);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        position: relative;
+    }
+
+    /* Video e tooltip desktop */
+    .castellana-video-wrapper {
+        position: absolute;
+        top: 260px;
+        left: 4%;
+        width: 26vw;
+        max-width: 280px;
+        z-index: 10 !important;
+    }
+
+    .castellana-tooltip {
+        position: absolute;
+        top: 220px;
+        left: 4%;
+        width: auto;
+        padding: 10px 20px;
+        z-index: 25;
+    }
+
+    /* Poesia desktop */
+    .home-welcome-poetry {
+        position: absolute;
+        top: 260px;
+        left: 58%;
+        transform: translateX(-50%);
+        width: 38vw;
+        max-width: 440px;
+        background: rgba(0, 0, 0, 0);
+        z-index: 5;
+    }
+
+    /* Installazione desktop */
+    .install-app-desktop {
+        position: absolute;
+        top: 920px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 75%;
+        max-width: 850px;
+    }
+
+    /* Chat desktop */
+    .chat-desktop {
+        position: absolute;
+        top: 260px;
+        right: 4%;
+        width: 310px;
+        height: 300px;
+        z-index: 30;
+    }
+    
+    .chat-desktop.active { display: block; }
 }
