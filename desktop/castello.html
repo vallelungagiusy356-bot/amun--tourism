@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="castle.title">Il Castello di Caccamo</title>
+    <title data-i18n="pages.castle_page.title">Il Castello di Caccamo</title>
 
-    <!-- Google Fonts integrato con Playfair Display e Cormorant Garamond per uniformità con chiese-arte -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="castello.css">
 
-    <!-- SEO -->
     <meta name="description" content="Il Castello di Caccamo: storia, leggende e misteri raccontati dalla Castellana. Vivi un'esperienza immersiva tra poesia, video e chat interattiva.">
 </head>
 
@@ -24,7 +22,7 @@
         <div class="scene-overlay"></div>
     </div>
 
-    <!-- 👑 DASHBOARD UNIFORMATA -->
+    <!-- 👑 DASHBOARD -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
@@ -35,7 +33,6 @@
         </nav>
 
         <div class="header-right-actions">
-            <!-- Selettore lingue testuale compatto identico alla home e a chiese-arte -->
             <div class="lang-switcher">
                 <button data-lang="it" class="active" title="Italiano">IT</button>
                 <button data-lang="en" title="English">EN</button>
@@ -50,32 +47,31 @@
         </div>
     </header>
 
-    <!-- 🏰 LAYOUT CENTRATO STILE HERO -->
+    <!-- 🏰 LAYOUT CENTRATO -->
     <main class="hero">
         <div class="hero-text">
-            <span class="category-tag" data-i18n="castle.category">Monumenti Storici</span>
-            <h1 data-i18n="castle.title">Il Castello di Caccamo</h1>
+            <span class="category-tag" data-i18n="pages.castle_page.category">Monumenti Storici</span>
+            <h1 data-i18n="pages.castle_page.title">Il Castello di Caccamo</h1>
         </div>
         
-        <!-- Contenitore unico ed elegante per rime e approfondimenti -->
         <section class="poesia-container">
             
             <div class="poesia-corpo">
-                <p data-i18n="castle.rhyme_1">
+                <p data-i18n="pages.castle_page.rhyme_1">
                     Benvenuti, o viandanti, al maniero possente,<br>
                     che scruta la valle e la storia presente.<br>
                     Arroccato sul monte di viva pietra fiero,<br>
                     custode di sogni, di gloria e mistero.
                 </p>
 
-                <p data-i18n="castle.rhyme_2">
+                <p data-i18n="pages.castle_page.rhyme_2">
                     Tra queste sue mura che sfidano il tempo,<br>
                     passaron dinastie come soffio nel vento.<br>
                     Dai fieri Chiaramonte ai Despuches d'onore,<br>
                     ogni stanza racconta di patti e splendore.
                 </p>
 
-                <p class="highlight-para" data-i18n="castle.rhyme_3">
+                <p class="highlight-para" data-i18n="pages.castle_page.rhyme_3">
                     Non cercate le date nel freddo volume,<br>
                     ma l'ombra che danza al calar del lumicino.<br>
                     La Castellana vi attende, tra i passi e la via,<br>
@@ -83,22 +79,21 @@
                 </p>
             </div>
 
-            <!-- 1858 ABITO STORICO INLINE INTEGRATO NEL FLUSSO -->
             <figure class="castle-dress-inline">
                 <img src="img/abito_clean.png" alt="Abito storico della Castellana" class="dress-img-inline" loading="lazy">
-                <figcaption class="dress-caption-inline" data-i18n="castle.dress_caption">
+                <figcaption class="dress-caption-inline" data-i18n="pages.castle_page.dress_caption">
                     L'abito della Castellana
                 </figcaption>
             </figure>
 
             <div class="poesia-corpo descrizione-storica">
-                <p data-i18n="castle.para_2">
+                <p data-i18n="pages.castle_page.para_2">
                     Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
                 </p>
 
-                <p class="highlight-para" data-i18n="castle.para_3">
+                <p class="highlight-para" data-i18n="pages.castle_page.para_3">
                     Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo.  
-                    La Castellana ti aspetta in chat per revelarmi ogni segreto di questo luogo senza tempo.
+                    La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
                 </p>
             </div>
 
@@ -106,9 +101,8 @@
         </section>
     </main>
 
-    <!-- 👑 CASTELLANA WIDGET AREA (STRUTTURA UNIFORMATA VIA DI MEZZO) -->
+    <!-- 👑 WIDGET CASTELLANA -->
     <div class="castellana-widget-area">
-        <!-- Aggiornato file video e struttura classi come in chiese-arte -->
         <div class="castellana-video-wrapper" id="castellanaTrigger">
             <video class="castellana-video" autoplay loop muted playsinline>
                 <source src="img/castellana_alpha.webm" type="video/webm">
@@ -117,7 +111,7 @@
         <div class="castellana-tooltip">Click to chat</div>
     </div>
 
-    <!-- FIANCO CHAT ADATTATO SOPRA L'ICONA -->
+    <!-- 💬 CHAT -->
     <div class="chat-desktop" id="chatDesktop">
         <header class="chat-header">
             <div class="avatar-status-dot"></div>
@@ -126,7 +120,7 @@
         </header>
 
         <div class="chat-messages" id="chatMessagesBox">
-            <div class="message system-msg" data-i18n="castle.welcomemsg_felicia">
+            <div class="message system-msg" data-i18n="pages.castle_page.welcomemsg_felicia">
                 Benvenuto al Castello di Caccamo! Sono la tua guida custode. Chiedimi pure della Sala delle Congiure o dei fantasmi che abitano queste mura...
             </div>
         </div>
@@ -137,26 +131,19 @@
         </div>
     </div>
 
-        <!-- 💬 LOGICHE PAGINA (CHAT + LINGUA) -->
     <script>
         // --- LOGICA CHAT ---
         const chat = document.getElementById("chatDesktop");
         const trigger = document.getElementById("castellanaTrigger");
         const closeBtn = document.getElementById("closeChatBtn");
 
-        trigger.addEventListener("click", () => {
-            chat.style.display = 'flex';
-        });
-        
-        closeBtn.addEventListener("click", () => {
-            chat.style.display = 'none';
-        });
+        trigger.addEventListener("click", () => { chat.style.display = 'flex'; });
+        closeBtn.addEventListener("click", () => { chat.style.display = 'none'; });
 
         // --- LOGICA LINGUA ---
         let currentLang = localStorage.getItem("lang") || "it";
 
         function loadLanguage(lang) {
-            // Percorso corretto nella cartella desktop
             fetch(`./lang/${lang}.json`)
                 .then(res => res.json())
                 .then(data => {
@@ -175,7 +162,7 @@
                         else btn.classList.remove("active");
                     });
                 })
-                .catch(err => console.error("Errore nel caricamento del file lingua:", err));
+                .catch(err => console.error("Errore lingua:", err));
             localStorage.setItem("lang", lang);
         }
 
@@ -186,9 +173,5 @@
             loadLanguage(currentLang);
         });
     </script>
-
-
-    
-
 </body>
 </html>
