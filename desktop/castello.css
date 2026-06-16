@@ -207,6 +207,8 @@ html, body {
    4. LAYOUT STRUTTURALE CENTRATO & POESIA (CORMORANT GARAMOND)
 ============================================================ */
 .hero {
+    position: relative;
+    z-index: 1;
     margin-top: 190px; 
     text-align: center;
     padding: 1.5rem;
