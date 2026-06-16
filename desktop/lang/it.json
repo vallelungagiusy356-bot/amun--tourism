@@ -14,23 +14,27 @@
       "talk_castellana": "Parla con la Castellana"
     },
     "citizen": {
-      "tag": "Comunità Locale",
-      "main_heading": "Cittadino del Borgo",
-      "intro_text": "Il cuore pulsante di Amunì risiede in chi vive il borgo ogni giorno. Custodi di storie antiche, sapori tramandati e segreti nascosti tra le pietre e i vicoli.",
-      "legends_title": "Leggende e Radici",
-      "legends_desc": "Le storie più antiche del borgo, tramandate di generazione in generazione.",
-      "legend_felicia": "La leggenda di Suor Felicia",
-      "legend_pizzarrone": "La leggenda della Torre del Pizzarrone",
-      "audio_title": "Ascolta le preghiere e i cunti in dialetto",
-      "transcription": "Trascrizione automatica",
-      "castle_title": "Il Castello",
-      "castle_desc": "Una fortezza millenaria: congiure, feritoie, tunnel segreti, prigioni e battaglie epiche.",
-      "castle_more": "Scopri il Castello",
-      "church_title": "Chiese e Arte",
-      "church_desc": "Un viaggio tra catacombe, tradizioni, patroni e antiche devozioni.",
-      "church_catacombs": "Le catacombe e le cripte nascoste",
-      "church_sangiuseppe": "La gratinata rossa di San Giuseppe",
-      "church_sepolcri": "I sepolcri con il grano in fiore"
+    "title": "Amunì Tourism - Cittadino del Borgo",
+    "tag": "Comunità Locale",
+    "main_heading": "Cittadino del Borgo",
+    "intro_text": "Il cuore pulsante di Amunì risiede in chi vive il borgo ogni giorno. Scegli un quadrante per esplorare la nostra storia.",
+    
+    "legends_title": "Leggende e tradizioni",
+    "legends_desc": "I racconti popolari e i miti tramandati nel tempo.",
+    
+    "churches_title": "Chiese e arte",
+    "churches_desc": "Un viaggio tra catacombe, tradizioni e tesori sacri.",
+    
+    "food_events_title": "Cibo e eventi",
+    "food_events_desc": "Sapori autentici, ricette storiche e feste del borgo.",
+    
+    "castle_title": "Il castello",
+    "castle_desc": "La fortezza millenaria: storia, misteri e prigioni."
+  },
+  "chat": {
+    "title": "La Castellana",
+    "placeholder": "Scrivi alla Castellana...",
+    "citizen_msg1": "Benvenuto! Sono qui per raccontarti i segreti di Caccamo. Cosa vuoi scoprire oggi?
     },
     "pages": {
       "castle_page": {
