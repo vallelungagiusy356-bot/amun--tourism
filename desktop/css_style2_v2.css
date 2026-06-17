@@ -1,132 +1,607 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - CSS DEFINITIVO (STRUTTURA INTEGRATA)
+   PARTE 1: STILI BASE E PER DISPOSITIVI MOBILI (PRIME ~200 RIGHE)
    ========================================================================== */
 
-:root {
-    --gold: #ffd78f;
-    --glass-bg: rgba(0, 0, 0, 0.4);
-    --glass-border: 1px solid rgba(255, 215, 160, 0.3);
+/* RESET E BINDING */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-
-body { 
-    background: #0d0d0d; 
-    color: #fff; 
-    min-height: 100vh; 
-    overflow-x: hidden; 
+body {
+    background: #0d0d0d;
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* SFONDO */
+/* SFONDO GENERALE (MOBILE) */
 .scene-background {
-    position: fixed; 
+    position: fixed;
     inset: 0;
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
-    background-size: cover; 
+    background-size: cover;
     background-position: center;
-    filter: brightness(0.7) contrast(1.1); 
+    background-repeat: no-repeat;
+    filter: brightness(0.5) contrast(1.2);
     z-index: -10;
 }
 
-/* EFFETTO VETRO (GLASSMORPHISM) */
-.glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: var(--glass-border);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-    padding: 30px;
+/* HEADER / NAVBAR MOBILE */
+.dashboard {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.85);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-/* EFFETTO RIFLESSO (SHINE) */
-.shine-effect {
-    position: relative; 
-    overflow: hidden;
-}
-.shine-effect::after {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-    transform: rotate(45deg);
-    animation: shine 3s infinite;
-}
-@keyframes shine {
-    0% { transform: translateX(-100%) rotate(45deg); }
-    100% { transform: translateX(100%) rotate(45deg); }
+.dashboard .logo-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffd78f;
+    text-shadow: 0 0 8px rgba(255, 215, 160, 0.6);
 }
 
-/* LAYOUT PRINCIPALE */
-.hero-container {
-    display: flex; 
-    justify-content: center; 
-    align-items: flex-start;
-    gap: 40px; 
-    padding: 60px 5%; 
-    max-width: 1200px; 
-    margin: 0 auto;
+.nav-desktop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
-.center-content { 
-    flex: 1; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 20px; 
+.nav-desktop a {
+    color: #ffd78f;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 160, 0.5);
+    background: rgba(0, 0, 0, 0.6);
 }
 
-.castellana-video-wrapper { 
-    flex: 0 0 300px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+.lang-switcher {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
 }
 
-/* STILI TESTO */
-h1, h3 { color: var(--gold); margin-bottom: 15px; font-family: Georgia, serif; }
-p { font-style: italic; line-height: 1.6; color: #f7f2e9; margin-bottom: 15px; }
-
-/* STATISTICHE INTEGRATE */
-.stats-integrated {
-    display: flex; 
-    justify-content: space-between; 
-    margin-top: 20px;
-    padding-top: 20px; 
-    border-top: 1px solid rgba(255, 215, 160, 0.3);
+.lang-switcher button {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #ffd78f;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
-.stat-item { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    color: var(--gold); 
+
+/* VIDEO CASTELLANA MOBILE */
+.castellana-video-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 260px;
+}
+
+.castellana-video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.castellana-tooltip {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    border-radius: 10px;
+    font-weight: bold;
     text-align: center;
 }
-.stat-item strong { font-size: 1.2rem; margin-bottom: 5px; }
 
-/* QR CODE E BOTTONI */
-.install-section {
-    width: 90%; 
-    max-width: 800px; 
-    margin: 40px auto;
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-}
-.btn-desktop { 
-    display: inline-block; 
-    padding: 12px 25px; 
-    margin: 5px; 
-    border: 1px solid var(--gold); 
-    color: var(--gold); 
-    text-decoration: none; 
-    border-radius: 50px; 
-    background: rgba(0,0,0,0.3);
+/* POESIA MOBILE — OTTIMIZZATA MINIMAL ED ELEGANTE */
+.home-welcome-poetry {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.35); /* Velo molto leggero per non appesantire */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    border-radius: 15px;
+    text-align: center;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .hero-container { flex-direction: column; text-align: center; }
-    .castellana-video-wrapper { order: -1; } /* Video in alto su mobile */
-    .install-section { flex-direction: column; text-align: center; }
+.home-welcome-poetry h1 {
+    font-family: 'Georgia', 'Times New Roman', Times, serif; /* Coerenza Serif mobile */
+    font-size: 1.4rem;
+    color: #ffd78f;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 }
+
+.home-welcome-poetry p {
+    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif; /* Coerenza Serif mobile */
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #f7f2e9;
+    font-style: italic;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95); /* Leggibilità garantita sul cielo */
+}
+
+/* ============================================================
+   BOX INTRODUTTIVO CASTELLANA (HOME)
+   ============================================================ */
+.castellana-intro-card {
+    max-width: 700px;
+    margin: 2.5rem auto;
+    padding: 1.5rem;
+    background: rgba(5, 3, 2, 0.4);
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.castellana-intro-card:hover {
+    background: rgba(5, 3, 2, 0.6);
+    border-color: rgba(255, 215, 160, 0.4);
+    box-shadow: 0 12px 35px rgba(255, 215, 160, 0.1);
+    transform: translateY(-2px);
+}
+
+.intro-card-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    color: #ffd78f;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.intro-card-content p {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    line-height: 1.6;
+    color: #e6e0d4;
+    margin-bottom: 1.2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.intro-card-content strong {
+    color: #ffd78f;
+    font-weight: 600;
+}
+
+/* Badge delle 5 lingue per dare impatto visivo immediato */
+.languages-badge {
+    display: inline-block;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffd78f;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 160, 0.2);
+}
+
+.languages-badge span {
+    opacity: 0.85;
+}
+
+/* BOX APPLICAZIONE MOBILE */
+.install-app-desktop {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ffd78f;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.install-left h2 {
+    color: #ffd78f;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.btn-desktop {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background: #000;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.install-right {
+    margin-top: 20px;
+}
+
+.qr-desktop {
+    width: 110px;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 10px;
+}
+
+.install-right p {
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+/* CHAT MOBILE BASE */
+.chat-desktop {
+    width: 90%;
+    margin: 20px auto;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #ffd78f;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    color: #ffd78f;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.chat-messages {
+    height: 120px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================================================
+   PARTE 2: VERSIONE DESKTOP — ABILITATA DA 900PX IN SU (OTTIMIZZATA)
+   ========================================================================== */
+@media screen and (min-width: 900px) {
+
+    /* SFONDO — VERSIONE DESKTOP */
+    .scene-background {
+        position: fixed;
+        inset: 0;
+        background-image: url('img/tuo_nuovo_sfondo.jpeg') !important;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: brightness(0.78) contrast(1.1) saturate(1.1);
+        z-index: -5 !important;
+        pointer-events: none;
+    }
+
+    body {
+        background: transparent !important;
+    }
+
+    /* DASHBOARD ELEGANTE NERA + ORO (FIX COMPATEZZA) */
+    .dashboard {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background: rgba(0, 0, 0, 0.75);
+        border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+        backdrop-filter: blur(18px) saturate(200%);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        z-index: 20;
+        box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
+    }
+
+    .dashboard .logo-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #ffd78f;
+        text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
+    }
+
+    .nav-desktop {
+        display: flex;
+        gap: 12px;
+    }
+
+    .nav-desktop a {
+        color: #ffd78f;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 8px 14px;
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(255, 215, 160, 0.75);
+        box-shadow:
+            0 0 14px rgba(255, 215, 160, 0.55),
+            inset 0 0 8px rgba(255, 215, 160, 0.35);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        position: relative; 
+        overflow: hidden;   
+    }
+
+    .nav-desktop a::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -110%;
+        width: 35%;
+        height: 200%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 215, 160, 0) 0%,
+            rgba(255, 215, 160, 0.14) 50%,
+            rgba(255, 215, 160, 0) 100%
+        );
+        transform: rotate(-45deg);
+        animation: desktopGlowLoop 10s infinite ease-in-out;
+        pointer-events: none;
+    }
+
+    .nav-desktop a:hover {
+        background: rgba(255, 215, 160, 0.15);
+        box-shadow:
+            0 0 22px rgba(255, 215, 160, 0.85),
+            inset 0 0 12px rgba(255, 215, 160, 0.45);
+        transform: scale(1.05);
+    }
+
+    /* PULSANTI LINGUA (RISOLUZIONE BANDIERINA SPAGNOLA) */
+    .lang-switcher {
+        display: flex;
+        gap: 6px;
+        margin-top: 0;
+        align-items: center;
+    }
+
+    .lang-switcher button {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.65);
+        border: 1px solid rgba(255, 215, 160, 0.85);
+        color: #ffd78f;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow:
+            0 0 10px rgba(255, 215, 160, 0.4),
+            inset 0 0 6px rgba(255, 215, 160, 0.3);
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .lang-switcher button:hover {
+        background: rgba(255, 215, 160, 0.15);
+        box-shadow: 0 0 15px rgba(255, 215, 160, 0.7);
+        transform: scale(1.05);
+    }
+
+    /* VIDEO CASTELLANA DESKTOP */
+    .castellana-video-wrapper {
+        position: absolute;
+        top: 260px;
+        left: 4%;
+        width: 26vw;          
+        max-width: 280px;
+        margin: 0;
+        border-radius: 20px; 
+        overflow: hidden;    
+        z-index: 10 !important;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        cursor: pointer;
+    }
+
+    .castellana-video {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+        background: transparent !important;
+        filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.5)); 
+    }
+
+    .castellana-tooltip {
+        position: absolute;
+        top: 220px; 
+        left: 4%;
+        margin-top: 0;
+        padding: 10px 20px;
+        background: rgba(0, 0, 0, 0.65);
+        border: 1px solid rgba(255, 215, 160, 0.9);
+        border-radius: 14px;
+        color: #ffd78f;
+        font-size: 1rem;
+        font-weight: 700;
+        text-shadow: 0 0 12px rgba(255, 215, 160, 1);
+        box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
+        cursor: pointer;
+        z-index: 25;
+    }
+
+    /* INTRODUZIONE POETICA DESKTOP — STILE BERGMAN / MINIMAL ELEGANT */
+    .home-welcome-poetry {
+        position: absolute;
+        top: 260px;
+        left: 58%;
+        transform: translateX(-50%);
+        width: 38vw;
+        max-width: 440px;
+        margin: 0;
+        text-align: center;
+        padding: 24px 30px;
+        background: rgba(0, 0, 0, 0);
+        border: 1px solid transparent;
+        border-radius: 22px;
+        box-shadow: none;
+        z-index: 5;
+        animation: fadeInPoetry 1.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .home-welcome-poetry:hover {
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(8px) saturate(120%);
+        -webkit-backdrop-filter: blur(8px) saturate(120%);
+        border: 1px solid rgba(255, 215, 160, 0.25);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .home-welcome-poetry h1 {
+        font-family: 'Georgia', 'Times New Roman', Times, serif;
+        font-size: 1.75rem;
+        color: #ffd78f;
+        margin-bottom: 16px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-shadow: 
+            2px 2px 8px rgba(0, 0, 0, 0.95),
+            0 0 15px rgba(255, 215, 160, 0.3);
+    }
+
+    .home-welcome-poetry p {
+        font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
+        font-size: 1.1rem;
+        color: #f7f2e9;
+        line-height: 1.75;
+        font-style: italic;
+        text-shadow: 
+            1px 1px 6px rgba(0, 0, 0, 0.95),
+            2px 2px 12px rgba(0, 0, 0, 0.9);
+    }
+
+    /* SEZIONE INSTALLAZIONE APP DESKTOP */
+    .install-app-desktop {
+        position: absolute;
+        top: 920px; 
+        left: 50%;
+        transform: translateX(-50%);
+        width: 75%;          
+        max-width: 850px;
+        margin: 0;
+        background: rgba(255, 255, 255, 0.03) !important;
+        backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
+        -webkit-backdrop-filter: blur(15px) brightness(1.05) contrast(0.85) !important;
+        border: 2px solid rgba(255, 215, 160, 0.9);
+        border-radius: 20px;
+        box-shadow:
+            0 0 45px rgba(255, 215, 160, 0.85),
+            inset 0 0 25px rgba(255, 215, 160, 0.35);
+        padding: 20px 35px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        z-index: 15;
+    }
+
+    .install-left h2 {
+        color: #ffd78f;
+        font-size: 1.45rem;
+        margin-bottom: 12px;
+        text-shadow: 0 0 12px rgba(255,215,160,0.55);
+        text-align: left;
+    }
+
+    .btn-desktop {
+        display: block;
+        width: 90%;
+        margin: 10px 0;
+        padding: 10px 14px;
+        background: rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(255, 215, 160, 0.85);
+        border-radius: 12px;
+        color: #ffd78f;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .btn-desktop:hover {
+        background: rgba(255, 215, 160, 0.15);
+        box-shadow: 0 0 18px rgba(255, 215, 160, 0.75);
+        transform: scale(1.02);
+    }
+
+    .install-right {
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .qr-desktop {
+        width: 120px; 
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+        border: 2px solid rgba(255,215,160,0.45);
+    }
+
+    .install-right p {
+        margin-top: 8px;
+        color: #f7f2e9;
+        font-size: 0.9rem;
+    }
+
+    /* CHAT DESKTOP INTERFACCIA COMPLETA */
+    .chat-desktop {
+        position: absolute;
+        top: 260px;
+        right: 4%;
+        width: 310px;
+        height: 300px;
+        margin: 0;
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 2px solid rgba(255, 215, 160, 0.9);
+        border-radius: 26px 26px 0 0;
+        padding: 18px;
+        display: none;
+        z-index: 30;
+    }
+
+    .chat-desktop.active {
+        display: block;
+        animation: slideInRight 0.55s ease forwards;
+    }
+
+        /* KEYFRAMES E ANIMAZIONI (CORRETTE E COMPLETE) */
+    @keyframes desktopGlowLoop {
+        0% { left: -110%; }
+        16% { left: 140%; }
+        100% { left: 140%; }
+    }
+
+    @keyframes fadeInPoetry {
+        0% { opacity: 0; transform: translate(-50%, 20px); }
+        100% { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    @keyframes slideInRight {
+        0% { transform: translateX(120%); opacity: 0; }
+        60% { transform: translateX(-10%); opacity: 1; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+
