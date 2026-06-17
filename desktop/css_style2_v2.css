@@ -1,220 +1,137 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - FILE CSS INTEGRALE (VERSIONE PREMIUM)
+   AMUNÌ TOURISM - CSS DEFINITIVO
    ========================================================================== */
 
-/* 1. VARIABILI E RESET */
 :root {
     --gold: #ffd78f;
-    --glass-bg: rgba(0, 0, 0, 0.4);
+    --glass-bg: rgba(0, 0, 0, 0.2); /* Molto leggero per non scurire */
     --glass-border: 1px solid rgba(255, 215, 160, 0.2);
-    --body-bg: #0d0d0d;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
 body {
-    background: var(--body-bg);
+    background: #0d0d0d;
     color: #fff;
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* 2. UTILITY E RIFLESSI */
-.shine-effect {
-    position: relative;
-    overflow: hidden;
-}
-
-.shine-effect::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.15) 50%, transparent 60%);
-    animation: shine 4s infinite linear;
-    pointer-events: none;
-}
-
-@keyframes shine {
-    0% { transform: translateX(-50%) rotate(45deg); }
-    100% { transform: translateX(50%) rotate(45deg); }
-}
-
-.glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: var(--glass-border);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-}
-
-/* 3. LAYOUT GLOBALE */
+/* SFONDO - PIÙ CHIARO */
 .scene-background {
     position: fixed;
     inset: 0;
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.5) contrast(1.2);
+    filter: brightness(0.85) contrast(1.1); /* Migliore leggibilità */
     z-index: -10;
 }
 
-/* 4. DASHBOARD (FIXED) */
+/* NAVBAR */
 .dashboard {
-    position: sticky;
-    top: 0;
     width: 100%;
-    height: 80px;
-    padding: 0 50px;
-    background: rgba(0, 0, 0, 0.7);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.3);
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 215, 160, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
     z-index: 100;
 }
 
-.dashboard .logo-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--gold);
-}
+.logo-title { font-size: 1.5rem; font-weight: 700; color: var(--gold); }
 
 .nav-desktop { display: flex; gap: 20px; }
-.nav-desktop a {
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 0.95rem;
-    padding: 8px 15px;
-    border: 1px solid rgba(255, 215, 160, 0.3);
-    border-radius: 10px;
-    transition: 0.3s;
-}
+.nav-desktop a { color: var(--gold); text-decoration: none; font-size: 0.9rem; }
 
-.nav-desktop a:hover { background: var(--gold); color: #000; }
-
-/* 5. HERO SECTION (LAYOUT FLESSIBILE) */
-.hero-section {
+/* HERO CONTAINER - LA LOGICA DI POSIZIONAMENTO */
+.hero-container {
     display: flex;
+    justify-content: center; /* Centra tutto il blocco nel desktop */
     align-items: center;
-    justify-content: center;
-    gap: 60px;
-    padding: 80px 5%;
-    min-height: 60vh;
+    gap: 50px;
+    padding: 50px 20px;
+    min-height: 80vh;
     flex-wrap: wrap; /* Adattabile a mobile */
 }
 
+/* Gruppo Centrale (Poesia + Info) */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 500px;
+}
+
+/* Card con Effetto Vetro Leggero */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+/* Poesia e Info */
+.home-welcome-poetry, .castellana-intro-card {
+    text-align: center;
+}
+
+.home-welcome-poetry h1 { color: var(--gold); margin-bottom: 15px; font-family: Georgia, serif; }
+.home-welcome-poetry p { font-style: italic; line-height: 1.6; }
+
+/* Castellana a Destra */
 .castellana-video-wrapper {
-    flex: 0 0 300px;
+    width: 280px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.castellana-video { width: 100%; border-radius: 20px; border: 2px solid var(--gold); }
-.castellana-tooltip {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: rgba(0,0,0,0.6);
-    border: 1px solid var(--gold);
-    border-radius: 20px;
+.castellana-video { width: 100%; border-radius: 20px; border: 1px solid var(--gold); }
+.castellana-tooltip { 
+    margin-top: 15px; 
+    padding: 10px 20px; 
+    background: rgba(0,0,0,0.5); 
+    border: 1px solid var(--gold); 
+    border-radius: 10px; 
     color: var(--gold);
     cursor: pointer;
 }
 
-.home-welcome-poetry {
-    max-width: 500px;
-    padding: 30px;
-    text-align: left;
-}
-
-.home-welcome-poetry h1 { color: var(--gold); font-size: 2rem; margin-bottom: 15px; }
-.home-welcome-poetry p { font-size: 1.2rem; line-height: 1.8; font-style: italic; }
-
-/* 6. INSTALL E ALTRI COMPONENTI */
+/* SEZIONE INSTALLAZIONE APP (IN FONDO) */
 .install-section {
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px;
-    margin: 50px auto;
-    width: 80%;
-    max-width: 900px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--gold);
     border-radius: 20px;
+    padding: 40px;
 }
 
 .btn-desktop {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 15px 25px;
+    margin: 10px;
     background: rgba(255, 215, 160, 0.1);
     color: var(--gold);
     border: 1px solid var(--gold);
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-    margin: 10px;
 }
 
-.btn-desktop:hover { background: var(--gold); color: #000; }
-
-.qr-desktop { width: 120px; border-radius: 10px; }
-
-/* 7. CHAT */
-.chat-interface {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    height: 400px;
-    background: #000;
-    border: 1px solid var(--gold);
-    border-radius: 20px;
-    display: none;
-    padding: 20px;
-    z-index: 1000;
+/* RESPONSIVITÀ MOBILE */
+@media (max-width: 900px) {
+    .hero-container { flex-direction: column-reverse; } /* Video va sopra su mobile */
+    .center-content { max-width: 90%; }
+    .install-section { flex-direction: column; text-align: center; }
 }
-
-.chat-interface.active { display: block; }
-
-/* Stile aggiuntivo per i nuovi elementi HTML */
-.stats-bar {
-    display: flex;
-    justify-content: space-around;
-    padding: 30px;
-    margin: 40px auto;
-    width: 80%;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 215, 160, 0.2);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 40px;
-}
-
-.feature-card {
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 215, 160, 0.2);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
-}
-
-.feature-card:hover { border-color: var(--gold); }
