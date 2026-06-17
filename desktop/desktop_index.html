@@ -47,43 +47,42 @@
                     dove la storia respira in ogni soffio di vento.<br>
                     Senti il richiamo di pietre millenarie e severe,<br>
                     custodi di cunti, di dame, di antiche preghiere.<br><br>
-                    Non fermare il tuo passo, specchiati in questa magia,<br>
                     <strong>Amunì, vieni, ti indico la via.</strong>
                 </p>
             </div>
         </section>
 
-        <!-- Stats Bar: Aggiunge professionalità -->
-        <section class="stats-bar">
+        <!-- Stats Bar: Ora classe glass-panel -->
+        <section class="stats-bar glass-panel">
             <div class="stat-item"><strong>33</strong><span>Chiese storiche</span></div>
             <div class="stat-item"><strong>XI Sec.</strong><span>Origine Normanna</span></div>
             <div class="stat-item"><strong>12 Ott.</strong><span>Sagra Salsiccia</span></div>
         </section>
 
-        <!-- Highlights Grid -->
+        <!-- Highlights Grid: Classi glass-panel aggiunte -->
         <section class="features-grid">
-            <article class="feature-card">
+            <article class="feature-card glass-panel">
                 <h3>Storia & Arte</h3>
                 <p>Esplora il castello e i tesori gaginiani nascosti tra i vicoli del borgo.</p>
             </article>
-            <article class="feature-card">
+            <article class="feature-card glass-panel">
                 <h3>Sapori Locali</h3>
                 <p>Dal pane cunzato alle eccellenze dolciarie, il gusto della tradizione.</p>
             </article>
-            <article class="feature-card">
+            <article class="feature-card glass-panel">
                 <h3>Esperienze</h3>
                 <p>Vivi i riti della Settimana Santa e le rievocazioni storiche.</p>
             </article>
         </section>
 
-        <!-- App Download Section -->
-        <section class="install-section">
+        <!-- App Download Section: Classi glass-panel e shine-effect -->
+        <section class="install-section glass-panel">
             <div class="install-left">
                 <h2 data-i18n="home.install_app">Porta Amunì con te</h2>
                 <p>Scarica l'app ufficiale per navigare offline e accedere ai percorsi guidati.</p>
                 <div class="btn-group">
-                    <a href="#" class="btn-desktop">📲 <span data-i18n="home.download_apk">Scarica APK</span></a>
-                    <a href="#" class="btn-desktop">🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span></a>
+                    <a href="#" class="btn-desktop shine-effect">📲 <span data-i18n="home.download_apk">Scarica APK</span></a>
+                    <a href="#" class="btn-desktop shine-effect">🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span></a>
                 </div>
             </div>
             <div class="install-right">
@@ -100,8 +99,8 @@
         </div>
     </footer>
 
-    <!-- Chat Interface -->
-    <div class="chat-interface" id="chat-box">
+    <!-- Chat Interface: Classe glass-panel -->
+    <div class="chat-interface glass-panel" id="chat-box">
         <div class="chat-header">
             <span data-i18n="chat.title">Chiedi alla Castellana</span>
             <button id="close-chat" class="close-chat-btn">✕</button>
@@ -116,6 +115,7 @@
         </div>
     </div>
 
+    <!-- Script mantenuto identico -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const chat = document.getElementById("chat-box");
@@ -126,7 +126,6 @@
             closeBtn.addEventListener("click", () => chat.classList.remove("active"));
         });
 
-        // Gestione Lingue
         let currentLang = localStorage.getItem("lang") || "it";
         function loadLanguage(lang) {
             fetch(`lang/${lang}.json`)
