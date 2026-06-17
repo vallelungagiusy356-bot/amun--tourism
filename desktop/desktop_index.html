@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -12,6 +11,7 @@
 
     <div class="scene-background"></div>
 
+    <!-- Header / Dashboard -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
@@ -31,79 +31,63 @@
     </header>
 
     <main>
-    <!-- 1. Hero Section: Castellana + Poesia -->
-    <section class="hero-section">
-        <div class="castellana-video-wrapper">
-            <video class="castellana-video" autoplay muted loop playsinline>
-                <source src="img/castellana_alpha.webm" type="video/webm">
-            </video>
-            <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
-        </div>
-
-        <div class="home-welcome-poetry">
-            <h1 data-i18n="home.amuni_title">Benvenuto, o viandante...</h1>
-            <p data-i18n="home.amuni_text">
-                Benvenuto, o viandante, al limitare del tempo,<br>
-                dove la storia respira in ogni soffio di vento.<br>
-                Senti il richiamo di pietre millenarie e severe,<br>
-                custodi di cunti, di dame, di antiche preghiere.<br><br>
-                <strong>Amunì, vieni, ti indico la via.</strong>
-            </p>
-        </div>
-    </section>
-
-    <!-- 2. Sezione Informativa (La novità) -->
-    <section class="info-section">
-        <h2 class="section-title">La guida del borgo</h2>
-        <p>Qui risiede la Castellana, la tua guida digitale. Attraverso la conoscenza profonda dei segreti di Caccamo, ti accompagnerà tra le mura del castello e i vicoli storici, svelandoti leggende e curiosità inedite.</p>
-    </section>
-
-    <!-- 3. Stats Bar (Mantiene professionalità) -->
-    <section class="stats-bar">
-        <div class="stat-item"><strong>33</strong><span>Chiese storiche</span></div>
-        <div class="stat-item"><strong>XI Sec.</strong><span>Origine Normanna</span></div>
-        <div class="stat-item"><strong>12 Ott.</strong><span>Sagra Salsiccia</span></div>
-    </section>
-
-    <!-- 4. Highlights Grid (Approfondimenti) -->
-    <section class="features-grid">
-        <article class="feature-card">
-            <h3>Storia & Arte</h3>
-            <p>Esplora il castello e i tesori gaginiani nascosti tra i vicoli del borgo.</p>
-        </article>
-        <article class="feature-card">
-            <h3>Sapori Locali</h3>
-            <p>Dal pane cunzato alle eccellenze dolciarie, il gusto della tradizione.</p>
-        </article>
-        <article class="feature-card">
-            <h3>Esperienze</h3>
-            <p>Vivi i riti della Settimana Santa e le rievocazioni storiche.</p>
-        </article>
-    </section>
-
-    <!-- 5. App Download (In fondo, come richiesto) -->
-    <section class="install-section">
-        <div class="install-left">
-            <h2 data-i18n="home.install_app">Porta Amunì con te</h2>
-            <p>Scarica l'app ufficiale per navigare offline e accedere ai percorsi guidati.</p>
-            <div class="btn-group">
-                <a href="#" class="btn-desktop">📲 <span data-i18n="home.download_apk">Scarica APK</span></a>
-                <a href="#" class="btn-desktop">🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span></a>
+        <!-- 1. Hero Section: Video + Poesia -->
+        <section class="hero-section">
+            <div class="castellana-video-wrapper">
+                <video class="castellana-video" autoplay muted loop playsinline>
+                    <source src="img/castellana_alpha.webm" type="video/webm">
+                </video>
+                <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
             </div>
-        </div>
-        <div class="install-right">
-            <img src="https://vallelungagiusy356-bot.github.io/amun--tourism/qr.png" alt="QR Amunì" class="qr-desktop">
-        </div>
-    </section>
-</main>
 
+            <div class="home-welcome-poetry">
+                <h1 data-i18n="home.amuni_title">Benvenuto, o viandante...</h1>
+                <p data-i18n="home.amuni_text">
+                    Benvenuto, o viandante, al limitare del tempo,<br>
+                    dove la storia respira in ogni soffio di vento.<br>
+                    Senti il richiamo di pietre millenarie e severe,<br>
+                    custodi di cunti, di dame, di antiche preghiere.<br><br>
+                    <strong>Amunì, vieni, ti indico la via.</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. Intro Card -->
+        <section class="castellana-intro-card">
+            <div class="intro-card-content">
+                <h3 data-i18n="home.castellana_intro_title">Vivi la Caccamo più autentica</h3>
+                <p data-i18n="home.castellana_intro_text">
+                    Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto tra le meraviglie del borgo e del territorio circostante.
+                </p>
+                <div class="languages-badge">
+                    <span>IT</span> • <span>EN</span> • <span>FR</span> • <span>DE</span> • <span>ES</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. App Download -->
+        <section class="install-section">
+            <div class="install-left">
+                <h2 data-i18n="home.install_app">Porta Amunì con te</h2>
+                <div class="btn-group">
+                    <a href="https://raw.githubusercontent.com/vallelungagiusy356-bot/amun--tourism/main/app-release-signed.apk" class="btn-desktop">
+                        📲 <span data-i18n="home.download_apk">Scarica APK</span>
+                    </a>
+                    <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/" class="btn-desktop">
+                        🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span>
+                    </a>
+                </div>
+            </div>
+            <div class="install-right">
+                <img src="https://vallelungagiusy356-bot.github.io/amun--tourism/qr.png" alt="QR Amunì" class="qr-desktop">
+                <p data-i18n="home.scan_qr">Scansiona il QR</p>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a> | <a href="#">Note Legali</a>
-        </div>
     </footer>
 
     <!-- Chat Interface -->
@@ -123,6 +107,7 @@
     </div>
 
     <script>
+        // Gestione Chat
         document.addEventListener("DOMContentLoaded", () => {
             const chat = document.getElementById("chat-box");
             const closeBtn = document.getElementById("close-chat");
