@@ -39,7 +39,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    z-index: 100;
 }
 
 .dashboard .logo-title {
@@ -80,12 +79,6 @@ body {
     cursor: pointer;
 }
 
-/* HERO SECTION (Contenitore) */
-.hero-section {
-    position: relative; /* Fondamentale per mantenere gli elementi assoluti dentro */
-    width: 100%;
-}
-
 /* VIDEO CASTELLANA MOBILE */
 .castellana-video-wrapper {
     display: flex;
@@ -118,7 +111,7 @@ body {
     width: 90%;
     margin: 20px auto;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.35); 
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 215, 160, 0.2);
@@ -127,7 +120,7 @@ body {
 }
 
 .home-welcome-poetry h1 {
-    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-family: 'Georgia', 'Times New Roman', Times, serif; 
     font-size: 1.4rem;
     color: #ffd78f;
     margin-bottom: 12px;
@@ -135,16 +128,30 @@ body {
 }
 
 .home-welcome-poetry p {
-    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
+    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif; 
     font-size: 1rem;
     line-height: 1.6;
     color: #f7f2e9;
     font-style: italic;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95); 
 }
 
-/* BOX APPLICAZIONE */
-.install-section {
+/* BOX INTRODUTTIVO CASTELLANA */
+.castellana-intro-card {
+    width: 90%;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 215, 160, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* BOX APPLICAZIONE MOBILE */
+.install-app-desktop {
     width: 90%;
     margin: 30px auto;
     padding: 20px;
@@ -152,12 +159,6 @@ body {
     border: 1px solid #ffd78f;
     border-radius: 15px;
     text-align: center;
-}
-
-.install-left h2 {
-    color: #ffd78f;
-    font-size: 1.2rem;
-    margin-bottom: 15px;
 }
 
 .btn-desktop {
@@ -181,7 +182,7 @@ body {
 }
 
 /* CHAT MOBILE */
-.chat-interface {
+.chat-desktop {
     width: 90%;
     margin: 20px auto;
     background: rgba(0, 0, 0, 0.9);
@@ -191,31 +192,12 @@ body {
     display: none;
 }
 
-.chat-interface.active { display: block; }
-
-.chat-header {
-    display: flex;
-    justify-content: space-between;
-    color: #ffd78f;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.chat-messages {
-    height: 120px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-}
+.chat-desktop.active { display: block; }
 
 /* ==========================================================================
    VERS. DESKTOP (900PX+)
    ========================================================================== */
 @media screen and (min-width: 900px) {
-
-    /* Questa è la correzione chiave: diamo un'altezza alla sezione hero */
-    .hero-section {
-        min-height: 600px; 
-    }
 
     .scene-background {
         filter: brightness(0.78) contrast(1.1) saturate(1.1);
@@ -231,13 +213,13 @@ body {
         height: 70px;
         background: rgba(0, 0, 0, 0.75);
         border-bottom: 2px solid rgba(255, 215, 160, 0.85);
-        backdrop-filter: blur(18px) saturate(200%);
+        backdrop-filter: blur(18px);
         flex-direction: row;
         padding: 0 20px;
         z-index: 20;
     }
 
-    /* Video e Poesia (Tutto uguale al tuo originale) */
+    /* Video (Assoluto) */
     .castellana-video-wrapper {
         position: absolute;
         top: 150px;
@@ -245,22 +227,32 @@ body {
         width: 26vw;
         max-width: 280px;
         margin: 0;
+        z-index: 10;
     }
 
+    /* Poesia (Relativa - flusso naturale) */
     .home-welcome-poetry {
-        position: absolute;
-        top: 150px;
-        left: 58%;
-        transform: translateX(-50%);
-        width: 38vw;
+        position: relative;
+        margin-top: 150px;
+        margin-left: 35%; /* Sposta a destra per fare spazio al video */
+        width: 40vw;
         max-width: 440px;
         background: rgba(0, 0, 0, 0);
-        margin: 0;
     }
 
-    /* Installazione Desktop */
-    .install-section {
-        /* Tolto 'position: absolute' qui per permettere il flusso naturale sotto */
+    /* Intro Card (Sotto la poesia) */
+    .castellana-intro-card {
+        position: relative;
+        margin-top: 20px; /* Distanza dalla poesia */
+        margin-left: 35%; /* Allineato alla poesia */
+        width: 40vw;
+        max-width: 440px;
+        background: rgba(0, 0, 0, 0);
+        border: none;
+    }
+
+    /* Box Installazione */
+    .install-app-desktop {
         position: relative;
         margin: 50px auto; 
         width: 75%;
@@ -273,38 +265,11 @@ body {
     }
 
     /* Chat Desktop */
-    .chat-interface {
+    .chat-desktop {
         position: absolute;
         top: 150px;
         right: 4%;
         width: 310px;
-        height: 300px;
-        margin: 0;
-        border-radius: 26px 26px 0 0;
-        display: none;
         z-index: 30;
-    }
-
-    .chat-interface.active {
-        display: block;
-        animation: slideInRight 0.55s ease forwards;
-    }
-
-    /* Keyframes */
-    @keyframes desktopGlowLoop {
-        0% { left: -110%; }
-        15% { left: 120%; }
-        100% { left: 120%; }
-    }
-
-    @keyframes fadeInPoetry {
-        0% { opacity: 0; transform: translate(-50%, 20px); }
-        100% { opacity: 1; transform: translate(-50%, 0); }
-    }
-
-    @keyframes slideInRight {
-        0% { transform: translateX(120%); opacity: 0; }
-        60% { transform: translateX(-10%); opacity: 1; }
-        100% { transform: translateX(0); opacity: 1; }
     }
 }
