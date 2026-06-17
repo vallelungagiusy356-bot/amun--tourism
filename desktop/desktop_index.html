@@ -30,36 +30,43 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div id="castellana-3d"></div>
+        <section class="hero-container">
+            
+            <div class="center-content">
+                <article class="home-welcome-poetry glass-panel">
+                    <h1 data-i18n="home.amuni_title">Benvenuto, o viandante...</h1>
+                    <p data-i18n="home.amuni_text">
+                        Benvenuto, o viandante, al limitare del tempo,<br>
+                        dove la storia respira in ogni soffio di vento.<br>
+                        Senti il richiamo di pietre millenarie e severe,<br>
+                        custodi di cunti, di dame, di antiche preghiere.<br><br>
+                        <strong>Amunì, vieni, ti indico la via.</strong>
+                    </p>
+                </article>
+
+                <div class="castellana-intro-card glass-panel">
+                    <h3 data-i18n="home.intro_title">La tua guida</h3>
+                    <p data-i18n="home.intro_text">
+                        Sono la Castellana, custode digitale di Caccamo. Sono qui per accompagnarti
+                        tra i segreti del borgo e rendere la tua esperienza indimenticabile.
+                    </p>
+                </div>
+            </div>
+
             <div class="castellana-video-wrapper">
                 <video class="castellana-video" autoplay muted loop playsinline>
                     <source src="img/castellana_alpha.webm" type="video/webm">
                 </video>
                 <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
             </div>
-
-            <div class="home-welcome-poetry">
-                <h1 data-i18n="home.amuni_title">Benvenuto, o viandante...</h1>
-                <p data-i18n="home.amuni_text">
-                    Benvenuto, o viandante, al limitare del tempo,<br>
-                    dove la storia respira in ogni soffio di vento.<br>
-                    Senti il richiamo di pietre millenarie e severe,<br>
-                    custodi di cunti, di dame, di antiche preghiere.<br><br>
-                    <strong>Amunì, vieni, ti indico la via.</strong>
-                </p>
-            </div>
         </section>
 
-        <!-- Stats Bar: Ora classe glass-panel -->
         <section class="stats-bar glass-panel">
             <div class="stat-item"><strong>33</strong><span>Chiese storiche</span></div>
             <div class="stat-item"><strong>XI Sec.</strong><span>Origine Normanna</span></div>
             <div class="stat-item"><strong>12 Ott.</strong><span>Sagra Salsiccia</span></div>
         </section>
 
-        <!-- Highlights Grid: Classi glass-panel aggiunte -->
         <section class="features-grid">
             <article class="feature-card glass-panel">
                 <h3>Storia & Arte</h3>
@@ -75,7 +82,6 @@
             </article>
         </section>
 
-        <!-- App Download Section: Classi glass-panel e shine-effect -->
         <section class="install-section glass-panel">
             <div class="install-left">
                 <h2 data-i18n="home.install_app">Porta Amunì con te</h2>
@@ -91,7 +97,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
         <div class="footer-links">
@@ -99,7 +104,6 @@
         </div>
     </footer>
 
-    <!-- Chat Interface: Classe glass-panel -->
     <div class="chat-interface glass-panel" id="chat-box">
         <div class="chat-header">
             <span data-i18n="chat.title">Chiedi alla Castellana</span>
@@ -115,7 +119,6 @@
         </div>
     </div>
 
-    <!-- Script mantenuto identico -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const chat = document.getElementById("chat-box");
