@@ -1,137 +1,132 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - CSS DEFINITIVO
+   AMUNÌ TOURISM - CSS DEFINITIVO (STRUTTURA INTEGRATA)
    ========================================================================== */
 
 :root {
     --gold: #ffd78f;
-    --glass-bg: rgba(0, 0, 0, 0.2); /* Molto leggero per non scurire */
-    --glass-border: 1px solid rgba(255, 215, 160, 0.2);
+    --glass-bg: rgba(0, 0, 0, 0.4);
+    --glass-border: 1px solid rgba(255, 215, 160, 0.3);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-body {
-    background: #0d0d0d;
-    color: #fff;
-    overflow-x: hidden;
-    min-height: 100vh;
+body { 
+    background: #0d0d0d; 
+    color: #fff; 
+    min-height: 100vh; 
+    overflow-x: hidden; 
 }
 
-/* SFONDO - PIÙ CHIARO */
+/* SFONDO */
 .scene-background {
-    position: fixed;
+    position: fixed; 
     inset: 0;
     background-image: url('img/tuo_nuovo_sfondo.jpeg');
-    background-size: cover;
+    background-size: cover; 
     background-position: center;
-    filter: brightness(0.85) contrast(1.1); /* Migliore leggibilità */
+    filter: brightness(0.7) contrast(1.1); 
     z-index: -10;
 }
 
-/* NAVBAR */
-.dashboard {
-    width: 100%;
-    padding: 15px 30px;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.logo-title { font-size: 1.5rem; font-weight: 700; color: var(--gold); }
-
-.nav-desktop { display: flex; gap: 20px; }
-.nav-desktop a { color: var(--gold); text-decoration: none; font-size: 0.9rem; }
-
-/* HERO CONTAINER - LA LOGICA DI POSIZIONAMENTO */
-.hero-container {
-    display: flex;
-    justify-content: center; /* Centra tutto il blocco nel desktop */
-    align-items: center;
-    gap: 50px;
-    padding: 50px 20px;
-    min-height: 80vh;
-    flex-wrap: wrap; /* Adattabile a mobile */
-}
-
-/* Gruppo Centrale (Poesia + Info) */
-.center-content {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    max-width: 500px;
-}
-
-/* Card con Effetto Vetro Leggero */
+/* EFFETTO VETRO (GLASSMORPHISM) */
 .glass-panel {
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border: var(--glass-border);
     border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
     padding: 30px;
 }
 
-/* Poesia e Info */
-.home-welcome-poetry, .castellana-intro-card {
+/* EFFETTO RIFLESSO (SHINE) */
+.shine-effect {
+    position: relative; 
+    overflow: hidden;
+}
+.shine-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* LAYOUT PRINCIPALE */
+.hero-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start;
+    gap: 40px; 
+    padding: 60px 5%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+.center-content { 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+}
+
+.castellana-video-wrapper { 
+    flex: 0 0 300px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+/* STILI TESTO */
+h1, h3 { color: var(--gold); margin-bottom: 15px; font-family: Georgia, serif; }
+p { font-style: italic; line-height: 1.6; color: #f7f2e9; margin-bottom: 15px; }
+
+/* STATISTICHE INTEGRATE */
+.stats-integrated {
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 20px;
+    padding-top: 20px; 
+    border-top: 1px solid rgba(255, 215, 160, 0.3);
+}
+.stat-item { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    color: var(--gold); 
     text-align: center;
 }
+.stat-item strong { font-size: 1.2rem; margin-bottom: 5px; }
 
-.home-welcome-poetry h1 { color: var(--gold); margin-bottom: 15px; font-family: Georgia, serif; }
-.home-welcome-poetry p { font-style: italic; line-height: 1.6; }
-
-/* Castellana a Destra */
-.castellana-video-wrapper {
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.castellana-video { width: 100%; border-radius: 20px; border: 1px solid var(--gold); }
-.castellana-tooltip { 
-    margin-top: 15px; 
-    padding: 10px 20px; 
-    background: rgba(0,0,0,0.5); 
-    border: 1px solid var(--gold); 
-    border-radius: 10px; 
-    color: var(--gold);
-    cursor: pointer;
-}
-
-/* SEZIONE INSTALLAZIONE APP (IN FONDO) */
+/* QR CODE E BOTTONI */
 .install-section {
-    width: 80%;
-    max-width: 900px;
-    margin: 50px auto;
-    display: flex;
-    justify-content: space-between;
+    width: 90%; 
+    max-width: 800px; 
+    margin: 40px auto;
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--gold);
-    border-radius: 20px;
-    padding: 40px;
+}
+.btn-desktop { 
+    display: inline-block; 
+    padding: 12px 25px; 
+    margin: 5px; 
+    border: 1px solid var(--gold); 
+    color: var(--gold); 
+    text-decoration: none; 
+    border-radius: 50px; 
+    background: rgba(0,0,0,0.3);
 }
 
-.btn-desktop {
-    display: inline-block;
-    padding: 15px 25px;
-    margin: 10px;
-    background: rgba(255, 215, 160, 0.1);
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    border-radius: 50px;
-    text-decoration: none;
-}
-
-/* RESPONSIVITÀ MOBILE */
+/* RESPONSIVE */
 @media (max-width: 900px) {
-    .hero-container { flex-direction: column-reverse; } /* Video va sopra su mobile */
-    .center-content { max-width: 90%; }
+    .hero-container { flex-direction: column; text-align: center; }
+    .castellana-video-wrapper { order: -1; } /* Video in alto su mobile */
     .install-section { flex-direction: column; text-align: center; }
 }
