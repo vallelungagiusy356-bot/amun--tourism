@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CODICE INTEGRALE - AMUNÌ TOURISM (MANTENUTO ORIGINALE)
+   CODICE INTEGRALE E ORIGINALE (RESTAURATO)
    ========================================================================== */
 
 /* RESET E BINDING */
@@ -79,6 +79,13 @@ body {
     cursor: pointer;
 }
 
+/* --- HERO SECTION CONTAINER (FIX: AGGIUNTO MIN-HEIGHT) --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 600px; /* Garantisce lo spazio per i contenuti assoluti */
+}
+
 /* VIDEO CASTELLANA MOBILE */
 .castellana-video-wrapper {
     display: flex;
@@ -136,7 +143,7 @@ body {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95); 
 }
 
-/* BOX INTRODUTTIVO CASTELLANA */
+/* BOX INTRODUTTIVO CASTELLANA (HOME) */
 .castellana-intro-card {
     width: 90%;
     max-width: 700px;
@@ -146,12 +153,14 @@ body {
     border: 1px solid rgba(255, 215, 160, 0.2);
     border-radius: 15px;
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     text-align: center;
+    transition: all 0.4s ease;
 }
 
 /* BOX APPLICAZIONE MOBILE */
-.install-app-desktop {
+.install-section {
     width: 90%;
     margin: 30px auto;
     padding: 20px;
@@ -181,8 +190,8 @@ body {
     border-radius: 10px;
 }
 
-/* CHAT MOBILE */
-.chat-desktop {
+/* CHAT MOBILE BASE */
+.chat-interface {
     width: 90%;
     margin: 20px auto;
     background: rgba(0, 0, 0, 0.9);
@@ -192,12 +201,14 @@ body {
     display: none;
 }
 
-.chat-desktop.active { display: block; }
+.chat-interface.active { display: block; }
 
 /* ==========================================================================
-   VERS. DESKTOP (900PX+)
+   VERSIONE DESKTOP
    ========================================================================== */
 @media screen and (min-width: 900px) {
+
+    .hero-section { min-height: 700px; } /* Mantiene lo spazio */
 
     .scene-background {
         filter: brightness(0.78) contrast(1.1) saturate(1.1);
@@ -213,13 +224,14 @@ body {
         height: 70px;
         background: rgba(0, 0, 0, 0.75);
         border-bottom: 2px solid rgba(255, 215, 160, 0.85);
-        backdrop-filter: blur(18px);
+        backdrop-filter: blur(18px) saturate(200%);
+        display: flex;
         flex-direction: row;
         padding: 0 20px;
         z-index: 20;
     }
 
-    /* Video (Assoluto) */
+    /* Video e Poesia (Tutto originale) */
     .castellana-video-wrapper {
         position: absolute;
         top: 150px;
@@ -227,32 +239,21 @@ body {
         width: 26vw;
         max-width: 280px;
         margin: 0;
-        z-index: 10;
     }
 
-    /* Poesia (Relativa - flusso naturale) */
     .home-welcome-poetry {
-        position: relative;
-        margin-top: 150px;
-        margin-left: 35%; /* Sposta a destra per fare spazio al video */
-        width: 40vw;
+        position: absolute;
+        top: 150px;
+        left: 58%;
+        transform: translateX(-50%);
+        width: 38vw;
         max-width: 440px;
         background: rgba(0, 0, 0, 0);
+        margin: 0;
     }
 
-    /* Intro Card (Sotto la poesia) */
-    .castellana-intro-card {
-        position: relative;
-        margin-top: 20px; /* Distanza dalla poesia */
-        margin-left: 35%; /* Allineato alla poesia */
-        width: 40vw;
-        max-width: 440px;
-        background: rgba(0, 0, 0, 0);
-        border: none;
-    }
-
-    /* Box Installazione */
-    .install-app-desktop {
+    /* Installazione Desktop */
+    .install-section {
         position: relative;
         margin: 50px auto; 
         width: 75%;
@@ -265,11 +266,25 @@ body {
     }
 
     /* Chat Desktop */
-    .chat-desktop {
+    .chat-interface {
         position: absolute;
         top: 150px;
         right: 4%;
         width: 310px;
+        height: 300px;
+        margin: 0;
+        border-radius: 26px 26px 0 0;
+        display: none;
         z-index: 30;
     }
+
+    .chat-interface.active {
+        display: block;
+        animation: slideInRight 0.55s ease forwards;
+    }
+
+    /* Keyframes (Originali mantenuti) */
+    @keyframes desktopGlowLoop { 0% { left: -110%; } 15% { left: 120%; } 100% { left: 120%; } }
+    @keyframes fadeInPoetry { 0% { opacity: 0; transform: translate(-50%, 20px); } 100% { opacity: 1; transform: translate(-50%, 0); } }
+    @keyframes slideInRight { 0% { transform: translateX(120%); opacity: 0; } 60% { transform: translateX(-10%); opacity: 1; } 100% { transform: translateX(0); opacity: 1; } }
 }
