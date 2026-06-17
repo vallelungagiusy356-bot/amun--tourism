@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="pages.castle_page.title">Il Castello di Caccamo</title>
+    <title data-i18n="pages.castle.title">Il Castello di Caccamo</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="castello.css">
@@ -42,7 +42,7 @@
             </div>
 
             <button class="home-btn" onclick="location.href='index.html'">
-                <span data-i18n="menu.back">Indietro</span>
+                <span data-i18n="menu.citizen">Indietro</span>
             </button>
         </div>
     </header>
@@ -50,50 +50,40 @@
     <!-- 🏰 LAYOUT CENTRATO -->
     <main class="hero">
         <div class="hero-text">
-            <span class="category-tag" data-i18n="pages.castle_page.category">Monumenti Storici</span>
-            <h1 data-i18n="pages.castle_page.title">Il Castello di Caccamo</h1>
+            <span class="category-tag" data-i18n="pages.castle.category">Monumenti Storici</span>
+            <h1 data-i18n="pages.castle.title">Il Castello di Caccamo</h1>
         </div>
         
         <section class="poesia-container">
             
             <div class="poesia-corpo">
-                <p data-i18n="pages.castle_page.rhyme_1">
-                    Benvenuti, o viandanti, al maniero possente,<br>
-                    che scruta la valle e la storia presente.<br>
-                    Arroccato sul monte di viva pietra fiero,<br>
-                    custode di sogni, di gloria e mistero.
+                <p data-i18n="pages.castle.poetry.0">
+                    Benvenuti, o viandanti, al maniero possente...
                 </p>
 
-                <p data-i18n="pages.castle_page.rhyme_2">
-                    Tra queste sue mura che sfidano il tempo,<br>
-                    passaron dinastie come soffio nel vento.<br>
-                    Dai fieri Chiaramonte ai Despuches d'onore,<br>
-                    ogni stanza racconta di patti e splendore.
+                <p data-i18n="pages.castle.poetry.1">
+                    Tra queste sue mura che sfidano il tempo...
                 </p>
 
-                <p class="highlight-para" data-i18n="pages.castle_page.rhyme_3">
-                    Non cercate le date nel freddo volume,<br>
-                    ma l'ombra che danza al calar del lumicino.<br>
-                    La Castellana vi attende, tra i passi e la via,<br>
-                    per svelarvi il segreto di Suor Felicia.
+                <p class="highlight-para" data-i18n="pages.castle.poetry.2">
+                    La Castellana vi attende, tra i passi e la via...
                 </p>
             </div>
 
             <figure class="castle-dress-inline">
                 <img src="img/abito_clean.png" alt="Abito storico della Castellana" class="dress-img-inline" loading="lazy">
-                <figcaption class="dress-caption-inline" data-i18n="pages.castle_page.dress_caption">
+                <figcaption class="dress-caption-inline">
                     L'abito della Castellana
                 </figcaption>
             </figure>
 
             <div class="poesia-corpo descrizione-storica">
-                <p data-i18n="pages.castle_page.para_2">
-                    Ogni angolo di questo maniero trasuda fascino e mistero: dalla celebre Sala delle Congiure, teatro di intrighi e patti tra nobili medievali, alle antiche prigioni dell'Inquisizione scavate nella pietra.
+                <p data-i18n="pages.castle.description.0">
+                    Ogni angolo di questo maniero trasuda fascino e mistero...
                 </p>
 
-                <p class="highlight-para" data-i18n="pages.castle_page.para_3">
-                    Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo.  
-                    La Castellana ti aspetta in chat per rivelarti ogni segreto di questo luogo senza tempo.
+                <p class="highlight-para" data-i18n="pages.castle.description.1">
+                    Tra storia e leggenda, lo spirito di Suor Felicia protegge ancora il borgo...
                 </p>
             </div>
 
@@ -108,7 +98,7 @@
                 <source src="img/castellana_alpha.webm" type="video/webm">
             </video>
         </div>
-        <div class="castellana-tooltip">Click to chat</div>
+        <div class="castellana-tooltip" data-i18n="chat.tooltip">Click to chat</div>
     </div>
 
     <!-- 💬 CHAT -->
@@ -120,8 +110,8 @@
         </header>
 
         <div class="chat-messages" id="chatMessagesBox">
-            <div class="message system-msg" data-i18n="pages.castle_page.welcomemsg_felicia">
-                Benvenuto al Castello di Caccamo! Sono la tua guida custode. Chiedimi pure della Sala delle Congiure o dei fantasmi che abitano queste mura...
+            <div class="message system-msg" data-i18n="chat.greetings.default">
+                Benvenuto! Sono qui per raccontarti i segreti di Caccamo. Cosa vuoi scoprire oggi?
             </div>
         </div>
 
@@ -149,6 +139,7 @@
                 .then(data => {
                     document.querySelectorAll("[data-i18n]").forEach(el => {
                         const key = el.getAttribute("data-i18n");
+                        // La funzione split().reduce() gestisce correttamente anche gli array (es: .poetry.0)
                         const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
                         if (text) el.innerHTML = text;
                     });
