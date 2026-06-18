@@ -1,6 +1,4 @@
-/* ============================================================
-   RESET & FONT DI BASE
-============================================================ */
+/* 1. RESET BASE */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,6 +6,7 @@
   font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
+/* 2. BODY PULITO */
 body {
   color: #f7f2e9;
   min-height: 100vh;
@@ -15,14 +14,26 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(circle at top, rgba(255,180,80,0.05), rgba(0,0,0,0.7)), 
-              url('img/tuo_nuovo_sfondo.jpeg') no-repeat center center fixed;
-  background-size: cover;
+  position: relative; /* Fondamentale per bloccare lo sfondo dietro */
+  background: transparent; /* Il background lo gestiamo nel ::before */
+}
 
-/* FILTRO: Regola il contrasto */
-  /* 1.0 è il valore neutro. Prova 1.2 o 1.3 per un look più incisivo */
+/* 3. SFONDO CON FILTRO (solo immagine) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* Lo tiene dietro tutto il contenuto */
+  
+  /* Gradiente + Immagine */
+  background: radial-gradient(circle at top, rgba(255,180,80,0.05), rgba(0,0,0,0.7)), 
+              url('img/tuo_nuovo_sfondo.jpeg') no-repeat center center;
+  background-size: cover;
+  
+  /* FILTRO applicato solo a questo strato */
   filter: contrast(1.3); 
 }
+
 
 /* ============================================================
    DASHBOARD STRUTTURA GENERALE ED ELEGANTE (MOBILE FIRST)
