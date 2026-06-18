@@ -188,9 +188,24 @@ html, body {
 
 
 /* Flash rapido al passaggio del mouse */
-.quadrant:hover::before {
-    animation: desktopHoverFlasher 1.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+.quadrant::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%; /* Parte da molto lontano */
+    width: 20%;  /* Lama più sottile per un effetto più "tagliente" */
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%, /* Riflesso bianco/oro più intenso */
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(-30deg); /* Angolo più dinamico */
+    animation: desktopGlowLoop 6s infinite ease-in-out;
+    pointer-events: none;
 }
+
 
 .card-glow-effect {
     position: absolute;
