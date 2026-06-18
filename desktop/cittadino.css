@@ -215,14 +215,18 @@ html, body {
 }
 
 .card-text-block h2 {
-    font-size: 1.35rem;            
-    color: #ffd78f;
-    margin: 0 0 10px 0;
-    font-weight: 600;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    font-size: 1.8rem; /* Titolo più grande */
+    color: #fff;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
-.card-description { font-size: 0.95rem; line-height: 1.5; color: #e6dcc8; margin: 0; }
+.card-description { 
+    font-size: 1.15rem; /* Testo più leggibile */
+    line-height: 1.7; 
+    color: #d1c5ad; 
+}
+
 
 /* ==========================================================================
    5. INTERFACCIA CHAT BASE E CASTELLANA DESKTOP
