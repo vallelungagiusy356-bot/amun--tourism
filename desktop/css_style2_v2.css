@@ -341,12 +341,24 @@ body {
         text-shadow: 0 0 12px rgba(255, 215, 160, 1);
     }
 
-    .home-welcome-poetry {
+        .home-welcome-poetry {
         max-width: 440px;
         padding: 24px 30px;
         border-radius: 22px;
         z-index: 5;
     }
+
+    /* Regole specifiche per il testo nella versione desktop */
+    .home-welcome-poetry h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .home-welcome-poetry p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+    }
+
     
     .stats-bar {
         display: flex;
