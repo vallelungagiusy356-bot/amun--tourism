@@ -132,30 +132,42 @@ html, body {
 
                   
     /* ==========================================================================
-   4. GRIGLIA CARD DESKTOP (Grandi e Centrate) - EFFETTO PREMIUM
+   4. GRIGLIA CARD DESKTOP (Modifica Proporzioni)
    ========================================================================== */
 .citizen-centered-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Una colonna singola per la versione verticale */
+    grid-template-columns: 1fr;
     gap: 40px;                     
     width: 90%;
     max-width: 650px;              
-    margin: 50px 0 40px 20 px;   
+    margin: 50px auto 40px auto;   /* Centrato correttamente */
     padding: 0 20px;
     box-sizing: border-box;
 }
 
 .quadrant {
     position: relative;
-    background: rgba(0, 0, 0, 0.5); /* Leggermente più scuro per far risaltare l'oro */
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 215, 160, 0.6); /* Bordino dorato più visibile */
+    border: 1px solid rgba(255, 215, 160, 0.6);
     border-radius: 20px;
-    padding: 50px 40px; /* Aumentato il padding per allungare/ingrandire la card */
-    min-height: 220px;
+    
+    /* MODIFICA: Padding verticale ridotto a 25px (era 50px) */
+    padding: 25px 40px; 
+    
+    /* MODIFICA: Min-height ridotto a 100px (era 220px) per renderle meno alte */
+    min-height: 100px;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
+    box-shadow: 0 0 20px rgba(255, 215, 160, 0.25); 
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
+    cursor: pointer;
+}
+
     
     /* EFFETTO GLOW ORO */
     box-shadow: 0 0 20px rgba(255, 215, 160, 0.25); 
