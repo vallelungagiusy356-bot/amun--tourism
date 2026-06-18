@@ -139,8 +139,8 @@ html, body {
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;                     
-    width: 95%;                   /* Aumentato da 90% a 95% */
-    max-width: 950px;             /* Aumentato da 650px a 950px */
+    width: 95%;                   
+    max-width: 950px;             
     margin: 50px auto 40px auto;   
     padding: 0 20px;
     box-sizing: border-box;
@@ -167,22 +167,11 @@ html, body {
     cursor: pointer;
 }
 
- 
-    /* EFFETTO GLOW ORO */
-    box-shadow: 0 0 20px rgba(255, 215, 160, 0.25); 
-    
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    overflow: hidden;
-    cursor: pointer;
-}
-
 .quadrant:hover {
     transform: translateY(-5px) scale(1.02);
-    /* Glow più intenso al passaggio del mouse */
     box-shadow: 0 0 35px rgba(255, 215, 160, 0.5); 
     border-color: rgba(255, 215, 160, 0.9);
 }
-
 
 /* Riflesso Diagonale */
 .quadrant::before {
@@ -215,6 +204,7 @@ html, body {
     line-height: 1.7; 
     color: #d1c5ad; 
 }
+
 
 /* ==========================================================================
    5. INTERFACCIA CHAT BASE E CASTELLANA DESKTOP
