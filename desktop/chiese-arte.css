@@ -225,6 +225,20 @@ body::before {
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
 }
 
+.click-hint {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold); /* Usa la tua variabile dorata */
+    opacity: 0.7;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -15px; /* Lo avvicina leggermente al testo sopra */
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+
 /* ============================================================
    GRIGLIA CARTE CON GLOW POTENZIATO E FISSO DI BASE
 ============================================================ */
