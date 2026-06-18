@@ -153,9 +153,9 @@ html, body {
     border: 1px solid rgba(255, 215, 160, 0.6);
     border-radius: 20px;
     
-    width: 100%;                  /* Impostato a 100% per occupare tutto lo spazio del grid */
+    width: 100%;
     text-align: left;        
-    padding: 40px 60px;           /* Aumentato il padding per card più "importanti" */
+    padding: 40px 60px;
     
     display: flex;
     flex-direction: column;
@@ -167,8 +167,7 @@ html, body {
     cursor: pointer;
 }
 
-
-    
+ 
     /* EFFETTO GLOW ORO */
     box-shadow: 0 0 20px rgba(255, 215, 160, 0.25); 
     
@@ -392,16 +391,17 @@ html, body {
     .main-title { font-size: 1.6rem; }
     .leading-para { font-size: 0.9rem; }
 
-    .citizen-centered-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Una colonna singola */
-    gap: 40px;                     /* Più spazio tra le card */
-    width: 90%;
-    max-width: 650px;              /* Più stretto per una lettura elegante */
-    margin: 50px auto 40px auto;   
-    padding: 0 20px;
-    box-sizing: border-box;
-}
+        .citizen-centered-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;                     
+        width: 95%;
+        max-width: 900px;              /* Aggiornato per coerenza con il desktop */
+        margin: 30px auto 40px auto;   
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
 
 
     .quadrant { min-height: 85px; padding: 14px 18px; }
