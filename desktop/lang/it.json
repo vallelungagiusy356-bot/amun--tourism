@@ -6,12 +6,14 @@
     "contact": "Contatti"
   },
   "home": {
-    "chat_web": "Parla con la Castellana sul sito web",
-    "amuni_title": "Benvenuto, o viandante...",
-    "amuni_text": "Benvenuto, o viandante, al limitare del tempo,<br>dove la storia respira in ogni soffio di vento.<br>Senti il richiamo di pietre millenarie e severe,<br>custodi di cunti, di dame, di antiche preghiere.<br><br>Non fermare il tuo passo, specchiati in questa magia,<br><strong>Amunì, vieni, ti indico la via.</strong>",
+    "welcome_title": "Benvenuti a Caccamo",
+    "poetry": "Quando la sera accarezza le pietre e la luna s’affaccia,<br>Caccamo si veste di luce e ogni ombra si slaccia.<br>Le mura del castello, maestose, sfidano il tempo,<br>mentre il borgo s'anima e danza nel soffio del vento.<br><br>Siediti sui gradini, senti i ciottoli sotto la mano,<br>mentre lo sguardo s'invola verso il lago lontano.<br>Il Rosamarina riposa tra le valli silenti,<br>e la notte sussurra segreti ai presenti.<br><br>Non è un semplice sguardo, è un ritorno alla vita,<br>una storia antica che nell'ombra ritorna gradita.<br><strong>Amunì, vieni a guardare con occhi nuovi.</strong>",
     "castellana_intro_title": "Vivi la Caccamo più autentica",
     "castellana_intro_text": "Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto tra le meraviglie del borgo e del territorio circostante.",
-    "talk_castellana": "Parla con la Castellana"
+    "install_app": "Porta Amunì con te",
+    "download_apk": "Scarica APK",
+    "open_webapp": "Vai alla WebApp",
+    "scan_qr": "Scansiona il QR"
   },
   "citizen": {
     "title": "Amunì Tourism - Cittadino del Borgo",
