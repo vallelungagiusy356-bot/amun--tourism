@@ -140,7 +140,7 @@ html, body {
     gap: 40px;                     
     width: 90%;
     max-width: 650px;              
-    margin: 50px auto 40px auto;   
+    margin: 50px 0 40px 20 px;   
     padding: 0 20px;
     box-sizing: border-box;
 }
