@@ -378,4 +378,15 @@ body {
         border-radius: 25px !important; 
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
     }
+   /* Stile per il Copyright a piè di pagina */
+.footer-copyright {
+    text-align: center;
+    padding: 40px 20px;
+    color: #ffd78f; /* Colore oro coerente con il resto del sito */
+    font-size: 0.9rem;
+    opacity: 0.7;
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 215, 160, 0.1);
+}
 }
