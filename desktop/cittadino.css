@@ -131,16 +131,17 @@ html, body {
 .leading-para { font-size: 1.2rem; color: #fff; font-weight: 500; }
 
                   
-    /* ==========================================================================
+    
+/* ==========================================================================
    4. GRIGLIA CARD DESKTOP (Modifica Proporzioni)
    ========================================================================== */
 .citizen-centered-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;                     
-    width: 90%;
-    max-width: 650px;              
-    margin: 50px auto 40px auto;   /* Centrato correttamente */
+    width: 95%;                   /* Aumentato da 90% a 95% */
+    max-width: 950px;             /* Aumentato da 650px a 950px */
+    margin: 50px auto 40px auto;   
     padding: 0 20px;
     box-sizing: border-box;
 }
@@ -152,13 +153,10 @@ html, body {
     border: 1px solid rgba(255, 215, 160, 0.6);
     border-radius: 20px;
     
-    /* MODIFICA: Più larghe e testo a sinistra */
-    width: 95%;              /* Occupa quasi tutto lo spazio disponibile */
-    max-width: 850px;        /* Molto più lunghe rispetto al precedente (650px) */
-    text-align: left;        /* Il testo parte da sinistra */
-    padding: 35px 50px;      /* Padding generoso per far respirare il testo */
+    width: 100%;                  /* Impostato a 100% per occupare tutto lo spazio del grid */
+    text-align: left;        
+    padding: 40px 60px;           /* Aumentato il padding per card più "importanti" */
     
-    /* Rimosso justify-content: center per permettere allineamento a sinistra */
     display: flex;
     flex-direction: column;
     justify-content: flex-start; 
@@ -168,6 +166,7 @@ html, body {
     overflow: hidden;
     cursor: pointer;
 }
+
 
     
     /* EFFETTO GLOW ORO */
