@@ -378,6 +378,7 @@ body {
         border-radius: 25px !important; 
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
     }
+}
    /* Stile per il Copyright a piè di pagina */
 .footer-copyright {
     text-align: center;
@@ -389,4 +390,4 @@ body {
     margin-top: 20px;
     border-top: 1px solid rgba(255, 215, 160, 0.1);
 }
-}
+
