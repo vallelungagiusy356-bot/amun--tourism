@@ -98,35 +98,47 @@ body {
     text-align: center;
 }
 
-/* POESIA MOBILE — OTTIMIZZATA MINIMAL ED ELEGANTE */
+/* Stile per il container "fluttuante" */
 .home-welcome-poetry {
-    width: 80%;
-    margin: 15px auto;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.25) !important;
-    backdrop-filter: blur(6px) saturate(150%);
-    -webkit-backdrop-filter: blur(2px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 25px !important; 
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    background: transparent !important; /* Rimosso lo sfondo opaco */
+    backdrop-filter: blur(5px);
+    border: none !important; /* Rimosso il bordo */
+    box-shadow: none !important; /* Rimosso l'ombra del box */
+    text-align: center;
 }
 
+/* Titolo con font elegante e glow */
 .home-welcome-poetry h1 {
-    font-family: 'Georgia', 'Times New Roman', Times, serif;
-    font-size: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
     color: #ffd78f;
-    margin-bottom: 12px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(255, 215, 160, 0.6); /* Effetto Glow */
+    font-style: italic;
 }
 
-.home-welcome-poetry p {
-    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #f7f2e9;
-    font-style: italic;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.95);
+/* Barra Oro (Separatore) */
+.gold-divider {
+    width: 60px;
+    height: 2px;
+    background: #ffd78f;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 0 10px #ffd78f; /* Glow anche sulla linea */
 }
+
+/* Poesia con font Lora (molto elegante) */
+.home-welcome-poetry p {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #fff;
+    font-style: italic;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
 
 /* ============================================================
    BOX INTRODUTTIVO CASTELLANA (HOME)
