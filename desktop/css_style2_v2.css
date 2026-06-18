@@ -238,23 +238,37 @@ body {
     color: #ccc;
 }
 
-/* CHAT MOBILE BASE */
-.chat-desktop {
-    width: 90%;
-    margin: 20px auto;
-    background: rgba(0, 0, 0, 0.9);
-    border: 1px solid #ffd78f;
-    border-radius: 15px;
+ CHAT DEFINITIVA */
+.chat-interface {
+    position: fixed;
+    bottom: -100%; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 400px;
+    background: rgba(10, 8, 5, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 160, 0.4);
+    border-radius: 20px 20px 0 0;
     padding: 15px;
+    z-index: 1000;
+    transition: bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.8);
 }
 
+.chat-interface.active {
+    bottom: 0;
+}
+
+/* Stili interni chat (che avevi già) */
 .chat-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: #ffd78f;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+   }
 
 .chat-messages {
     height: 120px;
