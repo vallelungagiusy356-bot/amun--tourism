@@ -29,7 +29,8 @@ html, body {
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
     color: var(--text-light);
-    background: #050302 !important; /* Aggiunto colore scuro di fallback */
+    /* CAMBIA QUESTO: da #050302 a transparent */
+    background: transparent !important; 
     overflow-x: hidden;
 }
 
@@ -42,6 +43,8 @@ html, body {
     inset: 0;
     z-index: -1; 
     overflow: hidden;
+    /* AGGIUNGI QUESTO: Il nero serve qui, non sul body */
+    background-color: #050302; 
 }
 
 .scene-background-container video {
