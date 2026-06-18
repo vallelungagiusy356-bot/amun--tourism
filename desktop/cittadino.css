@@ -152,15 +152,16 @@ html, body {
     border: 1px solid rgba(255, 215, 160, 0.6);
     border-radius: 20px;
     
-    /* MODIFICA: Padding verticale ridotto a 25px (era 50px) */
-    padding: 25px 40px; 
+    /* MODIFICA: Più larghe e testo a sinistra */
+    width: 95%;              /* Occupa quasi tutto lo spazio disponibile */
+    max-width: 850px;        /* Molto più lunghe rispetto al precedente (650px) */
+    text-align: left;        /* Il testo parte da sinistra */
+    padding: 35px 50px;      /* Padding generoso per far respirare il testo */
     
-    /* MODIFICA: Min-height ridotto a 100px (era 220px) per renderle meno alte */
-    min-height: 100px;
-    
+    /* Rimosso justify-content: center per permettere allineamento a sinistra */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; 
     
     box-shadow: 0 0 20px rgba(255, 215, 160, 0.25); 
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
