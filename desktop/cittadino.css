@@ -164,29 +164,28 @@ html, body {
 }
 
 /* Strato di luce ambientale per le card (Copiato dal Premium Menu) */
-.quadrant::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -110%;
-    width: 35%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 215, 160, 0) 0%,
-        rgba(255, 215, 160, 0.2) 50%,
-        rgba(255, 215, 160, 0) 100%
-    );
-    transform: rotate(-45deg);
-    animation: desktopGlowLoop 8s infinite ease-in-out;
-    pointer-events: none;
+.quadrant {
+    position: relative;
+    background: rgba(0, 0, 0, 0.4); /* Leggermente più trasparente per il vetro */
+    backdrop-filter: blur(10px);    /* Effetto sfocato per profondità */
+    border: 1px solid rgba(255, 215, 160, 0.4);
+    border-radius: 20px;
+    padding: 40px 35px;            
+    min-height: 200px;             /* Card molto più alte e imponenti */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    transition: all 0.4s ease;
+    overflow: hidden; 
 }
 
 .quadrant:hover {
-    transform: translateY(-5px) scale(1.02);
-    border-color: rgba(255, 215, 160, 0.85);
-    box-shadow: 0 16px 40px rgba(255, 215, 160, 0.2);
+    transform: translateY(-10px) scale(1.01); /* Movimento più deciso */
+    border-color: rgba(255, 215, 160, 0.9);
+    box-shadow: 0 20px 50px rgba(255, 215, 160, 0.15);
 }
+
 
 /* Flash rapido al passaggio del mouse */
 .quadrant:hover::before {
@@ -394,13 +393,16 @@ html, body {
     .leading-para { font-size: 0.9rem; }
 
     .citizen-centered-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-        width: 100%;
-        max-width: 68%; 
-        margin: 15px 0 25px 20px;
-        padding: 0;
-    }
+    display: grid;
+    grid-template-columns: 1fr; /* Una colonna singola */
+    gap: 40px;                     /* Più spazio tra le card */
+    width: 90%;
+    max-width: 650px;              /* Più stretto per una lettura elegante */
+    margin: 50px auto 40px auto;   
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
 
     .quadrant { min-height: 85px; padding: 14px 18px; }
     .card-text-block h2 { font-size: 1.05rem; margin-bottom: 3px; }
