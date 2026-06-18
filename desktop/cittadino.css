@@ -147,26 +147,31 @@ html, body {
 
 .quadrant {
     position: relative;
-    background: rgba(0, 0, 0, 0.4); 
-    backdrop-filter: blur(10px);    
-    border: 1px solid rgba(255, 215, 160, 0.4);
+    background: rgba(0, 0, 0, 0.5); /* Leggermente più scuro per far risaltare l'oro */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 215, 160, 0.6); /* Bordino dorato più visibile */
     border-radius: 20px;
-    padding: 40px 35px;            
-    min-height: 200px;             
+    padding: 50px 40px; /* Aumentato il padding per allungare/ingrandire la card */
+    min-height: 220px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
-    transition: all 0.4s ease;
-    overflow: hidden; 
+    
+    /* EFFETTO GLOW ORO */
+    box-shadow: 0 0 20px rgba(255, 215, 160, 0.25); 
+    
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
     cursor: pointer;
 }
 
 .quadrant:hover {
-    transform: translateY(-10px) scale(1.01); 
+    transform: translateY(-5px) scale(1.02);
+    /* Glow più intenso al passaggio del mouse */
+    box-shadow: 0 0 35px rgba(255, 215, 160, 0.5); 
     border-color: rgba(255, 215, 160, 0.9);
-    box-shadow: 0 20px 50px rgba(255, 215, 160, 0.15);
 }
+
 
 /* Riflesso Diagonale */
 .quadrant::before {
@@ -183,7 +188,7 @@ html, body {
         rgba(255, 255, 255, 0) 100%
     );
     transform: rotate(-30deg);
-    animation: desktopGlowLoop 6s infinite ease-in-out;
+    animation: desktopGlowLoop 9s infinite ease-in-out;
     pointer-events: none;
 }
 
