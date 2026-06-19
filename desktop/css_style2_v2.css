@@ -324,6 +324,56 @@ body {
     height: 120px;
     overflow-y: auto;
     margin-bottom: 10px;
+   /* ==========================================================================
+   MEDIA QUERY: CORREZIONI MOBILI (Sotto i 900px)
+   ========================================================================== */
+@media screen and (max-width: 899px) {
+    
+    /* 1. Sfondo meno scuro per Mobile */
+    .scene-background {
+        filter: brightness(0.65) contrast(1.1) saturate(1.1) !important;
+    }
+
+    /* 2. Dashboard: Impilamento e Centramento */
+    .dashboard {
+        height: auto; /* Permette alla dashboard di espandersi se va a capo */
+        padding: 15px;
+        flex-direction: column; /* Impila logo e nav */
+        gap: 15px;
+    }
+
+    .nav-desktop {
+        gap: 10px;
+        flex-wrap: wrap; /* Permette ai tasti di andare a capo */
+        justify-content: center;
+    }
+
+    /* 3. Centratura contenuti Narrativi */
+    .home-welcome-poetry, 
+    .castellana-intro-card,
+    .install-app-desktop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 4. Video Castellana: Centramento assoluto */
+    .castellana-video-wrapper {
+        margin: 20px auto; /* Centra il wrapper */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 5. Riduzione margini per far respirare il layout su piccoli schermi */
+    main {
+        padding-top: 100px; /* Spazio per la dashboard che è diventata più alta */
+    }
+}
+
 }
 
 /* ==========================================================================
