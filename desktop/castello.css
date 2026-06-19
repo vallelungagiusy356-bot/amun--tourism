@@ -553,14 +553,14 @@ html, body {
         -webkit-backdrop-filter: blur(8px) saturate(120%);
     }
 
-    .poesia-corpo p {
-        font-size: 1.45rem;
+     .poesia-corpo p {
+        font-size: 1.7rem; /* Aumentato: era 1.45rem */
+        line-height: 1.6;  /* Aumentato leggermente per mantenere leggibilità con testo più grande */
     }
 
     .descrizione-storica p {
-        font-size: 1.3rem;
+        font-size: 1.5rem; /* Aumentato: era 1.3rem */
     }
-
     .dress-img-inline {
         width: 180px;
     }
