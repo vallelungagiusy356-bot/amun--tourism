@@ -39,6 +39,20 @@
   },
   "pages": {
      "pages": {
+       "about": {
+    "title": "La Visione di Amunì",
+    "mission": "Amunì nasce per fortificare la resilienza del nostro territorio. Non è solo conoscenza, è valorizzazione.",
+    "service_details": "Offriamo una guida multilingue (5 lingue) consultabile H24 tramite versione Premium. Ti accompagniamo lungo percorsi inediti e logistica locale, inclusa la linea Randazzo di Gesù, per raggiungere il mare (Pietra Piatta, Vetrana, Ombelico di Venere) e i borghi vicini come Termini Imerese, Trabia e San Nicola.",
+    "insider_value": "La Castellana svela segreti non accessibili altrove: aneddoti e chicche che solo chi abita il borgo conosce."
+  },
+  "chi_siamo": {
+    "title": "Chi siamo: La Nostra Storia",
+    "founder_bio": "Sono una mamma che agisce sul territorio, fondendo la visione scientifica di una chimica e programmatrice con la creatività di una web designer.",
+    "philosophy": "Questo sito non è un traguardo, ma un inizio che vive dei vostri feedback. La cultura popolare è un patrimonio vivo.",
+    "voices": "Il sito custodisce le voci delle mie bambine che narrano giochi e conte, insieme alla mia voce che tramanda preghiere e tradizioni. Una memoria che trasmettiamo alle generazioni future.",
+    "freemium_model": "I contenuti evocativi sui monumenti sono liberi. L'approfondimento tecnico (dettagli su soffitti, quadri d'autore, storia stratificata) e la guida alla scoperta sono riservati alla memoria della Castellana Premium.",
+    "events": "Dalla Pasqua alle tradizioni culinarie, ogni evento è un viaggio che la Castellana ti aiuterà ad approfondire in chat."
+  }
     "castle_page": {
       "title": "Il Castello di Caccamo",
       "category": "Monumenti Storici",
