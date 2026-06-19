@@ -25,18 +25,25 @@ body {
     border-bottom: 1px solid #d4af37;
 }
 
-.logo-title { font-weight: bold; font-size: 1.4rem; color: #ffd700; text-transform: uppercase; letter-spacing: 2px; }
+.logo-title { 
+    font-weight: bold; 
+    font-size: 1.4rem; 
+    color: #ffd700; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+}
 
-/* Stile comune per bottoni e link nel menù */
+/* Stile comune per bottoni e link: EFFETTO RIFLESSO */
 .nav-desktop a, .lang-switcher button {
-    padding: 10px 20px;
-    margin: 0 5px;
+    padding: 12px 22px;
+    margin: 0 8px;
     border: 1px solid #d4af37;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0,0,0,0.2));
+    /* Gradiente diagonale per effetto metallico */
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(0,0,0,0.2));
     color: #e6dcc5;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 0.95rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 3px;
@@ -62,7 +69,7 @@ h1 {
     font-size: 4rem;
     margin-bottom: 1.5rem;
     line-height: 1.1;
-    /* Effetto Oro Reale */
+    /* Oro Realistico */
     background: linear-gradient(to bottom, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
     -webkit-background-clip: text;
     background-clip: text;
@@ -79,7 +86,7 @@ h1 {
     background: linear-gradient(to right, transparent, #d4af37, transparent);
 }
 
-/* --- TESTO --- */
+/* --- TESTO (Leggibilità migliorata) --- */
 p {
     font-size: 1.4rem;
     line-height: 1.9; /* Maggiore interlinea per eleganza */
