@@ -1,43 +1,74 @@
-/* Stile base Mocha */
+/* RESET E BASE */
+* { box-sizing: border-box; }
 body {
-    background-color: #3e2a1d; /* Mocha scuro */
-    background-image: radial-gradient(circle at 50% 50%, #4a3222, #3e2a1d);
-    color: #e0d0b0;
-    font-family: 'Cormorant Garamond', serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    /* Background Mocha profondo e raffinato */
+    background: radial-gradient(circle at center, #4a3626 0%, #2b1d12 100%);
+    font-family: 'Cormorant Garamond', serif;
+    color: #e6dcc5; /* Un crema molto tenue, più elegante del bianco */
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centra tutto verticalmente */
 }
 
-/* Contenitore principale */
+/* BOX CONTENUTO */
 .content-wrapper {
-    max-width: 800px;
-    margin: 100px auto;
-    padding: 40px;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-/* Testo Oro con Glow */
-h1 {
-    color: #d4af37;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-    font-size: 2.5rem;
+    width: 90%;
+    max-width: 700px;
+    padding: 3rem;
+    background: rgba(30, 20, 12, 0.6); /* Semi-trasparente */
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px); /* Effetto vetro smerigliato */
     text-align: center;
-    margin-bottom: 30px;
 }
 
+/* TITOLO ORO CON GLOW REALE */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: #ffd700; /* Oro vivido */
+    margin-bottom: 2rem;
+    /* Glow intenso */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(184, 134, 11, 0.5);
+}
+
+/* TESTO CORPO */
 p {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     line-height: 1.8;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
 }
 
+/* TESTO EVIDENZIATO */
 .highlight-gold {
+    color: #e4c575;
+    font-style: italic;
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+}
+
+/* NAVIGAZIONE */
+.dashboard {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard a {
     color: #d4af37;
-    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: opacity 0.3s;
+}
+
+.dashboard a:hover {
+    opacity: 0.7;
 }
