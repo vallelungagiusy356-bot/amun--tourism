@@ -5,16 +5,17 @@
     "about": "Chi siamo",
     "contact": "Contatti"
   },
-  "home": {
+    "home": {
     "welcome_title": "Benvenuti a Caccamo",
-    "poetry": "Quando la sera accarezza le pietre e la luna s’affaccia,<br>Caccamo si veste di luce e ogni ombra si slaccia.<br>Le mura del castello, maestose, sfidano il tempo,<br>mentre il borgo s'anima e danza nel soffio del vento.<br><br>Siediti sui gradini, senti i ciottoli sotto la mano,<br>mentre lo sguardo s'invola verso il lago lontano.<br>Il Rosamarina riposa tra le valli silenti,<br>e la notte sussurra segreti ai presenti.<br><br>Non è un semplice sguardo, è un ritorno alla vita,<br>una storia antica che nell'ombra ritorna gradita.<br><strong>Amunì, vieni a guardare con occhi nuovi.</strong>",
+    "poetry": "Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>Caccamo intreccia il suo respiro all'antica memoria.<br>Non è solo pietra che sfida le ere e le genti,<br><strong>che corre tra le mura di una fortezza possente.</strong><br><br><strong>Come un gomitolo che lento si srotola,<br>si diffonde in ogni vicolo, in ogni piccola storia.</strong><br>Un intreccio di secoli svelato <strong>con amore e mistero,</strong><br>per chi cerca il cuore pulsante di un borgo vero.<br><br><strong>Amunì, imbocca la via,<br>la Castellana è qui per farti compagnia.</strong>",
     "castellana_intro_title": "Vivi la Caccamo più autentica",
-    "castellana_intro_text": "Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto tra le meraviglie del borgo e del territorio circostante.",
+    "castellana_intro_text": "Lascia che la <strong>Castellana</strong> ti conduca oltre la superficie del borgo. Custode di memorie millenarie, ti svelerà storie inedite, percorsi dimenticati e i sapori autentici di una terra che trasuda leggenda.",
     "install_app": "Porta Amunì con te",
     "download_apk": "Scarica APK",
     "open_webapp": "Vai alla WebApp",
     "scan_qr": "Scansiona il QR"
   },
+
   "citizen": {
     "title": "Amunì Tourism - Cittadino del Borgo",
     "tag": "Comunità Locale",
