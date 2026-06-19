@@ -2,28 +2,26 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Amunì Tourism</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="desktop/pages.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Siamo | Amunì Tourism</title>
+    <link rel="stylesheet" href="pages.css">
 </head>
 <body>
 
-    <!-- Navigazione (identica alle altre pagine per coerenza) -->
     <header class="dashboard">
         <a href="index.html">Torna alla Home</a>
     </header>
 
     <main class="content-wrapper">
-    <h1 data-i18n="pages.chi_siamo.title"></h1>
-    <p data-i18n="pages.chi_siamo.founder_bio"></p>
-    <p data-i18n="pages.chi_siamo.philosophy"></p>
-    <p data-i18n="pages.chi_siamo.voices"></p>
-</main>
-
+        <h1 data-i18n="pages.chi_siamo.title"></h1>
+        <p data-i18n="pages.chi_siamo.founder_bio"></p>
+        <p data-i18n="pages.chi_siamo.philosophy"></p>
+        <p data-i18n="pages.chi_siamo.voices"></p>
+    </main>
 
     <script>
-        // Caricamento lingua (lo stesso script usato nel castello)
         const lang = localStorage.getItem("lang") || "it";
+        // Cerca la cartella 'lang' che è nella stessa cartella di questo file
         fetch(`./lang/${lang}.json`)
             .then(res => res.json())
             .then(data => {
