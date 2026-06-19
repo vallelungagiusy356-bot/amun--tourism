@@ -460,3 +460,18 @@ html, body {
     100% { left: 130%; }
 }
 
+/* ============================================================
+   MOBILE AD HOC: Contenimento Card strette
+   ============================================================ */
+@media screen and (max-width: 600px) {
+    .cards {
+        max-width: 450px !important; /* Limita lo spazio totale per le card */
+        width: 90% !important;       /* Occupano solo il 90% dello schermo */
+        margin: 0 auto !important;
+        padding: 0 10px !important;
+    }
+
+    .card {
+        margin: 0 auto;             /* Centra le card se diventano troppo strette */
+    }
+}
