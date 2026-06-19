@@ -5,10 +5,10 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: radial-gradient(circle at center, #4a3626 0%, #2b1d12 100%);
+    /* Fondo Mocha più profondo */
+    background: radial-gradient(circle at center, #35261a 0%, #1a130e 100%);
     font-family: 'Cormorant Garamond', serif;
     color: #e6dcc5;
-    /* CORREZIONE FONDAMENTALE: impilamento verticale */
     display: flex;
     flex-direction: column; 
     align-items: center;
@@ -16,57 +16,74 @@ body {
 
 /* --- DASHBOARD (Header) --- */
 .dashboard {
-    width: 100%; /* Occupa tutta la larghezza */
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    padding: 25px 50px;
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid #d4af37;
 }
 
-.logo-title { font-weight: bold; font-size: 1.2rem; color: #ffd700; }
+.logo-title { font-weight: bold; font-size: 1.4rem; color: #ffd700; text-transform: uppercase; letter-spacing: 2px; }
 
-.nav-desktop a {
+/* Stile comune per bottoni e link nel menù */
+.nav-desktop a, .lang-switcher button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #d4af37;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0,0,0,0.2));
     color: #e6dcc5;
-    margin: 0 10px;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.nav-desktop a:hover, .lang-switcher button:hover {
+    background: rgba(212, 175, 55, 0.3);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
 /* --- CONTENUTO --- */
 .content-wrapper {
     width: 90%;
-    max-width: 800px;
-    padding: 40px 20px;
+    max-width: 850px;
+    padding: 60px 20px;
     text-align: center;
-    flex-grow: 1; /* Spinge il contenuto verso il basso se necessario */
 }
 
-/* --- TITOLO (Più grande e Oro Brillante) --- */
+/* --- TITOLO ORO METALLICO --- */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem; /* Aumentato */
-    color: #FFD700; /* Oro Puro */
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-    margin-bottom: 2rem;
-    line-height: 1.2;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    /* Effetto Oro Reale */
+    background: linear-gradient(to bottom, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-/* --- TESTO (Aumentato per leggibilità) --- */
+/* --- LINEA ORO (DIVIDER) --- */
+.gold-divider {
+    width: 50%;
+    height: 1px;
+    margin: 20px auto 40px auto;
+    border: none;
+    background: linear-gradient(to right, transparent, #d4af37, transparent);
+}
+
+/* --- TESTO --- */
 p {
-    font-size: 1.6rem; /* Aumentato */
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-/* --- LINGUE --- */
-.lang-switcher button {
-    background: transparent;
-    border: 1px solid #ffd700;
-    color: #ffd700;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 5px;
+    font-size: 1.4rem;
+    line-height: 1.9; /* Maggiore interlinea per eleganza */
+    margin-bottom: 25px;
+    color: #dcd0b5;
+    font-weight: 300;
 }
