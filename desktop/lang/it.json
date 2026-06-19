@@ -2,9 +2,10 @@
   "menu": {
     "title": "Amunì Tourism",
     "citizen": "Cittadino del borgo",
-    "about": "Chi siamo",
+    "about": "Il Progetto",
+    "chi_siamo": "Chi Siamo",
     "contact": "Contatti"
-  },
+},
     "home": {
     "welcome_title": "Benvenuti a Caccamo",
     "poetry": "Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>Caccamo intreccia il suo respiro all'antica memoria.<br>Non è solo pietra che sfida le ere e le genti,<br><strong>che corre tra le mura di una fortezza possente.</strong><br><br><strong>Come un gomitolo che lento si srotola,<br>si diffonde in ogni vicolo, in ogni piccola storia.</strong><br>Un intreccio di secoli svelato <strong>con amore e mistero,</strong><br>per chi cerca il cuore pulsante di un borgo vero.<br><br><strong>Amunì, imbocca la via,<br>la Castellana è qui per farti compagnia.</strong>",
