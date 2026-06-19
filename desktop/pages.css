@@ -1,4 +1,4 @@
-/* RESET E BASE */
+/* --- RESET --- */
 * { box-sizing: border-box; }
 body {
     margin: 0;
@@ -7,68 +7,79 @@ body {
     /* Background Mocha profondo e raffinato */
     background: radial-gradient(circle at center, #4a3626 0%, #2b1d12 100%);
     font-family: 'Cormorant Garamond', serif;
-    color: #e6dcc5; /* Un crema molto tenue, più elegante del bianco */
+    color: #e6dcc5;
+    /* Usiamo Flexbox per centrare il contenuto, ma permettiamo l'espansione */
     display: flex;
     justify-content: center;
-    align-items: center; /* Centra tutto verticalmente */
+    align-items: center;
 }
 
-/* BOX CONTENUTO */
+/* --- CONTENITORE EDITORIALE --- */
 .content-wrapper {
-    width: 90%;
-    max-width: 700px;
-    padding: 3rem;
-    background: rgba(30, 20, 12, 0.6); /* Semi-trasparente */
-    border: 1px solid rgba(212, 175, 55, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px); /* Effetto vetro smerigliato */
+    width: 92%;
+    max-width: 950px; /* Più largo per occupare la pagina */
+    padding: 4rem 2rem;
+    background: transparent; /* Tolto il box nero */
+    border: none;
     text-align: center;
+    /* Aggiungiamo un leggero spazio extra sopra e sotto */
+    margin: auto;
 }
 
-/* TITOLO ORO CON GLOW REALE */
+/* --- TITOLO --- */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    letter-spacing: 2px;
-    color: #ffd700; /* Oro vivido */
-    margin-bottom: 2rem;
-    /* Glow intenso */
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(184, 134, 11, 0.5);
+    font-size: 4rem; /* Molto più grande e d'impatto */
+    letter-spacing: 3px;
+    color: #ffd700;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
-/* TESTO CORPO */
+/* --- TESTO --- */
 p {
-    font-size: 1.4rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
+    font-size: 1.7rem; /* Testo più leggibile e importante */
+    line-height: 1.9;
+    margin-bottom: 2rem;
     font-weight: 300;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Leggera ombra per staccare dal fondo */
 }
 
-/* TESTO EVIDENZIATO */
 .highlight-gold {
     color: #e4c575;
     font-style: italic;
-    text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+    font-weight: 500;
 }
 
-/* NAVIGAZIONE */
+/* Stile Dashboard Uniforme */
 .dashboard {
-    position: absolute;
-    top: 20px;
-    width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.2); /* Sfondo leggermente scuro per staccare */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-.dashboard a {
-    color: #d4af37;
+.nav-desktop a {
+    color: #e6dcc5;
+    margin: 0 15px;
     text-decoration: none;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: opacity 0.3s;
+    font-size: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    transition: color 0.3s;
 }
 
-.dashboard a:hover {
-    opacity: 0.7;
+.nav-desktop a:hover {
+    color: #ffd700; /* Oro al passaggio del mouse */
+}
+
+.lang-switcher button {
+    background: none;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    margin-left: 5px;
 }
