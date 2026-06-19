@@ -38,17 +38,19 @@
     "chiese_msg": "Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo e chiedimi dettagli sulle loro storie."
   },
   "pages": {
-     "castle_page": {
+     "pages": {
+    "castle_page": {
       "title": "Il Castello di Caccamo",
       "category": "Monumenti Storici",
       "dress_caption": "L'abito della Castellana",
       "welcomemsg_felicia": "Benvenuto, viandante. I muri di questo maniero hanno visto secoli di intrighi e passioni. Chiedimi ciò che i libri di storia hanno dimenticato... cosa desideri sapere del mio Castello?",
-      "rhyme_1": "Varcate la soglia, o viandanti del tempo,<br>dove il passato sussurra a ogni evento.<br>Non è solo pietra, né mero bastione,<br>ma un libro di marmo, di gloria e passione.",
-      "rhyme_2": "Dalle sale celate ai silenzi sovrani,<br>trame di nobili, sogni lontani.<br>La storia non dorme, si scioglie nell'aria,<br>nella danza sottile di questa leggendaria.",
+      "rhyme_1": "In un castello normanno forgiato dal tempo,<br>venite, ammirate, fermatevi un momento.<br>Non è solo pietra, né freddo baluardo,<br>ma un'anima antica che attende il tuo sguardo.",
+      "rhyme_2": "La storia non dorme, si scioglie nell'aria,<br>e rivive nel cuore di chi oggi ne ascolta la trama.",
       "rhyme_3": "Non cercate risposte in vecchie carte ingiallite,<br>ma nel mio sguardo, tra ombre smarrite.<br>Sono la Castellana, custode del filo,<br>svelerò a chi ascolta l'antico profilo.",
       "para_2": "Il Castello non è soltanto una fortezza. È un corpo vivo che respira le trame dei Chiaramonte e le inquietudini dell'Inquisizione. Oltre le pareti che sfidano i secoli, si cela il cuore pulsante di Caccamo, un segreto che non attende di essere letto, ma di essere raccontato.",
       "para_3": "Ogni pietra conserva una voce, ogni corridoio un presagio. Non limitarti a osservare la superficie: entra nel vivo del mistero. La Castellana è qui, pronta a trasformare la tua visita in un viaggio che va oltre la storia, dritto nel mito."
-     },
+    },
+
     "chiese_page": {
       "page_title": "Le Chiese di Caccamo",
       "poesia_intro": "Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.",
