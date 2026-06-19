@@ -29,47 +29,87 @@ body {
     z-index: -10;
 }
 
-/* HEADER / NAVBAR MOBILE E BASE */
+
+/* DASHBOARD PREMIUM */
 .dashboard {
     width: 100%;
-    padding: 10px 20px;
-    background: rgba(0, 0, 0, 0.85);
-    border-bottom: 1px solid rgba(255, 215, 160, 0.4);
+    height: 80px; /* Più alta e spaziosa */
+    padding: 0 50px;
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 2px solid #ffd78f;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
 }
 
-.dashboard .logo-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #ffd78f;
-}
-
+/* NAV LINK BOX CON RIFLESSO */
 .nav-desktop {
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 .nav-desktop a {
     color: #ffd78f;
     text-decoration: none;
-    font-size: 0.8rem;
-    padding: 5px 10px;
-}
-
-.lang-switcher {
-    display: flex;
-    gap: 5px;
-}
-
-.lang-switcher button {
-    background: rgba(0, 0, 0, 0.7);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 8px 18px;
     border: 1px solid #ffd78f;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden; /* Fondamentale per il riflesso */
+    transition: all 0.3s ease;
 }
+
+.nav-desktop a:hover {
+    background: rgba(255, 215, 160, 0.15);
+    box-shadow: 0 0 15px rgba(255, 215, 160, 0.3);
+}
+
+/* L'animazione del riflesso diagonale */
+.nav-desktop a::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 160, 0) 0%,
+        rgba(255, 215, 160, 0.3) 50%,
+        rgba(255, 215, 160, 0) 100%
+    );
+    transform: rotate(45deg);
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0% { left: -150%; }
+    20% { left: 150%; }
+    100% { left: 150%; }
+}
+
+/* LINGUE PREMIUM */
+.lang-switcher button {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.lang-switcher button:hover {
+    background: #ffd78f;
+    color: #000;
+}
+
 
 /* VIDEO CASTELLANA MOBILE */
 .castellana-video-wrapper {
