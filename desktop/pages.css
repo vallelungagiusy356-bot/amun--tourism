@@ -18,20 +18,30 @@ body {
 .dashboard {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centriamo tutto per evitare spostamenti strani */
     align-items: center;
-    padding: 25px 50px;
+    padding: 20px 20px;
     background: rgba(0, 0, 0, 0.4);
     border-bottom: 1px solid #d4af37;
+    flex-wrap: wrap; /* FONDAMENTALE: manda a capo gli elementi se non c'è spazio */
+    gap: 15px; /* Spazio tra i bottoni per evitare che si tocchino */
 }
 
-.logo-title { 
-    font-weight: bold; 
-    font-size: 1.4rem; 
-    color: #ffd700; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
+/* Riduciamo leggermente i margini dei bottoni per farli stare meglio */
+.nav-desktop a, .lang-switcher button {
+    padding: 8px 15px; /* Leggermente meno padding per risparmiare spazio */
+    margin: 0; /* Togliamo i margini laterali fissi, il gap nel flexbox farà il lavoro */
+    border: 1px solid #d4af37;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(0,0,0,0.2));
+    color: #e6dcc5;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 3px;
 }
+
 
 /* Stile comune per bottoni e link: EFFETTO RIFLESSO */
 .nav-desktop a, .lang-switcher button {
