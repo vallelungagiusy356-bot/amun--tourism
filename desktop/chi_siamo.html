@@ -5,36 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Siamo | Amunì Tourism</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="pages.css">
 </head>
 <body>
 
     <header class="dashboard">
-    <!-- Logo/Titolo -->
-    <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+        <!-- Logo/Titolo -->
+        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
-    <!-- Navigazione Principale -->
-    <nav class="nav-desktop">
-        <a href="desktop_index.html" data-i18n="menu.home">Home</a>
-        <a href="cittadino.html" data-i18n="menu.citizen">Cittadino del borgo</a>
-        <a href="about.html" data-i18n="menu.about">Il Progetto</a>
-         <a href="contact.html" data-i18n="menu.contact">Contatti</a>
-    </nav>
+        <!-- Navigazione Principale -->
+        <nav class="nav-desktop">
+            <a href="desktop_index.html" data-i18n="menu.home">Home</a>
+            <a href="cittadino.html" data-i18n="menu.citizen">Cittadino del borgo</a>
+            <a href="about.html" data-i18n="menu.about">Il Progetto</a>
+            <a href="contact.html" data-i18n="menu.contact">Contatti</a>
+        </nav>
 
-    <!-- Lingue -->
-    <div class="lang-switcher">
-        <button data-lang="it">IT</button>
-        <button data-lang="en">EN</button>
-        <button data-lang="fr">FR</button>
-        <button data-lang="de">DE</button>
-        <button data-lang="es">ES</button>
-    </div>
-</header>
-
+        <!-- Lingue -->
+        <div class="lang-switcher">
+            <button data-lang="it">IT</button>
+            <button data-lang="en">EN</button>
+            <button data-lang="fr">FR</button>
+            <button data-lang="de">DE</button>
+            <button data-lang="es">ES</button>
+        </div>
+    </header>
 
     <main class="content-wrapper">
         <h1 data-i18n="pages.chi_siamo.title"></h1>
+        
+        <!-- Linea d'oro elegante -->
+        <hr class="gold-divider">
+        
         <p data-i18n="pages.chi_siamo.founder_bio"></p>
         <p data-i18n="pages.chi_siamo.philosophy"></p>
         <p data-i18n="pages.chi_siamo.voices"></p>
@@ -42,7 +44,6 @@
 
     <script>
         const lang = localStorage.getItem("lang") || "it";
-        // Cerca la cartella 'lang' che è nella stessa cartella di questo file
         fetch(`./lang/${lang}.json`)
             .then(res => res.json())
             .then(data => {
