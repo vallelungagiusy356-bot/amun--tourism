@@ -461,17 +461,46 @@ html, body {
 }
 
 /* ============================================================
-   MOBILE AD HOC: Contenimento Card strette
+   MOBILE AD HOC: Ottimizzazione Card per schermi stretti
    ============================================================ */
-@media screen and (max-width: 600px) {
-    .cards {
-        max-width: 350px !important; /* Limita lo spazio totale per le card */
-        width: u0% !important;       /* Occupano solo il 90% dello schermo */
-        margin: 0 auto !important;
-        padding: 0 6px !important;
+@media screen and (max-width: 900px) {
+    
+    /* 1. Il contenitore occupa lo spazio disponibile senza sbordare */
+    .citizen-centered-grid {
+        grid-template-columns: 1fr !important; /* Una sola colonna */
+        gap: 20px !important;
+        padding: 0 15px !important;
+        width: 100% !important;
+        margin: 20px auto 100px auto !important;
     }
 
-    .card {
-        margin: 0 auto;             /* Centra le card se diventano troppo strette */
+    /* 2. Le card (quadrant) diventano più compatte */
+    .quadrant {
+        padding: 20px 25px !important; 
+        min-height: auto !important; 
+        text-align: center !important; /* Centriamo il testo su mobile per estetica */
     }
+
+    /* 3. Il titolo è più leggibile su schermi piccoli */
+    .card-text-block h2 {
+        font-size: 1.3rem !important; 
+        margin-bottom: 8px !important;
+    }
+
+    /* 4. Descrizione adattiva */
+    .card-description {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* Gestione del glow effect (aggiunto perché presente nel tuo HTML) */
+.card-glow-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle at center, rgba(255, 215, 160, 0.05), transparent 70%);
 }
