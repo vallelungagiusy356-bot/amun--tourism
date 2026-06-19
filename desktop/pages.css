@@ -1,85 +1,72 @@
-/* --- RESET --- */
+/* --- RESET E STRUTTURA --- */
 * { box-sizing: border-box; }
+
 body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    /* Background Mocha profondo e raffinato */
     background: radial-gradient(circle at center, #4a3626 0%, #2b1d12 100%);
     font-family: 'Cormorant Garamond', serif;
     color: #e6dcc5;
-    /* Usiamo Flexbox per centrare il contenuto, ma permettiamo l'espansione */
+    /* CORREZIONE FONDAMENTALE: impilamento verticale */
     display: flex;
-    justify-content: center;
+    flex-direction: column; 
     align-items: center;
 }
 
-/* --- CONTENITORE EDITORIALE --- */
-.content-wrapper {
-    width: 92%;
-    max-width: 950px; /* Più largo per occupare la pagina */
-    padding: 4rem 2rem;
-    background: transparent; /* Tolto il box nero */
-    border: none;
-    text-align: center;
-    /* Aggiungiamo un leggero spazio extra sopra e sotto */
-    margin: auto;
-}
-
-/* --- TITOLO --- */
-h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem; /* Molto più grande e d'impatto */
-    letter-spacing: 3px;
-    color: #ffd700;
-    margin-bottom: 3rem;
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-}
-
-/* --- TESTO --- */
-p {
-    font-size: 1.7rem; /* Testo più leggibile e importante */
-    line-height: 1.9;
-    margin-bottom: 2rem;
-    font-weight: 300;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Leggera ombra per staccare dal fondo */
-}
-
-.highlight-gold {
-    color: #e4c575;
-    font-style: italic;
-    font-weight: 500;
-}
-
-/* Stile Dashboard Uniforme */
+/* --- DASHBOARD (Header) --- */
 .dashboard {
+    width: 100%; /* Occupa tutta la larghezza */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    background: rgba(0, 0, 0, 0.2); /* Sfondo leggermente scuro per staccare */
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
 }
+
+.logo-title { font-weight: bold; font-size: 1.2rem; color: #ffd700; }
 
 .nav-desktop a {
     color: #e6dcc5;
-    margin: 0 15px;
+    margin: 0 10px;
     text-decoration: none;
-    font-size: 1rem;
-    font-family: 'Cormorant Garamond', serif;
-    transition: color 0.3s;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
-.nav-desktop a:hover {
-    color: #ffd700; /* Oro al passaggio del mouse */
+/* --- CONTENUTO --- */
+.content-wrapper {
+    width: 90%;
+    max-width: 800px;
+    padding: 40px 20px;
+    text-align: center;
+    flex-grow: 1; /* Spinge il contenuto verso il basso se necessario */
 }
 
+/* --- TITOLO (Più grande e Oro Brillante) --- */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; /* Aumentato */
+    color: #FFD700; /* Oro Puro */
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+/* --- TESTO (Aumentato per leggibilità) --- */
+p {
+    font-size: 1.6rem; /* Aumentato */
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* --- LINGUE --- */
 .lang-switcher button {
-    background: none;
-    border: 1px solid #d4af37;
-    color: #d4af37;
+    background: transparent;
+    border: 1px solid #ffd700;
+    color: #ffd700;
     padding: 5px 10px;
     cursor: pointer;
-    font-family: 'Cormorant Garamond', serif;
     margin-left: 5px;
 }
