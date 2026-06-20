@@ -228,15 +228,18 @@ body::before {
 .click-hint {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    color: var(--gold); /* Usa la tua variabile dorata */
-    opacity: 0.7;
-    font-size: 0.9rem;
+    color: #ffd78f; /* Assicurati che sia il colore corretto o usa var(--gold) */
+    opacity: 0.8;
+    font-size: 0.95rem;
     text-align: center;
-    margin-top: -15px; /* Lo avvicina leggermente al testo sopra */
-    margin-bottom: 25px;
+    /* CAMBIAMENTI QUI */
+    margin-top: 25px;   /* Sostituito il valore negativo con uno positivo */
+    margin-bottom: 10px;
     letter-spacing: 0.5px;
     text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    display: block;    /* Assicura che occupi la sua riga */
 }
+
 
 
 /* ============================================================
