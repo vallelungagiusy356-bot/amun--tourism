@@ -7,8 +7,12 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="castello.css">
-
-    <meta name="description" content="Il Castello di Caccamo: storia, leggende e misteri raccontati dalla Castellana. Vivi un'esperienza immersiva tra poesia, video e chat interattiva.">
+    
+    <style>
+        .nav-right-group { display: flex; align-items: center; gap: 20px; }
+        .lang-switcher button.active { border: 2px solid #ffd78f !important; background: rgba(255, 215, 160, 0.2) !important; font-weight: bold; }
+        .dashboard { display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
+    </style>
 </head>
 
 <body>
@@ -26,62 +30,55 @@
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
-        <nav class="nav-desktop">
-            <a href="desktop_index.html" class="nav-item">Home</a>
-            <a href="about.html" class="nav-item" data-i18n="menu.about">About</a>
-            <a href="contact.html" class="nav-item" data-i18n="menu.contact">Contact</a>
-        </nav>
+        <div class="nav-right-group">
+            <nav class="nav-desktop">
+                <a href="index.html" data-i18n="menu.home">Home</a>
+                <a href="cittadino.html" data-i18n="menu.citizen">Cittadino</a>
+            </nav>
 
-        <div class="header-right-actions">
             <div class="lang-switcher">
-                <button data-lang="it" class="active" title="Italiano">IT</button>
-                <button data-lang="en" title="English">EN</button>
-                <button data-lang="fr" title="Français">FR</button>
-                <button data-lang="de" title="Deutsch">DE</button>
-                <button data-lang="es" title="Español">ES</button>
+                <button data-lang="it">IT</button>
+                <button data-lang="en">EN</button>
+                <button data-lang="fr">FR</button>
+                <button data-lang="es">ES</button>
+                <button data-lang="de">DE</button>
             </div>
-
         </div>
     </header>
 
     <!-- 🏰 LAYOUT CENTRATO -->
     <main class="hero">
-    <div class="hero-text">
-        <span class="category-tag" data-i18n="pages.castle_page.category">Monumenti Storici</span>
-        <h1 data-i18n="pages.castle_page.title">Il Castello di Caccamo</h1>
-    </div>
-    
-    <section class="poesia-container">
+        <div class="hero-text">
+            <span class="category-tag" data-i18n="pages.castle_page.category">Monumenti Storici</span>
+            <h1 data-i18n="pages.castle_page.title">Il Castello di Caccamo</h1>
+        </div>
         
-        <!-- PARTE 1: La Poesia -->
-        <div class="poesia-corpo">
-            <p data-i18n="pages.castle_page.rhyme_1"></p>
-            <p data-i18n="pages.castle_page.rhyme_2"></p>
-            <p class="highlight-para" data-i18n="pages.castle_page.rhyme_3"></p>
-        </div>
+        <section class="poesia-container">
+            <div class="poesia-corpo">
+                <p data-i18n="pages.castle_page.rhyme_1"></p>
+                <p data-i18n="pages.castle_page.rhyme_2"></p>
+                <p class="highlight-para" data-i18n="pages.castle_page.rhyme_3"></p>
+            </div>
 
-        <!-- IMMAGINE CENTRALE -->
-        <figure class="castle-dress-inline">
-            <img src="img/abito_clean.png" alt="Abito storico della Castellana" class="dress-img-inline" loading="lazy">
-            <figcaption class="dress-caption-inline" data-i18n="pages.castle_page.dress_caption">
-                L'abito della Castellana
-            </figcaption>
-        </figure>
+            <figure class="castle-dress-inline">
+                <img src="img/abito_clean.png" alt="Abito storico della Castellana" class="dress-img-inline" loading="lazy">
+                <figcaption class="dress-caption-inline" data-i18n="pages.castle_page.dress_caption">
+                    L'abito della Castellana
+                </figcaption>
+            </figure>
 
-        <!-- PARTE 2: La Descrizione (Prosa) -->
-        <div class="poesia-corpo descrizione-storica">
-            <p data-i18n="pages.castle_page.para_2"></p>
-            <p class="highlight-para" data-i18n="pages.castle_page.para_3"></p>
-        </div>
+            <div class="poesia-corpo descrizione-storica">
+                <p data-i18n="pages.castle_page.para_2"></p>
+                <p class="highlight-para" data-i18n="pages.castle_page.para_3"></p>
+            </div>
 
-        <p class="poesia-outro">Lasciati guidare oltre le soglie del tempo...</p>
-    </section>
-</main>
-
+            <p class="poesia-outro">Lasciati guidare oltre le soglie del tempo...</p>
+        </section>
+    </main>
 
     <!-- 👑 WIDGET CASTELLANA -->
     <div class="castellana-widget-area">
-        <div class="castellana-video-wrapper" id="castellanaTrigger">
+        <div class="castellana-video-wrapper" id="chat-open-btn">
             <video class="castellana-video" autoplay loop muted playsinline>
                 <source src="img/castellana_alpha.webm" type="video/webm">
             </video>
@@ -90,33 +87,31 @@
     </div>
 
     <!-- 💬 CHAT -->
-    <div class="chat-desktop" id="chatDesktop">
-        <header class="chat-header">
+    <div class="chat-desktop" id="chat-desktop">
+        <div class="chat-header">
             <div class="avatar-status-dot"></div>
-            <span id="chatTitle" data-i18n="chat.title">La Castellana</span>
-            <button class="close-chat-btn" id="closeChatBtn">✕</button>
-        </header>
-
-        <div class="chat-messages" id="chatMessagesBox">
+            <span data-i18n="chat.title">La Castellana</span>
+            <button id="close-chat" class="close-chat-btn">✕</button>
+        </div>
+        <div class="chat-messages">
             <div class="message system-msg" data-i18n="pages.castle_page.welcomemsg_felicia">
-                Benvenuto al Castello di Caccamo! Sono la tua guida custode. Chiedimi pure della Sala delle Congiure o dei fantasmi che abitano queste mura...
+                Benvenuto al Castello di Caccamo! Sono la tua guida custode. Chiedimi pure della Sala delle Congiure...
             </div>
         </div>
-
         <div class="chat-input-row">
-            <input type="text" id="chatInput" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+            <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
             <button class="mic-btn">🎤</button>
         </div>
     </div>
 
     <script>
         // --- LOGICA CHAT ---
-        const chat = document.getElementById("chatDesktop");
-        const trigger = document.getElementById("castellanaTrigger");
-        const closeBtn = document.getElementById("closeChatBtn");
+        const chat = document.getElementById("chat-desktop");
+        const openBtn = document.getElementById("chat-open-btn");
+        const closeBtn = document.getElementById("close-chat");
 
-        trigger.addEventListener("click", () => { chat.style.display = 'flex'; });
-        closeBtn.addEventListener("click", () => { chat.style.display = 'none'; });
+        openBtn.addEventListener("click", () => chat.classList.add("active"));
+        closeBtn.addEventListener("click", () => chat.classList.remove("active"));
 
         // --- LOGICA LINGUA ---
         let currentLang = localStorage.getItem("lang") || "it";
@@ -136,8 +131,7 @@
                         if (text) el.placeholder = text;
                     });
                     document.querySelectorAll(".lang-switcher button").forEach(btn => {
-                        if (btn.dataset.lang === lang) btn.classList.add("active");
-                        else btn.classList.remove("active");
+                        btn.classList.toggle("active", btn.dataset.lang === lang);
                     });
                 })
                 .catch(err => console.error("Errore lingua:", err));
