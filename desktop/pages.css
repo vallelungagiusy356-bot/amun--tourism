@@ -104,3 +104,9 @@ p {
     color: #dcd0b5;
     font-weight: 300;
 }
+@media screen and (max-width: 600px) {
+    .dashboard {
+        height: auto !important; /* Si adatta al contenuto */
+        padding: 5px !important;
+    }
+}
