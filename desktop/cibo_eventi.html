@@ -3,76 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cibo ed Eventi | Amunì</title>
-    <!-- Font -->
+    <title>Cibo ed Eventi | Amunì Caccamo</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="cibo_eventi.css">
 </head>
 <body>
 
-    <!-- Dashboard Master -->
     <header class="dashboard">
         <div class="logo-title">Amunì Tourism</div>
         <nav class="nav-desktop">
             <a href="index.html">Home</a>
-            <a href="cibo_eventi.html">Cibo & Eventi</a>
+            <a href="storia.html">Storia</a>
+            <a href="cibo_eventi.html" class="active">Cibo & Eventi</a>
         </nav>
-        <div class="header-right-actions">
-            <!-- Lingue -->
-        </div>
+        <div class="header-right-actions"></div>
     </header>
 
-    <div class="content-wrapper">
-        <h1>Cibo ed Eventi</h1>
-        <hr class="gold-divider">
-        
-        <p>Il tempo a Caccamo ha un sapore antico. Lascia che la Castellana ti prenda per mano tra i rituali della nostra terra.</p>
+    <main class="content-wrapper">
+        <section class="page-hero">
+            <h1>Il Calendario del Cuore</h1>
+            <p class="subtitle">Dove il tempo non scorre, ma si celebra. Scopri le stagioni che rendono Caccamo un luogo dell'anima.</p>
+            <hr class="gold-divider">
+        </section>
 
-        <!-- Griglia Eventi -->
-        <div class="event-grid">
-            <div class="event-card">
-                <h3>Il Ciclo Invernale</h3>
-                <p>Dalla magia della Cuccìa per Santa Lucia, al profumo dei Buccellati natalizi.</p>
-                <button class="chat-trigger" onclick="openChat()">Chiedi alla Castellana</button>
+        <section class="featured-event">
+            <div class="featured-content">
+                <span class="category-tag">Prossimo Appuntamento</span>
+                <h2>La Magia del Borgo</h2>
+                <p>Non è solo una data sul calendario, è un rituale che si ripete da secoli. Scopri come il borgo si prepara alla prossima festività, tra profumi di mandorla e il silenzio sacro delle processioni.</p>
+                <button class="chat-trigger" onclick="openChat()">Chiedi alla Castellana i dettagli</button>
             </div>
-
-            <div class="event-card">
-                <h3>Il Sacro e il Profano</h3>
-                <p>Le processioni pasquali, il rito della resurrezione e il fervore di San Nicasio.</p>
-                <button class="chat-trigger" onclick="openChat()">Chiedi alla Castellana</button>
+            <div class="featured-visual">
+                <div class="img-placeholder"></div>
             </div>
+        </section>
 
-            <div class="event-card">
-                <h3>Sapori del Borgo</h3>
-                <p>Ogni piatto racconta una storia di digiuno, festa e devozione.</p>
-                <button class="chat-trigger" onclick="openChat()">Chiedi alla Castellana</button>
+        <section class="event-directory">
+            <h3>Archivio Tradizioni</h3>
+            <div class="event-grid">
+                <article class="event-card">
+                    <div class="card-icon">❄️</div>
+                    <h4>Ciclo Invernale</h4>
+                    <p>Santa Lucia e la Cuccìa, il Natale dei Buccellati e il calore dei nostri presepi.</p>
+                    <button class="chat-trigger" onclick="openChat()">Scopri il sapore</button>
+                </article>
+
+                <article class="event-card">
+                    <div class="card-icon">🔥</div>
+                    <h4>Il Sacro e il Profano</h4>
+                    <p>Pasqua, il rito del fuoco e la devozione profonda che attraversa le nostre strade.</p>
+                    <button class="chat-trigger" onclick="openChat()">Vivi il rito</button>
+                </article>
+
+                <article class="event-card">
+                    <div class="card-icon">🍇</div>
+                    <h4>Sapori del Borgo</h4>
+                    <p>La dieta di una volta, il pane di casa e le ricette tramandate di madre in figlia.</p>
+                    <button class="chat-trigger" onclick="openChat()">Chiedi la ricetta</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="newsletter-cta">
+            <p>Vuoi che la Castellana ti avvisi quando il borgo si prepara a una nuova festa?</p>
+            <button class="main-button">Iscriviti alle Memorie di Caccamo</button>
+        </section>
+    </main>
+
+    <div class="castellana-widget-area">
+        <div class="castellana-video-wrapper" onclick="toggleChat()">
+            <video src="tuo_video_castellana.mp4" class="castellana-video" autoplay loop muted playsinline></video>
+        </div>
+        <div class="castellana-tooltip">Chiedi alla Castellana</div>
+
+        <div id="chatDesktop" class="chat-desktop">
+            <div class="chat-header">
+                <span><span class="avatar-status-dot"></span> Castellana</span>
+                <button class="close-chat-btn" onclick="toggleChat()">×</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="system-msg">Benvenuta nel borgo. Sono qui per guidarti tra le nostre tradizioni. Cosa desideri sapere?</div>
+            </div>
+            <div class="chat-input-row">
+                <input type="text" placeholder="Scrivi un messaggio..." id="chatInput">
+                <button class="mic-btn">🎙</button>
             </div>
         </div>
     </div>
-<!-- Widget Castellana -->
-<div class="castellana-widget-area">
-    <!-- Avatar (Cliccabile) -->
-    <div class="castellana-video-wrapper" onclick="toggleChat()">
-        <!-- Assicurati che il video sia in loop e muto -->
-        <video src="tuo_video_castellana.mp4" class="castellana-video" autoplay loop muted playsinline></video>
-    </div>
-    <div class="castellana-tooltip">Chiedi alla Castellana</div>
 
-    <!-- Finestra Chat -->
-    <div id="chatDesktop" class="chat-desktop">
-        <div class="chat-header">
-            <span><span class="avatar-status-dot"></span> Castellana</span>
-            <button class="close-chat-btn" onclick="toggleChat()">×</button>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="system-msg">Benvenuta nel borgo. Sono qui per guidarti tra le nostre tradizioni. Cosa desideri sapere?</div>
-        </div>
-        <div class="chat-input-row">
-            <input type="text" placeholder="Scrivi un messaggio..." id="chatInput">
-            <button class="mic-btn">🎙</button>
-        </div>
-    </div>
-</div>
+    <script>
+        function toggleChat() {
+            const chat = document.getElementById('chatDesktop');
+            chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+        }
+        function openChat() {
+            document.getElementById('chatDesktop').style.display = 'flex';
+        }
+    </script>
 
 </body>
 </html>
