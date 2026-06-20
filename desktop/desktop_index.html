@@ -7,6 +7,14 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Lora:ital@1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css_style2_v2.css">
+    <style>
+        /* Aggiungi questo piccolo stile nel CSS o qui per evidenziare il bottone attivo */
+        .lang-switcher button.active {
+            border: 2px solid #ffd78f !important;
+            background: rgba(255, 215, 160, 0.2) !important;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,6 +34,9 @@
         <div class="lang-switcher">
             <button data-lang="it">IT</button>
             <button data-lang="en">EN</button>
+            <button data-lang="fr">FR</button>
+            <button data-lang="es">ES</button>
+            <button data-lang="de">DE</button>
         </div>
     </header>
 
@@ -41,8 +52,7 @@
             <div class="home-welcome-poetry">
                 <h1 data-i18n="home.welcome_title">Benvenuti a Caccamo</h1>
                 <div class="gold-divider"></div>
-                <p data-i18n="home.poetry">
-                    </p>
+                <p data-i18n="home.poetry"></p>
             </div>
         </section>
 
@@ -52,6 +62,7 @@
                 <p data-i18n="home.castellana_intro_text">
                     Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto tra le meraviglie del borgo e del territorio circostante.
                 </p>
+                <!-- Badge riassuntivo lingue -->
                 <div class="languages-badge">
                     <span>IT</span> • <span>EN</span> • <span>FR</span> • <span>DE</span> • <span>ES</span>
                 </div>
@@ -109,6 +120,7 @@
 
         // Gestione Lingue
         let currentLang = localStorage.getItem("lang") || "it";
+        
         function loadLanguage(lang) {
             fetch(`lang/${lang}.json`)
                 .then(res => res.json())
@@ -123,6 +135,11 @@
                         const key = el.getAttribute("data-i18n-placeholder");
                         const text = key.split('.').reduce((o,i) => (o && o[i] !== undefined) ? o[i] : null, content);
                         if (text) el.placeholder = text;
+                    });
+                    
+                    // Aggiorna classe active sui bottoni
+                    document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                        btn.classList.toggle("active", btn.dataset.lang === lang);
                     });
                 }).catch(console.error);
             localStorage.setItem("lang", lang);
