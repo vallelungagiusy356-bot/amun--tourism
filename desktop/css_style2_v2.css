@@ -509,3 +509,73 @@ body {
     margin-top: 20px;
     border-top: 1px solid rgba(255, 215, 160, 0.1);
 }
+
+/* ==========================================================================
+   INTEGRAZIONI MANCANTI (LOGO & INPUT CHAT)
+   ========================================================================== */
+
+/* Stile per il Logo nella Dashboard */
+.logo-title {
+    color: #ffd78f;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 215, 160, 0.4);
+    letter-spacing: 1px;
+}
+
+/* Stile per il tasto chiusura chat */
+.close-chat-btn {
+    background: transparent;
+    border: none;
+    color: #ffd78f;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-chat-btn:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Stile per il blocco Input e Microfono della chat */
+.chat-input-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.chat-input-row input {
+    flex-grow: 1;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 160, 0.4);
+    background: rgba(0, 0, 0, 0.5);
+    color: #e6e0d4;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.chat-input-row input:focus {
+    border-color: #ffd78f;
+}
+
+.chat-input-row .mic-btn {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #ffd78f;
+    border-radius: 12px;
+    padding: 0 14px;
+    color: #ffd78f;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chat-input-row .mic-btn:hover {
+    background: #ffd78f;
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 215, 160, 0.4);
+}
