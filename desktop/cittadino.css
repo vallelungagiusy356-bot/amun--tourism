@@ -217,25 +217,64 @@ html, body {
 .chat-desktop.active { display: flex; flex-direction: column; animation: fadeIn 0.3s ease forwards; }
 
 /* ==========================================================================
-   6. RESPONSIVE (Ottimizzazione Dispositivi)
+   6. SEZIONE RESPONSIVE OTTIMIZZATA (Cittadino del Borgo)
    ========================================================================== */
 
-/* Tablet e Mobile Verticale */
-@media screen and (max-width: 900px) and (orientation: portrait) {
-    .dashboard { flex-direction: column; height: auto; padding: 12px; }
-    .nav-desktop { display: none; }
-    .citizen-centered-grid { grid-template-columns: 1fr; width: 90%; margin: 20px auto; }
-    .castellana-video-wrapper { width: 120px; bottom: 10px; right: 10px; }
-    .castellana-tooltip { display: none !important; }
+/* 📱 MOBILE (Smartphone) */
+@media screen and (max-width: 768px) {
+    /* 1. Dashboard più snella */
+    .dashboard { 
+        padding: 0 15px !important; 
+        height: 60px !important;
+    }
+    
+    /* 2. Titoli più piccoli per non andare a capo */
+    .main-title { font-size: 1.8rem !important; }
+
+    /* 3. GRIGLIA: Stacking verticale forzato */
+    .citizen-centered-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        padding: 0 10px !important;
+        width: 100% !important;
+        margin: 20px auto 100px auto !important;
+    }
+
+    /* 4. CARD: Ridotto drasticamente il padding interno */
+    .quadrant {
+        padding: 20px 15px !important; 
+        text-align: center !important;
+        min-height: auto !important;
+    }
+    
+    .card-text-block h2 { font-size: 1.3rem !important; }
+    .card-description { font-size: 0.9rem !important; }
+
+    /* 5. CASTELLANA: Più piccola e posizionata meglio */
+    .castellana-video-wrapper {
+        position: fixed !important;
+        bottom: 10px !important;
+        right: 10px !important;
+        width: 90px !important; /* Molto più piccola */
+        z-index: 1000 !important;
+    }
+    
+    /* 6. CHAT: Adattata alla larghezza schermo */
+    .chat-desktop {
+        bottom: 110px !important;
+        left: 10px !important;
+        right: 10px !important;
+        width: auto !important;
+    }
 }
 
-/* Mobile Landscape */
-@media screen and (max-height: 600px) and (orientation: landscape) {
-    .dashboard { height: 50px; }
-    .citizen-centered-grid { grid-template-columns: 1fr; }
-    .castellana-video-wrapper { width: 100px; bottom: 5px; }
-    .chat-desktop { height: 200px; bottom: 10px; }
-}
+/* ==========================================================================
+   7. ANIMAZIONI
+   ========================================================================== */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes tooltipPulse { 0%, 100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.05); } }
+@keyframes desktopGlowLoop { 0% { left: -110%; } 12% { left: 130%; } 100% { left: 130%; } }
+
 
 /* ==========================================================================
    7. ANIMAZIONI
