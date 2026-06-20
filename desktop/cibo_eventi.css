@@ -1,0 +1,90 @@
+/* Palette Colori Mocha & Gold */
+:root {
+    --mocha: #2a201a;
+    --mocha-light: rgba(60, 40, 30, 0.6);
+    --gold: #ffd78f;
+    --text-cream: #e6e0d4;
+}
+
+/* Container pagina */
+.page-container {
+    background-color: var(--mocha);
+    min-height: 100vh;
+    padding-top: 150px; /* Spazio per la dashboard */
+    padding-bottom: 50px;
+    background-image: radial-gradient(circle at 50% 0%, rgba(255, 215, 143, 0.05), transparent 70%);
+}
+
+.page-title {
+    color: var(--gold);
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px rgba(255, 215, 143, 0.3);
+}
+
+.intro-section {
+    text-align: center;
+    color: var(--text-cream);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* Griglia Card */
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.event-card {
+    background: var(--mocha-light);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 215, 143, 0.3);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+}
+
+.event-card:hover {
+    background: rgba(80, 55, 40, 0.7);
+    border-color: var(--gold);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.event-card h3 {
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
+}
+
+.event-card p {
+    color: var(--text-cream);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.chat-trigger {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.chat-trigger:hover {
+    background: var(--gold);
+    color: var(--mocha);
+}
