@@ -276,9 +276,3 @@ html, body {
 @keyframes desktopGlowLoop { 0% { left: -110%; } 12% { left: 130%; } 100% { left: 130%; } }
 
 
-/* ==========================================================================
-   7. ANIMAZIONI
-   ========================================================================== */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes tooltipPulse { 0%, 100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.05); } }
-@keyframes desktopGlowLoop { 0% { left: -110%; } 12% { left: 130%; } 100% { left: 130%; } }
