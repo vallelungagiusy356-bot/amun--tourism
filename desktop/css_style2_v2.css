@@ -52,10 +52,12 @@ body {
 
 /* Logo */
 .logo-title {
-    font-size: 1.4rem;
+    font-size: 1.6rem; /* Ho preso la dimensione più grande che avevi indicato */
     font-weight: 700;
     color: #ffd78f;
     text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
+    font-family: 'Playfair Display', serif; /* Aggiunto il font che preferivi */
+    letter-spacing: 1px;
 }
 
 /* Navigazione */
@@ -517,16 +519,6 @@ body {
 /* ==========================================================================
    INTEGRAZIONI MANCANTI (LOGO & INPUT CHAT)
    ========================================================================== */
-
-/* Stile per il Logo nella Dashboard */
-.logo-title {
-    color: #ffd78f;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    text-shadow: 0 0 10px rgba(255, 215, 160, 0.4);
-    letter-spacing: 1px;
-}
 
 /* Stile per il tasto chiusura chat */
 .close-chat-btn {
