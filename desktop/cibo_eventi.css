@@ -1,90 +1,126 @@
-/* Palette Colori Mocha & Gold */
-:root {
-    --mocha: #2a201a;
-    --mocha-light: rgba(60, 40, 30, 0.6);
-    --gold: #ffd78f;
-    --text-cream: #e6e0d4;
-}
+/* --- RESET E STRUTTURA --- */
+* { box-sizing: border-box; }
 
-/* Container pagina */
-.page-container {
-    background-color: var(--mocha);
+body {
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
-    padding-top: 150px; /* Spazio per la dashboard */
-    padding-bottom: 50px;
-    background-image: radial-gradient(circle at 50% 0%, rgba(255, 215, 143, 0.05), transparent 70%);
+    background: radial-gradient(circle at center, #35261a 0%, #1a130e 100%);
+    font-family: 'Cormorant Garamond', serif;
+    color: #e6dcc5;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
 }
 
-.page-title {
-    color: var(--gold);
+/* --- DASHBOARD MASTER --- */
+.dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    border-bottom: 2px solid #ffd78f;
+    backdrop-filter: blur(18px) saturate(200%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    gap: 12px;
+    z-index: 999;
+}
+
+.logo-title { font-size: 1.4rem; font-weight: 700; color: #ffd78f; }
+
+.nav-desktop a {
+    color: #ffd78f;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 6px 14px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid #ffd78f;
+    border-radius: 12px;
+}
+
+/* --- CONTENUTO --- */
+.content-wrapper {
+    width: 90%;
+    max-width: 850px;
+    padding: 120px 20px 60px 20px; /* Più spazio in alto per la dashboard */
     text-align: center;
+}
+
+h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    text-shadow: 0 0 20px rgba(255, 215, 143, 0.3);
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to bottom, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-.intro-section {
-    text-align: center;
-    color: var(--text-cream);
-    max-width: 600px;
-    margin: 0 auto 40px auto;
-    font-size: 1.2rem;
-    font-style: italic;
+.gold-divider {
+    width: 50%;
+    height: 1px;
+    margin: 20px auto 40px auto;
+    border: none;
+    background: linear-gradient(to right, transparent, #d4af37, transparent);
 }
 
-/* Griglia Card */
+p {
+    font-size: 1.4rem;
+    line-height: 1.9;
+    margin-bottom: 25px;
+    color: #dcd0b5;
+}
+
+/* --- GRIGLIA CARD ELEGANTE --- */
 .event-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
+    margin-top: 40px;
 }
 
 .event-card {
-    background: var(--mocha-light);
     padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 215, 143, 0.3);
-    text-align: center;
-    backdrop-filter: blur(10px);
-    transition: all 0.4s ease;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: 0.4s;
 }
 
 .event-card:hover {
-    background: rgba(80, 55, 40, 0.7);
-    border-color: var(--gold);
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-color: #d4af37;
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .event-card h3 {
-    color: var(--gold);
     font-family: 'Playfair Display', serif;
+    color: #ffd78f;
     margin-bottom: 15px;
-}
-
-.event-card p {
-    color: var(--text-cream);
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
 }
 
 .chat-trigger {
     background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 10px 20px;
-    border-radius: 30px;
+    border: 1px solid #ffd78f;
+    color: #ffd78f;
+    padding: 8px 16px;
+    border-radius: 20px;
     cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    margin-top: 15px;
 }
 
 .chat-trigger:hover {
-    background: var(--gold);
-    color: var(--mocha);
+    background: #ffd78f;
+    color: #1a130e;
+}
+
+@media screen and (max-width: 600px) {
+    h1 { font-size: 2.5rem; }
+    .dashboard { padding: 10px !important; }
 }
