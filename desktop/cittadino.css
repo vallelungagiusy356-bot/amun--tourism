@@ -1,7 +1,6 @@
 /* ==========================================================================
    1. RESET, SFONDO E FONT STRUTTURALI
    ========================================================================== */
-/* REGOLA FONDAMENTALE MANCANTE CHE CAUSAVA LE SOVRAPPOSIZIONI */
 * {
     margin: 0;
     padding: 0;
@@ -212,13 +211,13 @@ html, body {
 }
 
 /* ==========================================================================
-   5. CHAT E CASTELLANA
+   5. CHAT E CASTELLANA CORRETTE (Desktop)
    ========================================================================== */
 .castellana-video-wrapper {
     position: fixed;
-    bottom: 30px;
+    bottom: 0px; /* Ancorata in basso per non farle tagliare la testa */
     right: 2%;
-    width: 200px;
+    width: 170px; /* Leggermente più snella per mantenere le proporzioni */
     z-index: 100 !important;
     transition: transform 0.3s ease;
     cursor: pointer;
@@ -227,6 +226,8 @@ html, body {
 .castellana-video { 
     width: 100%; 
     height: auto; 
+    max-height: 45vh; /* Evita che diventi più alta dello schermo */
+    object-fit: contain; /* Mantiene le proporzioni senza deformare */
     display: block; 
     filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.8)); 
 }
@@ -258,7 +259,7 @@ html, body {
 
 .chat-desktop {
     position: fixed; 
-    bottom: 240px; 
+    bottom: 180px; /* Adattato alla nuova altezza della castellana */
     right: 2%; 
     width: 320px; 
     height: 350px;
@@ -286,12 +287,12 @@ html, body {
     .dashboard { 
         height: auto !important;
         padding: 15px !important;
-        flex-direction: column; /* Impila gli elementi verticalmente */
+        flex-direction: column;
         gap: 15px;
     }
 
     .nav-desktop {
-        flex-wrap: wrap; /* Fa andare a capo i pulsanti se non c'è spazio */
+        flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
     }
@@ -301,10 +302,9 @@ html, body {
         justify-content: center;
     }
 
-    /* TITOLI E IMPAGINAZIONE SUPERIORE */
+    /* TITOLI CHE ORA NON VENGONO PIÙ COPERTI DALLA DASHBOARD */
     .citizen-frame-layout {
-        /* Aumentiamo il padding alto perché la dashboard mobile è più ingombrante */
-        padding-top: 180px !important; 
+        padding-top: 250px !important; /* Molto più spazio in alto per via della dashboard mobile */
         text-align: center;
         justify-content: center;
     }
@@ -323,7 +323,7 @@ html, body {
 
     /* GRIGLIA CHE SI IMPILA CORRETTAMENTE */
     .citizen-centered-grid {
-        grid-template-columns: 1fr !important; /* Forza 1 sola colonna */
+        grid-template-columns: 1fr !important;
         gap: 20px !important;
         padding: 0 15px !important;
         margin: 30px auto 100px auto !important;
@@ -345,16 +345,16 @@ html, body {
 
     /* CASTELLANA SCALATA PER PICCOLI SCHERMI */
     .castellana-video-wrapper {
-        bottom: 15px !important;
+        bottom: 10px !important;
         right: 15px !important;
-        width: 110px !important;
+        width: 100px !important; /* Piccola e non intrusiva su mobile */
     }
     
     .chat-desktop {
         bottom: 130px !important;
         left: 10px !important;
         right: 10px !important;
-        width: calc(100% - 20px) !important; /* Si adatta alla larghezza mobile */
+        width: calc(100% - 20px) !important;
     }
 }
 
