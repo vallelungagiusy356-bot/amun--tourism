@@ -49,6 +49,30 @@
             </div>
         </div>
     </div>
+<!-- Widget Castellana -->
+<div class="castellana-widget-area">
+    <!-- Avatar (Cliccabile) -->
+    <div class="castellana-video-wrapper" onclick="toggleChat()">
+        <!-- Assicurati che il video sia in loop e muto -->
+        <video src="tuo_video_castellana.mp4" class="castellana-video" autoplay loop muted playsinline></video>
+    </div>
+    <div class="castellana-tooltip">Chiedi alla Castellana</div>
+
+    <!-- Finestra Chat -->
+    <div id="chatDesktop" class="chat-desktop">
+        <div class="chat-header">
+            <span><span class="avatar-status-dot"></span> Castellana</span>
+            <button class="close-chat-btn" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="system-msg">Benvenuta nel borgo. Sono qui per guidarti tra le nostre tradizioni. Cosa desideri sapere?</div>
+        </div>
+        <div class="chat-input-row">
+            <input type="text" placeholder="Scrivi un messaggio..." id="chatInput">
+            <button class="mic-btn">🎙</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
