@@ -28,88 +28,75 @@ html, body {
     pointer-events: none;
 }
 
-/* --- DASHBOARD MASTER (Da usare su TUTTE le pagine) --- */
+/* ==========================================================================
+   2. DASHBOARD (Stile Fisso Desktop)
+   ========================================================================== */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    border-bottom: 2px solid #ffd78f; /* Colore oro standard */
+    height: 70px;
+    background: rgba(0, 0, 0, 0.65);
+    border-bottom: 2px solid rgba(255, 215, 160, 0.85);
     backdrop-filter: blur(18px) saturate(200%);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 20px;
-    gap: 12px;
-    z-index: 999;
+    padding: 0 40px;
+    z-index: 9999;
     box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
-    box-sizing: border-box;
 }
 
-/* Logo */
-.logo-title {
-    font-size: 1.4rem;
+.dashboard .logo-title {
+    font-size: 1.55rem;
     font-weight: 700;
     color: #ffd78f;
     text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
+    white-space: nowrap;
 }
 
-/* Navigazione */
-.nav-desktop {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+.nav-desktop { 
+    display: flex; 
+    gap: 22px; 
 }
 
-.nav-desktop a {
+.nav-desktop a, .dashboard .home-btn {
     color: #ffd78f;
     font-weight: 600;
     text-decoration: none;
-    font-size: 0.9rem;
-    padding: 6px 14px;
+    padding: 10px 18px;
     border-radius: 12px;
     background: rgba(0, 0, 0, 0.55);
     border: 1px solid rgba(255, 215, 160, 0.75);
-    transition: all 0.4s ease;
+    box-shadow: 0 0 14px rgba(255, 215, 160, 0.55), inset 0 0 8px rgba(255, 215, 160, 0.35);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    white-space: nowrap;
 }
 
-/* Right Actions (Dove metti i bottoni specifici) */
-.header-right-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.nav-desktop a:hover, .dashboard .home-btn:hover {
+    background: rgba(255, 215, 160, 0.15);
+    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
+    transform: scale(1.05);
 }
 
-/* Selettore Lingue */
-.lang-switcher {
-    display: flex;
-    gap: 6px;
-    align-items: center;
+.lang-switcher { 
+    display: flex; 
+    gap: 12px; 
+    align-items: center; 
 }
 
 .lang-switcher button {
-    width: 36px;
-    height: 36px;
-    font-size: 0.95rem;
-    font-weight: bold;
-    border-radius: 8px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+    border-radius: 10px;
     background: rgba(0, 0, 0, 0.65);
     border: 1px solid rgba(255, 215, 160, 0.85);
     color: #ffd78f;
     cursor: pointer;
 }
-
-/* Media Query Desktop (per mantenere il layout fisso) */
-@media screen and (min-width: 900px) {
-    .dashboard {
-        height: 75px;
-        flex-direction: row;
-        padding: 0 40px;
-    }
-
 
 /* ==========================================================================
    3. BLOCCO INTRODUTTIVO
