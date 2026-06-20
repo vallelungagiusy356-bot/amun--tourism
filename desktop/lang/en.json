@@ -1,0 +1,81 @@
+{
+  "menu": {
+    "title": "Amunì Tourism",
+    "citizen": "Citizen of the Borgo",
+    "about": "The Project",
+    "chi_siamo": "About Us",
+    "contact": "Contacts"
+  },
+  "home": {
+    "welcome_title": "Welcome to Caccamo",
+    "poetry": "Beyond the horizon where the lake becomes mirror and glory,<br>Caccamo weaves its breath into ancient memory.<br>It is not just stone that defies eras and peoples,<br><strong>that runs within the walls of a mighty fortress.</strong><br><br><strong>Like a ball of yarn that slowly unravels,<br>it spreads into every alley, every small story.</strong><br>A tapestry of centuries revealed <strong>with love and mystery,</strong><br>for those seeking the beating heart of a true village.<br><br><strong>Amunì, take the road,<br>the Castellana is here to keep you company.</strong>",
+    "castellana_intro_title": "Experience the most authentic Caccamo",
+    "castellana_intro_text": "Let the <strong>Castellana</strong> lead you beyond the surface of the borgo. As a guardian of millenary memories, she will unveil untold stories, forgotten paths, and the authentic flavors of a land that exudes legend.",
+    "install_app": "Take Amunì with you",
+    "download_apk": "Download APK",
+    "open_webapp": "Open WebApp",
+    "scan_qr": "Scan QR"
+  },
+  "citizen": {
+    "title": "Amunì Tourism - Citizen of the Borgo",
+    "tag": "Local Community",
+    "main_heading": "Citizen of the Borgo",
+    "intro_text": "The beating heart of Amunì lies in those who live the borgo every day. Choose a quadrant to explore our history.",
+    "legends_title": "Legends and traditions",
+    "legends_desc": "Folktales and myths handed down through time.",
+    "churches_title": "Churches and art",
+    "churches_desc": "A journey through catacombs, traditions, and sacred treasures.",
+    "food_events_title": "Food and events",
+    "food_events_desc": "Authentic flavors, historical recipes, and village festivals.",
+    "castle_title": "The Castle",
+    "castle_desc": "The millenary fortress: history, mysteries, and prisons."
+  },
+  "chat": {
+    "title": "The Castellana",
+    "placeholder": "Write to the Castellana...",
+    "tooltip": "Click to chat",
+    "citizen_msg1": "Welcome! I am here to tell you the secrets of Caccamo. What do you want to discover today?",
+    "chiese_msg": "Welcome to Amunì Tourism! Explore the sacred beauties of Caccamo and ask me for details about their stories."
+  },
+  "pages": {
+    "about": {
+      "title": "The Vision of Amunì",
+      "mission": "Amunì was born from the desire to reconnect the present to its roots. It is not just a tourist portal, but a digital ecosystem designed to preserve and enhance the cultural resilience of our village.",
+      "service_details": "Our platform offers a multilingual guide (5 languages) active 24/7. Beyond the main content, the Premium service grants access to the memory of the Castellana: an intelligent assistant who guides the visitor along unique paths, from local logistics to hidden gems of the territory (Pietra Piatta, Vetrana, Navel of Venus), creating a fluid bridge between Caccamo and neighboring villages.",
+      "insider_value": "The Castellana is not a simple guide: she is the guardian of secrets that cannot be found in books. Through her eyes, we reveal anecdotes, legends, and nuances that belong only to those who live and breathe the village every day."
+    },
+    "chi_siamo": {
+      "title": "About Us: A Visionary Story",
+      "founder_bio": "The Amunì project was born from my dual nature: the analytical precision of a chemical researcher and the creative vision of a web designer. It is a synthesis of scientific rigor and love for art, designed to transform technology into a storytelling tool.",
+      "philosophy": "I don't consider this site a final destination, but a living laboratory. Popular culture is a dynamic heritage, and Amunì evolves through constant dialogue with you. I firmly believe that valuing the territory also means safeguarding the voices of those who inhabit it, passing down traditions, nursery rhymes, and songs to future generations.",
+      "freemium_model": "Historical and monumental content is a public good, accessible to everyone. The 'Castellana Premium' experience is reserved for those who desire a deeper journey: exclusive access to technical analysis of the heritage, layered stories, and personalized support for an authentic, timeless discovery.",
+      "events": "From Easter to culinary traditions, every event is a journey that the Castellana will help you explore in chat."
+    },
+    "castle_page": {
+      "title": "The Castle of Caccamo",
+      "category": "Historical Monuments",
+      "dress_caption": "The Castellana's dress",
+      "welcomemsg_felicia": "Welcome, traveler. The walls of this manor have seen centuries of intrigue and passion. Ask me what history books have forgotten... what do you wish to know about my Castle?",
+      "rhyme_1": "In a Norman castle forged by time,<br>come, admire, stay for a moment.<br>It is not just stone, nor cold bulwark,<br>but an ancient soul awaiting your gaze.",
+      "rhyme_2": "History does not sleep, it melts into the air,<br>and lives again in the heart of those who listen to its plot today.",
+      "rhyme_3": "Do not seek answers in old yellowed papers,<br>but in my gaze, among lost shadows.<br>I am the Castellana, guardian of the thread,<br>I will reveal the ancient profile to those who listen.",
+      "para_2": "The Castle is not just a fortress. It is a living body that breathes the plots of the Chiaramontes and the anxieties of the Inquisition. Beyond the walls that challenge the centuries lies the beating heart of Caccamo, a secret that does not wait to be read, but to be told.",
+      "para_3": "Every stone preserves a voice, every corridor a presage. Do not just observe the surface: enter into the heart of the mystery. The Castellana is here, ready to transform your visit into a journey that goes beyond history, straight into myth."
+    },
+    "chiese_page": {
+      "page_title": "The Churches of Caccamo",
+      "poesia_intro": "Five temples of stone, of faith and memory,<br>open their doors to a centuries-old story.",
+      "verse_angeli": "At the <strong>Angeli</strong> rests, in the most sacred silence,<br>Blessed Giovanni, the village's simulacrum.",
+      "verse_badia": "If you go down to the <strong>Badia</strong>, the earth becomes a flower<br>in the majolica embroidery of rare splendor.",
+      "verse_duomo": "Enter the great <strong>Duomo</strong>, majestic and solemn,<br>among the Gagini marbles and the perennial Stomer.",
+      "verse_annunziata": "Then the <strong>Annunziata</strong> reveals its painted vaults,<br>and the bell tower never conquered by guards.",
+      "verse_cappuccini": "Finally, climb to the <strong>Cappuccini</strong>, on the radiant hill,<br>among an altarpiece and a majestic panorama.",
+      "poesia_outro": "Let yourself be guided where time has stopped...",
+      "cappuccini": "I Cappuccini",
+      "annunziata": "Annunziata",
+      "badia": "S. Benedetto della Badia",
+      "angeli": "S. Maria degli Angeli",
+      "sangiorgio": "San Giorgio Martire"
+    }
+  }
+}
