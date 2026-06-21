@@ -1,18 +1,22 @@
 /* ==========================================================================
-   SEZIONE DOVE MANGIARE - VERSIONE FIX (SCROLL + BLACK TEXT & GOLD STROKE)
+   SEZIONE DOVE MANGIARE - VERSIONE ELEGANT GOLD (FIX SCROLL & STYLE)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #000;
-    color: #000;
-    overflow-x: hidden;
-    overflow-y: auto; /* SBLOCCO SCROLL: permette alla pagina di scorrere */
+/* FIX DEFINITIVO SCROLL */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto; /* Sbloccato */
     min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto; /* Abilitato lo scroll */
+    background-color: #000;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* SFONDO */
@@ -35,7 +39,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
-    background: rgba(0, 0, 0, 0.9); /* Sfondo più solido */
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     z-index: 1000;
@@ -45,22 +49,22 @@ body {
 .scroll-content {
     position: relative;
     z-index: 1;
-    margin-top: 0;      /* Rimosso il margine alto */
-    padding-top: 90px;  /* Spazio esatto per non coprire il titolo con la dashboard */
+    margin-top: 0;
+    padding-top: 90px;
     padding-bottom: 40px;
     padding-left: 1rem;
     padding-right: 1rem;
-    max-width: 1200px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    min-height: 100vh;  /* Assicura che la pagina abbia altezza sufficiente */
 }
 
-/* CARD CON TESTO NERO E BORDO ORO */
+/* CARD CON OPACITÀ 0.15 E TESTO UNIFICATO */
 .food-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.95); /* Sfondo chiaro per far risaltare il nero */
-    border: 1px solid #d4af37; /* Bordo oro sottile */
+    background: rgba(255, 255, 255, 0.15); /* Opacità richiesta */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 20px;
     padding: 20px;
     display: flex;
@@ -68,11 +72,13 @@ body {
     margin-bottom: 20px;
 }
 
+/* TESTO UNIFICATO (Effetto metallico oro/nero) */
 .food-card-title, .food-card-desc {
-    color: #000; /* Testo nero */
-    /* Effetto bordo oro sottile sulle lettere */
-    -webkit-text-stroke: 0.3px #d4af37; 
-    text-stroke: 0.3px #d4af37;
+    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Rende il testo del colore del gradiente */
+    font-weight: 600;
 }
 
 .food-card-title {
@@ -87,15 +93,31 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* BOTTONE (Mantenuto coerente) */
+/* BADGE */
+.badge {
+    padding: 4px 12px;
+    font-size: 0.70rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 20px;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    margin-bottom: 10px;
+    display: inline-block;
+    align-self: flex-start;
+    background: rgba(0,0,0,0.3);
+}
+
+/* BOTTONE */
 .food-card-btn {
     align-self: flex-start;
     padding: 10px 20px;
-    background: #000;
+    background: rgba(212, 175, 55, 0.1);
     color: #ffd78f;
-    border: 1px solid #d4af37;
+    border: 1px solid #ffd78f;
     border-radius: 10px;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.8rem;
+    letter-spacing: 1px;
 }
