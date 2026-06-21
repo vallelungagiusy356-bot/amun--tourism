@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="monuments.castello.title">Il Castello di Caccamo</title>
+    <!-- CORRETTO: Percorso gerarchico completo -->
+    <title data-i18n="pages.monuments_pages.castello.title">Il Castello di Caccamo</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="monumento_dettaglio.css">
 </head>
 <body>
 
     <header class="dashboard">
-        <span class="logo-title" data-i18n="menu.title">Amunì Tourism</span>
+        <!-- CORRETTO: Punto alla chiave corretta nel JSON -->
+        <span class="logo-title" data-i18n="home.amuni_title">Amunì Tourism</span>
         <div class="lang-switcher" style="margin-left: auto;">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
@@ -23,35 +25,43 @@
     <main class="mobile-layout-detail">
         
         <header class="monument-header">
-            <h1 data-i18n="monuments.castello.title">Il Castello di Caccamo</h1>
+            <!-- CORRETTO: Percorso specifico castello -->
+            <h1 data-i18n="pages.monuments_pages.castello.title">Il Castello di Caccamo</h1>
         </header>
 
-                        <div class="monument-render-container" style="width: 100%; text-align: center; min-height: 200px;">
-    <img src="img/castello_cacc.gif" alt="Il Castello di Caccamo" class="monument-hero-image img-castello">
-</div>
+        <div class="monument-render-container" style="width: 100%; text-align: center; min-height: 200px;">
+            <img src="img/castello_cacc.gif" alt="Il Castello di Caccamo" class="monument-hero-image img-castello">
+        </div>
 
         <section class="teca-cristallo descrittiva">
-            <p data-i18n="monuments.castello.description">Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. Arroccato sulla roccia viva fin dall'XI secolo, domina la valle del San Leonardo...</p>
+            <!-- CORRETTO: Percorso descrizione -->
+            <p data-i18n="pages.monuments_pages.castello.description">Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. Arroccato sulla roccia viva fin dall'XI secolo, domina la valle del San Leonardo...</p>
         </section>
 
         <section class="teca-cristallo teca-logistica">
             <div class="info-row">
-                <span class="info-label" data-i18n="monuments.hours_label">Orari:</span>
-                <span class="info-value" data-i18n="monuments.castello.hours">Tutti i giorni: 09:30 – 13:00 / 15:00 – 19:00</span>
+                <!-- CORRETTO: Label generica "Orari" -->
+                <span class="info-label" data-i18n="pages.monuments_pages.labels.hours">Orari:</span>
+                <!-- CORRETTO: Dati specifici castello -->
+                <span class="info-value" data-i18n="pages.monuments_pages.castello.hours">Tutti i giorni: 09:30 – 13:00 / 15:00 – 19:00</span>
             </div>
             <div class="info-row" style="margin-top: 10px;">
-                <span class="info-label" data-i18n="monuments.tickets_label">Biglietti:</span>
-                <span class="info-value" data-i18n="monuments.castello.tickets">Intero € 6,00 | Ridotto € 4,50</span>
+                <!-- CORRETTO: Label generica "Biglietti" -->
+                <span class="info-label" data-i18n="pages.monuments_pages.labels.tickets">Biglietti:</span>
+                <!-- CORRETTO: Dati specifici castello -->
+                <span class="info-value" data-i18n="pages.monuments_pages.castello.tickets">Intero € 6,00 | Ridotto € 4,50</span>
             </div>
         </section>
 
         <div class="actions-container">
             <button class="btn-barocco-action" onclick="window.location.href='mappa.html?focus=castello'">
-                🌐 <span data-i18n="monuments.view_map">Apri la Mappa</span>
+                <!-- CORRETTO: Label generica -->
+                🌐 <span data-i18n="pages.monuments_pages.labels.view_map">Apri la Mappa</span>
             </button>
             
             <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='https://www.comune.caccamo.pa.it'">
-                🎟️ <span data-i18n="monuments.btn_buy_tickets">Prenota / Acquista Biglietto</span>
+                <!-- CORRETTO: Label generica -->
+                🎟️ <span data-i18n="pages.monuments_pages.labels.btn_buy_tickets">Prenota / Acquista Biglietto</span>
             </button>
         </div>
 
