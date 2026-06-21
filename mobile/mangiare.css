@@ -1,7 +1,9 @@
 /* ==========================================================================
-   SEZIONE DOVE MANGIARE & MOVIDA - VERSIONE GLASS ELEGANT & DARK BORDERS
+   SEZIONE DOVE MANGIARE & MOVIDA - VERSIONE ELEGANT & GOLDEN HOME
    File: mangiare.css
    ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 * {
     margin: 0;
@@ -10,7 +12,7 @@
 }
 
 body {
-    font-family: system-ui, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #000;
     color: #f7f2e9;
     overflow-x: hidden;
@@ -41,6 +43,21 @@ body {
     align-items: center;
 }
 
+/* NUOVO BOTTONE HOME ORO */
+.home-btn {
+    font-size: 1.6rem;
+    color: #d4af37; /* Colore Oro */
+    text-decoration: none;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.home-btn:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
 /* CONTENUTO */
 .scroll-content {
     position: relative;
@@ -62,6 +79,7 @@ body {
 .search-input {
     width: 100%;
     padding: 12px 20px 12px 45px;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 30px;
@@ -80,9 +98,10 @@ body {
 
 /* TITOLI */
 .food-section-title {
-    font-family: 'Georgia', serif;
+    font-family: 'Playfair Display', serif;
     color: #fff;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
     margin: 2.5rem 0 1.5rem 0;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
@@ -97,22 +116,21 @@ body {
     margin-bottom: 3rem;
 }
 
-/* CARD "GLASS ELEGANT" CON RIFLESSO DIAGONALE */
+/* CARD "GLASS ELEGANT" */
 .food-card {
-    position: relative; /* Necessario per il riflesso */
-    background: rgba(255, 255, 255, 0.10); /* Trasparenza alta per leggere bene il nero */
+    position: relative;
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
-    border: 1px solid #000; /* Bordo nero */
+    border: 1px solid #000;
     border-radius: 16px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    overflow: hidden; /* Fondamentale per il riflesso */
+    overflow: hidden;
 }
 
-/* RIFLESSO DIAGONALE (Glow) */
 .food-card::before {
     content: "";
     position: absolute;
@@ -121,14 +139,14 @@ body {
     width: 200%;
     height: 200%;
     background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%);
-    pointer-events: none; /* Non blocca i click */
+    pointer-events: none;
 }
 
 .food-card:hover {
     transform: translateY(-8px);
 }
 
-/* CONTENUTO CARD (Testo Nero) */
+/* CONTENUTO CARD */
 .food-card-content {
     padding: 1.5rem;
     display: flex;
@@ -137,25 +155,26 @@ body {
 }
 
 .food-card-title {
-    font-family: 'Georgia', serif;
-    font-size: 1.3rem;
-    color: #000; /* Nero */
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #000;
     margin: 0;
 }
 
 .food-card-desc {
     font-size: 0.95rem;
-    color: #333; /* Grigio molto scuro */
-    line-height: 1.5;
+    color: #333;
+    line-height: 1.6;
     margin: 1rem 0;
     flex-grow: 1;
+    font-weight: 300;
 }
 
-/* BADGE (Colori più pieni per risaltare su fondo bianco-trasparente) */
+/* BADGE */
 .badge {
-    padding: 4px 10px;
+    padding: 4px 12px;
     font-size: 0.70rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
     border-radius: 20px;
     border: 1px solid #000;
@@ -169,13 +188,13 @@ body {
 .badge-pub { background: #4a148c; color: #fff; }
 .badge-summer { background: #e65100; color: #fff; }
 
-/* BOTTONE (Stile solido per contrasto) */
+/* BOTTONE */
 .food-card-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 10px 15px;
-    background: #000; /* Nero */
+    background: #000;
     color: #fff;
     border: 1px solid #000;
     border-radius: 8px;
