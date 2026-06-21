@@ -1,7 +1,7 @@
 let currentLang = localStorage.getItem("lang") || "it";
 
 function loadLanguage(lang) {
-    fetch(`../lang/${lang}.json`)
+    fetch(`lang/${lang}.json`)
         .then(res => {
             if (!res.ok) throw new Error(`File JSON non trovato in ../lang/ (Status: ${res.status})`);
             return res.json();
