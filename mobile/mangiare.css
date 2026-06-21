@@ -55,7 +55,7 @@ body {
 /* BARRA RICERCA */
 .search-container {
     max-width: 600px;
-    margin: 0 auto 3rem auto;
+    margin: 0 auto 4rem auto;
     position: relative;
 }
 
@@ -100,7 +100,7 @@ body {
 /* CARD "GLASS ELEGANT" CON RIFLESSO DIAGONALE */
 .food-card {
     position: relative; /* Necessario per il riflesso */
-    background: rgba(255, 255, 255, 0.75); /* Trasparenza alta per leggere bene il nero */
+    background: rgba(255, 255, 255, 0.15); /* Trasparenza alta per leggere bene il nero */
     backdrop-filter: blur(10px);
     border: 1px solid #000; /* Bordo nero */
     border-radius: 16px;
