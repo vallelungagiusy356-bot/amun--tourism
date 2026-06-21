@@ -12,6 +12,16 @@ body {
     flex-direction: column; 
     align-items: center;
 }
+/* SFONDO - Fissato e dietro tutto */
+.scene-background {
+    position: fixed;
+    inset: 0;
+    background-image: url('img/sicily.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6) contrast(1.1); /* Leggermente più scuro per far risaltare il testo */
+    z-index: -1; 
+}
 
 /* --- DASHBOARD MASTER --- */
 .dashboard {
