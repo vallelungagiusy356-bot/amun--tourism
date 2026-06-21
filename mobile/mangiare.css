@@ -1,18 +1,19 @@
 /* ==========================================================================
-   SEZIONE DOVE MANGIARE - FIX DEFINITIVO (SCROLL + STYLE)
+   SEZIONE DOVE MANGIARE - FIX DEFINITIVO
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* FIX GLOBALE: Permette alla pagina di scorrere */
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #000;
+/* FIX GLOBALE: Garantisce lo scroll */
+html, body {
+    width: 100%;
+    height: auto;
     overflow-x: hidden;
-    overflow-y: auto; /* Sblocca lo scroll */
-    min-height: 100vh;
+    overflow-y: auto;
+    background-color: #000;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* SFONDO */
@@ -26,7 +27,7 @@ body {
     z-index: -1; 
 }
 
-/* DASHBOARD (Dal file 1782044125379.jpeg) */
+/* DASHBOARD */
 .dashboard {
     position: fixed;
     top: 0; left: 0; width: 100%;
@@ -41,11 +42,11 @@ body {
     z-index: 1000;
 }
 
-/* CONTENUTO: Rimosso height: 100vh per permettere lo scroll */
+/* CONTENUTO */
 .scroll-content {
     position: relative;
     z-index: 1;
-    padding-top: 90px; /* Spazio sufficiente per iniziare SOTTO la dashboard */
+    padding-top: 90px;
     padding-bottom: 40px;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -53,20 +54,23 @@ body {
     margin: 0 auto;
 }
 
-/* CARD CON OPACITÀ 0.15 */
+/* CARD (Link) - FIX SOTTOLINEATURA E COLORI */
 .food-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.15); /* Opacità 0.15 richiesta */
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 20px;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
     margin-bottom: 20px;
+    text-decoration: none !important; /* Rimuove sottolineatura */
+    color: inherit; /* Forza il colore del testo, non quello del link */
+    transition: transform 0.2s ease;
 }
 
-/* TESTO UNIFICATO: Effetto metallico nero/oro senza sottolineature */
+/* TESTO UNIFICATO (Effetto Oro) */
 .food-card-title, .food-card-desc {
     background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
     -webkit-background-clip: text;
@@ -113,5 +117,5 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.8rem;
-    text-decoration: none; /* Rimossa ogni sottolineatura */
+    text-decoration: none !important;
 }
