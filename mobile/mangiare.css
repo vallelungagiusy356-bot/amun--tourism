@@ -1,192 +1,130 @@
 /* ==========================================================================
-   SEZIONE DOVE MANGIARE & MOVIDA (Amunì Tourism) - VERSIONE ELEGANTE
-   File: mangiare.css
+   SEZIONE MANGIARE & MOVIDA - VERSIONE GLASS ELEGANT
    ========================================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #000; 
-    color: #333; /* Testo generale più scuro per coerenza */
+    font-family: 'Lato', sans-serif; /* Elegante, pulito, moderno */
+    background-color: #000;
+    color: #fff;
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* SFONDO - Fissato e dietro tutto */
 .scene-background {
     position: fixed;
     inset: 0;
     background-image: url('img/sicily.jpg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.6) contrast(1.1); 
+    filter: brightness(0.4) contrast(1.2); /* Sfondo più scuro per far risaltare il vetro */
     z-index: -1; 
 }
 
-/* DASHBOARD (Header) - Effetto Vetro */
+/* DASHBOARD (Header) */
 .dashboard {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.6); 
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    top: 0; width: 100%; z-index: 100;
+    background: rgba(0, 0, 0, 0.3); 
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
 }
 
-/* CONTENUTO */
 .scroll-content {
-    position: relative;
-    z-index: 1;
-    margin-top: 100px; 
-    padding: 2rem 1rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    position: relative; z-index: 1;
+    margin-top: 100px; padding: 2rem 1rem;
+    max-width: 1200px; margin-left: auto; margin-right: auto;
 }
 
-/* BARRA DI RICERCA */
-.search-container {
-    max-width: 600px;
-    margin: 0 auto 3rem auto;
-    position: relative;
-}
-
-.search-input {
-    width: 100%;
-    padding: 12px 20px 12px 45px;
-    font-size: 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #000;
-    transition: all 0.3s ease;
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #8c1d40;
-    box-shadow: 0 0 8px rgba(140, 29, 64, 0.3);
-}
-
-.search-container::before {
-    content: "🔍";
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* TITOLI SEZIONE */
+/* TITOLO ELEGANTISSIMO */
 .food-section-title {
-    font-family: 'Georgia', serif;
-    color: #fff; /* Titolo bianco per contrastare con lo sfondo scuro della pagina */
-    font-size: 1.8rem;
-    margin: 2.5rem 0 1.5rem 0;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-/* GRIGLIA CARD */
-.food-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    font-family: 'Cinzel', serif; /* Stile barocco/storico */
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
     margin-bottom: 3rem;
+    color: #f7f2e9;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.8);
 }
 
-/* CARD "STILE PERGAMENA" */
+/* CARD GLASS ELEGANTI */
 .food-card {
-    background: rgba(255, 252, 245, 0.95); /* Colore crema/pergamena */
-    border: 1px solid #000; /* Bordo nero sottile */
-    border-radius: 8px; /* Meno arrotondato per un look più classico */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none; 
-    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05); /* Trasparenza molto sottile */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Bordo sottilissimo */
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex; flex-direction: column;
+    text-decoration: none; overflow: hidden;
 }
 
 .food-card:hover {
-    transform: translateY(-5px);
-    background: #ffffff;
-}
-
-/* CONTENUTO CARD */
-.food-card-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .food-card-title {
-    font-family: 'Georgia', serif;
-    font-size: 1.3rem;
-    color: #000; /* TESTO NERO */
+    font-family: 'Cinzel', serif; /* Titolo della card elegante */
+    font-size: 1.5rem;
+    color: #fff;
     margin-bottom: 0.5rem;
 }
 
 .food-card-desc {
     font-size: 0.95rem;
-    color: #333; /* Testo scuro leggibile */
-    line-height: 1.5;
+    color: #d1cfc7;
+    line-height: 1.6;
     margin: 1rem 0;
     flex-grow: 1;
+    font-weight: 300;
 }
 
-/* BADGE - Adattati per sfondo chiaro */
+/* BADGE */
 .badge {
-    padding: 4px 10px;
-    font-size: 0.70rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 4px;
-    border: 1px solid #000;
     display: inline-block;
-    margin-bottom: 10px;
+    padding: 5px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
 }
 
-.badge-restaurant { background: #8c1d40; color: #fff; }
-.badge-pizzeria { background: #0d47a1; color: #fff; }
-.badge-bar { background: #b57c1e; color: #fff; }
-.badge-pub { background: #4a148c; color: #fff; }
-.badge-summer { background: #e65100; color: #fff; }
-
-/* BOTTONE - Stile classico */
+/* BOTTONE - Minimalista ed elegante */
 .food-card-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 15px;
-    background: #000; /* Bottone Nero */
+    padding: 12px 20px;
+    background: transparent;
     color: #fff;
-    border: 1px solid #000;
-    border-radius: 4px;
-    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    font-weight: 500;
     transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }
 
 .food-card-btn:hover {
-    background-color: #8c1d40;
-    border-color: #8c1d40;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
 }
 
-/* MEDIA QUERIES */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .food-section-title { font-size: 1.5rem; text-align: center; }
-    .food-grid { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1rem; }
+    .food-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .food-section-title { font-size: 1.5rem; }
 }
