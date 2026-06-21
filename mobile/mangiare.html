@@ -11,31 +11,32 @@
 
     <div class="scene-background"></div>
 
-    <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
+    <button id="audio-trigger" style="position:fixed; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
     
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
 
     <header class="dashboard">
-        <header class="dashboard">
         <a href="mobile_index.html" class="home-btn">🏠</a>
         
         <div class="logo-title" data-i18n="menu.eat">Dove Mangiare</div>
         
-        <button id="toggle-music" class="btn-audio">🔈</button>
-        <div class="lang-switcher">
-            <button data-lang="it">🇮🇹</button>
-            <button data-lang="en">🇬🇧</button>
-            <button data-lang="fr">🇫🇷</button>
-            <button data-lang="de">🇩🇪</button>
-            <button data-lang="es">🇪🇸</button>
+        <div class="dashboard-controls">
+            <button id="toggle-music" class="btn-audio">🔈</button>
+            <div class="lang-switcher">
+                <button data-lang="it">🇮🇹</button>
+                <button data-lang="en">🇬🇧</button>
+                <button data-lang="fr">🇫🇷</button>
+                <button data-lang="de">🇩🇪</button>
+                <button data-lang="es">🇪🇸</button>
+            </div>
         </div>
     </header>
 
-    <div class="scroll-content" id="scroll-content">
+    <main class="scroll-content" id="scroll-content">
         
-        <main class="home-welcome-poetry">
+        <section class="home-welcome-poetry">
             <h1 data-i18n="food_page.title">Gusto e Compagnia nel Borgo</h1>
             <p data-i18n="food_page.intro">Benvenuto viandante nella sezione dedicata ai sapori del luogo e alle serate in compagnia.</p>
             
@@ -45,10 +46,9 @@
                 <input type="text" id="search-bar" class="search-input" placeholder="Cerca un locale o un sapore..." data-i18n-placeholder="food_page.search_placeholder">
             </div>
 
-            <div class="section-block" id="block-movida">
+            <section class="section-block" id="block-movida">
                 <h2 class="food-section-title">🎉 <span data-i18n="food_page.sec_movida">Movida e Serate</span></h2>
                 <div class="food-grid">
-                    
                     <a href="https://www.facebook.com/share/18vZG4MXRW/" target="_blank" class="food-card">
                         <div class="food-card-content">
                             <div class="food-card-header">
@@ -59,36 +59,12 @@
                             <span class="food-card-btn">Vedi Dettagli ➔</span>
                         </div>
                     </a>
+                    </div>
+            </section>
 
-                    <a href="https://www.kitipigghi.it/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Kittipigghi</h3>
-                                <span class="badge badge-pub">Pub</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.kittipigghi">Il punto di riferimento per le tue serate nel borgo. Eventi, musica e intrattenimento attivo tutto l'anno.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.facebook.com/share/1B4aAYCLgD/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Chiosco San Francesco</h3>
-                                <span class="badge badge-summer">Solo Estate</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.chiosco_san_francesco">Rinfresca le tue serate estive all'aperto, tra cocktail, ottima compagnia e atmosfera gioviale all'interno di una villa comunale recuperata e riadattata.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-
-            <div class="section-block" id="block-eat">
+            <section class="section-block" id="block-eat">
                 <h2 class="food-section-title">🍴 <span data-i18n="food_page.sec_eat">Ristoranti, Pizzerie e Bar</span></h2>
                 <div class="food-grid">
-
                     <a href="https://www.facebook.com/share/18u3GL8zLz/" target="_blank" class="food-card">
                         <div class="food-card-content">
                             <div class="food-card-header">
@@ -99,294 +75,90 @@
                             <span class="food-card-btn">Vedi Dettagli ➔</span>
                         </div>
                     </a>
-
-                    <a href="https://www.ilborgoristorante.it/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Il Borgo</h3>
-                                <span class="badge badge-restaurant">Ristorante</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.il_borgo">Un viaggio gastronomico tra i sapori veri ed eccellenze culinarie della nostra terra.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.castellana.it/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">A Castellana</h3>
-                                <span class="badge badge-restaurant">Ristorante</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.a_castellana">Un'esperienza culinaria ricercata nel cuore del borgo, dove la tradizione incontra l'eleganza.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.pasticceriacafferoyal.it/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Caffè Royal</h3>
-                                <span class="badge badge-bar">Bar Pasticceria</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.caffè_royal">Dalla colazione artigianale ai dolci della tradizione siciliana più raffinata.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.facebook.com/share/1JBduVFioY/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">La Bottega dei Sapori</h3>
-                                <span class="badge badge-pizzeria">Pizzeria Asporto</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.la_bottega_dei_sapori">Pizze d'asporto fragranti e sfiziose preparate al momento con ingredienti genuini.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.facebook.com/share/18mYX4eM55/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">L'officina dei golosi</h3>
-                                <span class="badge badge-bar">Bar Pasticceria</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.l_officina_dei_golosi">Dolci artigianali, colazioni ricche e pause caffè golose per coccolare il palato ogni giorno.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.google.com/amp/s/restaurantguru.it/amp/Strapizzami-Di-La-Corte-Caccamo" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Strapizzami</h3>
-                                <span class="badge badge-pizzeria">Pizzeria Panineria</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.strapizzami">Pizze croccanti, sfiziose e realizzate con ingredienti locali accuratamente selezionati.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.pasticceriascimeca.it/it/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Pasticceria Fratelli Scimeca</h3>
-                                <span class="badge badge-bar">Pasticceria</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.pasticceria_fratelli_scimeca">I maestri dei dolci tipici e dei sapori tradizionali che raccontano la nostra storia nel mondo.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.facebook.com/share/17U43rMe2E/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Dolci Tentazioni</h3>
-                                <span class="badge badge-bar">Bar</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.dolci_tentazioni">Il posto ideale per una pausa rigenerante, ottimi caffè e il gelato artigianale</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.facebook.com/share/18ac66cyJw/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Bar Ribaudo</h3>
-                                <span class="badge badge-bar">Bar</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.bar_ribaudo">Assolutamente da provare la loro mattonella, il panino con la milza, i loro polli arrosto.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.facebook.com/share/18iwTg9A2x/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Bar del Carmine</h3>
-                                <span class="badge badge-bar">Bar</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.bar_del_carmine">Caffetteria storica ideale per un ottimo espresso o un gelato rinfrescante in totale relax.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.facebook.com/share/1DdAPmbUN8/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Spiga d'oro food and drink</h3>
-                                <span class="badge badge-restaurant">Ristorante</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.spiga_d_oro_food_and_drink">Sfornati freschi, taglieri tipici e un'ampia scelta di specialità pronte da gustare.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.facebook.com/share/1LT4v9c3Kj/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Cafè 40</h3>
-                                <span class="badge badge-bar">Bar</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.cafè_40">Ambiente moderno e accogliente, ideale per incontri e colazioni.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://www.facebook.com/share/18xrPta97K/" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Il dolce</h3>
-                                <span class="badge badge-bar">Bar</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.il_dolce">Ambiente moderno e accogliente, ideale dolci tipici, rosticceria, tipico cibo da street food siciliano.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
-                    <a href="https://restaurantguru.it/amp/Bar-Muscarella-Caccamo" target="_blank" class="food-card">
-                        <div class="food-card-content">
-                            <div class="food-card-header">
-                                <h3 class="food-card-title activity-name">Bar Muscarella</h3>
-                                <span class="badge badge-bar">Bar & Caffè</span>
-                            </div>
-                            <p class="food-card-desc" data-i18n="food_page.cards.bar_muscarella">Tappa ideale per un caffè rigenerante, un gelato artigianale o un aperitivo in relax.</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
-                        </div>
-                    </a>
-
                 </div>
-            </div>
+            </section>
 
-            <div id="no-results-msg" class="no-results-msg" data-i18n="food_page.no_results">
+            <div id="no-results-msg" class="no-results-msg" data-i18n="food_page.no_results" style="display:none;">
                 Nessun locale o sapore trovato corrispondente alla ricerca.
             </div>
-
         </main>
-    </div>
+    </section>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const content = document.getElementById("scroll-content");
-            setTimeout(() => { content.classList.add("visible"); }, 50);
-
+            // Inizializzazione lingua
             const linguaSalvata = localStorage.getItem('linguaSelezionata') || 'it';
             caricaLingua(linguaSalvata);
 
+            // Event Listeners
             document.querySelectorAll('.lang-switcher button').forEach(button => {
-                button.addEventListener('click', () => {
-                    const linguaScelta = button.getAttribute('data-lang');
-                    caricaLingua(linguaScelta);
-                });
+                button.addEventListener('click', () => caricaLingua(button.getAttribute('data-lang')));
             });
 
-            // RICERCA REAL-TIME INTERNA ALLE NUOVE CARD GRID
             const searchBar = document.getElementById('search-bar');
+            searchBar.addEventListener('input', filtraCard);
+
+            // Gestione Audio
+            gestioneAudio();
+        });
+
+        function filtraCard(e) {
+            const query = e.target.value.toLowerCase().trim();
+            const blocks = document.querySelectorAll('.section-block');
             const noResultsMsg = document.getElementById('no-results-msg');
+            let anyCardVisibleOverall = false;
 
-            searchBar.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                const blocks = document.querySelectorAll('.section-block');
-                let anyCardVisibleOverall = false;
+            blocks.forEach(block => {
+                const cards = block.querySelectorAll('.food-card');
+                let visibleCardsInBlock = 0;
 
-                blocks.forEach(block => {
-                    const cards = block.querySelectorAll('.food-card');
-                    let visibleCardsInBlock = 0;
-
-                    cards.forEach(card => {
-                        const name = card.querySelector('.activity-name').textContent.toLowerCase();
-                        const desc = card.querySelector('.food-card-desc').textContent.toLowerCase();
-                        const badge = card.querySelector('.badge').textContent.toLowerCase();
-                        
-                        if (name.includes(query) || desc.includes(query) || badge.includes(query)) {
-                            card.style.display = 'flex';
-                            visibleCardsInBlock++;
-                            anyCardVisibleOverall = true;
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-
-                    if (visibleCardsInBlock === 0 && query !== '') {
-                        block.style.display = 'none';
+                cards.forEach(card => {
+                    const testoRicerca = card.innerText.toLowerCase();
+                    if (testoRicerca.includes(query)) {
+                        card.style.display = 'flex';
+                        visibleCardsInBlock++;
+                        anyCardVisibleOverall = true;
                     } else {
-                        block.style.display = 'block';
+                        card.style.display = 'none';
                     }
                 });
-
-                // Mostra/Nascondi messaggio di nessun risultato trovato
-                if (!anyCardVisibleOverall && query !== '') {
-                    noResultsMsg.style.display = 'block';
-                } else {
-                    noResultsMsg.style.display = 'none';
-                }
+                block.style.display = (visibleCardsInBlock === 0 && query !== '') ? 'none' : 'block';
             });
-        });
+            noResultsMsg.style.display = (!anyCardVisibleOverall && query !== '') ? 'block' : 'none';
+        }
 
         function caricaLingua(lingua) {
             localStorage.setItem('linguaSelezionata', lingua);
             document.documentElement.lang = lingua;
-
-            // Corretto percorso per la cartella 'lang' nella root
             fetch(`../lang/${lingua}.json`)
-                .then(response => {
-                    if (!response.ok) throw new Error("File non trovato");
-                    return response.json();
-                })
+                .then(r => r.json())
                 .then(data => {
-                    document.querySelectorAll('[data-i18n]').forEach(elemento => {
-                        const percorsoChiave = elemento.getAttribute('data-i18n');
-                        const chiavi = percorsoChiave.split('.'); 
-                        
-                        let testoTradotto = data;
-                        chiavi.forEach(chiave => {
-                            if (testoTradotto) {
-                                testoTradotto = testoTradotto[chiave];
-                            }
-                        });
-
-                        if (testoTradotto) {
-                            elemento.innerHTML = testoTradotto;
-                        }
+                    document.querySelectorAll('[data-i18n]').forEach(el => {
+                        const path = el.getAttribute('data-i18n').split('.');
+                        let txt = data;
+                        path.forEach(p => { if (txt) txt = txt[p]; });
+                        if (txt) el.innerHTML = txt;
                     });
-
-                    const searchInput = document.getElementById('search-bar');
-                    if (searchInput) {
-                        const placeholderKey = searchInput.getAttribute('data-i18n-placeholder');
-                        if (placeholderKey) {
-                            const keys = placeholderKey.split('.');
-                            let placeholderText = data;
-                            keys.forEach(k => { if (placeholderText) placeholderText = placeholderText[k]; });
-                            if (placeholderText) searchInput.placeholder = placeholderText;
-                        }
-                    }
-                })
-                .catch(error => console.error("Errore internazionalizzazione:", error));
+                });
         }
-    </script>
 
-    <script>
-        const bgMusic = document.getElementById('bg-music');
-        const toggleMusicBtn = document.getElementById('toggle-music');
-        const audioTrigger = document.getElementById('audio-trigger');
+        function gestioneAudio() {
+            const bgMusic = document.getElementById('bg-music');
+            const toggleMusicBtn = document.getElementById('toggle-music');
+            const audioTrigger = document.getElementById('audio-trigger');
 
-        if (audioTrigger) {
             audioTrigger.addEventListener('click', () => {
                 bgMusic.play().then(() => {
                     toggleMusicBtn.textContent = "🔊";
                     audioTrigger.remove();
-                }).catch(err => console.log("Audio bloccato"));
+                });
+            });
+
+            toggleMusicBtn.addEventListener('click', () => {
+                if (bgMusic.paused) { bgMusic.play(); toggleMusicBtn.textContent = "🔊"; }
+                else { bgMusic.pause(); toggleMusicBtn.textContent = "🔈"; }
             });
         }
-
-        toggleMusicBtn.addEventListener('click', () => {
-            if (bgMusic.paused) {
-                bgMusic.play();
-                toggleMusicBtn.textContent = "🔊";
-            } else {
-                bgMusic.pause();
-                toggleMusicBtn.textContent = "🔈";
-            }
-        });
     </script>
 </body>
 </html>
