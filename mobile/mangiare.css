@@ -111,48 +111,64 @@ body {
     margin-bottom: 3rem;
 }
 
-/* CARD "GLASS" */
+/* CARD "STYLE PERGAMENA" (Modifica queste parti nel tuo CSS) */
+
 .food-card {
-    background: rgba(255, 255, 255, 0.08); /* Trasparenza */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Cambiamo il fondo in un bianco sporco/crema semitrasparente */
+    background: rgba(255, 252, 245, 0.9); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* Bordo sottile nero come volevi */
+    border: 1px solid #000; 
     border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
-    text-decoration: none; /* Rimuove sottolineatura link */
+    text-decoration: none;
     overflow: hidden;
 }
 
 .food-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.95); /* Leggera variazione al passaggio */
 }
 
-/* CONTENUTO CARD */
-.food-card-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
+/* CONTENUTO CARD - TESTO NERO */
 .food-card-title {
     font-family: 'Georgia', serif;
     font-size: 1.3rem;
-    color: #ffffff;
+    color: #000; /* Nero */
     margin: 0;
 }
 
 .food-card-desc {
     font-size: 0.95rem;
-    color: #d1cfc7;
+    color: #333; /* Grigio molto scuro, più leggibile del nero puro */
     line-height: 1.5;
     margin: 1rem 0;
     flex-grow: 1;
 }
+
+/* BOTTONE - Adattiamolo allo stile scuro */
+.food-card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.8); /* Fondo bottone scuro */
+    color: #fff; /* Testo bianco nel bottone */
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.food-card-btn:hover {
+    background-color: #8c1d40;
+    border-color: #8c1d40;
+}
+
 
 /* BADGE */
 .badge {
