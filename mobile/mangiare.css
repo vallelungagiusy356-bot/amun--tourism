@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SEZIONE DOVE MANGIARE - VERSIONE ELEGANT & GOLDEN (OTTIMIZZATA)
+   SEZIONE DOVE MANGIARE - VERSIONE FIX (SCROLL + BLACK TEXT & GOLD STROKE)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
@@ -9,8 +9,9 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #000;
-    color: #f7f2e9;
+    color: #000;
     overflow-x: hidden;
+    overflow-y: auto; /* SBLOCCO SCROLL: permette alla pagina di scorrere */
     min-height: 100vh;
 }
 
@@ -34,142 +35,67 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.9); /* Sfondo più solido */
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     z-index: 1000;
-}
-
-.home-btn {
-    font-size: 1.4rem;
-    color: #ffd78f;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-    display: flex;
-    align-items: center;
-}
-
-.dashboard-controls {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.logo-title {
-    flex-grow: 1;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    pointer-events: none;
-    margin: 0 10px;
 }
 
 /* CONTENUTO */
 .scroll-content {
     position: relative;
     z-index: 1;
-    margin-top: 80px;
-    padding: 2rem 1rem;
+    margin-top: 0;      /* Rimosso il margine alto */
+    padding-top: 90px;  /* Spazio esatto per non coprire il titolo con la dashboard */
+    padding-bottom: 40px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    min-height: 100vh;  /* Assicura che la pagina abbia altezza sufficiente */
 }
 
-/* BARRA RICERCA */
-.search-container {
-    max-width: 600px;
-    margin: 0 auto 3rem auto;
-    position: relative;
-}
-
-.search-input {
-    width: 100%;
-    padding: 12px 20px 12px 45px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    backdrop-filter: blur(5px);
-}
-
-/* GRIGLIA CARD */
-.food-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Una colonna su mobile */
-    gap: 20px;
-}
-
-/* CARD ELEGANT */
+/* CARD CON TESTO NERO E BORDO ORO */
 .food-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(255, 255, 255, 0.95); /* Sfondo chiaro per far risaltare il nero */
+    border: 1px solid #d4af37; /* Bordo oro sottile */
     border-radius: 20px;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    text-decoration: none;
-    overflow: hidden;
-    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.food-card-title, .food-card-desc {
+    color: #000; /* Testo nero */
+    /* Effetto bordo oro sottile sulle lettere */
+    -webkit-text-stroke: 0.3px #d4af37; 
+    text-stroke: 0.3px #d4af37;
 }
 
 .food-card-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: #ffd78f;
+    font-size: 1.5rem;
     margin-bottom: 0.8rem;
 }
 
 .food-card-desc {
-    font-size: 0.95rem;
-    color: #f7f2e9;
+    font-size: 1rem;
     line-height: 1.5;
     margin-bottom: 1.5rem;
-    flex-grow: 1;
 }
 
-/* BADGE */
-.badge {
-    padding: 4px 12px;
-    font-size: 0.70rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 20px;
-    border: 1px solid #000;
-    margin-bottom: 10px;
-    display: inline-block;
-    align-self: flex-start;
-}
-
-.badge-restaurant { background: #8c1d40; color: #fff; }
-.badge-pizzeria { background: #0d47a1; color: #fff; }
-.badge-bar { background: #b57c1e; color: #fff; }
-
-/* BOTTONE */
+/* BOTTONE (Mantenuto coerente) */
 .food-card-btn {
     align-self: flex-start;
     padding: 10px 20px;
-    background: rgba(212, 175, 55, 0.1);
+    background: #000;
     color: #ffd78f;
-    border: 1px solid #ffd78f;
+    border: 1px solid #d4af37;
     border-radius: 10px;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.8rem;
-    letter-spacing: 1px;
-}
-
-.food-card-btn:hover {
-    background: #ffd78f;
-    color: #000;
 }
