@@ -1,15 +1,10 @@
 /* ==========================================================================
-   SEZIONE DOVE MANGIARE & MOVIDA - VERSIONE ELEGANT & GOLDEN HOME
-   File: mangiare.css
+   SEZIONE DOVE MANGIARE - VERSIONE ELEGANT & GOLDEN HOME
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -43,20 +38,20 @@ body {
     align-items: center;
 }
 
-/* NUOVO BOTTONE HOME ORO */
 .home-btn {
     font-size: 1.6rem;
     color: #d4af37; /* Colore Oro */
     text-decoration: none;
     transition: transform 0.3s ease, filter 0.3s ease;
     cursor: pointer;
-    line-height: 1;
 }
 
 .home-btn:hover {
     transform: scale(1.1);
     filter: brightness(1.2);
 }
+
+.logo-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
 
 /* CONTENUTO */
 .scroll-content {
@@ -101,7 +96,6 @@ body {
     font-family: 'Playfair Display', serif;
     color: #fff;
     font-size: 2.2rem;
-    letter-spacing: 1px;
     margin: 2.5rem 0 1.5rem 0;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
@@ -116,11 +110,11 @@ body {
     margin-bottom: 3rem;
 }
 
-/* CARD "GLASS ELEGANT" */
+/* CARD GLASS ELEGANT */
 .food-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(15px);
     border: 1px solid #000;
     border-radius: 16px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
@@ -134,31 +128,20 @@ body {
 .food-card::before {
     content: "";
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
     background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%);
     pointer-events: none;
 }
 
-.food-card:hover {
-    transform: translateY(-8px);
-}
+.food-card:hover { transform: translateY(-8px); }
 
-/* CONTENUTO CARD */
-.food-card-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
+/* TESTI CARD */
 .food-card-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     color: #000;
-    margin: 0;
+    margin-bottom: 0.5rem;
 }
 
 .food-card-desc {
@@ -200,14 +183,12 @@ body {
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }
 
 .food-card-btn:hover {
     background-color: #8c1d40;
     border-color: #8c1d40;
-}
-
-@media (max-width: 768px) {
-    .food-section-title { font-size: 1.5rem; text-align: center; }
-    .food-grid { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 0.5rem; }
 }
