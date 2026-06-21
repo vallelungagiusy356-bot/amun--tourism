@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SEZIONE DOVE MANGIARE - VERSIONE ELEGANT & GOLDEN HOME
+   SEZIONE DOVE MANGIARE - VERSIONE ELEGANT & GOLDEN (OTTIMIZZATA)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
@@ -25,47 +25,41 @@ body {
     z-index: -1; 
 }
 
-/* Allineamento globale Dashboard */
+/* DASHBOARD */
 .dashboard {
     position: fixed;
     top: 0; left: 0; width: 100%;
     height: 65px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Spazia gli elementi equamente */
-    padding: 0 20px;
-    background: rgba(0, 0, 0, 0.6);
+    justify-content: space-between;
+    padding: 0 15px;
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     z-index: 1000;
 }
 
-/* Stile Casetta (Home Button) */
 .home-btn {
     font-size: 1.4rem;
-    color: #ffd78f; /* Oro coerente */
+    color: #ffd78f;
     text-decoration: none;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition: transform 0.3s ease;
     display: flex;
     align-items: center;
 }
 
-.home-btn:hover {
-    transform: scale(1.15);
-    filter: brightness(1.3);
-}
-
-/* Raggruppamento Audio e Bandierine */
 .dashboard-controls {
     display: flex;
     align-items: center;
-    gap: 15px; /* Spazio tra audio e lingue */
+    gap: 15px;
 }
 
-/* Logo Amunì (Il nostro oro) */
 .logo-title {
+    flex-grow: 1;
+    text-align: center;
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; /* Leggermente più piccolo per stare ovunque bene */
+    font-size: 1.2rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -73,11 +67,8 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
-    position: absolute; /* Centrato assoluto */
-    left: 50%;
-    transform: translateX(-50%);
-    pointer-events: none; /* Non blocca i click */
+    pointer-events: none;
+    margin: 0 10px;
 }
 
 /* CONTENUTO */
@@ -94,7 +85,7 @@ body {
 /* BARRA RICERCA */
 .search-container {
     max-width: 600px;
-    margin: 0 auto 4rem auto;
+    margin: 0 auto 3rem auto;
     position: relative;
 }
 
@@ -110,74 +101,41 @@ body {
     backdrop-filter: blur(5px);
 }
 
-.search-container::before {
-    content: "🔍";
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* TITOLI */
-.food-section-title {
-    font-family: 'Playfair Display', serif;
-    color: #fff;
-    font-size: 2.2rem;
-    margin: 2.5rem 0 1.5rem 0;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
 /* GRIGLIA CARD */
 .food-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: 1fr; /* Una colonna su mobile */
+    gap: 20px;
 }
 
-/* CARD GLASS ELEGANT */
+/* CARD ELEGANT */
 .food-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.15); 
-    backdrop-filter: blur(15px);
-    border: 1px solid #000;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     text-decoration: none;
     overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.food-card::before {
-    content: "";
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-.food-card:hover { transform: translateY(-8px); }
-
-/* TESTI CARD */
 .food-card-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: #000;
-    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    color: #ffd78f;
+    margin-bottom: 0.8rem;
 }
 
 .food-card-desc {
     font-size: 0.95rem;
-    color: #333;
-    line-height: 1.6;
-    margin: 1rem 0;
+    color: #f7f2e9;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
     flex-grow: 1;
-    font-weight: 300;
 }
 
 /* BADGE */
@@ -190,32 +148,28 @@ body {
     border: 1px solid #000;
     margin-bottom: 10px;
     display: inline-block;
+    align-self: flex-start;
 }
 
 .badge-restaurant { background: #8c1d40; color: #fff; }
 .badge-pizzeria { background: #0d47a1; color: #fff; }
 .badge-bar { background: #b57c1e; color: #fff; }
-.badge-pub { background: #4a148c; color: #fff; }
-.badge-summer { background: #e65100; color: #fff; }
 
 /* BOTTONE */
 .food-card-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 15px;
-    background: #000;
-    color: #fff;
-    border: 1px solid #000;
-    border-radius: 8px;
+    align-self: flex-start;
+    padding: 10px 20px;
+    background: rgba(212, 175, 55, 0.1);
+    color: #ffd78f;
+    border: 1px solid #ffd78f;
+    border-radius: 10px;
     font-weight: 600;
-    transition: all 0.3s ease;
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 1px;
 }
 
 .food-card-btn:hover {
-    background-color: #8c1d40;
-    border-color: #8c1d40;
+    background: #ffd78f;
+    color: #000;
 }
