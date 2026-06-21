@@ -19,7 +19,7 @@ body {
 .scene-background {
     position: fixed;
     inset: 0;
-    background: url('img/tuo_nuovo_sfondo.jpeg') no-repeat center center fixed;
+    background: url('img/sicily.jpg') no-repeat center center fixed;
     background-size: cover;
     filter: brightness(0.75) contrast(1.1);
     z-index: 0;
