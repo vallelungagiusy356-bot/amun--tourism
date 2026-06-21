@@ -11,17 +11,25 @@
 <body>
 
     <header class="dashboard">
-        <!-- NOTA: Come per l'altro file, lascio statico il brand title perché non è presente
-             nella sezione monuments_pages del JSON. Se vuoi tradurlo, va aggiunta una chiave apposita -->
-        <span class="logo-title">Amunì Tourism</span>
-        <div class="lang-switcher" style="margin-left: auto;">
+    <!-- Pulsante Home "Casetta" coerente -->
+    <a href="index.html" class="home-btn" aria-label="Home">🏠</a>
+    
+    <!-- Logo Amunì Tourism (Stessa classe gold delle altre pagine) -->
+    <div class="logo-title">Amunì Tourism</div>
+    
+    <!-- Contenitore controlli (Audio + Lingue) -->
+    <div class="dashboard-controls">
+        <button id="toggle-music" class="btn-audio">🔈</button>
+        <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
             <button data-lang="fr">🇫🇷</button>
             <button data-lang="de">🇩🇪</button>
             <button data-lang="es">🇪🇸</button>
         </div>
-    </header>
+    </div>
+</header>
+
 
     <main class="mobile-layout-detail">
         
