@@ -8,17 +8,6 @@ html, body {
     background-color: #000;
 }
 
-/* 2. La Finestra Scorrevole: L'unica che si muove */
-.scroll-content {
-    width: 100%;
-    /* Questo è il segreto: altezza totale meno lo spazio occupato dalla dashboard */
-    height: calc(100vh - 80px); 
-    overflow-y: auto;
-    padding-top: 20px; /* Ridotto per non avere troppo spazio vuoto */
-    padding-bottom: 50px;
-    -webkit-overflow-scrolling: touch;
-}
-
 
 /* 3. Dashboard */
 .dashboard {
