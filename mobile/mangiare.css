@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SEZIONE DOVE MANGIARE - FIX DEFINITIVO E COMPLETO
+   SEZIONE DOVE MANGIARE - EFFETTO FLUTTUANTE E TRASPARENZA
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
@@ -34,20 +34,23 @@ html, body {
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.6); /* Leggermente più trasparente anche la barra */
     backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     z-index: 1000;
 }
 
-/* CONTENUTO (Wrappa questo tutto nel tuo HTML) */
+/* CONTENUTO CON SCROLL */
 .scroll-content {
+    height: 100vh;
+    overflow-y: auto;
     padding-top: 90px;
     padding-bottom: 40px;
     padding-left: 1rem;
     padding-right: 1rem;
     max-width: 600px;
     margin: 0 auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* TITOLO SEZIONE */
@@ -66,12 +69,12 @@ html, body {
     gap: 20px;
 }
 
-/* CARD */
+/* CARD - Estremamente tenui e trasparenti */
 .food-card {
     display: block;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(255, 255, 255, 0.03); /* Molto trasparente */
+    backdrop-filter: blur(15px); /* Effetto vetro accentuato */
+    border: 1px solid rgba(212, 175, 55, 0.1); /* Bordo quasi invisibile */
     border-radius: 20px;
     padding: 20px;
     text-decoration: none !important;
@@ -79,11 +82,11 @@ html, body {
 }
 
 .food-card:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.07);
     transform: scale(1.01);
 }
 
-/* HEADER CARD (Titolo + Badge) */
+/* HEADER CARD */
 .food-card-header {
     display: flex;
     justify-content: space-between;
@@ -104,7 +107,7 @@ html, body {
 }
 
 .food-card-desc {
-    color: #ccc;
+    color: #eee; /* Leggermente più chiaro per leggibilità su vetro */
     font-size: 0.95rem;
     line-height: 1.4;
     margin-bottom: 15px;
@@ -117,7 +120,7 @@ html, body {
     font-weight: 600;
     text-transform: uppercase;
     border-radius: 5px;
-    border: 1px solid #d4af37;
+    border: 1px solid rgba(212, 175, 55, 0.5);
     color: #d4af37;
     white-space: nowrap;
 }
@@ -126,9 +129,9 @@ html, body {
 .food-card-btn {
     display: inline-block;
     padding: 8px 15px;
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(212, 175, 55, 0.05);
     color: #ffd78f;
-    border: 1px solid #ffd78f;
+    border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 8px;
     font-weight: 600;
     text-transform: uppercase;
