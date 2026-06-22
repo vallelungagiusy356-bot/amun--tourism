@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
+/* RESET GENERALE */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* 1. Blocchiamo il scroll del body, forziamo l'altezza */
 html, body {
     width: 100%;
-    height: 100vh; /* Forza l'altezza al 100% dello schermo */
-    overflow: hidden; /* Impedisce che l'intera pagina scrolli */
+    height: 100vh;
+    overflow: hidden; 
     background-color: #000;
     font-family: 'Montserrat', sans-serif;
     color: #fff;
 }
 
-/* SFONDO - Fissato e sempre visibile */
+/* 2. Sfondo fisso */
 .scene-background {
     position: fixed;
     top: 0;
@@ -25,7 +27,7 @@ html, body {
     z-index: -1; 
 }
 
-/* DASHBOARD */
+/* 3. Dashboard */
 .dashboard {
     position: fixed;
     top: 0; left: 0; width: 100%;
@@ -34,23 +36,28 @@ html, body {
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     z-index: 1000;
 }
 
-/* CONTENUTO SCROLLABILE */
+/* 4. Il contenitore dello scroll */
 .scroll-content {
-    height: 100vh;           /* Altezze definita */
-    overflow-y: auto;        /* Scroll interno */
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto; /* Questo attiva lo scroll solo qui dentro */
     padding-top: 90px;
-    padding-bottom: 40px;
+    padding-bottom: 60px;
     padding-left: 1rem;
     padding-right: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
     -webkit-overflow-scrolling: touch;
+}
+
+/* 5. FIX DEL COLORE (Il viola sparirà) */
+a {
+    text-decoration: none;
+    color: inherit; /* Forza il link a ereditare il colore del testo */
 }
 
 /* TITOLO SEZIONE */
@@ -62,23 +69,17 @@ html, body {
     text-align: center;
 }
 
-/* GRIGLIA */
-.food-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
 /* CARD - Effetto vetro trasparente */
 .food-card {
     display: block;
-    background: rgba(255, 255, 255, 0.04); /* Molto tenue */
+    background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 20px;
     padding: 20px;
-    text-decoration: none !important;
+    margin-bottom: 20px; /* Spazio tra le card */
     transition: transform 0.2s ease, background 0.3s ease;
+    color: #fff; /* Forza il bianco */
 }
 
 .food-card:hover {
@@ -86,4 +87,33 @@ html, body {
     transform: scale(1.01);
 }
 
-/* ... resto del CSS invariato ... */
+.food-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #d4af37; /* Oro */
+    margin-bottom: 10px;
+}
+
+.food-card-desc {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.badge {
+    padding: 2px 8px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+}
+
+.food-card-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ffd78f;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
