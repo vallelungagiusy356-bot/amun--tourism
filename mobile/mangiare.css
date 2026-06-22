@@ -8,19 +8,7 @@ html, body {
     background-color: #000;
 }
 
-/* 2. Lo Sfondo: Fisso */
-.scene-background {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-image: url('img/sicily.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.6) contrast(1.1);
-    z-index: -1; /* Mettilo dietro tutto */
-}
-
-/* 3. La Finestra Scorrevole: L'unica che si muove */
+/* 2. La Finestra Scorrevole: L'unica che si muove */
 .scroll-content {
     width: 100%;
     /* Questo è il segreto: altezza totale meno lo spazio occupato dalla dashboard */
@@ -47,10 +35,12 @@ html, body {
     z-index: 1000;
 }
 
-/* 4. Il contenitore dello scroll */
+/* 4. Il contenitore dello scroll - Versione corretta e pulita */
 .scroll-content {
     width: 100%;
-    height: 100vh;
+    /* Questo calc() risolve il problema: Altezza totale meno il padding totale (90+60=150) */
+    /* Se la dashboard occupa spazio, assicurati di tenerne conto nel calcolo */
+    height: calc(100vh - 150px); 
     overflow-y: auto; /* Questo attiva lo scroll solo qui dentro */
     padding-top: 90px;
     padding-bottom: 60px;
