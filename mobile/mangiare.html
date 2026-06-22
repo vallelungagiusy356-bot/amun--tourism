@@ -10,7 +10,6 @@
 </head>
 <body>
 
-    <!-- ELEMENTI FISSI (Non scorrono) -->
     <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
     
     <audio id="bg-music" loop>
@@ -31,15 +30,9 @@
         </div>
     </header>
 
-    <!-- AREA CHE SCORRE -->
     <div class="scroll-content">
         <div class="mobile-layout">
-
-            <div class="video-container">
-                <video autoplay muted loop playsinline class="castellana-avatar">
-                    <source src="img/castellana_alpha.webm" type="video/webm">
-                </video>
-            </div>
+            <!-- Avatar rimosso -->
 
             <div class="buttons-grid">
                 <a href="mangiare.html" class="btn-barocco" data-i18n="home.btn_mangiare"></a>
@@ -52,11 +45,9 @@
                 <a href="monumenti.html" class="btn-barocco" data-i18n="home.btn_monuments"></a>
             </div>
 
-            <!-- SEZIONE DINAMICA ATTIVITÀ -->
             <section class="section-block" id="block-eat">
                 <h2 class="food-section-title">🍴 <span data-i18n="food_page.sec_eat">Ristoranti, Pizzerie e Bar</span></h2>
                 <div class="food-grid" id="food-container">
-                    <!-- Il JS popolerà le card qui -->
                 </div>
             </section>
 
@@ -68,13 +59,10 @@
                 <div class="amuni-title" data-i18n="home.amuni_title"></div>
                 <div class="amuni-text" data-i18n="home.amuni_text"></div>
             </div>
+        </div>
+    </div>
 
-        </div> <!-- Fine mobile-layout -->
-    </div> <!-- Fine scroll-content -->
-
-    <!-- SCRIPT -->
     <script>
-        // 1. CONFIGURAZIONE ATTIVITÀ
         const activityMeta = {
             "the_castle": { link: "https://www.facebook.com/share/18vZG4MXRW/", badge: "Pub" },
             "kittipigghi": { link: "https://www.kitipigghi.it/", badge: "Pub" },
@@ -87,7 +75,6 @@
             "la_bottega_dei_sapori": { link: "#", badge: "Pizzeria" }
         };
 
-        // 2. FUNZIONE GENERATORE CARD
         function renderFoodCards(data) {
             const container = document.getElementById('food-container');
             const cardsData = data.pages?.food_page?.cards;
@@ -115,7 +102,6 @@
             });
         }
 
-        // 3. LOGICA CARICAMENTO LINGUA
         function loadLanguage(lang) {
             fetch(`./lang/${lang}.json`) 
                 .then(res => res.json())
@@ -131,7 +117,6 @@
             localStorage.setItem("lang", lang);
         }
 
-        // 4. INIZIALIZZAZIONE
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".lang-switcher button").forEach(btn => {
                 btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
@@ -139,7 +124,6 @@
             loadLanguage(localStorage.getItem("lang") || "it");
         });
 
-        // 5. AUDIO
         const audio = document.getElementById("bg-music");
         const toggleBtn = document.getElementById("toggle-music");
         document.addEventListener("touchstart", () => audio.play(), { once: true });
@@ -148,7 +132,6 @@
             else { audio.pause(); toggleBtn.textContent = "🔇"; }
         });
 
-        // 6. PWA
         if ("serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js");
     </script>
 </body>
