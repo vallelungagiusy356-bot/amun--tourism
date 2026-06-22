@@ -1,88 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
-
-/* 1. Il Muro: Immobile */
+/* 1. Reset e Base */
 html, body {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    height: 100vh;
-    overflow: hidden; /* IMPORTANTE: Blocca lo scroll del body */
-    background-color: #000;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #000; /* Testo nero richiesto */
+    overflow-x: hidden; /* Evita scroll orizzontali */
 }
 
-
-/* 2. Dashboard */
-.dashboard {
+/* Background - Assicurati che il percorso img/sicily.jpg sia corretto */
+.scene-background {
     position: fixed;
-    top: 0; left: 0; width: 100%;
-    height: 65px;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background-image: url('img/sicily.jpg'); /* Percorso relativo corretto */
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.8); /* Opzionale: scurisce leggermente per far risaltare il vetro */
+}
+
+/* 2. Dashboard - Flexbox a riga singola */
+.dashboard {
+    position: sticky; /* Migliore di fixed per scroll nativo */
+    top: 0;
+    width: 100%;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 15px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 0 10px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.8); /* Sfondo chiaro per testo nero */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.5);
     z-index: 1000;
 }
 
-/* 3. Il contenitore dello scroll - Versione corretta e pulita */
+/* Impedisce il wrapping della dashboard */
+.logo-title { flex-shrink: 1; font-weight: bold; }
+.lang-switcher { 
+    display: flex; 
+    gap: 4px; 
+    flex-shrink: 0; /* Impedisce alle bandierine di andare a capo */
+}
+
+/* 3. Scroll Content - Rimosso il calc complesso */
 .scroll-content {
     width: 100%;
-    /* Questo calc() risolve il problema: Altezza totale meno il padding totale (90+60=150) */
-    /* Se la dashboard occupa spazio, assicurati di tenerne conto nel calcolo */
-    height: calc(100vh - 150px); 
-    overflow-y: auto; /* Questo attiva lo scroll solo qui dentro */
-    padding-top: 90px;
-    padding-bottom: 60px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    -webkit-overflow-scrolling: touch;
+    padding: 20px 15px;
+    box-sizing: border-box;
 }
 
-/* 4. FIX DEL COLORE (Il viola sparirà) */
-a {
-    text-decoration: none;
-    color: inherit; /* Forza il link a ereditare il colore del testo */
-}
-
-/* TITOLO SEZIONE */
-.food-section-title {
-    font-family: 'Playfair Display', serif;
-    color: #d4af37;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    text-align: center;
-}
-
-/* CARD - Effetto vetro trasparente */
+/* 4. Glassmorphism Card (Oro Glow) */
 .food-card {
     display: block;
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(255, 255, 255, 0.6); /* Vetro semi-trasparente bianco */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); /* Glow oro */
     border-radius: 20px;
     padding: 20px;
-    margin-bottom: 20px; /* Spazio tra le card */
-    transition: transform 0.2s ease, background 0.3s ease;
-    color: #fff; /* Forza il bianco */
-}
-
-.food-card:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: scale(1.01);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
 }
 
 .food-card-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: #d4af37; /* Oro */
+    color: #000; /* Testo nero */
     margin-bottom: 10px;
 }
 
 .food-card-desc {
-    color: #ccc;
-    font-size: 0.95rem;
-    line-height: 1.4;
+    color: #333; /* Grigio scuro per leggibilità */
 }
+
 
 .badge {
     padding: 2px 8px;
