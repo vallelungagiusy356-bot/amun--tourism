@@ -1,19 +1,17 @@
 /* ==========================================================================
-   SEZIONE DOVE MANGIARE - FIX DEFINITIVO
+   SEZIONE DOVE MANGIARE - FIX DEFINITIVO E COMPLETO
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* FIX GLOBALE: Garantisce lo scroll */
 html, body {
     width: 100%;
-    height: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
+    min-height: 100vh;
     background-color: #000;
     font-family: 'Montserrat', sans-serif;
+    color: #fff;
 }
 
 /* SFONDO */
@@ -42,10 +40,8 @@ html, body {
     z-index: 1000;
 }
 
-/* CONTENUTO */
+/* CONTENUTO (Wrappa questo tutto nel tuo HTML) */
 .scroll-content {
-    position: relative;
-    z-index: 1;
     padding-top: 90px;
     padding-bottom: 40px;
     padding-left: 1rem;
@@ -54,68 +50,87 @@ html, body {
     margin: 0 auto;
 }
 
-/* CARD (Link) - FIX SOTTOLINEATURA E COLORI */
-.food-card {
-    position: relative;
+/* TITOLO SEZIONE */
+.food-section-title {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/* GRIGLIA */
+.food-grid {
     display: flex;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.15);
+    gap: 20px;
+}
+
+/* CARD */
+.food-card {
+    display: block;
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 20px;
     padding: 20px;
-    margin-bottom: 20px;
-    text-decoration: none !important; /* Rimuove sottolineatura */
-    color: inherit; /* Forza il colore del testo, non quello del link */
-    transition: transform 0.2s ease;
+    text-decoration: none !important;
+    transition: transform 0.2s ease, background 0.3s ease;
 }
 
-/* TESTO UNIFICATO (Effetto Oro) */
-.food-card-title, .food-card-desc {
+.food-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: scale(1.01);
+}
+
+/* HEADER CARD (Titolo + Badge) */
+.food-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* TESTO E TITOLI */
+.food-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
     background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    font-weight: 600;
-}
-
-.food-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
+    margin: 0;
 }
 
 .food-card-desc {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
 }
 
 /* BADGE */
 .badge {
-    padding: 4px 12px;
-    font-size: 0.70rem;
+    padding: 2px 8px;
+    font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 1px solid #d4af37;
     color: #d4af37;
-    margin-bottom: 10px;
-    display: inline-block;
-    align-self: flex-start;
-    background: rgba(0,0,0,0.3);
+    white-space: nowrap;
 }
 
 /* BOTTONE */
 .food-card-btn {
-    align-self: flex-start;
-    padding: 10px 20px;
+    display: inline-block;
+    padding: 8px 15px;
     background: rgba(212, 175, 55, 0.1);
     color: #ffd78f;
     border: 1px solid #ffd78f;
-    border-radius: 10px;
+    border-radius: 8px;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    text-decoration: none !important;
+    font-size: 0.75rem;
 }
