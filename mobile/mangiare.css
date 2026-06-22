@@ -1,95 +1,115 @@
-/* 1. Reset e Base */
-html, body {
+/* 1. Reset Base */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+}
+
+body {
     font-family: 'Montserrat', sans-serif;
     color: #000; /* Testo nero richiesto */
-    overflow-x: hidden; /* Evita scroll orizzontali */
+    background-color: #000;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden; /* Blocca solo lo scroll orizzontale */
 }
 
-/* Background - Assicurati che il percorso img/sicily.jpg sia corretto */
+/* 2. Background Siciliano */
 .scene-background {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
-    background-image: url('img/sicily.jpg'); /* Percorso relativo corretto */
+    background-image: url('img/sicily.jpg'); /* Percorso corretto */
     background-size: cover;
     background-position: center;
-    filter: brightness(0.8); /* Opzionale: scurisce leggermente per far risaltare il vetro */
+    filter: brightness(0.7); /* Scurisce l'immagine per far leggere meglio il testo */
 }
 
-/* 2. Dashboard - Flexbox a riga singola */
+/* 3. Dashboard (Header) - Flexbox forzato su riga singola */
 .dashboard {
-    position: sticky; /* Migliore di fixed per scroll nativo */
+    position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: 60px;
     display: flex;
+    flex-wrap: nowrap; /* Fondamentale: impedisce di andare a capo */
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
-    box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.8); /* Sfondo chiaro per testo nero */
-    backdrop-filter: blur(10px);
+    padding: 0 15px;
+    background: rgba(255, 255, 255, 0.85); /* Effetto glassmorphism chiaro */
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.5);
     z-index: 1000;
 }
 
-/* Impedisce il wrapping della dashboard */
-.logo-title { flex-shrink: 1; font-weight: bold; }
+/* Forza il logo e le lingue a stare in riga */
+.logo-title { font-weight: bold; font-size: 1.1rem; white-space: nowrap; }
 .lang-switcher { 
     display: flex; 
-    gap: 4px; 
-    flex-shrink: 0; /* Impedisce alle bandierine di andare a capo */
+    flex-shrink: 0; /* Fondamentale: non rimpicciolisce né va a capo */
+    gap: 5px; 
 }
 
-/* 3. Scroll Content - Rimosso il calc complesso */
+/* 4. Contenitore Scroll */
 .scroll-content {
     width: 100%;
-    padding: 20px 15px;
-    box-sizing: border-box;
+    padding-top: 80px; /* Spazio per la dashboard fissa */
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-/* 4. Glassmorphism Card (Oro Glow) */
+/* 5. Glassmorphism Card (Oro Glow) */
 .food-card {
     display: block;
-    background: rgba(255, 255, 255, 0.6); /* Vetro semi-trasparente bianco */
+    background: rgba(255, 255, 255, 0.7); /* Vetro chiaro */
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.5);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); /* Glow oro */
-    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); /* Glow oro */
+    border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
-    transition: transform 0.3s ease;
+    text-decoration: none;
+    color: #000; /* Testo nero */
+    transition: transform 0.2s;
 }
+
+.food-card:hover { transform: scale(1.02); }
 
 .food-card-title {
     font-family: 'Playfair Display', serif;
-    color: #000; /* Testo nero */
-    margin-bottom: 10px;
+    color: #000; /* Nero */
+    margin-bottom: 8px;
 }
 
 .food-card-desc {
-    color: #333; /* Grigio scuro per leggibilità */
+    color: #333;
+    font-size: 0.9rem;
+    line-height: 1.4;
 }
-
 
 .badge {
-    padding: 2px 8px;
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 5px;
-    border: 1px solid #d4af37;
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
     color: #d4af37;
+    border: 1px solid #d4af37;
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
-.food-card-btn {
-    display: inline-block;
-    margin-top: 10px;
-    color: #ffd78f;
-    font-size: 0.8rem;
-    text-transform: uppercase;
+/* 6. Altri elementi (Bottoni generici) */
+.btn-barocco {
+    display: block;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
