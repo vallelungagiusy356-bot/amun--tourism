@@ -9,7 +9,7 @@ html, body {
 }
 
 
-/* 3. Dashboard */
+/* 2. Dashboard */
 .dashboard {
     position: fixed;
     top: 0; left: 0; width: 100%;
@@ -24,7 +24,7 @@ html, body {
     z-index: 1000;
 }
 
-/* 4. Il contenitore dello scroll - Versione corretta e pulita */
+/* 3. Il contenitore dello scroll - Versione corretta e pulita */
 .scroll-content {
     width: 100%;
     /* Questo calc() risolve il problema: Altezza totale meno il padding totale (90+60=150) */
@@ -38,7 +38,7 @@ html, body {
     -webkit-overflow-scrolling: touch;
 }
 
-/* 5. FIX DEL COLORE (Il viola sparirà) */
+/* 4. FIX DEL COLORE (Il viola sparirà) */
 a {
     text-decoration: none;
     color: inherit; /* Forza il link a ereditare il colore del testo */
@@ -57,7 +57,7 @@ a {
 .food-card {
     display: block;
     background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(6px);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 20px;
     padding: 20px;
