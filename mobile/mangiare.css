@@ -20,12 +20,12 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 96%;
     z-index: -1;
     background-image: url('img/sicily.jpg'); /* Percorso corretto */
     background-size: cover;
     background-position: center;
-    filter: brightness(0.7); /* Scurisce l'immagine per far leggere meglio il testo */
+    filter: brightness(0.8); /* Scurisce l'immagine per far leggere meglio il testo */
 }
 
 /* 3. Dashboard (Header) - Flexbox forzato su riga singola */
@@ -66,10 +66,10 @@ body {
 /* 5. Glassmorphism Card (Oro Glow) */
 .food-card {
     display: block;
-    background: rgba(255, 255, 255, 0.7); /* Vetro chiaro */
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.6);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); /* Glow oro */
+    background: rgba(255, 255, 255, 0.5); /* Vetro chiaro */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.8); /* Glow oro */
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
