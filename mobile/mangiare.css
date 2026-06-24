@@ -122,26 +122,27 @@ body {
     margin-bottom: 10px;
     letter-spacing: 1px;
 }
+/* Stile Bottone Premium - Alta leggibilità */
 .food-card-btn {
     display: inline-block;
     margin-top: 15px;
-    padding: 8px 20px; /* Più largo per essere facile da cliccare */
-    font-size: 0.85rem;
-    color: #d4af37; /* Oro per coerenza */
-    font-weight: 600;
-    text-decoration: none; /* Rimuoviamo la sottolineatura */
-    border: 1px solid #d4af37; /* Bordo oro */
-    border-radius: 50px; /* Forma a pillola, molto elegante */
-    background: rgba(0, 0, 0, 0.1); /* Sfondo scurissimo e leggero */
+    padding: 10px 20px; /* Leggermente più alto per un tocco facile */
+    font-size: 0.9rem;
+    color: #000; /* Testo NERO per contrasto massimo */
+    font-weight: 700; /* Più spesso per leggibilità */
+    text-decoration: none; 
+    border: none;
+    border-radius: 50px; 
+    background: #d4af37; /* Background ORO (il vero protagonista) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Una leggera ombra per farlo "staccare" */
     transition: all 0.3s ease;
     text-align: center;
+    text-transform: uppercase; /* Dà un tocco più ufficiale */
+    letter-spacing: 0.5px;
 }
 
-/* Feedback al tocco (molto importante per il mobile) */
+/* Feedback al tocco */
 .food-card-btn:active {
-    background: #d4af37; /* Colore pieno al tocco */
-    color: #000; /* Testo nero per contrasto */
-    transform: scale(0.95); /* Leggero effetto "pressione" */
+    background: #b8962d; /* Una tonalità d'oro più scura al tocco */
+    transform: scale(0.95);
 }
-
-
