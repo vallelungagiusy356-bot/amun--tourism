@@ -1,3 +1,4 @@
+/* 1. Reset Base */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -14,7 +15,7 @@ body {
     filter: brightness(0.7);
 }
 
-/* Dashboard Stile Uniforme */
+/* 2. Dashboard Stile Uniforme */
 .dashboard {
     display: flex;
     justify-content: space-between;
@@ -39,9 +40,15 @@ body {
 
 .lang-switcher button { background: transparent; border: none; font-size: 1.2rem; cursor: pointer; margin-left: 5px; }
 
-/* Layout e Glassmorphism */
-.scroll-content { padding: 20px 15px; }
+/* 3. Layout e Spaziatura (QUI È DOVE MANCAVA) */
+.scroll-content { 
+    padding-top: 80px; /* Questo spinge il contenuto sotto l'header */
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
 
+/* 4. Glassmorphism Card */
 .food-card {
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(15px);
