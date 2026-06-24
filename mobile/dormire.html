@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amunì Tourism - Dormire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mangiare.css">
+    <style>
+        /* Modifica specifica per le card dormire: più sottili ed eleganti */
+        .sleep-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid #d4af37;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .sleep-card:hover { transform: scale(1.01); background: rgba(255, 255, 255, 0.3); }
+        .sleep-title { font-family: 'Cinzel', serif; color: #fff; font-size: 1rem; }
+        .btn-view { color: #d4af37; font-size: 0.9rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="scene-background"></div>
+
+    <header class="dashboard">
+        <a href="index.html" class="btn-home">🏠</a>
+        <div class="logo-container"><div class="logo-title">AMUNÌ TOURISM</div></div>
+        <div class="lang-switcher">
+            <button data-lang="it">🇮🇹</button>
+            <button data-lang="en">🇬🇧</button>
+        </div>
+    </header>
+
+    <div class="scroll-content">
+        <div class="search-container">
+            <input type="text" id="sleep-search" placeholder="Cerca dove dormire..." onkeyup="filterSleep()">
+        </div>
+        <div class="mobile-layout" id="sleep-container"></div>
+    </div>
+
+    <script>
+        const accommodations = [
+            { name: "De Spuches house", link: "https://www.booking.com/Share-9yidf9" },
+            { name: "Il duca house & holiday", link: "https://www.booking.com/Share-fg0sxP" },
+            { name: "Casa vacanze Caccamo Santa Lucia", link: "https://www.booking.com/Share-Zy5oMf" },
+            { name: "A casa da Paola", link: "https://www.booking.com/Share-R2YrnE" },
+            { name: "Trinacria Caccamo luxury and rooms", link: "https://www.booking.com/Share-ceKMpkE" },
+            { name: "La casa dei cavalieri", link: "https://www.booking.com/Share-5n6YbS2" },
+            { name: "L'opuntia sul lago", link: "https://www.booking.com/Share-6PtdvA" },
+            { name: "Il cortile holiday house", link: "https://www.booking.com/Share-1bcyLa7" },
+            { name: "La casa del Custode", link: "https://www.booking.com/Share-AOPAO9" },
+            { name: "La casetta di Rosina", link: "https://www.booking.com/Share-LXb1QZ" },
+            { name: "Casa del vecchio borgo", link: "https://www.booking.com/Share-5q8K2qH" },
+            { name: "Sikania Agrirelais", link: "https://www.booking.com/Share-wc8bjRR" },
+            { name: "L'arco antico", link: "https://www.booking.com/Share-WutiSb" },
+            { name: "Pet friendly home", link: "https://www.booking.com/Share-ymqmBUx" },
+            { name: "Batiful villa", link: "https://www.booking.com/Share-1q3QZGo" }
+        ];
+
+            <script>
+        function renderList(data) {
+            const container = document.getElementById('sleep-container');
+            const list = data.sleep_page?.accommodations;
+            if(!container || !list) return;
+
+            container.innerHTML = '';
+            list.forEach(item => {
+                container.innerHTML += `
+                    <a href="${item.link}" target="_blank" class="sleep-card">
+                        <h3 class="sleep-title">${item.name}</h3>
+                        <span class="btn-view">PRENOTA ➔</span>
+                    </a>
+                `;
+            });
+        }
+
+        // Caricamento dati da JSON
+        fetch('./lang/dormire.json') 
+            .then(res => res.json())
+            .then(data => renderList(data))
+            .catch(err => console.error("Errore nel caricamento dati:", err));
+
+        function filterSleep() {
+            let input = document.getElementById('sleep-search').value.toLowerCase();
+            let cards = document.querySelectorAll('.sleep-card');
+            cards.forEach(card => {
+                let title = card.querySelector('.sleep-title').innerText.toLowerCase();
+                card.style.display = title.includes(input) ? "flex" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
