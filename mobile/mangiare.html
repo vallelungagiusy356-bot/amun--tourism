@@ -117,11 +117,17 @@
             loadLanguage(localStorage.getItem("lang") || "it");
         });
 
-        // Gestione Audio
+                // Gestione Audio (Versione corretta e reattiva)
         const audio = document.getElementById("bg-music");
-        document.addEventListener("touchstart", () => audio.play(), { once: true });
+        const trigger = document.getElementById("audio-trigger");
+
+        trigger.addEventListener("click", () => {
+            audio.play();
+            trigger.style.display = "none"; // Nasconde il muro invisibile dopo il click
+        });
         
         if ("serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js");
+        
     </script>
 </body>
 </html>
