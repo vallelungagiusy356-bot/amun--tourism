@@ -37,6 +37,9 @@
 
     <div class="scroll-content">
         <div class="mobile-layout">
+            <div class="search-container">
+    <input type="text" id="food-search" placeholder="Cerca tra i sapori..." onkeyup="filterCards()">
+</div>
             <section class="section-block" id="block-eat">
                 <div class="food-grid" id="food-container"></div>
             </section>
@@ -92,6 +95,14 @@
                 .catch(err => console.error("Errore lingua:", err));
             localStorage.setItem("lang", lang);
         }
+function filterCards() {
+    let input = document.getElementById('food-search').value.toLowerCase();
+    let cards = document.querySelectorAll('.food-card');
+    cards.forEach(card => {
+        let title = card.querySelector('.food-card-title').innerText.toLowerCase();
+        card.style.display = title.includes(input) ? "block" : "none";
+    });
+}
 
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".lang-switcher button").forEach(btn => {
