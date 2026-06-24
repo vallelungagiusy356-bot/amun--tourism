@@ -14,32 +14,52 @@ body {
     filter: brightness(0.7);
 }
 
-/* Dashboard Fissa e stabile */
+/* Dashboard Fissa e ottimizzata */
 .dashboard {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 60px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 15px;
-    background: rgba(0, 0, 0, 0.9);
-    border-bottom: 2px solid #d4af37;
+    justify-content: space-between; /* Spazia gli elementi agli estremi */
+    align-items: center; /* Allinea tutto verticalmente al centro */
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.9); /* Sfondo scuro elegante */
+    border-bottom: 2px solid #d4af37; /* Bordo oro */
+    position: sticky;
+    top: 0;
     z-index: 1000;
+    width: 100%;
 }
 
-.btn-home { font-size: 1.5rem; text-decoration: none; color: #fff; }
+/* Contenitore per il titolo che impedisce di andare a capo */
+.logo-container {
+    flex-grow: 1; /* Occupa lo spazio disponibile */
+    text-align: center;
+    padding: 0 10px;
+    white-space: nowrap; /* IMPEDISCE DI ANDARE A CAPO */
+    overflow: hidden; /* Taglia il testo se è troppo lungo invece di romperlo */
+    text-overflow: ellipsis; /* Aggiunge i puntini se troppo lungo */
+}
 
 .logo-title {
     font-family: 'Playfair Display', serif;
     color: #d4af37;
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* Leggermente più piccolo per stare in una riga */
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
-.lang-switcher button { background: transparent; border: none; font-size: 1.2rem; cursor: pointer; margin-left: 5px; }
+/* La sezione delle bandiere (lang-switcher) */
+.lang-switcher {
+    display: flex;
+    flex-shrink: 0; /* Impedisce alle bandierine di restringersi */
+    gap: 4px; /* Spazio stretto tra le bandierine */
+}
+
+.lang-switcher button {
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0; /* Rimuove padding extra */
+}
 
 /* ContenitoreScroll: deve avere il padding-top pari all'altezza della dashboard */
 .scroll-content { 
