@@ -122,4 +122,26 @@ body {
     margin-bottom: 10px;
     letter-spacing: 1px;
 }
+.food-card-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 20px; /* Più largo per essere facile da cliccare */
+    font-size: 0.85rem;
+    color: #d4af37; /* Oro per coerenza */
+    font-weight: 600;
+    text-decoration: none; /* Rimuoviamo la sottolineatura */
+    border: 1px solid #d4af37; /* Bordo oro */
+    border-radius: 50px; /* Forma a pillola, molto elegante */
+    background: rgba(0, 0, 0, 0.1); /* Sfondo scurissimo e leggero */
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Feedback al tocco (molto importante per il mobile) */
+.food-card-btn:active {
+    background: #d4af37; /* Colore pieno al tocco */
+    color: #000; /* Testo nero per contrasto */
+    transform: scale(0.95); /* Leggero effetto "pressione" */
+}
+
 
