@@ -69,48 +69,31 @@ body {
     padding-bottom: 20px;
 }
 
-/* Card Glassmorphism - Testo scuro per contrasto */
 .food-card {
-    background: rgba(255, 255, 255, 0.4); /* Leggermente più opaco per far risaltare il testo */
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     padding: 25px;
     margin-bottom: 20px;
     display: block;
     text-decoration: none;
-    color: #2c2c2c; /* COLORE TESTO: Grigio scuro elegante */
-    transition: transform 0.3s ease, background 0.3s ease;
+    color: #2c2c2c;
+    
+    /* MODIFICA: Bordo nero sottile */
+    border: 1px solid #000; 
+    
+    /* MODIFICA: Ombra originale + Glow dorato */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 10px rgba(212, 175, 55, 0.5); 
+    
+    /* MODIFICA: Aggiunto box-shadow alla transizione per renderlo fluido */
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Effetto al tocco (hover) */
 .food-card:hover { 
     transform: scale(1.02); 
-    background: rgba(255, 255, 255, 0.6); /* Diventa un po' più chiaro al tocco */
-}
-
-.food-card-title {
-    font-family: 'Playfair Display', serif;
-    text-transform: uppercase;
-    color: #000; /* Nero per il titolo */
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-
-.food-card-desc { 
-    color: #444; /* Grigio scuro per la descrizione, più leggibile */
-    font-size: 0.95rem; 
-    line-height: 1.5;
-    margin-bottom: 10px; 
-}
-
-.food-card-btn {
-    display: block;
-    margin-top: 15px;
-    font-size: 0.85rem;
-    color: #b8860b; /* Oro scuro, sta bene col nero del testo */
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 5px;
+    background: rgba(255, 255, 255, 0.6); 
+    /* Glow più intenso al tocco */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.8);
 }
