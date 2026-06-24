@@ -68,6 +68,23 @@ body {
     padding-right: 15px;
     padding-bottom: 20px;
 }
+.search-container {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#food-search {
+    width: 100%;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #d4af37;
+    border-radius: 50px; /* Forma ovale premium */
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    backdrop-filter: blur(10px);
+}
+
 
 .food-card {
     background: rgba(255, 255, 255, 0.4);
@@ -81,7 +98,7 @@ body {
     color: #2c2c2c;
     
     /* MODIFICA: Bordo nero sottile */
-    border: 1px solid #000; 
+    border: 2,5px solid #000; 
     
     /* MODIFICA: Ombra originale + Glow dorato */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 10px rgba(212, 175, 55, 0.5); 
@@ -97,3 +114,11 @@ body {
     /* Glow più intenso al tocco */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.8);
 }
+.food-card-title {
+    font-family: 'Cinzel', serif; /* Font Medievale/Premium */
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
