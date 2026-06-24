@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - Mangiare</title>
+    <!-- Font Medievale Premium e Font Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="mangiare.css">
     <meta name="theme-color" content="#000000">
 </head>
 <body>
 
+    <!-- Pulsante invisibile per sbloccare l'audio su mobile -->
     <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
     
     <audio id="bg-music" loop>
@@ -18,28 +20,30 @@
 
     <div class="scene-background"></div>
 
+    <!-- Dashboard Fissa e ottimizzata -->
     <header class="dashboard">
-    <a href="index.html" class="btn-home">🏠</a>
-    
-    <div class="logo-container">
-        <div class="logo-title">AMUNÌ TOURISM</div>
-    </div>
-    
-    <div class="lang-switcher">
-        <button data-lang="it">🇮🇹</button>
-        <button data-lang="en">🇬🇧</button>
-        <button data-lang="fr">🇫🇷</button>
-        <button data-lang="de">🇩🇪</button>
-        <button data-lang="es">🇪🇸</button>
-    </div>
-</header>
-
+        <a href="index.html" class="btn-home">🏠</a>
+        
+        <div class="logo-container">
+            <div class="logo-title">AMUNÌ TOURISM</div>
+        </div>
+        
+        <div class="lang-switcher">
+            <button data-lang="it">🇮🇹</button>
+            <button data-lang="en">🇬🇧</button>
+            <button data-lang="fr">🇫🇷</button>
+            <button data-lang="de">🇩🇪</button>
+            <button data-lang="es">🇪🇸</button>
+        </div>
+    </header>
 
     <div class="scroll-content">
+        <!-- BARRA DI RICERCA: Spostata qui per un layout migliore (fissa) -->
+        <div class="search-container">
+            <input type="text" id="food-search" placeholder="Cerca tra i sapori..." onkeyup="filterCards()">
+        </div>
+
         <div class="mobile-layout">
-            <div class="search-container">
-    <input type="text" id="food-search" placeholder="Cerca tra i sapori..." onkeyup="filterCards()">
-</div>
             <section class="section-block" id="block-eat">
                 <div class="food-grid" id="food-container"></div>
             </section>
@@ -95,14 +99,16 @@
                 .catch(err => console.error("Errore lingua:", err));
             localStorage.setItem("lang", lang);
         }
-function filterCards() {
-    let input = document.getElementById('food-search').value.toLowerCase();
-    let cards = document.querySelectorAll('.food-card');
-    cards.forEach(card => {
-        let title = card.querySelector('.food-card-title').innerText.toLowerCase();
-        card.style.display = title.includes(input) ? "block" : "none";
-    });
-}
+
+        // Funzione per filtrare le card in base alla ricerca
+        function filterCards() {
+            let input = document.getElementById('food-search').value.toLowerCase();
+            let cards = document.querySelectorAll('.food-card');
+            cards.forEach(card => {
+                let title = card.querySelector('.food-card-title').innerText.toLowerCase();
+                card.style.display = title.includes(input) ? "block" : "none";
+            });
+        }
 
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".lang-switcher button").forEach(btn => {
