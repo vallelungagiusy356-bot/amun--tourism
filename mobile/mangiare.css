@@ -91,9 +91,9 @@ body {
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border-radius: 25px;
+    border-radius: 20px;
     padding: 25px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     display: block;
     text-decoration: none;
     color: #2c2c2c;
