@@ -40,11 +40,27 @@
         "capricci_di_sicilia": "Gastronomia in via Termitana, ideale per una pausa veloce o un break goloso se ti trovi alla villa comunale con i bambini."
       }
     },
-    "sleep_page": {
-      "title": "Dove Dormire",
-      "intro": "Benvenuto, viandante. Trova ristoro nelle nostre accoglienti strutture, dove la storia e l'ospitalità si fondono per regalarti un riposo sereno nel cuore di Caccamo.",
-      "placeholder": "Cerca una struttura ricettiva..."
-    },
+    {
+  "sleep_page": {
+    "accommodations": [
+      { "name": "De Spuches house", "link": "https://www.booking.com/Share-9yidf9" },
+      { "name": "Il duca house & holiday", "link": "https://www.booking.com/Share-fg0sxP" },
+      { "name": "Casa vacanze Caccamo Santa Lucia", "link": "https://www.booking.com/Share-Zy5oMf" },
+      { "name": "A casa da Paola", "link": "https://www.booking.com/Share-R2YrnE" },
+      { "name": "Trinacria Caccamo luxury and rooms", "link": "https://www.booking.com/Share-ceKMpkE" },
+      { "name": "La casa dei cavalieri", "link": "https://www.booking.com/Share-5n6YbS2" },
+      { "name": "L'opuntia sul lago", "link": "https://www.booking.com/Share-6PtdvA" },
+      { "name": "Il cortile holiday house", "link": "https://www.booking.com/Share-1bcyLa7" },
+      { "name": "La casa del Custode", "link": "https://www.booking.com/Share-AOPAO9" },
+      { "name": "La casetta di Rosina", "link": "https://www.booking.com/Share-LXb1QZ" },
+      { "name": "Casa del vecchio borgo", "link": "https://www.booking.com/Share-5q8K2qH" },
+      { "name": "Sikania Agrirelais", "link": "https://www.booking.com/Share-wc8bjRR" },
+      { "name": "L'arco antico", "link": "https://www.booking.com/Share-WutiSb" },
+      { "name": "Pet friendly home", "link": "https://www.booking.com/Share-ymqmBUx" },
+      { "name": "Batiful villa", "link": "https://www.booking.com/Share-1q3QZGo" }
+    ]
+  },
+
     "transport_page": {
       "welcome": "Benvenuto, o viandante, nella sezione Trasporti. Qui troverai le informazioni necessarie per muovere i tuoi passi nei dintorni del borgo.",
       "company_title": "Autolinee Randazzo di Gesù",
