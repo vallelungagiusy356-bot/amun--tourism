@@ -39,12 +39,13 @@ body {
 }
 
 .logo-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif; /* Cambiato da Playfair Display a Cinzel */
     color: #d4af37;
-    font-size: 1.1rem; /* Leggermente più piccolo per stare in una riga */
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-size: 1.2rem; /* Leggermente aumentato visto che Cinzel è molto leggibile */
+    font-weight: 700; /* Leggermente più spesso */
+    letter-spacing: 2px; /* Un po' più arioso */
 }
+
 
 /* La sezione delle bandiere (lang-switcher) */
 .lang-switcher {
