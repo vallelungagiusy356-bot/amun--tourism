@@ -98,7 +98,7 @@ body {
     color: #2c2c2c;
     
     /* MODIFICA: Bordo nero sottile */
-    border: 2,5px solid #000; 
+    border: 2.5px solid #000; 
     
     /* MODIFICA: Ombra originale + Glow dorato */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 10px rgba(212, 175, 55, 0.5); 
