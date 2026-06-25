@@ -40,62 +40,40 @@
     </header>
 
     <div class="scroll-content">
-        <div class="search-container">
-            <input type="text" id="sleep-search" placeholder="Cerca dove dormire..." onkeyup="filterSleep()">
-        </div>
-        <div class="mobile-layout" id="sleep-container"></div>
+    <div class="search-container">
+        <!-- AGGIUNTO CLASSE 'search-bar' PER CSS -->
+        <input type="text" id="sleep-search" class="search-bar" placeholder="Cerca dove dormire..." onkeyup="filterSleep()">
     </div>
+    <div class="mobile-layout" id="sleep-container"></div>
+</div>
 
-    <script>
-        const accommodations = [
-            { name: "De Spuches house", link: "https://www.booking.com/Share-9yidf9" },
-            { name: "Il duca house & holiday", link: "https://www.booking.com/Share-fg0sxP" },
-            { name: "Casa vacanze Caccamo Santa Lucia", link: "https://www.booking.com/Share-Zy5oMf" },
-            { name: "A casa da Paola", link: "https://www.booking.com/Share-R2YrnE" },
-            { name: "Trinacria Caccamo luxury and rooms", link: "https://www.booking.com/Share-ceKMpkE" },
-            { name: "La casa dei cavalieri", link: "https://www.booking.com/Share-5n6YbS2" },
-            { name: "L'opuntia sul lago", link: "https://www.booking.com/Share-6PtdvA" },
-            { name: "Il cortile holiday house", link: "https://www.booking.com/Share-1bcyLa7" },
-            { name: "La casa del Custode", link: "https://www.booking.com/Share-AOPAO9" },
-            { name: "La casetta di Rosina", link: "https://www.booking.com/Share-LXb1QZ" },
-            { name: "Casa del vecchio borgo", link: "https://www.booking.com/Share-5q8K2qH" },
-            { name: "Sikania Agrirelais", link: "https://www.booking.com/Share-wc8bjRR" },
-            { name: "L'arco antico", link: "https://www.booking.com/Share-WutiSb" },
-            { name: "Pet friendly home", link: "https://www.booking.com/Share-ymqmBUx" },
-            { name: "Batiful villa", link: "https://www.booking.com/Share-1q3QZGo" }
-        ];
+<script>
+    // Caricamento dati
+    fetch('./lang/dormire.json') 
+        .then(res => res.json())
+        .then(data => renderList(data))
+        .catch(err => console.error("Errore nel caricamento dati:", err));
 
-            <script>
-        function renderList(data) {
-            const container = document.getElementById('sleep-container');
-            const list = data.sleep_page?.accommodations;
-            if(!container || !list) return;
+    function renderList(data) {
+        const container = document.getElementById('sleep-container');
+        const list = data.pages?.sleep_page?.accommodations; // Corretto percorso basato sul tuo JSON
+        if(!container || !list) return;
 
-            container.innerHTML = '';
-            list.forEach(item => {
-                container.innerHTML += `
-                    <a href="${item.link}" target="_blank" class="sleep-card">
-                        <h3 class="sleep-title">${item.name}</h3>
-                        <span class="btn-view">PRENOTA ➔</span>
-                    </a>
-                `;
-            });
-        }
+        container.innerHTML = list.map(item => `
+            <a href="${item.link}" target="_blank" class="sleep-card">
+                <h3 class="sleep-title">${item.name}</h3>
+                <span class="btn-view">PRENOTA ➔</span>
+            </a>
+        `).join('');
+    }
 
-        // Caricamento dati da JSON
-        fetch('./lang/dormire.json') 
-            .then(res => res.json())
-            .then(data => renderList(data))
-            .catch(err => console.error("Errore nel caricamento dati:", err));
-
-        function filterSleep() {
-            let input = document.getElementById('sleep-search').value.toLowerCase();
-            let cards = document.querySelectorAll('.sleep-card');
-            cards.forEach(card => {
-                let title = card.querySelector('.sleep-title').innerText.toLowerCase();
-                card.style.display = title.includes(input) ? "flex" : "none";
-            });
-        }
-    </script>
+    function filterSleep() {
+        let input = document.getElementById('sleep-search').value.toLowerCase();
+        document.querySelectorAll('.sleep-card').forEach(card => {
+            let title = card.querySelector('.sleep-title').innerText.toLowerCase();
+            card.style.display = title.includes(input) ? "flex" : "none";
+        });
+    }
+</script>
 </body>
 </html>
