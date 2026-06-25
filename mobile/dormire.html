@@ -48,16 +48,18 @@
 </div>
 
 <script>
-    // Caricamento dati
-    function loadLanguage(lang) {
-            fetch(`./lang/${lang}.json`)  
-        .then(res => res.json())
-        .then(data => renderList(data))
-        .catch(err => console.error("Errore nel caricamento dati:", err));
+    // 1. Esegui subito al caricamento
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('./lang/it.json') // Assicurati che il file si chiami esattamente così
+            .then(res => res.json())
+            .then(data => renderList(data))
+            .catch(err => console.error("Errore nel caricamento:", err));
+    });
 
+    // 2. Funzioni globali (ora accessibili dall'HTML)
     function renderList(data) {
         const container = document.getElementById('sleep-container');
-        const list = data.pages?.sleep_page?.accommodations; // Corretto percorso basato sul tuo JSON
+        const list = data.pages?.sleep_page?.accommodations;
         if(!container || !list) return;
 
         container.innerHTML = list.map(item => `
@@ -69,9 +71,10 @@
     }
 
     function filterSleep() {
-        let input = document.getElementById('sleep-search').value.toLowerCase();
-        document.querySelectorAll('.sleep-card').forEach(card => {
-            let title = card.querySelector('.sleep-title').innerText.toLowerCase();
+        const input = document.getElementById('sleep-search').value.toLowerCase();
+        const cards = document.querySelectorAll('.sleep-card');
+        cards.forEach(card => {
+            const title = card.querySelector('.sleep-title').innerText.toLowerCase();
             card.style.display = title.includes(input) ? "flex" : "none";
         });
     }
