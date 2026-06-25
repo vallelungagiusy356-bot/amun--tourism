@@ -146,3 +146,53 @@ body {
     background: #b8962d; /* Una tonalità d'oro più scura al tocco */
     transform: scale(0.95);
 }
+/* --- Stile Lista Alloggi (Tile Layout) --- */
+
+#sleep-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spazio tra una card e l'altra */
+    padding: 10px 5px;
+    width: 100%;
+}
+
+.sleep-card {
+    background: rgba(255, 255, 255, 0.15); /* Vetro leggero */
+    backdrop-filter: blur(10px);
+    border: 1px solid #d4af37; /* Bordo dorato */
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Titolo a sx, bottone a dx */
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Effetto al passaggio del mouse o tocco */
+.sleep-card:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.02); /* Leggero zoom per feedback */
+}
+
+.sleep-title {
+    font-family: 'Cinzel', serif;
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Bottone specifico per la lista */
+.btn-view {
+    color: #000;
+    background: #d4af37;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem; /* Più piccolo per stare nella riga */
+    font-weight: 800;
+    text-transform: uppercase;
+    white-space: nowrap; /* Il testo non va a capo */
+    margin-left: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
