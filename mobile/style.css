@@ -85,10 +85,6 @@ body {
     filter: grayscale(0);
 }
 
-/* Assicurati che l'header non sovrapponga il contenuto */
-.mobile-layout {
-    margin-top: 80px; 
-}
 
 
 /* LAYOUT MOBILE */
