@@ -145,53 +145,55 @@ body {
     background: #b8962d; /* Una tonalità d'oro più scura al tocco */
     transform: scale(0.95);
 }
-/* --- Stile Lista Alloggi (Tile Layout) --- */
+/* --- Stile Lista Alloggi (Tile Layout - Ottimizzato) --- */
 
 #sleep-container {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Spazio tra una card e l'altra */
+    gap: 15px;
     padding: 10px 5px;
     width: 100%;
 }
 
 .sleep-card {
-    background: rgba(255, 255, 255, 0.15); /* Vetro leggero */
-    backdrop-filter: blur(10px);
-    border: 1px solid #d4af37; /* Bordo dorato */
-    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.7); /* Aumentata opacità per contrasto */
+    backdrop-filter: blur(15px);
+    border: 2.5px solid #000; /* Bordo nero come nella sezione Mangiare */
+    border-radius: 20px;
     padding: 20px;
     display: flex;
-    justify-content: space-between; /* Titolo a sx, bottone a dx */
+    justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Effetto al passaggio del mouse o tocco */
 .sleep-card:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: scale(1.02); /* Leggero zoom per feedback */
+    background: rgba(255, 255, 255, 0.85);
+    transform: scale(1.02);
 }
 
 .sleep-title {
     font-family: 'Cinzel', serif;
-    color: #fff;
-    font-size: 1.1rem;
-    margin: 0;
+    color: #000; /* TESTO NERO */
+    font-size: 1rem;
     line-height: 1.2;
+    text-transform: uppercase;
+    margin-right: 10px; /* Spazio tra testo e bottone */
 }
 
-/* Bottone specifico per la lista */
 .btn-view {
     color: #000;
     background: #d4af37;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.75rem; /* Più piccolo per stare nella riga */
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
     font-weight: 800;
     text-transform: uppercase;
-    white-space: nowrap; /* Il testo non va a capo */
-    margin-left: 10px;
+    white-space: nowrap;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex; /* Forza l'allineamento del contenuto */
+    align-items: center;
+    justify-content: center;
 }
