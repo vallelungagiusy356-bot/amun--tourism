@@ -3,55 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amunì Tourism - Mobile</title>
-
-    <!-- PWA: Manifest -->
+    <title>Amunì Tourism - Home</title>
     <link rel="manifest" href="./manifest.json?v=2">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- PWA: Colore barra superiore -->
     <meta name="theme-color" content="#000000">
 </head>
 <body>
 
-    <button id="audio-trigger" style="
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    opacity:0;
-    border:none;
-    background:transparent;
-    z-index:9999;"></button>
+    <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
 
-    <!-- AUDIO EPICO -->
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- SFONDO -->
     <div class="scene-background"></div>
 
-    <!-- DASHBOARD MOBILE -->
+    <!-- DASHBOARD UNIFICATA -->
     <header class="dashboard">
-        <div class="logo-title" data-i18n="home.amuni_title"></div>
-        <button id="toggle-music" class="btn-audio">🔈</button>
+        <!-- Tasto Home che ricarica la pagina -->
+        <a href="mobile_index.html" class="btn-home">🏠</a>
+        
+        <div class="logo-container">
+            <div class="logo-title" data-i18n="home.amuni_title">AMUNÌ TOURISM</div>
+        </div>
 
-        <div class="lang-switcher">
-            <button data-lang="it">🇮🇹</button>
-            <button data-lang="en">🇬🇧</button>
-            <button data-lang="fr">🇫🇷</button>
-            <button data-lang="de">🇩🇪</button>
-            <button data-lang="es">🇪🇸</button>
+        <div class="right-controls">
+            <button id="toggle-music" class="btn-audio">🔈</button>
+            <div class="lang-switcher">
+                <button data-lang="it">🇮🇹</button>
+                <button data-lang="en">🇬🇧</button>
+                <button data-lang="fr">🇫🇷</button>
+                <button data-lang="de">🇩🇪</button>
+                <button data-lang="es">🇪🇸</button>
+            </div>
         </div>
     </header>
 
-    <!-- LAYOUT MOBILE -->
     <div class="mobile-layout">
-
         <div class="video-container">
             <video autoplay muted loop playsinline class="castellana-avatar">
                 <source src="img/castellana_alpha.webm" type="video/webm">
@@ -78,6 +66,13 @@
             <div class="amuni-text" data-i18n="home.amuni_text"></div>
         </div>
     </div>
+
+    <script>
+        // Mantieni la tua logica esistente, ho solo pulito la struttura header
+        // ... (il tuo script rimane invariato)
+    </script>
+</body>
+</html>
 
     <!-- SCRIPT LOGICA GENERALE -->
     <script>
