@@ -6,17 +6,21 @@
     <title>Amunì Tourism - Dormire</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="mangiare.css">
+    <meta name="theme-color" content="#000000">
 </head>
 <body>
 
     <div class="scene-background"></div>
 
     <header class="dashboard">
-        <a href="index.html" class="btn-home">🏠</a>
+        <a href="mobile_index.html" class="btn-home">🏠</a>
         <div class="logo-container"><div class="logo-title">AMUNÌ TOURISM</div></div>
         <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
+            <button data-lang="fr">🇫🇷</button>
+            <button data-lang="de">🇩🇪</button>
+            <button data-lang="es">🇪🇸</button>
         </div>
     </header>
 
@@ -28,12 +32,14 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('./lang/it.json') 
+        // Caricamento Dati
+        function loadLanguage(lang) {
+            fetch(`./lang/${lang}.json`) 
                 .then(res => res.json())
                 .then(data => renderList(data))
-                .catch(err => console.error("Errore nel caricamento:", err));
-        });
+                .catch(err => console.error("Errore lingua:", err));
+            localStorage.setItem("lang", lang);
+        }
 
         function renderList(data) {
             const container = document.getElementById('sleep-container');
@@ -50,12 +56,22 @@
 
         function filterSleep() {
             const input = document.getElementById('sleep-search').value.toLowerCase();
-            const cards = document.querySelectorAll('.sleep-card');
-            cards.forEach(card => {
+            document.querySelectorAll('.sleep-card').forEach(card => {
                 const title = card.querySelector('.sleep-title').innerText.toLowerCase();
                 card.style.display = title.includes(input) ? "flex" : "none";
             });
         }
+
+        // Inizializzazione
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
+            });
+            loadLanguage(localStorage.getItem("lang") || "it");
+            
+            // Registrazione PWA
+            if ("serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js");
+        });
     </script>
 </body>
 </html>
