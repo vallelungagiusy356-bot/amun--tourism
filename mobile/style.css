@@ -31,7 +31,7 @@ body {
     z-index: 0;
 }
 
-/* DASHBOARD MOBILE */
+/* DASHBOARD AGGIORNATA (Standardizzata) */
 .dashboard {
     position: fixed;
     top: 0;
@@ -40,49 +40,56 @@ body {
     height: 65px;
     display: flex;
     align-items: center;
-    padding: 0 20px;
-    background: rgba(0, 0, 0, 0.6);
+    justify-content: space-between; /* Distribuisce gli spazi */
+    padding: 0 15px;
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-    z-index: 100;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    z-index: 1000;
 }
 
-/* LOGO ELEGANTE ORO */
-.logo-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+.btn-home {
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 5px;
 }
 
-/* CONTENITORE BANDIERE */
-.flags-container {
+.logo-container {
+    flex-grow: 1;
     display: flex;
-    gap: 8px; /* Spazio tra le bandiere */
-    margin-left: 10px;
+    justify-content: center;
 }
 
-/* BOTTONE AUDIO */
-.btn-audio {
-    margin-left: auto;
+.right-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 5px;
+}
+
+.lang-switcher button {
     background: none;
     border: none;
-    color: #ffd78f;
-    font-size: 1.4rem;
     cursor: pointer;
-    padding: 6px;
-    transition: transform 0.2s ease;
+    font-size: 1rem;
+    filter: grayscale(0.2);
+    transition: transform 0.2s;
 }
 
-.btn-audio:hover {
+.lang-switcher button:hover {
     transform: scale(1.2);
+    filter: grayscale(0);
 }
+
+/* Assicurati che l'header non sovrapponga il contenuto */
+.mobile-layout {
+    margin-top: 80px; 
+}
+
 
 /* LAYOUT MOBILE */
 .mobile-layout {
