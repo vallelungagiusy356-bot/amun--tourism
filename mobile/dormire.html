@@ -6,25 +6,6 @@
     <title>Amunì Tourism - Dormire</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="mangiare.css">
-    <style>
-        /* Modifica specifica per le card dormire: più sottili ed eleganti */
-        .sleep-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid #d4af37;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-        .sleep-card:hover { transform: scale(1.01); background: rgba(255, 255, 255, 0.3); }
-        .sleep-title { font-family: 'Cinzel', serif; color: #fff; font-size: 1rem; }
-        .btn-view { color: #d4af37; font-size: 0.9rem; font-weight: bold; }
-    </style>
 </head>
 <body>
 
@@ -40,44 +21,41 @@
     </header>
 
     <div class="scroll-content">
-    <div class="search-container">
-        <!-- AGGIUNTO CLASSE 'search-bar' PER CSS -->
-        <input type="text" id="sleep-search" class="search-bar" placeholder="Cerca dove dormire..." onkeyup="filterSleep()">
+        <div class="search-container">
+            <input type="text" id="sleep-search" class="search-bar" placeholder="Cerca dove dormire..." onkeyup="filterSleep()">
+        </div>
+        <div class="mobile-layout" id="sleep-container"></div>
     </div>
-    <div class="mobile-layout" id="sleep-container"></div>
-</div>
 
-<script>
-    // 1. Esegui subito al caricamento
-    document.addEventListener('DOMContentLoaded', () => {
-        fetch('./lang/it.json') // Assicurati che il file si chiami esattamente così
-            .then(res => res.json())
-            .then(data => renderList(data))
-            .catch(err => console.error("Errore nel caricamento:", err));
-    });
-
-    // 2. Funzioni globali (ora accessibili dall'HTML)
-    function renderList(data) {
-        const container = document.getElementById('sleep-container');
-        const list = data.pages?.sleep_page?.accommodations;
-        if(!container || !list) return;
-
-        container.innerHTML = list.map(item => `
-            <a href="${item.link}" target="_blank" class="sleep-card">
-                <h3 class="sleep-title">${item.name}</h3>
-                <span class="btn-view">PRENOTA ➔</span>
-            </a>
-        `).join('');
-    }
-
-    function filterSleep() {
-        const input = document.getElementById('sleep-search').value.toLowerCase();
-        const cards = document.querySelectorAll('.sleep-card');
-        cards.forEach(card => {
-            const title = card.querySelector('.sleep-title').innerText.toLowerCase();
-            card.style.display = title.includes(input) ? "flex" : "none";
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('./lang/it.json') 
+                .then(res => res.json())
+                .then(data => renderList(data))
+                .catch(err => console.error("Errore nel caricamento:", err));
         });
-    }
-</script>
+
+        function renderList(data) {
+            const container = document.getElementById('sleep-container');
+            const list = data.pages?.sleep_page?.accommodations;
+            if(!container || !list) return;
+
+            container.innerHTML = list.map(item => `
+                <a href="${item.link}" target="_blank" class="sleep-card">
+                    <h3 class="sleep-title">${item.name}</h3>
+                    <span class="btn-view">PRENOTA ➔</span>
+                </a>
+            `).join('');
+        }
+
+        function filterSleep() {
+            const input = document.getElementById('sleep-search').value.toLowerCase();
+            const cards = document.querySelectorAll('.sleep-card');
+            cards.forEach(card => {
+                const title = card.querySelector('.sleep-title').innerText.toLowerCase();
+                card.style.display = title.includes(input) ? "flex" : "none";
+            });
+        }
+    </script>
 </body>
 </html>
