@@ -145,7 +145,7 @@ body {
     background: #b8962d; /* Una tonalità d'oro più scura al tocco */
     transform: scale(0.95);
 }
-/* --- Stile Lista Alloggi (Tile Layout - Ottimizzato) --- */
+/* --- Stile Lista Alloggi (Tile Layout) --- */
 
 #sleep-container {
     display: flex;
@@ -156,22 +156,22 @@ body {
 }
 
 .sleep-card {
-    background: rgba(255, 255, 255, 0.7); /* Aumentata opacità per contrasto */
+    background: rgba(255, 255, 255, 0.7); /* Sfondo più solido per leggibilità */
     backdrop-filter: blur(15px);
-    border: 2.5px solid #000; /* Bordo nero come nella sezione Mangiare */
+    border: 2.5px solid #000; /* Bordo nero */
     border-radius: 20px;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    transition: transform 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .sleep-card:hover {
-    background: rgba(255, 255, 255, 0.85);
     transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.85);
 }
 
 .sleep-title {
@@ -180,12 +180,12 @@ body {
     font-size: 1rem;
     line-height: 1.2;
     text-transform: uppercase;
-    margin-right: 10px; /* Spazio tra testo e bottone */
+    margin-right: 10px;
 }
 
 .btn-view {
     color: #000;
-    background: #d4af37;
+    background: #d4af37; /* ORO */
     padding: 10px 15px;
     border-radius: 50px;
     font-size: 0.8rem;
@@ -193,7 +193,4 @@ body {
     text-transform: uppercase;
     white-space: nowrap;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    display: flex; /* Forza l'allineamento del contenuto */
-    align-items: center;
-    justify-content: center;
 }
