@@ -3,28 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amunì Tourism - Home</title>
+    <title>Amunì Tourism - Mobile</title>
+
+    <!-- PWA: Manifest -->
     <link rel="manifest" href="./manifest.json?v=2">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- PWA: Colore barra superiore -->
     <meta name="theme-color" content="#000000">
 </head>
 <body>
 
-    <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
+    <button id="audio-trigger" style="
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    border:none;
+    background:transparent;
+    z-index:9999;"></button>
 
+    <!-- AUDIO EPICO -->
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- SFONDO -->
     <div class="scene-background"></div>
 
-    <!-- DASHBOARD UNIFICATA -->
+    <!-- DASHBOARD UNIFICATA E SISTEMATA -->
     <header class="dashboard">
-        <!-- Tasto Home che ricarica la pagina -->
+        <!-- Tasto Home per coerenza -->
         <a href="mobile_index.html" class="btn-home">🏠</a>
         
         <div class="logo-container">
-            <div class="logo-title" data-i18n="home.amuni_title">AMUNÌ TOURISM</div>
+            <div class="logo-title" data-i18n="home.amuni_title"></div>
         </div>
 
         <div class="right-controls">
@@ -39,7 +56,9 @@
         </div>
     </header>
 
+    <!-- LAYOUT MOBILE -->
     <div class="mobile-layout">
+
         <div class="video-container">
             <video autoplay muted loop playsinline class="castellana-avatar">
                 <source src="img/castellana_alpha.webm" type="video/webm">
@@ -67,16 +86,9 @@
         </div>
     </div>
 
-    <script>
-        // Mantieni la tua logica esistente, ho solo pulito la struttura header
-        // ... (il tuo script rimane invariato)
-    </script>
-</body>
-</html>
-
     <!-- SCRIPT LOGICA GENERALE -->
     <script>
-        // 1. GESTIONE AUDIO
+        // La tua logica rimane identica, ho solo aggiornato l'HTML sopra!
         const audio = document.getElementById("bg-music");
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
