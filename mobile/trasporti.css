@@ -101,29 +101,36 @@ body {
 }
 
 
-/* 4. AREA DI SCROLL MOBILE CONTENUTI VIA CARD */
+/* CORREZIONE SCROLL (Modifica la classe esistente) */
 .scroll-content {
     position: relative;
     z-index: 2;
-    margin-top: 85px;
+    margin-top: 85px; /* Spazio sotto la dashboard */
     padding: 16px 20px 40px 20px;
     display: flex;
     flex-direction: column;
     gap: 28px;
     align-items: center;
     width: 100%;
-    min-height: calc(100vh - 85px);
-    box-sizing: border-box;
+    
+    /* RIMUOVI min-height: calc(100vh - 85px); e usa questo: */
+    min-height: auto; 
+    overflow-y: visible;
     
     opacity: 0;
     transform: translateY(15px);
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.scroll-content.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* Assicurati che il body sia fluido */
+body {
+    background: #0d0d0d;
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    overflow-y: auto; /* IMPORTANTE: permette lo scroll */
 }
+
 
 /* 5. BLOCCO TESTO TOTALMENTE LIBERO (SENZA CARD O SFONDI OPACHI) */
 .home-welcome-poetry {
