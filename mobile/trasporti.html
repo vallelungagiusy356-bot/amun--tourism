@@ -73,23 +73,27 @@
 });
 
         // --- LOGICA AUDIO ---
-        const audio = document.getElementById("bg-music");
-        const trigger = document.getElementById("audio-trigger");
-        const toggleBtn = document.getElementById("toggle-music");
-        audio.volume = 0.5;
-        
-        function startMusic() {
-            audio.play().catch(() => {});
-            if(trigger) trigger.remove();
-        }
-        document.addEventListener("touchstart", startMusic, { once: true });
-        document.addEventListener("click", startMusic, { once: true });
+const audio = document.getElementById("bg-music");
+const trigger = document.getElementById("audio-trigger");
+const toggleBtn = document.getElementById("toggle-music");
 
-        toggleBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; } 
-            else { audio.pause(); toggleBtn.textContent = "🔇"; }
-        });
+if (toggleBtn) { // Controlla se il bottone esiste prima di usarlo
+    audio.volume = 0.5;
+    
+    function startMusic() {
+        audio.play().catch(() => {});
+        if(trigger) trigger.remove();
+    }
+    document.addEventListener("touchstart", startMusic, { once: true });
+    document.addEventListener("click", startMusic, { once: true });
+
+    toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; } 
+        else { audio.pause(); toggleBtn.textContent = "🔇"; }
+    });
+}
+
 
         // --- LOGICA LINGUA (PERCORSO CORRETTO) ---
         let currentLang = localStorage.getItem("lang") || "it";
