@@ -30,17 +30,16 @@ body {
     z-index: -10;
 }
 
-
-/* 3. DASHBOARD MOBILE UNIFICATA */
+/* Dashboard a 3 colonne per centratura perfetta */
 .dashboard {
     position: fixed;
-    top: 0; 
-    left: 0; 
+    top: 0;
+    left: 0;
     width: 100%;
     height: 65px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Distribuisce lo spazio */
+    justify-content: space-between;
     padding: 0 15px;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(15px);
@@ -48,27 +47,39 @@ body {
     z-index: 1000;
 }
 
-/* Facciamo in modo che ogni parte prenda 1/3 dello spazio */
-.btn-home {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start; /* Allinea a sinistra */
-    text-decoration: none;
-    font-size: 1.4rem;
+.left-controls {
+    flex: 1; /* Prende spazio a sinistra */
 }
 
 .logo-container {
-    flex: 1;
+    flex: 1; /* Prende spazio al centro */
     display: flex;
-    justify-content: center; /* Centra perfettamente */
+    justify-content: center;
 }
 
 .right-controls {
-    flex: 1;
+    flex: 1; /* Prende spazio a destra */
     display: flex;
-    justify-content: flex-end; /* Allinea a destra */
-    gap: 15px;
+    align-items: center;
+    justify-content: flex-end; /* Allinea i bottoni a destra */
+    gap: 10px;
 }
+
+/* Stile Logo (Forziamo le proprietà) */
+.logo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase !important; /* !important forza la maiuscola */
+    letter-spacing: 1.5px;
+    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important; /* Forza il colore trasparente per il gradiente */
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+    white-space: nowrap; /* Evita che vada a capo */
+}
+
 
 /* 4. AREA DI SCROLL - RISOLTA */
 .scroll-content {
