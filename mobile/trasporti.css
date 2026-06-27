@@ -30,30 +30,18 @@ body {
     z-index: -10;
 }
 
-/* Dashboard Fissa e bilanciata */
+/* Dashboard Fissa e ottimizzata */
 .dashboard {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 0 15px; /* Rimosso il padding verticale eccessivo se c'è */
-    height: 65px;
-    background: rgba(0, 0, 0, 0.9); 
-    border-bottom: 2px solid #d4af37; 
+    justify-content: space-between; /* Spazia gli elementi agli estremi */
+    align-items: center; /* Allinea tutto verticalmente al centro */
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.9); /* Sfondo scuro elegante */
+    border-bottom: 2px solid #d4af37; /* Bordo oro */
     position: sticky;
     top: 0;
     z-index: 1000;
-}
-
-/* Container laterali per bilanciare il logo al centro */
-.header-side {
-    flex: 1; /* Prende lo stesso spazio a sinistra e destra */
-    display: flex;
-    align-items: center;
-}
-
-.header-side.right {
-    justify-content: flex-end; /* Allinea audio e bandiere a destra */
-    gap: 8px; /* Distanza tra audio e bandiere */
+    width: 100%;
 }
 
 /* Contenitore per il titolo che impedisce di andare a capo */
@@ -74,23 +62,20 @@ body {
     letter-spacing: 2px; /* Un po' più arioso */
 }
 
-.btn-home {
-    text-decoration: none;
-    font-size: 1.5rem;
-}
 
+/* La sezione delle bandiere (lang-switcher) */
 .lang-switcher {
     display: flex;
-    gap: 4px;
+    flex-shrink: 0; /* Impedisce alle bandierine di restringersi */
+    gap: 4px; /* Spazio stretto tra le bandierine */
 }
-
 
 .lang-switcher button {
     background: transparent;
     border: none;
     font-size: 1.1rem;
     cursor: pointer;
-    padding: 0; 
+    padding: 0; /* Rimuove padding extra */
 }
 
 
