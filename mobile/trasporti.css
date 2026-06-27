@@ -10,7 +10,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Corpo unificato */
 body {
     background: #0d0d0d;
     color: #fff;
@@ -123,30 +122,19 @@ body {
 .scroll-content.visible {
     opacity: 1;
     transform: translateY(0);
+} /* <--- HO AGGIUNTO QUESTA PARENTESI CHE MANCAVA */
 
-
-/* Assicurati che il body sia fluido */
-body {
-    background: #0d0d0d;
-    color: #fff;
-    overflow-x: hidden;
-    min-height: 100vh;
-    overflow-y: auto; /* IMPORTANTE: permette lo scroll */
-}
-
-
-/* 5. BLOCCO TESTO TOTALMENTE LIBERO (SENZA CARD O SFONDI OPACHI) */
+/* 5. BLOCCO TESTO TOTALMENTE LIBERO */
 .home-welcome-poetry {
     width: 100%;
     max-width: 700px;
     padding: 10px 15px;
-    background: transparent; /* Card dissolta! */
+    background: transparent;
     border: none;
     box-shadow: none;
     text-align: center;
 }
 
-/* Ombreggiatura accentuata per proteggere la lettura dal sole dello sfondo */
 .home-welcome-poetry h1 {
     font-family: 'Georgia', 'Times New Roman', Times, serif; 
     font-size: 1.45rem;
@@ -165,10 +153,9 @@ body {
     margin-bottom: 14px;
 }
 
-/* BOX FERMATE MINIMALE INTEGRATO FLUTTUANTE */
 .stops-box {
     text-align: left;
-    background: rgba(0, 0, 0, 0.2); /* Un velo appena accennato per la lista */
+    background: rgba(0, 0, 0, 0.2);
     padding: 18px;
     border-radius: 12px;
     border-left: 2px solid rgba(255, 215, 160, 0.5);
@@ -209,7 +196,7 @@ body {
 }
 
 .transport-buttons .btn-barocco {
-    background: rgba(0, 0, 0, 0.8); /* Leggermente trasparente per integrarsi */
+    background: rgba(0, 0, 0, 0.8);
     border: 1px solid #ffd78f;
     border-radius: 10px;
     padding: 14px 6px;
@@ -250,14 +237,11 @@ body {
     animation-delay: 0.5s;
 }
 
-/* ==========================================================================
-   7. VERSIONE DESKTOP (DA 900PX IN SU)
-   ========================================================================== */
+/* 7. VERSIONE DESKTOP */
 @media screen and (min-width: 900px) {
     .scene-background {
         filter: brightness(0.8) contrast(1.1);
     }
-
     .dashboard {
         height: 70px;
         background: rgba(0, 0, 0, 0.75);
@@ -267,13 +251,11 @@ body {
         padding: 0 20px;
         box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
     }
-
     .dashboard .logo-title {
         font-size: 1.35rem;
         text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
         margin-left: 0;
     }
-
     .lang-switcher button {
         width: 36px;
         height: 36px;
@@ -287,32 +269,26 @@ body {
         box-shadow: 0 0 10px rgba(255, 215, 160, 0.4);
         transition: all 0.4s ease;
     }
-
     .lang-switcher button:hover {
         background: rgba(255, 215, 160, 0.15);
         box-shadow: 0 0 15px rgba(255, 215, 160, 0.7);
         transform: scale(1.05);
     }
-
     .scroll-content {
         margin-top: 130px; 
         min-height: calc(100vh - 130px);
         padding: 24px 30px;
     }
-
     .home-welcome-poetry {
         width: 45vw;
         max-width: 550px;
     }
-
     .home-welcome-poetry h1 { font-size: 1.85rem; }
     .home-welcome-poetry p { font-size: 1.15rem; line-height: 1.75; }
-
     .transport-buttons .btn-barocco {
         background: rgba(0, 0, 0, 0.65);
         border: 1px solid rgba(255, 215, 160, 0.75);
     }
-    
     .transport-buttons .btn-barocco:hover {
         transform: scale(1.05);
         box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
