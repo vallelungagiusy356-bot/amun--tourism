@@ -195,3 +195,13 @@ body {
     white-space: nowrap;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+/* Stile specifico per la Dashboard in Home */
+.dashboard-home .logo-container {
+    flex-grow: 0;           /* Non occupare tutto lo spazio centrale */
+    justify-content: flex-start; /* Allinea il logo a sinistra */
+    padding-left: 5px;
+}
+
+.dashboard-home {
+    justify-content: space-between; /* Mantiene i controlli a destra */
+}
