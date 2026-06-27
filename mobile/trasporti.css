@@ -30,55 +30,60 @@ body {
     z-index: -10;
 }
 
-/* Dashboard a 3 colonne per centratura perfetta */
+/* Dashboard Fissa e ottimizzata - ALLINEATA */
 .dashboard {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 65px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.9); 
+    border-bottom: 2px solid #d4af37; 
+    position: sticky;
+    top: 0;
     z-index: 1000;
+    width: 100%;
 }
 
-.left-controls {
-    flex: 1; /* Prende spazio a sinistra */
+.btn-home {
+    text-decoration: none;
+    font-size: 1.5rem;
+    flex-shrink: 0; /* Impedisce che il bottone si rimpicciolisca */
 }
 
 .logo-container {
-    flex: 1; /* Prende spazio al centro */
-    display: flex;
-    justify-content: center;
+    flex-grow: 1; 
+    text-align: center;
+    padding: 0 10px;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
-.right-controls {
-    flex: 1; /* Prende spazio a destra */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Allinea i bottoni a destra */
-    gap: 10px;
-}
-
-/* Stile Logo (Forziamo le proprietà) */
 .logo-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
     font-size: 1.2rem;
     font-weight: 700;
-    text-transform: uppercase !important; /* !important forza la maiuscola */
-    letter-spacing: 1.5px;
-    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent !important; /* Forza il colore trasparente per il gradiente */
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
-    white-space: nowrap; /* Evita che vada a capo */
+    letter-spacing: 2px;
+    text-transform: uppercase; /* Assicuriamoci che sia maiuscolo */
 }
+
+/* La sezione delle bandiere (lang-switcher) - FORZATA IN RIGA */
+.lang-switcher {
+    display: flex;
+    flex-direction: row; /* FORZATO ORIZZONTALE */
+    flex-shrink: 0; 
+    gap: 4px; 
+}
+
+.lang-switcher button {
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0; 
+}
+
 
 
 /* 4. AREA DI SCROLL - RISOLTA */
