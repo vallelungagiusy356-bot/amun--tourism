@@ -56,10 +56,22 @@ body {
     gap: 8px; /* Distanza tra audio e bandiere */
 }
 
-/* Logo al centro */
+/* Contenitore per il titolo che impedisce di andare a capo */
 .logo-container {
-    flex: 2; /* Il logo ha più spazio per stare al centro */
+    flex-grow: 1; /* Occupa lo spazio disponibile */
     text-align: center;
+    padding: 0 10px;
+    white-space: nowrap; /* IMPEDISCE DI ANDARE A CAPO */
+    overflow: hidden; /* Taglia il testo se è troppo lungo invece di romperlo */
+    text-overflow: ellipsis; /* Aggiunge i puntini se troppo lungo */
+}
+
+.logo-title {
+    font-family: 'Cinzel', serif; /* Cambiato da Playfair Display a Cinzel */
+    color: #d4af37;
+    font-size: 1.2rem; /* Leggermente aumentato visto che Cinzel è molto leggibile */
+    font-weight: 700; /* Leggermente più spesso */
+    letter-spacing: 2px; /* Un po' più arioso */
 }
 
 .btn-home {
