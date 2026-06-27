@@ -3,35 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amunì Tourism - Trasporti</title>
-
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="trasporti.css">
+    <title>Amunì Tourism - Mangiare</title>
+    <!-- Font Medievale Premium e Font Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mangiare.css">
+    <meta name="theme-color" content="#000000">
 </head>
 <body>
 
-    <div class="scene-background"></div>
-
+    <!-- Pulsante invisibile per sbloccare l'audio su mobile -->
     <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
     
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
 
+    <div class="scene-background"></div>
+
+    <!-- Dashboard Fissa e ottimizzata -->
     <header class="dashboard">
-    <!-- Lato sinistro: Home -->
-    <div class="header-side">
         <a href="mobile_index.html" class="btn-home">🏠</a>
-    </div>
-    
-    <!-- Centro: Logo -->
-    <div class="logo-container">
-        <div class="logo-title">AMUNÌ TOURISM</div>
-    </div>
-    
-    <!-- Lato destro: Audio + Bandiere (tutto insieme) -->
-    <div class="header-side right">
-        <button id="toggle-music" style="background:none; border:none; color:white; cursor:pointer; font-size:1.2rem;">🔈</button>
+        
+        <div class="logo-container">
+            <div class="logo-title">AMUNÌ TOURISM</div>
+        </div>
+        
         <div class="lang-switcher">
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
@@ -39,10 +35,7 @@
             <button data-lang="de">🇩🇪</button>
             <button data-lang="es">🇪🇸</button>
         </div>
-    </div>
-</header>
-
-
+    </header>
     <div class="scroll-content" id="scroll-content">
         
         <main class="home-welcome-poetry">
