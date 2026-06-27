@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AMUNÌ TOURISM - MODULE: TRASPORTI (VERSIONE FULL IMMERSIVE NO-CARD)
+   AMUNÌ TOURISM - MODULE: TRASPORTI (DEFINITIVO)
    ========================================================================== */
 
 /* 1. RESET E STRUTTURA DI BASE */
@@ -10,14 +10,16 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Corpo unificato */
 body {
     background: #0d0d0d;
     color: #fff;
     overflow-x: hidden;
     min-height: 100vh;
+    overflow-y: auto; /* IMPORTANTE: permette lo scroll */
 }
 
-/* 2. GESTIONE SFONDO CINEMATOGRAFICO PIÙ LUMINOSO */
+/* 2. GESTIONE SFONDO */
 .scene-background {
     position: fixed;
     inset: 0;
@@ -25,12 +27,11 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* Schiarito a 0.75 per mostrare nettamente le sfumature dello sfondo */
     filter: brightness(0.75) contrast(1.1); 
     z-index: -10;
 }
 
-/* 3. DASHBOARD MOBILE UNIFICATA (Allineamento con altre pagine) */
+/* 3. DASHBOARD MOBILE UNIFICATA */
 .dashboard {
     position: fixed;
     top: 0; 
@@ -39,7 +40,7 @@ body {
     height: 65px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Spazia gli elementi */
+    justify-content: space-between;
     padding: 0 15px;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(15px);
@@ -59,7 +60,7 @@ body {
 .logo-container {
     flex-grow: 1;
     display: flex;
-    justify-content: center; /* Centra il logo */
+    justify-content: center;
 }
 
 .logo-title {
@@ -100,20 +101,17 @@ body {
     filter: grayscale(0);
 }
 
-
-/* CORREZIONE SCROLL (Modifica la classe esistente) */
+/* 4. AREA DI SCROLL - RISOLTA */
 .scroll-content {
     position: relative;
     z-index: 2;
-    margin-top: 85px; /* Spazio sotto la dashboard */
+    margin-top: 85px;
     padding: 16px 20px 40px 20px;
     display: flex;
     flex-direction: column;
     gap: 28px;
     align-items: center;
     width: 100%;
-    
-    /* RIMUOVI min-height: calc(100vh - 85px); e usa questo: */
     min-height: auto; 
     overflow-y: visible;
     
@@ -121,6 +119,11 @@ body {
     transform: translateY(15px);
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
+
+.scroll-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+
 
 /* Assicurati che il body sia fluido */
 body {
