@@ -30,51 +30,48 @@ body {
     z-index: -10;
 }
 
-/* Dashboard Fissa e ottimizzata - ALLINEATA */
+/* Dashboard Fissa e bilanciata */
 .dashboard {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
-    padding: 10px 15px;
+    padding: 0 15px; /* Rimosso il padding verticale eccessivo se c'è */
+    height: 65px;
     background: rgba(0, 0, 0, 0.9); 
     border-bottom: 2px solid #d4af37; 
     position: sticky;
     top: 0;
     z-index: 1000;
-    width: 100%;
+}
+
+/* Container laterali per bilanciare il logo al centro */
+.header-side {
+    flex: 1; /* Prende lo stesso spazio a sinistra e destra */
+    display: flex;
+    align-items: center;
+}
+
+.header-side.right {
+    justify-content: flex-end; /* Allinea audio e bandiere a destra */
+    gap: 8px; /* Distanza tra audio e bandiere */
+}
+
+/* Logo al centro */
+.logo-container {
+    flex: 2; /* Il logo ha più spazio per stare al centro */
+    text-align: center;
 }
 
 .btn-home {
     text-decoration: none;
     font-size: 1.5rem;
-    flex-shrink: 0; /* Impedisce che il bottone si rimpicciolisca */
 }
 
-.logo-container {
-    flex-grow: 1; 
-    text-align: center;
-    padding: 0 10px;
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis;
-}
-
-.logo-title {
-    font-family: 'Cinzel', serif;
-    color: #d4af37;
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase; /* Assicuriamoci che sia maiuscolo */
-}
-
-/* La sezione delle bandiere (lang-switcher) - FORZATA IN RIGA */
 .lang-switcher {
     display: flex;
-    flex-direction: row; /* FORZATO ORIZZONTALE */
-    flex-shrink: 0; 
-    gap: 4px; 
+    gap: 4px;
 }
+
 
 .lang-switcher button {
     background: transparent;
