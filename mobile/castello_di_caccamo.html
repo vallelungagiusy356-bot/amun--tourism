@@ -3,77 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CORRETTO: Percorso gerarchico completo -->
     <title data-i18n="pages.monuments_pages.castello.title">Il Castello di Caccamo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="monumento_dettaglio.css">
+    <meta name="theme-color" content="#000000">
 </head>
 <body>
 
+    <!-- Audio ed elementi di sblocco (Standard Master) -->
+    <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
+    
+    <audio id="bg-music" loop>
+        <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="scene-background"></div>
+
+    <!-- Dashboard "Blindata" (layout 1/2/1) -->
     <header class="dashboard">
-    <!-- Pulsante Home -->
-    <a href="mobile_index.html" class="btn-home" aria-label="Home">🏠</a>
-    
-    <!-- Logo Centrato -->
-    <div class="logo-container">
-        <div class="logo-title">AMUNÌ TOURISM</div>
-    </div>
-    
-    <!-- Controlli a destra -->
-    <div class="right-controls">
-        <button id="toggle-music" class="btn-audio">🔈</button>
+        <a href="mobile_index.html" class="btn-home">🏠</a>
+        
+        <div class="logo-container">
+            <div class="logo-title">AMUNÌ TOURISM</div>
+        </div>
+        
         <div class="lang-switcher">
+            <button id="toggle-music" class="btn-audio">🔈</button>
             <button data-lang="it">🇮🇹</button>
             <button data-lang="en">🇬🇧</button>
             <button data-lang="fr">🇫🇷</button>
             <button data-lang="de">🇩🇪</button>
             <button data-lang="es">🇪🇸</button>
         </div>
-    </div>
-</header>
-
-
-
+    </header>
 
     <main class="mobile-layout-detail">
         
         <header class="monument-header">
-            <!-- CORRETTO: Percorso specifico castello -->
             <h1 data-i18n="pages.monuments_pages.castello.title">Il Castello di Caccamo</h1>
         </header>
 
-        <div class="monument-render-container" style="width: 100%; text-align: center; min-height: 200px;">
-            <img src="img/castello_cacc.gif" alt="Il Castello di Caccamo" class="monument-hero-image img-castello">
+        <div class="monument-render-container">
+            <img src="img/castello_cacc.gif" alt="Il Castello di Caccamo" class="monument-hero-image img-castello" onerror="this.src='img/avatar_castellana.png';">
         </div>
 
         <section class="teca-cristallo descrittiva">
-            <!-- CORRETTO: Percorso descrizione -->
             <p data-i18n="pages.monuments_pages.castello.description">Il Castello di Caccamo è tra le più grandi e meglio conservate fortezze normanne di Sicilia. Arroccato sulla roccia viva fin dall'XI secolo, domina la valle del San Leonardo...</p>
         </section>
 
         <section class="teca-cristallo teca-logistica">
             <div class="info-row">
-                <!-- CORRETTO: Label generica "Orari" -->
                 <span class="info-label" data-i18n="pages.monuments_pages.labels.hours">Orari:</span>
-                <!-- CORRETTO: Dati specifici castello -->
                 <span class="info-value" data-i18n="pages.monuments_pages.castello.hours">Tutti i giorni: 09:30 – 13:00 / 15:00 – 19:00</span>
             </div>
             <div class="info-row" style="margin-top: 10px;">
-                <!-- CORRETTO: Label generica "Biglietti" -->
                 <span class="info-label" data-i18n="pages.monuments_pages.labels.tickets">Biglietti:</span>
-                <!-- CORRETTO: Dati specifici castello -->
                 <span class="info-value" data-i18n="pages.monuments_pages.castello.tickets">Intero € 6,00 | Ridotto € 4,50</span>
             </div>
         </section>
 
         <div class="actions-container">
             <button class="btn-barocco-action" onclick="window.location.href='mappa.html?focus=castello'">
-                <!-- CORRETTO: Label generica -->
                 🌐 <span data-i18n="pages.monuments_pages.labels.view_map">Apri la Mappa</span>
             </button>
             
             <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='https://www.comune.caccamo.pa.it'">
-                <!-- CORRETTO: Label generica -->
                 🎟️ <span data-i18n="pages.monuments_pages.labels.btn_buy_tickets">Prenota / Acquista Biglietto</span>
             </button>
         </div>
@@ -82,7 +80,24 @@
 
     </main>
 
-    <div class="scene-background"></div>
     <script src="monument_translation.js"></script>
+    
+    <!-- Script di gestione Audio rapido -->
+    <script>
+        const audio = document.getElementById("bg-music");
+        const trigger = document.getElementById("audio-trigger");
+        const toggleBtn = document.getElementById("toggle-music");
+
+        trigger.addEventListener("click", () => {
+            audio.play();
+            trigger.style.display = "none";
+        });
+
+        toggleBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; } 
+            else { audio.pause(); toggleBtn.textContent = "🔇"; }
+        });
+    </script>
 </body>
 </html>
