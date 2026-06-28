@@ -29,12 +29,12 @@ body {
     z-index: -10;
 }
 
-/* --- DASHBOARD ALLINEATA A MANGIARE --- */
+/* --- DASHBOARD ALLINEATA E BILANCIATA --- */
 .dashboard {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 5px 10px; /* Leggermente ridotto per guadagnare spazio */
     background: rgba(0, 0, 0, 0.9);
     border-bottom: 2px solid #d4af37;
     position: sticky;
@@ -43,28 +43,41 @@ body {
     width: 100%;
 }
 
+/* 1. Forza la larghezza del lato sinistro */
 .btn-home {
+    flex: 0 0 40px; /* Larghezza fissa */
     text-decoration: none;
     font-size: 1.2rem;
+    text-align: left;
 }
 
+/* 2. Forza la larghezza del lato destro (deve essere uguale al sinistro per centrare il logo) */
+.lang-switcher {
+    flex: 0 0 160px; /* Larghezza fissa abbondante per contenere audio + 5 bandiere */
+    display: flex;
+    justify-content: flex-end; /* Spinge tutto a destra */
+    gap: 4px;
+}
+
+/* 3. Il logo ora sta in mezzo senza combattere con nessuno */
 .logo-container {
-    flex-grow: 1;
+    flex: 1; /* Occupa solo lo spazio rimanente centrale */
     text-align: center;
-    /* Aumentiamo il padding da 10px a 30px per creare più spazio ai lati */
-    padding: 0 30px; 
+    overflow: hidden; 
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
+    padding: 0 5px; /* Spazio ridotto perché ora è "protetto" dalle larghezze fisse laterali */
+    min-width: 0; /* TRUCCO FONDAMENTALE: permette al testo di rimpicciolirsi con ellissi */
 }
 
 .logo-title {
     font-family: 'Cinzel', serif;
     color: #d4af37;
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Manteniamo leggermente più piccolo per sicurezza mobile */
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
+
 
 .lang-switcher {
     display: flex;
