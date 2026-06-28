@@ -14,53 +14,54 @@ body {
     filter: brightness(0.7);
 }
 
-/* Dashboard Fissa e ottimizzata */
+/* --- DASHBOARD BLINDATA (Forza 1/4 - 2/4 - 1/4) --- */
 .dashboard {
     display: flex;
-    justify-content: space-between; /* Spazia gli elementi agli estremi */
-    align-items: center; /* Allinea tutto verticalmente al centro */
-    padding: 10px 15px;
-    background: rgba(0, 0, 0, 0.9); /* Sfondo scuro elegante */
-    border-bottom: 2px solid #d4af37; /* Bordo oro */
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 2px solid #d4af37;
     position: sticky;
     top: 0;
     z-index: 1000;
     width: 100%;
 }
 
-/* Contenitore per il titolo che impedisce di andare a capo */
+/* Forziamo ogni elemento ad avere uno spazio fisso */
+.btn-home {
+    flex: 1; /* Occupa 1 parte */
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
 .logo-container {
-    flex-grow: 1; /* Occupa lo spazio disponibile */
+    flex: 2; /* Il logo occupa 2 parti (il doppio dei lati) */
     text-align: center;
-    padding: 0 10px;
-    white-space: nowrap; /* IMPEDISCE DI ANDARE A CAPO */
-    overflow: hidden; /* Taglia il testo se è troppo lungo invece di romperlo */
-    text-overflow: ellipsis; /* Aggiunge i puntini se troppo lungo */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 5px;
 }
 
 .logo-title {
-    font-family: 'Cinzel', serif; /* Cambiato da Playfair Display a Cinzel */
+    font-family: 'Cinzel', serif;
     color: #d4af37;
-    font-size: 1.2rem; /* Leggermente aumentato visto che Cinzel è molto leggibile */
-    font-weight: 700; /* Leggermente più spesso */
-    letter-spacing: 2px; /* Un po' più arioso */
+    font-size: 1.1rem; /* Leggermente ridotto per sicurezza */
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-
-/* La sezione delle bandiere (lang-switcher) */
 .lang-switcher {
+    flex: 1; /* Occupa 1 parte */
     display: flex;
-    flex-shrink: 0; /* Impedisce alle bandierine di restringersi */
-    gap: 4px; /* Spazio stretto tra le bandierine */
+    justify-content: flex-end; /* Allinea a destra */
+    gap: 6px;
 }
 
-.lang-switcher button {
-    background: transparent;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    padding: 0; /* Rimuove padding extra */
-}
 
 /* ContenitoreScroll: deve avere il padding-top pari all'altezza della dashboard */
 .scroll-content { 
