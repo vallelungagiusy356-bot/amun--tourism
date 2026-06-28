@@ -8,26 +8,26 @@
 }
 
 body {
-    font-family: 'Georgia', serif; /* Uniformato a stile Eventi */
-    background: #0d0d0d;
-    color: #f7f2e9;
+    font-family: 'Georgia', serif;
+    background: #fdfcf9; /* Sfondo chiaro per permettere testo nero */
+    color: #333; /* Testo nero/grigio scuro */
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* Sfondo immersivo: uniformato a Eventi */
+/* Sfondo immersivo (leggermente schiarito per contrasto col testo) */
 .scene-background {
     position: fixed;
     inset: 0;
     background: url('img/sicily.jpg') no-repeat center center fixed;
     background-size: cover;
-    filter: brightness(0.75) contrast(1.1);
+    filter: brightness(0.9) contrast(1.1); /* Schiarito per leggibilità */
     z-index: 0;
 }
 
-/* Layout contenitore mobile: pulito */
+/* Layout contenitore mobile: Spinto in basso per non essere coperto dalla dashboard */
 .mobile-layout-detail {
-    margin-top: 20px;
+    margin-top: 90px; /* Spazio aumentato per evitare la dashboard */
     padding: 16px 20px 40px 20px;
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@ body {
     z-index: 2;
 }
 
-/* --- DASHBOARD: STRUTTURA EQUILIBRATA (COPIATA DALLA HOME) --- */
+/* --- DASHBOARD --- */
 .dashboard {
     position: fixed;
     top: 0;
@@ -46,60 +46,34 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px; /* Ridotto leggermente per guadagnare spazio */
-    background: rgba(0, 0, 0, 0.7);
+    padding: 0 10px;
+    background: rgba(255, 255, 255, 0.9); /* Sfondo chiaro per la dashboard */
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.4);
     z-index: 1000;
 }
 
-.btn-home {
-    width: 50px; /* Larghezza fissa per non rubare spazio */
-    text-decoration: none;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-}
-
-.logo-container {
-    flex-grow: 1; /* Il logo prende tutto lo spazio rimanente */
-    display: flex;
-    justify-content: center;
-    overflow: hidden; /* Fondamentale per non andare a capo */
-    padding: 0 10px;
-}
-
 .logo-title {
-    font-family: 'Playfair Display', serif; /* O Cinzel, come preferisci */
-    font-size: 1.1rem; /* Ridotto di un soffio per sicurezza */
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    white-space: nowrap; /* IMPEDISCE IL RITORNO A CAPO */
-    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
+    background: linear-gradient(to bottom, #d4af37, #997d28);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.lang-switcher {
-    display: flex;
-    gap: 5px;
-    flex-shrink: 0; /* Impedisce alle icone di rimpicciolirsi */
-}
-
-
-
 /* =======================================================
    2. INTRODUZIONE E SCRIGNO IMMAGINE
    ======================================================= */
-.monument-header { text-align: center; margin-bottom: 4px; }
+.monument-header { text-align: center; margin-bottom: 10px; }
 
 .monument-header h1 {
     font-family: 'Cinzel', Georgia, serif;
     font-size: 1.6rem;
-    color: #ffd78f;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
+    color: #d4af37; /* FORZATO ORO PER TUTTI */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     line-height: 1.3;
 }
 
@@ -107,19 +81,8 @@ body {
     width: 100%;
     overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     position: relative;
-}
-
-/* Luce dinamica mantenuta */
-.monument-render-container::before {
-    content: '';
-    position: absolute;
-    top: -100%; left: -150%; width: 35%; height: 300%;
-    background: linear-gradient(to right, rgba(255, 215, 160, 0) 0%, rgba(255, 215, 160, 0.25) 50%, rgba(255, 215, 160, 0) 100%);
-    transform: rotate(-45deg);
-    animation: imageBoxDiagonalGlow 6s infinite ease-in-out;
-    pointer-events: none;
 }
 
 .monument-hero-image {
@@ -127,132 +90,74 @@ body {
     height: 250px;
     object-fit: cover;
     display: block;
-    animation: advancedSlowMotion 4.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
 }
 
 /* =======================================================
-   3. LE TECHE (Ora più eteree e "fluttuanti")
+   3. LE TECHE (Ora con fondo chiaro per testo nero)
    ======================================================= */
 .teca-cristallo {
-    background: rgba(0, 0, 0, 0.3); /* Micro velo, meno pesante */
+    background: rgba(255, 255, 255, 0.85); /* Sfondo chiaro semi-trasparente */
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     border-radius: 12px;
-    border: 1px solid rgba(255, 215, 160, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.3);
     padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .teca-cristallo.descrittiva p {
     font-size: 1rem;
-    color: #f7f2e9;
+    color: #333; /* TESTO NERO */
     text-align: justify;
 }
 
 .info-label {
     font-family: 'Cinzel', Georgia, serif;
     font-size: 0.85rem;
-    color: #ffd78f;
-    letter-spacing: 1.5px;
+    color: #b8860b; /* Oro più scuro per contrasto su fondo chiaro */
+    font-weight: bold;
+    letter-spacing: 1px;
     text-transform: uppercase;
+    display: block;
     margin-bottom: 5px;
 }
 
-.info-value { font-size: 1rem; color: #fff; margin-bottom: 12px; }
+.info-value { font-size: 1rem; color: #000; margin-bottom: 12px; }
 
 .teca-avviso {
-    border-color: rgba(255, 180, 100, 0.3);
-    background: rgba(0, 0, 0, 0.2);
+    border-left: 4px solid #d4af37;
+    background: rgba(255, 255, 255, 0.9);
 }
 
 /* =======================================================
-   4. TECA GIOIELLI NASCOSTI
+   4. BOTTONI D'AZIONE
    ======================================================= */
-.teca-segreta {
-    background: rgba(20, 15, 5, 0.4);
-    border: 1px solid #ffd78f;
-    border-radius: 12px;
-    padding: 20px;
-    animation: pulseGlow 4s ease-in-out infinite;
-}
-
-.teca-segreta-badge {
-    font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    color: #000;
-    background: #ffd78f;
-    padding: 2px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-/* =======================================================
-   5. BOTTONI D'AZIONE (Uniformati a Eventi)
-   ======================================================= */
-.actions-container { display: flex; flex-direction: column; gap: 12px; }
-
 .btn-barocco-action {
-    background: rgba(0, 0, 0, 0.85);
-    border: 1px solid #ffd78f;
+    background: #fff;
+    border: 1px solid #d4af37;
     border-radius: 10px;
     padding: 14px;
-    color: #ffd78f;
+    color: #333; /* Testo dei bottoni nero */
     text-align: center;
     text-decoration: none;
     font-weight: 600;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s;
-}
-
-.btn-barocco-action::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -60%; width: 30%; height: 200%;
-    background: linear-gradient(to right, rgba(255, 215, 160, 0) 0%, rgba(255, 215, 160, 0.35) 50%, rgba(255, 215, 160, 0) 100%);
-    transform: rotate(-45deg);
-    animation: diagonalGlow 4s infinite ease-in-out;
 }
 
 /* =======================================================
-   6. UTILITY E KEYFRAMES (Mantenuti uguali)
+   5. UTILITY
    ======================================================= */
 .btn-back-home {
-    align-self: center;
-    margin-top: 15px;
-    color: #ffd78f;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #000; /* TESTO NERO PER IL LINK HOME */
     text-decoration: none;
-    border-bottom: 1px dashed rgba(255, 215, 160, 0.4);
+    font-weight: 600;
+    border-bottom: 1px dashed #d4af37;
 }
 
-@keyframes pulseGlow {
-    0% { border-color: rgba(255, 200, 120, 0.3); }
-    50% { border-color: rgba(255, 215, 160, 0.8); }
-    100% { border-color: rgba(255, 200, 120, 0.3); }
-}
-
-@keyframes advancedSlowMotion {
-    0% { transform: scale(1.15); filter: brightness(0.2) blur(8px); }
-    100% { transform: scale(1); filter: brightness(1) blur(0px); }
-}
-
-@keyframes diagonalGlow {
-    0% { left: -70%; }
-    50% { left: 130%; }
-    100% { left: 130%; }
-}
-
-@keyframes imageBoxDiagonalGlow {
-    0% { left: -150%; }
-    20% { left: 150%; }
-    100% { left: 150%; }
-}
-
-/* =======================================================
-   8. PERSONALIZZAZIONI IMMAGINI (INTATTE)
-   ======================================================= */
-.monument-hero-image.img-annunziata { height: 260px !important; transform: scale(1.05) !important; transform-origin: center 45%; }
-.monument-hero-image.img-cappuccini { height: 180px; transform: scale(1.35); }
-.monument-hero-image.img-castello { height: 280px; object-position: center 35%; }
-.monument-hero-image.img-sangiorgio { height: 300px; transform: scale(1.35); }
-.monument-hero-image.img-sandomenico { height: 260px !important; transform: scale(1.08) !important; transform-origin: center center; }
+/* Fix immagini specifiche */
+.monument-hero-image.img-annunziata { height: 260px !important; }
+.monument-hero-image.img-cappuccini { height: 180px; }
+.monument-hero-image.img-castello { height: 280px; }
+.monument-hero-image.img-sangiorgio { height: 300px; }
+.monument-hero-image.img-sandomenico { height: 260px !important; }
