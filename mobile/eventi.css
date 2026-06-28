@@ -29,7 +29,7 @@ body {
     z-index: -10;
 }
 
-/* --- DASHBOARD DEFINITIVA E PULITA --- */
+/* --- DASHBOARD: STRUTTURA EQUILIBRATA (COPIATA DALLA HOME) --- */
 .dashboard {
     position: fixed;
     top: 0;
@@ -39,58 +39,48 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 15px;
+    padding: 0 10px; /* Ridotto leggermente per guadagnare spazio */
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.4);
     z-index: 1000;
 }
 
-/* Lato sinistro: Home */
 .btn-home {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    width: 50px; /* Larghezza fissa per non rubare spazio */
     text-decoration: none;
     font-size: 1.5rem;
+    display: flex;
+    align-items: center;
 }
 
-/* Centro: Logo */
 .logo-container {
-    flex: 2;
-    text-align: center;
-    overflow: hidden; 
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    padding: 0 15px;
+    flex-grow: 1; /* Il logo prende tutto lo spazio rimanente */
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Fondamentale per non andare a capo */
+    padding: 0 10px;
 }
 
 .logo-title {
-    font-family: 'Cinzel', serif;
-    color: #d4af37;
-    font-size: 1.3rem;
+    font-family: 'Playfair Display', serif; /* O Cinzel, come preferisci */
+    font-size: 1.1rem; /* Ridotto di un soffio per sicurezza */
     font-weight: 700;
-    letter-spacing: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap; /* IMPEDISCE IL RITORNO A CAPO */
+    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-/* Lato destro: Lingue (Unificato e pulito) */
 .lang-switcher {
-    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 6px;
-    flex-shrink: 0; /* Assicura che le bandiere non si schiaccino mai */
+    gap: 5px;
+    flex-shrink: 0; /* Impedisce alle icone di rimpicciolirsi */
 }
 
-.lang-switcher button {
-    background: transparent;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    padding: 0;
-}
 
 
 /* --- SCROLL CONTENT ALLINEATO --- */
