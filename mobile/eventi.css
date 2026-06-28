@@ -29,12 +29,13 @@ body {
     z-index: -10;
 }
 
-/* --- DASHBOARD ALLINEATA E BILANCIATA --- */
+/* --- DASHBOARD AMPIA E PREMIUM --- */
 .dashboard {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 10px; /* Leggermente ridotto per guadagnare spazio */
+    height: 70px; /* Diamo respiro verticale */
+    padding: 0 20px; /* Spazio laterale generoso */
     background: rgba(0, 0, 0, 0.9);
     border-bottom: 2px solid #d4af37;
     position: sticky;
@@ -43,41 +44,42 @@ body {
     width: 100%;
 }
 
-/* 1. Forza la larghezza del lato sinistro */
-.btn-home {
-    flex: 0 0 40px; /* Larghezza fissa */
-    text-decoration: none;
-    font-size: 1.2rem;
-    text-align: left;
-}
-
-/* 2. Forza la larghezza del lato destro (deve essere uguale al sinistro per centrare il logo) */
-.lang-switcher {
-    flex: 0 0 160px; /* Larghezza fissa abbondante per contenere audio + 5 bandiere */
+/* Diamo ai due lati la stessa larghezza per far stare il logo perfettamente al centro */
+.btn-home, .lang-switcher {
+    flex: 1; /* Entrambi occupano la stessa quantità di spazio */
     display: flex;
-    justify-content: flex-end; /* Spinge tutto a destra */
-    gap: 4px;
+    align-items: center;
 }
 
-/* 3. Il logo ora sta in mezzo senza combattere con nessuno */
+/* Il tasto home a sinistra */
+.btn-home {
+    justify-content: flex-start;
+    text-decoration: none;
+    font-size: 1.5rem; /* Un po' più grande */
+}
+
+/* Le bandierine a destra */
+.lang-switcher {
+    justify-content: flex-end; /* Spinge tutto a destra */
+    gap: 8px; /* Più respiro tra le bandierine */
+}
+
+/* Il logo ora ha tutto lo spazio che serve al centro */
 .logo-container {
-    flex: 1; /* Occupa solo lo spazio rimanente centrale */
+    flex: 2; /* Il centro è il doppio dei lati */
     text-align: center;
     overflow: hidden; 
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding: 0 5px; /* Spazio ridotto perché ora è "protetto" dalle larghezze fisse laterali */
-    min-width: 0; /* TRUCCO FONDAMENTALE: permette al testo di rimpicciolirsi con ellissi */
+    padding: 0 15px;
 }
 
 .logo-title {
     font-family: 'Cinzel', serif;
     color: #d4af37;
-    /* Riduciamo leggermente per farla stare comoda */
-    font-size: 0.95rem; 
-    /* Riduciamo lo spacing da 1px a 0.5px */
-    letter-spacing: 0.5px; 
+    font-size: 1.3rem; /* Torniamo a una dimensione importante */
     font-weight: 700;
+    letter-spacing: 2px; /* Rimettiamo un po' di respiro alle lettere */
 }
 
 
