@@ -64,15 +64,14 @@ body {
 .lang-switcher button {
     background: transparent !important;
     border: none !important;
-    padding: 5px 8px; 
+    padding: 2px 4px;       /* Ridotto: prima era 5px 8px */
     cursor: pointer;
     color: white; 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem; 
+    font-size: 0.9rem;      /* Ridotto: prima era 1.2rem */
 }
-
 
 
 /* =======================================================
