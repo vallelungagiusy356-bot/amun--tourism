@@ -30,54 +30,57 @@ body {
     z-index: -10;
 }
 
-/* Dashboard Fissa e ottimizzata */
+/* --- DASHBOARD: STRUTTURA EQUILIBRATA (COPIATA DALLA HOME) --- */
 .dashboard {
-    display: flex;
-    justify-content: space-between; /* Spazia gli elementi agli estremi */
-    align-items: center; /* Allinea tutto verticalmente al centro */
-    padding: 10px 15px;
-    background: rgba(0, 0, 0, 0.9); /* Sfondo scuro elegante */
-    border-bottom: 2px solid #d4af37; /* Bordo oro */
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    left: 0;
     width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px; /* Ridotto leggermente per guadagnare spazio */
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    z-index: 1000;
 }
 
-/* Contenitore per il titolo che impedisce di andare a capo */
+.btn-home {
+    width: 50px; /* Larghezza fissa per non rubare spazio */
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
 .logo-container {
-    flex-grow: 1; /* Occupa lo spazio disponibile */
-    text-align: center;
+    flex-grow: 1; /* Il logo prende tutto lo spazio rimanente */
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Fondamentale per non andare a capo */
     padding: 0 10px;
-    white-space: nowrap; /* IMPEDISCE DI ANDARE A CAPO */
-    overflow: hidden; /* Taglia il testo se è troppo lungo invece di romperlo */
-    text-overflow: ellipsis; /* Aggiunge i puntini se troppo lungo */
 }
 
 .logo-title {
-    font-family: 'Cinzel', serif; /* Cambiato da Playfair Display a Cinzel */
-    color: #d4af37;
-    font-size: 1.2rem; /* Leggermente aumentato visto che Cinzel è molto leggibile */
-    font-weight: 700; /* Leggermente più spesso */
-    letter-spacing: 2px; /* Un po' più arioso */
+    font-family: 'Playfair Display', serif; /* O Cinzel, come preferisci */
+    font-size: 1.1rem; /* Ridotto di un soffio per sicurezza */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap; /* IMPEDISCE IL RITORNO A CAPO */
+    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-
-/* La sezione delle bandiere (lang-switcher) */
 .lang-switcher {
     display: flex;
-    flex-shrink: 0; /* Impedisce alle bandierine di restringersi */
-    gap: 4px; /* Spazio stretto tra le bandierine */
+    gap: 5px;
+    flex-shrink: 0; /* Impedisce alle icone di rimpicciolirsi */
 }
-
-.lang-switcher button {
-    background: transparent;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    padding: 0; /* Rimuove padding extra */
-}
-
 
 
 /* 4. AREA DI SCROLL - RISOLTA */
