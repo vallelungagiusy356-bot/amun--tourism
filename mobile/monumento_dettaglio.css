@@ -1,33 +1,28 @@
 /* =======================================================
    1. RESET GENERALE E IMPOSTAZIONI STRUTTURALI
    ======================================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: 'Georgia', serif;
-    background: #fdfcf9; /* Sfondo chiaro per permettere testo nero */
-    color: #333; /* Testo nero/grigio scuro */
+    background: #fdfcf9; /* Sfondo chiaro come volevi */
+    color: #333;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* Sfondo immersivo (leggermente schiarito per contrasto col testo) */
+/* Sfondo immersivo */
 .scene-background {
     position: fixed;
     inset: 0;
     background: url('img/sicily.jpg') no-repeat center center fixed;
     background-size: cover;
-    filter: brightness(0.9) contrast(1.1); /* Schiarito per leggibilità */
+    filter: brightness(0.9) contrast(1.1);
     z-index: 0;
 }
 
-/* Layout contenitore mobile: Spinto in basso per non essere coperto dalla dashboard */
 .mobile-layout-detail {
-    margin-top: 90px; /* Spazio aumentato per evitare la dashboard */
+    margin-top: 90px;
     padding: 16px 20px 40px 20px;
     display: flex;
     flex-direction: column;
@@ -36,7 +31,7 @@ body {
     z-index: 2;
 }
 
-/* --- DASHBOARD --- */
+/* --- DASHBOARD NERA --- */
 .dashboard {
     position: fixed;
     top: 0;
@@ -47,9 +42,9 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-    background: rgba(255, 255, 255, 0.9); /* Sfondo chiaro per la dashboard */
+    background: rgba(0, 0, 0, 0.85); /* Dashboard NERA */
     backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    border-bottom: 1px solid #d4af37;
     z-index: 1000;
 }
 
@@ -58,31 +53,32 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    background: linear-gradient(to bottom, #d4af37, #997d28);
+    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
 /* =======================================================
-   2. INTRODUZIONE E SCRIGNO IMMAGINE
+   2. IMMAGINE E TITOLO
    ======================================================= */
 .monument-header { text-align: center; margin-bottom: 10px; }
 
 .monument-header h1 {
     font-family: 'Cinzel', Georgia, serif;
     font-size: 1.6rem;
-    color: #d4af37; /* FORZATO ORO PER TUTTI */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    color: #d4af37;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     line-height: 1.3;
 }
 
+/* Contenitore immagine con BORDO NERO */
 .monument-render-container {
     width: 100%;
+    border-radius: 20px;
+    border: 2.5px solid #000; /* Bordo NERO richiesto */
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    position: relative;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
 
 .monument-hero-image {
@@ -93,69 +89,74 @@ body {
 }
 
 /* =======================================================
-   3. LE TECHE (Ora con fondo chiaro per testo nero)
+   3. TECHE (EFFETTO VETRO + BORDO NERO)
    ======================================================= */
 .teca-cristallo {
-    background: rgba(255, 255, 255, 0.85); /* Sfondo chiaro semi-trasparente */
-    backdrop-filter: blur(8px);
-    border-radius: 12px;
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(255, 255, 255, 0.7); /* Vetro satinato */
+    backdrop-filter: blur(15px);
+    border: 2.5px solid #000; /* Bordo NERO richiesto */
+    border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
 }
 
 .teca-cristallo.descrittiva p {
+    color: #000; /* Testo nero */
     font-size: 1rem;
-    color: #333; /* TESTO NERO */
     text-align: justify;
 }
 
 .info-label {
-    font-family: 'Cinzel', Georgia, serif;
+    font-family: 'Cinzel', serif;
     font-size: 0.85rem;
-    color: #b8860b; /* Oro più scuro per contrasto su fondo chiaro */
-    font-weight: bold;
-    letter-spacing: 1px;
+    color: #000;
+    font-weight: 800;
     text-transform: uppercase;
-    display: block;
     margin-bottom: 5px;
+    display: block;
 }
 
-.info-value { font-size: 1rem; color: #000; margin-bottom: 12px; }
+.info-value { 
+    font-size: 1rem; 
+    color: #222; 
+    margin-bottom: 12px; 
+}
 
 .teca-avviso {
-    border-left: 4px solid #d4af37;
-    background: rgba(255, 255, 255, 0.9);
+    border-left: 5px solid #d4af37;
 }
 
 /* =======================================================
-   4. BOTTONI D'AZIONE
+   4. BOTTONI
    ======================================================= */
 .btn-barocco-action {
     background: #fff;
-    border: 1px solid #d4af37;
-    border-radius: 10px;
+    border: 2px solid #000;
+    border-radius: 12px;
     padding: 14px;
-    color: #333; /* Testo dei bottoni nero */
+    color: #000;
+    font-weight: 700;
     text-align: center;
     text-decoration: none;
-    font-weight: 600;
+    transition: all 0.3s;
 }
 
-/* =======================================================
-   5. UTILITY
-   ======================================================= */
+.btn-barocco-action:hover {
+    background: #d4af37;
+    color: #000;
+}
+
 .btn-back-home {
     display: block;
     text-align: center;
     margin-top: 20px;
-    color: #000; /* TESTO NERO PER IL LINK HOME */
+    color: #000; /* Nero per coerenza */
     text-decoration: none;
     font-weight: 600;
     border-bottom: 1px dashed #d4af37;
 }
 
-/* Fix immagini specifiche */
+/* Fix altezze immagini */
 .monument-hero-image.img-annunziata { height: 260px !important; }
 .monument-hero-image.img-cappuccini { height: 180px; }
 .monument-hero-image.img-castello { height: 280px; }
