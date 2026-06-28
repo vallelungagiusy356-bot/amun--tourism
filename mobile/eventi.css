@@ -29,7 +29,7 @@ body {
     z-index: -10;
 }
 
-/* DASHBOARD AGGIORNATA (Standardizzata) */
+/* --- DASHBOARD DEFINITIVA E PULITA --- */
 .dashboard {
     position: fixed;
     top: 0;
@@ -38,7 +38,7 @@ body {
     height: 65px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Distribuisce gli spazi */
+    justify-content: space-between;
     padding: 0 15px;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(15px);
@@ -46,55 +46,50 @@ body {
     z-index: 1000;
 }
 
+/* Lato sinistro: Home */
 .btn-home {
-    text-decoration: none;
-    font-size: 1.5rem;
-    padding: 5px;
-}
-
-.logo-container {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
-.logo-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    /* Effetto Oro */
-    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
-}
-
-
-.right-controls {
+    flex: 1;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: flex-start;
+    text-decoration: none;
+    font-size: 1.5rem;
 }
 
+/* Centro: Logo */
+.logo-container {
+    flex: 2;
+    text-align: center;
+    overflow: hidden; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 15px;
+}
+
+.logo-title {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* Lato destro: Lingue (Unificato e pulito) */
 .lang-switcher {
+    flex: 1;
     display: flex;
-    gap: 5px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    flex-shrink: 0; /* Assicura che le bandiere non si schiaccino mai */
 }
 
 .lang-switcher button {
-    background: none;
+    background: transparent;
     border: none;
+    font-size: 1.1rem;
     cursor: pointer;
-    font-size: 1rem;
-    filter: grayscale(0.2);
-    transition: transform 0.2s;
-}
-
-.lang-switcher button:hover {
-    transform: scale(1.2);
-    filter: grayscale(0);
+    padding: 0;
 }
 
 
