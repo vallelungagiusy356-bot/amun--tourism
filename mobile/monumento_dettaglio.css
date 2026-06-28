@@ -174,3 +174,20 @@ body {
 .monument-hero-image.img-castello { 
     object-position: 40% center; 
 }
+
+/* Pulizia bottoni Dashboard (Audio e Bandiere) */
+.dashboard button {
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    transition: opacity 0.3s ease;
+}
+
+/* Effetto al tocco/passaggio mouse per le bandiere e icona audio */
+.dashboard button:hover {
+    opacity: 0.7;
+}
