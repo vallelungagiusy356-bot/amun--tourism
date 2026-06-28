@@ -162,3 +162,15 @@ body {
 .monument-hero-image.img-castello { height: 280px; }
 .monument-hero-image.img-sangiorgio { height: 300px; }
 .monument-hero-image.img-sandomenico { height: 260px !important; }
+
+/* Correzioni di posizionamento specifico */
+
+/* Badia: Sposta l'inquadratura verso l'alto (30% invece di 50%) */
+.monument-hero-image.img-badia { 
+    object-position: center 30%; 
+}
+
+/* Castello: Sposta l'inquadratura verso sinistra (40% invece di 50%) */
+.monument-hero-image.img-castello { 
+    object-position: 40% center; 
+}
