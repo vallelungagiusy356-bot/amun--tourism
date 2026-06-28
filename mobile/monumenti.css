@@ -25,65 +25,58 @@ body {
     z-index: -10;
 }
 
-/* --- DASHBOARD STANDARDIZZATA --- */
+
+/* --- DASHBOARD: STRUTTURA EQUILIBRATA (COPIATA DALLA HOME) --- */
 .dashboard {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    background: rgba(0, 0, 0, 0.9);
-    border-bottom: 2px solid #d4af37;
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    left: 0;
     width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px; /* Ridotto leggermente per guadagnare spazio */
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    z-index: 1000;
 }
 
 .btn-home {
+    width: 50px; /* Larghezza fissa per non rubare spazio */
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .logo-container {
-    flex-grow: 1;
-    text-align: center;
-    /* Aumentiamo il padding da 10px a 30px per creare più spazio ai lati */
-    padding: 0 30px; 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    flex-grow: 1; /* Il logo prende tutto lo spazio rimanente */
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Fondamentale per non andare a capo */
+    padding: 0 10px;
 }
 
-
 .logo-title {
-    font-family: 'Cinzel', serif;
-    color: #d4af37;
-    font-size: 1.2rem;
+    font-family: 'Playfair Display', serif; /* O Cinzel, come preferisci */
+    font-size: 1.1rem; /* Ridotto di un soffio per sicurezza */
     font-weight: 700;
-    letter-spacing: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap; /* IMPEDISCE IL RITORNO A CAPO */
+    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .lang-switcher {
     display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    gap: 6px;
+    gap: 5px;
+    flex-shrink: 0; /* Impedisce alle icone di rimpicciolirsi */
 }
-
-.lang-switcher button {
-    background: transparent;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    padding: 0;
-}
-
-.btn-audio {
-    color: #d4af37;
-    font-size: 1.2rem;
-    margin-right: 5px;
-}
-
 /* --- SCROLL CONTENT ALLINEATO --- */
 .scroll-content { 
     position: relative;
