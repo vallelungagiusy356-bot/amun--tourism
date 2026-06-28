@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CORRETTO: Percorso gerarchico completo dal JSON -->
     <title data-i18n="pages.monuments_pages.santamaria.title">Chiesa di Santa Maria degli Angeli</title>
-     <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="monumento_dettaglio.css">
     <meta name="theme-color" content="#000000">
 </head>
@@ -23,27 +22,24 @@
     <div class="scene-background"></div>
 
     <header class="dashboard">
-    <a href="mobile_index.html" class="btn-home">🏠</a>
-    
-    <div class="logo-container">
-        <div class="logo-title">AMUNÌ TOURISM</div>
-    </div>
-    
-    <div class="lang-switcher">
-        <button id="toggle-music" class="btn-audio">🔈</button>
-        <button data-lang="it">🇮🇹</button>
-        <button data-lang="en">🇬🇧</button>
-        <button data-lang="fr">🇫🇷</button>
-        <button data-lang="de">🇩🇪</button>
-        <button data-lang="es">🇪🇸</button>
-    </div>
-</header>
-
+        <a href="mobile_index.html" class="btn-home">🏠</a>
+        
+        <div class="logo-container">
+            <div class="logo-title">AMUNÌ TOURISM</div>
+        </div>
+        
+        <div class="lang-switcher">
+            <button id="toggle-music" class="btn-audio">🔈</button>
+            <button data-lang="it">🇮🇹</button>
+            <button data-lang="en">🇬🇧</button>
+            <button data-lang="fr">🇫🇷</button>
+            <button data-lang="de">🇩🇪</button>
+            <button data-lang="es">🇪🇸</button>
+        </div>
+    </header>
 
     <main class="mobile-layout-detail">
-        
         <header class="monument-header">
-            <!-- CORRETTO: Uso il titolo specifico del monumento, non un titolo generico mancante -->
             <h1 data-i18n="pages.monuments_pages.santamaria.title">Chiesa di Santa Maria degli Angeli</h1>
         </header>
 
@@ -52,43 +48,34 @@
         </div>
 
         <section class="teca-cristallo descrittiva">
-            <!-- CORRETTO: Percorso gerarchico completo -->
             <p data-i18n="pages.monuments_pages.santamaria.description">Fondata nel XV secolo insieme al convento domenicano, la Chiesa di Santa Maria degli Angeli è uno dei centri spirituali più importanti del borgo...</p>
         </section>
 
         <section class="teca-cristallo teca-avviso">
-            <!-- CORRETTO: Punta alla label generica corretta nel JSON -->
             <p data-i18n="pages.monuments_pages.labels.church_notice">⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche...</p>
         </section>
 
         <section class="teca-cristallo teca-logistica">
             <div class="info-row">
-                <!-- CORRETTO: Punta alle labels corrette -->
                 <span class="info-label" data-i18n="pages.monuments_pages.labels.hours">Orari:</span>
-                <!-- CORRETTO: Valore specifico del monumento -->
                 <span class="info-value" data-i18n="pages.monuments_pages.santamaria.hours">Sabato e Domenica...</span>
             </div>
         </section>
 
         <div class="actions-container">
             <button class="btn-barocco-action" onclick="window.location.href='mappa.html?focus=santamaria'">
-                <!-- CORRETTO: Label corretta -->
                 🌐 <span data-i18n="pages.monuments_pages.labels.view_map">Apri la Mappa</span>
             </button>
             
             <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='tel:0918148111'">
-                <!-- CORRETTO: Label corretta -->
                 📞 <span data-i18n="pages.monuments_pages.labels.btn_contact_turismo">Contatta Ufficio Turismo</span>
             </button>
         </div>
 
-        <!-- NOTA: Questo pulsante di ritorno di solito resta nella lingua di base o va aggiunto al JSON se necessario -->
         <a href="monumenti.html" class="btn-back-home">← Torna ai Monumenti</a>
-
     </main>
 
-    <div class="scene-background"></div>
-    <!-- Assicurati che questo script gestisca i percorsi annidati (dot notation) -->
+    <!-- Script caricato alla fine -->
     <script src="monument_translation.js"></script>
 </body>
 </html>
