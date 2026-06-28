@@ -51,8 +51,8 @@ body {
 .logo-container {
     flex-grow: 1;
     text-align: center;
-    /* Aumentiamo il padding da 10px a 25px per creare più spazio ai lati */
-    padding: 0 25px; 
+    /* Aumentiamo il padding da 10px a 30px per creare più spazio ai lati */
+    padding: 0 30px; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
