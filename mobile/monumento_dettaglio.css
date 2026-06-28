@@ -167,7 +167,7 @@ body {
 
 /* Badia: Sposta l'inquadratura verso l'alto (30% invece di 50%) */
 .monument-hero-image.img-badia { 
-    object-position: center 30%; 
+    object-position: center 20%; 
 }
 
 /* Castello: Sposta l'inquadratura verso sinistra (40% invece di 50%) */
