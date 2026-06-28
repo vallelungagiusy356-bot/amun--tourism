@@ -5,30 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CORRETTO: Percorso gerarchico completo dal JSON -->
     <title data-i18n="pages.monuments_pages.santamaria.title">Chiesa di Santa Maria degli Angeli</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="monumento_dettaglio.css">
+    <meta name="theme-color" content="#000000">
 </head>
 <body>
 
-    <header class="dashboard">
-    <!-- Pulsante Home -->
-    <a href="mobile_index.html" class="btn-home" aria-label="Home">🏠</a>
+    <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
     
-    <!-- Logo Centrato -->
+    <audio id="bg-music" loop>
+        <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="scene-background"></div>
+
+    <header class="dashboard">
+    <a href="mobile_index.html" class="btn-home">🏠</a>
+    
     <div class="logo-container">
         <div class="logo-title">AMUNÌ TOURISM</div>
     </div>
     
-    <!-- Controlli a destra -->
-    <div class="right-controls">
+    <div class="lang-switcher">
         <button id="toggle-music" class="btn-audio">🔈</button>
-        <div class="lang-switcher">
-            <button data-lang="it">🇮🇹</button>
-            <button data-lang="en">🇬🇧</button>
-            <button data-lang="fr">🇫🇷</button>
-            <button data-lang="de">🇩🇪</button>
-            <button data-lang="es">🇪🇸</button>
-        </div>
+        <button data-lang="it">🇮🇹</button>
+        <button data-lang="en">🇬🇧</button>
+        <button data-lang="fr">🇫🇷</button>
+        <button data-lang="de">🇩🇪</button>
+        <button data-lang="es">🇪🇸</button>
     </div>
 </header>
 
