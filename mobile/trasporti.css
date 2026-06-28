@@ -31,6 +31,7 @@ body {
 }
 
 /* --- DASHBOARD: STRUTTURA EQUILIBRATA (COPIATA DALLA HOME) --- */
+/* --- DASHBOARD NERA --- */
 .dashboard {
     position: fixed;
     top: 0;
@@ -40,42 +41,24 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px; /* Ridotto leggermente per guadagnare spazio */
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-    z-index: 1000;
-}
-
-.btn-home {
-    width: 50px; /* Larghezza fissa per non rubare spazio */
-    text-decoration: none;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-}
-
-.logo-container {
-    flex-grow: 1; /* Il logo prende tutto lo spazio rimanente */
-    display: flex;
-    justify-content: center;
-    overflow: hidden; /* Fondamentale per non andare a capo */
     padding: 0 10px;
+    background: rgba(0, 0, 0, 0.85); /* Dashboard NERA */
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #d4af37;
+    z-index: 1000;
+    
 }
 
 .logo-title {
-    font-family: 'Playfair Display', serif; /* O Cinzel, come preferisci */
-    font-size: 1.1rem; /* Ridotto di un soffio per sicurezza */
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    white-space: nowrap; /* IMPEDISCE IL RITORNO A CAPO */
     background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
-
 
 /* --- CONTROLLI DASHBOARD --- */
 .lang-switcher button {
