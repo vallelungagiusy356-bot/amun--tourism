@@ -60,13 +60,6 @@ body {
     color: transparent;
 }
 
-/* --- CONTROLLI DASHBOARD --- */
-.dashboard button {
-    background: transparent !important;
-    border: none !important;
-    padding: 5px;
-    cursor: pointer;
-}
 
 
 /* =======================================================
