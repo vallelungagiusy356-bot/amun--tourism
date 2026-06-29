@@ -1,7 +1,18 @@
 // TOKEN Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l1c2lmaTg5IiwiYSI6ImNtcGNvYXpqYTAwZ3kzNHM5amI4emxxOTAifQ.iNuDFyanN-ZEyl8-zRevGw';
 
-// Inizializzazione mappa
+// --- DEBUG GLOBALE (Spostato fuori così funziona ovunque) ---
+const debugPanel = document.createElement('div');
+debugPanel.style.cssText = 'position:absolute; top:10px; left:10px; background:rgba(26,21,16,0.9); color:#CDA843; padding:10px; font-family:monospace; z-index:9999; border-radius:8px; border:1px solid #B48A1D; max-height: 80vh; overflow-y: auto;';
+debugPanel.innerHTML = 'AMUNÌ TOURISM: System Ready';
+document.body.appendChild(debugPanel);
+
+function debug(msg) { 
+    console.log(msg); 
+    debugPanel.innerHTML += `<br>${msg}`; 
+}
+// -----------------------------------------------------------
+
 const map = new mapboxgl.Map({
     container: 'mappa',
     style: 'mapbox://styles/giusifi89/cmpl4lr6n003401r63fof43dl',
@@ -11,14 +22,6 @@ const map = new mapboxgl.Map({
     bearing: 0
 });
 
-// Geolocalizzazione
-map.addControl(new mapboxgl.GeolocateControl({
-    positionOptions: { enableHighAccuracy: true },
-    trackUserLocation: true,
-    showUserHeading: true
-}));
-
-// Funzione Motore per i Modelli 3D (AGGIORNATA PER IL DEBUG)
 function create3DLayer(id, modelUrl, coords) {
     return {
         id: id,
@@ -36,13 +39,11 @@ function create3DLayer(id, modelUrl, coords) {
             new THREE.GLTFLoader().load(modelUrl, (gltf) => {
                 const model = gltf.scene;
 
-                // --- INIZIO CODICE DEBUG DIMENSIONI ---
+                // Debug Dimensioni
                 const box = new THREE.Box3().setFromObject(model);
                 const size = new THREE.Vector3();
                 box.getSize(size);
-                // Questo scrive le dimensioni nel tuo pannello di debug in alto a sinistra
-                debug(`📏 ${id} size: ${size.x.toFixed(2)}, ${size.y.toFixed(2)}, ${size.z.toFixed(2)}`);
-                // --- FINE CODICE DEBUG ---
+                debug(`📏 ${id}: ${size.x.toFixed(2)}, ${size.y.toFixed(2)}, ${size.z.toFixed(2)}`);
 
                 model.traverse((node) => {
                     if (node.isMesh) {
@@ -52,7 +53,7 @@ function create3DLayer(id, modelUrl, coords) {
                     }
                 });
                 this.scene.add(model);
-            });
+            }, undefined, (err) => debug(`❌ Errore caricamento ${id}`));
 
             this.map = map;
             this.renderer = new THREE.WebGLRenderer({
@@ -61,10 +62,10 @@ function create3DLayer(id, modelUrl, coords) {
             this.renderer.autoClear = false;
         },
         render: function (gl, matrix) {
-            const m = new THREE.Matrix4().fromArray(matrix);
-            // NOTA: Se non vedi il modello, prova a cambiare il valore moltiplicativo qui sotto (es. da 1 a 100 o 1000)
-            const scaleFactor = 1; 
+            // PROVA A CAMBIARE QUESTO VALORE (es. 10, 50, 100)
+            const scaleFactor = 50; 
             
+            const m = new THREE.Matrix4().fromArray(matrix);
             const l = new THREE.Matrix4()
                 .makeTranslation(mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).x, mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).y, 0)
                 .scale(new THREE.Vector3(
@@ -82,10 +83,22 @@ function create3DLayer(id, modelUrl, coords) {
     };
 }
 
-
 map.on('load', () => {
-    // Nascondi POI standard
     try { map.setLayoutProperty('poi', 'visibility', 'none'); } catch (e) {}
+
+    fetch('data.geojson')
+        .then(res => res.json())
+        .then(data => {
+            debug("✅ GeoJSON caricato.");
+            data.features.forEach((feature, index) => {
+                if (feature.properties.model) {
+                    map.addLayer(create3DLayer('3d-model-' + index, feature.properties.model, feature.geometry.coordinates));
+                    debug(`🏗️ Inserito layer 3D: ${feature.properties.name}`);
+                }
+            });
+        });
+});
+
 
     // Debug Panel
     const debugPanel = document.createElement('div');
