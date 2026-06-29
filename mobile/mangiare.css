@@ -14,58 +14,87 @@ body {
     filter: brightness(0.7);
 }
 
-/* --- DASHBOARD: NUOVO MOCHA PIÙ SCURO E COMPATTO --- */
+/* --- DASHBOARD: ELEGANTE E PIÙ SPAZIOSA --- */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 65px;
+    height: 75px; /* Aumentata per più respiro */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
-    /* MODIFICA: Marrone molto più scuro e profondo (Dark Coffee) */
-    background: rgba(45, 30, 20, 0.95);
+    padding: 0 15px;
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.4);
     z-index: 1000;
 }
 
+.btn-home {
+    width: 50px;
+    text-decoration: none;
+    font-size: 1.8rem; /* Ingrandita */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+/* Logo Oro Brillante */
+.logo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+}
+
 /* --- BANDIERINE COMPATTE --- */
 .lang-switcher {
     display: flex;
-    gap: 3px;
-    flex-shrink: 0; 
+    gap: 5px;
+    flex-shrink: 0;
 }
 
 .lang-switcher button {
-    background: transparent;
+    background: none;
     border: none;
     cursor: pointer;
-    
-    /* MODIFICA: Dimensioni fisse per le bandierine */
-    width: 24px;  
-    height: 24px; 
+    width: 24px;
+    height: 24px;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s;
 }
 
-.lang-switcher button:active {
-    transform: scale(0.9);
+.lang-switcher button:hover {
+    transform: scale(1.2);
 }
 
-/* ContenitoreScroll */
+/* ContenitoreScroll: Padding-top aumentato per compensare l'altezza della dashboard */
 .scroll-content { 
-    padding-top: 80px; 
+    padding-top: 90px; 
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 20px;
 }
+
 .search-container {
     margin-bottom: 20px;
     width: 100%;
@@ -87,10 +116,10 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
+/* Card Stile */
 .food-card {
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     border-radius: 20px;
     padding: 25px;
     margin-bottom: 25px;
@@ -99,20 +128,16 @@ body {
     color: #2c2c2c;
     border: 2.5px solid #000; 
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 10px rgba(212, 175, 55, 0.5); 
-    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-.food-card:hover { 
-    transform: scale(1.02); 
-    background: rgba(255, 255, 255, 0.6); 
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.8);
-}
+.food-card:hover { transform: scale(1.02); }
+
 .food-card-title {
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
     color: #000;
     margin-bottom: 10px;
-    letter-spacing: 1px;
 }
 
 .food-card-btn {
@@ -122,22 +147,13 @@ body {
     font-size: 0.9rem;
     color: #000;
     font-weight: 700;
-    text-decoration: none; 
     border: none;
     border-radius: 50px; 
     background: #d4af37;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
-.food-card-btn:active {
-    background: #b8962d;
-    transform: scale(0.95);
-}
-
+/* --- Lista Alloggi (Sleep) --- */
 #sleep-container {
     display: flex;
     flex-direction: column;
@@ -156,21 +172,13 @@ body {
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    transition: all 0.3s ease;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 10px rgba(212, 175, 55, 0.5);
-}
-
-.sleep-card:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: scale(1.02);
 }
 
 .sleep-title {
     font-family: 'Cinzel', serif;
     color: #000;
     font-size: 1.1rem;
-    margin: 0;
-    line-height: 1.2;
 }
 
 .btn-view {
@@ -181,7 +189,5 @@ body {
     font-size: 0.75rem;
     font-weight: 800;
     text-transform: uppercase;
-    white-space: nowrap;
     margin-left: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
