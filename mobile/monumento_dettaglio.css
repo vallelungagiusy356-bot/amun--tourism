@@ -32,45 +32,56 @@ body {
 }
 
 /* --- DASHBOARD NERA --- */
+/* --- DASHBOARD: NERO PROFONDO ED EQUILIBRATA --- */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 65px;
+    height: 60px; /* Leggermente più bassa per un look più sleek */
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-    background: rgba(0, 0, 0, 0.85); /* Dashboard NERA */
-    backdrop-filter: blur(15px);
+    background: #000; /* Nero assoluto e profondo */
     border-bottom: 1px solid #d4af37;
     z-index: 1000;
-    
 }
 
-.logo-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+/* Bottone Home più discreto */
+.btn-home {
+    width: 40px; /* Larghezza fissa */
+    font-size: 1.2rem; /* Casetta ridotta */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* --- CONTROLLI DASHBOARD --- */
+/* Logo centrato */
+.logo-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Bandierine compatte */
+.lang-switcher {
+    display: flex;
+    gap: 2px; /* Spazio ridotto tra le bandiere */
+    width: auto;
+}
+
 .lang-switcher button {
     background: transparent !important;
     border: none !important;
-    padding: 2px 4px;       /* Ridotto: prima era 5px 8px */
+    padding: 0 2px; 
     cursor: pointer;
     color: white; 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;      /* Ridotto: prima era 1.2rem */
+    font-size: 0.75rem; /* Bandierine leggermente più piccole */
+    min-width: 20px;
 }
 
 
