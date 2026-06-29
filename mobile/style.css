@@ -58,7 +58,10 @@ body {
     flex-grow: 1;
     display: flex;
     justify-content: center;
+    margin-left: -20px; /* Valore negativo per spostare il logo a sinistra */
 }
+
+   
 .logo-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
@@ -267,4 +270,17 @@ body {
     0% { filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35)) brightness(1); }
     30% { filter: drop-shadow(0 0 25px rgba(255, 230, 180, 0.7)) brightness(1.25) contrast(1.1); }
     45%, 100% { filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35)) brightness(1); }
+}
+
+/* --- CORREZIONE PULSANTE AUDIO --- */
+.btn-audio {
+    background: transparent !important; /* Elimina lo sfondo bianco */
+    border: none !important;           /* Elimina eventuali bordi */
+    outline: none !important;          /* Rimuove l'alone di selezione */
+    box-shadow: none !important;       /* Rimuove ombre residue */
+    cursor: pointer;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
