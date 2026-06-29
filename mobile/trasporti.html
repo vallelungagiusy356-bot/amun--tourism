@@ -3,25 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amunì Tourism - Mangiare</title>
-    <!-- Font Medievale Premium e Font Montserrat -->
+    <title>Amunì Tourism - Trasporti</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="trasporti.css">
     <meta name="theme-color" content="#000000">
 </head>
 <body>
 
-    <!-- Pulsante invisibile per sbloccare l'audio su mobile -->
-    
-<button id="audio-trigger" style="position:absolute; top:65px; left:0; width:100%; height:calc(100% - 65px); opacity:0; border:none; background:transparent; z-index:9999;"></button>
-
-    <audio id="bg-music" loop>
-        <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="scene-background"></div>
 
-    <!-- Dashboard Fissa e ottimizzata -->
     <header class="dashboard">
         <a href="mobile_index.html" class="btn-home">🏠</a>
         
@@ -37,6 +27,7 @@
             <button data-lang="es">🇪🇸</button>
         </div>
     </header>
+
     <div class="scroll-content" id="scroll-content">
         
         <main class="home-welcome-poetry">
@@ -68,56 +59,31 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-    // const content = document.getElementById("scroll-content");
-    // setTimeout(() => { content.classList.add("visible"); }, 50);
-});
-
-        // --- LOGICA AUDIO ---
-const audio = document.getElementById("bg-music");
-const trigger = document.getElementById("audio-trigger");
-const toggleBtn = document.getElementById("toggle-music");
-
-if (toggleBtn) { // Controlla se il bottone esiste prima di usarlo
-    audio.volume = 0.5;
-    
-    function startMusic() {
-        audio.play().catch(() => {});
-        if(trigger) trigger.remove();
-    }
-    document.addEventListener("touchstart", startMusic, { once: true });
-    document.addEventListener("click", startMusic, { once: true });
-
-    toggleBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; } 
-        else { audio.pause(); toggleBtn.textContent = "🔇"; }
-    });
-}
-
-
-        // --- LOGICA LINGUA (PERCORSO CORRETTO) ---
+        // --- LOGICA LINGUA ---
         let currentLang = localStorage.getItem("lang") || "it";
 
         function loadLanguage(lang) {
-            // Percorso corretto: ./lang/ perché siamo già dentro mobile
+            // Percorso corretto: ./lang/ rispetto alla posizione del file mobile
             fetch(`./lang/${lang}.json`)
                 .then(res => res.json())
                 .then(data => {
                     document.querySelectorAll("[data-i18n]").forEach(el => {
                         const key = el.getAttribute("data-i18n");
+                        // Navigazione sicura nell'oggetto JSON
                         const text = key.split('.').reduce((o,i) => (o ? o[i] : null), data);
                         if (text) el.innerHTML = text;
                     });
                 })
-                .catch(err => console.error("Errore lingua:", err));
+                .catch(err => console.error("Errore caricamento lingua:", err));
             localStorage.setItem("lang", lang);
         }
 
         document.addEventListener("DOMContentLoaded", () => {
+            // Inizializzazione bottoni lingua
             document.querySelectorAll(".lang-switcher button").forEach(btn => {
                 btn.addEventListener("click", () => { loadLanguage(btn.dataset.lang); });
             });
+            // Caricamento lingua iniziale
             loadLanguage(currentLang);
         });
     </script>
