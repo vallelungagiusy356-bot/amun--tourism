@@ -29,8 +29,8 @@ map.addControl(new mapboxgl.GeolocateControl({
     showUserHeading: true
 }));
 
-// Funzione Motore per i Modelli 3D
-function create3DLayer(id, modelUrl, coords) {
+// Funzione Motore per i Modelli 3D (AGGIRONATA)
+function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     return {
         id: id,
         type: 'custom',
@@ -39,17 +39,23 @@ function create3DLayer(id, modelUrl, coords) {
             this.camera = new THREE.Camera();
             this.scene = new THREE.Scene();
             
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-            directionalLight.position.set(0, -70, 100).normalize();
-            this.scene.add(directionalLight);
-            this.scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+            // LUCI MIGLIORATE
+            const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 2);
+            this.scene.add(ambientLight);
+            
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
+            dirLight.position.set(100, 100, 100);
+            this.scene.add(dirLight);
 
             new THREE.GLTFLoader().load(modelUrl, (gltf) => {
                 const model = gltf.scene;
+                // Materiale che riflette meglio la luce
                 model.traverse((node) => {
                     if (node.isMesh) {
                         node.material = new THREE.MeshStandardMaterial({
-                            color: 0xD4AF37, metalness: 0.9, roughness: 0.1
+                            color: 0xD4AF37, 
+                            metalness: 0.3, 
+                            roughness: 0.7
                         });
                     }
                 });
@@ -65,12 +71,16 @@ function create3DLayer(id, modelUrl, coords) {
         render: function (gl, matrix) {
             const scaleFactor = 50; 
             const m = new THREE.Matrix4().fromArray(matrix);
+            
+            // Calcoliamo le coordinate con l'offset
+            const merc = mapboxgl.MercatorCoordinate.fromLngLat(coords, 0);
+            
             const l = new THREE.Matrix4()
-                .makeTranslation(mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).x, mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).y, 0)
+                .makeTranslation(merc.x + offset.x, merc.y + offset.y, 0)
                 .scale(new THREE.Vector3(
-                    mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).meterInMercatorCoordinateUnits() * scaleFactor, 
-                    -mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).meterInMercatorCoordinateUnits() * scaleFactor, 
-                    mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).meterInMercatorCoordinateUnits() * scaleFactor
+                    merc.meterInMercatorCoordinateUnits() * scaleFactor, 
+                    -merc.meterInMercatorCoordinateUnits() * scaleFactor, 
+                    merc.meterInMercatorCoordinateUnits() * scaleFactor
                 ))
                 .multiply(new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2));
             
@@ -94,7 +104,15 @@ map.on('load', () => {
             // 1. Carica Modelli 3D
             data.features.forEach((feature, index) => {
                 if (feature.properties.model) {
-                    map.addLayer(create3DLayer('3d-model-' + index, feature.properties.model, feature.geometry.coordinates));
+                    // Se nel GeoJSON esiste un offset, usalo, altrimenti usa {x:0, y:0}
+                    const offset = feature.properties.offset || {x: 0, y: 0};
+                    
+                    map.addLayer(create3DLayer(
+                        '3d-model-' + index, 
+                        feature.properties.model, 
+                        feature.geometry.coordinates,
+                        offset
+                    ));
                     debug(`🏗️ Caricato 3D: ${feature.properties.name}`);
                 }
             });
