@@ -4,23 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - Mangiare</title>
-    <!-- Font Medievale Premium e Font Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="mangiare.css">
     <meta name="theme-color" content="#000000">
 </head>
 <body>
 
-    <!-- Pulsante invisibile per sbloccare l'audio su mobile -->
-    <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
-    
-    <audio id="bg-music" loop>
-        <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="scene-background"></div>
 
-    <!-- Dashboard Fissa e ottimizzata -->
     <header class="dashboard">
         <a href="mobile_index.html" class="btn-home">🏠</a>
         
@@ -38,10 +29,8 @@
     </header>
 
     <div class="scroll-content">
-        <!-- BARRA DI RICERCA: Spostata qui per un layout migliore (fissa) -->
         <div class="search-container">
             <input type="text" id="food-search" class="search-bar" placeholder="Cerca tra i sapori..." onkeyup="filterCards()">
-
         </div>
 
         <div class="mobile-layout">
@@ -101,7 +90,6 @@
             localStorage.setItem("lang", lang);
         }
 
-        // Funzione per filtrare le card in base alla ricerca
         function filterCards() {
             let input = document.getElementById('food-search').value.toLowerCase();
             let cards = document.querySelectorAll('.food-card');
@@ -118,15 +106,7 @@
             loadLanguage(localStorage.getItem("lang") || "it");
         });
 
-                // Gestione Audio (Versione corretta e reattiva)
-        const audio = document.getElementById("bg-music");
-        const trigger = document.getElementById("audio-trigger");
-
-        trigger.addEventListener("click", () => {
-            audio.play();
-            trigger.style.display = "none"; // Nasconde il muro invisibile dopo il click
-        });
-        
+        // Service Worker
         if ("serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js");
         
     </script>
