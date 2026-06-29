@@ -10,7 +10,7 @@ body {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
-    background: url('img/sicily.jpg') center/cover;
+    background: url('img/tuo_nuovo_sfondo.jpeg') center/cover;
     filter: brightness(0.7);
 }
 
