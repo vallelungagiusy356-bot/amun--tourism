@@ -12,34 +12,24 @@
 
     <div class="scene-background"></div>
 
-    <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
-    
-    <audio id="bg-music" loop>
-        <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
-    </audio>
-
     <header class="dashboard">
-    <!-- Pulsante Home -->
-    <a href="mobile_index.html" class="btn-home">🏠</a>
-    
-    <!-- Logo Centrato -->
-    <div class="logo-container">
-        <div class="logo-title">AMUNÌ TOURISM</div>
-    </div>
-    
-    <!-- Controlli (Musica + Lingue) -->
-    <div class="lang-switcher">
-        <!-- Bottone musica ripristinato per il tuo JS -->
-        <button id="toggle-music" class="btn-audio" style="background:transparent; border:none; margin-right: 10px;">🔈</button>
+        <!-- Pulsante Home -->
+        <a href="mobile_index.html" class="btn-home">🏠</a>
         
-        <button data-lang="it">🇮🇹</button>
-        <button data-lang="en">🇬🇧</button>
-        <button data-lang="fr">🇫🇷</button>
-        <button data-lang="de">🇩🇪</button>
-        <button data-lang="es">🇪🇸</button>
-    </div>
-</header>
-
+        <!-- Logo Centrato -->
+        <div class="logo-container">
+            <div class="logo-title">AMUNÌ TOURISM</div>
+        </div>
+        
+        <!-- Controlli Lingue -->
+        <div class="lang-switcher">
+            <button data-lang="it">🇮🇹</button>
+            <button data-lang="en">🇬🇧</button>
+            <button data-lang="fr">🇫🇷</button>
+            <button data-lang="de">🇩🇪</button>
+            <button data-lang="es">🇪🇸</button>
+        </div>
+    </header>
 
     <div class="scroll-content" id="scroll-content">
         
@@ -120,74 +110,31 @@
         });
 
         function caricaLingua(lingua) {
-            // Salva la scelta così se l'utente naviga tra le pagine la ricorda
             localStorage.setItem('linguaSelezionata', lingua);
-
-            // Cambia l'attributo lang del tag <html> per accessibilità
             document.documentElement.lang = lingua;
 
-            // Fai il fetch del file JSON corrispondente (es: locales/it.json)
             fetch(`../lang/${lingua}.json`)
                 .then(response => {
                     if (!response.ok) throw new Error("File di lingua non trovato");
                     return response.json();
                 })
                 .then(data => {
-                    // Cerca TUTTI gli elementi nella pagina che hanno un attributo data-i18n
                     document.querySelectorAll('[data-i18n]').forEach(elemento => {
                         const percorsoChiave = elemento.getAttribute('data-i18n');
-                        
-                        // Divide la stringa (es: ["events_page", "title"])
                         const chiavi = percorsoChiave.split('.'); 
-                        
-                        // Naviga nel JSON in modo ricorsivo
                         let testoTradotto = data;
                         chiavi.forEach(chiave => {
-                            if (testoTradotto) {
-                                testoTradotto = testoTradotto[chiave];
-                            }
+                            if (testoTradotto) testoTradotto = testoTradotto[chiave];
                         });
-
-                        // Aggiorna l'HTML dell'elemento con il testo tradotto trovato
-                        if (testoTradotto) {
-                            elemento.innerHTML = testoTradotto;
-                        }
+                        if (testoTradotto) elemento.innerHTML = testoTradotto;
                     });
                 })
                 .catch(error => console.error("Errore nel caricamento della lingua:", error));
         }
 
         function openCastellanaChat() {
-    // URL corretto con la sottocartella del progetto
-    window.location.href = "https://vallelungagiusy356-bot.github.io/amun--tourism/desktop/";
-}
-
-    </script>
-
-    <script>
-        const bgMusic = document.getElementById('bg-music');
-        const toggleMusicBtn = document.getElementById('toggle-music');
-        const audioTrigger = document.getElementById('audio-trigger');
-
-        // Logica per aggirare il blocco dell'autoplay dei browser
-        if (audioTrigger) {
-            audioTrigger.addEventListener('click', () => {
-                bgMusic.play().then(() => {
-                    toggleMusicBtn.textContent = "🔊";
-                    audioTrigger.remove(); // Rimuove il bottone invisibile una volta attivato
-                }).catch(err => console.log("Audio in attesa di interazione"));
-            });
+            window.location.href = "https://vallelungagiusy356-bot.github.io/amun--tourism/desktop/";
         }
-
-        toggleMusicBtn.addEventListener('click', () => {
-            if (bgMusic.paused) {
-                bgMusic.play();
-                toggleMusicBtn.textContent = "🔊";
-            } else {
-                bgMusic.pause();
-                toggleMusicBtn.textContent = "🔈";
-            }
-        });
     </script>
 </body>
 </html>
