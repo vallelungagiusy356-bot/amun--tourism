@@ -30,7 +30,7 @@ body {
     z-index: -10;
 }
 
-/* --- DASHBOARD: STRUTTURA EQUILIBRATA (COPIATA DALLA HOME) --- */
+
 /* --- DASHBOARD NERA --- */
 .dashboard {
     position: fixed;
@@ -42,7 +42,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-    background: rgba(0, 0, 0, 0.85); /* Dashboard NERA */
+    background: rgba(0, 0, 0, 0.85); 
     backdrop-filter: blur(15px);
     border-bottom: 1px solid #d4af37;
     z-index: 1000;
@@ -60,6 +60,17 @@ body {
     color: transparent;
 }
 
+.btn-home {
+    width: 60px;        
+    padding-left: 10px; 
+    text-decoration: none;
+    font-size: 1.8rem;  
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;     
+}
+
+
 /* --- CONTROLLI DASHBOARD --- */
 .lang-switcher button {
     background: transparent !important;
@@ -73,7 +84,9 @@ body {
     font-size: 0.9rem;      /* Ridotto: prima era 1.2rem */
 }
 
+
 /* 4. AREA DI SCROLL - RISOLTA */
+
 .scroll-content {
     position: relative;
     z-index: 2;
