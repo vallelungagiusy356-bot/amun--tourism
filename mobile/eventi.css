@@ -47,19 +47,21 @@ body {
 }
 
 .btn-home {
-    width: 50px; 
+    width: 50px;
+    padding-left: 10px; 
     text-decoration: none;
     font-size: 1.5rem;
     display: flex;
     align-items: center;
+    flex-shrink: 0; 
 }
-
 .logo-container {
-    flex-grow: 1; 
+    flex-grow: 1;
     display: flex;
     justify-content: center;
-    overflow: hidden; 
-    padding: 0 10px;
+    align-items: center; 
+    overflow: visible;   
+    padding: 0 15px;     
 }
 
 .logo-title {
