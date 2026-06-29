@@ -14,7 +14,7 @@ body {
     filter: brightness(0.7);
 }
 
-/* --- DASHBOARD: STRUTTURA EQUILIBRATA (COPIATA DALLA HOME) --- */
+/* --- DASHBOARD: MOCHA STYLE --- */
 .dashboard {
     position: fixed;
     top: 0;
@@ -24,15 +24,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px; /* Ridotto leggermente per guadagnare spazio */
-    background: rgba(0, 0, 0, 0.7);
+    padding: 0 10px;
+    /* MODIFICA: Colore Mocha (Marrone Caffè caldo) con trasparenza per il blur */
+    background: rgba(92, 64, 51, 0.85);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.4);
     z-index: 1000;
 }
 
 .btn-home {
-    width: 50px; /* Larghezza fissa per non rubare spazio */
+    width: 50px;
     text-decoration: none;
     font-size: 1.5rem;
     display: flex;
@@ -40,33 +41,47 @@ body {
 }
 
 .logo-container {
-    flex-grow: 1; /* Il logo prende tutto lo spazio rimanente */
+    flex-grow: 1;
     display: flex;
     justify-content: center;
-    overflow: hidden; /* Fondamentale per non andare a capo */
+    overflow: hidden;
     padding: 0 10px;
 }
 
 .logo-title {
-    font-family: 'Playfair Display', serif; /* O Cinzel, come preferisci */
-    font-size: 1.1rem; /* Ridotto di un soffio per sicurezza */
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    white-space: nowrap; /* IMPEDISCE IL RITORNO A CAPO */
+    white-space: nowrap;
     background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
+/* --- LINGUE TRASPARENTI --- */
 .lang-switcher {
     display: flex;
     gap: 5px;
-    flex-shrink: 0; /* Impedisce alle icone di rimpicciolirsi */
+    flex-shrink: 0;
 }
 
-/* ContenitoreScroll: deve avere il padding-top pari all'altezza della dashboard */
+.lang-switcher button {
+    background: transparent; /* Sfondo trasparente */
+    border: none;            /* Nessun bordo */
+    cursor: pointer;
+    font-size: 1.2rem;       /* Dimensione bandierine */
+    padding: 5px;
+    transition: transform 0.2s ease;
+}
+
+.lang-switcher button:active {
+    transform: scale(0.9);
+}
+
+/* ContenitoreScroll */
 .scroll-content { 
     padding-top: 80px; 
     padding-left: 15px;
@@ -81,7 +96,7 @@ body {
 .search-bar {
     width: 100%;
     padding: 12px 20px;
-    background: rgba(0, 0, 0, 0.6); /* Sfondo più scuro per contrasto */
+    background: rgba(0, 0, 0, 0.6);
     border: 1px solid #d4af37;
     border-radius: 50px;
     color: #fff;
@@ -90,11 +105,9 @@ body {
     backdrop-filter: blur(10px);
 }
 
-/* Stile per rendere il testo del placeholder visibile */
 .search-bar::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
-
 
 .food-card {
     background: rgba(255, 255, 255, 0.4);
@@ -106,69 +119,59 @@ body {
     display: block;
     text-decoration: none;
     color: #2c2c2c;
-    
-    /* MODIFICA: Bordo nero sottile */
     border: 2.5px solid #000; 
-    
-    /* MODIFICA: Ombra originale + Glow dorato */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 10px rgba(212, 175, 55, 0.5); 
-    
-    /* MODIFICA: Aggiunto box-shadow alla transizione per renderlo fluido */
     transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Effetto al tocco (hover) */
 .food-card:hover { 
     transform: scale(1.02); 
     background: rgba(255, 255, 255, 0.6); 
-    /* Glow più intenso al tocco */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.8);
 }
 .food-card-title {
-    font-family: 'Cinzel', serif; /* Font Medievale/Premium */
+    font-family: 'Cinzel', serif;
     text-transform: uppercase;
     color: #000;
     margin-bottom: 10px;
     letter-spacing: 1px;
 }
-/* Stile Bottone Premium - Alta leggibilità */
+
 .food-card-btn {
     display: inline-block;
     margin-top: 15px;
-    padding: 10px 20px; /* Leggermente più alto per un tocco facile */
+    padding: 10px 20px;
     font-size: 0.9rem;
-    color: #000; /* Testo NERO per contrasto massimo */
-    font-weight: 700; /* Più spesso per leggibilità */
+    color: #000;
+    font-weight: 700;
     text-decoration: none; 
     border: none;
     border-radius: 50px; 
-    background: #d4af37; /* Background ORO (il vero protagonista) */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Una leggera ombra per farlo "staccare" */
+    background: #d4af37;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     text-align: center;
-    text-transform: uppercase; /* Dà un tocco più ufficiale */
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-/* Feedback al tocco */
 .food-card-btn:active {
-    background: #b8962d; /* Una tonalità d'oro più scura al tocco */
+    background: #b8962d;
     transform: scale(0.95);
 }
-/* --- Stile Lista Alloggi (Tile Layout) --- */
 
 #sleep-container {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Spazio tra una card e l'altra */
+    gap: 15px;
     padding: 10px 5px;
     width: 100%;
 }
 
 .sleep-card {
-    background: rgba(255, 255, 255, 0.4); /* Allineato a .food-card */
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(15px);
-    border: 2.5px solid #000; /* Aggiunto bordo nero */
+    border: 2.5px solid #000;
     border-radius: 20px;
     padding: 20px;
     display: flex;
@@ -179,31 +182,28 @@ body {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
-
-/* Effetto al passaggio del mouse o tocco */
 .sleep-card:hover {
     background: rgba(255, 255, 255, 0.25);
-    transform: scale(1.02); /* Leggero zoom per feedback */
+    transform: scale(1.02);
 }
 
 .sleep-title {
     font-family: 'Cinzel', serif;
-    color: #000; /* Cambiato da #fff a #000 per contrasto */
+    color: #000;
     font-size: 1.1rem;
     margin: 0;
     line-height: 1.2;
 }
 
-/* Bottone specifico per la lista */
 .btn-view {
     color: #000;
     background: #d4af37;
     padding: 8px 15px;
     border-radius: 20px;
-    font-size: 0.75rem; /* Più piccolo per stare nella riga */
+    font-size: 0.75rem;
     font-weight: 800;
     text-transform: uppercase;
-    white-space: nowrap; /* Il testo non va a capo */
+    white-space: nowrap;
     margin-left: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
