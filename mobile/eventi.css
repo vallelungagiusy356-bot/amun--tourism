@@ -61,7 +61,7 @@ body {
     justify-content: center;
     align-items: center; 
     overflow: visible;   
-    padding: 0 12px;     
+    padding: 0 5px;     
 }
 
 .logo-title {
@@ -77,26 +77,25 @@ body {
     color: transparent;
 }
 
+/* --- CONTROLLI DASHBOARD (Mobile) --- */
 .lang-switcher {
     display: flex;
-    gap: 5px;
+    gap: 1px;            
     flex-shrink: 0; 
 }
 
-/* --- CONTROLLI DASHBOARD (Mobile) --- */
 .lang-switcher button {
     background: transparent !important;
     border: none !important;
-    padding: 2px 4px;
+    padding: 1px 2px;    
     cursor: pointer;
     color: white; 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
-    flex-shrink: 0;
+    font-size: 0.8rem;   
+    flex-shrink: 0;      
 }
-
 
 
 /* --- SCROLL CONTENT ALLINEATO --- */
