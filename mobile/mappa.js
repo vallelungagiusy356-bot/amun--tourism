@@ -18,7 +18,7 @@ map.addControl(new mapboxgl.GeolocateControl({
     showUserHeading: true
 }));
 
-// Funzione Motore per i Modelli 3D
+// Funzione Motore per i Modelli 3D (AGGIORNATA PER IL DEBUG)
 function create3DLayer(id, modelUrl, coords) {
     return {
         id: id,
@@ -35,6 +35,15 @@ function create3DLayer(id, modelUrl, coords) {
 
             new THREE.GLTFLoader().load(modelUrl, (gltf) => {
                 const model = gltf.scene;
+
+                // --- INIZIO CODICE DEBUG DIMENSIONI ---
+                const box = new THREE.Box3().setFromObject(model);
+                const size = new THREE.Vector3();
+                box.getSize(size);
+                // Questo scrive le dimensioni nel tuo pannello di debug in alto a sinistra
+                debug(`📏 ${id} size: ${size.x.toFixed(2)}, ${size.y.toFixed(2)}, ${size.z.toFixed(2)}`);
+                // --- FINE CODICE DEBUG ---
+
                 model.traverse((node) => {
                     if (node.isMesh) {
                         node.material = new THREE.MeshStandardMaterial({
@@ -53,9 +62,16 @@ function create3DLayer(id, modelUrl, coords) {
         },
         render: function (gl, matrix) {
             const m = new THREE.Matrix4().fromArray(matrix);
+            // NOTA: Se non vedi il modello, prova a cambiare il valore moltiplicativo qui sotto (es. da 1 a 100 o 1000)
+            const scaleFactor = 1; 
+            
             const l = new THREE.Matrix4()
                 .makeTranslation(mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).x, mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).y, 0)
-                .scale(new THREE.Vector3(mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).meterInMercatorCoordinateUnits(), -mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).meterInMercatorCoordinateUnits(), mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).meterInMercatorCoordinateUnits()))
+                .scale(new THREE.Vector3(
+                    mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).meterInMercatorCoordinateUnits() * scaleFactor, 
+                    -mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).meterInMercatorCoordinateUnits() * scaleFactor, 
+                    mapboxgl.MercatorCoordinate.fromLngLat(coords, 0).meterInMercatorCoordinateUnits() * scaleFactor
+                ))
                 .multiply(new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2));
             
             this.camera.projectionMatrix = m.multiply(l);
@@ -65,6 +81,7 @@ function create3DLayer(id, modelUrl, coords) {
         }
     };
 }
+
 
 map.on('load', () => {
     // Nascondi POI standard
