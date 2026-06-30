@@ -1,4 +1,3 @@
-
 // TOKEN Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l1c2lmaTg5IiwiYSI6ImNtcGNvYXpqYTAwZ3kzNHM5amI4emxxOTAifQ.iNuDFyanN-ZEyl8-zRevGw';
 
@@ -39,10 +38,9 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             this.scene = new THREE.Scene();
             
             // 1. LUCI: Ridotte per evitare l'effetto "bruciato"
-            // Ambient light più bassa: lascia che le ombre definiscano le forme
             this.scene.add(new THREE.AmbientLight(0xFFFFFF, 0.4)); 
             
-            // Directional light: più morbida, posizionata lateralmente
+            // Directional light: morbida, posizionata lateralmente
             const dirLight = new THREE.DirectionalLight(0xFFFFFF, 0.6);
             dirLight.position.set(50, 100, 50);
             this.scene.add(dirLight);
@@ -53,13 +51,12 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
                 model.traverse((node) => {
                     if (node.isMesh) {
                         node.material = new THREE.MeshStandardMaterial({
-                            color: 0x787068,  // COLORE: Ardesia Calda (si intona alla carta antica)
-                            metalness: 0.0,   // Niente metallo, è pietra
-                            roughness: 0.8,   // Rugoso, non riflette luce come uno specchio
+                            color: 0x787068,  // COLORE: Ardesia Calda
+                            metalness: 0.0,   
+                            roughness: 0.8,   
                             side: THREE.DoubleSide
                         });
                         
-                        // Fondamentale: ammorbidisce gli spigoli rendendo il modello "liscio"
                         if (node.geometry) {
                             node.geometry.computeVertexNormals();
                         }
@@ -74,30 +71,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             });
             this.renderer.autoClear = false;
         },
-        // ... il resto del metodo render rimane invariato
-        render: function (gl, matrix) {
-            const scaleFactor = 50; 
-            const m = new THREE.Matrix4().fromArray(matrix);
-            const merc = mapboxgl.MercatorCoordinate.fromLngLat(coords, 0);
-            
-            const l = new THREE.Matrix4()
-                .makeTranslation(merc.x + offset.x, merc.y + offset.y, 0)
-                .scale(new THREE.Vector3(
-                    merc.meterInMercatorCoordinateUnits() * scaleFactor, 
-                    -merc.meterInMercatorCoordinateUnits() * scaleFactor, 
-                    merc.meterInMercatorCoordinateUnits() * scaleFactor
-                ))
-                .multiply(new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2));
-            
-            this.camera.projectionMatrix = m.multiply(l);
-            this.renderer.resetState();
-            this.renderer.render(this.scene, this.camera);
-            this.map.triggerRepaint();
-        }
-    };
-}
-
-
+        
         render: function (gl, matrix) {
             const scaleFactor = 50; 
             const m = new THREE.Matrix4().fromArray(matrix);
