@@ -166,10 +166,10 @@ map.on('load', () => {
         })
         .catch(err => debug(`❌ Errore: ${err.message}`));
 
-        // Popup interattivi con aggiornamento linea percorso
+            // Popup interattivi con aggiornamento linea percorso
     map.on('click', 'poi-github', (e) => {
         const p = e.features[0].properties;
-        const coords = e.features[0].geometry.coordinates;
+        const coords = e.features[0].geometry.coordinates; // [lng, lat]
         
         // Per ora usiamo il centro mappa come punto di partenza
         const userCoords = map.getCenter(); 
@@ -186,12 +186,14 @@ map.on('load', () => {
             }
         });
 
-        // Popup con link corretto per Google Maps
+        // URL CORRETTO: Destinazione = [lat, lng]
+        const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
+
         new mapboxgl.Popup().setLngLat(coords).setHTML(`
             <div style="padding:5px;">
                 <h3 style="font-family:'Cinzel';">${p.name}</h3>
                 <p>${p.address || ''}</p>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking" target="_blank" style="text-decoration:none; color:#CDA843; font-weight:bold;">🚶 PORTAMI QUI</a>
+                <a href="${mapsUrl}" target="_blank" style="text-decoration:none; color:#CDA843; font-weight:bold;">🚶 PORTAMI QUI</a>
             </div>
         `).addTo(map);
     });
