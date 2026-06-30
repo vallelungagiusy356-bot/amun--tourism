@@ -35,11 +35,11 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
         id: id,
         type: 'custom',
         renderingMode: '3d',
-                onAdd: function (map, gl) {
+        onAdd: function (map, gl) {
             this.camera = new THREE.Camera();
             this.scene = new THREE.Scene();
             
-            // 1. LUCI (più intense)
+            // LUCI POTENZIATE
             const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 4);
             this.scene.add(ambientLight);
             
@@ -47,35 +47,26 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             dirLight.position.set(100, 100, 100);
             this.scene.add(dirLight);
 
-            // 2. SECONDA LUCE (per eliminare zone nere)
             const backLight = new THREE.DirectionalLight(0xffffff, 0.8);
             backLight.position.set(-100, 50, -100);
             this.scene.add(backLight);
 
             new THREE.GLTFLoader().load(modelUrl, (gltf) => {
                 const model = gltf.scene;
-                // Materiale che riflette meglio la luce
+                // Materiale ORO brillante
                 model.traverse((node) => {
                     if (node.isMesh) {
                         node.material = new THREE.MeshStandardMaterial({
-                            color: 0xFFD700,
-                            metalness: 0.9,
+                            color: 0xFFD700, 
+                            metalness: 0.9, 
                             roughness: 0.1,
-                            emissive: 0x332200, // <--- Bagliore oro
+                            emissive: 0x332200, 
                             side: THREE.DoubleSide
                         });
                     }
                 });
                 this.scene.add(model);
             });
-
-            this.map = map;
-            this.renderer = new THREE.WebGLRenderer({
-                canvas: map.getCanvas(), context: gl, antialias: true
-            });
-            this.renderer.autoClear = false;
-        },
-
 
             this.map = map;
             this.renderer = new THREE.WebGLRenderer({
@@ -106,6 +97,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
         }
     };
 }
+
 
 // UNICO BLOCCO DI CARICAMENTO
 map.on('load', () => {
