@@ -33,27 +33,29 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
         id: id,
         type: 'custom',
         renderingMode: '3d',
-        onAdd: function (map, gl) {
+                onAdd: function (map, gl) {
             this.camera = new THREE.Camera();
             this.scene = new THREE.Scene();
             
-            // 1. LUCI: Ridotte per evitare l'effetto "bruciato"
-            this.scene.add(new THREE.AmbientLight(0xFFFFFF, 0.4)); 
+            // 1. LUCI: Sostituiamo AmbientLight con HemisphereLight
+            // Questo crea profondità: luce "cielo" dall'alto e luce "terra" dal basso
+            const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.9);
+            this.scene.add(hemiLight);
             
-            // Directional light: morbida, posizionata lateralmente
-            const dirLight = new THREE.DirectionalLight(0xFFFFFF, 0.6);
-            dirLight.position.set(50, 100, 50);
+            // Directional light: manteniamola per creare ombre marcate
+            const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            dirLight.position.set(100, 100, 100);
             this.scene.add(dirLight);
 
-            // 2. MATERIALE: "Ardesia Calda"
+            // 2. MATERIALE: "Pietra Calda" (color calcarenite)
             new THREE.GLTFLoader().load(modelUrl, (gltf) => {
                 const model = gltf.scene;
                 model.traverse((node) => {
                     if (node.isMesh) {
                         node.material = new THREE.MeshStandardMaterial({
-                            color: 0x787068,  // COLORE: Ardesia Calda
+                            color: 0xD2B48C,  // COLORE: Beige Sabbia/Pietra (si intona alla mappa)
                             metalness: 0.0,   
-                            roughness: 0.8,   
+                            roughness: 0.9,   
                             side: THREE.DoubleSide
                         });
                         
@@ -71,6 +73,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             });
             this.renderer.autoClear = false;
         },
+
         
         render: function (gl, matrix) {
             const scaleFactor = 50; 
