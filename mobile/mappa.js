@@ -166,7 +166,7 @@ map.on('load', () => {
         })
         .catch(err => debug(`❌ Errore: ${err.message}`));
 
-            // Popup interattivi con aggiornamento linea percorso
+                // Popup interattivi con aggiornamento linea percorso
     map.on('click', 'poi-github', (e) => {
         const p = e.features[0].properties;
         const coords = e.features[0].geometry.coordinates; // [lng, lat]
@@ -187,6 +187,7 @@ map.on('load', () => {
         });
 
         // URL CORRETTO: Destinazione = [lat, lng]
+        // Utilizziamo l'URL ufficiale di Google Maps per il navigatore
         const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
 
         new mapboxgl.Popup().setLngLat(coords).setHTML(`
