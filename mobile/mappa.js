@@ -39,11 +39,11 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             
             // 1. LUCI: Sostituiamo AmbientLight con HemisphereLight
             // Questo crea profondità: luce "cielo" dall'alto e luce "terra" dal basso
-            const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.9);
+            const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.7);
             this.scene.add(hemiLight);
             
             // Directional light: manteniamola per creare ombre marcate
-            const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+            const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
             dirLight.position.set(100, 100, 100);
             this.scene.add(dirLight);
 
@@ -55,7 +55,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
                         node.material = new THREE.MeshStandardMaterial({
                             color: 0xD2B48C,  // COLORE: Beige Sabbia/Pietra (si intona alla mappa)
                             metalness: 0.0,   
-                            roughness: 1.0,   
+                            roughness: 1.2,   
                             side: THREE.DoubleSide
                         });
                         
