@@ -29,59 +29,53 @@ map.addControl(new mapboxgl.GeolocateControl({
     showUserHeading: true
 }));
 
-// Funzione Motore per i Modelli 3D (CORRETTA)
+// Funzione Motore per i Modelli 3D
 function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     return {
         id: id,
         type: 'custom',
         renderingMode: '3d',
         onAdd: function (map, gl) {
-    this.camera = new THREE.Camera();
-    this.scene = new THREE.Scene();
-    
-    // 1. AMBIENTALE (Golden Hour): Luce calda diffusa
-    const ambientLight = new THREE.AmbientLight(0xFFD700, 0.5); 
-    this.scene.add(ambientLight);
-    
-    // 2. HEMISPHERE (Il segreto dell'omogeneità): 
-    // Colore cielo (bianco caldo) e colore terra (oro scuro)
-    const hemiLight = new THREE.HemisphereLight(0xFFFFFF, 0x664400, 1.8);
-    this.scene.add(hemiLight);
-    
-    // 3. DIREZIONALE (Più debole per evitare macchie): 
-    // Serve solo per dare un po' di forma, non per illuminare tutto
-    const dirLight = new THREE.DirectionalLight(0xFFFFFF, 0.5);
-    dirLight.position.set(100, 200, 100);
-    this.scene.add(dirLight);
+            this.camera = new THREE.Camera();
+            this.scene = new THREE.Scene();
+            
+            // 1. LUCI: Configurazione Golden Hour
+            const ambientLight = new THREE.AmbientLight(0xFFD700, 0.5); 
+            this.scene.add(ambientLight);
+            
+            const hemiLight = new THREE.HemisphereLight(0xFFFFFF, 0x664400, 1.8);
+            this.scene.add(hemiLight);
+            
+            const dirLight = new THREE.DirectionalLight(0xFFFFFF, 0.5);
+            dirLight.position.set(100, 200, 100);
+            this.scene.add(dirLight);
 
-    new THREE.GLTFLoader().load(modelUrl, (gltf) => {
-        const model = gltf.scene;
-        model.traverse((node) => {
-            if (node.isMesh) {
-                node.material = new THREE.MeshStandardMaterial({
-                    color: 0xFFD700,
-                    metalness: 0.7,
-                    roughness: 0.4, // Leggermente più opaco aiuta a nascondere le "chiazze"
-                    emissive: 0x221100, // Bagliore oro per uniformare le zone d'ombra
-                    side: THREE.DoubleSide
+            new THREE.GLTFLoader().load(modelUrl, (gltf) => {
+                const model = gltf.scene;
+                model.traverse((node) => {
+                    if (node.isMesh) {
+                        node.material = new THREE.MeshStandardMaterial({
+                            color: 0xFFD700,
+                            metalness: 0.7,
+                            roughness: 0.4, 
+                            emissive: 0x221100, 
+                            side: THREE.DoubleSide
+                        });
+                    }
                 });
-            }
-        });
-        this.scene.add(model);
-    });
+                this.scene.add(model);
+            });
 
-    this.map = map;
-    this.renderer = new THREE.WebGLRenderer({
-        canvas: map.getCanvas(), context: gl, antialias: true
-    });
-    this.renderer.autoClear = false;
-},
-
+            this.map = map;
+            this.renderer = new THREE.WebGLRenderer({
+                canvas: map.getCanvas(), context: gl, antialias: true
+            });
+            this.renderer.autoClear = false;
+        },
         render: function (gl, matrix) {
             const scaleFactor = 50; 
             const m = new THREE.Matrix4().fromArray(matrix);
             
-            // Calcoliamo le coordinate con l'offset
             const merc = mapboxgl.MercatorCoordinate.fromLngLat(coords, 0);
             
             const l = new THREE.Matrix4()
@@ -101,12 +95,11 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     };
 }
 
-
-// UNICO BLOCCO DI CARICAMENTO (VERSIONE DEFINITIVA)
+// UNICO BLOCCO DI CARICAMENTO
 map.on('load', () => {
     try { map.setLayoutProperty('poi', 'visibility', 'none'); } catch (e) {}
 
-    // 1. INIZIALIZZAZIONE LINEA PERCORSO (Il "binario" invisibile)
+    // Inizializzazione Linea
     map.addSource('route', {
         type: 'geojson',
         data: { type: 'FeatureCollection', features: [] }
@@ -118,7 +111,7 @@ map.on('load', () => {
         source: 'route',
         layout: { 'line-join': 'round', 'line-cap': 'round' },
         paint: {
-            'line-color': '#CDA843', // Oro coerente col tema
+            'line-color': '#CDA843',
             'line-width': 6,
             'line-opacity': 0.8
         }
@@ -129,7 +122,6 @@ map.on('load', () => {
         .then(data => {
             debug("✅ GeoJSON caricato.");
             
-            // Carica Modelli 3D
             data.features.forEach((feature, index) => {
                 if (feature.properties.model) {
                     const offset = feature.properties.offset || {x: 0, y: 0};
@@ -143,7 +135,6 @@ map.on('load', () => {
                 }
             });
 
-            // Carica Icone
             const icone = ['castello_icona', 'duomo_icona', 'annunziata', 'badia_icona', 'cappuccini', 'san_domenico', 'chiesa', 'bar', 'ristorante_icona', 'leone_pub_icona', 'ludoteca'];
             const promises = icone.map(nome => new Promise(resolve => {
                 map.loadImage(`img/${nome}.png`, (err, img) => {
@@ -166,28 +157,22 @@ map.on('load', () => {
         })
         .catch(err => debug(`❌ Errore: ${err.message}`));
 
-                // Popup interattivi con aggiornamento linea percorso
+    // Popup interattivi
     map.on('click', 'poi-github', (e) => {
         const p = e.features[0].properties;
         const coords = e.features[0].geometry.coordinates; // [lng, lat]
-        
-        // Per ora usiamo il centro mappa come punto di partenza
         const userCoords = map.getCenter(); 
 
-        // Aggiorna la linea sulla mappa
         map.getSource('route').setData({
             type: 'Feature',
             geometry: {
                 type: 'LineString',
-                coordinates: [
-                    [userCoords.lng, userCoords.lat], 
-                    coords                            
-                ]
+                coordinates: [[userCoords.lng, userCoords.lat], coords]
             }
         });
 
-        // URL CORRETTO: Destinazione = [lat, lng]
-        // Utilizziamo l'URL ufficiale di Google Maps per il navigatore
+        // URL CORRETTO: API Ufficiale Google Maps
+        // coords[1] = latitudine, coords[0] = longitudine
         const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
 
         new mapboxgl.Popup().setLngLat(coords).setHTML(`
@@ -198,3 +183,4 @@ map.on('load', () => {
             </div>
         `).addTo(map);
     });
+});
