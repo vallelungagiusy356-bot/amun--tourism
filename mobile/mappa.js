@@ -39,31 +39,30 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     this.camera = new THREE.Camera();
     this.scene = new THREE.Scene();
     
-    // 1. LUCI: Intensità medie per evitare sia il buio che la sovraesposizione
-    // HemisphereLight: Luce ambientale per illuminare le ombre
-    const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 2.0); 
+    // 1. AMBIENTALE (Golden Hour): Luce calda diffusa
+    const ambientLight = new THREE.AmbientLight(0xFFD700, 0.5); 
     this.scene.add(ambientLight);
     
-    // DirectionalLight: La luce principale (sole)
-    const dirLight = new THREE.DirectionalLight(0xffffff, 1.0); 
-    dirLight.position.set(100, 100, 100);
+    // 2. HEMISPHERE (Il segreto dell'omogeneità): 
+    // Colore cielo (bianco caldo) e colore terra (oro scuro)
+    const hemiLight = new THREE.HemisphereLight(0xFFFFFF, 0x664400, 1.8);
+    this.scene.add(hemiLight);
+    
+    // 3. DIREZIONALE (Più debole per evitare macchie): 
+    // Serve solo per dare un po' di forma, non per illuminare tutto
+    const dirLight = new THREE.DirectionalLight(0xFFFFFF, 0.5);
+    dirLight.position.set(100, 200, 100);
     this.scene.add(dirLight);
-
-    // BackLight: Luce di riempimento per le zone d'ombra
-    const backLight = new THREE.DirectionalLight(0xffffff, 0.5); 
-    backLight.position.set(-100, 50, -100);
-    this.scene.add(backLight);
 
     new THREE.GLTFLoader().load(modelUrl, (gltf) => {
         const model = gltf.scene;
         model.traverse((node) => {
             if (node.isMesh) {
-                // MATERIALE ORO OMOGENEO
                 node.material = new THREE.MeshStandardMaterial({
-                    color: 0xFFD700,    // Oro
-                    metalness: 0.8,     // Manteniamo la lucentezza metallica
-                    roughness: 0.35,    // <--- AUMENTATO: Questo è il segreto per l'omogeneità
-                    emissive: 0x110800, // Bagliore molto tenue, quasi impercettibile
+                    color: 0xFFD700,
+                    metalness: 0.7,
+                    roughness: 0.4, // Leggermente più opaco aiuta a nascondere le "chiazze"
+                    emissive: 0x221100, // Bagliore oro per uniformare le zone d'ombra
                     side: THREE.DoubleSide
                 });
             }
