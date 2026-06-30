@@ -107,11 +107,11 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
 }
 
 
-
-// UNICO BLOCCO DI CARICAMENTO
+// UNICO BLOCCO DI CARICAMENTO (VERSIONE DEFINITIVA)
 map.on('load', () => {
     try { map.setLayoutProperty('poi', 'visibility', 'none'); } catch (e) {}
-    // Aggiungi la sorgente e il layer per la linea del percorso
+
+    // 1. INIZIALIZZAZIONE LINEA PERCORSO (Il "binario" invisibile)
     map.addSource('route', {
         type: 'geojson',
         data: { type: 'FeatureCollection', features: [] }
@@ -134,12 +134,10 @@ map.on('load', () => {
         .then(data => {
             debug("✅ GeoJSON caricato.");
             
-            // 1. Carica Modelli 3D
+            // Carica Modelli 3D
             data.features.forEach((feature, index) => {
                 if (feature.properties.model) {
-                    // Se nel GeoJSON esiste un offset, usalo, altrimenti usa {x:0, y:0}
                     const offset = feature.properties.offset || {x: 0, y: 0};
-                    
                     map.addLayer(create3DLayer(
                         '3d-model-' + index, 
                         feature.properties.model, 
@@ -150,7 +148,7 @@ map.on('load', () => {
                 }
             });
 
-            // 2. Carica Icone
+            // Carica Icone
             const icone = ['castello_icona', 'duomo_icona', 'annunziata', 'badia_icona', 'cappuccini', 'san_domenico', 'chiesa', 'bar', 'ristorante_icona', 'leone_pub_icona', 'ludoteca'];
             const promises = icone.map(nome => new Promise(resolve => {
                 map.loadImage(`img/${nome}.png`, (err, img) => {
@@ -173,10 +171,26 @@ map.on('load', () => {
         })
         .catch(err => debug(`❌ Errore: ${err.message}`));
 
-    // Popup interattivi
+    // Popup interattivi con aggiornamento linea percorso
     map.on('click', 'poi-github', (e) => {
         const p = e.features[0].properties;
         const coords = e.features[0].geometry.coordinates;
+        
+        // Per ora usiamo il centro mappa come punto di partenza
+        const userCoords = map.getCenter(); 
+
+        // Aggiorna la linea sulla mappa
+        map.getSource('route').setData({
+            type: 'Feature',
+            geometry: {
+                type: 'LineString',
+                coordinates: [
+                    [userCoords.lng, userCoords.lat], 
+                    coords                            
+                ]
+            }
+        });
+
         new mapboxgl.Popup().setLngLat(coords).setHTML(`
             <div style="padding:5px;">
                 <h3 style="font-family:'Cinzel';">${p.name}</h3>
