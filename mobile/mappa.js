@@ -111,6 +111,23 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
 // UNICO BLOCCO DI CARICAMENTO
 map.on('load', () => {
     try { map.setLayoutProperty('poi', 'visibility', 'none'); } catch (e) {}
+    // Aggiungi la sorgente e il layer per la linea del percorso
+    map.addSource('route', {
+        type: 'geojson',
+        data: { type: 'FeatureCollection', features: [] }
+    });
+
+    map.addLayer({
+        id: 'route-line',
+        type: 'line',
+        source: 'route',
+        layout: { 'line-join': 'round', 'line-cap': 'round' },
+        paint: {
+            'line-color': '#CDA843', // Oro coerente col tema
+            'line-width': 6,
+            'line-opacity': 0.8
+        }
+    });
 
     fetch('data.geojson')
         .then(res => res.json())
