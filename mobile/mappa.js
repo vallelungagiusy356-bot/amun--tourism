@@ -47,20 +47,23 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             dirLight.position.set(100, 100, 100);
             this.scene.add(dirLight);
 
-            new THREE.GLTFLoader().load(modelUrl, (gltf) => {
+                        new THREE.GLTFLoader().load(modelUrl, (gltf) => {
                 const model = gltf.scene;
                 // Materiale che riflette meglio la luce
                 model.traverse((node) => {
                     if (node.isMesh) {
+                        // MODIFICA SOLO QUI DENTRO:
                         node.material = new THREE.MeshStandardMaterial({
-                            color: 0xD4AF37, 
-                            metalness: 0.3, 
-                            roughness: 0.7
+                            color: 0xFFD700,    // <-- Cambiato in colore Oro
+                            metalness: 0.9,     // <-- Aumentato per l'effetto metallo
+                            roughness: 0.1,     // <-- Abbassato per la brillantezza
+                            side: THREE.DoubleSide
                         });
                     }
                 });
                 this.scene.add(model);
             });
+
 
             this.map = map;
             this.renderer = new THREE.WebGLRenderer({
