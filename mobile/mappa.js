@@ -39,26 +39,32 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     this.camera = new THREE.Camera();
     this.scene = new THREE.Scene();
     
-    // SETUP LUCI CORRETTO: Molto più tenue
-    // Ambient light bassa (0.3) per non "lavare" il colore
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+    // 1. LUCI: Intensità medie per evitare sia il buio che la sovraesposizione
+    // HemisphereLight: Luce ambientale per illuminare le ombre
+    const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 2.0); 
     this.scene.add(ambientLight);
     
-    // Unica Direzionale per dare profondità e ombre
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    dirLight.position.set(5, 10, 5); // Luce angolata, non frontale
+    // DirectionalLight: La luce principale (sole)
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.0); 
+    dirLight.position.set(100, 100, 100);
     this.scene.add(dirLight);
+
+    // BackLight: Luce di riempimento per le zone d'ombra
+    const backLight = new THREE.DirectionalLight(0xffffff, 0.5); 
+    backLight.position.set(-100, 50, -100);
+    this.scene.add(backLight);
 
     new THREE.GLTFLoader().load(modelUrl, (gltf) => {
         const model = gltf.scene;
         model.traverse((node) => {
             if (node.isMesh) {
-                // MATERIALE ORO ELEGANTE
+                // MATERIALE ORO OMOGENEO
                 node.material = new THREE.MeshStandardMaterial({
-                    color: 0xD4AF37,   // Un oro più "reale", meno neon
-                    metalness: 0.7,    
-                    roughness: 0.3,    // Opacità satinata
-                    emissive: 0x000000 // RIMOSSO l'emissive (è quello che creava il bagliore)
+                    color: 0xFFD700,    // Oro
+                    metalness: 0.8,     // Manteniamo la lucentezza metallica
+                    roughness: 0.35,    // <--- AUMENTATO: Questo è il segreto per l'omogeneità
+                    emissive: 0x110800, // Bagliore molto tenue, quasi impercettibile
+                    side: THREE.DoubleSide
                 });
             }
         });
@@ -71,7 +77,6 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     });
     this.renderer.autoClear = false;
 },
-
 
         render: function (gl, matrix) {
             const scaleFactor = 50; 
