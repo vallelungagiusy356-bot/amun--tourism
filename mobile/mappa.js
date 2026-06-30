@@ -52,10 +52,11 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
                     if (node.isMesh) {
                         // CONFIGURAZIONE PIETRA GRIGIA (Contrasto elevato)
                         node.material = new THREE.MeshStandardMaterial({
-                            color: 0x808080, // GRIGIO PIETRA (stacca dal beige della mappa)
-                            metalness: 0.0,
-                            roughness: 0.9,
-                            side: THREE.DoubleSide
+                        color: 0xDED0B6, 
+                        metalness: 0.0,
+                        roughness: 0.9,
+                        side: THREE.DoubleSide,
+                        emissive: 0x222222 
                         });
                         if (node.geometry) {
                             node.geometry.computeVertexNormals();
