@@ -29,7 +29,7 @@ map.addControl(new mapboxgl.GeolocateControl({
     showUserHeading: true
 }));
 
-// Funzione Motore per i Modelli 3D
+// Funzione Motore per i Modelli 3D (OTTIMIZZATA)
 function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     return {
         id: id,
@@ -39,7 +39,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             this.camera = new THREE.Camera();
             this.scene = new THREE.Scene();
             
-            // 1. LUCI: Configurazione Golden Hour
+            // Luci per Golden Hour
             const ambientLight = new THREE.AmbientLight(0xFFD700, 0.5); 
             this.scene.add(ambientLight);
             
@@ -50,17 +50,22 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             dirLight.position.set(100, 200, 100);
             this.scene.add(dirLight);
 
+            // Caricamento e ottimizzazione materiale
             new THREE.GLTFLoader().load(modelUrl, (gltf) => {
                 const model = gltf.scene;
                 model.traverse((node) => {
                     if (node.isMesh) {
+                        // Materiale satinato (meno riflettente, più uniforme)
                         node.material = new THREE.MeshStandardMaterial({
                             color: 0xFFD700,
-                            metalness: 0.7,
-                            roughness: 0.4, 
-                            emissive: 0x221100, 
+                            metalness: 0.2, 
+                            roughness: 0.8, 
                             side: THREE.DoubleSide
                         });
+                        // Calcola le normali per nascondere la spigolosità dei triangoli
+                        if (node.geometry) {
+                            node.geometry.computeVertexNormals();
+                        }
                     }
                 });
                 this.scene.add(model);
@@ -72,6 +77,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             });
             this.renderer.autoClear = false;
         },
+
         render: function (gl, matrix) {
             const scaleFactor = 50; 
             const m = new THREE.Matrix4().fromArray(matrix);
@@ -95,11 +101,10 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     };
 }
 
-// UNICO BLOCCO DI CARICAMENTO
+// BLOCCO CARICAMENTO
 map.on('load', () => {
     try { map.setLayoutProperty('poi', 'visibility', 'none'); } catch (e) {}
 
-    // Inizializzazione Linea
     map.addSource('route', {
         type: 'geojson',
         data: { type: 'FeatureCollection', features: [] }
@@ -157,7 +162,7 @@ map.on('load', () => {
         })
         .catch(err => debug(`❌ Errore: ${err.message}`));
 
-    // Popup interattivi
+    // Popup e navigazione
     map.on('click', 'poi-github', (e) => {
         const p = e.features[0].properties;
         const coords = e.features[0].geometry.coordinates; // [lng, lat]
@@ -171,8 +176,7 @@ map.on('load', () => {
             }
         });
 
-        // URL CORRETTO: API Ufficiale Google Maps
-        // coords[1] = latitudine, coords[0] = longitudine
+        // URL Standard Google Maps API (Latitudine, Longitudine)
         const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
 
         new mapboxgl.Popup().setLngLat(coords).setHTML(`
