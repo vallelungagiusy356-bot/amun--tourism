@@ -1,3 +1,4 @@
+
 // TOKEN Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l1c2lmaTg5IiwiYSI6ImNtcGNvYXpqYTAwZ3kzNHM5amI4emxxOTAifQ.iNuDFyanN-ZEyl8-zRevGw';
 
@@ -27,7 +28,7 @@ map.addControl(new mapboxgl.GeolocateControl({
     showUserHeading: true
 }));
 
-// Funzione Motore 3D - Setup "Effetto Pietra"
+// Funzione Motore 3D - Setup "Effetto Pietra Grigia"
 function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     return {
         id: id,
@@ -37,11 +38,11 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             this.camera = new THREE.Camera();
             this.scene = new THREE.Scene();
             
-            // Luci più neutre per la pietra
-            const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.6); 
+            // Luci più forti per contrasto
+            const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.8); 
             this.scene.add(ambientLight);
             
-            const dirLight = new THREE.DirectionalLight(0xFFFFFF, 0.8);
+            const dirLight = new THREE.DirectionalLight(0xFFFFFF, 1.2);
             dirLight.position.set(100, 200, 100);
             this.scene.add(dirLight);
 
@@ -49,11 +50,11 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
                 const model = gltf.scene;
                 model.traverse((node) => {
                     if (node.isMesh) {
-                        // CONFIGURAZIONE PIETRA
+                        // CONFIGURAZIONE PIETRA GRIGIA (Contrasto elevato)
                         node.material = new THREE.MeshStandardMaterial({
-                            color: 0xD2B48C, // Colore tipo pietra/arenaria
-                            metalness: 0.0,  // 0 = non metallico
-                            roughness: 1.0,  // 1 = totalmente opaco
+                            color: 0x808080, // GRIGIO PIETRA (stacca dal beige della mappa)
+                            metalness: 0.0,
+                            roughness: 0.9,
                             side: THREE.DoubleSide
                         });
                         if (node.geometry) {
