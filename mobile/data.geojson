@@ -8,7 +8,8 @@
         "type": "castello",
         "address": "Piazza Castello",
         "icona": "castello_icona",
-         "model":"assets/castellocacc.glb"
+         "model":"assets/castellocacc.glb",
+         "offset": { "x": 0, "y": 0 }
       },
       "geometry": {
         "type": "Point",
@@ -22,7 +23,8 @@
         "type": "chiesa",
         "address": "Piazza Vittorio Emanuele, 4",
         "icona": "badia_icona",
-        "model":"assets/sanbenedetto1.glb"
+        "model":"assets/sanbenedetto1.glb",
+        "offset": { "x": 0, "y": 0 }
       },
       "geometry": {
         "type": "Point",
@@ -49,7 +51,8 @@
         "type": "convento",
         "address": "Piazza Cappuccini, 4",
         "icona": "cappuccini",
-        "model":"assets/cappuccini1.glb"
+        "model":"assets/cappuccini1.glb",
+        "offset": { "x": 0, "y": 0 }
       },
       "geometry": {
         "type": "Point",
@@ -76,7 +79,8 @@
         "type": "chiesa",
         "address": "Piazza SS. Annunziata",
         "icona": "annunziata",
-        "model":"assets/annunziata1.glb"
+        "model":"assets/annunziata1.glb",
+        "offset": { "x": 0, "y": 0 }
       },
       "geometry": {
         "type": "Point",
@@ -90,7 +94,8 @@
         "type": "chiesa",
         "address": "Piazza San Domenico, 1",
         "icona": "san_domenico",
-        "model":"assets/sandomenico1.glb"
+        "model":"assets/sandomenico1.glb",
+        "offset": { "x": 0, "y": 0 }
       },
       "geometry": {
         "type": "Point",
@@ -142,8 +147,7 @@
         "name": "Chiesa di San Giacomo Maggiore",
         "type": "chiesa",
         "address": "Corso Umberto, 23",
-        "icona": "chiesa",
-        "model":"assets/duomosangiorgio1.glb"
+        "icona": "chiesa"  
       },
       "geometry": {
         "type": "Point",
@@ -195,7 +199,9 @@
         "name": "Duomo di San Giorgio Martire",
         "type": "chiesa",
         "address": "Piazza Duomo, 2",
-        "icona": "duomo_icona"
+        "icona": "duomo_icona",
+        "model":"assets/duomosangiorgio1.glb",
+        "offset": { "x": 0, "y": 0 }
       },
       "geometry": {
         "type": "Point",
