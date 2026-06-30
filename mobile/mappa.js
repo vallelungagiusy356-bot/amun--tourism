@@ -29,7 +29,7 @@ map.addControl(new mapboxgl.GeolocateControl({
     showUserHeading: true
 }));
 
-// Funzione Motore per i Modelli 3D (AGGIRONATA)
+// Funzione Motore per i Modelli 3D (CORRETTA)
 function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     return {
         id: id,
@@ -39,7 +39,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             this.camera = new THREE.Camera();
             this.scene = new THREE.Scene();
             
-            // LUCI POTENZIATE
+            // 1. LUCI (più intense)
             const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 4);
             this.scene.add(ambientLight);
             
@@ -47,20 +47,21 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             dirLight.position.set(100, 100, 100);
             this.scene.add(dirLight);
 
+            // 2. SECONDA LUCE (per eliminare zone nere)
             const backLight = new THREE.DirectionalLight(0xffffff, 0.8);
             backLight.position.set(-100, 50, -100);
             this.scene.add(backLight);
 
             new THREE.GLTFLoader().load(modelUrl, (gltf) => {
                 const model = gltf.scene;
-                // Materiale ORO brillante
+                // Materiale che riflette meglio la luce
                 model.traverse((node) => {
                     if (node.isMesh) {
                         node.material = new THREE.MeshStandardMaterial({
-                            color: 0xFFD700, 
-                            metalness: 0.9, 
+                            color: 0xFFD700,
+                            metalness: 0.9,
                             roughness: 0.1,
-                            emissive: 0x332200, 
+                            emissive: 0x332200, // Bagliore oro
                             side: THREE.DoubleSide
                         });
                     }
@@ -97,6 +98,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
         }
     };
 }
+
 
 
 // UNICO BLOCCO DI CARICAMENTO
