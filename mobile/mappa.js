@@ -1,12 +1,6 @@
 // TOKEN Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l1c2lmaTg5IiwiYSI6ImNtcGNvYXpqYTAwZ3kzNHM5amI4emxxOTAifQ.iNuDFyanN-ZEyl8-zRevGw';
 
-// --- DEBUG GLOBALE ---
-const debugPanel = document.createElement('div');
-debugPanel.style.cssText = 'position:absolute; top:10px; left:10px; background:rgba(26,21,16,0.9); color:#CDA843; padding:10px; font-family:monospace; z-index:9999; border-radius:8px; border:1px solid #B48A1D; max-height: 80vh; overflow-y: auto; pointer-events: none;';
-debugPanel.innerHTML = 'AMUNÌ TOURISM: System Ready';
-document.body.appendChild(debugPanel);
-
 const map = new mapboxgl.Map({
     container: 'mappa',
     style: 'mapbox://styles/giusifi89/cmpl4lr6n003401r63fof43dl',
@@ -15,12 +9,6 @@ const map = new mapboxgl.Map({
     pitch: 45,
     bearing: 0
 });
-
-map.addControl(new mapboxgl.GeolocateControl({
-    positionOptions: { enableHighAccuracy: true },
-    trackUserLocation: true,
-    showUserHeading: true
-}));
 
 // Funzione Motore 3D
 function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
@@ -32,12 +20,12 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             this.camera = new THREE.Camera();
             this.scene = new THREE.Scene();
             
-            // Illuminazione "Pietra Calda"
-            const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.7);
+            // Illuminazione ottimizzata per pietra/architettura
+            const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.9);
             this.scene.add(hemiLight);
             
-            const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
-            dirLight.position.set(100, 100, 100);
+            const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+            dirLight.position.set(50, 100, 50);
             this.scene.add(dirLight);
 
             new THREE.GLTFLoader().load(modelUrl, (gltf) => {
@@ -47,7 +35,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
                         node.material = new THREE.MeshStandardMaterial({
                             color: 0xD2B48C,
                             metalness: 0.0,   
-                            roughness: 1.2,   
+                            roughness: 0.9,   
                             side: THREE.DoubleSide
                         });
                         if (node.geometry) node.geometry.computeVertexNormals();
@@ -64,6 +52,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             const scaleFactor = 50; 
             const m = new THREE.Matrix4().fromArray(matrix);
             const merc = mapboxgl.MercatorCoordinate.fromLngLat(coords, 0);
+            
             const l = new THREE.Matrix4()
                 .makeTranslation(merc.x + offset.x, merc.y + offset.y, 0)
                 .scale(new THREE.Vector3(
@@ -82,9 +71,10 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
 }
 
 map.on('load', () => {
+    // Nascondi etichette di sistema per pulizia visiva
     try { map.setLayoutProperty('poi', 'visibility', 'none'); } catch (e) {}
 
-    // Sorgente Percorso
+    // Sorgente Linea Percorso
     map.addSource('route', { type: 'geojson', data: { type: 'FeatureCollection', features: [] }});
     map.addLayer({
         id: 'route-line',
@@ -97,7 +87,7 @@ map.on('load', () => {
     fetch('data.geojson')
         .then(res => res.json())
         .then(data => {
-            // Aggiunta Modelli 3D
+            // Caricamento Modelli 3D
             data.features.forEach((feature, index) => {
                 if (feature.properties.model) {
                     const offset = feature.properties.offset || {x: 0, y: 0};
@@ -105,15 +95,7 @@ map.on('load', () => {
                 }
             });
 
-            // Layer Debug: Disegna i puntini rossi per allineare i modelli
-            map.addLayer({
-                id: 'debug-points',
-                type: 'circle',
-                source: { type: 'geojson', data: data },
-                paint: { 'circle-radius': 6, 'circle-color': '#FF0000', 'circle-opacity': 0.8 }
-            });
-
-            // Caricamento Icone
+            // Caricamento Icone POI
             const icone = ['castello_icona', 'duomo_icona', 'annunziata', 'badia_icona', 'cappuccini', 'san_domenico', 'chiesa', 'bar', 'ristorante_icona', 'leone_pub_icona', 'ludoteca'];
             const promises = icone.map(nome => new Promise(resolve => {
                 map.loadImage(`img/${nome}.png`, (err, img) => {
@@ -130,7 +112,7 @@ map.on('load', () => {
             });
         });
 
-    // Gestione Click
+    // Interazione Click
     map.on('click', 'poi-github', (e) => {
         const p = e.features[0].properties;
         const coords = e.features[0].geometry.coordinates;
@@ -143,12 +125,10 @@ map.on('load', () => {
 
         map.flyTo({ center: coords, zoom: 16, pitch: 45 });
 
-        const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
         new mapboxgl.Popup().setLngLat(coords).setHTML(`
-            <div style="padding:5px;">
-                <h3 style="font-family:'Cinzel';">${p.name}</h3>
-                <p>${p.address || ''}</p>
-                <a href="${mapsUrl}" target="_blank" style="text-decoration:none; color:#CDA843; font-weight:bold;">🚶 PORTAMI QUI</a>
+            <div style="padding:5px; text-align:center;">
+                <h3 style="font-family:'Cinzel', serif; color:#CDA843;">${p.name}</h3>
+                <p style="font-size:12px;">${p.address || ''}</p>
             </div>
         `).addTo(map);
     });
