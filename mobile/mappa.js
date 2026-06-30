@@ -39,36 +39,26 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     this.camera = new THREE.Camera();
     this.scene = new THREE.Scene();
     
-    // 1. AMBIENTALE FORTE: Schiarisce tutto uniformemente
-    const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 5);
+    // SETUP LUCI CORRETTO: Molto più tenue
+    // Ambient light bassa (0.3) per non "lavare" il colore
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
     this.scene.add(ambientLight);
     
-    // 2. LUCE PRINCIPALE (più morbida)
-    const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
-    dirLight.position.set(100, 100, 100);
+    // Unica Direzionale per dare profondità e ombre
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(5, 10, 5); // Luce angolata, non frontale
     this.scene.add(dirLight);
-
-    // 3. FILL LIGHT (Illumina il lato buio con più forza)
-    const fillLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    fillLight.position.set(-100, 50, -100);
-    this.scene.add(fillLight);
-
-    // 4. TOP LIGHT (Nuova! Colpisce i tetti dall'alto per evitare zone nere)
-    const topLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    topLight.position.set(0, 100, 0);
-    this.scene.add(topLight);
 
     new THREE.GLTFLoader().load(modelUrl, (gltf) => {
         const model = gltf.scene;
         model.traverse((node) => {
             if (node.isMesh) {
-                // MATERIALE SATINATO (meno specchio, più oro)
+                // MATERIALE ORO ELEGANTE
                 node.material = new THREE.MeshStandardMaterial({
-                    color: 0xFFD700,
-                    metalness: 0.8,    // Leggermente ridotto per uniformare
-                    roughness: 0.25,   // Aumentato per diffondere meglio la luce
-                    emissive: 0x443300,// Bagliore più tenue
-                    side: THREE.DoubleSide
+                    color: 0xD4AF37,   // Un oro più "reale", meno neon
+                    metalness: 0.7,    
+                    roughness: 0.3,    // Opacità satinata
+                    emissive: 0x000000 // RIMOSSO l'emissive (è quello che creava il bagliore)
                 });
             }
         });
@@ -81,6 +71,7 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     });
     this.renderer.autoClear = false;
 },
+
 
         render: function (gl, matrix) {
             const scaleFactor = 50; 
