@@ -36,45 +36,52 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
         type: 'custom',
         renderingMode: '3d',
         onAdd: function (map, gl) {
-            this.camera = new THREE.Camera();
-            this.scene = new THREE.Scene();
-            
-            // 1. LUCI (più intense)
-            const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 4);
-            this.scene.add(ambientLight);
-            
-            const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
-            dirLight.position.set(100, 100, 100);
-            this.scene.add(dirLight);
+    this.camera = new THREE.Camera();
+    this.scene = new THREE.Scene();
+    
+    // 1. AMBIENTALE FORTE: Schiarisce tutto uniformemente
+    const ambientLight = new THREE.HemisphereLight(0xffffff, 0x444444, 5);
+    this.scene.add(ambientLight);
+    
+    // 2. LUCE PRINCIPALE (più morbida)
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    dirLight.position.set(100, 100, 100);
+    this.scene.add(dirLight);
 
-            // 2. SECONDA LUCE (per eliminare zone nere)
-            const backLight = new THREE.DirectionalLight(0xffffff, 0.8);
-            backLight.position.set(-100, 50, -100);
-            this.scene.add(backLight);
+    // 3. FILL LIGHT (Illumina il lato buio con più forza)
+    const fillLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    fillLight.position.set(-100, 50, -100);
+    this.scene.add(fillLight);
 
-            new THREE.GLTFLoader().load(modelUrl, (gltf) => {
-                const model = gltf.scene;
-                // Materiale che riflette meglio la luce
-                model.traverse((node) => {
-                    if (node.isMesh) {
-                        node.material = new THREE.MeshStandardMaterial({
-                            color: 0xFFD700,
-                            metalness: 0.9,
-                            roughness: 0.1,
-                            emissive: 0x332200, // Bagliore oro
-                            side: THREE.DoubleSide
-                        });
-                    }
+    // 4. TOP LIGHT (Nuova! Colpisce i tetti dall'alto per evitare zone nere)
+    const topLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    topLight.position.set(0, 100, 0);
+    this.scene.add(topLight);
+
+    new THREE.GLTFLoader().load(modelUrl, (gltf) => {
+        const model = gltf.scene;
+        model.traverse((node) => {
+            if (node.isMesh) {
+                // MATERIALE SATINATO (meno specchio, più oro)
+                node.material = new THREE.MeshStandardMaterial({
+                    color: 0xFFD700,
+                    metalness: 0.8,    // Leggermente ridotto per uniformare
+                    roughness: 0.25,   // Aumentato per diffondere meglio la luce
+                    emissive: 0x443300,// Bagliore più tenue
+                    side: THREE.DoubleSide
                 });
-                this.scene.add(model);
-            });
+            }
+        });
+        this.scene.add(model);
+    });
 
-            this.map = map;
-            this.renderer = new THREE.WebGLRenderer({
-                canvas: map.getCanvas(), context: gl, antialias: true
-            });
-            this.renderer.autoClear = false;
-        },
+    this.map = map;
+    this.renderer = new THREE.WebGLRenderer({
+        canvas: map.getCanvas(), context: gl, antialias: true
+    });
+    this.renderer.autoClear = false;
+},
+
         render: function (gl, matrix) {
             const scaleFactor = 50; 
             const m = new THREE.Matrix4().fromArray(matrix);
