@@ -12,7 +12,6 @@ function debug(msg) {
     debugPanel.innerHTML += `<br>${msg}`; 
 }
 
-// Inizializzazione mappa
 const map = new mapboxgl.Map({
     container: 'mappa',
     style: 'mapbox://styles/giusifi89/cmpl4lr6n003401r63fof43dl',
@@ -22,14 +21,13 @@ const map = new mapboxgl.Map({
     bearing: 0
 });
 
-// Geolocalizzazione
 map.addControl(new mapboxgl.GeolocateControl({
     positionOptions: { enableHighAccuracy: true },
     trackUserLocation: true,
     showUserHeading: true
 }));
 
-// Funzione Motore per i Modelli 3D (OTTIMIZZATA)
+// Funzione Motore 3D - Setup "Effetto Pietra"
 function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     return {
         id: id,
@@ -39,30 +37,25 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
             this.camera = new THREE.Camera();
             this.scene = new THREE.Scene();
             
-            // Luci per Golden Hour
-            const ambientLight = new THREE.AmbientLight(0xFFD700, 0.5); 
+            // Luci più neutre per la pietra
+            const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.6); 
             this.scene.add(ambientLight);
             
-            const hemiLight = new THREE.HemisphereLight(0xFFFFFF, 0x664400, 1.8);
-            this.scene.add(hemiLight);
-            
-            const dirLight = new THREE.DirectionalLight(0xFFFFFF, 0.5);
+            const dirLight = new THREE.DirectionalLight(0xFFFFFF, 0.8);
             dirLight.position.set(100, 200, 100);
             this.scene.add(dirLight);
 
-            // Caricamento e ottimizzazione materiale
             new THREE.GLTFLoader().load(modelUrl, (gltf) => {
                 const model = gltf.scene;
                 model.traverse((node) => {
                     if (node.isMesh) {
-                        // Materiale satinato (meno riflettente, più uniforme)
+                        // CONFIGURAZIONE PIETRA
                         node.material = new THREE.MeshStandardMaterial({
-                            color: 0xFFD700,
-                            metalness: 0.2, 
-                            roughness: 0.8, 
+                            color: 0xD2B48C, // Colore tipo pietra/arenaria
+                            metalness: 0.0,  // 0 = non metallico
+                            roughness: 1.0,  // 1 = totalmente opaco
                             side: THREE.DoubleSide
                         });
-                        // Calcola le normali per nascondere la spigolosità dei triangoli
                         if (node.geometry) {
                             node.geometry.computeVertexNormals();
                         }
@@ -81,7 +74,6 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
         render: function (gl, matrix) {
             const scaleFactor = 50; 
             const m = new THREE.Matrix4().fromArray(matrix);
-            
             const merc = mapboxgl.MercatorCoordinate.fromLngLat(coords, 0);
             
             const l = new THREE.Matrix4()
@@ -101,42 +93,25 @@ function create3DLayer(id, modelUrl, coords, offset = {x: 0, y: 0}) {
     };
 }
 
-// BLOCCO CARICAMENTO
 map.on('load', () => {
     try { map.setLayoutProperty('poi', 'visibility', 'none'); } catch (e) {}
 
-    map.addSource('route', {
-        type: 'geojson',
-        data: { type: 'FeatureCollection', features: [] }
-    });
-
+    map.addSource('route', { type: 'geojson', data: { type: 'FeatureCollection', features: [] }});
     map.addLayer({
         id: 'route-line',
         type: 'line',
         source: 'route',
         layout: { 'line-join': 'round', 'line-cap': 'round' },
-        paint: {
-            'line-color': '#CDA843',
-            'line-width': 6,
-            'line-opacity': 0.8
-        }
+        paint: { 'line-color': '#CDA843', 'line-width': 6, 'line-opacity': 0.8 }
     });
 
     fetch('data.geojson')
         .then(res => res.json())
         .then(data => {
-            debug("✅ GeoJSON caricato.");
-            
             data.features.forEach((feature, index) => {
                 if (feature.properties.model) {
                     const offset = feature.properties.offset || {x: 0, y: 0};
-                    map.addLayer(create3DLayer(
-                        '3d-model-' + index, 
-                        feature.properties.model, 
-                        feature.geometry.coordinates,
-                        offset
-                    ));
-                    debug(`🏗️ Caricato 3D: ${feature.properties.name}`);
+                    map.addLayer(create3DLayer('3d-model-' + index, feature.properties.model, feature.geometry.coordinates, offset));
                 }
             });
 
@@ -151,34 +126,17 @@ map.on('load', () => {
             Promise.all(promises).then(() => {
                 map.addLayer({
                     id: 'poi-github', type: 'symbol', source: { type: 'geojson', data: data },
-                    layout: {
-                        'icon-image': ['get', 'icona'],
-                        'icon-size': 0.15,
-                        'icon-allow-overlap': true
-                    }
+                    layout: { 'icon-image': ['get', 'icona'], 'icon-size': 0.15, 'icon-allow-overlap': true }
                 });
-                debug("🎯 Layer POI attivo.");
             });
-        })
-        .catch(err => debug(`❌ Errore: ${err.message}`));
-
-    // Popup e navigazione
-    map.on('click', 'poi-github', (e) => {
-        const p = e.features[0].properties;
-        const coords = e.features[0].geometry.coordinates; // [lng, lat]
-        const userCoords = map.getCenter(); 
-
-        map.getSource('route').setData({
-            type: 'Feature',
-            geometry: {
-                type: 'LineString',
-                coordinates: [[userCoords.lng, userCoords.lat], coords]
-            }
         });
 
-        // URL Standard Google Maps API (Latitudine, Longitudine)
+    map.on('click', 'poi-github', (e) => {
+        const p = e.features[0].properties;
+        const coords = e.features[0].geometry.coordinates;
+        const userCoords = map.getCenter(); 
+        map.getSource('route').setData({ type: 'Feature', geometry: { type: 'LineString', coordinates: [[userCoords.lng, userCoords.lat], coords] } });
         const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
-
         new mapboxgl.Popup().setLngLat(coords).setHTML(`
             <div style="padding:5px;">
                 <h3 style="font-family:'Cinzel';">${p.name}</h3>
