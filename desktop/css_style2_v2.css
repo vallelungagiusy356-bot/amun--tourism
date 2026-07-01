@@ -344,8 +344,8 @@ body {
         left: 0;
         width: 100%;
         padding: 10px;
-        flex-direction: row; /* Mettiamo tutto in fila */
-        flex-wrap: wrap;     /* Se non ci sta, va a capo */
+        flex-direction: row;
+        flex-wrap: wrap;     
         gap: 8px;
         z-index: 1000;
         height: auto;
@@ -372,7 +372,7 @@ body {
     .lang-switcher { 
         gap: 4px; 
         display: flex;
-        margin-left: 18px; 
+        margin-left: 50px; 
     }
     
     .lang-switcher button { 
