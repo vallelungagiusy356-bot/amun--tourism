@@ -2,7 +2,8 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    min-height: 100vh;
+    height: 100vh; /* Forza l'altezza della pagina */
+    overflow: hidden; /* Blocca lo scroll */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #000;
 }
@@ -31,22 +32,22 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    /* Colori richiesti: Sfondo scuro semitrasparente */
     background: rgba(0, 0, 0, 0.85); 
     border-bottom: 2px solid #ffd78f;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(18px) saturate(200%);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    z-index: 999;
+    z-index: 1000;
+    box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
 }
 
 .logo-title {
     font-size: 1.4rem;
     font-weight: 700;
     color: #ffd78f;
-    text-shadow: 0 0 10px rgba(255, 215, 160, 0.8);
+    text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
 }
 
 .nav-right-group { display: flex; align-items: center; gap: 20px; }
@@ -71,21 +72,27 @@ body {
     color: #000;
 }
 
-/* --- CONTENUTO (Senza teca) --- */
+/* --- CONTENUTO (Layout a Imbuto) --- */
 .content-wrapper {
+    position: fixed;
+    top: 100px; /* Spazio per la dashboard */
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 90%;
-    max-width: 700px;
-    margin: 150px auto 50px auto;
+    max-width: 600px; /* L'imbuto: stretto e centrato */
     text-align: center;
-    /* Niente background, niente bordo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    pointer-events: auto; /* Permette interazione col testo */
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: #000;
     margin-bottom: 1.5rem;
-    /* Alone bianco per staccare il testo nero dallo sfondo */
     text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5);
 }
 
@@ -93,18 +100,17 @@ h1 {
     width: 60px;
     height: 3px;
     margin: 0 auto 30px auto;
-    background: #ffd78f;
+    background: #ffd78f; /* Oro per coerenza */
     border: none;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 p {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     line-height: 1.8;
     margin-bottom: 25px;
     color: #000;
     font-weight: 600;
-    /* Alone per leggibilità */
     text-shadow: 0 0 5px rgba(255,255,255,0.9);
 }
 
@@ -119,7 +125,10 @@ p {
         flex-direction: column; 
         gap: 10px; 
     }
-    .content-wrapper { margin-top: 200px; }
-    h1 { font-size: 2.2rem; }
+    .content-wrapper { 
+        top: 150px; /* Più spazio su mobile per la dashboard che si allarga */
+        max-width: 85%; 
+    }
+    h1 { font-size: 2rem; }
     p { font-size: 1.1rem; }
 }
