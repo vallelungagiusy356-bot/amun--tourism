@@ -9,19 +9,27 @@ body {
 }
 
 /* SFONDO CON L'IMMAGINE RICHIESTA */
+/* Sfondo Desktop (Default) */
 .page-background {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('img/sicily.jpg');
+    inset: 0;
+    background-image: url('img/sicily.jpg'); 
     background-size: cover; 
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
-    filter: brightness(0.7); /* Oscura leggermente per il testo */
+    filter: brightness(0.6);
     z-index: -1;
 }
+
+/* Correzione specifica per Mobile (come si vede in 1782897000021.jpeg) */
+@media screen and (max-width: 768px) {
+    .page-background {
+        background-size: contain; 
+        background-position: center center;
+        background-color: #0d0d0d; 
+    }
+}
+
 
 /* --- DASHBOARD PREMIUM (Identica alla Home) --- */
 .dashboard {
