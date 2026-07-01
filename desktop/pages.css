@@ -72,46 +72,45 @@ body {
     color: #000;
 }
 
-/* --- CONTENUTO (Layout a Imbuto) --- */
+/* --- CONTENUTO (Layout a Imbuto Elastico) --- */
 .content-wrapper {
     position: fixed;
-    top: 100px; /* Spazio per la dashboard */
-    bottom: 20px;
+    top: 100px;     /* Spazio per la Dashboard */
+    bottom: 20px;   /* Margine inferiore */
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    max-width: 600px; /* L'imbuto: stretto e centrato */
-    text-align: center;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centra verticalmente */
-    pointer-events: auto; /* Permette interazione col testo */
+    text-align: center;
+    overflow: hidden; /* Impedisce che il testo esca dal frame */
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
+    /* Usa clamp per adattare il titolo allo schermo */
+    font-size: clamp(1.5rem, 5vw, 3rem); 
     color: #000;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5);
-}
-
-.gold-divider {
-    width: 60px;
-    height: 3px;
-    margin: 0 auto 30px auto;
-    background: #ffd78f; /* Oro per coerenza */
-    border: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px rgba(255,255,255,0.8);
 }
 
 p {
-    font-size: 1.3rem;
-    line-height: 1.8;
-    margin-bottom: 25px;
+    /* Il testo si rimpicciolisce se lo schermo è stretto */
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+    line-height: 1.5;
+    margin-bottom: 15px;
     color: #000;
-    font-weight: 600;
+    font-weight: 500;
     text-shadow: 0 0 5px rgba(255,255,255,0.9);
+}
+
+/* Regola per evitare che il testo sia troppo lungo su schermi piccolissimi */
+@media screen and (max-height: 600px) {
+    .content-wrapper { top: 80px; }
+    p { margin-bottom: 10px; line-height: 1.3; }
 }
 
 /* --- RESPONSIVE DASHBOARD --- */
