@@ -5,8 +5,6 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    /* Fondo Mocha più profondo */
-    background: radial-gradient(circle at center, #35261a 0%, #1a130e 100%);
     font-family: 'Cormorant Garamond', serif;
     color: #e6dcc5;
     display: flex;
@@ -14,14 +12,26 @@ body {
     align-items: center;
 }
 
-/* --- DASHBOARD MASTER (Da usare su TUTTE le pagine) --- */
+/* SFONDO DINAMICO */
+.page-background {
+    position: fixed;
+    inset: 0;
+    background-image: url('img/sicily.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.4); /* Leggermente oscurato per leggibilità */
+    z-index: -1;
+}
+
+/* --- DASHBOARD MASTER --- */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.85);
-    border-bottom: 2px solid #ffd78f; /* Colore oro standard */
+    border-bottom: 2px solid #ffd78f;
     backdrop-filter: blur(18px) saturate(200%);
     display: flex;
     flex-direction: column;
@@ -31,7 +41,6 @@ body {
     gap: 12px;
     z-index: 999;
     box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
-    box-sizing: border-box;
 }
 
 /* Logo */
@@ -62,13 +71,6 @@ body {
     transition: all 0.4s ease;
 }
 
-/* Right Actions (Dove metti i bottoni specifici) */
-.header-right-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
 /* Selettore Lingue */
 .lang-switcher {
     display: flex;
@@ -88,21 +90,21 @@ body {
     cursor: pointer;
 }
 
-/* Media Query Desktop (per mantenere il layout fisso) */
+/* Media Query Desktop */
 @media screen and (min-width: 900px) {
     .dashboard {
         height: 75px;
         flex-direction: row;
         padding: 0 40px;
     }
-
-
+}
 
 /* --- CONTENUTO --- */
 .content-wrapper {
     width: 90%;
     max-width: 850px;
-    padding: 60px 20px;
+    /* Padding-top aumentato per evitare sovrapposizioni con la dashboard fissa */
+    padding: 150px 20px 50px 20px; 
     text-align: center;
 }
 
@@ -112,7 +114,6 @@ h1 {
     font-size: 4rem;
     margin-bottom: 1.5rem;
     line-height: 1.1;
-    /* Oro Realistico */
     background: linear-gradient(to bottom, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
     -webkit-background-clip: text;
     background-clip: text;
@@ -129,17 +130,22 @@ h1 {
     background: linear-gradient(to right, transparent, #d4af37, transparent);
 }
 
-/* --- TESTO (Leggibilità migliorata) --- */
+/* --- TESTO --- */
 p {
     font-size: 1.4rem;
-    line-height: 1.9; /* Maggiore interlinea per eleganza */
+    line-height: 1.9;
     margin-bottom: 25px;
     color: #dcd0b5;
     font-weight: 300;
 }
+
+/* Media Query Mobile */
 @media screen and (max-width: 600px) {
     .dashboard {
-        height: auto !important; /* Si adatta al contenuto */
-        padding: 5px !important;
+        height: auto !important; 
+        padding: 10px !important;
     }
+    h1 { font-size: 2.5rem; }
+    p { font-size: 1.1rem; }
+    .content-wrapper { padding-top: 180px; }
 }
