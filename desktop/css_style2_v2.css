@@ -131,14 +131,31 @@ body {
 
 .castellana-tooltip {
     margin-top: 10px;
-    padding: 8px 16px;
-    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.7); /* Leggermente più trasparente */
     border: 1px solid #ffd78f;
     color: #ffd78f;
-    border-radius: 10px;
+    border-radius: 12px;
     font-weight: bold;
     text-align: center;
+    cursor: pointer;              /* Fondamentale: fa apparire la manina */
+    transition: all 0.3s ease;    /* Rende il cambio colore fluido */
+    user-select: none;            /* Evita che si selezioni il testo cliccando */
 }
+
+/* Effetto dinamico al passaggio del mouse/tocco */
+.castellana-tooltip:hover {
+    background: #ffd78f;
+    color: #000;
+    transform: scale(1.05);       /* Leggero ingrandimento */
+    box-shadow: 0 0 15px rgba(255, 215, 160, 0.6);
+}
+
+/* Effetto al click (quando viene premuto) */
+.castellana-tooltip:active {
+    transform: scale(0.95);
+}
+
 
 /* Stile per il container "fluttuante" */
 .home-welcome-poetry {
