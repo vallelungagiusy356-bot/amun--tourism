@@ -1,142 +1,89 @@
-/* --- RESET E STRUTTURA --- */
-* { box-sizing: border-box; }
+/* --- RESET E BASE --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    margin: 0;
-    padding: 0;
     min-height: 100vh;
     font-family: 'Cormorant Garamond', serif;
-    color: #e6dcc5;
+    background-color: #fdfdfd; /* Sfondo chiaro */
+    color: #000000; /* Testo NERO */
     display: flex;
     flex-direction: column; 
     align-items: center;
 }
 
-/* SFONDO DINAMICO */
+/* SFONDO DINAMICO (Intero) */
 .page-background {
     position: fixed;
     inset: 0;
     background-image: url('img/sicily.jpg');
-    background-size: cover;
+    background-size: contain; /* Mostra l'immagine intera */
     background-position: center;
     background-repeat: no-repeat;
-    filter: brightness(0.4); /* Leggermente oscurato per leggibilità */
+    filter: none; 
     z-index: -1;
 }
 
-/* --- DASHBOARD MASTER --- */
+/* --- DASHBOARD (Stile chiaro) --- */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    border-bottom: 2px solid #ffd78f;
-    backdrop-filter: blur(18px) saturate(200%);
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 2px solid #000;
+    backdrop-filter: blur(18px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     padding: 15px 20px;
-    gap: 12px;
     z-index: 999;
-    box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
 }
 
-/* Logo */
-.logo-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #ffd78f;
-    text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
-}
+.logo-title { color: #000; font-weight: 700; font-size: 1.4rem; }
+.nav-desktop a { color: #000; border: 1px solid #000; padding: 6px 14px; border-radius: 12px; text-decoration: none; margin: 5px; }
+.lang-switcher button { color: #000; border: 1px solid #000; background: transparent; cursor: pointer; padding: 5px; }
 
-/* Navigazione */
-.nav-desktop {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-
-.nav-desktop a {
-    color: #ffd78f;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 6px 14px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.75);
-    transition: all 0.4s ease;
-}
-
-/* Selettore Lingue */
-.lang-switcher {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-}
-
-.lang-switcher button {
-    width: 36px;
-    height: 36px;
-    font-size: 0.95rem;
-    font-weight: bold;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.65);
-    border: 1px solid rgba(255, 215, 160, 0.85);
-    color: #ffd78f;
-    cursor: pointer;
-}
-
-/* Media Query Desktop */
+/* MEDIA QUERY PER DESKTOP (Dashboard in linea) */
 @media screen and (min-width: 900px) {
     .dashboard {
         height: 75px;
         flex-direction: row;
+        justify-content: space-between;
         padding: 0 40px;
     }
 }
 
-/* --- CONTENUTO --- */
+/* --- CONTENUTO (Testo Nero) --- */
 .content-wrapper {
     width: 90%;
     max-width: 850px;
-    /* Padding-top aumentato per evitare sovrapposizioni con la dashboard fissa */
-    padding: 150px 20px 50px 20px; 
+    padding: 180px 20px 50px 20px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    margin-top: 20px;
 }
 
-/* --- TITOLO ORO METALLICO --- */
 h1 {
     font-family: 'Playfair Display', serif;
     font-size: 4rem;
+    color: #000000;
     margin-bottom: 1.5rem;
-    line-height: 1.1;
-    background: linear-gradient(to bottom, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-/* --- LINEA ORO (DIVIDER) --- */
 .gold-divider {
+    background: #000;
     width: 50%;
-    height: 1px;
+    height: 2px;
     margin: 20px auto 40px auto;
     border: none;
-    background: linear-gradient(to right, transparent, #d4af37, transparent);
 }
 
-/* --- TESTO --- */
 p {
     font-size: 1.4rem;
     line-height: 1.9;
-    margin-bottom: 25px;
-    color: #dcd0b5;
-    font-weight: 300;
+    color: #000000;
+    font-weight: 400;
 }
 
 /* Media Query Mobile */
@@ -147,5 +94,5 @@ p {
     }
     h1 { font-size: 2.5rem; }
     p { font-size: 1.1rem; }
-    .content-wrapper { padding-top: 180px; }
+    .content-wrapper { padding-top: 150px; }
 }
