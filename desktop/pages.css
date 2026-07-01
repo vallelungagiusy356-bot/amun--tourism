@@ -4,11 +4,10 @@
 body {
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #000; /* Testo nero come richiesto */
-    background: #fff;
+    color: #000;
 }
 
-/* SFONDO DINAMICO (Desktop vs Mobile) */
+/* SFONDO (Gestione Desktop/Mobile) */
 .page-background {
     position: fixed;
     inset: 0;
@@ -19,10 +18,10 @@ body {
     z-index: -1;
 }
 
-/* Cambio immagine su Mobile */
 @media screen and (max-width: 768px) {
     .page-background {
-        background-image: url('img/sicily.png'); /* Mobile */
+        background-image: url('img/sicily.png'); /* Mobile (Verticale) */
+        background-size: cover;
     }
 }
 
@@ -32,8 +31,9 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.9); /* Sfondo chiaro per leggibilità */
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    /* Colori richiesti: Sfondo scuro semitrasparente */
+    background: rgba(0, 0, 0, 0.85); 
+    border-bottom: 2px solid #ffd78f;
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
@@ -42,54 +42,60 @@ body {
     z-index: 999;
 }
 
-.logo-title { font-size: 1.4rem; font-weight: 700; color: #000; }
+.logo-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffd78f;
+    text-shadow: 0 0 10px rgba(255, 215, 160, 0.8);
+}
 
 .nav-right-group { display: flex; align-items: center; gap: 20px; }
 
-.nav-desktop { display: flex; gap: 10px; }
+/* Pulsanti unificati */
+.nav-desktop, .lang-switcher { display: flex; gap: 10px; }
 
-/* STILE UNIFICATO PULSANTI (Nav + Lingue) */
-.nav-desktop a, 
-.lang-switcher button {
-    color: #000;
+.nav-desktop a, .lang-switcher button {
+    color: #ffd78f;
     text-decoration: none;
     font-size: 0.9rem;
     padding: 6px 14px;
-    border: 1px solid #000;
     border-radius: 12px;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.75);
+    transition: all 0.4s ease;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.nav-desktop a:hover, 
-.lang-switcher button:hover {
-    background: #000;
-    color: #fff;
+.nav-desktop a:hover, .lang-switcher button:hover {
+    background: #ffd78f;
+    color: #000;
 }
 
 /* --- CONTENUTO (Senza teca) --- */
 .content-wrapper {
     width: 90%;
-    max-width: 800px;
+    max-width: 700px;
     margin: 150px auto 50px auto;
     text-align: center;
-    /* Niente background, niente box, solo testo */
+    /* Niente background, niente bordo */
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: 3.5rem;
     color: #000;
+    margin-bottom: 1.5rem;
+    /* Alone bianco per staccare il testo nero dallo sfondo */
+    text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5);
 }
 
 .gold-divider {
     width: 60px;
-    height: 2px;
+    height: 3px;
     margin: 0 auto 30px auto;
-    background: #000;
+    background: #ffd78f;
     border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 p {
@@ -97,7 +103,9 @@ p {
     line-height: 1.8;
     margin-bottom: 25px;
     color: #000;
-    font-weight: 400;
+    font-weight: 600;
+    /* Alone per leggibilità */
+    text-shadow: 0 0 5px rgba(255,255,255,0.9);
 }
 
 /* --- RESPONSIVE DASHBOARD --- */
@@ -110,13 +118,8 @@ p {
     .nav-right-group { 
         flex-direction: column; 
         gap: 10px; 
-        width: 100%; 
-    }
-    .nav-desktop, .lang-switcher { 
-        display: flex; 
-        justify-content: center; 
-        flex-wrap: wrap; 
-        gap: 5px; 
     }
     .content-wrapper { margin-top: 200px; }
+    h1 { font-size: 2.2rem; }
+    p { font-size: 1.1rem; }
 }
