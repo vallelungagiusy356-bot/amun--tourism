@@ -372,7 +372,7 @@ body {
     .lang-switcher { 
         gap: 4px; 
         display: flex;
-        margin-left: 50px; 
+        margin-left: 80px; 
     }
     
     .lang-switcher button { 
