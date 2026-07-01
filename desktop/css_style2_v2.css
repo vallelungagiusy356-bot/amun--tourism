@@ -337,18 +337,43 @@ body {
         filter: brightness(0.65) contrast(1.1) saturate(1.1) !important;
     }
 
-    /* 2. Dashboard: Impilamento e Centramento */
+    /* 2. DASHBOARD OTTIMIZZATA */
     .dashboard {
-        height: auto; /* Permette alla dashboard di espandersi se va a capo */
-        padding: 15px;
-        flex-direction: column; /* Impila logo e nav */
-        gap: 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        flex-direction: row; /* Mettiamo tutto in fila */
+        flex-wrap: wrap;     /* Se non ci sta, va a capo */
+        gap: 8px;
+        z-index: 1000;
+        height: auto;
+    }
+
+    .logo-title { 
+        font-size: 1.1rem; 
+        flex: 1 1 100%; 
+        text-align: center; 
     }
 
     .nav-desktop {
-        gap: 10px;
-        flex-wrap: wrap; /* Permette ai tasti di andare a capo */
+        gap: 5px;
         justify-content: center;
+        flex: 1 1 100%;
+        margin-bottom: 5px;
+    }
+    
+    .nav-desktop a { 
+        font-size: 0.75rem; 
+        padding: 4px 8px; 
+    }
+
+    .lang-switcher { gap: 4px; }
+    .lang-switcher button { 
+        width: 30px; 
+        height: 30px; 
+        font-size: 0.8rem; 
     }
 
     /* 3. Centratura contenuti Narrativi */
@@ -363,17 +388,24 @@ body {
         margin-right: auto;
     }
 
-    /* 4. Video Castellana: Centramento assoluto */
+    /* 4. Video Castellana: Risoluzione taglio */
     .castellana-video-wrapper {
-        margin: 20px auto; /* Centra il wrapper */
+        margin: 20px auto;
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-height: 35vh; /* Limita l'altezza per evitare che esca dallo schermo */
+    }
+    
+    .castellana-video {
+        height: 100%;
+        max-height: 35vh;
+        width: auto;
     }
 
-    /* 5. Riduzione margini per far respirare il layout su piccoli schermi */
-    main {
-        padding-top: 100px; /* Spazio per la dashboard che è diventata più alta */
+    /* 5. Padding-top per evitare sovrapposizioni con la dashboard */
+    main { 
+        padding-top: 130px; /* Adattato al nuovo ingombro della dashboard */
     }
 }
 
