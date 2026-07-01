@@ -388,6 +388,22 @@ body {
         margin-right: auto;
     }
 
+   .home-welcome-poetry p {
+    font-family: 'Lora', serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    line-height: 1.8;
+    color: #fff;
+    font-style: italic;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+   .intro-card-content p {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* AGGIORNA QUI */
+    line-height: 1.6;
+    color: #e6e0d4;
+    margin-bottom: 1.2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+   }
     /* 4. Video Castellana: Risoluzione taglio */
     .castellana-video-wrapper {
         margin: 20px auto;
