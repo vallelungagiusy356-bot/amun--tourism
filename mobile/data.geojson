@@ -75,7 +75,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Chiesa SS. Annunziata",
+        "name": "Parrocchia SS. Annunziata",
         "type": "chiesa",
         "address": "Piazza SS. Annunziata",
         "icona": "annunziata",
@@ -84,7 +84,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.6642971, 37.9315291]
+        "coordinates": [37,931561°N,13,664299°E]
       }
     },
     {
