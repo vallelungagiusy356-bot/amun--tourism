@@ -369,12 +369,17 @@ body {
         padding: 4px 8px; 
     }
 
-    .lang-switcher { gap: 4px; }
+    .lang-switcher { 
+        gap: 4px; 
+        display: flex;
+        margin-left: 18px; 
+    }
+    
     .lang-switcher button { 
         width: 30px; 
         height: 30px; 
         font-size: 0.8rem; 
-    }
+       }
 
     /* 3. Centratura contenuti Narrativi */
     .home-welcome-poetry, 
