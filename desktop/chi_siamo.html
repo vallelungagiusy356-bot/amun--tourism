@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Siamo | Amunì Tourism</title>
-    <!-- Importa il font Playfair per i titoli -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="pages.css">
 </head>
 <body>
 
-    <!-- Lo sfondo fisso -->
     <div class="page-background"></div>
 
-    <!-- Dashboard coerente -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
@@ -34,17 +30,15 @@
         </div>
     </header>
 
-    <!-- Contenitore con vetro sfocato -->
     <main class="content-wrapper">
         <h1 data-i18n="pages.chi_siamo.title">Chi Siamo</h1>
         <hr class="gold-divider">
-        <p data-i18n="pages.chi_siamo.founder_bio">Il nostro progetto nasce dalla volontà di valorizzare il patrimonio di Caccamo...</p>
-        <p data-i18n="pages.chi_siamo.philosophy">Crediamo in un turismo consapevole e narrativo...</p>
-        <p data-i18n="pages.chi_siamo.voices">Ogni pietra ha una storia da raccontare...</p>
+        <p data-i18n="pages.chi_siamo.founder_bio"></p>
+        <p data-i18n="pages.chi_siamo.philosophy"></p>
+        <p data-i18n="pages.chi_siamo.voices"></p>
     </main>
 
     <script>
-        // Logica per caricare le traduzioni
         const lang = localStorage.getItem("lang") || "it";
         fetch(`./lang/${lang}.json`)
             .then(res => res.json())
@@ -58,5 +52,3 @@
     </script>
 </body>
 </html>
-
-            
