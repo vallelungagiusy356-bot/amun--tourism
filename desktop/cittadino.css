@@ -19,7 +19,7 @@ html, body {
 .scene-background {
     position: fixed;
     inset: 0;
-    background-image: url('img/tuo_nuovo_sfondo.jpeg') !important;
+    background-image: url('img/sfondocaccamo.jpeg') !important;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
