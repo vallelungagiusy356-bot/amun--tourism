@@ -1,8 +1,29 @@
 /* ==========================================================================
+   AMUNÌ TOURISM — RESTYLE PALETTE DIURNA MEDITERRANEA
+   Stessa struttura, stesse classi, stessa logica del tuo file originale.
+   Cambiano solo: colori, ombre/glow, alcuni background.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------
+   NUOVA PALETTE (variabili) — sostituisce il tema notte/oro con
+   azzurro cielo-mare + pietra + terracotta, oro solo come accento.
+   -------------------------------------------------------------------- */
+:root {
+    --sky: #5B8FAE;
+    --sea: #1B4965;
+    --sea-ink: #14283A;      /* per sfondi scuri “tinti” invece del nero puro */
+    --stone: #EFE6D3;
+    --stone-dim: #DCCFAF;
+    --terracotta: #C1622D;
+    --gold: #C9973F;         /* oro più caldo/meno neon del precedente #ffd78f */
+    --ink: #22303B;
+    --cream-text: #F3ECDC;
+}
+
+/* ==========================================================================
    PARTE 1: STILI BASE E PER DISPOSITIVI MOBILI
    ========================================================================== */
 
-/* RESET E BINDING */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +32,7 @@
 }
 
 body {
-    background: #0d0d0d;
+    background: var(--sea-ink); /* era #0d0d0d — nero puro sostituito con blu-notte caldo */
     color: #fff;
     overflow-x: hidden;
     min-height: 100vh;
@@ -25,18 +46,19 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: brightness(0.4) contrast(1.3) saturate(1.2);
+    /* leggermente più luminoso e meno contrastato: meno "notte", più "giorno velato" */
+    filter: brightness(0.55) contrast(1.15) saturate(1.1);
     z-index: -10;
 }
 
-/* --- DASHBOARD MASTER (Da usare su TUTTE le pagine) --- */
+/* --- DASHBOARD MASTER --- */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    border-bottom: 2px solid #ffd78f; /* Colore oro standard */
+    background: rgba(20, 40, 58, 0.88); /* era nero puro rgba(0,0,0,.85) */
+    border-bottom: 2px solid var(--gold);
     backdrop-filter: blur(18px) saturate(200%);
     display: flex;
     flex-direction: column;
@@ -45,19 +67,17 @@ body {
     padding: 15px 20px;
     gap: 12px;
     z-index: 999;
-    box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
+    box-shadow: 0 0 20px rgba(201, 151, 63, 0.35); /* glow oro più discreto */
     box-sizing: border-box;
 }
 
-/* Logo */
 .logo-title {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #ffd78f;
-    text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(201, 151, 63, 0.6);
 }
 
-/* Navigazione */
 .nav-desktop {
     display: flex;
     flex-wrap: wrap;
@@ -66,25 +86,28 @@ body {
 }
 
 .nav-desktop a {
-    color: #ffd78f;
+    color: var(--cream-text);           /* era oro pieno: ora testo crema, oro resta accento sul bordo */
     font-weight: 600;
     text-decoration: none;
     font-size: 0.9rem;
     padding: 6px 14px;
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.75);
+    background: rgba(27, 73, 101, 0.5); /* era nero: ora blu mare */
+    border: 1px solid rgba(201, 151, 63, 0.75);
     transition: all 0.4s ease;
 }
 
-/* Right Actions (Dove metti i bottoni specifici) */
+.nav-desktop a:hover {
+    background: rgba(201, 151, 63, 0.18);
+    border-color: var(--gold);
+}
+
 .header-right-actions {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-/* Selettore Lingue */
 .lang-switcher {
     display: flex;
     gap: 6px;
@@ -97,13 +120,15 @@ body {
     font-size: 0.95rem;
     font-weight: bold;
     border-radius: 8px;
-    background: rgba(0, 0, 0, 0.65);
-    border: 1px solid rgba(255, 215, 160, 0.85);
-    color: #ffd78f;
+    background: rgba(27, 73, 101, 0.6); /* era nero */
+    border: 1px solid rgba(201, 151, 63, 0.85);
+    color: var(--gold);
     cursor: pointer;
 }
 
-/* Media Query Desktop (per mantenere il layout fisso) */
+/* attivo: già gestito nell'inline <style> dell'HTML, resta compatibile
+   perché usa border/background che qui restano coerenti col nuovo oro */
+
 @media screen and (min-width: 900px) {
     .dashboard {
         height: 75px;
@@ -120,74 +145,75 @@ body {
     margin: 30px auto;
     width: 90%;
     max-width: 260px;
+    cursor: pointer; /* ora è lei stessa cliccabile per aprire la chat */
 }
 
 .castellana-video {
     width: 100%;
     height: auto;
     border-radius: 15px;
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+    transition: transform 0.3s ease;
+}
+
+.castellana-video-wrapper:hover .castellana-video {
+    transform: translateY(-3px);
 }
 
 .castellana-tooltip {
     margin-top: 10px;
     padding: 10px 20px;
-    background: rgba(0, 0, 0, 0.7); /* Leggermente più trasparente */
-    border: 1px solid #ffd78f;
-    color: #ffd78f;
+    background: rgba(27, 73, 101, 0.55); /* era nero */
+    border: 1px solid var(--gold);
+    color: var(--gold);
     border-radius: 12px;
     font-weight: bold;
     text-align: center;
-    cursor: pointer;              /* Fondamentale: fa apparire la manina */
-    transition: all 0.3s ease;    /* Rende il cambio colore fluido */
-    user-select: none;             
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
 }
 
-/* Effetto dinamico al passaggio del mouse/tocco */
 .castellana-tooltip:hover {
-    background: #ffd78f;
-    color: #000;
-    transform: scale(1.05);       /* Leggero ingrandimento */
-    box-shadow: 0 0 15px rgba(255, 215, 160, 0.6);
+    background: var(--gold);
+    color: var(--sea-ink);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(201, 151, 63, 0.5);
 }
 
-/* Effetto al click (quando viene premuto) */
 .castellana-tooltip:active {
     transform: scale(0.95);
 }
 
-
-/* Stile per il container "fluttuante" */
+/* Container poesia */
 .home-welcome-poetry {
     width: 90%;
     margin: 40px auto;
     padding: 30px;
-    background: transparent !important; /* Rimosso lo sfondo opaco */
+    background: transparent !important;
     backdrop-filter: blur(5px);
-    border: none !important; /* Rimosso il bordo */
-    box-shadow: none !important; /* Rimosso l'ombra del box */
+    border: none !important;
+    box-shadow: none !important;
     text-align: center;
 }
 
-/* Titolo con font elegante e glow */
 .home-welcome-poetry h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
-    color: #ffd78f;
+    color: var(--cream-text);           /* era oro pieno: il titolo principale ora è crema, più leggibile e meno "insegna al neon" */
     margin-bottom: 15px;
-    text-shadow: 0 0 15px rgba(255, 215, 160, 0.6); /* Effetto Glow */
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
     font-style: italic;
 }
 
-/* Barra Oro (Separatore) */
 .gold-divider {
     width: 60px;
     height: 2px;
-    background: #ffd78f;
+    background: var(--gold);
     margin: 0 auto 20px auto;
-    box-shadow: 0 0 10px #ffd78f; /* Glow anche sulla linea */
+    box-shadow: 0 0 8px rgba(201, 151, 63, 0.7);
 }
 
-/* Poesia con font Lora (molto elegante) */
 .home-welcome-poetry p {
     font-family: 'Lora', serif;
     font-size: 1.2rem;
@@ -204,42 +230,42 @@ body {
     max-width: 700px;
     margin: 2.5rem auto;
     padding: 1.5rem;
-    background: rgba(0, 0, 0, 0.25) !important;
+    background: rgba(20, 40, 58, 0.35) !important; /* era nero */
     backdrop-filter: blur(12px) saturate(180%);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 25px !important; 
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(201, 151, 63, 0.25) !important;
+    border-radius: 25px !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
 }
 
 .castellana-intro-card:hover {
-    background: rgba(5, 3, 2, 0.6);
-    border-color: rgba(255, 215, 160, 0.4);
-    box-shadow: 0 12px 35px rgba(255, 215, 160, 0.1);
+    background: rgba(20, 40, 58, 0.55);
+    border-color: rgba(201, 151, 63, 0.45);
+    box-shadow: 0 12px 30px rgba(201, 151, 63, 0.12);
     transform: translateY(-2px);
 }
 
 .intro-card-content h3 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.4rem, 3vw, 1.8rem);
-    color: #ffd78f;
+    color: var(--gold);
     margin-top: 0;
     margin-bottom: 0.8rem;
     letter-spacing: 0.5px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .intro-card-content p {
     font-family: 'Segoe UI', system-ui, sans-serif;
     font-size: clamp(1rem, 2.2vw, 1.1rem);
     line-height: 1.6;
-    color: #e6e0d4;
+    color: var(--cream-text);
     margin-bottom: 1.2rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 .intro-card-content strong {
-    color: #ffd78f;
+    color: var(--gold);
     font-weight: 600;
 }
 
@@ -249,15 +275,15 @@ body {
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #ffd78f;
-    background: rgba(0, 0, 0, 0.4);
+    color: var(--gold);
+    background: rgba(27, 73, 101, 0.45);
     padding: 6px 16px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 215, 160, 0.2);
+    border: 1px solid rgba(201, 151, 63, 0.3);
 }
 
 .languages-badge span {
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 /* BOX APPLICAZIONE MOBILE */
@@ -265,14 +291,14 @@ body {
     width: 90%;
     margin: 30px auto;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid #ffd78f;
+    background: rgba(20, 40, 58, 0.75); /* era nero */
+    border: 1px solid var(--gold);
     border-radius: 15px;
     text-align: center;
 }
 
 .install-left h2 {
-    color: #ffd78f;
+    color: var(--gold);
     font-size: 1.2rem;
     margin-bottom: 15px;
 }
@@ -282,12 +308,17 @@ body {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
-    background: #000;
-    border: 1px solid #ffd78f;
-    color: #ffd78f;
+    background: var(--terracotta);   /* era nero pieno con bordo oro: ora CTA piena in terracotta */
+    border: none;
+    color: #fff;
     text-decoration: none;
     border-radius: 10px;
     font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn-desktop:hover {
+    background: #A94F22;
 }
 
 .install-right {
@@ -299,29 +330,32 @@ body {
     margin: 0 auto 10px;
     display: block;
     border-radius: 10px;
+    background: #fff;
+    padding: 6px;
 }
 
 .install-right p {
     font-size: 0.85rem;
-    color: #ccc;
+    color: var(--stone-dim);
 }
 
-/* CHAT DEFINITIVA */
+/* CHAT DEFINITIVA — resta chiusa di default (bottom:-100%), si apre
+   con .active. Sfondo passato da quasi-nero a pannello chiaro leggibile. */
 .chat-interface {
     position: fixed;
-    bottom: -100%; 
+    bottom: -100%;
     left: 50%;
     transform: translateX(-50%);
     width: 95%;
     max-width: 400px;
-    background: rgba(10, 8, 5, 0.95);
+    background: var(--stone);          /* era rgba(10,8,5,.95): pannello ora chiaro */
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 160, 0.4);
+    border: 1px solid var(--gold);
     border-radius: 20px 20px 0 0;
     padding: 15px;
     z-index: 1000;
     transition: bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
 }
 
 .chat-interface.active {
@@ -332,9 +366,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #ffd78f;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
+    color: #fff;
+    background: var(--sea);            /* nuovo: intestazione blu mare piena */
+    margin: -15px -15px 15px -15px;
+    padding: 12px 15px;
+    border-radius: 20px 20px 0 0;
 }
 
 .chat-messages {
@@ -343,17 +379,28 @@ body {
     margin-bottom: 10px;
 }
 
+/* Aggiunta necessaria: senza questa regola i messaggi (testo bianco di
+   default dal body) sarebbero invisibili sul nuovo pannello chiaro. */
+.chat-messages .message {
+    color: var(--ink);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    max-width: 85%;
+}
+
 /* ==========================================================================
    MEDIA QUERY: CORREZIONI MOBILI (Sotto i 900px)
    ========================================================================== */
 @media screen and (max-width: 899px) {
-    
-    /* 1. Sfondo meno scuro per Mobile */
+
     .scene-background {
-        filter: brightness(0.65) contrast(1.1) saturate(1.1) !important;
+        filter: brightness(0.72) contrast(1.05) saturate(1.05) !important;
     }
 
-    /* 2. DASHBOARD OTTIMIZZATA */
     .dashboard {
         position: fixed;
         top: 0;
@@ -361,16 +408,16 @@ body {
         width: 100%;
         padding: 10px;
         flex-direction: row;
-        flex-wrap: wrap;     
+        flex-wrap: wrap;
         gap: 8px;
         z-index: 1000;
         height: auto;
     }
 
-    .logo-title { 
-        font-size: 1.1rem; 
-        flex: 1 1 100%; 
-        text-align: center; 
+    .logo-title {
+        font-size: 1.1rem;
+        flex: 1 1 100%;
+        text-align: center;
     }
 
     .nav-desktop {
@@ -379,26 +426,25 @@ body {
         flex: 1 1 100%;
         margin-bottom: 5px;
     }
-    
-    .nav-desktop a { 
-        font-size: 0.75rem; 
-        padding: 4px 8px; 
+
+    .nav-desktop a {
+        font-size: 0.75rem;
+        padding: 4px 8px;
     }
 
-    .lang-switcher { 
-        gap: 4px; 
+    .lang-switcher {
+        gap: 4px;
         display: flex;
-        margin-left: 100px; 
+        margin-left: 100px;
     }
-    
-    .lang-switcher button { 
-        width: 30px; 
-        height: 30px; 
-        font-size: 0.8rem; 
-       }
 
-    /* 3. Centratura contenuti Narrativi */
-    .home-welcome-poetry, 
+    .lang-switcher button {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .home-welcome-poetry,
     .castellana-intro-card,
     .install-app-desktop {
         display: flex;
@@ -409,40 +455,40 @@ body {
         margin-right: auto;
     }
 
-   .home-welcome-poetry p {
-    font-family: 'Lora', serif;
-    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-    line-height: 1.8;
-    color: #fff;
-    font-style: italic;
-    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
-}
-   .intro-card-content p {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* AGGIORNA QUI */
-    line-height: 1.6;
-    color: #e6e0d4;
-    margin-bottom: 1.2rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-   }
-    /* 4. Video Castellana: Risoluzione taglio */
+    .home-welcome-poetry p {
+        font-family: 'Lora', serif;
+        font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+        line-height: 1.8;
+        color: #fff;
+        font-style: italic;
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .intro-card-content p {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        line-height: 1.6;
+        color: var(--cream-text);
+        margin-bottom: 1.2rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    }
+
     .castellana-video-wrapper {
         margin: 20px auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-height: 35vh; /* Limita l'altezza per evitare che esca dallo schermo */
+        max-height: 35vh;
     }
-    
+
     .castellana-video {
         height: 100%;
         max-height: 35vh;
         width: auto;
     }
 
-    /* 5. Padding-top per evitare sovrapposizioni con la dashboard */
-    main { 
-        padding-top: 130px; /* Adattato al nuovo ingombro della dashboard */
+    main {
+        padding-top: 130px;
     }
 }
 
@@ -458,7 +504,7 @@ body {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        filter: brightness(0.78) contrast(1.1) saturate(1.1);
+        filter: brightness(0.82) contrast(1.05) saturate(1.05);
         z-index: -5 !important;
         pointer-events: none;
     }
@@ -470,15 +516,15 @@ body {
         top: 0;
         width: 100%;
         height: 70px;
-        background: rgba(0, 0, 0, 0.75);
-        border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+        background: rgba(20, 40, 58, 0.8);
+        border-bottom: 2px solid rgba(201, 151, 63, 0.85);
         backdrop-filter: blur(18px) saturate(200%);
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 40px;
         z-index: 100;
-        box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
+        box-shadow: 0 0 20px rgba(201, 151, 63, 0.35);
     }
 
     main { padding-top: 120px; }
@@ -500,20 +546,19 @@ body {
         cursor: pointer;
     }
 
-    .castellana-video { 
-        width: 100%; 
-        height: auto; 
-        display: block; 
-        filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.5)); 
-    }
-    
-        .castellana-tooltip {
-        position: absolute; 
-        top: -40px; 
-        left: 0; 
+    .castellana-video {
         width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.45));
     }
 
+    .castellana-tooltip {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        width: 100%;
+    }
 
     .home-welcome-poetry {
         max-width: 440px;
@@ -522,7 +567,6 @@ body {
         z-index: 5;
     }
 
-    /* Regole specifiche per il testo nella versione desktop */
     .home-welcome-poetry h1 {
         font-size: 2rem;
         margin-bottom: 20px;
@@ -538,9 +582,9 @@ body {
         justify-content: center;
         gap: 80px;
         padding: 40px;
-        background: rgba(0,0,0,0.3);
+        background: rgba(20, 40, 58, 0.3);
     }
-    
+
     .features-grid {
         display: grid;
         grid-template-columns: repeat(3, 300px);
@@ -556,12 +600,12 @@ body {
         gap: 50px;
         max-width: 850px;
         margin: 50px auto;
-        background: rgba(0, 0, 0, 0.25) !important;
+        background: rgba(20, 40, 58, 0.35) !important;
         backdrop-filter: blur(12px) saturate(180%);
         -webkit-backdrop-filter: blur(12px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-radius: 25px !important; 
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(201, 151, 63, 0.25) !important;
+        border-radius: 25px !important;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
     }
 }
 
@@ -571,44 +615,41 @@ body {
 .footer-copyright {
     text-align: center;
     padding: 40px 20px;
-    color: #ffd78f; /* Colore oro coerente con il resto del sito */
+    color: var(--gold);
     font-size: 0.9rem;
-    opacity: 0.7;
+    opacity: 0.75;
     width: 100%;
     margin-top: 20px;
-    border-top: 1px solid rgba(255, 215, 160, 0.1);
+    border-top: 1px solid rgba(201, 151, 63, 0.15);
 }
 
 /* ==========================================================================
-   INTEGRAZIONI MANCANTI (LOGO & INPUT CHAT)
+   INTEGRAZIONI: LOGO & INPUT CHAT
    ========================================================================== */
 
-/* Stile per il Logo nella Dashboard */
 .logo-title {
-    color: #ffd78f;
+    color: var(--gold);
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
     font-weight: 600;
-    text-shadow: 0 0 10px rgba(255, 215, 160, 0.4);
+    text-shadow: 0 0 8px rgba(201, 151, 63, 0.35);
     letter-spacing: 1px;
 }
 
-/* Stile per il tasto chiusura chat */
 .close-chat-btn {
     background: transparent;
     border: none;
-    color: #ffd78f;
+    color: #fff;
     font-size: 1.2rem;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .close-chat-btn:hover {
-    color: #fff;
+    color: var(--gold);
     transform: scale(1.1);
 }
 
-/* Stile per il blocco Input e Microfono della chat */
 .chat-input-row {
     display: flex;
     gap: 10px;
@@ -620,31 +661,34 @@ body {
     flex-grow: 1;
     padding: 10px 14px;
     border-radius: 12px;
-    border: 1px solid rgba(255, 215, 160, 0.4);
-    background: rgba(0, 0, 0, 0.5);
-    color: #e6e0d4;
+    border: 1px solid rgba(201, 151, 63, 0.5);
+    background: #fff;                 /* era nero: ora coerente col pannello chiaro */
+    color: var(--ink);
     font-family: 'Segoe UI', sans-serif;
     outline: none;
     transition: border 0.3s;
 }
 
+.chat-input-row input::placeholder {
+    color: #9a8f7c;
+}
+
 .chat-input-row input:focus {
-    border-color: #ffd78f;
+    border-color: var(--gold);
 }
 
 .chat-input-row .mic-btn {
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid #ffd78f;
+    background: var(--terracotta);    /* era nero con bordo oro: ora piena terracotta come le altre CTA */
+    border: none;
     border-radius: 12px;
     padding: 0 14px;
-    color: #ffd78f;
+    color: #fff;
     font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .chat-input-row .mic-btn:hover {
-    background: #ffd78f;
-    color: #000;
-    box-shadow: 0 0 10px rgba(255, 215, 160, 0.4);
+    background: #A94F22;
+    box-shadow: 0 0 10px rgba(193, 98, 45, 0.4);
 }
