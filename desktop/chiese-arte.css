@@ -27,7 +27,7 @@ body::before {
   
   /* Gradiente + Immagine */
   background: radial-gradient(circle at top, rgba(255,180,80,0.05), rgba(0,0,0,0.7)), 
-              url('img/tuo_nuovo_sfondo.jpeg') no-repeat center center;
+              url('img/sfondocaccamo.jpeg') no-repeat center center;
   background-size: cover;
   
   /* FILTRO applicato solo a questo strato */
