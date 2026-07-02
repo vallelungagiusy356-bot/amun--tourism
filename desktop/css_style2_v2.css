@@ -139,7 +139,7 @@ body {
     text-align: center;
     cursor: pointer;              /* Fondamentale: fa apparire la manina */
     transition: all 0.3s ease;    /* Rende il cambio colore fluido */
-    user-select: none;            /* Evita che si selezioni il testo cliccando */
+    user-select: none;             
 }
 
 /* Effetto dinamico al passaggio del mouse/tocco */
