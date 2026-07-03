@@ -1,4 +1,6 @@
-/* 1. RESET BASE */
+/* ============================================================
+   1. RESET + VARIABILI GLOBALI — stessa palette di castello.css/chiese.css
+   ============================================================ */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,46 +8,65 @@
   font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
+:root {
+  --sky: #5B8FAE;
+  --sea: #1B4965;
 
-/* 2. BODY PULITO */
-body {
-  color: #f7f2e9;
+  --stone: #EFE6D3;
+  --stone-dim: #DCCFAF;
+
+  --terracotta: #C1622D;
+  --terracotta-dark: #9C4C22;
+
+  --gold: #B8873B;
+  --gold-light: #D4AF6A;
+
+  --ink: #22303B;
+  --ink-soft: #465563;
+
+  --shadow-strong: rgba(0, 0, 0, 0.35);
+  --shadow-soft: rgba(0, 0, 0, 0.18);
+}
+
+/* ============================================================
+   2. BODY — sfondo piatto pietra calcarea con vignatura,
+   era immagine sfondocaccamo.jpeg a piena pagina con overlay
+   scuro: rimossa per coerenza con castello.css/chiese.css
+   ============================================================ */
+html, body {
+  width: 100%;
   min-height: 100vh;
+  color: var(--ink);
+  background: var(--stone) !important;
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  position: relative; /* Fondamentale per bloccare lo sfondo dietro */
-  background: transparent; /* Il background lo gestiamo nel ::before */
+  position: relative;
 }
 
-/* 3. SFONDO CON FILTRO (solo immagine) */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: -1; /* Lo tiene dietro tutto il contenuto */
-  
-  /* Gradiente + Immagine */
-  background: radial-gradient(circle at top, rgba(255,180,80,0.05), rgba(0,0,0,0.7)), 
-              url('img/sfondocaccamo.jpeg') no-repeat center center;
-  background-size: cover;
-  
-  /* FILTRO applicato solo a questo strato */
-  filter: contrast(1.2); 
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(60, 40, 20, 0.16) 100%);
 }
 
-
 /* ============================================================
-   DASHBOARD STRUTTURA GENERALE ED ELEGANTE (MOBILE FIRST)
-============================================================ */
+   3. DASHBOARD — identica a castello.css/chiese.css.
+   Il bug era proprio qui: un override inline nell'HTML forzava
+   flex-direction riga anche su mobile, spezzando il layout.
+   Ora la colonna mobile-first vive solo qui, senza duplicati.
+   ============================================================ */
 .dashboard {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+  background: rgba(15, 25, 34, 0.92);
+  border-bottom: 2px solid var(--gold);
   backdrop-filter: blur(18px) saturate(200%);
   display: flex;
   flex-direction: column;
@@ -53,15 +74,16 @@ body::before {
   justify-content: space-between;
   padding: 15px 20px;
   gap: 12px;
-  z-index: 20;
-  box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
+  z-index: 999;
+  box-shadow: 0 2px 0 rgba(212, 175, 106, 0.25);
+  box-sizing: border-box;
 }
 
 .dashboard .logo-title {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #ffd78f;
-  text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
+  color: var(--gold-light);
+  letter-spacing: 1.5px;
 }
 
 .nav-desktop {
@@ -72,46 +94,31 @@ body::before {
 }
 
 .nav-desktop a {
-  color: #ffd78f;
+  color: var(--stone);
   font-weight: 600;
   text-decoration: none;
-  font-size: 0.9rem;
-  padding: 6px 14px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 215, 160, 0.75);
-  box-shadow:
-    0 0 14px rgba(255, 215, 160, 0.55),
-    inset 0 0 8px rgba(255, 215, 160, 0.35);
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  position: relative;
-  overflow: hidden;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+  padding: 6px 16px;
+  border-radius: 2px;
+  background: rgba(239, 230, 211, 0.08);
+  border: 1px solid rgba(239, 230, 211, 0.4);
+  transition: all 0.3s ease;
 }
 
-.nav-desktop a::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -110%;
-  width: 35%;
-  height: 200%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 215, 160, 0) 0%,
-    rgba(255, 215, 160, 0.14) 50%,
-    rgba(255, 215, 160, 0) 100%
-  );
-  transform: rotate(-45deg);
-  animation: desktopGlowLoop 10s infinite ease-in-out;
-  pointer-events: none;
-}
-
+/* rimossa l'animazione "luccichio in scorrimento" (::before) e il
+   transform:scale sull'hover — coerente col resto del sito, che
+   non usa più effetti da insegna al neon */
 .nav-desktop a:hover {
-  background: rgba(255, 215, 160, 0.15);
-  box-shadow:
-    0 0 22px rgba(255, 215, 160, 0.85),
-    inset 0 0 12px rgba(255, 215, 160, 0.45);
-  transform: scale(1.05);
+  background: rgba(193, 98, 45, 0.25);
+  border-color: var(--terracotta);
+  color: #fff;
+}
+
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .lang-switcher {
@@ -123,31 +130,44 @@ body::before {
 .lang-switcher button {
   width: 36px;
   height: 36px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(255, 215, 160, 0.85);
-  color: #ffd78f;
+  border-radius: 2px;
+  background: rgba(239, 230, 211, 0.08);
+  border: 1px solid rgba(239, 230, 211, 0.4);
+  color: var(--stone);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow:
-    0 0 10px rgba(255, 215, 160, 0.4),
-    inset 0 0 6px rgba(255, 215, 160, 0.3);
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.3s ease;
 }
 
 .lang-switcher button:hover {
-  background: rgba(255, 215, 160, 0.15);
-  box-shadow: 0 0 15px rgba(255, 215, 160, 0.7);
-  transform: scale(1.05);
+  background: rgba(193, 98, 45, 0.25);
+}
+
+/* Fix allineamento header mobile — stesso bug e stessa soluzione
+   già applicata in castello.css e chiese.css */
+@media screen and (max-width: 899px) {
+  .header-right-actions {
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 8px;
+  }
+  .nav-desktop {
+      flex: 1 1 100%;
+      justify-content: center;
+  }
+  .lang-switcher {
+      flex: 1 1 100%;
+      justify-content: center;
+  }
 }
 
 /* ============================================================
-   HERO CENTRALE & POESIA ELEGANTE (CORMORANT GARAMOND)
-============================================================ */
+   4. HERO CENTRALE & POESIA
+   ============================================================ */
 .hero {
   margin-top: 190px;
   text-align: center;
@@ -162,40 +182,35 @@ body::before {
 .hero-text h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
-  color: #ffd78f;
-  text-shadow: 0 0 14px rgba(255, 215, 160, 0.85);
+  color: var(--sea);
   margin-bottom: 0.5rem;
 }
 
 .hero-text::after {
-  content: "";
+  content: "❧";
   display: block;
-  width: 40%;
-  height: 2px;
-  margin: 0.5rem auto 1.5rem;
-  background: linear-gradient(90deg, transparent, #ffd78f, transparent);
+  margin: 0.6rem auto 1.5rem;
+  color: var(--gold);
+  font-size: 15px;
 }
 
 .poesia-container {
   max-width: 750px;
   margin: 0 auto 2.5rem auto;
   padding: 1.5rem 1rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 22px;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 215, 160, 0.1);
-  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: all 0.4s ease;
 }
 
 .poesia-intro {
   font-family: 'Cormorant Garamond', 'Playfair Display', serif;
   font-size: 1.35rem;
   font-weight: 600;
-  color: #ffd78f;
+  color: var(--sea);
   line-height: 1.5;
   margin-bottom: 1.4rem;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 1), 0 0 10px rgba(0,0,0,0.8);
 }
 
 .poesia-corpo p {
@@ -203,17 +218,15 @@ body::before {
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.6;
-  color: #f7f2e9;
+  color: var(--ink);
   font-style: italic;
   margin-bottom: 1.2rem;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 1), 1px 1px 8px rgba(0, 0, 0, 0.95);
 }
 
 .poesia-corpo strong {
-  color: #ffd78f;
+  color: var(--terracotta-dark);
   font-style: normal;
   font-weight: 600;
-  text-shadow: 0 0 10px rgba(255, 215, 160, 0.6);
 }
 
 .poesia-outro {
@@ -221,31 +234,27 @@ body::before {
   font-style: italic;
   font-size: 1.2rem;
   font-weight: 500;
-  color: #ffd78f;
+  color: var(--terracotta-dark);
   margin-top: 1rem;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
 }
 
 .click-hint {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: #ffd78f; /* Assicurati che sia il colore corretto o usa var(--gold) */
-    opacity: 0.8;
-    font-size: 0.95rem;
-    text-align: center;
-    /* CAMBIAMENTI QUI */
-    margin-top: 25px;   /* Sostituito il valore negativo con uno positivo */
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    display: block;    /* Assicura che occupi la sua riga */
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--terracotta-dark);
+  opacity: 0.85;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  display: block;
 }
 
-
-
 /* ============================================================
-   GRIGLIA CARTE CON GLOW POTENZIATO E FISSO DI BASE
-============================================================ */
+   5. GRIGLIA CARTE — bordo terracotta sottile, ombra morbida,
+   niente glow/pulsazione: coerente col resto del sito
+   ============================================================ */
 .cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -257,30 +266,22 @@ body::before {
 }
 
 .card {
-  background: rgba(12, 8, 5, 0.9);
-  border-radius: 1rem;
+  background: var(--stone-dim);
+  border-radius: 2px;
   overflow: hidden;
-  /* MODIFICA: Il bordo dorato e il glow sono caricate FISSI fin da subito */
-  border: 1px solid rgba(255, 215, 160, 0.9);
-  box-shadow: 
-    0 0 20px rgba(255, 215, 160, 0.6), 
-    0 0 40px rgba(212, 166, 74, 0.3),
-    inset 0 0 12px rgba(255, 215, 160, 0.25);
-  filter: drop-shadow(0 0 8px rgba(255, 215, 160, 0.4));
-  
-  backdrop-filter: blur(8px);
+  border: 1px solid var(--terracotta);
+  box-shadow: 0 6px 18px var(--shadow-soft);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
-              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-img-wrapper {
   width: 100%;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--stone-dim);
 }
 
 .card img {
@@ -288,44 +289,41 @@ body::before {
   height: 140px;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease, filter 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 .card h3 {
+  font-family: 'Playfair Display', serif;
   font-size: 0.9rem;
   padding: 1rem 0.5rem;
-  color: #ffd78f; /* Colore oro fisso di base */
+  color: var(--sea);
   text-align: center;
-  background: rgba(0, 0, 0, 0.75);
-  border-top: 1px solid rgba(255, 215, 160, 0.3);
+  background: var(--stone);
+  border-top: 1px solid rgba(193, 98, 45, 0.3);
   margin-top: auto;
-  text-shadow: 0 0 8px rgba(255, 215, 160, 0.8);
 }
 
-/* Al tocco/hover la carta fa solo un elegante scatto verso l'alto e l'immagine zooma */
+/* al hover solo un discreto sollevamento e zoom immagine,
+   niente più glow doppio o triplo */
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 
-    0 0 30px rgba(255, 215, 160, 0.9), 
-    0 0 60px rgba(212, 166, 74, 0.55),
-    inset 0 0 15px rgba(255, 215, 160, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px var(--shadow-soft);
 }
 
 .card:hover img {
   transform: scale(1.05);
-  filter: brightness(1.15);
 }
 
 /* ============================================================
-   STRUTTURA FINESTRA SCHERMO INTERO (MODAL LIGHTBOX)
-============================================================ */
+   6. MODAL LIGHTBOX
+   ============================================================ */
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(5, 3, 2, 0.93);
+  background: rgba(15, 25, 34, 0.93);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  z-index: 999999; /* Sopra a ogni cosa */
+  z-index: 999999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -346,7 +344,7 @@ body::before {
   flex-direction: column;
   align-items: center;
   transform: scale(0.9);
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.4s ease;
 }
 
 .modal.active .modal-content-wrapper {
@@ -357,28 +355,26 @@ body::before {
   max-width: 100%;
   max-height: 70vh;
   object-fit: contain;
-  border-radius: 12px;
-  border: 2px solid #ffd78f;
-  box-shadow: 0 0 40px rgba(255, 215, 160, 0.5);
+  border-radius: 2px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 30px var(--shadow-strong);
 }
 
 .modal-title {
   font-family: 'Playfair Display', serif;
-  color: #ffd78f;
+  color: var(--stone);
   font-size: 1.8rem;
   margin-top: 15px;
-  text-shadow: 0 0 12px rgba(255, 215, 160, 0.8);
   text-align: center;
 }
 
-/* Pulsante di Chiusura elegante a cerchio */
 .modal-close {
   position: absolute;
   top: 25px;
   right: 25px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid #ffd78f;
-  color: #ffd78f;
+  background: rgba(239, 230, 211, 0.1);
+  border: 1px solid var(--gold);
+  color: var(--stone);
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -387,20 +383,17 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 15px rgba(255, 215, 160, 0.3);
   transition: all 0.3s ease;
 }
 
 .modal-close:hover {
-  background: #ffd78f;
-  color: #050302;
-  box-shadow: 0 0 25px #ffd78f;
-  transform: rotate(90deg);
+  background: var(--gold);
+  color: var(--sea);
 }
 
 /* ============================================================
-   WIDGET AREA & CASTELLANA (VIA DI MEZZO E VISO PROPORZIONATO)
-============================================================ */
+   7. CASTELLANA WIDGET E CHAT — identici a castello.css/chiese.css
+   ============================================================ */
 .castellana-widget-area {
   position: fixed;
   right: 1.2rem;
@@ -413,89 +406,82 @@ body::before {
 }
 
 .castellana-video-wrapper {
-  width: 78px;   
+  width: 78px;
   height: 78px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #ffd78f;
+  border: 3px solid var(--sea);
   background: #000;
-  box-shadow: 0 0 20px rgba(255, 215, 160, 0.4), 0 4px 15px rgba(0,0,0,0.6);
+  box-shadow: 0 4px 15px var(--shadow-strong);
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   position: relative;
 }
 
-.castellana-video-wrapper::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  box-shadow: 0 0 15px #ffd78f;
-  opacity: 0.5;
-  animation: widgetPulse 2.5s infinite alternate ease-in-out;
-  pointer-events: none;
-}
-
 .castellana-video-wrapper:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 30px rgba(255, 215, 160, 0.85);
+  transform: scale(1.04);
 }
 
 .castellana-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%; 
+  object-position: center 15%;
 }
 
 .castellana-tooltip {
-  background: linear-gradient(135deg, #ffd78f, #e5b25d);
-  color: #050302;
-  padding: 0.3rem 0.8rem;
-  border-radius: 999px;
+  background: var(--sea);
+  color: var(--stone);
+  padding: 0.3rem 0.9rem;
+  border-radius: 2px;
   font-weight: 700;
   font-size: 0.65rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 10px var(--shadow-strong);
   pointer-events: none;
 }
 
-#chat-desktop {
+.chat-desktop {
   position: fixed;
   right: 1.5rem;
-  bottom: 125px; 
+  bottom: 125px;
   width: 290px;
   height: 330px;
-  background: rgba(10, 6, 4, 0.97);
-  border-radius: 1rem;
-  border: 2px solid #ffd78f;
+  background: var(--stone);
+  border-radius: 2px;
+  border: 1px solid var(--sea);
   backdrop-filter: blur(12px);
   display: none;
   flex-direction: column;
   overflow: hidden;
   z-index: 99999;
   padding: 14px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 10px 30px var(--shadow-strong);
+}
+
+.chat-desktop.active {
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease forwards;
 }
 
 .chat-header {
   display: flex;
   justify-content: space-between;
-  color: #ffd78f;
+  color: var(--sea);
   font-weight: bold;
   margin-bottom: 12px;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 215, 160, 0.2);
+  border-bottom: 1px solid var(--gold);
   padding-bottom: 6px;
 }
 
 .avatar-status-dot {
   width: 8px;
   height: 8px;
-  background: #00ff66;
+  background: #3E8C5A;
   border-radius: 50%;
-  box-shadow: 0 0 8px #00ff66;
   display: inline-block;
   margin-right: 6px;
 }
@@ -503,14 +489,14 @@ body::before {
 .close-chat-btn {
   background: transparent;
   border: none;
-  color: #ffd78f;
+  color: var(--sea);
   cursor: pointer;
   font-size: 1.1rem;
   transition: color 0.2s;
 }
 
 .close-chat-btn:hover {
-  color: #fff;
+  color: var(--terracotta);
 }
 
 .chat-messages {
@@ -519,7 +505,7 @@ body::before {
   font-size: 0.9rem;
   line-height: 1.45;
   margin-bottom: 12px;
-  color: #f7f2e9;
+  color: var(--ink);
 }
 
 .chat-input-row {
@@ -529,37 +515,38 @@ body::before {
 
 .chat-input-row input {
   flex-grow: 1;
-  background: rgba(0,0,0,0.6);
-  border: 1px solid rgba(255, 215, 160, 0.3);
+  background: #fff;
+  border: 1px solid rgba(27, 73, 101, 0.35);
   padding: 8px 12px;
-  border-radius: 8px;
-  color: #fff;
+  border-radius: 2px;
+  color: var(--ink);
   font-size: 0.85rem;
 }
 
 .chat-input-row input:focus {
   outline: none;
-  border-color: #ffd78f;
+  border-color: var(--sea);
 }
 
 .mic-btn {
-  background: rgba(255, 215, 160, 0.15);
-  border: 1px solid #ffd78f;
-  border-radius: 8px;
+  background: var(--terracotta);
+  border: none;
+  border-radius: 2px;
   padding: 0 10px;
   cursor: pointer;
   transition: background 0.2s;
+  color: #fff;
 }
 
 .mic-btn:hover {
-  background: rgba(255, 215, 160, 0.3);
+  background: var(--terracotta-dark);
 }
 
 /* ============================================================
-   MEDIA QUERY: OTTIMIZZAZIONE DESKTOP (DA 900PX IN SU)
-============================================================ */
+   8. OTTIMIZZAZIONE DESKTOP (DA 900PX IN SU)
+   ============================================================ */
 @media screen and (min-width: 900px) {
-  
+
   .dashboard {
     height: 75px;
     flex-direction: row;
@@ -589,28 +576,26 @@ body::before {
   }
 
   .poesia-container {
-    background: rgba(0, 0, 0, 0);
+    background: transparent;
     border: 1px solid transparent;
     box-shadow: none;
     padding: 24px 40px;
   }
 
   .poesia-container:hover {
-    background: rgba(5, 3, 2, 0.5);
-    border: 1px solid rgba(255, 215, 160, 0.25);
-    box-shadow: 0 0 35px rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(8px) saturate(120%);
-    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    background: rgba(220, 207, 175, 0.5);
+    border: 1px solid var(--terracotta);
+    box-shadow: 0 8px 24px var(--shadow-soft);
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
   }
 
   .poesia-intro {
     font-size: 1.55rem;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 1), 0 0 15px rgba(255, 215, 160, 0.2);
   }
 
   .poesia-corpo p {
     font-size: 1.45rem;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 1), 2px 2px 14px rgba(0, 0, 0, 0.95);
   }
 
   .poesia-outro {
@@ -638,19 +623,13 @@ body::before {
   }
 
   .castellana-video-wrapper {
-    width: 110px;  
+    width: 110px;
     height: 110px;
-    border: 3px solid #ffd78f;
   }
 
-  .castellana-tooltip {
-    font-size: 0.75rem;
-    padding: 0.4rem 1rem;
-  }
-
-  #chat-desktop {
+  .chat-desktop {
     right: 2rem;
-    bottom: 175px; 
+    bottom: 175px;
     width: 320px;
     height: 400px;
   }
@@ -672,35 +651,28 @@ body::before {
     width: 95px;
     height: 95px;
   }
-  #chat-desktop {
+  .chat-desktop {
     bottom: 150px;
   }
 }
 
-/* TIMING ANIMAZIONI ACCLARATE */
-@keyframes desktopGlowLoop {
-  0% { left: -120%; }
-  16% { left: 140%; }
-  100% { left: 140%; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes widgetPulse {
-  0% { box-shadow: 0 0 10px rgba(255, 215, 160, 0.3); transform: scale(1); }
-  100% { box-shadow: 0 0 25px rgba(255, 215, 160, 0.7); transform: scale(1.02); }
-}
 /* ============================================================
-   MOBILE AD HOC: Contenimento Card strette
+   MOBILE AD HOC: contenimento card strette
    ============================================================ */
 @media screen and (max-width: 600px) {
-    .cards {
-        max-width: 450px !important; /* Limita lo spazio totale per le card */
-        width: 90% !important;       /* Occupano solo il 90% dello schermo */
-        margin: 0 auto !important;
-        padding: 0 10px !important;
-    }
+  .cards {
+    max-width: 450px !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+    padding: 0 10px !important;
+  }
 
-    .card {
-        margin: 0 auto;             /* Centra le card se diventano troppo strette */
-    }
+  .card {
+    margin: 0 auto;
+  }
 }
-
