@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="citizen.title">Amunì Tourism - Cittadino del Borgo</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="cittadino.css">
     <style>
         /* Piccola aggiunta per allineare bene il nuovo gruppo navigazione */
         .nav-right-group { display: flex; align-items: center; gap: 20px; }
-        .lang-switcher button.active { border: 2px solid #ffd78f !important; background: rgba(255, 215, 160, 0.2) !important; font-weight: bold; }
+        .lang-switcher button.active {
+            border: 2px solid #B8873B !important;
+            background: rgba(184, 135, 59, 0.2) !important;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -20,7 +26,7 @@
 
         <div class="nav-right-group">
             <button class="home-btn" onclick="window.location.href='desktop_index.html'">Home</button>
-            
+
             <div class="lang-switcher">
                 <button data-lang="it">IT</button>
                 <button data-lang="en">EN</button>
@@ -45,7 +51,6 @@
     <main class="citizen-centered-grid">
         <!-- Leggende e tradizioni -->
         <section class="quadrant" onclick="window.location.href='leggende.html'" role="button" tabindex="0">
-            <div class="card-glow-effect"></div>
             <div class="card-text-block">
                 <h2 data-i18n="citizen.legends_title">Leggende e tradizioni</h2>
                 <p class="card-description" data-i18n="citizen.legends_desc">I racconti popolari e i miti tramandati nel tempo.</p>
@@ -54,7 +59,6 @@
 
         <!-- Chiese e arte -->
         <section class="quadrant" onclick="window.location.href='chiese-arte.html'" role="button" tabindex="0">
-            <div class="card-glow-effect"></div>
             <div class="card-text-block">
                 <h2 data-i18n="citizen.churches_title">Chiese e arte</h2>
                 <p class="card-description" data-i18n="citizen.churches_desc">Un viaggio tra catacombe, tradizioni e tesori sacri.</p>
@@ -63,7 +67,6 @@
 
         <!-- Cibo e eventi -->
         <section class="quadrant" onclick="window.location.href='cibo_eventi.html'" role="button" tabindex="0">
-            <div class="card-glow-effect"></div>
             <div class="card-text-block">
                 <h2 data-i18n="citizen.food_events_title">Cibo e eventi</h2>
                 <p class="card-description" data-i18n="citizen.food_events_desc">Sapori autentici, ricette storiche e feste del borgo.</p>
@@ -72,7 +75,6 @@
 
         <!-- Il castello -->
         <section class="quadrant" onclick="window.location.href='castello.html'" role="button" tabindex="0">
-            <div class="card-glow-effect"></div>
             <div class="card-text-block">
                 <h2 data-i18n="citizen.castle_title">Il castello</h2>
                 <p class="card-description" data-i18n="citizen.castle_desc">La fortezza millenaria: storia, misteri e prigioni.</p>
