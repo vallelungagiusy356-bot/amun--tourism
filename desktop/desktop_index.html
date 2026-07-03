@@ -58,14 +58,17 @@
                 <div class="hero-text">
                     <h1 data-i18n="home.welcome_title">Benvenuti a Caccamo</h1>
                     <div class="gold-divider"></div>
-                    <p class="hero-verse" data-i18n="home.poetry_intro"></p>
+                    <p class="hero-verse" data-i18n="home.poetry_intro">
+                        Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>
+                        Caccamo intreccia il suo respiro all'antica memoria.
+                    </p>
                     <a href="#sezione-racconto" class="scroll-cue">Scopri il racconto ↓</a>
                 </div>
 
             </div>
         </section>
 
-        
+
         <!-- ============================================================
              SEZIONE 2 — PARALLASSE
              Qui vive la poesia completa. Lo sfondo del castello scorre
@@ -75,7 +78,18 @@
             <div class="parallax-bg"></div>
             <div class="parallax-overlay"></div>
             <div class="parallax-content">
-                <p data-i18n="home.poetry"></p>
+                <p data-i18n="home.poetry">
+                    Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>
+                    Caccamo intreccia il suo respiro all'antica memoria.<br>
+                    Non è solo pietra che sfida le ere e le genti,<br>
+                    <strong>che corre tra le mura di una fortezza possente.</strong><br><br>
+                    Come un gomitolo che lento si srotola,<br>
+                    si diffonde in ogni vicolo, in ogni piccola storia.<br>
+                    Un intreccio di secoli svelato <strong>con amore e mistero,</strong><br>
+                    per chi cerca il cuore pulsante di un borgo vero.<br><br>
+                    <strong>Amunì, imbocca la via,</strong><br>
+                    <strong>la Castellana è qui per farti compagnia.</strong>
+                </p>
             </div>
         </section>
 
@@ -176,6 +190,32 @@
             });
             loadLanguage(currentLang);
         });
+
+        // ============================================================
+        // HEADER COLLASSABILE — SOLO MOBILE (< 900px)
+        // Su desktop l'header resta sempre fisso e visibile: nessuna
+        // modifica al comportamento esistente sopra i 900px.
+        // ============================================================
+        (function () {
+            const header = document.querySelector('.dashboard');
+            let lastScroll = 0;
+            const THRESHOLD = 900; // stessa soglia del breakpoint CSS desktop/mobile
+
+            window.addEventListener('scroll', () => {
+                if (window.innerWidth >= THRESHOLD) {
+                    // su desktop l'header resta sempre visibile, nessuna modifica
+                    header.classList.remove('header-hidden');
+                    return;
+                }
+                const current = window.scrollY;
+                if (current > lastScroll && current > 80) {
+                    header.classList.add('header-hidden');   // scroll giù → nascondi
+                } else {
+                    header.classList.remove('header-hidden'); // scroll su → mostra
+                }
+                lastScroll = current;
+            }, { passive: true });
+        })();
     </script>
 </body>
 </html>
