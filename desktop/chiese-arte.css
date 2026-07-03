@@ -109,6 +109,7 @@ body::before {
 /* rimossa l'animazione "luccichio in scorrimento" (::before) e il
    transform:scale sull'hover — coerente col resto del sito, che
    non usa più effetti da insegna al neon */
+
 .nav-desktop a:hover {
   background: rgba(193, 98, 45, 0.25);
   border-color: var(--terracotta);
