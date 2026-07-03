@@ -8,11 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="chiese-arte.css">
   <style>
-      /* Stile per allineare correttamente la dashboard */
-      .nav-right-group { display: flex; align-items: center; gap: 20px; }
-      .lang-switcher button.active { border: 2px solid #ffd78f !important; background: rgba(255, 215, 160, 0.2) !important; font-weight: bold; }
-      /* Assicura che la dashboard sia flessibile */
-      .dashboard { display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
+      .lang-switcher button.active {
+          border: 2px solid #B8873B !important;
+          background: rgba(184, 135, 59, 0.2) !important;
+          font-weight: bold;
+      }
   </style>
 </head>
 
@@ -21,7 +21,7 @@
   <header class="dashboard">
       <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
-      <div class="nav-right-group">
+      <div class="header-right-actions">
           <nav class="nav-desktop">
               <a href="desktop_index.html" data-i18n="menu.home">Home</a>
               <a href="cittadino.html" data-i18n="menu.citizen">Cittadino</a>
@@ -40,10 +40,10 @@
   <main class="hero">
       <div class="hero-text">
           <h1 data-i18n="pages.chiese_page.page_title">Le Chiese di Caccamo</h1>
-          
+
           <div class="poesia-container">
               <p class="poesia-intro" data-i18n="pages.chiese_page.poesia_intro">Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.</p>
-              
+
               <div class="poesia-corpo">
                   <p data-i18n="pages.chiese_page.verse_angeli">Agli <strong>Angeli</strong> riposa, nel silenzio più sacro,<br>il Beato Giovanni, del borgo simulacro.</p>
                   <p data-i18n="pages.chiese_page.verse_badia">Se scendi alla <strong>Badia</strong>, la terra si fa fiore<br>nel ricamo in maiolica di raro splendore.</p>
@@ -51,32 +51,32 @@
                   <p data-i18n="pages.chiese_page.verse_annunziata">Poi l'<strong>Annunziata</strong> svela le sue volte dipinte,<br>e la torre campanaria dalle guardie mai vinte.</p>
                   <p data-i18n="pages.chiese_page.verse_cappuccini">Sali infine ai <strong>Cappuccini</strong>, sul colle radioso,<br>tra una Pala d'altare e un panorama maestoso.</p>
               </div>
-              
+
               <p class="poesia-outro" data-i18n="pages.chiese_page.poesia_outro">Lasciati guidare dove il tempo si è fermato...</p>
               <p class="click-hint">* Clicca sulle card per scoprire i tesori nascosti</p>
           </div>
       </div>
-    
+
 
       <section class="cards">
           <article class="card" data-img="img/cappuccini.jpg" data-title="I Cappuccini">
               <div class="card-img-wrapper"><img src="img/cappuccini.jpg" alt="I Cappuccini"></div>
               <h3 data-i18n="pages.chiese_page.cappuccini">I Cappuccini</h3>
           </article>
-          <article class="card" data-img="img/parrocchia annunziata.jpg" data-title="Chiesa dell'Annunziata">
-             <div class="card-img-wrapper"><img src="img/parrocchia annunziata.jpg" alt="Chiesa dell'Annunziata"></div>
+          <article class="card" data-img="img/annunziata.jpg" data-title="Chiesa dell'Annunziata">
+             <div class="card-img-wrapper"><img src="img/annunziata.jpg" alt="Chiesa dell'Annunziata"></div>
              <h3 data-i18n="pages.chiese_page.annunziata">Annunziata</h3>
           </article>
-          <article class="card" data-img="img/sanbenedettodellabadia.jpg" data-title="S. Benedetto della Badia">
-              <div class="card-img-wrapper"><img src="img/sanbenedettodellabadia.jpg" alt="S. Benedetto della Badia"></div>
+          <article class="card" data-img="img/badia.jpg" data-title="S. Benedetto della Badia">
+              <div class="card-img-wrapper"><img src="img/badia.jpg" alt="S. Benedetto della Badia"></div>
               <h3 data-i18n="pages.chiese_page.badia">S. Benedetto della Badia</h3>
           </article>
-          <article class="card" data-img="img/santamariadegliangeli.jpg" data-title="Santa Maria degli Angeli">
-              <div class="card-img-wrapper"><img src="img/santamariadegliangeli.jpg" alt="Santa Maria degli Angeli"></div>
+          <article class="card" data-img="img/sandomenico.jpg" data-title="Santa Maria degli Angeli">
+              <div class="card-img-wrapper"><img src="img/sandomenico.jpg" alt="Santa Maria degli Angeli"></div>
               <h3 data-i18n="pages.chiese_page.angeli">S. Maria degli Angeli</h3>
           </article>
-          <article class="card" data-img="img/sangiorgiomartire.jpg" data-title="San Giorgio Martire">
-              <div class="card-img-wrapper"><img src="img/sangiorgiomartire.jpg" alt="San Giorgio Martire"></div>
+          <article class="card" data-img="img/sangiorgio.jpg" data-title="San Giorgio Martire">
+              <div class="card-img-wrapper"><img src="img/sangiorgio.jpg" alt="San Giorgio Martire"></div>
               <h3 data-i18n="pages.chiese_page.sangiorgio">San Giorgio Martire</h3>
           </article>
       </section>
@@ -154,7 +154,6 @@
                       const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
                       if (text) el.placeholder = text;
                   });
-                  // Aggiorna classe active
                   document.querySelectorAll(".lang-switcher button").forEach(btn => {
                       btn.classList.toggle("active", btn.dataset.lang === lang);
                   });
