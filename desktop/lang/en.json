@@ -8,7 +8,7 @@
   },
   "home": {
     "welcome_title": "Welcome to Caccamo",
-    "poetry_intro": "Beyond the hprizon where the lake becomes mirror and glory,>br>Caccamo weaves its breath into ancient memory",
+    "poetry_intro": "Beyond the horizon where the lake becomes mirror and glory,<br>Caccamo weaves its breath into ancient memory.",
     "poetry": "Beyond the horizon where the lake becomes mirror and glory,<br>Caccamo weaves its breath into ancient memory.<br>It is not just stone that defies eras and peoples,<br><strong>that runs within the walls of a mighty fortress.</strong><br><br><strong>Like a ball of yarn that slowly unravels,<br>it spreads into every alley, every small story.</strong><br>A tapestry of centuries revealed <strong>with love and mystery,</strong><br>for those seeking the beating heart of a true village.<br><br><strong>Amunì, take the road,<br>the Castellana is here to keep you company.</strong>",
     "castellana_intro_title": "Experience the most authentic Caccamo",
     "castellana_intro_text": "Let the <strong>Castellana</strong> lead you beyond the surface of the borgo. As a guardian of millenary memories, she will unveil untold stories, forgotten paths, and the authentic flavors of a land that exudes legend.",
@@ -76,7 +76,12 @@
       "annunziata": "Annunziata",
       "badia": "S. Benedetto della Badia",
       "angeli": "S. Maria degli Angeli",
-      "sangiorgio": "San Giorgio Martire"
+      "sangiorgio": "San Giorgio Martire",
+      "route_cappuccini": "Highest point",
+      "route_angeli": "Silence",
+      "route_annunziata": "Painted vaults",
+      "route_badia": "Descending",
+      "route_sangiorgio": "Heart of the village"
     }
   }
 }
