@@ -216,11 +216,12 @@ body::before {
 .click-hint {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
+  font-weight: 700;
   color: var(--terracotta-dark);
-  opacity: 0.85;
-  font-size: 0.9rem;
+  opacity: 0.95;
+  font-size: 1.1rem;
   text-align: center;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   display: block;
 }
 
@@ -295,12 +296,33 @@ body::before {
 .card.side-right { grid-column: 3; justify-self: start; text-align: left; }
 
 .card-frame {
-  flex: 0 0 78px;
-  width: 78px;
-  height: 78px;
+  position: relative;
+  flex: 0 0 108px;
+  width: 108px;
+  height: 108px;
   overflow: hidden;
   background: var(--stone);
   border: 1px solid var(--gold);
+}
+
+/* badge "lente d'ingrandimento" — segnale permanente e discreto
+   che la card è cliccabile/ingrandibile, senza ricorrere a glow */
+.card-frame::after {
+  content: "🔍";
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  background: var(--terracotta);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  pointer-events: none;
 }
 
 .card-frame img {
@@ -308,11 +330,14 @@ body::before {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  animation: gentleBreathe 3.5s ease-in-out infinite;
 }
 
+/* sull'hover/tap il respiro si ferma e l'immagine zooma leggermente di più,
+   così il feedback di interazione resta distinto dall'animazione di richiamo */
 .card:hover .card-frame img {
-  transform: scale(1.06);
+  animation-play-state: paused;
+  transform: scale(1.08);
 }
 
 .card-text { max-width: 260px; }
@@ -656,9 +681,9 @@ body::before {
   }
 
   .card-frame {
-    flex: 0 0 96px;
-    width: 96px;
-    height: 96px;
+    flex: 0 0 145px;
+    width: 145px;
+    height: 145px;
   }
 
   .castellana-widget-area {
@@ -701,4 +726,9 @@ body::before {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gentleBreathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
 }
