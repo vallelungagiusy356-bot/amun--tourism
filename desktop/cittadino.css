@@ -1,4 +1,24 @@
 /* ==========================================================================
+   CITTADINO DEL BORGO — UNIFORMATO ALLO STILE HOMEPAGE
+   Stessi design token (colori, font, raggi, spessori bordo) di
+   css_style2_v2.css, applicati alla pagina "Cittadino del Borgo".
+   ========================================================================== */
+
+:root {
+    --sky: #5B8FAE;
+    --sea: #1B4965;
+    --sea-ink: #14283A;
+    --stone: #EFE6D3;
+    --stone-dim: #DCCFAF;
+    --terracotta: #C1622D;
+    --gold: #B8873B;
+    --gold-light: #D4AF6A;
+    --wine: #6B1F2A;
+    --ink: #22303B;
+    --cream-text: #F3ECDC;
+}
+
+/* ==========================================================================
    1. RESET, SFONDO E FONT STRUTTURALI
    ========================================================================== */
 * {
@@ -10,9 +30,9 @@
 html, body {
     width: 100%;
     min-height: 100vh;
-    font-family: "Segoe UI", system-ui, sans-serif;
-    color: #ffd78f;
-    background: transparent !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--cream-text);
+    background: var(--sea-ink) !important;
     overflow-x: hidden;
 }
 
@@ -23,288 +43,405 @@ html, body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: brightness(0.75) contrast(1.1) saturate(1.1);
+    filter: brightness(0.68) contrast(1.08) saturate(1.05);
     z-index: -5 !important;
     pointer-events: none;
 }
 
+.scene-background::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg,
+        rgba(20, 40, 58, 0.4) 0%,
+        rgba(20, 40, 58, 0.25) 45%,
+        var(--sea-ink) 100%);
+    z-index: -4;
+    pointer-events: none;
+}
+
 /* ==========================================================================
-   2. DASHBOARD (Stile Fisso Desktop)
+   2. DASHBOARD (identica alla homepage)
    ========================================================================== */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px;
-    background: rgba(0, 0, 0, 0.65);
-    border-bottom: 2px solid rgba(255, 215, 160, 0.85);
+    height: 75px;
+    background: rgba(15, 25, 34, 0.92);
+    border-bottom: 2px solid var(--gold);
     backdrop-filter: blur(18px) saturate(200%);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 40px;
     z-index: 9999;
-    box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
+    box-shadow: 0 2px 0 rgba(212, 175, 106, 0.25);
 }
 
 .dashboard .logo-title {
-    font-size: 1.55rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    color: #ffd78f;
-    text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 6px rgba(184, 135, 59, 0.4);
     white-space: nowrap;
 }
 
-.nav-desktop { 
-    display: flex; 
-    gap: 22px; 
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.nav-desktop a, .dashboard .home-btn {
-    color: #ffd78f;
+.dashboard .home-btn {
+    color: var(--cream-text);
     font-weight: 600;
     text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.75);
-    box-shadow: 0 0 14px rgba(255, 215, 160, 0.55), inset 0 0 8px rgba(255, 215, 160, 0.35);
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 8px 20px;
+    border-radius: 2px;
+    background: rgba(20, 40, 58, 0.5);
+    border: 1px solid rgba(184, 135, 59, 0.6);
     cursor: pointer;
     white-space: nowrap;
+    transition: all 0.3s ease;
 }
 
-.nav-desktop a:hover, .dashboard .home-btn:hover {
-    background: rgba(255, 215, 160, 0.15);
-    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85);
-    transform: scale(1.05);
+.dashboard .home-btn:hover {
+    background: rgba(184, 135, 59, 0.15);
+    border-color: var(--gold);
+    color: var(--gold-light);
 }
 
-.lang-switcher { 
-    display: flex; 
-    gap: 12px; 
-    align-items: center; 
+.lang-switcher {
+    display: flex;
+    gap: 6px;
+    align-items: center;
 }
 
 .lang-switcher button {
-    width: 42px;
-    height: 42px;
-    font-size: 1.2rem;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.65);
-    border: 1px solid rgba(255, 215, 160, 0.85);
-    color: #ffd78f;
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 2px;
+    background: rgba(20, 40, 58, 0.6);
+    border: 1px solid rgba(184, 135, 59, 0.75);
+    color: var(--gold);
     cursor: pointer;
 }
 
 /* ==========================================================================
-   3. BLOCCO INTRODUTTIVO
+   3. BLOCCO INTRODUTTIVO (stessa gerarchia tipografica dell'hero homepage)
    ========================================================================== */
 .citizen-frame-layout {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 120px 20px 0px 20px;
+    padding: 135px 40px 0 40px;
     display: flex;
     justify-content: flex-start;
 }
 
-.citizen-intro-container { 
-    max-width: 650px; 
+.citizen-intro-container {
+    max-width: 650px;
 }
 
 .category-tag {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #ffd28c;
+    letter-spacing: 2.5px;
+    color: var(--gold-light);
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     display: inline-block;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
 .main-title {
-    font-size: 2.8rem;
-    color: #ffd78f;
-    margin: 0 0 10px 0;
-    font-weight: 700;
-    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    color: var(--cream-text);
+    margin: 0 0 14px 0;
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .gold-divider {
     border: none;
     height: 1px;
-    background: linear-gradient(90deg, #ffd78f 0%, transparent 90%);
-    width: 100%;
-    margin-bottom: 15px;
+    background: var(--gold);
+    width: 60px;
+    margin: 0 0 20px 0;
+    position: relative;
+}
+
+.gold-divider::before {
+    content: "❧";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--sea-ink);
+    color: var(--gold);
+    font-size: 13px;
+    padding-right: 8px;
 }
 
 .text-paragraph {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: #f0e6d2;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    line-height: 1.7;
+    color: #fff;
     margin: 0;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
 }
 
 /* ==========================================================================
-   4. GRIGLIA CARD (Desktop)
+   4. GRIGLIA CARD
+   Padding a destra riservato allo spazio della Castellana fissa, così
+   il testo delle card non finisce mai coperto dal personaggio.
    ========================================================================== */
 .citizen-centered-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 32px;
     width: 100%;
     max-width: 950px;
-    margin: 50px auto 40px auto;
-    padding: 0 20px;
+    margin: 50px auto 60px auto;
+    padding: 0 40px 220px 40px; /* spazio in basso per non finire sotto la Castellana */
 }
 
 .quadrant {
     position: relative;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 215, 160, 0.6);
-    border-radius: 20px;
+    background: rgba(20, 40, 58, 0.6);
+    border: 1px solid rgba(184, 135, 59, 0.6);
+    border-radius: 4px;
     width: 100%;
     text-align: left;
-    padding: 40px 60px;
+    padding: 32px 36px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 20px rgba(255, 215, 160, 0.25);
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    overflow: hidden;
+    box-shadow: 0 0 18px rgba(184, 135, 59, 0.15);
     cursor: pointer;
+    /* Solo transizione su colore/ombra: niente transform+blur insieme,
+       che su alcuni Chrome Android sfoca il testo durante l'hover/tap. */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-.quadrant:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 0 35px rgba(255, 215, 160, 0.5);
-    border-color: rgba(255, 215, 160, 0.9);
+.quadrant:hover,
+.quadrant:focus-visible {
+    border-color: var(--gold);
+    background: rgba(20, 40, 58, 0.78);
+    box-shadow: 0 0 26px rgba(184, 135, 59, 0.35);
 }
 
-.quadrant::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -150%;
-    width: 20%;
-    height: 200%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
-    transform: rotate(-30deg);
-    animation: desktopGlowLoop 9s infinite ease-in-out;
-    pointer-events: none;
+.card-text-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--cream-text);
+    margin-bottom: 12px;
 }
 
-.card-text-block h2 { 
-    font-size: 1.8rem; 
-    color: #fff; 
-    margin-bottom: 15px; 
-}
-
-.card-description { 
-    font-size: 1.15rem; 
-    line-height: 1.7; 
-    color: #d1c5ad; 
+.card-description {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--stone-dim);
 }
 
 /* ==========================================================================
-   5. CHAT E CASTELLANA CORRETTE (Desktop)
+   5. CASTELLANA E CHAT
+   Dimensioni ridotte rispetto alla versione precedente: la figura resta
+   un widget d'angolo, non un elemento che invade i contenuti sopra di sé.
    ========================================================================== */
 .castellana-video-wrapper {
     position: fixed;
-    bottom: 0px; /* Ancorata in basso per non farle tagliare la testa */
-    right: 2%;
-    width: 170px; /* Leggermente più snella per mantenere le proporzioni */
-    z-index: 100 !important;
+    bottom: 0;
+    right: 3%;
+    width: 130px;
+    z-index: 100;
     transition: transform 0.3s ease;
     cursor: pointer;
 }
 
-.castellana-video { 
-    width: 100%; 
-    height: auto; 
-    max-height: 45vh; /* Evita che diventi più alta dello schermo */
-    object-fit: contain; /* Mantiene le proporzioni senza deformare */
-    display: block; 
-    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.8)); 
+.castellana-video-wrapper:hover {
+    transform: translateY(-4px);
+}
+
+.castellana-video {
+    width: 100%;
+    height: auto;
+    max-height: 32vh;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6));
 }
 
 .castellana-tooltip {
-    position: absolute; 
-    top: -40px; 
-    left: 50%; 
+    position: absolute;
+    top: -36px;
+    left: 50%;
     transform: translateX(-50%);
-    padding: 6px 14px; 
-    background: rgba(0, 0, 0, 0.85); 
-    border: 1px solid rgba(255, 215, 160, 0.9);
-    border-radius: 8px; 
-    color: #ffd78f; 
-    font-size: 0.75rem; 
+    padding: 6px 14px;
+    background: rgba(20, 40, 58, 0.85);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    color: var(--gold);
+    font-size: 0.75rem;
     font-weight: 700;
-    white-space: nowrap; 
-    display: none; 
-    opacity: 0; 
+    white-space: nowrap;
+    opacity: 0;
     pointer-events: none;
-    z-index: 9999; 
-    animation: tooltipPulse 2.6s ease-in-out infinite;
+    z-index: 9999;
+    transition: opacity 0.25s ease;
 }
 
-.castellana-video-wrapper:hover .castellana-tooltip { 
-    display: block; 
-    opacity: 1; 
+.castellana-video-wrapper:hover .castellana-tooltip {
+    opacity: 1;
 }
 
 .chat-desktop {
-    position: fixed; 
-    bottom: 180px; /* Adattato alla nuova altezza della castellana */
-    right: 2%; 
-    width: 320px; 
+    position: fixed;
+    bottom: 150px;
+    right: 3%;
+    width: 320px;
     height: 350px;
-    background: rgba(5, 3, 2, 0.95) !important; 
+    background: rgba(15, 25, 34, 0.96);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 215, 160, 0.85); 
-    border-radius: 18px; 
+    border: 1px solid var(--gold);
+    border-radius: 4px;
     padding: 16px;
-    display: none; 
-    z-index: 999; 
+    display: none;
+    z-index: 999;
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
 }
 
-.chat-desktop.active { 
-    display: flex; 
-    flex-direction: column; 
-    animation: fadeIn 0.3s ease forwards; 
+.chat-desktop.active {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cream-text);
+    background: var(--sea-ink);
+    margin: -16px -16px 15px -16px;
+    padding: 12px 15px;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid var(--gold);
+}
+
+.avatar-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #5FD068;
+    box-shadow: 0 0 6px #5FD068;
+}
+
+.chat-header span {
+    flex-grow: 1;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.close-chat-btn {
+    background: transparent;
+    border: none;
+    color: var(--cream-text);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.close-chat-btn:hover {
+    color: var(--gold-light);
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.chat-messages .message {
+    color: var(--ink);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+    max-width: 90%;
+    border-left: 2px solid var(--gold);
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input-row input {
+    flex-grow: 1;
+    padding: 10px 14px;
+    border-radius: 2px;
+    border: 1px solid rgba(184, 135, 59, 0.5);
+    background: #fff;
+    color: var(--ink);
+    outline: none;
+}
+
+.chat-input-row input:focus {
+    border-color: var(--gold);
+}
+
+.chat-input-row .mic-btn {
+    background: var(--wine);
+    border: none;
+    border-radius: 2px;
+    padding: 0 14px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.chat-input-row .mic-btn:hover {
+    background: #521720;
 }
 
 /* ==========================================================================
-   6. SEZIONE RESPONSIVE OTTIMIZZATA (Tablet e Mobile)
+   6. RESPONSIVE (tablet e mobile) — stessa gerarchia, più stretta
    ========================================================================== */
 @media screen and (max-width: 950px) {
-    
-    /* DASHBOARD RESPONSIVA */
-    .dashboard { 
+
+    .dashboard {
         height: auto !important;
-        padding: 15px !important;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-desktop {
+        padding: 10px !important;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        gap: 8px;
     }
 
-    .lang-switcher {
+    .dashboard .logo-title {
+        flex: 1 1 100%;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    .nav-right-group {
+        flex: 1 1 100%;
+        justify-content: center;
         flex-wrap: wrap;
-        justify-content: center;
+        gap: 8px;
     }
 
-    /* TITOLI CHE ORA NON VENGONO PIÙ COPERTI DALLA DASHBOARD */
     .citizen-frame-layout {
-        padding-top: 250px !important; /* Molto più spazio in alto per via della dashboard mobile */
+        padding: 130px 20px 0 20px;
         text-align: center;
         justify-content: center;
     }
@@ -314,63 +451,59 @@ html, body {
     }
 
     .gold-divider {
-        background: linear-gradient(90deg, transparent 0%, #ffd78f 50%, transparent 100%);
+        margin: 0 auto 20px auto;
+        background: var(--gold);
     }
 
-    .main-title { 
-        font-size: 2rem !important; 
+    .gold-divider::before {
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
-    /* GRIGLIA CHE SI IMPILA CORRETTAMENTE */
+    .main-title {
+        font-size: 1.9rem;
+    }
+
+    /* GRIGLIA CHE SI IMPILA */
     .citizen-centered-grid {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-        padding: 0 15px !important;
-        margin: 30px auto 100px auto !important;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 16px 190px 16px; /* spazio in basso per la Castellana ridotta */
+        margin: 30px auto 40px auto;
     }
 
-    /* CARD RIDIMENSIONATE PER IL MOBILE */
     .quadrant {
-        padding: 25px 20px !important; 
-        text-align: center !important;
-    }
-    
-    .card-text-block h2 { 
-        font-size: 1.4rem !important; 
-    }
-    
-    .card-description { 
-        font-size: 1rem !important; 
+        padding: 24px 20px;
+        text-align: center;
     }
 
-    /* CASTELLANA SCALATA PER PICCOLI SCHERMI */
-    .castellana-video-wrapper {
-        bottom: 10px !important;
-        right: 15px !important;
-        width: 100px !important; /* Piccola e non intrusiva su mobile */
+    .card-text-block h2 {
+        font-size: 1.3rem;
     }
-    
+
+    .card-description {
+        font-size: 1rem;
+    }
+
+    /* CASTELLANA RIDOTTA SU MOBILE — piccola e non intrusiva */
+    .castellana-video-wrapper {
+        width: 90px;
+        right: 12px;
+        bottom: 8px;
+    }
+
     .chat-desktop {
-        bottom: 130px !important;
-        left: 10px !important;
-        right: 10px !important;
-        width: calc(100% - 20px) !important;
+        bottom: 110px;
+        left: 10px;
+        right: 10px;
+        width: calc(100% - 20px);
     }
 }
 
 /* ==========================================================================
    7. ANIMAZIONI
    ========================================================================== */
-@keyframes fadeIn { 
-    from { opacity: 0; transform: translateY(10px); } 
-    to { opacity: 1; transform: translateY(0); } 
-}
-@keyframes tooltipPulse { 
-    0%, 100% { transform: translateX(-50%) scale(1); } 
-    50% { transform: translateX(-50%) scale(1.05); } 
-}
-@keyframes desktopGlowLoop { 
-    0% { left: -110%; } 
-    12% { left: 130%; } 
-    100% { left: 130%; } 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
