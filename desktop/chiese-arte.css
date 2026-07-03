@@ -295,12 +295,25 @@ body::before {
 .card h3 {
   font-family: 'Playfair Display', serif;
   font-size: 0.9rem;
-  padding: 1rem 0.5rem;
+  padding: 0.6rem 0.5rem 1rem;
   color: var(--sea);
   text-align: center;
   background: var(--stone);
   border-top: 1px solid rgba(193, 98, 45, 0.3);
   margin-top: auto;
+}
+
+.card-route-label {
+  display: block;
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--terracotta);
+  background: var(--stone);
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(193, 98, 45, 0.3);
 }
 
 /* al hover solo un discreto sollevamento e zoom immagine,
@@ -606,6 +619,7 @@ body::before {
     grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
     padding-bottom: 3rem;
+    padding-right: 170px; /* riserva lo spazio del widget Castellana (110px + margini), evita che l'ultima colonna ci finisca sotto */
   }
 
   .card img {
@@ -643,6 +657,7 @@ body::before {
 @media (min-width: 601px) and (max-width: 899px) {
   .cards {
     grid-template-columns: repeat(3, 1fr);
+    padding-right: 140px; /* riserva lo spazio del widget Castellana (95px + margini) su questo breakpoint */
   }
   .hero {
     margin-top: 150px;
