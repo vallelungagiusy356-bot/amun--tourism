@@ -1,24 +1,28 @@
 /* ============================================================
-   1. RESET + VARIABILI GLOBALI
+   1. RESET + VARIABILI GLOBALI — PALETTE REGALE MONOCROMATICA
    ============================================================ */
 :root {
-    --gold: #ffd78f;
-    --gold-soft: rgba(255, 215, 160, 0.15);
-    --gold-strong: rgba(255, 215, 160, 0.4);
-    --gold-bg: rgba(255, 215, 160, 0.05);
+    --gold: #B8873B;              /* era #ffd78f — oro antico, coerente con le altre pagine */
+    --gold-light: #D4AF6A;
+    --gold-soft: rgba(184, 135, 59, 0.15);
+    --gold-strong: rgba(184, 135, 59, 0.4);
 
-    --dark: #050302;
-    --dark-soft: rgba(5, 3, 2, 0.85);
-    --dark-overlay-1: rgba(5, 3, 2, 0.92);
-    --dark-overlay-2: rgba(5, 3, 2, 0.65);
+    --sea-deep: #0F2C3E;          /* nuovo — sfondo monocromatico di tutta la pagina */
+    --wine: #6B1F2A;              /* nuovo — accento araldico */
+    --parchment: #F3EAD9;
+
+    --dark: #0F2C3E;              /* era #050302 nero puro: ora blu profondo, coerente col resto del sito */
+    --dark-soft: rgba(15, 44, 62, 0.85);
+    --dark-overlay-1: rgba(15, 44, 62, 0.92);
+    --dark-overlay-2: rgba(15, 44, 62, 0.65);
 
     --text-light: #e6e0d4;
     --text-strong: #fff;
 
-    --shadow-strong: rgba(0, 0, 0, 0.9);
-    --shadow-soft: rgba(0, 0, 0, 0.5);
+    --shadow-strong: rgba(0, 0, 0, 0.7);
+    --shadow-soft: rgba(0, 0, 0, 0.4);
 
-    --radius: 12px;
+    --radius: 2px;                /* era 12px: ora quasi squadrato, coerente col resto */
     --transition: 0.3s ease;
 }
 
@@ -29,73 +33,49 @@ html, body {
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
     color: var(--text-light);
-    /* CAMBIA QUESTO: da #050302 a transparent */
-    background: transparent !important; 
+    background: var(--sea-deep) !important;   /* era transparent: ora il monocromatico vero e proprio */
     overflow-x: hidden;
 }
 
-
 /* ============================================================
-   2. VIDEO BACKGROUND CINEMATICO & SFONDO AURA
+   2. SFONDO MONOCROMATICO (sostituisce il video + overlay dorato)
    ============================================================ */
 .scene-background-container {
+    /* Blocco non più necessario se hai tolto il video dall'HTML.
+       Lasciato qui solo come rete di sicurezza nel caso l'elemento
+       esista ancora in qualche pagina: diventa un semplice sfondo piatto. */
     position: fixed;
     inset: 0;
-    z-index: -1; 
-    overflow: hidden;
-    /* AGGIUNGI QUESTO: Il nero serve qui, non sul body */
-    background-color: #050302; 
+    z-index: -1;
+    background: var(--sea-deep);
 }
 
-.scene-background-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    
-    /* Aggiungi questa riga per aumentare il contrasto del video */
-    filter: contrast(1.25); 
-}
-
-
-.scene-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg,
-        rgba(5, 3, 2, 0.6) 0%,
-        rgba(5, 3, 2, 0.4) 55%,
-        rgba(5, 3, 2, 0.6) 100%
-    );
-    backdrop-filter: blur(1px);
-}
-
+/* Se rimuovi del tutto il markup del video, queste regole non servono più */
+.scene-background-container video,
+.scene-overlay,
 .scene-background-container::after {
-    content: '';
-    position: absolute;
+    display: none;
+}
+
+/* nuovo: leggerissima vignatura agli angoli, al posto del bagliore dorato pulsante */
+body::before {
+    content: "";
+    position: fixed;
     inset: 0;
+    z-index: -1;
     pointer-events: none;
-    z-index: 2;
-    background: radial-gradient(
-        circle at 50% 50%,
-        rgba(255, 240, 200, 0.20) 0%,
-        rgba(255, 215, 120, 0.10) 35%,
-        rgba(255, 200, 80, 0.05) 55%,
-        transparent 85%
-    );
-    backdrop-filter: brightness(1.18) saturate(1.08);
-    -webkit-backdrop-filter: brightness(1.18) saturate(1.08);
-    box-shadow: inset 0 0 120px rgba(255, 215, 160, 0.15);
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.35) 100%);
 }
 
 /* ============================================================
-   3. DASHBOARD PREMIUM STRUTTURATA (MOBILE FIRST)
+   3. DASHBOARD — versione squadrata, senza animazioni luccicanti
    ============================================================ */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(10, 25, 36, 0.92);          /* era nero puro rgba(0,0,0,.85) */
     border-bottom: 2px solid var(--gold);
     backdrop-filter: blur(18px) saturate(200%);
     display: flex;
@@ -105,7 +85,7 @@ html, body {
     padding: 15px 20px;
     gap: 12px;
     z-index: 999;
-    box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
+    box-shadow: 0 2px 0 rgba(212, 175, 106, 0.25);  /* era glow diffuso: ora linea sottile incisa */
     box-sizing: border-box;
 }
 
@@ -113,7 +93,8 @@ html, body {
     font-size: 1.4rem;
     font-weight: 700;
     color: var(--gold);
-    text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 6px rgba(184, 135, 59, 0.4);   /* glow ridotto */
 }
 
 .nav-desktop {
@@ -124,37 +105,32 @@ html, body {
 }
 
 .nav-desktop a {
-    color: #ffd78f;
+    color: var(--gold-light);
     font-weight: 600;
     text-decoration: none;
-    font-size: 0.9rem;
-    padding: 6px 14px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.75);
-    box-shadow: 0 0 14px rgba(255, 215, 160, 0.55), inset 0 0 8px rgba(255, 215, 160, 0.35);
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
+    padding: 6px 16px;
+    border-radius: 2px;                              /* era 12px: ora squadrato */
+    background: rgba(15, 44, 62, 0.6);
+    border: 1px solid rgba(184, 135, 59, 0.7);
+    box-shadow: none;                                /* era doppia ombra glow: rimossa */
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
+/* rimosso completamente l'elemento ::before con l'animazione "luccichio in scorrimento":
+   era il dettaglio più da insegna al neon di tutta la pagina */
 .nav-desktop a::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -110%;
-    width: 35%;
-    height: 200%;
-    background: linear-gradient(to right, rgba(255, 215, 160, 0) 0%, rgba(255, 215, 160, 0.2) 50%, rgba(255, 215, 160, 0) 100%);
-    transform: rotate(-45deg);
-    animation: desktopGlowLoop 8s infinite ease-in-out;
-    pointer-events: none;
+    content: none;
 }
 
 .nav-desktop a:hover {
-    background: rgba(255, 215, 160, 0.15);
-    box-shadow: 0 0 22px rgba(255, 215, 160, 0.85), inset 0 0 12px rgba(255, 215, 160, 0.45);
-    transform: scale(1.05);
+    background: rgba(184, 135, 59, 0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: none;                                 /* era scale(1.05): tolto l'effetto "gonfia al hover" */
 }
 
 .header-right-actions {
@@ -172,24 +148,24 @@ html, body {
 .lang-switcher button {
     width: 36px;
     height: 36px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: bold;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.65);
-    border: 1px solid rgba(255, 215, 160, 0.85);
-    color: #ffd78f;
+    border-radius: 2px;                              /* era 8px: ora squadrato */
+    background: rgba(15, 44, 62, 0.6);
+    border: 1px solid rgba(184, 135, 59, 0.85);
+    color: var(--gold);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 10px rgba(255, 215, 160, 0.4), inset 0 0 6px rgba(255, 215, 160, 0.3);
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: none;
+    transition: all 0.3s ease;
 }
 
 .lang-switcher button:hover {
-    background: rgba(255, 215, 160, 0.15);
-    box-shadow: 0 0 15px rgba(255, 215, 160, 0.7);
-    transform: scale(1.05);
+    background: rgba(184, 135, 59, 0.15);
+    box-shadow: none;
+    transform: none;
 }
 
 .home-btn {
@@ -197,7 +173,7 @@ html, body {
     border: 1px solid var(--gold);
     color: var(--gold);
     padding: 6px 14px;
-    border-radius: 8px;
+    border-radius: 2px;
     cursor: pointer;
     font-weight: 600;
     font-size: 0.85rem;
@@ -206,17 +182,16 @@ html, body {
 
 .home-btn:hover {
     background: var(--gold);
-    color: var(--dark);
-    box-shadow: 0 0 15px var(--gold-soft);
+    color: var(--sea-deep);
 }
 
 /* ============================================================
-   4. LAYOUT STRUTTURALE CENTRATO & POESIA (CORMORANT GARAMOND)
-============================================================ */
+   4. LAYOUT CENTRATO & POESIA
+   ============================================================ */
 .hero {
     position: relative;
     z-index: 1;
-    margin-top: 190px; 
+    margin-top: 190px;
     text-align: center;
     padding: 1.5rem;
     flex-grow: 1;
@@ -228,63 +203,80 @@ html, body {
 }
 
 .category-tag {
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    color: #ffd78f; 
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--wine);                              /* era oro: ora bordeaux, coerente con l'eyebrow delle altre pagine */
     font-weight: 700;
     margin-bottom: 5px;
     display: block;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: none;
 }
 
 .hero-text h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 5vw, 3.2rem);
-    color: var(--gold);
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.95), 0 4px 25px rgba(255, 215, 160, 0.3);
+    color: var(--parchment);                         /* era oro pieno: ora crema, meno "insegna" */
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
     margin-bottom: 0.5rem;
 }
 
 .hero-text::after {
-    content: "";
+    content: "❧";                                    /* era una linea piatta: ora il fiorone tipografico, coerente col resto */
     display: block;
-    width: 30%;
-    height: 1px;
+    width: auto;
     margin: 0.8rem auto 2rem;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    color: var(--gold);
+    font-size: 15px;
+}
+
+/* ============================================================
+   4bis. IMMAGINE DEL CASTELLO — trattata come fotografia incorniciata,
+   non più come sfondo a piena pagina
+   ============================================================ */
+.castle-hero-image {
+    max-width: 620px;
+    width: 100%;
+    margin: 0 auto 2.5rem;
+    padding: 10px;
+    background: rgba(15, 44, 62, 0.4);
+    border: 1px solid var(--gold);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.castle-hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .poesia-container {
     max-width: 800px;
     margin: 0 auto 2.5rem auto;
     padding: 1rem 1.5rem;
-    background: transparent; 
-    border: none;             
-    backdrop-filter: none;    
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
     -webkit-backdrop-filter: none;
     box-shadow: none;
     pointer-events: auto;
 }
 
 .poesia-corpo p {
-    /* Uniformato all'eleganza di chiese-arte con Cormorant Garamond */
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.2rem, 2.6vw, 1.45rem); 
+    font-size: clamp(1.2rem, 2.6vw, 1.45rem);
     line-height: 1.8;
-    color: #fff; 
+    color: #fff;
     font-style: italic;
     margin-bottom: 1.8rem;
-    text-shadow: 
-        2px 2px 4px rgba(0, 0, 0, 1), 
-        -2px -2px 4px rgba(0, 0, 0, 1),
-        0 0 15px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);       /* era doppia ombra pesante: ridotta */
 }
 
 .poesia-corpo strong {
-    color: #ffd78f;
+    color: var(--gold-light);
     font-style: normal;
     font-weight: 600;
-    text-shadow: 0 0 10px rgba(255, 215, 160, 0.6);
+    text-shadow: none;
 }
 
 .descrizione-storica p {
@@ -295,28 +287,31 @@ html, body {
 
 .highlight-para {
     padding: 10px 20px;
-    background: rgba(255, 215, 160, 0.04); 
-    border-radius: 8px;
+    background: rgba(184, 135, 59, 0.06);
+    border-left: 2px solid var(--gold);              /* nuovo dettaglio "manoscritto", coerente con le altre pagine */
+    border-radius: 0;                                 /* era 8px: ora squadrato */
     display: inline-block;
     max-width: 95%;
     margin: 0 auto;
 }
 
 .castle-dress-inline {
-    background: transparent;
-    padding: 10px;
+    background: rgba(15, 44, 62, 0.35);               /* nuovo: piccola targa attorno all'abito, coerente con l'immagine del castello */
+    border: 1px solid var(--gold);
+    padding: 16px;
     text-align: center;
     margin: 2rem auto;
+    max-width: 260px;
 }
 
 .dress-img-inline {
-    width: 140px; 
-    filter: drop-shadow(0 4px 20px rgba(0,0,0,1));
+    width: 140px;
+    filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
     transition: transform 0.4s ease;
 }
 
 .dress-img-inline:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .dress-caption-inline {
@@ -326,7 +321,7 @@ html, body {
     margin-top: 12px;
     letter-spacing: 1px;
     font-style: italic;
-    text-shadow: 0 2px 6px rgba(0,0,0,1);
+    text-shadow: none;
 }
 
 .poesia-outro {
@@ -335,12 +330,12 @@ html, body {
     font-size: 1.25rem;
     color: var(--gold);
     margin-top: 1.5rem;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
+    text-shadow: none;
 }
 
 /* ============================================================
-   5. CASTELLANA INTERFACCIA ED AVATAR (STILE CHIESE-ARTE)
-============================================================ */
+   5. CASTELLANA WIDGET — senza pulsazione continua
+   ============================================================ */
 .castellana-widget-area {
     position: fixed;
     right: 1.2rem;
@@ -353,93 +348,84 @@ html, body {
     pointer-events: auto;
 }
 
-/* DIAMETRO VIA DI MEZZO PER MOBILE */
 .castellana-video-wrapper {
-    width: 78px;   
+    width: 78px;
     height: 78px;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid #ffd78f;
+    border: 3px solid var(--gold);
     background: #000;
-    box-shadow: 0 0 20px rgba(255, 215, 160, 0.4), 0 4px 15px rgba(0,0,0,0.6);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);           /* era doppio glow: ridotto a un'ombra sola */
     cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
     position: relative;
 }
 
+/* rimossa l'animazione widgetPulse: un pulsing continuo è un tic da app,
+   non da oggetto regale — resta solo il bordo oro fisso */
 .castellana-video-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    box-shadow: 0 0 15px #ffd78f;
-    opacity: 0.5;
-    animation: widgetPulse 2.5s infinite alternate ease-in-out;
-    pointer-events: none;
+    content: none;
 }
 
 .castellana-video-wrapper:hover {
-    transform: scale(1.06);
-    box-shadow: 0 0 30px rgba(255, 215, 160, 0.85);
+    transform: scale(1.04);
 }
 
-/* PROPORZIONE VISO CORRETTA (NON TAGLIATO) */
 .castellana-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 15%; 
+    object-position: center 15%;
 }
 
 .castellana-tooltip {
-    background: linear-gradient(135deg, #ffd78f, #e5b25d);
-    color: #050302;
-    padding: 0.3rem 0.8rem;
-    border-radius: 999px;
+    background: var(--gold);
+    color: var(--sea-deep);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;                               /* era pillola 999px: ora squadrato */
     font-weight: 700;
     font-size: 0.65rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     pointer-events: none;
 }
 
-/* CHAT ORIENTATA CORRETTAMENTE SOPRA IL WIDGET */
 .chat-desktop {
     position: fixed;
     right: 1.5rem;
-    bottom: 125px; 
+    bottom: 125px;
     width: 290px;
     height: 330px;
-    background: rgba(10, 6, 4, 0.97);
-    border-radius: 1rem;
-    border: 2px solid #ffd78f;
+    background: var(--parchment);                     /* era quasi-nero: ora pannello chiaro leggibile */
+    border-radius: 2px;                                /* era 1rem: ora squadrato */
+    border: 1px solid var(--gold);
     backdrop-filter: blur(12px);
-    display: none; /* Regolata da JS flex/none */
+    display: none;
     flex-direction: column;
     overflow: hidden;
     z-index: 99999;
     padding: 14px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .chat-header {
     display: flex;
     justify-content: space-between;
-    color: #ffd78f;
+    color: var(--sea-deep);                            /* era oro su sfondo scuro: ora scuro su pannello chiaro */
     font-weight: bold;
     margin-bottom: 12px;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 215, 160, 0.2);
+    border-bottom: 1px solid var(--gold);
     padding-bottom: 6px;
 }
 
 .avatar-status-dot {
     width: 8px;
     height: 8px;
-    background: #00ff66;
+    background: #3E8C5A;                               /* verde meno "neon" del precedente #00ff66 */
     border-radius: 50%;
-    box-shadow: 0 0 8px #00ff66;
+    box-shadow: none;
     display: inline-block;
     margin-right: 6px;
 }
@@ -447,14 +433,14 @@ html, body {
 .close-chat-btn {
     background: transparent;
     border: none;
-    color: #ffd78f;
+    color: var(--sea-deep);
     cursor: pointer;
     font-size: 1.1rem;
     transition: color 0.2s;
 }
 
 .close-chat-btn:hover {
-    color: #fff;
+    color: var(--wine);
 }
 
 .chat-messages {
@@ -463,11 +449,11 @@ html, body {
     font-size: 0.9rem;
     line-height: 1.45;
     margin-bottom: 12px;
-    color: #f7f2e9;
+    color: var(--sea-deep);                            /* era testo chiaro su sfondo scuro: ora scuro su pannello chiaro */
 }
 
 .system-msg {
-    border-left: 2px solid #ffd78f;
+    border-left: 2px solid var(--gold);
     padding-left: 8px;
 }
 
@@ -478,38 +464,38 @@ html, body {
 
 .chat-input-row input {
     flex-grow: 1;
-    background: rgba(0,0,0,0.6);
-    border: 1px solid rgba(255, 215, 160, 0.3);
+    background: #fff;
+    border: 1px solid rgba(184, 135, 59, 0.4);
     padding: 8px 12px;
-    border-radius: 8px;
-    color: #fff;
+    border-radius: 2px;
+    color: var(--sea-deep);
     font-size: 0.85rem;
 }
 
 .chat-input-row input:focus {
     outline: none;
-    border-color: #ffd78f;
+    border-color: var(--gold);
 }
 
 .mic-btn {
-    background: rgba(255, 215, 160, 0.15);
-    border: 1px solid #ffd78f;
-    border-radius: 8px;
+    background: var(--wine);
+    border: none;
+    border-radius: 2px;
     padding: 0 10px;
     cursor: pointer;
     transition: background 0.2s;
-    color: #ffd78f;
+    color: #fff;
 }
 
 .mic-btn:hover {
-    background: rgba(255, 215, 160, 0.3);
+    background: #521720;
 }
 
 /* ============================================================
    6. OPTIMIZATION DESKTOP (DA 900PX IN SU)
-============================================================ */
+   ============================================================ */
 @media screen and (min-width: 900px) {
-    
+
     .dashboard {
         height: 75px;
         flex-direction: row;
@@ -538,6 +524,10 @@ html, body {
         font-size: 3.2rem;
     }
 
+    .castle-hero-image {
+        max-width: 720px;
+    }
+
     .poesia-container {
         background: transparent;
         border: 1px solid transparent;
@@ -546,26 +536,26 @@ html, body {
     }
 
     .poesia-container:hover {
-        background: rgba(5, 3, 2, 0.55);
-        border: 1px solid rgba(255, 215, 160, 0.2);
-        box-shadow: 0 0 35px rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(8px) saturate(120%);
-        -webkit-backdrop-filter: blur(8px) saturate(120%);
+        background: rgba(15, 44, 62, 0.4);
+        border: 1px solid var(--gold);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(6px) saturate(120%);
+        -webkit-backdrop-filter: blur(6px) saturate(120%);
     }
 
-     .poesia-corpo p {
-        font-size: 1.7rem; /* Aumentato: era 1.45rem */
-        line-height: 1.6;  /* Aumentato leggermente per mantenere leggibilità con testo più grande */
+    .poesia-corpo p {
+        font-size: 1.7rem;
+        line-height: 1.6;
     }
 
     .descrizione-storica p {
-        font-size: 1.5rem; /* Aumentato: era 1.3rem */
+        font-size: 1.5rem;
     }
+
     .dress-img-inline {
         width: 180px;
     }
 
-    /* VIA DI MEZZO DESKTOP UNIFORMATA */
     .castellana-widget-area {
         right: 2rem;
         bottom: 2rem;
@@ -573,9 +563,9 @@ html, body {
     }
 
     .castellana-video-wrapper {
-        width: 110px;  
+        width: 110px;
         height: 110px;
-        border: 3px solid #ffd78f;
+        border: 3px solid var(--gold);
     }
 
     .castellana-tooltip {
@@ -583,15 +573,14 @@ html, body {
         padding: 0.4rem 1rem;
     }
 
-    #chatDesktop {
+    .chat-desktop {
         right: 2rem;
-        bottom: 175px; 
+        bottom: 175px;
         width: 320px;
         height: 400px;
     }
 }
 
-/* SCENARIO INTERMEDIO TABLET */
 @media (min-width: 601px) and (max-width: 899px) {
     .hero {
         margin-top: 150px;
@@ -600,19 +589,11 @@ html, body {
         width: 95px;
         height: 95px;
     }
-    #chatDesktop {
+    .chat-desktop {
         bottom: 150px;
     }
 }
 
-/* ANIMAZIONI ACCLARATE */
-@keyframes desktopGlowLoop {
-    0% { left: -110%; }
-    15% { left: 140%; }
-    100% { left: 140%; }
-}
-
-@keyframes widgetPulse {
-    0% { box-shadow: 0 0 10px rgba(255, 215, 160, 0.3); transform: scale(1); }
-    100% { box-shadow: 0 0 25px rgba(255, 215, 160, 0.7); transform: scale(1.02); }
-}
+/* Le animazioni "desktopGlowLoop" e "widgetPulse" sono state rimosse
+   insieme ai loro riferimenti — erano il tratto più "insegna luminosa"
+   di tutta la pagina e in contrasto con il registro regale. */
