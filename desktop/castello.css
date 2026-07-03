@@ -1,28 +1,29 @@
 /* ============================================================
-   1. RESET + VARIABILI GLOBALI — PALETTE REGALE MONOCROMATICA
+   1. RESET + VARIABILI GLOBALI — PALETTE BORGO (non più monocromatica blu)
+   Base: pietra calcarea. Accento caldo: terracotta dei tetti.
+   Accento puntuale: azzurro cielo/mare (richiama la fascia della Castellana).
+   Oro: solo rifiniture sottili, mai colore di riempimento dominante.
    ============================================================ */
 :root {
-    --gold: #B8873B;              /* era #ffd78f — oro antico, coerente con le altre pagine */
+    --sky: #5B8FAE;
+    --sea: #1B4965;
+
+    --stone: #EFE6D3;              /* nuovo colore di base della pagina, era --sea-deep (blu scuro) */
+    --stone-dim: #DCCFAF;          /* variante leggermente più scura della pietra, per pannelli */
+
+    --terracotta: #C1622D;         /* nuovo accento primario caldo */
+    --terracotta-dark: #9C4C22;
+
+    --gold: #B8873B;               /* resta, ma solo per bordi/rifiniture sottili */
     --gold-light: #D4AF6A;
-    --gold-soft: rgba(184, 135, 59, 0.15);
-    --gold-strong: rgba(184, 135, 59, 0.4);
 
-    --sea-deep: #0F2C3E;          /* nuovo — sfondo monocromatico di tutta la pagina */
-    --wine: #6B1F2A;              /* nuovo — accento araldico */
-    --parchment: #F3EAD9;
+    --ink: #22303B;                /* testo scuro su fondo chiaro, coerente con le altre pagine del sito */
+    --ink-soft: #465563;
 
-    --dark: #0F2C3E;              /* era #050302 nero puro: ora blu profondo, coerente col resto del sito */
-    --dark-soft: rgba(15, 44, 62, 0.85);
-    --dark-overlay-1: rgba(15, 44, 62, 0.92);
-    --dark-overlay-2: rgba(15, 44, 62, 0.65);
+    --shadow-strong: rgba(0, 0, 0, 0.35);
+    --shadow-soft: rgba(0, 0, 0, 0.18);
 
-    --text-light: #e6e0d4;
-    --text-strong: #fff;
-
-    --shadow-strong: rgba(0, 0, 0, 0.7);
-    --shadow-soft: rgba(0, 0, 0, 0.4);
-
-    --radius: 2px;                /* era 12px: ora quasi squadrato, coerente col resto */
+    --radius: 2px;
     --transition: 0.3s ease;
 }
 
@@ -32,51 +33,48 @@ html, body {
     width: 100%;
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
-    color: var(--text-light);
-    background: var(--sea-deep) !important;   /* era transparent: ora il monocromatico vero e proprio */
+    color: var(--ink);                       /* era testo chiaro su fondo scuro: ora inchiostro scuro su pietra chiara */
+    background: var(--stone) !important;     /* era --sea-deep (blu): ora pietra calcarea */
     overflow-x: hidden;
 }
 
 /* ============================================================
-   2. SFONDO MONOCROMATICO (sostituisce il video + overlay dorato)
+   2. SFONDO — pietra calcarea con lieve vignatura calda
    ============================================================ */
 .scene-background-container {
-    /* Blocco non più necessario se hai tolto il video dall'HTML.
-       Lasciato qui solo come rete di sicurezza nel caso l'elemento
-       esista ancora in qualche pagina: diventa un semplice sfondo piatto. */
     position: fixed;
     inset: 0;
     z-index: -1;
-    background: var(--sea-deep);
+    background: var(--stone);
 }
 
-/* Se rimuovi del tutto il markup del video, queste regole non servono più */
 .scene-background-container video,
 .scene-overlay,
 .scene-background-container::after {
     display: none;
 }
 
-/* nuovo: leggerissima vignatura agli angoli, al posto del bagliore dorato pulsante */
+/* vignatura calda simile a una pagina antica, non più fredda/blu */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.35) 100%);
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(60, 40, 20, 0.16) 100%);
 }
 
 /* ============================================================
-   3. DASHBOARD — versione squadrata, senza animazioni luccicanti
+   3. DASHBOARD — resta scura per contrasto con la pagina chiara,
+   ma sul blu marino (--sea) invece del blu quasi nero di prima
    ============================================================ */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(10, 25, 36, 0.92);          /* era nero puro rgba(0,0,0,.85) */
-    border-bottom: 2px solid var(--gold);
+    background: rgba(27, 73, 101, 0.92);       /* var(--sea) con opacità, era rgba(10,25,36,.92) */
+    border-bottom: 2px solid var(--gold);      /* l'oro resta, ma solo come sottile riga di rifinitura */
     backdrop-filter: blur(18px) saturate(200%);
     display: flex;
     flex-direction: column;
@@ -85,16 +83,16 @@ body::before {
     padding: 15px 20px;
     gap: 12px;
     z-index: 999;
-    box-shadow: 0 2px 0 rgba(212, 175, 106, 0.25);  /* era glow diffuso: ora linea sottile incisa */
+    box-shadow: 0 2px 0 rgba(212, 175, 106, 0.25);
     box-sizing: border-box;
 }
 
 .logo-title {
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--gold);
+    color: var(--gold-light);
     letter-spacing: 1.5px;
-    text-shadow: 0 0 6px rgba(184, 135, 59, 0.4);   /* glow ridotto */
+    text-shadow: none;
 }
 
 .nav-desktop {
@@ -105,32 +103,30 @@ body::before {
 }
 
 .nav-desktop a {
-    color: var(--gold-light);
+    color: var(--stone);
     font-weight: 600;
     text-decoration: none;
     font-size: 0.85rem;
     letter-spacing: 0.3px;
     padding: 6px 16px;
-    border-radius: 2px;                              /* era 12px: ora squadrato */
-    background: rgba(15, 44, 62, 0.6);
-    border: 1px solid rgba(184, 135, 59, 0.7);
-    box-shadow: none;                                /* era doppia ombra glow: rimossa */
+    border-radius: 2px;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid rgba(239, 230, 211, 0.4);
+    box-shadow: none;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-/* rimosso completamente l'elemento ::before con l'animazione "luccichio in scorrimento":
-   era il dettaglio più da insegna al neon di tutta la pagina */
 .nav-desktop a::before {
     content: none;
 }
 
 .nav-desktop a:hover {
-    background: rgba(184, 135, 59, 0.15);
-    border-color: var(--gold);
-    color: var(--gold);
-    transform: none;                                 /* era scale(1.05): tolto l'effetto "gonfia al hover" */
+    background: rgba(193, 98, 45, 0.25);       /* hover terracotta, era hover oro */
+    border-color: var(--terracotta);
+    color: #fff;
+    transform: none;
 }
 
 .header-right-actions {
@@ -150,10 +146,10 @@ body::before {
     height: 36px;
     font-size: 0.9rem;
     font-weight: bold;
-    border-radius: 2px;                              /* era 8px: ora squadrato */
-    background: rgba(15, 44, 62, 0.6);
-    border: 1px solid rgba(184, 135, 59, 0.85);
-    color: var(--gold);
+    border-radius: 2px;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid rgba(239, 230, 211, 0.4);
+    color: var(--stone);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -163,15 +159,15 @@ body::before {
 }
 
 .lang-switcher button:hover {
-    background: rgba(184, 135, 59, 0.15);
+    background: rgba(193, 98, 45, 0.25);
     box-shadow: none;
     transform: none;
 }
 
 .home-btn {
     background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
+    border: 1px solid var(--stone);
+    color: var(--stone);
     padding: 6px 14px;
     border-radius: 2px;
     cursor: pointer;
@@ -181,12 +177,13 @@ body::before {
 }
 
 .home-btn:hover {
-    background: var(--gold);
-    color: var(--sea-deep);
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: #fff;
 }
 
 /* ============================================================
-   4. LAYOUT CENTRATO & POESIA
+   4. LAYOUT CENTRATO & POESIA — testo scuro su fondo chiaro
    ============================================================ */
 .hero {
     position: relative;
@@ -206,7 +203,7 @@ body::before {
     font-size: 0.8rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--wine);                              /* era oro: ora bordeaux, coerente con l'eyebrow delle altre pagine */
+    color: var(--terracotta);                  /* era bordeaux (wine): ora terracotta, coerente coi tetti */
     font-weight: 700;
     margin-bottom: 5px;
     display: block;
@@ -216,32 +213,31 @@ body::before {
 .hero-text h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 5vw, 3.2rem);
-    color: var(--parchment);                         /* era oro pieno: ora crema, meno "insegna" */
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    color: var(--sea);                         /* era crema chiara su fondo scuro: ora blu marino su pietra chiara */
+    text-shadow: none;
     margin-bottom: 0.5rem;
 }
 
 .hero-text::after {
-    content: "❧";                                    /* era una linea piatta: ora il fiorone tipografico, coerente col resto */
+    content: "❧";
     display: block;
     width: auto;
     margin: 0.8rem auto 2rem;
-    color: var(--gold);
+    color: var(--gold);                        /* l'oro resta qui: rifinitura tipografica puntuale */
     font-size: 15px;
 }
 
 /* ============================================================
-   4bis. IMMAGINE DEL CASTELLO — trattata come fotografia incorniciata,
-   non più come sfondo a piena pagina
+   4bis. IMMAGINE DEL CASTELLO — cornice chiara, bordo terracotta
    ============================================================ */
 .castle-hero-image {
     max-width: 620px;
     width: 100%;
     margin: 0 auto 2.5rem;
     padding: 10px;
-    background: rgba(15, 44, 62, 0.4);
-    border: 1px solid var(--gold);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    background: var(--stone-dim);
+    border: 1px solid var(--terracotta);
+    box-shadow: 0 12px 30px var(--shadow-soft);
 }
 
 .castle-hero-image img {
@@ -266,14 +262,14 @@ body::before {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.2rem, 2.6vw, 1.45rem);
     line-height: 1.8;
-    color: #fff;
+    color: var(--ink);                         /* era bianco su fondo scuro: ora inchiostro su pietra chiara */
     font-style: italic;
     margin-bottom: 1.8rem;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);       /* era doppia ombra pesante: ridotta */
+    text-shadow: none;
 }
 
 .poesia-corpo strong {
-    color: var(--gold-light);
+    color: var(--terracotta-dark);             /* era oro chiaro: ora terracotta, accento caldo secondario */
     font-style: normal;
     font-weight: 600;
     text-shadow: none;
@@ -283,21 +279,27 @@ body::before {
     font-style: normal;
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.15rem, 2.3vw, 1.3rem);
+    color: var(--ink);
 }
 
 .highlight-para {
     padding: 10px 20px;
-    background: rgba(184, 135, 59, 0.06);
-    border-left: 2px solid var(--gold);              /* nuovo dettaglio "manoscritto", coerente con le altre pagine */
-    border-radius: 0;                                 /* era 8px: ora squadrato */
+    background: rgba(193, 98, 45, 0.08);       /* tinta terracotta, era tinta oro */
+    border-left: 2px solid var(--terracotta);
+    border-radius: 0;
     display: inline-block;
     max-width: 95%;
     margin: 0 auto;
 }
 
+/* ============================================================
+   Il pannello dell'abito richiama esplicitamente l'azzurro
+   della fascia della Castellana: qui l'accento sky/sea trova
+   il suo posto puntuale, non diffuso su tutta la pagina.
+   ============================================================ */
 .castle-dress-inline {
-    background: rgba(15, 44, 62, 0.35);               /* nuovo: piccola targa attorno all'abito, coerente con l'immagine del castello */
-    border: 1px solid var(--gold);
+    background: var(--stone-dim);
+    border: 1px solid var(--sea);
     padding: 16px;
     text-align: center;
     margin: 2rem auto;
@@ -306,7 +308,7 @@ body::before {
 
 .dress-img-inline {
     width: 140px;
-    filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 4px 14px var(--shadow-soft));
     transition: transform 0.4s ease;
 }
 
@@ -317,7 +319,7 @@ body::before {
 .dress-caption-inline {
     font-family: 'Playfair Display', serif;
     font-size: 0.85rem;
-    color: var(--gold);
+    color: var(--sea);
     margin-top: 12px;
     letter-spacing: 1px;
     font-style: italic;
@@ -328,13 +330,15 @@ body::before {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 1.25rem;
-    color: var(--gold);
+    color: var(--terracotta-dark);
     margin-top: 1.5rem;
     text-shadow: none;
 }
 
 /* ============================================================
-   5. CASTELLANA WIDGET — senza pulsazione continua
+   5. CASTELLANA WIDGET — bordo azzurro come la sua fascia,
+   invece dell'oro usato per tutto il resto del sito: qui il
+   colore diventa un dettaglio di riconoscimento del personaggio.
    ============================================================ */
 .castellana-widget-area {
     position: fixed;
@@ -353,16 +357,14 @@ body::before {
     height: 78px;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid var(--gold);
+    border: 3px solid var(--sea);              /* era var(--gold): ora il blu della sua fascia */
     background: #000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);           /* era doppio glow: ridotto a un'ombra sola */
+    box-shadow: 0 4px 15px var(--shadow-strong);
     cursor: pointer;
     transition: transform 0.3s ease;
     position: relative;
 }
 
-/* rimossa l'animazione widgetPulse: un pulsing continuo è un tic da app,
-   non da oggetto regale — resta solo il bordo oro fisso */
 .castellana-video-wrapper::after {
     content: none;
 }
@@ -379,15 +381,15 @@ body::before {
 }
 
 .castellana-tooltip {
-    background: var(--gold);
-    color: var(--sea-deep);
+    background: var(--sea);                    /* era var(--gold): coerente col bordo del widget */
+    color: var(--stone);
     padding: 0.3rem 0.9rem;
-    border-radius: 2px;                               /* era pillola 999px: ora squadrato */
+    border-radius: 2px;
     font-weight: 700;
     font-size: 0.65rem;
     letter-spacing: 0.8px;
     text-transform: uppercase;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 10px var(--shadow-strong);
     pointer-events: none;
 }
 
@@ -397,22 +399,22 @@ body::before {
     bottom: 125px;
     width: 290px;
     height: 330px;
-    background: var(--parchment);                     /* era quasi-nero: ora pannello chiaro leggibile */
-    border-radius: 2px;                                /* era 1rem: ora squadrato */
-    border: 1px solid var(--gold);
+    background: var(--stone);                  /* era --parchment: stesso concetto, ora token unico */
+    border-radius: 2px;
+    border: 1px solid var(--sea);
     backdrop-filter: blur(12px);
     display: none;
     flex-direction: column;
     overflow: hidden;
     z-index: 99999;
     padding: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px var(--shadow-strong);
 }
 
 .chat-header {
     display: flex;
     justify-content: space-between;
-    color: var(--sea-deep);                            /* era oro su sfondo scuro: ora scuro su pannello chiaro */
+    color: var(--sea);
     font-weight: bold;
     margin-bottom: 12px;
     align-items: center;
@@ -423,7 +425,7 @@ body::before {
 .avatar-status-dot {
     width: 8px;
     height: 8px;
-    background: #3E8C5A;                               /* verde meno "neon" del precedente #00ff66 */
+    background: #3E8C5A;
     border-radius: 50%;
     box-shadow: none;
     display: inline-block;
@@ -433,14 +435,14 @@ body::before {
 .close-chat-btn {
     background: transparent;
     border: none;
-    color: var(--sea-deep);
+    color: var(--sea);
     cursor: pointer;
     font-size: 1.1rem;
     transition: color 0.2s;
 }
 
 .close-chat-btn:hover {
-    color: var(--wine);
+    color: var(--terracotta);
 }
 
 .chat-messages {
@@ -449,11 +451,11 @@ body::before {
     font-size: 0.9rem;
     line-height: 1.45;
     margin-bottom: 12px;
-    color: var(--sea-deep);                            /* era testo chiaro su sfondo scuro: ora scuro su pannello chiaro */
+    color: var(--ink);
 }
 
 .system-msg {
-    border-left: 2px solid var(--gold);
+    border-left: 2px solid var(--terracotta);
     padding-left: 8px;
 }
 
@@ -465,20 +467,20 @@ body::before {
 .chat-input-row input {
     flex-grow: 1;
     background: #fff;
-    border: 1px solid rgba(184, 135, 59, 0.4);
+    border: 1px solid rgba(27, 73, 101, 0.35);
     padding: 8px 12px;
     border-radius: 2px;
-    color: var(--sea-deep);
+    color: var(--ink);
     font-size: 0.85rem;
 }
 
 .chat-input-row input:focus {
     outline: none;
-    border-color: var(--gold);
+    border-color: var(--sea);
 }
 
 .mic-btn {
-    background: var(--wine);
+    background: var(--terracotta);             /* era var(--wine): ora terracotta, coerente con la palette */
     border: none;
     border-radius: 2px;
     padding: 0 10px;
@@ -488,7 +490,7 @@ body::before {
 }
 
 .mic-btn:hover {
-    background: #521720;
+    background: var(--terracotta-dark);
 }
 
 /* ============================================================
@@ -536,9 +538,9 @@ body::before {
     }
 
     .poesia-container:hover {
-        background: rgba(15, 44, 62, 0.4);
-        border: 1px solid var(--gold);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        background: rgba(220, 207, 175, 0.5);      /* era rgba(sea-deep): ora tinta pietra più scura */
+        border: 1px solid var(--terracotta);
+        box-shadow: 0 8px 24px var(--shadow-soft);
         backdrop-filter: blur(6px) saturate(120%);
         -webkit-backdrop-filter: blur(6px) saturate(120%);
     }
@@ -565,7 +567,7 @@ body::before {
     .castellana-video-wrapper {
         width: 110px;
         height: 110px;
-        border: 3px solid var(--gold);
+        border: 3px solid var(--sea);
     }
 
     .castellana-tooltip {
@@ -593,7 +595,3 @@ body::before {
         bottom: 150px;
     }
 }
-
-/* Le animazioni "desktopGlowLoop" e "widgetPulse" sono state rimosse
-   insieme ai loro riferimenti — erano il tratto più "insegna luminosa"
-   di tutta la pagina e in contrasto con il registro regale. */
