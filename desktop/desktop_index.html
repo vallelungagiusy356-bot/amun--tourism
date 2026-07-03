@@ -146,19 +146,23 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-        const chat = document.getElementById("chat-box");
-        const closeBtn = document.getElementById("close-chat");
-        const openBtn = document.getElementById("chat-open-btn");
-        const castellanaWrapper = document.querySelector(".castellana-video-wrapper");
+    const chat = document.getElementById("chat-box");
+    const closeBtn = document.getElementById("close-chat");
+    const openBtn = document.getElementById("chat-open-btn");
+    const castellanaWrapper = document.querySelector(".castellana-video-wrapper");
 
-        openBtn.addEventListener("click", () => chat.classList.add("active"));
-        closeBtn.addEventListener("click", () => chat.classList.remove("active"));
+    openBtn.addEventListener("click", () => chat.classList.add("active"));
+    closeBtn.addEventListener("click", () => chat.classList.remove("active"));
 
-        // NUOVO: cliccando la Castellana stessa (non solo il tooltip) si apre la chat
-        if (castellanaWrapper) {
-            castellanaWrapper.addEventListener("click", () => chat.classList.add("active"));
-        }
+    if (castellanaWrapper) {
+        castellanaWrapper.addEventListener("click", () => chat.classList.add("active"));
+    }
+
+    document.querySelectorAll(".lang-switcher button").forEach(btn => {
+        btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
     });
+    loadLanguage(currentLang);
+});
     </script>
 </body>
 </html>
