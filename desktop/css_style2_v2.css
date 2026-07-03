@@ -574,4 +574,15 @@ body {
     .castellana-video-wrapper {
         max-width: 150px;
     }
+
+    /* Header collassabile: si nasconde scrollando verso il basso e
+       riappare scrollando verso l'alto. Attivo SOLO sotto i 900px
+       grazie al controllo window.innerWidth nel JS: su desktop la
+       classe .header-hidden non viene mai applicata. */
+    .dashboard {
+        transition: transform 0.35s ease;
+    }
+    .dashboard.header-hidden {
+        transform: translateY(-100%);
+    }
 }
