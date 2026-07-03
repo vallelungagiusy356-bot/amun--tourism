@@ -73,8 +73,8 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(27, 73, 101, 0.92);       /* var(--sea) con opacità, era rgba(10,25,36,.92) */
-    border-bottom: 2px solid var(--gold);      /* l'oro resta, ma solo come sottile riga di rifinitura */
+    background: rgba(15, 25, 34, 0.92);        /* era rgba(27,73,101,.92) [--sea]: ora stesso tono scuro di homepage/cittadino */
+    border-bottom: 2px solid var(--gold);
     backdrop-filter: blur(18px) saturate(200%);
     display: flex;
     flex-direction: column;
@@ -593,5 +593,30 @@ body::before {
     }
     .chat-desktop {
         bottom: 150px;
+    }
+}
+
+/* ============================================================
+   6bis. FIX ALLINEAMENTO HEADER MOBILE (< 900px)
+   .header-right-actions non aveva flex-wrap: nav-desktop e
+   lang-switcher provavano a stare sulla stessa riga, non ci
+   stavano, e solo nav-desktop si spezzava internamente — da qui
+   lo sfalsamento "Home" + lingue su una riga e "Cittadino" da
+   solo sulla riga sotto. Ora ciascun gruppo occupa una riga
+   intera centrata, come nelle altre pagine del sito.
+   ============================================================ */
+@media screen and (max-width: 899px) {
+    .header-right-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 8px;
+    }
+    .nav-desktop {
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+    .lang-switcher {
+        flex: 1 1 100%;
+        justify-content: center;
     }
 }
