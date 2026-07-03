@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism | Il cuore di Caccamo</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Lora:ital@1&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css_style2_v2.css">
     <style>
-        /* Aggiungi questo piccolo stile nel CSS o qui per evidenziare il bottone attivo */
         .lang-switcher button.active {
-            border: 2px solid #ffd78f !important;
-            background: rgba(255, 215, 160, 0.2) !important;
+            border: 2px solid #B8873B !important;
+            background: rgba(184, 135, 59, 0.2) !important;
             font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-
-    <div class="scene-background"></div>
 
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
@@ -41,35 +38,65 @@
     </header>
 
     <main>
-        <section class="hero-section">
-            <div class="castellana-video-wrapper">
-                <video class="castellana-video" autoplay muted loop playsinline>
-                    <source src="img/castellana_alpha.webm" type="video/webm">
-                </video>
-                <div class="castellana-tooltip" id="chat-open-btn">Click to chat</div>
-            </div>
 
-            <div class="home-welcome-poetry">
-                <h1 data-i18n="home.welcome_title">Benvenuti a Caccamo</h1>
-                <div class="gold-divider"></div>
+        <!-- ============================================================
+             SEZIONE 1 — HERO
+             Flusso normale (flex), niente più posizionamenti assoluti:
+             Castellana e testo stanno ciascuno nel proprio spazio,
+             non si sovrappongono più su nessuna larghezza di schermo.
+             ============================================================ -->
+        <section class="section-hero">
+            <div class="hero-inner">
+
+                <div class="castellana-video-wrapper" id="chat-open-btn">
+                    <video class="castellana-video" autoplay muted loop playsinline>
+                        <source src="img/castellana_alpha.webm" type="video/webm">
+                    </video>
+                    <div class="castellana-tooltip">Click to chat</div>
+                </div>
+
+                <div class="hero-text">
+                    <h1 data-i18n="home.welcome_title">Benvenuti a Caccamo</h1>
+                    <div class="gold-divider"></div>
+                    <p class="hero-verse" data-i18n="home.poetry_intro"></p>
+                    <a href="#sezione-racconto" class="scroll-cue">Scopri il racconto ↓</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SEZIONE 2 — PARALLASSE
+             Qui vive la poesia completa. Lo sfondo del castello scorre
+             a velocità diversa dal testo durante lo scroll.
+             ============================================================ -->
+        <section class="section-parallax" id="sezione-racconto">
+            <div class="parallax-bg"></div>
+            <div class="parallax-overlay"></div>
+            <div class="parallax-content">
                 <p data-i18n="home.poetry"></p>
             </div>
         </section>
 
-        <section class="castellana-intro-card">
+        <!-- ============================================================
+             SEZIONE 3 — CASTELLANA INTRO
+             ============================================================ -->
+        <section class="section-flat castellana-intro-card">
             <div class="intro-card-content">
                 <h3 data-i18n="home.castellana_intro_title">Vivi la Caccamo più autentica</h3>
                 <p data-i18n="home.castellana_intro_text">
                     Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto tra le meraviglie del borgo e del territorio circostante.
                 </p>
-                <!-- Badge riassuntivo lingue -->
                 <div class="languages-badge">
                     <span>IT</span> • <span>EN</span> • <span>FR</span> • <span>DE</span> • <span>ES</span>
                 </div>
             </div>
         </section>
 
-        <section class="install-app-desktop install-section">
+        <!-- ============================================================
+             SEZIONE 4 — INSTALL APP
+             ============================================================ -->
+        <section class="section-flat install-app-desktop install-section">
             <div class="install-left">
                 <h2 data-i18n="home.install_app">Porta Amunì con te</h2>
                 <div class="btn-group">
@@ -86,6 +113,7 @@
                 <p data-i18n="home.scan_qr">Scansiona il QR</p>
             </div>
         </section>
+
     </main>
 
     <footer class="footer-copyright">
@@ -108,19 +136,8 @@
     </div>
 
     <script>
-        // Gestione Chat
-        document.addEventListener("DOMContentLoaded", () => {
-            const chat = document.getElementById("chat-box");
-            const closeBtn = document.getElementById("close-chat");
-            const openBtn = document.getElementById("chat-open-btn");
-
-            openBtn.addEventListener("click", () => chat.classList.add("active"));
-            closeBtn.addEventListener("click", () => chat.classList.remove("active"));
-        });
-
-        // Gestione Lingue
         let currentLang = localStorage.getItem("lang") || "it";
-        
+
         function loadLanguage(lang) {
             fetch(`lang/${lang}.json`)
                 .then(res => res.json())
@@ -136,8 +153,6 @@
                         const text = key.split('.').reduce((o,i) => (o && o[i] !== undefined) ? o[i] : null, content);
                         if (text) el.placeholder = text;
                     });
-                    
-                    // Aggiorna classe active sui bottoni
                     document.querySelectorAll(".lang-switcher button").forEach(btn => {
                         btn.classList.toggle("active", btn.dataset.lang === lang);
                     });
@@ -146,23 +161,18 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-    const chat = document.getElementById("chat-box");
-    const closeBtn = document.getElementById("close-chat");
-    const openBtn = document.getElementById("chat-open-btn");
-    const castellanaWrapper = document.querySelector(".castellana-video-wrapper");
+            const chat = document.getElementById("chat-box");
+            const closeBtn = document.getElementById("close-chat");
+            const openBtn = document.getElementById("chat-open-btn");
 
-    openBtn.addEventListener("click", () => chat.classList.add("active"));
-    closeBtn.addEventListener("click", () => chat.classList.remove("active"));
+            openBtn.addEventListener("click", () => chat.classList.add("active"));
+            closeBtn.addEventListener("click", () => chat.classList.remove("active"));
 
-    if (castellanaWrapper) {
-        castellanaWrapper.addEventListener("click", () => chat.classList.add("active"));
-    }
-
-    document.querySelectorAll(".lang-switcher button").forEach(btn => {
-        btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
-    });
-    loadLanguage(currentLang);
-});
+            document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
+            });
+            loadLanguage(currentLang);
+        });
     </script>
 </body>
 </html>
