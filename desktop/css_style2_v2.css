@@ -124,10 +124,37 @@ body {
     align-items: center;
     justify-content: center;
     padding: 140px 24px 60px;
-    background: linear-gradient(180deg, var(--sea-ink) 0%, #0D1D29 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-hero::before {
+    /* stesso sfondo della sezione parallasse, così le due sezioni
+       si percepiscono come un racconto continuo, non due mondi diversi */
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('img/sfondocaccamo.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.45) contrast(1.1) saturate(1.05);
+}
+
+.section-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(180deg,
+        rgba(20, 40, 58, 0.55) 0%,
+        rgba(20, 40, 58, 0.35) 45%,
+        var(--sea-ink) 100%);
 }
 
 .hero-inner {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -537,4 +564,10 @@ body {
     main { padding-top: 130px; }
     .section-hero { padding-top: 40px; min-height: auto; }
     .parallax-bg { background-attachment: scroll; } /* fixed è poco affidabile su mobile: fallback a scroll normale */
+
+    /* Castellana più piccola su mobile: prima occupava quasi tutta la
+       larghezza e il video appariva tagliato/ingombrante */
+    .castellana-video-wrapper {
+        max-width: 150px;
+    }
 }
