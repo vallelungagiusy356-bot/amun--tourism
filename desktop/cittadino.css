@@ -32,7 +32,7 @@ html, body {
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--cream-text);
-    background: var(--sea-ink) !important;
+    background: transparent !important;
     overflow-x: hidden;
 }
 
@@ -187,7 +187,6 @@ html, body {
     color: #fff;
     margin: 0;
 }
-
 
 /* ==========================================================================
    4. GRIGLIA CARD
