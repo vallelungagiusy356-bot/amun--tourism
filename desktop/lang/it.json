@@ -76,7 +76,12 @@
       "annunziata": "Annunziata",
       "badia": "S. Benedetto della Badia",
       "angeli": "S. Maria degli Angeli",
-      "sangiorgio": "San Giorgio Martire"
+      "sangiorgio": "San Giorgio Martire",
+      "route_cappuccini": "Punto più alto",
+      "route_angeli": "Silenzio",
+      "route_annunziata": "Volte dipinte",
+      "route_badia": "Si scende",
+      "route_sangiorgio": "Cuore del borgo"
     }
   }
 }
