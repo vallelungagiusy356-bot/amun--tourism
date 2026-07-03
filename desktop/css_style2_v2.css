@@ -115,7 +115,6 @@ body {
     main { padding-top: 75px; }
 }
 
-
 /* ============================================================
    SEZIONE 1 — HERO (flex, non più posizioni assolute)
    ============================================================ */
@@ -139,7 +138,7 @@ body {
     background-image: url('img/sfondocaccamo.jpeg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.45) contrast(1.1) saturate(1.05);
+    filter: brightness(0.68) contrast(1.08) saturate(1.05);   /* era 0.45: troppo scuro, ora più luminoso */
 }
 
 .section-hero::after {
@@ -148,9 +147,9 @@ body {
     inset: 0;
     z-index: 0;
     background: linear-gradient(180deg,
-        rgba(20, 40, 58, 0.55) 0%,
-        rgba(20, 40, 58, 0.35) 45%,
-        var(--sea-ink) 100%);
+        rgba(20, 40, 58, 0.4) 0%,
+        rgba(20, 40, 58, 0.25) 45%,
+        var(--sea-ink) 100%);   /* overlay alleggerito di conseguenza */
 }
 
 .hero-inner {
@@ -329,20 +328,24 @@ body {
     padding: 70px 24px;
 }
 
+.section-flat.castellana-intro-card-section {
+    background: var(--stone);
+}
+
 .castellana-intro-card {
     max-width: 700px;
     margin: 0 auto;
     padding: 1.6rem 2rem;
-    background: rgba(15, 25, 34, 0.55);
-    border: 1px solid var(--gold);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    background: transparent;
+    border: none;
+    box-shadow: none;
     text-align: center;
 }
 
 .intro-card-content h3 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.4rem, 3vw, 1.8rem);
-    color: var(--gold);
+    color: var(--wine);              /* era oro su sfondo scuro: ora bordeaux su pergamena chiara */
     margin-bottom: 0.8rem;
     letter-spacing: 0.5px;
 }
@@ -350,12 +353,12 @@ body {
 .intro-card-content p {
     font-size: clamp(1rem, 2.2vw, 1.1rem);
     line-height: 1.6;
-    color: var(--cream-text);
+    color: var(--ink);               /* era crema chiaro: ora inchiostro scuro, leggibile su fondo chiaro */
     margin-bottom: 1.2rem;
 }
 
 .intro-card-content strong {
-    color: var(--gold);
+    color: var(--wine);
     font-weight: 600;
 }
 
@@ -364,11 +367,11 @@ body {
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 2.5px;
-    color: var(--gold);
-    background: rgba(20, 40, 58, 0.5);
+    color: var(--sea-ink);
+    background: #fff;
     padding: 6px 16px;
     border-radius: 2px;
-    border: 1px solid rgba(184, 135, 59, 0.4);
+    border: 1px solid var(--gold);
 }
 
 .install-app-desktop {
