@@ -7,30 +7,23 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="castello.css">
-    
+
     <style>
-        .nav-right-group { display: flex; align-items: center; gap: 20px; }
-        .lang-switcher button.active { border: 2px solid #ffd78f !important; background: rgba(255, 215, 160, 0.2) !important; font-weight: bold; }
-        .dashboard { display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
+        .lang-switcher button.active {
+            border: 2px solid #B8873B !important;
+            background: rgba(184, 135, 59, 0.2) !important;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- 🎬 SFONDO VIDEO + OVERLAY -->
-    <div class="scene-background-container">
-        <video autoplay loop muted playsinline>
-            <source src="img/video_castello.webm" type="video/webm">
-            <source src="img/video_castello.mp4" type="video/mp4">
-        </video>
-        <div class="scene-overlay"></div>
-    </div>
-
     <!-- 👑 DASHBOARD -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
-        <div class="nav-right-group">
+        <div class="header-right-actions">
             <nav class="nav-desktop">
                 <a href="desktop_index.html" data-i18n="menu.home">Home</a>
                 <a href="cittadino.html" data-i18n="menu.citizen">Cittadino</a>
@@ -52,12 +45,29 @@
             <span class="category-tag" data-i18n="pages.castle_page.category">Monumenti Storici</span>
             <h1 data-i18n="pages.castle_page.title">Il Castello di Caccamo</h1>
         </div>
-        
+
+        <figure class="castle-hero-image">
+            <img src="img/castello2.jpg" alt="Il Castello di Caccamo" loading="lazy">
+        </figure>
+
         <section class="poesia-container">
             <div class="poesia-corpo">
-                <p data-i18n="pages.castle_page.rhyme_1"></p>
-                <p data-i18n="pages.castle_page.rhyme_2"></p>
-                <p class="highlight-para" data-i18n="pages.castle_page.rhyme_3"></p>
+                <p data-i18n="pages.castle_page.rhyme_1">
+                    In un castello normanno forgiato dal tempo,<br>
+                    venite, ammirate, fermatevi un momento.<br>
+                    Non è solo pietra, né freddo baluardo,<br>
+                    ma un'anima antica che attende il tuo sguardo.
+                </p>
+                <p data-i18n="pages.castle_page.rhyme_2">
+                    La storia non dorme, si scioglie nell'aria,<br>
+                    e rivive nel cuore di chi oggi ne ascolta la trama.
+                </p>
+                <p class="highlight-para" data-i18n="pages.castle_page.rhyme_3">
+                    Non cercate risposte in vecchie carte ingiallite,<br>
+                    ma nel mio sguardo, tra ombre smarrite.<br>
+                    Sono la Castellana, custode del filo,<br>
+                    svelerò a chi ascolta l'antico profilo.
+                </p>
             </div>
 
             <figure class="castle-dress-inline">
@@ -68,8 +78,12 @@
             </figure>
 
             <div class="poesia-corpo descrizione-storica">
-                <p data-i18n="pages.castle_page.para_2"></p>
-                <p class="highlight-para" data-i18n="pages.castle_page.para_3"></p>
+                <p data-i18n="pages.castle_page.para_2">
+                    Il Castello non è soltanto una fortezza. È un corpo vivo che respira le trame dei Chiaramonte e le inquietudini dell'Inquisizione. Oltre le pareti che sfidano i secoli, si cela il cuore pulsante di Caccamo, un segreto che non attende di essere letto, ma di essere raccontato.
+                </p>
+                <p class="highlight-para" data-i18n="pages.castle_page.para_3">
+                    Ogni pietra conserva una voce, ogni corridoio un presagio. Non limitarti a osservare la superficie: entra nel vivo del mistero. La Castellana è qui, pronta a trasformare la tua visita in un viaggio che va oltre la storia, dritto nel mito.
+                </p>
             </div>
 
             <p class="poesia-outro">Lasciati guidare oltre le soglie del tempo...</p>
@@ -95,7 +109,7 @@
         </div>
         <div class="chat-messages">
             <div class="message system-msg" data-i18n="pages.castle_page.welcomemsg_felicia">
-                Benvenuto al Castello di Caccamo! Sono la tua guida custode. Chiedimi pure della Sala delle Congiure...
+                Benvenuto, viandante. I muri di questo maniero hanno visto secoli di intrighi e passioni. Chiedimi ciò che i libri di storia hanno dimenticato... cosa desideri sapere del mio Castello?
             </div>
         </div>
         <div class="chat-input-row">
