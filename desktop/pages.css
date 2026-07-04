@@ -1,133 +1,404 @@
-/* --- RESET E BASE --- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-    height: 100vh; /* Forza l'altezza della pagina */
-    overflow: hidden; /* Blocca lo scroll */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #000;
+/* ============================================================
+   1. RESET + VARIABILI GLOBALI — stessa palette del resto del sito.
+   Condiviso da chi_siamo.html e about.html ("Il Progetto"):
+   nessuna regola qui è specifica di una sola pagina.
+   ============================================================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-/* SFONDO (Gestione Desktop/Mobile) */
-.page-background {
+:root {
+    --sky: #5B8FAE;
+    --sea: #1B4965;
+
+    --stone: #EFE6D3;
+    --stone-dim: #DCCFAF;
+
+    --terracotta: #C1622D;
+    --terracotta-dark: #9C4C22;
+
+    --gold: #B8873B;
+    --gold-light: #D4AF6A;
+
+    --ink: #22303B;
+    --ink-soft: #465563;
+
+    --shadow-strong: rgba(0, 0, 0, 0.35);
+    --shadow-soft: rgba(0, 0, 0, 0.18);
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    color: var(--ink);
+    background: var(--stone) !important;
+    overflow-x: hidden;
+    /* era height:100vh + overflow:hidden: bloccava lo scroll e con 4
+       paragrafi di testo il contenuto finiva tagliato e irraggiungibile
+       su schermi piccoli. Ora la pagina scorre normalmente. */
+}
+
+body::before {
+    content: '';
     position: fixed;
     inset: 0;
-    background-image: url('img/sicily.jpg'); /* Desktop */
-    background-size: cover; 
-    background-position: center center;
-    background-repeat: no-repeat;
     z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(60, 40, 20, 0.16) 100%);
 }
 
-@media screen and (max-width: 768px) {
-    .page-background {
-        background-image: url('img/sicily.png'); /* Mobile (Verticale) */
-        background-size: cover;
-    }
-}
-
-/* --- DASHBOARD PREMIUM --- */
+/* ============================================================
+   2. DASHBOARD — identica alle altre pagine del sito
+   ============================================================ */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.85); 
-    border-bottom: 2px solid #ffd78f;
+    background: rgba(15, 25, 34, 0.92);
+    border-bottom: 2px solid var(--gold);
     backdrop-filter: blur(18px) saturate(200%);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 15px 40px;
-    z-index: 1000;
-    box-shadow: 0 0 28px rgba(255, 215, 160, 0.55);
+    justify-content: space-between;
+    padding: 15px 20px;
+    gap: 12px;
+    z-index: 999;
+    box-shadow: 0 2px 0 rgba(212, 175, 106, 0.25);
 }
 
 .logo-title {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #ffd78f;
-    text-shadow: 0 0 14px rgba(255, 215, 160, 0.95);
+    color: var(--gold-light);
+    letter-spacing: 1.5px;
 }
 
-.nav-right-group { display: flex; align-items: center; gap: 20px; }
+.nav-desktop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
 
-/* Pulsanti unificati */
-.nav-desktop, .lang-switcher { display: flex; gap: 10px; }
-
-.nav-desktop a, .lang-switcher button {
-    color: #ffd78f;
+.nav-desktop a {
+    color: var(--stone);
+    font-weight: 600;
     text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
+    padding: 6px 16px;
+    border-radius: 2px;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid rgba(239, 230, 211, 0.4);
+    transition: all 0.3s ease;
+}
+
+.nav-desktop a:hover {
+    background: rgba(193, 98, 45, 0.25);
+    border-color: var(--terracotta);
+    color: #fff;
+}
+
+.header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.lang-switcher button {
+    width: 36px;
+    height: 36px;
     font-size: 0.9rem;
-    padding: 6px 14px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.75);
-    transition: all 0.4s ease;
+    font-weight: bold;
+    border-radius: 2px;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid rgba(239, 230, 211, 0.4);
+    color: var(--stone);
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
-.nav-desktop a:hover, .lang-switcher button:hover {
-    background: #ffd78f;
-    color: #000;
+.lang-switcher button:hover {
+    background: rgba(193, 98, 45, 0.25);
 }
 
-/* --- CONTENUTO (Layout a Imbuto Elastico) --- */
+@media screen and (max-width: 899px) {
+    .header-right-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 8px;
+    }
+    .nav-desktop {
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+    .lang-switcher {
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+}
+
+/* ============================================================
+   3. CONTENUTO — colonna di lettura centrata, generica per
+   qualunque pagina "testo + titolo" (Chi Siamo, Il Progetto)
+   ============================================================ */
 .content-wrapper {
-    position: fixed;
-    top: 100px;     /* Spazio per la Dashboard */
-    bottom: 20px;   /* Margine inferiore */
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 190px 24px 100px;
+    text-align: center;
+}
+
+.category-tag {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.content-wrapper h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+    color: var(--sea);
+    margin-bottom: 16px;
+    line-height: 1.15;
+}
+
+.gold-divider {
+    border: none;
+    height: 1px;
+    background: var(--gold);
+    width: 70px;
+    margin: 0 auto 28px;
+    position: relative;
+}
+
+.gold-divider::before {
+    content: "❧";
+    position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 600px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--stone);
+    color: var(--gold);
+    font-size: 13px;
+    padding: 0 8px;
+}
+
+.content-wrapper p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.content-wrapper p:last-of-type {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 899px) {
+    .content-wrapper {
+        padding-top: 150px;
+    }
+}
+
+/* ============================================================
+   4. CASTELLANA WIDGET E CHAT — identici alle altre pagine
+   ============================================================ */
+.castellana-widget-area {
+    position: fixed;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra verticalmente */
-    text-align: center;
-    overflow: hidden; /* Impedisce che il testo esca dal frame */
+    align-items: center;
+    gap: 6px;
 }
 
-h1 {
-    font-family: 'Playfair Display', serif;
-    /* Usa clamp per adattare il titolo allo schermo */
-    font-size: clamp(1.5rem, 5vw, 3rem); 
-    color: #000;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 8px rgba(255,255,255,0.8);
+.castellana-video-wrapper {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--sea);
+    background: #000;
+    box-shadow: 0 4px 15px var(--shadow-strong);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
 }
 
-p {
-    /* Il testo si rimpicciolisce se lo schermo è stretto */
-    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
-    line-height: 1.5;
-    margin-bottom: 15px;
-    color: #000;
-    font-weight: 500;
-    text-shadow: 0 0 5px rgba(255,255,255,0.9);
+.castellana-video-wrapper:hover {
+    transform: scale(1.04);
 }
 
-/* Regola per evitare che il testo sia troppo lungo su schermi piccolissimi */
-@media screen and (max-height: 600px) {
-    .content-wrapper { top: 80px; }
-    p { margin-bottom: 10px; line-height: 1.3; }
+.castellana-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
 }
 
-/* --- RESPONSIVE DASHBOARD --- */
-@media screen and (max-width: 768px) {
-    .dashboard { 
-        flex-direction: column; 
-        padding: 10px; 
-        gap: 15px; 
+.castellana-tooltip {
+    background: var(--sea);
+    color: var(--stone);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px var(--shadow-strong);
+    pointer-events: none;
+}
+
+.chat-desktop {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 125px;
+    width: 290px;
+    height: 330px;
+    background: var(--stone);
+    border-radius: 2px;
+    border: 1px solid var(--sea);
+    backdrop-filter: blur(12px);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 99999;
+    padding: 14px;
+    box-shadow: 0 10px 30px var(--shadow-strong);
+}
+
+.chat-desktop.active {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    color: var(--sea);
+    font-weight: bold;
+    margin-bottom: 12px;
+    align-items: center;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 6px;
+}
+
+.avatar-status-dot {
+    width: 8px;
+    height: 8px;
+    background: #3E8C5A;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.close-chat-btn {
+    background: transparent;
+    border: none;
+    color: var(--sea);
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.close-chat-btn:hover {
+    color: var(--terracotta);
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin-bottom: 12px;
+    color: var(--ink);
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 6px;
+}
+
+.chat-input-row input {
+    flex-grow: 1;
+    background: #fff;
+    border: 1px solid rgba(27, 73, 101, 0.35);
+    padding: 8px 12px;
+    border-radius: 2px;
+    color: var(--ink);
+    font-size: 0.85rem;
+}
+
+.chat-input-row input:focus {
+    outline: none;
+    border-color: var(--sea);
+}
+
+.mic-btn {
+    background: var(--terracotta);
+    border: none;
+    border-radius: 2px;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: #fff;
+}
+
+.mic-btn:hover {
+    background: var(--terracotta-dark);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   5. OTTIMIZZAZIONE DESKTOP (DA 900PX IN SU)
+   ============================================================ */
+@media screen and (min-width: 900px) {
+    .dashboard {
+        height: 75px;
+        flex-direction: row;
+        padding: 0 40px;
+        gap: 0;
     }
-    .nav-right-group { 
-        flex-direction: column; 
-        gap: 10px; 
-    }
-    .content-wrapper { 
-        top: 150px; /* Più spazio su mobile per la dashboard che si allarga */
-        max-width: 85%; 
-    }
-    h1 { font-size: 2rem; }
-    p { font-size: 1.1rem; }
+    .logo-title { font-size: 1.55rem; }
+    .nav-desktop { gap: 22px; }
+    .nav-desktop a { font-size: 1rem; padding: 10px 18px; }
+
+    .content-wrapper { padding-top: 130px; }
+
+    .castellana-widget-area { right: 2rem; bottom: 2rem; gap: 8px; }
+    .castellana-video-wrapper { width: 110px; height: 110px; }
+    .chat-desktop { right: 2rem; bottom: 175px; width: 320px; height: 400px; }
+}
+
+@media (min-width: 601px) and (max-width: 899px) {
+    .castellana-video-wrapper { width: 95px; height: 95px; }
+    .chat-desktop { bottom: 150px; }
 }
