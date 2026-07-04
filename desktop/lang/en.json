@@ -36,7 +36,8 @@
     "placeholder": "Write to the Castellana...",
     "tooltip": "Click to chat",
     "citizen_msg1": "Welcome! I am here to tell you the secrets of Caccamo. What do you want to discover today?",
-    "chiese_msg": "Welcome to Amunì Tourism! Explore the sacred beauties of Caccamo and ask me for details about their stories."
+    "chiese_msg": "Welcome to Amunì Tourism! Explore the sacred beauties of Caccamo and ask me for details about their stories.",
+    "cibo_eventi_msg": "Welcome! Ask me about Caccamo's festivals and traditions, season by season."
   },
   "pages": {
     "about": {
@@ -82,6 +83,28 @@
       "route_annunziata": "Painted vaults",
       "route_badia": "Descending",
       "route_sangiorgio": "Heart of the village"
+    },
+    "cibo_eventi_page": {
+      "page_title": "The Village Calendar",
+      "category": "Food & Events",
+      "subtitle": "Four seasons, four ways to experience Caccamo",
+      "cta": "Ask the Castellana to tell you about it",
+      "s1_period": "October — December",
+      "s1_title": "Festival and Nativity Scenes",
+      "s1_body": "The Sausage Festival opens the autumn, alongside local sweets such as taralli. In December the village lights up with nativity scenes: the one at the Cappuccini, set up outside the convent with antique farming tools and household objects 40-60 years old, and the one at Santo Domenico, among the most beautiful to see. Below the Castle, the great Christmas tree is lit, and the neighboring villages — easily reachable by local transport — often host live nativity scenes.",
+      "s1_tags": "Sausage Festival · Cappuccini Nativity Scene · Santo Domenico Nativity Scene · Tree below the Castle",
+      "s2_period": "March — April",
+      "s2_title": "Holy Week",
+      "s2_body": "The week opens on Palm Sunday with U Signuruzzu a Cavaddu, when a child from the village portrays Jesus entering Jerusalem. On Good Friday evening comes the living Way of the Cross: the Madonna with the pierced heart meets Christ on a bed of roses. On the same day it is customary to \"visit the sepulchres\" — churches left open, altars adorned with sprouted wheat, recalling Mary and Magdalene going to Christ's tomb.",
+      "s2_tags": "U Signuruzzu a Cavaddu — Palm Sunday · Living Way of the Cross — Good Friday · Visiting the Sepulchres · Cena Bread · Almond Lambs",
+      "s3_period": "Last Sunday of May",
+      "s3_title": "Blessed Giovanni Liccio",
+      "s3_body": "Not just any saint, but a patron truly of Caccamo: Blessed Giovanni Liccio is a son of the village, which is why his feast is among the most heartfelt for the community. The procession crosses the whole town, especially the old quarter — a unique way to see the village in a different light and feel part of the community.",
+      "s3_tags": "Patronal procession · Patron saint of Caccamo · Historic center",
+      "s4_period": "Late August",
+      "s4_title": "Palio di San Nicasio",
+      "s4_body": "Three days of celebration: the Castellana's historical parade opens the festivities, leading up to the Palio that closes Caccamo's summer.",
+      "s4_tags": "Historical parade · Palio · Feast of San Nicasio"
     }
   }
 }
