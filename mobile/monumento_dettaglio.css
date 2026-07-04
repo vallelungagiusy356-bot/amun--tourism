@@ -1,127 +1,180 @@
-/* =======================================================
-   1. RESET GENERALE E IMPOSTAZIONI STRUTTURALI
-   ======================================================= */
+/* ==========================================================================
+   AMUNÌ TOURISM — SCHEDA MONUMENTO (mobile, allineata al resto del sito)
+   Stessa logica di prima (audio ambientale, traduzioni, render 3D):
+   qui cambia l'aspetto e si aggiunge il pulsante "Ascolta la descrizione".
+   ========================================================================== */
+
+:root {
+    --sky: #5B8FAE;
+    --sea: #1B4965;
+    --sea-ink: #14283A;
+
+    --stone: #EFE6D3;
+    --stone-dim: #DCCFAF;
+
+    --terracotta: #C1622D;
+    --terracotta-dark: #9C4C22;
+
+    --gold: #B8873B;
+    --gold-light: #D4AF6A;
+
+    --ink: #22303B;
+    --ink-soft: #465563;
+
+    --shadow-soft: rgba(0, 0, 0, 0.18);
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: 'Georgia', serif;
-    background: #fdfcf9; /* Sfondo chiaro come volevi */
-    color: #333;
+    font-family: 'Jost', sans-serif;
+    background: var(--stone);
+    color: var(--ink);
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* Sfondo immersivo */
+/* ==========================================================================
+   SFONDO — piatto pietra, come tutte le pagine interne
+   ========================================================================== */
 .scene-background {
     position: fixed;
     inset: 0;
-    background: url('img/sicily.jpg') no-repeat center center fixed;
-    background-size: cover;
-    filter: brightness(0.9) contrast(1.1);
+    background: var(--stone);
     z-index: 0;
 }
 
+.scene-background::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(60, 40, 20, 0.16) 100%);
+    pointer-events: none;
+}
+
 .mobile-layout-detail {
-    margin-top: 90px;
-    padding: 16px 20px 40px 20px;
+    margin-top: 100px;
+    padding: 0 16px 40px 16px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 22px;
     position: relative;
     z-index: 2;
 }
 
-
-/* --- DASHBOARD: NERO PROFONDO ED EQUILIBRATA --- */
+/* ==========================================================================
+   DASHBOARD — identica alle altre pagine interne con audio
+   ========================================================================== */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* Leggermente più bassa per un look più sleek */
+    min-height: 65px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-    background: #000; /* Nero assoluto e profondo */
-    border-bottom: 1px solid #d4af37;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(15, 25, 34, 0.92);
+    backdrop-filter: blur(18px) saturate(200%);
+    border-bottom: 2px solid var(--gold);
     z-index: 1000;
 }
 
-/* Bottone Home più discreto */
-.btn-home {
-    width: 40px; /* Larghezza fissa */
-    font-size: 1.2rem; /* Casetta ridotta */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Logo centrato */
 .logo-container {
-    flex: 1;
+    flex: 1 1 100%;
     display: flex;
     justify-content: center;
 }
 
-/* Logo Oro Brillante */
 .logo-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; 
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--gold-light);
     white-space: nowrap;
-    /* Effetto Oro */
-    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5)); /* Ombra per staccare dal nero */
 }
 
-
-/* Bandierine compatte */
-.lang-switcher {
+.right-controls {
     display: flex;
-    gap: 2px; /* Spazio ridotto tra le bandiere */
-    width: auto;
-}
-
-.lang-switcher button {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 2px; 
-    cursor: pointer;
-    color: white; 
-    display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem; /* Bandierine leggermente più piccole */
-    min-width: 20px;
+    gap: 10px;
+    flex: 1 1 100%;
 }
 
+.btn-home {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    text-decoration: none;
+}
 
-/* =======================================================
-   2. IMMAGINE E TITOLO
-   ======================================================= */
-.monument-header { text-align: center; margin-bottom: 10px; }
+.btn-home svg { color: var(--gold-light); }
+
+.btn-audio {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    padding: 0 5px;
+    font-size: 1.1rem;
+    color: var(--stone);
+}
+
+.lang-switcher { display: flex; gap: 5px; }
+
+.lang-switcher button {
+    width: 30px;
+    height: 30px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 2px;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid rgba(239, 230, 211, 0.4);
+    color: var(--stone);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.lang-switcher button.active {
+    border-color: var(--gold);
+    background: rgba(184, 135, 59, 0.25);
+    color: var(--gold-light);
+}
+
+/* ==========================================================================
+   TITOLO E RENDER 3D
+   ========================================================================== */
+.monument-header { text-align: center; }
 
 .monument-header h1 {
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 1.6rem;
-    color: #d4af37;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--sea);
     line-height: 1.3;
 }
 
-/* Contenitore immagine con BORDO NERO */
 .monument-render-container {
     width: 100%;
-    border-radius: 20px;
-    border: 2.5px solid #000; /* Bordo NERO richiesto */
+    border-radius: 2px;
+    border: 1px solid var(--gold);
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px var(--shadow-soft);
+    background: var(--stone-dim);
 }
 
 .monument-hero-image {
@@ -131,89 +184,132 @@ body {
     display: block;
 }
 
-/* =======================================================
-   3. TECHE (EFFETTO VETRO + BORDO NERO)
-   ======================================================= */
+/* ==========================================================================
+   TECHE — vetro scuro con bordo oro, come il resto del sito, testo
+   in Cormorant Garamond corsivo per la sensazione da "guida narrata"
+   ========================================================================== */
 .teca-cristallo {
-    background: rgba(255, 255, 255, 0.7); /* Vetro satinato */
-    backdrop-filter: blur(15px);
-    border: 2.5px solid #000; /* Bordo NERO richiesto */
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+    background: rgba(15, 25, 34, 0.88);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 18px;
+    box-shadow: 0 6px 16px var(--shadow-soft);
 }
 
 .teca-cristallo.descrittiva p {
-    color: #000; /* Testo nero */
-    font-size: 1rem;
-    text-align: justify;
+    color: var(--stone);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    text-align: left;
 }
 
 .info-label {
-    font-family: 'Cinzel', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 0.85rem;
-    color: #000;
-    font-weight: 800;
+    color: var(--gold-light);
+    font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 5px;
     display: block;
 }
 
-.info-value { 
-    font-size: 1rem; 
-    color: #222; 
-    margin-bottom: 12px; 
+.info-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--stone);
+    margin-bottom: 12px;
+    display: block;
 }
 
 .teca-avviso {
-    border-left: 5px solid #d4af37;
+    border-left: 4px solid var(--terracotta);
 }
 
-/* =======================================================
-   4. BOTTONI
-   ======================================================= */
+.teca-avviso p {
+    color: var(--stone) !important;
+    font-style: normal !important;
+}
+
+/* ==========================================================================
+   AUDIOGUIDA — pulsante "Ascolta la descrizione"
+   ========================================================================== */
+.btn-listen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: var(--terracotta);
+    color: var(--stone);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 12px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    margin-bottom: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-listen:active { background: var(--terracotta-dark); }
+
+.btn-listen.playing { background: var(--sea); }
+
+/* ==========================================================================
+   BOTTONI AZIONE
+   ========================================================================== */
+.actions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .btn-barocco-action {
-    background: #fff;
-    border: 2px solid #000;
-    border-radius: 12px;
+    background: rgba(15, 25, 34, 0.88);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
     padding: 14px;
-    color: #000;
-    font-weight: 700;
+    color: var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.92rem;
     text-align: center;
     text-decoration: none;
-    transition: all 0.3s;
+    cursor: pointer;
+    box-shadow: 0 6px 16px var(--shadow-soft);
+    transition: border-color 0.2s ease;
 }
 
-.btn-barocco-action:hover {
-    background: #d4af37;
-    color: #000;
+.btn-barocco-action:active { border-color: var(--terracotta); }
+
+/* Parla con la Castellana: pieno, coerente col resto del sito */
+.btn-secondary-action {
+    background: var(--sea);
+    color: var(--stone);
 }
+
+.btn-secondary-action:active { background: var(--terracotta-dark); }
 
 .btn-back-home {
     display: block;
     text-align: center;
-    margin-top: 20px;
-    color: #000; /* Nero per coerenza */
+    margin-top: 6px;
+    color: var(--sea);
     text-decoration: none;
+    font-family: 'Jost', sans-serif;
     font-weight: 600;
-    border-bottom: 1px dashed #d4af37;
+    border-bottom: 1px dashed var(--gold);
+    padding-bottom: 4px;
 }
 
-/* Fix altezze immagini */
+/* Altezze immagini per singolo monumento (invariate) */
 .monument-hero-image.img-annunziata { height: 260px !important; }
 .monument-hero-image.img-cappuccini { height: 180px; }
 .monument-hero-image.img-castello { height: 280px; }
 .monument-hero-image.img-sangiorgio { height: 300px; }
 .monument-hero-image.img-sandomenico { height: 260px !important; }
 
-/* Correzioni di posizionamento specifico */
-
-/* Badia: Sposta l'inquadratura verso l'alto (30% invece di 50%) */
-.monument-hero-image.img-badia { 
-    object-position: center 60%; 
-}
-
-/* Castello: Sposta l'inquadratura verso sinistra (40% invece di 50%) */
-.monument-hero-image.img-castello { 
-    object-position: 40% center; 
-}
+.monument-hero-image.img-badia { object-position: center 60%; }
+.monument-hero-image.img-castello { object-position: 40% center; }
