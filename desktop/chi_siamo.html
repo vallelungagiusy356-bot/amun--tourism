@@ -3,23 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Siamo | Amunì Tourism</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title data-i18n="pages.chi_siamo.title">Chi Siamo | Amunì Tourism</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="pages.css">
+
+    <style>
+        .lang-switcher button.active {
+            border: 2px solid #B8873B !important;
+            background: rgba(184, 135, 59, 0.2) !important;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-
-    <div class="page-background"></div>
 
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
-        <div class="nav-right-group">
+        <div class="header-right-actions">
             <nav class="nav-desktop">
                 <a href="desktop_index.html" data-i18n="menu.home">Home</a>
                 <a href="cittadino.html" data-i18n="menu.citizen">Cittadino</a>
             </nav>
-            
 
             <div class="lang-switcher">
                 <button data-lang="it">IT</button>
@@ -32,24 +38,78 @@
     </header>
 
     <main class="content-wrapper">
-        <h1 data-i18n="pages.chi_siamo.title">Chi Siamo</h1>
+        <span class="category-tag" data-i18n="pages.chi_siamo.category">La Nostra Storia</span>
+        <h1 data-i18n="pages.chi_siamo.title">Chi Siamo: Una Storia di Visione</h1>
         <hr class="gold-divider">
-        <p data-i18n="pages.chi_siamo.founder_bio"></p>
-        <p data-i18n="pages.chi_siamo.philosophy"></p>
-        <p data-i18n="pages.chi_siamo.voices"></p>
+
+        <p data-i18n="pages.chi_siamo.founder_bio">Il progetto Amunì nasce dalla mia doppia natura: la precisione analitica di una ricercatrice chimica e la visione creativa di una web designer. È una sintesi tra rigore scientifico e amore per l'arte, pensata per trasformare la tecnologia in uno strumento di narrazione.</p>
+
+        <p data-i18n="pages.chi_siamo.philosophy">Non considero questo sito un punto d'arrivo, ma un laboratorio vivente. La cultura popolare è un patrimonio dinamico, e Amunì si evolve attraverso il dialogo costante con voi. Credo fermamente che valorizzare il territorio significhi anche custodire le voci di chi lo abita, tramandando tradizioni, filastrocche e canti alle generazioni future.</p>
+
+        <p data-i18n="pages.chi_siamo.freemium_model">I contenuti storici e monumentali sono un bene pubblico e accessibile a tutti. L'esperienza 'Castellana Premium' è riservata a chi desidera un viaggio più profondo: un accesso esclusivo all'analisi tecnica del patrimonio, alle storie stratificate e al supporto personalizzato per una scoperta autentica e senza tempo.</p>
+
+        <p data-i18n="pages.chi_siamo.events">Dalla Pasqua alle tradizioni culinarie, ogni evento è un viaggio che la Castellana ti aiuterà ad approfondire in chat.</p>
     </main>
 
+    <div class="castellana-widget-area">
+        <div class="castellana-video-wrapper" id="chat-open-btn">
+            <video class="castellana-video" autoplay loop muted playsinline>
+                <source src="img/castellana_alpha.webm" type="video/webm">
+            </video>
+        </div>
+        <div class="castellana-tooltip" data-i18n="chat.tooltip">Click to chat</div>
+    </div>
+
+    <div class="chat-desktop" id="chat-desktop">
+        <div class="chat-header">
+            <div class="avatar-status-dot"></div>
+            <span data-i18n="chat.title">La Castellana</span>
+            <button id="close-chat" class="close-chat-btn">✕</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message" data-i18n="chat.chi_siamo_msg">Vuoi sapere di più su chi c'è dietro Amunì, o su come funziona l'esperienza Premium? Chiedimi pure.</div>
+        </div>
+        <div class="chat-input-row">
+            <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+            <button class="mic-btn">🎤</button>
+        </div>
+    </div>
+
     <script>
-        const lang = localStorage.getItem("lang") || "it";
-        fetch(`./lang/${lang}.json`)
-            .then(res => res.json())
-            .then(data => {
-                document.querySelectorAll("[data-i18n]").forEach(el => {
-                    const key = el.getAttribute("data-i18n");
-                    const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
-                    if (text) el.innerHTML = text;
-                });
+        const chat = document.getElementById("chat-desktop");
+        const openBtn = document.getElementById("chat-open-btn");
+        const closeBtn = document.getElementById("close-chat");
+        openBtn.addEventListener("click", () => chat.classList.add("active"));
+        closeBtn.addEventListener("click", () => chat.classList.remove("active"));
+
+        let currentLang = localStorage.getItem("lang") || "it";
+        function loadLanguage(lang) {
+            fetch(`./lang/${lang}.json`)
+                .then(res => res.json())
+                .then(data => {
+                    document.querySelectorAll("[data-i18n]").forEach(el => {
+                        const key = el.getAttribute("data-i18n");
+                        const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                        if (text) el.innerHTML = text;
+                    });
+                    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                        const key = el.getAttribute("data-i18n-placeholder");
+                        const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                        if (text) el.placeholder = text;
+                    });
+                    document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                        btn.classList.toggle("active", btn.dataset.lang === lang);
+                    });
+                })
+                .catch(err => console.error("Errore lingua:", err));
+            localStorage.setItem("lang", lang);
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
             });
+            loadLanguage(currentLang);
+        });
     </script>
 </body>
 </html>
