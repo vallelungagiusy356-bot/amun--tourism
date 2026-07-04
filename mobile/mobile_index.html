@@ -44,11 +44,11 @@
     <div class="right-controls">
         <button id="toggle-music" class="btn-audio">🔈</button>
         <div class="lang-switcher">
-            <button data-lang="it">🇮🇹</button>
-            <button data-lang="en">🇬🇧</button>
-            <button data-lang="fr">🇫🇷</button>
-            <button data-lang="de">🇩🇪</button>
-            <button data-lang="es">🇪🇸</button>
+            <button data-lang="it">IT</button>
+            <button data-lang="en">EN</button>
+            <button data-lang="fr">FR</button>
+            <button data-lang="de">DE</button>
+            <button data-lang="es">ES</button>
         </div>
     </div>
 </header>
@@ -164,6 +164,10 @@
                     });
                     // Genera card dinamiche
                     renderFoodCards(data);
+                    // Aggiorna stato pulsanti lingua
+                    document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                        btn.classList.toggle("active", btn.dataset.lang === lang);
+                    });
                 })
                 .catch(err => console.error("Errore lingua:", err));
 
