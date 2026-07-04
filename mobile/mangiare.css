@@ -1,193 +1,294 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ==========================================================================
+   AMUNÌ TOURISM — MANGIARE (mobile, allineata alla home già approvata)
+   Stessa logica di prima (ricerca, card dinamiche, cambio lingua):
+   qui cambia solo l'aspetto.
+   ========================================================================== */
+
+:root {
+    --sky: #5B8FAE;
+    --sea: #1B4965;
+    --sea-ink: #14283A;
+
+    --stone: #EFE6D3;
+    --stone-dim: #DCCFAF;
+
+    --terracotta: #C1622D;
+    --terracotta-dark: #9C4C22;
+
+    --gold: #B8873B;
+    --gold-light: #D4AF6A;
+
+    --ink: #22303B;
+    --ink-soft: #465563;
+
+    --shadow-soft: rgba(0, 0, 0, 0.18);
+    --shadow-strong: rgba(0, 0, 0, 0.35);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #000;
+    font-family: 'Jost', sans-serif;
+    background: var(--stone);
+    color: var(--ink);
     min-height: 100vh;
 }
 
+/* ==========================================================================
+   SFONDO — piatto pietra, come tutte le pagine interne (solo la home
+   mobile ha la foto del borgo, esattamente come sul desktop)
+   ========================================================================== */
 .scene-background {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    inset: 0;
     z-index: -1;
-    background: url('img/sicily.jpg') center/cover;
-    filter: brightness(0.7);
+    background: var(--stone);
 }
 
-/* --- DASHBOARD: ELEGANTE E PIÙ SPAZIOSA --- */
+.scene-background::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(60, 40, 20, 0.16) 100%);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   DASHBOARD — identica a quella della home mobile, con il bottone home
+   al posto del toggle audio
+   ========================================================================== */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 75px; /* Aumentata per più respiro */
+    min-height: 65px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(15, 25, 34, 0.92);
+    backdrop-filter: blur(18px) saturate(200%);
+    border-bottom: 2px solid var(--gold);
     z-index: 1000;
 }
 
-.btn-home {
-    width: 50px;
-    text-decoration: none;
-    font-size: 1.3rem; /* Ingrandita */
+.logo-container {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--gold-light);
+    white-space: nowrap;
+}
+
+.right-controls {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
+    flex: 1 1 100%;
 }
 
-.logo-container {
-    flex-grow: 1;
+.btn-home {
+    width: 34px;
+    height: 34px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    overflow: hidden;
-    padding: 0 10px;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 1rem;
 }
 
-/* Logo Oro Brillante */
-.logo-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    white-space: nowrap;
-    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
-}
-
-/* --- BANDIERINE COMPATTE --- */
 .lang-switcher {
     display: flex;
-    gap: 1.5px;
-    flex-shrink: 0;
+    gap: 5px;
 }
 
 .lang-switcher button {
-    background: none;
-    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 2px;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid rgba(239, 230, 211, 0.4);
+    color: var(--ink-soft);
     cursor: pointer;
-    width: 24px;
-    height: 24px;
-    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s;
+    transition: background 0.2s ease;
 }
 
-.lang-switcher button:hover {
-    transform: scale(1.2);
+.lang-switcher button.active {
+    border-color: var(--gold);
+    background: rgba(184, 135, 59, 0.25);
+    color: var(--gold-light);
 }
 
-/* ContenitoreScroll: Padding-top aumentato per compensare l'altezza della dashboard */
-.scroll-content { 
-    padding-top: 90px; 
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 20px;
+/* ==========================================================================
+   CONTENUTO
+   ========================================================================== */
+.scroll-content {
+    padding-top: 100px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 40px;
 }
 
 .search-container {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     width: 100%;
 }
 
 .search-bar {
     width: 100%;
-    padding: 12px 20px;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid #d4af37;
-    border-radius: 50px;
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
+    padding: 12px 16px;
+    background: var(--stone-dim);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
     outline: none;
-    backdrop-filter: blur(10px);
 }
 
 .search-bar::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--ink-soft);
+    opacity: 0.7;
 }
 
-/* Card Stile */
+.search-bar:focus {
+    border-color: var(--terracotta);
+}
+
+/* ==========================================================================
+   CARD CIBO — stesso trattamento delle card della home (vetro scuro,
+   bordo oro), qui su sfondo pietra invece che sulla foto del borgo
+   ========================================================================== */
+.food-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
 .food-card {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 25px;
     display: block;
     text-decoration: none;
-    color: #2c2c2c;
-    border: 2.5px solid #000; 
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 10px rgba(212, 175, 55, 0.5); 
-    transition: transform 0.3s ease;
+    color: var(--stone);
+    background: rgba(15, 25, 34, 0.88);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 18px;
+    box-shadow: 0 6px 16px var(--shadow-soft);
+    transition: border-color 0.2s ease;
 }
 
-.food-card:hover { transform: scale(1.02); }
+.food-card:active {
+    border-color: var(--terracotta);
+}
+
+.food-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
 
 .food-card-title {
-    font-family: 'Cinzel', serif;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--gold-light);
+}
+
+.badge {
+    font-size: 0.62rem;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: #000;
+    color: var(--terracotta);
+    font-weight: 700;
+    background: rgba(239, 230, 211, 0.1);
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+
+.food-card-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--stone);
     margin-bottom: 10px;
 }
 
 .food-card-btn {
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    color: #000;
-    font-weight: 700;
-    border: none;
-    border-radius: 50px; 
-    background: #d4af37;
-    text-transform: uppercase;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--gold-light);
 }
 
-/* --- Lista Alloggi (Sleep) --- */
+/* ==========================================================================
+   CARD ALLOGGI (dormire.html) — stesso vetro scuro delle card cibo,
+   layout orizzontale nome + pulsante prenota
+   ========================================================================== */
 #sleep-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding: 10px 5px;
-    width: 100%;
+    gap: 14px;
 }
 
 .sleep-card {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(15px);
-    border: 2.5px solid #000;
-    border-radius: 20px;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
+    background: rgba(15, 25, 34, 0.88);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 16px 18px;
     text-decoration: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 10px rgba(212, 175, 55, 0.5);
+    box-shadow: 0 6px 16px var(--shadow-soft);
+    transition: border-color 0.2s ease;
+}
+
+.sleep-card:active {
+    border-color: var(--terracotta);
 }
 
 .sleep-title {
-    font-family: 'Cinzel', serif;
-    color: #000;
-    font-size: 1.1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--gold-light);
 }
 
 .btn-view {
-    color: #000;
-    background: #d4af37;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 800;
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin-left: 10px;
+    color: #fff;
+    background: var(--terracotta);
+    padding: 8px 14px;
+    border-radius: 2px;
+    white-space: nowrap;
 }
