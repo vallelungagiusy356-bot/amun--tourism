@@ -37,7 +37,9 @@
     "tooltip": "Clicca per chattare",
     "citizen_msg1": "Benvenuto! Sono qui per raccontarti i segreti di Caccamo. Cosa vuoi scoprire oggi?",
     "chiese_msg": "Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo e chiedimi dettagli sulle loro storie.",
-    "cibo_eventi_msg": "Benvenuto! Chiedimi delle feste e delle tradizioni di Caccamo, stagione per stagione."
+    "cibo_eventi_msg": "Benvenuto! Chiedimi delle feste e delle tradizioni di Caccamo, stagione per stagione.",
+    "chi_siamo_msg": "Vuoi sapere di più su chi c'è dietro Amunì, o su come funziona l'esperienza Premium? Chiedimi pure.",
+    "canti_msg": "Vuoi ascoltare altri canti e preghiere del borgo? Nella versione Premium te ne racconto molti altri..."
   },
   "pages": {
     "about": {
@@ -48,6 +50,7 @@
     },
     "chi_siamo": {
       "title": "Chi Siamo: Una Storia di Visione",
+      "category": "La Nostra Storia",
       "founder_bio": "Il progetto Amunì nasce dalla mia doppia natura: la precisione analitica di una ricercatrice chimica e la visione creativa di una web designer. È una sintesi tra rigore scientifico e amore per l'arte, pensata per trasformare la tecnologia in uno strumento di narrazione.",
       "philosophy": "Non considero questo sito un punto d'arrivo, ma un laboratorio vivente. La cultura popolare è un patrimonio dinamico, e Amunì si evolve attraverso il dialogo costante con voi. Credo fermamente che valorizzare il territorio significhi anche custodire le voci di chi lo abita, tramandando tradizioni, filastrocche e canti alle generazioni future.",
       "freemium_model": "I contenuti storici e monumentali sono un bene pubblico e accessibile a tutti. L'esperienza 'Castellana Premium' è riservata a chi desidera un viaggio più profondo: un accesso esclusivo all'analisi tecnica del patrimonio, alle storie stratificate e al supporto personalizzato per una scoperta autentica e senza tempo.",
