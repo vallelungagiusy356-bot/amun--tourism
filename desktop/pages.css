@@ -215,6 +215,14 @@ body::before {
     margin-bottom: 0;
 }
 
+.highlight-gold {
+    font-style: italic;
+    color: var(--terracotta-dark);
+    background: rgba(184, 135, 59, 0.08);
+    border-left: 2px solid var(--gold);
+    padding: 14px 18px;
+}
+
 @media screen and (max-width: 899px) {
     .content-wrapper {
         padding-top: 150px;
