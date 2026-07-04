@@ -620,3 +620,28 @@ body::before {
         justify-content: center;
     }
 }
+
+/* Pulsante di invio della chat (sostituisce il microfono) */
+.send-btn {
+    background: var(--sea);
+    border: none;
+    border-radius: 2px;
+    padding: 0 12px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.send-btn:hover {
+    background: var(--terracotta);
+}
+
+.chat-messages .message.user-msg {
+    background: var(--sea);
+    color: #fff;
+    margin-left: auto;
+    border-left: none;
+    border-right: 2px solid var(--gold);
+    text-align: right;
+}
