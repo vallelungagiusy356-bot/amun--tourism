@@ -1,0 +1,357 @@
+/* ============================================================
+   1. RESET + VARIABILI GLOBALI — stessa palette del resto del sito
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+:root {
+  --sky: #5B8FAE;
+  --sea: #1B4965;
+
+  --stone: #EFE6D3;
+  --stone-dim: #DCCFAF;
+
+  --terracotta: #C1622D;
+  --terracotta-dark: #9C4C22;
+
+  --gold: #B8873B;
+  --gold-light: #D4AF6A;
+
+  --ink: #22303B;
+  --ink-soft: #465563;
+
+  --shadow-strong: rgba(0, 0, 0, 0.35);
+  --shadow-soft: rgba(0, 0, 0, 0.18);
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--stone) !important;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(60, 40, 20, 0.16) 100%);
+}
+
+/* ============================================================
+   2. DASHBOARD — identica alle altre pagine
+   ============================================================ */
+.dashboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 25, 34, 0.92);
+  border-bottom: 2px solid var(--gold);
+  backdrop-filter: blur(18px) saturate(200%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  gap: 12px;
+  z-index: 999;
+  box-shadow: 0 2px 0 rgba(212, 175, 106, 0.25);
+}
+
+.logo-title { font-size: 1.4rem; font-weight: 700; color: var(--gold-light); letter-spacing: 1.5px; }
+
+.nav-desktop { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+
+.nav-desktop a {
+  color: var(--stone); font-weight: 600; text-decoration: none; font-size: 0.85rem;
+  letter-spacing: 0.3px; padding: 6px 16px; border-radius: 2px;
+  background: rgba(239, 230, 211, 0.08); border: 1px solid rgba(239, 230, 211, 0.4);
+  transition: all 0.3s ease;
+}
+.nav-desktop a:hover { background: rgba(193, 98, 45, 0.25); border-color: var(--terracotta); color: #fff; }
+
+.header-right-actions { display: flex; align-items: center; gap: 15px; }
+.lang-switcher { display: flex; gap: 6px; align-items: center; }
+.lang-switcher button {
+  width: 36px; height: 36px; font-size: 0.9rem; font-weight: bold; border-radius: 2px;
+  background: rgba(239, 230, 211, 0.08); border: 1px solid rgba(239, 230, 211, 0.4);
+  color: var(--stone); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease;
+}
+.lang-switcher button:hover { background: rgba(193, 98, 45, 0.25); }
+
+@media screen and (max-width: 899px) {
+  .header-right-actions { flex-wrap: wrap; justify-content: center; row-gap: 8px; }
+  .nav-desktop { flex: 1 1 100%; justify-content: center; }
+  .lang-switcher { flex: 1 1 100%; justify-content: center; }
+}
+
+/* ============================================================
+   3. HERO
+   ============================================================ */
+.hero {
+  margin-top: 190px;
+  padding: 0 20px 60px;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.category-tag {
+  display: block; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--terracotta); font-weight: 700; margin-bottom: 8px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 5vw, 2.4rem);
+  color: var(--sea);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  margin-bottom: 30px;
+}
+
+/* ============================================================
+   4. SELETTORE TRACCE
+   ============================================================ */
+.track-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 26px;
+  text-align: left;
+}
+
+.group-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--sea);
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--stone-dim);
+}
+
+.track-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--stone-dim);
+  border: 1px solid var(--gold);
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.track-item:last-child { margin-bottom: 0; }
+
+.track-item:hover { border-color: var(--terracotta); }
+
+.track-item.active {
+  background: #fff;
+  border-color: var(--terracotta);
+  box-shadow: 0 4px 12px var(--shadow-soft);
+}
+
+.track-play {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.track-item.active .track-play { background: var(--sea); }
+
+.track-meta { display: flex; flex-direction: column; min-width: 0; }
+
+.track-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  color: var(--sea);
+}
+
+.track-who {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+/* ============================================================
+   5. PLAYER CARD
+   ============================================================ */
+.player-card {
+  background: #fff;
+  border: 1px solid var(--gold);
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 20px var(--shadow-soft);
+  text-align: left;
+}
+
+.player-top { display: flex; align-items: center; gap: 14px; }
+
+.play-btn {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--terracotta); border: none; color: #fff; font-size: 18px;
+  flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 16px rgba(193, 98, 45, 0.35);
+}
+.play-btn:active { transform: scale(0.95); }
+
+.track-info { flex: 1; min-width: 0; }
+.track-info .title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--sea); }
+.track-info .who { font-size: 0.72rem; color: var(--ink-soft); margin-top: 2px; }
+
+.waveform { display: flex; align-items: flex-end; gap: 2px; height: 34px; margin: 14px 0 8px; }
+.waveform .bar { flex: 1; background: var(--stone-dim); border-radius: 2px; transition: background 0.2s; }
+.waveform .bar.played { background: var(--gold); }
+
+.time-row { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--ink-soft); }
+
+.lang-row { display: flex; gap: 6px; margin-top: 14px; }
+.lang-chip {
+  flex: 1; text-align: center; font-size: 0.7rem; padding: 6px 0;
+  border: 1px solid var(--stone-dim); color: var(--ink-soft); cursor: pointer;
+  font-weight: 600;
+}
+.lang-chip.active { background: var(--sea); border-color: var(--sea); color: #fff; }
+
+/* ============================================================
+   6. TRASCRIZIONE
+   ============================================================ */
+.transcript {
+  background: #fff;
+  border: 1px solid var(--gold);
+  padding: 4px;
+  max-height: 280px;
+  overflow-y: auto;
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.line { padding: 14px 16px; border-bottom: 1px solid var(--stone); transition: background 0.25s; }
+.line:last-child { border-bottom: none; }
+.line.active { background: rgba(184, 135, 59, 0.14); }
+
+.line .dialect {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--sea);
+  line-height: 1.4;
+}
+.line.active .dialect { color: var(--terracotta-dark); font-weight: 600; }
+
+.line .translation { font-size: 0.85rem; color: var(--ink-soft); margin-top: 4px; line-height: 1.5; }
+
+.note {
+  text-align: left;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--gold);
+  padding-left: 12px;
+}
+
+.note code {
+  background: var(--stone-dim);
+  padding: 1px 4px;
+  font-family: 'Segoe UI', monospace;
+}
+
+/* ============================================================
+   7. CASTELLANA WIDGET E CHAT — identici alle altre pagine
+   ============================================================ */
+.castellana-widget-area {
+  position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 9999;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+
+.castellana-video-wrapper {
+  width: 78px; height: 78px; border-radius: 50%; overflow: hidden;
+  border: 3px solid var(--sea); background: #000;
+  box-shadow: 0 4px 15px var(--shadow-strong); cursor: pointer;
+  transition: transform 0.3s ease; position: relative;
+}
+.castellana-video-wrapper:hover { transform: scale(1.04); }
+.castellana-video { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+
+.castellana-tooltip {
+  background: var(--sea); color: var(--stone); padding: 0.3rem 0.9rem; border-radius: 2px;
+  font-weight: 700; font-size: 0.65rem; letter-spacing: 0.8px; text-transform: uppercase;
+  box-shadow: 0 4px 10px var(--shadow-strong); pointer-events: none;
+}
+
+.chat-desktop {
+  position: fixed; right: 1.5rem; bottom: 125px; width: 290px; height: 330px;
+  background: var(--stone); border-radius: 2px; border: 1px solid var(--sea);
+  backdrop-filter: blur(12px); display: none; flex-direction: column; overflow: hidden;
+  z-index: 99999; padding: 14px; box-shadow: 0 10px 30px var(--shadow-strong);
+}
+.chat-desktop.active { display: flex; flex-direction: column; animation: fadeIn 0.3s ease forwards; }
+
+.chat-header {
+  display: flex; justify-content: space-between; color: var(--sea); font-weight: bold;
+  margin-bottom: 12px; align-items: center; border-bottom: 1px solid var(--gold); padding-bottom: 6px;
+}
+.avatar-status-dot { width: 8px; height: 8px; background: #3E8C5A; border-radius: 50%; display: inline-block; margin-right: 6px; }
+.close-chat-btn { background: transparent; border: none; color: var(--sea); cursor: pointer; font-size: 1.1rem; transition: color 0.2s; }
+.close-chat-btn:hover { color: var(--terracotta); }
+.chat-messages { flex-grow: 1; overflow-y: auto; font-size: 0.9rem; line-height: 1.45; margin-bottom: 12px; color: var(--ink); }
+.chat-input-row { display: flex; gap: 6px; }
+.chat-input-row input { flex-grow: 1; background: #fff; border: 1px solid rgba(27, 73, 101, 0.35); padding: 8px 12px; border-radius: 2px; color: var(--ink); font-size: 0.85rem; }
+.chat-input-row input:focus { outline: none; border-color: var(--sea); }
+.mic-btn { background: var(--terracotta); border: none; border-radius: 2px; padding: 0 10px; cursor: pointer; transition: background 0.2s; color: #fff; }
+.mic-btn:hover { background: var(--terracotta-dark); }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================================================
+   8. OTTIMIZZAZIONE DESKTOP (DA 900PX IN SU)
+   ============================================================ */
+@media screen and (min-width: 900px) {
+  .dashboard { height: 75px; flex-direction: row; padding: 0 40px; gap: 0; }
+  .logo-title { font-size: 1.55rem; }
+  .nav-desktop { gap: 22px; }
+  .nav-desktop a { font-size: 1rem; padding: 10px 18px; }
+
+  .hero { margin-top: 110px; }
+  .hero h1 { font-size: 2.6rem; }
+
+  .track-groups { flex-direction: row; gap: 30px; }
+  .track-group { flex: 1; }
+
+  .castellana-widget-area { right: 2rem; bottom: 2rem; gap: 8px; }
+  .castellana-video-wrapper { width: 110px; height: 110px; }
+  .chat-desktop { right: 2rem; bottom: 175px; width: 320px; height: 400px; }
+}
+
+@media (min-width: 601px) and (max-width: 899px) {
+  .hero { margin-top: 150px; }
+  .castellana-video-wrapper { width: 95px; height: 95px; }
+  .chat-desktop { bottom: 150px; }
+}
