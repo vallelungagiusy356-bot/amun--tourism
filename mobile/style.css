@@ -1,10 +1,33 @@
+
 /* ==========================================================================
-   AMUNÌ TOURISM - HOME PAGE (VERSIONE ELEGANT GOLD - OTTIMIZZATA)
+   AMUNÌ TOURISM — MOBILE HOME (allineata alla palette del sito desktop)
+   Stessa logica di prima (audio, lingua, card dinamiche, service worker):
+   qui cambia solo l'aspetto, non un solo ID o classe usata dal JS.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap');
 
-/* RESET */
+:root {
+    --sky: #5B8FAE;
+    --sea: #1B4965;
+    --sea-ink: #14283A;
+
+    --stone: #EFE6D3;
+    --stone-dim: #DCCFAF;
+
+    --terracotta: #C1622D;
+    --terracotta-dark: #9C4C22;
+
+    --gold: #B8873B;
+    --gold-light: #D4AF6A;
+
+    --ink: #22303B;
+    --ink-soft: #465563;
+
+    --shadow-soft: rgba(0, 0, 0, 0.18);
+    --shadow-strong: rgba(0, 0, 0, 0.35);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,26 +35,45 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background: #000;
-    color: #f7f2e9;
+    font-family: 'Jost', sans-serif;
+    background: var(--stone);
+    color: var(--ink);
     overflow-x: hidden;
-    overflow-y: auto; /* Assicura lo scroll verticale */
+    overflow-y: auto;
     min-height: 100vh;
 }
 
-/* SFONDO */
+/* ==========================================================================
+   SFONDO — foto del borgo solo qui in home (come sul desktop), non più
+   il file generico di prima. Le altre pagine mobile (quando le
+   aggiorneremo) resteranno invece a sfondo piatto pietra, come
+   già fanno tutte le pagine interne del desktop.
+   ========================================================================== */
 .scene-background {
     position: fixed;
     inset: 0;
-    background-image: url('img/tuo_nuovo_sfondo.jpeg');
+    background-image: url('img/sfondocaccamo.jpeg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.78) contrast(1.1) saturate(1.1);
+    filter: brightness(0.6) contrast(1.08) saturate(1.05);
     z-index: 0;
 }
 
-/* DASHBOARD AGGIORNATA (Standardizzata) */
+.scene-background::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg,
+        rgba(20, 40, 58, 0.35) 0%,
+        rgba(20, 40, 58, 0.55) 55%,
+        var(--sea-ink) 100%);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   DASHBOARD — stessa identità del desktop: scura, bordo oro sottile,
+   niente più effetto vetro dorato pesante
+   ========================================================================== */
 .dashboard {
     position: fixed;
     top: 0;
@@ -40,42 +82,29 @@ body {
     height: 65px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Distribuisce gli spazi */
-    padding: 0 15px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    justify-content: space-between;
+    padding: 0 16px;
+    background: rgba(15, 25, 34, 0.92);
+    backdrop-filter: blur(18px) saturate(200%);
+    border-bottom: 2px solid var(--gold);
     z-index: 1000;
-}
-
-.btn-home {
-    text-decoration: none;
-    font-size: 1.5rem;
-    padding: 5px;
 }
 
 .logo-container {
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    margin-left: -20px; /* Valore negativo per spostare il logo a sinistra */
+    margin-left: -20px;
 }
 
-   
 .logo-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    /* Effetto Oro */
-    background: linear-gradient(to bottom, #d4af37, #fdf2b3, #d4af37);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));
+    color: var(--gold-light);
 }
-
 
 .right-controls {
     display: flex;
@@ -89,198 +118,232 @@ body {
 }
 
 .lang-switcher button {
-    background: none;
-    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 2px;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid rgba(239, 230, 211, 0.4);
+    color: var(--stone);
     cursor: pointer;
-    font-size: 1rem;
-    filter: grayscale(0.2);
-    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.lang-switcher button.active {
+    border-color: var(--gold);
+    background: rgba(184, 135, 59, 0.25);
+    color: var(--gold-light);
 }
 
 .lang-switcher button:hover {
-    transform: scale(1.2);
-    filter: grayscale(0);
+    background: rgba(193, 98, 45, 0.25);
 }
 
+/* pulsante audio: struttura invariata, solo pulizia visiva */
+.btn-audio {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    padding: 0 5px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--stone);
+}
 
-
-/* LAYOUT MOBILE */
+/* ==========================================================================
+   LAYOUT MOBILE
+   ========================================================================== */
 .mobile-layout {
-    margin-top: 70px; /* Spazio per l'header fisso */
+    margin-top: 70px;
     padding: 16px;
-    padding-bottom: 150px; /* Spazio extra in basso */
+    padding-bottom: 150px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    height: auto;
+    gap: 18px;
     min-height: 100vh;
     position: relative;
     z-index: 2;
 }
 
-/* VIDEO CASTELLANA */
+/* ==========================================================================
+   VIDEO CASTELLANA — cornice pietra invece di taglio netto, coerente
+   con le cornici già usate per le immagini sul desktop
+   ========================================================================== */
 .video-container {
     width: 100%;
-    aspect-ratio: 16 / 9; /* Proporzioni costanti */
-    max-height: 40vh;    /* Limite di altezza */
+    aspect-ratio: 16 / 9;
+    max-height: 38vh;
     overflow: hidden;
-    border-bottom: 2px solid rgba(212, 175, 55, 0.5);
-    border-radius: 0 0 18px 18px;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    background: var(--stone-dim);
     position: relative;
 }
 
-/* CASTELLANA AVATAR */
 .castellana-avatar {
-    max-height: 40vh; /* Limita l'avatar per lasciare spazio ai bottoni */
+    max-height: 38vh;
     width: auto;
-    position: relative; /* Flusso del layout */
-    margin: 0 auto 20px auto;
+    margin: 0 auto;
     display: block;
     pointer-events: none;
-    animation: fadeIn 1.2s ease-out, breathe 4s ease-in-out infinite, castellanaGlowReflection 6s ease-in-out infinite;
+    animation: fadeIn 1s ease-out, gentleBreathe 5s ease-in-out infinite;
 }
 
-/* BOTTONI BAROCCHI */
+/* ==========================================================================
+   CARD DI NAVIGAZIONE — sostituiscono i vecchi bottoni "barocchi" neri
+   con glow: bordo sottile, sfondo pietra, niente animazioni luminose
+   ========================================================================== */
 .buttons-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 20;
-}
-
-.btn-barocco {
-    background: #000;
-    border: 2px solid #d4a84f;
-    border-radius: 14px;
-    padding: 14px 6px;
-    text-align: center;
-    color: #ffd78f;
-    font-weight: 600;
-    font-size: 0.85rem;
-    box-shadow: 0 0 10px rgba(255, 215, 160, 0.25);
-    position: relative;
-    overflow: hidden;
-    display: block;
-    text-decoration: none;
-}
-
-.btn-barocco::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -70%;
-    width: 30%;
-    height: 200%;
-    background: linear-gradient(to right, rgba(255, 215, 160, 0) 0%, rgba(255, 215, 160, 0.4) 50%, rgba(255, 215, 160, 0) 100%);
-    transform: rotate(-45deg);
-    animation: homeButtonGlow 4s infinite ease-in-out;
-    pointer-events: none;
+    gap: 10px;
 }
 
 .buttons-row-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    position: relative;
-    z-index: 20;
+    gap: 10px;
 }
 
-.buttons-row-2 .btn-barocco::before {
-    animation-delay: 0.5s;
+.btn-barocco {
+    background: var(--stone-dim);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 14px 6px;
+    text-align: center;
+    color: var(--sea);
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0 4px 10px var(--shadow-soft);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* BOTTONE CHAT WEB */
+.btn-barocco:active {
+    border-color: var(--terracotta);
+    box-shadow: 0 2px 6px var(--shadow-soft);
+}
+
+/* ==========================================================================
+   CTA PRINCIPALE — parla con la Castellana: unico bottone "pieno",
+   per distinguerlo chiaramente dalle card di navigazione sopra
+   ========================================================================== */
 .btn-castellana {
-    margin-top: 10px;
-    background: rgba(0, 0, 0, 0.55);
-    border: 2px solid #ffd78f;
-    border-radius: 18px;
+    display: block;
+    background: var(--sea);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
     padding: 14px;
     text-align: center;
-    color: #ffd78f;
+    color: var(--stone);
+    font-family: 'Playfair Display', serif;
     font-weight: 600;
     font-size: 1rem;
-    box-shadow: 0 0 12px rgba(255, 215, 160, 0.35);
-    position: relative;
-    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 6px 14px var(--shadow-soft);
+    transition: background 0.2s ease;
 }
 
-.btn-castellana::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -70%;
-    width: 25%;
-    height: 200%;
-    background: linear-gradient(to right, rgba(255, 215, 160, 0) 0%, rgba(255, 215, 160, 0.5) 50%, rgba(255, 215, 160, 0) 100%);
-    transform: rotate(-45deg);
-    animation: homeButtonGlow 4.5s infinite ease-in-out;
-    animation-delay: 1s;
-    pointer-events: none;
+.btn-castellana:active {
+    background: var(--terracotta-dark);
 }
 
-/* SEZIONE AMUNI */
+/* ==========================================================================
+   BOX INFORMATIVO AMUNÌ
+   ========================================================================== */
 .amuni-box {
-    margin-top: 20px;
-    background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 215, 160, 0.45);
-    border-radius: 18px;
+    background: var(--stone-dim);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
     padding: 18px;
-    backdrop-filter: blur(10px);
 }
 
 .amuni-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #ffd78f;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--sea);
     margin-bottom: 10px;
     text-align: center;
 }
 
 .amuni-text {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #f7f2e9;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
     text-align: center;
 }
 
-/* KEYFRAMES */
+/* ==========================================================================
+   CARD CIBO (generate dinamicamente da JS, in altre pagine mobile —
+   restano qui pronte per quando estenderemo lo stesso stile a quelle)
+   ========================================================================== */
+.food-card {
+    display: block;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--stone-dim);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    margin-bottom: 12px;
+    padding: 14px;
+}
+
+.food-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.food-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--sea);
+}
+
+.badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+}
+
+.food-card-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.food-card-btn {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--terracotta);
+}
+
+/* ==========================================================================
+   ANIMAZIONI — solo quella discreta rimasta, niente più bagliori
+   ========================================================================== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes breathe {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(-6px); }
-    100% { transform: translateY(0); }
-}
-
-@keyframes homeButtonGlow {
-    0% { left: -70%; }
-    25% { left: 130%; }
-    100% { left: 130%; }
-}
-
-@keyframes castellanaGlowReflection {
-    0% { filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35)) brightness(1); }
-    30% { filter: drop-shadow(0 0 25px rgba(255, 230, 180, 0.7)) brightness(1.25) contrast(1.1); }
-    45%, 100% { filter: drop-shadow(0 0 12px rgba(255, 215, 160, 0.35)) brightness(1); }
-}
-
-/* --- CORREZIONE PULSANTE AUDIO --- */
-.btn-audio {
-    background: transparent !important; /* Elimina lo sfondo bianco */
-    border: none !important;           /* Elimina eventuali bordi */
-    outline: none !important;          /* Rimuove l'alone di selezione */
-    box-shadow: none !important;       /* Rimuove ombre residue */
-    cursor: pointer;
-    padding: 0 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@keyframes gentleBreathe {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
