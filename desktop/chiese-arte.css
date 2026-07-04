@@ -109,7 +109,6 @@ body::before {
 /* rimossa l'animazione "luccichio in scorrimento" (::before) e il
    transform:scale sull'hover — coerente col resto del sito, che
    non usa più effetti da insegna al neon */
-
 .nav-desktop a:hover {
   background: rgba(193, 98, 45, 0.25);
   border-color: var(--terracotta);
@@ -732,4 +731,29 @@ body::before {
 @keyframes gentleBreathe {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.035); }
+}
+
+/* Pulsante di invio della chat (sostituisce il microfono) */
+.send-btn {
+    background: var(--sea);
+    border: none;
+    border-radius: 2px;
+    padding: 0 12px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.send-btn:hover {
+    background: var(--terracotta);
+}
+
+.chat-messages .message.user-msg {
+    background: var(--sea);
+    color: #fff;
+    margin-left: auto;
+    border-left: none;
+    border-right: 2px solid var(--gold);
+    text-align: right;
 }
