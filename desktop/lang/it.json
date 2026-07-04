@@ -36,7 +36,8 @@
     "placeholder": "Scrivi alla Castellana...",
     "tooltip": "Clicca per chattare",
     "citizen_msg1": "Benvenuto! Sono qui per raccontarti i segreti di Caccamo. Cosa vuoi scoprire oggi?",
-    "chiese_msg": "Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo e chiedimi dettagli sulle loro storie."
+    "chiese_msg": "Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo e chiedimi dettagli sulle loro storie.",
+    "cibo_eventi_msg": "Benvenuto! Chiedimi delle feste e delle tradizioni di Caccamo, stagione per stagione."
   },
   "pages": {
     "about": {
@@ -82,6 +83,28 @@
       "route_annunziata": "Volte dipinte",
       "route_badia": "Si scende",
       "route_sangiorgio": "Cuore del borgo"
+    },
+    "cibo_eventi_page": {
+      "page_title": "Il Calendario del Borgo",
+      "category": "Cibo & Eventi",
+      "subtitle": "Quattro stagioni, quattro modi di vivere Caccamo",
+      "cta": "Chiedi alla Castellana di raccontartela",
+      "s1_period": "Ottobre — Dicembre",
+      "s1_title": "Sagra e Presepi",
+      "s1_body": "La Sagra della Salsiccia apre l'autunno, tra dolci locali come i taralli. A dicembre il borgo si accende di presepi: quello dei Cappuccini, allestito all'esterno del convento con antichi attrezzi agricoli e oggetti di casa di 40-60 anni fa, e quello di Santo Domenico, tra i più belli da vedere. Sotto il Castello si accende il grande albero di Natale, e i paesi limitrofi — facilmente raggiungibili coi trasporti locali — ospitano spesso presepi viventi.",
+      "s1_tags": "Sagra della Salsiccia · Presepe dei Cappuccini · Presepe di Santo Domenico · Albero sotto il Castello",
+      "s2_period": "Marzo — Aprile",
+      "s2_title": "Settimana Santa",
+      "s2_body": "La settimana si apre la Domenica delle Palme con U Signuruzzu a Cavaddu, quando un bambino del paese impersona Gesù nell'ingresso a Gerusalemme. Il Venerdì Santo sera è la Via Crucis vivente: la Madonna dal cuore trafitto incontra il Cristo su un letto di rose. Lo stesso giorno si usa \"girare i sepolcri\" — le chiese aperte, gli altari allestiti con il grano fiorito, a ricordare Maria e la Maddalena che si recano al sepolcro di Cristo.",
+      "s2_tags": "U Signuruzzu a Cavaddu — Domenica delle Palme · Via Crucis vivente — Venerdì Santo · Giro dei sepolcri · Pane di Cena · Pecorelle di mandorla",
+      "s3_period": "Ultima Domenica di Maggio",
+      "s3_title": "Beato Giovanni Liccio",
+      "s3_body": "Non un santo qualsiasi, ma un patrono tutto caccamese: il Beato Giovanni Liccio è un figlio del borgo, ed è per questo che la sua festa è tra le più sentite dalla comunità. La processione attraversa tutto il paese, in particolare la parte antica — un modo unico per vedere il borgo in una veste diversa e sentirsi parte della comunità.",
+      "s3_tags": "Processione patronale · Patrono di Caccamo · Centro storico",
+      "s4_period": "Fine Agosto",
+      "s4_title": "Palio di San Nicasio",
+      "s4_body": "Tre giorni di festa: il corteo storico della Castellana apre le celebrazioni, fino al Palio che chiude l'estate caccamese.",
+      "s4_tags": "Corteo storico · Palio · Festa di San Nicasio"
     }
   }
 }
