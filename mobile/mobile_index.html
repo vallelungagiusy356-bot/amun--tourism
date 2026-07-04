@@ -28,7 +28,7 @@
     z-index:9999;"></button>
 
     <!-- AUDIO EPICO -->
-    <audiol id="bg-music" loop>
+    <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
 
@@ -92,7 +92,8 @@
         audio.volume = 0.5;
 
         function startMusic() {
-            audio.play().then(() => { if(trigger) trigger.remove(); }).catch(() => { setTimeout(() => audio.play(), 200); });
+            if (trigger) trigger.remove();
+            audio.play().catch(() => {});
         }
         document.addEventListener("touchstart", startMusic, { once: true });
         document.addEventListener("click", startMusic, { once: true });
