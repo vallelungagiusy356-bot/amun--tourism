@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pages.canti_page.page_title">Canti e Preghiere del Borgo</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="leggende_e_tradizioni.css">
+
+    <style>
+        .lang-switcher button.active {
+            border: 2px solid #B8873B !important;
+            background: rgba(184, 135, 59, 0.2) !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="dashboard">
+        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+
+        <div class="header-right-actions">
+            <nav class="nav-desktop">
+                <a href="desktop_index.html" data-i18n="menu.home">Home</a>
+                <a href="cittadino.html" data-i18n="menu.citizen">Cittadino</a>
+            </nav>
+
+            <div class="lang-switcher">
+                <button data-lang="it">IT</button>
+                <button data-lang="en">EN</button>
+                <button data-lang="fr">FR</button>
+                <button data-lang="es">ES</button>
+                <button data-lang="de">DE</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero">
+        <span class="category-tag" data-i18n="pages.canti_page.category">Leggende e Tradizioni</span>
+        <h1 data-i18n="pages.canti_page.page_title">Canti e Preghiere del Borgo</h1>
+        <p class="subtitle" data-i18n="pages.canti_page.subtitle">Voci di famiglia, tramandate in dialetto</p>
+
+        <!-- ===================== SELETTORE TRACCE ===================== -->
+        <div class="track-groups">
+
+            <div class="track-group">
+                <h3 class="group-label" data-i18n="pages.canti_page.group_cunti">I Cunti</h3>
+
+                <button class="track-item active" data-track="cunto1">
+                    <span class="track-play">▶</span>
+                    <span class="track-meta">
+                        <span class="track-title" data-i18n="pages.canti_page.cunto1_title">[Cunto 1 — titolo da inserire]</span>
+                        <span class="track-who" data-i18n="pages.canti_page.cunto1_who">[Narratore da inserire]</span>
+                    </span>
+                </button>
+
+                <button class="track-item" data-track="cunto2">
+                    <span class="track-play">▶</span>
+                    <span class="track-meta">
+                        <span class="track-title" data-i18n="pages.canti_page.cunto2_title">[Cunto 2 — titolo da inserire]</span>
+                        <span class="track-who" data-i18n="pages.canti_page.cunto2_who">[Narratore da inserire]</span>
+                    </span>
+                </button>
+            </div>
+
+            <div class="track-group">
+                <h3 class="group-label" data-i18n="pages.canti_page.group_preghiere">Le Preghiere</h3>
+
+                <button class="track-item" data-track="preghiera1">
+                    <span class="track-play">▶</span>
+                    <span class="track-meta">
+                        <span class="track-title" data-i18n="pages.canti_page.preghiera1_title">[Preghiera 1 — titolo da inserire]</span>
+                        <span class="track-who" data-i18n="pages.canti_page.preghiera1_who">[Narratore da inserire]</span>
+                    </span>
+                </button>
+
+                <button class="track-item" data-track="preghiera2">
+                    <span class="track-play">▶</span>
+                    <span class="track-meta">
+                        <span class="track-title" data-i18n="pages.canti_page.preghiera2_title">[Preghiera 2 — titolo da inserire]</span>
+                        <span class="track-who" data-i18n="pages.canti_page.preghiera2_who">[Narratore da inserire]</span>
+                    </span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- ===================== PLAYER CARD ===================== -->
+        <div class="player-card">
+            <div class="player-top">
+                <button class="play-btn" id="playBtn">▶</button>
+                <div class="track-info">
+                    <div class="title" id="nowPlayingTitle">[Cunto 1 — titolo da inserire]</div>
+                    <div class="who" id="nowPlayingWho">[Narratore da inserire]</div>
+                </div>
+            </div>
+            <div class="waveform" id="waveform"></div>
+            <div class="time-row"><span id="curTime">0:00</span><span id="totTime">0:00</span></div>
+            <div class="lang-row">
+                <div class="lang-chip active" data-lang="it">IT</div>
+                <div class="lang-chip" data-lang="en">EN</div>
+                <div class="lang-chip" data-lang="fr">FR</div>
+                <div class="lang-chip" data-lang="es">ES</div>
+                <div class="lang-chip" data-lang="de">DE</div>
+            </div>
+        </div>
+
+        <div class="transcript" id="transcript"></div>
+
+        <div class="note">
+            Prototipo dimostrativo: il tempo scorre in modo simulato (nessun audio reale caricato), solo per mostrare come il testo si illumina in sincronia con la voce, riga per riga. Testi segnati tra <code>[ ]</code> sono segnaposto da sostituire con i contenuti reali; con la registrazione vera i tempi di ogni riga andranno ritarati ad orecchio e collegati a un file audio reale.
+        </div>
+    </main>
+
+    <div class="castellana-widget-area">
+        <div class="castellana-video-wrapper" id="chat-open-btn">
+            <video class="castellana-video" autoplay loop muted playsinline>
+                <source src="img/castellana_alpha.webm" type="video/webm">
+            </video>
+        </div>
+        <div class="castellana-tooltip" data-i18n="chat.tooltip">Click to chat</div>
+    </div>
+
+    <div class="chat-desktop" id="chat-desktop">
+        <div class="chat-header">
+            <div class="avatar-status-dot"></div>
+            <span data-i18n="chat.title">La Castellana</span>
+            <button id="close-chat" class="close-chat-btn">✕</button>
+        </div>
+        <div class="chat-messages">
+            <div class="message" data-i18n="chat.canti_msg">Vuoi ascoltare altri canti e preghiere del borgo? Nella versione Premium te ne racconto molti altri...</div>
+        </div>
+        <div class="chat-input-row">
+            <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+            <button class="mic-btn">🎤</button>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // LOGICA CHAT (standard, uguale alle altre pagine)
+        // ============================================================
+        const chat = document.getElementById("chat-desktop");
+        const openBtn = document.getElementById("chat-open-btn");
+        const closeBtn = document.getElementById("close-chat");
+        openBtn.addEventListener("click", () => chat.classList.add("active"));
+        closeBtn.addEventListener("click", () => chat.classList.remove("active"));
+
+        let currentLang = localStorage.getItem("lang") || "it";
+        function loadLanguage(lang) {
+            fetch(`./lang/${lang}.json`)
+                .then(res => res.json())
+                .then(data => {
+                    document.querySelectorAll("[data-i18n]").forEach(el => {
+                        const key = el.getAttribute("data-i18n");
+                        const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                        if (text) el.innerHTML = text;
+                    });
+                    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                        const key = el.getAttribute("data-i18n-placeholder");
+                        const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                        if (text) el.placeholder = text;
+                    });
+                    document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                        btn.classList.toggle("active", btn.dataset.lang === lang);
+                    });
+                })
+                .catch(err => console.error("Errore lingua:", err));
+            localStorage.setItem("lang", lang);
+        }
+        document.querySelectorAll(".lang-switcher button").forEach(btn => {
+            btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
+        });
+
+        // ============================================================
+        // DATI TRACCE — PLACEHOLDER: sostituire dialect/it/en/fr/es/de
+        // e i tempi start/end con i valori reali una volta registrato
+        // l'audio vero. Struttura identica per ogni traccia.
+        // ============================================================
+        const tracks = {
+            cunto1: {
+                title: "[Cunto 1 — titolo da inserire]",
+                who: "[Narratore da inserire]",
+                lines: [
+                    { start: 0,   end: 4.5,  dialect: "[riga 1 in dialetto da inserire]",
+                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
+                    { start: 4.5, end: 9,    dialect: "[riga 2 in dialetto da inserire]",
+                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
+                ]
+            },
+            cunto2: {
+                title: "[Cunto 2 — titolo da inserire]",
+                who: "[Narratore da inserire]",
+                lines: [
+                    { start: 0,   end: 5,    dialect: "[riga 1 in dialetto da inserire]",
+                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
+                    { start: 5,   end: 10,   dialect: "[riga 2 in dialetto da inserire]",
+                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
+                ]
+            },
+            preghiera1: {
+                title: "[Preghiera 1 — titolo da inserire]",
+                who: "[Narratore da inserire]",
+                lines: [
+                    { start: 0,   end: 4,    dialect: "[riga 1 in dialetto da inserire]",
+                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
+                    { start: 4,   end: 8,    dialect: "[riga 2 in dialetto da inserire]",
+                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
+                ]
+            },
+            preghiera2: {
+                title: "[Preghiera 2 — titolo da inserire]",
+                who: "[Narratore da inserire]",
+                lines: [
+                    { start: 0,   end: 4,    dialect: "[riga 1 in dialetto da inserire]",
+                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
+                    { start: 4,   end: 8,    dialect: "[riga 2 in dialetto da inserire]",
+                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
+                ]
+            }
+        };
+
+        let activeTrackId = "cunto1";
+        let currentTime = 0;
+        let playing = false;
+        let timer = null;
+        let currentPlayerLang = "it";
+
+        const transcriptEl = document.getElementById("transcript");
+        const waveformEl = document.getElementById("waveform");
+        const playBtn = document.getElementById("playBtn");
+        const curTimeEl = document.getElementById("curTime");
+        const totTimeEl = document.getElementById("totTime");
+        const nowPlayingTitle = document.getElementById("nowPlayingTitle");
+        const nowPlayingWho = document.getElementById("nowPlayingWho");
+
+        function fmt(t){
+            const m = Math.floor(t/60), s = Math.floor(t%60);
+            return m + ":" + String(s).padStart(2,"0");
+        }
+
+        function renderTrack(trackId){
+            const track = tracks[trackId];
+            activeTrackId = trackId;
+            currentTime = 0;
+            playing = false;
+            clearInterval(timer);
+            playBtn.textContent = "▶";
+
+            nowPlayingTitle.textContent = track.title;
+            nowPlayingWho.textContent = track.who;
+
+            const totalDuration = track.lines[track.lines.length - 1].end;
+            totTimeEl.textContent = fmt(totalDuration);
+            curTimeEl.textContent = "0:00";
+
+            transcriptEl.innerHTML = "";
+            track.lines.forEach((l, i) => {
+                const div = document.createElement("div");
+                div.className = "line";
+                div.id = "line-" + i;
+                div.innerHTML = `<div class="dialect">${l.dialect}</div><div class="translation" id="tr-${i}">${l[currentPlayerLang]}</div>`;
+                transcriptEl.appendChild(div);
+            });
+
+            waveformEl.innerHTML = "";
+            const barCount = 40;
+            for(let i=0;i<barCount;i++){
+                const bar = document.createElement("div");
+                bar.className = "bar";
+                const h = 6 + Math.round(Math.sin(i*0.7)*10 + 12 + Math.random()*6);
+                bar.style.height = Math.max(6,h) + "px";
+                waveformEl.appendChild(bar);
+            }
+
+            document.querySelectorAll(".track-item").forEach(btn => {
+                btn.classList.toggle("active", btn.dataset.track === trackId);
+            });
+        }
+
+        function updateUI(){
+            const track = tracks[activeTrackId];
+            const totalDuration = track.lines[track.lines.length - 1].end;
+            curTimeEl.textContent = fmt(currentTime);
+
+            const bars = document.querySelectorAll(".waveform .bar");
+            const progress = currentTime / totalDuration;
+            const filled = Math.floor(progress * bars.length);
+            bars.forEach((b,i) => b.classList.toggle("played", i < filled));
+
+            track.lines.forEach((l,i) => {
+                const el = document.getElementById("line-" + i);
+                const active = currentTime >= l.start && currentTime < l.end;
+                el.classList.toggle("active", active);
+                if(active) el.scrollIntoView({block:"center", behavior:"smooth"});
+            });
+        }
+
+        playBtn.addEventListener("click", () => {
+            const track = tracks[activeTrackId];
+            const totalDuration = track.lines[track.lines.length - 1].end;
+
+            if(playing){
+                playing = false;
+                playBtn.textContent = "▶";
+                clearInterval(timer);
+                return;
+            }
+            if(currentTime >= totalDuration) currentTime = 0;
+            playing = true;
+            playBtn.textContent = "❚❚";
+            timer = setInterval(() => {
+                currentTime += 0.1;
+                if(currentTime >= totalDuration){
+                    currentTime = totalDuration;
+                    updateUI();
+                    playing = false;
+                    playBtn.textContent = "▶";
+                    clearInterval(timer);
+                    return;
+                }
+                updateUI();
+            }, 100);
+        });
+
+        document.querySelectorAll(".lang-chip").forEach(chip => {
+            chip.addEventListener("click", () => {
+                document.querySelectorAll(".lang-chip").forEach(c => c.classList.remove("active"));
+                chip.classList.add("active");
+                currentPlayerLang = chip.dataset.lang;
+                tracks[activeTrackId].lines.forEach((l,i) => {
+                    document.getElementById("tr-" + i).textContent = l[currentPlayerLang];
+                });
+            });
+        });
+
+        document.querySelectorAll(".track-item").forEach(btn => {
+            btn.addEventListener("click", () => renderTrack(btn.dataset.track));
+        });
+
+        // stato iniziale
+        renderTrack("cunto1");
+        loadLanguage(currentLang);
+    </script>
+</body>
+</html>
+
