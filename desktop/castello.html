@@ -90,7 +90,6 @@
         </section>
     </main>
 
-    
     <!-- 👑 WIDGET CASTELLANA -->
     <div class="castellana-widget-area">
         <div class="castellana-video-wrapper" id="chat-open-btn">
@@ -115,7 +114,7 @@
         </div>
         <div class="chat-input-row">
             <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
-            <button class="mic-btn">🎤</button>
+            <button class="send-btn" aria-label="Invia">➤</button>
         </div>
     </div>
 
@@ -159,6 +158,132 @@
             });
             loadLanguage(currentLang);
         });
+
+        // ============================================================
+        // CONNESSIONE CHAT ↔ BACKEND PYTHON
+        // ============================================================
+        const API_BASE_URL = "https://castellana.pythonanywhere.com";
+        const PREMIUM_STORAGE_KEY = "amuni_premium_access";
+
+        function getPageSlug() {
+            const path = window.location.pathname;
+            const file = path.substring(path.lastIndexOf('/') + 1);
+            return file.replace('.html', '') || 'home';
+        }
+
+        function appendChatMessage(text, sender) {
+            const msg = document.createElement('div');
+            msg.className = 'message' + (sender === 'user' ? ' user-msg' : '');
+            msg.textContent = text;
+            const messagesBox = document.querySelector('.chat-messages');
+            messagesBox.appendChild(msg);
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+
+        function getStoredAccessCode() {
+            const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+            if (!raw) return null;
+            try {
+                const data = JSON.parse(raw);
+                if (new Date(data.expires_at) > new Date()) {
+                    return data.code;
+                } else {
+                    localStorage.removeItem(PREMIUM_STORAGE_KEY);
+                    return null;
+                }
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function storeAccessCode(code, expiresAt) {
+            localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
+                code: code,
+                expires_at: expiresAt
+            }));
+        }
+
+        async function tryActivateCode(rawMessage) {
+            const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9]+)/i);
+            if (!match) return false;
+
+            const code = match[2].toUpperCase();
+            appendChatMessage(rawMessage, 'user');
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/activate-code`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: code, lang: currentLang })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    storeAccessCode(code, data.expires_at);
+                    const expiryDate = new Date(data.expires_at);
+                    const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+                    appendChatMessage(`Premium attivato! Avrai accesso ai contenuti esclusivi fino al ${formatted}.`, 'castellana');
+                } else {
+                    appendChatMessage(data.message || 'Codice non valido.', 'castellana');
+                }
+            } catch (err) {
+                console.error('Errore attivazione codice:', err);
+                appendChatMessage('Al momento non riesco a verificare il codice — riprova tra poco.', 'castellana');
+            }
+
+            return true;
+        }
+
+        async function sendChatMessage(text) {
+            if (!text.trim()) return;
+
+            const wasActivationAttempt = await tryActivateCode(text);
+            if (wasActivationAttempt) return;
+
+            appendChatMessage(text, 'user');
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: text,
+                        page: getPageSlug(),
+                        lang: currentLang,
+                        access_code: getStoredAccessCode() || ""
+                    })
+                });
+
+                if (!res.ok) throw new Error('Risposta non valida dal server');
+
+                const data = await res.json();
+                appendChatMessage(data.reply, 'castellana');
+
+            } catch (err) {
+                console.error('Errore chat:', err);
+                appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+            }
+        }
+
+        const chatInputField = document.querySelector('.chat-input-row input');
+        const sendBtn = document.querySelector('.send-btn');
+
+        function handleSend() {
+            sendChatMessage(chatInputField.value);
+            chatInputField.value = '';
+        }
+
+        if (chatInputField) {
+            chatInputField.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.keyCode === 13) {
+                    e.preventDefault();
+                    handleSend();
+                }
+            });
+        }
+        if (sendBtn) {
+            sendBtn.addEventListener('click', handleSend);
+        }
     </script>
 </body>
 </html>
