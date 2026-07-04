@@ -292,3 +292,6 @@ body {
     border-radius: 2px;
     white-space: nowrap;
 }
+.btn-home svg {
+    color: var(--gold-light);
+}
