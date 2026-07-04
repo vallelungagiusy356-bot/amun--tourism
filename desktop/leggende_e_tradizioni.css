@@ -355,3 +355,18 @@ body::before {
   .castellana-video-wrapper { width: 95px; height: 95px; }
   .chat-desktop { bottom: 150px; }
 }
+
+.send-btn {
+    background: var(--sea);
+    border: none;
+    border-radius: 2px;
+    padding: 0 12px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.send-btn:hover {
+    background: var(--terracotta);
+}
