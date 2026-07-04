@@ -39,11 +39,13 @@
     "chiese_msg": "Welcome to Amunì Tourism! Explore the sacred beauties of Caccamo and ask me for details about their stories.",
     "cibo_eventi_msg": "Welcome! Ask me about Caccamo's festivals and traditions, season by season.",
     "chi_siamo_msg": "Want to know more about who's behind Amunì, or how the Premium experience works? Feel free to ask.",
-    "canti_msg": "Want to hear more songs and prayers from the village? In the Premium version I can tell you about many more..."
+    "canti_msg": "Want to hear more songs and prayers from the village? In the Premium version I can tell you about many more...",
+    "about_msg": "Want to know how Amunì works or what the Premium experience offers? Feel free to ask."
   },
   "pages": {
     "about": {
       "title": "The Vision of Amunì",
+      "category": "The Project",
       "mission": "Amunì was born from the desire to reconnect the present to its roots. It is not just a tourist portal, but a digital ecosystem designed to preserve and enhance the cultural resilience of our village.",
       "service_details": "Our platform offers a multilingual guide (5 languages) active 24/7. Beyond the main content, the Premium service grants access to the memory of the Castellana: an intelligent assistant who guides the visitor along unique paths, from local logistics to hidden gems of the territory (Pietra Piatta, Vetrana, Navel of Venus), creating a fluid bridge between Caccamo and neighboring villages.",
       "insider_value": "The Castellana is not a simple guide: she is the guardian of secrets that cannot be found in books. Through her eyes, we reveal anecdotes, legends, and nuances that belong only to those who live and breathe the village every day."
