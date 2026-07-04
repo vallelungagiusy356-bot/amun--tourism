@@ -78,7 +78,8 @@
         audio.volume = 0.5;
 
         function startMusic() {
-            audio.play().then(() => { if(trigger) trigger.remove(); }).catch(() => { setTimeout(() => audio.play(), 200); });
+            if (trigger) trigger.remove();
+            audio.play().catch(() => {});
         }
         if(trigger) { trigger.addEventListener("click", startMusic); trigger.addEventListener("touchstart", startMusic); }
 
