@@ -37,7 +37,9 @@
     "tooltip": "Click to chat",
     "citizen_msg1": "Welcome! I am here to tell you the secrets of Caccamo. What do you want to discover today?",
     "chiese_msg": "Welcome to Amunì Tourism! Explore the sacred beauties of Caccamo and ask me for details about their stories.",
-    "cibo_eventi_msg": "Welcome! Ask me about Caccamo's festivals and traditions, season by season."
+    "cibo_eventi_msg": "Welcome! Ask me about Caccamo's festivals and traditions, season by season.",
+    "chi_siamo_msg": "Want to know more about who's behind Amunì, or how the Premium experience works? Feel free to ask.",
+    "canti_msg": "Want to hear more songs and prayers from the village? In the Premium version I can tell you about many more..."
   },
   "pages": {
     "about": {
@@ -48,6 +50,7 @@
     },
     "chi_siamo": {
       "title": "About Us: A Visionary Story",
+      "category": "Our Story",
       "founder_bio": "The Amunì project was born from my dual nature: the analytical precision of a chemical researcher and the creative vision of a web designer. It is a synthesis of scientific rigor and love for art, designed to transform technology into a storytelling tool.",
       "philosophy": "I don't consider this site a final destination, but a living laboratory. Popular culture is a dynamic heritage, and Amunì evolves through constant dialogue with you. I firmly believe that valuing the territory also means safeguarding the voices of those who inhabit it, passing down traditions, nursery rhymes, and songs to future generations.",
       "freemium_model": "Historical and monumental content is a public good, accessible to everyone. The 'Castellana Premium' experience is reserved for those who desire a deeper journey: exclusive access to technical analysis of the heritage, layered stories, and personalized support for an authentic, timeless discovery.",
