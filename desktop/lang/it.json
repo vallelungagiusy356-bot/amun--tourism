@@ -39,11 +39,13 @@
     "chiese_msg": "Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo e chiedimi dettagli sulle loro storie.",
     "cibo_eventi_msg": "Benvenuto! Chiedimi delle feste e delle tradizioni di Caccamo, stagione per stagione.",
     "chi_siamo_msg": "Vuoi sapere di più su chi c'è dietro Amunì, o su come funziona l'esperienza Premium? Chiedimi pure.",
+    "about_msg": "Vuoi sapere come funziona Amunì o cosa offre l'esperienza Premium? Chiedimi pure."
     "canti_msg": "Vuoi ascoltare altri canti e preghiere del borgo? Nella versione Premium te ne racconto molti altri..."
   },
   "pages": {
     "about": {
       "title": "La Visione di Amunì",
+      "category": "Il Progetto",
       "mission": "Amunì nasce dal desiderio di riconnettere il presente alle radici. Non è solo un portale turistico, ma un ecosistema digitale progettato per preservare e valorizzare la resilienza culturale del nostro borgo.",
       "service_details": "La nostra piattaforma offre una guida multilingue (5 lingue) attiva 24/7. Oltre alla fruizione dei contenuti principali, il servizio Premium abilita l'accesso alla memoria della Castellana: un'assistente intelligente che accompagna il visitatore lungo percorsi inediti, dalla logistica locale fino alle gemme nascoste del territorio (Pietra Piatta, Vetrana, Ombelico di Venere), creando un ponte fluido tra Caccamo e i borghi limitrofi.",
       "insider_value": "La Castellana non è una semplice guida: è il custode di segreti che non si trovano nei libri. Attraverso il suo sguardo, sveliamo aneddoti, leggende e sfumature che appartengono solo a chi vive e respira il borgo ogni giorno."
