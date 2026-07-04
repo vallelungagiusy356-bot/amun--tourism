@@ -7,10 +7,10 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="monumento_dettaglio.css">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#14283A">
 </head>
 <body>
 
@@ -23,21 +23,27 @@
 
     <div class="scene-background"></div>
 
-    <!-- Dashboard "Blindata" (non si rompe mai) -->
     <header class="dashboard">
-        <a href="mobile_index.html" class="btn-home">🏠</a>
-        
         <div class="logo-container">
             <div class="logo-title">AMUNÌ TOURISM</div>
         </div>
-        
-        <div class="lang-switcher">
+
+        <div class="right-controls">
+            <a href="mobile_index.html" class="btn-home" aria-label="Torna alla home">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 11.5 12 4l9 7.5"/>
+                    <path d="M5.5 9.5V20h13V9.5"/>
+                    <path d="M10 20v-6h4v6"/>
+                </svg>
+            </a>
             <button id="toggle-music" class="btn-audio">🔈</button>
-            <button data-lang="it">🇮🇹</button>
-            <button data-lang="en">🇬🇧</button>
-            <button data-lang="fr">🇫🇷</button>
-            <button data-lang="de">🇩🇪</button>
-            <button data-lang="es">🇪🇸</button>
+            <div class="lang-switcher">
+                <button data-lang="it">IT</button>
+                <button data-lang="en">EN</button>
+                <button data-lang="fr">FR</button>
+                <button data-lang="de">DE</button>
+                <button data-lang="es">ES</button>
+            </div>
         </div>
     </header>
 
@@ -51,8 +57,12 @@
             <img src="img/san_giorgio_martire.gif" alt="San Giorgio" class="monument-hero-image img-sangiorgio">
         </div>
 
+        <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
+            🔊 <span>Ascolta la descrizione</span>
+        </button>
+
         <section class="teca-cristallo descrittiva">
-            <p data-i18n="pages.monuments_pages.sangiorgio.description">La Chiesa Madre di Caccamo, dedicata a San Giorgio Martire, è un imponente capolavoro che domina la monumentale piazza sottostante il Castello...</p>
+            <p id="desc-text" data-i18n="pages.monuments_pages.sangiorgio.description">Il Duomo sorge dove, secondo la tradizione, i Normanni eressero già nel 1090 la prima chiesa dedicata a San Giorgio — il santo che, si narra, li aiutò a vincere i Saraceni nella battaglia di Cerami nel 1063. L'edificio che vedi oggi risale al Seicento, ma il suo campanile alto 49 metri è ancora più antico: nella parte inferiore era una torre di avvistamento del Castello. All'interno, l'altare barocco custodisce rilievi attribuiti a Francesco Laurana e una statua-reliquiario d'argento di Santa Rosalia.</p>
         </section>
 
         <section class="teca-cristallo teca-avviso">
@@ -72,9 +82,8 @@
             </button>
             
             <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='../desktop/desktop_index.html'">
-    👑 <span data-i18n="pages.monuments_pages.labels.btn_parla_castellana">Parla con la Castellana</span>
-</button>
-
+                👑 <span data-i18n="pages.monuments_pages.labels.btn_parla_castellana">Parla con la Castellana</span>
+            </button>
         </div>
 
         <a href="monumenti.html" class="btn-back-home">← Torna ai Monumenti</a>
@@ -83,24 +92,49 @@
 
     <script src="monument_translation.js"></script>
     
-    <!-- Script di gestione Audio rapido (da includere o integrare in monument_translation.js) -->
     <script>
         const audio = document.getElementById("bg-music");
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
 
-        // Gestione sblocco audio
         trigger.addEventListener("click", () => {
             audio.play();
             trigger.style.display = "none";
         });
 
-        // Gestione toggle manuale
         toggleBtn.addEventListener("click", (e) => {
             e.stopPropagation();
             if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; } 
             else { audio.pause(); toggleBtn.textContent = "🔇"; }
         });
+
+        // ============================================================
+        // AUDIOGUIDA — sintesi vocale del browser (gratuita).
+        // Legge il testo attualmente visibile nel blocco #desc-text,
+        // quindi segue automaticamente la lingua selezionata.
+        // ============================================================
+        function toggleReadAloud(btnEl, textId) {
+            if (!('speechSynthesis' in window)) {
+                alert("La sintesi vocale non è supportata su questo browser.");
+                return;
+            }
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                btnEl.classList.remove('playing');
+                btnEl.querySelector('span').textContent = 'Ascolta la descrizione';
+                return;
+            }
+            const text = document.getElementById(textId).innerText;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = document.documentElement.lang || 'it-IT';
+            utterance.onend = () => {
+                btnEl.classList.remove('playing');
+                btnEl.querySelector('span').textContent = 'Ascolta la descrizione';
+            };
+            window.speechSynthesis.speak(utterance);
+            btnEl.classList.add('playing');
+            btnEl.querySelector('span').textContent = 'Ferma l\'ascolto';
+        }
     </script>
 </body>
 </html>
