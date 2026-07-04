@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amunì Tourism - Dormire</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="mangiare.css">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#14283A">
 </head>
 <body>
 
     <div class="scene-background"></div>
 
     <header class="dashboard">
-        <a href="mobile_index.html" class="btn-home">🏠</a>
-        <div class="logo-container"><div class="logo-title">AMUNÌ TOURISM</div></div>
-        <div class="lang-switcher">
-            <button data-lang="it">🇮🇹</button>
-            <button data-lang="en">🇬🇧</button>
-            <button data-lang="fr">🇫🇷</button>
-            <button data-lang="de">🇩🇪</button>
-            <button data-lang="es">🇪🇸</button>
+        <div class="logo-container">
+            <div class="logo-title">AMUNÌ TOURISM</div>
+        </div>
+
+        <div class="right-controls">
+            <a href="mobile_index.html" class="btn-home" aria-label="Torna alla home">🏠</a>
+            <div class="lang-switcher">
+                <button data-lang="it">IT</button>
+                <button data-lang="en">EN</button>
+                <button data-lang="fr">FR</button>
+                <button data-lang="de">DE</button>
+                <button data-lang="es">ES</button>
+            </div>
         </div>
     </header>
 
@@ -36,7 +41,12 @@
         function loadLanguage(lang) {
             fetch(`./lang/${lang}.json`) 
                 .then(res => res.json())
-                .then(data => renderList(data))
+                .then(data => {
+                    renderList(data);
+                    document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                        btn.classList.toggle("active", btn.dataset.lang === lang);
+                    });
+                })
                 .catch(err => console.error("Errore lingua:", err));
             localStorage.setItem("lang", lang);
         }
