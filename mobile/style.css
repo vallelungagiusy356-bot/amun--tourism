@@ -1,4 +1,3 @@
-
 /* ==========================================================================
    AMUNÌ TOURISM — MOBILE HOME (allineata alla palette del sito desktop)
    Stessa logica di prima (audio, lingua, card dinamiche, service worker):
@@ -55,7 +54,7 @@ body {
     background-image: url('img/sfondocaccamo.jpeg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.6) contrast(1.08) saturate(1.05);
+    filter: brightness(0.88) contrast(1.12) saturate(1.2);
     z-index: 0;
 }
 
@@ -64,8 +63,8 @@ body {
     position: fixed;
     inset: 0;
     background: linear-gradient(180deg,
-        rgba(20, 40, 58, 0.35) 0%,
-        rgba(20, 40, 58, 0.55) 55%,
+        rgba(20, 40, 58, 0.12) 0%,
+        rgba(20, 40, 58, 0.3) 55%,
         var(--sea-ink) 100%);
     pointer-events: none;
 }
@@ -79,11 +78,13 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 65px;
+    min-height: 65px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
     background: rgba(15, 25, 34, 0.92);
     backdrop-filter: blur(18px) saturate(200%);
     border-bottom: 2px solid var(--gold);
@@ -91,25 +92,26 @@ body {
 }
 
 .logo-container {
-    flex-grow: 1;
+    flex: 1 1 100%;
     display: flex;
     justify-content: center;
-    margin-left: -20px;
 }
 
 .logo-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.5px;
     color: var(--gold-light);
+    white-space: nowrap;
 }
 
 .right-controls {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
+    flex: 1 1 100%;
 }
 
 .lang-switcher {
@@ -162,7 +164,7 @@ body {
    LAYOUT MOBILE
    ========================================================================== */
 .mobile-layout {
-    margin-top: 70px;
+    margin-top: 112px;
     padding: 16px;
     padding-bottom: 150px;
     display: flex;
@@ -181,10 +183,7 @@ body {
     width: 100%;
     aspect-ratio: 16 / 9;
     max-height: 38vh;
-    overflow: hidden;
-    border: 1px solid var(--gold);
-    border-radius: 2px;
-    background: var(--stone-dim);
+    overflow: visible;
     position: relative;
 }
 
@@ -214,23 +213,23 @@ body {
 }
 
 .btn-barocco {
-    background: var(--stone-dim);
+    background: var(--sky);
     border: 1px solid var(--gold);
     border-radius: 2px;
     padding: 14px 6px;
     text-align: center;
-    color: var(--sea);
+    color: var(--stone);
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     font-size: 0.82rem;
     text-decoration: none;
     display: block;
     box-shadow: 0 4px 10px var(--shadow-soft);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-barocco:active {
-    border-color: var(--terracotta);
+    background: var(--sea);
     box-shadow: 0 2px 6px var(--shadow-soft);
 }
 
