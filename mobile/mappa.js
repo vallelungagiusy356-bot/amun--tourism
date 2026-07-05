@@ -12,9 +12,6 @@ const map = new mapboxgl.Map({
 
 // ============================================================
 // CONTROLLI MAPPA — zoom/bussola + geolocalizzazione
-// (la geolocalizzazione mancava del tutto: senza questo controllo
-// il pulsante per centrare la mappa sulla propria posizione non
-// esiste proprio, quindi non può funzionare)
 // ============================================================
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
@@ -33,6 +30,12 @@ map.addControl(new mapboxgl.GeolocateControl({
 //   - offset: {x, y} per spostamenti fini in metri mercatore.
 //   - tint: colore esadecimale opzionale (es. "#D2B48C"). Se
 //     omesso, il modello mantiene i suoi colori/texture originali.
+//
+// NOVITÀ: il modello viene ora agganciato all'elevazione reale
+// del terreno tramite map.queryTerrainElevation(), invece di
+// restare fisso a quota 0. Questo risolve il problema degli
+// edifici che "galleggiano" sopra o sotto il livello del suolo
+// nelle zone collinari.
 // ============================================================
 function create3DLayer(id, modelUrl, coords, options = {}) {
     const offset = options.offset || { x: 0, y: 0 };
@@ -59,9 +62,6 @@ function create3DLayer(id, modelUrl, coords, options = {}) {
                 const model = gltf.scene;
                 model.traverse((node) => {
                     if (node.isMesh) {
-                        // Prima: il colore originale veniva sempre sostituito.
-                        // Ora: si mantiene il materiale del modello (colori e
-                        // texture originali), regolando solo la resa alla luce.
                         if (node.material) {
                             if (tint) {
                                 node.material.color = new THREE.Color(tint);
@@ -82,7 +82,13 @@ function create3DLayer(id, modelUrl, coords, options = {}) {
         },
         render: function (gl, matrix) {
             const m = new THREE.Matrix4().fromArray(matrix);
-            const merc = mapboxgl.MercatorCoordinate.fromLngLat(coords, 0);
+
+            // Elevazione reale del terreno in quel punto (metri).
+            // Se il DEM non è ancora caricato, queryTerrainElevation
+            // può restituire null: in quel caso si usa 0 come fallback,
+            // e il repaint successivo correggerà comunque la quota.
+            const elevation = this.map.queryTerrainElevation(coords) || 0;
+            const merc = mapboxgl.MercatorCoordinate.fromLngLat(coords, elevation);
 
             // Conversione fissa da Y-up (formato glTF) a Z-up (formato Mapbox)
             const rotationX = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2);
@@ -90,7 +96,7 @@ function create3DLayer(id, modelUrl, coords, options = {}) {
             const rotationY = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(0, 1, 0), THREE.MathUtils.degToRad(rotationDeg));
 
             const l = new THREE.Matrix4()
-                .makeTranslation(merc.x + offset.x, merc.y + offset.y, 0)
+                .makeTranslation(merc.x + offset.x, merc.y + offset.y, merc.z)
                 .scale(new THREE.Vector3(
                     merc.meterInMercatorCoordinateUnits() * scale,
                     -merc.meterInMercatorCoordinateUnits() * scale,
@@ -108,6 +114,19 @@ function create3DLayer(id, modelUrl, coords, options = {}) {
 }
 
 map.on('load', () => {
+    // ============================================================
+    // TERRENO 3D — aggancia l'intera mappa (e di conseguenza i calcoli
+    // di elevazione usati da create3DLayer) al DEM reale di Mapbox.
+    // Senza questo, queryTerrainElevation() restituirebbe sempre 0/null.
+    // ============================================================
+    map.addSource('mapbox-dem', {
+        'type': 'raster-dem',
+        'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        'tileSize': 512,
+        'maxzoom': 14
+    });
+    map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.0 });
+
     try { map.setLayoutProperty('poi', 'visibility', 'none'); } catch (e) {}
 
     map.addSource('route', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
@@ -122,7 +141,7 @@ map.on('load', () => {
     fetch('data.geojson')
         .then(res => res.json())
         .then(data => {
-            // Caricamento Modelli 3D — ora legge anche scale/rotation
+            // Caricamento Modelli 3D — legge scale/rotation/tint
             // per ogni monumento, se presenti nel geojson
             data.features.forEach((feature, index) => {
                 if (feature.properties.model) {
@@ -157,7 +176,6 @@ map.on('load', () => {
                         'icon-image': ['get', 'icona'],
                         'icon-size': 0.15,
                         'icon-allow-overlap': true,
-                        // ETICHETTE — mancavano completamente, aggiunte qui
                         'text-field': ['get', 'name'],
                         'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
                         'text-size': 12,
