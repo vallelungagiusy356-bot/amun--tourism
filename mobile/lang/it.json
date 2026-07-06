@@ -101,29 +101,29 @@
       "castello": {
         "title": "Il Castello di Caccamo",
         "description": "Il Castello sorge su questa rupe dal 1094, eretto dai Normanni per dominare la valle del San Leonardo. Nel 1160 fu teatro della congiura dei baroni: il signore Matteo Bonello vi si rifugiò dopo aver tentato di rovesciare il re Guglielmo I. Si narra che il suo fantasma vaghi ancora nella Sala della Congiura, in cerca di pace. Una delle cappelle nasconde persino una botola, un tempo usata per liberarsi degli ospiti sgraditi.",
-        "hours": "Tutti i giorni: 09:30 – 13:00 / 15:00 – 19:00",
-        "tickets": "Intero € 6,00 | Ridotto € 4,50 (Esclusivamente con prenotazione online)"
+        "hours": "Orario invernale (16 ottobre - 14 aprile): lunedì pomeriggio - domenica, 09:00 – 12:30 e 14:30 – 18:30. Orario estivo (15 aprile - 15 ottobre): lunedì pomeriggio - domenica, 09:00 – 12:30 e 15:30 – 19:00. Chiuso lunedì mattina.",
+        "tickets": "Intero € 6,00 | Promozionale con prenotazione online € 4,50 | Residenti Comune di Caccamo € 1,00 | Studenti 18-25 anni € 3,00 | Gratuito under 18. Info e prenotazioni: 091 8103233 (lun-ven) o 091 8149252 (mar-dom)."
       },
       "badia": {
         "title": "Chiesa di San Benedetto alla Badia",
         "description": "Dietro la sua facciata sobria, la chiesa custodisce uno dei pavimenti in maiolica più preziosi di Sicilia: 5.555 mattonelle dipinte a mano nel Settecento, con al centro un veliero che lotta contro un mare in tempesta — simbolo della Chiesa contro le forze del male. Gli abitanti la chiamano ancora oggi \"chiesa-salotto\", per la ricchezza di stucchi e intarsi dorati. Molti visitatori scelgono di percorrerla a piedi scalzi, per rispetto e per goderne ogni dettaglio.",
-        "hours": "Mar - Dom: 09:00 – 12:30 | Lun: 14:30 – 18:30 (Nessuna funzione regolare, ideale per visite)",
+        "hours": "Lunedì pomeriggio: 14:30 – 18:30. Da martedì a domenica, mattina: 09:00 – 12:30 (pomeriggio solo su prenotazione).",
         "tickets": "Intero € 2,00 | Ridotto € 1,00 (Giovani UE 18-25 anni o con ticket Castello stesso giorno) | Gratuito under 18"
       },
       "santamaria": {
         "title": "Chiesa di Santa Maria degli Angeli",
         "description": "I caccamesi la chiamano ancora \"San Domenico\", dal nome della piazza. Fu fondata nel 1487 dal frate domenicano Giovanni Liccio, nato proprio a Caccamo — secondo la tradizione, fu la Madonna stessa a indicargli in sogno dove costruirla. Oggi la chiesa custodisce le sue reliquie in un'urna d'argento, insieme a una Madonna col Bambino scolpita nel 1516 da Antonello Gagini. È lo stesso Beato Giovanni che il borgo festeggia ogni maggio.",
-        "hours": "Apertura e Visite: Sabato dalle 16:00 alle 17:30 | Domenica dalle 09:00 alle 10:00 e dalle 11:00 alle 12:30. (Sante Messe: Sabato ore 17:30 | Domenica ore 10:00)."
+        "hours": "Da lunedì a sabato: Santa Messa ore 08:30, apertura mattutina 09:00 – 12:00. Domenica: Sante Messe ore 08:30, 11:30 e 17:00 (apertura compatibile con gli orari delle funzioni)."
       },
       "sangiorgio": {
         "title": "Chiesa di San Giorgio Martire",
         "description": "Il Duomo sorge dove, secondo la tradizione, i Normanni eressero già nel 1090 la prima chiesa dedicata a San Giorgio — il santo che, si narra, li aiutò a vincere i Saraceni nella battaglia di Cerami nel 1063. L'edificio che vedi oggi risale al Seicento, ma il suo campanile alto 49 metri è ancora più antico: nella parte inferiore era una torre di avvistamento del Castello. All'interno, l'altare barocco custodisce rilievi attribuiti a Francesco Laurana e una statua-reliquiario d'argento di Santa Rosalia.",
-        "hours": "Fasce Orarie Visite: Sabato e Domenica ore 09:30 – 10:45 e ore 16:00 – 18:00. (La ricezione turistica è sospesa durante la Santa Messa domenicale delle ore 11:00)."
+        "hours": "Da lunedì a sabato: 09:00 – 12:00, Santa Messa ore 18:00. Domenica: Sante Messe ore 11:00 e 18:00 (apertura compatibile con gli orari delle funzioni)."
       },
       "annunziata": {
         "title": "Parrocchia SS. Annunziata",
         "description": "Le sue origini risalgono al Duecento, tra le più antiche di Caccamo. Custodisce una grande tela di Guglielmo Borremans, l'Annunciazione, e stucchi della scuola di Serpotta. Nel Settecento ospitava anche un pavimento in maiolica dipinto dal maestro Nicolò Sarzana — lo stesso artigiano che realizzò poi il celebre pavimento della Badia poco distante. Ogni primavera, la chiesa si anima per la festa di San Giuseppe, tra le tradizioni più sentite del borgo.",
-        "hours": "Lun - Sab: 09:00 – 12:00 | Messe feriali ore 18:00. Domenica e Festivi visite nelle fasce: 08:30 - 09:30 e 10:30 - 12:00 (Messe festive ore 09:30, 12:00, 19:00)."
+        "hours": "Da lunedì a sabato: 09:00 – 12:00, Santa Messa ore 18:00. Domenica: Sante Messe ore 09:30, 12:00 e 19:00 (apertura compatibile con gli orari delle funzioni)."
       },
       "cappuccini": {
         "title": "Convento dei Frati Cappuccini",
