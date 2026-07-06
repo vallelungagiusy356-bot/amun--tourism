@@ -14,6 +14,50 @@
             background: rgba(184, 135, 59, 0.2) !important;
             font-weight: bold;
         }
+
+        /* ===== BOTTONE PREMIUM ===== */
+        .castellana-premium-cta {
+          max-width: 420px;
+          margin: 32px auto;
+          padding: 20px;
+          background: #fdf6e8;
+          border-radius: 14px;
+          text-align: center;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+          font-family: 'Cormorant Garamond', serif;
+        }
+
+        .premium-cta-label {
+          margin: 0 0 14px;
+          font-weight: 600;
+          color: #5a1a20;
+        }
+
+        .premium-btn {
+          display: inline-block;
+          padding: 10px 20px;
+          border-radius: 24px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          border: none;
+          margin: 4px;
+          transition: opacity 0.2s ease;
+        }
+
+        .premium-btn:hover { opacity: 0.9; }
+
+        .premium-btn-outline {
+          background: transparent;
+          border: 2px solid #7a1f2b;
+          color: #7a1f2b;
+        }
+
+        .premium-btn-gold {
+          background: linear-gradient(135deg, #c9962f, #e0b04a);
+          color: #3a2a10;
+        }
     </style>
 </head>
 
@@ -99,6 +143,21 @@
                 <div class="ask-castellana" data-i18n="pages.cibo_eventi_page.cta">Chiedi alla Castellana di raccontartela</div>
             </div>
         </section>
+
+        <!-- ===== BOTTONE PREMIUM ===== -->
+        <div class="castellana-premium-cta">
+          <p class="premium-cta-label">🔒 Contenuti Premium disponibili</p>
+          <button id="btn-premium-code" class="premium-btn premium-btn-outline">
+            Ho già un codice
+          </button>
+          <a
+            href="#"
+            id="btn-buy-premium"
+            class="premium-btn premium-btn-gold"
+          >
+            Acquista l'accesso — 3,90€
+          </a>
+        </div>
     </main>
 
     <div class="castellana-widget-area">
@@ -292,6 +351,23 @@
         if (sendBtn) {
             sendBtn.addEventListener('click', handleSend);
         }
+
+        // ============================================================
+        // BOTTONE PREMIUM
+        // ============================================================
+        document.getElementById('btn-premium-code').addEventListener('click', () => {
+          chat.classList.add('active');
+          appendChatMessage(
+            'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"',
+            'castellana'
+          );
+        });
+
+        // Link di acquisto Stripe — NON ANCORA ATTIVO
+        document.getElementById('btn-buy-premium').addEventListener('click', (e) => {
+          e.preventDefault();
+          alert('Il pagamento sarà disponibile a breve. Torna presto!');
+        });
     </script>
 </body>
 </html>
