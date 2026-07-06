@@ -15,7 +15,6 @@
             font-weight: bold;
         }
 
-        /* ===== BOTTONE PREMIUM ===== */
         .castellana-premium-cta {
           max-width: 420px;
           margin: 32px auto;
@@ -63,7 +62,6 @@
 
 <body>
 
-    <!-- 👑 DASHBOARD -->
     <header class="dashboard">
         <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
@@ -83,54 +81,87 @@
         </div>
     </header>
 
-    <!-- 🏰 LAYOUT CENTRATO -->
-    <main class="hero">
-        <div class="hero-text">
-            <span class="category-tag" data-i18n="pages.castle_page.category">Monumenti Storici</span>
-            <h1 data-i18n="pages.castle_page.title">Il Castello di Caccamo</h1>
-        </div>
+    <main>
 
-        <figure class="castle-hero-image">
-            <img src="img/castello2.jpg" alt="Il Castello di Caccamo" loading="lazy">
-        </figure>
-
-        <section class="poesia-container">
-            <div class="poesia-corpo">
-                <p data-i18n="pages.castle_page.rhyme_1">
-                    In un castello normanno forgiato dal tempo,<br>
-                    venite, ammirate, fermatevi un momento.<br>
-                    Non è solo pietra, né freddo baluardo,<br>
-                    ma un'anima antica che attende il tuo sguardo.
-                </p>
-                <p data-i18n="pages.castle_page.rhyme_2">
-                    La storia non dorme, si scioglie nell'aria,<br>
-                    e rivive nel cuore di chi oggi ne ascolta la trama.
-                </p>
-                <p class="highlight-para" data-i18n="pages.castle_page.rhyme_3">
-                    Non cercate risposte in vecchie carte ingiallite,<br>
-                    ma nel mio sguardo, tra ombre smarrite.<br>
-                    Sono la Castellana, custode del filo,<br>
-                    svelerò a chi ascolta l'antico profilo.
-                </p>
+        <!-- ============================================================
+             SEZIONE 1 — HERO: immagine del castello + testo poetico
+             ============================================================ -->
+        <section class="hero">
+            <div class="hero-text">
+                <span class="category-tag" data-i18n="pages.castle_page.category">Monumenti Storici</span>
+                <h1 data-i18n="pages.castle_page.title">Il Castello di Caccamo</h1>
             </div>
 
-            <figure class="castle-dress-inline">
-                <img src="img/abito_clean.png" alt="Abito storico della Castellana" class="dress-img-inline" loading="lazy">
-                <figcaption class="dress-caption-inline" data-i18n="pages.castle_page.dress_caption">
-                    L'abito della Castellana
-                </figcaption>
+            <figure class="castle-hero-image">
+                <img src="img/castello2.jpg" alt="Il Castello di Caccamo" loading="lazy">
             </figure>
 
-            <div class="poesia-corpo descrizione-storica">
-                <p data-i18n="pages.castle_page.para_2">
-                    Il Castello non è soltanto una fortezza. È un corpo vivo che respira le trame dei Chiaramonte e le inquietudini dell'Inquisizione. Oltre le pareti che sfidano i secoli, si cela il cuore pulsante di Caccamo, un segreto che non attende di essere letto, ma di essere raccontato.
+            <section class="poesia-container">
+                <div class="poesia-corpo">
+                    <p data-i18n="pages.castle_page.rhyme_1">
+                        In un castello normanno forgiato dal tempo,<br>
+                        venite, ammirate, fermatevi un momento.<br>
+                        Non è solo pietra, né freddo baluardo,<br>
+                        ma un'anima antica che attende il tuo sguardo.
+                    </p>
+                    <p data-i18n="pages.castle_page.rhyme_2">
+                        La storia non dorme, si scioglie nell'aria,<br>
+                        e rivive nel cuore di chi oggi ne ascolta la trama.
+                    </p>
+                    <p class="highlight-para" data-i18n="pages.castle_page.rhyme_3">
+                        Non cercate risposte in vecchie carte ingiallite,<br>
+                        ma nel mio sguardo, tra ombre smarrite.<br>
+                        Sono la Castellana, custode del filo,<br>
+                        svelerò a chi ascolta l'antico profilo.
+                    </p>
+                </div>
+
+                <figure class="castle-dress-inline">
+                    <img src="img/abito_clean.png" alt="Abito storico della Castellana" class="dress-img-inline" loading="lazy">
+                    <figcaption class="dress-caption-inline" data-i18n="pages.castle_page.dress_caption">
+                        L'abito della Castellana
+                    </figcaption>
+                </figure>
+
+                <div class="poesia-corpo descrizione-storica">
+                    <p data-i18n="pages.castle_page.para_2">
+                        Il Castello non è soltanto una fortezza. È un corpo vivo che respira le trame dei Chiaramonte e le inquietudini dell'Inquisizione. Oltre le pareti che sfidano i secoli, si cela il cuore pulsante di Caccamo, un segreto che non attende di essere letto, ma di essere raccontato.
+                    </p>
+                    <p class="highlight-para" data-i18n="pages.castle_page.para_3">
+                        Ogni pietra conserva una voce, ogni corridoio un presagio. Non limitarti a osservare la superficie: entra nel vivo del mistero. La Castellana è qui, pronta a trasformare la tua visita in un viaggio che va oltre la storia, dritto nel mito.
+                    </p>
+                </div>
+
+                <p class="poesia-outro">Lasciati guidare oltre le soglie del tempo...</p>
+            </section>
+
+            <a href="#sezione-info" class="scroll-cue">Scopri la sua storia ↓</a>
+        </section>
+
+        <!-- ============================================================
+             SEZIONE 2 — PARALLASSE: contenuto storico/pratico
+             (ex contenuti "free", ora testo statico su sfondo scuro)
+             ============================================================ -->
+        <section class="section-parallax" id="sezione-info">
+            <div class="parallax-bg"></div>
+            <div class="parallax-overlay"></div>
+            <div class="parallax-content">
+                <p>
+                    Il Castello nasce nel <strong>1094</strong>, quando il Conte Ruggero I lo concede in feudo al nobile normanno Goffredo de Sageyo. Nei secoli successivi passa di mano a numerose famiglie — tra cui <strong>Bonello, Chiaramonte, De Prades, Cabrera, Henriquez, Amato e De Spuches</strong> — fino al 1963, quando l'ultimo duca lo cede alla Regione Siciliana. In quasi 900 anni di storia, ben <strong>14 famiglie nobiliari</strong> diverse si sono succedute nel suo possesso.
                 </p>
-                <p class="highlight-para" data-i18n="pages.castle_page.para_3">
-                    Ogni pietra conserva una voce, ogni corridoio un presagio. Non limitarti a osservare la superficie: entra nel vivo del mistero. La Castellana è qui, pronta a trasformare la tua visita in un viaggio che va oltre la storia, dritto nel mito.
+                <p>
+                    La <strong>Torre Mastra</strong> è la più antica e la più alta dell'intera fortezza, con una cisterna d'acqua nascosta alla sua base — il terremoto del 1823 ne causò il parziale crollo. La <strong>Torre Gibellina</strong> sorveglia il lato sud-est, sopra l'antico quartiere di Terravecchia: il suo nome viene dall'arabo <em>gibel</em>, "rivolta verso la città". La <strong>Torre della Fossa</strong>, detta anche del Dammuso, occupa il centro del prospetto sud, voluta dai Prades-Cabrera.
+                </p>
+                <p>
+                    È uno dei castelli normanni più grandi e meglio conservati di tutta la Sicilia. Percorrerlo tutto richiede almeno un'ora, tra cortili, sale e camminamenti.
+                </p>
+                <p>
+                    <strong>Orari</strong> — Invernale (16 ottobre–14 aprile): lun pomeriggio–dom, 9:00-12:30 e 14:30-18:30. Estivo (15 aprile–15 ottobre): stessi giorni, 9:00-12:30 e 15:30-19:00. Chiuso lunedì mattina.
+                </p>
+                <p>
+                    <strong>Biglietti</strong> — Intero 6,00€ · Ridotto online 4,50€ · Residenti Caccamo 1,00€ · Studenti 18-25 anni 3,00€ · Gratuito under 18. Info e prenotazioni: 091 8103233 (lun-ven) o 091 8149252 (mar-dom).
                 </p>
             </div>
-
-            <p class="poesia-outro">Lasciati guidare oltre le soglie del tempo...</p>
         </section>
 
         <!-- ===== BOTTONE PREMIUM ===== -->
@@ -147,9 +178,10 @@
             Acquista l'accesso — 3,90€
           </a>
         </div>
+
     </main>
 
-    <!-- 👑 WIDGET CASTELLANA -->
+    <!-- 👑 WIDGET CASTELLANA (invariato) -->
     <div class="castellana-widget-area">
         <div class="castellana-video-wrapper" id="chat-open-btn">
             <video class="castellana-video" autoplay loop muted playsinline>
@@ -159,7 +191,7 @@
         <div class="castellana-tooltip">Click to chat</div>
     </div>
 
-    <!-- 💬 CHAT -->
+    <!-- 💬 CHAT (invariata) -->
     <div class="chat-desktop" id="chat-desktop">
         <div class="chat-header">
             <div class="avatar-status-dot"></div>
@@ -178,7 +210,6 @@
     </div>
 
     <script>
-        // --- LOGICA CHAT ---
         const chat = document.getElementById("chat-desktop");
         const openBtn = document.getElementById("chat-open-btn");
         const closeBtn = document.getElementById("close-chat");
@@ -186,7 +217,6 @@
         openBtn.addEventListener("click", () => chat.classList.add("active"));
         closeBtn.addEventListener("click", () => chat.classList.remove("active"));
 
-        // --- LOGICA LINGUA ---
         let currentLang = localStorage.getItem("lang") || "it";
 
         function loadLanguage(lang) {
@@ -218,9 +248,6 @@
             loadLanguage(currentLang);
         });
 
-        // ============================================================
-        // CONNESSIONE CHAT ↔ BACKEND PYTHON
-        // ============================================================
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
 
@@ -344,9 +371,6 @@
             sendBtn.addEventListener('click', handleSend);
         }
 
-        // ============================================================
-        // BOTTONE PREMIUM
-        // ============================================================
         document.getElementById('btn-premium-code').addEventListener('click', () => {
           chat.classList.add('active');
           appendChatMessage(
@@ -355,7 +379,6 @@
           );
         });
 
-        // Link di acquisto Stripe — NON ANCORA ATTIVO
         document.getElementById('btn-buy-premium').addEventListener('click', (e) => {
           e.preventDefault();
           alert('Il pagamento sarà disponibile a breve. Torna presto!');
