@@ -1,4 +1,11 @@
 /* ============================================================
+   0. RESET DI BASE — mancava, causava overflow di padding/margini
+   ============================================================ */
+* {
+    box-sizing: border-box;
+}
+
+/* ============================================================
    1. RESET + VARIABILI GLOBALI — PALETTE BORGO
    ============================================================ */
 :root {
@@ -148,6 +155,7 @@ html, body {
     position: relative;
     z-index: 1;
     margin-top: 190px;
+    width: 100%;
     text-align: center;
     padding: 1.5rem;
     display: flex;
@@ -155,6 +163,11 @@ html, body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+}
+
+.hero-text {
+    width: 100%;
+    text-align: center;
 }
 
 .category-tag {
@@ -199,13 +212,11 @@ html, body {
     height: auto;
 }
 
-.poesia-container {
-    max-width: 800px;
-    margin: 0 auto 2.5rem auto;
-    padding: 1rem 1.5rem;
-    background: transparent;
-    border: none;
-    box-shadow: none;
+.poesia-corpo.hero-intro {
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .poesia-corpo p {
@@ -214,66 +225,7 @@ html, body {
     line-height: 1.8;
     color: var(--ink);
     font-style: italic;
-    margin-bottom: 1.8rem;
-}
-
-.poesia-corpo strong {
-    color: var(--terracotta-dark);
-    font-style: normal;
-    font-weight: 600;
-}
-
-.descrizione-storica p {
-    font-style: normal;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.15rem, 2.3vw, 1.3rem);
-    color: var(--ink);
-}
-
-.highlight-para {
-    padding: 10px 20px;
-    background: rgba(193, 98, 45, 0.08);
-    border-left: 2px solid var(--terracotta);
-    border-radius: 0;
-    display: inline-block;
-    max-width: 95%;
-    margin: 0 auto;
-}
-
-.castle-dress-inline {
-    background: var(--stone-dim);
-    border: 1px solid var(--sea);
-    padding: 16px;
-    text-align: center;
-    margin: 2rem auto;
-    max-width: 260px;
-}
-
-.dress-img-inline {
-    width: 140px;
-    filter: drop-shadow(0 4px 14px var(--shadow-soft));
-    transition: transform 0.4s ease;
-}
-
-.dress-img-inline:hover {
-    transform: scale(1.03);
-}
-
-.dress-caption-inline {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.85rem;
-    color: var(--sea);
-    margin-top: 12px;
-    letter-spacing: 1px;
-    font-style: italic;
-}
-
-.poesia-outro {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.25rem;
-    color: var(--terracotta-dark);
-    margin-top: 1.5rem;
+    margin-bottom: 0;
 }
 
 .scroll-cue {
@@ -298,15 +250,18 @@ html, body {
 .section-parallax {
     position: relative;
     min-height: 85vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background: var(--sea-ink); /* colore di riserva se l'immagine non si carica */
 }
 
 .parallax-bg {
     position: absolute;
     inset: 0;
+    background-color: var(--sea-ink);
     background-image: url('img/sfondocaccamo.jpeg');
     background-size: cover;
     background-position: center;
@@ -318,16 +273,19 @@ html, body {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg,
-        rgba(15, 25, 34, 0.75) 0%,
-        rgba(15, 25, 34, 0.55) 40%,
-        rgba(15, 25, 34, 0.8) 100%);
+        rgba(15, 25, 34, 0.80) 0%,
+        rgba(15, 25, 34, 0.62) 40%,
+        rgba(15, 25, 34, 0.85) 100%);
 }
 
 .parallax-content {
     position: relative;
     z-index: 2;
+    width: 100%;
     max-width: 720px;
     padding: 60px 32px;
+    margin: 0 auto;
+    box-sizing: border-box;
     text-align: left;
 }
 
@@ -351,7 +309,10 @@ html, body {
 
 @media screen and (max-width: 899px) {
     .parallax-bg { background-attachment: scroll; }
-    .parallax-content { padding: 40px 24px; text-align: left; }
+    .parallax-content {
+        padding: 40px 24px;
+        text-align: left;
+    }
 }
 
 /* ============================================================
