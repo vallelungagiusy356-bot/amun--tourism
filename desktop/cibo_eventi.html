@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="pages.canti_page.page_title">Canti e Preghiere del Borgo</title>
+    <title data-i18n="pages.cibo_eventi_page.page_title">Il Calendario del Borgo</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="leggende_e_tradizioni.css">
+    <link rel="stylesheet" href="cibo_eventi.css">
 
     <style>
         .lang-switcher button.active {
@@ -83,78 +83,66 @@
     </header>
 
     <main class="hero">
-        <span class="category-tag" data-i18n="pages.canti_page.category">Leggende e Tradizioni</span>
-        <h1 data-i18n="pages.canti_page.page_title">Canti e Preghiere del Borgo</h1>
-        <p class="subtitle" data-i18n="pages.canti_page.subtitle">Voci di famiglia, tramandate in dialetto</p>
-
-        <div class="track-groups">
-
-            <div class="track-group">
-                <h3 class="group-label" data-i18n="pages.canti_page.group_cunti">I Cunti</h3>
-
-                <button class="track-item active" data-track="cunto1">
-                    <span class="track-play">▶</span>
-                    <span class="track-meta">
-                        <span class="track-title" data-i18n="pages.canti_page.cunto1_title">[Cunto 1 — titolo da inserire]</span>
-                        <span class="track-who" data-i18n="pages.canti_page.cunto1_who">[Narratore da inserire]</span>
-                    </span>
-                </button>
-
-                <button class="track-item" data-track="cunto2">
-                    <span class="track-play">▶</span>
-                    <span class="track-meta">
-                        <span class="track-title" data-i18n="pages.canti_page.cunto2_title">[Cunto 2 — titolo da inserire]</span>
-                        <span class="track-who" data-i18n="pages.canti_page.cunto2_who">[Narratore da inserire]</span>
-                    </span>
-                </button>
-            </div>
-
-            <div class="track-group">
-                <h3 class="group-label" data-i18n="pages.canti_page.group_preghiere">Le Preghiere</h3>
-
-                <button class="track-item" data-track="preghiera1">
-                    <span class="track-play">▶</span>
-                    <span class="track-meta">
-                        <span class="track-title" data-i18n="pages.canti_page.preghiera1_title">[Preghiera 1 — titolo da inserire]</span>
-                        <span class="track-who" data-i18n="pages.canti_page.preghiera1_who">[Narratore da inserire]</span>
-                    </span>
-                </button>
-
-                <button class="track-item" data-track="preghiera2">
-                    <span class="track-play">▶</span>
-                    <span class="track-meta">
-                        <span class="track-title" data-i18n="pages.canti_page.preghiera2_title">[Preghiera 2 — titolo da inserire]</span>
-                        <span class="track-who" data-i18n="pages.canti_page.preghiera2_who">[Narratore da inserire]</span>
-                    </span>
-                </button>
-            </div>
-
+        <div class="crest">
+            <svg viewBox="0 0 44 44" fill="none">
+                <circle cx="22" cy="22" r="20" stroke="#B8873B" stroke-width="1.4"/>
+                <circle cx="22" cy="22" r="16" stroke="#B8873B" stroke-width="0.6"/>
+                <path d="M14 26V17L18 14L22 11L26 14L30 17V26H26V21H18V26H14Z" stroke="#1B4965" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M14 26H30" stroke="#1B4965" stroke-width="1.3"/>
+            </svg>
         </div>
 
-        <div class="player-card">
-            <div class="player-top">
-                <button class="play-btn" id="playBtn">▶</button>
-                <div class="track-info">
-                    <div class="title" id="nowPlayingTitle">[Cunto 1 — titolo da inserire]</div>
-                    <div class="who" id="nowPlayingWho">[Narratore da inserire]</div>
-                </div>
-            </div>
-            <div class="waveform" id="waveform"></div>
-            <div class="time-row"><span id="curTime">0:00</span><span id="totTime">0:00</span></div>
-            <div class="lang-row">
-                <div class="lang-chip active" data-lang="it">IT</div>
-                <div class="lang-chip" data-lang="en">EN</div>
-                <div class="lang-chip" data-lang="fr">FR</div>
-                <div class="lang-chip" data-lang="es">ES</div>
-                <div class="lang-chip" data-lang="de">DE</div>
-            </div>
-        </div>
+        <span class="category-tag" data-i18n="pages.cibo_eventi_page.category">Cibo &amp; Eventi</span>
+        <h1 data-i18n="pages.cibo_eventi_page.page_title">Il Calendario del Borgo</h1>
+        <p class="subtitle" data-i18n="pages.cibo_eventi_page.subtitle">Quattro stagioni, quattro modi di vivere Caccamo</p>
 
-        <div class="transcript" id="transcript"></div>
+        <section class="season-card s1">
+            <div class="season-head">
+                <span class="period" data-i18n="pages.cibo_eventi_page.s1_period">Ottobre — Dicembre</span>
+                <h2 data-i18n="pages.cibo_eventi_page.s1_title">Sagra e Presepi</h2>
+            </div>
+            <div class="season-body">
+                <p data-i18n="pages.cibo_eventi_page.s1_body">La Sagra della Salsiccia apre l'autunno, tra dolci locali come i taralli. A dicembre il borgo si accende di presepi: quello dei Cappuccini, allestito all'esterno del convento con antichi attrezzi agricoli e oggetti di casa di 40-60 anni fa, e quello di Santo Domenico, tra i più belli da vedere. Sotto il Castello si accende il grande albero di Natale, e i paesi limitrofi — facilmente raggiungibili coi trasporti locali — ospitano spesso presepi viventi.</p>
+                <div class="tag-row" data-i18n="pages.cibo_eventi_page.s1_tags">Sagra della Salsiccia · Presepe dei Cappuccini · Presepe di Santo Domenico · Albero sotto il Castello</div>
+                <div class="ask-castellana" data-i18n="pages.cibo_eventi_page.cta">Chiedi alla Castellana di raccontartela</div>
+            </div>
+        </section>
 
-        <div class="note">
-            Prototipo dimostrativo: il tempo scorre in modo simulato (nessun audio reale caricato), solo per mostrare come il testo si illumina in sincronia con la voce, riga per riga. Testi segnati tra <code>[ ]</code> sono segnaposto da sostituire con i contenuti reali; con la registrazione vera i tempi di ogni riga andranno ritarati ad orecchio e collegati a un file audio reale.
-        </div>
+        <section class="season-card s2">
+            <div class="season-head">
+                <span class="period" data-i18n="pages.cibo_eventi_page.s2_period">Marzo — Aprile</span>
+                <h2 data-i18n="pages.cibo_eventi_page.s2_title">Settimana Santa</h2>
+            </div>
+            <div class="season-body">
+                <p data-i18n="pages.cibo_eventi_page.s2_body">La settimana si apre la Domenica delle Palme con U Signuruzzu a Cavaddu, quando un bambino del paese impersona Gesù nell'ingresso a Gerusalemme. Il Venerdì Santo sera è la Via Crucis vivente: la Madonna dal cuore trafitto incontra il Cristo su un letto di rose. Lo stesso giorno si usa "girare i sepolcri" — le chiese aperte, gli altari allestiti con il grano fiorito, a ricordare Maria e la Maddalena che si recano al sepolcro di Cristo.</p>
+                <div class="tag-row" data-i18n="pages.cibo_eventi_page.s2_tags">U Signuruzzu a Cavaddu — Domenica delle Palme · Via Crucis vivente — Venerdì Santo · Giro dei sepolcri · Pane di Cena · Pecorelle di mandorla</div>
+                <div class="ask-castellana" data-i18n="pages.cibo_eventi_page.cta">Chiedi alla Castellana di raccontartela</div>
+            </div>
+        </section>
+
+        <section class="season-card s3">
+            <div class="season-head">
+                <span class="period" data-i18n="pages.cibo_eventi_page.s3_period">Ultima Domenica di Maggio</span>
+                <h2 data-i18n="pages.cibo_eventi_page.s3_title">Beato Giovanni Liccio</h2>
+            </div>
+            <div class="season-body">
+                <p data-i18n="pages.cibo_eventi_page.s3_body">Non un santo qualsiasi, ma un patrono tutto caccamese: il Beato Giovanni Liccio è un figlio del borgo, ed è per questo che la sua festa è tra le più sentite dalla comunità. La processione attraversa tutto il paese, in particolare la parte antica — un modo unico per vedere il borgo in una veste diversa e sentirsi parte della comunità.</p>
+                <div class="tag-row" data-i18n="pages.cibo_eventi_page.s3_tags">Processione patronale · Patrono di Caccamo · Centro storico</div>
+                <div class="ask-castellana" data-i18n="pages.cibo_eventi_page.cta">Chiedi alla Castellana di raccontartela</div>
+            </div>
+        </section>
+
+        <section class="season-card s4">
+            <div class="season-head">
+                <span class="period" data-i18n="pages.cibo_eventi_page.s4_period">Fine Agosto</span>
+                <h2 data-i18n="pages.cibo_eventi_page.s4_title">Palio di San Nicasio</h2>
+            </div>
+            <div class="season-body">
+                <p data-i18n="pages.cibo_eventi_page.s4_body">Tre giorni di festa: il corteo storico della Castellana apre le celebrazioni, fino al Palio che chiude l'estate caccamese.</p>
+                <div class="tag-row" data-i18n="pages.cibo_eventi_page.s4_tags">Corteo storico · Palio · Festa di San Nicasio</div>
+                <div class="ask-castellana" data-i18n="pages.cibo_eventi_page.cta">Chiedi alla Castellana di raccontartela</div>
+            </div>
+        </section>
 
         <!-- ===== BOTTONE PREMIUM ===== -->
         <div class="castellana-premium-cta">
@@ -188,7 +176,7 @@
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
         <div class="chat-messages">
-            <div class="message" data-i18n="chat.canti_msg">Vuoi ascoltare altri canti e preghiere del borgo? Nella versione Premium te ne racconto molti altri...</div>
+            <div class="message" data-i18n="chat.cibo_eventi_msg">Benvenuto! Chiedimi delle feste e delle tradizioni di Caccamo, stagione per stagione.</div>
         </div>
         <div class="chat-input-row">
             <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
@@ -200,8 +188,14 @@
         const chat = document.getElementById("chat-desktop");
         const openBtn = document.getElementById("chat-open-btn");
         const closeBtn = document.getElementById("close-chat");
+
         openBtn.addEventListener("click", () => chat.classList.add("active"));
         closeBtn.addEventListener("click", () => chat.classList.remove("active"));
+
+        // ogni "Chiedi alla Castellana" apre la stessa chat
+        document.querySelectorAll(".ask-castellana").forEach(el => {
+            el.addEventListener("click", () => chat.classList.add("active"));
+        });
 
         let currentLang = localStorage.getItem("lang") || "it";
         function loadLanguage(lang) {
@@ -225,173 +219,12 @@
                 .catch(err => console.error("Errore lingua:", err));
             localStorage.setItem("lang", lang);
         }
-        document.querySelectorAll(".lang-switcher button").forEach(btn => {
-            btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
-        });
-
-        const tracks = {
-            cunto1: {
-                title: "[Cunto 1 — titolo da inserire]",
-                who: "[Narratore da inserire]",
-                lines: [
-                    { start: 0,   end: 4.5,  dialect: "[riga 1 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
-                    { start: 4.5, end: 9,    dialect: "[riga 2 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
-                ]
-            },
-            cunto2: {
-                title: "[Cunto 2 — titolo da inserire]",
-                who: "[Narratore da inserire]",
-                lines: [
-                    { start: 0,   end: 5,    dialect: "[riga 1 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
-                    { start: 5,   end: 10,   dialect: "[riga 2 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
-                ]
-            },
-            preghiera1: {
-                title: "[Preghiera 1 — titolo da inserire]",
-                who: "[Narratore da inserire]",
-                lines: [
-                    { start: 0,   end: 4,    dialect: "[riga 1 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
-                    { start: 4,   end: 8,    dialect: "[riga 2 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
-                ]
-            },
-            preghiera2: {
-                title: "[Preghiera 2 — titolo da inserire]",
-                who: "[Narratore da inserire]",
-                lines: [
-                    { start: 0,   end: 4,    dialect: "[riga 1 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
-                    { start: 4,   end: 8,    dialect: "[riga 2 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
-                ]
-            }
-        };
-
-        let activeTrackId = "cunto1";
-        let currentTime = 0;
-        let playing = false;
-        let timer = null;
-        let currentPlayerLang = "it";
-
-        const transcriptEl = document.getElementById("transcript");
-        const waveformEl = document.getElementById("waveform");
-        const playBtn = document.getElementById("playBtn");
-        const curTimeEl = document.getElementById("curTime");
-        const totTimeEl = document.getElementById("totTime");
-        const nowPlayingTitle = document.getElementById("nowPlayingTitle");
-        const nowPlayingWho = document.getElementById("nowPlayingWho");
-
-        function fmt(t){
-            const m = Math.floor(t/60), s = Math.floor(t%60);
-            return m + ":" + String(s).padStart(2,"0");
-        }
-
-        function renderTrack(trackId){
-            const track = tracks[trackId];
-            activeTrackId = trackId;
-            currentTime = 0;
-            playing = false;
-            clearInterval(timer);
-            playBtn.textContent = "▶";
-
-            nowPlayingTitle.textContent = track.title;
-            nowPlayingWho.textContent = track.who;
-
-            const totalDuration = track.lines[track.lines.length - 1].end;
-            totTimeEl.textContent = fmt(totalDuration);
-            curTimeEl.textContent = "0:00";
-
-            transcriptEl.innerHTML = "";
-            track.lines.forEach((l, i) => {
-                const div = document.createElement("div");
-                div.className = "line";
-                div.id = "line-" + i;
-                div.innerHTML = `<div class="dialect">${l.dialect}</div><div class="translation" id="tr-${i}">${l[currentPlayerLang]}</div>`;
-                transcriptEl.appendChild(div);
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
             });
-
-            waveformEl.innerHTML = "";
-            const barCount = 40;
-            for(let i=0;i<barCount;i++){
-                const bar = document.createElement("div");
-                bar.className = "bar";
-                const h = 6 + Math.round(Math.sin(i*0.7)*10 + 12 + Math.random()*6);
-                bar.style.height = Math.max(6,h) + "px";
-                waveformEl.appendChild(bar);
-            }
-
-            document.querySelectorAll(".track-item").forEach(btn => {
-                btn.classList.toggle("active", btn.dataset.track === trackId);
-            });
-        }
-
-        function updateUI(){
-            const track = tracks[activeTrackId];
-            const totalDuration = track.lines[track.lines.length - 1].end;
-            curTimeEl.textContent = fmt(currentTime);
-
-            const bars = document.querySelectorAll(".waveform .bar");
-            const progress = currentTime / totalDuration;
-            const filled = Math.floor(progress * bars.length);
-            bars.forEach((b,i) => b.classList.toggle("played", i < filled));
-
-            track.lines.forEach((l,i) => {
-                const el = document.getElementById("line-" + i);
-                const active = currentTime >= l.start && currentTime < l.end;
-                el.classList.toggle("active", active);
-                if(active) el.scrollIntoView({block:"center", behavior:"smooth"});
-            });
-        }
-
-        playBtn.addEventListener("click", () => {
-            const track = tracks[activeTrackId];
-            const totalDuration = track.lines[track.lines.length - 1].end;
-
-            if(playing){
-                playing = false;
-                playBtn.textContent = "▶";
-                clearInterval(timer);
-                return;
-            }
-            if(currentTime >= totalDuration) currentTime = 0;
-            playing = true;
-            playBtn.textContent = "❚❚";
-            timer = setInterval(() => {
-                currentTime += 0.1;
-                if(currentTime >= totalDuration){
-                    currentTime = totalDuration;
-                    updateUI();
-                    playing = false;
-                    playBtn.textContent = "▶";
-                    clearInterval(timer);
-                    return;
-                }
-                updateUI();
-            }, 100);
+            loadLanguage(currentLang);
         });
-
-        document.querySelectorAll(".lang-chip").forEach(chip => {
-            chip.addEventListener("click", () => {
-                document.querySelectorAll(".lang-chip").forEach(c => c.classList.remove("active"));
-                chip.classList.add("active");
-                currentPlayerLang = chip.dataset.lang;
-                tracks[activeTrackId].lines.forEach((l,i) => {
-                    document.getElementById("tr-" + i).textContent = l[currentPlayerLang];
-                });
-            });
-        });
-
-        document.querySelectorAll(".track-item").forEach(btn => {
-            btn.addEventListener("click", () => renderTrack(btn.dataset.track));
-        });
-
-        renderTrack("cunto1");
-        loadLanguage(currentLang);
 
         // ============================================================
         // CONNESSIONE CHAT ↔ BACKEND PYTHON
