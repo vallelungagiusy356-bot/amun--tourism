@@ -1,24 +1,24 @@
 /* ============================================================
-   1. RESET + VARIABILI GLOBALI — PALETTE BORGO (non più monocromatica blu)
-   Base: pietra calcarea. Accento caldo: terracotta dei tetti.
-   Accento puntuale: azzurro cielo/mare (richiama la fascia della Castellana).
-   Oro: solo rifiniture sottili, mai colore di riempimento dominante.
+   1. RESET + VARIABILI GLOBALI — PALETTE BORGO
    ============================================================ */
 :root {
     --sky: #5B8FAE;
     --sea: #1B4965;
 
-    --stone: #EFE6D3;              /* nuovo colore di base della pagina, era --sea-deep (blu scuro) */
-    --stone-dim: #DCCFAF;          /* variante leggermente più scura della pietra, per pannelli */
+    --stone: #EFE6D3;
+    --stone-dim: #DCCFAF;
 
-    --terracotta: #C1622D;         /* nuovo accento primario caldo */
+    --terracotta: #C1622D;
     --terracotta-dark: #9C4C22;
 
-    --gold: #B8873B;               /* resta, ma solo per bordi/rifiniture sottili */
+    --gold: #B8873B;
     --gold-light: #D4AF6A;
 
-    --ink: #22303B;                /* testo scuro su fondo chiaro, coerente con le altre pagine del sito */
+    --ink: #22303B;
     --ink-soft: #465563;
+
+    --sea-ink: #14283A;
+    --cream-text: #F3ECDC;
 
     --shadow-strong: rgba(0, 0, 0, 0.35);
     --shadow-soft: rgba(0, 0, 0, 0.18);
@@ -33,48 +33,20 @@ html, body {
     width: 100%;
     min-height: 100vh;
     font-family: "Segoe UI", system-ui, sans-serif;
-    color: var(--ink);                       /* era testo chiaro su fondo scuro: ora inchiostro scuro su pietra chiara */
-    background: var(--stone) !important;     /* era --sea-deep (blu): ora pietra calcarea */
+    color: var(--ink);
+    background: var(--stone) !important;
     overflow-x: hidden;
 }
 
-
 /* ============================================================
-   2. SFONDO — pietra calcarea con lieve vignatura calda
-   ============================================================ */
-.scene-background-container {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background: var(--stone);
-}
-
-.scene-background-container video,
-.scene-overlay,
-.scene-background-container::after {
-    display: none;
-}
-
-/* vignatura calda simile a una pagina antica, non più fredda/blu */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(ellipse at center, transparent 55%, rgba(60, 40, 20, 0.16) 100%);
-}
-
-/* ============================================================
-   3. DASHBOARD — resta scura per contrasto con la pagina chiara,
-   ma sul blu marino (--sea) invece del blu quasi nero di prima
+   2. DASHBOARD
    ============================================================ */
 .dashboard {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(15, 25, 34, 0.92);        /* era rgba(27,73,101,.92) [--sea]: ora stesso tono scuro di homepage/cittadino */
+    background: rgba(15, 25, 34, 0.92);
     border-bottom: 2px solid var(--gold);
     backdrop-filter: blur(18px) saturate(200%);
     display: flex;
@@ -93,7 +65,6 @@ body::before {
     font-weight: 700;
     color: var(--gold-light);
     letter-spacing: 1.5px;
-    text-shadow: none;
 }
 
 .nav-desktop {
@@ -113,21 +84,13 @@ body::before {
     border-radius: 2px;
     background: rgba(239, 230, 211, 0.08);
     border: 1px solid rgba(239, 230, 211, 0.4);
-    box-shadow: none;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.nav-desktop a::before {
-    content: none;
 }
 
 .nav-desktop a:hover {
-    background: rgba(193, 98, 45, 0.25);       /* hover terracotta, era hover oro */
+    background: rgba(193, 98, 45, 0.25);
     border-color: var(--terracotta);
     color: #fff;
-    transform: none;
 }
 
 .header-right-actions {
@@ -155,36 +118,31 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: none;
     transition: all 0.3s ease;
 }
 
 .lang-switcher button:hover {
     background: rgba(193, 98, 45, 0.25);
-    box-shadow: none;
-    transform: none;
 }
 
-.home-btn {
-    background: transparent;
-    border: 1px solid var(--stone);
-    color: var(--stone);
-    padding: 6px 14px;
-    border-radius: 2px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-}
-
-.home-btn:hover {
-    background: var(--terracotta);
-    border-color: var(--terracotta);
-    color: #fff;
+@media screen and (max-width: 899px) {
+    .header-right-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 8px;
+    }
+    .nav-desktop {
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+    .lang-switcher {
+        flex: 1 1 100%;
+        justify-content: center;
+    }
 }
 
 /* ============================================================
-   4. LAYOUT CENTRATO & POESIA — testo scuro su fondo chiaro
+   3. SEZIONE 1 — HERO (immagine castello + poesia)
    ============================================================ */
 .hero {
     position: relative;
@@ -192,7 +150,6 @@ body::before {
     margin-top: 190px;
     text-align: center;
     padding: 1.5rem;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -204,18 +161,16 @@ body::before {
     font-size: 0.8rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--terracotta);                  /* era bordeaux (wine): ora terracotta, coerente coi tetti */
+    color: var(--terracotta);
     font-weight: 700;
     margin-bottom: 5px;
     display: block;
-    text-shadow: none;
 }
 
 .hero-text h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 5vw, 3.2rem);
-    color: var(--sea);                         /* era crema chiara su fondo scuro: ora blu marino su pietra chiara */
-    text-shadow: none;
+    color: var(--sea);
     margin-bottom: 0.5rem;
 }
 
@@ -224,13 +179,10 @@ body::before {
     display: block;
     width: auto;
     margin: 0.8rem auto 2rem;
-    color: var(--gold);                        /* l'oro resta qui: rifinitura tipografica puntuale */
+    color: var(--gold);
     font-size: 15px;
 }
 
-/* ============================================================
-   4bis. IMMAGINE DEL CASTELLO — cornice chiara, bordo terracotta
-   ============================================================ */
 .castle-hero-image {
     max-width: 620px;
     width: 100%;
@@ -253,27 +205,22 @@ body::before {
     padding: 1rem 1.5rem;
     background: transparent;
     border: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
     box-shadow: none;
-    pointer-events: auto;
 }
 
 .poesia-corpo p {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.2rem, 2.6vw, 1.45rem);
     line-height: 1.8;
-    color: var(--ink);                         /* era bianco su fondo scuro: ora inchiostro su pietra chiara */
+    color: var(--ink);
     font-style: italic;
     margin-bottom: 1.8rem;
-    text-shadow: none;
 }
 
 .poesia-corpo strong {
-    color: var(--terracotta-dark);             /* era oro chiaro: ora terracotta, accento caldo secondario */
+    color: var(--terracotta-dark);
     font-style: normal;
     font-weight: 600;
-    text-shadow: none;
 }
 
 .descrizione-storica p {
@@ -285,7 +232,7 @@ body::before {
 
 .highlight-para {
     padding: 10px 20px;
-    background: rgba(193, 98, 45, 0.08);       /* tinta terracotta, era tinta oro */
+    background: rgba(193, 98, 45, 0.08);
     border-left: 2px solid var(--terracotta);
     border-radius: 0;
     display: inline-block;
@@ -293,11 +240,6 @@ body::before {
     margin: 0 auto;
 }
 
-/* ============================================================
-   Il pannello dell'abito richiama esplicitamente l'azzurro
-   della fascia della Castellana: qui l'accento sky/sea trova
-   il suo posto puntuale, non diffuso su tutta la pagina.
-   ============================================================ */
 .castle-dress-inline {
     background: var(--stone-dim);
     border: 1px solid var(--sea);
@@ -324,7 +266,6 @@ body::before {
     margin-top: 12px;
     letter-spacing: 1px;
     font-style: italic;
-    text-shadow: none;
 }
 
 .poesia-outro {
@@ -333,13 +274,88 @@ body::before {
     font-size: 1.25rem;
     color: var(--terracotta-dark);
     margin-top: 1.5rem;
-    text-shadow: none;
+}
+
+.scroll-cue {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--sea);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 3px;
+    transition: color 0.3s ease;
+}
+
+.scroll-cue:hover {
+    color: var(--terracotta);
 }
 
 /* ============================================================
-   5. CASTELLANA WIDGET — bordo azzurro come la sua fascia,
-   invece dell'oro usato per tutto il resto del sito: qui il
-   colore diventa un dettaglio di riconoscimento del personaggio.
+   4. SEZIONE 2 — PARALLASSE (contenuto storico/pratico)
+   ============================================================ */
+.section-parallax {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.parallax-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('img/sfondocaccamo.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: brightness(0.5) contrast(1.1) saturate(1.05);
+}
+
+.parallax-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+        rgba(15, 25, 34, 0.75) 0%,
+        rgba(15, 25, 34, 0.55) 40%,
+        rgba(15, 25, 34, 0.8) 100%);
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    padding: 60px 32px;
+    text-align: left;
+}
+
+.parallax-content p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.85;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    margin-bottom: 1.6rem;
+}
+
+.parallax-content p:last-child {
+    margin-bottom: 0;
+}
+
+.parallax-content p strong {
+    color: var(--gold-light);
+    font-weight: 600;
+}
+
+@media screen and (max-width: 899px) {
+    .parallax-bg { background-attachment: scroll; }
+    .parallax-content { padding: 40px 24px; text-align: left; }
+}
+
+/* ============================================================
+   5. CASTELLANA WIDGET — invariato
    ============================================================ */
 .castellana-widget-area {
     position: fixed;
@@ -358,16 +374,12 @@ body::before {
     height: 78px;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid var(--sea);              /* era var(--gold): ora il blu della sua fascia */
+    border: 3px solid var(--sea);
     background: #000;
     box-shadow: 0 4px 15px var(--shadow-strong);
     cursor: pointer;
     transition: transform 0.3s ease;
     position: relative;
-}
-
-.castellana-video-wrapper::after {
-    content: none;
 }
 
 .castellana-video-wrapper:hover {
@@ -382,7 +394,7 @@ body::before {
 }
 
 .castellana-tooltip {
-    background: var(--sea);                    /* era var(--gold): coerente col bordo del widget */
+    background: var(--sea);
     color: var(--stone);
     padding: 0.3rem 0.9rem;
     border-radius: 2px;
@@ -400,7 +412,7 @@ body::before {
     bottom: 125px;
     width: 290px;
     height: 330px;
-    background: var(--stone);                  /* era --parchment: stesso concetto, ora token unico */
+    background: var(--stone);
     border-radius: 2px;
     border: 1px solid var(--sea);
     backdrop-filter: blur(12px);
@@ -415,6 +427,7 @@ body::before {
 .chat-desktop.active {
     display: flex;
 }
+
 .chat-header {
     display: flex;
     justify-content: space-between;
@@ -431,7 +444,6 @@ body::before {
     height: 8px;
     background: #3E8C5A;
     border-radius: 50%;
-    box-shadow: none;
     display: inline-block;
     margin-right: 6px;
 }
@@ -483,22 +495,40 @@ body::before {
     border-color: var(--sea);
 }
 
-.mic-btn {
-    background: var(--terracotta);             /* era var(--wine): ora terracotta, coerente con la palette */
+.send-btn {
+    background: var(--sea);
     border: none;
     border-radius: 2px;
-    padding: 0 10px;
+    padding: 0 12px;
     cursor: pointer;
-    transition: background 0.2s;
     color: #fff;
+    font-size: 1rem;
+    transition: background 0.2s;
 }
 
-.mic-btn:hover {
-    background: var(--terracotta-dark);
+.send-btn:hover {
+    background: var(--terracotta);
+}
+
+.chat-messages .message.user-msg {
+    background: var(--sea);
+    color: #fff;
+    margin-left: auto;
+    border-left: none;
+    border-right: 2px solid var(--gold);
+    text-align: right;
 }
 
 /* ============================================================
-   6. OPTIMIZATION DESKTOP (DA 900PX IN SU)
+   6. BOTTONE PREMIUM
+   ============================================================ */
+.castellana-premium-cta {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+   7. OTTIMIZZAZIONE DESKTOP (DA 900PX IN SU)
    ============================================================ */
 @media screen and (min-width: 900px) {
 
@@ -535,18 +565,7 @@ body::before {
     }
 
     .poesia-container {
-        background: transparent;
-        border: 1px solid transparent;
-        box-shadow: none;
         padding: 24px 40px;
-    }
-
-    .poesia-container:hover {
-        background: rgba(220, 207, 175, 0.5);      /* era rgba(sea-deep): ora tinta pietra più scura */
-        border: 1px solid var(--terracotta);
-        box-shadow: 0 8px 24px var(--shadow-soft);
-        backdrop-filter: blur(6px) saturate(120%);
-        -webkit-backdrop-filter: blur(6px) saturate(120%);
     }
 
     .poesia-corpo p {
@@ -600,15 +619,6 @@ body::before {
     }
 }
 
-/* ============================================================
-   6bis. FIX ALLINEAMENTO HEADER MOBILE (< 900px)
-   .header-right-actions non aveva flex-wrap: nav-desktop e
-   lang-switcher provavano a stare sulla stessa riga, non ci
-   stavano, e solo nav-desktop si spezzava internamente — da qui
-   lo sfalsamento "Home" + lingue su una riga e "Cittadino" da
-   solo sulla riga sotto. Ora ciascun gruppo occupa una riga
-   intera centrata, come nelle altre pagine del sito.
-   ============================================================ */
 @media screen and (max-width: 899px) {
     .header-right-actions {
         flex-wrap: wrap;
@@ -623,29 +633,4 @@ body::before {
         flex: 1 1 100%;
         justify-content: center;
     }
-}
-
-/* Pulsante di invio della chat (sostituisce il microfono) */
-.send-btn {
-    background: var(--sea);
-    border: none;
-    border-radius: 2px;
-    padding: 0 12px;
-    cursor: pointer;
-    color: #fff;
-    font-size: 1rem;
-    transition: background 0.2s;
-}
-
-.send-btn:hover {
-    background: var(--terracotta);
-}
-
-.chat-messages .message.user-msg {
-    background: var(--sea);
-    color: #fff;
-    margin-left: auto;
-    border-left: none;
-    border-right: 2px solid var(--gold);
-    text-align: right;
 }
