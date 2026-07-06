@@ -411,6 +411,9 @@ body::before {
     box-shadow: 0 10px 30px var(--shadow-strong);
 }
 
+.chat-desktop.active {
+    display: flex;
+}
 .chat-header {
     display: flex;
     justify-content: space-between;
