@@ -35,12 +35,11 @@
     "title": "La Castellana",
     "placeholder": "Scrivi alla Castellana...",
     "tooltip": "Clicca per chattare",
-    "citizen_msg1": "Benvenuto! Sono qui per raccontarti i segreti di Caccamo. Cosa vuoi scoprire oggi?",
-    "chiese_msg": "Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo e chiedimi dettagli sulle loro storie.",
-    "cibo_eventi_msg": "Benvenuto! Chiedimi delle feste e delle tradizioni di Caccamo, stagione per stagione.",
-    "chi_siamo_msg": "Vuoi sapere di più su chi c'è dietro Amunì, o su come funziona l'esperienza Premium? Chiedimi pure.",
-    "about_msg": "Vuoi sapere come funziona Amunì o cosa offre l'esperienza Premium? Chiedimi pure."
-    "canti_msg": "Vuoi ascoltare altri canti e preghiere del borgo? Nella versione Premium te ne racconto molti altri..."
+    "msg1": "Ciao viandante, chiedimi pure!",
+    "citizen_msg1": "Ciao viandante, chiedimi pure!",
+    "chiese_msg": "Ciao viandante, chiedimi pure!",
+    "cibo_eventi_msg": "Ciao viandante, chiedimi pure!",
+    "canti_msg": "Ciao viandante, chiedimi pure!"
   },
   "pages": {
     "about": {
