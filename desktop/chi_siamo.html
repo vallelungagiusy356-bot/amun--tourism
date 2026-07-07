@@ -51,37 +51,7 @@
         <p data-i18n="pages.chi_siamo.events">Dalla Pasqua alle tradizioni culinarie, ogni evento è un viaggio che la Castellana ti aiuterà ad approfondire in chat.</p>
     </main>
 
-    <div class="castellana-widget-area">
-        <div class="castellana-video-wrapper" id="chat-open-btn">
-            <video class="castellana-video" autoplay loop muted playsinline>
-                <source src="img/castellana_alpha.webm" type="video/webm">
-            </video>
-        </div>
-        <div class="castellana-tooltip" data-i18n="chat.tooltip">Click to chat</div>
-    </div>
-
-    <div class="chat-desktop" id="chat-desktop">
-        <div class="chat-header">
-            <div class="avatar-status-dot"></div>
-            <span data-i18n="chat.title">La Castellana</span>
-            <button id="close-chat" class="close-chat-btn">✕</button>
-        </div>
-        <div class="chat-messages">
-            <div class="message" data-i18n="chat.chi_siamo_msg">Vuoi sapere di più su chi c'è dietro Amunì, o su come funziona l'esperienza Premium? Chiedimi pure.</div>
-        </div>
-        <div class="chat-input-row">
-            <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
-            <button class="mic-btn">🎤</button>
-        </div>
-    </div>
-
     <script>
-        const chat = document.getElementById("chat-desktop");
-        const openBtn = document.getElementById("chat-open-btn");
-        const closeBtn = document.getElementById("close-chat");
-        openBtn.addEventListener("click", () => chat.classList.add("active"));
-        closeBtn.addEventListener("click", () => chat.classList.remove("active"));
-
         let currentLang = localStorage.getItem("lang") || "it";
         function loadLanguage(lang) {
             fetch(`./lang/${lang}.json`)
