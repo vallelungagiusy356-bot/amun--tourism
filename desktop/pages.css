@@ -153,8 +153,10 @@ body::before {
 }
 
 /* ============================================================
-   3. CONTENUTO — colonna di lettura centrata, generica per
-   qualunque pagina "testo + titolo" (Chi Siamo, Il Progetto)
+   3. CONTENUTO — colonna di lettura, generica per qualunque
+   pagina "testo + titolo" (Chi Siamo, Il Progetto).
+   Le dimensioni qui sono quelle base/mobile; vengono ampliate
+   nelle media query desktop più sotto (sezione 4).
    ============================================================ */
 .content-wrapper {
     max-width: 700px;
@@ -230,163 +232,15 @@ body::before {
 }
 
 /* ============================================================
-   4. CASTELLANA WIDGET E CHAT — identici alle altre pagine
-   ============================================================ */
-.castellana-widget-area {
-    position: fixed;
-    right: 1.2rem;
-    bottom: 1.2rem;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
-
-.castellana-video-wrapper {
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--sea);
-    background: #000;
-    box-shadow: 0 4px 15px var(--shadow-strong);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    position: relative;
-}
-
-.castellana-video-wrapper:hover {
-    transform: scale(1.04);
-}
-
-.castellana-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 15%;
-}
-
-.castellana-tooltip {
-    background: var(--sea);
-    color: var(--stone);
-    padding: 0.3rem 0.9rem;
-    border-radius: 2px;
-    font-weight: 700;
-    font-size: 0.65rem;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    box-shadow: 0 4px 10px var(--shadow-strong);
-    pointer-events: none;
-}
-
-.chat-desktop {
-    position: fixed;
-    right: 1.5rem;
-    bottom: 125px;
-    width: 290px;
-    height: 330px;
-    background: var(--stone);
-    border-radius: 2px;
-    border: 1px solid var(--sea);
-    backdrop-filter: blur(12px);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 99999;
-    padding: 14px;
-    box-shadow: 0 10px 30px var(--shadow-strong);
-}
-
-.chat-desktop.active {
-    display: flex;
-    flex-direction: column;
-    animation: fadeIn 0.3s ease forwards;
-}
-
-.chat-header {
-    display: flex;
-    justify-content: space-between;
-    color: var(--sea);
-    font-weight: bold;
-    margin-bottom: 12px;
-    align-items: center;
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 6px;
-}
-
-.avatar-status-dot {
-    width: 8px;
-    height: 8px;
-    background: #3E8C5A;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 6px;
-}
-
-.close-chat-btn {
-    background: transparent;
-    border: none;
-    color: var(--sea);
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: color 0.2s;
-}
-
-.close-chat-btn:hover {
-    color: var(--terracotta);
-}
-
-.chat-messages {
-    flex-grow: 1;
-    overflow-y: auto;
-    font-size: 0.9rem;
-    line-height: 1.45;
-    margin-bottom: 12px;
-    color: var(--ink);
-}
-
-.chat-input-row {
-    display: flex;
-    gap: 6px;
-}
-
-.chat-input-row input {
-    flex-grow: 1;
-    background: #fff;
-    border: 1px solid rgba(27, 73, 101, 0.35);
-    padding: 8px 12px;
-    border-radius: 2px;
-    color: var(--ink);
-    font-size: 0.85rem;
-}
-
-.chat-input-row input:focus {
-    outline: none;
-    border-color: var(--sea);
-}
-
-.mic-btn {
-    background: var(--terracotta);
-    border: none;
-    border-radius: 2px;
-    padding: 0 10px;
-    cursor: pointer;
-    transition: background 0.2s;
-    color: #fff;
-}
-
-.mic-btn:hover {
-    background: var(--terracotta-dark);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ============================================================
-   5. OTTIMIZZAZIONE DESKTOP (DA 900PX IN SU)
+   4. OTTIMIZZAZIONE DESKTOP
+   Prima c'era solo una media query da 900px che allargava
+   l'header ma lasciava il testo bloccato a max-width:700px e a
+   una dimensione font che smette di crescere già intorno ai
+   900px di larghezza (i clamp() toccavano il loro massimo lì).
+   Risultato: su un monitor desktop la colonna di lettura restava
+   identica a quella mobile, sperduta in mezzo allo schermo,
+   con caratteri piccoli e poco respiro tra le righe.
+   Qui sotto la aggiorniamo con due soglie via via più ariose.
    ============================================================ */
 @media screen and (min-width: 900px) {
     .dashboard {
@@ -399,21 +253,51 @@ body::before {
     .nav-desktop { gap: 22px; }
     .nav-desktop a { font-size: 1rem; padding: 10px 18px; }
 
-    .content-wrapper { padding-top: 130px; }
+    .content-wrapper {
+        max-width: 780px;
+        padding: 160px 32px 130px;
+        text-align: left;
+    }
 
-    .castellana-widget-area { right: 2rem; bottom: 2rem; gap: 8px; }
-    .castellana-video-wrapper { width: 110px; height: 110px; }
-    .chat-desktop { right: 2rem; bottom: 175px; width: 320px; height: 400px; }
+    .category-tag,
+    .content-wrapper h1,
+    .gold-divider {
+        text-align: center;
+    }
+
+    .content-wrapper h1 {
+        font-size: 2.75rem;
+    }
+
+    .content-wrapper p {
+        font-size: 1.28rem;
+        line-height: 1.9;
+        margin-bottom: 28px;
+    }
+
+    .highlight-gold {
+        padding: 20px 26px;
+        font-size: 1.32rem;
+    }
 }
 
-@media (min-width: 601px) and (max-width: 899px) {
-    .castellana-video-wrapper { width: 95px; height: 95px; }
-    .chat-desktop { bottom: 150px; }
-}
+@media screen and (min-width: 1300px) {
+    .content-wrapper {
+        max-width: 880px;
+        padding: 180px 40px 150px;
+    }
 
-/* Pulsante di invio della chat (sostituisce il microfono) */
-.send-btn {
-    background: var(--sea);
-    border: none;
-    border-radius: 2px;
+    .content-wrapper h1 {
+        font-size: 3rem;
+    }
+
+    .content-wrapper p {
+        font-size: 1.35rem;
+        line-height: 1.95;
+        margin-bottom: 32px;
+    }
+
+    .highlight-gold {
+        font-size: 1.4rem;
+    }
 }
