@@ -39,12 +39,6 @@
 
     <main>
 
-        <!-- ============================================================
-             SEZIONE 1 — HERO
-             Flusso normale (flex), niente più posizionamenti assoluti:
-             Castellana e testo stanno ciascuno nel proprio spazio,
-             non si sovrappongono più su nessuna larghezza di schermo.
-             ============================================================ -->
         <section class="section-hero">
             <div class="hero-inner">
 
@@ -68,12 +62,6 @@
             </div>
         </section>
 
-
-        <!-- ============================================================
-             SEZIONE 2 — PARALLASSE
-             Qui vive la poesia completa. Lo sfondo del castello scorre
-             a velocità diversa dal testo durante lo scroll.
-             ============================================================ -->
         <section class="section-parallax" id="sezione-racconto">
             <div class="parallax-bg"></div>
             <div class="parallax-overlay"></div>
@@ -93,9 +81,6 @@
             </div>
         </section>
 
-        <!-- ============================================================
-             SEZIONE 3 — CASTELLANA INTRO
-             ============================================================ -->
         <section class="section-flat castellana-intro-card-section">
             <div class="castellana-intro-card">
             <div class="intro-card-content">
@@ -110,9 +95,6 @@
             </div>
         </section>
 
-        <!-- ============================================================
-             SEZIONE 4 — INSTALL APP
-             ============================================================ -->
         <section class="section-flat install-app-desktop install-section">
             <div class="install-left">
                 <h2 data-i18n="home.install_app">Porta Amunì con te</h2>
@@ -139,12 +121,11 @@
 
     <div class="chat-interface" id="chat-box">
         <div class="chat-header">
-            <span data-i18n="chat.title">Chiedi alla Castellana</span>
+            <span data-i18n="chat.title">La Castellana</span>
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
         <div class="chat-messages">
-            <div class="message" data-i18n="chat.msg1">Ciao! Sono la Castellana.</div>
-            <div class="message" data-i18n="chat.msg2">Cosa desideri scoprire oggi?</div>
+            <div class="message" data-i18n="chat.msg1">Ciao viandante, chiedimi pure!</div>
         </div>
         <div class="chat-input-row">
             <input type="text" placeholder="Scrivi qui..." data-i18n-placeholder="chat.placeholder">
@@ -191,35 +172,26 @@
             loadLanguage(currentLang);
         });
 
-        // ============================================================
-        // HEADER COLLASSABILE — SOLO MOBILE (< 900px)
-        // Su desktop l'header resta sempre fisso e visibile: nessuna
-        // modifica al comportamento esistente sopra i 900px.
-        // ============================================================
         (function () {
             const header = document.querySelector('.dashboard');
             let lastScroll = 0;
-            const THRESHOLD = 900; // stessa soglia del breakpoint CSS desktop/mobile
+            const THRESHOLD = 900;
 
             window.addEventListener('scroll', () => {
                 if (window.innerWidth >= THRESHOLD) {
-                    // su desktop l'header resta sempre visibile, nessuna modifica
                     header.classList.remove('header-hidden');
                     return;
                 }
                 const current = window.scrollY;
                 if (current > lastScroll && current > 80) {
-                    header.classList.add('header-hidden');   // scroll giù → nascondi
+                    header.classList.add('header-hidden');
                 } else {
-                    header.classList.remove('header-hidden'); // scroll su → mostra
+                    header.classList.remove('header-hidden');
                 }
                 lastScroll = current;
             }, { passive: true });
         })();
 
-        // ============================================================
-        // CONNESSIONE CHAT ↔ BACKEND PYTHON
-        // ============================================================
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
 
