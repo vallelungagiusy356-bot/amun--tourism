@@ -116,34 +116,32 @@
             <div class="parallax-bg"></div>
             <div class="parallax-overlay"></div>
             <div class="parallax-content">
-                <p>
-                    Il Castello nasce nel <strong>1094</strong>, quando il Conte Ruggero I lo concede in feudo al nobile normanno Goffredo de Sageyo. Nei secoli successivi passa di mano a numerose famiglie — tra cui <strong>Bonello, Chiaramonte, De Prades, Cabrera, Henriquez, Amato e De Spuches</strong> — fino al 1963, quando l'ultimo duca lo cede alla Regione Siciliana. In quasi 900 anni di storia, ben <strong>14 famiglie nobiliari</strong> diverse si sono succedute nel suo possesso.
+                <p data-i18n="pages.castle_page.history_intro">
+                    Il Castello nasce nel <strong>1094</strong> per volere del Conte Ruggero I. Nei secoli passa tra <strong>14 famiglie nobiliari</strong> — tra cui Chiaramonte, Cabrera e De Spuches — fino al 1963, quando viene ceduto alla Regione Siciliana.
                 </p>
-                <p>
-                    La <strong>Torre Mastra</strong> è la più antica e la più alta dell'intera fortezza, con una cisterna d'acqua nascosta alla sua base — il terremoto del 1823 ne causò il parziale crollo. La <strong>Torre Gibellina</strong> sorveglia il lato sud-est, sopra l'antico quartiere di Terravecchia: il suo nome viene dall'arabo <em>gibel</em>, "rivolta verso la città". La <strong>Torre della Fossa</strong>, detta anche del Dammuso, occupa il centro del prospetto sud, voluta dai Prades-Cabrera.
+                <p data-i18n="pages.castle_page.towers">
+                    La <strong>Torre Mastra</strong>, la più antica e alta, custodisce una cisterna alla base. La <strong>Torre Gibellina</strong> veglia su Terravecchia, mentre la <strong>Torre della Fossa</strong> chiude il prospetto sud.
                 </p>
-                <p>
-                    È uno dei castelli normanni più grandi e meglio conservati di tutta la Sicilia. Percorrerlo tutto richiede almeno un'ora, tra cortili, sale e camminamenti.
+                <p data-i18n="pages.castle_page.size_note">
+                    Uno dei castelli normanni meglio conservati di Sicilia: percorrerlo tutto richiede almeno un'ora, tra cortili e camminamenti.
                 </p>
-                <p>
-                    <strong>Orari</strong> — Invernale (16 ottobre–14 aprile): lun pomeriggio–dom, 9:00-12:30 e 14:30-18:30. Estivo (15 aprile–15 ottobre): stessi giorni, 9:00-12:30 e 15:30-19:00. Chiuso lunedì mattina.
-                </p>
-                <p>
-                    <strong>Biglietti</strong> — Intero 6,00€ · Ridotto online 4,50€ · Residenti Caccamo 1,00€ · Studenti 18-25 anni 3,00€ · Gratuito under 18. Info e prenotazioni: 091 8103233 (lun-ven) o 091 8149252 (mar-dom).
+                <p data-i18n="pages.castle_page.biglietti">
+                    <strong>Biglietti</strong> — Intero 6€ · Ridotto online 4,50€ · Residenti 1€ · Studenti 18-25 anni 3€ · Gratuito under 18.
                 </p>
             </div>
         </section>
 
         <!-- ===== BOTTONE PREMIUM ===== -->
         <div class="castellana-premium-cta">
-          <p class="premium-cta-label">🔒 Contenuti Premium disponibili</p>
-          <button id="btn-premium-code" class="premium-btn premium-btn-outline">
+          <p class="premium-cta-label" data-i18n="premium.cta_label">🔒 Contenuti Premium disponibili</p>
+          <button id="btn-premium-code" class="premium-btn premium-btn-outline" data-i18n="premium.btn_code">
             Ho già un codice
           </button>
           <a
             href="#"
             id="btn-buy-premium"
             class="premium-btn premium-btn-gold"
+            data-i18n="premium.btn_buy"
           >
             Acquista l'accesso — 3,90€
           </a>
@@ -158,7 +156,7 @@
                 <source src="img/castellana_alpha.webm" type="video/webm">
             </video>
         </div>
-        <div class="castellana-tooltip">Click to chat</div>
+        <div class="castellana-tooltip" data-i18n="chat.tooltip">Click to chat</div>
     </div>
 
     <!-- 💬 CHAT (invariata) -->
@@ -170,7 +168,7 @@
         </div>
         <div class="chat-messages">
             <div class="message system-msg" data-i18n="pages.castle_page.welcomemsg_felicia">
-                Benvenuto, viandante. I muri di questo maniero hanno visto secoli di intrighi e passioni. Chiedimi ciò che i libri di storia hanno dimenticato... cosa desideri sapere del mio Castello?
+                Ciao viandante, sono la Castellana! Chiedimi pure del mio Castello.
             </div>
         </div>
         <div class="chat-input-row">
@@ -188,11 +186,18 @@
         closeBtn.addEventListener("click", () => chat.classList.remove("active"));
 
         let currentLang = localStorage.getItem("lang") || "it";
+        let langData = {};
+
+        function t(path, fallback) {
+            const value = path.split('.').reduce((o,i) => o ? o[i] : null, langData);
+            return value || fallback;
+        }
 
         function loadLanguage(lang) {
             fetch(`./lang/${lang}.json`)
                 .then(res => res.json())
                 .then(data => {
+                    langData = data;
                     document.querySelectorAll("[data-i18n]").forEach(el => {
                         const key = el.getAttribute("data-i18n");
                         const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
@@ -278,13 +283,13 @@
                     storeAccessCode(code, data.expires_at);
                     const expiryDate = new Date(data.expires_at);
                     const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
-                    appendChatMessage(`Premium attivato! Avrai accesso ai contenuti esclusivi fino al ${formatted}.`, 'castellana');
+                    appendChatMessage(t('premium.activated_prefix', 'Premium attivato! Avrai accesso ai contenuti esclusivi fino al ') + formatted + '.', 'castellana');
                 } else {
-                    appendChatMessage(data.message || 'Codice non valido.', 'castellana');
+                    appendChatMessage(data.message || t('premium.invalid_code', 'Codice non valido.'), 'castellana');
                 }
             } catch (err) {
                 console.error('Errore attivazione codice:', err);
-                appendChatMessage('Al momento non riesco a verificare il codice — riprova tra poco.', 'castellana');
+                appendChatMessage(t('premium.code_check_error', 'Al momento non riesco a verificare il codice — riprova tra poco.'), 'castellana');
             }
 
             return true;
@@ -344,14 +349,14 @@
         document.getElementById('btn-premium-code').addEventListener('click', () => {
           chat.classList.add('active');
           appendChatMessage(
-            'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"',
+            t('premium.chat_code_prompt', 'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"'),
             'castellana'
           );
         });
 
         document.getElementById('btn-buy-premium').addEventListener('click', (e) => {
           e.preventDefault();
-          alert('Il pagamento sarà disponibile a breve. Torna presto!');
+          alert(t('premium.payment_soon', 'Il pagamento sarà disponibile a breve. Torna presto!'));
         });
     </script>
 </body>
