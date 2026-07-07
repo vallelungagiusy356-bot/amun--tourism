@@ -246,6 +246,9 @@ html, body {
 
 /* ============================================================
    4. SEZIONE 2 — PARALLASSE (contenuto storico/pratico)
+   Aggiunta una mask-image che sfuma i margini superiore e
+   inferiore della sezione, così che il blocco scuro non tagli
+   di netto ma si dissolva nello sfondo chiaro della pagina.
    ============================================================ */
 .section-parallax {
     position: relative;
@@ -256,6 +259,16 @@ html, body {
     justify-content: center;
     overflow: hidden;
     background: var(--sea-ink); /* colore di riserva se l'immagine non si carica */
+    -webkit-mask-image: linear-gradient(to bottom,
+        transparent 0,
+        black 90px,
+        black calc(100% - 90px),
+        transparent 100%);
+    mask-image: linear-gradient(to bottom,
+        transparent 0,
+        black 90px,
+        black calc(100% - 90px),
+        transparent 100%);
 }
 
 .parallax-bg {
@@ -312,6 +325,18 @@ html, body {
     .parallax-content {
         padding: 40px 24px;
         text-align: left;
+    }
+    .section-parallax {
+        -webkit-mask-image: linear-gradient(to bottom,
+            transparent 0,
+            black 50px,
+            black calc(100% - 50px),
+            transparent 100%);
+        mask-image: linear-gradient(to bottom,
+            transparent 0,
+            black 50px,
+            black calc(100% - 50px),
+            transparent 100%);
     }
 }
 
@@ -490,6 +515,12 @@ html, body {
 
 /* ============================================================
    7. OTTIMIZZAZIONE DESKTOP (DA 900PX IN SU)
+   Prima qui si scalava solo l'header e la hero, ma il blocco
+   di testo dentro il parallasse (.parallax-content) restava
+   fisso a max-width:720px con font quasi piatto (i clamp()
+   toccavano il loro tetto già verso i 900px) — la stessa colonna
+   stretta "da mobile" lamentata anche su about/chi_siamo.
+   Qui sotto allarghiamo colonna e tipografia anche lì.
    ============================================================ */
 @media screen and (min-width: 900px) {
 
@@ -525,21 +556,20 @@ html, body {
         max-width: 720px;
     }
 
-    .poesia-container {
-        padding: 24px 40px;
-    }
-
     .poesia-corpo p {
         font-size: 1.7rem;
         line-height: 1.6;
     }
 
-    .descrizione-storica p {
-        font-size: 1.5rem;
+    .parallax-content {
+        max-width: 820px;
+        padding: 100px 40px;
     }
 
-    .dress-img-inline {
-        width: 180px;
+    .parallax-content p {
+        font-size: 1.32rem;
+        line-height: 1.95;
+        margin-bottom: 2rem;
     }
 
     .castellana-widget-area {
@@ -564,6 +594,22 @@ html, body {
         bottom: 175px;
         width: 320px;
         height: 400px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .parallax-content {
+        max-width: 920px;
+        padding: 120px 40px;
+    }
+
+    .parallax-content p {
+        font-size: 1.4rem;
+        line-height: 2;
+    }
+
+    .castle-hero-image {
+        max-width: 820px;
     }
 }
 
