@@ -193,9 +193,9 @@ body::before {
 
 .content-wrapper p {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    font-size: clamp(2.05rem, 2vw, 2.2rem);
     line-height: 1.75;
-    color: var(--ink-soft);
+    color: var(--ink);
     margin-bottom: 22px;
     text-align: left;
 }
