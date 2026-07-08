@@ -1,9 +1,5 @@
 /* ==========================================================================
    AMUNÌ TOURISM — LAYOUT A SEZIONI CON PARALLASSE
-   Sostituisce i posizionamenti assoluti (che causavano le sovrapposizioni
-   tra Castellana, tooltip e box "Benvenuti") con un flusso a sezioni:
-   ogni blocco occupa il proprio spazio, nessun elemento fluttua sopra
-   un altro per coincidenza di coordinate.
    ========================================================================== */
 
 :root {
@@ -116,10 +112,10 @@ body {
 }
 
 /* ============================================================
-   SEZIONE 1 — HERO (flex, non più posizioni assolute)
+   SEZIONE 1 — HERO
    ============================================================ */
 .section-hero {
-    min-height: 90vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,8 +125,6 @@ body {
 }
 
 .section-hero::before {
-    /* stesso sfondo della sezione parallasse, così le due sezioni
-       si percepiscono come un racconto continuo, non due mondi diversi */
     content: "";
     position: absolute;
     inset: 0;
@@ -138,7 +132,7 @@ body {
     background-image: url('img/sfondocaccamo.jpeg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.68) contrast(1.08) saturate(1.05);   /* era 0.45: troppo scuro, ora più luminoso */
+    filter: brightness(0.68) contrast(1.08) saturate(1.05);
 }
 
 .section-hero::after {
@@ -149,7 +143,7 @@ body {
     background: linear-gradient(180deg,
         rgba(20, 40, 58, 0.4) 0%,
         rgba(20, 40, 58, 0.25) 45%,
-        var(--sea-ink) 100%);   /* overlay alleggerito di conseguenza */
+        var(--sea-ink) 100%);
 }
 
 .hero-inner {
@@ -187,8 +181,6 @@ body {
 }
 
 .castellana-tooltip {
-    /* era position: absolute con salto rispetto alla figura:
-       ora fa parte del flusso naturale, subito sotto il video */
     padding: 8px 20px;
     background: rgba(20, 40, 58, 0.7);
     border: 1px solid var(--gold);
@@ -237,16 +229,6 @@ body {
     padding: 0 8px;
 }
 
-.hero-verse {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
-    line-height: 1.7;
-    color: #fff;
-    max-width: 560px;
-    margin: 0 auto 26px;
-}
-
 .scroll-cue {
     display: inline-block;
     color: var(--gold-light);
@@ -263,7 +245,7 @@ body {
 }
 
 /* ============================================================
-   SEZIONE 2 — PARALLASSE (la poesia completa)
+   SEZIONE 2 — PARALLASSE (poesia completa, unica)
    ============================================================ */
 .section-parallax {
     position: relative;
@@ -280,7 +262,7 @@ body {
     background-image: url('img/sfondocaccamo.jpeg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;   /* l'effetto parallasse vero e proprio */
+    background-attachment: fixed;
     filter: brightness(0.5) contrast(1.1) saturate(1.05);
 }
 
@@ -316,13 +298,8 @@ body {
     font-weight: 600;
 }
 
-/* Nota: background-attachment:fixed non funziona in modo affidabile
-   su Safari iOS dentro elementi non a piena pagina. Se noti problemi
-   su iPhone, valuta una libreria JS leggera (es. Rellax) come
-   alternativa allo stesso effetto visivo. */
-
 /* ============================================================
-   SEZIONI 3 e 4 — flusso normale, come prima ma senza sovrapposizioni
+   SEZIONI FLAT
    ============================================================ */
 .section-flat {
     padding: 70px 24px;
@@ -336,16 +313,13 @@ body {
     max-width: 700px;
     margin: 0 auto;
     padding: 1.6rem 2rem;
-    background: transparent;
-    border: none;
-    box-shadow: none;
     text-align: center;
 }
 
 .intro-card-content h3 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.4rem, 3vw, 1.8rem);
-    color: var(--wine);              /* era oro su sfondo scuro: ora bordeaux su pergamena chiara */
+    color: var(--wine);
     margin-bottom: 0.8rem;
     letter-spacing: 0.5px;
 }
@@ -353,7 +327,7 @@ body {
 .intro-card-content p {
     font-size: clamp(1rem, 2.2vw, 1.1rem);
     line-height: 1.6;
-    color: var(--ink);               /* era crema chiaro: ora inchiostro scuro, leggibile su fondo chiaro */
+    color: var(--ink);
     margin-bottom: 1.2rem;
 }
 
@@ -404,6 +378,7 @@ body {
 
 .btn-desktop {
     display: block;
+    width: 100%;
     padding: 12px;
     background: var(--wine);
     border: 1px solid var(--gold-light);
@@ -412,6 +387,8 @@ body {
     border-radius: 2px;
     font-weight: 600;
     letter-spacing: 0.3px;
+    font-family: inherit;
+    cursor: pointer;
     transition: background 0.3s ease;
 }
 
@@ -440,6 +417,86 @@ body {
         justify-content: center;
         gap: 60px;
     }
+}
+
+/* ============================================================
+   SEZIONE ABBONAMENTO PREMIUM
+   ============================================================ */
+.premium-section {
+    background: var(--stone);
+}
+
+.premium-card {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1.6rem 2rem;
+}
+
+.premium-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    color: var(--wine);
+    margin-bottom: 14px;
+}
+
+.premium-card p {
+    font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 16px;
+}
+
+.premium-howto strong {
+    color: var(--wine);
+}
+
+.premium-cta {
+    max-width: 320px;
+    margin: 10px auto 0;
+    font-size: 1.05rem;
+}
+
+/* ============================================================
+   POPUP ISTRUZIONI INSTALLAZIONE iOS
+   ============================================================ */
+.install-instructions-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    padding: 24px;
+}
+
+.install-instructions-popup.active {
+    display: flex;
+}
+
+.install-popup-inner {
+    background: var(--stone);
+    color: var(--ink);
+    max-width: 360px;
+    padding: 24px;
+    border-radius: 4px;
+    border: 1px solid var(--gold);
+    position: relative;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.close-popup-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--ink);
 }
 
 /* ============================================================
@@ -526,68 +583,6 @@ body {
     border-color: var(--gold);
 }
 
-.chat-input-row .mic-btn {
-    background: var(--wine);
-    border: none;
-    border-radius: 2px;
-    padding: 0 14px;
-    color: #fff;
-    font-size: 1.1rem;
-    cursor: pointer;
-}
-
-.chat-input-row .mic-btn:hover {
-    background: #521720;
-}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.footer-copyright {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--gold);
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    opacity: 0.8;
-    border-top: 1px solid rgba(184, 135, 59, 0.2);
-}
-
-/* ============================================================
-   MOBILE (sotto i 900px) — stessa gerarchia, semplicemente più stretta
-   ============================================================ */
-@media screen and (max-width: 899px) {
-    .dashboard {
-        padding: 10px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .logo-title { font-size: 1.1rem; flex: 1 1 100%; text-align: center; }
-    .nav-desktop { flex: 1 1 100%; justify-content: center; gap: 5px; }
-    .nav-desktop a { font-size: 0.75rem; padding: 4px 8px; }
-    main { padding-top: 130px; }
-    .section-hero { padding-top: 40px; min-height: auto; }
-    .parallax-bg { background-attachment: scroll; } /* fixed è poco affidabile su mobile: fallback a scroll normale */
-
-    /* Castellana più piccola su mobile: prima occupava quasi tutta la
-       larghezza e il video appariva tagliato/ingombrante */
-    .castellana-video-wrapper {
-        max-width: 150px;
-    }
-
-    /* Header collassabile: si nasconde scrollando verso il basso e
-       riappare scrollando verso l'alto. Attivo SOLO sotto i 900px
-       grazie al controllo window.innerWidth nel JS: su desktop la
-       classe .header-hidden non viene mai applicata. */
-    .dashboard {
-        transition: transform 0.35s ease;
-    }
-    .dashboard.header-hidden {
-        transform: translateY(-100%);
-    }
-}
-
-/* Pulsante di invio della chat (sostituisce il microfono) */
 .send-btn {
     background: var(--sea);
     border: none;
@@ -610,4 +605,110 @@ body {
     border-left: none;
     border-right: 2px solid var(--gold);
     text-align: right;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer-copyright {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+    border-top: 1px solid rgba(184, 135, 59, 0.2);
+}
+
+/* ============================================================
+   MOBILE (sotto i 900px)
+   ============================================================ */
+@media screen and (max-width: 899px) {
+    .dashboard {
+        padding: 10px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .logo-title { font-size: 1.1rem; flex: 1 1 100%; text-align: center; }
+    .nav-desktop { flex: 1 1 100%; justify-content: center; gap: 5px; }
+    .nav-desktop a { font-size: 0.75rem; padding: 4px 8px; }
+    main { padding-top: 130px; }
+    .section-hero { padding-top: 40px; min-height: auto; }
+    .parallax-bg { background-attachment: scroll; }
+
+    .castellana-video-wrapper {
+        max-width: 150px;
+    }
+
+    .dashboard {
+        transition: transform 0.35s ease;
+    }
+    .dashboard.header-hidden {
+        transform: translateY(-100%);
+    }
+}
+
+/* ============================================================
+   INGRANDIMENTO TESTI DESKTOP (900px+)
+   ============================================================ */
+@media screen and (min-width: 900px) {
+    .logo-title {
+        font-size: 1.6rem;
+    }
+
+    .lang-switcher button {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .nav-desktop a {
+        font-size: 1rem;
+        padding: 8px 18px;
+    }
+
+    .intro-card-content h3 {
+        font-size: 2rem;
+    }
+
+    .intro-card-content p {
+        font-size: 1.25rem;
+        line-height: 1.8;
+    }
+
+    .languages-badge {
+        font-size: 0.85rem;
+        padding: 8px 20px;
+    }
+
+    .install-left h2 {
+        font-size: 1.6rem;
+    }
+
+    .btn-desktop {
+        font-size: 1.05rem;
+        padding: 14px 20px;
+    }
+
+    .install-right p {
+        font-size: 1rem;
+    }
+
+    .premium-card h2 {
+        font-size: 2.3rem;
+    }
+
+    .premium-card p {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .intro-card-content h3 {
+        font-size: 2.3rem;
+    }
+
+    .intro-card-content p {
+        font-size: 1.35rem;
+    }
 }
