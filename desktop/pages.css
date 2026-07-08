@@ -220,8 +220,8 @@ body::before {
 
 /* ============================================================
    4. DESKTOP (900px — 1299px)
-   Layout a due colonne che si espande con lo schermo (vw),
-   non più bloccato a una larghezza fissa centrata.
+   Colonna unica, centrata, ma larga: si adatta allo schermo
+   invece di restare bloccata a una misura fissa piccola.
    ============================================================ */
 @media screen and (min-width: 900px) {
     .dashboard {
@@ -235,24 +235,16 @@ body::before {
     .nav-desktop a { font-size: 1rem; padding: 10px 18px; }
 
     .content-wrapper {
-        max-width: 1500px;
+        max-width: 1100px;
         margin: 0 auto;
-        padding: 160px 5vw 140px;
-        display: grid;
-        grid-template-columns: 260px minmax(0, 1fr);
-        column-gap: 50px;
-        align-items: start;
+        padding: 160px 6vw 140px;
+        display: flex;
+        flex-direction: column;
     }
 
     .content-head {
-        position: sticky;
-        top: 110px;
-    }
-
-    .category-tag,
-    .content-wrapper h1,
-    .gold-divider {
         text-align: center;
+        margin-bottom: 36px;
     }
 
     .content-wrapper h1 {
@@ -263,25 +255,22 @@ body::before {
         font-size: 1.5rem;
         line-height: 1.95;
         margin-bottom: 28px;
-        max-width: 820px;
     }
 
     .highlight-gold {
         padding: 20px 26px;
         font-size: 1.5rem;
-        max-width: 820px;
     }
 }
 
 /* ============================================================
-   5. LAYOUT EDITORIALE — schermi larghi (1300px+)
+   5. SCHERMI LARGHI (1300px+)
+   Stessa colonna unica, ma più ampia e con caratteri più grandi.
    ============================================================ */
 @media screen and (min-width: 1300px) {
     .content-wrapper {
-        max-width: 1800px;
-        padding: 170px 6vw 160px;
-        grid-template-columns: 320px minmax(0, 1fr);
-        column-gap: 70px;
+        max-width: 1300px;
+        padding: 170px 7vw 160px;
     }
 
     .content-wrapper h1 {
@@ -293,14 +282,12 @@ body::before {
         font-size: 1.65rem;
         line-height: 2.05;
         margin-bottom: 30px;
-        max-width: 950px;
     }
 
     .highlight-gold {
         font-size: 1.65rem;
         position: relative;
         padding: 24px 30px 24px 46px;
-        max-width: 950px;
     }
 
     .highlight-gold::before {
