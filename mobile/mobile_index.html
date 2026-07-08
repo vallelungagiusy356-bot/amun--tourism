@@ -80,6 +80,9 @@
         <div class="amuni-box">
             <div class="amuni-title" data-i18n="home.amuni_title"></div>
             <div class="amuni-text" data-i18n="home.amuni_text"></div>
+            <button type="button" id="install-pwa-btn-mobile" class="btn-barocco">
+                📲 Aggiungi alla schermata Home
+            </button>
         </div>
     </div>
 
@@ -182,7 +185,33 @@
             loadLanguage(currentLang);
         });
 
-        // 5. PWA SW
+        // 5. INSTALLAZIONE PWA ("Aggiungi alla schermata Home")
+        let deferredInstallPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredInstallPrompt = e;
+        });
+
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
+        const installBtnMobile = document.getElementById("install-pwa-btn-mobile");
+        if (installBtnMobile) {
+            installBtnMobile.addEventListener("click", async () => {
+                if (deferredInstallPrompt) {
+                    deferredInstallPrompt.prompt();
+                    await deferredInstallPrompt.userChoice;
+                    deferredInstallPrompt = null;
+                } else if (isIOS()) {
+                    alert('Su iPhone/iPad: tocca l\'icona Condividi in Safari, poi "Aggiungi alla schermata Home".');
+                } else {
+                    alert('Apri il menu del browser e cerca "Aggiungi alla schermata Home" o "Installa app".');
+                }
+            });
+        }
+
+        // 6. PWA SW
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("./service-worker.js").catch(err => console.log("SW Error:", err));
         }
