@@ -52,10 +52,6 @@
                 <div class="hero-text">
                     <h1 data-i18n="home.welcome_title">Benvenuti a Caccamo</h1>
                     <div class="gold-divider"></div>
-                    <p class="hero-verse" data-i18n="home.poetry_intro">
-                        Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>
-                        Caccamo intreccia il suo respiro all'antica memoria.
-                    </p>
                     <a href="#sezione-racconto" class="scroll-cue">Scopri il racconto ↓</a>
                 </div>
 
@@ -70,7 +66,7 @@
                     Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>
                     Caccamo intreccia il suo respiro all'antica memoria.<br>
                     Non è solo pietra che sfida le ere e le genti,<br>
-                    <strong>che corre tra le mura di una fortezza possente.</strong><br><br>
+                    <strong>che cela tra le mura tesori sorprendenti.</strong><br><br>
                     Come un gomitolo che lento si srotola,<br>
                     si diffonde in ogni vicolo, in ogni piccola storia.<br>
                     Un intreccio di secoli svelato <strong>con amore e mistero,</strong><br>
@@ -99,9 +95,9 @@
             <div class="install-left">
                 <h2 data-i18n="home.install_app">Porta Amunì con te</h2>
                 <div class="btn-group">
-                    <a href="https://raw.githubusercontent.com/vallelungagiusy356-bot/amun--tourism/main/app-release-signed.apk" class="btn-desktop">
-                        📲 <span data-i18n="home.download_apk">Scarica APK</span>
-                    </a>
+                    <button type="button" class="btn-desktop" id="install-pwa-btn">
+                        📲 <span data-i18n="home.add_home">Aggiungi alla schermata Home</span>
+                    </button>
                     <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/" class="btn-desktop">
                         🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span>
                     </a>
@@ -113,11 +109,31 @@
             </div>
         </section>
 
+        <section class="section-flat premium-section">
+            <div class="premium-card">
+                <h2 data-i18n="home.premium_title">Sblocca la Castellana Premium</h2>
+                <p data-i18n="home.premium_text">
+                    Per 3,90€ conversi in tempo reale con la Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.
+                </p>
+                <p class="premium-howto" data-i18n="home.premium_howto">
+                    Ricevi il codice via email e scrivilo in chat: <strong>codice</strong> seguito dal tuo codice alfanumerico.
+                </p>
+                <button type="button" class="btn-desktop premium-cta" id="premium-chat-btn" data-i18n="home.premium_cta">Acquista l'accesso — 3,90€</button>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer-copyright">
         <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
     </footer>
+
+    <div class="install-instructions-popup" id="ios-install-popup">
+        <div class="install-popup-inner">
+            <button class="close-popup-btn" id="close-ios-popup">✕</button>
+            <p><strong>Su iPhone/iPad:</strong> tocca l'icona Condividi nella barra di Safari, poi scegli "Aggiungi alla schermata Home".</p>
+        </div>
+    </div>
 
     <div class="chat-interface" id="chat-box">
         <div class="chat-header">
@@ -158,6 +174,16 @@
             localStorage.setItem("lang", lang);
         }
 
+        let deferredInstallPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredInstallPrompt = e;
+        });
+
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             const chat = document.getElementById("chat-box");
             const closeBtn = document.getElementById("close-chat");
@@ -165,6 +191,32 @@
 
             openBtn.addEventListener("click", () => chat.classList.add("active"));
             closeBtn.addEventListener("click", () => chat.classList.remove("active"));
+
+            const premiumBtn = document.getElementById("premium-chat-btn");
+            if (premiumBtn) {
+                premiumBtn.addEventListener("click", () => chat.classList.add("active"));
+            }
+
+            const installBtn = document.getElementById("install-pwa-btn");
+            const iosPopup = document.getElementById("ios-install-popup");
+            const closeIosPopup = document.getElementById("close-ios-popup");
+
+            if (installBtn) {
+                installBtn.addEventListener("click", async () => {
+                    if (deferredInstallPrompt) {
+                        deferredInstallPrompt.prompt();
+                        await deferredInstallPrompt.userChoice;
+                        deferredInstallPrompt = null;
+                    } else if (isIOS()) {
+                        iosPopup.classList.add("active");
+                    } else {
+                        alert('Per installare Amunì, apri il menu del tuo browser e cerca "Aggiungi alla schermata Home" o "Installa app".');
+                    }
+                });
+            }
+            if (closeIosPopup) {
+                closeIosPopup.addEventListener("click", () => iosPopup.classList.remove("active"));
+            }
 
             document.querySelectorAll(".lang-switcher button").forEach(btn => {
                 btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
