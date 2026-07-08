@@ -1,7 +1,5 @@
 /* ============================================================
-   1. RESET + VARIABILI GLOBALI — stessa palette del resto del sito.
-   Condiviso da chi_siamo.html e about.html ("Il Progetto"):
-   nessuna regola qui è specifica di una sola pagina.
+   1. RESET + VARIABILI GLOBALI
    ============================================================ */
 * {
     box-sizing: border-box;
@@ -13,19 +11,14 @@
 :root {
     --sky: #5B8FAE;
     --sea: #1B4965;
-
     --stone: #EFE6D3;
     --stone-dim: #DCCFAF;
-
     --terracotta: #C1622D;
     --terracotta-dark: #9C4C22;
-
     --gold: #B8873B;
     --gold-light: #D4AF6A;
-
     --ink: #22303B;
     --ink-soft: #465563;
-
     --shadow-strong: rgba(0, 0, 0, 0.35);
     --shadow-soft: rgba(0, 0, 0, 0.18);
 }
@@ -36,9 +29,6 @@ html, body {
     color: var(--ink);
     background: var(--stone) !important;
     overflow-x: hidden;
-    /* era height:100vh + overflow:hidden: bloccava lo scroll e con 4
-       paragrafi di testo il contenuto finiva tagliato e irraggiungibile
-       su schermi piccoli. Ora la pagina scorre normalmente. */
 }
 
 body::before {
@@ -51,7 +41,7 @@ body::before {
 }
 
 /* ============================================================
-   2. DASHBOARD — identica alle altre pagine del sito
+   2. DASHBOARD
    ============================================================ */
 .dashboard {
     position: fixed;
@@ -153,10 +143,7 @@ body::before {
 }
 
 /* ============================================================
-   3. CONTENUTO — colonna di lettura, generica per qualunque
-   pagina "testo + titolo" (Chi Siamo, Il Progetto).
-   Le dimensioni qui sono quelle base/mobile; vengono ampliate
-   nelle media query desktop più sotto (sezione 4).
+   3. CONTENUTO — base mobile
    ============================================================ */
 .content-wrapper {
     max-width: 700px;
@@ -232,15 +219,7 @@ body::before {
 }
 
 /* ============================================================
-   4. OTTIMIZZAZIONE DESKTOP
-   Prima c'era solo una media query da 900px che allargava
-   l'header ma lasciava il testo bloccato a max-width:700px e a
-   una dimensione font che smette di crescere già intorno ai
-   900px di larghezza (i clamp() toccavano il loro massimo lì).
-   Risultato: su un monitor desktop la colonna di lettura restava
-   identica a quella mobile, sperduta in mezzo allo schermo,
-   con caratteri piccoli e poco respiro tra le righe.
-   Qui sotto la aggiorniamo con due soglie via via più ariose.
+   4. OTTIMIZZAZIONE DESKTOP (900px — 1299px)
    ============================================================ */
 @media screen and (min-width: 900px) {
     .dashboard {
@@ -266,38 +245,67 @@ body::before {
     }
 
     .content-wrapper h1 {
-        font-size: 2.75rem;
+        font-size: 2.85rem;
     }
 
     .content-wrapper p {
-        font-size: 1.28rem;
+        font-size: 1.3rem;
         line-height: 1.9;
         margin-bottom: 28px;
     }
 
     .highlight-gold {
         padding: 20px 26px;
-        font-size: 1.32rem;
+        font-size: 1.34rem;
     }
 }
 
+/* ============================================================
+   5. LAYOUT EDITORIALE — schermi larghi (1300px+)
+   Qui sta la vera correzione del problema "testo perso nel
+   vuoto": la pagina passa da colonna unica centrata a due
+   colonne. Titolo fisso a sinistra (resta visibile mentre
+   scorri), testo più largo e più grande a destra.
+   ============================================================ */
 @media screen and (min-width: 1300px) {
     .content-wrapper {
-        max-width: 880px;
-        padding: 180px 40px 150px;
+        max-width: 1180px;
+        padding: 170px 40px 160px;
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        column-gap: 70px;
+        align-items: start;
+    }
+
+    .content-head {
+        position: sticky;
+        top: 110px;
     }
 
     .content-wrapper h1 {
-        font-size: 3rem;
+        font-size: 3.1rem;
+        line-height: 1.15;
     }
 
     .content-wrapper p {
-        font-size: 1.35rem;
-        line-height: 1.95;
-        margin-bottom: 32px;
+        font-size: 1.42rem;
+        line-height: 2;
+        margin-bottom: 30px;
     }
 
     .highlight-gold {
-        font-size: 1.4rem;
+        font-size: 1.45rem;
+        position: relative;
+        padding: 24px 30px 24px 46px;
+    }
+
+    .highlight-gold::before {
+        content: "❝";
+        position: absolute;
+        left: 12px;
+        top: 10px;
+        font-size: 1.9rem;
+        color: var(--gold);
+        font-family: 'Playfair Display', serif;
     }
 }
