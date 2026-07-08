@@ -98,7 +98,7 @@
                     <button type="button" class="btn-desktop" id="install-pwa-btn">
                         📲 <span data-i18n="home.add_home">Aggiungi alla schermata Home</span>
                     </button>
-                    <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/" class="btn-desktop">
+                    <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html" class="btn-desktop">
                         🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span>
                     </a>
                 </div>
@@ -127,13 +127,6 @@
     <footer class="footer-copyright">
         <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
     </footer>
-
-    <div class="install-instructions-popup" id="ios-install-popup">
-        <div class="install-popup-inner">
-            <button class="close-popup-btn" id="close-ios-popup">✕</button>
-            <p><strong>Su iPhone/iPad:</strong> tocca l'icona Condividi nella barra di Safari, poi scegli "Aggiungi alla schermata Home".</p>
-        </div>
-    </div>
 
     <div class="chat-interface" id="chat-box">
         <div class="chat-header">
@@ -174,16 +167,6 @@
             localStorage.setItem("lang", lang);
         }
 
-        let deferredInstallPrompt = null;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredInstallPrompt = e;
-        });
-
-        function isIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        }
-
         document.addEventListener("DOMContentLoaded", () => {
             const chat = document.getElementById("chat-box");
             const closeBtn = document.getElementById("close-chat");
@@ -197,25 +180,15 @@
                 premiumBtn.addEventListener("click", () => chat.classList.add("active"));
             }
 
+            // "Aggiungi alla schermata Home": la pagina desktop non ha un
+            // manifest collegato, quindi non può installare se stessa.
+            // Porta l'utente alla pagina mobile, dove l'installazione vera
+            // (con manifest.json e service worker) è già configurata.
             const installBtn = document.getElementById("install-pwa-btn");
-            const iosPopup = document.getElementById("ios-install-popup");
-            const closeIosPopup = document.getElementById("close-ios-popup");
-
             if (installBtn) {
-                installBtn.addEventListener("click", async () => {
-                    if (deferredInstallPrompt) {
-                        deferredInstallPrompt.prompt();
-                        await deferredInstallPrompt.userChoice;
-                        deferredInstallPrompt = null;
-                    } else if (isIOS()) {
-                        iosPopup.classList.add("active");
-                    } else {
-                        alert('Per installare Amunì, apri il menu del tuo browser e cerca "Aggiungi alla schermata Home" o "Installa app".');
-                    }
+                installBtn.addEventListener("click", () => {
+                    window.location.href = "https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html";
                 });
-            }
-            if (closeIosPopup) {
-                closeIosPopup.addEventListener("click", () => iosPopup.classList.remove("active"));
             }
 
             document.querySelectorAll(".lang-switcher button").forEach(btn => {
