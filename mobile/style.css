@@ -348,3 +348,28 @@ body {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
 }
+/* ==========================================================================
+   PULSANTE INSTALLAZIONE PWA — dentro .amuni-box, sotto il testo
+   ========================================================================== */
+#install-pwa-btn-mobile {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    background: var(--sea);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 13px 10px;
+    text-align: center;
+    color: var(--stone);
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow-soft);
+    transition: background 0.2s ease;
+}
+
+#install-pwa-btn-mobile:active {
+    background: var(--terracotta-dark);
+}
