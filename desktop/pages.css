@@ -143,7 +143,7 @@ body::before {
 }
 
 /* ============================================================
-   3. CONTENUTO — base mobile
+   3. CONTENUTO — base mobile (sotto i 900px)
    ============================================================ */
 .content-wrapper {
     max-width: 700px;
@@ -193,8 +193,8 @@ body::before {
 
 .content-wrapper p {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.05rem, 2vw, 2.2rem);
-    line-height: 1.75;
+    font-size: clamp(1.15rem, 4vw, 1.35rem);
+    line-height: 1.8;
     color: var(--ink);
     margin-bottom: 22px;
     text-align: left;
@@ -219,7 +219,9 @@ body::before {
 }
 
 /* ============================================================
-   4. OTTIMIZZAZIONE DESKTOP (900px — 1299px)
+   4. DESKTOP (900px — 1299px)
+   Layout a due colonne che si espande con lo schermo (vw),
+   non più bloccato a una larghezza fissa centrata.
    ============================================================ */
 @media screen and (min-width: 900px) {
     .dashboard {
@@ -233,9 +235,18 @@ body::before {
     .nav-desktop a { font-size: 1rem; padding: 10px 18px; }
 
     .content-wrapper {
-        max-width: 780px;
-        padding: 160px 32px 130px;
-        text-align: left;
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 160px 5vw 140px;
+        display: grid;
+        grid-template-columns: 260px minmax(0, 1fr);
+        column-gap: 50px;
+        align-items: start;
+    }
+
+    .content-head {
+        position: sticky;
+        top: 110px;
     }
 
     .category-tag,
@@ -245,41 +256,32 @@ body::before {
     }
 
     .content-wrapper h1 {
-        font-size: 2.85rem;
+        font-size: 2.7rem;
     }
 
     .content-wrapper p {
-        font-size: 1.3rem;
-        line-height: 1.9;
+        font-size: 1.5rem;
+        line-height: 1.95;
         margin-bottom: 28px;
+        max-width: 820px;
     }
 
     .highlight-gold {
         padding: 20px 26px;
-        font-size: 1.34rem;
+        font-size: 1.5rem;
+        max-width: 820px;
     }
 }
 
 /* ============================================================
    5. LAYOUT EDITORIALE — schermi larghi (1300px+)
-   Qui sta la vera correzione del problema "testo perso nel
-   vuoto": la pagina passa da colonna unica centrata a due
-   colonne. Titolo fisso a sinistra (resta visibile mentre
-   scorri), testo più largo e più grande a destra.
    ============================================================ */
 @media screen and (min-width: 1300px) {
     .content-wrapper {
-        max-width: 1180px;
-        padding: 170px 40px 160px;
-        display: grid;
-        grid-template-columns: 340px 1fr;
+        max-width: 1800px;
+        padding: 170px 6vw 160px;
+        grid-template-columns: 320px minmax(0, 1fr);
         column-gap: 70px;
-        align-items: start;
-    }
-
-    .content-head {
-        position: sticky;
-        top: 110px;
     }
 
     .content-wrapper h1 {
@@ -288,15 +290,17 @@ body::before {
     }
 
     .content-wrapper p {
-        font-size: 1.42rem;
-        line-height: 2;
+        font-size: 1.65rem;
+        line-height: 2.05;
         margin-bottom: 30px;
+        max-width: 950px;
     }
 
     .highlight-gold {
-        font-size: 1.45rem;
+        font-size: 1.65rem;
         position: relative;
         padding: 24px 30px 24px 46px;
+        max-width: 950px;
     }
 
     .highlight-gold::before {
