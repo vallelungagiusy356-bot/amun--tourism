@@ -8,14 +8,17 @@
   },
   "home": {
     "welcome_title": "Benvenuti a Caccamo",
-    "poetry_intro": "Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>Caccamo intreccia il suo respiro all'antica memoria.",
-    "poetry": "Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>Caccamo intreccia il suo respiro all'antica memoria.<br>Non è solo pietra che sfida le ere e le genti,<br><strong>che corre tra le mura di una fortezza possente.</strong><br><br><strong>Come un gomitolo che lento si srotola,<br>si diffonde in ogni vicolo, in ogni piccola storia.</strong><br>Un intreccio di secoli svelato <strong>con amore e mistero,</strong><br>per chi cerca il cuore pulsante di un borgo vero.<br><br><strong>Amunì, imbocca la via,<br>la Castellana è qui per farti compagnia.</strong>",
+    "poetry": "Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>Caccamo intreccia il suo respiro all'antica memoria.<br>Non è solo pietra che sfida le ere e le genti,<br><strong>che cela tra le mura tesori sorprendenti.</strong><br><br>Come un gomitolo che lento si srotola,<br>si diffonde in ogni vicolo, in ogni piccola storia.<br>Un intreccio di secoli svelato <strong>con amore e mistero,</strong><br>per chi cerca il cuore pulsante di un borgo vero.<br><br><strong>Amunì, imbocca la via,<br>la Castellana è qui per farti compagnia.</strong>",
     "castellana_intro_title": "Vivi la Caccamo più autentica",
     "castellana_intro_text": "Lascia che la <strong>Castellana</strong> ti conduca oltre la superficie del borgo. Custode di memorie millenarie, ti svelerà storie inedite, percorsi dimenticati e i sapori autentici di una terra che trasuda leggenda.",
     "install_app": "Porta Amunì con te",
-    "download_apk": "Scarica APK",
+    "add_home": "Aggiungi alla schermata Home",
     "open_webapp": "Vai alla WebApp",
-    "scan_qr": "Scansiona il QR"
+    "scan_qr": "Scansiona il QR",
+    "premium_title": "Sblocca la Castellana Premium",
+    "premium_text": "Per 3,90€ conversi in tempo reale con la Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.",
+    "premium_howto": "Ricevi il codice via email e scrivilo in chat: <strong>codice</strong> seguito dal tuo codice alfanumerico.",
+    "premium_cta": "Acquista l'accesso — 3,90€"
   },
   "citizen": {
     "title": "Amunì Tourism - Cittadino del Borgo",
