@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy | Amunì Tourism</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --sky: #5B8FAE;
+            --sea: #1B4965;
+            --stone: #EFE6D3;
+            --stone-dim: #DCCFAF;
+            --terracotta: #C1622D;
+            --terracotta-dark: #9C4C22;
+            --gold: #B8873B;
+            --gold-light: #D4AF6A;
+            --ink: #22303B;
+            --ink-soft: #465563;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", system-ui, sans-serif;
+            background: var(--stone);
+            color: var(--ink);
+        }
+
+        .dashboard {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 25, 34, 0.92);
+            border-bottom: 2px solid var(--gold);
+            backdrop-filter: blur(18px) saturate(200%);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .logo-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            letter-spacing: 1.5px;
+        }
+
+        .nav-desktop {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-desktop a {
+            color: var(--stone);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            border-radius: 2px;
+            background: rgba(239, 230, 211, 0.08);
+            border: 1px solid rgba(239, 230, 211, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .nav-desktop a:hover {
+            background: rgba(193, 98, 45, 0.25);
+            border-color: var(--terracotta);
+            color: #fff;
+        }
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 160px 24px 60px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            color: var(--sea);
+            text-align: center;
+            margin-bottom: 0.4rem;
+        }
+
+        .category-tag {
+            display: block;
+            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        h1 + .gold-divider,
+        .gold-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1.2rem auto 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--sea);
+            margin-top: 2.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--ink);
+            margin: 0 0 1.1rem;
+        }
+
+        strong { color: var(--terracotta-dark); }
+
+        .highlight-box {
+            background: rgba(193, 98, 45, 0.08);
+            border-left: 2px solid var(--terracotta);
+            padding: 14px 20px;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p { margin: 0; }
+
+        .footer-copyright {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(15, 25, 34, 0.95);
+            color: var(--stone-dim);
+            font-size: 0.85rem;
+        }
+
+        .footer-copyright a {
+            color: var(--gold-light);
+        }
+
+        @media screen and (min-width: 900px) {
+            .dashboard { padding: 0 40px; height: 75px; }
+            main { padding-top: 130px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="dashboard">
+        <div class="logo-title">Amunì Tourism</div>
+        <nav class="nav-desktop">
+            <a href="desktop_index.html">Home</a>
+            <a href="cittadino.html">Cittadino</a>
+            <a href="about.html">Il Progetto</a>
+            <a href="contact.html">Contatti</a>
+        </nav>
+    </header>
+
+    <main>
+        <span class="category-tag">Informativa</span>
+        <h1>Privacy</h1>
+        <div class="gold-divider"></div>
+
+        <h2>Chat "La Castellana"</h2>
+        <p>
+            Il servizio di chat "La Castellana" di Amunì Tourism tratta i seguenti dati,
+            nel modo descritto qui sotto.
+        </p>
+
+        <h2>Cosa registriamo</h2>
+        <p>
+            Le domande poste alla Castellana e le risposte fornite, insieme alla pagina
+            del sito da cui la conversazione è avvenuta, alla lingua selezionata e alla
+            data. <strong>Non registriamo nomi, email, numeri di telefono o altri dati
+            identificativi</strong>: la conversazione è anonima.
+        </p>
+
+        <h2>Perché lo facciamo</h2>
+        <p>
+            Le conversazioni vengono riesaminate esclusivamente per migliorare la qualità
+            e l'accuratezza delle risposte della guida virtuale.
+        </p>
+
+        <h2>Come funziona il servizio</h2>
+        <p>
+            Le risposte della versione Premium sono generate tramite un servizio di
+            intelligenza artificiale di Anthropic (Claude). Le domande inviate alla chat
+            vengono elaborate da tale servizio ai soli fini della generazione della risposta.
+        </p>
+
+        <h2>Conservazione</h2>
+        <p>
+            Le conversazioni registrate vengono conservate in forma anonima e limitata
+            alle più recenti; le più vecchie vengono eliminate automaticamente.
+        </p>
+
+        <div class="highlight-box">
+            <p>
+                <strong>Consiglio pratico:</strong> non inserire nella chat dati personali
+                (nome completo, telefono, email, indirizzi) — la Castellana non ne ha
+                bisogno per aiutarti!
+            </p>
+        </div>
+
+        <h2>Contatti</h2>
+        <p>
+            Per qualsiasi domanda sul trattamento dei dati è possibile scriverci
+            tramite la pagina <a href="contact.html">Contatti</a>.
+        </p>
+    </main>
+
+    <footer class="footer-copyright">
+        <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
+    </footer>
+
+</body>
+</html>
