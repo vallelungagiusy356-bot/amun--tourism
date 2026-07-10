@@ -370,6 +370,67 @@ html, body {
     border-left: 2px solid var(--gold);
 }
 
+.chat-link-btn {
+    display: block;
+    background: var(--terracotta);
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin: -2px 0 8px 0;
+    transition: background 0.2s;
+}
+
+.chat-link-btn:hover {
+    background: var(--sea);
+}
+
+.topic-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 2px 0 10px 0;
+}
+
+.topic-btn {
+    background: #fff;
+    border: 1px solid var(--gold);
+    color: var(--sea);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.topic-btn:hover {
+    background: var(--gold);
+    color: #fff;
+}
+
+.topic-group-btn {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+    font-weight: 600;
+}
+
+.topic-group-btn:hover {
+    background: var(--terracotta);
+    color: #fff;
+}
+
+.topic-subitems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+    margin-top: 4px;
+    padding-left: 10px;
+}
+
 .chat-input-row {
     display: flex;
     gap: 10px;
