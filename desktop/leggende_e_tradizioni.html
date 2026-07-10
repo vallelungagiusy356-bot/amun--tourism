@@ -199,6 +199,7 @@ window.silktideConsentManager.init({
             </div>
             <div class="waveform" id="waveform"></div>
             <div class="time-row"><span id="curTime">0:00</span><span id="totTime">0:00</span></div>
+            <audio id="realAudioPlayer" preload="none"></audio>
             <div class="lang-row">
                 <div class="lang-chip active" data-lang="it">IT</div>
                 <div class="lang-chip" data-lang="en">EN</div>
@@ -211,7 +212,7 @@ window.silktideConsentManager.init({
         <div class="transcript" id="transcript"></div>
 
         <div class="note">
-            Prototipo dimostrativo: il tempo scorre in modo simulato (nessun audio reale caricato), solo per mostrare come il testo si illumina in sincronia con la voce, riga per riga. Testi segnati tra <code>[ ]</code> sono segnaposto da sostituire con i contenuti reali; con la registrazione vera i tempi di ogni riga andranno ritarati ad orecchio e collegati a un file audio reale.
+            Prototipo con voce sintetica del browser: il testo viene letto ad alta voce riga per riga, nella lingua selezionata sopra. Testi segnati tra <code>[ ]</code> sono segnaposto da sostituire con i contenuti reali. Quando saranno pronti i file audio registrati, basterà inserire il percorso del file in <code>audioUrl</code> per ogni traccia: il player passerà automaticamente all'audio reale, con sincronizzazione precisa sui tempi <code>start</code>/<code>end</code> di ogni riga.
         </div>
     </main>
 
@@ -228,6 +229,7 @@ window.silktideConsentManager.init({
         <div class="chat-header">
             <div class="avatar-status-dot"></div>
             <span data-i18n="chat.title">La Castellana</span>
+            <button id="voice-toggle-btn" class="close-chat-btn" title="Attiva/disattiva voce" aria-label="Attiva o disattiva la voce">🔊</button>
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
         <div class="chat-messages">
@@ -244,7 +246,10 @@ window.silktideConsentManager.init({
         const openBtn = document.getElementById("chat-open-btn");
         const closeBtn = document.getElementById("close-chat");
         openBtn.addEventListener("click", () => chat.classList.add("active"));
-        closeBtn.addEventListener("click", () => chat.classList.remove("active"));
+        closeBtn.addEventListener("click", () => {
+            chat.classList.remove("active");
+            if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+        });
 
         let currentLang = localStorage.getItem("lang") || "it";
         function loadLanguage(lang) {
@@ -276,6 +281,7 @@ window.silktideConsentManager.init({
             cunto1: {
                 title: "[Cunto 1 — titolo da inserire]",
                 who: "[Narratore da inserire]",
+                audioUrl: null, // quando avrai il file registrato: "audio/cunto1.mp3"
                 lines: [
                     { start: 0,   end: 4.5,  dialect: "[riga 1 in dialetto da inserire]",
                       it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
@@ -286,6 +292,7 @@ window.silktideConsentManager.init({
             cunto2: {
                 title: "[Cunto 2 — titolo da inserire]",
                 who: "[Narratore da inserire]",
+                audioUrl: null, // quando avrai il file registrato: "audio/cunto2.mp3"
                 lines: [
                     { start: 0,   end: 5,    dialect: "[riga 1 in dialetto da inserire]",
                       it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
@@ -296,6 +303,7 @@ window.silktideConsentManager.init({
             preghiera1: {
                 title: "[Preghiera 1 — titolo da inserire]",
                 who: "[Narratore da inserire]",
+                audioUrl: null, // quando avrai il file registrato: "audio/preghiera1.mp3"
                 lines: [
                     { start: 0,   end: 4,    dialect: "[riga 1 in dialetto da inserire]",
                       it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
@@ -306,6 +314,7 @@ window.silktideConsentManager.init({
             preghiera2: {
                 title: "[Preghiera 2 — titolo da inserire]",
                 who: "[Narratore da inserire]",
+                audioUrl: null, // quando avrai il file registrato: "audio/preghiera2.mp3"
                 lines: [
                     { start: 0,   end: 4,    dialect: "[riga 1 in dialetto da inserire]",
                       it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
@@ -316,9 +325,8 @@ window.silktideConsentManager.init({
         };
 
         let activeTrackId = "cunto1";
-        let currentTime = 0;
         let playing = false;
-        let timer = null;
+        let ttsLineIndex = 0;
         let currentPlayerLang = "it";
 
         const transcriptEl = document.getElementById("transcript");
@@ -328,26 +336,60 @@ window.silktideConsentManager.init({
         const totTimeEl = document.getElementById("totTime");
         const nowPlayingTitle = document.getElementById("nowPlayingTitle");
         const nowPlayingWho = document.getElementById("nowPlayingWho");
+        const realAudioEl = document.getElementById("realAudioPlayer");
 
         function fmt(t){
             const m = Math.floor(t/60), s = Math.floor(t%60);
             return m + ":" + String(s).padStart(2,"0");
         }
 
+        function trackHasRealAudio(track){
+            return !!track.audioUrl;
+        }
+
+        function updateBarsProgress(fraction){
+            const bars = document.querySelectorAll(".waveform .bar");
+            const filled = Math.floor((fraction || 0) * bars.length);
+            bars.forEach((b,i) => b.classList.toggle("played", i < filled));
+        }
+
+        function highlightLine(index){
+            document.querySelectorAll(".transcript .line").forEach(el => el.classList.remove("active"));
+            if (index === null || index === undefined) return;
+            const el = document.getElementById("line-" + index);
+            if (el){
+                el.classList.add("active");
+                el.scrollIntoView({block:"center", behavior:"smooth"});
+            }
+        }
+
+        // Ferma qualsiasi riproduzione in corso (voce sintetica o audio reale)
+        function stopPlayback(){
+            playing = false;
+            playBtn.textContent = "▶";
+            if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+            if (!realAudioEl.paused) realAudioEl.pause();
+        }
+
         function renderTrack(trackId){
+            stopPlayback();
+            highlightLine(null);
             const track = tracks[trackId];
             activeTrackId = trackId;
-            currentTime = 0;
-            playing = false;
-            clearInterval(timer);
-            playBtn.textContent = "▶";
+            ttsLineIndex = 0;
 
             nowPlayingTitle.textContent = track.title;
             nowPlayingWho.textContent = track.who;
 
-            const totalDuration = track.lines[track.lines.length - 1].end;
-            totTimeEl.textContent = fmt(totalDuration);
-            curTimeEl.textContent = "0:00";
+            if (trackHasRealAudio(track)){
+                realAudioEl.src = track.audioUrl;
+                realAudioEl.currentTime = 0;
+                totTimeEl.textContent = "0:00";
+                curTimeEl.textContent = "0:00";
+            } else {
+                totTimeEl.textContent = track.lines.length + " righe";
+                curTimeEl.textContent = "-";
+            }
 
             transcriptEl.innerHTML = "";
             track.lines.forEach((l, i) => {
@@ -373,49 +415,64 @@ window.silktideConsentManager.init({
             });
         }
 
-        function updateUI(){
+        // --- Modalità voce sintetica: legge le righe una dopo l'altra ---
+        function speakLineIndex(i){
             const track = tracks[activeTrackId];
-            const totalDuration = track.lines[track.lines.length - 1].end;
-            curTimeEl.textContent = fmt(currentTime);
+            if (i >= track.lines.length){
+                playing = false;
+                playBtn.textContent = "▶";
+                highlightLine(null);
+                ttsLineIndex = 0;
+                return;
+            }
+            ttsLineIndex = i;
+            highlightLine(i);
+            curTimeEl.textContent = (i + 1) + "/" + track.lines.length;
+            updateBarsProgress((i + 1) / track.lines.length);
 
-            const bars = document.querySelectorAll(".waveform .bar");
-            const progress = currentTime / totalDuration;
-            const filled = Math.floor(progress * bars.length);
-            bars.forEach((b,i) => b.classList.toggle("played", i < filled));
-
-            track.lines.forEach((l,i) => {
-                const el = document.getElementById("line-" + i);
-                const active = currentTime >= l.start && currentTime < l.end;
-                el.classList.toggle("active", active);
-                if(active) el.scrollIntoView({block:"center", behavior:"smooth"});
-            });
+            const text = track.lines[i][currentPlayerLang] || track.lines[i].it;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = ttsLangCode(currentPlayerLang);
+            utterance.onend = () => {
+                if (playing) speakLineIndex(i + 1);
+            };
+            window.speechSynthesis.speak(utterance);
         }
+
+        // --- Modalità audio reale (quando track.audioUrl è impostato) ---
+        realAudioEl.addEventListener("loadedmetadata", () => {
+            totTimeEl.textContent = fmt(realAudioEl.duration);
+        });
+        realAudioEl.addEventListener("timeupdate", () => {
+            const track = tracks[activeTrackId];
+            if (!trackHasRealAudio(track)) return;
+            curTimeEl.textContent = fmt(realAudioEl.currentTime);
+            updateBarsProgress(realAudioEl.currentTime / (realAudioEl.duration || 1));
+            const idx = track.lines.findIndex(l => realAudioEl.currentTime >= l.start && realAudioEl.currentTime < l.end);
+            highlightLine(idx === -1 ? null : idx);
+        });
+        realAudioEl.addEventListener("ended", () => {
+            playing = false;
+            playBtn.textContent = "▶";
+            realAudioEl.currentTime = 0;
+        });
 
         playBtn.addEventListener("click", () => {
             const track = tracks[activeTrackId];
-            const totalDuration = track.lines[track.lines.length - 1].end;
 
-            if(playing){
-                playing = false;
-                playBtn.textContent = "▶";
-                clearInterval(timer);
+            if (playing){
+                stopPlayback();
                 return;
             }
-            if(currentTime >= totalDuration) currentTime = 0;
+
             playing = true;
             playBtn.textContent = "❚❚";
-            timer = setInterval(() => {
-                currentTime += 0.1;
-                if(currentTime >= totalDuration){
-                    currentTime = totalDuration;
-                    updateUI();
-                    playing = false;
-                    playBtn.textContent = "▶";
-                    clearInterval(timer);
-                    return;
-                }
-                updateUI();
-            }, 100);
+
+            if (trackHasRealAudio(track)){
+                realAudioEl.play();
+            } else {
+                speakLineIndex(ttsLineIndex);
+            }
         });
 
         document.querySelectorAll(".lang-chip").forEach(chip => {
@@ -426,6 +483,9 @@ window.silktideConsentManager.init({
                 tracks[activeTrackId].lines.forEach((l,i) => {
                     document.getElementById("tr-" + i).textContent = l[currentPlayerLang];
                 });
+                if (playing && !trackHasRealAudio(tracks[activeTrackId])){
+                    stopPlayback();
+                }
             });
         });
 
@@ -441,6 +501,44 @@ window.silktideConsentManager.init({
         // ============================================================
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
+
+        // ============================================================
+        // VOCE SINTETICA (browser) — verrà sostituita da audio reali
+        // quando saranno disponibili i file registrati.
+        // ============================================================
+        const VOICE_PREF_KEY = "amuni_voice_enabled";
+        let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
+        const voiceToggleBtn = document.getElementById("voice-toggle-btn");
+
+        function updateVoiceToggleIcon() {
+            if (voiceToggleBtn) voiceToggleBtn.textContent = voiceEnabled ? "🔊" : "🔇";
+        }
+        updateVoiceToggleIcon();
+
+        if (voiceToggleBtn) {
+            voiceToggleBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                voiceEnabled = !voiceEnabled;
+                localStorage.setItem(VOICE_PREF_KEY, voiceEnabled ? "on" : "off");
+                updateVoiceToggleIcon();
+                if (!voiceEnabled && "speechSynthesis" in window) {
+                    window.speechSynthesis.cancel();
+                }
+            });
+        }
+
+        function ttsLangCode(lang) {
+            const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+            return map[lang] || "it-IT";
+        }
+
+        function speakText(text) {
+            if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = ttsLangCode(currentLang);
+            window.speechSynthesis.speak(utterance);
+        }
 
         function getPageSlug() {
             const path = window.location.pathname;
@@ -535,6 +633,9 @@ window.silktideConsentManager.init({
 
                 const data = await res.json();
                 appendChatMessage(data.reply, 'castellana');
+                if (data.speak) {
+                    speakText(data.reply);
+                }
 
             } catch (err) {
                 console.error('Errore chat:', err);
