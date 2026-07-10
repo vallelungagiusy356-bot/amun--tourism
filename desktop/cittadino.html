@@ -213,7 +213,10 @@ window.silktideConsentManager.init({
             const chat = document.getElementById("chat-desktop");
             const closeBtn = document.getElementById("close-chat");
             const openBtn = document.getElementById("chat-open-btn");
-            openBtn.addEventListener("click", () => chat.classList.add("active"));
+            openBtn.addEventListener("click", () => {
+                chat.classList.add("active");
+                loadTopicMenu();
+            });
             closeBtn.addEventListener("click", (e) => {
                 e.stopPropagation();
                 chat.classList.remove("active");
@@ -245,7 +248,15 @@ window.silktideConsentManager.init({
             }
 
             document.querySelectorAll(".lang-switcher button").forEach(btn => {
-                btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
+                btn.addEventListener("click", () => {
+                    currentLang = btn.dataset.lang;
+                    loadLanguage(currentLang);
+                    // Se la chat è aperta, ricarica il menu con le etichette nella nuova lingua
+                    const oldMenu = document.querySelector('.chat-messages .topic-menu');
+                    if (oldMenu) oldMenu.remove();
+                    menuLoadedForCode = null;
+                    if (chat.classList.contains('active')) loadTopicMenu();
+                });
             });
             loadLanguage(currentLang);
 
@@ -363,6 +374,103 @@ window.silktideConsentManager.init({
                 }
 
                 messagesBox.scrollTop = messagesBox.scrollHeight;
+            }
+
+            // ============================================================
+            // MENU A PULSANTI (topic) — mostra le voci disponibili per la pagina
+            // ============================================================
+            function renderTopicMenu(menu) {
+                if (!menu || !menu.length) return;
+                const messagesBox = document.querySelector('.chat-messages');
+                const wrap = document.createElement('div');
+                wrap.className = 'topic-menu';
+
+                menu.forEach(entry => {
+                    if (entry.group) {
+                        const groupBtn = document.createElement('button');
+                        groupBtn.className = 'topic-btn topic-group-btn';
+                        groupBtn.textContent = entry.group + ' ▸';
+                        groupBtn.addEventListener('click', () => {
+                            const existing = groupBtn.nextElementSibling;
+                            if (existing && existing.classList.contains('topic-subitems')) {
+                                existing.remove();
+                                return;
+                            }
+                            const sub = document.createElement('div');
+                            sub.className = 'topic-subitems';
+                            entry.items.forEach(it => {
+                                const b = document.createElement('button');
+                                b.className = 'topic-btn';
+                                b.textContent = it.label;
+                                b.addEventListener('click', () => sendTopicRequest(it.topic, it.label));
+                                sub.appendChild(b);
+                            });
+                            groupBtn.insertAdjacentElement('afterend', sub);
+                            messagesBox.scrollTop = messagesBox.scrollHeight;
+                        });
+                        wrap.appendChild(groupBtn);
+                    } else {
+                        const b = document.createElement('button');
+                        b.className = 'topic-btn';
+                        b.textContent = entry.label;
+                        b.addEventListener('click', () => sendTopicRequest(entry.topic, entry.label));
+                        wrap.appendChild(b);
+                    }
+                });
+
+                messagesBox.appendChild(wrap);
+                messagesBox.scrollTop = messagesBox.scrollHeight;
+            }
+
+            async function sendTopicRequest(topicId, label) {
+                appendChatMessage(label, 'user');
+                try {
+                    const res = await fetch(`${API_BASE_URL}/chat`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            message: label,
+                            page: getPageSlug(),
+                            lang: currentLang,
+                            access_code: getStoredAccessCode() || "",
+                            topic: topicId
+                        })
+                    });
+                    if (!res.ok) throw new Error('Risposta non valida dal server');
+                    const data = await res.json();
+                    appendChatMessage(data.reply, 'castellana', data.link);
+                    if (data.speak) speakText(data.reply);
+                } catch (err) {
+                    console.error('Errore richiesta topic:', err);
+                    appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+                }
+            }
+
+            let menuLoadedForCode = null;
+            async function loadTopicMenu() {
+                const code = getStoredAccessCode();
+                if (!code || menuLoadedForCode === code) return;
+                try {
+                    const res = await fetch(`${API_BASE_URL}/chat`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            message: "",
+                            page: getPageSlug(),
+                            lang: currentLang,
+                            access_code: code,
+                            topic: ""
+                        })
+                    });
+                    if (!res.ok) return;
+                    const data = await res.json();
+                    if (data.premium_active && data.menu && data.menu.length) {
+                        renderTopicMenu(data.menu);
+                        menuLoadedForCode = code;
+                    }
+                } catch (err) {
+                    console.error('Errore caricamento menu:', err);
+                }
             }
 
             function getStoredAccessCode() {
