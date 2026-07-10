@@ -195,6 +195,7 @@ window.silktideConsentManager.init({
         <div class="chat-header">
             <div class="avatar-status-dot"></div>
             <span data-i18n="chat.title">La Castellana</span>
+            <button id="voice-toggle-btn" class="close-chat-btn" title="Attiva/disattiva voce" aria-label="Attiva o disattiva la voce">🔊</button>
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
         <div class="chat-messages">
@@ -213,7 +214,11 @@ window.silktideConsentManager.init({
             const closeBtn = document.getElementById("close-chat");
             const openBtn = document.getElementById("chat-open-btn");
             openBtn.addEventListener("click", () => chat.classList.add("active"));
-            closeBtn.addEventListener("click", (e) => { e.stopPropagation(); chat.classList.remove("active"); });
+            closeBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                chat.classList.remove("active");
+                if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+            });
 
             // Logica Lingue (Aggiornata per gestire le classi active)
             let currentLang = localStorage.getItem("lang") || "it";
@@ -250,18 +255,113 @@ window.silktideConsentManager.init({
             const API_BASE_URL = "https://castellana.pythonanywhere.com";
             const PREMIUM_STORAGE_KEY = "amuni_premium_access";
 
+            // ============================================================
+            // VOCE SINTETICA (browser) — verrà sostituita da audio reali
+            // quando saranno disponibili i file registrati.
+            // ============================================================
+            const VOICE_PREF_KEY = "amuni_voice_enabled";
+            let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
+            const voiceToggleBtn = document.getElementById("voice-toggle-btn");
+
+            function updateVoiceToggleIcon() {
+                if (voiceToggleBtn) voiceToggleBtn.textContent = voiceEnabled ? "🔊" : "🔇";
+            }
+            updateVoiceToggleIcon();
+
+            if (voiceToggleBtn) {
+                voiceToggleBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    voiceEnabled = !voiceEnabled;
+                    localStorage.setItem(VOICE_PREF_KEY, voiceEnabled ? "on" : "off");
+                    updateVoiceToggleIcon();
+                    if (!voiceEnabled && "speechSynthesis" in window) {
+                        window.speechSynthesis.cancel();
+                    }
+                });
+            }
+
+            function ttsLangCode(lang) {
+                const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+                return map[lang] || "it-IT";
+            }
+
+            function speakText(text) {
+                if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = ttsLangCode(currentLang);
+                window.speechSynthesis.speak(utterance);
+            }
+
             function getPageSlug() {
                 const path = window.location.pathname;
                 const file = path.substring(path.lastIndexOf('/') + 1);
                 return file.replace('.html', '') || 'home';
             }
 
-            function appendChatMessage(text, sender) {
+            const PAGE_LINK_LABELS = {
+                it: {
+                    "castello.html": "Vai al Castello →",
+                    "chiese-arte.html": "Vai a Chiese e Arte →",
+                    "cibo_eventi.html": "Vai a Cibo e Eventi →",
+                    "cittadino.html": "Vai al Cittadino del Borgo →",
+                    "leggende_e_tradizioni.html": "Vai a Leggende e Tradizioni →",
+                    "desktop_index.html": "Torna alla Home →"
+                },
+                en: {
+                    "castello.html": "Go to the Castle →",
+                    "chiese-arte.html": "Go to Churches & Art →",
+                    "cibo_eventi.html": "Go to Food & Events →",
+                    "cittadino.html": "Go to Citizen of the Village →",
+                    "leggende_e_tradizioni.html": "Go to Legends & Traditions →",
+                    "desktop_index.html": "Back to Home →"
+                },
+                fr: {
+                    "castello.html": "Aller au Château →",
+                    "chiese-arte.html": "Aller à Églises et Art →",
+                    "cibo_eventi.html": "Aller à Gastronomie et Événements →",
+                    "cittadino.html": "Aller à Citoyen du Village →",
+                    "leggende_e_tradizioni.html": "Aller à Légendes et Traditions →",
+                    "desktop_index.html": "Retour à l'accueil →"
+                },
+                es: {
+                    "castello.html": "Ir al Castillo →",
+                    "chiese-arte.html": "Ir a Iglesias y Arte →",
+                    "cibo_eventi.html": "Ir a Comida y Eventos →",
+                    "cittadino.html": "Ir a Ciudadano del Pueblo →",
+                    "leggende_e_tradizioni.html": "Ir a Leyendas y Tradiciones →",
+                    "desktop_index.html": "Volver al Inicio →"
+                },
+                de: {
+                    "castello.html": "Zum Schloss →",
+                    "chiese-arte.html": "Zu Kirchen und Kunst →",
+                    "cibo_eventi.html": "Zu Essen und Events →",
+                    "cittadino.html": "Zum Bürger des Dorfes →",
+                    "leggende_e_tradizioni.html": "Zu Legenden und Traditionen →",
+                    "desktop_index.html": "Zurück zur Startseite →"
+                }
+            };
+
+            function getLinkLabel(link) {
+                const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
+                return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
+            }
+
+            function appendChatMessage(text, sender, link) {
                 const msg = document.createElement('div');
                 msg.className = 'message' + (sender === 'user' ? ' user-msg' : '');
                 msg.textContent = text;
                 const messagesBox = document.querySelector('.chat-messages');
                 messagesBox.appendChild(msg);
+
+                if (link) {
+                    const btn = document.createElement('button');
+                    btn.className = 'chat-link-btn';
+                    btn.textContent = getLinkLabel(link);
+                    btn.addEventListener('click', () => { window.location.href = link; });
+                    messagesBox.appendChild(btn);
+                }
+
                 messagesBox.scrollTop = messagesBox.scrollHeight;
             }
 
@@ -342,7 +442,10 @@ window.silktideConsentManager.init({
                     if (!res.ok) throw new Error('Risposta non valida dal server');
 
                     const data = await res.json();
-                    appendChatMessage(data.reply, 'castellana');
+                    appendChatMessage(data.reply, 'castellana', data.link);
+                    if (data.speak) {
+                        speakText(data.reply);
+                    }
 
                 } catch (err) {
                     console.error('Errore chat:', err);
