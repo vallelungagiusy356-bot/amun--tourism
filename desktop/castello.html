@@ -320,7 +320,10 @@ window.silktideConsentManager.init({
 
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".lang-switcher button").forEach(btn => {
-                btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
+                btn.addEventListener("click", () => {
+                    currentLang = btn.dataset.lang;
+                    loadLanguage(currentLang);
+                });
             });
             loadLanguage(currentLang);
         });
@@ -471,3 +474,4 @@ window.silktideConsentManager.init({
 </footer>
 </body>
 </html>
+
