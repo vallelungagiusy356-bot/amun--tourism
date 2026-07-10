@@ -309,7 +309,10 @@ window.silktideConsentManager.init({
       const chatBtn = document.getElementById('chat-open-btn');
       const chatBox = document.getElementById('chat-desktop');
       const closeChat = document.getElementById('close-chat');
-      chatBtn.addEventListener('click', () => chatBox.classList.add('active'));
+      chatBtn.addEventListener('click', () => {
+          chatBox.classList.add('active');
+          loadTopicMenu();
+      });
       closeChat.addEventListener('click', () => chatBox.classList.remove('active'));
 
       // --- LOGICA MODAL ---
@@ -353,7 +356,14 @@ window.silktideConsentManager.init({
       }
       document.addEventListener("DOMContentLoaded", () => {
           document.querySelectorAll(".lang-switcher button").forEach(btn => {
-              btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
+              btn.addEventListener("click", () => {
+                  currentLang = btn.dataset.lang;
+                  loadLanguage(currentLang);
+                  const oldMenu = document.querySelector('.chat-messages .topic-menu');
+                  if (oldMenu) oldMenu.remove();
+                  menuLoadedForCode = null;
+                  if (chatBox.classList.contains('active')) loadTopicMenu();
+              });
           });
           loadLanguage(currentLang);
       });
@@ -370,13 +380,166 @@ window.silktideConsentManager.init({
           return file.replace('.html', '') || 'home';
       }
 
-      function appendChatMessage(text, sender) {
+      const PAGE_LINK_LABELS = {
+          it: {
+              "castello.html": "Vai al Castello →",
+              "chiese-arte.html": "Vai a Chiese e Arte →",
+              "cibo_eventi.html": "Vai a Cibo e Eventi →",
+              "cittadino.html": "Vai al Cittadino del Borgo →",
+              "leggende_e_tradizioni.html": "Vai a Leggende e Tradizioni →",
+              "desktop_index.html": "Torna alla Home →"
+          },
+          en: {
+              "castello.html": "Go to the Castle →",
+              "chiese-arte.html": "Go to Churches & Art →",
+              "cibo_eventi.html": "Go to Food & Events →",
+              "cittadino.html": "Go to Citizen of the Village →",
+              "leggende_e_tradizioni.html": "Go to Legends & Traditions →",
+              "desktop_index.html": "Back to Home →"
+          },
+          fr: {
+              "castello.html": "Aller au Château →",
+              "chiese-arte.html": "Aller à Églises et Art →",
+              "cibo_eventi.html": "Aller à Gastronomie et Événements →",
+              "cittadino.html": "Aller à Citoyen du Village →",
+              "leggende_e_tradizioni.html": "Aller à Légendes et Traditions →",
+              "desktop_index.html": "Retour à l'accueil →"
+          },
+          es: {
+              "castello.html": "Ir al Castillo →",
+              "chiese-arte.html": "Ir a Iglesias y Arte →",
+              "cibo_eventi.html": "Ir a Comida y Eventos →",
+              "cittadino.html": "Ir a Ciudadano del Pueblo →",
+              "leggende_e_tradizioni.html": "Ir a Leyendas y Tradiciones →",
+              "desktop_index.html": "Volver al Inicio →"
+          },
+          de: {
+              "castello.html": "Zum Schloss →",
+              "chiese-arte.html": "Zu Kirchen und Kunst →",
+              "cibo_eventi.html": "Zu Essen und Events →",
+              "cittadino.html": "Zum Bürger des Dorfes →",
+              "leggende_e_tradizioni.html": "Zu Legenden und Traditionen →",
+              "desktop_index.html": "Zurück zur Startseite →"
+          }
+      };
+
+      function getLinkLabel(link) {
+          const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
+          return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
+      }
+
+      function appendChatMessage(text, sender, link) {
           const msg = document.createElement('div');
           msg.className = 'message' + (sender === 'user' ? ' user-msg' : '');
           msg.textContent = text;
           const messagesBox = document.querySelector('.chat-messages');
           messagesBox.appendChild(msg);
+
+          if (link) {
+              const btn = document.createElement('button');
+              btn.className = 'chat-link-btn';
+              btn.textContent = getLinkLabel(link);
+              btn.addEventListener('click', () => { window.location.href = link; });
+              messagesBox.appendChild(btn);
+          }
+
           messagesBox.scrollTop = messagesBox.scrollHeight;
+      }
+
+      // ============================================================
+      // MENU A PULSANTI (topic) — mostra le voci disponibili per la pagina
+      // ============================================================
+      function renderTopicMenu(menu) {
+          if (!menu || !menu.length) return;
+          const messagesBox = document.querySelector('.chat-messages');
+          const wrap = document.createElement('div');
+          wrap.className = 'topic-menu';
+
+          menu.forEach(entry => {
+              if (entry.group) {
+                  const groupBtn = document.createElement('button');
+                  groupBtn.className = 'topic-btn topic-group-btn';
+                  groupBtn.textContent = entry.group + ' ▸';
+                  groupBtn.addEventListener('click', () => {
+                      const existing = groupBtn.nextElementSibling;
+                      if (existing && existing.classList.contains('topic-subitems')) {
+                          existing.remove();
+                          return;
+                      }
+                      const sub = document.createElement('div');
+                      sub.className = 'topic-subitems';
+                      entry.items.forEach(it => {
+                          const b = document.createElement('button');
+                          b.className = 'topic-btn';
+                          b.textContent = it.label;
+                          b.addEventListener('click', () => sendTopicRequest(it.topic, it.label));
+                          sub.appendChild(b);
+                      });
+                      groupBtn.insertAdjacentElement('afterend', sub);
+                      messagesBox.scrollTop = messagesBox.scrollHeight;
+                  });
+                  wrap.appendChild(groupBtn);
+              } else {
+                  const b = document.createElement('button');
+                  b.className = 'topic-btn';
+                  b.textContent = entry.label;
+                  b.addEventListener('click', () => sendTopicRequest(entry.topic, entry.label));
+                  wrap.appendChild(b);
+              }
+          });
+
+          messagesBox.appendChild(wrap);
+          messagesBox.scrollTop = messagesBox.scrollHeight;
+      }
+
+      async function sendTopicRequest(topicId, label) {
+          appendChatMessage(label, 'user');
+          try {
+              const res = await fetch(`${API_BASE_URL}/chat`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      message: label,
+                      page: getPageSlug(),
+                      lang: currentLang,
+                      access_code: getStoredAccessCode() || "",
+                      topic: topicId
+                  })
+              });
+              if (!res.ok) throw new Error('Risposta non valida dal server');
+              const data = await res.json();
+              appendChatMessage(data.reply, 'castellana', data.link);
+          } catch (err) {
+              console.error('Errore richiesta topic:', err);
+              appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+          }
+      }
+
+      let menuLoadedForCode = null;
+      async function loadTopicMenu() {
+          const code = getStoredAccessCode();
+          if (!code || menuLoadedForCode === code) return;
+          try {
+              const res = await fetch(`${API_BASE_URL}/chat`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      message: "",
+                      page: getPageSlug(),
+                      lang: currentLang,
+                      access_code: code,
+                      topic: ""
+                  })
+              });
+              if (!res.ok) return;
+              const data = await res.json();
+              if (data.premium_active && data.menu && data.menu.length) {
+                  renderTopicMenu(data.menu);
+                  menuLoadedForCode = code;
+              }
+          } catch (err) {
+              console.error('Errore caricamento menu:', err);
+          }
       }
 
       function getStoredAccessCode() {
@@ -422,6 +585,7 @@ window.silktideConsentManager.init({
                   const expiryDate = new Date(data.expires_at);
                   const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
                   appendChatMessage(`Premium attivato! Avrai accesso ai contenuti esclusivi fino al ${formatted}.`, 'castellana');
+                  loadTopicMenu();
               } else {
                   appendChatMessage(data.message || 'Codice non valido.', 'castellana');
               }
@@ -456,7 +620,7 @@ window.silktideConsentManager.init({
               if (!res.ok) throw new Error('Risposta non valida dal server');
 
               const data = await res.json();
-              appendChatMessage(data.reply, 'castellana');
+              appendChatMessage(data.reply, 'castellana', data.link);
 
           } catch (err) {
               console.error('Errore chat:', err);
