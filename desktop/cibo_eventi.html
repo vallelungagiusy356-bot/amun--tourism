@@ -277,6 +277,7 @@ window.silktideConsentManager.init({
             <span data-i18n="chat.title">La Castellana</span>
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
+        <div class="premium-status-bar" id="premium-status-bar"></div>
         <div class="chat-messages">
             <div class="message" data-i18n="chat.cibo_eventi_msg">Benvenuto! Chiedimi delle feste e delle tradizioni di Caccamo, stagione per stagione.</div>
         </div>
@@ -293,6 +294,7 @@ window.silktideConsentManager.init({
 
         openBtn.addEventListener("click", () => {
             chat.classList.add("active");
+            updatePremiumStatusDisplay();
             loadTopicMenu();
         });
         closeBtn.addEventListener("click", () => chat.classList.remove("active"));
@@ -301,6 +303,7 @@ window.silktideConsentManager.init({
         document.querySelectorAll(".ask-castellana").forEach(el => {
             el.addEventListener("click", () => {
                 chat.classList.add("active");
+                updatePremiumStatusDisplay();
                 loadTopicMenu();
             });
         });
@@ -332,6 +335,7 @@ window.silktideConsentManager.init({
                 btn.addEventListener("click", () => {
                     currentLang = btn.dataset.lang;
                     loadLanguage(currentLang);
+                    updatePremiumStatusDisplay();
                     const oldMenu = document.querySelector('.chat-messages .topic-menu');
                     if (oldMenu) oldMenu.remove();
                     menuLoadedForCode = null;
@@ -396,7 +400,15 @@ window.silktideConsentManager.init({
             }
         };
 
+        const MANGIARE_LABEL_BY_LANG = {
+            it: "Vai a Mangiare e Bere →", en: "Go to Eat & Drink →", fr: "Aller à Manger et Boire →",
+            es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →"
+        };
+
         function getLinkLabel(link) {
+            if (link && link.includes('mangiare.html')) {
+                return MANGIARE_LABEL_BY_LANG[currentLang] || MANGIARE_LABEL_BY_LANG.it;
+            }
             const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
             return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
         }
@@ -531,6 +543,42 @@ window.silktideConsentManager.init({
             }
         }
 
+        // ============================================================
+        // INDICATORE PREMIUM — mostra sempre, in chiaro, se sei Premium
+        // (e fino a quando) oppure in versione gratuita.
+        // ============================================================
+        const PREMIUM_STATUS_TEXT = {
+            it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
+            en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
+            fr: { active: (d) => `👑 Premium actif jusqu'au ${d}`, free: "🔓 Version gratuite" },
+            es: { active: (d) => `👑 Premium activo hasta el ${d}`, free: "🔓 Versión gratuita" },
+            de: { active: (d) => `👑 Premium aktiv bis ${d}`, free: "🔓 Kostenlose Version" }
+        };
+
+        function updatePremiumStatusDisplay() {
+            const bar = document.getElementById('premium-status-bar');
+            if (!bar) return;
+            const texts = PREMIUM_STATUS_TEXT[currentLang] || PREMIUM_STATUS_TEXT.it;
+            const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    if (new Date(data.expires_at) > new Date()) {
+                        const d = new Date(data.expires_at);
+                        const formatted = d.toLocaleDateString(currentLang, { day: 'numeric', month: 'long' }) +
+                            ' ' + d.toLocaleTimeString(currentLang, { hour: '2-digit', minute: '2-digit' });
+                        bar.textContent = texts.active(formatted);
+                        bar.classList.add('premium-active');
+                        bar.classList.remove('premium-free');
+                        return;
+                    }
+                } catch (e) { /* codice non valido, trattalo come gratuito */ }
+            }
+            bar.textContent = texts.free;
+            bar.classList.add('premium-free');
+            bar.classList.remove('premium-active');
+        }
+
         function storeAccessCode(code, expiresAt) {
             localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
                 code: code,
@@ -558,6 +606,7 @@ window.silktideConsentManager.init({
                     const expiryDate = new Date(data.expires_at);
                     const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
                     appendChatMessage(`Premium attivato! Avrai accesso ai contenuti esclusivi fino al ${formatted}.`, 'castellana');
+                    updatePremiumStatusDisplay();
                     loadTopicMenu();
                 } else {
                     appendChatMessage(data.message || 'Codice non valido.', 'castellana');
