@@ -352,6 +352,28 @@ html, body {
     color: var(--gold-light);
 }
 
+.premium-status-bar {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 4px 8px;
+    margin: -6px 0 10px 0;
+    border-radius: 2px;
+    letter-spacing: 0.2px;
+}
+
+.premium-status-bar.premium-active {
+    background: rgba(184, 135, 59, 0.18);
+    color: var(--gold-light);
+    border: 1px solid rgba(184, 135, 59, 0.4);
+}
+
+.premium-status-bar.premium-free {
+    background: rgba(239, 230, 211, 0.08);
+    color: var(--stone-dim, #cbbfa0);
+    border: 1px solid rgba(239, 230, 211, 0.25);
+}
+
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
