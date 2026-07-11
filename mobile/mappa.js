@@ -50,6 +50,14 @@ const geolocateControl = new mapboxgl.GeolocateControl({
 });
 map.addControl(geolocateControl, 'top-right');
 
+// Il pulsantino di geolocalizzazione predefinito (in alto a destra)
+// finiva sotto il pannello di ricerca. Lo nascondiamo e lo spostiamo
+// dentro il campo "Punto di partenza", come fa Google Maps: è lì che
+// serve davvero, non in un angolo separato.
+const nascondiGeolocateDefault = document.createElement('style');
+nascondiGeolocateDefault.textContent = `.mapboxgl-ctrl-geolocate { display: none !important; }`;
+document.head.appendChild(nascondiGeolocateDefault);
+
 // ============================================================
 // RICERCA PARTENZA/DESTINAZIONE — due campi come su Maps, invece
 // di una singola barra che localizza un solo punto senza generare
@@ -66,8 +74,14 @@ searchPanel.style.cssText = `
 `;
 document.body.appendChild(searchPanel);
 
+// IMPORTANTE: ogni campo ha bisogno di "position: relative" — è
+// quello che permette al menu dei suggerimenti di comparire subito
+// sotto il campo giusto, invece di posizionarsi rispetto al pannello
+// intero (che è quello che causava i suggerimenti "invisibili").
 const originContainer = document.createElement('div');
+originContainer.style.cssText = 'position: relative; display: flex; align-items: center; gap: 6px;';
 const destContainer = document.createElement('div');
+destContainer.style.cssText = 'position: relative;';
 searchPanel.appendChild(originContainer);
 searchPanel.appendChild(destContainer);
 
@@ -87,6 +101,21 @@ if (typeof MapboxGeocoder !== 'undefined') {
         if (lastDestination) drawFullRoute();
     });
     geocoderOrigin.on('clear', () => { originOverrideCoords = null; });
+
+    // Pulsante "usa la mia posizione", accanto al campo Partenza.
+    const useMyLocationBtn = document.createElement('button');
+    useMyLocationBtn.innerHTML = '📍';
+    useMyLocationBtn.title = 'Usa la mia posizione';
+    useMyLocationBtn.style.cssText = `
+        flex-shrink: 0; width: 34px; height: 34px; border: none; border-radius: 2px;
+        background: #1B4965; color: #EFE6D3; font-size: 1rem; cursor: pointer;
+    `;
+    originContainer.appendChild(useMyLocationBtn);
+    useMyLocationBtn.addEventListener('click', () => {
+        originOverrideCoords = null; // usa il GPS, non un indirizzo scritto a mano
+        geolocateControl.trigger();
+        showLocationPrompt();
+    });
 
     const geocoderDestination = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
@@ -206,7 +235,7 @@ function showFarAwayMessage() {
 
 // Chiede il percorso reale (a piedi, lungo le vie) tra due punti
 // qualsiasi tramite il servizio Direzioni di Mapbox, e lo disegna
-// sulla mappa.
+// sulla mappa insieme a tempo e distanza stimati.
 async function drawRouteBetween(originCoords, destCoords) {
     const url = `https://api.mapbox.com/directions/v5/mapbox/walking/${originCoords[0]},${originCoords[1]};${destCoords[0]},${destCoords[1]}?geometries=geojson&overview=full&access_token=${mapboxgl.accessToken}`;
     try {
@@ -214,18 +243,43 @@ async function drawRouteBetween(originCoords, destCoords) {
         const json = await res.json();
         if (!json.routes || !json.routes[0]) return;
 
-        const routeGeometry = json.routes[0].geometry;
-        map.getSource('route').setData({ type: 'Feature', geometry: routeGeometry });
+        const route = json.routes[0];
+        map.getSource('route').setData({ type: 'Feature', geometry: route.geometry });
 
-        const coords = routeGeometry.coordinates;
+        const coords = route.geometry.coordinates;
         const bounds = coords.reduce(
             (b, c) => b.extend(c),
             new mapboxgl.LngLatBounds(coords[0], coords[0])
         );
         map.fitBounds(bounds, { padding: 70 });
+
+        showRouteInfo(route.duration, route.distance);
     } catch (err) {
         console.warn('Errore nel calcolo del percorso:', err);
     }
+}
+
+// Mostra tempo (a piedi) e distanza del percorso appena calcolato,
+// in un piccolo pannello in basso. Si aggiorna da solo se calcoli
+// un nuovo percorso, invece di accumularne diversi in pagina.
+function showRouteInfo(durationSeconds, distanceMeters) {
+    const minuti = Math.max(1, Math.round(durationSeconds / 60));
+    const km = (distanceMeters / 1000).toFixed(distanceMeters >= 1000 ? 1 : 2);
+
+    let box = document.getElementById('info-percorso');
+    if (!box) {
+        box = document.createElement('div');
+        box.id = 'info-percorso';
+        box.style.cssText = `
+            position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%);
+            z-index: 5; background: rgba(15,25,34,0.92); color: #EFE6D3;
+            border: 1px solid #B8873B; border-radius: 4px; padding: 8px 16px;
+            font-family: sans-serif; font-size: 0.9rem; font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        `;
+        document.body.appendChild(box);
+    }
+    box.textContent = `🚶 ${minuti} min a piedi · ${km} km`;
 }
 
 // Punto d'ingresso per "portami lì" dalla mappa (click su un
