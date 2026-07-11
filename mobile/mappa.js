@@ -23,6 +23,12 @@ const FOCUS_TO_NAME = {
     cappuccini: "Convento dei Cappuccini"
 };
 
+// Centro del borgo, usato per capire se il turista è già nei
+// dintorni di Caccamo oppure la sta guardando da lontano (es. da
+// casa, prima ancora di partire per il viaggio).
+const CACCAMO_CENTER = [13.666, 37.933];
+const RAGGIO_VICINANZA_KM = 15;
+
 const map = new mapboxgl.Map({
     container: 'mappa',
     style: 'mapbox://styles/giusifi89/cmpl4lr6n003401r63fof43dl',
@@ -33,20 +39,165 @@ const map = new mapboxgl.Map({
 });
 
 // ============================================================
-// CONTROLLI MAPPA — zoom/bussola + geolocalizzazione
+// CONTROLLI MAPPA — zoom/bussola, geolocalizzazione, ricerca indirizzo
 // ============================================================
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-// Teniamo un riferimento al controllo di geolocalizzazione: ci
-// serve per poterlo attivare noi via codice quando si arriva da
-// un link "dove si trova" (vedi più sotto), non solo quando
-// l'utente preme il pulsantino manualmente.
 const geolocateControl = new mapboxgl.GeolocateControl({
     positionOptions: { enableHighAccuracy: true },
     trackUserLocation: true,
     showUserHeading: true
 });
 map.addControl(geolocateControl, 'top-right');
+
+// Barra di ricerca indirizzo (richiede lo script/CSS del plugin
+// "Geocoder" di Mapbox — vedi le istruzioni per mappa.html).
+if (typeof MapboxGeocoder !== 'undefined') {
+    const geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        marker: { color: '#C1622D' },
+        placeholder: 'Cerca un indirizzo o una via...',
+        language: 'it',
+        countries: 'it',
+        proximity: { longitude: CACCAMO_CENTER[0], latitude: CACCAMO_CENTER[1] }
+    });
+    map.addControl(geocoder, 'top-left');
+} else {
+    console.warn('MapboxGeocoder non è caricato: manca lo script del plugin in mappa.html.');
+}
+
+// ============================================================
+// POSIZIONE UTENTE E PERCORSI REALI
+// ============================================================
+let userLocation = null;      // [lng, lat] dell'utente, appena disponibile
+let pendingRouteTarget = null; // coordinate del monumento in attesa della posizione
+let bannerVisible = false;
+
+function haversineKm(a, b) {
+    const toRad = (deg) => (deg * Math.PI) / 180;
+    const R = 6371; // raggio terrestre in km
+    const dLat = toRad(b[1] - a[1]);
+    const dLon = toRad(b[0] - a[0]);
+    const lat1 = toRad(a[1]);
+    const lat2 = toRad(b[1]);
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+}
+
+// ============================================================
+// BANNER "Attiva la mia posizione" — richiede un tocco reale
+// dell'utente: i browser bloccano l'attivazione automatica via
+// codice per motivi di privacy.
+// ============================================================
+function showLocationPrompt() {
+    if (bannerVisible) return;
+    bannerVisible = true;
+
+    const banner = document.createElement('div');
+    banner.id = 'banner-posizione';
+    banner.style.cssText = `
+        position: absolute; left: 50%; top: 16px; transform: translateX(-50%);
+        z-index: 5; background: rgba(15,25,34,0.92); color: #EFE6D3;
+        border: 1px solid #B8873B; border-radius: 4px; padding: 10px 16px;
+        font-family: sans-serif; font-size: 0.85rem; display: flex;
+        align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        max-width: 90%;
+    `;
+    banner.innerHTML = `
+        <span>📍 Attiva la tua posizione per orientarti</span>
+        <button id="btn-attiva-posizione" style="
+            background:#B8873B; color:#14283A; border:none; border-radius:2px;
+            padding:6px 12px; font-weight:600; cursor:pointer; white-space:nowrap;
+        ">Attiva</button>
+        <button id="btn-chiudi-banner" style="
+            background:transparent; color:#EFE6D3; border:none;
+            font-size:1rem; cursor:pointer; padding:0 2px;
+        ">✕</button>
+    `;
+    document.body.appendChild(banner);
+
+    document.getElementById('btn-attiva-posizione').addEventListener('click', () => {
+        geolocateControl.trigger();
+        banner.remove();
+        bannerVisible = false;
+    });
+    document.getElementById('btn-chiudi-banner').addEventListener('click', () => {
+        banner.remove();
+        bannerVisible = false;
+    });
+}
+
+// Messaggio quando il turista guarda la mappa da lontano (non è
+// ancora arrivato a Caccamo): niente percorso assurdo attraverso
+// mezza Italia, solo un avviso gentile.
+function showFarAwayMessage() {
+    const msg = document.createElement('div');
+    msg.style.cssText = `
+        position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%);
+        z-index: 5; background: rgba(15,25,34,0.92); color: #EFE6D3;
+        border: 1px solid #B8873B; border-radius: 4px; padding: 10px 16px;
+        font-family: sans-serif; font-size: 0.85rem; max-width: 85%; text-align: center;
+    `;
+    msg.textContent = 'Sembra che tu non sia ancora nei dintorni di Caccamo. Quando arriverai, la mappa ti guiderà passo passo fino al monumento!';
+    document.body.appendChild(msg);
+    setTimeout(() => msg.remove(), 5000);
+}
+
+// Chiede il percorso reale (a piedi, lungo le vie) tra la
+// posizione dell'utente e un monumento, tramite il servizio
+// Direzioni di Mapbox, e lo disegna sulla mappa.
+async function drawRouteTo(destCoords) {
+    const url = `https://api.mapbox.com/directions/v5/mapbox/walking/${userLocation[0]},${userLocation[1]};${destCoords[0]},${destCoords[1]}?geometries=geojson&overview=full&access_token=${mapboxgl.accessToken}`;
+    try {
+        const res = await fetch(url);
+        const json = await res.json();
+        if (!json.routes || !json.routes[0]) return;
+
+        const routeGeometry = json.routes[0].geometry;
+        map.getSource('route').setData({ type: 'Feature', geometry: routeGeometry });
+
+        const coords = routeGeometry.coordinates;
+        const bounds = coords.reduce(
+            (b, c) => b.extend(c),
+            new mapboxgl.LngLatBounds(coords[0], coords[0])
+        );
+        map.fitBounds(bounds, { padding: 70 });
+    } catch (err) {
+        console.warn('Errore nel calcolo del percorso:', err);
+    }
+}
+
+// Punto d'ingresso unico per "portami lì": se non abbiamo ancora
+// la posizione dell'utente, la chiediamo e ricordiamo la meta per
+// dopo; se il turista è lontano da Caccamo, avvisiamo invece di
+// disegnare un percorso senza senso.
+function requestRouteTo(destCoords) {
+    if (!userLocation) {
+        pendingRouteTarget = destCoords;
+        showLocationPrompt();
+        return;
+    }
+    if (haversineKm(userLocation, CACCAMO_CENTER) > RAGGIO_VICINANZA_KM) {
+        showFarAwayMessage();
+        return;
+    }
+    drawRouteTo(destCoords);
+}
+
+geolocateControl.on('geolocate', (position) => {
+    userLocation = [position.coords.longitude, position.coords.latitude];
+    if (pendingRouteTarget) {
+        const target = pendingRouteTarget;
+        pendingRouteTarget = null;
+        requestRouteTo(target);
+    }
+});
+
+geolocateControl.on('error', (err) => {
+    alert('Non riesco ad accedere alla tua posizione. Controlla che il GPS sia attivo sul telefono e che il permesso di localizzazione sia concesso al browser, poi riprova.');
+    console.warn('Errore geolocalizzazione:', err);
+});
 
 // ============================================================
 // Funzione Motore 3D
@@ -137,15 +288,14 @@ function create3DLayer(id, modelUrl, coords, options = {}) {
 // ============================================================
 // Vola sul monumento richiesto (?focus=...) e mostra un popup,
 // esattamente come quando lo si tocca a mano sulla mappa.
-// Restituisce true se un monumento è stato trovato ed è stato
-// effettivamente aperto, false altrimenti.
+// Restituisce le coordinate del monumento trovato, o null.
 // ============================================================
 function flyToFocusedMonument(data) {
-    if (!focusParam || !FOCUS_TO_NAME[focusParam]) return false;
+    if (!focusParam || !FOCUS_TO_NAME[focusParam]) return null;
 
     const targetName = FOCUS_TO_NAME[focusParam];
     const targetFeature = data.features.find(f => f.properties.name === targetName);
-    if (!targetFeature) return false;
+    if (!targetFeature) return null;
 
     const coords = targetFeature.geometry.coordinates;
 
@@ -158,7 +308,7 @@ function flyToFocusedMonument(data) {
         </div>
     `).addTo(map);
 
-    return true;
+    return coords;
 }
 
 map.on('load', () => {
@@ -178,8 +328,13 @@ map.on('load', () => {
         type: 'line',
         source: 'route',
         layout: { 'line-join': 'round', 'line-cap': 'round' },
-        paint: { 'line-color': '#CDA843', 'line-width': 8, 'line-opacity': 0.9 }
+        paint: { 'line-color': '#CDA843', 'line-width': 6, 'line-opacity': 0.9 }
     });
+
+    // Il banner compare sempre all'apertura della mappa, non solo
+    // quando si arriva da un monumento specifico: è comodo per
+    // orientarsi anche quando si guarda la mappa in generale.
+    showLocationPrompt();
 
     fetch('data.geojson')
         .then(res => res.json())
@@ -233,61 +388,18 @@ map.on('load', () => {
             });
 
             // Se siamo arrivati da un pulsante "dove si trova" / "Apri la
-            // Mappa" con un monumento specifico, voliamo lì e mostriamo
-            // un banner per attivare la posizione. Non possiamo attivarla
-            // da soli via codice: i browser richiedono un tocco reale
-            // dell'utente per mostrare il popup di richiesta permesso.
-            const foundMonument = flyToFocusedMonument(data);
-            if (foundMonument) {
-                showLocationPrompt();
+            // Mappa" con un monumento specifico, voliamo lì e proviamo
+            // subito a disegnare il percorso reale (se la posizione è
+            // già nota, o appena diventa disponibile).
+            const focusedCoords = flyToFocusedMonument(data);
+            if (focusedCoords) {
+                requestRouteTo(focusedCoords);
             }
         });
-
-    // ============================================================
-    // BANNER "Attiva la mia posizione" — un tocco reale dell'utente,
-    // richiesto dai browser per mostrare il popup di permesso GPS.
-    // ============================================================
-    function showLocationPrompt() {
-        const banner = document.createElement('div');
-        banner.style.cssText = `
-            position: absolute; left: 50%; top: 16px; transform: translateX(-50%);
-            z-index: 5; background: rgba(15,25,34,0.92); color: #EFE6D3;
-            border: 1px solid #B8873B; border-radius: 4px; padding: 10px 16px;
-            font-family: sans-serif; font-size: 0.85rem; display: flex;
-            align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            max-width: 90%;
-        `;
-        banner.innerHTML = `
-            <span>📍 Attiva la tua posizione per orientarti</span>
-            <button id="btn-attiva-posizione" style="
-                background:#B8873B; color:#14283A; border:none; border-radius:2px;
-                padding:6px 12px; font-weight:600; cursor:pointer; white-space:nowrap;
-            ">Attiva</button>
-        `;
-        document.body.appendChild(banner);
-
-        document.getElementById('btn-attiva-posizione').addEventListener('click', () => {
-            geolocateControl.trigger();
-            banner.remove();
-        });
-    }
-
-    // Se la geolocalizzazione fallisce (permesso negato, GPS spento sul
-    // telefono, ecc.) avvisiamo l'utente invece di lasciarlo senza risposta.
-    geolocateControl.on('error', (err) => {
-        alert('Non riesco ad accedere alla tua posizione. Controlla che il GPS sia attivo sul telefono e che il permesso di localizzazione sia concesso al browser, poi riprova.');
-        console.warn('Errore geolocalizzazione:', err);
-    });
 
     map.on('click', 'poi-github', (e) => {
         const p = e.features[0].properties;
         const coords = e.features[0].geometry.coordinates;
-        const userCoords = [map.getCenter().lng, map.getCenter().lat];
-
-        map.getSource('route').setData({
-            type: 'Feature',
-            geometry: { type: 'LineString', coordinates: [userCoords, coords] }
-        });
 
         map.flyTo({ center: coords, zoom: 16, pitch: 45 });
 
@@ -297,5 +409,7 @@ map.on('load', () => {
                 <p style="font-size:12px;">${p.address || ''}</p>
             </div>
         `).addTo(map);
+
+        requestRouteTo(coords);
     });
 });
