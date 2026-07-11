@@ -50,29 +50,82 @@ const geolocateControl = new mapboxgl.GeolocateControl({
 });
 map.addControl(geolocateControl, 'top-right');
 
-// Barra di ricerca indirizzo (richiede lo script/CSS del plugin
-// "Geocoder" di Mapbox — vedi le istruzioni per mappa.html).
+// ============================================================
+// RICERCA PARTENZA/DESTINAZIONE — due campi come su Maps, invece
+// di una singola barra che localizza un solo punto senza generare
+// un percorso.
+// ============================================================
+let originOverrideCoords = null; // impostata solo se l'utente scrive una partenza a mano
+let lastDestination = null;      // ultima destinazione cercata o cliccata
+
+const searchPanel = document.createElement('div');
+searchPanel.id = 'pannello-ricerca';
+searchPanel.style.cssText = `
+    position: absolute; top: 16px; left: 16px; z-index: 6;
+    display: flex; flex-direction: column; gap: 6px; max-width: 280px;
+`;
+document.body.appendChild(searchPanel);
+
+const originContainer = document.createElement('div');
+const destContainer = document.createElement('div');
+searchPanel.appendChild(originContainer);
+searchPanel.appendChild(destContainer);
+
 if (typeof MapboxGeocoder !== 'undefined') {
-    const geocoder = new MapboxGeocoder({
+    const geocoderOrigin = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
-        marker: { color: '#C1622D' },
-        placeholder: 'Cerca un indirizzo o una via...',
+        marker: { color: '#1B4965' },
+        placeholder: 'Punto di partenza (o usa GPS)',
         language: 'it',
         countries: 'it',
         proximity: { longitude: CACCAMO_CENTER[0], latitude: CACCAMO_CENTER[1] }
     });
-    map.addControl(geocoder, 'top-left');
+    geocoderOrigin.addTo(originContainer);
+    geocoderOrigin.on('result', (e) => {
+        originOverrideCoords = e.result.center;
+        if (lastDestination) drawFullRoute();
+    });
+    geocoderOrigin.on('clear', () => { originOverrideCoords = null; });
+
+    const geocoderDestination = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        marker: { color: '#C1622D' },
+        placeholder: 'Dove vuoi andare?',
+        language: 'it',
+        countries: 'it',
+        proximity: { longitude: CACCAMO_CENTER[0], latitude: CACCAMO_CENTER[1] }
+    });
+    geocoderDestination.addTo(destContainer);
+    geocoderDestination.on('result', (e) => {
+        lastDestination = e.result.center;
+        map.flyTo({ center: lastDestination, zoom: 16 });
+        drawFullRoute();
+    });
 } else {
-    console.warn('MapboxGeocoder non è caricato: manca lo script del plugin in mappa.html.');
+    console.warn('MapboxGeocoder non è caricato: mancano lo script/CSS del plugin in mappa.html.');
 }
+
+// Disegna il percorso tra partenza (scritta a mano, o GPS se vuota)
+// e l'ultima destinazione cercata. Se non c'è né una partenza scritta
+// né una posizione GPS nota, la chiede prima di procedere.
+function drawFullRoute() {
+    const origin = originOverrideCoords || userLocation;
+    if (!origin) {
+        pendingRouteTarget = lastDestination;
+        showLocationPrompt();
+        return;
+    }
+    drawRouteBetween(origin, lastDestination);
+}
+
 
 // ============================================================
 // POSIZIONE UTENTE E PERCORSI REALI
 // ============================================================
 let userLocation = null;      // [lng, lat] dell'utente, appena disponibile
 let pendingRouteTarget = null; // coordinate del monumento in attesa della posizione
-let bannerVisible = false;
 
 function haversineKm(a, b) {
     const toRad = (deg) => (deg * Math.PI) / 180;
@@ -91,8 +144,8 @@ function haversineKm(a, b) {
 // codice per motivi di privacy.
 // ============================================================
 function showLocationPrompt() {
-    if (bannerVisible) return;
-    bannerVisible = true;
+    const existing = document.getElementById('banner-posizione');
+    if (existing) return; // già visibile, non serve un secondo banner
 
     const banner = document.createElement('div');
     banner.id = 'banner-posizione';
@@ -118,14 +171,21 @@ function showLocationPrompt() {
     document.body.appendChild(banner);
 
     document.getElementById('btn-attiva-posizione').addEventListener('click', () => {
+        const btn = document.getElementById('btn-attiva-posizione');
+        btn.textContent = 'Ricerca in corso…';
+        btn.disabled = true;
         geolocateControl.trigger();
-        banner.remove();
-        bannerVisible = false;
     });
     document.getElementById('btn-chiudi-banner').addEventListener('click', () => {
         banner.remove();
-        bannerVisible = false;
     });
+}
+
+// Chiamata quando la posizione arriva davvero: chiude il banner
+// (se presente) e sblocca eventuali percorsi in attesa.
+function removeLocationPrompt() {
+    const banner = document.getElementById('banner-posizione');
+    if (banner) banner.remove();
 }
 
 // Messaggio quando il turista guarda la mappa da lontano (non è
@@ -144,11 +204,11 @@ function showFarAwayMessage() {
     setTimeout(() => msg.remove(), 5000);
 }
 
-// Chiede il percorso reale (a piedi, lungo le vie) tra la
-// posizione dell'utente e un monumento, tramite il servizio
-// Direzioni di Mapbox, e lo disegna sulla mappa.
-async function drawRouteTo(destCoords) {
-    const url = `https://api.mapbox.com/directions/v5/mapbox/walking/${userLocation[0]},${userLocation[1]};${destCoords[0]},${destCoords[1]}?geometries=geojson&overview=full&access_token=${mapboxgl.accessToken}`;
+// Chiede il percorso reale (a piedi, lungo le vie) tra due punti
+// qualsiasi tramite il servizio Direzioni di Mapbox, e lo disegna
+// sulla mappa.
+async function drawRouteBetween(originCoords, destCoords) {
+    const url = `https://api.mapbox.com/directions/v5/mapbox/walking/${originCoords[0]},${originCoords[1]};${destCoords[0]},${destCoords[1]}?geometries=geojson&overview=full&access_token=${mapboxgl.accessToken}`;
     try {
         const res = await fetch(url);
         const json = await res.json();
@@ -168,11 +228,13 @@ async function drawRouteTo(destCoords) {
     }
 }
 
-// Punto d'ingresso unico per "portami lì": se non abbiamo ancora
-// la posizione dell'utente, la chiediamo e ricordiamo la meta per
-// dopo; se il turista è lontano da Caccamo, avvisiamo invece di
-// disegnare un percorso senza senso.
+// Punto d'ingresso per "portami lì" dalla mappa (click su un
+// monumento, o arrivo da un link "dove si trova"): usa sempre la
+// posizione GPS come partenza. Se non c'è ancora, la chiede e
+// ricorda la meta per dopo; se il turista è lontano da Caccamo,
+// avvisa invece di disegnare un percorso senza senso.
 function requestRouteTo(destCoords) {
+    lastDestination = destCoords;
     if (!userLocation) {
         pendingRouteTarget = destCoords;
         showLocationPrompt();
@@ -182,11 +244,12 @@ function requestRouteTo(destCoords) {
         showFarAwayMessage();
         return;
     }
-    drawRouteTo(destCoords);
+    drawRouteBetween(userLocation, destCoords);
 }
 
 geolocateControl.on('geolocate', (position) => {
     userLocation = [position.coords.longitude, position.coords.latitude];
+    removeLocationPrompt();
     if (pendingRouteTarget) {
         const target = pendingRouteTarget;
         pendingRouteTarget = null;
@@ -195,8 +258,14 @@ geolocateControl.on('geolocate', (position) => {
 });
 
 geolocateControl.on('error', (err) => {
-    alert('Non riesco ad accedere alla tua posizione. Controlla che il GPS sia attivo sul telefono e che il permesso di localizzazione sia concesso al browser, poi riprova.');
-    console.warn('Errore geolocalizzazione:', err);
+    const btn = document.getElementById('btn-attiva-posizione');
+    if (btn) {
+        btn.textContent = 'Riprova';
+        btn.disabled = false;
+    } else {
+        showLocationPrompt();
+    }
+    console.warn('Errore geolocalizzazione (controlla che il GPS sia attivo sul telefono):', err);
 });
 
 // ============================================================
