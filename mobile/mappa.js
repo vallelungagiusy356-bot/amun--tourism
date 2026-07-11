@@ -1,6 +1,28 @@
 // TOKEN Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l1c2lmaTg5IiwiYSI6ImNtcGNvYXpqYTAwZ3kzNHM5amI4emxxOTAifQ.iNuDFyanN-ZEyl8-zRevGw';
 
+// ============================================================
+// FOCUS DA CHAT — legge ?focus=NOME dall'indirizzo della pagina
+// (es. mappa.html?focus=castello, generato dal pulsante "Apri la
+// Mappa" nelle schede monumento e, in futuro, dai pulsanti "dove
+// si trova" della chat sul sito desktop).
+// ============================================================
+const urlParams = new URLSearchParams(window.location.search);
+const focusParam = urlParams.get('focus');
+
+// Ponte tra lo slug usato nei link (es. "castello") e il nome
+// esatto del monumento così com'è scritto in data.geojson.
+// Se in futuro aggiungi altri monumenti con un modello 3D,
+// aggiungi qui la riga corrispondente.
+const FOCUS_TO_NAME = {
+    castello: "Castello di Caccamo",
+    badia: "Chiesa di San Benedetto alla Badia",
+    santamaria: "Chiesa Santa Maria degli Angeli",
+    sangiorgio: "Duomo di San Giorgio Martire",
+    annunziata: "Parrocchia SS. Annunziata",
+    cappuccini: "Convento dei Cappuccini"
+};
+
 const map = new mapboxgl.Map({
     container: 'mappa',
     style: 'mapbox://styles/giusifi89/cmpl4lr6n003401r63fof43dl',
@@ -15,11 +37,16 @@ const map = new mapboxgl.Map({
 // ============================================================
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-map.addControl(new mapboxgl.GeolocateControl({
+// Teniamo un riferimento al controllo di geolocalizzazione: ci
+// serve per poterlo attivare noi via codice quando si arriva da
+// un link "dove si trova" (vedi più sotto), non solo quando
+// l'utente preme il pulsantino manualmente.
+const geolocateControl = new mapboxgl.GeolocateControl({
     positionOptions: { enableHighAccuracy: true },
     trackUserLocation: true,
     showUserHeading: true
-}), 'top-right');
+});
+map.addControl(geolocateControl, 'top-right');
 
 // ============================================================
 // Funzione Motore 3D
@@ -31,11 +58,11 @@ map.addControl(new mapboxgl.GeolocateControl({
 //   - tint: colore esadecimale opzionale (es. "#D2B48C"). Se
 //     omesso, il modello mantiene i suoi colori/texture originali.
 //
-// NOVITÀ: il modello viene ora agganciato all'elevazione reale
-// del terreno tramite map.queryTerrainElevation(), invece di
-// restare fisso a quota 0. Questo risolve il problema degli
-// edifici che "galleggiano" sopra o sotto il livello del suolo
-// nelle zone collinari.
+// Il modello viene agganciato all'elevazione reale del terreno
+// tramite map.queryTerrainElevation(), invece di restare fisso
+// a quota 0. Questo risolve il problema degli edifici che
+// "galleggiano" sopra o sotto il livello del suolo nelle zone
+// collinari.
 // ============================================================
 function create3DLayer(id, modelUrl, coords, options = {}) {
     const offset = options.offset || { x: 0, y: 0 };
@@ -83,16 +110,10 @@ function create3DLayer(id, modelUrl, coords, options = {}) {
         render: function (gl, matrix) {
             const m = new THREE.Matrix4().fromArray(matrix);
 
-            // Elevazione reale del terreno in quel punto (metri).
-            // Se il DEM non è ancora caricato, queryTerrainElevation
-            // può restituire null: in quel caso si usa 0 come fallback,
-            // e il repaint successivo correggerà comunque la quota.
             const elevation = this.map.queryTerrainElevation(coords) || 0;
             const merc = mapboxgl.MercatorCoordinate.fromLngLat(coords, elevation);
 
-            // Conversione fissa da Y-up (formato glTF) a Z-up (formato Mapbox)
             const rotationX = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2);
-            // Rotazione regolabile per allineare l'edificio alle vie reali
             const rotationY = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(0, 1, 0), THREE.MathUtils.degToRad(rotationDeg));
 
             const l = new THREE.Matrix4()
@@ -113,12 +134,34 @@ function create3DLayer(id, modelUrl, coords, options = {}) {
     };
 }
 
+// ============================================================
+// Vola sul monumento richiesto (?focus=...) e mostra un popup,
+// esattamente come quando lo si tocca a mano sulla mappa.
+// Restituisce true se un monumento è stato trovato ed è stato
+// effettivamente aperto, false altrimenti.
+// ============================================================
+function flyToFocusedMonument(data) {
+    if (!focusParam || !FOCUS_TO_NAME[focusParam]) return false;
+
+    const targetName = FOCUS_TO_NAME[focusParam];
+    const targetFeature = data.features.find(f => f.properties.name === targetName);
+    if (!targetFeature) return false;
+
+    const coords = targetFeature.geometry.coordinates;
+
+    map.flyTo({ center: coords, zoom: 17, pitch: 60 });
+
+    new mapboxgl.Popup({ className: 'popup-medievale' }).setLngLat(coords).setHTML(`
+        <div style="padding:5px; text-align:center;">
+            <h3 style="font-family:'Cinzel', serif; color:#CDA843;">${targetFeature.properties.name}</h3>
+            <p style="font-size:12px;">${targetFeature.properties.address || ''}</p>
+        </div>
+    `).addTo(map);
+
+    return true;
+}
+
 map.on('load', () => {
-    // ============================================================
-    // TERRENO 3D — aggancia l'intera mappa (e di conseguenza i calcoli
-    // di elevazione usati da create3DLayer) al DEM reale di Mapbox.
-    // Senza questo, queryTerrainElevation() restituirebbe sempre 0/null.
-    // ============================================================
     map.addSource('mapbox-dem', {
         'type': 'raster-dem',
         'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
@@ -141,8 +184,6 @@ map.on('load', () => {
     fetch('data.geojson')
         .then(res => res.json())
         .then(data => {
-            // Caricamento Modelli 3D — legge scale/rotation/tint
-            // per ogni monumento, se presenti nel geojson
             data.features.forEach((feature, index) => {
                 if (feature.properties.model) {
                     map.addLayer(create3DLayer(
@@ -190,6 +231,17 @@ map.on('load', () => {
                     }
                 });
             });
+
+            // Se siamo arrivati da un pulsante "dove si trova" / "Apri la
+            // Mappa" con un monumento specifico, voliamo lì e attiviamo
+            // subito la geolocalizzazione, così il turista vede la sua
+            // posizione rispetto al monumento e può orientarsi da subito.
+            const foundMonument = flyToFocusedMonument(data);
+            if (foundMonument) {
+                // Piccolo ritardo: il controllo deve finire di montarsi
+                // sulla mappa prima di poter essere attivato via codice.
+                setTimeout(() => geolocateControl.trigger(), 800);
+            }
         });
 
     map.on('click', 'poi-github', (e) => {
