@@ -233,16 +233,51 @@ map.on('load', () => {
             });
 
             // Se siamo arrivati da un pulsante "dove si trova" / "Apri la
-            // Mappa" con un monumento specifico, voliamo lì e attiviamo
-            // subito la geolocalizzazione, così il turista vede la sua
-            // posizione rispetto al monumento e può orientarsi da subito.
+            // Mappa" con un monumento specifico, voliamo lì e mostriamo
+            // un banner per attivare la posizione. Non possiamo attivarla
+            // da soli via codice: i browser richiedono un tocco reale
+            // dell'utente per mostrare il popup di richiesta permesso.
             const foundMonument = flyToFocusedMonument(data);
             if (foundMonument) {
-                // Piccolo ritardo: il controllo deve finire di montarsi
-                // sulla mappa prima di poter essere attivato via codice.
-                setTimeout(() => geolocateControl.trigger(), 800);
+                showLocationPrompt();
             }
         });
+
+    // ============================================================
+    // BANNER "Attiva la mia posizione" — un tocco reale dell'utente,
+    // richiesto dai browser per mostrare il popup di permesso GPS.
+    // ============================================================
+    function showLocationPrompt() {
+        const banner = document.createElement('div');
+        banner.style.cssText = `
+            position: absolute; left: 50%; top: 16px; transform: translateX(-50%);
+            z-index: 5; background: rgba(15,25,34,0.92); color: #EFE6D3;
+            border: 1px solid #B8873B; border-radius: 4px; padding: 10px 16px;
+            font-family: sans-serif; font-size: 0.85rem; display: flex;
+            align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            max-width: 90%;
+        `;
+        banner.innerHTML = `
+            <span>📍 Attiva la tua posizione per orientarti</span>
+            <button id="btn-attiva-posizione" style="
+                background:#B8873B; color:#14283A; border:none; border-radius:2px;
+                padding:6px 12px; font-weight:600; cursor:pointer; white-space:nowrap;
+            ">Attiva</button>
+        `;
+        document.body.appendChild(banner);
+
+        document.getElementById('btn-attiva-posizione').addEventListener('click', () => {
+            geolocateControl.trigger();
+            banner.remove();
+        });
+    }
+
+    // Se la geolocalizzazione fallisce (permesso negato, GPS spento sul
+    // telefono, ecc.) avvisiamo l'utente invece di lasciarlo senza risposta.
+    geolocateControl.on('error', (err) => {
+        alert('Non riesco ad accedere alla tua posizione. Controlla che il GPS sia attivo sul telefono e che il permesso di localizzazione sia concesso al browser, poi riprova.');
+        console.warn('Errore geolocalizzazione:', err);
+    });
 
     map.on('click', 'poi-github', (e) => {
         const p = e.features[0].properties;
