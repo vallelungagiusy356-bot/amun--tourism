@@ -198,6 +198,7 @@ window.silktideConsentManager.init({
             <button id="voice-toggle-btn" class="close-chat-btn" title="Attiva/disattiva voce" aria-label="Attiva o disattiva la voce">🔊</button>
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
+        <div class="premium-status-bar" id="premium-status-bar"></div>
         <div class="chat-messages">
             <div class="message" data-i18n="chat.citizen_msg1">Benvenuto nella sezione del cittadino! Esplora le card al centro o chiedimi dettagli su eventi e tradizioni del borgo.</div>
         </div>
@@ -215,6 +216,7 @@ window.silktideConsentManager.init({
             const openBtn = document.getElementById("chat-open-btn");
             openBtn.addEventListener("click", () => {
                 chat.classList.add("active");
+                updatePremiumStatusDisplay();
                 loadTopicMenu();
             });
             closeBtn.addEventListener("click", (e) => {
@@ -251,6 +253,7 @@ window.silktideConsentManager.init({
                 btn.addEventListener("click", () => {
                     currentLang = btn.dataset.lang;
                     loadLanguage(currentLang);
+                    updatePremiumStatusDisplay();
                     // Se la chat è aperta, ricarica il menu con le etichette nella nuova lingua
                     const oldMenu = document.querySelector('.chat-messages .topic-menu');
                     if (oldMenu) oldMenu.remove();
@@ -520,6 +523,43 @@ window.silktideConsentManager.init({
                 }
             }
 
+            // ============================================================
+            // INDICATORE PREMIUM — mostra sempre, in chiaro, se sei Premium
+            // (e fino a quando) oppure in versione gratuita, invece di
+            // doverlo dedurre dalle risposte della chat.
+            // ============================================================
+            const PREMIUM_STATUS_TEXT = {
+                it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
+                en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
+                fr: { active: (d) => `👑 Premium actif jusqu'au ${d}`, free: "🔓 Version gratuite" },
+                es: { active: (d) => `👑 Premium activo hasta el ${d}`, free: "🔓 Versión gratuita" },
+                de: { active: (d) => `👑 Premium aktiv bis ${d}`, free: "🔓 Kostenlose Version" }
+            };
+
+            function updatePremiumStatusDisplay() {
+                const bar = document.getElementById('premium-status-bar');
+                if (!bar) return;
+                const texts = PREMIUM_STATUS_TEXT[currentLang] || PREMIUM_STATUS_TEXT.it;
+                const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+                if (raw) {
+                    try {
+                        const data = JSON.parse(raw);
+                        if (new Date(data.expires_at) > new Date()) {
+                            const d = new Date(data.expires_at);
+                            const formatted = d.toLocaleDateString(currentLang, { day: 'numeric', month: 'long' }) +
+                                ' ' + d.toLocaleTimeString(currentLang, { hour: '2-digit', minute: '2-digit' });
+                            bar.textContent = texts.active(formatted);
+                            bar.classList.add('premium-active');
+                            bar.classList.remove('premium-free');
+                            return;
+                        }
+                    } catch (e) { /* codice non valido, trattalo come gratuito */ }
+                }
+                bar.textContent = texts.free;
+                bar.classList.add('premium-free');
+                bar.classList.remove('premium-active');
+            }
+
             function storeAccessCode(code, expiresAt) {
                 localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
                     code: code,
@@ -547,6 +587,7 @@ window.silktideConsentManager.init({
                         const expiryDate = new Date(data.expires_at);
                         const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
                         appendChatMessage(`Premium attivato! Avrai accesso ai contenuti esclusivi fino al ${formatted}.`, 'castellana');
+                        updatePremiumStatusDisplay();
                     } else {
                         appendChatMessage(data.message || 'Codice non valido.', 'castellana');
                     }
