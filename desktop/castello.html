@@ -268,6 +268,7 @@ window.silktideConsentManager.init({
             <span data-i18n="chat.title">La Castellana</span>
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
+        <div class="premium-status-bar" id="premium-status-bar"></div>
         <div class="chat-messages">
             <div class="message system-msg" data-i18n="pages.castle_page.welcomemsg_felicia">
                 Ciao viandante, sono la Castellana! Chiedimi pure del mio Castello.
@@ -286,6 +287,7 @@ window.silktideConsentManager.init({
 
         openBtn.addEventListener("click", () => {
             chat.classList.add("active");
+            updatePremiumStatusDisplay();
             loadTopicMenu();
         });
         closeBtn.addEventListener("click", () => chat.classList.remove("active"));
@@ -326,6 +328,7 @@ window.silktideConsentManager.init({
                 btn.addEventListener("click", () => {
                     currentLang = btn.dataset.lang;
                     loadLanguage(currentLang);
+                    updatePremiumStatusDisplay();
                 });
             });
             loadLanguage(currentLang);
@@ -545,6 +548,42 @@ window.silktideConsentManager.init({
             }
         }
 
+        // ============================================================
+        // INDICATORE PREMIUM — mostra sempre, in chiaro, se sei Premium
+        // (e fino a quando) oppure in versione gratuita.
+        // ============================================================
+        const PREMIUM_STATUS_TEXT = {
+            it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
+            en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
+            fr: { active: (d) => `👑 Premium actif jusqu'au ${d}`, free: "🔓 Version gratuite" },
+            es: { active: (d) => `👑 Premium activo hasta el ${d}`, free: "🔓 Versión gratuita" },
+            de: { active: (d) => `👑 Premium aktiv bis ${d}`, free: "🔓 Kostenlose Version" }
+        };
+
+        function updatePremiumStatusDisplay() {
+            const bar = document.getElementById('premium-status-bar');
+            if (!bar) return;
+            const texts = PREMIUM_STATUS_TEXT[currentLang] || PREMIUM_STATUS_TEXT.it;
+            const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    if (new Date(data.expires_at) > new Date()) {
+                        const d = new Date(data.expires_at);
+                        const formatted = d.toLocaleDateString(currentLang, { day: 'numeric', month: 'long' }) +
+                            ' ' + d.toLocaleTimeString(currentLang, { hour: '2-digit', minute: '2-digit' });
+                        bar.textContent = texts.active(formatted);
+                        bar.classList.add('premium-active');
+                        bar.classList.remove('premium-free');
+                        return;
+                    }
+                } catch (e) { /* codice non valido, trattalo come gratuito */ }
+            }
+            bar.textContent = texts.free;
+            bar.classList.add('premium-free');
+            bar.classList.remove('premium-active');
+        }
+
         function storeAccessCode(code, expiresAt) {
             localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
                 code: code,
@@ -572,6 +611,7 @@ window.silktideConsentManager.init({
                     const expiryDate = new Date(data.expires_at);
                     const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
                     appendChatMessage(t('premium.activated_prefix', 'Premium attivato! Avrai accesso ai contenuti esclusivi fino al ') + formatted + '.', 'castellana');
+                    updatePremiumStatusDisplay();
                     loadTopicMenu();
                 } else {
                     appendChatMessage(data.message || t('premium.invalid_code', 'Codice non valido.'), 'castellana');
