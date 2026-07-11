@@ -383,9 +383,30 @@ window.silktideConsentManager.init({
             }
         };
 
+        const MAP_LABEL_BY_LANG = {
+            it: "Vedi sulla mappa →", en: "See on the map →", fr: "Voir sur la carte →",
+            es: "Ver en el mapa →", de: "Auf der Karte ansehen →"
+        };
+
         function getLinkLabel(link) {
+            if (link && link.includes('mappa.html')) {
+                return MAP_LABEL_BY_LANG[currentLang] || MAP_LABEL_BY_LANG.it;
+            }
             const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
             return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
+        }
+
+        function openMapOverlay(url) {
+            const overlay = document.createElement('div');
+            overlay.className = 'map-overlay';
+            overlay.innerHTML = `
+                <button class="map-overlay-close" aria-label="Chiudi la mappa">✕</button>
+                <iframe src="${url}" allow="geolocation" title="Mappa Amunì"></iframe>
+            `;
+            document.body.appendChild(overlay);
+            overlay.querySelector('.map-overlay-close').addEventListener('click', () => {
+                overlay.remove();
+            });
         }
 
         function appendChatMessage(text, sender, link) {
@@ -399,7 +420,13 @@ window.silktideConsentManager.init({
                 const btn = document.createElement('button');
                 btn.className = 'chat-link-btn';
                 btn.textContent = getLinkLabel(link);
-                btn.addEventListener('click', () => { window.location.href = link; });
+                btn.addEventListener('click', () => {
+                    if (link.includes('mappa.html')) {
+                        openMapOverlay(link);
+                    } else {
+                        window.location.href = link;
+                    }
+                });
                 messagesBox.appendChild(btn);
             }
 
