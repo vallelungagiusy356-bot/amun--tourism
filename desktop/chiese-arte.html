@@ -6,10 +6,6 @@
 
   <!-- ============================================================
      BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
-     Da incollare dentro <head> di OGNI pagina del sito,
-     subito dopo <meta name="viewport" ...>.
-     Include: Silktide Consent Manager (banner GDPR, gratuito)
-     + Google Analytics G-DNTGGXSSM0 (parte SOLO dopo consenso)
      ============================================================ -->
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -30,24 +26,16 @@
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
 <script>
 window.silktideConsentManager.init({
-  backdrop: {
-    show: false
-  },
-  icon: {
-    position: "bottomLeft"
-  },
-  prompt: {
-    position: "bottomCenter"
-  },
+  backdrop: { show: false },
+  icon: { position: "bottomLeft" },
+  prompt: { position: "bottomCenter" },
   consentTypes: [
     {
       id: "essential",
       label: "Essenziali",
       description: "<p>Cookie tecnici necessari al funzionamento del sito, come la memoria della lingua scelta e del codice Premium attivato. Non possono essere disattivati.</p>",
       required: true,
-      onAccept: function() {
-        // Cookie tecnici: nessuna azione necessaria
-      }
+      onAccept: function() {}
     },
     {
       id: "analytics",
@@ -55,14 +43,8 @@ window.silktideConsentManager.init({
       description: "Questi cookie ci aiutano a capire come i visitatori usano il sito, in forma aggregata e anonima, per migliorare i contenuti di Amunì Tourism.",
       required: false,
       gtag: "analytics_storage",
-      scripts: [
-        {
-          url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0",
-          load: "async"
-        }
-      ],
+      scripts: [{ url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0", load: "async" }],
       onAccept: function() {
-        // Google Analytics 4 (G-DNTGGXSSM0)
         window.dataLayer = window.dataLayer || [];
         function gtag() { window.dataLayer.push(arguments); }
         gtag('js', new Date());
@@ -293,6 +275,7 @@ window.silktideConsentManager.init({
       <div class="chat-header">
           <div class="avatar-status-dot"></div>
           <span data-i18n="chat.title">La Castellana</span>
+          <button id="voice-toggle-btn" class="close-chat-btn" title="Attiva/disattiva voce" aria-label="Attiva o disattiva la voce">🔊</button>
           <button id="close-chat" class="close-chat-btn">✕</button>
       </div>
       <div class="premium-status-bar" id="premium-status-bar"></div>
@@ -315,7 +298,10 @@ window.silktideConsentManager.init({
           updatePremiumStatusDisplay();
           loadTopicMenu();
       });
-      closeChat.addEventListener('click', () => chatBox.classList.remove('active'));
+      closeChat.addEventListener('click', () => {
+          chatBox.classList.remove('active');
+          castellanaZitta();
+      });
 
       // --- LOGICA MODAL ---
       const cards = document.querySelectorAll('.card');
@@ -333,7 +319,7 @@ window.silktideConsentManager.init({
       modalCloseBtn.addEventListener('click', () => modal.classList.remove('active'));
       modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 
-      // --- LOGICA LINGUA (STANDARD) ---
+      // --- LOGICA LINGUA ---
       let currentLang = localStorage.getItem("lang") || "it";
       function loadLanguage(lang) {
           fetch(`./lang/${lang}.json`)
@@ -376,6 +362,68 @@ window.silktideConsentManager.init({
       // ============================================================
       const API_BASE_URL = "https://castellana.pythonanywhere.com";
       const PREMIUM_STORAGE_KEY = "amuni_premium_access";
+
+      // ============================================================
+      // TTS AVANZATO — La Castellana parla
+      // ============================================================
+      const VOICE_PREF_KEY = "amuni_voice_enabled";
+      let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
+      const voiceToggleBtn = document.getElementById("voice-toggle-btn");
+      let voceCastellana = null;
+
+      function trovaVoceCastellana() {
+          const voci = window.speechSynthesis.getVoices();
+          const preferenze = ['Google italiano', 'Microsoft Elsa', 'Samantha', 'Alice', 'it-IT'];
+          for (let nome of preferenze) {
+              const voce = voci.find(v => v.name.includes(nome) || v.lang === 'it-IT');
+              if (voce) return voce;
+          }
+          return voci.find(v => v.lang && v.lang.startsWith('it')) || voci[0];
+      }
+
+      window.speechSynthesis.onvoiceschanged = function() {
+          voceCastellana = trovaVoceCastellana();
+      };
+
+      function updateVoiceToggleIcon() {
+          if (voiceToggleBtn) voiceToggleBtn.textContent = voiceEnabled ? "🔊" : "🔇";
+      }
+      updateVoiceToggleIcon();
+
+      if (voiceToggleBtn) {
+          voiceToggleBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              voiceEnabled = !voiceEnabled;
+              localStorage.setItem(VOICE_PREF_KEY, voiceEnabled ? "on" : "off");
+              updateVoiceToggleIcon();
+              if (!voiceEnabled && "speechSynthesis" in window) {
+                  window.speechSynthesis.cancel();
+              }
+          });
+      }
+
+      function ttsLangCode(lang) {
+          const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+          return map[lang] || "it-IT";
+      }
+
+      function speakText(text) {
+          if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
+          window.speechSynthesis.cancel();
+
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.voice = voceCastellana;
+          utterance.lang = ttsLangCode(currentLang);
+          utterance.rate = 0.82;
+          utterance.pitch = 0.95;
+          utterance.volume = 1.0;
+
+          window.speechSynthesis.speak(utterance);
+      }
+
+      function castellanaZitta() {
+          if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      }
 
       function getPageSlug() {
           const path = window.location.pathname;
@@ -453,16 +501,52 @@ window.silktideConsentManager.init({
       }
 
       function appendChatMessage(text, sender, link) {
-          const msg = document.createElement('div');
-          msg.className = 'message' + (sender === 'user' ? ' user-msg' : '');
-          msg.textContent = text;
           const messagesBox = document.querySelector('.chat-messages');
-          messagesBox.appendChild(msg);
+
+          const msgWrap = document.createElement('div');
+          msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
+          msgWrap.style.cssText = 'display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;';
+
+          const msg = document.createElement('div');
+          msg.className = 'message-bubble';
+          msg.style.cssText = 'flex:1; padding:12px 16px; border-radius:14px; background:' + 
+              (sender === 'user' ? '#7a1f2b; color:#fff;' : '#fdf6e8; color:#3a2a10;') +
+              ' line-height:1.6; font-size:15px;';
+          msg.textContent = text;
+          msgWrap.appendChild(msg);
+
+          if (sender !== 'user' && voiceEnabled) {
+              const audioBtn = document.createElement('button');
+              audioBtn.innerHTML = '🔊';
+              audioBtn.title = 'Ascolta la Castellana';
+              audioBtn.style.cssText = `
+                  background: rgba(184, 135, 59, 0.15);
+                  border: none;
+                  border-radius: 50%;
+                  width: 36px;
+                  height: 36px;
+                  font-size: 16px;
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                  margin-top: 4px;
+                  transition: background 0.2s;
+              `;
+              audioBtn.onmouseenter = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.35)';
+              audioBtn.onmouseleave = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.15)';
+              audioBtn.onclick = () => speakText(text);
+              msgWrap.appendChild(audioBtn);
+          }
+
+          messagesBox.appendChild(msgWrap);
 
           if (link) {
               const btn = document.createElement('button');
               btn.className = 'chat-link-btn';
               btn.textContent = getLinkLabel(link);
+              btn.style.cssText = 'margin-left: 44px; margin-top: 4px;';
               btn.addEventListener('click', () => {
                   if (link.includes('mappa.html')) {
                       openMapOverlay(link);
@@ -476,9 +560,6 @@ window.silktideConsentManager.init({
           messagesBox.scrollTop = messagesBox.scrollHeight;
       }
 
-      // ============================================================
-      // MENU A PULSANTI (topic) — mostra le voci disponibili per la pagina
-      // ============================================================
       function renderTopicMenu(menu) {
           if (!menu || !menu.length) return;
           const messagesBox = document.querySelector('.chat-messages');
@@ -539,6 +620,7 @@ window.silktideConsentManager.init({
               if (!res.ok) throw new Error('Risposta non valida dal server');
               const data = await res.json();
               appendChatMessage(data.reply, 'castellana', data.link);
+              if (data.speak || voiceEnabled) speakText(data.reply);
           } catch (err) {
               console.error('Errore richiesta topic:', err);
               appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
@@ -588,10 +670,6 @@ window.silktideConsentManager.init({
           }
       }
 
-      // ============================================================
-      // INDICATORE PREMIUM — mostra sempre, in chiaro, se sei Premium
-      // (e fino a quando) oppure in versione gratuita.
-      // ============================================================
       const PREMIUM_STATUS_TEXT = {
           it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
           en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
@@ -688,6 +766,7 @@ window.silktideConsentManager.init({
 
               const data = await res.json();
               appendChatMessage(data.reply, 'castellana', data.link);
+              if (data.speak || voiceEnabled) speakText(data.reply);
 
           } catch (err) {
               console.error('Errore chat:', err);
@@ -726,7 +805,6 @@ window.silktideConsentManager.init({
         );
       });
 
-      // Link di acquisto Stripe — NON ANCORA ATTIVO
       document.getElementById('btn-buy-premium').addEventListener('click', (e) => {
         e.preventDefault();
         alert('Il pagamento sarà disponibile a breve. Torna presto!');
