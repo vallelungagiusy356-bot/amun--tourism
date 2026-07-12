@@ -253,7 +253,7 @@ window.silktideConsentManager.init({
         });
         closeBtn.addEventListener("click", () => {
             chat.classList.remove("active");
-            if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+            castellanaZitta();
         });
 
         let currentLang = localStorage.getItem("lang") || "it";
@@ -294,7 +294,7 @@ window.silktideConsentManager.init({
             cunto1: {
                 title: "[Cunto 1 — titolo da inserire]",
                 who: "[Narratore da inserire]",
-                audioUrl: null, // quando avrai il file registrato: "audio/cunto1.mp3"
+                audioUrl: null,
                 lines: [
                     { start: 0,   end: 4.5,  dialect: "[riga 1 in dialetto da inserire]",
                       it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
@@ -305,7 +305,7 @@ window.silktideConsentManager.init({
             cunto2: {
                 title: "[Cunto 2 — titolo da inserire]",
                 who: "[Narratore da inserire]",
-                audioUrl: null, // quando avrai il file registrato: "audio/cunto2.mp3"
+                audioUrl: null,
                 lines: [
                     { start: 0,   end: 5,    dialect: "[riga 1 in dialetto da inserire]",
                       it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
@@ -316,7 +316,7 @@ window.silktideConsentManager.init({
             preghiera1: {
                 title: "[Preghiera 1 — titolo da inserire]",
                 who: "[Narratore da inserire]",
-                audioUrl: null, // quando avrai il file registrato: "audio/preghiera1.mp3"
+                audioUrl: null,
                 lines: [
                     { start: 0,   end: 4,    dialect: "[riga 1 in dialetto da inserire]",
                       it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
@@ -327,7 +327,7 @@ window.silktideConsentManager.init({
             preghiera2: {
                 title: "[Preghiera 2 — titolo da inserire]",
                 who: "[Narratore da inserire]",
-                audioUrl: null, // quando avrai il file registrato: "audio/preghiera2.mp3"
+                audioUrl: null,
                 lines: [
                     { start: 0,   end: 4,    dialect: "[riga 1 in dialetto da inserire]",
                       it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
@@ -376,7 +376,6 @@ window.silktideConsentManager.init({
             }
         }
 
-        // Ferma qualsiasi riproduzione in corso (voce sintetica o audio reale)
         function stopPlayback(){
             playing = false;
             playBtn.textContent = "▶";
@@ -428,7 +427,6 @@ window.silktideConsentManager.init({
             });
         }
 
-        // --- Modalità voce sintetica: legge le righe una dopo l'altra ---
         function speakLineIndex(i){
             const track = tracks[activeTrackId];
             if (i >= track.lines.length){
@@ -452,7 +450,6 @@ window.silktideConsentManager.init({
             window.speechSynthesis.speak(utterance);
         }
 
-        // --- Modalità audio reale (quando track.audioUrl è impostato) ---
         realAudioEl.addEventListener("loadedmetadata", () => {
             totTimeEl.textContent = fmt(realAudioEl.duration);
         });
@@ -516,12 +513,28 @@ window.silktideConsentManager.init({
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
 
         // ============================================================
-        // VOCE SINTETICA (browser) — verrà sostituita da audio reali
-        // quando saranno disponibili i file registrati.
+        // TTS AVANZATO — La Castellana parla
         // ============================================================
         const VOICE_PREF_KEY = "amuni_voice_enabled";
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
         const voiceToggleBtn = document.getElementById("voice-toggle-btn");
+        let voceCastellana = null;
+
+        // Trova la migliore voce italiana disponibile nel browser
+        function trovaVoceCastellana() {
+            const voci = window.speechSynthesis.getVoices();
+            const preferenze = ['Google italiano', 'Microsoft Elsa', 'Samantha', 'Alice', 'it-IT'];
+            for (let nome of preferenze) {
+                const voce = voci.find(v => v.name.includes(nome) || v.lang === 'it-IT');
+                if (voce) return voce;
+            }
+            return voci.find(v => v.lang && v.lang.startsWith('it')) || voci[0];
+        }
+
+        // Le voci si caricano in modo asincrono
+        window.speechSynthesis.onvoiceschanged = function() {
+            voceCastellana = trovaVoceCastellana();
+        };
 
         function updateVoiceToggleIcon() {
             if (voiceToggleBtn) voiceToggleBtn.textContent = voiceEnabled ? "🔊" : "🔇";
@@ -545,12 +558,24 @@ window.silktideConsentManager.init({
             return map[lang] || "it-IT";
         }
 
+        // La Castellana parla — velocità lenta e teatrale
         function speakText(text) {
             if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
             window.speechSynthesis.cancel();
+
             const utterance = new SpeechSynthesisUtterance(text);
+            utterance.voice = voceCastellana;
             utterance.lang = ttsLangCode(currentLang);
+            utterance.rate = 0.82;
+            utterance.pitch = 0.95;
+            utterance.volume = 1.0;
+
             window.speechSynthesis.speak(utterance);
+        }
+
+        // Ferma la voce della Castellana
+        function castellanaZitta() {
+            if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         }
 
         function getPageSlug() {
@@ -608,16 +633,55 @@ window.silktideConsentManager.init({
         }
 
         function appendChatMessage(text, sender, link) {
-            const msg = document.createElement('div');
-            msg.className = 'message' + (sender === 'user' ? ' user-msg' : '');
-            msg.textContent = text;
             const messagesBox = document.querySelector('.chat-messages');
-            messagesBox.appendChild(msg);
+
+            // Contenitore del messaggio
+            const msgWrap = document.createElement('div');
+            msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
+            msgWrap.style.cssText = 'display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;';
+
+            // Bolla del messaggio
+            const msg = document.createElement('div');
+            msg.className = 'message-bubble';
+            msg.style.cssText = 'flex:1; padding:12px 16px; border-radius:14px; background:' + 
+                (sender === 'user' ? '#7a1f2b; color:#fff;' : '#fdf6e8; color:#3a2a10;') +
+                ' line-height:1.6; font-size:15px;';
+            msg.textContent = text;
+            msgWrap.appendChild(msg);
+
+            // Pulsante 🔊 SOLO per i messaggi della Castellana
+            if (sender !== 'user' && voiceEnabled) {
+                const audioBtn = document.createElement('button');
+                audioBtn.innerHTML = '🔊';
+                audioBtn.title = 'Ascolta la Castellana';
+                audioBtn.style.cssText = `
+                    background: rgba(184, 135, 59, 0.15);
+                    border: none;
+                    border-radius: 50%;
+                    width: 36px;
+                    height: 36px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                    margin-top: 4px;
+                    transition: background 0.2s;
+                `;
+                audioBtn.onmouseenter = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.35)';
+                audioBtn.onmouseleave = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.15)';
+                audioBtn.onclick = () => speakText(text);
+                msgWrap.appendChild(audioBtn);
+            }
+
+            messagesBox.appendChild(msgWrap);
 
             if (link) {
                 const btn = document.createElement('button');
                 btn.className = 'chat-link-btn';
                 btn.textContent = getLinkLabel(link);
+                btn.style.cssText = 'margin-left: 44px; margin-top: 4px;';
                 btn.addEventListener('click', () => { window.location.href = link; });
                 messagesBox.appendChild(btn);
             }
@@ -626,7 +690,7 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // MENU A PULSANTI (topic) — mostra le voci disponibili per la pagina
+        // MENU A PULSANTI (topic)
         // ============================================================
         function renderTopicMenu(menu) {
             if (!menu || !menu.length) return;
@@ -688,7 +752,7 @@ window.silktideConsentManager.init({
                 if (!res.ok) throw new Error('Risposta non valida dal server');
                 const data = await res.json();
                 appendChatMessage(data.reply, 'castellana', data.link);
-                if (data.speak) speakText(data.reply);
+                if (data.speak || voiceEnabled) speakText(data.reply);
             } catch (err) {
                 console.error('Errore richiesta topic:', err);
                 appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
@@ -739,8 +803,7 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // INDICATORE PREMIUM — mostra sempre, in chiaro, se sei Premium
-        // (e fino a quando) oppure in versione gratuita.
+        // INDICATORE PREMIUM
         // ============================================================
         const PREMIUM_STATUS_TEXT = {
             it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
@@ -837,9 +900,7 @@ window.silktideConsentManager.init({
 
                 const data = await res.json();
                 appendChatMessage(data.reply, 'castellana', data.link);
-                if (data.speak) {
-                    speakText(data.reply);
-                }
+                if (data.speak || voiceEnabled) speakText(data.reply);
 
             } catch (err) {
                 console.error('Errore chat:', err);
