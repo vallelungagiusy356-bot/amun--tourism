@@ -1,8 +1,6 @@
 /* ==========================================================================
-   CITTADINO DEL BORGO — UNIFORMATO ALLO STILE HOMEPAGE
-   Stessi design token (colori, font, raggi, spessori bordo) di
-   css_style2_v2.css, applicati alla pagina "Cittadino del Borgo".
-   ========================================================================== */
+   CITTADINO DEL BORGO — VERSIONE DESKTOP OTTIMIZZATA
+   ========================================================================= */
 
 :root {
     --sky: #5B8FAE;
@@ -19,7 +17,7 @@
 }
 
 /* ==========================================================================
-   1. RESET, SFONDO E FONT STRUTTURALI
+   1. RESET
    ========================================================================== */
 * {
     margin: 0;
@@ -36,6 +34,9 @@ html, body {
     overflow-x: hidden;
 }
 
+/* ==========================================================================
+   2. SFONDO
+   ========================================================================== */
 .scene-background {
     position: fixed;
     inset: 0;
@@ -49,7 +50,7 @@ html, body {
 }
 
 /* ==========================================================================
-   2. DASHBOARD (identica alla homepage)
+   3. HEADER
    ========================================================================== */
 .dashboard {
     position: fixed;
@@ -120,22 +121,33 @@ html, body {
     border: 1px solid rgba(184, 135, 59, 0.75);
     color: var(--gold);
     cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.lang-switcher button:hover {
+    background: rgba(184, 135, 59, 0.15);
+}
+
+.lang-switcher button.active {
+    border: 2px solid #B8873B !important;
+    background: rgba(184, 135, 59, 0.2) !important;
+    font-weight: bold;
 }
 
 /* ==========================================================================
-   3. BLOCCO INTRODUTTIVO (stessa gerarchia tipografica dell'hero homepage)
+   4. INTRO
    ========================================================================== */
 .citizen-frame-layout {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 135px 40px 0 40px;
+    padding: 125px 48px 0 48px;
     display: flex;
     justify-content: flex-start;
 }
 
 .citizen-intro-container {
-    max-width: 650px;
+    max-width: 620px;
 }
 
 .category-tag {
@@ -146,16 +158,17 @@ html, body {
     font-weight: 700;
     margin-bottom: 8px;
     display: inline-block;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.62);
 }
 
 .main-title {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-size: clamp(2.2rem, 4vw, 3rem);
     color: var(--cream-text);
     margin: 0 0 14px 0;
     font-weight: 600;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.72);
 }
 
 .gold-divider {
@@ -182,75 +195,73 @@ html, body {
 .text-paragraph {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    font-size: clamp(1.08rem, 2vw, 1.24rem);
     line-height: 1.7;
     color: #fff;
     margin: 0;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.62);
 }
 
 /* ==========================================================================
-   4. GRIGLIA CARD
-   Padding a destra riservato allo spazio della Castellana fissa, così
-   il testo delle card non finisce mai coperto dal personaggio.
+   5. GRIGLIA CARD
    ========================================================================== */
 .citizen-centered-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 24px;
     width: 100%;
-    max-width: 950px;
-    margin: 50px auto 60px auto;
-    padding: 0 40px 220px 40px; /* spazio in basso per non finire sotto la Castellana */
+    max-width: 980px;
+    margin: 38px auto 70px auto;
+    padding: 0 40px 200px 40px;
 }
 
 .quadrant {
     position: relative;
-    background: rgba(20, 40, 58, 0.6);
-    border: 1px solid rgba(184, 135, 59, 0.6);
-    border-radius: 4px;
+    background: rgba(20, 40, 58, 0.68);
+    border: 1px solid rgba(184, 135, 59, 0.62);
+    border-radius: 8px;
     width: 100%;
+    min-height: 132px;
     text-align: left;
-    padding: 32px 36px;
+    padding: 28px 30px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 18px rgba(184, 135, 59, 0.15);
+    justify-content: center;
+    box-shadow: 0 0 18px rgba(184, 135, 59, 0.14);
     cursor: pointer;
-    /* Solo transizione su colore/ombra: niente transform+blur insieme,
-       che su alcuni Chrome Android sfoca il testo durante l'hover/tap. */
     transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .quadrant:hover,
 .quadrant:focus-visible {
     border-color: var(--gold);
-    background: rgba(20, 40, 58, 0.78);
+    background: rgba(20, 40, 58, 0.82);
     box-shadow: 0 0 26px rgba(184, 135, 59, 0.35);
 }
 
 .card-text-block h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: var(--cream-text);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .card-description {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    font-size: 1.14rem;
+    line-height: 1.55;
     color: var(--stone-dim);
+    max-width: 92%;
 }
 
 /* ==========================================================================
-   5. CASTELLANA E CHAT
-   Dimensioni ridotte rispetto alla versione precedente: la figura resta
-   un widget d'angolo, non un elemento che invade i contenuti sopra di sé.
+   6. CASTELLANA
    ========================================================================== */
 .castellana-video-wrapper {
     position: fixed;
     bottom: 0;
-    right: 3%;
-    width: 130px;
+    right: 18px;
+    width: 160px;
     z-index: 100;
     transition: transform 0.3s ease;
     cursor: pointer;
@@ -263,10 +274,10 @@ html, body {
 .castellana-video {
     width: 100%;
     height: auto;
-    max-height: 32vh;
+    max-height: 36vh;
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6));
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.58));
 }
 
 .castellana-tooltip {
@@ -275,9 +286,9 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     padding: 6px 14px;
-    background: rgba(20, 40, 58, 0.85);
+    background: rgba(20, 40, 58, 0.88);
     border: 1px solid var(--gold);
-    border-radius: 2px;
+    border-radius: 4px;
     color: var(--gold);
     font-size: 0.75rem;
     font-weight: 700;
@@ -292,26 +303,41 @@ html, body {
     opacity: 1;
 }
 
+/* ==========================================================================
+   7. CHAT — ACCANTO ALLA CASTELLANA
+   ========================================================================== */
 .chat-desktop {
     position: fixed;
-    bottom: 150px;
-    right: 3%;
-    width: 320px;
-    height: 350px;
-    background: rgba(15, 25, 34, 0.96);
+    right: 190px;
+    bottom: 24px;
+    width: 360px;
+    height: 410px;
+    background: rgba(15, 25, 34, 0.97);
     backdrop-filter: blur(10px);
     border: 1px solid var(--gold);
-    border-radius: 4px;
+    border-radius: 10px;
     padding: 16px;
     display: none;
     z-index: 999;
-    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.52);
+}
+
+.chat-desktop::after {
+    content: "";
+    position: absolute;
+    right: -12px;
+    bottom: 62px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 12px solid var(--gold);
 }
 
 .chat-desktop.active {
     display: flex;
     flex-direction: column;
-    animation: fadeIn 0.3s ease forwards;
+    animation: fadeIn 0.28s ease forwards;
 }
 
 .chat-header {
@@ -322,7 +348,7 @@ html, body {
     background: var(--sea-ink);
     margin: -16px -16px 15px -16px;
     padding: 12px 15px;
-    border-radius: 4px 4px 0 0;
+    border-radius: 10px 10px 0 0;
     border-bottom: 1px solid var(--gold);
 }
 
@@ -337,7 +363,7 @@ html, body {
 .chat-header span {
     flex-grow: 1;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
 }
 
 .close-chat-btn {
@@ -358,7 +384,7 @@ html, body {
     text-align: center;
     padding: 4px 8px;
     margin: -6px 0 10px 0;
-    border-radius: 2px;
+    border-radius: 4px;
     letter-spacing: 0.2px;
 }
 
@@ -378,6 +404,7 @@ html, body {
     flex-grow: 1;
     overflow-y: auto;
     margin-bottom: 10px;
+    padding-right: 4px;
 }
 
 .chat-messages .message {
@@ -386,10 +413,50 @@ html, body {
     line-height: 1.5;
     background: #fff;
     padding: 8px 12px;
-    border-radius: 2px;
+    border-radius: 6px;
     margin-bottom: 8px;
-    max-width: 90%;
+    max-width: 92%;
     border-left: 2px solid var(--gold);
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.chat-input-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(184, 135, 59, 0.55);
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--ink);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.chat-input-row input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(184, 135, 59, 0.18);
+}
+
+.send-btn {
+    border: none;
+    background: var(--terracotta);
+    color: #fff;
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.send-btn:hover {
+    background: #a75027;
+    transform: translateY(-1px);
 }
 
 .chat-link-btn {
@@ -398,146 +465,79 @@ html, body {
     color: #fff;
     border: none;
     padding: 8px 14px;
-    border-radius: 2px;
+    border-radius: 6px;
+    margin-top: 8px;
+    text-decoration: none;
+    text-align: center;
     font-size: 0.85rem;
     font-weight: 600;
-    cursor: pointer;
-    margin: -2px 0 8px 0;
-    transition: background 0.2s;
-}
-
-.chat-link-btn:hover {
-    background: var(--sea);
-}
-
-.map-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 999999;
-    background: #000;
-}
-
-.map-overlay iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-}
-
-.map-overlay-close {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(15, 25, 34, 0.85);
-    color: var(--cream-text);
-    border: 1px solid var(--gold);
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-.topic-menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 2px 0 10px 0;
-}
-
-.topic-btn {
-    background: #fff;
-    border: 1px solid var(--gold);
-    color: var(--sea);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-}
-
-.topic-btn:hover {
-    background: var(--gold);
-    color: #fff;
-}
-
-.topic-group-btn {
-    border-color: var(--terracotta);
-    color: var(--terracotta);
-    font-weight: 600;
-}
-
-.topic-group-btn:hover {
-    background: var(--terracotta);
-    color: #fff;
-}
-
-.topic-subitems {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    width: 100%;
-    margin-top: 4px;
-    padding-left: 10px;
-}
-
-.chat-input-row {
-    display: flex;
-    gap: 10px;
-}
-
-.chat-input-row input {
-    flex-grow: 1;
-    padding: 10px 14px;
-    border-radius: 2px;
-    border: 1px solid rgba(184, 135, 59, 0.5);
-    background: #fff;
-    color: var(--ink);
-    outline: none;
-}
-
-.chat-input-row input:focus {
-    border-color: var(--gold);
-}
-
-.chat-input-row .mic-btn {
-    background: var(--wine);
-    border: none;
-    border-radius: 2px;
-    padding: 0 14px;
-    color: #fff;
-    font-size: 1.1rem;
-    cursor: pointer;
-}
-
-.chat-input-row .mic-btn:hover {
-    background: #521720;
 }
 
 /* ==========================================================================
-   6. RESPONSIVE (tablet e mobile) — stessa gerarchia, più stretta
+   8. ANIMAZIONE
    ========================================================================== */
-@media screen and (max-width: 950px) {
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-    .dashboard {
-        height: auto !important;
-        padding: 10px !important;
-        flex-wrap: wrap;
-        gap: 8px;
+/* ==========================================================================
+   9. RESPONSIVE TABLET
+   ========================================================================== */
+@media screen and (max-width: 1100px) {
+    .citizen-frame-layout {
+        padding: 120px 28px 0 28px;
     }
 
-    .dashboard .logo-title {
-        flex: 1 1 100%;
-        text-align: center;
-        font-size: 1.1rem;
+    .citizen-centered-grid {
+        max-width: 900px;
+        gap: 20px;
+        padding: 0 28px 190px 28px;
+    }
+
+    .card-text-block h2 {
+        font-size: 1.58rem;
+    }
+
+    .card-description {
+        font-size: 1.05rem;
+        max-width: 100%;
+    }
+
+    .chat-desktop {
+        right: 165px;
+        width: 330px;
+        height: 390px;
+    }
+
+    .castellana-video-wrapper {
+        width: 138px;
+    }
+}
+
+/* ==========================================================================
+   10. MOBILE — preservato
+   ========================================================================== */
+@media screen and (max-width: 900px) {
+    .dashboard {
+        height: auto;
+        min-height: 75px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 16px;
     }
 
     .nav-right-group {
-        flex: 1 1 100%;
-        justify-content: center;
         flex-wrap: wrap;
-        gap: 8px;
+        justify-content: center;
+        gap: 10px;
     }
 
     .citizen-frame-layout {
@@ -547,88 +547,57 @@ html, body {
     }
 
     .citizen-intro-container {
-        margin: 0 auto;
+        max-width: 100%;
+        text-align: center;
     }
 
     .gold-divider {
         margin: 0 auto 20px auto;
-        background: var(--gold);
     }
 
     .gold-divider::before {
         left: 50%;
         transform: translate(-50%, -50%);
+        padding: 0 8px;
     }
 
-    .main-title {
-        font-size: 1.9rem;
-    }
-
-    /* GRIGLIA CHE SI IMPILA */
     .citizen-centered-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-        padding: 0 16px 190px 16px; /* spazio in basso per la Castellana ridotta */
+        padding: 0 16px 190px 16px;
+        max-width: 100%;
         margin: 30px auto 40px auto;
     }
 
     .quadrant {
         padding: 24px 20px;
         text-align: center;
-    }
-
-    .card-text-block h2 {
-        font-size: 1.3rem;
+        min-height: auto;
     }
 
     .card-description {
-        font-size: 1rem;
+        max-width: 100%;
     }
 
-    /* CASTELLANA RIDOTTA SU MOBILE — piccola e non intrusiva */
     .castellana-video-wrapper {
         width: 90px;
         right: 12px;
         bottom: 8px;
     }
 
+    .castellana-video {
+        max-height: none;
+    }
+
     .chat-desktop {
         bottom: 110px;
         left: 10px;
         right: 10px;
-        width: calc(100% - 20px);
+        width: auto;
+        height: 360px;
     }
-}
 
-/* ==========================================================================
-   7. ANIMAZIONI
-   ========================================================================== */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Pulsante di invio della chat (sostituisce il microfono) */
-.send-btn {
-    background: var(--sea);
-    border: none;
-    border-radius: 2px;
-    padding: 0 12px;
-    cursor: pointer;
-    color: #fff;
-    font-size: 1rem;
-    transition: background 0.2s;
-}
-
-.send-btn:hover {
-    background: var(--terracotta);
-}
-
-.chat-messages .message.user-msg {
-    background: var(--sea);
-    color: #fff;
-    margin-left: auto;
-    border-left: none;
-    border-right: 2px solid var(--gold);
-    text-align: right;
+    .chat-desktop::after {
+        display: none;
+    }
 }
