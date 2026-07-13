@@ -561,7 +561,11 @@ window.silktideConsentManager.init({
               btn.textContent = getLinkLabel(link);
               btn.style.cssText = 'margin-left: 44px; margin-top: 4px;';
               btn.addEventListener('click', () => {
-                  if (link.includes('mappa.html')) {
+                  // Sia la mappa che le pagine di orari/biglietti vivono sul
+                  // sito mobile (../mobile/...): le apriamo entrambe sopra la
+                  // chat invece di navigare via, così tornando indietro non
+                  // si perde mai lo storico della conversazione.
+                  if (link.includes('mappa.html') || link.includes('/mobile/')) {
                       openMapOverlay(link);
                   } else {
                       window.location.href = link;
