@@ -272,7 +272,6 @@ window.silktideConsentManager.init({
           color: #3a2a10;
         }
     </style>
-<base target="_blank">
 </head>
 
 <body>
@@ -525,7 +524,6 @@ window.silktideConsentManager.init({
                     currentLang = btn.dataset.lang;
                     loadLanguage(currentLang);
                     updatePremiumStatusDisplay();
-                    // Reset chat menu al cambio lingua
                     const oldMenu = document.querySelector('.chat-messages .topic-menu-state');
                     if (oldMenu) oldMenu.remove();
                     menuLoadedForCode = null;
@@ -634,7 +632,7 @@ window.silktideConsentManager.init({
                 btn.className = 'chat-link-btn';
                 btn.textContent = getLinkLabel(link);
                 btn.onclick = () => {
-                    if (link.includes('mappa.html')) {
+                    if (link.includes('mappa.html') || link.includes('/mobile/')) {
                         openMapOverlay(link);
                     } else {
                         window.location.href = link;
@@ -663,7 +661,6 @@ window.silktideConsentManager.init({
             const wrap = document.createElement('div');
             wrap.className = 'topic-menu topic-menu-state';
 
-            // Se siamo dentro un gruppo appena esplorato, mostra prima i suoi item
             if (currentGroupName) {
                 const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
                 if (groupEntry) {
@@ -681,7 +678,6 @@ window.silktideConsentManager.init({
                 }
             }
 
-            // Elenco principale: gruppi e voci singole
             fullTopicMenu.forEach(entry => {
                 if (entry.group) {
                     if (exploredGroups.has(entry.group)) return;
@@ -703,7 +699,6 @@ window.silktideConsentManager.init({
                 }
             });
 
-            // Se non rimane nulla, messaggio di chiusura
             if (wrap.children.length === 0) {
                 const knowledge = CASTELLO_KNOWLEDGE[currentLang] || CASTELLO_KNOWLEDGE.it;
                 appendChatMessage(knowledge.closing, 'castellana');
@@ -730,11 +725,9 @@ window.silktideConsentManager.init({
             appendChatMessage(knowledge.welcome, 'castellana');
             if (voiceEnabled) speakText(knowledge.welcome);
 
-            // Menu di fallback da knowledge base locale
             const fallbackMenu = knowledge.topics.map(t => ({ label: t.label, topic: t.id }));
             renderTopicMenu(fallbackMenu);
 
-            // Se c'è un codice Premium, prova a sovrascrivere con il menu dal backend
             loadTopicMenu();
 
             hasShownWelcome = true;
