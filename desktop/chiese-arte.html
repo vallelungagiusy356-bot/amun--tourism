@@ -479,9 +479,17 @@ window.silktideConsentManager.init({
           es: "Ver en el mapa →", de: "Auf der Karte ansehen →"
       };
 
+      const ORARI_LABEL_BY_LANG = {
+          it: "Orari e biglietti →", en: "Hours & tickets →", fr: "Horaires et billets →",
+          es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →"
+      };
+
       function getLinkLabel(link) {
           if (link && link.includes('mappa.html')) {
               return MAP_LABEL_BY_LANG[currentLang] || MAP_LABEL_BY_LANG.it;
+          }
+          if (link && link.includes('/mobile/')) {
+              return ORARI_LABEL_BY_LANG[currentLang] || ORARI_LABEL_BY_LANG.it;
           }
           const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
           return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
@@ -500,20 +508,25 @@ window.silktideConsentManager.init({
           });
       }
 
+      // ============================================================
+      // RENDERING MESSAGGI CHAT — corretto: una sola "scatola" per
+      // messaggio (.message / .message.user-msg), quella che già
+      // riceve sfondo/bordo/padding giusti dal CSS. Prima veniva
+      // creata anche una .message-bubble interna con un secondo
+      // sfondo scritto a mano nel JS: una scatola dentro l'altra,
+      // con doppio bordo/doppio sfondo indesiderato.
+      // ============================================================
       function appendChatMessage(text, sender, link) {
           const messagesBox = document.querySelector('.chat-messages');
 
           const msgWrap = document.createElement('div');
           msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
-          msgWrap.style.cssText = 'display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;';
+          msgWrap.style.cssText = 'display:flex; align-items:flex-start; gap:8px;';
 
-          const msg = document.createElement('div');
-          msg.className = 'message-bubble';
-          msg.style.cssText = 'flex:1; padding:12px 16px; border-radius:14px; background:' + 
-              (sender === 'user' ? '#7a1f2b; color:#fff;' : '#fdf6e8; color:#3a2a10;') +
-              ' line-height:1.6; font-size:15px;';
-          msg.textContent = text;
-          msgWrap.appendChild(msg);
+          const textSpan = document.createElement('span');
+          textSpan.style.cssText = 'flex:1;';
+          textSpan.textContent = text;
+          msgWrap.appendChild(textSpan);
 
           if (sender !== 'user' && voiceEnabled) {
               const audioBtn = document.createElement('button');
@@ -531,7 +544,6 @@ window.silktideConsentManager.init({
                   align-items: center;
                   justify-content: center;
                   flex-shrink: 0;
-                  margin-top: 4px;
                   transition: background 0.2s;
               `;
               audioBtn.onmouseenter = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.35)';
