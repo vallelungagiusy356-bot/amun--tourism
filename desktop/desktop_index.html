@@ -150,7 +150,7 @@ window.silktideConsentManager.init({
         }
 
         .message-wrap.user-msg .message-bubble {
-            background: #ffffff;
+            background: #F0E9DA;
             color: #3a2a10;
             border: 1px solid #e8e0d0;
             border-radius: 18px 18px 4px 18px;
@@ -257,9 +257,23 @@ window.silktideConsentManager.init({
             border-radius: 12px;
             margin: 8px 0;
         }
+
+        /* ===== CHAT PIÙ GRANDE E PIÙ A DESTRA SU DESKTOP =====
+           Solo da 951px in su (sopra la soglia mobile usata nel resto
+           del sito): su schermi grandi la finestra della chat era
+           troppo piccola e troppo in basso. Qui la allarghiamo e la
+           spostiamo verso destra, vicino alla Castellana. */
+        @media (min-width: 951px) {
+            #chat-box.chat-interface {
+                width: 440px !important;
+                height: 640px !important;
+                max-height: 80vh !important;
+                right: 60px !important;
+                bottom: 110px !important;
+                left: auto !important;
+            }
+        }
     </style>
-<base target="_blank">
-<base target="_blank">
 </head>
 
 <body>
@@ -413,9 +427,9 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
                 followUp: `E allora, cosa altro vuoi scoprire?`,
                 topics: [
                     { id: "castello", label: "🏰 Castello", page: "castello.html" },
-                    { id: "chiese", label: "⛪ Chiese", page: "chiese.html" },
+                    { id: "chiese", label: "⛪ Chiese", page: "chiese-arte.html" },
                     { id: "cibo_eventi", label: "🍷 Cibo ed Eventi", page: "cibo_eventi.html" },
-                    { id: "cultura", label: "📜 Leggende e Tradizioni", page: "cultura.html" },
+                    { id: "cultura", label: "📜 Leggende e Tradizioni", page: "leggende_e_tradizioni.html" },
                     { id: "citizen", label: "🚌 Trasporti e Modi di Dire", page: "cittadino.html" }
                 ]
             },
@@ -425,9 +439,9 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
                 followUp: `So, what else would you like to discover?`,
                 topics: [
                     { id: "castello", label: "🏰 Castle", page: "castello.html" },
-                    { id: "chiese", label: "⛪ Churches", page: "chiese.html" },
+                    { id: "chiese", label: "⛪ Churches", page: "chiese-arte.html" },
                     { id: "cibo_eventi", label: "🍷 Food & Events", page: "cibo_eventi.html" },
-                    { id: "cultura", label: "📜 Legends & Traditions", page: "cultura.html" },
+                    { id: "cultura", label: "📜 Legends & Traditions", page: "leggende_e_tradizioni.html" },
                     { id: "citizen", label: "🚌 Transport & Sayings", page: "cittadino.html" }
                 ]
             },
@@ -437,9 +451,9 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
                 followUp: `Alors, que voulez-vous découvrir d'autre?`,
                 topics: [
                     { id: "castello", label: "🏰 Château", page: "castello.html" },
-                    { id: "chiese", label: "⛪ Églises", page: "chiese.html" },
+                    { id: "chiese", label: "⛪ Églises", page: "chiese-arte.html" },
                     { id: "cibo_eventi", label: "🍷 Cuisine & Fêtes", page: "cibo_eventi.html" },
-                    { id: "cultura", label: "📜 Légendes", page: "cultura.html" },
+                    { id: "cultura", label: "📜 Légendes", page: "leggende_e_tradizioni.html" },
                     { id: "citizen", label: "🚌 Transports", page: "cittadino.html" }
                 ]
             },
@@ -449,9 +463,9 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
                 followUp: `Entonces, ¿qué más te gustaría descubrir?`,
                 topics: [
                     { id: "castello", label: "🏰 Castillo", page: "castello.html" },
-                    { id: "chiese", label: "⛪ Iglesias", page: "chiese.html" },
+                    { id: "chiese", label: "⛪ Iglesias", page: "chiese-arte.html" },
                     { id: "cibo_eventi", label: "🍷 Comida y Fiestas", page: "cibo_eventi.html" },
-                    { id: "cultura", label: "📜 Leyendas", page: "cultura.html" },
+                    { id: "cultura", label: "📜 Leyendas", page: "leggende_e_tradizioni.html" },
                     { id: "citizen", label: "🚌 Transportes", page: "cittadino.html" }
                 ]
             },
@@ -461,9 +475,9 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
                 followUp: `Also, was möchten Sie noch entdecken?`,
                 topics: [
                     { id: "castello", label: "🏰 Burg", page: "castello.html" },
-                    { id: "chiese", label: "⛪ Kirchen", page: "chiese.html" },
+                    { id: "chiese", label: "⛪ Kirchen", page: "chiese-arte.html" },
                     { id: "cibo_eventi", label: "🍷 Essen & Feste", page: "cibo_eventi.html" },
-                    { id: "cultura", label: "📜 Legenden", page: "cultura.html" },
+                    { id: "cultura", label: "📜 Legenden", page: "leggende_e_tradizioni.html" },
                     { id: "citizen", label: "🚌 Transport", page: "cittadino.html" }
                 ]
             }
@@ -510,12 +524,38 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
 
         function trovaVoceCastellana() {
             const voci = window.speechSynthesis.getVoices();
-            const preferenze = ['Google italiano', 'Microsoft Elsa', 'Samantha', 'Alice', 'it-IT'];
-            for (let nome of preferenze) {
-                const voce = voci.find(v => v.name.includes(nome) || v.lang === 'it-IT');
-                if (voce) return voce;
-            }
-            return voci.find(v => v.lang && v.lang.startsWith('it')) || voci[0];
+            const vociItaliane = voci.filter(v => v.lang && v.lang.toLowerCase().startsWith('it'));
+
+            // 1) Nomi di voci femminili noti sui vari sistemi (Android/Chrome,
+            //    iOS/Safari, Windows/Edge, macOS). Confronto case-insensitive
+            //    e senza accenti perché i nomi variano molto da dispositivo
+            //    a dispositivo.
+            const nomiFemminili = [
+                'alice', 'elsa', 'samantha', 'federica', 'silvia', 'paola',
+                'elisa', 'francesca', 'giulia', 'martina', 'female', 'donna'
+            ];
+            const vociTraCuiScegliere = vociItaliane.length ? vociItaliane : voci;
+
+            let voce = vociTraCuiScegliere.find(v =>
+                nomiFemminili.some(nome => v.name.toLowerCase().includes(nome))
+            );
+            if (voce) return voce;
+
+            // 2) Nessun nome femminile riconosciuto: escludiamo almeno i nomi
+            //    chiaramente maschili più comuni, e prendiamo la prima
+            //    rimasta tra le voci italiane.
+            const nomiMaschili = ['luca', 'cosimo', 'diego', 'marco', 'paolo', 'male', 'uomo'];
+            voce = vociTraCuiScegliere.find(v =>
+                !nomiMaschili.some(nome => v.name.toLowerCase().includes(nome))
+            );
+            if (voce) return voce;
+
+            // 3) Ultima spiaggia: la prima voce italiana disponibile, o la
+            //    prima voce in assoluto se sul dispositivo non ce n'è nessuna
+            //    in italiano. Su alcuni Android è l'unica opzione esistente:
+            //    in quel caso il tono dipende dal motore vocale del telefono,
+            //    non dal codice (vedi nota sotto per come cambiarla).
+            return vociItaliane[0] || voci[0];
         }
 
         window.speechSynthesis.onvoiceschanged = function() {
