@@ -99,56 +99,44 @@ window.silktideConsentManager.init({
             font-weight: bold;
         }
 
-        /* ===== STILI CHAT PULITI ===== */
+        /* ===== STILI CHAT — una sola scatola per messaggio ===== */
         .chat-messages {
             padding: 16px;
             background: #faf8f3;
         }
 
-        .message-wrap {
+        .message {
             display: flex;
             align-items: flex-start;
             gap: 8px;
             margin-bottom: 14px;
             animation: fadeInUp 0.3s ease;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .message-wrap.user-msg {
-            flex-direction: row-reverse;
-        }
-
-        .message-bubble {
-            flex: 1;
             padding: 12px 16px;
             border-radius: 18px;
             line-height: 1.65;
             font-size: 15px;
             max-width: 85%;
             word-wrap: break-word;
-        }
-
-        .message-wrap.user-msg .message-bubble {
-            background: #ffffff;
-            color: #3a2a10;
-            border: 1px solid #e8e0d0;
-            border-radius: 18px 18px 4px 18px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-
-        .message-wrap:not(.user-msg) .message-bubble {
             background: #fdf6e8;
             color: #3a2a10;
             border: 1px solid #f0e6d0;
-            border-radius: 18px 18px 18px 4px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            border-radius: 18px 18px 18px 4px;
         }
 
-        .message-bubble strong {
+        .message.user-msg {
+            background: #ffffff;
+            border: 1px solid #e8e0d0;
+            border-radius: 18px 18px 4px 18px;
+            flex-direction: row-reverse;
+            margin-left: auto;
+        }
+
+        .message span {
+            flex: 1;
+        }
+
+        .message strong {
             color: #7a1f2b;
         }
 
@@ -165,7 +153,7 @@ window.silktideConsentManager.init({
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            margin-top: 6px;
+            margin-top: 2px;
             transition: all 0.2s ease;
             color: #8b6914;
         }
@@ -179,13 +167,14 @@ window.silktideConsentManager.init({
             transform: scale(0.95);
         }
 
-        /* Pulsanti topic */
-        .topic-buttons-row {
+        /* Menu topic */
+        .topic-menu {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin: 10px 0 14px 0;
             padding: 0 4px;
+            animation: fadeInUp 0.3s ease;
         }
 
         .topic-btn {
@@ -212,6 +201,11 @@ window.silktideConsentManager.init({
             transform: translateY(0);
         }
 
+        .topic-group-btn {
+            background: linear-gradient(135deg, #f5ebd0 0%, #e8d5a8 100%);
+            font-weight: 600;
+        }
+
         /* Link sotto messaggio */
         .chat-link-btn {
             background: transparent;
@@ -230,27 +224,9 @@ window.silktideConsentManager.init({
             background: rgba(184, 135, 59, 0.1);
         }
 
-        /* Messaggio di chiusura */
-        .closing-message {
-            font-style: italic;
-            color: #7a5a2a;
-            text-align: center;
-            padding: 16px;
-            background: rgba(184, 135, 59, 0.08);
-            border-radius: 12px;
-            margin: 8px 0;
-        }
-
-        /* Messaggio follow-up */
-        .followup-message {
-            font-style: italic;
-            color: #8b6a2a;
-            padding: 10px 16px;
-            background: #f8f0e0;
-            border: 1px dashed #d4b896;
-            border-radius: 14px;
-            margin: 8px 0;
-            font-size: 14px;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .castellana-premium-cta {
@@ -425,6 +401,8 @@ window.silktideConsentManager.init({
             updatePremiumStatusDisplay();
             if (!hasShownWelcome) {
                 renderWelcome();
+            } else {
+                loadTopicMenu();
             }
         });
         closeBtn.addEventListener("click", () => {
@@ -441,7 +419,6 @@ window.silktideConsentManager.init({
         const CASTELLO_KNOWLEDGE = {
             it: {
                 welcome: "Benvenuto al Castello di Caccamo, viandante! Sono la Castellana e ti guidero attraverso la storia, l'architettura e i segreti di questa fortezza normanna. Cosa vuoi scoprire?",
-                followUp: "E allora, cosa altro vuoi scoprire?",
                 closing: "Bene viandante, da questa pagina e tutto! Il Castello ti ha svelato i suoi segreti. Consulta le altre pagine e scopri il resto del borgo. Amuni! 🏰",
                 topics: [
                     { id: "castello.storia", label: "🏰 Storia" },
@@ -455,7 +432,6 @@ window.silktideConsentManager.init({
             },
             en: {
                 welcome: "Welcome to the Castle of Caccamo, traveler! I am the Castellana and I will guide you through the history, architecture and secrets of this Norman fortress. What would you like to discover?",
-                followUp: "So, what else would you like to discover?",
                 closing: "Well traveler, that's all from this page! The Castle has revealed its secrets. Check the other pages and discover the rest of the village. Amuni! 🏰",
                 topics: [
                     { id: "castello.storia", label: "🏰 History" },
@@ -469,7 +445,6 @@ window.silktideConsentManager.init({
             },
             fr: {
                 welcome: "Bienvenue au Chateau de Caccamo, voyageur! Je suis la Castellana et je vous guiderai a travers l'histoire, l'architecture et les secrets de cette forteresse normande. Que voulez-vous decouvrir?",
-                followUp: "Alors, que voulez-vous decouvrir d'autre?",
                 closing: "Bien voyageur, c'est tout pour cette page! Le Chateau a revele ses secrets. Consultez les autres pages. Amuni! 🏰",
                 topics: [
                     { id: "castello.storia", label: "🏰 Histoire" },
@@ -483,7 +458,6 @@ window.silktideConsentManager.init({
             },
             es: {
                 welcome: "Bienvenido al Castillo de Caccamo, viajero! Soy la Castellana y te guiare a traves de la historia, la arquitectura y los secretos de esta fortaleza normanda. Que te gustaria descubrir?",
-                followUp: "Entonces, que mas te gustaria descubrir?",
                 closing: "Bien viajero, eso es todo en esta pagina! El Castillo ha revelado sus secretos. Consulta las otras paginas. Amuni! 🏰",
                 topics: [
                     { id: "castello.storia", label: "🏰 Historia" },
@@ -497,7 +471,6 @@ window.silktideConsentManager.init({
             },
             de: {
                 welcome: "Willkommen in der Burg von Caccamo, Reisender! Ich bin die Castellana und fuhre Sie durch die Geschichte, Architektur und Geheimnisse dieser normannischen Festung. Was mochten Sie entdecken?",
-                followUp: "Also, was mochten Sie noch entdecken?",
                 closing: "Gut, Reisender, das ist alles auf dieser Seite! Die Burg hat ihre Geheimnisse enthullt. Sehen Sie sich die anderen Seiten an. Amuni! 🏰",
                 topics: [
                     { id: "castello.storia", label: "🏰 Geschichte" },
@@ -511,8 +484,10 @@ window.silktideConsentManager.init({
             }
         };
 
-        // Topic gia usati in questa sessione
         let usedTopics = new Set();
+        let exploredGroups = new Set();
+        let fullTopicMenu = [];
+        let menuLoadedForCode = null;
         let hasShownWelcome = false;
 
         function t(path, fallback) {
@@ -550,6 +525,15 @@ window.silktideConsentManager.init({
                     currentLang = btn.dataset.lang;
                     loadLanguage(currentLang);
                     updatePremiumStatusDisplay();
+                    // Reset chat menu al cambio lingua
+                    const oldMenu = document.querySelector('.chat-messages .topic-menu-state');
+                    if (oldMenu) oldMenu.remove();
+                    menuLoadedForCode = null;
+                    exploredGroups.clear();
+                    usedTopics.clear();
+                    if (chat.classList.contains('active')) {
+                        renderWelcome();
+                    }
                 });
             });
             loadLanguage(currentLang);
@@ -559,7 +543,7 @@ window.silktideConsentManager.init({
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
 
         // ============================================================
-        // TTS AVANZATO — La Castellana parla (0.84)
+        // TTS AVANZATO — La Castellana parla
         // ============================================================
         const VOICE_PREF_KEY = "amuni_voice_enabled";
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
@@ -621,25 +605,24 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // RENDERING MESSAGGI CHAT (stili puliti)
+        // RENDERING MESSAGGI CHAT — una sola scatola per messaggio
         // ============================================================
         function appendChatMessage(text, sender, link) {
             const messagesBox = document.getElementById('chat-messages-box');
             if (!messagesBox) return;
 
             const msgWrap = document.createElement('div');
-            msgWrap.className = 'message-wrap' + (sender === 'user' ? ' user-msg' : '');
+            msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
 
-            const msg = document.createElement('div');
-            msg.className = 'message-bubble';
-            msg.innerHTML = text.replace(/\n/g, '<br>');
-            msgWrap.appendChild(msg);
+            const textSpan = document.createElement('span');
+            textSpan.textContent = text;
+            msgWrap.appendChild(textSpan);
 
             if (sender !== 'user') {
                 const audioBtn = document.createElement('button');
-                audioBtn.className = 'audio-btn';
                 audioBtn.innerHTML = '🔊';
                 audioBtn.title = 'Ascolta la Castellana';
+                audioBtn.className = 'audio-btn';
                 audioBtn.onclick = () => speakText(text);
                 msgWrap.appendChild(audioBtn);
             }
@@ -664,54 +647,71 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // PULSANTI TOPIC DINAMICI (flusso sequenziale)
+        // MENU A PULSANTI — versione con contesto persistente
         // ============================================================
-        function renderTopicButtons() {
+        function renderTopicMenu(menu) {
+            if (!menu || !menu.length) return;
+            fullTopicMenu = menu;
+            renderMenuState(null);
+        }
+
+        function renderMenuState(currentGroupName) {
             const messagesBox = document.getElementById('chat-messages-box');
-            if (!messagesBox) return;
+            const old = messagesBox.querySelector('.topic-menu-state');
+            if (old) old.remove();
 
-            const knowledge = CASTELLO_KNOWLEDGE[currentLang] || CASTELLO_KNOWLEDGE.it;
-            const availableTopics = knowledge.topics.filter(t => !usedTopics.has(t.id));
+            const wrap = document.createElement('div');
+            wrap.className = 'topic-menu topic-menu-state';
 
-            if (availableTopics.length === 0) {
-                // Nessun topic rimanente — messaggio di chiusura
-                const closingDiv = document.createElement('div');
-                closingDiv.className = 'closing-message';
-                closingDiv.textContent = knowledge.closing;
-                messagesBox.appendChild(closingDiv);
+            // Se siamo dentro un gruppo appena esplorato, mostra prima i suoi item
+            if (currentGroupName) {
+                const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
+                if (groupEntry) {
+                    groupEntry.items.forEach(it => {
+                        if (usedTopics.has(it.topic)) return;
+                        const b = document.createElement('button');
+                        b.className = 'topic-btn';
+                        b.textContent = it.label;
+                        b.addEventListener('click', () => {
+                            usedTopics.add(it.topic);
+                            sendTopicRequest(it.topic, it.label, currentGroupName);
+                        });
+                        wrap.appendChild(b);
+                    });
+                }
+            }
+
+            // Elenco principale: gruppi e voci singole
+            fullTopicMenu.forEach(entry => {
+                if (entry.group) {
+                    if (exploredGroups.has(entry.group)) return;
+                    const groupBtn = document.createElement('button');
+                    groupBtn.className = 'topic-btn topic-group-btn';
+                    groupBtn.textContent = entry.group + ' ▸';
+                    groupBtn.addEventListener('click', () => renderMenuState(entry.group));
+                    wrap.appendChild(groupBtn);
+                } else {
+                    if (usedTopics.has(entry.topic)) return;
+                    const b = document.createElement('button');
+                    b.className = 'topic-btn';
+                    b.textContent = entry.label;
+                    b.addEventListener('click', () => {
+                        usedTopics.add(entry.topic);
+                        sendTopicRequest(entry.topic, entry.label, null);
+                    });
+                    wrap.appendChild(b);
+                }
+            });
+
+            // Se non rimane nulla, messaggio di chiusura
+            if (wrap.children.length === 0) {
+                const knowledge = CASTELLO_KNOWLEDGE[currentLang] || CASTELLO_KNOWLEDGE.it;
+                appendChatMessage(knowledge.closing, 'castellana');
                 if (voiceEnabled) speakText(knowledge.closing);
-                messagesBox.scrollTop = messagesBox.scrollHeight;
                 return;
             }
 
-            // Messaggio follow-up
-            const followUpWrap = document.createElement('div');
-            followUpWrap.className = 'message-wrap';
-            const followUpBubble = document.createElement('div');
-            followUpBubble.className = 'message-bubble followup-message';
-            followUpBubble.textContent = knowledge.followUp;
-            followUpWrap.appendChild(followUpBubble);
-            messagesBox.appendChild(followUpWrap);
-
-            // Container pulsanti
-            const btnRow = document.createElement('div');
-            btnRow.className = 'topic-buttons-row';
-
-            availableTopics.forEach(topic => {
-                const btn = document.createElement('button');
-                btn.className = 'topic-btn';
-                btn.textContent = topic.label;
-                btn.onclick = () => {
-                    usedTopics.add(topic.id);
-                    castellanaZitta();
-                    appendChatMessage(topic.label, 'user');
-                    // Invia al backend
-                    sendTopicRequest(topic.id, topic.label);
-                };
-                btnRow.appendChild(btn);
-            });
-
-            messagesBox.appendChild(btnRow);
+            messagesBox.appendChild(wrap);
             messagesBox.scrollTop = messagesBox.scrollHeight;
         }
 
@@ -723,11 +723,20 @@ window.silktideConsentManager.init({
             if (!messagesBox) return;
             messagesBox.innerHTML = '';
             usedTopics.clear();
+            exploredGroups.clear();
+            menuLoadedForCode = null;
 
             const knowledge = CASTELLO_KNOWLEDGE[currentLang] || CASTELLO_KNOWLEDGE.it;
             appendChatMessage(knowledge.welcome, 'castellana');
             if (voiceEnabled) speakText(knowledge.welcome);
-            renderTopicButtons();
+
+            // Menu di fallback da knowledge base locale
+            const fallbackMenu = knowledge.topics.map(t => ({ label: t.label, topic: t.id }));
+            renderTopicMenu(fallbackMenu);
+
+            // Se c'è un codice Premium, prova a sovrascrivere con il menu dal backend
+            loadTopicMenu();
+
             hasShownWelcome = true;
         }
 
@@ -809,7 +818,13 @@ window.silktideConsentManager.init({
         // ============================================================
         // INVIO TOPIC AL BACKEND
         // ============================================================
-        async function sendTopicRequest(topicId, label) {
+        async function sendTopicRequest(topicId, label, groupName) {
+            appendChatMessage(label, 'user');
+
+            const messagesBox = document.getElementById('chat-messages-box');
+            const old = messagesBox.querySelector('.topic-menu-state');
+            if (old) old.remove();
+
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
                     method: 'POST',
@@ -826,8 +841,8 @@ window.silktideConsentManager.init({
                 const data = await res.json();
                 appendChatMessage(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
-                // Rigenera pulsanti dopo la risposta
-                setTimeout(() => renderTopicButtons(), 500);
+                if (groupName) exploredGroups.add(groupName);
+                renderMenuState(groupName);
             } catch (err) {
                 console.error('Errore richiesta topic:', err);
                 appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
@@ -835,7 +850,36 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // PREMIUM E CODICI (invariato)
+        // CARICAMENTO MENU DAL BACKEND (Premium)
+        // ============================================================
+        async function loadTopicMenu() {
+            const code = getStoredAccessCode();
+            if (!code || menuLoadedForCode === code) return;
+            try {
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: "",
+                        page: getPageSlug(),
+                        lang: currentLang,
+                        access_code: code,
+                        topic: ""
+                    })
+                });
+                if (!res.ok) return;
+                const data = await res.json();
+                if (data.premium_active && data.menu && data.menu.length) {
+                    renderTopicMenu(data.menu);
+                    menuLoadedForCode = code;
+                }
+            } catch (err) {
+                console.error('Errore caricamento menu:', err);
+            }
+        }
+
+        // ============================================================
+        // PREMIUM E CODICI
         // ============================================================
         function getStoredAccessCode() {
             const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
@@ -913,6 +957,7 @@ window.silktideConsentManager.init({
                     const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
                     appendChatMessage(t('premium.activated_prefix', 'Premium attivato! Avrai accesso ai contenuti esclusivi fino al ') + formatted + '.', 'castellana');
                     updatePremiumStatusDisplay();
+                    loadTopicMenu();
                 } else {
                     appendChatMessage(data.message || t('premium.invalid_code', 'Codice non valido.'), 'castellana');
                 }
@@ -931,7 +976,7 @@ window.silktideConsentManager.init({
             if (wasActivationAttempt) return;
 
             appendChatMessage(text, 'user');
-            castellanaZitta(); // Ferma TTS quando utente scrive
+            castellanaZitta();
 
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
@@ -999,4 +1044,4 @@ window.silktideConsentManager.init({
     </p>
 </footer>
 </body>
-</html>l
+</html>
