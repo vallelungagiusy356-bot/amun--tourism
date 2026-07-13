@@ -235,8 +235,9 @@ window.silktideConsentManager.init({
         </p>
     </footer>
 
-    <div class="chat-interface" id="chat-box">
+    <div class="chat-desktop" id="chat-box">
         <div class="chat-header">
+            <div class="avatar-status-dot"></div>
             <span data-i18n="chat.title">La Castellana</span>
             <button id="voice-toggle-btn" class="close-chat-btn" title="Attiva/disattiva voce" aria-label="Attiva o disattiva la voce">🔊</button>
             <button id="close-chat" class="close-chat-btn">✕</button>
@@ -443,30 +444,19 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
         }
 
         // ============================================================
-        // RENDERING MESSAGGI CHAT (stili puliti)
+        // RENDERING MESSAGGI CHAT — stesse classi del resto del sito
+        // (.message / .message.user-msg dentro .chat-messages), niente
+        // più pulsante audio per ogni singolo messaggio: la lettura è
+        // già gestita dal toggle 🔊 nell'header.
         // ============================================================
         function appendChatMessage(text, sender, link) {
             const messagesBox = document.getElementById('chat-messages-box');
             if (!messagesBox) return;
 
-            const msgWrap = document.createElement('div');
-            msgWrap.className = 'message-wrap' + (sender === 'user' ? ' user-msg' : '');
-
             const msg = document.createElement('div');
-            msg.className = 'message-bubble';
+            msg.className = 'message' + (sender === 'user' ? ' user-msg' : '');
             msg.innerHTML = text.replace(/\n/g, '<br>');
-            msgWrap.appendChild(msg);
-
-            if (sender !== 'user') {
-                const audioBtn = document.createElement('button');
-                audioBtn.className = 'audio-btn';
-                audioBtn.innerHTML = '🔊';
-                audioBtn.title = 'Ascolta la Castellana';
-                audioBtn.onclick = () => speakText(text);
-                msgWrap.appendChild(audioBtn);
-            }
-
-            messagesBox.appendChild(msgWrap);
+            messagesBox.appendChild(msg);
 
             if (link) {
                 const btn = document.createElement('button');
@@ -492,7 +482,8 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
             if (availableTopics.length === 0) {
                 // Nessun topic rimanente — messaggio di chiusura
                 const closingDiv = document.createElement('div');
-                closingDiv.className = 'closing-message';
+                closingDiv.className = 'message system-msg';
+                closingDiv.style.fontStyle = 'italic';
                 closingDiv.textContent = knowledge.closing;
                 messagesBox.appendChild(closingDiv);
                 if (voiceEnabled) speakText(knowledge.closing);
@@ -501,18 +492,15 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
             }
 
             // Messaggio follow-up
-            const followUpWrap = document.createElement('div');
-            followUpWrap.className = 'message-wrap';
-            const followUpBubble = document.createElement('div');
-            followUpBubble.className = 'message-bubble';
-            followUpBubble.style.cssText = 'background:#f8f0e0; border:1px dashed #d4b896; font-style:italic;';
-            followUpBubble.textContent = knowledge.followUp;
-            followUpWrap.appendChild(followUpBubble);
-            messagesBox.appendChild(followUpWrap);
+            const followUpDiv = document.createElement('div');
+            followUpDiv.className = 'message system-msg';
+            followUpDiv.style.fontStyle = 'italic';
+            followUpDiv.textContent = knowledge.followUp;
+            messagesBox.appendChild(followUpDiv);
 
-            // Container pulsanti
+            // Container pulsanti — stessa classe .topic-menu del resto del sito
             const btnRow = document.createElement('div');
-            btnRow.className = 'topic-buttons-row';
+            btnRow.className = 'topic-menu';
 
             availableTopics.forEach(topic => {
                 const btn = document.createElement('button');
