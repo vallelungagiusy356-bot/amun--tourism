@@ -115,7 +115,150 @@ window.silktideConsentManager.init({
             background: rgba(184, 135, 59, 0.2) !important;
             font-weight: bold;
         }
+
+        /* ===== STILI CHAT PULITI ===== */
+        .chat-messages {
+            padding: 16px;
+            background: #faf8f3;
+        }
+
+        .message-wrap {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 14px;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message-wrap.user-msg {
+            flex-direction: row-reverse;
+        }
+
+        .message-bubble {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 18px;
+            line-height: 1.65;
+            font-size: 15px;
+            max-width: 85%;
+            word-wrap: break-word;
+        }
+
+        .message-wrap.user-msg .message-bubble {
+            background: #ffffff;
+            color: #3a2a10;
+            border: 1px solid #e8e0d0;
+            border-radius: 18px 18px 4px 18px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .message-wrap:not(.user-msg) .message-bubble {
+            background: #fdf6e8;
+            color: #3a2a10;
+            border: 1px solid #f0e6d0;
+            border-radius: 18px 18px 18px 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .message-bubble strong {
+            color: #7a1f2b;
+        }
+
+        /* Pulsante audio */
+        .audio-btn {
+            background: rgba(184, 135, 59, 0.12);
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 6px;
+            transition: all 0.2s ease;
+            color: #8b6914;
+        }
+
+        .audio-btn:hover {
+            background: rgba(184, 135, 59, 0.3);
+            transform: scale(1.08);
+        }
+
+        .audio-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Pulsanti topic */
+        .topic-buttons-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0 14px 0;
+            padding: 0 4px;
+        }
+
+        .topic-btn {
+            background: linear-gradient(135deg, #fdf6e8 0%, #f5ebd0 100%);
+            border: 1.5px solid #d4b896;
+            color: #5a3a10;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: 'Cormorant Garamond', serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .topic-btn:hover {
+            background: linear-gradient(135deg, #f5ebd0 0%, #e8d5a8 100%);
+            border-color: #b8873b;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(184, 135, 59, 0.2);
+        }
+
+        .topic-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Link sotto messaggio */
+        .chat-link-btn {
+            background: transparent;
+            border: 1.5px solid #b8873b;
+            color: #8b6914;
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-family: 'Cormorant Garamond', serif;
+            cursor: pointer;
+            margin: 4px 0 12px 44px;
+            transition: all 0.2s ease;
+        }
+
+        .chat-link-btn:hover {
+            background: rgba(184, 135, 59, 0.1);
+        }
+
+        /* Messaggio di chiusura */
+        .closing-message {
+            font-style: italic;
+            color: #7a5a2a;
+            text-align: center;
+            padding: 16px;
+            background: rgba(184, 135, 59, 0.08);
+            border-radius: 12px;
+            margin: 8px 0;
+        }
     </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 
@@ -242,8 +385,8 @@ window.silktideConsentManager.init({
             <button id="voice-toggle-btn" class="close-chat-btn" title="Attiva/disattiva voce" aria-label="Attiva o disattiva la voce">🔊</button>
             <button id="close-chat" class="close-chat-btn">✕</button>
         </div>
-        <div class="chat-messages">
-            <div class="message" data-i18n="chat.msg1">Ciao viandante, chiedimi pure!</div>
+        <div class="chat-messages" id="chat-messages-box">
+            <!-- Il benvenuto viene inserito via JS per avere il controllo completo -->
         </div>
         <div class="chat-input-row">
             <input type="text" placeholder="Scrivi qui..." data-i18n-placeholder="chat.placeholder">
@@ -253,6 +396,82 @@ window.silktideConsentManager.init({
 
     <script>
         let currentLang = localStorage.getItem("lang") || "it";
+
+        // ============================================================
+        // KNOWLEDGE BASE — Home Page (linguaggio naturale, sintetico)
+        // ============================================================
+        const HOME_KNOWLEDGE = {
+            it: {
+                welcome: `Ciao viandante! Sono la Castellana di Caccamo, la tua guida per questo borgo.
+
+Ti racconto le origini del paese: Caccamo sorge su uno sperone roccioso che domina la valle del San Leonardo. Il nome deriva probabilmente dal greco "kakkabe", che indicava un tipo di coppa o forse dal latino "cacabus". Già in epoca araba esisteva qui una fortificazione, ma il borgo come lo conosciamo iniziò a prender forma nel XII secolo con la conquista normanna. Matteo Bonello, signore di Caccamo, costruì il castello che ancora oggi domina il paese.
+
+Caccamo è un borgo medievale che ha conservato il suo fascino attraverso secoli di storia: normanni, svevi, angioini, aragonesi, spagnoli e borboni hanno lasciato tracce nelle pietre, nelle chiese, nelle tradizioni.
+
+Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi pure in libertà, rispondo a tutto ciò che so sul borgo!`,
+                closing: `Bene viandante, da questa pagina è tutto! Consulta le altre pagine e scopri il resto del borgo. Amunì! 🏰`,
+                followUp: `E allora, cosa altro vuoi scoprire?`,
+                topics: [
+                    { id: "castello", label: "🏰 Castello", page: "castello.html" },
+                    { id: "chiese", label: "⛪ Chiese", page: "chiese.html" },
+                    { id: "cibo_eventi", label: "🍷 Cibo ed Eventi", page: "cibo_eventi.html" },
+                    { id: "cultura", label: "📜 Leggende e Tradizioni", page: "cultura.html" },
+                    { id: "citizen", label: "🚌 Trasporti e Modi di Dire", page: "cittadino.html" }
+                ]
+            },
+            en: {
+                welcome: `Hello traveler! I am the Castellana of Caccamo, your guide to this village.\n\nLet me tell you about the origins: Caccamo stands on a rocky spur overlooking the San Leonardo valley. The name probably comes from the Greek \"kakkabe\". A fortress existed here in Arab times, but the village as we know it began in the 12th century with the Norman conquest.\n\nHow does the chat work? Choose a topic below and I'll guide you. Or write freely — I know everything about this village!`,
+                closing: `Well traveler, that's all from this page! Check the other pages and discover the rest of the village. Amunì! 🏰`,
+                followUp: `So, what else would you like to discover?`,
+                topics: [
+                    { id: "castello", label: "🏰 Castle", page: "castello.html" },
+                    { id: "chiese", label: "⛪ Churches", page: "chiese.html" },
+                    { id: "cibo_eventi", label: "🍷 Food & Events", page: "cibo_eventi.html" },
+                    { id: "cultura", label: "📜 Legends & Traditions", page: "cultura.html" },
+                    { id: "citizen", label: "🚌 Transport & Sayings", page: "cittadino.html" }
+                ]
+            },
+            fr: {
+                welcome: `Bonjour voyageur! Je suis la Castellana de Caccamo, votre guide pour ce village.\n\nLes origines du village remontent au XIIe siècle avec la conquête normande.\n\nComment fonctionne le chat? Choisissez un sujet ci-dessous. Ou écrivez librement!`,
+                closing: `Bien voyageur, c'est tout pour cette page! Consultez les autres pages. Amunì! 🏰`,
+                followUp: `Alors, que voulez-vous découvrir d'autre?`,
+                topics: [
+                    { id: "castello", label: "🏰 Château", page: "castello.html" },
+                    { id: "chiese", label: "⛪ Églises", page: "chiese.html" },
+                    { id: "cibo_eventi", label: "🍷 Cuisine & Fêtes", page: "cibo_eventi.html" },
+                    { id: "cultura", label: "📜 Légendes", page: "cultura.html" },
+                    { id: "citizen", label: "🚌 Transports", page: "cittadino.html" }
+                ]
+            },
+            es: {
+                welcome: `¡Hola viajero! Soy la Castellana de Caccamo, tu guía para este pueblo.\n\nEl pueblo se formó en el siglo XII con la conquista normanda.\n\n¿Cómo funciona el chat? Elige un tema abajo. ¡O escríbeme libremente!`,
+                closing: `¡Bien viajero, eso es todo en esta página! Consulta las otras páginas. ¡Amunì! 🏰`,
+                followUp: `Entonces, ¿qué más te gustaría descubrir?`,
+                topics: [
+                    { id: "castello", label: "🏰 Castillo", page: "castello.html" },
+                    { id: "chiese", label: "⛪ Iglesias", page: "chiese.html" },
+                    { id: "cibo_eventi", label: "🍷 Comida y Fiestas", page: "cibo_eventi.html" },
+                    { id: "cultura", label: "📜 Leyendas", page: "cultura.html" },
+                    { id: "citizen", label: "🚌 Transportes", page: "cittadino.html" }
+                ]
+            },
+            de: {
+                welcome: `Hallo Reisender! Ich bin die Castellana von Caccamo, Ihr Führer für dieses Dorf.\n\nDas Dorf entstand im 12. Jahrhundert mit der normannischen Eroberung.\n\nWie funktioniert der Chat? Wählen Sie unten ein Thema. Oder schreiben Sie mir frei!`,
+                closing: `Gut, Reisender, das ist alles auf dieser Seite! Sehen Sie sich die anderen Seiten an. Amunì! 🏰`,
+                followUp: `Also, was möchten Sie noch entdecken?`,
+                topics: [
+                    { id: "castello", label: "🏰 Burg", page: "castello.html" },
+                    { id: "chiese", label: "⛪ Kirchen", page: "chiese.html" },
+                    { id: "cibo_eventi", label: "🍷 Essen & Feste", page: "cibo_eventi.html" },
+                    { id: "cultura", label: "📜 Legenden", page: "cultura.html" },
+                    { id: "citizen", label: "🚌 Transport", page: "cittadino.html" }
+                ]
+            }
+        };
+
+        // Topic già usati in questa sessione
+        let usedTopics = new Set();
+        let hasShownWelcome = false;
 
         function loadLanguage(lang) {
             fetch(`lang/${lang}.json`)
@@ -274,66 +493,15 @@ window.silktideConsentManager.init({
                     });
                 }).catch(console.error);
             localStorage.setItem("lang", lang);
+            currentLang = lang;
+            // Se la chat è aperta, aggiorna il benvenuto
+            if (hasShownWelcome) {
+                renderWelcome();
+            }
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const chat = document.getElementById("chat-box");
-            const closeBtn = document.getElementById("close-chat");
-            const openBtn = document.getElementById("chat-open-btn");
-
-            openBtn.addEventListener("click", () => chat.classList.add("active"));
-            closeBtn.addEventListener("click", () => {
-                chat.classList.remove("active");
-                castellanaZitta();
-            });
-
-            const premiumBtn = document.getElementById("premium-chat-btn");
-            if (premiumBtn) {
-                premiumBtn.addEventListener("click", () => chat.classList.add("active"));
-            }
-
-            // "Aggiungi alla schermata Home": la pagina desktop non ha un
-            // manifest collegato, quindi non può installare se stessa.
-            // Porta l'utente alla pagina mobile, dove l'installazione vera
-            // (con manifest.json e service worker) è già configurata.
-            const installBtn = document.getElementById("install-pwa-btn");
-            if (installBtn) {
-                installBtn.addEventListener("click", () => {
-                    window.location.href = "https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html";
-                });
-            }
-
-            document.querySelectorAll(".lang-switcher button").forEach(btn => {
-                btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
-            });
-            loadLanguage(currentLang);
-        });
-
-        (function () {
-            const header = document.querySelector('.dashboard');
-            let lastScroll = 0;
-            const THRESHOLD = 900;
-
-            window.addEventListener('scroll', () => {
-                if (window.innerWidth >= THRESHOLD) {
-                    header.classList.remove('header-hidden');
-                    return;
-                }
-                const current = window.scrollY;
-                if (current > lastScroll && current > 80) {
-                    header.classList.add('header-hidden');
-                } else {
-                    header.classList.remove('header-hidden');
-                }
-                lastScroll = current;
-            }, { passive: true });
-        })();
-
-        const API_BASE_URL = "https://castellana.pythonanywhere.com";
-        const PREMIUM_STORAGE_KEY = "amuni_premium_access";
-
         // ============================================================
-        // TTS AVANZATO — La Castellana parla
+        // TTS AVANZATO — La Castellana parla (0.84)
         // ============================================================
         const VOICE_PREF_KEY = "amuni_voice_enabled";
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
@@ -382,7 +550,7 @@ window.silktideConsentManager.init({
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.voice = voceCastellana;
             utterance.lang = ttsLangCode(currentLang);
-            utterance.rate = 0.82;
+            utterance.rate = 0.84;
             utterance.pitch = 0.95;
             utterance.volume = 1.0;
             window.speechSynthesis.speak(utterance);
@@ -392,74 +560,190 @@ window.silktideConsentManager.init({
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         }
 
-        function getPageSlug() {
-            const path = window.location.pathname;
-            const file = path.substring(path.lastIndexOf('/') + 1);
-            return file.replace('.html', '') || 'home';
-        }
-
+        // ============================================================
+        // RENDERING MESSAGGI CHAT (stili puliti)
+        // ============================================================
         function appendChatMessage(text, sender, link) {
-            const messagesBox = document.querySelector('.chat-messages');
+            const messagesBox = document.getElementById('chat-messages-box');
+            if (!messagesBox) return;
 
-            // Contenitore del messaggio
             const msgWrap = document.createElement('div');
-            msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
-            msgWrap.style.cssText = 'display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;';
+            msgWrap.className = 'message-wrap' + (sender === 'user' ? ' user-msg' : '');
 
-            // Bolla del messaggio
             const msg = document.createElement('div');
             msg.className = 'message-bubble';
-            msg.style.cssText = 'flex:1; padding:12px 16px; border-radius:14px; background:' + 
-                (sender === 'user' ? '#7a1f2b; color:#fff;' : '#fdf6e8; color:#3a2a10;') +
-                ' line-height:1.6; font-size:15px;';
-            msg.textContent = text;
+            msg.innerHTML = text.replace(/\n/g, '<br>');
             msgWrap.appendChild(msg);
 
-            // Pulsante 🔊 SOLO per i messaggi della Castellana
-            if (sender !== 'user' && voiceEnabled) {
+            if (sender !== 'user') {
                 const audioBtn = document.createElement('button');
+                audioBtn.className = 'audio-btn';
                 audioBtn.innerHTML = '🔊';
                 audioBtn.title = 'Ascolta la Castellana';
-                audioBtn.style.cssText = `
-                    background: rgba(184, 135, 59, 0.15);
-                    border: none;
-                    border-radius: 50%;
-                    width: 36px;
-                    height: 36px;
-                    font-size: 16px;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-shrink: 0;
-                    margin-top: 4px;
-                    transition: background 0.2s;
-                `;
-                audioBtn.onmouseenter = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.35)';
-                audioBtn.onmouseleave = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.15)';
                 audioBtn.onclick = () => speakText(text);
                 msgWrap.appendChild(audioBtn);
             }
 
             messagesBox.appendChild(msgWrap);
 
-            // Link sotto il messaggio (se presente)
             if (link) {
                 const btn = document.createElement('button');
                 btn.className = 'chat-link-btn';
-                btn.textContent = getLinkLabel(link);
-                btn.style.cssText = 'margin-left: 44px; margin-top: 4px;';
-                btn.addEventListener('click', () => {
-                    if (link.includes('mappa.html')) {
-                        openMapOverlay(link);
-                    } else {
-                        window.location.href = link;
-                    }
-                });
+                btn.textContent = 'Vedi sulla mappa →';
+                btn.onclick = () => window.location.href = link;
                 messagesBox.appendChild(btn);
             }
 
             messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+
+        // ============================================================
+        // PULSANTI TOPIC DINAMICI
+        // ============================================================
+        function renderTopicButtons() {
+            const messagesBox = document.getElementById('chat-messages-box');
+            if (!messagesBox) return;
+
+            const knowledge = HOME_KNOWLEDGE[currentLang] || HOME_KNOWLEDGE.it;
+            const availableTopics = knowledge.topics.filter(t => !usedTopics.has(t.id));
+
+            if (availableTopics.length === 0) {
+                // Nessun topic rimanente — messaggio di chiusura
+                const closingDiv = document.createElement('div');
+                closingDiv.className = 'closing-message';
+                closingDiv.textContent = knowledge.closing;
+                messagesBox.appendChild(closingDiv);
+                if (voiceEnabled) speakText(knowledge.closing);
+                messagesBox.scrollTop = messagesBox.scrollHeight;
+                return;
+            }
+
+            // Messaggio follow-up
+            const followUpWrap = document.createElement('div');
+            followUpWrap.className = 'message-wrap';
+            const followUpBubble = document.createElement('div');
+            followUpBubble.className = 'message-bubble';
+            followUpBubble.style.cssText = 'background:#f8f0e0; border:1px dashed #d4b896; font-style:italic;';
+            followUpBubble.textContent = knowledge.followUp;
+            followUpWrap.appendChild(followUpBubble);
+            messagesBox.appendChild(followUpWrap);
+
+            // Container pulsanti
+            const btnRow = document.createElement('div');
+            btnRow.className = 'topic-buttons-row';
+
+            availableTopics.forEach(topic => {
+                const btn = document.createElement('button');
+                btn.className = 'topic-btn';
+                btn.textContent = topic.label;
+                btn.onclick = () => {
+                    usedTopics.add(topic.id);
+                    castellanaZitta();
+                    // Simula click: mostra conferma e reindirizza
+                    appendChatMessage(topic.label, 'user');
+                    setTimeout(() => {
+                        appendChatMessage(`Perfetto, viandante! Ti porto subito alla pagina dedicata.`, 'castellana');
+                        if (voiceEnabled) speakText(`Perfetto, viandante! Ti porto subito alla pagina dedicata.`);
+                        setTimeout(() => {
+                            window.location.href = topic.page;
+                        }, 2000);
+                    }, 300);
+                };
+                btnRow.appendChild(btn);
+            });
+
+            messagesBox.appendChild(btnRow);
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+
+        // ============================================================
+        // BENVENUTO INIZIALE
+        // ============================================================
+        function renderWelcome() {
+            const messagesBox = document.getElementById('chat-messages-box');
+            if (!messagesBox) return;
+            messagesBox.innerHTML = ''; // Pulisci
+            usedTopics.clear();
+
+            const knowledge = HOME_KNOWLEDGE[currentLang] || HOME_KNOWLEDGE.it;
+            appendChatMessage(knowledge.welcome, 'castellana');
+            if (voiceEnabled) speakText(knowledge.welcome);
+            renderTopicButtons();
+            hasShownWelcome = true;
+        }
+
+        // ============================================================
+        // DOMContentLoaded
+        // ============================================================
+        document.addEventListener("DOMContentLoaded", () => {
+            const chat = document.getElementById("chat-box");
+            const closeBtn = document.getElementById("close-chat");
+            const openBtn = document.getElementById("chat-open-btn");
+
+            openBtn.addEventListener("click", () => {
+                chat.classList.add("active");
+                if (!hasShownWelcome) {
+                    renderWelcome();
+                }
+            });
+
+            closeBtn.addEventListener("click", () => {
+                chat.classList.remove("active");
+                castellanaZitta();
+            });
+
+            const premiumBtn = document.getElementById("premium-chat-btn");
+            if (premiumBtn) {
+                premiumBtn.addEventListener("click", () => {
+                    chat.classList.add("active");
+                    if (!hasShownWelcome) renderWelcome();
+                });
+            }
+
+            const installBtn = document.getElementById("install-pwa-btn");
+            if (installBtn) {
+                installBtn.addEventListener("click", () => {
+                    window.location.href = "https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html";
+                });
+            }
+
+            document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
+            });
+            loadLanguage(currentLang);
+        });
+
+        // Header scroll
+        (function () {
+            const header = document.querySelector('.dashboard');
+            let lastScroll = 0;
+            const THRESHOLD = 900;
+
+            window.addEventListener('scroll', () => {
+                if (window.innerWidth >= THRESHOLD) {
+                    header.classList.remove('header-hidden');
+                    return;
+                }
+                const current = window.scrollY;
+                if (current > lastScroll && current > 80) {
+                    header.classList.add('header-hidden');
+                } else {
+                    header.classList.remove('header-hidden');
+                }
+                lastScroll = current;
+            }, { passive: true });
+        })();
+
+        // ============================================================
+        // API E CHAT (invariato dal tuo codice originale)
+        // ============================================================
+        const API_BASE_URL = "https://castellana.pythonanywhere.com";
+        const PREMIUM_STORAGE_KEY = "amuni_premium_access";
+
+        function getPageSlug() {
+            const path = window.location.pathname;
+            const file = path.substring(path.lastIndexOf('/') + 1);
+            return file.replace('.html', '') || 'home';
         }
 
         function getStoredAccessCode() {
@@ -523,6 +807,7 @@ window.silktideConsentManager.init({
             if (wasActivationAttempt) return;
 
             appendChatMessage(text, 'user');
+            castellanaZitta(); // Ferma TTS quando utente scrive
 
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
