@@ -500,54 +500,97 @@ body {
 }
 
 /* ============================================================
-   CHAT
+   CHAT — stessa struttura/classi usate nel resto del sito
+   (.chat-desktop, non più .chat-interface): nascosta con
+   display:none di base, mostrata solo con .active. Molto più
+   solido del vecchio bottom:-100%, che lasciava spazio a bug.
    ============================================================ */
-.chat-interface {
+.chat-desktop {
     position: fixed;
-    bottom: -100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
-    max-width: 400px;
-    background: var(--stone);
+    bottom: 150px;
+    right: 3%;
+    width: 320px;
+    height: 350px;
+    background: rgba(15, 25, 34, 0.96);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--gold);
-    border-radius: 4px 4px 0 0;
-    padding: 15px;
-    z-index: 1000;
-    transition: bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    border-radius: 4px;
+    padding: 16px;
+    display: none;
+    z-index: 99999;
     box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
 }
 
-.chat-interface.active {
-    bottom: 0;
+.chat-desktop.active {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease forwards;
 }
 
 .chat-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    color: #fff;
+    gap: 8px;
+    color: var(--cream-text);
     background: var(--sea-ink);
-    margin: -15px -15px 15px -15px;
+    margin: -16px -16px 15px -16px;
     padding: 12px 15px;
     border-radius: 4px 4px 0 0;
     border-bottom: 1px solid var(--gold);
 }
 
+.chat-header span {
+    flex-grow: 1;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.avatar-status-dot {
+    width: 8px;
+    height: 8px;
+    background: #5FD068;
+    box-shadow: 0 0 6px #5FD068;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
 .close-chat-btn {
     background: transparent;
     border: none;
-    color: var(--ink);
-    font-size: 1.2rem;
+    color: var(--cream-text);
     cursor: pointer;
+    font-size: 1.1rem;
 }
 
 .close-chat-btn:hover {
-    color: var(--wine);
+    color: var(--gold-light);
+}
+
+.premium-status-bar {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 4px 8px;
+    margin: -6px 0 10px 0;
+    border-radius: 2px;
+    letter-spacing: 0.2px;
+}
+
+.premium-status-bar.premium-active {
+    background: rgba(184, 135, 59, 0.18);
+    color: var(--gold-light);
+    border: 1px solid rgba(184, 135, 59, 0.4);
+}
+
+.premium-status-bar.premium-free {
+    background: rgba(239, 230, 211, 0.08);
+    color: var(--cream-text);
+    border: 1px solid rgba(239, 230, 211, 0.25);
 }
 
 .chat-messages {
-    height: 120px;
+    flex-grow: 1;
     overflow-y: auto;
     margin-bottom: 10px;
 }
@@ -560,8 +603,111 @@ body {
     padding: 8px 12px;
     border-radius: 2px;
     margin-bottom: 8px;
-    max-width: 85%;
+    max-width: 90%;
     border-left: 2px solid var(--gold);
+}
+
+.chat-messages .message.user-msg {
+    background: var(--sea);
+    color: #fff;
+    margin-left: auto;
+    border-left: none;
+    border-right: 2px solid var(--gold);
+    text-align: right;
+}
+
+.system-msg {
+    border-left: 2px solid var(--terracotta);
+}
+
+.chat-link-btn {
+    display: block;
+    background: var(--terracotta);
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin: -2px 0 8px 0;
+    transition: background 0.2s;
+}
+
+.chat-link-btn:hover {
+    background: var(--sea);
+}
+
+.map-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: #000;
+}
+
+.map-overlay iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.map-overlay-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(15, 25, 34, 0.85);
+    color: var(--cream-text);
+    border: 1px solid var(--gold);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.topic-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 2px 0 10px 0;
+}
+
+.topic-btn {
+    background: #fff;
+    border: 1px solid var(--gold);
+    color: var(--sea);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.topic-btn:hover {
+    background: var(--gold);
+    color: #fff;
+}
+
+.topic-group-btn {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+    font-weight: 600;
+}
+
+.topic-group-btn:hover {
+    background: var(--terracotta);
+    color: #fff;
+}
+
+.topic-subitems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+    margin-top: 4px;
+    padding-left: 10px;
 }
 
 .chat-input-row {
@@ -577,6 +723,7 @@ body {
     background: #fff;
     color: var(--ink);
     outline: none;
+    font-size: 0.85rem;
 }
 
 .chat-input-row input:focus {
@@ -598,13 +745,33 @@ body {
     background: var(--terracotta);
 }
 
-.chat-messages .message.user-msg {
-    background: var(--sea);
-    color: #fff;
-    margin-left: auto;
-    border-left: none;
-    border-right: 2px solid var(--gold);
-    text-align: right;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Solo sulla home: finestra più grande e più a destra su desktop
+   (nelle altre pagine resta compatta, qui la Castellana è il fulcro
+   della hero e la chat merita più spazio). */
+@media screen and (min-width: 951px) {
+    .chat-desktop {
+        width: 440px;
+        height: 640px;
+        max-height: 80vh;
+        right: 60px;
+        bottom: 110px;
+    }
+}
+
+/* Chat più stretta sui piccoli schermi (stessa soglia usata nel
+   resto del sito) */
+@media screen and (max-width: 950px) {
+    .chat-desktop {
+        bottom: 110px;
+        left: 10px;
+        right: 10px;
+        width: calc(100% - 20px);
+    }
 }
 
 /* ============================================================
