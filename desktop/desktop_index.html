@@ -108,7 +108,7 @@ window.silktideConsentManager.init({
     <title>Amunì Tourism | Il cuore di Caccamo</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css_style2_v2.css">
+    <link rel="stylesheet" href="css_style2_v2.css?v=2">
     <style>
         .lang-switcher button.active {
             border: 2px solid #B8873B !important;
@@ -541,6 +541,21 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
             renderTopicButtons();
             hasShownWelcome = true;
         }
+
+        // ============================================================
+        // FIX "torna indietro col browser" — quando arrivi su questa
+        // pagina tornando indietro da un'altra (es. dopo un pulsante
+        // topic), alcuni browser mobili ripristinano la pagina dalla
+        // loro cache interna invece di ricaricarla da zero: la chat
+        // poteva restare "aperta" ma vuota. pageshow scatta sia al
+        // primo caricamento sia al ritorno da cache: qui forziamo
+        // sempre la chat chiusa, così parte sempre pulita.
+        // ============================================================
+        window.addEventListener("pageshow", () => {
+            const chat = document.getElementById("chat-box");
+            if (chat) chat.classList.remove("active");
+            if (typeof castellanaZitta === "function") castellanaZitta();
+        });
 
         // ============================================================
         // DOMContentLoaded
