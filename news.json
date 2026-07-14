@@ -1,0 +1,25 @@
+{
+  "_leggimi": "Modifica solo l'elenco 'items' qui sotto. Ogni volta che vedi un post davvero pertinente sulla pagina Facebook del Comune di Caccamo (Settimana Santa, San Nicasio, Sagra della Salsiccia, Beato Giovanni, La Castellana, area pedonale via Termitana, ecc.), aggiungi un oggetto con 'title' (un titolo breve, es. 'Sagra della Salsiccia — 12 ottobre') e 'link' (l'indirizzo diretto del post su Facebook, si trova cliccando sulla data del post e copiando l'indirizzo che appare). Il campo 'date' è solo per tuo riferimento, non è obbligatorio ma è comodo per ricordarti quando l'hai aggiunto. Per far sparire il tooltip 'News Eventi' dal sito, basta svuotare l'elenco così: \"items\": []",
+  "items": [
+    {
+      "title": "🎵 Tachipirina 500 in concerto — 24 luglio",
+      "link": "https://www.facebook.com/share/p/1BWzAJddgc/",
+      "date": "13 luglio 2026"
+    },
+    {
+      "title": "👑 Eletta la 36ª Castellana — Corteo il 23 agosto",
+      "link": "https://www.facebook.com/share/p/1EAxftEGhp/",
+      "date": "5 luglio 2026"
+    },
+    {
+      "title": "🎬 Young Sherlock 2 gira al Castello di Caccamo",
+      "link": "https://www.facebook.com/share/p/191YGHKirk/",
+      "date": "5 giugno 2026"
+    },
+    {
+      "title": "🚶 Torna l'isola pedonale in Via Termitana",
+      "link": "https://www.facebook.com/share/p/1DBXjtAEHz/",
+      "date": "12 luglio 2026"
+    }
+  ]
+}
