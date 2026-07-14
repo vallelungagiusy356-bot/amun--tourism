@@ -99,37 +99,37 @@ window.silktideConsentManager.init({
             font-weight: bold;
         }
 
-        /* ===== STILI CHAT — una sola scatola per messaggio ===== */
+        /* ===== STILI CHAT — allineati a chiese-arte.html/cibo_eventi.html:
+           Castellana bianca/oro, tu blu scuro/oro, pillola bianca per i
+           topic. Prima qui erano crema/bianco con font Cormorant Garamond:
+           per questo la chat sembrava "un'altra pagina". ===== */
         .chat-messages {
             padding: 16px;
-            background: #faf8f3;
         }
 
         .message {
             display: flex;
             align-items: flex-start;
             gap: 8px;
-            margin-bottom: 14px;
-            animation: fadeInUp 0.3s ease;
-            padding: 12px 16px;
-            border-radius: 18px;
-            line-height: 1.65;
-            font-size: 15px;
-            max-width: 85%;
-            word-wrap: break-word;
-            background: #fdf6e8;
-            color: #3a2a10;
-            border: 1px solid #f0e6d0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-            border-radius: 18px 18px 18px 4px;
+            margin-bottom: 8px;
+            color: var(--ink);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-width: 90%;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 2px;
+            border-left: 2px solid var(--gold);
         }
 
         .message.user-msg {
-            background: #ffffff;
-            border: 1px solid #e8e0d0;
-            border-radius: 18px 18px 4px 18px;
+            background: var(--sea);
+            color: #fff;
+            border-left: none;
+            border-right: 2px solid var(--gold);
             flex-direction: row-reverse;
             margin-left: auto;
+            text-align: right;
         }
 
         .message span {
@@ -137,7 +137,7 @@ window.silktideConsentManager.init({
         }
 
         .message strong {
-            color: #7a1f2b;
+            color: inherit;
         }
 
         /* Pulsante audio */
@@ -155,7 +155,7 @@ window.silktideConsentManager.init({
             flex-shrink: 0;
             margin-top: 2px;
             transition: all 0.2s ease;
-            color: #8b6914;
+            color: var(--gold);
         }
 
         .audio-btn:hover {
@@ -171,62 +171,54 @@ window.silktideConsentManager.init({
         .topic-menu {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin: 10px 0 14px 0;
-            padding: 0 4px;
-            animation: fadeInUp 0.3s ease;
+            gap: 6px;
+            margin: 2px 0 10px 0;
         }
 
         .topic-btn {
-            background: linear-gradient(135deg, #fdf6e8 0%, #f5ebd0 100%);
-            border: 1.5px solid #d4b896;
-            color: #5a3a10;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-family: 'Cormorant Garamond', serif;
+            background: #fff;
+            border: 1px solid var(--gold);
+            color: var(--sea);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.78rem;
             cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
+            transition: background 0.2s, color 0.2s;
         }
 
         .topic-btn:hover {
-            background: linear-gradient(135deg, #f5ebd0 0%, #e8d5a8 100%);
-            border-color: #b8873b;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(184, 135, 59, 0.2);
-        }
-
-        .topic-btn:active {
-            transform: translateY(0);
+            background: var(--gold);
+            color: #fff;
         }
 
         .topic-group-btn {
-            background: linear-gradient(135deg, #f5ebd0 0%, #e8d5a8 100%);
+            border-color: var(--terracotta);
+            color: var(--terracotta);
             font-weight: 600;
+        }
+
+        .topic-group-btn:hover {
+            background: var(--terracotta);
+            color: #fff;
         }
 
         /* Link sotto messaggio */
         .chat-link-btn {
-            background: transparent;
-            border: 1.5px solid #b8873b;
-            color: #8b6914;
-            padding: 6px 14px;
-            border-radius: 16px;
-            font-size: 13px;
-            font-family: 'Cormorant Garamond', serif;
+            display: block;
+            background: var(--terracotta);
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
             cursor: pointer;
-            margin: 4px 0 12px 44px;
-            transition: all 0.2s ease;
+            margin: -2px 0 8px 0;
+            transition: background 0.2s;
         }
 
         .chat-link-btn:hover {
-            background: rgba(184, 135, 59, 0.1);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            background: var(--sea);
         }
 
         .castellana-premium-cta {
@@ -787,9 +779,17 @@ window.silktideConsentManager.init({
             es: "Ver en el mapa →", de: "Auf der Karte ansehen →"
         };
 
+        const ORARI_LABEL_BY_LANG = {
+            it: "Orari e biglietti →", en: "Hours & tickets →", fr: "Horaires et billets →",
+            es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →"
+        };
+
         function getLinkLabel(link) {
             if (link && link.includes('mappa.html')) {
                 return MAP_LABEL_BY_LANG[currentLang] || MAP_LABEL_BY_LANG.it;
+            }
+            if (link && link.includes('/mobile/')) {
+                return ORARI_LABEL_BY_LANG[currentLang] || ORARI_LABEL_BY_LANG.it;
             }
             const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
             return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
