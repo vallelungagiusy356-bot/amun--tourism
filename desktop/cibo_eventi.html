@@ -322,9 +322,11 @@ window.silktideConsentManager.init({
                     currentLang = btn.dataset.lang;
                     loadLanguage(currentLang);
                     updatePremiumStatusDisplay();
-                    const oldMenu = document.querySelector('.chat-messages .topic-menu');
+                    const oldMenu = document.querySelector('.chat-messages .topic-menu-state');
                     if (oldMenu) oldMenu.remove();
                     menuLoadedForCode = null;
+                    exploredGroups.clear();
+                    usedTopics.clear();
                     if (chat.classList.contains('active')) loadTopicMenu();
                 });
             });
@@ -448,6 +450,16 @@ window.silktideConsentManager.init({
             }
         };
 
+        const MAP_LABEL_BY_LANG = {
+            it: "Vedi sulla mappa →", en: "See on the map →", fr: "Voir sur la carte →",
+            es: "Ver en el mapa →", de: "Auf der Karte ansehen →"
+        };
+
+        const ORARI_LABEL_BY_LANG = {
+            it: "Orari e biglietti →", en: "Hours & tickets →", fr: "Horaires et billets →",
+            es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →"
+        };
+
         const MANGIARE_LABEL_BY_LANG = {
             it: "Vai a Mangiare e Bere →", en: "Go to Eat & Drink →", fr: "Aller à Manger et Boire →",
             es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →"
@@ -457,46 +469,51 @@ window.silktideConsentManager.init({
             if (link && link.includes('mangiare.html')) {
                 return MANGIARE_LABEL_BY_LANG[currentLang] || MANGIARE_LABEL_BY_LANG.it;
             }
+            if (link && link.includes('mappa.html')) {
+                return MAP_LABEL_BY_LANG[currentLang] || MAP_LABEL_BY_LANG.it;
+            }
+            if (link && link.includes('/mobile/')) {
+                return ORARI_LABEL_BY_LANG[currentLang] || ORARI_LABEL_BY_LANG.it;
+            }
             const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
             return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
         }
 
+        function openMapOverlay(url) {
+            const overlay = document.createElement('div');
+            overlay.className = 'map-overlay';
+            overlay.innerHTML = `
+                <button class="map-overlay-close" aria-label="Chiudi la mappa">✕</button>
+                <iframe src="${url}" allow="geolocation" title="Mappa Amunì"></iframe>
+            `;
+            document.body.appendChild(overlay);
+            overlay.querySelector('.map-overlay-close').addEventListener('click', () => {
+                overlay.remove();
+            });
+        }
+
+        // ============================================================
+        // RENDERING MESSAGGI CHAT — una sola scatola per messaggio
+        // (.message / .message.user-msg), come castello.html e
+        // chiese-arte.html. Prima c'era una .message-bubble interna
+        // con un secondo sfondo scritto a mano: scatola dentro la
+        // scatola, con doppio bordo/sfondo indesiderato.
+        // ============================================================
         function appendChatMessage(text, sender, link) {
             const messagesBox = document.querySelector('.chat-messages');
 
             const msgWrap = document.createElement('div');
             msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
-            msgWrap.style.cssText = 'display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;';
 
-            const msg = document.createElement('div');
-            msg.className = 'message-bubble';
-            msg.style.cssText = 'flex:1; padding:12px 16px; border-radius:14px; background:' + 
-                (sender === 'user' ? '#7a1f2b; color:#fff;' : '#fdf6e8; color:#3a2a10;') +
-                ' line-height:1.6; font-size:15px;';
-            msg.textContent = text;
-            msgWrap.appendChild(msg);
+            const textSpan = document.createElement('span');
+            textSpan.textContent = text;
+            msgWrap.appendChild(textSpan);
 
-            if (sender !== 'user' && voiceEnabled) {
+            if (sender !== 'user') {
                 const audioBtn = document.createElement('button');
                 audioBtn.innerHTML = '🔊';
                 audioBtn.title = 'Ascolta la Castellana';
-                audioBtn.style.cssText = `
-                    background: rgba(184, 135, 59, 0.15);
-                    border: none;
-                    border-radius: 50%;
-                    width: 36px;
-                    height: 36px;
-                    font-size: 16px;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-shrink: 0;
-                    margin-top: 4px;
-                    transition: background 0.2s;
-                `;
-                audioBtn.onmouseenter = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.35)';
-                audioBtn.onmouseleave = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.15)';
+                audioBtn.className = 'audio-btn';
                 audioBtn.onclick = () => speakText(text);
                 msgWrap.appendChild(audioBtn);
             }
@@ -507,8 +524,13 @@ window.silktideConsentManager.init({
                 const btn = document.createElement('button');
                 btn.className = 'chat-link-btn';
                 btn.textContent = getLinkLabel(link);
-                btn.style.cssText = 'margin-left: 44px; margin-top: 4px;';
-                btn.addEventListener('click', () => { window.location.href = link; });
+                btn.addEventListener('click', () => {
+                    if (link.includes('mappa.html') || link.includes('/mobile/')) {
+                        openMapOverlay(link);
+                    } else {
+                        window.location.href = link;
+                    }
+                });
                 messagesBox.appendChild(btn);
             }
 
@@ -516,53 +538,80 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // MENU A PULSANTI (topic)
+        // MENU A PULSANTI — versione con contesto persistente: dopo
+        // ogni risposta, ricompaiono le altre voci dello stesso evento
+        // appena trattato, e sotto quelle il resto degli eventi ancora
+        // da esplorare (tranne quello appena affrontato).
         // ============================================================
+        let fullTopicMenu = [];
+        let exploredGroups = new Set();
+        let usedTopics = new Set();
+
         function renderTopicMenu(menu) {
             if (!menu || !menu.length) return;
-            const messagesBox = document.querySelector('.chat-messages');
-            const wrap = document.createElement('div');
-            wrap.className = 'topic-menu';
+            fullTopicMenu = menu;
+            renderMenuState(null);
+        }
 
-            menu.forEach(entry => {
+        function renderMenuState(currentGroupName) {
+            const messagesBox = document.querySelector('.chat-messages');
+            const old = messagesBox.querySelector('.topic-menu-state');
+            if (old) old.remove();
+
+            const wrap = document.createElement('div');
+            wrap.className = 'topic-menu topic-menu-state';
+
+            if (currentGroupName) {
+                const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
+                if (groupEntry) {
+                    groupEntry.items.forEach(it => {
+                        if (usedTopics.has(it.topic)) return;
+                        const b = document.createElement('button');
+                        b.className = 'topic-btn';
+                        b.textContent = it.label;
+                        b.addEventListener('click', () => {
+                            usedTopics.add(it.topic);
+                            sendTopicRequest(it.topic, it.label, currentGroupName);
+                        });
+                        wrap.appendChild(b);
+                    });
+                }
+            }
+
+            fullTopicMenu.forEach(entry => {
                 if (entry.group) {
+                    if (exploredGroups.has(entry.group)) return;
                     const groupBtn = document.createElement('button');
                     groupBtn.className = 'topic-btn topic-group-btn';
                     groupBtn.textContent = entry.group + ' ▸';
-                    groupBtn.addEventListener('click', () => {
-                        const existing = groupBtn.nextElementSibling;
-                        if (existing && existing.classList.contains('topic-subitems')) {
-                            existing.remove();
-                            return;
-                        }
-                        const sub = document.createElement('div');
-                        sub.className = 'topic-subitems';
-                        entry.items.forEach(it => {
-                            const b = document.createElement('button');
-                            b.className = 'topic-btn';
-                            b.textContent = it.label;
-                            b.addEventListener('click', () => sendTopicRequest(it.topic, it.label));
-                            sub.appendChild(b);
-                        });
-                        groupBtn.insertAdjacentElement('afterend', sub);
-                        messagesBox.scrollTop = messagesBox.scrollHeight;
-                    });
+                    groupBtn.addEventListener('click', () => renderMenuState(entry.group));
                     wrap.appendChild(groupBtn);
                 } else {
+                    if (usedTopics.has(entry.topic)) return;
                     const b = document.createElement('button');
                     b.className = 'topic-btn';
                     b.textContent = entry.label;
-                    b.addEventListener('click', () => sendTopicRequest(entry.topic, entry.label));
+                    b.addEventListener('click', () => {
+                        usedTopics.add(entry.topic);
+                        sendTopicRequest(entry.topic, entry.label, null);
+                    });
                     wrap.appendChild(b);
                 }
             });
 
-            messagesBox.appendChild(wrap);
-            messagesBox.scrollTop = messagesBox.scrollHeight;
+            if (wrap.children.length > 0) {
+                messagesBox.appendChild(wrap);
+                messagesBox.scrollTop = messagesBox.scrollHeight;
+            }
         }
 
-        async function sendTopicRequest(topicId, label) {
+        async function sendTopicRequest(topicId, label, groupName) {
             appendChatMessage(label, 'user');
+
+            const messagesBox = document.querySelector('.chat-messages');
+            const old = messagesBox.querySelector('.topic-menu-state');
+            if (old) old.remove();
+
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
                     method: 'POST',
@@ -579,6 +628,8 @@ window.silktideConsentManager.init({
                 const data = await res.json();
                 appendChatMessage(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
+                if (groupName) exploredGroups.add(groupName);
+                renderMenuState(groupName);
             } catch (err) {
                 console.error('Errore richiesta topic:', err);
                 appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
@@ -710,6 +761,7 @@ window.silktideConsentManager.init({
             if (wasActivationAttempt) return;
 
             appendChatMessage(text, 'user');
+            castellanaZitta();
 
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
