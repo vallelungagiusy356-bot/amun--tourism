@@ -352,6 +352,7 @@ window.silktideConsentManager.init({
                   if (oldMenu) oldMenu.remove();
                   menuLoadedForCode = null;
                   exploredGroups.clear();
+                  exploredTopics.clear();
                   if (chatBox.classList.contains('active')) loadTopicMenu();
               });
           });
@@ -584,9 +585,12 @@ window.silktideConsentManager.init({
       // ad approfondire quel monumento), e sotto quelle il resto delle
       // chiese ancora da esplorare — tranne quella appena affrontata,
       // che si considera "vista" e sparisce dall'elenco principale.
+      // Gli argomenti singoli (senza gruppo) seguono la stessa logica:
+      // una volta risposti, spariscono anche loro dal menu principale.
       // ============================================================
       let fullTopicMenu = [];       // il menu originale ricevuto dal backend
       let exploredGroups = new Set(); // nomi delle chiese già affrontate
+      let exploredTopics = new Set(); // argomenti singoli (senza gruppo) già affrontati
 
       function renderTopicMenu(menu) {
           if (!menu || !menu.length) return;
@@ -628,6 +632,7 @@ window.silktideConsentManager.init({
                   groupBtn.addEventListener('click', () => renderMenuState(entry.group));
                   wrap.appendChild(groupBtn);
               } else {
+                  if (exploredTopics.has(entry.topic)) return; // già affrontato, non ricompare
                   const b = document.createElement('button');
                   b.className = 'topic-btn';
                   b.textContent = entry.label;
@@ -660,7 +665,11 @@ window.silktideConsentManager.init({
               const data = await res.json();
               appendChatMessage(data.reply, 'castellana', data.link);
               if (data.speak || voiceEnabled) speakText(data.reply);
-              if (groupName) exploredGroups.add(groupName);
+              if (groupName) {
+                  exploredGroups.add(groupName);
+              } else {
+                  exploredTopics.add(topicId);
+              }
               renderMenuState(groupName);
           } catch (err) {
               console.error('Errore richiesta topic:', err);
