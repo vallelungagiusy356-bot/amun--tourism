@@ -76,6 +76,21 @@ let userLocation = null;      // [lng, lat] dell'utente, appena disponibile
 let pendingRouteTarget = null; // coordinate del monumento in attesa della posizione
 let bannerVisible = false;
 
+// --- WAYFINDING IN TEMPO REALE -------------------------------
+// Mentre il turista cammina con un percorso attivo, la posizione
+// si aggiorna continuamente da sola (trackUserLocation è già
+// attivo): qui agganciamo quell'aggiornamento per ricalcolare il
+// percorso vero ogni tanto, invece di lasciarlo congelato al
+// momento della partenza.
+let currentDestination = null;      // monumento verso cui si sta camminando ora
+let lastRouteRecalcTime = 0;         // quando è stato ricalcolato l'ultima volta
+let lastRouteRecalcLocation = null;  // da dove, l'ultima volta
+
+const WAYFINDING_ARRIVED_THRESHOLD_M = 20;  // sotto questa distanza: "sei arrivato"
+const WAYFINDING_MIN_INTERVAL_MS = 6000;    // mai più di un ricalcolo ogni 6 secondi
+const WAYFINDING_RECALC_EVERY_MS = 20000;   // ricalcola comunque almeno ogni 20 secondi
+const WAYFINDING_RECALC_MIN_MOVE_M = 20;    // oppure prima, se ci si è mossi di almeno 20 metri
+
 function haversineKm(a, b) {
     const toRad = (deg) => (deg * Math.PI) / 180;
     const R = 6371; // raggio terrestre in km
@@ -201,11 +216,63 @@ function showRouteInfo(durationSeconds, distanceMeters) {
     box.textContent = `🚶 ${minuti} min a piedi · ${km} km`;
 }
 
+// Quando il turista è arrivato a destinazione: pulisce il percorso
+// disegnato e mostra un messaggio di arrivo al posto del solito
+// tempo/distanza.
+function showArrivedMessage() {
+    const box = document.getElementById('info-percorso');
+    if (box) box.textContent = '🎉 Sei arrivato!';
+    map.getSource('route').setData({ type: 'FeatureCollection', features: [] });
+}
+
+// Azzera lo stato del wayfinding (nessuna destinazione attiva).
+function clearWayfinding() {
+    currentDestination = null;
+    lastRouteRecalcTime = 0;
+    lastRouteRecalcLocation = null;
+}
+
+// ============================================================
+// AGGIORNAMENTO IN TEMPO REALE — chiamata ogni volta che arriva
+// una nuova posizione GPS, se c'è una destinazione attiva. Non
+// richiama il servizio Direzioni ad ogni singolo aggiornamento
+// (sarebbe eccessivo): lo fa solo ogni tot secondi, o se il
+// turista si è mosso abbastanza da giustificare un ricalcolo.
+// ============================================================
+function updateWayfinding() {
+    if (!currentDestination || !userLocation) return;
+
+    const distanceM = haversineKm(userLocation, currentDestination) * 1000;
+
+    if (distanceM < WAYFINDING_ARRIVED_THRESHOLD_M) {
+        showArrivedMessage();
+        clearWayfinding();
+        return;
+    }
+
+    const now = Date.now();
+    const timeSinceLastRecalc = now - lastRouteRecalcTime;
+    const movedEnough = !lastRouteRecalcLocation ||
+        haversineKm(userLocation, lastRouteRecalcLocation) * 1000 >= WAYFINDING_RECALC_MIN_MOVE_M;
+
+    const shouldRecalc =
+        timeSinceLastRecalc >= WAYFINDING_MIN_INTERVAL_MS &&
+        (movedEnough || timeSinceLastRecalc >= WAYFINDING_RECALC_EVERY_MS);
+
+    if (shouldRecalc) {
+        lastRouteRecalcTime = now;
+        lastRouteRecalcLocation = userLocation;
+        drawRouteTo(currentDestination);
+    }
+}
+
 // Punto d'ingresso unico per "portami lì": se non abbiamo ancora
 // la posizione dell'utente, la chiediamo e ricordiamo la meta per
 // dopo; se il turista è lontano da Caccamo, avvisiamo invece di
 // disegnare un percorso senza senso.
 function requestRouteTo(destCoords) {
+    currentDestination = destCoords;
+
     if (!userLocation) {
         pendingRouteTarget = destCoords;
         showLocationPrompt();
@@ -215,6 +282,8 @@ function requestRouteTo(destCoords) {
         showFarAwayMessage();
         return;
     }
+    lastRouteRecalcTime = Date.now();
+    lastRouteRecalcLocation = userLocation;
     drawRouteTo(destCoords);
 }
 
@@ -225,7 +294,9 @@ geolocateControl.on('geolocate', (position) => {
         const target = pendingRouteTarget;
         pendingRouteTarget = null;
         requestRouteTo(target);
+        return;
     }
+    updateWayfinding();
 });
 
 geolocateControl.on('error', (err) => {
