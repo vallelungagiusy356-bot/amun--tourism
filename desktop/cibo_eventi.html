@@ -465,6 +465,16 @@ window.silktideConsentManager.init({
             es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →"
         };
 
+        // Messaggio quando gli argomenti disponibili in questa pagina sono
+        // finiti tutti — stesso testo usato in tutte le pagine del sito.
+        const CLOSING_MESSAGES = {
+            it: "E da qui è tutto, viandante! Spero di esserti stata utile. Se vuoi avere altre informazioni, vieni a trovarmi nelle altre pagine!",
+            en: "That's all from here, traveler! I hope I was useful. For more information, come find me on the other pages!",
+            fr: "C'est tout pour ici, voyageur ! J'espère t'avoir été utile. Pour en savoir plus, retrouve-moi sur les autres pages !",
+            es: "¡Eso es todo por aquí, viajero! Espero haberte sido útil. Para más información, ¡búscame en las otras páginas!",
+            de: "Das war's von hier, Reisender! Ich hoffe, ich konnte dir helfen. Für mehr Informationen findest du mich auf den anderen Seiten!"
+        };
+
         function getLinkLabel(link) {
             if (link && link.includes('mangiare.html')) {
                 return MANGIARE_LABEL_BY_LANG[currentLang] || MANGIARE_LABEL_BY_LANG.it;
@@ -525,7 +535,13 @@ window.silktideConsentManager.init({
                 btn.className = 'chat-link-btn';
                 btn.textContent = getLinkLabel(link);
                 btn.addEventListener('click', () => {
-                    if (link.includes('mappa.html') || link.includes('/mobile/')) {
+                    // "/mobile/" da solo indica una pagina pensata per la
+                    // finestra sovrapposta (mappa, orari) — ma mangiare.html
+                    // è una pagina di contenuto vera e propria (ricette),
+                    // va quindi esclusa ed aperta come pagina intera,
+                    // altrimenti finiva schiacciata nel piccolo overlay e
+                    // sembrava "non funzionare".
+                    if (link.includes('mappa.html') || (link.includes('/mobile/') && !link.includes('mangiare.html'))) {
                         openMapOverlay(link);
                     } else {
                         window.location.href = link;
@@ -602,6 +618,10 @@ window.silktideConsentManager.init({
             if (wrap.children.length > 0) {
                 messagesBox.appendChild(wrap);
                 messagesBox.scrollTop = messagesBox.scrollHeight;
+            } else {
+                const closingText = CLOSING_MESSAGES[currentLang] || CLOSING_MESSAGES.it;
+                appendChatMessage(closingText, 'castellana');
+                if (voiceEnabled) speakText(closingText);
             }
         }
 
