@@ -15,6 +15,12 @@
    Un solo aggiornamento -> il tooltip porta dritto al post Facebook.
    Più aggiornamenti insieme -> il tooltip apre un piccolo elenco, ogni
    voce porta al proprio post.
+
+   Posizione: in alto a sinistra, sotto l'header. Essendo "position: fixed"
+   resta ancorato a quel punto dello schermo e non scorre con la pagina;
+   l'altezza dell'header cambia tra i formati (desktop/tablet/mobile), per
+   questo il valore di "top" è regolato con le stesse soglie usate nel
+   resto del sito, così il tooltip non finisce mai sotto l'header.
    ========================================================================== */
 
 (function () {
@@ -37,10 +43,16 @@
         style.textContent = `
             #news-badge-wrap {
                 position: fixed;
-                left: 1.2rem;
-                bottom: 1.2rem;
+                left: 1rem;
+                top: 130px;
                 z-index: 9998;
                 font-family: 'Segoe UI', system-ui, sans-serif;
+            }
+            @media (min-width: 601px) and (max-width: 899px) {
+                #news-badge-wrap { top: 160px; }
+            }
+            @media (min-width: 900px) {
+                #news-badge-wrap { top: 90px; }
             }
             #news-badge-btn {
                 display: flex;
