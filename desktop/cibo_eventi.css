@@ -424,6 +424,9 @@ body::before {
 }
 
 .chat-messages .message {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
   color: var(--ink);
   font-size: 0.9rem;
   line-height: 1.5;
@@ -433,6 +436,42 @@ body::before {
   margin-bottom: 8px;
   max-width: 90%;
   border-left: 2px solid var(--gold);
+}
+
+.chat-messages .message span {
+  flex: 1;
+}
+
+/* ============================================================
+   Pulsante "ascolta" (🔊) accanto ai messaggi della Castellana.
+   Mancava: senza questa regola il browser mostrava un pulsante
+   di sistema grezzo invece del cerchietto oro coerente col resto
+   del sito.
+   ============================================================ */
+.audio-btn {
+  background: rgba(184, 135, 59, 0.12);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.2s ease;
+  color: var(--gold);
+}
+
+.audio-btn:hover {
+  background: rgba(184, 135, 59, 0.3);
+  transform: scale(1.08);
+}
+
+.audio-btn:active {
+  transform: scale(0.95);
 }
 
 .chat-link-btn {
@@ -552,9 +591,40 @@ body::before {
   .nav-desktop { gap: 22px; }
   .nav-desktop a { font-size: 1rem; padding: 10px 18px; }
 
-  .hero { margin-top: 110px; }
+  /* ============================================================
+     Layout a doppia colonna: con 4 card stagionali, una singola
+     colonna centrata lasciava troppo spazio vuoto ai lati su schermi
+     larghi. Qui .hero diventa una griglia a 2 colonne: gli elementi
+     introduttivi (sigillo, etichetta, titolo, sottotitolo) occupano
+     l'intera larghezza con "grid-column: 1 / -1", poi le 4 card si
+     dispongono automaticamente 2 per riga, e infine il box Premium
+     torna a occupare l'intera larghezza in fondo.
+     ============================================================ */
+  .hero {
+    margin-top: 110px;
+    max-width: 1040px;
+    padding: 0 32px 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 26px;
+    row-gap: 22px;
+    align-items: start;
+  }
 
-  .hero h1 { font-size: 2.6rem; }
+  .crest,
+  .category-tag,
+  .hero > h1,
+  .subtitle {
+    grid-column: 1 / -1;
+  }
+
+  .season-card {
+    margin-bottom: 0; /* lo spazio verticale ora lo gestisce row-gap */
+  }
+
+  .castellana-premium-cta {
+    grid-column: 1 / -1;
+  }
 
   .season-body p { font-size: 1.08rem; }
 
