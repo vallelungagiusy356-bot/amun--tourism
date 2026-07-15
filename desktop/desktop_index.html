@@ -255,8 +255,16 @@ window.silktideConsentManager.init({
         let currentLang = localStorage.getItem("lang") || "it";
 
         // ============================================================
-        // KNOWLEDGE BASE — Home Page (linguaggio naturale, sintetico)
+        // KNOWLEDGE BASE — Home Page
         // ============================================================
+        // Struttura a DUE LIVELLI, stesso meccanismo "gruppo -> sotto-voci"
+        // già usato nel resto del sito (es. le chiese raggruppate per
+        // monumento): prima compaiono le 4 domande, cliccandone una
+        // compaiono i pulsanti delle pagine pertinenti a quella domanda.
+        // Le stesse pagine possono comparire sotto più di una domanda
+        // (es. Castello sia nel tour classico sia in quello enogastronomico):
+        // usano sempre lo stesso "id", quindi una volta scelta una pagina
+        // non ricompare più negli altri gruppi già visti.
         const HOME_KNOWLEDGE = {
             it: {
                 welcome: `Ciao viandante! Sono la Castellana di Caccamo, la tua guida per questo borgo.
@@ -265,69 +273,186 @@ Ti racconto le origini del paese: Caccamo sorge su uno sperone roccioso che domi
 
 Caccamo è un borgo medievale che ha conservato il suo fascino attraverso secoli di storia: normanni, svevi, angioini, aragonesi, spagnoli e borboni hanno lasciato tracce nelle pietre, nelle chiese, nelle tradizioni.
 
-Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi pure in libertà, rispondo a tutto ciò che so sul borgo!`,
-                closing: `Bene viandante, da questa pagina è tutto! Consulta le altre pagine e scopri il resto del borgo. Amunì! 🏰`,
-                followUp: `E allora, cosa altro vuoi scoprire?`,
-                topics: [
-                    { id: "castello", label: "🏰 Castello", page: "castello.html" },
-                    { id: "chiese", label: "⛪ Chiese", page: "chiese-arte.html" },
-                    { id: "cibo_eventi", label: "🍷 Cibo ed Eventi", page: "cibo_eventi.html" },
-                    { id: "cultura", label: "📜 Leggende e Tradizioni", page: "leggende_e_tradizioni.html" },
-                    { id: "citizen", label: "🚌 Trasporti e Modi di Dire", page: "cittadino.html" }
+Come funziona la chat? Scegli qui sotto cosa ti va di fare, e ti guido verso le pagine giuste. Oppure scrivimi pure in libertà, rispondo a tutto ciò che so sul borgo!`,
+                closing: `E da qui è tutto, viandante! Spero di esserti stata utile. Se vuoi avere altre informazioni, vieni a trovarmi nelle altre pagine!`,
+                followUp: `Perfetto, viandante! Ti porto subito alla pagina dedicata.`,
+                groups: [
+                    {
+                        group: "Hai voglia di un tour?",
+                        items: [
+                            { id: "castello", label: "🏰 Castello", page: "castello.html" },
+                            { id: "chiese", label: "⛪ Chiese", page: "chiese-arte.html" }
+                        ]
+                    },
+                    {
+                        group: "Hai voglia di un tour enogastronomico?",
+                        items: [
+                            { id: "castello", label: "🏰 Castello", page: "castello.html" },
+                            { id: "chiese", label: "⛪ Chiese", page: "chiese-arte.html" },
+                            { id: "cibo_eventi", label: "🍷 Cibo ed Eventi", page: "cibo_eventi.html" }
+                        ]
+                    },
+                    {
+                        group: "Vuoi sentirti parte del borgo?",
+                        items: [
+                            { id: "cultura", label: "📜 Leggende e Tradizioni", page: "leggende_e_tradizioni.html" },
+                            { id: "cibo_eventi", label: "🍷 Cibo ed Eventi", page: "cibo_eventi.html" }
+                        ]
+                    },
+                    {
+                        group: "Vuoi sapere di più su come muoverti o sui modi di dire?",
+                        items: [
+                            { id: "citizen", label: "🚌 Trasporti e Modi di Dire", page: "cittadino.html" }
+                        ]
+                    }
                 ]
             },
             en: {
-                welcome: `Hello traveler! I am the Castellana of Caccamo, your guide to this village.\n\nLet me tell you about the origins: Caccamo stands on a rocky spur overlooking the San Leonardo valley. The name probably comes from the Greek \"kakkabe\". A fortress existed here in Arab times, but the village as we know it began in the 12th century with the Norman conquest.\n\nHow does the chat work? Choose a topic below and I'll guide you. Or write freely — I know everything about this village!`,
-                closing: `Well traveler, that's all from this page! Check the other pages and discover the rest of the village. Amunì! 🏰`,
-                followUp: `So, what else would you like to discover?`,
-                topics: [
-                    { id: "castello", label: "🏰 Castle", page: "castello.html" },
-                    { id: "chiese", label: "⛪ Churches", page: "chiese-arte.html" },
-                    { id: "cibo_eventi", label: "🍷 Food & Events", page: "cibo_eventi.html" },
-                    { id: "cultura", label: "📜 Legends & Traditions", page: "leggende_e_tradizioni.html" },
-                    { id: "citizen", label: "🚌 Transport & Sayings", page: "cittadino.html" }
+                welcome: `Hello traveler! I am the Castellana of Caccamo, your guide to this village.\n\nLet me tell you about the origins: Caccamo stands on a rocky spur overlooking the San Leonardo valley. The name probably comes from the Greek \"kakkabe\". A fortress existed here in Arab times, but the village as we know it began in the 12th century with the Norman conquest.\n\nHow does the chat work? Choose below what you feel like doing, and I'll guide you to the right pages. Or write freely — I know everything about this village!`,
+                closing: `That's all from here, traveler! I hope I was useful. If you'd like more information, come find me on the other pages!`,
+                followUp: `Perfect, traveler! Taking you to the right page now.`,
+                groups: [
+                    {
+                        group: "Fancy a tour?",
+                        items: [
+                            { id: "castello", label: "🏰 Castle", page: "castello.html" },
+                            { id: "chiese", label: "⛪ Churches", page: "chiese-arte.html" }
+                        ]
+                    },
+                    {
+                        group: "Fancy a food & wine tour?",
+                        items: [
+                            { id: "castello", label: "🏰 Castle", page: "castello.html" },
+                            { id: "chiese", label: "⛪ Churches", page: "chiese-arte.html" },
+                            { id: "cibo_eventi", label: "🍷 Food & Events", page: "cibo_eventi.html" }
+                        ]
+                    },
+                    {
+                        group: "Want to feel like a local?",
+                        items: [
+                            { id: "cultura", label: "📜 Legends & Traditions", page: "leggende_e_tradizioni.html" },
+                            { id: "cibo_eventi", label: "🍷 Food & Events", page: "cibo_eventi.html" }
+                        ]
+                    },
+                    {
+                        group: "Want to know more about getting around or local sayings?",
+                        items: [
+                            { id: "citizen", label: "🚌 Transport & Sayings", page: "cittadino.html" }
+                        ]
+                    }
                 ]
             },
             fr: {
-                welcome: `Bonjour voyageur! Je suis la Castellana de Caccamo, votre guide pour ce village.\n\nLes origines du village remontent au XIIe siècle avec la conquête normande.\n\nComment fonctionne le chat? Choisissez un sujet ci-dessous. Ou écrivez librement!`,
-                closing: `Bien voyageur, c'est tout pour cette page! Consultez les autres pages. Amunì! 🏰`,
-                followUp: `Alors, que voulez-vous découvrir d'autre?`,
-                topics: [
-                    { id: "castello", label: "🏰 Château", page: "castello.html" },
-                    { id: "chiese", label: "⛪ Églises", page: "chiese-arte.html" },
-                    { id: "cibo_eventi", label: "🍷 Cuisine & Fêtes", page: "cibo_eventi.html" },
-                    { id: "cultura", label: "📜 Légendes", page: "leggende_e_tradizioni.html" },
-                    { id: "citizen", label: "🚌 Transports", page: "cittadino.html" }
+                welcome: `Bonjour voyageur! Je suis la Castellana de Caccamo, votre guide pour ce village.\n\nLes origines du village remontent au XIIe siècle avec la conquête normande.\n\nComment fonctionne le chat? Choisis ci-dessous ce que tu as envie de faire, je te guiderai vers les bonnes pages. Ou écris librement!`,
+                closing: `C'est tout pour ici, voyageur! J'espère t'avoir été utile. Pour en savoir plus, retrouve-moi sur les autres pages!`,
+                followUp: `Parfait, voyageur! Je t'emmène tout de suite vers la page dédiée.`,
+                groups: [
+                    {
+                        group: "Envie d'une visite?",
+                        items: [
+                            { id: "castello", label: "🏰 Château", page: "castello.html" },
+                            { id: "chiese", label: "⛪ Églises", page: "chiese-arte.html" }
+                        ]
+                    },
+                    {
+                        group: "Envie d'une visite gastronomique?",
+                        items: [
+                            { id: "castello", label: "🏰 Château", page: "castello.html" },
+                            { id: "chiese", label: "⛪ Églises", page: "chiese-arte.html" },
+                            { id: "cibo_eventi", label: "🍷 Cuisine & Fêtes", page: "cibo_eventi.html" }
+                        ]
+                    },
+                    {
+                        group: "Envie de te sentir comme un habitant?",
+                        items: [
+                            { id: "cultura", label: "📜 Légendes", page: "leggende_e_tradizioni.html" },
+                            { id: "cibo_eventi", label: "🍷 Cuisine & Fêtes", page: "cibo_eventi.html" }
+                        ]
+                    },
+                    {
+                        group: "Envie d'en savoir plus sur les transports ou les expressions locales?",
+                        items: [
+                            { id: "citizen", label: "🚌 Transports", page: "cittadino.html" }
+                        ]
+                    }
                 ]
             },
             es: {
-                welcome: `¡Hola viajero! Soy la Castellana de Caccamo, tu guía para este pueblo.\n\nEl pueblo se formó en el siglo XII con la conquista normanda.\n\n¿Cómo funciona el chat? Elige un tema abajo. ¡O escríbeme libremente!`,
-                closing: `¡Bien viajero, eso es todo en esta página! Consulta las otras páginas. ¡Amunì! 🏰`,
-                followUp: `Entonces, ¿qué más te gustaría descubrir?`,
-                topics: [
-                    { id: "castello", label: "🏰 Castillo", page: "castello.html" },
-                    { id: "chiese", label: "⛪ Iglesias", page: "chiese-arte.html" },
-                    { id: "cibo_eventi", label: "🍷 Comida y Fiestas", page: "cibo_eventi.html" },
-                    { id: "cultura", label: "📜 Leyendas", page: "leggende_e_tradizioni.html" },
-                    { id: "citizen", label: "🚌 Transportes", page: "cittadino.html" }
+                welcome: `¡Hola viajero! Soy la Castellana de Caccamo, tu guía para este pueblo.\n\nEl pueblo se formó en el siglo XII con la conquista normanda.\n\n¿Cómo funciona el chat? Elige abajo qué te apetece hacer, te guiaré a las páginas adecuadas. ¡O escríbeme libremente!`,
+                closing: `¡Eso es todo por aquí, viajero! Espero haberte sido útil. Para más información, ¡búscame en las otras páginas!`,
+                followUp: `¡Perfecto, viajero! Te llevo enseguida a la página dedicada.`,
+                groups: [
+                    {
+                        group: "¿Te apetece un tour?",
+                        items: [
+                            { id: "castello", label: "🏰 Castillo", page: "castello.html" },
+                            { id: "chiese", label: "⛪ Iglesias", page: "chiese-arte.html" }
+                        ]
+                    },
+                    {
+                        group: "¿Te apetece un tour gastronómico?",
+                        items: [
+                            { id: "castello", label: "🏰 Castillo", page: "castello.html" },
+                            { id: "chiese", label: "⛪ Iglesias", page: "chiese-arte.html" },
+                            { id: "cibo_eventi", label: "🍷 Comida y Fiestas", page: "cibo_eventi.html" }
+                        ]
+                    },
+                    {
+                        group: "¿Quieres sentirte parte del pueblo?",
+                        items: [
+                            { id: "cultura", label: "📜 Leyendas", page: "leggende_e_tradizioni.html" },
+                            { id: "cibo_eventi", label: "🍷 Comida y Fiestas", page: "cibo_eventi.html" }
+                        ]
+                    },
+                    {
+                        group: "¿Quieres saber más sobre cómo moverte o los dichos locales?",
+                        items: [
+                            { id: "citizen", label: "🚌 Transportes", page: "cittadino.html" }
+                        ]
+                    }
                 ]
             },
             de: {
-                welcome: `Hallo Reisender! Ich bin die Castellana von Caccamo, Ihr Führer für dieses Dorf.\n\nDas Dorf entstand im 12. Jahrhundert mit der normannischen Eroberung.\n\nWie funktioniert der Chat? Wählen Sie unten ein Thema. Oder schreiben Sie mir frei!`,
-                closing: `Gut, Reisender, das ist alles auf dieser Seite! Sehen Sie sich die anderen Seiten an. Amunì! 🏰`,
-                followUp: `Also, was möchten Sie noch entdecken?`,
-                topics: [
-                    { id: "castello", label: "🏰 Burg", page: "castello.html" },
-                    { id: "chiese", label: "⛪ Kirchen", page: "chiese-arte.html" },
-                    { id: "cibo_eventi", label: "🍷 Essen & Feste", page: "cibo_eventi.html" },
-                    { id: "cultura", label: "📜 Legenden", page: "leggende_e_tradizioni.html" },
-                    { id: "citizen", label: "🚌 Transport", page: "cittadino.html" }
+                welcome: `Hallo Reisender! Ich bin die Castellana von Caccamo, Ihr Führer für dieses Dorf.\n\nDas Dorf entstand im 12. Jahrhundert mit der normannischen Eroberung.\n\nWie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dich zu den passenden Seiten. Oder schreib mir frei!`,
+                closing: `Das war's von hier, Reisender! Ich hoffe, ich konnte dir helfen. Für mehr Informationen findest du mich auf den anderen Seiten!`,
+                followUp: `Perfekt, Reisender! Ich bringe dich sofort zur passenden Seite.`,
+                groups: [
+                    {
+                        group: "Lust auf eine Tour?",
+                        items: [
+                            { id: "castello", label: "🏰 Burg", page: "castello.html" },
+                            { id: "chiese", label: "⛪ Kirchen", page: "chiese-arte.html" }
+                        ]
+                    },
+                    {
+                        group: "Lust auf eine Genusstour?",
+                        items: [
+                            { id: "castello", label: "🏰 Burg", page: "castello.html" },
+                            { id: "chiese", label: "⛪ Kirchen", page: "chiese-arte.html" },
+                            { id: "cibo_eventi", label: "🍷 Essen & Feste", page: "cibo_eventi.html" }
+                        ]
+                    },
+                    {
+                        group: "Möchtest du dich wie ein Einheimischer fühlen?",
+                        items: [
+                            { id: "cultura", label: "📜 Legenden", page: "leggende_e_tradizioni.html" },
+                            { id: "cibo_eventi", label: "🍷 Essen & Feste", page: "cibo_eventi.html" }
+                        ]
+                    },
+                    {
+                        group: "Möchtest du mehr über Fortbewegung oder Redewendungen erfahren?",
+                        items: [
+                            { id: "citizen", label: "🚌 Transport", page: "cittadino.html" }
+                        ]
+                    }
                 ]
             }
         };
 
-        // Topic già usati in questa sessione
+        // Topic (pagine) già scelte in questa sessione, e gruppi già esauriti
         let usedTopics = new Set();
+        let exploredGroups = new Set();
+        let fullTopicMenu = [];
         let hasShownWelcome = false;
 
         function loadLanguage(lang) {
@@ -369,10 +494,6 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
             const voci = window.speechSynthesis.getVoices();
             const vociItaliane = voci.filter(v => v.lang && v.lang.toLowerCase().startsWith('it'));
 
-            // 1) Nomi di voci femminili noti sui vari sistemi (Android/Chrome,
-            //    iOS/Safari, Windows/Edge, macOS). Confronto case-insensitive
-            //    e senza accenti perché i nomi variano molto da dispositivo
-            //    a dispositivo.
             const nomiFemminili = [
                 'alice', 'elsa', 'samantha', 'federica', 'silvia', 'paola',
                 'elisa', 'francesca', 'giulia', 'martina', 'female', 'donna'
@@ -384,20 +505,12 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
             );
             if (voce) return voce;
 
-            // 2) Nessun nome femminile riconosciuto: escludiamo almeno i nomi
-            //    chiaramente maschili più comuni, e prendiamo la prima
-            //    rimasta tra le voci italiane.
             const nomiMaschili = ['luca', 'cosimo', 'diego', 'marco', 'paolo', 'male', 'uomo'];
             voce = vociTraCuiScegliere.find(v =>
                 !nomiMaschili.some(nome => v.name.toLowerCase().includes(nome))
             );
             if (voce) return voce;
 
-            // 3) Ultima spiaggia: la prima voce italiana disponibile, o la
-            //    prima voce in assoluto se sul dispositivo non ce n'è nessuna
-            //    in italiano. Su alcuni Android è l'unica opzione esistente:
-            //    in quel caso il tono dipende dal motore vocale del telefono,
-            //    non dal codice (vedi nota sotto per come cambiarla).
             return vociItaliane[0] || voci[0];
         }
 
@@ -445,9 +558,7 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
 
         // ============================================================
         // RENDERING MESSAGGI CHAT — stesse classi del resto del sito
-        // (.message / .message.user-msg dentro .chat-messages), niente
-        // più pulsante audio per ogni singolo messaggio: la lettura è
-        // già gestita dal toggle 🔊 nell'header.
+        // (.message / .message.user-msg dentro .chat-messages).
         // ============================================================
         function appendChatMessage(text, sender, link) {
             const messagesBox = document.getElementById('chat-messages-box');
@@ -470,60 +581,77 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
         }
 
         // ============================================================
-        // PULSANTI TOPIC DINAMICI
+        // MENU A DUE LIVELLI — stesso meccanismo "gruppo -> sotto-voci"
+        // già usato nel resto del sito. currentGroupName: se valorizzato,
+        // mostra prima i pulsanti-pagina di quel gruppo, poi sotto le
+        // altre domande ancora da esplorare (quella corrente esce
+        // dall'elenco principale una volta che tutte le sue pagine sono
+        // state scelte).
         // ============================================================
-        function renderTopicButtons() {
+        function renderMenuState(currentGroupName) {
             const messagesBox = document.getElementById('chat-messages-box');
             if (!messagesBox) return;
 
-            const knowledge = HOME_KNOWLEDGE[currentLang] || HOME_KNOWLEDGE.it;
-            const availableTopics = knowledge.topics.filter(t => !usedTopics.has(t.id));
+            const old = messagesBox.querySelector('.topic-menu-state');
+            if (old) old.remove();
 
-            if (availableTopics.length === 0) {
-                // Nessun topic rimanente — messaggio di chiusura
-                const closingDiv = document.createElement('div');
-                closingDiv.className = 'message system-msg';
-                closingDiv.style.fontStyle = 'italic';
-                closingDiv.textContent = knowledge.closing;
-                messagesBox.appendChild(closingDiv);
+            const wrap = document.createElement('div');
+            wrap.className = 'topic-menu topic-menu-state';
+
+            if (currentGroupName) {
+                const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
+                if (groupEntry) {
+                    groupEntry.items.forEach(it => {
+                        if (usedTopics.has(it.topic)) return;
+                        const b = document.createElement('button');
+                        b.className = 'topic-btn';
+                        b.textContent = it.label;
+                        b.addEventListener('click', () => selectPageTopic(it, currentGroupName));
+                        wrap.appendChild(b);
+                    });
+                }
+            }
+
+            fullTopicMenu.forEach(entry => {
+                if (exploredGroups.has(entry.group)) return;
+                const groupBtn = document.createElement('button');
+                groupBtn.className = 'topic-btn topic-group-btn';
+                groupBtn.textContent = entry.group + ' ▸';
+                groupBtn.addEventListener('click', () => renderMenuState(entry.group));
+                wrap.appendChild(groupBtn);
+            });
+
+            if (wrap.children.length === 0) {
+                const knowledge = HOME_KNOWLEDGE[currentLang] || HOME_KNOWLEDGE.it;
+                appendChatMessage(knowledge.closing, 'castellana');
                 if (voiceEnabled) speakText(knowledge.closing);
-                messagesBox.scrollTop = messagesBox.scrollHeight;
                 return;
             }
 
-            // Messaggio follow-up
-            const followUpDiv = document.createElement('div');
-            followUpDiv.className = 'message system-msg';
-            followUpDiv.style.fontStyle = 'italic';
-            followUpDiv.textContent = knowledge.followUp;
-            messagesBox.appendChild(followUpDiv);
-
-            // Container pulsanti — stessa classe .topic-menu del resto del sito
-            const btnRow = document.createElement('div');
-            btnRow.className = 'topic-menu';
-
-            availableTopics.forEach(topic => {
-                const btn = document.createElement('button');
-                btn.className = 'topic-btn';
-                btn.textContent = topic.label;
-                btn.onclick = () => {
-                    usedTopics.add(topic.id);
-                    castellanaZitta();
-                    // Simula click: mostra conferma e reindirizza
-                    appendChatMessage(topic.label, 'user');
-                    setTimeout(() => {
-                        appendChatMessage(`Perfetto, viandante! Ti porto subito alla pagina dedicata.`, 'castellana');
-                        if (voiceEnabled) speakText(`Perfetto, viandante! Ti porto subito alla pagina dedicata.`);
-                        setTimeout(() => {
-                            window.location.href = topic.page;
-                        }, 2000);
-                    }, 300);
-                };
-                btnRow.appendChild(btn);
-            });
-
-            messagesBox.appendChild(btnRow);
+            messagesBox.appendChild(wrap);
             messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+
+        function selectPageTopic(item, groupName) {
+            usedTopics.add(item.topic);
+            castellanaZitta();
+            appendChatMessage(item.label, 'user');
+
+            const knowledge = HOME_KNOWLEDGE[currentLang] || HOME_KNOWLEDGE.it;
+            setTimeout(() => {
+                appendChatMessage(knowledge.followUp, 'castellana');
+                if (voiceEnabled) speakText(knowledge.followUp);
+                setTimeout(() => {
+                    window.location.href = item.page;
+                }, 1600);
+            }, 300);
+
+            // Se tutte le voci di questo gruppo sono state scelte, il
+            // gruppo si considera esaurito e non ricompare più.
+            const groupEntry = fullTopicMenu.find(e => e.group === groupName);
+            if (groupEntry && groupEntry.items.every(it => usedTopics.has(it.topic))) {
+                exploredGroups.add(groupName);
+            }
         }
 
         // ============================================================
@@ -532,13 +660,17 @@ Come funziona la chat? Scegli un argomento qui sotto e ti guido. Oppure scrivimi
         function renderWelcome() {
             const messagesBox = document.getElementById('chat-messages-box');
             if (!messagesBox) return;
-            messagesBox.innerHTML = ''; // Pulisci
+            messagesBox.innerHTML = '';
             usedTopics.clear();
+            exploredGroups.clear();
 
             const knowledge = HOME_KNOWLEDGE[currentLang] || HOME_KNOWLEDGE.it;
             appendChatMessage(knowledge.welcome, 'castellana');
             if (voiceEnabled) speakText(knowledge.welcome);
-            renderTopicButtons();
+
+            fullTopicMenu = knowledge.groups;
+            renderMenuState(null);
+
             hasShownWelcome = true;
         }
 
