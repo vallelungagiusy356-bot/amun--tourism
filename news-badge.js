@@ -8,29 +8,44 @@
    struttura fosse diversa, basta aggiustare il percorso).
 
    Legge ../news.json: se contiene almeno una voce in "items", mostra un
-   piccolo tooltip fisso con un'animazione che pulsa dolcemente, per
-   attirare l'attenzione senza essere invadente. Resta visibile finché
-   non svuoti l'elenco in news.json — non sparisce da solo.
+   piccolo pulsante fisso. Resta visibile finché non svuoti l'elenco in
+   news.json — non sparisce da solo.
 
    Un solo aggiornamento -> il tooltip porta dritto al post Facebook.
    Più aggiornamenti insieme -> il tooltip apre un piccolo elenco, ogni
    voce porta al proprio post.
 
-   Posizione: in alto a sinistra, sotto l'header. Essendo "position: fixed"
-   resta ancorato a quel punto dello schermo e non scorre con la pagina;
-   l'altezza dell'header cambia tra i formati (desktop/tablet/mobile), per
-   questo il valore di "top" è regolato con le stesse soglie usate nel
-   resto del sito, così il tooltip non finisce mai sotto l'header.
+   POSIZIONE — in basso a sinistra (l'angolo opposto alla Castellana,
+   che sta in basso a destra). Prima stava vicino all'header con un
+   "top" fisso: siccome l'header ha un'altezza diversa da pagina a
+   pagina, capitava che il tooltip finisse sopra al titolo o al
+   sottotitolo del contenuto. In basso a sinistra questo problema non
+   si presenta più, perché lì non scorre mai testo di pagina.
+
+   ASPETTO — di base è una piccola icona rotonda color oro (poco
+   invasiva). Ogni tot secondi si "apre" mostrando l'etichetta per
+   qualche istante, poi si richiude: intermittente invece che sempre
+   spalancata, per non risultare invadente.
+
+   VARIABILI — colori, bordo e dimensione sono variabili CSS
+   (--news-badge-*) dentro #news-badge-wrap: bastano quelle per
+   cambiare la palette senza toccare il resto del file.
    ========================================================================== */
 
 (function () {
+    const NEWS_ICON = "📰";
     const NEWS_LABEL_BY_LANG = {
-        it: "📰 News Eventi",
-        en: "📰 Event News",
-        fr: "📰 Actualités",
-        es: "📰 Noticias",
-        de: "📰 Neuigkeiten"
+        it: "News Eventi",
+        en: "Event News",
+        fr: "Actualités",
+        es: "Noticias",
+        de: "Neuigkeiten"
     };
+
+    // Ogni quanto si "apre" mostrando l'etichetta, e per quanto tempo resta aperto
+    const PULSE_INTERVAL_MS = 14000;
+    const PULSE_SHOW_MS = 4000;
+    const FIRST_PULSE_DELAY_MS = 1200;
 
     function currentLang() {
         return localStorage.getItem("lang") || "it";
@@ -42,44 +57,67 @@
         style.id = "news-badge-styles";
         style.textContent = `
             #news-badge-wrap {
+                /* ===== Variabili — modifica solo qui per cambiare aspetto ===== */
+                --news-badge-bg: linear-gradient(135deg, #D4AF6A, #B8873B);
+                --news-badge-text: #3a2a10;
+                --news-badge-border: #8C6529;
+                --news-badge-glow: rgba(184, 135, 59, 0.55);
+                --news-badge-size: 46px;
+
                 position: fixed;
                 left: 1rem;
-                top: 130px;
+                bottom: 90px;
                 z-index: 9998;
                 font-family: 'Segoe UI', system-ui, sans-serif;
-            }
-            @media (min-width: 601px) and (max-width: 899px) {
-                #news-badge-wrap { top: 160px; }
-            }
-            @media (min-width: 900px) {
-                #news-badge-wrap { top: 90px; }
             }
             #news-badge-btn {
                 display: flex;
                 align-items: center;
                 gap: 6px;
-                background: rgba(15, 25, 34, 0.92);
-                color: #F3ECDC;
-                border: 1px solid #B8873B;
+                height: var(--news-badge-size);
+                width: var(--news-badge-size);
+                padding: 0;
+                justify-content: center;
+                white-space: nowrap;
+                overflow: hidden;
+                background: var(--news-badge-bg);
+                color: var(--news-badge-text);
+                border: 1px solid var(--news-badge-border);
                 border-radius: 999px;
-                padding: 8px 16px;
-                font-size: 0.82rem;
-                font-weight: 600;
+                font-weight: 700;
+                font-size: 1.05rem;
                 cursor: pointer;
-                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-                animation: newsBadgePulse 2.6s ease-in-out infinite;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+                transition: width 0.35s ease, padding 0.35s ease, box-shadow 0.3s ease;
             }
-            @keyframes newsBadgePulse {
-                0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(0,0,0,0.3); }
-                50% { transform: scale(1.05); box-shadow: 0 4px 18px rgba(184,135,59,0.55); }
+            /* Stato "aperto": si allarga per mostrare il testo e pulsa dolcemente */
+            #news-badge-wrap.expanded #news-badge-btn {
+                width: auto;
+                padding: 0 18px 0 14px;
+                font-size: 0.82rem;
+                box-shadow: 0 4px 18px var(--news-badge-glow);
+                animation: newsBadgeGlow 1.6s ease-in-out infinite;
+            }
+            @keyframes newsBadgeGlow {
+                0%, 100% { box-shadow: 0 4px 14px var(--news-badge-glow); }
+                50% { box-shadow: 0 4px 22px var(--news-badge-glow); }
+            }
+            .news-badge-label {
+                display: none;
+            }
+            #news-badge-wrap.expanded .news-badge-label {
+                display: inline;
             }
             #news-badge-list {
                 display: none;
                 flex-direction: column;
                 gap: 6px;
-                margin-top: 8px;
+                position: absolute;
+                bottom: 100%;
+                left: 0;
+                margin-bottom: 8px;
                 background: rgba(15, 25, 34, 0.96);
-                border: 1px solid #B8873B;
+                border: 1px solid var(--news-badge-border);
                 border-radius: 8px;
                 padding: 10px;
                 max-width: 260px;
@@ -99,6 +137,15 @@
         document.head.appendChild(style);
     }
 
+    function startPulseCycle(wrap) {
+        function pulseOnce() {
+            wrap.classList.add("expanded");
+            setTimeout(() => wrap.classList.remove("expanded"), PULSE_SHOW_MS);
+        }
+        setTimeout(pulseOnce, FIRST_PULSE_DELAY_MS);
+        setInterval(pulseOnce, PULSE_INTERVAL_MS);
+    }
+
     function renderBadge(items) {
         if (!items || items.length === 0) return;
 
@@ -109,7 +156,8 @@
 
         const btn = document.createElement("button");
         btn.id = "news-badge-btn";
-        btn.textContent = NEWS_LABEL_BY_LANG[currentLang()] || NEWS_LABEL_BY_LANG.it;
+        const label = NEWS_LABEL_BY_LANG[currentLang()] || NEWS_LABEL_BY_LANG.it;
+        btn.innerHTML = `<span>${NEWS_ICON}</span><span class="news-badge-label">${label}</span>`;
         wrap.appendChild(btn);
 
         if (items.length === 1) {
@@ -141,6 +189,7 @@
         }
 
         document.body.appendChild(wrap);
+        startPulseCycle(wrap);
     }
 
     document.addEventListener("DOMContentLoaded", () => {
