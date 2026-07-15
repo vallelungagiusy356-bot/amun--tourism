@@ -299,32 +299,41 @@ body::before {
 .card.side-left  { grid-column: 1; justify-self: end; flex-direction: row-reverse; text-align: right; }
 .card.side-right { grid-column: 3; justify-self: start; text-align: left; }
 
+/* ============================================================
+   Cornice immagine — ingrandita rispetto alla versione precedente
+   (108px -> 130px su mobile, 145px -> 190px su desktop, vedi media
+   query più sotto). L'immagine riempiva già la cornice bordo a
+   bordo (object-fit: cover, nessun padding); il problema di "troppo
+   spazio vuoto" segnalato era quindi dovuto alla cornice stessa
+   troppo piccola, non a un padding nascosto da togliere.
+   ============================================================ */
 .card-frame {
   position: relative;
-  flex: 0 0 108px;
-  width: 108px;
-  height: 108px;
+  flex: 0 0 130px;
+  width: 130px;
+  height: 130px;
   overflow: hidden;
   background: var(--stone);
   border: 1px solid var(--gold);
 }
 
 /* badge "lente d'ingrandimento" — segnale permanente e discreto
-   che la card è cliccabile/ingrandibile, senza ricorrere a glow */
+   che la card è cliccabile/ingrandibile, senza ricorrere a glow.
+   Ingrandito leggermente in proporzione alla cornice più grande. */
 .card-frame::after {
   content: "🔍";
   position: absolute;
-  bottom: 5px;
-  right: 5px;
-  width: 24px;
-  height: 24px;
+  bottom: 6px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
   background: var(--terracotta);
   color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 13px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.35);
   pointer-events: none;
 }
@@ -811,10 +820,27 @@ body::before {
     font-size: 1.3rem;
   }
 
+  /* Sentiero leggermente più largo per dare respiro alle card
+     con la cornice immagine ingrandita (vedi .card-frame sotto) */
+  .path-wrap {
+    max-width: 860px;
+  }
+
   .card-frame {
-    flex: 0 0 145px;
-    width: 145px;
-    height: 145px;
+    flex: 0 0 190px;
+    width: 190px;
+    height: 190px;
+  }
+
+  .card-frame::after {
+    width: 32px;
+    height: 32px;
+    font-size: 15px;
+  }
+
+  /* testo leggermente più largo per bilanciare la cornice più grande */
+  .card-text {
+    max-width: 300px;
   }
 
   .castellana-widget-area {
