@@ -9,6 +9,7 @@
     --stone: #EFE6D3;
     --stone-dim: #DCCFAF;
     --terracotta: #C1622D;
+    --terracotta-dark: #9C4C22;
     --gold: #B8873B;
     --gold-light: #D4AF6A;
     --wine: #6B1F2A;
@@ -471,6 +472,66 @@ html, body {
     text-align: center;
     font-size: 0.85rem;
     font-weight: 600;
+}
+
+.chat-link-btn:hover {
+    background: var(--terracotta-dark);
+}
+
+/* ==========================================================================
+   7bis. MENU A PULSANTI DELLA CHAT (argomenti / gruppi)
+   Queste regole mancavano: senza di esse il browser disegna i
+   pulsanti con l'aspetto grezzo di sistema (grigio, bordo nero),
+   invece dello stile oro/blu marino coerente con il resto del sito.
+   ========================================================================== */
+.topic-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.topic-btn {
+    border: 1px solid var(--gold);
+    background: rgba(184, 135, 59, 0.14);
+    color: var(--cream-text);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.topic-btn:hover {
+    background: rgba(184, 135, 59, 0.32);
+}
+
+.topic-group-btn {
+    background: rgba(107, 31, 42, 0.35);
+    border-color: var(--gold-light);
+}
+
+/* Messaggi dell'utente, distinti da quelli della Castellana */
+.chat-messages .message.user-msg {
+    background: rgba(184, 135, 59, 0.18);
+    border-left: 2px solid var(--sea);
+    margin-left: auto;
+}
+
+/* Bottone "ascolta" accanto ai messaggi della Castellana */
+.audio-btn {
+    background: rgba(184, 135, 59, 0.15);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.audio-btn:hover {
+    background: rgba(184, 135, 59, 0.35);
 }
 
 /* ==========================================================================
