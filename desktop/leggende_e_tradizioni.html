@@ -119,6 +119,67 @@ window.silktideConsentManager.init({
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
+
+        /* ===== SEZIONE LEGGENDE — dà finalmente un senso al nome della
+           pagina, che prima conteneva solo canti e preghiere ===== */
+        .legend-section {
+            max-width: 720px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .legend-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            color: var(--sea, #1B4965);
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .legend-card {
+            background: var(--stone-dim, #DCCFAF);
+            border: 1px solid var(--terracotta, #C1622D);
+            border-radius: 4px;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        .legend-card p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.08rem;
+            line-height: 1.7;
+            color: var(--ink, #22303B);
+            margin-bottom: 1rem;
+        }
+
+        .legend-card p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .ask-legend-castellana {
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(184, 135, 59, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--sea, #1B4965);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .ask-legend-castellana:after {
+            content: "→";
+            margin-left: auto;
+            color: var(--gold, #B8873B);
+            font-style: normal;
+        }
+
+        .ask-legend-castellana:hover {
+            color: var(--terracotta-dark, #9C4C22);
+        }
     </style>
 </head>
 
@@ -147,6 +208,22 @@ window.silktideConsentManager.init({
         <span class="category-tag" data-i18n="pages.canti_page.category">Leggende e Tradizioni</span>
         <h1 data-i18n="pages.canti_page.page_title">Canti e Preghiere del Borgo</h1>
         <p class="subtitle" data-i18n="pages.canti_page.subtitle">Voci di famiglia, tramandate in dialetto</p>
+
+        <section class="legend-section">
+            <h2 class="legend-title" data-i18n="pages.canti_page.legend_title">Suor Felicia e la Sfida del Melograno</h2>
+            <div class="legend-card">
+                <p data-i18n="pages.canti_page.legend_p1">Il maestoso Castello di Caccamo, arroccato sulla sua imponente rupe calcarea, custodisce una delle storie più affascinanti e misteriose di tutta la Sicilia: la leggenda di Suor Felicia, conosciuta anche come la monaca del castello.</p>
+                <p data-i18n="pages.canti_page.legend_p2">Si racconta che Felicia, fanciulla di straordinaria bellezza, fosse la figlia del castellano dell'epoca — molto probabilmente un nobile della famiglia Cabrera o Chiaramonte. Come in ogni dramma cavalleresco che si rispetti, la giovane commise il peccato più grande per la nobiltà del tempo: si innamorò follemente di un ragazzo di umili origini, un paggio o un giovane soldato della guarnigione del castello.</p>
+                <p data-i18n="pages.canti_page.legend_p3">Quando il severo padre scoprì la relazione segreta, la sua reazione fu furiosa. Fece arrestare il giovane amante, rinchiudendolo nei bui sotterranei del castello — secondo alcune versioni, gettato in uno dei famigerati pozzi a rasoio. Per punire la figlia e soffocare lo scandalo, la costrinse a prendere i voti, rinchiudendola a vita in un convento di clausura.</p>
+                <p data-i18n="pages.canti_page.legend_p4">La ragazza prese il nome di Suor Felicia. Consumata dal dolore per il suo amore perduto, morì di crepacuore in giovane età. Ma il suo legame con il castello era troppo forte per spezzarsi con la morte: si dice che la sua anima tormentata vi sia tornata, e che vi vaghi ancora oggi.</p>
+                <p data-i18n="pages.canti_page.legend_p5">Nelle notti di luna piena, allo scoccare della mezzanotte, il fantasma della monaca appare tra i saloni silenziosi, vestita di un abito candido, bellissima e malinconica. Tra le mani stringe un vassoio d'argento con sopra un melograno maturo, rosso come il sangue.</p>
+                <p data-i18n="pages.canti_page.legend_p6">Se un visitatore coraggioso la incontra a mezzanotte, lei non lo spaventa: gli va incontro e gli offre il vassoio, proponendogli una sfida. Deve sgranare il melograno e mangiare ogni singolo chicco, senza usare le mani e senza farne cadere a terra nemmeno uno.</p>
+                <p data-i18n="pages.canti_page.legend_p7">Se riesce nell'impresa, l'incantesimo si spezza: Suor Felicia gli indica il punto esatto in cui è nascosto un immenso tesoro nei sotterranei del castello, per poi volare in cielo, finalmente in pace. Se fallisce, anche solo facendo cadere un chicco, lo spettro svanisce all'istante con un gemito di delusione, lasciando il malcapitato al buio.</p>
+                <p data-i18n="pages.canti_page.legend_p8">La scelta del melograno non è casuale: nella mitologia mediterranea è da sempre il frutto del regno dei morti e del legame indissolubile, come nel mito greco di Proserpina, condannata a restare nell'Ade per aver mangiato sei chicchi di melograno. Nella leggenda di Suor Felicia, il frutto rappresenta il legame eterno con l'aldilà e la passione spezzata dei due giovani amanti, sacrificati sull'altare dell'orgoglio nobiliare.</p>
+                <p data-i18n="pages.canti_page.legend_p9">Ad oggi, si racconta che nessuno sia mai riuscito a superare la prova. Suor Felicia continua ad attendere, con il suo vassoio d'argento e il suo melograno intatto.</p>
+                <div class="ask-legend-castellana" data-i18n="pages.canti_page.legend_cta">Chiedi alla Castellana di raccontartela</div>
+            </div>
+        </section>
 
         <div class="track-groups">
 
@@ -261,6 +338,16 @@ window.silktideConsentManager.init({
         closeBtn.addEventListener("click", () => {
             chat.classList.remove("active");
             castellanaZitta();
+        });
+
+        // "Chiedi alla Castellana di raccontartela" nella sezione Leggende
+        // apre la stessa chat, come nelle altre pagine del sito.
+        document.querySelectorAll(".ask-legend-castellana").forEach(el => {
+            el.addEventListener("click", () => {
+                chat.classList.add("active");
+                updatePremiumStatusDisplay();
+                loadTopicMenu();
+            });
         });
 
         let currentLang = localStorage.getItem("lang") || "it";
