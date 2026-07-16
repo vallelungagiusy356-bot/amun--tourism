@@ -6,16 +6,18 @@ function loadLanguage(lang) {
             if (!res.ok) throw new Error(`File JSON non trovato in ../lang/ (Status: ${res.status})`);
             return res.json();
         })
-        // Aggiorna la lingua della pagina per la sintesi vocale
+        .then(data => {
+            // Aggiorna la lingua della pagina per la sintesi vocale
             const speechLangMap = { it: "it-IT", en: "en-US", fr: "fr-FR", de: "de-DE", es: "es-ES" };
             document.documentElement.lang = speechLangMap[lang] || "it-IT";
 
             document.querySelectorAll("[data-i18n]").forEach(el => {
-                
+                const key = el.getAttribute("data-i18n");
+
                 // SISTEMAZIONE BLINDATA: Se una chiave fallisce, non crasha più la pagina
                 try {
                     const text = key.split('.').reduce((o, i) => (o ? o[i] : null), data);
-                    
+
                     if (text) {
                         if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
                             el.placeholder = text;
@@ -40,7 +42,7 @@ function loadLanguage(lang) {
             });
         })
         .catch(err => console.error("Errore nel caricamento delle lingue di Amunì:", err));
-    
+
     localStorage.setItem("lang", lang);
 }
 
