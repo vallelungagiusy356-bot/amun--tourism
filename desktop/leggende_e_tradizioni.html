@@ -6,10 +6,6 @@
 
     <!-- ============================================================
      BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
-     Da incollare dentro <head> di OGNI pagina del sito,
-     subito dopo <meta name="viewport" ...>.
-     Include: Silktide Consent Manager (banner GDPR, gratuito)
-     + Google Analytics G-DNTGGXSSM0 (parte SOLO dopo consenso)
      ============================================================ -->
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -30,24 +26,16 @@
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
 <script>
 window.silktideConsentManager.init({
-  backdrop: {
-    show: false
-  },
-  icon: {
-    position: "bottomLeft"
-  },
-  prompt: {
-    position: "bottomCenter"
-  },
+  backdrop: { show: false },
+  icon: { position: "bottomLeft" },
+  prompt: { position: "bottomCenter" },
   consentTypes: [
     {
       id: "essential",
       label: "Essenziali",
       description: "<p>Cookie tecnici necessari al funzionamento del sito, come la memoria della lingua scelta e del codice Premium attivato. Non possono essere disattivati.</p>",
       required: true,
-      onAccept: function() {
-        // Cookie tecnici: nessuna azione necessaria
-      }
+      onAccept: function() {}
     },
     {
       id: "analytics",
@@ -55,14 +43,8 @@ window.silktideConsentManager.init({
       description: "Questi cookie ci aiutano a capire come i visitatori usano il sito, in forma aggregata e anonima, per migliorare i contenuti di Amunì Tourism.",
       required: false,
       gtag: "analytics_storage",
-      scripts: [
-        {
-          url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0",
-          load: "async"
-        }
-      ],
+      scripts: [{ url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0", load: "async" }],
       onAccept: function() {
-        // Google Analytics 4 (G-DNTGGXSSM0)
         window.dataLayer = window.dataLayer || [];
         function gtag() { window.dataLayer.push(arguments); }
         gtag('js', new Date());
@@ -116,6 +98,27 @@ window.silktideConsentManager.init({
             background: rgba(184, 135, 59, 0.2) !important;
             font-weight: bold;
         }
+
+        /* Blocco "significato" sotto la traduzione — più leggero della
+           riga dialetto/traduzione, per non confondersi con quella */
+        .meaning-block {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(184, 135, 59, 0.4);
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: var(--ink-soft, #465563);
+        }
+
+        .meaning-block strong {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--terracotta-dark, #9C4C22);
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
@@ -150,19 +153,31 @@ window.silktideConsentManager.init({
             <div class="track-group">
                 <h3 class="group-label" data-i18n="pages.canti_page.group_cunti">I Cunti</h3>
 
-                <button class="track-item active" data-track="cunto1">
+                <button class="track-item active" data-track="cummari_piricuddu">
                     <span class="track-play">▶</span>
                     <span class="track-meta">
-                        <span class="track-title" data-i18n="pages.canti_page.cunto1_title">[Cunto 1 — titolo da inserire]</span>
-                        <span class="track-who" data-i18n="pages.canti_page.cunto1_who">[Narratore da inserire]</span>
+                        <span class="track-title" data-i18n="pages.canti_page.cummari_title">Cummari Piricuddu</span>
+                        <span class="track-who" data-i18n="pages.canti_page.cummari_who">Tradizione orale di Caccamo</span>
+                    </span>
+                </button>
+            </div>
+
+            <div class="track-group">
+                <h3 class="group-label" data-i18n="pages.canti_page.group_filastrocche">Filastrocche</h3>
+
+                <button class="track-item" data-track="oca_oca">
+                    <span class="track-play">▶</span>
+                    <span class="track-meta">
+                        <span class="track-title" data-i18n="pages.canti_page.oca_title">Oca Oca</span>
+                        <span class="track-who" data-i18n="pages.canti_page.oca_who">Filastrocca per bambini</span>
                     </span>
                 </button>
 
-                <button class="track-item" data-track="cunto2">
+                <button class="track-item" data-track="fora_quaranta">
                     <span class="track-play">▶</span>
                     <span class="track-meta">
-                        <span class="track-title" data-i18n="pages.canti_page.cunto2_title">[Cunto 2 — titolo da inserire]</span>
-                        <span class="track-who" data-i18n="pages.canti_page.cunto2_who">[Narratore da inserire]</span>
+                        <span class="track-title" data-i18n="pages.canti_page.fora_title">Fora Quaranta</span>
+                        <span class="track-who" data-i18n="pages.canti_page.fora_who">Conta per i giochi di strada</span>
                     </span>
                 </button>
             </div>
@@ -170,19 +185,11 @@ window.silktideConsentManager.init({
             <div class="track-group">
                 <h3 class="group-label" data-i18n="pages.canti_page.group_preghiere">Le Preghiere</h3>
 
-                <button class="track-item" data-track="preghiera1">
+                <button class="track-item" data-track="preghiera_bnotte">
                     <span class="track-play">▶</span>
                     <span class="track-meta">
-                        <span class="track-title" data-i18n="pages.canti_page.preghiera1_title">[Preghiera 1 — titolo da inserire]</span>
-                        <span class="track-who" data-i18n="pages.canti_page.preghiera1_who">[Narratore da inserire]</span>
-                    </span>
-                </button>
-
-                <button class="track-item" data-track="preghiera2">
-                    <span class="track-play">▶</span>
-                    <span class="track-meta">
-                        <span class="track-title" data-i18n="pages.canti_page.preghiera2_title">[Preghiera 2 — titolo da inserire]</span>
-                        <span class="track-who" data-i18n="pages.canti_page.preghiera2_who">[Narratore da inserire]</span>
+                        <span class="track-title" data-i18n="pages.canti_page.preghiera_title">Preghiera della Buonanotte</span>
+                        <span class="track-who" data-i18n="pages.canti_page.preghiera_who">Ninna nanna di protezione</span>
                     </span>
                 </button>
             </div>
@@ -193,8 +200,8 @@ window.silktideConsentManager.init({
             <div class="player-top">
                 <button class="play-btn" id="playBtn">▶</button>
                 <div class="track-info">
-                    <div class="title" id="nowPlayingTitle">[Cunto 1 — titolo da inserire]</div>
-                    <div class="who" id="nowPlayingWho">[Narratore da inserire]</div>
+                    <div class="title" id="nowPlayingTitle">Cummari Piricuddu</div>
+                    <div class="who" id="nowPlayingWho">Tradizione orale di Caccamo</div>
                 </div>
             </div>
             <div class="waveform" id="waveform"></div>
@@ -212,7 +219,7 @@ window.silktideConsentManager.init({
         <div class="transcript" id="transcript"></div>
 
         <div class="note">
-            Prototipo con voce sintetica del browser: il testo viene letto ad alta voce riga per riga, nella lingua selezionata sopra. Testi segnati tra <code>[ ]</code> sono segnaposto da sostituire con i contenuti reali. Quando saranno pronti i file audio registrati, basterà inserire il percorso del file in <code>audioUrl</code> per ogni traccia: il player passerà automaticamente all'audio reale, con sincronizzazione precisa sui tempi <code>start</code>/<code>end</code> di ogni riga.
+            Il testo in dialetto viene mostrato insieme alla traduzione e al significato del modo di dire, non solo alla traduzione letterale. Se hai già i file audio registrati, basta inserirne il percorso in <code>audioUrl</code> per ogni traccia: il player passa automaticamente alla registrazione reale.
         </div>
     </main>
 
@@ -292,54 +299,84 @@ window.silktideConsentManager.init({
             });
         });
 
+        // ============================================================
+        // TRACCE — 4 brani reali, riorganizzati in 3 gruppi (Cunti /
+        // Filastrocche / Preghiere). Ogni traccia ha un'unica "riga"
+        // che copre tutto l'audio (non abbiamo i tempi esatti di ogni
+        // singola battuta della registrazione, quindi niente
+        // evidenziazione riga-per-riga per ora — solo dialetto,
+        // traduzione E significato, come richiesto).
+        //
+        // ATTENZIONE percorsi audio: assumo che i file stiano in una
+        // cartella "audio/" alla radice del sito, quindi richiamati
+        // come "../audio/nomefile.mp3" da qui (che sto dentro /desktop/).
+        // Se la cartella reale ha un nome o percorso diverso, va corretto
+        // qui sotto in ogni "audioUrl".
+        // ============================================================
         const tracks = {
-            cunto1: {
-                title: "[Cunto 1 — titolo da inserire]",
-                who: "[Narratore da inserire]",
-                audioUrl: null,
+            cummari_piricuddu: {
+                title: "Cummari Piricuddu",
+                who: "Tradizione orale di Caccamo",
+                audioUrl: "audio/cummari_p.mp3",
                 lines: [
-                    { start: 0,   end: 4.5,  dialect: "[riga 1 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
-                    { start: 4.5, end: 9,    dialect: "[riga 2 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
+                    {
+                        start: 0, end: 600,
+                        it: "Traduzione: «Comare Piricuddo, quando mangio non voglio nessuno, ma finito di mangiare voglio tutti i miei compari.» Significato: il \"Piricuddu\" è il picciolo, una cosa minuscola — in senso figurato una persona avara e di poco valore morale. Il detto descrive l'amico di comodo: quando c'è da godersi qualcosa (cibo, guadagno, fortuna) si isola per non doverla dividere; appena finito, invece, cerca subito compagnia. È la perfetta definizione dell'amicizia interessata.",
+                        en: "Translation: \"Comare Piricuddo, when I eat I want nobody, but once I've finished eating I want all my friends.\" Meaning: \"Piricuddu\" means something tiny and worthless — a stingy, self-serving person. The saying mocks the fair-weather friend: while there's something to enjoy, he isolates himself so he won't have to share it; the moment he's done, he suddenly wants company. A perfect picture of friendship of convenience.",
+                        fr: "Traduction : « Commère Piricuddu, quand je mange je ne veux personne, mais une fois le repas fini, je veux tous mes compères. » Signification : « Piricuddu » désigne quelque chose de minuscule et sans valeur — une personne avare et intéressée. Ce dicton se moque de l'ami opportuniste : tant qu'il y a quelque chose à profiter seul, il s'isole pour ne pas devoir le partager ; une fois que c'est fini, il recherche soudain la compagnie. Le portrait parfait de l'amitié de circonstance.",
+                        es: "Traducción: «Comadre Piricuddu, cuando como no quiero a nadie, pero al terminar de comer quiero a todos mis compadres.» Significado: \"Piricuddu\" designa algo diminuto y sin valor — una persona avara e interesada. El dicho se burla del amigo oportunista: mientras hay algo que disfrutar en solitario, se aísla para no tener que compartirlo; en cuanto termina, de repente busca compañía. El retrato perfecto de la amistad por conveniencia.",
+                        de: "Übersetzung: „Gevatterin Piricuddu, wenn ich esse, will ich niemanden, aber wenn ich fertig gegessen habe, will ich alle meine Freunde.“ Bedeutung: „Piricuddu“ steht für etwas Winziges und Wertloses — eine geizige, eigennützige Person. Das Sprichwort verspottet den Schönwetterfreund: Solange es etwas allein zu genießen gibt, zieht er sich zurück, um es nicht teilen zu müssen; sobald er fertig ist, sucht er plötzlich Gesellschaft. Das perfekte Bild einer Freundschaft aus Berechnung."
+                    }
                 ]
             },
-            cunto2: {
-                title: "[Cunto 2 — titolo da inserire]",
-                who: "[Narratore da inserire]",
-                audioUrl: null,
+            oca_oca: {
+                title: "Oca Oca",
+                who: "Filastrocca per bambini",
+                audioUrl: "audio/ocaoca1.mp3",
                 lines: [
-                    { start: 0,   end: 5,    dialect: "[riga 1 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
-                    { start: 5,   end: 10,   dialect: "[riga 2 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
+                    {
+                        start: 0, end: 600,
+                        it: "Traduzione: «Oca, oca, oca, il re si mangia l'oca, la regina si mangia l'uva, e [Nome] con la pancia piena.» Significato: al re spetta il piatto forte, alla regina la frutta pregiata, ma al bambino la parte migliore — essere sazio e felice. È una filastrocca da fare sulle ginocchia (\"del cavalluccio\"): si dondola il bambino a ritmo di canto, e all'ultimo verso ci si ferma di colpo per fargli il solletico sulla pancia, tra le risate.",
+                        en: "Translation: \"Goose, goose, goose, the king eats the goose, the queen eats the grapes, and [Name] with a full tummy.\" Meaning: the king gets the main course, the queen the fine fruit, but the child gets the best part — being full and happy. It's a traditional knee-bouncing rhyme: the child is bounced in rhythm, and on the last line the bouncing stops suddenly for a round of tummy tickles and laughter.",
+                        fr: "Traduction : « Oie, oie, oie, le roi mange l'oie, la reine mange le raisin, et [Prénom] le ventre plein. » Signification : au roi revient le plat principal, à la reine le fruit précieux, mais à l'enfant la meilleure part — être rassasié et heureux. C'est une comptine à faire sur les genoux : on fait sautiller l'enfant en rythme, et au dernier vers on s'arrête net pour lui chatouiller le ventre, dans les rires.",
+                        es: "Traducción: «Oca, oca, oca, el rey se come la oca, la reina se come la uva, y [Nombre] con la barriga llena.» Significado: al rey le toca el plato fuerte, a la reina la fruta preciada, pero al niño la mejor parte — estar satisfecho y feliz. Es una cancioncilla para hacer en las rodillas: se hace saltar al niño al ritmo del canto, y en el último verso se detiene de golpe para hacerle cosquillas en la barriga entre risas.",
+                        de: "Übersetzung: „Gans, Gans, Gans, der König isst die Gans, die Königin isst die Trauben, und [Name] mit vollem Bäuchlein.“ Bedeutung: Der König bekommt das Hauptgericht, die Königin das edle Obst, aber das Kind bekommt den besten Teil — satt und glücklich zu sein. Es ist ein traditioneller Kniereim: Das Kind wird im Takt gewippt, und bei der letzten Zeile stoppt das Wippen abrupt für ein Bauchkitzeln unter Gelächter."
+                    }
                 ]
             },
-            preghiera1: {
-                title: "[Preghiera 1 — titolo da inserire]",
-                who: "[Narratore da inserire]",
-                audioUrl: null,
+            fora_quaranta: {
+                title: "Fora Quaranta",
+                who: "Conta per i giochi di strada",
+                audioUrl: "audio/fora_quaranta.mp3",
                 lines: [
-                    { start: 0,   end: 4,    dialect: "[riga 1 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
-                    { start: 4,   end: 8,    dialect: "[riga 2 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
+                    {
+                        start: 0, end: 600,
+                        it: "Traduzione: «Fuori quaranta, tutto il mondo canta, canta il gallo affacciato alla finestra con tre colombe in testa. Gallo, gallina, Palermo e Messina!» Significato: celebrava la fine dei 40 giorni di digiuno della Quaresima — con la Pasqua tornava la festa. Il gallo canta l'alba e la Resurrezione, le tre colombe richiamano la Trinità, Palermo e Messina uniscono simbolicamente tutta l'isola. Si usava come conta per i giochi di gruppo: si batte il pugno a ritmo sui pugni dei bambini in cerchio, e chi riceve il tocco sull'ultima sillaba viene eliminato.",
+                        en: "Translation: \"Forty days are over, the whole world sings, the rooster sings at the window with three doves on his head. Rooster, hen, Palermo and Messina!\" Meaning: it celebrated the end of the 40 days of Lenten fasting — with Easter, the festivities returned. The rooster announces dawn and the Resurrection, the three doves recall the Trinity, and Palermo and Messina symbolically join the whole island together. It was used as a counting rhyme for group games: children in a circle tap fists in rhythm, and whoever gets tapped on the last syllable is out.",
+                        fr: "Traduction : « Les quarante jours sont finis, le monde entier chante, le coq chante à la fenêtre avec trois colombes sur la tête. Coq, poule, Palerme et Messine ! » Signification : ce chant célébrait la fin des 40 jours de jeûne du Carême — avec Pâques revenait la fête. Le coq annonce l'aube et la Résurrection, les trois colombes rappellent la Trinité, et Palerme et Messine unissent symboliquement toute l'île. On l'utilisait comme comptine pour les jeux de groupe : les enfants en cercle tapent du poing en rythme, et celui qui reçoit le coup sur la dernière syllabe est éliminé.",
+                        es: "Traducción: «Se acabaron los cuarenta días, todo el mundo canta, canta el gallo asomado a la ventana con tres palomas en la cabeza. Gallo, gallina, Palermo y Mesina.» Significado: celebraba el fin de los 40 días de ayuno de Cuaresma — con la Pascua volvía la fiesta. El gallo anuncia el amanecer y la Resurrección, las tres palomas recuerdan a la Trinidad, y Palermo y Mesina unen simbólicamente toda la isla. Se usaba como cuenta para juegos de grupo: los niños en círculo golpean los puños al ritmo, y quien recibe el toque en la última sílaba queda eliminado.",
+                        de: "Übersetzung: „Die vierzig Tage sind vorbei, die ganze Welt singt, der Hahn singt am Fenster mit drei Tauben auf dem Kopf. Hahn, Henne, Palermo und Messina!“ Bedeutung: Es feierte das Ende der 40-tägigen Fastenzeit — mit Ostern kehrte das Fest zurück. Der Hahn kündigt die Morgendämmerung und die Auferstehung an, die drei Tauben erinnern an die Dreifaltigkeit, und Palermo und Messina verbinden symbolisch die ganze Insel. Es wurde als Abzählreim für Gruppenspiele benutzt: Kinder im Kreis schlagen im Takt die Fäuste aneinander, und wer bei der letzten Silbe getroffen wird, scheidet aus."
+                    }
                 ]
             },
-            preghiera2: {
-                title: "[Preghiera 2 — titolo da inserire]",
-                who: "[Narratore da inserire]",
-                audioUrl: null,
+            preghiera_bnotte: {
+                title: "Preghiera della Buonanotte",
+                who: "Ninna nanna di protezione",
+                audioUrl: "audio/Preghiera_bnotte.mp3",
                 lines: [
-                    { start: 0,   end: 4,    dialect: "[riga 1 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" },
-                    { start: 4,   end: 8,    dialect: "[riga 2 in dialetto da inserire]",
-                      it: "[traduzione IT]", en: "[EN translation]", fr: "[traduction FR]", es: "[traducción ES]", de: "[Übersetzung DE]" }
+                    {
+                        start: 0, end: 600,
+                        it: "«In questo letto mi sono disteso, quattro angeli ci ho trovato, 2 dalla testa 2 dai piedi e al centro l'Angelo Rafaele. In questo letto mi sono disteso che si vuole seminare come un giardino, con fiori, rose e gelsomino. Viene l'angelo e mi dice: La croce te la sei fatta? Tre gocce di sangue di Gesù, tre fili di capelli di Maria, Signore allontanate chi vuole fare del male a me.» Significato: è un vero scudo spirituale in tre momenti. I quattro angeli ai lati del letto creano una barriera sacra, con l'angelo Raffaele al centro (guida e guaritore nella tradizione biblica) a proteggere il sonno. Il letto-giardino di rose e gelsomino evoca sogni sereni e purezza. Infine si chiede a Dio di allontanare le cattive intenzioni di chi vuole fare del male, mentre si è indifesi nel sonno.",
+                        en: "\"In this bed I lay down, four angels I found there, two at the head, two at the feet, and in the middle the angel Raphael. In this bed I lay down, wishing it to bloom like a garden, with flowers, roses and jasmine. The angel comes and asks me: 'Have you made the sign of the cross?' Three drops of Jesus' blood, three strands of Mary's hair, Lord, bind whoever wishes to harm me.\" Meaning: a spiritual shield in three parts. Four angels guard the corners of the bed, with the angel Raphael — guide and healer in biblical tradition — at the centre, protecting sleep. The bed-as-garden of roses and jasmine evokes peaceful dreams and purity. Finally, the \"binding\": God is asked to neutralise the bad intentions of anyone wishing harm, while the sleeper lies defenceless.",
+                        fr: "« Dans ce lit je me suis couché, quatre anges j'y ai trouvés, deux à la tête, deux aux pieds, et au milieu l'ange Raphaël. Dans ce lit je me suis couché, qu'il se transforme en jardin, avec des fleurs, des roses et du jasmin. L'ange vient et me dit : \"As-tu fait le signe de croix ?\" Trois gouttes du sang de Jésus, trois mèches des cheveux de Marie, Seigneur, lie celui qui veut me faire du mal. » Signification : un véritable bouclier spirituel en trois temps. Quatre anges gardent les coins du lit, avec l'ange Raphaël — guide et guérisseur dans la tradition biblique — au centre, protégeant le sommeil. Le lit-jardin de roses et de jasmin évoque des rêves paisibles et la pureté. Enfin, la « ligature » : on demande à Dieu de neutraliser les mauvaises intentions de qui voudrait faire du mal, pendant que le dormeur est sans défense.",
+                        es: "«En esta cama me acosté, cuatro ángeles encontré, dos a la cabeza, dos a los pies, y en medio el ángel Rafael. En esta cama me acosté, que se quiere sembrar como un jardín, con flores, rosas y jazmín. Viene el ángel y me dice: '¿Te has hecho la señal de la cruz?' Tres gotas de sangre de Jesús, tres hebras de cabello de María, Señor, ata a quien quiera hacerme daño.» Significado: un auténtico escudo espiritual en tres momentos. Cuatro ángeles custodian las esquinas de la cama, con el ángel Rafael —guía y sanador en la tradición bíblica— en el centro, protegiendo el sueño. La cama-jardín de rosas y jazmín evoca sueños serenos y pureza. Por último, la \"atadura\": se pide a Dios que neutralice las malas intenciones de quien quiera hacer daño, mientras se está indefenso durmiendo.",
+                        de: "„In diesem Bett legte ich mich nieder, vier Engel fand ich dort, zwei am Kopf, zwei an den Füßen, und in der Mitte der Engel Raphael. In diesem Bett legte ich mich nieder, das sich wie ein Garten entfalten möge, mit Blumen, Rosen und Jasmin. Der Engel kommt und fragt mich: ‚Hast du das Kreuzzeichen gemacht?' Drei Tropfen vom Blut Jesu, drei Haarsträhnen von Maria, Herr, binde, wer mir Böses will.\" Bedeutung: ein spirituelles Schutzschild in drei Teilen. Vier Engel bewachen die Ecken des Bettes, in der Mitte der Engel Raphael — in biblischer Tradition Führer und Heiler — der den Schlaf beschützt. Das Garten-Bett aus Rosen und Jasmin steht für ruhige Träume und Reinheit. Schließlich die „Bindung\": Gott wird gebeten, die bösen Absichten dessen zu neutralisieren, der Schaden anrichten will, während der Schlafende schutzlos ist."
+                    }
                 ]
             }
         };
 
-        let activeTrackId = "cunto1";
+        let activeTrackId = "cummari_piricuddu";
         let playing = false;
         let ttsLineIndex = 0;
         let currentPlayerLang = "it";
@@ -385,6 +422,28 @@ window.silktideConsentManager.init({
             if (!realAudioEl.paused) realAudioEl.pause();
         }
 
+        // Divide un blocco di testo su "Significato:" per mostrarlo in
+        // un riquadro separato dalla traduzione letterale, quando presente.
+        function renderTranslationBlock(fullText){
+            const marker = fullText.indexOf("Significato:") !== -1 ? "Significato:"
+                : fullText.indexOf("Meaning:") !== -1 ? "Meaning:"
+                : fullText.indexOf("Signification :") !== -1 ? "Signification :"
+                : fullText.indexOf("Significado:") !== -1 ? "Significado:"
+                : fullText.indexOf("Bedeutung:") !== -1 ? "Bedeutung:"
+                : null;
+
+            if (!marker) {
+                return `<div class="translation-text">${fullText}</div>`;
+            }
+            const idx = fullText.indexOf(marker);
+            const literal = fullText.substring(0, idx).trim();
+            const meaning = fullText.substring(idx + marker.length).trim();
+            return `
+                <div class="translation-text">${literal}</div>
+                <div class="meaning-block"><strong>${marker.replace(':', '').replace(' :','')}</strong>${meaning}</div>
+            `;
+        }
+
         function renderTrack(trackId){
             stopPlayback();
             highlightLine(null);
@@ -410,7 +469,7 @@ window.silktideConsentManager.init({
                 const div = document.createElement("div");
                 div.className = "line";
                 div.id = "line-" + i;
-                div.innerHTML = `<div class="dialect">${l.dialect}</div><div class="translation" id="tr-${i}">${l[currentPlayerLang]}</div>`;
+                div.innerHTML = `<div class="translation" id="tr-${i}">${renderTranslationBlock(l[currentPlayerLang])}</div>`;
                 transcriptEl.appendChild(div);
             });
 
@@ -443,7 +502,7 @@ window.silktideConsentManager.init({
             curTimeEl.textContent = (i + 1) + "/" + track.lines.length;
             updateBarsProgress((i + 1) / track.lines.length);
 
-            const text = track.lines[i][currentPlayerLang] || track.lines[i].it;
+            const text = track.lines[i].dialect;
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = ttsLangCode(currentPlayerLang);
             utterance.onend = () => {
@@ -493,7 +552,7 @@ window.silktideConsentManager.init({
                 chip.classList.add("active");
                 currentPlayerLang = chip.dataset.lang;
                 tracks[activeTrackId].lines.forEach((l,i) => {
-                    document.getElementById("tr-" + i).textContent = l[currentPlayerLang];
+                    document.getElementById("tr-" + i).innerHTML = renderTranslationBlock(l[currentPlayerLang]);
                 });
                 if (playing && !trackHasRealAudio(tracks[activeTrackId])){
                     stopPlayback();
@@ -505,7 +564,7 @@ window.silktideConsentManager.init({
             btn.addEventListener("click", () => renderTrack(btn.dataset.track));
         });
 
-        renderTrack("cunto1");
+        renderTrack("cummari_piricuddu");
         loadLanguage(currentLang);
 
         // ============================================================
@@ -578,6 +637,8 @@ window.silktideConsentManager.init({
         // Ferma la voce della Castellana
         function castellanaZitta() {
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+            const chatAudio = document.getElementById("chat-real-audio");
+            if (chatAudio) chatAudio.pause();
         }
 
         function getPageSlug() {
@@ -636,12 +697,11 @@ window.silktideConsentManager.init({
 
         // ============================================================
         // RENDERING MESSAGGI CHAT — una sola scatola per messaggio
-        // (.message / .message.user-msg), come le altre pagine. Prima
-        // c'era una .message-bubble interna con un secondo sfondo
-        // scritto a mano: scatola dentro la scatola, con doppio
-        // bordo/sfondo indesiderato.
+        // (.message / .message.user-msg). Se il topic ha un file audio
+        // reale (es. Lu Verbu), viene mostrato un player <audio> invece
+        // del solo pulsante di sintesi vocale del browser.
         // ============================================================
-        function appendChatMessage(text, sender, link) {
+        function appendChatMessage(text, sender, link, audioFile) {
             const messagesBox = document.querySelector('.chat-messages');
 
             const msgWrap = document.createElement('div');
@@ -651,7 +711,7 @@ window.silktideConsentManager.init({
             textSpan.textContent = text;
             msgWrap.appendChild(textSpan);
 
-            if (sender !== 'user') {
+            if (sender !== 'user' && !audioFile) {
                 const audioBtn = document.createElement('button');
                 audioBtn.innerHTML = '🔊';
                 audioBtn.title = 'Ascolta la Castellana';
@@ -662,11 +722,21 @@ window.silktideConsentManager.init({
 
             messagesBox.appendChild(msgWrap);
 
-            // Nota: le schede di questa pagina (detti, filastrocche,
-            // preghiere) non hanno mai un campo "link" nella knowledge
-            // base — sono testi puri in dialetto. Questo blocco resta
-            // qui solo per coerenza futura, ma nella pratica non scatta
-            // mai su questa pagina.
+            // Registrazione reale (es. Lu Verbu recitato davvero) al posto
+            // della sola voce sintetica: un player audio compatto sotto
+            // il messaggio.
+            if (sender !== 'user' && audioFile) {
+                const audioWrap = document.createElement('div');
+                audioWrap.style.cssText = 'margin: -2px 0 8px 0;';
+                const audioEl = document.createElement('audio');
+                audioEl.id = 'chat-real-audio';
+                audioEl.controls = true;
+                audioEl.style.cssText = 'width: 100%; height: 34px;';
+                audioEl.src = audioFile;
+                audioWrap.appendChild(audioEl);
+                messagesBox.appendChild(audioWrap);
+            }
+
             if (link) {
                 const btn = document.createElement('button');
                 btn.className = 'chat-link-btn';
@@ -767,8 +837,8 @@ window.silktideConsentManager.init({
                 });
                 if (!res.ok) throw new Error('Risposta non valida dal server');
                 const data = await res.json();
-                appendChatMessage(data.reply, 'castellana', data.link);
-                if (data.speak || voiceEnabled) speakText(data.reply);
+                appendChatMessage(data.reply, 'castellana', data.link, data.audio_file);
+                if (!data.audio_file && (data.speak || voiceEnabled)) speakText(data.reply);
                 if (groupName) exploredGroups.add(groupName);
                 renderMenuState(groupName);
             } catch (err) {
@@ -917,8 +987,8 @@ window.silktideConsentManager.init({
                 if (!res.ok) throw new Error('Risposta non valida dal server');
 
                 const data = await res.json();
-                appendChatMessage(data.reply, 'castellana', data.link);
-                if (data.speak || voiceEnabled) speakText(data.reply);
+                appendChatMessage(data.reply, 'castellana', data.link, data.audio_file);
+                if (!data.audio_file && (data.speak || voiceEnabled)) speakText(data.reply);
 
             } catch (err) {
                 console.error('Errore chat:', err);
