@@ -511,10 +511,17 @@ html, body {
     border-color: var(--gold-light);
 }
 
-/* Messaggi dell'utente, distinti da quelli della Castellana */
+/* Messaggi dell'utente, distinti da quelli della Castellana.
+   Prima usava uno sfondo oro trasparente (rgba 18%) sovrapposto allo
+   sfondo blu scuro della chat: il risultato era un marrone scurissimo
+   con testo blu-inchiostro sopra, quasi invisibile. Ora usa uno sfondo
+   pieno (blu marino) con testo bianco, leggibile sempre, come nelle
+   altre pagine del sito. */
 .chat-messages .message.user-msg {
-    background: rgba(184, 135, 59, 0.18);
-    border-left: 2px solid var(--sea);
+    background: var(--sea);
+    color: #fff;
+    border-left: none;
+    border-right: 2px solid var(--gold);
     margin-left: auto;
 }
 
