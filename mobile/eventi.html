@@ -118,7 +118,7 @@
             localStorage.setItem('linguaSelezionata', lingua);
             document.documentElement.lang = lingua;
 
-            fetch(`../lang/${lingua}.json`)
+            fetch(`./lang/${lingua}.json`)
                 .then(response => {
                     if (!response.ok) throw new Error("File di lingua non trovato");
                     return response.json();
