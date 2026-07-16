@@ -1,0 +1,154 @@
+{
+  "home": {
+    "talk_castellana": "Habla con la Castellana",
+    "amuni_title": "Amunì Tourism",
+    "amuni_text": "Amunì, en dialecto siciliano, significa <strong>'vamos'</strong>. Es una cálida invitación a moverse, a explorar y a dejarse guiar entre nuestras piedras milenarias, guardianas de relatos, damas y antiguas oraciones.<br><br>No detengas tu paso, mírate en esta magia: <strong>Amunì, ven, te muestro el camino.</strong>",
+    "btn_mangiare": "Comer",
+    "btn_dormire": "Dormir",
+    "btn_transport": "Transportes",
+    "btn_events": "Eventos",
+    "btn_monuments": "Monumentos",
+    "btn_desktop_redirect": "Ir a la versión de Escritorio"
+  },
+  "pages": {
+    "food_page": {
+      "title": "Sabor y Compañía en el Pueblo",
+      "intro": "Bienvenido, viajero, a la sección dedicada a los sabores del lugar y a las veladas en compañía.",
+      "search_placeholder": "Busca un local o un sabor...",
+      "sec_movida": "Vida Nocturna y Veladas",
+      "sec_eat": "Restaurantes, Pizzerías y Bares",
+      "no_results": "No se ha encontrado ningún local o sabor que coincida con la búsqueda.",
+      "cards": {
+        "the_castle": "Diversión y veladas de verano temáticas, en el mágico marco nocturno a la sombra del castillo medieval.",
+        "kittipigghi": "El punto de referencia para tus noches en el pueblo. Eventos, música y entretenimiento activo durante todo el año.",
+        "chiosco_san_francesco": "Refresca tus veladas de verano al aire libre, entre cócteles, excelente compañía y ambiente jovial dentro de una villa municipal recuperada y remodelada.",
+        "al_maniero": "Cocina cuidada y platos de la tradición en una atmósfera cálida con vistas al castillo.",
+        "il_borgo": "Un viaje gastronómico entre los sabores auténticos y las excelencias culinarias de nuestra tierra.",
+        "a_castellana": "Una experiencia culinaria refinada en el corazón del pueblo, donde la tradición se encuentra con la elegancia.",
+        "caffè_royal": "Del desayuno artesanal a los dulces de la tradición siciliana más refinada.",
+        "la_bottega_dei_sapori": "Pizzas para llevar fragantes y deliciosas, preparadas al momento con ingredientes genuinos.",
+        "l_officina_dei_golosi": "Dulces artesanales, desayunos abundantes y pausas de café golosas para mimar el paladar cada día.",
+        "strapizzami": "Pizzas crujientes y sabrosas, elaboradas con ingredientes locales cuidadosamente seleccionados.",
+        "pasticceria_fratelli_scimeca": "Los maestros de los dulces típicos y los sabores tradicionales que cuentan nuestra historia en el mundo.",
+        "dolci_tentazioni": "El lugar ideal para una pausa reparadora, excelentes cafés y helado artesanal",
+        "bar_ribaudo": "Imprescindible probar su 'mattonella', el bocadillo de bazo, su pollo asado.",
+        "bar_del_carmine": "Cafetería histórica, ideal para un excelente espresso o un helado refrescante con total relax.",
+        "spiga_d_oro_food_and_drink": "Productos recién horneados, tablas típicas y una amplia selección de especialidades listas para disfrutar.",
+        "cafè_40": "Ambiente moderno y acogedor, ideal para reuniones y desayunos.",
+        "il_dolce": "Ambiente moderno y acogedor, ideal para dulces típicos, rosticería y comida callejera típica siciliana.",
+        "bar_muscarella": "Parada ideal para un café reparador, un helado artesanal o un aperitivo relajado.",
+        "capricci_di_sicilia": "Charcutería en via Termitana, ideal para una pausa rápida o un capricho goloso si estás en la villa municipal con niños."
+      }
+    },
+    "sleep_page": {
+      "accommodations": [
+        { "name": "De Spuches house", "link": "https://www.booking.com/Share-9yidf9" },
+        { "name": "Il duca house & holiday", "link": "https://www.booking.com/Share-fg0sxP" },
+        { "name": "Casa vacanze Caccamo Santa Lucia", "link": "https://www.booking.com/Share-Zy5oMf" },
+        { "name": "A casa da Paola", "link": "https://www.booking.com/Share-R2YrnE" },
+        { "name": "Trinacria Caccamo luxury and rooms", "link": "https://www.booking.com/Share-ceKMpkE" },
+        { "name": "La casa dei cavalieri", "link": "https://www.booking.com/Share-5n6YbS2" },
+        { "name": "L'opuntia sul lago", "link": "https://www.booking.com/Share-6PtdvA" },
+        { "name": "Il cortile holiday house", "link": "https://www.booking.com/Share-1bcyLa7" },
+        { "name": "La casa del Custode", "link": "https://www.booking.com/Share-AOPAO9" },
+        { "name": "La casetta di Rosina", "link": "https://www.booking.com/Share-LXb1QZ" },
+        { "name": "Casa del vecchio borgo", "link": "https://www.booking.com/Share-5q8K2qH" },
+        { "name": "Sikania Agrirelais", "link": "https://www.booking.com/Share-wc8bjRR" },
+        { "name": "L'arco antico", "link": "https://www.booking.com/Share-WutiSb" },
+        { "name": "Pet friendly home", "link": "https://www.booking.com/Share-ymqmBUx" },
+        { "name": "Batiful villa", "link": "https://www.booking.com/Share-1q3QZGo" }
+      ]
+    },
+    "transport_page": {
+      "welcome": "Bienvenido, viajero, a la sección de Transportes. Aquí encontrarás la información necesaria para moverte por los alrededores del pueblo.",
+      "company_title": "Autolinee Randazzo di Gesù",
+      "company_desc": "La línea de autobuses conecta Caccamo con <strong>Termini Imerese</strong> y <strong>Palermo</strong> durante todo el año. Aprovechando el trayecto de la mañana o de la tarde (salida de las 9 y de las 13 horas) hacia Palermo, es posible bajarse en <strong>Vetrana</strong>, una conocida zona de playa, en Pietra Piatta o en el 'Ombligo de Venus'. Desde Termini Imerese podrás además tomar el tren hacia <strong>Cefalù</strong> y otros destinos turísticos.",
+      "stops_title": "📍 Las Paradas en el Pueblo",
+      "stop_1": "<strong>Porta Euracea:</strong> frente al Bar Giallombardo y a la tienda de materiales de construcción.",
+      "stop_2": "<strong>Viale Regione Siciliana:</strong> sobre el parque infantil 'Roberta' (cerca de la agencia de seguros Axa).",
+      "stop_3": "<strong>Piazza Cappuccini:</strong> a la sombra del antiguo Convento.",
+      "btn_schedule": "📅 Ver Horarios de Autobuses",
+      "btn_tickets": "🎫 Comprar Billetes Online"
+    },
+    "events_page": {
+      "title": "Ritos y Fiestas del Pueblo",
+      "intro": "Vive el alma más auténtica de nuestro pueblo a través de sus tradiciones seculares, donde fe, historia y folclore se entrelazan en momentos únicos y emocionantes.",
+      "signuruzzu_title": "U Signuruzzu a Cavaddu",
+      "signuruzzu_desc": "El Domingo de Ramos, un niño del lugar representa a Jesús y desfila sobre un burrito engalanado por las calles del pueblo adornadas de fiesta con palmas. El cortejo se detiene frente a la Iglesia de Santa Maria degli Angeli y ante el Duomo de San Giorgio Martire para la sugestiva bendición.",
+      "venerdi_title": "Los Ritos de la Semana Santa",
+      "venerdi_desc": "El ambiente se vuelve profundo con los altares dispuestos en las iglesias para el Viernes Santo, adornados con los típicos platos de trigo germinado a oscuras. Siguen la solemne y conmovedora Procesión y el Vía Crucis de la ciudad.",
+      "giovanni_title": "Fiesta del Beato Giovanni",
+      "giovanni_desc": "Una conmemoración profundamente sentida y vivida por toda la comunidad, que se congrega en torno a su Beato en un ambiente de gran devoción y calor popular.",
+      "castellana_title": "Elección de la Castellana y Cortejo Histórico",
+      "castellana_desc": "El pueblo se sumerge de nuevo en su glorioso pasado medieval. Cada año, en la segunda mitad de agosto, un majestuoso cortejo histórico con trajes de época recorre las calles del pueblo. Cada dos años, el cortejo culmina con la solemne elección de la Castellana del castillo, a la que se puede optar como candidata a partir del mes de febrero.",
+      "nicasio_title": "Fiesta de San Nicasio y el Palio",
+      "nicasio_desc": "Celebraciones vibrantes en honor al Santo, enriquecidas con el esperadísimo y apasionante Palio de la ciudad, que enciende el desafío y el entusiasmo de grandes y pequeños.",
+      "sagra_title": "Fiesta de la Salchicha",
+      "sagra_desc": "Cada año, el segundo domingo de octubre, los aromas de la tradición invaden el pueblo. Una cita gastronómica imperdible para degustar la auténtica salchicha local entre cantos, vino y convivialidad."
+    },
+    "monuments_pages": {
+      "labels": {
+        "hours": "Horarios",
+        "tickets": "Entradas",
+        "view_map": "Abrir el Mapa",
+        "btn_buy_tickets": "Reservar / Comprar Entrada",
+        "btn_comune_info": "Información Institucional del Ayuntamiento",
+        "btn_parla_castellana": "Habla con la Castellana",
+        "btn_dindondan": "Explorar Iglesias en Din Don Dan",
+        "church_notice": "⚠️ Nota: Estos son lugares de culto activos, dedicados a las funciones litúrgicas. Para las visitas turísticas, se ruega respetar los horarios recomendados y evitar los momentos de celebración interna.",
+        "go_to_map": "Ir al Mapa"
+      },
+      "castello": {
+        "title": "El Castillo de Caccamo",
+        "description": "El Castillo se alza sobre este peñasco desde 1094, erigido por los normandos para dominar el valle del San Leonardo. En 1160 fue escenario de la conjura de los barones: el señor Matteo Bonello se refugió aquí tras intentar derrocar al rey Guillermo I. Se dice que su fantasma todavía vaga por la Sala de la Conjura, en busca de paz. Una de las capillas esconde incluso una trampilla, usada antaño para deshacerse de los huéspedes indeseados.",
+        "hours": "Horario de invierno (16 de octubre - 14 de abril): lunes por la tarde - domingo, 09:00 – 12:30 y 14:30 – 18:30. Horario de verano (15 de abril - 15 de octubre): lunes por la tarde - domingo, 09:00 – 12:30 y 15:30 – 19:00. Cerrado los lunes por la mañana.",
+        "tickets": "Entrada general 6,00 € | Promocional con reserva online 4,50 € | Residentes del municipio de Caccamo 1,00 € | Estudiantes 18-25 años 3,00 € | Gratis menores de 18 años. Info y reservas: 091 8103233 (lun-vie) o 091 8149252 (mar-dom)."
+      },
+      "badia": {
+        "title": "Iglesia de San Benedetto alla Badia",
+        "description": "Tras su fachada sobria, la iglesia guarda uno de los suelos de mayólica más preciados de Sicilia: 5.555 azulejos pintados a mano en el siglo XVIII, con un velero luchando contra un mar tempestuoso en el centro — símbolo de la Iglesia contra las fuerzas del mal. Los habitantes todavía la llaman 'iglesia-salón', por la riqueza de sus estucos e incrustaciones doradas. Muchos visitantes eligen recorrerla descalzos, por respeto y para disfrutar de cada detalle.",
+        "hours": "Lunes por la tarde: 14:30 – 18:30. De martes a domingo, por la mañana: 09:00 – 12:30 (por la tarde solo con reserva).",
+        "tickets": "Entrada general 2,00 € | Reducida 1,00 € (jóvenes UE 18-25 años o con entrada del Castillo del mismo día) | Gratis menores de 18 años"
+      },
+      "santamaria": {
+        "title": "Iglesia de Santa Maria degli Angeli",
+        "description": "Los habitantes de Caccamo todavía la llaman 'San Domenico', por el nombre de la plaza. Fue fundada en 1487 por el fraile dominico Giovanni Liccio, nacido precisamente en Caccamo — según la tradición, fue la propia Virgen quien le indicó en sueños dónde construirla. Hoy la iglesia guarda sus reliquias en una urna de plata, junto a una Virgen con el Niño esculpida en 1516 por Antonello Gagini. Es el mismo Beato Giovanni que el pueblo celebra cada mes de mayo.",
+        "hours": "De lunes a sábado: Santa Misa a las 08:30, apertura matutina 09:00 – 12:00. Domingo: Santas Misas a las 08:30, 11:30 y 17:00 (apertura según los horarios de las funciones)."
+      },
+      "sangiorgio": {
+        "title": "Iglesia de San Giorgio Martire",
+        "description": "El Duomo se alza donde, según la tradición, los normandos erigieron ya en 1090 la primera iglesia dedicada a San Giorgio — el santo que, se cuenta, les ayudó a vencer a los sarracenos en la batalla de Cerami en 1063. El edificio que se ve hoy data del siglo XVII, pero su campanario de 49 metros de altura es aún más antiguo: en su parte inferior fue una torre de vigilancia del Castillo. En el interior, el altar barroco conserva relieves atribuidos a Francesco Laurana y una estatua-relicario de plata de Santa Rosalia.",
+        "hours": "De lunes a sábado: 09:00 – 12:00, Santa Misa a las 18:00. Domingo: Santas Misas a las 11:00 y 18:00 (apertura según los horarios de las funciones)."
+      },
+      "annunziata": {
+        "title": "Parroquia SS. Annunziata",
+        "description": "Sus orígenes se remontan al siglo XIII, siendo una de las más antiguas de Caccamo. Conserva un gran lienzo de Guglielmo Borremans, la Anunciación, y estucos de la escuela de Serpotta. En el siglo XVIII albergaba también un suelo de mayólica pintado por el maestro Nicolò Sarzana — el mismo artesano que realizó después el célebre suelo de la Badia, muy cerca de allí. Cada primavera, la iglesia se anima con la fiesta de San Giuseppe, una de las tradiciones más sentidas del pueblo.",
+        "hours": "De lunes a sábado: 09:00 – 12:00, Santa Misa a las 18:00. Domingo: Santas Misas a las 09:30, 12:00 y 19:00 (apertura según los horarios de las funciones)."
+      },
+      "cappuccini": {
+        "title": "Convento de los Frailes Capuchinos",
+        "description": "Los frailes Capuchinos llegaron aquí en 1589, trayendo consigo el estilo sobrio y silencioso que siempre ha distinguido a su orden. Es uno de los últimos conventos todavía habitados en toda Sicilia occidental: hoy como entonces, los frailes viven de la oración, el trabajo manual y la acogida de peregrinos. Sus muros cuentan casi dos siglos de historia, incluso antes de la Unificación de Italia.",
+        "hours": "Accesible principalmente por petición o durante las festividades franciscanas. Contactar con la Oficina de Turismo.",
+        "secret_info": "💡 Las Joyas Escondidas de Caccamo: el pueblo alberga nada menos que 33 iglesias. Utiliza el mapa de Din Don Dan y amplía la vista sobre Caccamo para descubrir los horarios y aperturas en tiempo real de tesoros menos conocidos, como la Iglesia de San Rocco y otras pequeñas obras maestras repartidas por el pueblo."
+      }
+    }
+  },
+  "monuments": {
+    "title": "Nuestros Monumentos",
+    "go_to_map": "Ir al Mapa",
+    "mobile": {
+      "castello": "Castillo de Caccamo",
+      "santamaria": "Iglesia Santa María de los Ángeles",
+      "sangiorgio": "Iglesia San Jorge Mártir",
+      "cappuccini": "Convento de los Frailes Capuchinos",
+      "annunziata": "Parroquia SS. Annunziata",
+      "sanbenedetto": "Iglesia San Benito de la Badia"
+    }
+  },
+  "citizen": {
+    "church_sepolcri": "El Periodo Pascual",
+    "events_title": "Mayo",
+    "food_aperitivo": "Agosto",
+    "food_desc": "Octubre"
+  }
+}
