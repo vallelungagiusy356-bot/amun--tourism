@@ -42,21 +42,66 @@
     },
     "sleep_page": {
       "accommodations": [
-        { "name": "De Spuches house", "link": "https://www.booking.com/Share-9yidf9" },
-        { "name": "Il duca house & holiday", "link": "https://www.booking.com/Share-fg0sxP" },
-        { "name": "Casa vacanze Caccamo Santa Lucia", "link": "https://www.booking.com/Share-Zy5oMf" },
-        { "name": "A casa da Paola", "link": "https://www.booking.com/Share-R2YrnE" },
-        { "name": "Trinacria Caccamo luxury and rooms", "link": "https://www.booking.com/Share-ceKMpkE" },
-        { "name": "La casa dei cavalieri", "link": "https://www.booking.com/Share-5n6YbS2" },
-        { "name": "L'opuntia sul lago", "link": "https://www.booking.com/Share-6PtdvA" },
-        { "name": "Il cortile holiday house", "link": "https://www.booking.com/Share-1bcyLa7" },
-        { "name": "La casa del Custode", "link": "https://www.booking.com/Share-AOPAO9" },
-        { "name": "La casetta di Rosina", "link": "https://www.booking.com/Share-LXb1QZ" },
-        { "name": "Casa del vecchio borgo", "link": "https://www.booking.com/Share-5q8K2qH" },
-        { "name": "Sikania Agrirelais", "link": "https://www.booking.com/Share-wc8bjRR" },
-        { "name": "L'arco antico", "link": "https://www.booking.com/Share-WutiSb" },
-        { "name": "Pet friendly home", "link": "https://www.booking.com/Share-ymqmBUx" },
-        { "name": "Batiful villa", "link": "https://www.booking.com/Share-1q3QZGo" }
+        {
+          "name": "De Spuches house",
+          "link": "https://www.booking.com/Share-9yidf9"
+        },
+        {
+          "name": "Il duca house & holiday",
+          "link": "https://www.booking.com/Share-fg0sxP"
+        },
+        {
+          "name": "Casa vacanze Caccamo Santa Lucia",
+          "link": "https://www.booking.com/Share-Zy5oMf"
+        },
+        {
+          "name": "A casa da Paola",
+          "link": "https://www.booking.com/Share-R2YrnE"
+        },
+        {
+          "name": "Trinacria Caccamo luxury and rooms",
+          "link": "https://www.booking.com/Share-ceKMpkE"
+        },
+        {
+          "name": "La casa dei cavalieri",
+          "link": "https://www.booking.com/Share-5n6YbS2"
+        },
+        {
+          "name": "L'opuntia sul lago",
+          "link": "https://www.booking.com/Share-6PtdvA"
+        },
+        {
+          "name": "Il cortile holiday house",
+          "link": "https://www.booking.com/Share-1bcyLa7"
+        },
+        {
+          "name": "La casa del Custode",
+          "link": "https://www.booking.com/Share-AOPAO9"
+        },
+        {
+          "name": "La casetta di Rosina",
+          "link": "https://www.booking.com/Share-LXb1QZ"
+        },
+        {
+          "name": "Casa del vecchio borgo",
+          "link": "https://www.booking.com/Share-5q8K2qH"
+        },
+        {
+          "name": "Sikania Agrirelais",
+          "link": "https://www.booking.com/Share-wc8bjRR"
+        },
+        {
+          "name": "L'arco antico",
+          "link": "https://www.booking.com/Share-WutiSb"
+        },
+        {
+          "name": "Pet friendly home",
+          "link": "https://www.booking.com/Share-ymqmBUx"
+        },
+        {
+          "name": "Batiful villa",
+          "link": "https://www.booking.com/Share-1q3QZGo"
+        }
       ]
     },
     "transport_page": {
@@ -80,11 +125,11 @@
       "giovanni_title": "Festa del Beato Giovanni",
       "giovanni_desc": "Una ricorrenza profondamente sentita e vissuta dall'intera comunità, che si stringe attorno al suo Beato in un clima di grande devozione e calore popolare.",
       "castellana_title": "Elezione della Castellana & Corteo Storico",
-      "castellana_desc": "Il borgo si rituffa nel suo glorioso passato medievale. Un maestoso corteo storico in abiti d'epoca attraversa le strade, culminando con la solenne elezione della Castellana del maniero.",
+      "castellana_desc": "Il borgo si rituffa nel suo glorioso passato medievale. Ogni anno, nella seconda metà di agosto, un maestoso corteo storico in abiti d'epoca attraversa le strade del paese. Ogni due anni, il corteo culmina con la solenne elezione della Castellana del maniero, alla quale è possibile candidarsi a partire dal mese di febbraio.",
       "nicasio_title": "Festa di San Nicasio e il Palio",
       "nicasio_desc": "Celebrazioni vibranti in onore del Santo, arricchite dall'attesissimo e avvincente Palio cittadino che accende la sfida e l'entusiasmo di grandi e piccini.",
-      "sagra_title": "Sagra della Salsiccia (12 Ottobre)",
-      "sagra_desc": "Ogni anno, il 12 ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità."
+      "sagra_title": "Sagra della Salsiccia",
+      "sagra_desc": "Ogni anno, la seconda domenica di ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità."
     },
     "monuments_pages": {
       "labels": {
@@ -132,5 +177,23 @@
         "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti come la Chiesa di San Rocco e altri piccoli capolavori diffusi."
       }
     }
+  },
+  "monuments": {
+    "title": "I Nostri Monumenti",
+    "go_to_map": "Vai alla Mappa",
+    "mobile": {
+      "castello": "Castello di Caccamo",
+      "santamaria": "Chiesa S. Maria degli Angeli",
+      "sangiorgio": "Chiesa San Giorgio Martire",
+      "cappuccini": "Convento Frati Cappuccini",
+      "annunziata": "Parrocchia SS. Annunziata",
+      "sanbenedetto": "Chiesa S. Benedetto della Badia"
+    }
+  },
+  "citizen": {
+    "church_sepolcri": "Il Periodo Pasquale",
+    "events_title": "Maggio",
+    "food_aperitivo": "Agosto",
+    "food_desc": "Ottobre"
   }
 }
