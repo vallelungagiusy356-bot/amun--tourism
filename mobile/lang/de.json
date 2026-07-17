@@ -42,21 +42,66 @@
     },
     "sleep_page": {
       "accommodations": [
-        { "name": "De Spuches house", "link": "https://www.booking.com/Share-9yidf9" },
-        { "name": "Il duca house & holiday", "link": "https://www.booking.com/Share-fg0sxP" },
-        { "name": "Casa vacanze Caccamo Santa Lucia", "link": "https://www.booking.com/Share-Zy5oMf" },
-        { "name": "A casa da Paola", "link": "https://www.booking.com/Share-R2YrnE" },
-        { "name": "Trinacria Caccamo luxury and rooms", "link": "https://www.booking.com/Share-ceKMpkE" },
-        { "name": "La casa dei cavalieri", "link": "https://www.booking.com/Share-5n6YbS2" },
-        { "name": "L'opuntia sul lago", "link": "https://www.booking.com/Share-6PtdvA" },
-        { "name": "Il cortile holiday house", "link": "https://www.booking.com/Share-1bcyLa7" },
-        { "name": "La casa del Custode", "link": "https://www.booking.com/Share-AOPAO9" },
-        { "name": "La casetta di Rosina", "link": "https://www.booking.com/Share-LXb1QZ" },
-        { "name": "Casa del vecchio borgo", "link": "https://www.booking.com/Share-5q8K2qH" },
-        { "name": "Sikania Agrirelais", "link": "https://www.booking.com/Share-wc8bjRR" },
-        { "name": "L'arco antico", "link": "https://www.booking.com/Share-WutiSb" },
-        { "name": "Pet friendly home", "link": "https://www.booking.com/Share-ymqmBUx" },
-        { "name": "Batiful villa", "link": "https://www.booking.com/Share-1q3QZGo" }
+        {
+          "name": "De Spuches house",
+          "link": "https://www.booking.com/Share-9yidf9"
+        },
+        {
+          "name": "Il duca house & holiday",
+          "link": "https://www.booking.com/Share-fg0sxP"
+        },
+        {
+          "name": "Casa vacanze Caccamo Santa Lucia",
+          "link": "https://www.booking.com/Share-Zy5oMf"
+        },
+        {
+          "name": "A casa da Paola",
+          "link": "https://www.booking.com/Share-R2YrnE"
+        },
+        {
+          "name": "Trinacria Caccamo luxury and rooms",
+          "link": "https://www.booking.com/Share-ceKMpkE"
+        },
+        {
+          "name": "La casa dei cavalieri",
+          "link": "https://www.booking.com/Share-5n6YbS2"
+        },
+        {
+          "name": "L'opuntia sul lago",
+          "link": "https://www.booking.com/Share-6PtdvA"
+        },
+        {
+          "name": "Il cortile holiday house",
+          "link": "https://www.booking.com/Share-1bcyLa7"
+        },
+        {
+          "name": "La casa del Custode",
+          "link": "https://www.booking.com/Share-AOPAO9"
+        },
+        {
+          "name": "La casetta di Rosina",
+          "link": "https://www.booking.com/Share-LXb1QZ"
+        },
+        {
+          "name": "Casa del vecchio borgo",
+          "link": "https://www.booking.com/Share-5q8K2qH"
+        },
+        {
+          "name": "Sikania Agrirelais",
+          "link": "https://www.booking.com/Share-wc8bjRR"
+        },
+        {
+          "name": "L'arco antico",
+          "link": "https://www.booking.com/Share-WutiSb"
+        },
+        {
+          "name": "Pet friendly home",
+          "link": "https://www.booking.com/Share-ymqmBUx"
+        },
+        {
+          "name": "Batiful villa",
+          "link": "https://www.booking.com/Share-1q3QZGo"
+        }
       ]
     },
     "transport_page": {
@@ -69,22 +114,6 @@
       "stop_3": "<strong>Piazza Cappuccini:</strong> im Schatten des alten Klosters.",
       "btn_schedule": "📅 Busfahrpläne ansehen",
       "btn_tickets": "🎫 Online-Tickets kaufen"
-    },
-    "events_page": {
-      "title": "Riten und Feste des Dorfes",
-      "intro": "Erleben Sie die authentischste Seele unseres Dorfes durch seine jahrhundertealten Traditionen, in denen Glaube, Geschichte und Folklore sich zu einzigartigen und bewegenden Momenten verweben.",
-      "signuruzzu_title": "U Signuruzzu a Cavaddu",
-      "signuruzzu_desc": "Am Palmsonntag stellt ein Kind aus dem Ort Jesus dar und reitet auf einem geschmückten Esel durch die mit Palmzweigen festlich geschmückten Gassen des Dorfes. Der Umzug hält vor der Kirche Santa Maria degli Angeli und vor dem Dom San Giorgio Martire für die eindrucksvolle Segnung.",
-      "venerdi_title": "Die Riten der Karwoche",
-      "venerdi_desc": "Die Stimmung wird tiefgründig mit den Altären, die in den Kirchen für den Karfreitag aufgestellt werden, geschmückt mit den typischen Gerichten aus im Dunkeln gekeimtem Weizen. Es folgen die feierliche und bewegende Prozession sowie der städtische Kreuzweg.",
-      "giovanni_title": "Fest des Seligen Giovanni",
-      "giovanni_desc": "Ein zutiefst empfundenes Ereignis, das von der gesamten Gemeinschaft gelebt wird, die sich in einer Atmosphäre großer Frömmigkeit und volkstümlicher Wärme um ihren Seligen schart.",
-      "castellana_title": "Wahl der Castellana & Historischer Umzug",
-      "castellana_desc": "Das Dorf taucht wieder in seine glorreiche mittelalterliche Vergangenheit ein. Jedes Jahr, in der zweiten Augusthälfte, zieht ein prächtiger historischer Umzug in Kostümen der Epoche durch die Straßen des Ortes. Alle zwei Jahre gipfelt der Umzug in der feierlichen Wahl der Castellana der Burg, für die man sich ab Februar bewerben kann.",
-      "nicasio_title": "Fest des San Nicasio und der Palio",
-      "nicasio_desc": "Lebendige Feierlichkeiten zu Ehren des Heiligen, bereichert durch den mit Spannung erwarteten und mitreißenden städtischen Palio, der bei Groß und Klein Wetteifer und Begeisterung entfacht.",
-      "sagra_title": "Wurstfest",
-      "sagra_desc": "Jedes Jahr, am zweiten Sonntag im Oktober, erfüllen die Düfte der Tradition das Dorf. Ein unverzichtbares kulinarisches Ereignis, um die authentische lokale Wurst bei Gesang, Wein und Geselligkeit zu genießen."
     },
     "monuments_pages": {
       "labels": {
@@ -150,5 +179,21 @@
     "events_title": "Mai",
     "food_aperitivo": "August",
     "food_desc": "Oktober"
+  },
+  "events_page": {
+    "title": "Riten und Feste des Dorfes",
+    "intro": "Erleben Sie die authentischste Seele unseres Dorfes durch seine jahrhundertealten Traditionen, in denen Glaube, Geschichte und Folklore sich zu einzigartigen und bewegenden Momenten verweben.",
+    "signuruzzu_title": "U Signuruzzu a Cavaddu",
+    "signuruzzu_desc": "Am Palmsonntag stellt ein Kind aus dem Ort Jesus dar und reitet auf einem geschmückten Esel durch die mit Palmzweigen festlich geschmückten Gassen des Dorfes. Der Umzug hält vor der Kirche Santa Maria degli Angeli und vor dem Dom San Giorgio Martire für die eindrucksvolle Segnung.",
+    "venerdi_title": "Die Riten der Karwoche",
+    "venerdi_desc": "Die Stimmung wird tiefgründig mit den Altären, die in den Kirchen für den Karfreitag aufgestellt werden, geschmückt mit den typischen Gerichten aus im Dunkeln gekeimtem Weizen. Es folgen die feierliche und bewegende Prozession sowie der städtische Kreuzweg.",
+    "giovanni_title": "Fest des Seligen Giovanni",
+    "giovanni_desc": "Ein zutiefst empfundenes Ereignis, das von der gesamten Gemeinschaft gelebt wird, die sich in einer Atmosphäre großer Frömmigkeit und volkstümlicher Wärme um ihren Seligen schart.",
+    "castellana_title": "Wahl der Castellana & Historischer Umzug",
+    "castellana_desc": "Das Dorf taucht wieder in seine glorreiche mittelalterliche Vergangenheit ein. Jedes Jahr, in der zweiten Augusthälfte, zieht ein prächtiger historischer Umzug in Kostümen der Epoche durch die Straßen des Ortes. Alle zwei Jahre gipfelt der Umzug in der feierlichen Wahl der Castellana der Burg, für die man sich ab Februar bewerben kann.",
+    "nicasio_title": "Fest des San Nicasio und der Palio",
+    "nicasio_desc": "Lebendige Feierlichkeiten zu Ehren des Heiligen, bereichert durch den mit Spannung erwarteten und mitreißenden städtischen Palio, der bei Groß und Klein Wetteifer und Begeisterung entfacht.",
+    "sagra_title": "Wurstfest",
+    "sagra_desc": "Jedes Jahr, am zweiten Sonntag im Oktober, erfüllen die Düfte der Tradition das Dorf. Ein unverzichtbares kulinarisches Ereignis, um die authentische lokale Wurst bei Gesang, Wein und Geselligkeit zu genießen."
   }
 }
