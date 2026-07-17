@@ -31,23 +31,31 @@ html, body {
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--cream-text);
-    background: transparent !important;
     overflow-x: hidden;
+    /* Sfondo agganciato direttamente al body invece che a un div
+       "position: fixed" separato: prima, in modalità desktop su
+       telefono, quel div si "staccava" dallo schermo e finiva
+       renderizzato come un blocco in più sotto il footer (la barra
+       nera con il copyright veniva tagliata a metà). Il background
+       del body invece è sempre alto esattamente quanto la pagina,
+       non può mai creare spazio fantasma in più. */
+    background-image:
+        linear-gradient(rgba(10, 18, 26, 0.35), rgba(10, 18, 26, 0.35)),
+        url('img/sfondocaccamo.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* ==========================================================================
    2. SFONDO
+   Il vecchio div "position: fixed" è stato sostituito dallo sfondo
+   diretto sul body (vedi sezione 1). Questa regola lo disattiva senza
+   dover toccare l'HTML della pagina.
    ========================================================================== */
 .scene-background {
-    position: fixed;
-    inset: 0;
-    background-image: url('img/sfondocaccamo.jpeg') !important;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: brightness(0.68) contrast(1.08) saturate(1.05);
-    z-index: -5 !important;
-    pointer-events: none;
+    display: none;
 }
 
 /* ==========================================================================
@@ -149,6 +157,11 @@ html, body {
 
 .citizen-intro-container {
     max-width: 620px;
+    background: rgba(15, 25, 34, 0.52);
+    border: 1px solid rgba(184, 135, 59, 0.35);
+    border-radius: 10px;
+    padding: 28px 32px;
+    backdrop-filter: blur(6px);
 }
 
 .category-tag {
