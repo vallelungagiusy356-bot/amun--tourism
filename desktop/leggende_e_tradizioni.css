@@ -128,20 +128,40 @@ body::before {
   max-width: 1320px;
   margin: 0 auto;
   padding: 120px 48px 220px 48px;
-  display: grid;
-  grid-template-columns: minmax(320px, 420px) minmax(460px, 1fr);
-  grid-template-areas:
-    "intro intro"
-    "tracks player";
-  column-gap: 44px;
-  row-gap: 28px;
-  align-items: start;
 }
 
-.category-tag,
-.hero h1,
-.subtitle {
-  grid-area: intro;
+/* Blocco titolo: un unico contenitore centrato, niente più
+   testi sovrapposti (prima categoria/titolo/sottotitolo si
+   accavallavano perché condividevano la stessa area di griglia) */
+.hero-intro {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3rem;
+}
+
+/* Le due colonne: sinistra (tracce + leggenda), destra (player).
+   Flexbox invece di grid-area condivise: ogni colonna scorre in
+   verticale in modo indipendente, senza incastrarsi con l'altra. */
+.hero-columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 44px;
+}
+
+.hero-col-left {
+  flex: 0 0 420px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero-col-right {
+  flex: 1 1 460px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .category-tag {
@@ -174,12 +194,10 @@ body::before {
    TRACCE
    ============================================================ */
 .track-groups {
-  grid-area: tracks;
   display: flex;
   flex-direction: column;
   gap: 22px;
   width: 100%;
-  max-width: 420px;
 }
 
 .track-group {
@@ -255,13 +273,6 @@ body::before {
 /* ============================================================
    PLAYER + TRASCRIZIONE
    ============================================================ */
-.player-card,
-.dialect-lyrics,
-.transcript,
-.note {
-  grid-column: 2;
-}
-
 /* ============================================================
    TESTO IN DIALETTO — effetto karaoke: la riga in ascolto
    si illumina a tempo con l'audio
@@ -561,13 +572,17 @@ body::before {
 @media (min-width: 601px) and (max-width: 899px) {
   .hero {
     margin-top: 150px;
-    display: block;
     max-width: 760px;
     padding: 0 24px 170px;
   }
 
-  .track-groups {
+  .hero-columns {
+    flex-direction: column;
+  }
+
+  .hero-col-left {
     max-width: 100%;
+    flex: 1 1 auto;
   }
 
   .castellana-video-wrapper {
@@ -609,7 +624,15 @@ body::before {
     margin-top: 190px;
     padding: 0 20px 160px;
     max-width: 620px;
-    display: block;
+  }
+
+  .hero-columns {
+    flex-direction: column;
+  }
+
+  .hero-col-left {
+    max-width: 100%;
+    flex: 1 1 auto;
   }
 
   .track-groups {
@@ -770,20 +793,40 @@ body::before {
   max-width: 1320px;
   margin: 0 auto;
   padding: 120px 48px 220px 48px;
-  display: grid;
-  grid-template-columns: minmax(320px, 420px) minmax(460px, 1fr);
-  grid-template-areas:
-    "intro intro"
-    "tracks player";
-  column-gap: 44px;
-  row-gap: 28px;
-  align-items: start;
 }
 
-.category-tag,
-.hero h1,
-.subtitle {
-  grid-area: intro;
+/* Blocco titolo: un unico contenitore centrato, niente più
+   testi sovrapposti (prima categoria/titolo/sottotitolo si
+   accavallavano perché condividevano la stessa area di griglia) */
+.hero-intro {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3rem;
+}
+
+/* Le due colonne: sinistra (tracce + leggenda), destra (player).
+   Flexbox invece di grid-area condivise: ogni colonna scorre in
+   verticale in modo indipendente, senza incastrarsi con l'altra. */
+.hero-columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 44px;
+}
+
+.hero-col-left {
+  flex: 0 0 420px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero-col-right {
+  flex: 1 1 460px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .category-tag {
@@ -816,12 +859,10 @@ body::before {
    TRACCE
    ============================================================ */
 .track-groups {
-  grid-area: tracks;
   display: flex;
   flex-direction: column;
   gap: 22px;
   width: 100%;
-  max-width: 420px;
 }
 
 .track-group {
@@ -897,13 +938,6 @@ body::before {
 /* ============================================================
    PLAYER + TRASCRIZIONE
    ============================================================ */
-.player-card,
-.dialect-lyrics,
-.transcript,
-.note {
-  grid-column: 2;
-}
-
 /* ============================================================
    TESTO IN DIALETTO — effetto karaoke: la riga in ascolto
    si illumina a tempo con l'audio
@@ -1275,13 +1309,17 @@ body::before {
 @media (min-width: 601px) and (max-width: 899px) {
   .hero {
     margin-top: 150px;
-    display: block;
     max-width: 760px;
     padding: 0 24px 170px;
   }
 
-  .track-groups {
+  .hero-columns {
+    flex-direction: column;
+  }
+
+  .hero-col-left {
     max-width: 100%;
+    flex: 1 1 auto;
   }
 
   .castellana-video-wrapper {
@@ -1323,7 +1361,15 @@ body::before {
     margin-top: 190px;
     padding: 0 20px 160px;
     max-width: 620px;
-    display: block;
+  }
+
+  .hero-columns {
+    flex-direction: column;
+  }
+
+  .hero-col-left {
+    max-width: 100%;
+    flex: 1 1 auto;
   }
 
   .track-groups {
