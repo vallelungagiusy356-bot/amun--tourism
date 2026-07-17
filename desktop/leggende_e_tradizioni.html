@@ -180,6 +180,58 @@ window.silktideConsentManager.init({
         .ask-legend-castellana:hover {
             color: var(--terracotta-dark, #9C4C22);
         }
+
+        /* ===== FISARMONICA LEGGENDA — mostra solo il primo paragrafo,
+           il resto si apre dolcemente cliccando il bottone ===== */
+        .legend-more {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease;
+        }
+
+        .legend-more.expanded {
+            max-height: 3000px;
+        }
+
+        .legend-toggle {
+            display: block;
+            margin: 1.2rem auto 0;
+            background: transparent;
+            border: 1px solid var(--gold, #B8873B);
+            color: var(--sea, #1B4965);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            padding: 8px 22px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .legend-toggle:hover {
+            background: rgba(184, 135, 59, 0.12);
+            color: var(--terracotta-dark, #9C4C22);
+        }
+
+        .legend-toggle-label-less {
+            display: none;
+        }
+
+        .legend-toggle.is-expanded .legend-toggle-label-more {
+            display: none;
+        }
+
+        .legend-toggle.is-expanded .legend-toggle-label-less {
+            display: inline;
+        }
+
+        .legend-toggle .legend-toggle-label-more::after {
+            content: " ↓";
+        }
+
+        .legend-toggle .legend-toggle-label-less::after {
+            content: " ↑";
+        }
     </style>
 </head>
 
@@ -213,14 +265,23 @@ window.silktideConsentManager.init({
             <h2 class="legend-title" data-i18n="pages.canti_page.legend_title">Suor Felicia e la Sfida del Melograno</h2>
             <div class="legend-card">
                 <p data-i18n="pages.canti_page.legend_p1">Il maestoso Castello di Caccamo, arroccato sulla sua imponente rupe calcarea, custodisce una delle storie più affascinanti e misteriose di tutta la Sicilia: la leggenda di Suor Felicia, conosciuta anche come la monaca del castello.</p>
-                <p data-i18n="pages.canti_page.legend_p2">Si racconta che Felicia, fanciulla di straordinaria bellezza, fosse la figlia del castellano dell'epoca — molto probabilmente un nobile della famiglia Cabrera o Chiaramonte. Come in ogni dramma cavalleresco che si rispetti, la giovane commise il peccato più grande per la nobiltà del tempo: si innamorò follemente di un ragazzo di umili origini, un paggio o un giovane soldato della guarnigione del castello.</p>
-                <p data-i18n="pages.canti_page.legend_p3">Quando il severo padre scoprì la relazione segreta, la sua reazione fu furiosa. Fece arrestare il giovane amante, rinchiudendolo nei bui sotterranei del castello — secondo alcune versioni, gettato in uno dei famigerati pozzi a rasoio. Per punire la figlia e soffocare lo scandalo, la costrinse a prendere i voti, rinchiudendola a vita in un convento di clausura.</p>
-                <p data-i18n="pages.canti_page.legend_p4">La ragazza prese il nome di Suor Felicia. Consumata dal dolore per il suo amore perduto, morì di crepacuore in giovane età. Ma il suo legame con il castello era troppo forte per spezzarsi con la morte: si dice che la sua anima tormentata vi sia tornata, e che vi vaghi ancora oggi.</p>
-                <p data-i18n="pages.canti_page.legend_p5">Nelle notti di luna piena, allo scoccare della mezzanotte, il fantasma della monaca appare tra i saloni silenziosi, vestita di un abito candido, bellissima e malinconica. Tra le mani stringe un vassoio d'argento con sopra un melograno maturo, rosso come il sangue.</p>
-                <p data-i18n="pages.canti_page.legend_p6">Se un visitatore coraggioso la incontra a mezzanotte, lei non lo spaventa: gli va incontro e gli offre il vassoio, proponendogli una sfida. Deve sgranare il melograno e mangiare ogni singolo chicco, senza usare le mani e senza farne cadere a terra nemmeno uno.</p>
-                <p data-i18n="pages.canti_page.legend_p7">Se riesce nell'impresa, l'incantesimo si spezza: Suor Felicia gli indica il punto esatto in cui è nascosto un immenso tesoro nei sotterranei del castello, per poi volare in cielo, finalmente in pace. Se fallisce, anche solo facendo cadere un chicco, lo spettro svanisce all'istante con un gemito di delusione, lasciando il malcapitato al buio.</p>
-                <p data-i18n="pages.canti_page.legend_p8">La scelta del melograno non è casuale: nella mitologia mediterranea è da sempre il frutto del regno dei morti e del legame indissolubile, come nel mito greco di Proserpina, condannata a restare nell'Ade per aver mangiato sei chicchi di melograno. Nella leggenda di Suor Felicia, il frutto rappresenta il legame eterno con l'aldilà e la passione spezzata dei due giovani amanti, sacrificati sull'altare dell'orgoglio nobiliare.</p>
-                <p data-i18n="pages.canti_page.legend_p9">Ad oggi, si racconta che nessuno sia mai riuscito a superare la prova. Suor Felicia continua ad attendere, con il suo vassoio d'argento e il suo melograno intatto.</p>
+
+                <div class="legend-more" id="legendMore">
+                    <p data-i18n="pages.canti_page.legend_p2">Si racconta che Felicia, fanciulla di straordinaria bellezza, fosse la figlia del castellano dell'epoca — molto probabilmente un nobile della famiglia Cabrera o Chiaramonte. Come in ogni dramma cavalleresco che si rispetti, la giovane commise il peccato più grande per la nobiltà del tempo: si innamorò follemente di un ragazzo di umili origini, un paggio o un giovane soldato della guarnigione del castello.</p>
+                    <p data-i18n="pages.canti_page.legend_p3">Quando il severo padre scoprì la relazione segreta, la sua reazione fu furiosa. Fece arrestare il giovane amante, rinchiudendolo nei bui sotterranei del castello — secondo alcune versioni, gettato in uno dei famigerati pozzi a rasoio. Per punire la figlia e soffocare lo scandalo, la costrinse a prendere i voti, rinchiudendola a vita in un convento di clausura.</p>
+                    <p data-i18n="pages.canti_page.legend_p4">La ragazza prese il nome di Suor Felicia. Consumata dal dolore per il suo amore perduto, morì di crepacuore in giovane età. Ma il suo legame con il castello era troppo forte per spezzarsi con la morte: si dice che la sua anima tormentata vi sia tornata, e che vi vaghi ancora oggi.</p>
+                    <p data-i18n="pages.canti_page.legend_p5">Nelle notti di luna piena, allo scoccare della mezzanotte, il fantasma della monaca appare tra i saloni silenziosi, vestita di un abito candido, bellissima e malinconica. Tra le mani stringe un vassoio d'argento con sopra un melograno maturo, rosso come il sangue.</p>
+                    <p data-i18n="pages.canti_page.legend_p6">Se un visitatore coraggioso la incontra a mezzanotte, lei non lo spaventa: gli va incontro e gli offre il vassoio, proponendogli una sfida. Deve sgranare il melograno e mangiare ogni singolo chicco, senza usare le mani e senza farne cadere a terra nemmeno uno.</p>
+                    <p data-i18n="pages.canti_page.legend_p7">Se riesce nell'impresa, l'incantesimo si spezza: Suor Felicia gli indica il punto esatto in cui è nascosto un immenso tesoro nei sotterranei del castello, per poi volare in cielo, finalmente in pace. Se fallisce, anche solo facendo cadere un chicco, lo spettro svanisce all'istante con un gemito di delusione, lasciando il malcapitato al buio.</p>
+                    <p data-i18n="pages.canti_page.legend_p8">La scelta del melograno non è casuale: nella mitologia mediterranea è da sempre il frutto del regno dei morti e del legame indissolubile, come nel mito greco di Proserpina, condannata a restare nell'Ade per aver mangiato sei chicchi di melograno. Nella leggenda di Suor Felicia, il frutto rappresenta il legame eterno con l'aldilà e la passione spezzata dei due giovani amanti, sacrificati sull'altare dell'orgoglio nobiliare.</p>
+                    <p data-i18n="pages.canti_page.legend_p9">Ad oggi, si racconta che nessuno sia mai riuscito a superare la prova. Suor Felicia continua ad attendere, con il suo vassoio d'argento e il suo melograno intatto.</p>
+                </div>
+
+                <button class="legend-toggle" id="legendToggleBtn" aria-expanded="false" aria-controls="legendMore">
+                    <span class="legend-toggle-label-more" data-i18n="pages.canti_page.legend_toggle_more">Continua a leggere la leggenda</span>
+                    <span class="legend-toggle-label-less" data-i18n="pages.canti_page.legend_toggle_less">Chiudi la leggenda</span>
+                </button>
+
                 <div class="ask-legend-castellana" data-i18n="pages.canti_page.legend_cta">Chiedi alla Castellana di raccontartela</div>
             </div>
         </section>
@@ -257,6 +318,14 @@ window.silktideConsentManager.init({
                         <span class="track-who" data-i18n="pages.canti_page.fora_who">Conta per i giochi di strada</span>
                     </span>
                 </button>
+
+                <button class="track-item" data-track="peri">
+                    <span class="track-play">▶</span>
+                    <span class="track-meta">
+                        <span class="track-title" data-i18n="pages.canti_page.peri_title">Peri</span>
+                        <span class="track-who" data-i18n="pages.canti_page.peri_who">Conta per il nascondino</span>
+                    </span>
+                </button>
             </div>
 
             <div class="track-group">
@@ -284,14 +353,9 @@ window.silktideConsentManager.init({
             <div class="waveform" id="waveform"></div>
             <div class="time-row"><span id="curTime">0:00</span><span id="totTime">0:00</span></div>
             <audio id="realAudioPlayer" preload="none"></audio>
-            <div class="lang-row">
-                <div class="lang-chip active" data-lang="it">IT</div>
-                <div class="lang-chip" data-lang="en">EN</div>
-                <div class="lang-chip" data-lang="fr">FR</div>
-                <div class="lang-chip" data-lang="es">ES</div>
-                <div class="lang-chip" data-lang="de">DE</div>
-            </div>
         </div>
+
+        <div class="dialect-lyrics" id="dialectLyrics"></div>
 
         <div class="transcript" id="transcript"></div>
 
@@ -350,6 +414,18 @@ window.silktideConsentManager.init({
             });
         });
 
+        // Leggenda "a fisarmonica": si vede solo il primo paragrafo,
+        // il resto si apre/chiude cliccando il bottone.
+        const legendToggleBtn = document.getElementById("legendToggleBtn");
+        const legendMore = document.getElementById("legendMore");
+        if (legendToggleBtn && legendMore) {
+            legendToggleBtn.addEventListener("click", () => {
+                const isExpanded = legendMore.classList.toggle("expanded");
+                legendToggleBtn.classList.toggle("is-expanded", isExpanded);
+                legendToggleBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+            });
+        }
+
         let currentLang = localStorage.getItem("lang") || "it";
         function loadLanguage(lang) {
             fetch(`./lang/${lang}.json`)
@@ -376,6 +452,7 @@ window.silktideConsentManager.init({
             btn.addEventListener("click", () => {
                 currentLang = btn.dataset.lang;
                 loadLanguage(currentLang);
+                updatePlayerLanguage(currentLang);
                 updatePremiumStatusDisplay();
                 const oldMenu = document.querySelector('.chat-messages .topic-menu-state');
                 if (oldMenu) oldMenu.remove();
@@ -405,6 +482,12 @@ window.silktideConsentManager.init({
                 title: "Cummari Piricuddu",
                 who: "Tradizione orale di Caccamo",
                 audioUrl: "audio/cummari_p.mp3",
+                dialect: [
+                    { text: "Cummari Piricuddu", start: 0, end: 2 },
+                    { text: "quannu manciu un vogghiu a nuddu", start: 2, end: 5 },
+                    { text: "a finuti ri manciari", start: 5, end: 6 },
+                    { text: "vogghiu tutti i me cumpari", start: 6, end: 8.5 }
+                ],
                 lines: [
                     {
                         start: 0, end: 600,
@@ -420,6 +503,12 @@ window.silktideConsentManager.init({
                 title: "Oca Oca",
                 who: "Filastrocca per bambini",
                 audioUrl: "audio/ocaoca1.mp3",
+                dialect: [
+                    { text: "Oca, oca, oca", start: 0, end: 2 },
+                    { text: "u re si mancia l'oca", start: 2, end: 7 },
+                    { text: "a regina si mancia a racina", start: 7, end: 10 },
+                    { text: "e Francesca ca panza china", start: 10, end: 15.2 }
+                ],
                 lines: [
                     {
                         start: 0, end: 600,
@@ -435,6 +524,15 @@ window.silktideConsentManager.init({
                 title: "Fora Quaranta",
                 who: "Conta per i giochi di strada",
                 audioUrl: "audio/fora_quaranta.mp3",
+                dialect: [
+                    { text: "Fora quaranta", start: 0, end: 2 },
+                    { text: "tuttu lu munnu canta", start: 2, end: 4 },
+                    { text: "canta lu iaddu", start: 4, end: 5 },
+                    { text: "affacciatu alla finestra", start: 5, end: 9 },
+                    { text: "cu tri palummi ntesta", start: 9, end: 11 },
+                    { text: "iaddu, iaddina", start: 11, end: 13 },
+                    { text: "Palermu e Messina", start: 13, end: 15 }
+                ],
                 lines: [
                     {
                         start: 0, end: 600,
@@ -446,10 +544,46 @@ window.silktideConsentManager.init({
                     }
                 ]
             },
+            peri: {
+                title: "Peri",
+                who: "Conta per il nascondino",
+                audioUrl: "audio/peri1.mp3",
+                dialect: [
+                    { text: "Peri 1, peri 2, peri 3", start: 0, end: 5 },
+                    { text: "peri 4, peri 5, peri 6", start: 5, end: 9 },
+                    { text: "peri 7, peri 8", start: 9, end: 13 },
+                    { text: "tappiti tippiti e un biscottu", start: 13, end: 15.7 }
+                ],
+                lines: [
+                    {
+                        start: 0, end: 600,
+                        it: "Traduzione: «Piede 1, piede 2, piede 3, piede 4, piede 5, piede 6, piede 7, piede 8, tippete tappete e un biscotto!» Significato: è una conta infantile siciliana, usata per decidere chi doveva \"stare sotto\" nei giochi di gruppo come il nascondino. I bambini si disponevano in cerchio con un piede teso verso il centro, e chi contava toccava un piede a ogni numero pronunciato. Il piede toccato esattamente sulla parola finale, \"biscottu\", veniva eliminato e ritirato indietro. Si continuava a girare finché non restava un solo piede: quel bambino era il \"designato\" a iniziare il gioco.",
+                        en: "Translation: \"Foot 1, foot 2, foot 3, foot 4, foot 5, foot 6, foot 7, foot 8, tippety-tappety and a biscuit!\" Meaning: a traditional Sicilian children's counting rhyme, used to decide who had to be \"it\" in group games like hide-and-seek. Children stood in a circle with one foot stretched towards the centre, and whoever was counting tapped a foot at each number. The foot tapped exactly on the final word, \"biscottu\" (biscuit), was eliminated and pulled back. The round continued until only one foot remained: that child was the one chosen to start the game.",
+                        fr: "Traduction : « Pied 1, pied 2, pied 3, pied 4, pied 5, pied 6, pied 7, pied 8, tippety-tappety et un biscuit ! » Signification : une comptine enfantine sicilienne traditionnelle, utilisée pour décider qui devait « y être » dans les jeux de groupe comme cache-cache. Les enfants se plaçaient en cercle avec un pied tendu vers le centre, et celui qui comptait touchait un pied à chaque chiffre prononcé. Le pied touché exactement sur le dernier mot, « biscottu » (biscuit), était éliminé et retiré. On continuait à tourner jusqu'à ce qu'il ne reste qu'un seul pied : cet enfant était désigné pour commencer le jeu.",
+                        es: "Traducción: «Pie 1, pie 2, pie 3, pie 4, pie 5, pie 6, pie 7, pie 8, tippety-tappety y una galleta!» Significado: una cuenta infantil siciliana tradicional, usada para decidir quién debía \"quedarse\" en juegos de grupo como el escondite. Los niños se colocaban en círculo con un pie extendido hacia el centro, y quien contaba tocaba un pie en cada número pronunciado. El pie tocado exactamente en la última palabra, \"biscottu\" (galleta), quedaba eliminado y se retiraba. Se seguía dando vueltas hasta que quedaba un solo pie: ese niño era el \"designado\" para iniciar el juego.",
+                        de: "Übersetzung: „Fuß 1, Fuß 2, Fuß 3, Fuß 4, Fuß 5, Fuß 6, Fuß 7, Fuß 8, tippety-tappety und ein Keks!“ Bedeutung: ein traditioneller sizilianischer Abzählreim für Kinder, mit dem entschieden wurde, wer bei Gruppenspielen wie Verstecken \"dran\" war. Die Kinder stellten sich im Kreis auf, mit einem Fuß zur Mitte gestreckt, und wer zählte, tippte bei jeder genannten Zahl auf einen Fuß. Der Fuß, der genau beim letzten Wort, \"biscottu\" (Keks), berührt wurde, schied aus und wurde zurückgezogen. Man drehte weiter, bis nur noch ein Fuß übrig war: Dieses Kind war dazu bestimmt, das Spiel zu beginnen."
+                    }
+                ]
+            },
             preghiera_bnotte: {
                 title: "Preghiera della Buonanotte",
                 who: "Ninna nanna di protezione",
                 audioUrl: "audio/Preghiera_bnotte.mp3",
+                dialect: [
+                    { text: "Nni stu lettu mi curcaiu", start: 0, end: 4 },
+                    { text: "quattru ancili ci truvaiu", start: 4, end: 6 },
+                    { text: "rui ra testa e rui ri peri", start: 6, end: 10 },
+                    { text: "nmezzu l'ancilu Raffaeli", start: 10, end: 13 },
+                    { text: "ni stu lettu c'è un jardinu", start: 13, end: 16 },
+                    { text: "chi si voli siminari", start: 16, end: 17 },
+                    { text: "a ciuri, rosi e gersominu", start: 17, end: 20 },
+                    { text: "cala l'ancilu cu nu mbambineddu e mi rici", start: 20, end: 27 },
+                    { text: "a cruci ta facisti?", start: 27, end: 29 },
+                    { text: "tri ucci ri sangu ri Cristu", start: 29, end: 33 },
+                    { text: "tri fili ri capiddi ri Maria", start: 33, end: 35 },
+                    { text: "signuri liati", start: 35, end: 36 },
+                    { text: "a ccu voli fari mali a mia", start: 36, end: 40 }
+                ],
                 lines: [
                     {
                         start: 0, end: 600,
@@ -466,9 +600,26 @@ window.silktideConsentManager.init({
         let activeTrackId = "cummari_piricuddu";
         let playing = false;
         let ttsLineIndex = 0;
-        let currentPlayerLang = "it";
+        let currentPlayerLang = currentLang;
+
+        // Aggiorna la lingua della trascrizione. Richiamata sia
+        // all'apertura di una traccia, sia quando si cambia lingua
+        // dal selettore unico nell'header (niente più bottoni doppi).
+        function updatePlayerLanguage(lang){
+            currentPlayerLang = lang;
+            const track = tracks[activeTrackId];
+            if (!track) return;
+            track.lines.forEach((l, i) => {
+                const el = document.getElementById("tr-" + i);
+                if (el) el.innerHTML = renderTranslationBlock(l[currentPlayerLang]);
+            });
+            if (playing && !trackHasRealAudio(track)){
+                stopPlayback();
+            }
+        }
 
         const transcriptEl = document.getElementById("transcript");
+        const dialectLyricsEl = document.getElementById("dialectLyrics");
         const waveformEl = document.getElementById("waveform");
         const playBtn = document.getElementById("playBtn");
         const curTimeEl = document.getElementById("curTime");
@@ -500,6 +651,13 @@ window.silktideConsentManager.init({
                 el.classList.add("active");
                 el.scrollIntoView({block:"center", behavior:"smooth"});
             }
+        }
+
+        function highlightDialectLine(index){
+            document.querySelectorAll(".dialect-lyrics .dialect-line").forEach(el => el.classList.remove("active"));
+            if (index === null || index === undefined) return;
+            const el = document.getElementById("dial-" + index);
+            if (el) el.classList.add("active");
         }
 
         function stopPlayback(){
@@ -534,6 +692,7 @@ window.silktideConsentManager.init({
         function renderTrack(trackId){
             stopPlayback();
             highlightLine(null);
+            highlightDialectLine(null);
             const track = tracks[trackId];
             activeTrackId = trackId;
             ttsLineIndex = 0;
@@ -558,6 +717,16 @@ window.silktideConsentManager.init({
                 div.id = "line-" + i;
                 div.innerHTML = `<div class="translation" id="tr-${i}">${renderTranslationBlock(l[currentPlayerLang])}</div>`;
                 transcriptEl.appendChild(div);
+            });
+
+            dialectLyricsEl.innerHTML = "";
+            (track.dialect || []).forEach((seg, i) => {
+                const span = document.createElement("span");
+                span.className = "dialect-line";
+                span.id = "dial-" + i;
+                span.textContent = seg.text;
+                dialectLyricsEl.appendChild(span);
+                dialectLyricsEl.appendChild(document.createTextNode(" "));
             });
 
             waveformEl.innerHTML = "";
@@ -608,6 +777,8 @@ window.silktideConsentManager.init({
             updateBarsProgress(realAudioEl.currentTime / (realAudioEl.duration || 1));
             const idx = track.lines.findIndex(l => realAudioEl.currentTime >= l.start && realAudioEl.currentTime < l.end);
             highlightLine(idx === -1 ? null : idx);
+            const dIdx = (track.dialect || []).findIndex(l => realAudioEl.currentTime >= l.start && realAudioEl.currentTime < l.end);
+            highlightDialectLine(dIdx === -1 ? null : dIdx);
         });
         realAudioEl.addEventListener("ended", () => {
             playing = false;
@@ -631,20 +802,6 @@ window.silktideConsentManager.init({
             } else {
                 speakLineIndex(ttsLineIndex);
             }
-        });
-
-        document.querySelectorAll(".lang-chip").forEach(chip => {
-            chip.addEventListener("click", () => {
-                document.querySelectorAll(".lang-chip").forEach(c => c.classList.remove("active"));
-                chip.classList.add("active");
-                currentPlayerLang = chip.dataset.lang;
-                tracks[activeTrackId].lines.forEach((l,i) => {
-                    document.getElementById("tr-" + i).innerHTML = renderTranslationBlock(l[currentPlayerLang]);
-                });
-                if (playing && !trackHasRealAudio(tracks[activeTrackId])){
-                    stopPlayback();
-                }
-            });
         });
 
         document.querySelectorAll(".track-item").forEach(btn => {
