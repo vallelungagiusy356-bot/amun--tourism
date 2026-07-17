@@ -115,22 +115,6 @@
       "btn_schedule": "📅 Vedi Orari delle Corse",
       "btn_tickets": "🎫 Acquista Biglietti Online"
     },
-    "events_page": {
-      "title": "Riti e Feste del Borgo",
-      "intro": "Vivi l'anima più autentica del nostro borgo attraverso le sue secolari tradizioni, dove fede, storia e folklore si intrecciano in momenti unici ed emozionanti.",
-      "signuruzzu_title": "U Signuruzzu a Cavaddu",
-      "signuruzzu_desc": "La Domenica delle Palme, un bambino del luogo impersona Gesù e sfila su un asinello bardato tra le vie del borgo addobbate a festa con le palme. Il corteo fa sosta davanti alla Chiesa di Santa Maria degli Angeli e al Duomo di San Giorgio Martire per la suggestiva benedizione.",
-      "venerdi_title": "I Riti della Settimana Santa",
-      "venerdi_desc": "L'atmosfera si fa profonda con gli altari allestiti nelle chiese per il Venerdì Santo, arricchiti con i tipici piatti di grano germogliato al buio. Seguono la solenne e commovente Processione e la Via Crucis cittadina.",
-      "giovanni_title": "Festa del Beato Giovanni",
-      "giovanni_desc": "Una ricorrenza profondamente sentita e vissuta dall'intera comunità, che si stringe attorno al suo Beato in un clima di grande devozione e calore popolare.",
-      "castellana_title": "Elezione della Castellana & Corteo Storico",
-      "castellana_desc": "Il borgo si rituffa nel suo glorioso passato medievale. Ogni anno, nella seconda metà di agosto, un maestoso corteo storico in abiti d'epoca attraversa le strade del paese. Ogni due anni, il corteo culmina con la solenne elezione della Castellana del maniero, alla quale è possibile candidarsi a partire dal mese di febbraio.",
-      "nicasio_title": "Festa di San Nicasio e il Palio",
-      "nicasio_desc": "Celebrazioni vibranti in onore del Santo, arricchite dall'attesissimo e avvincente Palio cittadino che accende la sfida e l'entusiasmo di grandi e piccini.",
-      "sagra_title": "Sagra della Salsiccia",
-      "sagra_desc": "Ogni anno, la seconda domenica di ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità."
-    },
     "monuments_pages": {
       "labels": {
         "hours": "Orari",
@@ -195,5 +179,21 @@
     "events_title": "Maggio",
     "food_aperitivo": "Agosto",
     "food_desc": "Ottobre"
+  },
+  "events_page": {
+    "title": "Riti e Feste del Borgo",
+    "intro": "Vivi l'anima più autentica del nostro borgo attraverso le sue secolari tradizioni, dove fede, storia e folklore si intrecciano in momenti unici ed emozionanti.",
+    "signuruzzu_title": "U Signuruzzu a Cavaddu",
+    "signuruzzu_desc": "La Domenica delle Palme, un bambino del luogo impersona Gesù e sfila su un asinello bardato tra le vie del borgo addobbate a festa con le palme. Il corteo fa sosta davanti alla Chiesa di Santa Maria degli Angeli e al Duomo di San Giorgio Martire per la suggestiva benedizione.",
+    "venerdi_title": "I Riti della Settimana Santa",
+    "venerdi_desc": "L'atmosfera si fa profonda con gli altari allestiti nelle chiese per il Venerdì Santo, arricchiti con i tipici piatti di grano germogliato al buio. Seguono la solenne e commovente Processione e la Via Crucis cittadina.",
+    "giovanni_title": "Festa del Beato Giovanni",
+    "giovanni_desc": "Una ricorrenza profondamente sentita e vissuta dall'intera comunità, che si stringe attorno al suo Beato in un clima di grande devozione e calore popolare.",
+    "castellana_title": "Elezione della Castellana & Corteo Storico",
+    "castellana_desc": "Il borgo si rituffa nel suo glorioso passato medievale. Ogni anno, nella seconda metà di agosto, un maestoso corteo storico in abiti d'epoca attraversa le strade del paese. Ogni due anni, il corteo culmina con la solenne elezione della Castellana del maniero, alla quale è possibile candidarsi a partire dal mese di febbraio.",
+    "nicasio_title": "Festa di San Nicasio e il Palio",
+    "nicasio_desc": "Celebrazioni vibranti in onore del Santo, arricchite dall'attesissimo e avvincente Palio cittadino che accende la sfida e l'entusiasmo di grandi e piccini.",
+    "sagra_title": "Sagra della Salsiccia",
+    "sagra_desc": "Ogni anno, la seconda domenica di ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità."
   }
 }
