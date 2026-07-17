@@ -42,21 +42,66 @@
     },
     "sleep_page": {
       "accommodations": [
-        { "name": "De Spuches house", "link": "https://www.booking.com/Share-9yidf9" },
-        { "name": "Il duca house & holiday", "link": "https://www.booking.com/Share-fg0sxP" },
-        { "name": "Casa vacanze Caccamo Santa Lucia", "link": "https://www.booking.com/Share-Zy5oMf" },
-        { "name": "A casa da Paola", "link": "https://www.booking.com/Share-R2YrnE" },
-        { "name": "Trinacria Caccamo luxury and rooms", "link": "https://www.booking.com/Share-ceKMpkE" },
-        { "name": "La casa dei cavalieri", "link": "https://www.booking.com/Share-5n6YbS2" },
-        { "name": "L'opuntia sul lago", "link": "https://www.booking.com/Share-6PtdvA" },
-        { "name": "Il cortile holiday house", "link": "https://www.booking.com/Share-1bcyLa7" },
-        { "name": "La casa del Custode", "link": "https://www.booking.com/Share-AOPAO9" },
-        { "name": "La casetta di Rosina", "link": "https://www.booking.com/Share-LXb1QZ" },
-        { "name": "Casa del vecchio borgo", "link": "https://www.booking.com/Share-5q8K2qH" },
-        { "name": "Sikania Agrirelais", "link": "https://www.booking.com/Share-wc8bjRR" },
-        { "name": "L'arco antico", "link": "https://www.booking.com/Share-WutiSb" },
-        { "name": "Pet friendly home", "link": "https://www.booking.com/Share-ymqmBUx" },
-        { "name": "Batiful villa", "link": "https://www.booking.com/Share-1q3QZGo" }
+        {
+          "name": "De Spuches house",
+          "link": "https://www.booking.com/Share-9yidf9"
+        },
+        {
+          "name": "Il duca house & holiday",
+          "link": "https://www.booking.com/Share-fg0sxP"
+        },
+        {
+          "name": "Casa vacanze Caccamo Santa Lucia",
+          "link": "https://www.booking.com/Share-Zy5oMf"
+        },
+        {
+          "name": "A casa da Paola",
+          "link": "https://www.booking.com/Share-R2YrnE"
+        },
+        {
+          "name": "Trinacria Caccamo luxury and rooms",
+          "link": "https://www.booking.com/Share-ceKMpkE"
+        },
+        {
+          "name": "La casa dei cavalieri",
+          "link": "https://www.booking.com/Share-5n6YbS2"
+        },
+        {
+          "name": "L'opuntia sul lago",
+          "link": "https://www.booking.com/Share-6PtdvA"
+        },
+        {
+          "name": "Il cortile holiday house",
+          "link": "https://www.booking.com/Share-1bcyLa7"
+        },
+        {
+          "name": "La casa del Custode",
+          "link": "https://www.booking.com/Share-AOPAO9"
+        },
+        {
+          "name": "La casetta di Rosina",
+          "link": "https://www.booking.com/Share-LXb1QZ"
+        },
+        {
+          "name": "Casa del vecchio borgo",
+          "link": "https://www.booking.com/Share-5q8K2qH"
+        },
+        {
+          "name": "Sikania Agrirelais",
+          "link": "https://www.booking.com/Share-wc8bjRR"
+        },
+        {
+          "name": "L'arco antico",
+          "link": "https://www.booking.com/Share-WutiSb"
+        },
+        {
+          "name": "Pet friendly home",
+          "link": "https://www.booking.com/Share-ymqmBUx"
+        },
+        {
+          "name": "Batiful villa",
+          "link": "https://www.booking.com/Share-1q3QZGo"
+        }
       ]
     },
     "transport_page": {
@@ -69,22 +114,6 @@
       "stop_3": "<strong>Piazza Cappuccini:</strong> in the shade of the old Convent.",
       "btn_schedule": "📅 View Bus Timetables",
       "btn_tickets": "🎫 Buy Tickets Online"
-    },
-    "events_page": {
-      "title": "Rites and Feasts of the Village",
-      "intro": "Experience the most authentic soul of our village through its centuries-old traditions, where faith, history and folklore intertwine in unique and moving moments.",
-      "signuruzzu_title": "U Signuruzzu a Cavaddu",
-      "signuruzzu_desc": "On Palm Sunday, a local child plays the role of Jesus and rides through the village streets, decked out for the feast with palm fronds, on a decorated donkey. The procession stops in front of the Church of Santa Maria degli Angeli and the Cathedral of San Giorgio Martire for a moving blessing.",
-      "venerdi_title": "The Rites of Holy Week",
-      "venerdi_desc": "The atmosphere grows solemn with the altars set up in the churches for Good Friday, adorned with the typical dishes of wheat sprouted in the dark. These are followed by the solemn and moving Procession and the town's Way of the Cross.",
-      "giovanni_title": "Feast of the Blessed Giovanni",
-      "giovanni_desc": "A deeply felt occasion, lived by the whole community, which gathers around its Blessed in a climate of great devotion and popular warmth.",
-      "castellana_title": "Election of the Castellana & Historic Parade",
-      "castellana_desc": "The village plunges back into its glorious medieval past. Every year, in the second half of August, a magnificent historic parade in period costume winds through the streets of the town. Every two years, the parade culminates in the solemn election of the Castellana of the castle, for which candidacies open in February.",
-      "nicasio_title": "Feast of San Nicasio and the Palio",
-      "nicasio_desc": "Vibrant celebrations in honor of the Saint, enriched by the eagerly awaited and thrilling town Palio, which sparks excitement and rivalry among young and old alike.",
-      "sagra_title": "Sausage Festival",
-      "sagra_desc": "Every year, on the second Sunday of October, the scents of tradition fill the village. An unmissable food event to taste authentic local sausage amid songs, wine and conviviality."
     },
     "monuments_pages": {
       "labels": {
@@ -150,5 +179,21 @@
     "events_title": "May",
     "food_aperitivo": "August",
     "food_desc": "October"
+  },
+  "events_page": {
+    "title": "Rites and Feasts of the Village",
+    "intro": "Experience the most authentic soul of our village through its centuries-old traditions, where faith, history and folklore intertwine in unique and moving moments.",
+    "signuruzzu_title": "U Signuruzzu a Cavaddu",
+    "signuruzzu_desc": "On Palm Sunday, a local child plays the role of Jesus and rides through the village streets, decked out for the feast with palm fronds, on a decorated donkey. The procession stops in front of the Church of Santa Maria degli Angeli and the Cathedral of San Giorgio Martire for a moving blessing.",
+    "venerdi_title": "The Rites of Holy Week",
+    "venerdi_desc": "The atmosphere grows solemn with the altars set up in the churches for Good Friday, adorned with the typical dishes of wheat sprouted in the dark. These are followed by the solemn and moving Procession and the town's Way of the Cross.",
+    "giovanni_title": "Feast of the Blessed Giovanni",
+    "giovanni_desc": "A deeply felt occasion, lived by the whole community, which gathers around its Blessed in a climate of great devotion and popular warmth.",
+    "castellana_title": "Election of the Castellana & Historic Parade",
+    "castellana_desc": "The village plunges back into its glorious medieval past. Every year, in the second half of August, a magnificent historic parade in period costume winds through the streets of the town. Every two years, the parade culminates in the solemn election of the Castellana of the castle, for which candidacies open in February.",
+    "nicasio_title": "Feast of San Nicasio and the Palio",
+    "nicasio_desc": "Vibrant celebrations in honor of the Saint, enriched by the eagerly awaited and thrilling town Palio, which sparks excitement and rivalry among young and old alike.",
+    "sagra_title": "Sausage Festival",
+    "sagra_desc": "Every year, on the second Sunday of October, the scents of tradition fill the village. An unmissable food event to taste authentic local sausage amid songs, wine and conviviality."
   }
 }
