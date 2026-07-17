@@ -42,21 +42,66 @@
     },
     "sleep_page": {
       "accommodations": [
-        { "name": "De Spuches house", "link": "https://www.booking.com/Share-9yidf9" },
-        { "name": "Il duca house & holiday", "link": "https://www.booking.com/Share-fg0sxP" },
-        { "name": "Casa vacanze Caccamo Santa Lucia", "link": "https://www.booking.com/Share-Zy5oMf" },
-        { "name": "A casa da Paola", "link": "https://www.booking.com/Share-R2YrnE" },
-        { "name": "Trinacria Caccamo luxury and rooms", "link": "https://www.booking.com/Share-ceKMpkE" },
-        { "name": "La casa dei cavalieri", "link": "https://www.booking.com/Share-5n6YbS2" },
-        { "name": "L'opuntia sul lago", "link": "https://www.booking.com/Share-6PtdvA" },
-        { "name": "Il cortile holiday house", "link": "https://www.booking.com/Share-1bcyLa7" },
-        { "name": "La casa del Custode", "link": "https://www.booking.com/Share-AOPAO9" },
-        { "name": "La casetta di Rosina", "link": "https://www.booking.com/Share-LXb1QZ" },
-        { "name": "Casa del vecchio borgo", "link": "https://www.booking.com/Share-5q8K2qH" },
-        { "name": "Sikania Agrirelais", "link": "https://www.booking.com/Share-wc8bjRR" },
-        { "name": "L'arco antico", "link": "https://www.booking.com/Share-WutiSb" },
-        { "name": "Pet friendly home", "link": "https://www.booking.com/Share-ymqmBUx" },
-        { "name": "Batiful villa", "link": "https://www.booking.com/Share-1q3QZGo" }
+        {
+          "name": "De Spuches house",
+          "link": "https://www.booking.com/Share-9yidf9"
+        },
+        {
+          "name": "Il duca house & holiday",
+          "link": "https://www.booking.com/Share-fg0sxP"
+        },
+        {
+          "name": "Casa vacanze Caccamo Santa Lucia",
+          "link": "https://www.booking.com/Share-Zy5oMf"
+        },
+        {
+          "name": "A casa da Paola",
+          "link": "https://www.booking.com/Share-R2YrnE"
+        },
+        {
+          "name": "Trinacria Caccamo luxury and rooms",
+          "link": "https://www.booking.com/Share-ceKMpkE"
+        },
+        {
+          "name": "La casa dei cavalieri",
+          "link": "https://www.booking.com/Share-5n6YbS2"
+        },
+        {
+          "name": "L'opuntia sul lago",
+          "link": "https://www.booking.com/Share-6PtdvA"
+        },
+        {
+          "name": "Il cortile holiday house",
+          "link": "https://www.booking.com/Share-1bcyLa7"
+        },
+        {
+          "name": "La casa del Custode",
+          "link": "https://www.booking.com/Share-AOPAO9"
+        },
+        {
+          "name": "La casetta di Rosina",
+          "link": "https://www.booking.com/Share-LXb1QZ"
+        },
+        {
+          "name": "Casa del vecchio borgo",
+          "link": "https://www.booking.com/Share-5q8K2qH"
+        },
+        {
+          "name": "Sikania Agrirelais",
+          "link": "https://www.booking.com/Share-wc8bjRR"
+        },
+        {
+          "name": "L'arco antico",
+          "link": "https://www.booking.com/Share-WutiSb"
+        },
+        {
+          "name": "Pet friendly home",
+          "link": "https://www.booking.com/Share-ymqmBUx"
+        },
+        {
+          "name": "Batiful villa",
+          "link": "https://www.booking.com/Share-1q3QZGo"
+        }
       ]
     },
     "transport_page": {
@@ -69,22 +114,6 @@
       "stop_3": "<strong>Piazza Cappuccini:</strong> a la sombra del antiguo Convento.",
       "btn_schedule": "📅 Ver Horarios de Autobuses",
       "btn_tickets": "🎫 Comprar Billetes Online"
-    },
-    "events_page": {
-      "title": "Ritos y Fiestas del Pueblo",
-      "intro": "Vive el alma más auténtica de nuestro pueblo a través de sus tradiciones seculares, donde fe, historia y folclore se entrelazan en momentos únicos y emocionantes.",
-      "signuruzzu_title": "U Signuruzzu a Cavaddu",
-      "signuruzzu_desc": "El Domingo de Ramos, un niño del lugar representa a Jesús y desfila sobre un burrito engalanado por las calles del pueblo adornadas de fiesta con palmas. El cortejo se detiene frente a la Iglesia de Santa Maria degli Angeli y ante el Duomo de San Giorgio Martire para la sugestiva bendición.",
-      "venerdi_title": "Los Ritos de la Semana Santa",
-      "venerdi_desc": "El ambiente se vuelve profundo con los altares dispuestos en las iglesias para el Viernes Santo, adornados con los típicos platos de trigo germinado a oscuras. Siguen la solemne y conmovedora Procesión y el Vía Crucis de la ciudad.",
-      "giovanni_title": "Fiesta del Beato Giovanni",
-      "giovanni_desc": "Una conmemoración profundamente sentida y vivida por toda la comunidad, que se congrega en torno a su Beato en un ambiente de gran devoción y calor popular.",
-      "castellana_title": "Elección de la Castellana y Cortejo Histórico",
-      "castellana_desc": "El pueblo se sumerge de nuevo en su glorioso pasado medieval. Cada año, en la segunda mitad de agosto, un majestuoso cortejo histórico con trajes de época recorre las calles del pueblo. Cada dos años, el cortejo culmina con la solemne elección de la Castellana del castillo, a la que se puede optar como candidata a partir del mes de febrero.",
-      "nicasio_title": "Fiesta de San Nicasio y el Palio",
-      "nicasio_desc": "Celebraciones vibrantes en honor al Santo, enriquecidas con el esperadísimo y apasionante Palio de la ciudad, que enciende el desafío y el entusiasmo de grandes y pequeños.",
-      "sagra_title": "Fiesta de la Salchicha",
-      "sagra_desc": "Cada año, el segundo domingo de octubre, los aromas de la tradición invaden el pueblo. Una cita gastronómica imperdible para degustar la auténtica salchicha local entre cantos, vino y convivialidad."
     },
     "monuments_pages": {
       "labels": {
@@ -150,5 +179,21 @@
     "events_title": "Mayo",
     "food_aperitivo": "Agosto",
     "food_desc": "Octubre"
+  },
+  "events_page": {
+    "title": "Ritos y Fiestas del Pueblo",
+    "intro": "Vive el alma más auténtica de nuestro pueblo a través de sus tradiciones seculares, donde fe, historia y folclore se entrelazan en momentos únicos y emocionantes.",
+    "signuruzzu_title": "U Signuruzzu a Cavaddu",
+    "signuruzzu_desc": "El Domingo de Ramos, un niño del lugar representa a Jesús y desfila sobre un burrito engalanado por las calles del pueblo adornadas de fiesta con palmas. El cortejo se detiene frente a la Iglesia de Santa Maria degli Angeli y ante el Duomo de San Giorgio Martire para la sugestiva bendición.",
+    "venerdi_title": "Los Ritos de la Semana Santa",
+    "venerdi_desc": "El ambiente se vuelve profundo con los altares dispuestos en las iglesias para el Viernes Santo, adornados con los típicos platos de trigo germinado a oscuras. Siguen la solemne y conmovedora Procesión y el Vía Crucis de la ciudad.",
+    "giovanni_title": "Fiesta del Beato Giovanni",
+    "giovanni_desc": "Una conmemoración profundamente sentida y vivida por toda la comunidad, que se congrega en torno a su Beato en un ambiente de gran devoción y calor popular.",
+    "castellana_title": "Elección de la Castellana y Cortejo Histórico",
+    "castellana_desc": "El pueblo se sumerge de nuevo en su glorioso pasado medieval. Cada año, en la segunda mitad de agosto, un majestuoso cortejo histórico con trajes de época recorre las calles del pueblo. Cada dos años, el cortejo culmina con la solemne elección de la Castellana del castillo, a la que se puede optar como candidata a partir del mes de febrero.",
+    "nicasio_title": "Fiesta de San Nicasio y el Palio",
+    "nicasio_desc": "Celebraciones vibrantes en honor al Santo, enriquecidas con el esperadísimo y apasionante Palio de la ciudad, que enciende el desafío y el entusiasmo de grandes y pequeños.",
+    "sagra_title": "Fiesta de la Salchicha",
+    "sagra_desc": "Cada año, el segundo domingo de octubre, los aromas de la tradición invaden el pueblo. Una cita gastronómica imperdible para degustar la auténtica salchicha local entre cantos, vino y convivialidad."
   }
 }
