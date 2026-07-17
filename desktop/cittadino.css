@@ -50,13 +50,9 @@ html, body {
 
 /* ==========================================================================
    2. SFONDO
-   Il vecchio div "position: fixed" è stato sostituito dallo sfondo
-   diretto sul body (vedi sezione 1). Questa regola lo disattiva senza
-   dover toccare l'HTML della pagina.
+   Lo sfondo è applicato direttamente al body (vedi sezione 1) —
+   niente più div/elementi separati da gestire qui.
    ========================================================================== */
-.scene-background {
-    display: none;
-}
 
 /* ==========================================================================
    3. HEADER
