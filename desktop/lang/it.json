@@ -88,6 +88,8 @@
       "legend_p8": "La scelta del melograno non è casuale: nella mitologia mediterranea è da sempre il frutto del regno dei morti e del legame indissolubile, come nel mito greco di Proserpina, condannata a restare nell'Ade per aver mangiato sei chicchi di melograno. Nella leggenda di Suor Felicia, il frutto rappresenta il legame eterno con l'aldilà e la passione spezzata dei due giovani amanti, sacrificati sull'altare dell'orgoglio nobiliare.",
       "legend_p9": "Ad oggi, si racconta che nessuno sia mai riuscito a superare la prova. Suor Felicia continua ad attendere, con il suo vassoio d'argento e il suo melograno intatto.",
       "legend_cta": "Chiedi alla Castellana di raccontartela",
+      "legend_toggle_more": "Continua a leggere la leggenda",
+      "legend_toggle_less": "Chiudi la leggenda",
       "group_cunti": "I Cunti",
       "cummari_title": "Cummari Piricuddu",
       "cummari_who": "Tradizione orale di Caccamo",
@@ -96,6 +98,8 @@
       "oca_who": "Filastrocca per bambini",
       "fora_title": "Fora Quaranta",
       "fora_who": "Conta per i giochi di strada",
+      "peri_title": "Peri",
+      "peri_who": "Conta per il nascondino",
       "group_preghiere": "Le Preghiere",
       "preghiera_title": "Preghiera della Buonanotte",
       "preghiera_who": "Ninna nanna di protezione"
