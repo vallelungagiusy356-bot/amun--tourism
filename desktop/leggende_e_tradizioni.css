@@ -256,9 +256,40 @@ body::before {
    PLAYER + TRASCRIZIONE
    ============================================================ */
 .player-card,
+.dialect-lyrics,
 .transcript,
 .note {
   grid-column: 2;
+}
+
+/* ============================================================
+   TESTO IN DIALETTO — effetto karaoke: la riga in ascolto
+   si illumina a tempo con l'audio
+   ============================================================ */
+.dialect-lyrics {
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--gold);
+  border-radius: 18px;
+  padding: 22px 26px;
+  margin-top: 18px;
+  box-shadow: 0 10px 26px var(--shadow-soft);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  line-height: 2;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.dialect-line {
+  display: inline-block;
+  transition: color 0.35s ease, text-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.dialect-line.active {
+  color: var(--terracotta-dark, #9C4C22);
+  font-weight: 700;
+  text-shadow: 0 0 14px rgba(184, 135, 59, 0.55);
+  transform: scale(1.06);
 }
 
 .player-card {
@@ -307,8 +338,7 @@ body::before {
   margin-bottom: 14px;
 }
 
-.time-row,
-.lang-row {
+.time-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -320,26 +350,8 @@ body::before {
   margin-bottom: 14px;
 }
 
-.lang-row {
-  gap: 10px;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
 
-.lang-chip {
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(184,135,59,0.4);
-  color: var(--ink-soft);
-  background: #fff;
-  font-size: 0.84rem;
-}
 
-.lang-chip.active {
-  color: var(--sea);
-  border-color: var(--gold);
-  background: rgba(184,135,59,0.08);
-}
 
 .transcript {
   background: rgba(255,255,255,0.92);
@@ -886,9 +898,40 @@ body::before {
    PLAYER + TRASCRIZIONE
    ============================================================ */
 .player-card,
+.dialect-lyrics,
 .transcript,
 .note {
   grid-column: 2;
+}
+
+/* ============================================================
+   TESTO IN DIALETTO — effetto karaoke: la riga in ascolto
+   si illumina a tempo con l'audio
+   ============================================================ */
+.dialect-lyrics {
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--gold);
+  border-radius: 18px;
+  padding: 22px 26px;
+  margin-top: 18px;
+  box-shadow: 0 10px 26px var(--shadow-soft);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  line-height: 2;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.dialect-line {
+  display: inline-block;
+  transition: color 0.35s ease, text-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.dialect-line.active {
+  color: var(--terracotta-dark, #9C4C22);
+  font-weight: 700;
+  text-shadow: 0 0 14px rgba(184, 135, 59, 0.55);
+  transform: scale(1.06);
 }
 
 .player-card {
@@ -937,8 +980,7 @@ body::before {
   margin-bottom: 14px;
 }
 
-.time-row,
-.lang-row {
+.time-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -950,26 +992,8 @@ body::before {
   margin-bottom: 14px;
 }
 
-.lang-row {
-  gap: 10px;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
 
-.lang-chip {
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(184,135,59,0.4);
-  color: var(--ink-soft);
-  background: #fff;
-  font-size: 0.84rem;
-}
 
-.lang-chip.active {
-  color: var(--sea);
-  border-color: var(--gold);
-  background: rgba(184,135,59,0.08);
-}
 
 .transcript {
   background: rgba(255,255,255,0.92);
