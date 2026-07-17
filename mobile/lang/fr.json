@@ -42,21 +42,66 @@
     },
     "sleep_page": {
       "accommodations": [
-        { "name": "De Spuches house", "link": "https://www.booking.com/Share-9yidf9" },
-        { "name": "Il duca house & holiday", "link": "https://www.booking.com/Share-fg0sxP" },
-        { "name": "Casa vacanze Caccamo Santa Lucia", "link": "https://www.booking.com/Share-Zy5oMf" },
-        { "name": "A casa da Paola", "link": "https://www.booking.com/Share-R2YrnE" },
-        { "name": "Trinacria Caccamo luxury and rooms", "link": "https://www.booking.com/Share-ceKMpkE" },
-        { "name": "La casa dei cavalieri", "link": "https://www.booking.com/Share-5n6YbS2" },
-        { "name": "L'opuntia sul lago", "link": "https://www.booking.com/Share-6PtdvA" },
-        { "name": "Il cortile holiday house", "link": "https://www.booking.com/Share-1bcyLa7" },
-        { "name": "La casa del Custode", "link": "https://www.booking.com/Share-AOPAO9" },
-        { "name": "La casetta di Rosina", "link": "https://www.booking.com/Share-LXb1QZ" },
-        { "name": "Casa del vecchio borgo", "link": "https://www.booking.com/Share-5q8K2qH" },
-        { "name": "Sikania Agrirelais", "link": "https://www.booking.com/Share-wc8bjRR" },
-        { "name": "L'arco antico", "link": "https://www.booking.com/Share-WutiSb" },
-        { "name": "Pet friendly home", "link": "https://www.booking.com/Share-ymqmBUx" },
-        { "name": "Batiful villa", "link": "https://www.booking.com/Share-1q3QZGo" }
+        {
+          "name": "De Spuches house",
+          "link": "https://www.booking.com/Share-9yidf9"
+        },
+        {
+          "name": "Il duca house & holiday",
+          "link": "https://www.booking.com/Share-fg0sxP"
+        },
+        {
+          "name": "Casa vacanze Caccamo Santa Lucia",
+          "link": "https://www.booking.com/Share-Zy5oMf"
+        },
+        {
+          "name": "A casa da Paola",
+          "link": "https://www.booking.com/Share-R2YrnE"
+        },
+        {
+          "name": "Trinacria Caccamo luxury and rooms",
+          "link": "https://www.booking.com/Share-ceKMpkE"
+        },
+        {
+          "name": "La casa dei cavalieri",
+          "link": "https://www.booking.com/Share-5n6YbS2"
+        },
+        {
+          "name": "L'opuntia sul lago",
+          "link": "https://www.booking.com/Share-6PtdvA"
+        },
+        {
+          "name": "Il cortile holiday house",
+          "link": "https://www.booking.com/Share-1bcyLa7"
+        },
+        {
+          "name": "La casa del Custode",
+          "link": "https://www.booking.com/Share-AOPAO9"
+        },
+        {
+          "name": "La casetta di Rosina",
+          "link": "https://www.booking.com/Share-LXb1QZ"
+        },
+        {
+          "name": "Casa del vecchio borgo",
+          "link": "https://www.booking.com/Share-5q8K2qH"
+        },
+        {
+          "name": "Sikania Agrirelais",
+          "link": "https://www.booking.com/Share-wc8bjRR"
+        },
+        {
+          "name": "L'arco antico",
+          "link": "https://www.booking.com/Share-WutiSb"
+        },
+        {
+          "name": "Pet friendly home",
+          "link": "https://www.booking.com/Share-ymqmBUx"
+        },
+        {
+          "name": "Batiful villa",
+          "link": "https://www.booking.com/Share-1q3QZGo"
+        }
       ]
     },
     "transport_page": {
@@ -69,22 +114,6 @@
       "stop_3": "<strong>Piazza Cappuccini :</strong> à l'ombre de l'ancien Couvent.",
       "btn_schedule": "📅 Voir les Horaires des Bus",
       "btn_tickets": "🎫 Acheter les Billets en Ligne"
-    },
-    "events_page": {
-      "title": "Rites et Fêtes du Bourg",
-      "intro": "Vivez l'âme la plus authentique de notre bourg à travers ses traditions séculaires, où foi, histoire et folklore s'entrelacent dans des moments uniques et émouvants.",
-      "signuruzzu_title": "U Signuruzzu a Cavaddu",
-      "signuruzzu_desc": "Le dimanche des Rameaux, un enfant du village incarne Jésus et défile sur un petit âne harnaché à travers les rues du bourg décorées de rameaux en fête. Le cortège s'arrête devant l'église Santa Maria degli Angeli et devant le Duomo San Giorgio Martire pour la bénédiction, un moment particulièrement suggestif.",
-      "venerdi_title": "Les Rites de la Semaine Sainte",
-      "venerdi_desc": "L'atmosphère se fait plus profonde avec les autels dressés dans les églises pour le Vendredi Saint, ornés des plats typiques de blé germé dans l'obscurité. Suivent la solennelle et émouvante Procession ainsi que le Chemin de Croix de la ville.",
-      "giovanni_title": "Fête du Bienheureux Giovanni",
-      "giovanni_desc": "Une commémoration profondément ressentie et vécue par toute la communauté, qui se rassemble autour de son Bienheureux dans un climat de grande dévotion et de chaleur populaire.",
-      "castellana_title": "Élection de la Castellana & Cortège Historique",
-      "castellana_desc": "Le bourg replonge dans son glorieux passé médiéval. Chaque année, dans la seconde moitié du mois d'août, un majestueux cortège historique en costumes d'époque traverse les rues du village. Tous les deux ans, le cortège culmine avec la solennelle élection de la Castellana du château, à laquelle il est possible de se porter candidate à partir du mois de février.",
-      "nicasio_title": "Fête de Saint Nicasio et le Palio",
-      "nicasio_desc": "Célébrations animées en l'honneur du Saint, enrichies par le Palio de la ville, très attendu et palpitant, qui suscite le défi et l'enthousiasme des petits et des grands.",
-      "sagra_title": "Fête de la Saucisse",
-      "sagra_desc": "Chaque année, le deuxième dimanche d'octobre, les parfums de la tradition envahissent le bourg. Un rendez-vous gastronomique à ne pas manquer pour déguster l'authentique saucisse locale, entre chants, vin et convivialité."
     },
     "monuments_pages": {
       "labels": {
@@ -150,5 +179,21 @@
     "events_title": "Mai",
     "food_aperitivo": "Août",
     "food_desc": "Octobre"
+  },
+  "events_page": {
+    "title": "Rites et Fêtes du Bourg",
+    "intro": "Vivez l'âme la plus authentique de notre bourg à travers ses traditions séculaires, où foi, histoire et folklore s'entrelacent dans des moments uniques et émouvants.",
+    "signuruzzu_title": "U Signuruzzu a Cavaddu",
+    "signuruzzu_desc": "Le dimanche des Rameaux, un enfant du village incarne Jésus et défile sur un petit âne harnaché à travers les rues du bourg décorées de rameaux en fête. Le cortège s'arrête devant l'église Santa Maria degli Angeli et devant le Duomo San Giorgio Martire pour la bénédiction, un moment particulièrement suggestif.",
+    "venerdi_title": "Les Rites de la Semaine Sainte",
+    "venerdi_desc": "L'atmosphère se fait plus profonde avec les autels dressés dans les églises pour le Vendredi Saint, ornés des plats typiques de blé germé dans l'obscurité. Suivent la solennelle et émouvante Procession ainsi que le Chemin de Croix de la ville.",
+    "giovanni_title": "Fête du Bienheureux Giovanni",
+    "giovanni_desc": "Une commémoration profondément ressentie et vécue par toute la communauté, qui se rassemble autour de son Bienheureux dans un climat de grande dévotion et de chaleur populaire.",
+    "castellana_title": "Élection de la Castellana & Cortège Historique",
+    "castellana_desc": "Le bourg replonge dans son glorieux passé médiéval. Chaque année, dans la seconde moitié du mois d'août, un majestueux cortège historique en costumes d'époque traverse les rues du village. Tous les deux ans, le cortège culmine avec la solennelle élection de la Castellana du château, à laquelle il est possible de se porter candidate à partir du mois de février.",
+    "nicasio_title": "Fête de Saint Nicasio et le Palio",
+    "nicasio_desc": "Célébrations animées en l'honneur du Saint, enrichies par le Palio de la ville, très attendu et palpitant, qui suscite le défi et l'enthousiasme des petits et des grands.",
+    "sagra_title": "Fête de la Saucisse",
+    "sagra_desc": "Chaque année, le deuxième dimanche d'octobre, les parfums de la tradition envahissent le bourg. Un rendez-vous gastronomique à ne pas manquer pour déguster l'authentique saucisse locale, entre chants, vin et convivialité."
   }
 }
