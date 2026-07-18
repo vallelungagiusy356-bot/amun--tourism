@@ -208,9 +208,47 @@ window.silktideConsentManager.init({
             const chat = document.getElementById("chat-desktop");
             const closeBtn = document.getElementById("close-chat");
             const openBtn = document.getElementById("chat-open-btn");
+            let hasShownMenu = false;
+
+            // ============================================================
+            // MENU DI ANTEPRIMA — stesso principio già usato in
+            // castello.html e chiese-arte.html: anche senza Premium
+            // attivo, il turista vede subito le due voci disponibili
+            // (Trasporti e Curiosità), invece del solo messaggio di
+            // benvenuto senza indicazioni concrete. Se poi il codice
+            // Premium è valido, loadTopicMenu() sovrascrive con il
+            // menu reale del backend, esattamente come prima.
+            // ============================================================
+            const CITTADINO_TOPICS = {
+                it: [
+                    { topic: "citizen.trasporti", label: "🚌 Trasporti e mercati" },
+                    { topic: "citizen.curiosita", label: "📜 Curiosità e modi di dire" }
+                ],
+                en: [
+                    { topic: "citizen.trasporti", label: "🚌 Transport & markets" },
+                    { topic: "citizen.curiosita", label: "📜 Curiosities & local sayings" }
+                ],
+                fr: [
+                    { topic: "citizen.trasporti", label: "🚌 Transports & marchés" },
+                    { topic: "citizen.curiosita", label: "📜 Curiosités & expressions locales" }
+                ],
+                es: [
+                    { topic: "citizen.trasporti", label: "🚌 Transportes y mercados" },
+                    { topic: "citizen.curiosita", label: "📜 Curiosidades y dichos locales" }
+                ],
+                de: [
+                    { topic: "citizen.trasporti", label: "🚌 Verkehr & Märkte" },
+                    { topic: "citizen.curiosita", label: "📜 Kuriositäten & Redewendungen" }
+                ]
+            };
+
             openBtn.addEventListener("click", () => {
                 chat.classList.add("active");
                 updatePremiumStatusDisplay();
+                if (!hasShownMenu) {
+                    renderTopicMenu(CITTADINO_TOPICS[currentLang] || CITTADINO_TOPICS.it);
+                    hasShownMenu = true;
+                }
                 loadTopicMenu();
             });
             closeBtn.addEventListener("click", (e) => {
@@ -252,7 +290,10 @@ window.silktideConsentManager.init({
                     menuLoadedForCode = null;
                     exploredGroups.clear();
                     usedTopics.clear();
-                    if (chat.classList.contains('active')) loadTopicMenu();
+                    if (chat.classList.contains('active')) {
+                        renderTopicMenu(CITTADINO_TOPICS[currentLang] || CITTADINO_TOPICS.it);
+                        loadTopicMenu();
+                    }
                 });
             });
             loadLanguage(currentLang);
