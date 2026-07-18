@@ -266,6 +266,7 @@ window.silktideConsentManager.init({
         </div>
         <div class="chat-input-row">
             <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+            <button id="mic-btn" class="mic-btn" type="button" title="Parla con la Castellana" aria-label="Parla con la Castellana">🎤</button>
             <button class="send-btn" aria-label="Invia">➤</button>
         </div>
     </div>
@@ -275,9 +276,117 @@ window.silktideConsentManager.init({
         const openBtn = document.getElementById("chat-open-btn");
         const closeBtn = document.getElementById("close-chat");
 
+        // ============================================================
+        // MENU DI ANTEPRIMA — stesso principio già usato in
+        // castello.html, chiese-arte.html e cittadino.html: anche
+        // senza Premium attivo, il turista vede subito le 4 stagioni
+        // con le relative voci, invece del solo messaggio di
+        // benvenuto senza indicazioni concrete. Se poi il codice
+        // Premium è valido, loadTopicMenu() sovrascrive con il menu
+        // reale del backend, esattamente come prima.
+        // ============================================================
+        const CIBO_EVENTI_TOPICS = {
+            it: [
+                { group: "Sagra e Presepi", items: [
+                    { topic: "cibo_eventi.sagra.dettagli", label: "📜 Dettagli" },
+                    { topic: "cibo_eventi.sagra.ricette", label: "🍽️ Ricette tipiche" }
+                ]},
+                { group: "Settimana Santa", items: [
+                    { topic: "cibo_eventi.settimana_santa.dettagli", label: "📜 Dettagli" },
+                    { topic: "cibo_eventi.settimana_santa.riti", label: "🕯️ Riti e tradizioni" }
+                ]},
+                { group: "Beato Giovanni", items: [
+                    { topic: "cibo_eventi.beato_giovanni.dettagli", label: "📜 Dettagli" },
+                    { topic: "cibo_eventi.beato_giovanni.processione", label: "🎉 La processione" }
+                ]},
+                { group: "Palio di San Nicasio", items: [
+                    { topic: "cibo_eventi.palio.dettagli", label: "📜 Dettagli" },
+                    { topic: "cibo_eventi.palio.corteo", label: "🏇 Corteo storico e Palio" }
+                ]}
+            ],
+            en: [
+                { group: "Festival & Nativity Scenes", items: [
+                    { topic: "cibo_eventi.sagra.dettagli", label: "📜 Details" },
+                    { topic: "cibo_eventi.sagra.ricette", label: "🍽️ Traditional recipes" }
+                ]},
+                { group: "Holy Week", items: [
+                    { topic: "cibo_eventi.settimana_santa.dettagli", label: "📜 Details" },
+                    { topic: "cibo_eventi.settimana_santa.riti", label: "🕯️ Rites & traditions" }
+                ]},
+                { group: "Blessed Giovanni", items: [
+                    { topic: "cibo_eventi.beato_giovanni.dettagli", label: "📜 Details" },
+                    { topic: "cibo_eventi.beato_giovanni.processione", label: "🎉 The procession" }
+                ]},
+                { group: "Palio of San Nicasio", items: [
+                    { topic: "cibo_eventi.palio.dettagli", label: "📜 Details" },
+                    { topic: "cibo_eventi.palio.corteo", label: "🏇 Historic parade & Palio" }
+                ]}
+            ],
+            fr: [
+                { group: "Fête et Crèches", items: [
+                    { topic: "cibo_eventi.sagra.dettagli", label: "📜 Détails" },
+                    { topic: "cibo_eventi.sagra.ricette", label: "🍽️ Recettes typiques" }
+                ]},
+                { group: "Semaine Sainte", items: [
+                    { topic: "cibo_eventi.settimana_santa.dettagli", label: "📜 Détails" },
+                    { topic: "cibo_eventi.settimana_santa.riti", label: "🕯️ Rites et traditions" }
+                ]},
+                { group: "Bienheureux Giovanni", items: [
+                    { topic: "cibo_eventi.beato_giovanni.dettagli", label: "📜 Détails" },
+                    { topic: "cibo_eventi.beato_giovanni.processione", label: "🎉 La procession" }
+                ]},
+                { group: "Palio de San Nicasio", items: [
+                    { topic: "cibo_eventi.palio.dettagli", label: "📜 Détails" },
+                    { topic: "cibo_eventi.palio.corteo", label: "🏇 Cortège historique & Palio" }
+                ]}
+            ],
+            es: [
+                { group: "Fiesta y Belenes", items: [
+                    { topic: "cibo_eventi.sagra.dettagli", label: "📜 Detalles" },
+                    { topic: "cibo_eventi.sagra.ricette", label: "🍽️ Recetas típicas" }
+                ]},
+                { group: "Semana Santa", items: [
+                    { topic: "cibo_eventi.settimana_santa.dettagli", label: "📜 Detalles" },
+                    { topic: "cibo_eventi.settimana_santa.riti", label: "🕯️ Ritos y tradiciones" }
+                ]},
+                { group: "Beato Giovanni", items: [
+                    { topic: "cibo_eventi.beato_giovanni.dettagli", label: "📜 Detalles" },
+                    { topic: "cibo_eventi.beato_giovanni.processione", label: "🎉 La procesión" }
+                ]},
+                { group: "Palio de San Nicasio", items: [
+                    { topic: "cibo_eventi.palio.dettagli", label: "📜 Detalles" },
+                    { topic: "cibo_eventi.palio.corteo", label: "🏇 Cortejo histórico y Palio" }
+                ]}
+            ],
+            de: [
+                { group: "Fest und Krippen", items: [
+                    { topic: "cibo_eventi.sagra.dettagli", label: "📜 Details" },
+                    { topic: "cibo_eventi.sagra.ricette", label: "🍽️ Traditionelle Rezepte" }
+                ]},
+                { group: "Karwoche", items: [
+                    { topic: "cibo_eventi.settimana_santa.dettagli", label: "📜 Details" },
+                    { topic: "cibo_eventi.settimana_santa.riti", label: "🕯️ Riten und Traditionen" }
+                ]},
+                { group: "Seliger Giovanni", items: [
+                    { topic: "cibo_eventi.beato_giovanni.dettagli", label: "📜 Details" },
+                    { topic: "cibo_eventi.beato_giovanni.processione", label: "🎉 Die Prozession" }
+                ]},
+                { group: "Palio von San Nicasio", items: [
+                    { topic: "cibo_eventi.palio.dettagli", label: "📜 Details" },
+                    { topic: "cibo_eventi.palio.corteo", label: "🏇 Historischer Umzug & Palio" }
+                ]}
+            ]
+        };
+
+        let hasShownMenu = false;
+
         openBtn.addEventListener("click", () => {
             chat.classList.add("active");
             updatePremiumStatusDisplay();
+            if (!hasShownMenu) {
+                renderTopicMenu(CIBO_EVENTI_TOPICS[currentLang] || CIBO_EVENTI_TOPICS.it);
+                hasShownMenu = true;
+            }
             loadTopicMenu();
         });
         closeBtn.addEventListener("click", () => {
@@ -290,6 +399,10 @@ window.silktideConsentManager.init({
             el.addEventListener("click", () => {
                 chat.classList.add("active");
                 updatePremiumStatusDisplay();
+                if (!hasShownMenu) {
+                    renderTopicMenu(CIBO_EVENTI_TOPICS[currentLang] || CIBO_EVENTI_TOPICS.it);
+                    hasShownMenu = true;
+                }
                 loadTopicMenu();
             });
         });
@@ -327,7 +440,10 @@ window.silktideConsentManager.init({
                     menuLoadedForCode = null;
                     exploredGroups.clear();
                     usedTopics.clear();
-                    if (chat.classList.contains('active')) loadTopicMenu();
+                    if (chat.classList.contains('active')) {
+                        renderTopicMenu(CIBO_EVENTI_TOPICS[currentLang] || CIBO_EVENTI_TOPICS.it);
+                        loadTopicMenu();
+                    }
                 });
             });
             loadLanguage(currentLang);
@@ -341,25 +457,58 @@ window.silktideConsentManager.init({
 
         // ============================================================
         // TTS AVANZATO — La Castellana parla
+        //
+        // Due correzioni rispetto a prima:
+        //
+        // 1. VOCE SEMPRE FEMMINILE, IN OGNI LINGUA: prima la voce
+        //    veniva scelta filtrando SOLO voci italiane, sempre,
+        //    indipendentemente dalla lingua selezionata. Ora si sceglie
+        //    di nuovo ogni volta, nella lingua giusta.
+        //
+        // 2. VELOCITÀ DI AVVIO: chiamare cancel() e speak() nello
+        //    stesso istante è un bug noto dei browser (Chrome/Edge).
+        //    Ora c'è una piccola pausa tra i due comandi, e le voci
+        //    vengono "svegliate" subito al caricamento della pagina.
         // ============================================================
         const VOICE_PREF_KEY = "amuni_voice_enabled";
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
         const voiceToggleBtn = document.getElementById("voice-toggle-btn");
-        let voceCastellana = null;
 
-        function trovaVoceCastellana() {
-            const voci = window.speechSynthesis.getVoices();
-            const preferenze = ['Google italiano', 'Microsoft Elsa', 'Samantha', 'Alice', 'it-IT'];
-            for (let nome of preferenze) {
-                const voce = voci.find(v => v.name.includes(nome) || v.lang === 'it-IT');
-                if (voce) return voce;
-            }
-            return voci.find(v => v.lang && v.lang.startsWith('it')) || voci[0];
+        let vociDisponibili = [];
+        function aggiornaVociDisponibili() {
+            vociDisponibili = window.speechSynthesis.getVoices();
+        }
+        if ("speechSynthesis" in window) {
+            aggiornaVociDisponibili();
+            window.speechSynthesis.onvoiceschanged = aggiornaVociDisponibili;
         }
 
-        window.speechSynthesis.onvoiceschanged = function() {
-            voceCastellana = trovaVoceCastellana();
+        const NOMI_VOCE_FEMMINILE = {
+            "it-IT": ["Google italiano", "Elsa", "Alice", "Federica", "Silvia", "Paola"],
+            "en-US": ["Google US English", "Samantha", "Zira", "Aria", "Jenny"],
+            "fr-FR": ["Google français", "Amelie", "Julie", "Denise", "Hortense"],
+            "de-DE": ["Google Deutsch", "Anna", "Katja", "Petra", "Helena"],
+            "es-ES": ["Google español", "Monica", "Helena", "Elvira", "Paloma"]
         };
+        const INDIZI_VOCE_MASCHILE = /male|david|mark|daniel|thomas|diego|paolo|hans|marco|luca|carlos|antonio|cosimo/i;
+
+        function trovaVoceCastellana(langCode) {
+            if (!vociDisponibili.length) vociDisponibili = window.speechSynthesis.getVoices();
+
+            const nomiPreferiti = NOMI_VOCE_FEMMINILE[langCode] || [];
+            for (const nome of nomiPreferiti) {
+                const voce = vociDisponibili.find(v => v.name.includes(nome));
+                if (voce) return voce;
+            }
+
+            const linguaBase = langCode.split('-')[0];
+            const stessaLingua = vociDisponibili.filter(v =>
+                v.lang === langCode || (v.lang || '').startsWith(linguaBase)
+            );
+            const nonMaschile = stessaLingua.find(v => !INDIZI_VOCE_MASCHILE.test(v.name));
+
+            return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
+        }
 
         function updateVoiceToggleIcon() {
             if (voiceToggleBtn) voiceToggleBtn.textContent = voiceEnabled ? "🔊" : "🔇";
@@ -386,19 +535,73 @@ window.silktideConsentManager.init({
         function speakText(text) {
             if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
             window.speechSynthesis.cancel();
-
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.voice = voceCastellana;
-            utterance.lang = ttsLangCode(currentLang);
-            utterance.rate = 0.82;
-            utterance.pitch = 0.95;
-            utterance.volume = 1.0;
-
-            window.speechSynthesis.speak(utterance);
+            setTimeout(() => {
+                const langCode = ttsLangCode(currentLang);
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = trovaVoceCastellana(langCode);
+                utterance.lang = langCode;
+                utterance.rate = 0.82;
+                utterance.pitch = 0.95;
+                utterance.volume = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }, 60);
         }
 
         function castellanaZitta() {
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+        }
+
+        // ============================================================
+        // MICROFONO — il turista può parlare invece di scrivere
+        // ============================================================
+        const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const micBtn = document.getElementById("mic-btn");
+        let recognition = null;
+        let isListening = false;
+
+        function sttLangCode(lang) {
+            const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+            return map[lang] || "it-IT";
+        }
+
+        if (SpeechRecognitionAPI && micBtn) {
+            recognition = new SpeechRecognitionAPI();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = () => {
+                isListening = true;
+                micBtn.classList.add("listening");
+            };
+            recognition.onend = () => {
+                isListening = false;
+                micBtn.classList.remove("listening");
+            };
+            recognition.onerror = () => {
+                isListening = false;
+                micBtn.classList.remove("listening");
+            };
+            recognition.onresult = (event) => {
+                const testoRiconosciuto = event.results[0][0].transcript;
+                sendChatMessage(testoRiconosciuto);
+            };
+
+            micBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (isListening) {
+                    recognition.stop();
+                    return;
+                }
+                recognition.lang = sttLangCode(currentLang);
+                castellanaZitta();
+                try {
+                    recognition.start();
+                } catch (err) {
+                    console.error("Errore riconoscimento vocale:", err);
+                }
+            });
+        } else if (micBtn) {
+            micBtn.style.display = "none";
         }
 
         function getPageSlug() {
