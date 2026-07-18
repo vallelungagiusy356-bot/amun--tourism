@@ -103,6 +103,21 @@
       "group_preghiere": "Die Gebete",
       "preghiera_title": "Gute-Nacht-Gebet",
       "preghiera_who": "Schützendes Schlaflied"
+    },
+    "about": {
+      "category": "Das Projekt",
+      "title": "Die Vision von Amunì",
+      "mission": "Amunì entstand aus dem Wunsch, die Gegenwart wieder mit ihren Wurzeln zu verbinden. Es ist keine einfache Touristenseite: Es ist ein digitales Ökosystem, das das Erbe von Caccamo erzählt, begleitet und lebendig macht — Stimme für Stimme, Denkmal für Denkmal.",
+      "service_details": "Die Castellana ist das schlagende Herz dieses Projekts: eine intelligente Audioguide, die 5 Sprachen spricht und dich vor jedem Denkmal begleitet, indem sie dir verifizierte Geschichten erzählt, die auf keiner Gedenktafel stehen könnten. Mit dem Premium-Dienst öffnet sich ihre Stimme noch weiter: unbekannte Routen, die Logistik der Umgebung, versteckte Schätze in der Nähe (Pietra Piatta, Vetrana, der Ombelico di Venere) — und schlägt so eine natürliche Brücke zwischen Caccamo und den umliegenden Dörfern.",
+      "insider_value": "Jede Legende, jedes Lied im Dialekt, jeder Stein dieses Dorfes hat nun eine sorgfältig gestaltete Stimme, die davon erzählt, in natürlicher, fließender Sprache. Die Castellana rezitiert kein starres Skript und erfindet nichts: Sie bewahrt nur die Wahrheiten des Territoriums, weitergegeben mit der Sorgfalt derer, die sie wirklich kennt."
+    },
+    "chi_siamo": {
+      "category": "Unsere Geschichte",
+      "title": "Über Uns: Eine Geschichte der Vision",
+      "founder_bio": "Das Projekt Amunì entstand aus meiner doppelten Natur: der analytischen Präzision einer Chemieforscherin und der Leidenschaft, autodidaktisch erworben, für die Programmierung. Ich hatte keinerlei informatischen Hintergrund: Ich habe durch Ausprobieren gelernt, einen Versuch nach dem anderen, angetrieben vom Wunsch, ein Gebiet so zu erzählen, wie es das verdient — ein Gebiet, das ich seit zu vielen Jahren vernachlässigt fühlte.",
+      "philosophy": "Aus diesem Wunsch entstand die Castellana: kein einfacher Chatbot, sondern eine sorgfältig gestaltete Führerin, die den Besucher begleitet — eine lebendige Audioguide, die den Steinen, Legenden und Dialektliedern von Caccamo in fünf verschiedenen Sprachen wieder eine Stimme gibt. Ich betrachte dieses Projekt nicht als Endpunkt, sondern als lebendiges Labor: Die Volkskultur ist ein dynamisches Erbe, und ich glaube, dass die Aufwertung eines Gebiets auch bedeutet, die Stimmen derer zu bewahren, die dort leben, und Traditionen, Kinderreime und Lieder an künftige Generationen weiterzugeben.",
+      "freemium_model": "Die historischen und monumentalen Inhalte sind ein öffentliches Gut, für alle zugänglich. Das Erlebnis „Castellana Premium“ ist denjenigen vorbehalten, die eine tiefere Reise wünschen: exklusiver Zugang zur technischen Analyse des Erbes, zu vielschichtigen Geschichten und zu persönlicher Unterstützung für eine authentische, zeitlose Entdeckung.",
+      "events": "Jedes Bild, jede Animation, jede Zeile Code von Amunì — und jedes von der Castellana gesprochene Wort — wurde von meinem Smartphone aus erdacht und umgesetzt, zwischen meiner Forschungsarbeit und meinen zwei kleinen Töchtern. Wenn du bis hierher gekommen bist, gehörst auch du zu diesem kleinen Labor."
     }
   },
   "citizen": {
@@ -129,7 +144,7 @@
     "open_webapp": "Zur WebApp",
     "scan_qr": "QR-Code scannen",
     "premium_title": "Schalte die Premium-Castellana frei",
-    "premium_text": "Für 3,90 € unterhältst du dich 4 Tage lang in Echtzeit mit der Castellana: der mehrsprachigen Führerin, die jedes Geheimnis von Caccamo kennt, von den Verkehrsmitteln bis zu den verborgenen Schätzen der Umgebung.",
+    "premium_text": "Für 3,90 € erhältst du 4 Tage lang Zugang zur Castellana: der mehrsprachigen Führerin, die jedes Geheimnis von Caccamo kennt, von den Verkehrsmitteln bis zu den verborgenen Schätzen der Umgebung.",
     "premium_howto": "Erhalte den Code per E-Mail und schreibe ihn im Chat: <strong>codice</strong> gefolgt von deinem alphanumerischen Code.",
     "premium_cta": "Zugang kaufen — 3,90 €"
   }
