@@ -246,9 +246,6 @@ html, body {
 
 /* ============================================================
    4. SEZIONE 2 — PARALLASSE (contenuto storico/pratico)
-   Aggiunta una mask-image che sfuma i margini superiore e
-   inferiore della sezione, così che il blocco scuro non tagli
-   di netto ma si dissolva nello sfondo chiaro della pagina.
    ============================================================ */
 .section-parallax {
     position: relative;
@@ -258,7 +255,7 @@ html, body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: var(--sea-ink); /* colore di riserva se l'immagine non si carica */
+    background: var(--sea-ink);
     -webkit-mask-image: linear-gradient(to bottom,
         transparent 0,
         black 90px,
@@ -392,6 +389,9 @@ html, body {
     pointer-events: none;
 }
 
+/* Chat: dimensioni base (mobile). Su desktop (min-width:900px) vengono
+   ingrandite più sotto — prima mancava del tutto un ingrandimento
+   per schermi grandi, la finestra restava sempre piccola. */
 .chat-desktop {
     position: fixed;
     bottom: 150px;
@@ -713,6 +713,16 @@ html, body {
     .castellana-tooltip {
         font-size: 0.75rem;
         padding: 0.4rem 1rem;
+    }
+
+    /* Chat più grande su desktop: prima usava sempre le stesse
+       dimensioni ridotte pensate per mobile (320x350), senza alcun
+       ingrandimento per schermi grandi. */
+    .chat-desktop {
+        width: 640px;
+        max-width: 85vw;
+        height: 700px;
+        max-height: 78vh;
     }
 }
 
