@@ -180,6 +180,18 @@ body {
     transform: translateY(-3px);
 }
 
+/* Avatar nascosto con dissolvenza quando la chat è aperta: qui
+   l'avatar sta centrato in alto nella hero, non in un angolo fisso
+   come nelle altre pagine — allargare la chat avrebbe sempre finito
+   per sovrapporsi a lui su qualche larghezza di schermo. Nasconderlo
+   mentre si chatta (e farlo ricomparire alla chiusura) è la soluzione
+   più solida, indipendente dalle dimensioni della finestra chat. */
+.castellana-video-wrapper.avatar-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
 .castellana-tooltip {
     padding: 8px 20px;
     background: rgba(20, 40, 58, 0.7);
