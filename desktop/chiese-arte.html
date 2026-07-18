@@ -8,439 +8,976 @@
      BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
      ============================================================ -->
 
-  <link rel="preconnect" href="[cdn.jsdelivr.net](https://cdn.jsdelivr.net)" crossorigin>
-  <link rel="stylesheet" id="silktide-consent-manager-css" href="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css)" integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
-  <style id="silktide-consent-manager-overrides">
-    #stcm-wrapper {
-      --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
-      --fontFamily: Helvetica Neue, Segoe UI, Arial, sans-serif;
-      --primaryColor: #9C4C22;
-      --backgroundColor: #efe6d3;
-      --textColor: #22303b;
-      --backdropBackgroundColor: #00000033;
-      --backdropBackgroundBlur: 0px;
-      --iconColor: #EFE6D3;
-      --iconBackgroundColor: #22303B;
-    }
-  </style>
-  <script src="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js)" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
-  <script>
-    window.silktideConsentManager.init({
-      backdrop: { show: false },
-      icon: { position: "bottomLeft" },
-      prompt: { position: "bottomCenter" },
-      consentTypes: [
-        {
-          id: "essential",
-          label: "Essenziali",
-          description: "<p>Cookie tecnici necessari al funzionamento del sito, come la memoria della lingua scelta e del codice Premium attivato. Non possono essere disattivati.</p>",
-          required: true,
-          onAccept: function() {}
-        },
-        {
-          id: "analytics",
-          label: "Statistiche",
-          description: "Questi cookie ci aiutano a capire come i visitatori usano il sito, in forma aggregata e anonima, per migliorare i contenuti di Amunì Tourism.",
-          required: false,
-          gtag: "analytics_storage",
-          scripts: [{ url: "[googletagmanager.com](https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0)", load: "async" }],
-          onAccept: function() {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { window.dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-DNTGGXSSM0', { 'anonymize_ip': true });
-          }
-        }
-      ],
-      text: {
-        banner: {
-          description: "<p>Amunì Tourism utilizza i cookie per offrirti la migliore esperienza di navigazione e per analizzare il traffico del sito in forma anonima. Puoi scegliere quali accettare.</p>",
-          acceptAllButtonText: "Accetta tutti",
-          acceptAllButtonAccessibleLabel: "Accetta tutti i cookie",
-          rejectNonEssentialButtonText: "Rifiuta i non essenziali",
-          rejectNonEssentialButtonAccessibleLabel: "Rifiuta tutti i cookie non essenziali",
-          preferencesButtonText: "Preferenze",
-          preferencesButtonAccessibleLabel: "Apri le preferenze cookie"
-        },
-        prompt: {
-          description: "<p>Amunì Tourism utilizza i cookie per offrirti la migliore esperienza di navigazione e per analizzare il traffico del sito in forma anonima. Puoi scegliere quali accettare.</p>",
-          acceptAllButtonText: "Accetta tutti",
-          acceptAllButtonAccessibleLabel: "Accetta tutti i cookie",
-          rejectNonEssentialButtonText: "Rifiuta i non essenziali",
-          rejectNonEssentialButtonAccessibleLabel: "Rifiuta tutti i cookie non essenziali",
-          preferencesButtonText: "Preferenze",
-          preferencesButtonAccessibleLabel: "Apri le preferenze cookie"
-        },
-        preferences: {
-          title: "Personalizza le tue preferenze cookie",
-          description: "<p>Rispettiamo il tuo diritto alla privacy. Puoi scegliere di non consentire alcuni tipi di cookie. Le tue preferenze verranno applicate a tutto il sito.</p>",
-          saveButtonText: "Salva e chiudi",
-          saveButtonAccessibleLabel: "Salva le tue preferenze cookie",
-          creditLinkText: "Ottieni questo banner gratis",
-          creditLinkAccessibleLabel: "Ottieni questo banner gratis"
-        }
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" id="silktide-consent-manager-css" href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css" integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
+<style id="silktide-consent-manager-overrides">
+#stcm-wrapper {
+  --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
+  --fontFamily: Helvetica Neue, Segoe UI, Arial, sans-serif;
+  --primaryColor: #9C4C22;
+  --backgroundColor: #efe6d3;
+  --textColor: #22303b;
+  --backdropBackgroundColor: #00000033;
+  --backdropBackgroundBlur: 0px;
+  --iconColor: #EFE6D3;
+  --iconBackgroundColor: #22303B;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
+<script>
+window.silktideConsentManager.init({
+  backdrop: { show: false },
+  icon: { position: "bottomLeft" },
+  prompt: { position: "bottomCenter" },
+  consentTypes: [
+    {
+      id: "essential",
+      label: "Essenziali",
+      description: "<p>Cookie tecnici necessari al funzionamento del sito, come la memoria della lingua scelta e del codice Premium attivato. Non possono essere disattivati.</p>",
+      required: true,
+      onAccept: function() {}
+    },
+    {
+      id: "analytics",
+      label: "Statistiche",
+      description: "Questi cookie ci aiutano a capire come i visitatori usano il sito, in forma aggregata e anonima, per migliorare i contenuti di Amunì Tourism.",
+      required: false,
+      gtag: "analytics_storage",
+      scripts: [{ url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0", load: "async" }],
+      onAccept: function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-DNTGGXSSM0', { 'anonymize_ip': true });
       }
-    });
-  </script>
+    }
+  ],
+  text: {
+    banner: {
+      description: "<p>Amunì Tourism utilizza i cookie per offrirti la migliore esperienza di navigazione e per analizzare il traffico del sito in forma anonima. Puoi scegliere quali accettare.</p>",
+      acceptAllButtonText: "Accetta tutti",
+      acceptAllButtonAccessibleLabel: "Accetta tutti i cookie",
+      rejectNonEssentialButtonText: "Rifiuta i non essenziali",
+      rejectNonEssentialButtonAccessibleLabel: "Rifiuta tutti i cookie non essenziali",
+      preferencesButtonText: "Preferenze",
+      preferencesButtonAccessibleLabel: "Apri le preferenze cookie"
+    },
+    prompt: {
+      description: "<p>Amunì Tourism utilizza i cookie per offrirti la migliore esperienza di navigazione e per analizzare il traffico del sito in forma anonima. Puoi scegliere quali accettare.</p>",
+      acceptAllButtonText: "Accetta tutti",
+      acceptAllButtonAccessibleLabel: "Accetta tutti i cookie",
+      rejectNonEssentialButtonText: "Rifiuta i non essenziali",
+      rejectNonEssentialButtonAccessibleLabel: "Rifiuta tutti i cookie non essenziali",
+      preferencesButtonText: "Preferenze",
+      preferencesButtonAccessibleLabel: "Apri le preferenze cookie"
+    },
+    preferences: {
+      title: "Personalizza le tue preferenze cookie",
+      description: "<p>Rispettiamo il tuo diritto alla privacy. Puoi scegliere di non consentire alcuni tipi di cookie. Le tue preferenze verranno applicate a tutto il sito.</p>",
+      saveButtonText: "Salva e chiudi",
+      saveButtonAccessibleLabel: "Salva le tue preferenze cookie",
+      creditLinkText: "Ottieni questo banner gratis",
+      creditLinkAccessibleLabel: "Ottieni questo banner gratis"
+    }
+  }
+});
+</script>
 
-  <!-- ============================================================
+<!-- ============================================================
      FINE BLOCCO COOKIE + ANALYTICS
      ============================================================ -->
 
   <title data-i18n="pages.chiese_page.page_title">Le Chiese di Caccamo</title>
 
-  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap)" rel="stylesheet">
+  <style type="text/css">@font-face {font-family:Cormorant Garamond;font-style:normal;font-weight:500;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:normal;font-weight:500;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:normal;font-weight:500;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:normal;font-weight:500;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:normal;font-weight:500;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:normal;font-weight:600;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:normal;font-weight:600;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:normal;font-weight:600;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:normal;font-weight:600;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:normal;font-weight:600;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:italic;font-weight:500;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/cyrillic-ext/wght/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:italic;font-weight:500;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/latin-ext/wght/italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:italic;font-weight:500;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/vietnamese/wght/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:italic;font-weight:500;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/cyrillic/wght/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:italic;font-weight:500;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/latin/wght/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:italic;font-weight:600;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/latin-ext/wght/italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:italic;font-weight:600;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/cyrillic-ext/wght/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:italic;font-weight:600;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/vietnamese/wght/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:italic;font-weight:600;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/latin/wght/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Cormorant Garamond;font-style:italic;font-weight:600;src:url(/cf-fonts/v/cormorant-garamond/5.2.11/cyrillic/wght/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Playfair Display;font-style:normal;font-weight:500;src:url(/cf-fonts/v/playfair-display/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Playfair Display;font-style:normal;font-weight:500;src:url(/cf-fonts/v/playfair-display/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Playfair Display;font-style:normal;font-weight:500;src:url(/cf-fonts/v/playfair-display/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Playfair Display;font-style:normal;font-weight:500;src:url(/cf-fonts/v/playfair-display/5.2.8/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Playfair Display;font-style:normal;font-weight:700;src:url(/cf-fonts/v/playfair-display/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Playfair Display;font-style:normal;font-weight:700;src:url(/cf-fonts/v/playfair-display/5.2.8/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Playfair Display;font-style:normal;font-weight:700;src:url(/cf-fonts/v/playfair-display/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Playfair Display;font-style:normal;font-weight:700;src:url(/cf-fonts/v/playfair-display/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}</style>
   <link rel="stylesheet" href="chiese-arte.css">
-
   <style>
-    .lang-switcher button.active {
-      border: 2px solid #B8873B !important;
-      background: rgba(184, 135, 59, 0.2) !important;
-      font-weight: bold;
-    }
-
-    .castellana-premium-cta {
-      max-width: 420px;
-      margin: 32px auto;
-      padding: 20px;
-      background: #fdf6e8;
-      border-radius: 14px;
-      text-align: center;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-      font-family: 'Cormorant Garamond', serif;
-    }
-
-    .premium-cta-label {
-      margin: 0 0 14px;
-      font-weight: 600;
-      color: #5a1a20;
-    }
-
-    .premium-btn {
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 24px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      border: none;
-      margin: 4px;
-      transition: opacity 0.2s ease;
-    }
-
-    .premium-btn:hover {
-      opacity: 0.9;
-    }
-
-    .premium-btn-outline {
-      background: transparent;
-      border: 2px solid #7a1f2b;
-      color: #7a1f2b;
-    }
-
-    .premium-btn-gold {
-      background: linear-gradient(135deg, #c9962f, #e0b04a);
-      color: #3a2a10;
-    }
-
-    .chat-desktop {
-      width: min(92vw, 560px) !important;
-      height: min(78vh, 820px) !important;
-      max-height: 78vh !important;
-    }
-
-    .chat-messages {
-      scroll-behavior: smooth;
-    }
-
-    .chat-input-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .voice-input-btn {
-      width: 46px;
-      height: 46px;
-      border: none;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #c9962f, #e0b04a);
-      color: #3a2a10;
-      font-size: 18px;
-      cursor: pointer;
-      flex-shrink: 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.18);
-      transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .voice-input-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.22);
-    }
-
-    .voice-input-btn.recording {
-      background: linear-gradient(135deg, #b83a3a, #e05d5d);
-      color: #fff;
-      animation: micPulse 1.1s infinite;
-    }
-
-    @keyframes micPulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.06); }
-      100% { transform: scale(1); }
-    }
-
-    .topic-premium-note {
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(184, 135, 59, 0.12);
-      color: #5a1a20;
-      font-size: 0.92rem;
-      line-height: 1.4;
-    }
-
-    .topic-btn.locked-topic {
-      position: relative;
-      opacity: 0.92;
-    }
-
-    .topic-btn.locked-topic::after {
-      content: " 🔒";
-    }
-
-    @media (max-width: 900px) {
-      .chat-desktop {
-        width: calc(100vw - 24px) !important;
-        height: min(76vh, 700px) !important;
-        max-height: 76vh !important;
+      .lang-switcher button.active {
+          border: 2px solid #B8873B !important;
+          background: rgba(184, 135, 59, 0.2) !important;
+          font-weight: bold;
       }
+
+      /* ===== BOTTONE PREMIUM ===== */
+      .castellana-premium-cta {
+        max-width: 420px;
+        margin: 32px auto;
+        padding: 20px;
+        background: #fdf6e8;
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        font-family: 'Cormorant Garamond', serif;
+      }
+
+      .premium-cta-label {
+        margin: 0 0 14px;
+        font-weight: 600;
+        color: #5a1a20;
+      }
+
+      .premium-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 24px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        margin: 4px;
+        transition: opacity 0.2s ease;
+      }
+
+      .premium-btn:hover { opacity: 0.9; }
+
+      .premium-btn-outline {
+        background: transparent;
+        border: 2px solid #7a1f2b;
+        color: #7a1f2b;
+      }
+
+      .premium-btn-gold {
+        background: linear-gradient(135deg, #c9962f, #e0b04a);
+        color: #3a2a10;
+      }
+
+      /* ===== CHAT PIÙ GRANDE (desktop) + MICROFONO TURISTA ===== */
+      @media screen and (min-width: 951px) {
+        .chat-desktop {
+          width: min(44vw, 560px) !important;
+          height: min(78vh, 820px) !important;
+          max-height: 78vh !important;
+          bottom: 138px !important;
+          right: 2.2rem !important;
+        }
+      }
+
+      @media screen and (max-width: 950px) {
+        .chat-desktop {
+          height: min(70vh, 620px) !important;
+          max-height: 76vh !important;
+        }
+      }
+
+      .chat-input-row input { min-width: 0; }
 
       .voice-input-btn {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
+        border: none;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #c9962f, #e0b04a);
+        color: #3a2a10;
+        font-size: 17px;
+        cursor: pointer;
+        flex-shrink: 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
-    }
+
+      .voice-input-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 14px rgba(0,0,0,0.22);
+      }
+
+      .voice-input-btn.recording {
+        background: linear-gradient(135deg, #b83a3a, #e05d5d);
+        color: #fff;
+        animation: micPulse 1.1s infinite;
+      }
+
+      @keyframes micPulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.06); }
+        100% { transform: scale(1); }
+      }
   </style>
 </head>
 
 <body>
 
   <header class="dashboard">
-    <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+      <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
 
-    <div class="header-right-actions">
-      <nav class="nav-desktop">
-        <a href="desktop_index.html" data-i18n="menu.home">Home</a>
-        <a href="cittadino.html" data-i18n="menu.citizen">Cittadino</a>
-      </nav>
+      <div class="header-right-actions">
+          <nav class="nav-desktop">
+              <a href="desktop_index.html" data-i18n="menu.home">Home</a>
+              <a href="cittadino.html" data-i18n="menu.citizen">Cittadino</a>
+          </nav>
 
-      <div class="lang-switcher">
-        <button data-lang="it">IT</button>
-        <button data-lang="en">EN</button>
-        <button data-lang="fr">FR</button>
-        <button data-lang="es">ES</button>
-        <button data-lang="de">DE</button>
+          <div class="lang-switcher">
+              <button data-lang="it">IT</button>
+              <button data-lang="en">EN</button>
+              <button data-lang="fr">FR</button>
+              <button data-lang="es">ES</button>
+              <button data-lang="de">DE</button>
+          </div>
       </div>
-    </div>
   </header>
 
   <main class="hero">
-    <div class="hero-text">
-      <h1 data-i18n="pages.chiese_page.page_title">Le Chiese di Caccamo</h1>
-      <p class="poesia-intro" data-i18n="pages.chiese_page.poesia_intro">Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.</p>
-      <p class="click-hint">* Clicca su una tappa per scoprire i tesori nascosti</p>
-    </div>
-
-    <div class="path-wrap">
-      <div class="path-line"></div>
-
-      <div class="stop">
-        <div class="waypoint"></div>
-        <article class="card side-left" data-img="img/cappuccini.jpg" data-title="I Cappuccini">
-          <div class="card-frame"><img src="img/cappuccini.jpg" alt="I Cappuccini"></div>
-          <div class="card-text">
-            <span class="card-route-label" data-i18n="pages.chiese_page.route_cappuccini">Punto più alto</span>
-            <h2 data-i18n="pages.chiese_page.cappuccini">I Cappuccini</h2>
-            <p data-i18n="pages.chiese_page.verse_cappuccini">In cima ai <strong>Cappuccini</strong> il cammino ha inizio,<br>tra una Pala d'altare e un vasto orizzonte propizio.</p>
-          </div>
-        </article>
+      <div class="hero-text">
+          <h1 data-i18n="pages.chiese_page.page_title">Le Chiese di Caccamo</h1>
+          <p class="poesia-intro" data-i18n="pages.chiese_page.poesia_intro">Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.</p>
+          <p class="click-hint">* Clicca su una tappa per scoprire i tesori nascosti</p>
       </div>
 
-      <div class="stop">
-        <div class="waypoint"></div>
-        <article class="card side-right" data-img="img/sandomenico.jpg" data-title="Santa Maria degli Angeli">
-          <div class="card-frame"><img src="img/sandomenico.jpg" alt="Santa Maria degli Angeli"></div>
-          <div class="card-text">
-            <span class="card-route-label" data-i18n="pages.chiese_page.route_angeli">Silenzio</span>
-            <h2 data-i18n="pages.chiese_page.angeli">S. Maria degli Angeli</h2>
-            <p data-i18n="pages.chiese_page.verse_angeli">Agli <strong>Angeli</strong> riposa, nel silenzio più sacro,<br>il Beato Giovanni, del borgo simulacro.</p>
+      <div class="path-wrap">
+          <div class="path-line"></div>
+
+          <div class="stop">
+              <div class="waypoint"></div>
+              <article class="card side-left" data-img="img/cappuccini.jpg" data-title="I Cappuccini">
+                  <div class="card-frame"><img src="img/cappuccini.jpg" alt="I Cappuccini"></div>
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_cappuccini">Punto più alto</span>
+                      <h2 data-i18n="pages.chiese_page.cappuccini">I Cappuccini</h2>
+                      <p data-i18n="pages.chiese_page.verse_cappuccini">In cima ai <strong>Cappuccini</strong> il cammino ha inizio,<br>tra una Pala d'altare e un vasto orizzonte propizio.</p>
+                  </div>
+              </article>
           </div>
-        </article>
-      </div>
 
-      <div class="stop">
-        <div class="waypoint"></div>
-        <article class="card side-left" data-img="img/annunziata.jpg" data-title="Chiesa dell'Annunziata">
-          <div class="card-frame"><img src="img/annunziata.jpg" alt="Chiesa dell'Annunziata"></div>
-          <div class="card-text">
-            <span class="card-route-label" data-i18n="pages.chiese_page.route_annunziata">Volte dipinte</span>
-            <h2 data-i18n="pages.chiese_page.annunziata">Annunziata</h2>
-            <p data-i18n="pages.chiese_page.verse_annunziata">Poi l'<strong>Annunziata</strong> svela le sue volte dipinte,<br>e la torre campanaria dalle guardie mai vinte.</p>
+          <div class="stop">
+              <div class="waypoint"></div>
+              <article class="card side-right" data-img="img/sandomenico.jpg" data-title="Santa Maria degli Angeli">
+                  <div class="card-frame"><img src="img/sandomenico.jpg" alt="Santa Maria degli Angeli"></div>
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_angeli">Silenzio</span>
+                      <h2 data-i18n="pages.chiese_page.angeli">S. Maria degli Angeli</h2>
+                      <p data-i18n="pages.chiese_page.verse_angeli">Agli <strong>Angeli</strong> riposa, nel silenzio più sacro,<br>il Beato Giovanni, del borgo simulacro.</p>
+                  </div>
+              </article>
           </div>
-        </article>
-      </div>
 
-      <div class="stop">
-        <div class="waypoint"></div>
-        <article class="card side-right" data-img="img/badia.jpg" data-title="S. Benedetto della Badia">
-          <div class="card-frame"><img src="img/badia.jpg" alt="S. Benedetto della Badia"></div>
-          <div class="card-text">
-            <span class="card-route-label" data-i18n="pages.chiese_page.route_badia">Si scende</span>
-            <h2 data-i18n="pages.chiese_page.badia">S. Benedetto della Badia</h2>
-            <p data-i18n="pages.chiese_page.verse_badia">Più in basso, la <strong>Badia</strong> veste la terra a fiore,<br>nel ricamo in maiolica di raro splendore.</p>
+          <div class="stop">
+              <div class="waypoint"></div>
+              <article class="card side-left" data-img="img/annunziata.jpg" data-title="Chiesa dell'Annunziata">
+                  <div class="card-frame"><img src="img/annunziata.jpg" alt="Chiesa dell'Annunziata"></div>
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_annunziata">Volte dipinte</span>
+                      <h2 data-i18n="pages.chiese_page.annunziata">Annunziata</h2>
+                      <p data-i18n="pages.chiese_page.verse_annunziata">Poi l'<strong>Annunziata</strong> svela le sue volte dipinte,<br>e la torre campanaria dalle guardie mai vinte.</p>
+                  </div>
+              </article>
           </div>
-        </article>
-      </div>
 
-      <div class="stop">
-        <div class="waypoint"></div>
-        <article class="card side-left" data-img="img/sangiorgio.jpg" data-title="San Giorgio Martire">
-          <div class="card-frame"><img src="img/sangiorgio.jpg" alt="San Giorgio Martire"></div>
-          <div class="card-text">
-            <span class="card-route-label" data-i18n="pages.chiese_page.route_sangiorgio">Cuore del borgo</span>
-            <h2 data-i18n="pages.chiese_page.sangiorgio">San Giorgio Martire</h2>
-            <p data-i18n="pages.chiese_page.verse_duomo">Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne.</p>
+          <div class="stop">
+              <div class="waypoint"></div>
+              <article class="card side-right" data-img="img/badia.jpg" data-title="S. Benedetto della Badia">
+                  <div class="card-frame"><img src="img/badia.jpg" alt="S. Benedetto della Badia"></div>
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_badia">Si scende</span>
+                      <h2 data-i18n="pages.chiese_page.badia">S. Benedetto della Badia</h2>
+                      <p data-i18n="pages.chiese_page.verse_badia">Più in basso, la <strong>Badia</strong> veste la terra a fiore,<br>nel ricamo in maiolica di raro splendore.</p>
+                  </div>
+              </article>
           </div>
-        </article>
+
+          <div class="stop">
+              <div class="waypoint"></div>
+              <article class="card side-left" data-img="img/sangiorgio.jpg" data-title="San Giorgio Martire">
+                  <div class="card-frame"><img src="img/sangiorgio.jpg" alt="San Giorgio Martire"></div>
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_sangiorgio">Cuore del borgo</span>
+                      <h2 data-i18n="pages.chiese_page.sangiorgio">San Giorgio Martire</h2>
+                      <p data-i18n="pages.chiese_page.verse_duomo">Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne.</p>
+                  </div>
+              </article>
+          </div>
+
       </div>
-    </div>
+      <p class="poesia-outro" data-i18n="pages.chiese_page.poesia_outro">Lasciati guidare dove il tempo si è fermato...</p>
 
-    <p class="poesia-outro" data-i18n="pages.chiese_page.poesia_outro">Lasciati guidare dove il tempo si è fermato...</p>
-
-    <div class="castellana-premium-cta">
-      <p class="premium-cta-label">🔒 Contenuti Premium disponibili</p>
-      <button id="btn-premium-code" class="premium-btn premium-btn-outline">
-        Ho già un codice
-      </button>
-      <a
-        href="#"
-        id="btn-buy-premium"
-        class="premium-btn premium-btn-gold"
-      >
-        Acquista l'accesso — 3,90€
-      </a>
-    </div>
+      <!-- ===== BOTTONE PREMIUM ===== -->
+      <div class="castellana-premium-cta">
+        <p class="premium-cta-label">🔒 Contenuti Premium disponibili</p>
+        <button id="btn-premium-code" class="premium-btn premium-btn-outline">
+          Ho già un codice
+        </button>
+        <a
+          href="#"
+          id="btn-buy-premium"
+          class="premium-btn premium-btn-gold"
+        >
+          Acquista l'accesso — 3,90€
+        </a>
+      </div>
   </main>
 
   <div id="image-modal" class="modal">
-    <button class="modal-close" id="modal-close-btn">✕</button>
-    <div class="modal-content-wrapper">
-      <img class="modal-img" id="modal-target-img" src="" alt="">
-      <h2 class="modal-title" id="modal-target-title"></h2>
-    </div>
+      <button class="modal-close" id="modal-close-btn">✕</button>
+      <div class="modal-content-wrapper">
+          <img class="modal-img" id="modal-target-img" src="" alt="">
+          <h2 class="modal-title" id="modal-target-title"></h2>
+      </div>
   </div>
 
   <div class="castellana-widget-area">
-    <div class="castellana-video-wrapper" id="chat-open-btn">
-      <video class="castellana-video" autoplay muted loop playsinline>
-        <source src="img/castellana_alpha.webm" type="video/webm">
-      </video>
-    </div>
-    <div class="castellana-tooltip" data-i18n="chat.tooltip">Click to chat</div>
+      <div class="castellana-video-wrapper" id="chat-open-btn">
+          <video class="castellana-video" autoplay muted loop playsinline>
+              <source src="img/castellana_alpha.webm" type="video/webm">
+          </video>
+      </div>
+      <div class="castellana-tooltip" data-i18n="chat.tooltip">Click to chat</div>
   </div>
 
   <div class="chat-desktop" id="chat-desktop">
-    <div class="chat-header">
-      <div class="avatar-status-dot"></div>
-      <span data-i18n="chat.title">La Castellana</span>
-      <button id="voice-toggle-btn" class="close-chat-btn" title="Attiva/disattiva voce" aria-label="Attiva o disattiva la voce">🔊</button>
-      <button id="close-chat" class="close-chat-btn">✕</button>
-    </div>
-
-    <div class="premium-status-bar" id="premium-status-bar"></div>
-
-    <div class="chat-messages">
-      <div class="message" data-i18n="chat.chiese_msg">Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo...</div>
-    </div>
-
-    <div class="chat-input-row">
-      <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
-      <button id="voice-input-btn" class="voice-input-btn" aria-label="Parla con la Castellana" title="Parla con la Castellana">🎤</button>
-      <button class="send-btn" aria-label="Invia">➤</button>
-    </div>
+      <div class="chat-header">
+          <div class="avatar-status-dot"></div>
+          <span data-i18n="chat.title">La Castellana</span>
+          <button id="voice-toggle-btn" class="close-chat-btn" title="Attiva/disattiva voce" aria-label="Attiva o disattiva la voce">🔊</button>
+          <button id="close-chat" class="close-chat-btn">✕</button>
+      </div>
+      <div class="premium-status-bar" id="premium-status-bar"></div>
+      <div class="chat-messages">
+          <div class="message" data-i18n="chat.chiese_msg">Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo...</div>
+      </div>
+      <div class="chat-input-row">
+          <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+          <button id="voice-input-btn" class="voice-input-btn" type="button" title="Parla con la Castellana" aria-label="Parla con la Castellana">🎤</button>
+          <button class="send-btn" aria-label="Invia">➤</button>
+      </div>
   </div>
 
   <script>
-    const chatBtn = document.getElementById('chat-open-btn');
-    const chatBox = document.getElementById('chat-desktop');
-    const closeChat = document.getElementById('close-chat');
-    const chatInputField = document.querySelector('.chat-input-row input');
-    const sendBtn = document.querySelector('.send-btn');
-    const voiceToggleBtn = document.getElementById('voice-toggle-btn');
-    const voiceInputBtn = document.getElementById('voice-input-btn');
-
-    chatBtn.addEventListener('click', () => {
-      chatBox.classList.add('active');
-      updatePremiumStatusDisplay();
-      loadTopicMenu();
-    });
-
-    closeChat.addEventListener('click', () => {
-      chatBox.classList.remove('active');
-      castellanaZitta();
-      stopVoiceRecognition();
-    });
-
-    const cards = document.querySelectorAll('.card');
-    const modal = document.getElementById('image-modal');
-    const modalImg = document.getElementById('modal-target-img');
-    const modalTitle = document.getElementById('modal-target-title');
-    const modalCloseBtn = document.getElementById('modal-close-btn');
-
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        modalImg.src = card.getAttribute('data-img');
-        modalTitle.textContent = card.getAttribute('data-title');
-        modal.classList.add('active');
-      });
-    });
-
-    modalCloseBtn.addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
-
-    let currentLang = localStorage.getItem("lang") || "it";
-
-    function loadLanguage(lang) {
-      fetch(`./lang/${lang}.json`)
-        .then(res => res.json())
-        .then(data => {
-          document.querySelectorAll("[data-i18n]").forEach(el => {
-            const key = el.getAttribute("data-i18n");
-            const text = key.split('.').reduce((o, i) => o ? o[i] : null, data);
-            if (text) el.innerHTML = text;
-          });
-
-          document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-            const key = el.getAttribute("data-i18n-placeholder");
-            const text = key.split('.').reduce((o, i) => o ? o[i] : null, data);
-            if (text) el.placeholder = text;
-          });
-
-          document.querySelectorAll(".lang-switcher button").forEach(btn => {
-            btn.classList.toggle("active", btn.dataset.lang === lang);
-          });
-
+      // --- LOGICA CHAT ---
+      const chatBtn = document.getElementById('chat-open-btn');
+      const chatBox = document.getElementById('chat-desktop');
+      const closeChat = document.getElementById('close-chat');
+      chatBtn.addEventListener('click', () => {
+          chatBox.classList.add('active');
           updatePremiumStatusDisplay();
-          updateVoiceInputUi();
-        })
-        .catch(err => console.error("Errore lingua:", err));
+          loadTopicMenu();
+      });
+      closeChat.addEventListener('click', () => {
+          chatBox.classList.remove('active');
+          castellanaZitta();
+      });
 
-      localStorage.setItem("lang", lang);
-      refreshVoiceSelection();
-    }
+      // --- LOGICA MODAL ---
+      const cards = document.querySelectorAll('.card');
+      const modal = document.getElementById('image-modal');
+      const modalImg = document.getElementById('modal-target-img');
+      const modalTitle = document.getElementById('modal-target-title');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+      cards.forEach(card => {
+          card.addEventListener('click', () => {
+              modalImg.src = card.getAttribute('data-img');
+              modalTitle.textContent = card.getAttribute('data-title');
+              modal.classList.add('active');
+          });
+      });
+      modalCloseBtn.addEventListener('click', () => modal.classList.remove('active'));
+      modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 
-    document.add
+      // --- LOGICA LINGUA ---
+      let currentLang = localStorage.getItem("lang") || "it";
+      function loadLanguage(lang) {
+          fetch(`./lang/${lang}.json`)
+              .then(res => res.json())
+              .then(data => {
+                  document.querySelectorAll("[data-i18n]").forEach(el => {
+                      const key = el.getAttribute("data-i18n");
+                      const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                      if (text) el.innerHTML = text;
+                  });
+                  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                      const key = el.getAttribute("data-i18n-placeholder");
+                      const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                      if (text) el.placeholder = text;
+                  });
+                  document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                      btn.classList.toggle("active", btn.dataset.lang === lang);
+                  });
+              })
+              .catch(err => console.error("Errore lingua:", err));
+          localStorage.setItem("lang", lang);
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+          document.querySelectorAll(".lang-switcher button").forEach(btn => {
+              btn.addEventListener("click", () => {
+                  currentLang = btn.dataset.lang;
+                  loadLanguage(currentLang);
+                  updatePremiumStatusDisplay();
+                  const oldMenu = document.querySelector('.chat-messages .topic-menu');
+                  if (oldMenu) oldMenu.remove();
+                  menuLoadedForCode = null;
+                  exploredGroups.clear();
+                  exploredTopics.clear();
+                  if (chatBox.classList.contains('active')) loadTopicMenu();
+              });
+          });
+          loadLanguage(currentLang);
+      });
+
+      // ============================================================
+      // CONNESSIONE CHAT ↔ BACKEND PYTHON
+      // ============================================================
+      const API_BASE_URL = "https://castellana.pythonanywhere.com";
+      const PREMIUM_STORAGE_KEY = "amuni_premium_access";
+
+      // ============================================================
+      // TTS AVANZATO — La Castellana parla
+      // ============================================================
+      const VOICE_PREF_KEY = "amuni_voice_enabled";
+      let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
+      const voiceToggleBtn = document.getElementById("voice-toggle-btn");
+      // Voce SEMPRE femminile, nella lingua giusta: la voce viene
+      // scelta a ogni frase in base alla lingua corrente, con una
+      // lista di nomi femminili preferiti per ciascuna delle 5 lingue.
+      let vociDisponibili = [];
+      function aggiornaVociDisponibili() {
+          vociDisponibili = window.speechSynthesis.getVoices();
+      }
+      if ("speechSynthesis" in window) {
+          aggiornaVociDisponibili();
+          window.speechSynthesis.onvoiceschanged = aggiornaVociDisponibili;
+      }
+
+      const NOMI_VOCE_FEMMINILE = {
+          "it-IT": ["Google italiano", "Elsa", "Alice", "Federica", "Silvia", "Paola"],
+          "en-US": ["Google US English", "Samantha", "Zira", "Aria", "Jenny"],
+          "fr-FR": ["Google français", "Amelie", "Julie", "Denise", "Hortense"],
+          "de-DE": ["Google Deutsch", "Anna", "Katja", "Petra", "Helena"],
+          "es-ES": ["Google español", "Monica", "Helena", "Elvira", "Paloma"]
+      };
+      const INDIZI_VOCE_MASCHILE = /male|david|mark|daniel|thomas|diego|paolo|hans|marco|luca|carlos|antonio|cosimo/i;
+
+      function trovaVoceCastellana(langCode) {
+          if (!vociDisponibili.length) vociDisponibili = window.speechSynthesis.getVoices();
+
+          const nomiPreferiti = NOMI_VOCE_FEMMINILE[langCode] || [];
+          for (const nome of nomiPreferiti) {
+              const voce = vociDisponibili.find(v => v.name.includes(nome));
+              if (voce) return voce;
+          }
+
+          const stessaLingua = vociDisponibili.filter(v => v.lang && v.lang.startsWith(langCode.split("-")[0]));
+          const femminile = stessaLingua.find(v => !INDIZI_VOCE_MASCHILE.test(v.name));
+          return femminile || stessaLingua[0] || vociDisponibili[0] || null;
+      }
+
+      function updateVoiceToggleIcon() {
+          if (voiceToggleBtn) voiceToggleBtn.textContent = voiceEnabled ? "🔊" : "🔇";
+      }
+      updateVoiceToggleIcon();
+
+      if (voiceToggleBtn) {
+          voiceToggleBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              voiceEnabled = !voiceEnabled;
+              localStorage.setItem(VOICE_PREF_KEY, voiceEnabled ? "on" : "off");
+              updateVoiceToggleIcon();
+              if (!voiceEnabled && "speechSynthesis" in window) {
+                  window.speechSynthesis.cancel();
+              }
+          });
+      }
+
+      function ttsLangCode(lang) {
+          const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+          return map[lang] || "it-IT";
+      }
+
+      function speakText(text) {
+          if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
+          // cancel() e speak() nello stesso istante causano il ritardo
+          // percepito (bug noto Chrome/Edge): una breve pausa tra i due
+          // comandi fa partire la voce molto più in fretta.
+          window.speechSynthesis.cancel();
+          setTimeout(() => {
+              const langCode = ttsLangCode(currentLang);
+              const utterance = new SpeechSynthesisUtterance(text);
+              utterance.voice = trovaVoceCastellana(langCode);
+              utterance.lang = langCode;
+              utterance.rate = 0.82;
+              utterance.pitch = 0.95;
+              utterance.volume = 1.0;
+              window.speechSynthesis.speak(utterance);
+          }, 60);
+      }
+
+      function castellanaZitta() {
+          if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      }
+
+      function getPageSlug() {
+          const path = window.location.pathname;
+          const file = path.substring(path.lastIndexOf('/') + 1);
+          return file.replace('.html', '') || 'home';
+      }
+
+      const PAGE_LINK_LABELS = {
+          it: {
+              "castello.html": "Vai al Castello →",
+              "chiese-arte.html": "Vai a Chiese e Arte →",
+              "cibo_eventi.html": "Vai a Cibo e Eventi →",
+              "cittadino.html": "Vai al Cittadino del Borgo →",
+              "leggende_e_tradizioni.html": "Vai a Leggende e Tradizioni →",
+              "desktop_index.html": "Torna alla Home →"
+          },
+          en: {
+              "castello.html": "Go to the Castle →",
+              "chiese-arte.html": "Go to Churches & Art →",
+              "cibo_eventi.html": "Go to Food & Events →",
+              "cittadino.html": "Go to Citizen of the Village →",
+              "leggende_e_tradizioni.html": "Go to Legends & Traditions →",
+              "desktop_index.html": "Back to Home →"
+          },
+          fr: {
+              "castello.html": "Aller au Château →",
+              "chiese-arte.html": "Aller à Églises et Art →",
+              "cibo_eventi.html": "Aller à Gastronomie et Événements →",
+              "cittadino.html": "Aller à Citoyen du Village →",
+              "leggende_e_tradizioni.html": "Aller à Légendes et Traditions →",
+              "desktop_index.html": "Retour à l'accueil →"
+          },
+          es: {
+              "castello.html": "Ir al Castillo →",
+              "chiese-arte.html": "Ir a Iglesias y Arte →",
+              "cibo_eventi.html": "Ir a Comida y Eventos →",
+              "cittadino.html": "Ir a Ciudadano del Pueblo →",
+              "leggende_e_tradizioni.html": "Ir a Leyendas y Tradiciones →",
+              "desktop_index.html": "Volver al Inicio →"
+          },
+          de: {
+              "castello.html": "Zum Schloss →",
+              "chiese-arte.html": "Zu Kirchen und Kunst →",
+              "cibo_eventi.html": "Zu Essen und Events →",
+              "cittadino.html": "Zum Bürger des Dorfes →",
+              "leggende_e_tradizioni.html": "Zu Legenden und Traditionen →",
+              "desktop_index.html": "Zurück zur Startseite →"
+          }
+      };
+
+      const MAP_LABEL_BY_LANG = {
+          it: "Vedi sulla mappa →", en: "See on the map →", fr: "Voir sur la carte →",
+          es: "Ver en el mapa →", de: "Auf der Karte ansehen →"
+      };
+
+      const ORARI_LABEL_BY_LANG = {
+          it: "Orari e biglietti →", en: "Hours & tickets →", fr: "Horaires et billets →",
+          es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →"
+      };
+
+      function getLinkLabel(link) {
+          if (link && link.includes('mappa.html')) {
+              return MAP_LABEL_BY_LANG[currentLang] || MAP_LABEL_BY_LANG.it;
+          }
+          if (link && link.includes('/mobile/')) {
+              return ORARI_LABEL_BY_LANG[currentLang] || ORARI_LABEL_BY_LANG.it;
+          }
+          const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
+          return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
+      }
+
+      function openMapOverlay(url) {
+          const overlay = document.createElement('div');
+          overlay.className = 'map-overlay';
+          overlay.innerHTML = `
+              <button class="map-overlay-close" aria-label="Chiudi la mappa">✕</button>
+              <iframe src="${url}" allow="geolocation" title="Mappa Amunì"></iframe>
+          `;
+          document.body.appendChild(overlay);
+          overlay.querySelector('.map-overlay-close').addEventListener('click', () => {
+              overlay.remove();
+          });
+      }
+
+      // ============================================================
+      // RENDERING MESSAGGI CHAT — corretto: una sola "scatola" per
+      // messaggio (.message / .message.user-msg), quella che già
+      // riceve sfondo/bordo/padding giusti dal CSS. Prima veniva
+      // creata anche una .message-bubble interna con un secondo
+      // sfondo scritto a mano nel JS: una scatola dentro l'altra,
+      // con doppio bordo/doppio sfondo indesiderato.
+      // ============================================================
+      function appendChatMessage(text, sender, link) {
+          const messagesBox = document.querySelector('.chat-messages');
+
+          const msgWrap = document.createElement('div');
+          msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
+          msgWrap.style.cssText = 'display:flex; align-items:flex-start; gap:8px;';
+
+          const textSpan = document.createElement('span');
+          textSpan.style.cssText = 'flex:1;';
+          textSpan.textContent = text;
+          msgWrap.appendChild(textSpan);
+
+          if (sender !== 'user' && voiceEnabled) {
+              const audioBtn = document.createElement('button');
+              audioBtn.innerHTML = '🔊';
+              audioBtn.title = 'Ascolta la Castellana';
+              audioBtn.style.cssText = `
+                  background: rgba(184, 135, 59, 0.15);
+                  border: none;
+                  border-radius: 50%;
+                  width: 36px;
+                  height: 36px;
+                  font-size: 16px;
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                  transition: background 0.2s;
+              `;
+              audioBtn.onmouseenter = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.35)';
+              audioBtn.onmouseleave = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.15)';
+              audioBtn.onclick = () => speakText(text);
+              msgWrap.appendChild(audioBtn);
+          }
+
+          messagesBox.appendChild(msgWrap);
+
+          if (link) {
+              const btn = document.createElement('button');
+              btn.className = 'chat-link-btn';
+              btn.textContent = getLinkLabel(link);
+              btn.style.cssText = 'margin-left: 44px; margin-top: 4px;';
+              btn.addEventListener('click', () => {
+                  // Sia la mappa che le pagine di orari/biglietti vivono sul
+                  // sito mobile (../mobile/...): le apriamo entrambe sopra la
+                  // chat invece di navigare via, così tornando indietro non
+                  // si perde mai lo storico della conversazione.
+                  if (link.includes('mappa.html') || link.includes('/mobile/')) {
+                      openMapOverlay(link);
+                  } else {
+                      window.location.href = link;
+                  }
+              });
+              messagesBox.appendChild(btn);
+          }
+
+          messagesBox.scrollTop = messagesBox.scrollHeight;
+      }
+
+      // ============================================================
+      // MENU A PULSANTI — versione con "contesto persistente":
+      // dopo ogni risposta, ricompaiono sempre le altre voci della
+      // stessa chiesa appena trattata (così il turista può continuare
+      // ad approfondire quel monumento), e sotto quelle il resto delle
+      // chiese ancora da esplorare — tranne quella appena affrontata,
+      // che si considera "vista" e sparisce dall'elenco principale.
+      // Gli argomenti singoli (senza gruppo) seguono la stessa logica:
+      // una volta risposti, spariscono anche loro dal menu principale.
+      // ============================================================
+      let fullTopicMenu = [];       // il menu originale ricevuto dal backend
+      let exploredGroups = new Set(); // nomi delle chiese già affrontate
+      let exploredTopics = new Set(); // argomenti singoli (senza gruppo) già affrontati
+
+      function renderTopicMenu(menu) {
+          if (!menu || !menu.length) return;
+          fullTopicMenu = menu;
+          renderMenuState(null);
+      }
+
+      // currentGroupName: se valorizzato, mostra prima le voci di
+      // quella chiesa (quella appena trattata), poi sotto l'elenco
+      // delle chiese rimanenti.
+      function renderMenuState(currentGroupName) {
+          const messagesBox = document.querySelector('.chat-messages');
+
+          const old = document.querySelector('.chat-messages .topic-menu-state');
+          if (old) old.remove();
+
+          const wrap = document.createElement('div');
+          wrap.className = 'topic-menu topic-menu-state';
+
+          if (currentGroupName) {
+              const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
+              if (groupEntry) {
+                  groupEntry.items.forEach(it => {
+                      const b = document.createElement('button');
+                      b.className = 'topic-btn';
+                      b.textContent = it.label;
+                      b.addEventListener('click', () => sendTopicRequest(it.topic, it.label, currentGroupName));
+                      wrap.appendChild(b);
+                  });
+              }
+          }
+
+          fullTopicMenu.forEach(entry => {
+              if (entry.group) {
+                  if (exploredGroups.has(entry.group)) return; // già affrontata, non ricompare qui
+                  const groupBtn = document.createElement('button');
+                  groupBtn.className = 'topic-btn topic-group-btn';
+                  groupBtn.textContent = entry.group + ' ▸';
+                  groupBtn.addEventListener('click', () => renderMenuState(entry.group));
+                  wrap.appendChild(groupBtn);
+              } else {
+                  if (exploredTopics.has(entry.topic)) return; // già affrontato, non ricompare
+                  const b = document.createElement('button');
+                  b.className = 'topic-btn';
+                  b.textContent = entry.label;
+                  b.addEventListener('click', () => sendTopicRequest(entry.topic, entry.label, null));
+                  wrap.appendChild(b);
+              }
+          });
+
+          messagesBox.appendChild(wrap);
+          messagesBox.scrollTop = messagesBox.scrollHeight;
+      }
+
+      async function sendTopicRequest(topicId, label, groupName) {
+          appendChatMessage(label, 'user');
+          const old = document.querySelector('.chat-messages .topic-menu-state');
+          if (old) old.remove();
+          try {
+              const res = await fetch(`${API_BASE_URL}/chat`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      message: label,
+                      page: getPageSlug(),
+                      lang: currentLang,
+                      access_code: getStoredAccessCode() || "",
+                      topic: topicId
+                  })
+              });
+              if (!res.ok) throw new Error('Risposta non valida dal server');
+              const data = await res.json();
+              appendChatMessage(data.reply, 'castellana', data.link);
+              if (data.speak || voiceEnabled) speakText(data.reply);
+              if (groupName) {
+                  exploredGroups.add(groupName);
+              } else {
+                  exploredTopics.add(topicId);
+              }
+              renderMenuState(groupName);
+          } catch (err) {
+              console.error('Errore richiesta topic:', err);
+              appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+          }
+      }
+
+      let menuLoadedForCode = null;
+      async function loadTopicMenu() {
+          const code = getStoredAccessCode();
+          if (!code || menuLoadedForCode === code) return;
+          try {
+              const res = await fetch(`${API_BASE_URL}/chat`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      message: "",
+                      page: getPageSlug(),
+                      lang: currentLang,
+                      access_code: code,
+                      topic: ""
+                  })
+              });
+              if (!res.ok) return;
+              const data = await res.json();
+              if (data.premium_active && data.menu && data.menu.length) {
+                  renderTopicMenu(data.menu);
+                  menuLoadedForCode = code;
+              }
+          } catch (err) {
+              console.error('Errore caricamento menu:', err);
+          }
+      }
+
+      function getStoredAccessCode() {
+          const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+          if (!raw) return null;
+          try {
+              const data = JSON.parse(raw);
+              if (new Date(data.expires_at) > new Date()) {
+                  return data.code;
+              } else {
+                  localStorage.removeItem(PREMIUM_STORAGE_KEY);
+                  return null;
+              }
+          } catch (e) {
+              return null;
+          }
+      }
+
+      const PREMIUM_STATUS_TEXT = {
+          it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
+          en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
+          fr: { active: (d) => `👑 Premium actif jusqu'au ${d}`, free: "🔓 Version gratuite" },
+          es: { active: (d) => `👑 Premium activo hasta el ${d}`, free: "🔓 Versión gratuita" },
+          de: { active: (d) => `👑 Premium aktiv bis ${d}`, free: "🔓 Kostenlose Version" }
+      };
+
+      function updatePremiumStatusDisplay() {
+          const bar = document.getElementById('premium-status-bar');
+          if (!bar) return;
+          const texts = PREMIUM_STATUS_TEXT[currentLang] || PREMIUM_STATUS_TEXT.it;
+          const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+          if (raw) {
+              try {
+                  const data = JSON.parse(raw);
+                  if (new Date(data.expires_at) > new Date()) {
+                      const d = new Date(data.expires_at);
+                      const formatted = d.toLocaleDateString(currentLang, { day: 'numeric', month: 'long' }) +
+                          ' ' + d.toLocaleTimeString(currentLang, { hour: '2-digit', minute: '2-digit' });
+                      bar.textContent = texts.active(formatted);
+                      bar.classList.add('premium-active');
+                      bar.classList.remove('premium-free');
+                      return;
+                  }
+              } catch (e) { /* codice non valido, trattalo come gratuito */ }
+          }
+          bar.textContent = texts.free;
+          bar.classList.add('premium-free');
+          bar.classList.remove('premium-active');
+      }
+
+      function storeAccessCode(code, expiresAt) {
+          localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
+              code: code,
+              expires_at: expiresAt
+          }));
+      }
+
+      async function tryActivateCode(rawMessage) {
+          const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9]+)/i);
+          if (!match) return false;
+
+          const code = match[2].toUpperCase();
+          appendChatMessage(rawMessage, 'user');
+
+          try {
+              const res = await fetch(`${API_BASE_URL}/activate-code`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ code: code, lang: currentLang })
+              });
+              const data = await res.json();
+
+              if (data.success) {
+                  storeAccessCode(code, data.expires_at);
+                  const expiryDate = new Date(data.expires_at);
+                  const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+                  appendChatMessage(`Premium attivato! Avrai accesso ai contenuti esclusivi fino al ${formatted}.`, 'castellana');
+                  updatePremiumStatusDisplay();
+                  loadTopicMenu();
+              } else {
+                  appendChatMessage(data.message || 'Codice non valido.', 'castellana');
+              }
+          } catch (err) {
+              console.error('Errore attivazione codice:', err);
+              appendChatMessage('Al momento non riesco a verificare il codice — riprova tra poco.', 'castellana');
+          }
+
+          return true;
+      }
+
+      async function sendChatMessage(text) {
+          if (!text.trim()) return;
+
+          const wasActivationAttempt = await tryActivateCode(text);
+          if (wasActivationAttempt) return;
+
+          appendChatMessage(text, 'user');
+
+          try {
+              const res = await fetch(`${API_BASE_URL}/chat`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      message: text,
+                      page: getPageSlug(),
+                      lang: currentLang,
+                      access_code: getStoredAccessCode() || ""
+                  })
+              });
+
+              if (!res.ok) throw new Error('Risposta non valida dal server');
+
+              const data = await res.json();
+              appendChatMessage(data.reply, 'castellana', data.link);
+              if (data.speak || voiceEnabled) speakText(data.reply);
+
+          } catch (err) {
+              console.error('Errore chat:', err);
+              appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+          }
+      }
+
+      const chatInputField = document.querySelector('.chat-input-row input');
+      const sendBtn = document.querySelector('.send-btn');
+
+      function handleSend() {
+          sendChatMessage(chatInputField.value);
+          chatInputField.value = '';
+      }
+
+      if (chatInputField) {
+          chatInputField.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.keyCode === 13) {
+                  e.preventDefault();
+                  handleSend();
+              }
+          });
+      }
+      if (sendBtn) {
+          sendBtn.addEventListener('click', handleSend);
+      }
+
+      // ============================================================
+      // MICROFONO — il turista può parlare invece di scrivere
+      // (Web Speech API: su browser non supportati il pulsante
+      // si nasconde automaticamente)
+      // ============================================================
+      const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const voiceInputBtn = document.getElementById("voice-input-btn");
+      let recognition = null;
+      let isListening = false;
+
+      if (SpeechRecognitionAPI && voiceInputBtn) {
+          recognition = new SpeechRecognitionAPI();
+          recognition.continuous = false;
+          recognition.interimResults = false;
+
+          voiceInputBtn.addEventListener("click", () => {
+              if (isListening) { recognition.stop(); return; }
+              castellanaZitta();
+              recognition.lang = ttsLangCode(currentLang);
+              try { recognition.start(); } catch (e) { /* già in ascolto */ }
+          });
+
+          recognition.onstart = () => { isListening = true; voiceInputBtn.classList.add("recording"); };
+          recognition.onend = () => { isListening = false; voiceInputBtn.classList.remove("recording"); };
+          recognition.onerror = () => { isListening = false; voiceInputBtn.classList.remove("recording"); };
+          recognition.onresult = (event) => {
+              const transcript = event.results[0][0].transcript;
+              if (transcript && transcript.trim()) {
+                  chatInputField.value = "";
+                  sendChatMessage(transcript.trim());
+              }
+          };
+      } else if (voiceInputBtn) {
+          voiceInputBtn.style.display = "none";
+      }
+
+      // ============================================================
+      // BOTTONE PREMIUM
+      // ============================================================
+      document.getElementById('btn-premium-code').addEventListener('click', () => {
+        chatBox.classList.add('active');
+        appendChatMessage(
+          'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"',
+          'castellana'
+        );
+      });
+
+      document.getElementById('btn-buy-premium').addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Il pagamento sarà disponibile a breve. Torna presto!');
+      });
+  </script>
+  <footer class="footer-copyright" style="text-align: center; padding: 30px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem;">
+    <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
+    <p style="font-size: 0.8rem; margin-top: 8px;">
+        Le conversazioni con la Castellana possono essere registrate in forma anonima
+        per migliorare la qualità del servizio.
+        <a href="privacy.html" style="color: #D4AF6A;">Maggiori informazioni</a>
+    </p>
+</footer>
+</body>
+</html>
