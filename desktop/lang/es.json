@@ -103,6 +103,21 @@
       "group_preghiere": "Las Oraciones",
       "preghiera_title": "Oración de Buenas Noches",
       "preghiera_who": "Nana protectora"
+    },
+    "about": {
+      "category": "El Proyecto",
+      "title": "La Visión de Amunì",
+      "mission": "Amunì nace del deseo de reconectar el presente con las raíces. No es un simple sitio turístico: es un ecosistema digital que cuenta, acompaña y da vida al patrimonio de Caccamo — voz tras voz, monumento tras monumento.",
+      "service_details": "La Castellana es el corazón palpitante de este proyecto: una audioguía inteligente que habla 5 idiomas y te acompaña ante cada monumento, contándote historias verificadas que ninguna placa podría contener. Con el servicio Premium, su voz se abre aún más: rutas inéditas, la logística del territorio, las joyas escondidas de los alrededores (Pietra Piatta, Vetrana, el Ombelico di Venere), creando un puente natural entre Caccamo y los pueblos vecinos.",
+      "insider_value": "Cada leyenda, cada canto en dialecto, cada piedra de este pueblo tiene ahora una voz cuidada que la cuenta, en un lenguaje natural y fluido. La Castellana no recita un guion rígido, ni inventa: custodia solo verdades del territorio, transmitidas con el cuidado de quien las conoce de verdad."
+    },
+    "chi_siamo": {
+      "category": "Nuestra Historia",
+      "title": "Quiénes Somos: Una Historia de Visión",
+      "founder_bio": "El proyecto Amunì nace de mi doble naturaleza: la precisión analítica de una investigadora química y la pasión, cultivada de forma autodidacta, por la programación. No tenía ningún conocimiento informático previo: aprendí probando, un intento tras otro, impulsada por el deseo de contar como se merece un territorio que sentía olvidado desde hacía demasiados años.",
+      "philosophy": "De ese deseo nació la Castellana: no un simple chatbot, sino una guía cuidada que acompaña al visitante — una audioguía viva que devuelve la voz a las piedras, a las leyendas y a los cantos en dialecto de Caccamo, en cinco idiomas distintos. No considero este proyecto un punto de llegada, sino un laboratorio vivo: la cultura popular es un patrimonio dinámico, y creo que valorizar el territorio significa también custodiar las voces de quienes lo habitan, transmitiendo tradiciones, canciones infantiles y cantos a las generaciones futuras.",
+      "freemium_model": "Los contenidos históricos y monumentales son un bien público, accesible para todos. La experiencia 'Castellana Premium' está reservada para quien desea un viaje más profundo: un acceso exclusivo al análisis técnico del patrimonio, a las historias estratificadas y a un acompañamiento personalizado para un descubrimiento auténtico y atemporal.",
+      "events": "Cada imagen, cada animación, cada línea de código de Amunì — y cada palabra pronunciada por la Castellana — ha sido pensada y realizada desde mi smartphone, entre mi trabajo de investigación y mis dos niñas. Si has llegado hasta aquí, tú también formas parte de este pequeño laboratorio."
     }
   },
   "citizen": {
@@ -129,7 +144,7 @@
     "open_webapp": "Ir a la WebApp",
     "scan_qr": "Escanea el código QR",
     "premium_title": "Desbloquea la Castellana Premium",
-    "premium_text": "Por 3,90 €, conversa en tiempo real con la Castellana durante 4 días: la guía multilingüe que conoce cada secreto de Caccamo, desde el transporte hasta las joyas escondidas del territorio.",
+    "premium_text": "Por 3,90 €, accede a la Castellana durante 4 días: la guía multilingüe que conoce cada secreto de Caccamo, desde el transporte hasta las joyas escondidas del territorio.",
     "premium_howto": "Recibe el código por correo electrónico y escríbelo en el chat: <strong>codice</strong> seguido de tu código alfanumérico.",
     "premium_cta": "Comprar acceso — 3,90 €"
   }
