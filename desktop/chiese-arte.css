@@ -33,9 +33,7 @@
 }
 
 /* ============================================================
-   2. BODY — sfondo piatto pietra calcarea con vignatura,
-   era immagine sfondocaccamo.jpeg a piena pagina con overlay
-   scuro: rimossa per coerenza con castello.css/chiese.css
+   2. BODY
    ============================================================ */
 html, body {
   width: 100%;
@@ -59,10 +57,7 @@ body::before {
 }
 
 /* ============================================================
-   3. DASHBOARD — identica a castello.css/chiese.css.
-   Il bug era proprio qui: un override inline nell'HTML forzava
-   flex-direction riga anche su mobile, spezzando il layout.
-   Ora la colonna mobile-first vive solo qui, senza duplicati.
+   3. DASHBOARD
    ============================================================ */
 .dashboard {
   position: fixed;
@@ -110,9 +105,6 @@ body::before {
   transition: all 0.3s ease;
 }
 
-/* rimossa l'animazione "luccichio in scorrimento" (::before) e il
-   transform:scale sull'hover — coerente col resto del sito, che
-   non usa più effetti da insegna al neon */
 .nav-desktop a:hover {
   background: rgba(193, 98, 45, 0.25);
   border-color: var(--terracotta);
@@ -151,8 +143,6 @@ body::before {
   background: rgba(193, 98, 45, 0.25);
 }
 
-/* Fix allineamento header mobile — stesso bug e stessa soluzione
-   già applicata in castello.css e chiese.css */
 @media screen and (max-width: 899px) {
   .header-right-actions {
       flex-wrap: wrap;
@@ -230,10 +220,7 @@ body::before {
 }
 
 /* ============================================================
-   5. IL SENTIERO — card alternate sinistra/destra lungo una linea
-   verticale, ordine geografico reale (dai Cappuccini in cima fino
-   a San Giorgio in basso). Colonna singola: non compete mai con
-   lo spazio del widget fisso della Castellana.
+   5. IL SENTIERO
    ============================================================ */
 .path-wrap {
   position: relative;
@@ -299,14 +286,6 @@ body::before {
 .card.side-left  { grid-column: 1; justify-self: end; flex-direction: row-reverse; text-align: right; }
 .card.side-right { grid-column: 3; justify-self: start; text-align: left; }
 
-/* ============================================================
-   Cornice immagine — ingrandita rispetto alla versione precedente
-   (108px -> 130px su mobile, 145px -> 190px su desktop, vedi media
-   query più sotto). L'immagine riempiva già la cornice bordo a
-   bordo (object-fit: cover, nessun padding); il problema di "troppo
-   spazio vuoto" segnalato era quindi dovuto alla cornice stessa
-   troppo piccola, non a un padding nascosto da togliere.
-   ============================================================ */
 .card-frame {
   position: relative;
   flex: 0 0 130px;
@@ -317,9 +296,6 @@ body::before {
   border: 1px solid var(--gold);
 }
 
-/* badge "lente d'ingrandimento" — segnale permanente e discreto
-   che la card è cliccabile/ingrandibile, senza ricorrere a glow.
-   Ingrandito leggermente in proporzione alla cornice più grande. */
 .card-frame::after {
   content: "🔍";
   position: absolute;
@@ -346,8 +322,6 @@ body::before {
   animation: gentleBreathe 3.5s ease-in-out infinite;
 }
 
-/* sull'hover/tap il respiro si ferma e l'immagine zooma leggermente di più,
-   così il feedback di interazione resta distinto dall'animazione di richiamo */
 .card:hover .card-frame img {
   animation-play-state: paused;
   transform: scale(1.08);
@@ -386,8 +360,6 @@ body::before {
   font-weight: 600;
 }
 
-/* sotto i 900px la doppia colonna alternata non ha più senso:
-   sentiero a sinistra, card sempre a destra, in fila unica */
 @media screen and (max-width: 899px) {
   .path-line { left: 22px; transform: none; }
 
@@ -509,7 +481,7 @@ body::before {
   background: #000;
   box-shadow: 0 4px 15px var(--shadow-strong);
   cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.25s ease;
+  transition: transform 0.3s ease;
   position: relative;
 }
 
@@ -537,18 +509,20 @@ body::before {
   pointer-events: none;
 }
 
+/* Chat: dimensioni base (mobile). Su desktop (min-width:900px)
+   vengono ingrandite più sotto — prima mancava del tutto un
+   ingrandimento per schermi grandi, la finestra restava sempre
+   piccola (320x350) anche su desktop. */
 .chat-desktop {
   position: fixed;
-  bottom: 138px;
-  right: 2.2rem;
-  width: min(92vw, 560px);
-  height: min(78vh, 820px);
-  max-height: 78vh;
-  background: rgba(15, 25, 34, 0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  bottom: 150px;
+  right: 3%;
+  width: 320px;
+  height: 350px;
+  background: rgba(15, 25, 34, 0.96);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--gold);
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 16px;
   display: none;
   z-index: 99999;
@@ -567,16 +541,16 @@ body::before {
   gap: 8px;
   color: var(--cream-text);
   background: var(--sea-ink);
-  margin: -16px -16px 12px -16px;
+  margin: -16px -16px 15px -16px;
   padding: 12px 15px;
-  border-radius: 6px 6px 0 0;
+  border-radius: 4px 4px 0 0;
   border-bottom: 1px solid var(--gold);
 }
 
 .chat-header span {
   flex-grow: 1;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .avatar-status-dot {
@@ -595,26 +569,18 @@ body::before {
   color: var(--cream-text);
   cursor: pointer;
   font-size: 1.1rem;
-  width: 34px;
-  height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .close-chat-btn:hover {
   color: var(--gold-light);
-  background: rgba(255, 255, 255, 0.08);
 }
 
 .premium-status-bar {
   font-size: 0.72rem;
   font-weight: 600;
   text-align: center;
-  padding: 6px 8px;
-  margin: -2px 0 10px 0;
+  padding: 4px 8px;
+  margin: -6px 0 10px 0;
   border-radius: 2px;
   letter-spacing: 0.2px;
 }
@@ -634,30 +600,19 @@ body::before {
 .chat-messages {
   flex-grow: 1;
   overflow-y: auto;
-  margin-bottom: 12px;
-  padding-right: 4px;
-  scroll-behavior: smooth;
+  margin-bottom: 10px;
 }
 
 .chat-messages .message {
   color: var(--ink);
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-size: 0.9rem;
+  line-height: 1.5;
   background: #fff;
-  padding: 10px 12px;
+  padding: 8px 12px;
   border-radius: 2px;
   margin-bottom: 8px;
-  max-width: 92%;
+  max-width: 90%;
   border-left: 2px solid var(--gold);
-}
-
-.chat-messages .message.user-msg {
-  background: var(--sea);
-  color: #fff;
-  margin-left: auto;
-  border-left: none;
-  border-right: 2px solid var(--gold);
-  text-align: right;
 }
 
 .chat-link-btn {
@@ -722,7 +677,7 @@ body::before {
   border-radius: 999px;
   font-size: 0.78rem;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, opacity 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .topic-btn:hover {
@@ -750,37 +705,196 @@ body::before {
   padding-left: 10px;
 }
 
-.topic-btn.locked-topic {
-  opacity: 0.95;
-}
-
-.topic-btn.locked-topic::after {
-  content: " 🔒";
-}
-
-.topic-premium-note {
-  margin-top: 10px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(184, 135, 59, 0.12);
-  color: #f3e5c3;
-  font-size: 0.86rem;
-  line-height: 1.45;
-  border: 1px solid rgba(184, 135, 59, 0.28);
-}
-
 .chat-input-row {
   display: flex;
-  align-items: center;
   gap: 10px;
 }
 
 .chat-input-row input {
   flex-grow: 1;
-  min-width: 0;
   background: #fff;
   border: 1px solid rgba(184, 135, 59, 0.5);
   padding: 10px 14px;
   border-radius: 2px;
   color: var(--ink);
- 
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.chat-input-row input:focus {
+  border-color: var(--gold);
+}
+
+.mic-btn {
+  background: var(--wine);
+  border: none;
+  border-radius: 2px;
+  padding: 0 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.mic-btn:hover {
+  background: #521720;
+}
+
+/* ============================================================
+   8. OTTIMIZZAZIONE DESKTOP (DA 900PX IN SU)
+   ============================================================ */
+@media screen and (min-width: 900px) {
+
+  .dashboard {
+    height: 75px;
+    flex-direction: row;
+    padding: 0 40px;
+    gap: 0;
+  }
+
+  .dashboard .logo-title {
+    font-size: 1.55rem;
+  }
+
+  .nav-desktop {
+    gap: 22px;
+  }
+
+  .nav-desktop a {
+    font-size: 1rem;
+    padding: 10px 18px;
+  }
+
+  .hero {
+    margin-top: 110px;
+  }
+
+  .hero-text h1 {
+    font-size: 3.2rem;
+  }
+
+  .poesia-container {
+    background: transparent;
+    border: 1px solid transparent;
+    box-shadow: none;
+    padding: 24px 40px;
+  }
+
+  .poesia-container:hover {
+    background: rgba(220, 207, 175, 0.5);
+    border: 1px solid var(--terracotta);
+    box-shadow: 0 8px 24px var(--shadow-soft);
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+  }
+
+  .poesia-intro {
+    font-size: 1.4rem;
+  }
+
+  .poesia-outro {
+    font-size: 1.3rem;
+  }
+
+  .path-wrap {
+    max-width: 860px;
+  }
+
+  .card-frame {
+    flex: 0 0 190px;
+    width: 190px;
+    height: 190px;
+  }
+
+  .card-frame::after {
+    width: 32px;
+    height: 32px;
+    font-size: 15px;
+  }
+
+  .card-text {
+    max-width: 300px;
+  }
+
+  .castellana-widget-area {
+    right: 2rem;
+    bottom: 2rem;
+    gap: 8px;
+  }
+
+  .castellana-video-wrapper {
+    width: 110px;
+    height: 110px;
+  }
+
+  .modal-img {
+    max-height: 75vh;
+  }
+
+  /* Chat più grande su desktop: prima usava sempre le stesse
+     dimensioni ridotte pensate per mobile (320x350). Altezza e
+     posizione ("bottom") leggermente ridotte rispetto al primo
+     tentativo, perché risultava troppo in alto sullo schermo. */
+  .chat-desktop {
+    width: 640px;
+    max-width: 85vw;
+    height: 640px;
+    max-height: 74vh;
+    bottom: 90px;
+  }
+}
+
+/* SCENARIO INTERMEDIO TABLET */
+@media (min-width: 601px) and (max-width: 899px) {
+  .hero {
+    margin-top: 150px;
+  }
+  .castellana-video-wrapper {
+    width: 95px;
+    height: 95px;
+  }
+}
+
+/* Chat più stretta sui piccoli schermi (stessa soglia di cittadino.html) */
+@media screen and (max-width: 950px) {
+  .chat-desktop {
+    bottom: 110px;
+    left: 10px;
+    right: 10px;
+    width: calc(100% - 20px);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gentleBreathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.send-btn {
+    background: var(--sea);
+    border: none;
+    border-radius: 2px;
+    padding: 0 12px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.send-btn:hover {
+    background: var(--terracotta);
+}
+
+.chat-messages .message.user-msg {
+    background: var(--sea);
+    color: #fff;
+    margin-left: auto;
+    border-left: none;
+    border-right: 2px solid var(--gold);
+    text-align: right;
+}
