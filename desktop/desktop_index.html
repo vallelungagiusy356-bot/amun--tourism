@@ -838,6 +838,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
 
             openBtn.addEventListener("click", () => {
                 chat.classList.add("active");
+                openBtn.classList.add("avatar-hidden");
                 if (!hasShownWelcome) {
                     renderWelcome();
                 }
@@ -845,6 +846,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
 
             closeBtn.addEventListener("click", () => {
                 chat.classList.remove("active");
+                openBtn.classList.remove("avatar-hidden");
                 castellanaZitta();
             });
 
