@@ -170,6 +170,12 @@ body::before {
     line-height: 1.15;
 }
 
+/* Divisorio dorato con piccolo rombo centrale disegnato in puro CSS.
+   Prima usava il carattere Unicode "❧" (fiorellino), non supportato
+   dal font di sistema su molti telefoni Android: al suo posto
+   comparivano dei puntini/quadratini vuoti, che sembravano un errore
+   di battitura invece di un abbellimento. Un rombo disegnato via CSS
+   è invece garantito identico su ogni dispositivo. */
 .gold-divider {
     border: none;
     height: 1px;
@@ -180,15 +186,14 @@ body::before {
 }
 
 .gold-divider::before {
-    content: "❧";
+    content: "";
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--stone);
-    color: var(--gold);
-    font-size: 13px;
-    padding: 0 8px;
+    width: 7px;
+    height: 7px;
+    background: var(--gold);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .content-wrapper p {
