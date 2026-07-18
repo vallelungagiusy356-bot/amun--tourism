@@ -32,13 +32,6 @@ html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--cream-text);
     overflow-x: hidden;
-    /* Sfondo agganciato direttamente al body invece che a un div
-       "position: fixed" separato: prima, in modalità desktop su
-       telefono, quel div si "staccava" dallo schermo e finiva
-       renderizzato come un blocco in più sotto il footer (la barra
-       nera con il copyright veniva tagliata a metà). Il background
-       del body invece è sempre alto esattamente quanto la pagina,
-       non può mai creare spazio fantasma in più. */
     background-image:
         linear-gradient(rgba(10, 18, 26, 0.35), rgba(10, 18, 26, 0.35)),
         url('img/sfondocaccamo.jpeg');
@@ -149,9 +142,6 @@ html, body {
     padding: 125px 48px 0 48px;
     display: flex;
     justify-content: center;
-    /* Velo scuro leggero solo su questa fascia in alto, per rendere
-       il testo leggibile senza chiuderlo dentro una card come le
-       quadrant card sotto — resta "sulla foto", non in un riquadro. */
     background: linear-gradient(180deg, rgba(10, 18, 26, 0.55) 0%, rgba(10, 18, 26, 0.15) 100%);
 }
 
@@ -191,15 +181,14 @@ html, body {
 }
 
 .gold-divider::before {
-    content: "❧";
+    content: "";
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--sea-ink);
-    color: var(--gold);
-    font-size: 13px;
-    padding: 0 8px;
+    width: 7px;
+    height: 7px;
+    background: var(--gold);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .text-paragraph {
@@ -315,13 +304,20 @@ html, body {
 
 /* ==========================================================================
    7. CHAT — ACCANTO ALLA CASTELLANA
+   Dimensioni raddoppiate (360x410 -> 720x820) e posizione alzata
+   (bottom: 24px -> 200px) perché prima la finestra, aprendosi,
+   copriva/tagliava la testa dell'avatar della Castellana: ora la
+   chat si apre più in alto, lasciando l'avatar visibile sotto di sé.
+   max-width/max-height di sicurezza per schermi più piccoli.
    ========================================================================== */
 .chat-desktop {
     position: fixed;
     right: 190px;
-    bottom: 24px;
-    width: 360px;
-    height: 410px;
+    bottom: 200px;
+    width: 720px;
+    max-width: 90vw;
+    height: 820px;
+    max-height: 78vh;
     background: rgba(15, 25, 34, 0.97);
     backdrop-filter: blur(10px);
     border: 1px solid var(--gold);
@@ -489,9 +485,6 @@ html, body {
 
 /* ==========================================================================
    7bis. MENU A PULSANTI DELLA CHAT (argomenti / gruppi)
-   Queste regole mancavano: senza di esse il browser disegna i
-   pulsanti con l'aspetto grezzo di sistema (grigio, bordo nero),
-   invece dello stile oro/blu marino coerente con il resto del sito.
    ========================================================================== */
 .topic-menu {
     display: flex;
@@ -520,12 +513,6 @@ html, body {
     border-color: var(--gold-light);
 }
 
-/* Messaggi dell'utente, distinti da quelli della Castellana.
-   Prima usava uno sfondo oro trasparente (rgba 18%) sovrapposto allo
-   sfondo blu scuro della chat: il risultato era un marrone scurissimo
-   con testo blu-inchiostro sopra, quasi invisibile. Ora usa uno sfondo
-   pieno (blu marino) con testo bianco, leggibile sempre, come nelle
-   altre pagine del sito. */
 .chat-messages .message.user-msg {
     background: var(--sea);
     color: #fff;
@@ -589,8 +576,11 @@ html, body {
 
     .chat-desktop {
         right: 165px;
-        width: 330px;
-        height: 390px;
+        bottom: 180px;
+        width: 560px;
+        max-width: 92vw;
+        height: 680px;
+        max-height: 76vh;
     }
 
     .castellana-video-wrapper {
@@ -599,7 +589,9 @@ html, body {
 }
 
 /* ==========================================================================
-   10. MOBILE — preservato
+   10. MOBILE
+   Chat alzata (bottom: 110px -> 190px) per non coprire più la testa
+   dell'avatar, che su mobile è più piccolo ma comunque presente sotto.
    ========================================================================== */
 @media screen and (max-width: 900px) {
     .dashboard {
@@ -632,12 +624,6 @@ html, body {
         margin: 0 auto 20px auto;
     }
 
-    .gold-divider::before {
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 0 8px;
-    }
-
     .citizen-centered-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -667,11 +653,12 @@ html, body {
     }
 
     .chat-desktop {
-        bottom: 110px;
+        bottom: 190px;
         left: 10px;
         right: 10px;
         width: auto;
         height: 360px;
+        max-height: 65vh;
     }
 
     .chat-desktop::after {
