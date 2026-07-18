@@ -552,6 +552,32 @@ body::before {
   font-size: 1rem;
 }
 
+.mic-btn {
+  border: none;
+  background: var(--wine);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.mic-btn:hover {
+  background: #521720;
+}
+
+.mic-btn.listening {
+  background: var(--terracotta);
+  animation: mic-pulse 1s ease-in-out infinite;
+}
+
+@keyframes mic-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
 /* ============================================================
    ANIMAZIONE
    ============================================================ */
@@ -588,6 +614,22 @@ body::before {
   .castellana-video-wrapper {
     width: 95px;
     height: 95px;
+  }
+}
+
+/* ============================================================
+   DESKTOP (da 900px in su) — chat ingrandita.
+   Prima mancava del tutto un ingrandimento per schermi grandi:
+   la finestra restava sempre 360x410 anche su desktop. Stesse
+   misure già approvate sulle altre pagine del sito.
+   ============================================================ */
+@media screen and (min-width: 900px) {
+  .chat-desktop {
+    width: 640px;
+    max-width: 85vw;
+    height: 640px;
+    max-height: 74vh;
+    bottom: 90px;
   }
 }
 
@@ -1217,6 +1259,32 @@ body::before {
   font-size: 1rem;
 }
 
+.mic-btn {
+  border: none;
+  background: var(--wine);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.mic-btn:hover {
+  background: #521720;
+}
+
+.mic-btn.listening {
+  background: var(--terracotta);
+  animation: mic-pulse 1s ease-in-out infinite;
+}
+
+@keyframes mic-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
 /* ============================================================
    MENU A PULSANTI DELLA CHAT (argomenti / gruppi)
    Queste regole mancavano: senza di esse il browser disegna i
@@ -1325,6 +1393,22 @@ body::before {
   .castellana-video-wrapper {
     width: 95px;
     height: 95px;
+  }
+}
+
+/* ============================================================
+   DESKTOP (da 900px in su) — chat ingrandita.
+   Prima mancava del tutto un ingrandimento per schermi grandi:
+   la finestra restava sempre 360x410 anche su desktop. Stesse
+   misure già approvate sulle altre pagine del sito.
+   ============================================================ */
+@media screen and (min-width: 900px) {
+  .chat-desktop {
+    width: 640px;
+    max-width: 85vw;
+    height: 640px;
+    max-height: 74vh;
+    bottom: 90px;
   }
 }
 
