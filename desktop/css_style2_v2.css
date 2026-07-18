@@ -753,16 +753,18 @@ body {
 /* Solo sulla home: finestra più grande e più a destra su desktop
    (nelle altre pagine resta compatta, qui la Castellana è il fulcro
    della hero e la chat merita più spazio).
-   Dimensioni raddoppiate rispetto a prima (440x640 -> 880x1280,
-   con max-height 80vh a fare comunque da limite naturale sull'altezza,
-   e max-width 90vw per non far uscire la finestra dal bordo destro
-   sugli schermi desktop più piccoli, tipo i laptop 13-14''). */
+   Larghezza raddoppiata (440 -> 880) per più comodità di lettura.
+   L'ALTEZZA invece è rimasta quella originale (640px): qui l'avatar
+   della Castellana non è "fisso" come nelle altre pagine, sta dentro
+   la sezione hero in alto — raddoppiando anche l'altezza la chat
+   arrivava a coprirlo interamente. Con l'altezza originale la chat
+   resta comoda ma non sale abbastanza da sovrapporsi all'avatar. */
 @media screen and (min-width: 951px) {
     .chat-desktop {
         width: 880px;
         max-width: 90vw;
-        height: 1280px;
-        max-height: 80vh;
+        height: 640px;
+        max-height: 70vh;
         right: 60px;
         bottom: 110px;
     }
