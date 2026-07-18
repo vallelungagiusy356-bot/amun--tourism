@@ -398,6 +398,7 @@ window.silktideConsentManager.init({
         </div>
         <div class="chat-input-row">
             <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+            <button id="mic-btn" class="mic-btn" type="button" title="Parla con la Castellana" aria-label="Parla con la Castellana">🎤</button>
             <button class="send-btn" aria-label="Invia">➤</button>
         </div>
     </div>
@@ -406,9 +407,98 @@ window.silktideConsentManager.init({
         const chat = document.getElementById("chat-desktop");
         const openBtn = document.getElementById("chat-open-btn");
         const closeBtn = document.getElementById("close-chat");
+
+        // ============================================================
+        // MENU DI ANTEPRIMA — stesso principio già usato nelle altre
+        // pagine (castello.html, chiese-arte.html, cittadino.html,
+        // cibo_eventi.html): anche senza Premium attivo, il turista
+        // vede subito le voci disponibili, invece del solo messaggio
+        // di benvenuto senza indicazioni concrete. Se poi il codice
+        // Premium è valido, loadTopicMenu() sovrascrive con il menu
+        // reale del backend, esattamente come prima.
+        // ============================================================
+        const CANTI_TOPICS = {
+            it: [
+                { group: "La Leggenda di Suor Felicia", items: [
+                    { topic: "cultura.leggenda_felicia.origine", label: "📜 Le origini della leggenda" },
+                    { topic: "cultura.leggenda_felicia.sfida", label: "🌰 La sfida del melograno" }
+                ]},
+                { group: "Canti e Filastrocche", items: [
+                    { topic: "cultura.filastrocche.dettagli", label: "🎶 Da dove vengono" },
+                    { topic: "cultura.filastrocche.significato", label: "📖 Il loro significato" }
+                ]},
+                { group: "Preghiere e Tradizioni", items: [
+                    { topic: "cultura.preghiere.dettagli", label: "🙏 Le preghiere del borgo" },
+                    { topic: "cultura.preghiere.origine", label: "🕯️ Le loro origini" }
+                ]}
+            ],
+            en: [
+                { group: "The Legend of Sister Felicia", items: [
+                    { topic: "cultura.leggenda_felicia.origine", label: "📜 Origins of the legend" },
+                    { topic: "cultura.leggenda_felicia.sfida", label: "🌰 The pomegranate challenge" }
+                ]},
+                { group: "Songs & Nursery Rhymes", items: [
+                    { topic: "cultura.filastrocche.dettagli", label: "🎶 Where they come from" },
+                    { topic: "cultura.filastrocche.significato", label: "📖 Their meaning" }
+                ]},
+                { group: "Prayers & Traditions", items: [
+                    { topic: "cultura.preghiere.dettagli", label: "🙏 The village's prayers" },
+                    { topic: "cultura.preghiere.origine", label: "🕯️ Their origins" }
+                ]}
+            ],
+            fr: [
+                { group: "La Légende de Sœur Felicia", items: [
+                    { topic: "cultura.leggenda_felicia.origine", label: "📜 Les origines de la légende" },
+                    { topic: "cultura.leggenda_felicia.sfida", label: "🌰 Le défi de la grenade" }
+                ]},
+                { group: "Chants et Comptines", items: [
+                    { topic: "cultura.filastrocche.dettagli", label: "🎶 D'où elles viennent" },
+                    { topic: "cultura.filastrocche.significato", label: "📖 Leur signification" }
+                ]},
+                { group: "Prières et Traditions", items: [
+                    { topic: "cultura.preghiere.dettagli", label: "🙏 Les prières du village" },
+                    { topic: "cultura.preghiere.origine", label: "🕯️ Leurs origines" }
+                ]}
+            ],
+            es: [
+                { group: "La Leyenda de Sor Felicia", items: [
+                    { topic: "cultura.leggenda_felicia.origine", label: "📜 Los orígenes de la leyenda" },
+                    { topic: "cultura.leggenda_felicia.sfida", label: "🌰 El desafío de la granada" }
+                ]},
+                { group: "Cantos y Canciones Infantiles", items: [
+                    { topic: "cultura.filastrocche.dettagli", label: "🎶 De dónde vienen" },
+                    { topic: "cultura.filastrocche.significato", label: "📖 Su significado" }
+                ]},
+                { group: "Oraciones y Tradiciones", items: [
+                    { topic: "cultura.preghiere.dettagli", label: "🙏 Las oraciones del pueblo" },
+                    { topic: "cultura.preghiere.origine", label: "🕯️ Sus orígenes" }
+                ]}
+            ],
+            de: [
+                { group: "Die Legende von Schwester Felicia", items: [
+                    { topic: "cultura.leggenda_felicia.origine", label: "📜 Die Ursprünge der Legende" },
+                    { topic: "cultura.leggenda_felicia.sfida", label: "🌰 Die Granatapfel-Herausforderung" }
+                ]},
+                { group: "Lieder und Kinderreime", items: [
+                    { topic: "cultura.filastrocche.dettagli", label: "🎶 Woher sie kommen" },
+                    { topic: "cultura.filastrocche.significato", label: "📖 Ihre Bedeutung" }
+                ]},
+                { group: "Gebete und Traditionen", items: [
+                    { topic: "cultura.preghiere.dettagli", label: "🙏 Die Gebete des Dorfes" },
+                    { topic: "cultura.preghiere.origine", label: "🕯️ Ihre Ursprünge" }
+                ]}
+            ]
+        };
+
+        let hasShownMenu = false;
+
         openBtn.addEventListener("click", () => {
             chat.classList.add("active");
             updatePremiumStatusDisplay();
+            if (!hasShownMenu) {
+                renderTopicMenu(CANTI_TOPICS[currentLang] || CANTI_TOPICS.it);
+                hasShownMenu = true;
+            }
             loadTopicMenu();
         });
         closeBtn.addEventListener("click", () => {
@@ -422,6 +512,10 @@ window.silktideConsentManager.init({
             el.addEventListener("click", () => {
                 chat.classList.add("active");
                 updatePremiumStatusDisplay();
+                if (!hasShownMenu) {
+                    renderTopicMenu(CANTI_TOPICS[currentLang] || CANTI_TOPICS.it);
+                    hasShownMenu = true;
+                }
                 loadTopicMenu();
             });
         });
@@ -471,7 +565,10 @@ window.silktideConsentManager.init({
                 menuLoadedForCode = null;
                 exploredGroups.clear();
                 usedTopics.clear();
-                if (chat.classList.contains('active')) loadTopicMenu();
+                if (chat.classList.contains('active')) {
+                    renderTopicMenu(CANTI_TOPICS[currentLang] || CANTI_TOPICS.it);
+                    loadTopicMenu();
+                }
             });
         });
 
@@ -830,27 +927,58 @@ window.silktideConsentManager.init({
 
         // ============================================================
         // TTS AVANZATO — La Castellana parla
+        //
+        // Due correzioni rispetto a prima:
+        //
+        // 1. VOCE SEMPRE FEMMINILE, IN OGNI LINGUA: prima la voce
+        //    veniva scelta filtrando SOLO voci italiane, sempre,
+        //    indipendentemente dalla lingua selezionata. Ora si sceglie
+        //    di nuovo ogni volta, nella lingua giusta.
+        //
+        // 2. VELOCITÀ DI AVVIO: chiamare cancel() e speak() nello
+        //    stesso istante è un bug noto dei browser (Chrome/Edge).
+        //    Ora c'è una piccola pausa tra i due comandi, e le voci
+        //    vengono "svegliate" subito al caricamento della pagina.
         // ============================================================
         const VOICE_PREF_KEY = "amuni_voice_enabled";
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
         const voiceToggleBtn = document.getElementById("voice-toggle-btn");
-        let voceCastellana = null;
 
-        // Trova la migliore voce italiana disponibile nel browser
-        function trovaVoceCastellana() {
-            const voci = window.speechSynthesis.getVoices();
-            const preferenze = ['Google italiano', 'Microsoft Elsa', 'Samantha', 'Alice', 'it-IT'];
-            for (let nome of preferenze) {
-                const voce = voci.find(v => v.name.includes(nome) || v.lang === 'it-IT');
-                if (voce) return voce;
-            }
-            return voci.find(v => v.lang && v.lang.startsWith('it')) || voci[0];
+        let vociDisponibili = [];
+        function aggiornaVociDisponibili() {
+            vociDisponibili = window.speechSynthesis.getVoices();
+        }
+        if ("speechSynthesis" in window) {
+            aggiornaVociDisponibili();
+            window.speechSynthesis.onvoiceschanged = aggiornaVociDisponibili;
         }
 
-        // Le voci si caricano in modo asincrono
-        window.speechSynthesis.onvoiceschanged = function() {
-            voceCastellana = trovaVoceCastellana();
+        const NOMI_VOCE_FEMMINILE = {
+            "it-IT": ["Google italiano", "Elsa", "Alice", "Federica", "Silvia", "Paola"],
+            "en-US": ["Google US English", "Samantha", "Zira", "Aria", "Jenny"],
+            "fr-FR": ["Google français", "Amelie", "Julie", "Denise", "Hortense"],
+            "de-DE": ["Google Deutsch", "Anna", "Katja", "Petra", "Helena"],
+            "es-ES": ["Google español", "Monica", "Helena", "Elvira", "Paloma"]
         };
+        const INDIZI_VOCE_MASCHILE = /male|david|mark|daniel|thomas|diego|paolo|hans|marco|luca|carlos|antonio|cosimo/i;
+
+        function trovaVoceCastellana(langCode) {
+            if (!vociDisponibili.length) vociDisponibili = window.speechSynthesis.getVoices();
+
+            const nomiPreferiti = NOMI_VOCE_FEMMINILE[langCode] || [];
+            for (const nome of nomiPreferiti) {
+                const voce = vociDisponibili.find(v => v.name.includes(nome));
+                if (voce) return voce;
+            }
+
+            const linguaBase = langCode.split('-')[0];
+            const stessaLingua = vociDisponibili.filter(v =>
+                v.lang === langCode || (v.lang || '').startsWith(linguaBase)
+            );
+            const nonMaschile = stessaLingua.find(v => !INDIZI_VOCE_MASCHILE.test(v.name));
+
+            return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
+        }
 
         function updateVoiceToggleIcon() {
             if (voiceToggleBtn) voiceToggleBtn.textContent = voiceEnabled ? "🔊" : "🔇";
@@ -878,15 +1006,16 @@ window.silktideConsentManager.init({
         function speakText(text) {
             if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
             window.speechSynthesis.cancel();
-
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.voice = voceCastellana;
-            utterance.lang = ttsLangCode(currentLang);
-            utterance.rate = 0.82;
-            utterance.pitch = 0.95;
-            utterance.volume = 1.0;
-
-            window.speechSynthesis.speak(utterance);
+            setTimeout(() => {
+                const langCode = ttsLangCode(currentLang);
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = trovaVoceCastellana(langCode);
+                utterance.lang = langCode;
+                utterance.rate = 0.82;
+                utterance.pitch = 0.95;
+                utterance.volume = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }, 60);
         }
 
         // Ferma la voce della Castellana
@@ -894,6 +1023,59 @@ window.silktideConsentManager.init({
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
             const chatAudio = document.getElementById("chat-real-audio");
             if (chatAudio) chatAudio.pause();
+        }
+
+        // ============================================================
+        // MICROFONO — il turista può parlare invece di scrivere
+        // ============================================================
+        const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const micBtn = document.getElementById("mic-btn");
+        let recognition = null;
+        let isListening = false;
+
+        function sttLangCode(lang) {
+            const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+            return map[lang] || "it-IT";
+        }
+
+        if (SpeechRecognitionAPI && micBtn) {
+            recognition = new SpeechRecognitionAPI();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = () => {
+                isListening = true;
+                micBtn.classList.add("listening");
+            };
+            recognition.onend = () => {
+                isListening = false;
+                micBtn.classList.remove("listening");
+            };
+            recognition.onerror = () => {
+                isListening = false;
+                micBtn.classList.remove("listening");
+            };
+            recognition.onresult = (event) => {
+                const testoRiconosciuto = event.results[0][0].transcript;
+                sendChatMessage(testoRiconosciuto);
+            };
+
+            micBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (isListening) {
+                    recognition.stop();
+                    return;
+                }
+                recognition.lang = sttLangCode(currentLang);
+                castellanaZitta();
+                try {
+                    recognition.start();
+                } catch (err) {
+                    console.error("Errore riconoscimento vocale:", err);
+                }
+            });
+        } else if (micBtn) {
+            micBtn.style.display = "none";
         }
 
         function getPageSlug() {
