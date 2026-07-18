@@ -1,667 +1,691 @@
-/* ==========================================================================
-   CITTADINO DEL BORGO — VERSIONE DESKTOP OTTIMIZZATA
-   ========================================================================= */
-
-:root {
-    --sky: #5B8FAE;
-    --sea: #1B4965;
-    --sea-ink: #14283A;
-    --stone: #EFE6D3;
-    --stone-dim: #DCCFAF;
-    --terracotta: #C1622D;
-    --terracotta-dark: #9C4C22;
-    --gold: #B8873B;
-    --gold-light: #D4AF6A;
-    --wine: #6B1F2A;
-    --ink: #22303B;
-    --cream-text: #F3ECDC;
+/* ============================================================
+   1. RESET + VARIABILI GLOBALI — stessa palette di castello.css/chiese-arte.css
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-/* ==========================================================================
-   1. RESET
-   ========================================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --sky: #5B8FAE;
+  --sea: #1B4965;
+  --sea-ink: #14283A;
+
+  --stone: #EFE6D3;
+  --stone-dim: #DCCFAF;
+
+  --terracotta: #C1622D;
+  --terracotta-dark: #9C4C22;
+
+  --gold: #B8873B;
+  --gold-light: #D4AF6A;
+  --gold-deep: #8C6529;   /* nuovo, derivato dall'oro esistente: solo per la card estiva */
+
+  --wine: #6B1F2A;
+
+  --ink: #22303B;
+  --ink-soft: #465563;
+  --cream-text: #F3ECDC;
+
+  --shadow-strong: rgba(0, 0, 0, 0.35);
+  --shadow-soft: rgba(0, 0, 0, 0.18);
 }
 
 html, body {
-    width: 100%;
-    min-height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--cream-text);
-    overflow-x: hidden;
-    background-image:
-        linear-gradient(rgba(10, 18, 26, 0.35), rgba(10, 18, 26, 0.35)),
-        url('img/sfondocaccamo.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  width: 100%;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--stone) !important;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(60, 40, 20, 0.16) 100%);
 }
 
-/* ==========================================================================
-   2. SFONDO
-   Lo sfondo è applicato direttamente al body (vedi sezione 1) —
-   niente più div/elementi separati da gestire qui.
-   ========================================================================== */
-
-/* ==========================================================================
-   3. HEADER
-   ========================================================================== */
+/* ============================================================
+   2. DASHBOARD — identica alle altre pagine del sito
+   ============================================================ */
 .dashboard {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75px;
-    background: rgba(15, 25, 34, 0.92);
-    border-bottom: 2px solid var(--gold);
-    backdrop-filter: blur(18px) saturate(200%);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    z-index: 9999;
-    box-shadow: 0 2px 0 rgba(212, 175, 106, 0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 25, 34, 0.92);
+  border-bottom: 2px solid var(--gold);
+  backdrop-filter: blur(18px) saturate(200%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  gap: 12px;
+  z-index: 999;
+  box-shadow: 0 2px 0 rgba(212, 175, 106, 0.25);
+  box-sizing: border-box;
 }
 
-.dashboard .logo-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 1.5px;
-    text-shadow: 0 0 6px rgba(184, 135, 59, 0.4);
-    white-space: nowrap;
+.logo-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 1.5px;
 }
 
-.nav-right-group {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.nav-desktop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-.dashboard .home-btn {
-    color: var(--cream-text);
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    padding: 8px 20px;
-    border-radius: 2px;
-    background: rgba(20, 40, 58, 0.5);
-    border: 1px solid rgba(184, 135, 59, 0.6);
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.3s ease;
+.nav-desktop a {
+  color: var(--stone);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+  padding: 6px 16px;
+  border-radius: 2px;
+  background: rgba(239, 230, 211, 0.08);
+  border: 1px solid rgba(239, 230, 211, 0.4);
+  transition: all 0.3s ease;
 }
 
-.dashboard .home-btn:hover {
-    background: rgba(184, 135, 59, 0.15);
-    border-color: var(--gold);
-    color: var(--gold-light);
+.nav-desktop a:hover {
+  background: rgba(193, 98, 45, 0.25);
+  border-color: var(--terracotta);
+  color: #fff;
+}
+
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .lang-switcher {
-    display: flex;
-    gap: 6px;
-    align-items: center;
+  display: flex;
+  gap: 6px;
+  align-items: center;
 }
 
 .lang-switcher button {
-    width: 36px;
-    height: 36px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    border-radius: 2px;
-    background: rgba(20, 40, 58, 0.6);
-    border: 1px solid rgba(184, 135, 59, 0.75);
-    color: var(--gold);
-    cursor: pointer;
-    transition: all 0.25s ease;
+  width: 36px;
+  height: 36px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 2px;
+  background: rgba(239, 230, 211, 0.08);
+  border: 1px solid rgba(239, 230, 211, 0.4);
+  color: var(--stone);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .lang-switcher button:hover {
-    background: rgba(184, 135, 59, 0.15);
+  background: rgba(193, 98, 45, 0.25);
 }
 
-.lang-switcher button.active {
-    border: 2px solid #B8873B !important;
-    background: rgba(184, 135, 59, 0.2) !important;
-    font-weight: bold;
+@media screen and (max-width: 899px) {
+  .header-right-actions {
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 8px;
+  }
+  .nav-desktop {
+      flex: 1 1 100%;
+      justify-content: center;
+  }
+  .lang-switcher {
+      flex: 1 1 100%;
+      justify-content: center;
+  }
 }
 
-/* ==========================================================================
-   4. INTRO
-   ========================================================================== */
-.citizen-frame-layout {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 125px 48px 0 48px;
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(180deg, rgba(10, 18, 26, 0.55) 0%, rgba(10, 18, 26, 0.15) 100%);
+/* ============================================================
+   3. HERO — sigillo araldico, titolo e sottotitolo
+   ============================================================ */
+.hero {
+  margin-top: 190px;
+  padding: 0 20px 60px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  flex-grow: 1;
 }
 
-.citizen-intro-container {
-    max-width: 620px;
-    text-align: center;
+.crest {
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 14px;
 }
 
 .category-tag {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    color: var(--gold-light);
-    font-weight: 700;
-    margin-bottom: 8px;
-    display: inline-block;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.62);
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 700;
+  margin-bottom: 6px;
 }
 
-.main-title {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(2.2rem, 4vw, 3rem);
-    color: var(--cream-text);
-    margin: 0 0 14px 0;
-    font-weight: 600;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.72);
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 5vw, 2.5rem);
+  color: var(--sea);
+  margin-bottom: 10px;
 }
 
-.gold-divider {
-    border: none;
-    height: 1px;
-    background: var(--gold);
-    width: 60px;
-    margin: 0 auto 20px auto;
-    position: relative;
+.subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  margin-bottom: 34px;
 }
 
-.gold-divider::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 7px;
-    height: 7px;
-    background: var(--gold);
-    transform: translate(-50%, -50%) rotate(45deg);
+/* ============================================================
+   4. LE 4 CARD STAGIONALI
+   ============================================================ */
+.season-card {
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--gold);
+  box-shadow: 0 8px 20px var(--shadow-soft);
+  margin-bottom: 22px;
 }
 
-.text-paragraph {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(1.08rem, 2vw, 1.24rem);
-    line-height: 1.7;
-    color: #fff;
-    margin: 0;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.62);
+.season-head {
+  padding: 16px 20px;
+  color: var(--stone);
+  border-bottom: 1px solid rgba(184, 135, 59, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
-/* ==========================================================================
-   5. GRIGLIA CARD
-   ========================================================================== */
-.citizen-centered-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
-    gap: 24px;
-    width: 100%;
-    max-width: 980px;
-    margin: 38px auto 70px auto;
-    padding: 0 40px 200px 40px;
+.season-head .period {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 600;
 }
 
-.quadrant {
-    position: relative;
-    background: rgba(20, 40, 58, 0.68);
-    border: 1px solid rgba(184, 135, 59, 0.62);
-    border-radius: 8px;
-    width: 100%;
-    min-height: 132px;
-    text-align: left;
-    padding: 28px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 0 18px rgba(184, 135, 59, 0.14);
-    cursor: pointer;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+.season-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 
-.quadrant:hover,
-.quadrant:focus-visible {
-    border-color: var(--gold);
-    background: rgba(20, 40, 58, 0.82);
-    box-shadow: 0 0 26px rgba(184, 135, 59, 0.35);
+/* colori derivati dalla palette esistente, uno per stagione */
+.s1 .season-head { background: var(--ink-soft); }
+.s2 .season-head { background: var(--terracotta-dark); }
+.s3 .season-head { background: var(--sea); }
+.s4 .season-head { background: var(--gold-deep); }
+
+.season-body {
+  padding: 16px 20px 20px;
 }
 
-.card-text-block h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.75rem;
-    color: var(--cream-text);
-    margin-bottom: 10px;
+.season-body p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
 }
 
-.card-description {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.14rem;
-    line-height: 1.55;
-    color: var(--stone-dim);
-    max-width: 92%;
+.tag-row {
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: var(--terracotta-dark);
+  font-weight: 600;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
 }
 
-/* ==========================================================================
-   6. CASTELLANA
-   ========================================================================== */
+.ask-castellana {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--stone-dim);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--sea);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.ask-castellana:after {
+  content: "→";
+  margin-left: auto;
+  color: var(--gold);
+  font-style: normal;
+}
+
+.ask-castellana:hover {
+  color: var(--terracotta-dark);
+}
+
+/* ============================================================
+   5. CASTELLANA WIDGET E CHAT — identici alle altre pagine
+   ============================================================ */
+.castellana-widget-area {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
 .castellana-video-wrapper {
-    position: fixed;
-    bottom: 0;
-    right: 18px;
-    width: 160px;
-    z-index: 100;
-    transition: transform 0.3s ease;
-    cursor: pointer;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--sea);
+  background: #000;
+  box-shadow: 0 4px 15px var(--shadow-strong);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
 }
 
 .castellana-video-wrapper:hover {
-    transform: translateY(-4px);
+  transform: scale(1.04);
 }
 
 .castellana-video {
-    width: 100%;
-    height: auto;
-    max-height: 36vh;
-    object-fit: contain;
-    display: block;
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.58));
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
 }
 
 .castellana-tooltip {
-    position: absolute;
-    top: -36px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 6px 14px;
-    background: rgba(20, 40, 58, 0.88);
-    border: 1px solid var(--gold);
-    border-radius: 4px;
-    color: var(--gold);
-    font-size: 0.75rem;
-    font-weight: 700;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 9999;
-    transition: opacity 0.25s ease;
+  background: var(--sea);
+  color: var(--stone);
+  padding: 0.3rem 0.9rem;
+  border-radius: 2px;
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px var(--shadow-strong);
+  pointer-events: none;
 }
 
-.castellana-video-wrapper:hover .castellana-tooltip {
-    opacity: 1;
-}
-
-/* ==========================================================================
-   7. CHAT — ACCANTO ALLA CASTELLANA
-   Dimensioni raddoppiate (360x410 -> 720x820) e posizione alzata
-   (bottom: 24px -> 200px) perché prima la finestra, aprendosi,
-   copriva/tagliava la testa dell'avatar della Castellana: ora la
-   chat si apre più in alto, lasciando l'avatar visibile sotto di sé.
-   max-width/max-height di sicurezza per schermi più piccoli.
-   ========================================================================== */
 .chat-desktop {
-    position: fixed;
-    right: 190px;
-    bottom: 200px;
-    width: 720px;
-    max-width: 90vw;
-    height: 820px;
-    max-height: 78vh;
-    background: rgba(15, 25, 34, 0.97);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--gold);
-    border-radius: 10px;
-    padding: 16px;
-    display: none;
-    z-index: 999;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.52);
-}
-
-.chat-desktop::after {
-    content: "";
-    position: absolute;
-    right: -12px;
-    bottom: 62px;
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 12px solid var(--gold);
+  position: fixed;
+  bottom: 150px;
+  right: 3%;
+  width: 320px;
+  height: 350px;
+  background: rgba(15, 25, 34, 0.96);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 16px;
+  display: none;
+  z-index: 99999;
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
 }
 
 .chat-desktop.active {
-    display: flex;
-    flex-direction: column;
-    animation: fadeIn 0.28s ease forwards;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease forwards;
 }
 
 .chat-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--cream-text);
-    background: var(--sea-ink);
-    margin: -16px -16px 15px -16px;
-    padding: 12px 15px;
-    border-radius: 10px 10px 0 0;
-    border-bottom: 1px solid var(--gold);
-}
-
-.avatar-status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #5FD068;
-    box-shadow: 0 0 6px #5FD068;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cream-text);
+  background: var(--sea-ink);
+  margin: -16px -16px 15px -16px;
+  padding: 12px 15px;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid var(--gold);
 }
 
 .chat-header span {
-    flex-grow: 1;
-    font-weight: 600;
-    font-size: 0.92rem;
+  flex-grow: 1;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.avatar-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #5FD068;
+  box-shadow: 0 0 6px #5FD068;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
 }
 
 .close-chat-btn {
-    background: transparent;
-    border: none;
-    color: var(--cream-text);
-    font-size: 1.1rem;
-    cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--cream-text);
+  cursor: pointer;
+  font-size: 1.1rem;
 }
 
 .close-chat-btn:hover {
-    color: var(--gold-light);
+  color: var(--gold-light);
 }
 
 .premium-status-bar {
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-align: center;
-    padding: 4px 8px;
-    margin: -6px 0 10px 0;
-    border-radius: 4px;
-    letter-spacing: 0.2px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 4px 8px;
+  margin: -6px 0 10px 0;
+  border-radius: 2px;
+  letter-spacing: 0.2px;
 }
 
 .premium-status-bar.premium-active {
-    background: rgba(184, 135, 59, 0.18);
-    color: var(--gold-light);
-    border: 1px solid rgba(184, 135, 59, 0.4);
+  background: rgba(184, 135, 59, 0.18);
+  color: var(--gold-light);
+  border: 1px solid rgba(184, 135, 59, 0.4);
 }
 
 .premium-status-bar.premium-free {
-    background: rgba(239, 230, 211, 0.08);
-    color: var(--stone-dim, #cbbfa0);
-    border: 1px solid rgba(239, 230, 211, 0.25);
+  background: rgba(239, 230, 211, 0.08);
+  color: var(--cream-text);
+  border: 1px solid rgba(239, 230, 211, 0.25);
 }
 
 .chat-messages {
-    flex-grow: 1;
-    overflow-y: auto;
-    margin-bottom: 10px;
-    padding-right: 4px;
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
 }
 
 .chat-messages .message {
-    color: var(--ink);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    background: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    max-width: 92%;
-    border-left: 2px solid var(--gold);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+  max-width: 90%;
+  border-left: 2px solid var(--gold);
 }
 
-.chat-input-row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
+.chat-messages .message span {
+  flex: 1;
 }
 
-.chat-input-row input {
-    flex: 1;
-    min-width: 0;
-    padding: 11px 12px;
-    border-radius: 6px;
-    border: 1px solid rgba(184, 135, 59, 0.55);
-    background: rgba(255, 255, 255, 0.96);
-    color: var(--ink);
-    font-size: 0.9rem;
-    outline: none;
+/* ============================================================
+   Pulsante "ascolta" (🔊) accanto ai messaggi della Castellana.
+   Mancava: senza questa regola il browser mostrava un pulsante
+   di sistema grezzo invece del cerchietto oro coerente col resto
+   del sito.
+   ============================================================ */
+.audio-btn {
+  background: rgba(184, 135, 59, 0.12);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.2s ease;
+  color: var(--gold);
 }
 
-.chat-input-row input:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 2px rgba(184, 135, 59, 0.18);
+.audio-btn:hover {
+  background: rgba(184, 135, 59, 0.3);
+  transform: scale(1.08);
 }
 
-.send-btn {
-    border: none;
-    background: var(--terracotta);
-    color: #fff;
-    width: 42px;
-    height: 42px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.25s ease, transform 0.2s ease;
-}
-
-.send-btn:hover {
-    background: #a75027;
-    transform: translateY(-1px);
+.audio-btn:active {
+  transform: scale(0.95);
 }
 
 .chat-link-btn {
-    display: block;
-    background: var(--terracotta);
-    color: #fff;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    margin-top: 8px;
-    text-decoration: none;
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 600;
+  display: block;
+  background: var(--terracotta);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: -2px 0 8px 0;
+  transition: background 0.2s;
 }
 
 .chat-link-btn:hover {
-    background: var(--terracotta-dark);
+  background: var(--sea);
 }
 
-/* ==========================================================================
-   7bis. MENU A PULSANTI DELLA CHAT (argomenti / gruppi)
-   ========================================================================== */
 .topic-menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 2px 0 10px 0;
 }
 
 .topic-btn {
-    border: 1px solid var(--gold);
-    background: rgba(184, 135, 59, 0.14);
-    color: var(--cream-text);
-    padding: 8px 14px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  background: #fff;
+  border: 1px solid var(--gold);
+  color: var(--sea);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
 
 .topic-btn:hover {
-    background: rgba(184, 135, 59, 0.32);
+  background: var(--gold);
+  color: #fff;
 }
 
 .topic-group-btn {
-    background: rgba(107, 31, 42, 0.35);
-    border-color: var(--gold-light);
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+  font-weight: 600;
+}
+
+.topic-group-btn:hover {
+  background: var(--terracotta);
+  color: #fff;
+}
+
+.topic-subitems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  margin-top: 4px;
+  padding-left: 10px;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input-row input {
+  flex-grow: 1;
+  background: #fff;
+  border: 1px solid rgba(184, 135, 59, 0.5);
+  padding: 10px 14px;
+  border-radius: 2px;
+  color: var(--ink);
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.chat-input-row input:focus {
+  border-color: var(--gold);
+}
+
+.mic-btn {
+  background: var(--wine);
+  border: none;
+  border-radius: 2px;
+  padding: 0 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.mic-btn:hover {
+  background: #521720;
+}
+
+.mic-btn.listening {
+  background: var(--terracotta);
+  animation: mic-pulse 1s ease-in-out infinite;
+}
+
+@keyframes mic-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   6. OTTIMIZZAZIONE DESKTOP (DA 900PX IN SU)
+   ============================================================ */
+@media screen and (min-width: 900px) {
+
+  .dashboard {
+    height: 75px;
+    flex-direction: row;
+    padding: 0 40px;
+    gap: 0;
+  }
+
+  .logo-title { font-size: 1.55rem; }
+  .nav-desktop { gap: 22px; }
+  .nav-desktop a { font-size: 1rem; padding: 10px 18px; }
+
+  /* ============================================================
+     Layout a doppia colonna: con 4 card stagionali, una singola
+     colonna centrata lasciava troppo spazio vuoto ai lati su schermi
+     larghi. Qui .hero diventa una griglia a 2 colonne: gli elementi
+     introduttivi (sigillo, etichetta, titolo, sottotitolo) occupano
+     l'intera larghezza con "grid-column: 1 / -1", poi le 4 card si
+     dispongono automaticamente 2 per riga, e infine il box Premium
+     torna a occupare l'intera larghezza in fondo.
+     ============================================================ */
+  .hero {
+    margin-top: 110px;
+    max-width: 1040px;
+    padding: 0 32px 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 26px;
+    row-gap: 22px;
+    align-items: start;
+  }
+
+  .crest,
+  .category-tag,
+  .hero > h1,
+  .subtitle {
+    grid-column: 1 / -1;
+  }
+
+  .season-card {
+    margin-bottom: 0; /* lo spazio verticale ora lo gestisce row-gap */
+  }
+
+  .castellana-premium-cta {
+    grid-column: 1 / -1;
+  }
+
+  .season-body p { font-size: 1.08rem; }
+
+  .castellana-widget-area { right: 2rem; bottom: 2rem; gap: 8px; }
+  .castellana-video-wrapper { width: 110px; height: 110px; }
+
+  /* Chat più grande su desktop: prima usava sempre le stesse
+     dimensioni ridotte pensate per mobile (320x350). Stesse misure
+     già approvate su chiese-arte.html. */
+  .chat-desktop {
+    width: 640px;
+    max-width: 85vw;
+    height: 640px;
+    max-height: 74vh;
+    bottom: 90px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 899px) {
+  .hero { margin-top: 150px; }
+  .castellana-video-wrapper { width: 95px; height: 95px; }
+}
+
+/* Chat più stretta sui piccoli schermi (stessa soglia di cittadino.html) */
+@media screen and (max-width: 950px) {
+  .chat-desktop { bottom: 110px; left: 10px; right: 10px; width: calc(100% - 20px); }
+}
+
+/* Pulsante di invio della chat (sostituisce il microfono) */
+.send-btn {
+    background: var(--sea);
+    border: none;
+    border-radius: 2px;
+    padding: 0 12px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.send-btn:hover {
+    background: var(--terracotta);
 }
 
 .chat-messages .message.user-msg {
     background: var(--sea);
     color: #fff;
+    margin-left: auto;
     border-left: none;
     border-right: 2px solid var(--gold);
-    margin-left: auto;
-}
-
-/* Bottone "ascolta" accanto ai messaggi della Castellana */
-.audio-btn {
-    background: rgba(184, 135, 59, 0.15);
-    border: none;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.audio-btn:hover {
-    background: rgba(184, 135, 59, 0.35);
-}
-
-/* ==========================================================================
-   8. ANIMAZIONE
-   ========================================================================== */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ==========================================================================
-   9. RESPONSIVE TABLET
-   ========================================================================== */
-@media screen and (max-width: 1100px) {
-    .citizen-frame-layout {
-        padding: 120px 28px 0 28px;
-    }
-
-    .citizen-centered-grid {
-        max-width: 900px;
-        gap: 20px;
-        padding: 0 28px 190px 28px;
-    }
-
-    .card-text-block h2 {
-        font-size: 1.58rem;
-    }
-
-    .card-description {
-        font-size: 1.05rem;
-        max-width: 100%;
-    }
-
-    .chat-desktop {
-        right: 165px;
-        bottom: 180px;
-        width: 560px;
-        max-width: 92vw;
-        height: 680px;
-        max-height: 76vh;
-    }
-
-    .castellana-video-wrapper {
-        width: 138px;
-    }
-}
-
-/* ==========================================================================
-   10. MOBILE
-   Chat alzata (bottom: 110px -> 190px) per non coprire più la testa
-   dell'avatar, che su mobile è più piccolo ma comunque presente sotto.
-   ========================================================================== */
-@media screen and (max-width: 900px) {
-    .dashboard {
-        height: auto;
-        min-height: 75px;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        padding: 12px 16px;
-    }
-
-    .nav-right-group {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .citizen-frame-layout {
-        padding: 130px 20px 0 20px;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .citizen-intro-container {
-        max-width: 100%;
-        text-align: center;
-    }
-
-    .gold-divider {
-        margin: 0 auto 20px auto;
-    }
-
-    .citizen-centered-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 16px 190px 16px;
-        max-width: 100%;
-        margin: 30px auto 40px auto;
-    }
-
-    .quadrant {
-        padding: 24px 20px;
-        text-align: center;
-        min-height: auto;
-    }
-
-    .card-description {
-        max-width: 100%;
-    }
-
-    .castellana-video-wrapper {
-        width: 90px;
-        right: 12px;
-        bottom: 8px;
-    }
-
-    .castellana-video {
-        max-height: none;
-    }
-
-    .chat-desktop {
-        bottom: 190px;
-        left: 10px;
-        right: 10px;
-        width: auto;
-        height: 360px;
-        max-height: 65vh;
-    }
-
-    .chat-desktop::after {
-        display: none;
-    }
+    text-align: right;
 }
