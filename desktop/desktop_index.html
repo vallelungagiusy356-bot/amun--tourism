@@ -115,6 +115,23 @@ window.silktideConsentManager.init({
             background: rgba(184, 135, 59, 0.2) !important;
             font-weight: bold;
         }
+        .mic-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0 6px;
+            color: var(--ink, #22303B);
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .mic-btn.listening {
+            color: #C1622D;
+            animation: mic-pulse 1s ease-in-out infinite;
+        }
+        @keyframes mic-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.18); }
+        }
     </style>
 </head>
 
@@ -215,7 +232,7 @@ window.silktideConsentManager.init({
             <div class="premium-card">
                 <h2 data-i18n="home.premium_title">Sblocca la Castellana Premium</h2>
                 <p data-i18n="home.premium_text">
-                    Per 3,90€ conversi in tempo reale con la Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.
+                    Per 3,90€ accedi alla Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.
                 </p>
                 <p class="premium-howto" data-i18n="home.premium_howto">
                     Ricevi il codice via email e scrivilo in chat: <strong>codice</strong> seguito dal tuo codice alfanumerico.
@@ -247,6 +264,7 @@ window.silktideConsentManager.init({
         </div>
         <div class="chat-input-row">
             <input type="text" placeholder="Scrivi qui..." data-i18n-placeholder="chat.placeholder">
+            <button id="mic-btn" class="mic-btn" type="button" title="Parla con la Castellana" aria-label="Parla con la Castellana">🎤</button>
             <button class="send-btn" aria-label="Invia">➤</button>
         </div>
     </div>
@@ -308,7 +326,13 @@ Come funziona la chat? Scegli qui sotto cosa ti va di fare, e ti guido verso le 
                 ]
             },
             en: {
-                welcome: `Hello traveler! I am the Castellana of Caccamo, your guide to this village.\n\nLet me tell you about the origins: Caccamo stands on a rocky spur overlooking the San Leonardo valley. The name probably comes from the Greek \"kakkabe\". A fortress existed here in Arab times, but the village as we know it began in the 12th century with the Norman conquest.\n\nHow does the chat work? Choose below what you feel like doing, and I'll guide you to the right pages. Or write freely — I know everything about this village!`,
+                welcome: `Hello traveler! I am the Castellana of Caccamo, your guide to this village.
+
+Let me tell you about the origins of the village: Caccamo stands on a rocky spur overlooking the San Leonardo valley. The name probably comes from the Greek "kakkabe", meaning a type of cup, or perhaps from the Latin "cacabus". A fortification already existed here in Arab times, but the village as we know it began to take shape in the 12th century with the Norman conquest. Matteo Bonello, lord of Caccamo, built the castle that still dominates the village today.
+
+Caccamo is a medieval village that has preserved its charm through centuries of history: Normans, Swabians, Angevins, Aragonese, Spanish and Bourbons have all left their traces in the stones, the churches, the traditions.
+
+How does the chat work? Choose below what you feel like doing, and I'll guide you to the right pages. Or write freely — I'll answer anything I know about the village!`,
                 closing: `That's all from here, traveler! I hope I was useful. If you'd like more information, come find me on the other pages!`,
                 followUp: `Perfect, traveler! Taking you to the right page now.`,
                 groups: [
@@ -343,7 +367,13 @@ Come funziona la chat? Scegli qui sotto cosa ti va di fare, e ti guido verso le 
                 ]
             },
             fr: {
-                welcome: `Bonjour voyageur! Je suis la Castellana de Caccamo, votre guide pour ce village.\n\nLes origines du village remontent au XIIe siècle avec la conquête normande.\n\nComment fonctionne le chat? Choisis ci-dessous ce que tu as envie de faire, je te guiderai vers les bonnes pages. Ou écris librement!`,
+                welcome: `Bonjour voyageur ! Je suis la Castellana de Caccamo, votre guide pour ce village.
+
+Laissez-moi vous raconter les origines du village : Caccamo se dresse sur un éperon rocheux qui domine la vallée du San Leonardo. Le nom vient probablement du grec « kakkabe », qui désignait une sorte de coupe, ou peut-être du latin « cacabus ». Une fortification existait déjà ici à l'époque arabe, mais le village tel que nous le connaissons a commencé à prendre forme au XIIe siècle avec la conquête normande. Matteo Bonello, seigneur de Caccamo, fit construire le château qui domine encore aujourd'hui le village.
+
+Caccamo est un village médiéval qui a conservé tout son charme à travers des siècles d'histoire : Normands, Souabes, Angevins, Aragonais, Espagnols et Bourbons ont tous laissé leurs traces dans les pierres, les églises, les traditions.
+
+Comment fonctionne le chat ? Choisis ci-dessous ce que tu as envie de faire, je te guiderai vers les bonnes pages. Ou écris librement, je réponds à tout ce que je sais sur le village !`,
                 closing: `C'est tout pour ici, voyageur! J'espère t'avoir été utile. Pour en savoir plus, retrouve-moi sur les autres pages!`,
                 followUp: `Parfait, voyageur! Je t'emmène tout de suite vers la page dédiée.`,
                 groups: [
@@ -378,7 +408,13 @@ Come funziona la chat? Scegli qui sotto cosa ti va di fare, e ti guido verso le 
                 ]
             },
             es: {
-                welcome: `¡Hola viajero! Soy la Castellana de Caccamo, tu guía para este pueblo.\n\nEl pueblo se formó en el siglo XII con la conquista normanda.\n\n¿Cómo funciona el chat? Elige abajo qué te apetece hacer, te guiaré a las páginas adecuadas. ¡O escríbeme libremente!`,
+                welcome: `¡Hola viajero! Soy la Castellana de Caccamo, tu guía para este pueblo.
+
+Déjame contarte los orígenes del pueblo: Caccamo se alza sobre un espolón rocoso que domina el valle del San Leonardo. El nombre probablemente proviene del griego "kakkabe", que designaba un tipo de copa, o quizás del latín "cacabus". Ya en época árabe existía aquí una fortificación, pero el pueblo tal como lo conocemos comenzó a tomar forma en el siglo XII con la conquista normanda. Matteo Bonello, señor de Caccamo, construyó el castillo que todavía hoy domina el pueblo.
+
+Caccamo es un pueblo medieval que ha conservado su encanto a través de siglos de historia: normandos, suevos, angevinos, aragoneses, españoles y borbones han dejado sus huellas en las piedras, las iglesias, las tradiciones.
+
+¿Cómo funciona el chat? Elige abajo qué te apetece hacer, te guiaré a las páginas adecuadas. ¡O escríbeme libremente, respondo a todo lo que sé sobre el pueblo!`,
                 closing: `¡Eso es todo por aquí, viajero! Espero haberte sido útil. Para más información, ¡búscame en las otras páginas!`,
                 followUp: `¡Perfecto, viajero! Te llevo enseguida a la página dedicada.`,
                 groups: [
@@ -413,7 +449,13 @@ Come funziona la chat? Scegli qui sotto cosa ti va di fare, e ti guido verso le 
                 ]
             },
             de: {
-                welcome: `Hallo Reisender! Ich bin die Castellana von Caccamo, Ihr Führer für dieses Dorf.\n\nDas Dorf entstand im 12. Jahrhundert mit der normannischen Eroberung.\n\nWie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dich zu den passenden Seiten. Oder schreib mir frei!`,
+                welcome: `Hallo Reisender! Ich bin die Castellana von Caccamo, deine Führerin für dieses Dorf.
+
+Lass mich dir von den Ursprüngen des Dorfes erzählen: Caccamo liegt auf einem Felssporn, der das Tal des San Leonardo überblickt. Der Name stammt wahrscheinlich vom griechischen „kakkabe", einer Art Becher, oder vielleicht vom lateinischen „cacabus". Schon zur Zeit der Araber gab es hier eine Befestigung, aber das Dorf, wie wir es heute kennen, begann im 12. Jahrhundert mit der normannischen Eroberung Gestalt anzunehmen. Matteo Bonello, Herr von Caccamo, ließ die Burg errichten, die noch heute das Dorf überragt.
+
+Caccamo ist ein mittelalterliches Dorf, das seinen Charme über Jahrhunderte der Geschichte bewahrt hat: Normannen, Staufer, Anjou, Aragonesen, Spanier und Bourbonen haben alle ihre Spuren in den Steinen, den Kirchen, den Traditionen hinterlassen.
+
+Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dich zu den passenden Seiten. Oder schreib mir frei — ich beantworte alles, was ich über das Dorf weiß!`,
                 closing: `Das war's von hier, Reisender! Ich hoffe, ich konnte dir helfen. Für mehr Informationen findest du mich auf den anderen Seiten!`,
                 followUp: `Perfekt, Reisender! Ich bringe dich sofort zur passenden Seite.`,
                 groups: [
@@ -483,40 +525,68 @@ Come funziona la chat? Scegli qui sotto cosa ti va di fare, e ti guido verso le 
         }
 
         // ============================================================
-        // TTS AVANZATO — La Castellana parla (0.84)
+        // TTS AVANZATO — La Castellana parla
+        //
+        // Tre correzioni rispetto a prima:
+        //
+        // 1. VOCE SEMPRE FEMMINILE, IN OGNI LINGUA: prima la voce veniva
+        //    scelta una sola volta filtrando solo le voci italiane, e poi
+        //    riusata anche quando la lingua cambiava — risultato: parlando
+        //    in inglese/francese/ecc. veniva comunque assegnata una voce
+        //    italiana, in conflitto con la lingua del testo. Il browser
+        //    a quel punto ignora la voce forzata e ripiega su una voce
+        //    di sistema per quella lingua, spesso maschile. Ora la voce
+        //    si sceglie di nuovo ogni volta, filtrando le voci della
+        //    lingua giusta.
+        //
+        // 2. VELOCITÀ DI AVVIO: chiamare cancel() e speak() nello stesso
+        //    istante è un bug noto dei browser (Chrome/Edge in primis):
+        //    il motore vocale ha bisogno di un attimo per "resettarsi",
+        //    altrimenti l'audio parte con un ritardo percepibile. Ora c'è
+        //    una piccola pausa tra i due comandi. Le voci vengono inoltre
+        //    "svegliate" subito al caricamento della pagina, non solo al
+        //    primo utilizzo.
         // ============================================================
         const VOICE_PREF_KEY = "amuni_voice_enabled";
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
         const voiceToggleBtn = document.getElementById("voice-toggle-btn");
-        let voceCastellana = null;
 
-        function trovaVoceCastellana() {
-            const voci = window.speechSynthesis.getVoices();
-            const vociItaliane = voci.filter(v => v.lang && v.lang.toLowerCase().startsWith('it'));
-
-            const nomiFemminili = [
-                'alice', 'elsa', 'samantha', 'federica', 'silvia', 'paola',
-                'elisa', 'francesca', 'giulia', 'martina', 'female', 'donna'
-            ];
-            const vociTraCuiScegliere = vociItaliane.length ? vociItaliane : voci;
-
-            let voce = vociTraCuiScegliere.find(v =>
-                nomiFemminili.some(nome => v.name.toLowerCase().includes(nome))
-            );
-            if (voce) return voce;
-
-            const nomiMaschili = ['luca', 'cosimo', 'diego', 'marco', 'paolo', 'male', 'uomo'];
-            voce = vociTraCuiScegliere.find(v =>
-                !nomiMaschili.some(nome => v.name.toLowerCase().includes(nome))
-            );
-            if (voce) return voce;
-
-            return vociItaliane[0] || voci[0];
+        let vociDisponibili = [];
+        function aggiornaVociDisponibili() {
+            vociDisponibili = window.speechSynthesis.getVoices();
+        }
+        if ("speechSynthesis" in window) {
+            aggiornaVociDisponibili();
+            window.speechSynthesis.onvoiceschanged = aggiornaVociDisponibili;
         }
 
-        window.speechSynthesis.onvoiceschanged = function() {
-            voceCastellana = trovaVoceCastellana();
+        // Nomi di voci femminili note, per lingua (in ordine di preferenza).
+        const NOMI_VOCE_FEMMINILE = {
+            "it-IT": ["Google italiano", "Elsa", "Alice", "Federica", "Silvia", "Paola"],
+            "en-US": ["Google US English", "Samantha", "Zira", "Aria", "Jenny"],
+            "fr-FR": ["Google français", "Amelie", "Julie", "Denise", "Hortense"],
+            "de-DE": ["Google Deutsch", "Anna", "Katja", "Petra", "Helena"],
+            "es-ES": ["Google español", "Monica", "Helena", "Elvira", "Paloma"]
         };
+        const INDIZI_VOCE_MASCHILE = /male|david|mark|daniel|thomas|diego|paolo|hans|marco|luca|carlos|antonio|cosimo/i;
+
+        function trovaVoceCastellana(langCode) {
+            if (!vociDisponibili.length) vociDisponibili = window.speechSynthesis.getVoices();
+
+            const nomiPreferiti = NOMI_VOCE_FEMMINILE[langCode] || [];
+            for (const nome of nomiPreferiti) {
+                const voce = vociDisponibili.find(v => v.name.includes(nome));
+                if (voce) return voce;
+            }
+
+            const linguaBase = langCode.split('-')[0];
+            const stessaLingua = vociDisponibili.filter(v =>
+                v.lang === langCode || (v.lang || '').startsWith(linguaBase)
+            );
+            const nonMaschile = stessaLingua.find(v => !INDIZI_VOCE_MASCHILE.test(v.name));
+
+            return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
+        }
 
         function updateVoiceToggleIcon() {
             if (voiceToggleBtn) voiceToggleBtn.textContent = voiceEnabled ? "🔊" : "🔇";
@@ -543,17 +613,86 @@ Come funziona la chat? Scegli qui sotto cosa ti va di fare, e ti guido verso le 
         function speakText(text) {
             if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
             window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.voice = voceCastellana;
-            utterance.lang = ttsLangCode(currentLang);
-            utterance.rate = 0.84;
-            utterance.pitch = 0.95;
-            utterance.volume = 1.0;
-            window.speechSynthesis.speak(utterance);
+            // Piccola pausa dopo cancel(): evita il ritardo di avvio
+            // causato dal bug "cancel + speak nello stesso istante".
+            setTimeout(() => {
+                const langCode = ttsLangCode(currentLang);
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = trovaVoceCastellana(langCode);
+                utterance.lang = langCode;
+                utterance.rate = 0.84;
+                utterance.pitch = 0.95;
+                utterance.volume = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }, 60);
         }
 
         function castellanaZitta() {
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+        }
+
+        // ============================================================
+        // MICROFONO — il turista può parlare invece di scrivere
+        // (Web Speech API, riconoscimento vocale del browser: gratuito,
+        // funziona su Chrome/Edge; su browser non supportati il
+        // pulsante si nasconde automaticamente).
+        // ============================================================
+        const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const micBtn = document.getElementById("mic-btn");
+        let recognition = null;
+        let isListening = false;
+
+        function sttLangCode(lang) {
+            const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+            return map[lang] || "it-IT";
+        }
+
+        if (SpeechRecognitionAPI && micBtn) {
+            recognition = new SpeechRecognitionAPI();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = () => {
+                isListening = true;
+                micBtn.classList.add("listening");
+            };
+
+            recognition.onend = () => {
+                isListening = false;
+                micBtn.classList.remove("listening");
+            };
+
+            recognition.onerror = () => {
+                isListening = false;
+                micBtn.classList.remove("listening");
+            };
+
+            recognition.onresult = (event) => {
+                const testoRiconosciuto = event.results[0][0].transcript;
+                if (chatInputField) {
+                    chatInputField.value = testoRiconosciuto;
+                }
+                sendChatMessage(testoRiconosciuto);
+                if (chatInputField) chatInputField.value = "";
+            };
+
+            micBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (isListening) {
+                    recognition.stop();
+                    return;
+                }
+                recognition.lang = sttLangCode(currentLang);
+                castellanaZitta();
+                try {
+                    recognition.start();
+                } catch (err) {
+                    console.error("Errore riconoscimento vocale:", err);
+                }
+            });
+        } else if (micBtn) {
+            // Browser senza supporto (es. Firefox): niente pulsante rotto in giro.
+            micBtn.style.display = "none";
         }
 
         // ============================================================
