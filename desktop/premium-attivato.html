@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento completato — Amunì</title>
+
+<!-- Stessi font usati nel resto del sito -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #C9A24B;
+    --sea: #2E5C6E;
+    --terracotta: #B5654A;
+    --ink: #2A2420;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #1a1510, var(--ink));
+    font-family: 'Cormorant Garamond', serif;
+    color: #f5efe6;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 40px 28px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin: 12px 0;
+  }
+
+  .code-box {
+    font-family: monospace;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    background: rgba(255,255,255,0.08);
+    border: 1px dashed var(--gold);
+    border-radius: 4px;
+    padding: 16px;
+    margin: 24px 0;
+    color: #fff;
+    word-break: break-all;
+  }
+
+  button {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    background: var(--terracotta);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 28px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+
+  button:active { opacity: 0.8; }
+
+  .stato { font-size: 1rem; opacity: 0.8; }
+  .errore { color: #e07a6b; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Grazie, viandante!</h1>
+  <div id="contenuto">
+    <p class="stato">Sto verificando il tuo pagamento…</p>
+  </div>
+</div>
+
+<script>
+// ---------------------------------------------------------
+// Indirizzo del tuo backend su PythonAnywhere
+// ---------------------------------------------------------
+const BACKEND_URL = "https://castellana.pythonanywhere.com";
+
+// Legge "session_id" dall'indirizzo della pagina
+// (Stripe lo aggiunge da solo quando manda qui il cliente)
+const params = new URLSearchParams(window.location.search);
+const sessionId = params.get("session_id");
+
+const contenuto = document.getElementById("contenuto");
+
+async function recuperaCodice() {
+  if (!sessionId) {
+    contenuto.innerHTML = `<p class="errore">Manca il riferimento al pagamento. Se hai appena pagato, controlla la tua email o contattaci.</p>`;
+    return;
+  }
+
+  try {
+    const risposta = await fetch(`${BACKEND_URL}/get-code?session_id=${encodeURIComponent(sessionId)}`);
+    const dati = await risposta.json();
+
+    if (!risposta.ok || dati.error) {
+      contenuto.innerHTML = `<p class="errore">${dati.error || "Non riesco a confermare il pagamento. Riprova tra qualche secondo ricaricando la pagina."}</p>`;
+      return;
+    }
+
+    contenuto.innerHTML = `
+      <p>Il tuo pagamento è andato a buon fine. Ecco il tuo codice Premium, valido 4 giorni da quando lo attiverai:</p>
+      <div class="code-box" id="codice">${dati.code}</div>
+      <button onclick="copiaCodice()">Copia codice</button>
+      <p style="font-size:0.95rem; opacity:0.85; margin-top:20px;">
+        Torna alla chat de La Castellana e inserisci questo codice per iniziare la tua visita guidata.
+      </p>
+    `;
+  } catch (e) {
+    contenuto.innerHTML = `<p class="errore">Errore di collegamento. Ricarica questa pagina tra qualche istante.</p>`;
+  }
+}
+
+function copiaCodice() {
+  const testo = document.getElementById("codice").innerText;
+  navigator.clipboard.writeText(testo).then(() => {
+    alert("Codice copiato!");
+  });
+}
+
+recuperaCodice();
+</script>
+
+</body>
+</html>
