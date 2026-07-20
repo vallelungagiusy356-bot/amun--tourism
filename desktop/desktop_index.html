@@ -210,21 +210,24 @@ window.silktideConsentManager.init({
             </div>
         </section>
 
+        <!-- ============================================================
+             SEZIONE "PORTA AMUNÌ CON TE" — semplificata: rimosso il QR
+             code (ridondante su un sito già visitato da computer) e il
+             vecchio bottone "Aggiungi alla schermata Home", che faceva
+             comunque la stessa cosa del link qui sotto. Un solo invito
+             chiaro a passare al telefono per la versione pratica.
+             ============================================================ -->
         <section class="section-flat install-app-desktop install-section">
             <div class="install-left">
                 <h2 data-i18n="home.install_app">Porta Amunì con te</h2>
+                <p data-i18n="home.install_app_text">
+                    Apri Amunì dal tuo smartphone per avere sempre a portata di mano mappe, orari e trasporti — e aggiungila alla schermata Home per ritrovarla con un tocco.
+                </p>
                 <div class="btn-group">
-                    <button type="button" class="btn-desktop" id="install-pwa-btn">
-                        📲 <span data-i18n="home.add_home">Aggiungi alla schermata Home</span>
-                    </button>
                     <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html" class="btn-desktop">
                         🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span>
                     </a>
                 </div>
-            </div>
-            <div class="install-right">
-                <img src="https://vallelungagiusy356-bot.github.io/amun--tourism/qr.png" alt="QR Amunì" class="qr-desktop">
-                <p data-i18n="home.scan_qr">Scansiona il QR</p>
             </div>
         </section>
 
@@ -235,7 +238,7 @@ window.silktideConsentManager.init({
                     Per 3,90€ accedi alla Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.
                 </p>
                 <p class="premium-howto" data-i18n="home.premium_howto">
-                    Dopo il pagamento vedrai subito il tuo codice a schermo <strong>codice</strong> : scrivilo in chat preceduto dalla parola "codice".
+                    Dopo il pagamento vedrai subito il tuo codice a schermo: scrivilo in chat preceduto dalla parola <strong>"codice"</strong>. Ogni codice funziona su fino a 2 dispositivi — utile su un secondo telefono, per chi viaggia con te, o in caso di imprevisti.
                 </p>
                 <button type="button" class="btn-desktop premium-cta" id="premium-chat-btn" data-i18n="home.premium_cta">Acquista l'accesso — 3,90€</button>
             </div>
@@ -873,12 +876,6 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                         premiumBtn.disabled = false;
                         premiumBtn.textContent = "Acquista l'accesso — 3,90€";
                     }
-                });
-        }
-            const installBtn = document.getElementById("install-pwa-btn");
-            if (installBtn) {
-                installBtn.addEventListener("click", () => {
-                    window.location.href = "https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html";
                 });
             }
 
