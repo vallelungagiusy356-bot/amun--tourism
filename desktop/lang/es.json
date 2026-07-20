@@ -142,10 +142,9 @@
     "install_app": "Lleva Amunì contigo",
     "add_home": "Añadir a la pantalla de inicio",
     "open_webapp": "Ir a la WebApp",
-    "scan_qr": "Escanea el código QR",
     "premium_title": "Desbloquea la Castellana Premium",
     "premium_text": "Por 3,90 €, accede a la Castellana durante 4 días: la guía multilingüe que conoce cada secreto de Caccamo, desde el transporte hasta las joyas escondidas del territorio.",
-    "premium_howto": "Recibe el código por correo electrónico y escríbelo en el chat: <strong>codice</strong> seguido de tu código alfanumérico.",
+     "premium_howto": "Después del pago verás tu código directamente en pantalla: escríbelo en el chat precedido de la palabra <strong>\"código\"</strong>. Cada código funciona en hasta 2 dispositivos — útil para un segundo teléfono, un compañero de viaje, o ante cualquier imprevisto.",
     "premium_cta": "Comprar acceso — 3,90 €"
   }
 }
