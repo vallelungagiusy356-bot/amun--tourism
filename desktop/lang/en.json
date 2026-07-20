@@ -145,7 +145,7 @@
     "scan_qr": "Scan the QR code",
     "premium_title": "Unlock the Premium Castellana",
     "premium_text": "For €3.90, you get access to the Castellana for 4 days: the multilingual guide who knows every secret of Caccamo, from transport to the hidden gems of the area.",
-    "premium_howto": "Receive the code by email and type it in chat: <strong>code</strong> followed by your alphanumeric code.",
+    "premium_howto": "After payment you'll see your code right on the screen: type it in chat preceded by the word <strong>\"code\"</strong>. Each code works on up to 2 devices — handy for a second phone, a travel companion, or if anything unexpected comes up.",
     "premium_cta": "Buy access — €3.90"
   }
 }
