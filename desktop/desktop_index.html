@@ -942,7 +942,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
         }
 
         async function tryActivateCode(rawMessage) {
-            const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9]+)/i);
+            const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9-]+)/i);
             if (!match) return false;
 
             const code = match[2].toUpperCase();
