@@ -235,7 +235,7 @@ window.silktideConsentManager.init({
                     Per 3,90€ accedi alla Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.
                 </p>
                 <p class="premium-howto" data-i18n="home.premium_howto">
-                    Ricevi il codice via email e scrivilo in chat: <strong>codice</strong> seguito dal tuo codice alfanumerico.
+                    Dopo il pagamento vedrai subito il tuo codice a schermo <strong>codice</strong> : scrivilo in chat preceduto dalla parola "codice".
                 </p>
                 <button type="button" class="btn-desktop premium-cta" id="premium-chat-btn" data-i18n="home.premium_cta">Acquista l'accesso — 3,90€</button>
             </div>
@@ -852,12 +852,29 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
 
             const premiumBtn = document.getElementById("premium-chat-btn");
             if (premiumBtn) {
-                premiumBtn.addEventListener("click", () => {
-                    chat.classList.add("active");
-                    if (!hasShownWelcome) renderWelcome();
+                premiumBtn.addEventListener("click", async () => {
+                    premiumBtn.disabled = true;
+                    premiumBtn.textContent = "Un momento...";
+                    try {
+                        const res = await fetch(`${API_BASE_URL}/create-checkout-session`, {
+                            method: "POST"
+                        });
+                        const data = await res.json();
+                        if (data.url) {
+                            window.location.href = data.url;
+                        } else {
+                            alert("Non riesco ad avviare il pagamento. Riprova tra poco.");
+                            premiumBtn.disabled = false;
+                            premiumBtn.textContent = "Acquista l'accesso — 3,90€";
+                        }
+                    } catch (err) {
+                        console.error("Errore avvio pagamento:", err);
+                        alert("Errore di collegamento. Riprova tra poco.");
+                        premiumBtn.disabled = false;
+                        premiumBtn.textContent = "Acquista l'accesso — 3,90€";
+                    }
                 });
-            }
-
+        }
             const installBtn = document.getElementById("install-pwa-btn");
             if (installBtn) {
                 installBtn.addEventListener("click", () => {
