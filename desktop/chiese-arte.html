@@ -1130,7 +1130,8 @@ window.silktideConsentManager.init({
       }
 
       // ============================================================
-      // BOTTONE PREMIUM
+      // BOTTONE PREMIUM — "Ho già un codice" apre la chat e invita
+      // a scrivere il codice; "Acquista l'accesso" avvia Stripe.
       // ============================================================
       document.getElementById('btn-premium-code').addEventListener('click', () => {
         chatBox.classList.add('active');
@@ -1140,9 +1141,25 @@ window.silktideConsentManager.init({
         );
       });
 
-      document.getElementById('btn-buy-premium').addEventListener('click', (e) => {
+      document.getElementById('btn-buy-premium').addEventListener('click', async (e) => {
         e.preventDefault();
-        alert('Il pagamento sarà disponibile a breve. Torna presto!');
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+        btn.textContent = "Un momento...";
+        try {
+          const res = await fetch(`${API_BASE_URL}/create-checkout-session`, { method: "POST" });
+          const data = await res.json();
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            alert("Non riesco ad avviare il pagamento. Riprova tra poco.");
+            btn.textContent = originalText;
+          }
+        } catch (err) {
+          console.error("Errore avvio pagamento:", err);
+          alert("Errore di collegamento. Riprova tra poco.");
+          btn.textContent = originalText;
+        }
       });
   </script>
   <footer class="footer-copyright" style="text-align: center; padding: 30px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem;">
