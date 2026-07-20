@@ -142,10 +142,9 @@
     "install_app": "Nimm Amunì mit dir",
     "add_home": "Zum Startbildschirm hinzufügen",
     "open_webapp": "Zur WebApp",
-    "scan_qr": "QR-Code scannen",
-    "premium_title": "Schalte die Premium-Castellana frei",
+   "premium_title": "Schalte die Premium-Castellana frei",
     "premium_text": "Für 3,90 € erhältst du 4 Tage lang Zugang zur Castellana: der mehrsprachigen Führerin, die jedes Geheimnis von Caccamo kennt, von den Verkehrsmitteln bis zu den verborgenen Schätzen der Umgebung.",
-    "premium_howto": "Erhalte den Code per E-Mail und schreibe ihn im Chat: <strong>codice</strong> gefolgt von deinem alphanumerischen Code.",
+    "premium_howto": "Nach der Zahlung siehst du deinen Code sofort auf dem Bildschirm: gib ihn im Chat ein, mit dem Wort <strong>\"code\"</strong> davor. Jeder Code funktioniert auf bis zu 2 Geräten — praktisch für ein zweites Handy, einen Reisebegleiter oder für unvorhergesehene Situationen.",
     "premium_cta": "Zugang kaufen — 3,90 €"
   }
 }
