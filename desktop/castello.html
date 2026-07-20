@@ -1125,13 +1125,26 @@ window.silktideConsentManager.init({
             sendBtn.addEventListener('click', handleSend);
         }
 
-        document.getElementById('btn-premium-code').addEventListener('click', () => {
-          chat.classList.add('active');
-          appendChatMessage(
-            t('premium.chat_code_prompt', 'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"'),
-            'castellana'
-          );
-        });
+        document.getElementById('btn-buy-premium').addEventListener('click', async (e) => {
+  e.preventDefault();
+  const btn = e.currentTarget;
+  const originalText = btn.textContent;
+  btn.textContent = "Un momento...";
+  try {
+    const res = await fetch(`${API_BASE_URL}/create-checkout-session`, { method: "POST" });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert("Non riesco ad avviare il pagamento. Riprova tra poco.");
+      btn.textContent = originalText;
+    }
+  } catch (err) {
+    console.error("Errore avvio pagamento:", err);
+    alert("Errore di collegamento. Riprova tra poco.");
+    btn.textContent = originalText;
+  }
+});
 
         document.getElementById('btn-buy-premium').addEventListener('click', (e) => {
           e.preventDefault();
