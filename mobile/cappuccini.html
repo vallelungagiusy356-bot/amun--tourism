@@ -108,6 +108,234 @@ window.silktideConsentManager.init({
     
     <link rel="stylesheet" href="monumento_dettaglio.css">
     <meta name="theme-color" content="#14283A">
+
+    <!-- ============================================================
+         STILE CHAT CASTELLANA — scritto qui in autonomia, senza
+         toccare monumento_dettaglio.css.
+         ============================================================ -->
+    <style>
+        :root {
+            --cst-gold: #B8873B;
+            --cst-gold-light: #D4AF6A;
+            --cst-sea: #1B4965;
+            --cst-sea-ink: #14283A;
+            --cst-terracotta: #C1622D;
+            --cst-terracotta-dark: #9C4C22;
+            --cst-ink: #22303B;
+            --cst-cream: #F3ECDC;
+        }
+
+        .chat-mobile {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 78vh;
+            max-height: 640px;
+            background: rgba(15, 25, 34, 0.97);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--cst-gold);
+            border-radius: 16px 16px 0 0;
+            padding: 16px;
+            display: none;
+            flex-direction: column;
+            z-index: 999999;
+            box-shadow: 0 -8px 30px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+        }
+
+        .chat-mobile.active {
+            display: flex;
+            animation: chatMobileFadeIn 0.25s ease forwards;
+        }
+
+        @keyframes chatMobileFadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--cst-cream);
+            background: var(--cst-sea-ink);
+            margin: -16px -16px 12px -16px;
+            padding: 14px 16px;
+            border-radius: 16px 16px 0 0;
+            border-bottom: 1px solid var(--cst-gold);
+        }
+
+        .chat-mobile-header .avatar-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #5FD068;
+            box-shadow: 0 0 6px #5FD068;
+        }
+
+        .chat-mobile-header span.chat-title-mobile {
+            flex-grow: 1;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .close-chat-btn-mobile,
+        .voice-toggle-btn-mobile {
+            background: transparent;
+            border: none;
+            color: var(--cst-cream);
+            font-size: 1.15rem;
+            cursor: pointer;
+            padding: 2px 6px;
+        }
+
+        .premium-status-bar-mobile {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 5px 8px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            letter-spacing: 0.2px;
+            background: rgba(239, 230, 211, 0.08);
+            color: var(--cst-cream);
+            border: 1px solid rgba(239, 230, 211, 0.25);
+        }
+
+        .premium-status-bar-mobile.premium-active {
+            background: rgba(184, 135, 59, 0.18);
+            color: var(--cst-gold-light);
+            border: 1px solid rgba(184, 135, 59, 0.4);
+        }
+
+        .chat-messages-mobile {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .chat-messages-mobile .message-mobile {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            color: var(--cst-ink);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            max-width: 90%;
+            border-left: 2px solid var(--cst-gold);
+        }
+
+        .chat-messages-mobile .message-mobile span {
+            flex: 1;
+        }
+
+        .chat-messages-mobile .message-mobile.user-msg-mobile {
+            background: var(--cst-sea);
+            color: #fff;
+            border-left: none;
+            border-right: 2px solid var(--cst-gold);
+            margin-left: auto;
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .audio-btn-mobile {
+            background: rgba(184, 135, 59, 0.12);
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            cursor: pointer;
+            flex-shrink: 0;
+            color: var(--cst-gold);
+        }
+
+        .chat-link-btn-mobile {
+            display: block;
+            background: var(--cst-terracotta);
+            color: #fff;
+            border: none;
+            padding: 9px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: -2px 0 8px 0;
+        }
+
+        .topic-menu-mobile {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 2px 0 10px 0;
+        }
+
+        .topic-btn-mobile {
+            background: #fff;
+            border: 1px solid var(--cst-gold);
+            color: var(--cst-sea);
+            padding: 7px 13px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .chat-input-row-mobile {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .chat-input-row-mobile input {
+            flex: 1;
+            min-width: 0;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(184, 135, 59, 0.55);
+            background: rgba(255,255,255,0.97);
+            color: var(--cst-ink);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .mic-btn-mobile,
+        .send-btn-mobile {
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .mic-btn-mobile {
+            background: #6B1F2A;
+        }
+
+        .mic-btn-mobile.listening {
+            background: var(--cst-terracotta);
+            animation: micPulseMobile 1s ease-in-out infinite;
+        }
+
+        @keyframes micPulseMobile {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+
+        .send-btn-mobile {
+            background: var(--cst-terracotta);
+        }
+    </style>
 </head>
 <body>
 
@@ -150,7 +378,7 @@ window.silktideConsentManager.init({
         </header>
 
         <div class="monument-render-container">
-            <img src="img/cappuccini_cacc.gif" alt="Convento dei Frati Cappuccini" class="monument-hero-image img-cappuccini" onerror="this.src='img/avatar_castellana.png';">
+            <img src="img/cappuccini.gif" alt="Convento dei Cappuccini" class="monument-hero-image img-cappuccini" onerror="this.src='img/avatar_castellana.png';">
         </div>
 
         <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
@@ -158,18 +386,18 @@ window.silktideConsentManager.init({
         </button>
 
         <section class="teca-cristallo descrittiva">
-            <p id="desc-text" data-i18n="pages.monuments_pages.cappuccini.description">I frati Cappuccini arrivarono qui nel 1589, portando con sé lo stile sobrio e silenzioso che da sempre contraddistingue il loro ordine. È uno degli ultimi conventi ancora abitati in tutta la Sicilia occidentale: oggi come allora, i frati vivono di preghiera, lavoro manuale e accoglienza dei pellegrini. Le sue mura raccontano quasi due secoli di storia prima ancora dell'Unità d'Italia.</p>
+            <p id="desc-text" data-i18n="pages.monuments_pages.cappuccini.description">Arroccato sul punto più alto del borgo, il convento fu fondato nel 1536. Al suo interno custodisce una pregevole Pala d'altare, ma la vera meraviglia si trova appena fuori: dal suo belvedere lo sguardo spazia libero su tutta la valle del Fiume San Leonardo, fino a scorgere in lontananza il Monte Cane. A dicembre, i frati allestiscono qui uno dei presepi più suggestivi del paese, con antichi attrezzi agricoli e oggetti di casa di altri tempi.</p>
+        </section>
+
+        <section class="teca-cristallo teca-avviso">
+            <p data-i18n="pages.monuments_pages.labels.church_notice">⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche...</p>
         </section>
 
         <section class="teca-cristallo teca-logistica">
             <div class="info-row">
-                <span class="info-label" data-i18n="pages.monuments_pages.labels.hours">Accesso:</span>
-                <span class="info-value" data-i18n="pages.monuments_pages.cappuccini.hours">Accessibile principalmente su richiesta o durante le ricorrenze francescane.</span>
+                <span class="info-label" data-i18n="pages.monuments_pages.labels.hours">Orari:</span>
+                <span class="info-value" data-i18n="pages.monuments_pages.cappuccini.hours">Sabato e Domenica...</span>
             </div>
-        </section>
-
-        <section class="teca-cristallo teca-avviso">
-            <p data-i18n="pages.monuments_pages.cappuccini.secret_info">💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan...</p>
         </section>
 
         <div class="actions-container">
@@ -177,7 +405,7 @@ window.silktideConsentManager.init({
                 🌐 <span data-i18n="pages.monuments_pages.labels.view_map">Apri la Mappa</span>
             </button>
             
-            <button class="btn-barocco-action btn-secondary-action" onclick="window.location.href='../desktop/desktop_index.html'">
+            <button class="btn-barocco-action btn-secondary-action" id="talk-castellana-btn-monumento">
                 👑 <span data-i18n="pages.monuments_pages.labels.btn_parla_castellana">Parla con la Castellana</span>
             </button>
         </div>
@@ -186,6 +414,26 @@ window.silktideConsentManager.init({
 
     </main>
 
+    <!-- ============================================================
+         CHAT CASTELLANA — collegata agli argomenti Premium specifici
+         dei Cappuccini (chiese.cappuccini.*).
+         ============================================================ -->
+    <div class="chat-mobile" id="chat-mobile">
+        <div class="chat-mobile-header">
+            <div class="avatar-status-dot"></div>
+            <span class="chat-title-mobile">La Castellana</span>
+            <button id="voice-toggle-btn-mobile" class="voice-toggle-btn-mobile" title="Attiva/disattiva voce">🔊</button>
+            <button id="close-chat-mobile" class="close-chat-btn-mobile">✕</button>
+        </div>
+        <div class="premium-status-bar-mobile" id="premium-status-bar-mobile"></div>
+        <div class="chat-messages-mobile" id="chat-messages-mobile"></div>
+        <div class="chat-input-row-mobile">
+            <input type="text" id="chat-input-mobile" placeholder="Scrivi alla Castellana...">
+            <button id="mic-btn-mobile" class="mic-btn-mobile" type="button" title="Parla con la Castellana">🎤</button>
+            <button id="send-btn-mobile" class="send-btn-mobile" aria-label="Invia">➤</button>
+        </div>
+    </div>
+
     <script src="monument_translation.js"></script>
 
     <script>
@@ -193,7 +441,7 @@ window.silktideConsentManager.init({
         // dell'audioguida (toggleReadAloud) arriva da
         // monument_translation.js, condivisa da tutte le pagine
         // dei monumenti.
-        const audio = document.getElementById("bg-music"); audio.volume=0.25;
+        const audio = document.getElementById("bg-music"); audio.volume = 0.2;
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
 
@@ -207,6 +455,472 @@ window.silktideConsentManager.init({
             if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; } 
             else { audio.pause(); toggleBtn.textContent = "🔇"; }
         });
+
+        // ============================================================
+        // ================  CHAT CASTELLANA (MOBILE)  ================
+        // ============================================================
+        const API_BASE_URL = "https://castellana.pythonanywhere.com";
+        const PREMIUM_STORAGE_KEY = "amuni_premium_access";
+        const VOICE_PREF_KEY = "amuni_voice_enabled";
+        let currentLang = localStorage.getItem("lang") || "it";
+
+        function getStoredAccessCode() {
+            const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+            if (!raw) return null;
+            try {
+                const data = JSON.parse(raw);
+                if (new Date(data.expires_at) > new Date()) {
+                    return data.code;
+                } else {
+                    localStorage.removeItem(PREMIUM_STORAGE_KEY);
+                    return null;
+                }
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function storeAccessCode(code, expiresAt) {
+            localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
+                code: code,
+                expires_at: expiresAt
+            }));
+        }
+
+        // --------------------------
+        // TTS
+        // --------------------------
+        let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
+        const voiceToggleBtnMobile = document.getElementById("voice-toggle-btn-mobile");
+
+        let vociDisponibili = [];
+        function aggiornaVociDisponibili() {
+            vociDisponibili = window.speechSynthesis.getVoices();
+        }
+        if ("speechSynthesis" in window) {
+            aggiornaVociDisponibili();
+            window.speechSynthesis.onvoiceschanged = aggiornaVociDisponibili;
+        }
+
+        const NOMI_VOCE_FEMMINILE = {
+            "it-IT": ["Google italiano", "Elsa", "Alice", "Federica", "Silvia", "Paola"],
+            "en-US": ["Google US English", "Samantha", "Zira", "Aria", "Jenny"],
+            "fr-FR": ["Google français", "Amelie", "Julie", "Denise", "Hortense"],
+            "de-DE": ["Google Deutsch", "Anna", "Katja", "Petra", "Helena"],
+            "es-ES": ["Google español", "Monica", "Helena", "Elvira", "Paloma"]
+        };
+        const INDIZI_VOCE_MASCHILE = /male|david|mark|daniel|thomas|diego|paolo|hans|marco|luca|carlos|antonio|cosimo/i;
+
+        function trovaVoceCastellana(langCode) {
+            if (!vociDisponibili.length) vociDisponibili = window.speechSynthesis.getVoices();
+            const nomiPreferiti = NOMI_VOCE_FEMMINILE[langCode] || [];
+            for (const nome of nomiPreferiti) {
+                const voce = vociDisponibili.find(v => v.name.includes(nome));
+                if (voce) return voce;
+            }
+            const linguaBase = langCode.split('-')[0];
+            const stessaLingua = vociDisponibili.filter(v =>
+                v.lang === langCode || (v.lang || '').startsWith(linguaBase)
+            );
+            const nonMaschile = stessaLingua.find(v => !INDIZI_VOCE_MASCHILE.test(v.name));
+            return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
+        }
+
+        function updateVoiceToggleIconMobile() {
+            if (voiceToggleBtnMobile) voiceToggleBtnMobile.textContent = voiceEnabled ? "🔊" : "🔇";
+        }
+        updateVoiceToggleIconMobile();
+
+        if (voiceToggleBtnMobile) {
+            voiceToggleBtnMobile.addEventListener("click", (e) => {
+                e.stopPropagation();
+                voiceEnabled = !voiceEnabled;
+                localStorage.setItem(VOICE_PREF_KEY, voiceEnabled ? "on" : "off");
+                updateVoiceToggleIconMobile();
+                if (!voiceEnabled && "speechSynthesis" in window) window.speechSynthesis.cancel();
+            });
+        }
+
+        function ttsLangCode(lang) {
+            const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+            return map[lang] || "it-IT";
+        }
+
+        function speakText(text) {
+            if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
+            window.speechSynthesis.cancel();
+            setTimeout(() => {
+                const langCode = ttsLangCode(currentLang);
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = trovaVoceCastellana(langCode);
+                utterance.lang = langCode;
+                utterance.rate = 0.84;
+                utterance.pitch = 0.95;
+                utterance.volume = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }, 60);
+        }
+
+        function castellanaZitta() {
+            if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+        }
+
+        // --------------------------
+        // MICROFONO
+        // --------------------------
+        const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const micBtnMobile = document.getElementById("mic-btn-mobile");
+        let recognitionMobile = null;
+        let isListeningMobile = false;
+
+        function sttLangCode(lang) {
+            const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+            return map[lang] || "it-IT";
+        }
+
+        if (SpeechRecognitionAPI && micBtnMobile) {
+            recognitionMobile = new SpeechRecognitionAPI();
+            recognitionMobile.continuous = false;
+            recognitionMobile.interimResults = false;
+
+            recognitionMobile.onstart = () => {
+                isListeningMobile = true;
+                micBtnMobile.classList.add("listening");
+            };
+            recognitionMobile.onend = () => {
+                isListeningMobile = false;
+                micBtnMobile.classList.remove("listening");
+            };
+            recognitionMobile.onerror = () => {
+                isListeningMobile = false;
+                micBtnMobile.classList.remove("listening");
+            };
+            recognitionMobile.onresult = (event) => {
+                const testoRiconosciuto = event.results[0][0].transcript;
+                sendChatMessageMobile(testoRiconosciuto);
+            };
+
+            micBtnMobile.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (isListeningMobile) {
+                    recognitionMobile.stop();
+                    return;
+                }
+                recognitionMobile.lang = sttLangCode(currentLang);
+                castellanaZitta();
+                try {
+                    recognitionMobile.start();
+                } catch (err) {
+                    console.error("Errore riconoscimento vocale:", err);
+                }
+            });
+        } else if (micBtnMobile) {
+            micBtnMobile.style.display = "none";
+        }
+
+        // --------------------------
+        // LINK — i link restituiti dal backend vanno fatti puntare
+        // a "../desktop/", perché le pagine desktop stanno lì.
+        // --------------------------
+        function resolveLinkPathMobile(link) {
+            if (!link) return link;
+            if (link.startsWith("http") || link.startsWith("../desktop/") || link.startsWith("/mobile/")) {
+                return link;
+            }
+            return "../desktop/" + link;
+        }
+
+        // --------------------------
+        // RENDERING MESSAGGI
+        // --------------------------
+        function appendChatMessageMobile(text, sender, link) {
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            if (!messagesBox) return;
+
+            const msg = document.createElement('div');
+            msg.className = 'message-mobile' + (sender === 'user' ? ' user-msg-mobile' : '');
+
+            const textSpan = document.createElement('span');
+            textSpan.innerHTML = text.replace(/\n/g, '<br>');
+            msg.appendChild(textSpan);
+
+            if (sender !== 'user') {
+                const audioBtn = document.createElement('button');
+                audioBtn.innerHTML = '🔊';
+                audioBtn.title = 'Ascolta la Castellana';
+                audioBtn.className = 'audio-btn-mobile';
+                audioBtn.onclick = () => speakText(text);
+                msg.appendChild(audioBtn);
+            }
+
+            messagesBox.appendChild(msg);
+
+            if (link) {
+                const btn = document.createElement('button');
+                btn.className = 'chat-link-btn-mobile';
+                btn.textContent = 'Vai alla pagina →';
+                btn.onclick = () => window.location.href = resolveLinkPathMobile(link);
+                messagesBox.appendChild(btn);
+            }
+
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+
+        // --------------------------
+        // ARGOMENTI PREMIUM — solo quelli dei Cappuccini,
+        // stessi id usati dal backend/chiese-arte.html.
+        // --------------------------
+        const CAPPUCCINI_TOPICS_MOBILE = {
+            it: [
+                { topic: "chiese.cappuccini.storia", label: "🏰 Storia" },
+                { topic: "chiese.cappuccini.interno", label: "🕯️ Interno" },
+                { topic: "chiese.cappuccini.dove", label: "📍 Dove si trova" }
+            ],
+            en: [
+                { topic: "chiese.cappuccini.storia", label: "🏰 History" },
+                { topic: "chiese.cappuccini.interno", label: "🕯️ Interior" },
+                { topic: "chiese.cappuccini.dove", label: "📍 Location" }
+            ],
+            fr: [
+                { topic: "chiese.cappuccini.storia", label: "🏰 Histoire" },
+                { topic: "chiese.cappuccini.interno", label: "🕯️ Intérieur" },
+                { topic: "chiese.cappuccini.dove", label: "📍 Où se trouve" }
+            ],
+            es: [
+                { topic: "chiese.cappuccini.storia", label: "🏰 Historia" },
+                { topic: "chiese.cappuccini.interno", label: "🕯️ Interior" },
+                { topic: "chiese.cappuccini.dove", label: "📍 Dónde está" }
+            ],
+            de: [
+                { topic: "chiese.cappuccini.storia", label: "🏰 Geschichte" },
+                { topic: "chiese.cappuccini.interno", label: "🕯️ Innenraum" },
+                { topic: "chiese.cappuccini.dove", label: "📍 Standort" }
+            ]
+        };
+
+        const WELCOME_MESSAGE_MOBILE = "Benvenuto al Convento dei Cappuccini, viandante! Cosa vuoi scoprire?";
+
+        let usedTopicsMobile = new Set();
+        let hasShownWelcomeMobile = false;
+
+        function renderTopicMenuMobile(menu) {
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            const old = messagesBox.querySelector('.topic-menu-state-mobile');
+            if (old) old.remove();
+
+            const wrap = document.createElement('div');
+            wrap.className = 'topic-menu-mobile topic-menu-state-mobile';
+
+            menu.forEach(entry => {
+                if (usedTopicsMobile.has(entry.topic)) return;
+                const b = document.createElement('button');
+                b.className = 'topic-btn-mobile';
+                b.textContent = entry.label;
+                b.addEventListener('click', () => {
+                    usedTopicsMobile.add(entry.topic);
+                    sendTopicRequestMobile(entry.topic, entry.label);
+                });
+                wrap.appendChild(b);
+            });
+
+            if (wrap.children.length > 0) {
+                messagesBox.appendChild(wrap);
+                messagesBox.scrollTop = messagesBox.scrollHeight;
+            }
+        }
+
+        async function sendTopicRequestMobile(topicId, label) {
+            appendChatMessageMobile(label, 'user');
+
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            const old = messagesBox.querySelector('.topic-menu-state-mobile');
+            if (old) old.remove();
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: label,
+                        page: "chiese-arte",
+                        lang: currentLang,
+                        access_code: getStoredAccessCode() || "",
+                        topic: topicId
+                    })
+                });
+                if (!res.ok) throw new Error('Risposta non valida dal server');
+                const data = await res.json();
+                appendChatMessageMobile(data.reply, 'castellana', data.link);
+                if (data.speak || voiceEnabled) speakText(data.reply);
+                renderTopicMenuMobile(CAPPUCCINI_TOPICS_MOBILE[currentLang] || CAPPUCCINI_TOPICS_MOBILE.it);
+            } catch (err) {
+                console.error('Errore richiesta topic:', err);
+                appendChatMessageMobile('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+            }
+        }
+
+        function renderWelcomeMobile() {
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            if (!messagesBox) return;
+            messagesBox.innerHTML = '';
+            usedTopicsMobile.clear();
+
+            appendChatMessageMobile(WELCOME_MESSAGE_MOBILE, 'castellana');
+            if (voiceEnabled) speakText(WELCOME_MESSAGE_MOBILE);
+
+            renderTopicMenuMobile(CAPPUCCINI_TOPICS_MOBILE[currentLang] || CAPPUCCINI_TOPICS_MOBILE.it);
+
+            hasShownWelcomeMobile = true;
+        }
+
+        // --------------------------
+        // ATTIVAZIONE CODICE + MESSAGGI LIBERI
+        // --------------------------
+        async function tryActivateCodeMobile(rawMessage) {
+            const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9-]+)/i);
+            if (!match) return false;
+
+            const code = match[2].toUpperCase();
+            appendChatMessageMobile(rawMessage, 'user');
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/activate-code`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: code, lang: currentLang })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    storeAccessCode(code, data.expires_at);
+                    const expiryDate = new Date(data.expires_at);
+                    const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+                    appendChatMessageMobile(`Premium attivato! Avrai accesso ai contenuti esclusivi fino al ${formatted}.`, 'castellana');
+                    updatePremiumStatusDisplayMobile();
+                } else {
+                    appendChatMessageMobile(data.message || 'Codice non valido.', 'castellana');
+                }
+            } catch (err) {
+                console.error('Errore attivazione codice:', err);
+                appendChatMessageMobile('Al momento non riesco a verificare il codice — riprova tra poco.', 'castellana');
+            }
+
+            return true;
+        }
+
+        async function sendChatMessageMobile(text) {
+            if (!text.trim()) return;
+
+            const wasActivationAttempt = await tryActivateCodeMobile(text);
+            if (wasActivationAttempt) return;
+
+            appendChatMessageMobile(text, 'user');
+            castellanaZitta();
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: text,
+                        page: "chiese-arte",
+                        lang: currentLang,
+                        access_code: getStoredAccessCode() || ""
+                    })
+                });
+
+                if (!res.ok) throw new Error('Risposta non valida dal server');
+
+                const data = await res.json();
+                appendChatMessageMobile(data.reply, 'castellana', data.link);
+                if (data.speak || voiceEnabled) speakText(data.reply);
+
+            } catch (err) {
+                console.error('Errore chat:', err);
+                appendChatMessageMobile('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+            }
+        }
+
+        const chatInputFieldMobile = document.getElementById('chat-input-mobile');
+        const sendBtnMobile = document.getElementById('send-btn-mobile');
+
+        function handleSendMobile() {
+            sendChatMessageMobile(chatInputFieldMobile.value);
+            chatInputFieldMobile.value = '';
+        }
+
+        if (chatInputFieldMobile) {
+            chatInputFieldMobile.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.keyCode === 13) {
+                    e.preventDefault();
+                    handleSendMobile();
+                }
+            });
+        }
+        if (sendBtnMobile) {
+            sendBtnMobile.addEventListener('click', handleSendMobile);
+        }
+
+        // --------------------------
+        // INDICATORE PREMIUM
+        // --------------------------
+        const PREMIUM_STATUS_TEXT_MOBILE = {
+            it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
+            en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
+            fr: { active: (d) => `👑 Premium actif jusqu'au ${d}`, free: "🔓 Version gratuite" },
+            es: { active: (d) => `👑 Premium activo hasta el ${d}`, free: "🔓 Versión gratuita" },
+            de: { active: (d) => `👑 Premium aktiv bis ${d}`, free: "🔓 Kostenlose Version" }
+        };
+
+        function updatePremiumStatusDisplayMobile() {
+            const bar = document.getElementById('premium-status-bar-mobile');
+            if (!bar) return;
+            const texts = PREMIUM_STATUS_TEXT_MOBILE[currentLang] || PREMIUM_STATUS_TEXT_MOBILE.it;
+            const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    if (new Date(data.expires_at) > new Date()) {
+                        const d = new Date(data.expires_at);
+                        const formatted = d.toLocaleDateString(currentLang, { day: 'numeric', month: 'long' }) +
+                            ' ' + d.toLocaleTimeString(currentLang, { hour: '2-digit', minute: '2-digit' });
+                        bar.textContent = texts.active(formatted);
+                        bar.classList.add('premium-active');
+                        return;
+                    }
+                } catch (e) { /* codice non valido, trattalo come gratuito */ }
+            }
+            bar.textContent = texts.free;
+            bar.classList.remove('premium-active');
+        }
+
+        // --------------------------
+        // APERTURA / CHIUSURA CHAT
+        // --------------------------
+        const chatMobileBox = document.getElementById('chat-mobile');
+        const closeChatMobileBtn = document.getElementById('close-chat-mobile');
+        const talkCastellanaBtnMonumento = document.getElementById('talk-castellana-btn-monumento');
+
+        if (talkCastellanaBtnMonumento) {
+            talkCastellanaBtnMonumento.addEventListener('click', () => {
+                if (getStoredAccessCode()) {
+                    chatMobileBox.classList.add('active');
+                    updatePremiumStatusDisplayMobile();
+                    if (!hasShownWelcomeMobile) {
+                        renderWelcomeMobile();
+                    }
+                } else {
+                    window.location.href = "../desktop/desktop_index.html";
+                }
+            });
+        }
+
+        if (closeChatMobileBtn) {
+            closeChatMobileBtn.addEventListener('click', () => {
+                chatMobileBox.classList.remove('active');
+                castellanaZitta();
+            });
+        }
     </script>
 </body>
 </html>
