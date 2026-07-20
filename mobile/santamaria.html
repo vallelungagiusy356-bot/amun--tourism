@@ -490,10 +490,20 @@ window.silktideConsentManager.init({
             ]
         };
 
-        const WELCOME_MESSAGE_MOBILE = "Benvenuto a Santa Maria degli Angeli, viandante! Cosa vuoi scoprire?";
+        const WELCOME_MESSAGE_MOBILE = {
+            it: "Benvenuto a Santa Maria degli Angeli, viandante! Cosa vuoi scoprire?",
+            en: "Welcome to Santa Maria degli Angeli, traveler! What would you like to discover?",
+            fr: "Bienvenue a Santa Maria degli Angeli, voyageur ! Que veux-tu decouvrir ?",
+            es: "Bienvenido a Santa Maria degli Angeli, viajero! Que quieres descubrir?",
+            de: "Willkommen bei Santa Maria degli Angeli, Reisender! Was mochtest du entdecken?"
+        };
 
         let usedTopicsMobile = new Set();
         let hasShownWelcomeMobile = false;
+        // Ricorda in quale lingua e stato mostrato l'ultimo benvenuto:
+        // se currentLang cambia rispetto a questa, il benvenuto va
+        // ridisegnato, anche se era gia stato mostrato una volta.
+        let shownWelcomeLang = null;
 
         function renderTopicMenuMobile(menu) {
             const messagesBox = document.getElementById('chat-messages-mobile');
@@ -557,12 +567,14 @@ window.silktideConsentManager.init({
             messagesBox.innerHTML = '';
             usedTopicsMobile.clear();
 
-            appendChatMessageMobile(WELCOME_MESSAGE_MOBILE, 'castellana');
-            if (voiceEnabled) speakText(WELCOME_MESSAGE_MOBILE);
+            const welcomeText = WELCOME_MESSAGE_MOBILE[currentLang] || WELCOME_MESSAGE_MOBILE.it;
+            appendChatMessageMobile(welcomeText, 'castellana');
+            if (voiceEnabled) speakText(welcomeText);
 
             renderTopicMenuMobile(SANTAMARIA_TOPICS_MOBILE[currentLang] || SANTAMARIA_TOPICS_MOBILE.it);
 
             hasShownWelcomeMobile = true;
+            shownWelcomeLang = currentLang;
         }
 
         async function tryActivateCodeMobile(rawMessage) {
@@ -689,7 +701,9 @@ window.silktideConsentManager.init({
                 if (getStoredAccessCode()) {
                     chatMobileBox.classList.add('active');
                     updatePremiumStatusDisplayMobile();
-                    if (!hasShownWelcomeMobile) {
+                    // Ridisegna il benvenuto se non e mai stato mostrato,
+                    // OPPURE se la lingua e cambiata da allora.
+                    if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
                         renderWelcomeMobile();
                     }
                 } else {
@@ -697,6 +711,20 @@ window.silktideConsentManager.init({
                 }
             });
         }
+
+        // Il selettore lingua in alto e gestito da monument_translation.js
+        // per il testo della pagina, ma non "parla" con la chat. Qui la
+        // chat si mette in ascolto per conto proprio: aggiorna la lingua
+        // interna e, se era gia aperta/mostrata, si ridisegna subito.
+        document.querySelectorAll(".lang-switcher button").forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                currentLang = btn.dataset.lang;
+                updatePremiumStatusDisplayMobile();
+                if (hasShownWelcomeMobile && shownWelcomeLang !== currentLang) {
+                    renderWelcomeMobile();
+                }
+            });
+        });
 
         if (closeChatMobileBtn) {
             closeChatMobileBtn.addEventListener('click', () => {
