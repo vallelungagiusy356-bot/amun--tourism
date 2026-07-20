@@ -1125,30 +1125,41 @@ window.silktideConsentManager.init({
             sendBtn.addEventListener('click', handleSend);
         }
 
-        document.getElementById('btn-buy-premium').addEventListener('click', async (e) => {
-  e.preventDefault();
-  const btn = e.currentTarget;
-  const originalText = btn.textContent;
-  btn.textContent = "Un momento...";
-  try {
-    const res = await fetch(`${API_BASE_URL}/create-checkout-session`, { method: "POST" });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      alert("Non riesco ad avviare il pagamento. Riprova tra poco.");
-      btn.textContent = originalText;
-    }
-  } catch (err) {
-    console.error("Errore avvio pagamento:", err);
-    alert("Errore di collegamento. Riprova tra poco.");
-    btn.textContent = originalText;
-  }
-});
+        // ============================================================
+        // BOTTONE PREMIUM — "Ho già un codice" apre la chat e invita
+        // a scrivere il codice; "Acquista l'accesso" avvia Stripe.
+        // Un solo listener per ciascun bottone (prima ce n'erano due
+        // sul bottone di acquisto: uno vecchio con un alert finto e
+        // uno nuovo che avvia davvero Stripe — venivano eseguiti
+        // entrambi in sequenza).
+        // ============================================================
+        document.getElementById('btn-premium-code').addEventListener('click', () => {
+            chat.classList.add('active');
+            appendChatMessage(
+                t('premium.chat_code_prompt', 'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"'),
+                'castellana'
+            );
+        });
 
-        document.getElementById('btn-buy-premium').addEventListener('click', (e) => {
-          e.preventDefault();
-          alert(t('premium.payment_soon', 'Il pagamento sarà disponibile a breve. Torna presto!'));
+        document.getElementById('btn-buy-premium').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const btn = e.currentTarget;
+            const originalText = btn.textContent;
+            btn.textContent = "Un momento...";
+            try {
+                const res = await fetch(`${API_BASE_URL}/create-checkout-session`, { method: "POST" });
+                const data = await res.json();
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    alert("Non riesco ad avviare il pagamento. Riprova tra poco.");
+                    btn.textContent = originalText;
+                }
+            } catch (err) {
+                console.error("Errore avvio pagamento:", err);
+                alert("Errore di collegamento. Riprova tra poco.");
+                btn.textContent = originalText;
+            }
         });
     </script>
     <footer class="footer-copyright" style="text-align: center; padding: 30px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem;">
