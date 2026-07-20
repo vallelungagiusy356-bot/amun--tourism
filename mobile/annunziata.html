@@ -189,10 +189,8 @@ window.silktideConsentManager.init({
     <script src="monument_translation.js"></script>
 
     <script>
+      (function() {
         // Musica di sottofondo della pagina. La sintesi vocale
-        // dell'audioguida (toggleReadAloud) arriva da
-        // monument_translation.js, condivisa da tutte le pagine
-        // dei monumenti.
         const audio = document.getElementById("bg-music"); audio.volume = 0.25;
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
