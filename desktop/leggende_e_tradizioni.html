@@ -232,6 +232,51 @@ window.silktideConsentManager.init({
         .legend-toggle .legend-toggle-label-less::after {
             content: " ↑";
         }
+
+        /* ===== BOTTONE PREMIUM — stesso stile usato in castello.html,
+           chiese-arte.html e cibo_eventi.html, per coerenza tra le pagine ===== */
+        .castellana-premium-cta {
+          max-width: 420px;
+          margin: 32px auto;
+          padding: 20px;
+          background: #fdf6e8;
+          border-radius: 14px;
+          text-align: center;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+          font-family: 'Cormorant Garamond', serif;
+        }
+
+        .premium-cta-label {
+          margin: 0 0 14px;
+          font-weight: 600;
+          color: #5a1a20;
+        }
+
+        .premium-btn {
+          display: inline-block;
+          padding: 10px 20px;
+          border-radius: 24px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          border: none;
+          margin: 4px;
+          transition: opacity 0.2s ease;
+        }
+
+        .premium-btn:hover { opacity: 0.9; }
+
+        .premium-btn-outline {
+          background: transparent;
+          border: 2px solid #7a1f2b;
+          color: #7a1f2b;
+        }
+
+        .premium-btn-gold {
+          background: linear-gradient(135deg, #c9962f, #e0b04a);
+          color: #3a2a10;
+        }
     </style>
 </head>
 
@@ -346,6 +391,17 @@ window.silktideConsentManager.init({
                         <div class="ask-legend-castellana" data-i18n="pages.canti_page.legend_cta">Chiedi alla Castellana di raccontartela</div>
                     </div>
                 </section>
+
+                <!-- ===== BOTTONE PREMIUM ===== -->
+                <div class="castellana-premium-cta">
+                  <p class="premium-cta-label">🔒 Contenuti Premium disponibili</p>
+                  <button id="btn-premium-code" class="premium-btn premium-btn-outline">
+                    Ho già un codice
+                  </button>
+                  <a href="#" id="btn-buy-premium" class="premium-btn premium-btn-gold">
+                    Acquista l'accesso — 3,90€
+                  </a>
+                </div>
 
             </div>
 
@@ -1452,6 +1508,39 @@ window.silktideConsentManager.init({
         if (sendBtn) {
             sendBtn.addEventListener('click', handleSend);
         }
+
+        // ============================================================
+        // BOTTONE PREMIUM — "Ho già un codice" apre la chat e invita
+        // a scrivere il codice; "Acquista l'accesso" avvia Stripe.
+        // ============================================================
+        document.getElementById('btn-premium-code').addEventListener('click', () => {
+            chat.classList.add('active');
+            appendChatMessage(
+                'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"',
+                'castellana'
+            );
+        });
+
+        document.getElementById('btn-buy-premium').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const btn = e.currentTarget;
+            const originalText = btn.textContent;
+            btn.textContent = "Un momento...";
+            try {
+                const res = await fetch(`${API_BASE_URL}/create-checkout-session`, { method: "POST" });
+                const data = await res.json();
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    alert("Non riesco ad avviare il pagamento. Riprova tra poco.");
+                    btn.textContent = originalText;
+                }
+            } catch (err) {
+                console.error("Errore avvio pagamento:", err);
+                alert("Errore di collegamento. Riprova tra poco.");
+                btn.textContent = originalText;
+            }
+        });
     </script>
     <footer class="footer-copyright" style="text-align: center; padding: 30px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem;">
     <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
