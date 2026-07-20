@@ -439,6 +439,11 @@ window.silktideConsentManager.init({
     <script src="monument_translation.js"></script>
 
     <script>
+      (function() {
+        // Tutto il codice qui dentro e racchiuso in una funzione che
+        // si esegue subito da sola: le sue variabili (currentLang,
+        // speakText, audio, ecc.) restano private e non entrano in
+        // conflitto con quelle gia usate in monument_translation.js.
         // Musica di sottofondo della pagina. La sintesi vocale
         // dell'audioguida (toggleReadAloud) arriva da
         // monument_translation.js, condivisa da tutte le pagine
@@ -930,6 +935,7 @@ window.silktideConsentManager.init({
                 castellanaZitta();
             });
         }
+      })();
     </script>
 </body>
 </html>
