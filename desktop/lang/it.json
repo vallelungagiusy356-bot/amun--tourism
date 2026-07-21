@@ -1,151 +1,1563 @@
-{
-  "menu": {
-    "title": "Amunì Tourism",
-    "home": "Home",
-    "citizen": "Cittadino",
-    "about": "Il Progetto",
-    "chi_siamo": "Chi Siamo",
-    "contact": "Contatti"
-  },
-  "chat": {
-    "title": "La Castellana",
-    "tooltip": "Clicca per chattare",
-    "placeholder": "Scrivi alla Castellana...",
-    "chiese_msg": "Benvenuto su Amunì Tourism! Esplora le bellezze sacre di Caccamo...",
-    "cibo_eventi_msg": "Benvenuto! Chiedimi delle feste e delle tradizioni di Caccamo, stagione per stagione.",
-    "citizen_msg1": "Benvenuto nella sezione del cittadino! Esplora le card al centro o chiedimi dettagli su eventi e tradizioni del borgo.",
-    "canti_msg": "Vuoi ascoltare altri canti e preghiere del borgo? Nella versione Premium te ne racconto molti altri..."
-  },
-  "premium": {
-    "cta_label": "🔒 Contenuti Premium disponibili",
-    "btn_code": "Ho già un codice",
-    "btn_buy": "Acquista l'accesso — 3,90€"
-  },
-  "pages": {
-    "castle_page": {
-      "category": "Monumenti Storici",
-      "title": "Il Castello di Caccamo",
-      "rhyme_1": "In un castello normanno forgiato dal tempo,<br>venite, ammirate, fermatevi un momento.<br>Non è solo pietra, né freddo baluardo,<br>ma un'anima antica che attende il tuo sguardo.",
-      "history_intro": "Il Castello nasce nel <strong>1094</strong> per volere del Conte Ruggero I. Nei secoli passa tra <strong>14 famiglie nobiliari</strong> — tra cui Chiaramonte, Cabrera e De Spuches — fino al 1963, quando viene ceduto alla Regione Siciliana.",
-      "towers": "La <strong>Torre Mastra</strong>, la più antica e alta, custodisce una cisterna alla base. La <strong>Torre Gibellina</strong> veglia su Terravecchia, mentre la <strong>Torre della Fossa</strong> chiude il prospetto sud.",
-      "size_note": "Uno dei castelli normanni meglio conservati di Sicilia: percorrerlo tutto richiede almeno un'ora, tra cortili e camminamenti.",
-      "biglietti": "<strong>Biglietti</strong> — Intero 6€ · Ridotto online 4,50€ · Residenti 1€ · Studenti 18-25 anni 3€ · Gratuito under 18."
-    },
-    "chiese_page": {
-      "page_title": "Le Chiese di Caccamo",
-      "poesia_intro": "Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.",
-      "poesia_outro": "Lasciati guidare dove il tempo si è fermato...",
-      "route_cappuccini": "Punto più alto",
-      "cappuccini": "I Cappuccini",
-      "verse_cappuccini": "In cima ai <strong>Cappuccini</strong> il cammino ha inizio,<br>tra una Pala d'altare e un vasto orizzonte propizio.",
-      "route_angeli": "Silenzio",
-      "angeli": "S. Maria degli Angeli",
-      "verse_angeli": "Agli <strong>Angeli</strong> riposa, nel silenzio più sacro,<br>il Beato Giovanni, del borgo simulacro.",
-      "route_annunziata": "Volte dipinte",
-      "annunziata": "Annunziata",
-      "verse_annunziata": "Poi l'<strong>Annunziata</strong> svela le sue volte dipinte,<br>e la torre campanaria dalle guardie mai vinte.",
-      "route_badia": "Si scende",
-      "badia": "S. Benedetto della Badia",
-      "verse_badia": "Più in basso, la <strong>Badia</strong> veste la terra a fiore,<br>nel ricamo in maiolica di raro splendore.",
-      "route_sangiorgio": "Cuore del borgo",
-      "sangiorgio": "San Giorgio Martire",
-      "verse_duomo": "Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne."
-    },
-    "cibo_eventi_page": {
-      "page_title": "Il Calendario del Borgo",
-      "category": "Cibo &amp; Eventi",
-      "subtitle": "Quattro stagioni, quattro modi di vivere Caccamo",
-      "cta": "Chiedi alla Castellana di raccontartela",
-      "s1_period": "Ottobre — Dicembre",
-      "s1_title": "Sagra e Presepi",
-      "s1_body": "La Sagra della Salsiccia apre l'autunno, tra dolci locali come i taralli. A dicembre il borgo si accende di presepi: quello dei Cappuccini, allestito all'esterno del convento con antichi attrezzi agricoli e oggetti di casa di 40-60 anni fa, e quello di Santo Domenico, tra i più belli da vedere. Sotto il Castello si accende il grande albero di Natale, e i paesi limitrofi — facilmente raggiungibili coi trasporti locali — ospitano spesso presepi viventi.",
-      "s1_tags": "Sagra della Salsiccia · Presepe dei Cappuccini · Presepe di Santo Domenico · Albero sotto il Castello",
-      "s2_period": "Marzo — Aprile",
-      "s2_title": "Settimana Santa",
-      "s2_body": "La settimana si apre la Domenica delle Palme con U Signuruzzu a Cavaddu, quando un bambino del paese impersona Gesù nell'ingresso a Gerusalemme. Il Venerdì Santo sera è la Via Crucis vivente: la Madonna dal cuore trafitto incontra il Cristo su un letto di rose. Lo stesso giorno si usa \"girare i sepolcri\" — le chiese aperte, gli altari allestiti con il grano fiorito, a ricordare Maria e la Maddalena che si recano al sepolcro di Cristo.",
-      "s2_tags": "U Signuruzzu a Cavaddu — Domenica delle Palme · Via Crucis vivente — Venerdì Santo · Giro dei sepolcri · Pane di Cena · Pecorelle di mandorla",
-      "s3_period": "Ultima Domenica di Maggio",
-      "s3_title": "Beato Giovanni Liccio",
-      "s3_body": "Non un santo qualsiasi, ma un patrono tutto caccamese: il Beato Giovanni Liccio è un figlio del borgo, ed è per questo che la sua festa è tra le più sentite dalla comunità. La processione attraversa tutto il paese, in particolare la parte antica — un modo unico per vedere il borgo in una veste diversa e sentirsi parte della comunità.",
-      "s3_tags": "Processione patronale · Patrono di Caccamo · Centro storico",
-      "s4_period": "Fine Agosto",
-      "s4_title": "Palio di San Nicasio",
-      "s4_body": "Tre giorni di festa: il corteo storico della Castellana apre le celebrazioni, fino al Palio che chiude l'estate caccamese.",
-      "s4_tags": "Corteo storico · Palio · Festa di San Nicasio"
-    },
-    "canti_page": {
-      "category": "Leggende e Tradizioni",
-      "page_title": "Canti e Preghiere del Borgo",
-      "subtitle": "Voci di famiglia, tramandate in dialetto",
-      "legend_title": "Suor Felicia e la Sfida del Melograno",
-      "legend_p1": "Il maestoso Castello di Caccamo, arroccato sulla sua imponente rupe calcarea, custodisce una delle storie più affascinanti e misteriose di tutta la Sicilia: la leggenda di Suor Felicia, conosciuta anche come la monaca del castello.",
-      "legend_p2": "Si racconta che Felicia, fanciulla di straordinaria bellezza, fosse la figlia del castellano dell'epoca — molto probabilmente un nobile della famiglia Cabrera o Chiaramonte. Come in ogni dramma cavalleresco che si rispetti, la giovane commise il peccato più grande per la nobiltà del tempo: si innamorò follemente di un ragazzo di umili origini, un paggio o un giovane soldato della guarnigione del castello.",
-      "legend_p3": "Quando il severo padre scoprì la relazione segreta, la sua reazione fu furiosa. Fece arrestare il giovane amante, rinchiudendolo nei bui sotterranei del castello — secondo alcune versioni, gettato in uno dei famigerati pozzi a rasoio. Per punire la figlia e soffocare lo scandalo, la costrinse a prendere i voti, rinchiudendola a vita in un convento di clausura.",
-      "legend_p4": "La ragazza prese il nome di Suor Felicia. Consumata dal dolore per il suo amore perduto, morì di crepacuore in giovane età. Ma il suo legame con il castello era troppo forte per spezzarsi con la morte: si dice che la sua anima tormentata vi sia tornata, e che vi vaghi ancora oggi.",
-      "legend_p5": "Nelle notti di luna piena, allo scoccare della mezzanotte, il fantasma della monaca appare tra i saloni silenziosi, vestita di un abito candido, bellissima e malinconica. Tra le mani stringe un vassoio d'argento con sopra un melograno maturo, rosso come il sangue.",
-      "legend_p6": "Se un visitatore coraggioso la incontra a mezzanotte, lei non lo spaventa: gli va incontro e gli offre il vassoio, proponendogli una sfida. Deve sgranare il melograno e mangiare ogni singolo chicco, senza usare le mani e senza farne cadere a terra nemmeno uno.",
-      "legend_p7": "Se riesce nell'impresa, l'incantesimo si spezza: Suor Felicia gli indica il punto esatto in cui è nascosto un immenso tesoro nei sotterranei del castello, per poi volare in cielo, finalmente in pace. Se fallisce, anche solo facendo cadere un chicco, lo spettro svanisce all'istante con un gemito di delusione, lasciando il malcapitato al buio.",
-      "legend_p8": "La scelta del melograno non è casuale: nella mitologia mediterranea è da sempre il frutto del regno dei morti e del legame indissolubile, come nel mito greco di Proserpina, condannata a restare nell'Ade per aver mangiato sei chicchi di melograno. Nella leggenda di Suor Felicia, il frutto rappresenta il legame eterno con l'aldilà e la passione spezzata dei due giovani amanti, sacrificati sull'altare dell'orgoglio nobiliare.",
-      "legend_p9": "Ad oggi, si racconta che nessuno sia mai riuscito a superare la prova. Suor Felicia continua ad attendere, con il suo vassoio d'argento e il suo melograno intatto.",
-      "legend_cta": "Chiedi alla Castellana di raccontartela",
-      "legend_toggle_more": "Continua a leggere la leggenda",
-      "legend_toggle_less": "Chiudi la leggenda",
-      "group_cunti": "I Cunti",
-      "cummari_title": "Cummari Piricuddu",
-      "cummari_who": "Tradizione orale di Caccamo",
-      "group_filastrocche": "Filastrocche",
-      "oca_title": "Oca Oca",
-      "oca_who": "Filastrocca per bambini",
-      "fora_title": "Fora Quaranta",
-      "fora_who": "Conta per i giochi di strada",
-      "peri_title": "Peri",
-      "peri_who": "Conta per il nascondino",
-      "group_preghiere": "Le Preghiere",
-      "preghiera_title": "Preghiera della Buonanotte",
-      "preghiera_who": "Ninna nanna di protezione"
-    },
-    "about": {
-      "category": "Il Progetto",
-      "title": "La Visione di Amunì",
-      "mission": "Amunì nasce dal desiderio di riconnettere il presente alle radici. Non è un semplice sito turistico: è un ecosistema digitale che racconta, accompagna e fa vivere il patrimonio di Caccamo — voce dopo voce, monumento dopo monumento.",
-      "service_details": "La Castellana è il cuore pulsante di questo progetto: un'audioguida intelligente che parla 5 lingue e ti accompagna davanti a ogni monumento, raccontandoti storie verificate che nessuna targa potrebbe contenere. Con il servizio Premium, la sua voce si apre ancora di più: percorsi inediti, la logistica del territorio, le gemme nascoste dei dintorni (Pietra Piatta, Vetrana, l'Ombelico di Venere), fino a creare un ponte naturale tra Caccamo e i borghi vicini.",
-      "insider_value": "Ogni leggenda, ogni canto in dialetto, ogni pietra di questo borgo ha ora una voce curata che la racconta, in un linguaggio naturale e fluido. La Castellana non recita un copione rigido, né inventa: custodisce solo verità del territorio, tramandate con la cura di chi le conosce davvero."
-    },
-    "chi_siamo": {
-      "category": "La Nostra Storia",
-      "title": "Chi Siamo: Una Storia di Visione",
-      "founder_bio": "Il progetto Amunì nasce dalla mia doppia natura: la precisione analitica di una ricercatrice chimica e la passione, coltivata da autodidatta, per la programmazione. Non avevo alcun background informatico: ho imparato provando, un tentativo dopo l'altro, spinta dal desiderio di raccontare come merita un territorio che sentivo trascurato da troppi anni.",
-      "philosophy": "Da quel desiderio è nata la Castellana: non un semplice chatbot, ma una guida curata che accompagna il visitatore — un'audioguida viva che restituisce voce alle pietre, alle leggende e ai canti in dialetto di Caccamo, in cinque lingue diverse. Non considero questo progetto un punto d'arrivo, ma un laboratorio vivente: la cultura popolare è un patrimonio dinamico, e credo che valorizzare il territorio significhi anche custodire le voci di chi lo abita, tramandando tradizioni, filastrocche e canti alle generazioni future.",
-      "freemium_model": "I contenuti storici e monumentali sono un bene pubblico e accessibile a tutti. L'esperienza 'Castellana Premium' è riservata a chi desidera un viaggio più profondo: un accesso esclusivo all'analisi tecnica del patrimonio, alle storie stratificate e al supporto personalizzato per una scoperta autentica e senza tempo.",
-      "events": "Ogni immagine, ogni animazione, ogni riga di codice di Amunì — e ogni parola pronunciata dalla Castellana — è stata pensata e realizzata dal mio smartphone, tra un impegno di ricerca e le mie due bambine. Se sei arrivato fin qui, fai parte anche tu di questo piccolo laboratorio."
-    }
-  },
-  "citizen": {
-    "title": "Amunì Tourism - Cittadino del Borgo",
-    "tag": "Diventa parte del borgo",
-    "main_heading": "Cittadino del Borgo",
-    "intro_text": "Esplora le tradizioni storiche, la cucina tipica e l'artigianato locale di Caccamo. Scegli un quadrante per iniziare il tuo viaggio.",
-    "legends_title": "Leggende e tradizioni",
-    "legends_desc": "I racconti popolari e i miti tramandati nel tempo.",
-    "churches_title": "Chiese e arte",
-    "churches_desc": "Un viaggio tra catacombe, tradizioni e tesori sacri.",
-    "food_events_title": "Cibo e eventi",
-    "food_events_desc": "Sapori autentici, ricette storiche e feste del borgo.",
-    "castle_title": "Il castello",
-    "castle_desc": "La fortezza millenaria: storia, misteri e prigioni."
-  },
-  "home": {
-    "welcome_title": "Benvenuti a Caccamo",
-    "poetry": "Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>Caccamo intreccia il suo respiro all'antica memoria.<br>Non è solo pietra che sfida le ere e le genti,<br><strong>che cela tra le mura tesori sorprendenti.</strong><br><br>Come un gomitolo che lento si srotola,<br>si diffonde in ogni vicolo, in ogni piccola storia.<br>Un intreccio di secoli svelato <strong>con amore e mistero,</strong><br>per chi cerca il cuore pulsante di un borgo vero.<br><br><strong>Amunì, imbocca la via,</strong><br><strong>la Castellana è qui per farti compagnia.</strong>",
-    "castellana_intro_title": "Vivi la Caccamo più autentica",
-    "castellana_intro_text": "Parla con la <strong>Castellana</strong>: la tua guida turistica multilingue per scoprire storie, chicche inedite e percorsi del gusto tra le meraviglie del borgo e del territorio circostante.",
-    "install_app": "Porta Amunì con te",
-    "add_home": "Aggiungi alla schermata Home",
-    "open_webapp": "Vai alla WebApp",
-    "scan_qr": "Scansiona il QR",
-    "premium_title": "Sblocca la Castellana Premium",
-    "premium_text": "Per 3,90€ accedi alla Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.",
-    "premium_howto": "Dopo il pagamento vedrai subito il tuo codice a schermo: scrivilo in chat preceduto dalla parola <strong>\"codice\"</strong>. Ogni codice funziona su fino a 2 dispositivi — utile su un secondo telefono, per chi viaggia con te, o in caso di imprevisti.",
-    "premium_cta": "Acquista l'accesso — 3,90€"
-  }
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ============================================================
+     BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
+     ============================================================ -->
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" id="silktide-consent-manager-css" href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css" integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
+<style id="silktide-consent-manager-overrides">
+#stcm-wrapper {
+  --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
+  --fontFamily: Helvetica Neue, Segoe UI, Arial, sans-serif;
+  --primaryColor: #9C4C22;
+  --backgroundColor: #efe6d3;
+  --textColor: #22303b;
+  --backdropBackgroundColor: #00000033;
+  --backdropBackgroundBlur: 0px;
+  --iconColor: #EFE6D3;
+  --iconBackgroundColor: #22303B;
 }
+</style>
+<script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
+<script>
+window.silktideConsentManager.init({
+  backdrop: { show: false },
+  icon: { position: "bottomLeft" },
+  prompt: { position: "bottomCenter" },
+  consentTypes: [
+    {
+      id: "essential",
+      label: "Essenziali",
+      description: "<p>Cookie tecnici necessari al funzionamento del sito, come la memoria della lingua scelta e del codice Premium attivato. Non possono essere disattivati.</p>",
+      required: true,
+      onAccept: function() {}
+    },
+    {
+      id: "analytics",
+      label: "Statistiche",
+      description: "Questi cookie ci aiutano a capire come i visitatori usano il sito, in forma aggregata e anonima, per migliorare i contenuti di Amunì Tourism.",
+      required: false,
+      gtag: "analytics_storage",
+      scripts: [{ url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0", load: "async" }],
+      onAccept: function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-DNTGGXSSM0', { 'anonymize_ip': true });
+      }
+    }
+  ],
+  text: {
+    banner: {
+      description: "<p>Amunì Tourism utilizza i cookie per offrirti la migliore esperienza di navigazione e per analizzare il traffico del sito in forma anonima. Puoi scegliere quali accettare.</p>",
+      acceptAllButtonText: "Accetta tutti",
+      acceptAllButtonAccessibleLabel: "Accetta tutti i cookie",
+      rejectNonEssentialButtonText: "Rifiuta i non essenziali",
+      rejectNonEssentialButtonAccessibleLabel: "Rifiuta tutti i cookie non essenziali",
+      preferencesButtonText: "Preferenze",
+      preferencesButtonAccessibleLabel: "Apri le preferenze cookie"
+    },
+    prompt: {
+      description: "<p>Amunì Tourism utilizza i cookie per offrirti la migliore esperienza di navigazione e per analizzare il traffico del sito in forma anonima. Puoi scegliere quali accettare.</p>",
+      acceptAllButtonText: "Accetta tutti",
+      acceptAllButtonAccessibleLabel: "Accetta tutti i cookie",
+      rejectNonEssentialButtonText: "Rifiuta i non essenziali",
+      rejectNonEssentialButtonAccessibleLabel: "Rifiuta tutti i cookie non essenziali",
+      preferencesButtonText: "Preferenze",
+      preferencesButtonAccessibleLabel: "Apri le preferenze cookie"
+    },
+    preferences: {
+      title: "Personalizza le tue preferenze cookie",
+      description: "<p>Rispettiamo il tuo diritto alla privacy. Puoi scegliere di non consentire alcuni tipi di cookie. Le tue preferenze verranno applicate a tutto il sito.</p>",
+      saveButtonText: "Salva e chiudi",
+      saveButtonAccessibleLabel: "Salva le tue preferenze cookie",
+      creditLinkText: "Ottieni questo banner gratis",
+      creditLinkAccessibleLabel: "Ottieni questo banner gratis"
+    }
+  }
+});
+</script>
+
+<!-- ============================================================
+     FINE BLOCCO COOKIE + ANALYTICS
+     ============================================================ -->
+
+    <title data-i18n="pages.canti_page.page_title">Canti e Preghiere del Borgo</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="leggende_e_tradizioni.css">
+
+    <style>
+        .lang-switcher button.active {
+            border: 2px solid #B8873B !important;
+            background: rgba(184, 135, 59, 0.2) !important;
+            font-weight: bold;
+        }
+
+        /* Blocco "significato" sotto la traduzione — più leggero della
+           riga dialetto/traduzione, per non confondersi con quella */
+        .meaning-block {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(184, 135, 59, 0.4);
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: var(--ink-soft, #465563);
+        }
+
+        .meaning-block strong {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--terracotta-dark, #9C4C22);
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ===== SEZIONE LEGGENDE — dà finalmente un senso al nome della
+           pagina, che prima conteneva solo canti e preghiere ===== */
+        .legend-section {
+            max-width: 720px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .legend-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            color: var(--sea, #1B4965);
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .legend-card {
+            background: var(--stone-dim, #DCCFAF);
+            border: 1px solid var(--terracotta, #C1622D);
+            border-radius: 4px;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        .legend-card p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.08rem;
+            line-height: 1.7;
+            color: var(--ink, #22303B);
+            margin-bottom: 1rem;
+        }
+
+        .legend-card p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .ask-legend-castellana {
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(184, 135, 59, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--sea, #1B4965);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .ask-legend-castellana:after {
+            content: "→";
+            margin-left: auto;
+            color: var(--gold, #B8873B);
+            font-style: normal;
+        }
+
+        .ask-legend-castellana:hover {
+            color: var(--terracotta-dark, #9C4C22);
+        }
+
+        /* ===== FISARMONICA LEGGENDA — mostra solo il primo paragrafo,
+           il resto si apre dolcemente cliccando il bottone ===== */
+        .legend-more {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease;
+        }
+
+        .legend-more.expanded {
+            max-height: 3000px;
+        }
+
+        .legend-toggle {
+            display: block;
+            margin: 1.2rem auto 0;
+            background: transparent;
+            border: 1px solid var(--gold, #B8873B);
+            color: var(--sea, #1B4965);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            padding: 8px 22px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .legend-toggle:hover {
+            background: rgba(184, 135, 59, 0.12);
+            color: var(--terracotta-dark, #9C4C22);
+        }
+
+        .legend-toggle-label-less {
+            display: none;
+        }
+
+        .legend-toggle.is-expanded .legend-toggle-label-more {
+            display: none;
+        }
+
+        .legend-toggle.is-expanded .legend-toggle-label-less {
+            display: inline;
+        }
+
+        .legend-toggle .legend-toggle-label-more::after {
+            content: " ↓";
+        }
+
+        .legend-toggle .legend-toggle-label-less::after {
+            content: " ↑";
+        }
+
+        /* ===== BOTTONE PREMIUM — stesso stile usato in castello.html,
+           chiese-arte.html e cibo_eventi.html, per coerenza tra le pagine ===== */
+        .castellana-premium-cta {
+          max-width: 420px;
+          margin: 32px auto;
+          padding: 20px;
+          background: #fdf6e8;
+          border-radius: 14px;
+          text-align: center;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+          font-family: 'Cormorant Garamond', serif;
+        }
+
+        .premium-cta-label {
+          margin: 0 0 14px;
+          font-weight: 600;
+          color: #5a1a20;
+        }
+
+        .premium-btn {
+          display: inline-block;
+          padding: 10px 20px;
+          border-radius: 24px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          border: none;
+          margin: 4px;
+          transition: opacity 0.2s ease;
+        }
+
+        .premium-btn:hover { opacity: 0.9; }
+
+        .premium-btn-outline {
+          background: transparent;
+          border: 2px solid #7a1f2b;
+          color: #7a1f2b;
+        }
+
+        .premium-btn-gold {
+          background: linear-gradient(135deg, #c9962f, #e0b04a);
+          color: #3a2a10;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="dashboard">
+        <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+
+        <div class="header-right-actions">
+            <nav class="nav-desktop">
+                <a href="desktop_index.html" data-i18n="menu.home">Home</a>
+                <a href="cittadino.html" data-i18n="menu.citizen">Cittadino</a>
+            </nav>
+
+            <div class="lang-switcher">
+                <button data-lang="it">IT</button>
+                <button data-lang="en">EN</button>
+                <button data-lang="fr">FR</button>
+                <button data-lang="es">ES</button>
+                <button data-lang="de">DE</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero">
+        <div class="hero-intro">
+            <span class="category-tag" data-i18n="pages.canti_page.category">Leggende e Tradizioni</span>
+            <h1 data-i18n="pages.canti_page.page_title">Canti e Preghiere del Borgo</h1>
+            <p class="subtitle" data-i18n="pages.canti_page.subtitle">Voci di famiglia, tramandate in dialetto</p>
+        </div>
+
+        <div class="hero-columns">
+            <div class="hero-col-left">
+
+                <div class="track-groups">
+
+                    <div class="track-group">
+                        <h3 class="group-label" data-i18n="pages.canti_page.group_cunti">I Cunti</h3>
+
+                        <button class="track-item active" data-track="cummari_piricuddu">
+                            <span class="track-play">▶</span>
+                            <span class="track-meta">
+                                <span class="track-title" data-i18n="pages.canti_page.cummari_title">Cummari Piricuddu</span>
+                                <span class="track-who" data-i18n="pages.canti_page.cummari_who">Tradizione orale di Caccamo</span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="track-group">
+                        <h3 class="group-label" data-i18n="pages.canti_page.group_filastrocche">Filastrocche</h3>
+
+                        <button class="track-item" data-track="oca_oca">
+                            <span class="track-play">▶</span>
+                            <span class="track-meta">
+                                <span class="track-title" data-i18n="pages.canti_page.oca_title">Oca Oca</span>
+                                <span class="track-who" data-i18n="pages.canti_page.oca_who">Filastrocca per bambini</span>
+                            </span>
+                        </button>
+
+                        <button class="track-item" data-track="fora_quaranta">
+                            <span class="track-play">▶</span>
+                            <span class="track-meta">
+                                <span class="track-title" data-i18n="pages.canti_page.fora_title">Fora Quaranta</span>
+                                <span class="track-who" data-i18n="pages.canti_page.fora_who">Conta per i giochi di strada</span>
+                            </span>
+                        </button>
+
+                        <button class="track-item" data-track="peri">
+                            <span class="track-play">▶</span>
+                            <span class="track-meta">
+                                <span class="track-title" data-i18n="pages.canti_page.peri_title">Peri</span>
+                                <span class="track-who" data-i18n="pages.canti_page.peri_who">Conta per il nascondino</span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="track-group">
+                        <h3 class="group-label" data-i18n="pages.canti_page.group_preghiere">Le Preghiere</h3>
+
+                        <button class="track-item" data-track="preghiera_bnotte">
+                            <span class="track-play">▶</span>
+                            <span class="track-meta">
+                                <span class="track-title" data-i18n="pages.canti_page.preghiera_title">Preghiera della Buonanotte</span>
+                                <span class="track-who" data-i18n="pages.canti_page.preghiera_who">Ninna nanna di protezione</span>
+                            </span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <section class="legend-section">
+                    <h2 class="legend-title" data-i18n="pages.canti_page.legend_title">Suor Felicia e la Sfida del Melograno</h2>
+                    <div class="legend-card">
+                        <p data-i18n="pages.canti_page.legend_p1">Il maestoso Castello di Caccamo, arroccato sulla sua imponente rupe calcarea, custodisce una delle storie più affascinanti e misteriose di tutta la Sicilia: la leggenda di Suor Felicia, conosciuta anche come la monaca del castello.</p>
+
+                        <div class="legend-more" id="legendMore">
+                            <p data-i18n="pages.canti_page.legend_p2">Si racconta che Felicia, fanciulla di straordinaria bellezza, fosse la figlia del castellano dell'epoca — molto probabilmente un nobile della famiglia Cabrera o Chiaramonte. Come in ogni dramma cavalleresco che si rispetti, la giovane commise il peccato più grande per la nobiltà del tempo: si innamorò follemente di un ragazzo di umili origini, un paggio o un giovane soldato della guarnigione del castello.</p>
+                            <p data-i18n="pages.canti_page.legend_p3">Quando il severo padre scoprì la relazione segreta, la sua reazione fu furiosa. Fece arrestare il giovane amante, rinchiudendolo nei bui sotterranei del castello — secondo alcune versioni, gettato in uno dei famigerati pozzi a rasoio. Per punire la figlia e soffocare lo scandalo, la costrinse a prendere i voti, rinchiudendola a vita in un convento di clausura.</p>
+                            <p data-i18n="pages.canti_page.legend_p4">La ragazza prese il nome di Suor Felicia. Consumata dal dolore per il suo amore perduto, morì di crepacuore in giovane età. Ma il suo legame con il castello era troppo forte per spezzarsi con la morte: si dice che la sua anima tormentata vi sia tornata, e che vi vaghi ancora oggi.</p>
+                            <p data-i18n="pages.canti_page.legend_p5">Nelle notti di luna piena, allo scoccare della mezzanotte, il fantasma della monaca appare tra i saloni silenziosi, vestita di un abito candido, bellissima e malinconica. Tra le mani stringe un vassoio d'argento con sopra un melograno maturo, rosso come il sangue.</p>
+                            <p data-i18n="pages.canti_page.legend_p6">Se un visitatore coraggioso la incontra a mezzanotte, lei non lo spaventa: gli va incontro e gli offre il vassoio, proponendogli una sfida. Deve sgranare il melograno e mangiare ogni singolo chicco, senza usare le mani e senza farne cadere a terra nemmeno uno.</p>
+                            <p data-i18n="pages.canti_page.legend_p7">Se riesce nell'impresa, l'incantesimo si spezza: Suor Felicia gli indica il punto esatto in cui è nascosto un immenso tesoro nei sotterranei del castello, per poi volare in cielo, finalmente in pace. Se fallisce, anche solo facendo cadere un chicco, lo spettro svanisce all'istante con un gemito di delusione, lasciando il malcapitato al buio.</p>
+                            <p data-i18n="pages.canti_page.legend_p8">La scelta del melograno non è casuale: nella mitologia mediterranea è da sempre il frutto del regno dei morti e del legame indissolubile, come nel mito greco di Proserpina, condannata a restare nell'Ade per aver mangiato sei chicchi di melograno. Nella leggenda di Suor Felicia, il frutto rappresenta il legame eterno con l'aldilà e la passione spezzata dei due giovani amanti, sacrificati sull'altare dell'orgoglio nobiliare.</p>
+                            <p data-i18n="pages.canti_page.legend_p9">Ad oggi, si racconta che nessuno sia mai riuscito a superare la prova. Suor Felicia continua ad attendere, con il suo vassoio d'argento e il suo melograno intatto.</p>
+                        </div>
+
+                        <button class="legend-toggle" id="legendToggleBtn" aria-expanded="false" aria-controls="legendMore">
+                            <span class="legend-toggle-label-more" data-i18n="pages.canti_page.legend_toggle_more">Continua a leggere la leggenda</span>
+                            <span class="legend-toggle-label-less" data-i18n="pages.canti_page.legend_toggle_less">Chiudi la leggenda</span>
+                        </button>
+
+                        <div class="ask-legend-castellana" data-i18n="pages.canti_page.legend_cta">Chiedi alla Castellana di raccontartela</div>
+                    </div>
+                </section>
+
+                <!-- ===== BOTTONE PREMIUM ===== -->
+                <div class="castellana-premium-cta">
+                  <p class="premium-cta-label">🔒 Contenuti Premium disponibili</p>
+                  <button id="btn-premium-code" class="premium-btn premium-btn-outline">
+                    Ho già un codice
+                  </button>
+                  <a href="#" id="btn-buy-premium" class="premium-btn premium-btn-gold">
+                    Acquista l'accesso — 3,90€
+                  </a>
+                </div>
+
+            </div>
+
+            <div class="hero-col-right">
+
+                <div class="player-card">
+                    <div class="player-top">
+                        <button class="play-btn" id="playBtn">▶</button>
+                        <div class="track-info">
+                            <div class="title" id="nowPlayingTitle">Cummari Piricuddu</div>
+                            <div class="who" id="nowPlayingWho">Tradizione orale di Caccamo</div>
+                        </div>
+                    </div>
+                    <div class="waveform" id="waveform"></div>
+                    <div class="time-row"><span id="curTime">0:00</span><span id="totTime">0:00</span></div>
+                    <audio id="realAudioPlayer" preload="none"></audio>
+                </div>
+
+                <div class="dialect-lyrics" id="dialectLyrics"></div>
+
+                <div class="transcript" id="transcript"></div>
+
+                <div class="note">
+                    Il testo in dialetto viene mostrato insieme alla traduzione e al significato del modo di dire, non solo alla traduzione letterale. 
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="castellana-widget-area">
+        <div class="castellana-video-wrapper" id="chat-open-btn">
+            <video class="castellana-video" autoplay loop muted playsinline>
+                <source src="img/castellana_alpha.webm" type="video/webm">
+            </video>
+        </div>
+        <div class="castellana-tooltip" data-i18n="chat.tooltip">Click to chat</div>
+    </div>
+
+    <div class="chat-desktop" id="chat-desktop">
+        <div class="chat-header">
+            <div class="avatar-status-dot"></div>
+            <span data-i18n="chat.title">La Castellana</span>
+            <button id="voice-toggle-btn" class="close-chat-btn" title="Attiva/disattiva voce" aria-label="Attiva o disattiva la voce">🔊</button>
+            <button id="close-chat" class="close-chat-btn">✕</button>
+        </div>
+        <div class="premium-status-bar" id="premium-status-bar"></div>
+        <div class="chat-messages">
+            <div class="message" data-i18n="chat.canti_msg">Vuoi ascoltare altri canti e preghiere del borgo? Nella versione Premium te ne racconto molti altri...</div>
+        </div>
+        <div class="chat-input-row">
+            <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+            <button id="mic-btn" class="mic-btn" type="button" title="Parla con la Castellana" aria-label="Parla con la Castellana">🎤</button>
+            <button class="send-btn" aria-label="Invia">➤</button>
+        </div>
+    </div>
+
+    <script>
+        const chat = document.getElementById("chat-desktop");
+        const openBtn = document.getElementById("chat-open-btn");
+        const closeBtn = document.getElementById("close-chat");
+
+        // ============================================================
+        // MENU DI ANTEPRIMA — stesso principio già usato nelle altre
+        // pagine (castello.html, chiese-arte.html, cittadino.html,
+        // cibo_eventi.html): anche senza Premium attivo, il turista
+        // vede subito le voci disponibili, invece del solo messaggio
+        // di benvenuto senza indicazioni concrete. Se poi il codice
+        // Premium è valido, loadTopicMenu() sovrascrive con il menu
+        // reale del backend, esattamente come prima.
+        // ============================================================
+        const CANTI_TOPICS = {
+            it: [
+                { group: "La Leggenda di Suor Felicia", items: [
+                    { topic: "cultura.leggenda_felicia.origine", label: "📜 Le origini della leggenda" },
+                    { topic: "cultura.leggenda_felicia.sfida", label: "🌰 La sfida del melograno" }
+                ]},
+                { group: "Canti e Filastrocche", items: [
+                    { topic: "cultura.filastrocche.dettagli", label: "🎶 Da dove vengono" },
+                    { topic: "cultura.filastrocche.significato", label: "📖 Il loro significato" }
+                ]},
+                { group: "Preghiere e Tradizioni", items: [
+                    { topic: "cultura.preghiere.dettagli", label: "🙏 Le preghiere del borgo" },
+                    { topic: "cultura.preghiere.origine", label: "🕯️ Le loro origini" }
+                ]}
+            ],
+            en: [
+                { group: "The Legend of Sister Felicia", items: [
+                    { topic: "cultura.leggenda_felicia.origine", label: "📜 Origins of the legend" },
+                    { topic: "cultura.leggenda_felicia.sfida", label: "🌰 The pomegranate challenge" }
+                ]},
+                { group: "Songs & Nursery Rhymes", items: [
+                    { topic: "cultura.filastrocche.dettagli", label: "🎶 Where they come from" },
+                    { topic: "cultura.filastrocche.significato", label: "📖 Their meaning" }
+                ]},
+                { group: "Prayers & Traditions", items: [
+                    { topic: "cultura.preghiere.dettagli", label: "🙏 The village's prayers" },
+                    { topic: "cultura.preghiere.origine", label: "🕯️ Their origins" }
+                ]}
+            ],
+            fr: [
+                { group: "La Légende de Sœur Felicia", items: [
+                    { topic: "cultura.leggenda_felicia.origine", label: "📜 Les origines de la légende" },
+                    { topic: "cultura.leggenda_felicia.sfida", label: "🌰 Le défi de la grenade" }
+                ]},
+                { group: "Chants et Comptines", items: [
+                    { topic: "cultura.filastrocche.dettagli", label: "🎶 D'où elles viennent" },
+                    { topic: "cultura.filastrocche.significato", label: "📖 Leur signification" }
+                ]},
+                { group: "Prières et Traditions", items: [
+                    { topic: "cultura.preghiere.dettagli", label: "🙏 Les prières du village" },
+                    { topic: "cultura.preghiere.origine", label: "🕯️ Leurs origines" }
+                ]}
+            ],
+            es: [
+                { group: "La Leyenda de Sor Felicia", items: [
+                    { topic: "cultura.leggenda_felicia.origine", label: "📜 Los orígenes de la leyenda" },
+                    { topic: "cultura.leggenda_felicia.sfida", label: "🌰 El desafío de la granada" }
+                ]},
+                { group: "Cantos y Canciones Infantiles", items: [
+                    { topic: "cultura.filastrocche.dettagli", label: "🎶 De dónde vienen" },
+                    { topic: "cultura.filastrocche.significato", label: "📖 Su significado" }
+                ]},
+                { group: "Oraciones y Tradiciones", items: [
+                    { topic: "cultura.preghiere.dettagli", label: "🙏 Las oraciones del pueblo" },
+                    { topic: "cultura.preghiere.origine", label: "🕯️ Sus orígenes" }
+                ]}
+            ],
+            de: [
+                { group: "Die Legende von Schwester Felicia", items: [
+                    { topic: "cultura.leggenda_felicia.origine", label: "📜 Die Ursprünge der Legende" },
+                    { topic: "cultura.leggenda_felicia.sfida", label: "🌰 Die Granatapfel-Herausforderung" }
+                ]},
+                { group: "Lieder und Kinderreime", items: [
+                    { topic: "cultura.filastrocche.dettagli", label: "🎶 Woher sie kommen" },
+                    { topic: "cultura.filastrocche.significato", label: "📖 Ihre Bedeutung" }
+                ]},
+                { group: "Gebete und Traditionen", items: [
+                    { topic: "cultura.preghiere.dettagli", label: "🙏 Die Gebete des Dorfes" },
+                    { topic: "cultura.preghiere.origine", label: "🕯️ Ihre Ursprünge" }
+                ]}
+            ]
+        };
+
+        let hasShownMenu = false;
+
+        openBtn.addEventListener("click", () => {
+            chat.classList.add("active");
+            updatePremiumStatusDisplay();
+            if (!hasShownMenu) {
+                renderTopicMenu(CANTI_TOPICS[currentLang] || CANTI_TOPICS.it);
+                hasShownMenu = true;
+            }
+            loadTopicMenu();
+        });
+        closeBtn.addEventListener("click", () => {
+            chat.classList.remove("active");
+            castellanaZitta();
+        });
+
+        // "Chiedi alla Castellana di raccontartela" nella sezione Leggende
+        // apre la stessa chat, come nelle altre pagine del sito.
+        document.querySelectorAll(".ask-legend-castellana").forEach(el => {
+            el.addEventListener("click", () => {
+                chat.classList.add("active");
+                updatePremiumStatusDisplay();
+                if (!hasShownMenu) {
+                    renderTopicMenu(CANTI_TOPICS[currentLang] || CANTI_TOPICS.it);
+                    hasShownMenu = true;
+                }
+                loadTopicMenu();
+            });
+        });
+
+        // Leggenda "a fisarmonica": si vede solo il primo paragrafo,
+        // il resto si apre/chiude cliccando il bottone.
+        const legendToggleBtn = document.getElementById("legendToggleBtn");
+        const legendMore = document.getElementById("legendMore");
+        if (legendToggleBtn && legendMore) {
+            legendToggleBtn.addEventListener("click", () => {
+                const isExpanded = legendMore.classList.toggle("expanded");
+                legendToggleBtn.classList.toggle("is-expanded", isExpanded);
+                legendToggleBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+            });
+        }
+
+        let currentLang = localStorage.getItem("lang") || "it";
+        let langData = {};
+
+        function t(path, fallback) {
+            const value = path.split('.').reduce((o,i) => o ? o[i] : null, langData);
+            return value || fallback;
+        }
+
+        function loadLanguage(lang) {
+            fetch(`./lang/${lang}.json`)
+                .then(res => res.json())
+                .then(data => {
+                    langData = data;
+                    document.querySelectorAll("[data-i18n]").forEach(el => {
+                        const key = el.getAttribute("data-i18n");
+                        const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                        if (text) el.innerHTML = text;
+                    });
+                    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                        const key = el.getAttribute("data-i18n-placeholder");
+                        const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                        if (text) el.placeholder = text;
+                    });
+                    document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                        btn.classList.toggle("active", btn.dataset.lang === lang);
+                    });
+                })
+                .catch(err => console.error("Errore lingua:", err));
+            localStorage.setItem("lang", lang);
+        }
+        document.querySelectorAll(".lang-switcher button").forEach(btn => {
+            btn.addEventListener("click", () => {
+                currentLang = btn.dataset.lang;
+                loadLanguage(currentLang);
+                updatePlayerLanguage(currentLang);
+                updatePremiumStatusDisplay();
+                const oldMenu = document.querySelector('.chat-messages .topic-menu-state');
+                if (oldMenu) oldMenu.remove();
+                menuLoadedForCode = null;
+                exploredGroups.clear();
+                usedTopics.clear();
+                if (chat.classList.contains('active')) {
+                    renderTopicMenu(CANTI_TOPICS[currentLang] || CANTI_TOPICS.it);
+                    loadTopicMenu();
+                }
+            });
+        });
+
+        // ============================================================
+        // TRACCE — 4 brani reali, riorganizzati in 3 gruppi (Cunti /
+        // Filastrocche / Preghiere). Ogni traccia ha un'unica "riga"
+        // che copre tutto l'audio (non abbiamo i tempi esatti di ogni
+        // singola battuta della registrazione, quindi niente
+        // evidenziazione riga-per-riga per ora — solo dialetto,
+        // traduzione E significato, come richiesto).
+        //
+        // ATTENZIONE percorsi audio: assumo che i file stiano in una
+        // cartella "audio/" alla radice del sito, quindi richiamati
+        // come "../audio/nomefile.mp3" da qui (che sto dentro /desktop/).
+        // Se la cartella reale ha un nome o percorso diverso, va corretto
+        // qui sotto in ogni "audioUrl".
+        // ============================================================
+        const tracks = {
+            cummari_piricuddu: {
+                title: "Cummari Piricuddu",
+                who: "Tradizione orale di Caccamo",
+                audioUrl: "audio/cummari_p.mp3",
+                dialect: [
+                    { text: "Cummari Piricuddu", start: 0, end: 2 },
+                    { text: "quannu manciu un vogghiu a nuddu", start: 2, end: 5 },
+                    { text: "a finuti ri manciari", start: 5, end: 6 },
+                    { text: "vogghiu tutti i me cumpari", start: 6, end: 8.5 }
+                ],
+                lines: [
+                    {
+                        start: 0, end: 600,
+                        it: "Traduzione: «Comare Piricuddo, quando mangio non voglio nessuno, ma finito di mangiare voglio tutti i miei compari.» Significato: il \"Piricuddu\" è il picciolo, una cosa minuscola — in senso figurato una persona avara e di poco valore morale. Il detto descrive l'amico di comodo: quando c'è da godersi qualcosa (cibo, guadagno, fortuna) si isola per non doverla dividere; appena finito, invece, cerca subito compagnia. È la perfetta definizione dell'amicizia interessata.",
+                        en: "Translation: \"Comare Piricuddo, when I eat I want nobody, but once I've finished eating I want all my friends.\" Meaning: \"Piricuddu\" means something tiny and worthless — a stingy, self-serving person. The saying mocks the fair-weather friend: while there's something to enjoy, he isolates himself so he won't have to share it; the moment he's done, he suddenly wants company. A perfect picture of friendship of convenience.",
+                        fr: "Traduction : « Commère Piricuddu, quand je mange je ne veux personne, mais une fois le repas fini, je veux tous mes compères. » Signification : « Piricuddu » désigne quelque chose de minuscule et sans valeur — une personne avare et intéressée. Ce dicton se moque de l'ami opportuniste : tant qu'il y a quelque chose à profiter seul, il s'isole pour ne pas devoir le partager ; une fois que c'est fini, il recherche soudain la compagnie. Le portrait parfait de l'amitié de circonstance.",
+                        es: "Traducción: «Comadre Piricuddu, cuando como no quiero a nadie, pero al terminar de comer quiero a todos mis compadres.» Significado: \"Piricuddu\" designa algo diminuto y sin valor — una persona avara e interesada. El dicho se burla del amigo oportunista: mientras hay algo que disfrutar en solitario, se aísla para no tener que compartirlo; en cuanto termina, de repente busca compañía. El retrato perfecto de la amistad por conveniencia.",
+                        de: "Übersetzung: „Gevatterin Piricuddu, wenn ich esse, will ich niemanden, aber wenn ich fertig gegessen habe, will ich alle meine Freunde.“ Bedeutung: „Piricuddu“ steht für etwas Winziges und Wertloses — eine geizige, eigennützige Person. Das Sprichwort verspottet den Schönwetterfreund: Solange es etwas allein zu genießen gibt, zieht er sich zurück, um es nicht teilen zu müssen; sobald er fertig ist, sucht er plötzlich Gesellschaft. Das perfekte Bild einer Freundschaft aus Berechnung."
+                    }
+                ]
+            },
+            oca_oca: {
+                title: "Oca Oca",
+                who: "Filastrocca per bambini",
+                audioUrl: "audio/ocaoca1.mp3",
+                dialect: [
+                    { text: "Oca, oca, oca", start: 0, end: 2 },
+                    { text: "u re si mancia l'oca", start: 2, end: 7 },
+                    { text: "a regina si mancia a racina", start: 7, end: 10 },
+                    { text: "e Francesca ca panza china", start: 10, end: 15.2 }
+                ],
+                lines: [
+                    {
+                        start: 0, end: 600,
+                        it: "Traduzione: «Oca, oca, oca, il re si mangia l'oca, la regina si mangia l'uva, e [Nome] con la pancia piena.» Significato: al re spetta il piatto forte, alla regina la frutta pregiata, ma al bambino la parte migliore — essere sazio e felice. È una filastrocca da fare sulle ginocchia (\"del cavalluccio\"): si dondola il bambino a ritmo di canto, e all'ultimo verso ci si ferma di colpo per fargli il solletico sulla pancia, tra le risate.",
+                        en: "Translation: \"Goose, goose, goose, the king eats the goose, the queen eats the grapes, and [Name] with a full tummy.\" Meaning: the king gets the main course, the queen the fine fruit, but the child gets the best part — being full and happy. It's a traditional knee-bouncing rhyme: the child is bounced in rhythm, and on the last line the bouncing stops suddenly for a round of tummy tickles and laughter.",
+                        fr: "Traduction : « Oie, oie, oie, le roi mange l'oie, la reine mange le raisin, et [Prénom] le ventre plein. » Signification : au roi revient le plat principal, à la reine le fruit précieux, mais à l'enfant la meilleure part — être rassasié et heureux. C'est une comptine à faire sur les genoux : on fait sautiller l'enfant en rythme, et au dernier vers on s'arrête net pour lui chatouiller le ventre, dans les rires.",
+                        es: "Traducción: «Oca, oca, oca, el rey se come la oca, la reina se come la uva, y [Nombre] con la barriga llena.» Significado: al rey le toca el plato fuerte, a la reina la fruta preciada, pero al niño la mejor parte — estar satisfecho y feliz. Es una cancioncilla para hacer en las rodillas: se hace saltar al niño al ritmo del canto, y en el último verso se detiene de golpe para hacerle cosquillas en la barriga entre risas.",
+                        de: "Übersetzung: „Gans, Gans, Gans, der König isst die Gans, die Königin isst die Trauben, und [Name] mit vollem Bäuchlein.“ Bedeutung: Der König bekommt das Hauptgericht, die Königin das edle Obst, aber das Kind bekommt den besten Teil — satt und glücklich zu sein. Es ist ein traditioneller Kniereim: Das Kind wird im Takt gewippt, und bei der letzten Zeile stoppt das Wippen abrupt für ein Bauchkitzeln unter Gelächter."
+                    }
+                ]
+            },
+            fora_quaranta: {
+                title: "Fora Quaranta",
+                who: "Conta per i giochi di strada",
+                audioUrl: "audio/fora_quaranta.mp3",
+                dialect: [
+                    { text: "Fora quaranta", start: 0, end: 2 },
+                    { text: "tuttu lu munnu canta", start: 2, end: 4 },
+                    { text: "canta lu iaddu", start: 4, end: 5 },
+                    { text: "affacciatu alla finestra", start: 5, end: 9 },
+                    { text: "cu tri palummi ntesta", start: 9, end: 11 },
+                    { text: "iaddu, iaddina", start: 11, end: 13 },
+                    { text: "Palermu e Messina", start: 13, end: 15 }
+                ],
+                lines: [
+                    {
+                        start: 0, end: 600,
+                        it: "Traduzione: «Fuori quaranta, tutto il mondo canta, canta il gallo affacciato alla finestra con tre colombe in testa. Gallo, gallina, Palermo e Messina!» Significato: celebrava la fine dei 40 giorni di digiuno della Quaresima — con la Pasqua tornava la festa. Il gallo canta l'alba e la Resurrezione, le tre colombe richiamano la Trinità, Palermo e Messina uniscono simbolicamente tutta l'isola. Si usava come conta per i giochi di gruppo: si batte il pugno a ritmo sui pugni dei bambini in cerchio, e chi riceve il tocco sull'ultima sillaba viene eliminato.",
+                        en: "Translation: \"Forty days are over, the whole world sings, the rooster sings at the window with three doves on his head. Rooster, hen, Palermo and Messina!\" Meaning: it celebrated the end of the 40 days of Lenten fasting — with Easter, the festivities returned. The rooster announces dawn and the Resurrection, the three doves recall the Trinity, and Palermo and Messina symbolically join the whole island together. It was used as a counting rhyme for group games: children in a circle tap fists in rhythm, and whoever gets tapped on the last syllable is out.",
+                        fr: "Traduction : « Les quarante jours sont finis, le monde entier chante, le coq chante à la fenêtre avec trois colombes sur la tête. Coq, poule, Palerme et Messine ! » Signification : ce chant célébrait la fin des 40 jours de jeûne du Carême — avec Pâques revenait la fête. Le coq annonce l'aube et la Résurrection, les trois colombes rappellent la Trinité, et Palerme et Messine unissent symboliquement toute l'île. On l'utilisait comme comptine pour les jeux de groupe : les enfants en cercle tapent du poing en rythme, et celui qui reçoit le coup sur la dernière syllabe est éliminé.",
+                        es: "Traducción: «Se acabaron los cuarenta días, todo el mundo canta, canta el gallo asomado a la ventana con tres palomas en la cabeza. Gallo, gallina, Palermo y Mesina.» Significado: celebraba el fin de los 40 días de ayuno de Cuaresma — con la Pascua volvía la fiesta. El gallo anuncia el amanecer y la Resurrección, las tres palomas recuerdan a la Trinidad, y Palermo y Mesina unen simbólicamente toda la isla. Se usaba como cuenta para juegos de grupo: los niños en círculo golpean los puños al ritmo, y quien recibe el toque en la última sílaba queda eliminado.",
+                        de: "Übersetzung: „Die vierzig Tage sind vorbei, die ganze Welt singt, der Hahn singt am Fenster mit drei Tauben auf dem Kopf. Hahn, Henne, Palermo und Messina!“ Bedeutung: Es feierte das Ende der 40-tägigen Fastenzeit — mit Ostern kehrte das Fest zurück. Der Hahn kündigt die Morgendämmerung und die Auferstehung an, die drei Tauben erinnern an die Dreifaltigkeit, und Palermo und Messina verbinden symbolisch die ganze Insel. Es wurde als Abzählreim für Gruppenspiele benutzt: Kinder im Kreis schlagen im Takt die Fäuste aneinander, und wer bei der letzten Silbe getroffen wird, scheidet aus."
+                    }
+                ]
+            },
+            peri: {
+                title: "Peri",
+                who: "Conta per il nascondino",
+                audioUrl: "audio/peri1.mp3",
+                dialect: [
+                    { text: "Peri 1, peri 2, peri 3", start: 0, end: 5 },
+                    { text: "peri 4, peri 5, peri 6", start: 5, end: 9 },
+                    { text: "peri 7, peri 8", start: 9, end: 13 },
+                    { text: "tappiti tippiti e un biscottu", start: 13, end: 15.7 }
+                ],
+                lines: [
+                    {
+                        start: 0, end: 600,
+                        it: "Traduzione: «Piede 1, piede 2, piede 3, piede 4, piede 5, piede 6, piede 7, piede 8, tippete tappete e un biscotto!» Significato: è una conta infantile siciliana, usata per decidere chi doveva \"stare sotto\" nei giochi di gruppo come il nascondino. I bambini si disponevano in cerchio con un piede teso verso il centro, e chi contava toccava un piede a ogni numero pronunciato. Il piede toccato esattamente sulla parola finale, \"biscottu\", veniva eliminato e ritirato indietro. Si continuava a girare finché non restava un solo piede: quel bambino era il \"designato\" a iniziare il gioco.",
+                        en: "Translation: \"Foot 1, foot 2, foot 3, foot 4, foot 5, foot 6, foot 7, foot 8, tippety-tappety and a biscuit!\" Meaning: a traditional Sicilian children's counting rhyme, used to decide who had to be \"it\" in group games like hide-and-seek. Children stood in a circle with one foot stretched towards the centre, and whoever was counting tapped a foot at each number. The foot tapped exactly on the final word, \"biscottu\" (biscuit), was eliminated and pulled back. The round continued until only one foot remained: that child was the one chosen to start the game.",
+                        fr: "Traduction : « Pied 1, pied 2, pied 3, pied 4, pied 5, pied 6, pied 7, pied 8, tippety-tappety et un biscuit ! » Signification : une comptine enfantine sicilienne traditionnelle, utilisée pour décider qui devait « y être » dans les jeux de groupe comme cache-cache. Les enfants se plaçaient en cercle avec un pied tendu vers le centre, et celui qui comptait touchait un pied à chaque chiffre prononcé. Le pied touché exactement sur le dernier mot, « biscottu » (biscuit), était éliminé et retiré. On continuait à tourner jusqu'à ce qu'il ne reste qu'un seul pied : cet enfant était désigné pour commencer le jeu.",
+                        es: "Traducción: «Pie 1, pie 2, pie 3, pie 4, pie 5, pie 6, pie 7, pie 8, tippety-tappety y una galleta!» Significado: una cuenta infantil siciliana tradicional, usada para decidir quién debía \"quedarse\" en juegos de grupo como el escondite. Los niños se colocaban en círculo con un pie extendido hacia el centro, y quien contaba tocaba un pie en cada número pronunciado. El pie tocado exactamente en la última palabra, \"biscottu\" (galleta), quedaba eliminado y se retiraba. Se seguía dando vueltas hasta que quedaba un solo pie: ese niño era el \"designado\" para iniciar el juego.",
+                        de: "Übersetzung: „Fuß 1, Fuß 2, Fuß 3, Fuß 4, Fuß 5, Fuß 6, Fuß 7, Fuß 8, tippety-tappety und ein Keks!“ Bedeutung: ein traditioneller sizilianischer Abzählreim für Kinder, mit dem entschieden wurde, wer bei Gruppenspielen wie Verstecken \"dran\" war. Die Kinder stellten sich im Kreis auf, mit einem Fuß zur Mitte gestreckt, und wer zählte, tippte bei jeder genannten Zahl auf einen Fuß. Der Fuß, der genau beim letzten Wort, \"biscottu\" (Keks), berührt wurde, schied aus und wurde zurückgezogen. Man drehte weiter, bis nur noch ein Fuß übrig war: Dieses Kind war dazu bestimmt, das Spiel zu beginnen."
+                    }
+                ]
+            },
+            preghiera_bnotte: {
+                title: "Preghiera della Buonanotte",
+                who: "Ninna nanna di protezione",
+                audioUrl: "audio/Preghiera_bnotte.mp3",
+                dialect: [
+                    { text: "Nni stu lettu mi curcaiu", start: 0, end: 4 },
+                    { text: "quattru ancili ci truvaiu", start: 4, end: 6 },
+                    { text: "rui ra testa e rui ri peri", start: 6, end: 10 },
+                    { text: "nmezzu l'ancilu Raffaeli", start: 10, end: 13 },
+                    { text: "ni stu lettu c'è un jardinu", start: 13, end: 16 },
+                    { text: "chi si voli siminari", start: 16, end: 17 },
+                    { text: "a rosi, ciuri e gersominu", start: 17, end: 20 },
+                    { text: "cala l'ancilu cu nu mbambineddu e mi rici", start: 20, end: 27 },
+                    { text: "a cruci ta facisti?", start: 27, end: 29 },
+                    { text: "tri ucci ri sangu ri Cristu", start: 29, end: 33 },
+                    { text: "tri fili ri capiddi ri Maria", start: 33, end: 35 },
+                    { text: "signuri liati", start: 35, end: 36 },
+                    { text: "a ccu voli fari mali a mia", start: 36, end: 40 }
+                ],
+                lines: [
+                    {
+                        start: 0, end: 600,
+                        it: "«In questo letto mi sono disteso, quattro angeli ci ho trovato, 2 dalla testa 2 dai piedi e al centro l'Angelo Rafaele. In questo letto mi sono disteso che si vuole seminare come un giardino, con fiori, rose e gelsomino. Viene l'angelo e mi dice: La croce te la sei fatta? Tre gocce di sangue di Gesù, tre fili di capelli di Maria, Signore allontanate chi vuole fare del male a me.» Significato: è un vero scudo spirituale in tre momenti. I quattro angeli ai lati del letto creano una barriera sacra, con l'angelo Raffaele al centro (guida e guaritore nella tradizione biblica) a proteggere il sonno. Il letto-giardino di rose e gelsomino evoca sogni sereni e purezza. Infine si chiede a Dio di allontanare le cattive intenzioni di chi vuole fare del male, mentre si è indifesi nel sonno.",
+                        en: "\"In this bed I lay down, four angels I found there, two at the head, two at the feet, and in the middle the angel Raphael. In this bed I lay down, wishing it to bloom like a garden, with flowers, roses and jasmine. The angel comes and asks me: 'Have you made the sign of the cross?' Three drops of Jesus' blood, three strands of Mary's hair, Lord, bind whoever wishes to harm me.\" Meaning: a spiritual shield in three parts. Four angels guard the corners of the bed, with the angel Raphael — guide and healer in biblical tradition — at the centre, protecting sleep. The bed-as-garden of roses and jasmine evokes peaceful dreams and purity. Finally, the \"binding\": God is asked to neutralise the bad intentions of anyone wishing harm, while the sleeper lies defenceless.",
+                        fr: "« Dans ce lit je me suis couché, quatre anges j'y ai trouvés, deux à la tête, deux aux pieds, et au milieu l'ange Raphaël. Dans ce lit je me suis couché, qu'il se transforme en jardin, avec des fleurs, des roses et du jasmin. L'ange vient et me dit : \"As-tu fait le signe de croix ?\" Trois gouttes du sang de Jésus, trois mèches des cheveux de Marie, Seigneur, lie celui qui veut me faire du mal. » Signification : un véritable bouclier spirituel en trois temps. Quatre anges gardent les coins du lit, avec l'ange Raphaël — guide et guérisseur dans la tradition biblique — au centre, protégeant le sommeil. Le lit-jardin de roses et de jasmin évoque des rêves paisibles et la pureté. Enfin, la « ligature » : on demande à Dieu de neutraliser les mauvaises intentions de qui voudrait faire du mal, pendant que le dormeur est sans défense.",
+                        es: "«En esta cama me acosté, cuatro ángeles encontré, dos a la cabeza, dos a los pies, y en medio el ángel Rafael. En esta cama me acosté, que se quiere sembrar como un jardín, con flores, rosas y jazmín. Viene el ángel y me dice: '¿Te has hecho la señal de la cruz?' Tres gotas de sangre de Jesús, tres hebras de cabello de María, Señor, ata a quien quiera hacerme daño.» Significado: un auténtico escudo espiritual en tres momentos. Cuatro ángeles custodian las esquinas de la cama, con el ángel Rafael —guía y sanador en la tradición bíblica— en el centro, protegiendo el sueño. La cama-jardín de rosas y jazmín evoca sueños serenos y pureza. Por último, la \"atadura\": se pide a Dios que neutralice las malas intenciones de quien quiera hacer daño, mientras se está indefenso durmiendo.",
+                        de: "„In diesem Bett legte ich mich nieder, vier Engel fand ich dort, zwei am Kopf, zwei an den Füßen, und in der Mitte der Engel Raphael. In diesem Bett legte ich mich nieder, das sich wie ein Garten entfalten möge, mit Blumen, Rosen und Jasmin. Der Engel kommt und fragt mich: ‚Hast du das Kreuzzeichen gemacht?' Drei Tropfen vom Blut Jesu, drei Haarsträhnen von Maria, Herr, binde, wer mir Böses will.\" Bedeutung: ein spirituelles Schutzschild in drei Teilen. Vier Engel bewachen die Ecken des Bettes, in der Mitte der Engel Raphael — in biblischer Tradition Führer und Heiler — der den Schlaf beschützt. Das Garten-Bett aus Rosen und Jasmin steht für ruhige Träume und Reinheit. Schließlich die „Bindung\": Gott wird gebeten, die bösen Absichten dessen zu neutralisieren, der Schaden anrichten will, während der Schlafende schutzlos ist."
+                    }
+                ]
+            }
+        };
+
+        let activeTrackId = "cummari_piricuddu";
+        let playing = false;
+        let ttsLineIndex = 0;
+        let currentPlayerLang = currentLang;
+
+        // Aggiorna la lingua della trascrizione. Richiamata sia
+        // all'apertura di una traccia, sia quando si cambia lingua
+        // dal selettore unico nell'header (niente più bottoni doppi).
+        function updatePlayerLanguage(lang){
+            currentPlayerLang = lang;
+            const track = tracks[activeTrackId];
+            if (!track) return;
+            track.lines.forEach((l, i) => {
+                const el = document.getElementById("tr-" + i);
+                if (el) el.innerHTML = renderTranslationBlock(l[currentPlayerLang]);
+            });
+            if (playing && !trackHasRealAudio(track)){
+                stopPlayback();
+            }
+        }
+
+        const transcriptEl = document.getElementById("transcript");
+        const dialectLyricsEl = document.getElementById("dialectLyrics");
+        const waveformEl = document.getElementById("waveform");
+        const playBtn = document.getElementById("playBtn");
+        const curTimeEl = document.getElementById("curTime");
+        const totTimeEl = document.getElementById("totTime");
+        const nowPlayingTitle = document.getElementById("nowPlayingTitle");
+        const nowPlayingWho = document.getElementById("nowPlayingWho");
+        const realAudioEl = document.getElementById("realAudioPlayer");
+
+        function fmt(t){
+            const m = Math.floor(t/60), s = Math.floor(t%60);
+            return m + ":" + String(s).padStart(2,"0");
+        }
+
+        function trackHasRealAudio(track){
+            return !!track.audioUrl;
+        }
+
+        function updateBarsProgress(fraction){
+            const bars = document.querySelectorAll(".waveform .bar");
+            const filled = Math.floor((fraction || 0) * bars.length);
+            bars.forEach((b,i) => b.classList.toggle("played", i < filled));
+        }
+
+        function highlightLine(index){
+            document.querySelectorAll(".transcript .line").forEach(el => el.classList.remove("active"));
+            if (index === null || index === undefined) return;
+            const el = document.getElementById("line-" + index);
+            if (el){
+                el.classList.add("active");
+            }
+        }
+
+        function highlightDialectLine(index){
+            document.querySelectorAll(".dialect-lyrics .dialect-line").forEach(el => el.classList.remove("active"));
+            if (index === null || index === undefined) return;
+            const el = document.getElementById("dial-" + index);
+            if (el) el.classList.add("active");
+        }
+
+        function stopPlayback(){
+            playing = false;
+            playBtn.textContent = "▶";
+            if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+            if (!realAudioEl.paused) realAudioEl.pause();
+        }
+
+        // Divide un blocco di testo su "Significato:" per mostrarlo in
+        // un riquadro separato dalla traduzione letterale, quando presente.
+        function renderTranslationBlock(fullText){
+            const marker = fullText.indexOf("Significato:") !== -1 ? "Significato:"
+                : fullText.indexOf("Meaning:") !== -1 ? "Meaning:"
+                : fullText.indexOf("Signification :") !== -1 ? "Signification :"
+                : fullText.indexOf("Significado:") !== -1 ? "Significado:"
+                : fullText.indexOf("Bedeutung:") !== -1 ? "Bedeutung:"
+                : null;
+
+            if (!marker) {
+                return `<div class="translation-text">${fullText}</div>`;
+            }
+            const idx = fullText.indexOf(marker);
+            const literal = fullText.substring(0, idx).trim();
+            const meaning = fullText.substring(idx + marker.length).trim();
+            return `
+                <div class="translation-text">${literal}</div>
+                <div class="meaning-block"><strong>${marker.replace(':', '').replace(' :','')}</strong>${meaning}</div>
+            `;
+        }
+
+        function renderTrack(trackId){
+            stopPlayback();
+            highlightLine(null);
+            highlightDialectLine(null);
+            const track = tracks[trackId];
+            activeTrackId = trackId;
+            ttsLineIndex = 0;
+
+            nowPlayingTitle.textContent = track.title;
+            nowPlayingWho.textContent = track.who;
+
+            if (trackHasRealAudio(track)){
+                realAudioEl.src = track.audioUrl;
+                realAudioEl.currentTime = 0;
+                totTimeEl.textContent = "0:00";
+                curTimeEl.textContent = "0:00";
+            } else {
+                totTimeEl.textContent = track.lines.length + " righe";
+                curTimeEl.textContent = "-";
+            }
+
+            transcriptEl.innerHTML = "";
+            track.lines.forEach((l, i) => {
+                const div = document.createElement("div");
+                div.className = "line";
+                div.id = "line-" + i;
+                div.innerHTML = `<div class="translation" id="tr-${i}">${renderTranslationBlock(l[currentPlayerLang])}</div>`;
+                transcriptEl.appendChild(div);
+            });
+
+            dialectLyricsEl.innerHTML = "";
+            (track.dialect || []).forEach((seg, i) => {
+                const span = document.createElement("span");
+                span.className = "dialect-line";
+                span.id = "dial-" + i;
+                span.textContent = seg.text;
+                dialectLyricsEl.appendChild(span);
+                dialectLyricsEl.appendChild(document.createTextNode(" "));
+            });
+
+            waveformEl.innerHTML = "";
+            const barCount = 40;
+            for(let i=0;i<barCount;i++){
+                const bar = document.createElement("div");
+                bar.className = "bar";
+                const h = 6 + Math.round(Math.sin(i*0.7)*10 + 12 + Math.random()*6);
+                bar.style.height = Math.max(6,h) + "px";
+                waveformEl.appendChild(bar);
+            }
+
+            document.querySelectorAll(".track-item").forEach(btn => {
+                btn.classList.toggle("active", btn.dataset.track === trackId);
+            });
+        }
+
+        function speakLineIndex(i){
+            const track = tracks[activeTrackId];
+            if (i >= track.lines.length){
+                playing = false;
+                playBtn.textContent = "▶";
+                highlightLine(null);
+                ttsLineIndex = 0;
+                return;
+            }
+            ttsLineIndex = i;
+            highlightLine(i);
+            curTimeEl.textContent = (i + 1) + "/" + track.lines.length;
+            updateBarsProgress((i + 1) / track.lines.length);
+
+            const text = track.lines[i].dialect;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = ttsLangCode(currentPlayerLang);
+            utterance.onend = () => {
+                if (playing) speakLineIndex(i + 1);
+            };
+            window.speechSynthesis.speak(utterance);
+        }
+
+        realAudioEl.addEventListener("loadedmetadata", () => {
+            totTimeEl.textContent = fmt(realAudioEl.duration);
+        });
+        realAudioEl.addEventListener("timeupdate", () => {
+            const track = tracks[activeTrackId];
+            if (!trackHasRealAudio(track)) return;
+            curTimeEl.textContent = fmt(realAudioEl.currentTime);
+            updateBarsProgress(realAudioEl.currentTime / (realAudioEl.duration || 1));
+            const idx = track.lines.findIndex(l => realAudioEl.currentTime >= l.start && realAudioEl.currentTime < l.end);
+            highlightLine(idx === -1 ? null : idx);
+            const dIdx = (track.dialect || []).findIndex(l => realAudioEl.currentTime >= l.start && realAudioEl.currentTime < l.end);
+            highlightDialectLine(dIdx === -1 ? null : dIdx);
+        });
+        realAudioEl.addEventListener("ended", () => {
+            playing = false;
+            playBtn.textContent = "▶";
+            realAudioEl.currentTime = 0;
+        });
+
+        playBtn.addEventListener("click", () => {
+            const track = tracks[activeTrackId];
+
+            if (playing){
+                stopPlayback();
+                return;
+            }
+
+            playing = true;
+            playBtn.textContent = "❚❚";
+
+            if (trackHasRealAudio(track)){
+                realAudioEl.play();
+            } else {
+                speakLineIndex(ttsLineIndex);
+            }
+        });
+
+        document.querySelectorAll(".track-item").forEach(btn => {
+            btn.addEventListener("click", () => renderTrack(btn.dataset.track));
+        });
+
+        renderTrack("cummari_piricuddu");
+        loadLanguage(currentLang);
+
+        // ============================================================
+        // CONNESSIONE CHAT ↔ BACKEND PYTHON
+        // ============================================================
+        const API_BASE_URL = "https://castellana.pythonanywhere.com";
+        const PREMIUM_STORAGE_KEY = "amuni_premium_access";
+
+        // ============================================================
+        // TTS AVANZATO — La Castellana parla
+        //
+        // Due correzioni rispetto a prima:
+        //
+        // 1. VOCE SEMPRE FEMMINILE, IN OGNI LINGUA: prima la voce
+        //    veniva scelta filtrando SOLO voci italiane, sempre,
+        //    indipendentemente dalla lingua selezionata. Ora si sceglie
+        //    di nuovo ogni volta, nella lingua giusta.
+        //
+        // 2. VELOCITÀ DI AVVIO: chiamare cancel() e speak() nello
+        //    stesso istante è un bug noto dei browser (Chrome/Edge).
+        //    Ora c'è una piccola pausa tra i due comandi, e le voci
+        //    vengono "svegliate" subito al caricamento della pagina.
+        // ============================================================
+        const VOICE_PREF_KEY = "amuni_voice_enabled";
+        let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
+        const voiceToggleBtn = document.getElementById("voice-toggle-btn");
+
+        let vociDisponibili = [];
+        function aggiornaVociDisponibili() {
+            vociDisponibili = window.speechSynthesis.getVoices();
+        }
+        if ("speechSynthesis" in window) {
+            aggiornaVociDisponibili();
+            window.speechSynthesis.onvoiceschanged = aggiornaVociDisponibili;
+        }
+
+        const NOMI_VOCE_FEMMINILE = {
+            "it-IT": ["Google italiano", "Elsa", "Alice", "Federica", "Silvia", "Paola"],
+            "en-US": ["Google US English", "Samantha", "Zira", "Aria", "Jenny"],
+            "fr-FR": ["Google français", "Amelie", "Julie", "Denise", "Hortense"],
+            "de-DE": ["Google Deutsch", "Anna", "Katja", "Petra", "Helena"],
+            "es-ES": ["Google español", "Monica", "Helena", "Elvira", "Paloma"]
+        };
+        const INDIZI_VOCE_MASCHILE = /male|david|mark|daniel|thomas|diego|paolo|hans|marco|luca|carlos|antonio|cosimo/i;
+
+        function trovaVoceCastellana(langCode) {
+            if (!vociDisponibili.length) vociDisponibili = window.speechSynthesis.getVoices();
+
+            const nomiPreferiti = NOMI_VOCE_FEMMINILE[langCode] || [];
+            for (const nome of nomiPreferiti) {
+                const voce = vociDisponibili.find(v => v.name.includes(nome));
+                if (voce) return voce;
+            }
+
+            const linguaBase = langCode.split('-')[0];
+            const stessaLingua = vociDisponibili.filter(v =>
+                v.lang === langCode || (v.lang || '').startsWith(linguaBase)
+            );
+            const nonMaschile = stessaLingua.find(v => !INDIZI_VOCE_MASCHILE.test(v.name));
+
+            return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
+        }
+
+        function updateVoiceToggleIcon() {
+            if (voiceToggleBtn) voiceToggleBtn.textContent = voiceEnabled ? "🔊" : "🔇";
+        }
+        updateVoiceToggleIcon();
+
+        if (voiceToggleBtn) {
+            voiceToggleBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                voiceEnabled = !voiceEnabled;
+                localStorage.setItem(VOICE_PREF_KEY, voiceEnabled ? "on" : "off");
+                updateVoiceToggleIcon();
+                if (!voiceEnabled && "speechSynthesis" in window) {
+                    window.speechSynthesis.cancel();
+                }
+            });
+        }
+
+        function ttsLangCode(lang) {
+            const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+            return map[lang] || "it-IT";
+        }
+
+        // La Castellana parla — velocità lenta e teatrale
+        function speakText(text) {
+            if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
+            window.speechSynthesis.cancel();
+            setTimeout(() => {
+                const langCode = ttsLangCode(currentLang);
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = trovaVoceCastellana(langCode);
+                utterance.lang = langCode;
+                utterance.rate = 0.82;
+                utterance.pitch = 0.95;
+                utterance.volume = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }, 60);
+        }
+
+        // Ferma la voce della Castellana
+        function castellanaZitta() {
+            if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+            const chatAudio = document.getElementById("chat-real-audio");
+            if (chatAudio) chatAudio.pause();
+        }
+
+        // ============================================================
+        // MICROFONO — il turista può parlare invece di scrivere
+        // ============================================================
+        const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const micBtn = document.getElementById("mic-btn");
+        let recognition = null;
+        let isListening = false;
+
+        function sttLangCode(lang) {
+            const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+            return map[lang] || "it-IT";
+        }
+
+        if (SpeechRecognitionAPI && micBtn) {
+            recognition = new SpeechRecognitionAPI();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = () => {
+                isListening = true;
+                micBtn.classList.add("listening");
+            };
+            recognition.onend = () => {
+                isListening = false;
+                micBtn.classList.remove("listening");
+            };
+            recognition.onerror = () => {
+                isListening = false;
+                micBtn.classList.remove("listening");
+            };
+            recognition.onresult = (event) => {
+                const testoRiconosciuto = event.results[0][0].transcript;
+                sendChatMessage(testoRiconosciuto);
+            };
+
+            micBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (isListening) {
+                    recognition.stop();
+                    return;
+                }
+                recognition.lang = sttLangCode(currentLang);
+                castellanaZitta();
+                try {
+                    recognition.start();
+                } catch (err) {
+                    console.error("Errore riconoscimento vocale:", err);
+                }
+            });
+        } else if (micBtn) {
+            micBtn.style.display = "none";
+        }
+
+        function getPageSlug() {
+            const path = window.location.pathname;
+            const file = path.substring(path.lastIndexOf('/') + 1);
+            return file.replace('.html', '') || 'home';
+        }
+
+        const PAGE_LINK_LABELS = {
+            it: {
+                "castello.html": "Vai al Castello →",
+                "chiese-arte.html": "Vai a Chiese e Arte →",
+                "cibo_eventi.html": "Vai a Cibo e Eventi →",
+                "cittadino.html": "Vai al Cittadino del Borgo →",
+                "leggende_e_tradizioni.html": "Vai a Leggende e Tradizioni →",
+                "desktop_index.html": "Torna alla Home →"
+            },
+            en: {
+                "castello.html": "Go to the Castle →",
+                "chiese-arte.html": "Go to Churches & Art →",
+                "cibo_eventi.html": "Go to Food & Events →",
+                "cittadino.html": "Go to Citizen of the Village →",
+                "leggende_e_tradizioni.html": "Go to Legends & Traditions →",
+                "desktop_index.html": "Back to Home →"
+            },
+            fr: {
+                "castello.html": "Aller au Château →",
+                "chiese-arte.html": "Aller à Églises et Art →",
+                "cibo_eventi.html": "Aller à Gastronomie et Événements →",
+                "cittadino.html": "Aller à Citoyen du Village →",
+                "leggende_e_tradizioni.html": "Aller à Légendes et Traditions →",
+                "desktop_index.html": "Retour à l'accueil →"
+            },
+            es: {
+                "castello.html": "Ir al Castillo →",
+                "chiese-arte.html": "Ir a Iglesias y Arte →",
+                "cibo_eventi.html": "Ir a Comida y Eventos →",
+                "cittadino.html": "Ir a Ciudadano del Pueblo →",
+                "leggende_e_tradizioni.html": "Ir a Leyendas y Tradiciones →",
+                "desktop_index.html": "Volver al Inicio →"
+            },
+            de: {
+                "castello.html": "Zum Schloss →",
+                "chiese-arte.html": "Zu Kirchen und Kunst →",
+                "cibo_eventi.html": "Zu Essen und Events →",
+                "cittadino.html": "Zum Bürger des Dorfes →",
+                "leggende_e_tradizioni.html": "Zu Legenden und Traditionen →",
+                "desktop_index.html": "Zurück zur Startseite →"
+            }
+        };
+
+        function getLinkLabel(link) {
+            const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
+            return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
+        }
+
+        // ============================================================
+        // RENDERING MESSAGGI CHAT — una sola scatola per messaggio
+        // (.message / .message.user-msg). Se il topic ha un file audio
+        // reale (es. Lu Verbu), viene mostrato un player <audio> invece
+        // del solo pulsante di sintesi vocale del browser.
+        // ============================================================
+        function appendChatMessage(text, sender, link, audioFile) {
+            const messagesBox = document.querySelector('.chat-messages');
+
+            const msgWrap = document.createElement('div');
+            msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = text;
+            msgWrap.appendChild(textSpan);
+
+            if (sender !== 'user' && !audioFile) {
+                const audioBtn = document.createElement('button');
+                audioBtn.innerHTML = '🔊';
+                audioBtn.title = 'Ascolta la Castellana';
+                audioBtn.className = 'audio-btn';
+                audioBtn.onclick = () => speakText(text);
+                msgWrap.appendChild(audioBtn);
+            }
+
+            messagesBox.appendChild(msgWrap);
+
+            // Registrazione reale (es. Lu Verbu recitato davvero) al posto
+            // della sola voce sintetica: un player audio compatto sotto
+            // il messaggio.
+            if (sender !== 'user' && audioFile) {
+                const audioWrap = document.createElement('div');
+                audioWrap.style.cssText = 'margin: -2px 0 8px 0;';
+                const audioEl = document.createElement('audio');
+                audioEl.id = 'chat-real-audio';
+                audioEl.controls = true;
+                audioEl.style.cssText = 'width: 100%; height: 34px;';
+                audioEl.src = audioFile;
+                audioWrap.appendChild(audioEl);
+                messagesBox.appendChild(audioWrap);
+            }
+
+            if (link) {
+                const btn = document.createElement('button');
+                btn.className = 'chat-link-btn';
+                btn.textContent = getLinkLabel(link);
+                btn.addEventListener('click', () => { window.location.href = link; });
+                messagesBox.appendChild(btn);
+            }
+
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+
+        // ============================================================
+        // MENU A PULSANTI — versione con contesto persistente: dopo
+        // ogni risposta, ricompaiono le altre voci dello stesso gruppo
+        // appena trattato (es. le altre Filastrocche), e sotto quelle
+        // il resto dei gruppi/voci ancora da esplorare.
+        // ============================================================
+        let fullTopicMenu = [];
+        let exploredGroups = new Set();
+        let usedTopics = new Set();
+
+        function renderTopicMenu(menu) {
+            if (!menu || !menu.length) return;
+            fullTopicMenu = menu;
+            renderMenuState(null);
+        }
+
+        function renderMenuState(currentGroupName) {
+            const messagesBox = document.querySelector('.chat-messages');
+            const old = messagesBox.querySelector('.topic-menu-state');
+            if (old) old.remove();
+
+            const wrap = document.createElement('div');
+            wrap.className = 'topic-menu topic-menu-state';
+
+            if (currentGroupName) {
+                const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
+                if (groupEntry) {
+                    groupEntry.items.forEach(it => {
+                        if (usedTopics.has(it.topic)) return;
+                        const b = document.createElement('button');
+                        b.className = 'topic-btn';
+                        b.textContent = it.label;
+                        b.addEventListener('click', () => {
+                            usedTopics.add(it.topic);
+                            sendTopicRequest(it.topic, it.label, currentGroupName);
+                        });
+                        wrap.appendChild(b);
+                    });
+                }
+            }
+
+            fullTopicMenu.forEach(entry => {
+                if (entry.group) {
+                    if (exploredGroups.has(entry.group)) return;
+                    const groupBtn = document.createElement('button');
+                    groupBtn.className = 'topic-btn topic-group-btn';
+                    groupBtn.textContent = entry.group + ' ▸';
+                    groupBtn.addEventListener('click', () => renderMenuState(entry.group));
+                    wrap.appendChild(groupBtn);
+                } else {
+                    if (usedTopics.has(entry.topic)) return;
+                    const b = document.createElement('button');
+                    b.className = 'topic-btn';
+                    b.textContent = entry.label;
+                    b.addEventListener('click', () => {
+                        usedTopics.add(entry.topic);
+                        sendTopicRequest(entry.topic, entry.label, null);
+                    });
+                    wrap.appendChild(b);
+                }
+            });
+
+            if (wrap.children.length > 0) {
+                messagesBox.appendChild(wrap);
+                messagesBox.scrollTop = messagesBox.scrollHeight;
+            }
+        }
+
+        async function sendTopicRequest(topicId, label, groupName) {
+            appendChatMessage(label, 'user');
+
+            const messagesBox = document.querySelector('.chat-messages');
+            const old = messagesBox.querySelector('.topic-menu-state');
+            if (old) old.remove();
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: label,
+                        page: getPageSlug(),
+                        lang: currentLang,
+                        access_code: getStoredAccessCode() || "",
+                        topic: topicId
+                    })
+                });
+                if (!res.ok) throw new Error('Risposta non valida dal server');
+                const data = await res.json();
+                appendChatMessage(data.reply, 'castellana', data.link, data.audio_file);
+                if (!data.audio_file && (data.speak || voiceEnabled)) speakText(data.reply);
+                if (groupName) exploredGroups.add(groupName);
+                renderMenuState(groupName);
+            } catch (err) {
+                console.error('Errore richiesta topic:', err);
+                appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+            }
+        }
+
+        let menuLoadedForCode = null;
+        async function loadTopicMenu() {
+            const code = getStoredAccessCode();
+            if (!code || menuLoadedForCode === code) return;
+            try {
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: "",
+                        page: getPageSlug(),
+                        lang: currentLang,
+                        access_code: code,
+                        topic: ""
+                    })
+                });
+                if (!res.ok) return;
+                const data = await res.json();
+                if (data.premium_active && data.menu && data.menu.length) {
+                    renderTopicMenu(data.menu);
+                    menuLoadedForCode = code;
+                }
+            } catch (err) {
+                console.error('Errore caricamento menu:', err);
+            }
+        }
+
+        function getStoredAccessCode() {
+            const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+            if (!raw) return null;
+            try {
+                const data = JSON.parse(raw);
+                if (new Date(data.expires_at) > new Date()) {
+                    return data.code;
+                } else {
+                    localStorage.removeItem(PREMIUM_STORAGE_KEY);
+                    return null;
+                }
+            } catch (e) {
+                return null;
+            }
+        }
+
+        // ============================================================
+        // INDICATORE PREMIUM
+        // ============================================================
+        const PREMIUM_STATUS_TEXT = {
+            it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
+            en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
+            fr: { active: (d) => `👑 Premium actif jusqu'au ${d}`, free: "🔓 Version gratuite" },
+            es: { active: (d) => `👑 Premium activo hasta el ${d}`, free: "🔓 Versión gratuita" },
+            de: { active: (d) => `👑 Premium aktiv bis ${d}`, free: "🔓 Kostenlose Version" }
+        };
+
+        function updatePremiumStatusDisplay() {
+            const bar = document.getElementById('premium-status-bar');
+            if (!bar) return;
+            const texts = PREMIUM_STATUS_TEXT[currentLang] || PREMIUM_STATUS_TEXT.it;
+            const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    if (new Date(data.expires_at) > new Date()) {
+                        const d = new Date(data.expires_at);
+                        const formatted = d.toLocaleDateString(currentLang, { day: 'numeric', month: 'long' }) +
+                            ' ' + d.toLocaleTimeString(currentLang, { hour: '2-digit', minute: '2-digit' });
+                        bar.textContent = texts.active(formatted);
+                        bar.classList.add('premium-active');
+                        bar.classList.remove('premium-free');
+                        return;
+                    }
+                } catch (e) { /* codice non valido, trattalo come gratuito */ }
+            }
+            bar.textContent = texts.free;
+            bar.classList.add('premium-free');
+            bar.classList.remove('premium-active');
+        }
+
+        function storeAccessCode(code, expiresAt) {
+            localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
+                code: code,
+                expires_at: expiresAt
+            }));
+        }
+
+        async function tryActivateCode(rawMessage) {
+            const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9-]+)/i);
+            if (!match) return false;
+
+            const code = match[2].toUpperCase();
+            appendChatMessage(rawMessage, 'user');
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/activate-code`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: code, lang: currentLang })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    storeAccessCode(code, data.expires_at);
+                    const expiryDate = new Date(data.expires_at);
+                    const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+                    appendChatMessage(t('premium.activated_prefix', 'Premium attivato! Avrai accesso ai contenuti esclusivi fino al ') + formatted + '.', 'castellana');
+                    updatePremiumStatusDisplay();
+                } else {
+                    appendChatMessage(data.message || t('premium.invalid_code', 'Codice non valido.'), 'castellana');
+                }
+            } catch (err) {
+                console.error('Errore attivazione codice:', err);
+                appendChatMessage(t('premium.code_check_error', 'Al momento non riesco a verificare il codice — riprova tra poco.'), 'castellana');
+            }
+
+            return true;
+        }
+
+        async function sendChatMessage(text) {
+            if (!text.trim()) return;
+
+            const wasActivationAttempt = await tryActivateCode(text);
+            if (wasActivationAttempt) return;
+
+            appendChatMessage(text, 'user');
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: text,
+                        page: getPageSlug(),
+                        lang: currentLang,
+                        access_code: getStoredAccessCode() || ""
+                    })
+                });
+
+                if (!res.ok) throw new Error('Risposta non valida dal server');
+
+                const data = await res.json();
+                appendChatMessage(data.reply, 'castellana', data.link, data.audio_file);
+                if (!data.audio_file && (data.speak || voiceEnabled)) speakText(data.reply);
+
+            } catch (err) {
+                console.error('Errore chat:', err);
+                appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+            }
+        }
+
+        const chatInputField = document.querySelector('.chat-input-row input');
+        const sendBtn = document.querySelector('.send-btn');
+
+        function handleSend() {
+            sendChatMessage(chatInputField.value);
+            chatInputField.value = '';
+        }
+
+        if (chatInputField) {
+            chatInputField.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.keyCode === 13) {
+                    e.preventDefault();
+                    handleSend();
+                }
+            });
+        }
+        if (sendBtn) {
+            sendBtn.addEventListener('click', handleSend);
+        }
+
+        // ============================================================
+        // BOTTONE PREMIUM — "Ho già un codice" apre la chat e invita
+        // a scrivere il codice; "Acquista l'accesso" avvia Stripe.
+        // ============================================================
+        document.getElementById('btn-premium-code').addEventListener('click', () => {
+            chat.classList.add('active');
+            appendChatMessage(
+                t('premium.chat_code_prompt', 'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"'),
+                'castellana'
+            );
+        });
+
+        document.getElementById('btn-buy-premium').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const btn = e.currentTarget;
+            const originalText = btn.textContent;
+            btn.textContent = "Un momento...";
+            try {
+                const res = await fetch(`${API_BASE_URL}/create-checkout-session`, { method: "POST" });
+                const data = await res.json();
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    alert(t('premium.payment_start_error', "Non riesco ad avviare il pagamento. Riprova tra poco."));
+                    btn.textContent = originalText;
+                }
+            } catch (err) {
+                console.error("Errore avvio pagamento:", err);
+                alert(t('premium.payment_connection_error', "Errore di collegamento. Riprova tra poco."));
+                btn.textContent = originalText;
+            }
+        });
+    </script>
+    <footer class="footer-copyright" style="text-align: center; padding: 30px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem;">
+    <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
+    <p style="font-size: 0.8rem; margin-top: 8px;">
+        Le conversazioni con la Castellana possono essere registrate in forma anonima
+        per migliorare la qualità del servizio.
+        <a href="privacy.html" style="color: #D4AF6A;">Maggiori informazioni</a>
+    </p>
+</footer>
+</body>
+</html>
