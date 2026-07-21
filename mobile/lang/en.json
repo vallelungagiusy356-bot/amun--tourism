@@ -8,7 +8,8 @@
     "btn_transport": "Transport",
     "btn_events": "Events",
     "btn_monuments": "Monuments",
-    "btn_desktop_redirect": "Go to the Desktop version"
+    "btn_desktop_redirect": "Go to the Desktop version",
+    "welcome_title": "Welcome to Caccamo"
   },
   "pages": {
     "food_page": {
