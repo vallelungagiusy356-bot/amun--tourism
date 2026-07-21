@@ -34,7 +34,7 @@
         "bar_ribaudo": "Unbedingt probieren: ihre 'mattonella', das Sandwich mit Milz, ihr gebratenes Hähnchen.",
         "bar_del_carmine": "Historisches Café, ideal für einen ausgezeichneten Espresso oder ein erfrischendes Eis in völliger Entspannung.",
         "spiga_d_oro_food_and_drink": "Frisch gebackene Waren, typische Platten und eine große Auswahl an Spezialitäten zum sofortigen Genießen.",
-        "cafè_40": "Moderne, einladende Umgebung, ideal für Treffen und Frühstück.",
+        "o_chianu_fasu": "Moderne, einladende Umgebung, ideal für Frühstück.",
         "il_dolce": "Moderne, einladende Umgebung, ideal für typische Süßspeisen, Rotisserie-Gerichte und typisches sizilianisches Street Food.",
         "bar_muscarella": "Idealer Halt für einen erholsamen Kaffee, ein handwerkliches Eis oder einen entspannten Aperitivo.",
         "capricci_di_sicilia": "Feinkostladen in der Via Termitana, ideal für eine schnelle Pause oder einen kleinen Genuss, wenn man mit Kindern in der Gemeindevilla ist."
@@ -129,7 +129,8 @@
         "btn_parla_castellana": "Mit der Castellana sprechen",
         "btn_dindondan": "Kirchen auf Din Don Dan entdecken",
         "church_notice": "⚠️ Hinweis: Diese Gotteshäuser sind aktiv und den liturgischen Funktionen gewidmet. Für touristische Besuche bitten wir, die empfohlenen Öffnungszeiten zu beachten und Zeiten interner Feiern zu vermeiden.",
-        "go_to_map": "Zur Karte"
+        "go_to_map": "Zur Karte",
+        "listen_button": "Beschreibung anhoren"
       },
       "castello": {
         "title": "Die Burg von Caccamo",
@@ -198,6 +199,8 @@
     "nicasio_title": "Fest des San Nicasio und der Palio",
     "nicasio_desc": "Lebendige Feierlichkeiten zu Ehren des Heiligen, bereichert durch den mit Spannung erwarteten und mitreißenden städtischen Palio, der bei Groß und Klein Wetteifer und Begeisterung entfacht.",
     "sagra_title": "Wurstfest",
-    "sagra_desc": "Jedes Jahr, am zweiten Sonntag im Oktober, erfüllen die Düfte der Tradition das Dorf. Ein unverzichtbares kulinarisches Ereignis, um die authentische lokale Wurst bei Gesang, Wein und Geselligkeit zu genießen."
+    "sagra_desc": "Jedes Jahr, am zweiten Sonntag im Oktober, erfüllen die Düfte der Tradition das Dorf. Ein unverzichtbares kulinarisches Ereignis, um die authentische lokale Wurst bei Gesang, Wein und Geselligkeit zu genießen.",
+    "facebook_group_btn": "📅 Aktuelle Veranstaltungen auf Facebook",
+    "facebook_group_note": "Eine von einem Einwohner gepflegte Gruppe mit allen Veranstaltungen in Caccamo, stets aktuell."
   }
 }
