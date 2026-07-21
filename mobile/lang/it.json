@@ -129,7 +129,8 @@
         "btn_parla_castellana": "Parla con la Castellana",
         "btn_dindondan": "Esplora Chiese su Din Don Dan",
         "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli Orari consigliati ed evitare i momenti di celebrazione interna.",
-        "go_to_map": "Vai alla Mappa"
+        "go_to_map": "Vai alla Mappa",
+        "listen_button": "Ascolta la descrizione"
       },
       "castello": {
         "title": "Il Castello di Caccamo",
@@ -198,6 +199,8 @@
     "nicasio_title": "Festa di San Nicasio e il Palio",
     "nicasio_desc": "Celebrazioni vibranti in onore del Santo, arricchite dall'attesissimo e avvincente Palio cittadino che accende la sfida e l'entusiasmo di grandi e piccini.",
     "sagra_title": "Sagra della Salsiccia",
-    "sagra_desc": "Ogni anno, la seconda domenica di ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità."
+    "sagra_desc": "Ogni anno, la seconda domenica di ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità.",
+    "facebook_group_btn": "📅 Eventi e manifestazioni aggiornate su Facebook",
+    "facebook_group_note": "Un gruppo curato da un concittadino con tutte le manifestazioni di Caccamo, sempre aggiornate."
   }
 }
