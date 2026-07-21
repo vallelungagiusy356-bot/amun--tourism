@@ -19,7 +19,13 @@
   "premium": {
     "cta_label": "🔒 Contenidos Premium disponibles",
     "btn_code": "Ya tengo un código",
-    "btn_buy": "Comprar acceso — 3,90 €"
+    "btn_buy": "Comprar acceso — 3,90 €",
+    "activated_prefix": "¡Premium activado! Tendras acceso a los contenidos exclusivos hasta el ",
+    "invalid_code": "Codigo no valido.",
+    "code_check_error": "Ahora mismo no puedo verificar el codigo — intentalo de nuevo en un momento.",
+    "chat_code_prompt": "Para activar tu acceso Premium, escribeme aqui: \"codigo TUCODIGO\"",
+    "payment_start_error": "No puedo iniciar el pago. Intentalo de nuevo en un momento.",
+    "payment_connection_error": "Error de conexion. Intentalo de nuevo en un momento."
   },
   "pages": {
     "castle_page": {
@@ -144,7 +150,7 @@
     "open_webapp": "Ir a la WebApp",
     "premium_title": "Desbloquea la Castellana Premium",
     "premium_text": "Por 3,90 €, accede a la Castellana durante 4 días: la guía multilingüe que conoce cada secreto de Caccamo, desde el transporte hasta las joyas escondidas del territorio.",
-     "premium_howto": "Después del pago verás tu código directamente en pantalla: escríbelo en el chat precedido de la palabra <strong>\"código\"</strong>. Cada código funciona en hasta 2 dispositivos — útil para un segundo teléfono, un compañero de viaje, o ante cualquier imprevisto.",
+    "premium_howto": "Después del pago verás tu código directamente en pantalla: escríbelo en el chat precedido de la palabra <strong>\"código\"</strong>. Cada código funciona en hasta 2 dispositivos — útil para un segundo teléfono, un compañero de viaje, o ante cualquier imprevisto.",
     "premium_cta": "Comprar acceso — 3,90 €"
   }
 }
