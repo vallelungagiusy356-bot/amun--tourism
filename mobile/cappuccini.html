@@ -703,10 +703,17 @@ window.silktideConsentManager.init({
             ]
         };
 
-        const WELCOME_MESSAGE_MOBILE = "Benvenuto al Convento dei Cappuccini, viandante! Cosa vuoi scoprire?";
+        const WELCOME_MESSAGE_MOBILE = {
+            it: "Benvenuto al Convento dei Cappuccini, viandante! Cosa vuoi scoprire?",
+            en: "Welcome to the Capuchin Convent, traveler! What would you like to discover?",
+            fr: "Bienvenue au Couvent des Capucins, voyageur ! Que veux-tu decouvrir ?",
+            es: "Bienvenido al Convento de los Capuchinos, viajero! Que quieres descubrir?",
+            de: "Willkommen im Kapuzinerkloster, Reisender! Was mochtest du entdecken?"
+        };
 
         let usedTopicsMobile = new Set();
         let hasShownWelcomeMobile = false;
+        let shownWelcomeLang = null;
 
         function renderTopicMenuMobile(menu) {
             const messagesBox = document.getElementById('chat-messages-mobile');
@@ -770,12 +777,14 @@ window.silktideConsentManager.init({
             messagesBox.innerHTML = '';
             usedTopicsMobile.clear();
 
-            appendChatMessageMobile(WELCOME_MESSAGE_MOBILE, 'castellana');
-            if (voiceEnabled) speakText(WELCOME_MESSAGE_MOBILE);
+            const welcomeText = WELCOME_MESSAGE_MOBILE[currentLang] || WELCOME_MESSAGE_MOBILE.it;
+            appendChatMessageMobile(welcomeText, 'castellana');
+            if (voiceEnabled) speakText(welcomeText);
 
             renderTopicMenuMobile(CAPPUCCINI_TOPICS_MOBILE[currentLang] || CAPPUCCINI_TOPICS_MOBILE.it);
 
             hasShownWelcomeMobile = true;
+            shownWelcomeLang = currentLang;
         }
 
         // --------------------------
@@ -911,7 +920,7 @@ window.silktideConsentManager.init({
                 if (getStoredAccessCode()) {
                     chatMobileBox.classList.add('active');
                     updatePremiumStatusDisplayMobile();
-                    if (!hasShownWelcomeMobile) {
+                    if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
                         renderWelcomeMobile();
                     }
                 } else {
@@ -919,6 +928,16 @@ window.silktideConsentManager.init({
                 }
             });
         }
+
+        document.querySelectorAll(".lang-switcher button").forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                currentLang = btn.dataset.lang;
+                updatePremiumStatusDisplayMobile();
+                if (hasShownWelcomeMobile && shownWelcomeLang !== currentLang) {
+                    renderWelcomeMobile();
+                }
+            });
+        });
 
         if (closeChatMobileBtn) {
             closeChatMobileBtn.addEventListener('click', () => {
