@@ -118,6 +118,29 @@ window.silktideConsentManager.init({
          (oro/blu marino/terracotta/inchiostro).
          ============================================================ -->
     <style>
+        /* Link verso il desktop: stesso stile barocco del resto, ma
+           più piccolo e discreto — è un link secondario, non deve
+           competere visivamente con "Parla con la Castellana". */
+        .btn-desktop-link {
+            font-size: 0.85rem;
+            padding: 8px 16px;
+            opacity: 0.85;
+            display: inline-block;
+            margin-top: 4px;
+        }
+        .btn-desktop-link:active {
+            opacity: 1;
+        }
+
+        .mobile-welcome-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: var(--cst-gold, #B8873B);
+            font-size: 1.5rem;
+            margin: 12px 0 4px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
         :root {
             --cst-gold: #B8873B;
             --cst-gold-light: #D4AF6A;
@@ -389,6 +412,8 @@ window.silktideConsentManager.init({
     <!-- LAYOUT MOBILE -->
     <div class="mobile-layout">
 
+        <h1 class="mobile-welcome-title" data-i18n="home.welcome_title">Benvenuti a Caccamo</h1>
+
         <div class="video-container">
             <video autoplay muted loop playsinline class="castellana-avatar">
                 <source src="img/castellana_alpha.webm" type="video/webm">
@@ -417,6 +442,17 @@ window.silktideConsentManager.init({
              ============================================================ -->
         <a href="../desktop/desktop_index.html" id="talk-castellana-btn" class="btn-castellana">
             <span data-i18n="home.talk_castellana"></span>
+        </a>
+
+        <!-- Link separato e sempre visibile verso il sito desktop:
+             prima il bottone sopra faceva anche da "porta" verso il
+             desktop quando non c'era un codice Premium valido, ma
+             ora che apre la chat direttamente (se il codice c'è),
+             chi ha già Premium non aveva più modo di raggiungere il
+             desktop dalla home. Questo link resta sempre disponibile,
+             indipendentemente dallo stato del codice. -->
+        <a href="../desktop/desktop_index.html" class="btn-barocco btn-desktop-link">
+            🖥️ <span data-i18n="home.btn_desktop_redirect">Vai alla versione Desktop</span>
         </a>
 
         <div class="amuni-box">
