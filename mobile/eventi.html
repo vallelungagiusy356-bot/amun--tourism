@@ -737,12 +737,19 @@ window.silktideConsentManager.init({
         };
 
         const CLOSING_MESSAGE_MOBILE = "E da qui è tutto, viandante! Spero di esserti stata utile. Se vuoi avere altre informazioni, vieni a trovarmi nelle altre pagine!";
-        const WELCOME_MESSAGE_MOBILE = "Benvenuto! Chiedimi delle feste e delle tradizioni di Caccamo, stagione per stagione.";
+        const WELCOME_MESSAGE_MOBILE = {
+            it: "Benvenuto! Chiedimi delle feste e delle tradizioni di Caccamo, stagione per stagione.",
+            en: "Welcome! Ask me about the festivals and traditions of Caccamo, season by season.",
+            fr: "Bienvenue ! Interroge-moi sur les fetes et traditions de Caccamo, saison par saison.",
+            es: "Bienvenido! Preguntame sobre las fiestas y tradiciones de Caccamo, estacion por estacion.",
+            de: "Willkommen! Frag mich nach den Festen und Traditionen von Caccamo, Saison fur Saison."
+        };
 
         let fullTopicMenuMobile = [];
         let exploredGroupsMobile = new Set();
         let usedTopicsMobile = new Set();
         let hasShownWelcomeMobile = false;
+        let shownWelcomeLang = null;
         let menuLoadedForCodeMobile = null;
 
         function renderTopicMenuMobile(menu) {
@@ -871,13 +878,15 @@ window.silktideConsentManager.init({
             exploredGroupsMobile.clear();
             menuLoadedForCodeMobile = null;
 
-            appendChatMessageMobile(WELCOME_MESSAGE_MOBILE, 'castellana');
-            if (voiceEnabled) speakText(WELCOME_MESSAGE_MOBILE);
+            const welcomeText = WELCOME_MESSAGE_MOBILE[currentLang] || WELCOME_MESSAGE_MOBILE.it;
+            appendChatMessageMobile(welcomeText, 'castellana');
+            if (voiceEnabled) speakText(welcomeText);
 
             renderTopicMenuMobile(CIBO_EVENTI_TOPICS_MOBILE[currentLang] || CIBO_EVENTI_TOPICS_MOBILE.it);
             loadTopicMenuMobile();
 
             hasShownWelcomeMobile = true;
+            shownWelcomeLang = currentLang;
         }
 
         // --------------------------
@@ -1016,7 +1025,7 @@ window.silktideConsentManager.init({
                 if (getStoredAccessCode()) {
                     chatMobileBox.classList.add('active');
                     updatePremiumStatusDisplayMobile();
-                    if (!hasShownWelcomeMobile) {
+                    if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
                         renderWelcomeMobile();
                     } else {
                         loadTopicMenuMobile();
@@ -1033,6 +1042,20 @@ window.silktideConsentManager.init({
                 castellanaZitta();
             });
         }
+
+        // caricaLingua() (script separato in cima alla pagina) aggiorna
+        // il testo della pagina ma non "parla" con la chat. Qui la chat
+        // si mette in ascolto per conto proprio: aggiorna la lingua
+        // interna e, se era gia aperta/mostrata, si ridisegna subito.
+        document.querySelectorAll(".lang-switcher button").forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                currentLang = btn.dataset.lang;
+                updatePremiumStatusDisplayMobile();
+                if (hasShownWelcomeMobile && shownWelcomeLang !== currentLang) {
+                    renderWelcomeMobile();
+                }
+            });
+        });
     </script>
     <script src="../news-badge.js"></script>
 </body>
