@@ -194,6 +194,23 @@ body {
     display: block;
     pointer-events: none;
     animation: fadeIn 1s ease-out, gentleBreathe 5s ease-in-out infinite;
+    /* Sfumatura ai bordi: il video ha un bordo rettangolare netto
+       (anche con canale alpha, il "riquadro" del video resta
+       percepibile). Una maschera a gradiente radiale — opaca al
+       centro, trasparente ai bordi — fa dissolvere dolcemente i
+       lati invece di tagliarli di netto. */
+    -webkit-mask-image: radial-gradient(
+        ellipse 62% 85% at center,
+        #000 55%,
+        rgba(0,0,0,0.6) 75%,
+        transparent 100%
+    );
+    mask-image: radial-gradient(
+        ellipse 62% 85% at center,
+        #000 55%,
+        rgba(0,0,0,0.6) 75%,
+        transparent 100%
+    );
 }
 
 /* ==========================================================================
