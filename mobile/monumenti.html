@@ -698,6 +698,7 @@ window.silktideConsentManager.init({
 
         let hasShownWelcomeMobile = false;
         let usedItemsMobile = new Set();
+        let shownWelcomeLang = null;
 
         function renderMonumentiMenuMobile() {
             const messagesBox = document.getElementById('chat-messages-mobile');
@@ -750,6 +751,7 @@ window.silktideConsentManager.init({
 
             renderMonumentiMenuMobile();
             hasShownWelcomeMobile = true;
+            shownWelcomeLang = currentLang;
         }
 
         // --------------------------
@@ -889,12 +891,29 @@ window.silktideConsentManager.init({
                     e.preventDefault();
                     chatMobileBox.classList.add('active');
                     updatePremiumStatusDisplayMobile();
-                    if (!hasShownWelcomeMobile) {
+                    if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
                         renderWelcomeMobile();
                     }
                 }
             });
         }
+
+        // monumenti.html gestisce gia la lingua in proprio (loadLanguage
+        // aggiorna currentLang), ma non ridisegnava la chat se era gia
+        // aperta. Registriamo questo ascoltatore dentro DOMContentLoaded,
+        // DOPO quello originale che chiama loadLanguage: cosi si collega
+        // al bottone DOPO, e quindi si attiva DOPO al click, leggendo
+        // gia il valore aggiornato di currentLang.
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll(".lang-switcher button").forEach(function(btn) {
+                btn.addEventListener("click", function() {
+                    if (hasShownWelcomeMobile && shownWelcomeLang !== currentLang) {
+                        renderWelcomeMobile();
+                    }
+                    updatePremiumStatusDisplayMobile();
+                });
+            });
+        });
 
         if (closeChatMobileBtn) {
             closeChatMobileBtn.addEventListener('click', () => {
