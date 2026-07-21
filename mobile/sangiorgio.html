@@ -710,10 +710,17 @@ window.silktideConsentManager.init({
             ]
         };
 
-        const WELCOME_MESSAGE_MOBILE = "Benvenuto al Duomo di San Giorgio Martire, viandante! Cosa vuoi scoprire?";
+        const WELCOME_MESSAGE_MOBILE = {
+            it: "Benvenuto al Duomo di San Giorgio Martire, viandante! Cosa vuoi scoprire?",
+            en: "Welcome to the Cathedral of San Giorgio Martire, traveler! What would you like to discover?",
+            fr: "Bienvenue a la Cathedrale de San Giorgio Martire, voyageur ! Que veux-tu decouvrir ?",
+            es: "Bienvenido a la Catedral de San Giorgio Martire, viajero! Que quieres descubrir?",
+            de: "Willkommen im Dom von San Giorgio Martire, Reisender! Was mochtest du entdecken?"
+        };
 
         let usedTopicsMobile = new Set();
         let hasShownWelcomeMobile = false;
+        let shownWelcomeLang = null;
         let menuLoadedForCodeMobile = null;
 
         function renderTopicMenuMobile(menu) {
@@ -779,12 +786,14 @@ window.silktideConsentManager.init({
             usedTopicsMobile.clear();
             menuLoadedForCodeMobile = null;
 
-            appendChatMessageMobile(WELCOME_MESSAGE_MOBILE, 'castellana');
-            if (voiceEnabled) speakText(WELCOME_MESSAGE_MOBILE);
+            const welcomeText = WELCOME_MESSAGE_MOBILE[currentLang] || WELCOME_MESSAGE_MOBILE.it;
+            appendChatMessageMobile(welcomeText, 'castellana');
+            if (voiceEnabled) speakText(welcomeText);
 
             renderTopicMenuMobile(DUOMO_TOPICS_MOBILE[currentLang] || DUOMO_TOPICS_MOBILE.it);
 
             hasShownWelcomeMobile = true;
+            shownWelcomeLang = currentLang;
         }
 
         // --------------------------
@@ -920,7 +929,7 @@ window.silktideConsentManager.init({
                 if (getStoredAccessCode()) {
                     chatMobileBox.classList.add('active');
                     updatePremiumStatusDisplayMobile();
-                    if (!hasShownWelcomeMobile) {
+                    if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
                         renderWelcomeMobile();
                     }
                 } else {
@@ -928,6 +937,16 @@ window.silktideConsentManager.init({
                 }
             });
         }
+
+        document.querySelectorAll(".lang-switcher button").forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                currentLang = btn.dataset.lang;
+                updatePremiumStatusDisplayMobile();
+                if (hasShownWelcomeMobile && shownWelcomeLang !== currentLang) {
+                    renderWelcomeMobile();
+                }
+            });
+        });
 
         if (closeChatMobileBtn) {
             closeChatMobileBtn.addEventListener('click', () => {
