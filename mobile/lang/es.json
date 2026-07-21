@@ -129,7 +129,8 @@
         "btn_parla_castellana": "Habla con la Castellana",
         "btn_dindondan": "Explorar Iglesias en Din Don Dan",
         "church_notice": "⚠️ Nota: Estos son lugares de culto activos, dedicados a las funciones litúrgicas. Para las visitas turísticas, se ruega respetar los horarios recomendados y evitar los momentos de celebración interna.",
-        "go_to_map": "Ir al Mapa"
+        "go_to_map": "Ir al Mapa",
+        "listen_button": "Escuchar la descripcion"
       },
       "castello": {
         "title": "El Castillo de Caccamo",
@@ -198,6 +199,8 @@
     "nicasio_title": "Fiesta de San Nicasio y el Palio",
     "nicasio_desc": "Celebraciones vibrantes en honor al Santo, enriquecidas con el esperadísimo y apasionante Palio de la ciudad, que enciende el desafío y el entusiasmo de grandes y pequeños.",
     "sagra_title": "Fiesta de la Salchicha",
-    "sagra_desc": "Cada año, el segundo domingo de octubre, los aromas de la tradición invaden el pueblo. Una cita gastronómica imperdible para degustar la auténtica salchicha local entre cantos, vino y convivialidad."
+    "sagra_desc": "Cada año, el segundo domingo de octubre, los aromas de la tradición invaden el pueblo. Una cita gastronómica imperdible para degustar la auténtica salchicha local entre cantos, vino y convivialidad.",
+    "facebook_group_btn": "📅 Eventos y fiestas actualizados en Facebook",
+    "facebook_group_note": "Un grupo gestionado por un vecino del pueblo con todos los eventos de Caccamo, siempre actualizados."
   }
 }
