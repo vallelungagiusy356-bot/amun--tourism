@@ -19,7 +19,13 @@
   "premium": {
     "cta_label": "🔒 Premium content available",
     "btn_code": "I already have a code",
-    "btn_buy": "Buy access — €3.90"
+    "btn_buy": "Buy access — €3.90",
+    "activated_prefix": "Premium activated! You'll have access to exclusive content until ",
+    "invalid_code": "Invalid code.",
+    "code_check_error": "I can't verify the code right now — please try again shortly.",
+    "chat_code_prompt": "To activate your Premium access, write to me here: \"code YOURCODE\"",
+    "payment_start_error": "I can't start the payment right now. Please try again shortly.",
+    "payment_connection_error": "Connection error. Please try again shortly."
   },
   "pages": {
     "castle_page": {
