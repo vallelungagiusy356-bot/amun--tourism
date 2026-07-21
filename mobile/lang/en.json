@@ -34,7 +34,7 @@
         "bar_ribaudo": "Absolutely worth trying: their 'mattonella', the spleen sandwich, and their roast chicken.",
         "bar_del_carmine": "A historic café, perfect for a great espresso or a refreshing gelato in total relaxation.",
         "spiga_d_oro_food_and_drink": "Freshly baked goods, typical platters and a wide choice of specialties ready to enjoy.",
-        "cafè_40": "A modern, welcoming setting, ideal for meetings and breakfasts.",
+        "o_chianu_fasu": "A modern, welcoming setting, ideal for breakfasts.",
         "il_dolce": "A modern, welcoming setting, ideal for traditional sweets, rotisserie fare, and typical Sicilian street food.",
         "bar_muscarella": "An ideal stop for a refreshing coffee, an artisan gelato or a relaxed aperitivo.",
         "capricci_di_sicilia": "A deli on Via Termitana, perfect for a quick break or a tasty snack if you're at the municipal park with children."
@@ -129,7 +129,8 @@
         "btn_parla_castellana": "Talk to the Castellana",
         "btn_dindondan": "Explore Churches on Din Don Dan",
         "church_notice": "⚠️ Note: These are active places of worship, dedicated to liturgical functions. For tourist visits, please respect the recommended visiting hours and avoid times of internal celebration.",
-        "go_to_map": "Go to the Map"
+        "go_to_map": "Go to the Map",
+        "listen_button": "Listen to the description"
       },
       "castello": {
         "title": "The Castle of Caccamo",
@@ -198,6 +199,8 @@
     "nicasio_title": "Feast of San Nicasio and the Palio",
     "nicasio_desc": "Vibrant celebrations in honor of the Saint, enriched by the eagerly awaited and thrilling town Palio, which sparks excitement and rivalry among young and old alike.",
     "sagra_title": "Sausage Festival",
-    "sagra_desc": "Every year, on the second Sunday of October, the scents of tradition fill the village. An unmissable food event to taste authentic local sausage amid songs, wine and conviviality."
+    "sagra_desc": "Every year, on the second Sunday of October, the scents of tradition fill the village. An unmissable food event to taste authentic local sausage amid songs, wine and conviviality.",
+    "facebook_group_btn": "📅 Updated events & festivals on Facebook",
+    "facebook_group_note": "A group curated by a local resident with all of Caccamo's events, always up to date."
   }
 }
