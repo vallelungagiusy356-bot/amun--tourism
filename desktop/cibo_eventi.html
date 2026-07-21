@@ -142,6 +142,40 @@ window.silktideConsentManager.init({
           background: linear-gradient(135deg, #c9962f, #e0b04a);
           color: #3a2a10;
         }
+
+        /* ===== BOX GRUPPO FACEBOOK ===== */
+        .facebook-group-cta {
+          max-width: 420px;
+          margin: 24px auto 0;
+          padding: 18px 20px;
+          background: #eef4fb;
+          border-radius: 14px;
+          text-align: center;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+          font-family: 'Cormorant Garamond', serif;
+        }
+
+        .facebook-group-note {
+          margin: 0 0 12px;
+          font-size: 0.92rem;
+          color: #2c4a6e;
+        }
+
+        .facebook-group-btn {
+          display: inline-block;
+          padding: 10px 20px;
+          border-radius: 24px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          border: none;
+          background: #1877f2;
+          color: #fff;
+          transition: opacity 0.2s ease;
+        }
+
+        .facebook-group-btn:hover { opacity: 0.9; }
     </style>
 </head>
 
@@ -227,6 +261,14 @@ window.silktideConsentManager.init({
                 <div class="ask-castellana" data-i18n="pages.cibo_eventi_page.cta">Chiedi alla Castellana di raccontartela</div>
             </div>
         </section>
+
+        <!-- ===== GRUPPO FACEBOOK COMUNITÀ ===== -->
+        <div class="facebook-group-cta">
+          <p class="facebook-group-note" data-i18n="pages.cibo_eventi_page.facebook_group_note">Un gruppo curato da un concittadino, con tutte le manifestazioni di Caccamo sempre aggiornate.</p>
+          <a href="https://www.facebook.com/share/1GvCAFWhWK/" target="_blank" rel="noopener" class="facebook-group-btn" data-i18n="pages.cibo_eventi_page.facebook_group_btn">
+            📅 Eventi aggiornati su Facebook
+          </a>
+        </div>
 
         <!-- ===== BOTTONE PREMIUM ===== -->
         <div class="castellana-premium-cta">
