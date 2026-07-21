@@ -34,7 +34,7 @@
         "bar_ribaudo": "À essayer absolument : leur 'mattonella', le sandwich à la rate, leurs poulets rôtis.",
         "bar_del_carmine": "Café historique, idéal pour un excellent espresso ou une glace rafraîchissante en toute détente.",
         "spiga_d_oro_food_and_drink": "Produits tout juste sortis du four, plateaux typiques et large choix de spécialités prêtes à déguster.",
-        "cafè_40": "Cadre moderne et accueillant, idéal pour les rendez-vous et les petits-déjeuners.",
+        "o_chianu_fasu": "Cadre moderne et accueillant, idéal pour les petits-déjeuners.",
         "il_dolce": "Cadre moderne et accueillant, idéal pour les douceurs typiques, la rôtisserie et la street food sicilienne traditionnelle.",
         "bar_muscarella": "Étape idéale pour un café régénérant, une glace artisanale ou un apéritif détendu.",
         "capricci_di_sicilia": "Épicerie fine via Termitana, idéale pour une pause rapide ou une gourmandise si vous êtes à la villa communale avec les enfants."
@@ -129,7 +129,8 @@
         "btn_parla_castellana": "Parler à la Castellana",
         "btn_dindondan": "Explorer les Églises sur Din Don Dan",
         "church_notice": "⚠️ Note : Ces lieux de culte sont actifs et dédiés aux fonctions liturgiques. Pour les visites touristiques, merci de respecter les horaires conseillés et d'éviter les moments de célébration interne.",
-        "go_to_map": "Aller à la Carte"
+        "go_to_map": "Aller à la Carte",
+        "listen_button": "Ecouter la description"
       },
       "castello": {
         "title": "Le Château de Caccamo",
@@ -198,6 +199,8 @@
     "nicasio_title": "Fête de Saint Nicasio et le Palio",
     "nicasio_desc": "Célébrations animées en l'honneur du Saint, enrichies par le Palio de la ville, très attendu et palpitant, qui suscite le défi et l'enthousiasme des petits et des grands.",
     "sagra_title": "Fête de la Saucisse",
-    "sagra_desc": "Chaque année, le deuxième dimanche d'octobre, les parfums de la tradition envahissent le bourg. Un rendez-vous gastronomique à ne pas manquer pour déguster l'authentique saucisse locale, entre chants, vin et convivialité."
+    "sagra_desc": "Chaque année, le deuxième dimanche d'octobre, les parfums de la tradition envahissent le bourg. Un rendez-vous gastronomique à ne pas manquer pour déguster l'authentique saucisse locale, entre chants, vin et convivialité.",
+    "facebook_group_btn": "📅 Evenements et festivites mis a jour sur Facebook",
+    "facebook_group_note": "Un groupe gere par un habitant du village avec toutes les manifestations de Caccamo, toujours a jour."
   }
 }
