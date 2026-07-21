@@ -312,11 +312,11 @@ html, body {
    ========================================================================== */
 .chat-desktop {
     position: fixed;
-    right: 190px;
+    right: 40px;
     bottom: 200px;
-    width: 720px;
-    max-width: 90vw;
-    height: 820px;
+    width: 440px;
+    max-width: 88vw;
+    height: 620px;
     max-height: 78vh;
     background: rgba(15, 25, 34, 0.97);
     backdrop-filter: blur(10px);
@@ -575,11 +575,11 @@ html, body {
     }
 
     .chat-desktop {
-        right: 165px;
+        right: 24px;
         bottom: 180px;
-        width: 560px;
-        max-width: 92vw;
-        height: 680px;
+        width: 380px;
+        max-width: 90vw;
+        height: 560px;
         max-height: 76vh;
     }
 
