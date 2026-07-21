@@ -19,7 +19,13 @@
   "premium": {
     "cta_label": "🔒 Premium-Inhalte verfügbar",
     "btn_code": "Ich habe bereits einen Code",
-    "btn_buy": "Zugang kaufen — 3,90 €"
+    "btn_buy": "Zugang kaufen — 3,90 €",
+    "activated_prefix": "Premium aktiviert! Du hast Zugriff auf exklusive Inhalte bis zum ",
+    "invalid_code": "Ungultiger Code.",
+    "code_check_error": "Ich kann den Code gerade nicht uberprufen — versuch es gleich noch einmal.",
+    "chat_code_prompt": "Um deinen Premium-Zugang zu aktivieren, schreib mir hier: \"code DEINCODE\"",
+    "payment_start_error": "Ich kann die Zahlung gerade nicht starten. Versuch es gleich noch einmal.",
+    "payment_connection_error": "Verbindungsfehler. Versuch es gleich noch einmal."
   },
   "pages": {
     "castle_page": {
@@ -142,7 +148,7 @@
     "install_app": "Nimm Amunì mit dir",
     "add_home": "Zum Startbildschirm hinzufügen",
     "open_webapp": "Zur WebApp",
-   "premium_title": "Schalte die Premium-Castellana frei",
+    "premium_title": "Schalte die Premium-Castellana frei",
     "premium_text": "Für 3,90 € erhältst du 4 Tage lang Zugang zur Castellana: der mehrsprachigen Führerin, die jedes Geheimnis von Caccamo kennt, von den Verkehrsmitteln bis zu den verborgenen Schätzen der Umgebung.",
     "premium_howto": "Nach der Zahlung siehst du deinen Code sofort auf dem Bildschirm: gib ihn im Chat ein, mit dem Wort <strong>\"code\"</strong> davor. Jeder Code funktioniert auf bis zu 2 Geräten — praktisch für ein zweites Handy, einen Reisebegleiter oder für unvorhergesehene Situationen.",
     "premium_cta": "Zugang kaufen — 3,90 €"
