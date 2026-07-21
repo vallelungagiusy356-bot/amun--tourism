@@ -8,7 +8,8 @@
     "btn_transport": "Verkehrsmittel",
     "btn_events": "Veranstaltungen",
     "btn_monuments": "Denkmäler",
-    "btn_desktop_redirect": "Zur Desktop-Version"
+    "btn_desktop_redirect": "Zur Desktop-Version",
+    "welcome_title": "Willkommen in Caccamo"
   },
   "pages": {
     "food_page": {
