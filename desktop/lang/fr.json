@@ -19,7 +19,13 @@
   "premium": {
     "cta_label": "🔒 Contenus Premium disponibles",
     "btn_code": "J'ai déjà un code",
-    "btn_buy": "Acheter l'accès — 3,90 €"
+    "btn_buy": "Acheter l'accès — 3,90 €",
+    "activated_prefix": "Premium active ! Tu auras acces aux contenus exclusifs jusqu'au ",
+    "invalid_code": "Code non valide.",
+    "code_check_error": "Je n'arrive pas a verifier le code pour le moment — reessaie bientot.",
+    "chat_code_prompt": "Pour activer ton acces Premium, ecris-moi ici : \"code TONCODE\"",
+    "payment_start_error": "Je n'arrive pas a demarrer le paiement. Reessaie bientot.",
+    "payment_connection_error": "Erreur de connexion. Reessaie bientot."
   },
   "pages": {
     "castle_page": {
