@@ -138,7 +138,13 @@ window.silktideConsentManager.init({
             color: var(--cst-gold, #B8873B);
             font-size: 1.5rem;
             margin: 12px 0 4px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            /* Nessun riquadro: solo un'ombra scura sfumata dietro al
+               testo, per renderlo leggibile su qualsiasi sfondo senza
+               disegnare bordi o forme visibili. */
+            text-shadow:
+                0 1px 3px rgba(0,0,0,0.9),
+                0 2px 8px rgba(0,0,0,0.85),
+                0 4px 18px rgba(0,0,0,0.7);
         }
 
         :root {
