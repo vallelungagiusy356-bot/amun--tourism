@@ -323,6 +323,16 @@ window.silktideConsentManager.init({
             const stessaLingua = vociDisponibili.filter(v =>
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
+
+            // Cerca automaticamente indizi di voce neurale/di qualità superiore,
+            // utile per varianti non presenti nella lista fissa sopra
+            // (es. voci "Enhanced"/"Premium" scaricate su iOS, o "Online (Natural)" di Edge)
+            const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
+            const vociDiQualita = stessaLingua.filter(v =>
+                INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
+            );
+            if (vociDiQualita.length) return vociDiQualita[0];
+
             const nonMaschile = stessaLingua.find(v => !INDIZI_VOCE_MASCHILE.test(v.name));
             return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
         }
@@ -350,15 +360,38 @@ window.silktideConsentManager.init({
         function speakText(text) {
             if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
             window.speechSynthesis.cancel();
+
+            // Spezza il testo in frasi, invece di leggerlo tutto insieme:
+            // fa "respirare" la voce tra una frase e l'altra, come una persona vera.
+            const frasi = text
+                .split(/(?<=[.!?])\s+|\n+/)
+                .map(f => f.trim())
+                .filter(f => f.length > 0);
+
+            if (!frasi.length) return;
+
             setTimeout(() => {
                 const langCode = ttsLangCode(currentLang);
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.voice = trovaVoceCastellana(langCode);
-                utterance.lang = langCode;
-                utterance.rate = 0.84;
-                utterance.pitch = 0.95;
-                utterance.volume = 1.0;
-                window.speechSynthesis.speak(utterance);
+                const voce = trovaVoceCastellana(langCode);
+                let indice = 0;
+
+                function parlaFrase() {
+                    if (indice >= frasi.length || !voiceEnabled) return;
+                    const utterance = new SpeechSynthesisUtterance(frasi[indice]);
+                    utterance.voice = voce;
+                    utterance.lang = langCode;
+                    // leggera variazione naturale, evita il tono piatto e ripetitivo
+                    utterance.rate = 0.90 + (Math.random() * 0.06 - 0.03);
+                    utterance.pitch = 1.0 + (Math.random() * 0.08 - 0.04);
+                    utterance.volume = 1.0;
+                    utterance.onend = () => {
+                        indice++;
+                        setTimeout(parlaFrase, 280); // micro-pausa tra le frasi, come un respiro
+                    };
+                    window.speechSynthesis.speak(utterance);
+                }
+
+                parlaFrase();
             }, 60);
         }
 
