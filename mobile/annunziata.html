@@ -333,8 +333,66 @@ window.silktideConsentManager.init({
             const stessaLingua = vociDisponibili.filter(v =>
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
+
+            // Cerca automaticamente indizi di voce neurale/di qualità superiore,
+            // utile per varianti non presenti nella lista fissa sopra
+            // (es. voci "Enhanced"/"Premium" scaricate su iOS, o "Online (Natural)" di Edge)
+            const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
+            const vociDiQualita = stessaLingua.filter(v =>
+                INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
+            );
+            if (vociDiQualita.length) return vociDiQualita[0];
+
             const nonMaschile = stessaLingua.find(v => !INDIZI_VOCE_MASCHILE.test(v.name));
             return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
+        }
+
+        // ============================================================
+        // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
+        // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
+        // Servono a due cose:
+        // 1. NON devono mai comparire come testo letto o mostrato
+        //    all'utente (stripEmotionTags li rimuove per la visualizzazione)
+        // 2. Modulano rate/pitch della sintesi vocale SOLO per la frase
+        //    che racchiudono (parseEmotionalSegments + speakText)
+        // ============================================================
+        const EMOTION_PRESETS = {
+            energico:    { rate: 1.05, pitch: 1.08 },
+            malinconico: { rate: 0.85, pitch: 0.90 },
+            fiero:       { rate: 0.95, pitch: 1.05 },
+            orgoglioso:  { rate: 0.93, pitch: 1.06 },
+            giocoso:     { rate: 1.02, pitch: 1.12 },
+            dolce:       { rate: 0.88, pitch: 0.98 },
+            dramatico:   { rate: 0.85, pitch: 0.85 }
+        };
+        const EMOTION_TAG_REGEX = /\[(energico|malinconico|fiero|orgoglioso|giocoso|dolce|dramatico)\]([\s\S]*?)\[\/\1\]/gi;
+
+        function stripEmotionTags(text) {
+            if (!text) return text;
+            return text
+                .replace(EMOTION_TAG_REGEX, (match, tag, contenuto) => contenuto)
+                .replace(/\s{2,}/g, ' ')
+                .trim();
+        }
+
+        function parseEmotionalSegments(text) {
+            const segmenti = [];
+            let ultimoIndice = 0;
+            let match;
+            EMOTION_TAG_REGEX.lastIndex = 0;
+            while ((match = EMOTION_TAG_REGEX.exec(text)) !== null) {
+                if (match.index > ultimoIndice) {
+                    const prima = text.slice(ultimoIndice, match.index).trim();
+                    if (prima) segmenti.push({ text: prima, emotion: null });
+                }
+                segmenti.push({ text: match[2].trim(), emotion: match[1].toLowerCase() });
+                ultimoIndice = EMOTION_TAG_REGEX.lastIndex;
+            }
+            if (ultimoIndice < text.length) {
+                const resto = text.slice(ultimoIndice).trim();
+                if (resto) segmenti.push({ text: resto, emotion: null });
+            }
+            return segmenti;
         }
 
         function updateVoiceToggleIconMobile() {
@@ -360,15 +418,42 @@ window.silktideConsentManager.init({
         function speakText(text) {
             if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
             window.speechSynthesis.cancel();
+
+            const segmenti = parseEmotionalSegments(text);
+            const frasi = [];
+            segmenti.forEach(seg => {
+                seg.text
+                    .split(/(?<=[.!?])\s+|\n+/)
+                    .map(f => f.trim())
+                    .filter(f => f.length > 0)
+                    .forEach(f => frasi.push({ text: f, emotion: seg.emotion }));
+            });
+
+            if (!frasi.length) return;
+
             setTimeout(() => {
                 const langCode = ttsLangCode(currentLang);
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.voice = trovaVoceCastellana(langCode);
-                utterance.lang = langCode;
-                utterance.rate = 0.84;
-                utterance.pitch = 0.95;
-                utterance.volume = 1.0;
-                window.speechSynthesis.speak(utterance);
+                const voce = trovaVoceCastellana(langCode);
+                let indice = 0;
+
+                function parlaFrase() {
+                    if (indice >= frasi.length || !voiceEnabled) return;
+                    const frase = frasi[indice];
+                    const preset = EMOTION_PRESETS[frase.emotion] || { rate: 0.90, pitch: 1.0 };
+                    const utterance = new SpeechSynthesisUtterance(frase.text);
+                    utterance.voice = voce;
+                    utterance.lang = langCode;
+                    utterance.rate = preset.rate + (Math.random() * 0.06 - 0.03);
+                    utterance.pitch = preset.pitch + (Math.random() * 0.08 - 0.04);
+                    utterance.volume = 1.0;
+                    utterance.onend = () => {
+                        indice++;
+                        setTimeout(parlaFrase, 280);
+                    };
+                    window.speechSynthesis.speak(utterance);
+                }
+
+                parlaFrase();
             }, 60);
         }
 
@@ -442,7 +527,7 @@ window.silktideConsentManager.init({
             msg.className = 'message-mobile' + (sender === 'user' ? ' user-msg-mobile' : '');
 
             const textSpan = document.createElement('span');
-            textSpan.innerHTML = text.replace(/\n/g, '<br>');
+            textSpan.innerHTML = stripEmotionTags(text).replace(/\n/g, '<br>');
             msg.appendChild(textSpan);
 
             if (sender !== 'user') {
@@ -533,6 +618,8 @@ window.silktideConsentManager.init({
             }
         }
 
+        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
+
         async function sendTopicRequestMobile(topicId, label) {
             appendChatMessageMobile(label, 'user');
 
@@ -556,6 +643,7 @@ window.silktideConsentManager.init({
                 const data = await res.json();
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
+                lastTopic = data.topic || topicId;
                 renderTopicMenuMobile(ANNUNZIATA_TOPICS_MOBILE[currentLang] || ANNUNZIATA_TOPICS_MOBILE.it);
             } catch (err) {
                 console.error('Errore richiesta topic:', err);
@@ -628,7 +716,8 @@ window.silktideConsentManager.init({
                         message: text,
                         page: "chiese-arte",
                         lang: currentLang,
-                        access_code: getStoredAccessCode() || ""
+                        access_code: getStoredAccessCode() || "",
+                        last_topic: lastTopic || ""
                     })
                 });
 
@@ -637,6 +726,7 @@ window.silktideConsentManager.init({
                 const data = await res.json();
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
+                if (data.topic) lastTopic = data.topic;
 
             } catch (err) {
                 console.error('Errore chat:', err);
