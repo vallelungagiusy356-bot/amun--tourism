@@ -316,8 +316,8 @@ html, body {
     bottom: 200px;
     width: 440px;
     max-width: 88vw;
-    height: 620px;
-    max-height: 78vh;
+    height: 310px;
+    max-height: 40vh;
     background: rgba(15, 25, 34, 0.97);
     backdrop-filter: blur(10px);
     border: 1px solid var(--gold);
@@ -579,8 +579,8 @@ html, body {
         bottom: 180px;
         width: 380px;
         max-width: 90vw;
-        height: 560px;
-        max-height: 76vh;
+        height: 280px;
+        max-height: 38vh;
     }
 
     .castellana-video-wrapper {
