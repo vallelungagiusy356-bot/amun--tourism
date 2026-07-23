@@ -409,7 +409,11 @@ window.silktideConsentManager.init({
         openBtn.addEventListener("click", () => {
             chat.classList.add("active");
             updatePremiumStatusDisplay();
-            if (!hasShownWelcome) {
+            // Ri-genera il benvenuto non solo la prima volta, ma anche se
+            // la lingua è cambiata da quando l'abbiamo mostrato l'ultima volta
+            // (altrimenti il testo resta fissato nella lingua di quando la
+            // chat fu aperta per la prima volta, ignorando i cambi successivi).
+            if (!hasShownWelcome || welcomeLangShown !== currentLang) {
                 renderWelcome();
             } else {
                 loadTopicMenu();
@@ -502,6 +506,7 @@ window.silktideConsentManager.init({
         let menuLoadedForCode = null;
         let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
         let hasShownWelcome = false;
+        let welcomeLangShown = null; // lingua in cui è stato mostrato l'ultimo benvenuto
 
         function t(path, fallback) {
             const value = path.split('.').reduce((o,i) => o ? o[i] : null, langData);
@@ -919,6 +924,7 @@ window.silktideConsentManager.init({
             loadTopicMenu();
 
             hasShownWelcome = true;
+            welcomeLangShown = currentLang;
         }
 
         function getPageSlug() {
