@@ -284,6 +284,46 @@ body::before {
   color: var(--terracotta-dark);
 }
 
+.programma-toggle {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--ink);
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.programma-toggle:hover { background: var(--gold); color: #fff; }
+
+.programma-lista {
+  display: none;
+  margin-top: 1rem;
+  max-height: 420px;
+  overflow-y: auto;
+  border-top: 1px solid var(--gold);
+  padding-top: 0.8rem;
+}
+.programma-lista.aperto { display: block; }
+
+.evento-riga {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  font-size: 0.95rem;
+}
+.evento-data {
+  min-width: 110px;
+  font-weight: 700;
+  color: var(--terracotta);
+}
+.evento-dettagli .evento-luogo {
+  display: block;
+  font-size: 0.82rem;
+  opacity: 0.75;
+}
 /* ============================================================
    5. CASTELLANA WIDGET E CHAT — identici alle altre pagine
    ============================================================ */
