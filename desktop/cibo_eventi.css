@@ -237,7 +237,7 @@ body::before {
 .s2 .season-head { background: var(--terracotta-dark); }
 .s3 .season-head { background: var(--sea); }
 .s4 .season-head { background: var(--gold-deep); }
-
+.s5 .season-head { background: var(--terracotta); }
 .season-body {
   padding: 16px 20px 20px;
 }
