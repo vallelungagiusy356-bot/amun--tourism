@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Carica i dati dal JSON solo la prima volta che si apre
     if (aperto && !caricato) {
-      fetch("eventi_estate.json")
+      fetch("lang/eventi_estate.json")
         .then((risposta) => risposta.json())
         .then((eventi) => {
           contenitore.innerHTML = eventi
