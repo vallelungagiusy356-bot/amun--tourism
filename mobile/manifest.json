@@ -1,7 +1,7 @@
 {
-  "name": "Amunì Turismo - Caccamo",
+  "name": "Amunì Tourism - Caccamo",
   "short_name": "Amunì",
-  "description": "Scopri Caccamo con Amunì Tourism: la guida turistica elegante e interattiva della Sicilia.",
+  "description": "Scopri Caccamo con Amunì Tourism: la guida turistica caratteristica del borgo e interattiva della Sicilia.",
   "start_url": "./mobile_index.html",
   "scope": "./",
   "display": "standalone",
