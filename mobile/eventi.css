@@ -289,7 +289,43 @@ body {
     line-height: 1.4;
     padding: 0 10px;
 }
+.programma-toggle-mobile {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--stone);
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.programma-toggle-mobile:active { background: var(--terracotta-dark); }
 
+.programma-lista-mobile {
+  display: none;
+  margin-top: 12px;
+  max-height: 340px;
+  overflow-y: auto;
+  border-top: 1px dashed var(--gold);
+  padding-top: 10px;
+}
+.programma-lista-mobile.aperto { display: block; }
+
+.evento-riga {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(220, 207, 175, 0.15);
+  font-family: 'Cormorant Garamond', serif;
+}
+.evento-data {
+  font-weight: 700;
+  color: var(--gold-light);
+  font-size: 0.95rem;
+}
+.evento-dettagli { color: var(--stone); font-size: 0.95rem; }
+.evento-luogo { display: block; font-size: 0.82rem; opacity: 0.7; }
 /* ==========================================================================
    VERSIONE DESKTOP (DA 900PX IN SU) — stessa struttura di prima,
    solo colori e font aggiornati
