@@ -35,7 +35,7 @@
           "x": 0,
           "y": 0
         },
-        "elevationOffset": 17
+        "elevationOffset": 20
       },
       "geometry": {
         "type": "Point",
@@ -267,7 +267,7 @@
           "x": 0,
           "y": 0
         },
-        "elevationOffset": 40
+        "elevationOffset": 35
       },
       "geometry": {
         "type": "Point",
