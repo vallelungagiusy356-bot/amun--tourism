@@ -13,7 +13,7 @@
           "x": 0,
           "y": 0
         },
-        "elevationOffset": 5
+        "elevationOffset": 10
       },
       "geometry": {
         "type": "Point",
@@ -32,10 +32,10 @@
         "icona": "badia_icona",
         "model": "assets/sanbenedetto1.glb",
         "offset": {
-          "x": 0,
+          "x": 10,
           "y": 0
         },
-        "elevationOffset": 5
+        "elevationOffset": 10
       },
       "geometry": {
         "type": "Point",
@@ -70,10 +70,10 @@
         "icona": "cappuccini",
         "model": "assets/cappuccini1.glb",
         "offset": {
-          "x": 0,
+          "x": 5,
           "y": 0
         },
-        "elevationOffset": 5
+        "elevationOffset": 7
       },
       "geometry": {
         "type": "Point",
@@ -111,7 +111,7 @@
           "x": 0,
           "y": 0
         },
-        "elevationOffset": 5
+        "elevationOffset": 10
       },
       "geometry": {
         "type": "Point",
@@ -130,10 +130,10 @@
         "icona": "san_domenico",
         "model": "assets/sandomenico1.glb",
         "offset": {
-          "x": 0,
+          "x": 5,
           "y": 0
         },
-        "elevationOffset": 5
+        "elevationOffset": 10
       },
       "geometry": {
         "type": "Point",
@@ -264,10 +264,10 @@
         "icona": "duomo_icona",
         "model": "assets/duomosangiorgio1.glb",
         "offset": {
-          "x": 0,
+          "x": 5,
           "y": 0
         },
-        "elevationOffset": 5
+        "elevationOffset": 30
       },
       "geometry": {
         "type": "Point",
