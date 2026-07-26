@@ -276,6 +276,326 @@
           37.931087
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Agriturismo Cicala Giuseppe Faso",
+        "type": "ristorante",
+        "address": "Contrada Misa, Caccamo",
+        "icona": "ristorante"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.664757,
+          37.924958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "A Castellana",
+        "type": "ristorante",
+        "address": "Piazza dei Caduti, 4, Caccamo",
+        "icona": "ristorante"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6603796,
+          37.9321034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Al Maniero",
+        "type": "ristorante",
+        "address": "Via Termitana, 7, Caccamo",
+        "icona": "ristorante"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6608553,
+          37.9326982
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Da Peppe",
+        "type": "ristorante",
+        "address": "Caccamo",
+        "icona": "ristorante"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6609813,
+          37.933353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Il Borgo",
+        "type": "ristorante",
+        "address": "Via Amilcare, 13, Caccamo",
+        "icona": "ristorante"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6607553,
+          37.9317912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "La Spiga D'Oro Food & Drink",
+        "type": "ristorante",
+        "address": "Contrada San Vito, snc, Caccamo",
+        "icona": "ristorante"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6683213,
+          37.9311792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Strapizzami Di La Corte",
+        "type": "ristorante",
+        "address": "Viale Regione Siciliana, 205, Caccamo",
+        "icona": "ristorante"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6707974,
+          37.9361941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Muscarella Francesco",
+        "type": "bar",
+        "address": "Via Roma, 3, Caccamo",
+        "icona": "bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6662576,
+          37.932684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "O Chianu Fasu",
+        "type": "bar",
+        "address": "Corso Umberto, 205, Caccamo",
+        "icona": "bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6665625,
+          37.9324294
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Al Chiosco da Pietro",
+        "type": "bar",
+        "address": "Via Cappuccini, 9, Caccamo",
+        "icona": "bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6638992,
+          37.9347184
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Caffè Royal",
+        "type": "bar",
+        "address": "Corso Umberto I, 1, Caccamo",
+        "icona": "bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6607216,
+          37.93217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "GiallomBARdo",
+        "type": "bar",
+        "address": "Caccamo",
+        "icona": "bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.668469,
+          37.9316938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bar Del Carmine",
+        "type": "bar",
+        "address": "Via del Carmine, 36b, Caccamo",
+        "icona": "bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6676292,
+          37.9290372
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ribaudo",
+        "type": "bar",
+        "address": "Via Circonvallazione, 55, Caccamo",
+        "icona": "bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6697967,
+          37.9304212
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "L'officina dei golosi",
+        "type": "bar",
+        "address": "Via Termitana, 35, Caccamo",
+        "icona": "bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6608835,
+          37.9330848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Capricci di Sicilia",
+        "type": "ristorante",
+        "address": "Via Termitana, 73, Caccamo",
+        "icona": "ristorante"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6616011,
+          37.9356194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Castle",
+        "type": "pub",
+        "address": "Via Termitana, 3, Caccamo",
+        "icona": "pub"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6608588,
+          37.9326558
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kitipigghi",
+        "type": "pub",
+        "address": "Via del Carmine, 73, Caccamo",
+        "icona": "pub"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6659805,
+          37.927471
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chiosco San Francesco",
+        "type": "pub",
+        "address": "Via de Spuches, 7, Caccamo",
+        "icona": "pub"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6637551,
+          37.9315769
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dai e Vai Pub & A.S.D San Giorgio Calcetto",
+        "type": "pub",
+        "address": "C. Da piano corte, Caccamo",
+        "icona": "pub"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.6594703,
+          37.9369395
+        ]
+      }
     }
   ]
 }
