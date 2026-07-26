@@ -35,7 +35,7 @@
           "x": 0,
           "y": 0
         },
-        "elevationOffset": 10
+        "elevationOffset": 17
       },
       "geometry": {
         "type": "Point",
@@ -73,7 +73,7 @@
           "x": 0,
           "y": 0
         },
-        "elevationOffset": 7
+        "elevationOffset": 9
       },
       "geometry": {
         "type": "Point",
@@ -111,7 +111,7 @@
           "x": 0,
           "y": 0
         },
-        "elevationOffset": 10
+        "elevationOffset": 19
       },
       "geometry": {
         "type": "Point",
@@ -133,7 +133,7 @@
           "x": 0,
           "y": 0
         },
-        "elevationOffset": 10
+        "elevationOffset": 12
       },
       "geometry": {
         "type": "Point",
@@ -267,7 +267,7 @@
           "x": 0,
           "y": 0
         },
-        "elevationOffset": 30
+        "elevationOffset": 40
       },
       "geometry": {
         "type": "Point",
