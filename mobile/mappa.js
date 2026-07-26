@@ -316,7 +316,9 @@ geolocateControl.on('error', (err) => {
 //   - scale: numero, default 50. Più alto = modello più grande.
 //   - rotation: gradi (0-360), default 0. Ruota il modello per
 //     allinearlo alle vie reali sulla mappa.
-//   - offset: {x, y} per spostamenti fini in metri mercatore.
+//   - offset: {x, y} spostamento in METRI REALI. x positivo = verso
+//     est, x negativo = verso ovest. y positivo = verso sud, y
+//     negativo = verso nord.
 //   - elevationOffset: numero in METRI REALI, default 0. Alza
 //     (valore positivo) o abbassa (valore negativo) il modello
 //     rispetto al terreno. Serve per i monumenti che "affondano":
@@ -385,12 +387,13 @@ function create3DLayer(id, modelUrl, coords, options = {}) {
             const rotationX = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2);
             const rotationY = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(0, 1, 0), THREE.MathUtils.degToRad(rotationDeg));
 
+            const metriPerUnita = merc.meterInMercatorCoordinateUnits();
             const l = new THREE.Matrix4()
-                .makeTranslation(merc.x + offset.x, merc.y + offset.y, merc.z)
+                .makeTranslation(merc.x + offset.x * metriPerUnita, merc.y + offset.y * metriPerUnita, merc.z)
                 .scale(new THREE.Vector3(
-                    merc.meterInMercatorCoordinateUnits() * scale,
-                    -merc.meterInMercatorCoordinateUnits() * scale,
-                    merc.meterInMercatorCoordinateUnits() * scale
+                    metriPerUnita * scale,
+                    -metriPerUnita * scale,
+                    metriPerUnita * scale
                 ))
                 .multiply(rotationX)
                 .multiply(rotationY);
