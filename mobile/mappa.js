@@ -317,6 +317,11 @@ geolocateControl.on('error', (err) => {
 //   - rotation: gradi (0-360), default 0. Ruota il modello per
 //     allinearlo alle vie reali sulla mappa.
 //   - offset: {x, y} per spostamenti fini in metri mercatore.
+//   - elevationOffset: numero in METRI REALI, default 0. Alza
+//     (valore positivo) o abbassa (valore negativo) il modello
+//     rispetto al terreno. Serve per i monumenti che "affondano":
+//     basta aumentare questo valore finché la base dell'edificio
+//     non appoggia bene sulla superficie.
 //   - tint: colore esadecimale opzionale (es. "#D2B48C"). Se
 //     omesso, il modello mantiene i suoi colori/texture originali.
 //
@@ -324,13 +329,15 @@ geolocateControl.on('error', (err) => {
 // tramite map.queryTerrainElevation(), invece di restare fisso
 // a quota 0. Questo risolve il problema degli edifici che
 // "galleggiano" sopra o sotto il livello del suolo nelle zone
-// collinari.
+// collinari. L'elevationOffset si somma sopra a questo, per dare
+// un aggiustamento fine monumento per monumento.
 // ============================================================
 function create3DLayer(id, modelUrl, coords, options = {}) {
     const offset = options.offset || { x: 0, y: 0 };
     const scale = options.scale || 50;
     const rotationDeg = options.rotation || 0;
     const tint = options.tint || null;
+    const elevationOffset = options.elevationOffset || 0;
 
     return {
         id: id,
@@ -372,7 +379,7 @@ function create3DLayer(id, modelUrl, coords, options = {}) {
         render: function (gl, matrix) {
             const m = new THREE.Matrix4().fromArray(matrix);
 
-            const elevation = this.map.queryTerrainElevation(coords) || 0;
+            const elevation = (this.map.queryTerrainElevation(coords) || 0) + elevationOffset;
             const merc = mapboxgl.MercatorCoordinate.fromLngLat(coords, elevation);
 
             const rotationX = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2);
@@ -455,7 +462,8 @@ map.on('load', () => {
                             offset: feature.properties.offset || { x: 0, y: 0 },
                             scale: feature.properties.scale,
                             rotation: feature.properties.rotation,
-                            tint: feature.properties.tint
+                            tint: feature.properties.tint,
+                            elevationOffset: feature.properties.elevationOffset || 0
                         }
                     ));
                 }

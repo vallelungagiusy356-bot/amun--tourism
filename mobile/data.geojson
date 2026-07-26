@@ -8,12 +8,19 @@
         "type": "castello",
         "address": "Piazza Castello",
         "icona": "castello_icona",
-         "model":"assets/castellocacc.glb",
-         "offset": { "x": 0, "y": 0 }
+        "model": "assets/castellocacc.glb",
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "elevationOffset": 5
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.660879, 37.932016]
+        "coordinates": [
+          13.660879,
+          37.932016
+        ]
       }
     },
     {
@@ -23,12 +30,19 @@
         "type": "chiesa",
         "address": "Piazza Vittorio Emanuele, 4",
         "icona": "badia_icona",
-        "model":"assets/sanbenedetto1.glb",
-        "offset": { "x": 0, "y": 0 }
+        "model": "assets/sanbenedetto1.glb",
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "elevationOffset": 5
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.664515, 37.931319]
+        "coordinates": [
+          13.664515,
+          37.931319
+        ]
       }
     },
     {
@@ -41,7 +55,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.6608231, 37.9313414]
+        "coordinates": [
+          13.6608231,
+          37.9313414
+        ]
       }
     },
     {
@@ -51,12 +68,19 @@
         "type": "convento",
         "address": "Piazza Cappuccini, 4",
         "icona": "cappuccini",
-        "model":"assets/cappuccini1.glb",
-        "offset": { "x": 0, "y": 0 }
+        "model": "assets/cappuccini1.glb",
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "elevationOffset": 5
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.663814, 37.935540]
+        "coordinates": [
+          13.663814,
+          37.93554
+        ]
       }
     },
     {
@@ -69,7 +93,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.6641303, 37.9326222]
+        "coordinates": [
+          13.6641303,
+          37.9326222
+        ]
       }
     },
     {
@@ -79,12 +106,19 @@
         "type": "chiesa",
         "address": "Piazza SS. Annunziata",
         "icona": "annunziata",
-        "model":"assets/annunziata1.glb",
-        "offset": { "x": 0, "y": 0 }
+        "model": "assets/annunziata1.glb",
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "elevationOffset": 5
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.664299, 37.931561]
+        "coordinates": [
+          13.664299,
+          37.931561
+        ]
       }
     },
     {
@@ -94,12 +128,19 @@
         "type": "chiesa",
         "address": "Piazza San Domenico, 1",
         "icona": "san_domenico",
-        "model":"assets/sandomenico1.glb",
-        "offset": { "x": 0, "y": 0 }
+        "model": "assets/sandomenico1.glb",
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "elevationOffset": 5
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.665960, 37.933009]
+        "coordinates": [
+          13.66596,
+          37.933009
+        ]
       }
     },
     {
@@ -112,7 +153,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.6630911, 37.9313951]
+        "coordinates": [
+          13.6630911,
+          37.9313951
+        ]
       }
     },
     {
@@ -125,7 +169,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.6634111, 37.9311707]
+        "coordinates": [
+          13.6634111,
+          37.9311707
+        ]
       }
     },
     {
@@ -138,7 +185,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.6652181, 37.9340851]
+        "coordinates": [
+          13.6652181,
+          37.9340851
+        ]
       }
     },
     {
@@ -147,11 +197,14 @@
         "name": "Chiesa di San Giacomo Maggiore",
         "type": "chiesa",
         "address": "Corso Umberto, 23",
-        "icona": "chiesa"  
+        "icona": "chiesa"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.661736, 37.9317104]
+        "coordinates": [
+          13.661736,
+          37.9317104
+        ]
       }
     },
     {
@@ -164,7 +217,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.6609508, 37.9322582]
+        "coordinates": [
+          13.6609508,
+          37.9322582
+        ]
       }
     },
     {
@@ -177,7 +233,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.6611745, 37.9314049]
+        "coordinates": [
+          13.6611745,
+          37.9314049
+        ]
       }
     },
     {
@@ -190,7 +249,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.6620671, 37.9303825]
+        "coordinates": [
+          13.6620671,
+          37.9303825
+        ]
       }
     },
     {
@@ -200,12 +262,19 @@
         "type": "chiesa",
         "address": "Piazza Duomo, 2",
         "icona": "duomo_icona",
-        "model":"assets/duomosangiorgio1.glb",
-        "offset": { "x": 0, "y": 0 }
+        "model": "assets/duomosangiorgio1.glb",
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "elevationOffset": 5
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [13.660732, 37.931087]
+        "coordinates": [
+          13.660732,
+          37.931087
+        ]
       }
     }
   ]
