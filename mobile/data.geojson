@@ -32,7 +32,7 @@
         "icona": "badia_icona",
         "model": "assets/sanbenedetto1.glb",
         "offset": {
-          "x": 10,
+          "x": 0,
           "y": 0
         },
         "elevationOffset": 10
@@ -70,7 +70,7 @@
         "icona": "cappuccini",
         "model": "assets/cappuccini1.glb",
         "offset": {
-          "x": 5,
+          "x": 0,
           "y": 0
         },
         "elevationOffset": 7
@@ -130,7 +130,7 @@
         "icona": "san_domenico",
         "model": "assets/sandomenico1.glb",
         "offset": {
-          "x": 5,
+          "x": 0,
           "y": 0
         },
         "elevationOffset": 10
@@ -264,7 +264,7 @@
         "icona": "duomo_icona",
         "model": "assets/duomosangiorgio1.glb",
         "offset": {
-          "x": 5,
+          "x": 0,
           "y": 0
         },
         "elevationOffset": 30
