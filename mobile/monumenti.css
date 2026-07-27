@@ -231,3 +231,10 @@ body {
     border-color: var(--gold) !important;
     color: var(--stone) !important;
 }
+
+/* La Chicca del Borgo: bordo tratteggiato oro, per segnalarla come
+   contenuto "nascosto" rispetto ai monumenti principali */
+.btn-chicca {
+    border-style: dashed;
+    background: rgba(184, 135, 59, 0.14);
+}
