@@ -35,6 +35,7 @@ const map = new mapboxgl.Map({
     style: 'mapbox://styles/giusifi89/cmpl4lr6n003401r63fof43dl',
     center: [13.666, 37.933],
     zoom: 14,
+    maxZoom: 18,
     pitch: 45,
     bearing: 0
 });
@@ -487,7 +488,7 @@ map.on('load', () => {
                     source: { type: 'geojson', data: data },
                     layout: {
                         'icon-image': ['get', 'icona'],
-                        'icon-size': 0.15,
+                        'icon-size': 0.22,
                         'icon-allow-overlap': true,
                         'text-field': ['get', 'name'],
                         'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
