@@ -351,6 +351,18 @@ body {
     transform: scale(0.97);
 }
 
+/* Variante scura — usata in chicca_borgo.html: i render 3D in
+   scala di grigi si perdevano sullo sfondo chiaro della pagina,
+   qui risaltano per contrasto, come nella sezione versi scura
+   del percorso esoterico desktop */
+.monument-render-container.render-dark {
+    background: var(--sea-ink);
+}
+
+.monument-render-container.render-dark .render-caption {
+    color: var(--stone-dim);
+}
+
 /* Altezze immagini per singolo monumento (invariate) */
 .monument-hero-image.img-annunziata { height: 260px !important; }
 .monument-hero-image.img-cappuccini { height: 180px; }

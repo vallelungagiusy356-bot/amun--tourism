@@ -232,9 +232,16 @@ body {
     color: var(--stone) !important;
 }
 
-/* La Chicca del Borgo: bordo tratteggiato oro, per segnalarla come
-   contenuto "nascosto" rispetto ai monumenti principali */
+/* La Chicca del Borgo: oro pieno, per farla risaltare rispetto
+   ai bottoni scuri dei monumenti principali */
 .btn-chicca {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold)) !important;
     border-style: dashed;
-    background: rgba(184, 135, 59, 0.14);
+    border-color: var(--terracotta-dark) !important;
+    color: var(--sea-ink) !important;
+    font-weight: 700;
+}
+
+.btn-chicca:active {
+    border-color: var(--terracotta-dark) !important;
 }
