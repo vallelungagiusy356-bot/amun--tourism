@@ -131,7 +131,8 @@
         "btn_dindondan": "Esplora Chiese su Din Don Dan",
         "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli Orari consigliati ed evitare i momenti di celebrazione interna.",
         "go_to_map": "Vai alla Mappa",
-        "listen_button": "Ascolta la descrizione"
+        "listen_button": "Ascolta la descrizione",
+        "address": "Dove si trova:"
       },
       "castello": {
         "title": "Il Castello di Caccamo",
@@ -165,6 +166,16 @@
         "description": "I frati Cappuccini arrivarono qui nel 1589, portando con sé lo stile sobrio e silenzioso che da sempre contraddistingue il loro ordine. È uno degli ultimi conventi ancora abitati in tutta la Sicilia occidentale: oggi come allora, i frati vivono di preghiera, lavoro manuale e accoglienza dei pellegrini. Le sue mura raccontano quasi due secoli di storia prima ancora dell'Unità d'Italia.",
         "hours": "Accessibile principalmente su richiesta o durante le ricorrenze francescane. Contattare l'Ufficio Turismo.",
         "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti come la Chiesa di San Rocco e altri piccoli capolavori diffusi."
+      },
+      "animesante": {
+        "tag": "✨ La Chicca del Borgo",
+        "title": "Chiesa delle Anime Sante del Purgatorio",
+        "description": "La chiesa delle Anime Sante del Purgatorio è uno dei gioielli nascosti del borgo. Qui potrai trovare stucchi del Serpotta, tele di Giovanni Bonomo, le catacombe e anche un antico lavatoio in cui veniva svolto il primo processo della procedura di imbalsamazione. La chiesa è fruibile grazie a un'associazione, Vivere è Pensare, che oltre a garantire guide esperte la domenica organizza eventi volti alla promozione del territorio.",
+        "hours": "Domenica: 10:00 – 13:00",
+        "address": "Piazza Duomo, accanto al Monte di Pietà",
+        "caption_catacombe": "Le catacombe",
+        "caption_altare": "L'altare",
+        "events_button": "🎉 Eventi in programma →"
       }
     }
   },
@@ -177,7 +188,8 @@
       "sangiorgio": "Chiesa San Giorgio Martire",
       "cappuccini": "Convento Frati Cappuccini",
       "annunziata": "Parrocchia SS. Annunziata",
-      "sanbenedetto": "Chiesa S. Benedetto della Badia"
+      "sanbenedetto": "Chiesa S. Benedetto della Badia",
+      "chicca_borgo": "✨ La Chicca del Borgo"
     }
   },
   "citizen": {
