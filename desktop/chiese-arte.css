@@ -360,25 +360,20 @@ body::before {
   font-weight: 600;
 }
 
-.card-link-esoterico {
-  display: inline-block;
-  margin-top: 8px;
-  font-family: 'Playfair Display', serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--terracotta-dark);
-  background: rgba(184, 135, 59, 0.16);
-  border: 1px solid var(--gold);
-  border-radius: 999px;
-  padding: 5px 12px;
+.card-esoterico {
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  min-height: 130px;
+  border-style: dashed;
 }
 
-.card-link-esoterico:hover {
-  background: var(--gold);
-  color: #fff;
+.card-esoterico:hover {
+  background: rgba(184, 135, 59, 0.08);
 }
+
+.card-esoterico .card-text { max-width: none; }
 
 @media screen and (max-width: 899px) {
   .path-line { left: 22px; transform: none; }

@@ -246,15 +246,13 @@ window.silktideConsentManager.init({
 
           <div class="stop">
               <div class="waypoint"></div>
-              <article class="card side-right" data-img="img/animesante.jpg" data-title="Anime Sante del Purgatorio">
-                  <div class="card-frame"><img src="img/animesante.jpg" alt="Anime Sante del Purgatorio"></div>
+              <a href="percorso_esoterico.html" class="card card-esoterico side-right">
                   <div class="card-text">
                       <span class="card-route-label">Chicca nascosta</span>
                       <h2>Anime Sante del Purgatorio</h2>
-                      <p>Sotto il <strong>Duomo</strong>, un gioiello nascosto: stucchi del Serpotta, catacombe e un antico rito d'imbalsamazione.</p>
-                      <a href="percorso_esoterico.html" class="card-link-esoterico" onclick="event.stopPropagation();">🔮 Il Percorso Esoterico →</a>
+                      <p>Sotto il <strong>Duomo</strong>, un gioiello nascosto: stucchi del Serpotta, catacombe e un antico rito d'imbalsamazione. 🔮 Scopri il Percorso Esoterico.</p>
                   </div>
-              </article>
+              </a>
           </div>
 
       </div>
@@ -532,7 +530,7 @@ window.silktideConsentManager.init({
       }
 
       // --- LOGICA MODAL ---
-      const cards = document.querySelectorAll('.card');
+      const cards = document.querySelectorAll('.card[data-img]');
       const modal = document.getElementById('image-modal');
       const modalImg = document.getElementById('modal-target-img');
       const modalTitle = document.getElementById('modal-target-title');

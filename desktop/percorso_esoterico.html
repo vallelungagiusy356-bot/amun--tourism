@@ -282,33 +282,11 @@ window.silktideConsentManager.init({
             50% { transform: scale(1.18); }
         }
 
-        /* ===== SEZIONE VERSI — il percorso esoterico, in rima baciata ===== */
-        .sezione-versi {
-            max-width: 640px;
-            margin: 10px auto 40px auto;
-            padding: 0 24px;
-        }
-
-        .sezione-versi .strofa {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 1.15rem;
-            line-height: 1.7;
-            color: var(--ink);
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .sezione-versi .strofa:nth-child(4) {
-            color: var(--terracotta);
-            font-weight: 600;
-        }
-
         /* ===== BOTTONE "TORNA INDIETRO" — desktop ===== */
         .btn-back-desktop {
             display: block;
             width: fit-content;
-            margin: 0 auto 40px auto;
+            margin: 40px auto 40px auto;
             padding: 12px 26px;
             border: 1px solid var(--gold);
             border-radius: 2px;
@@ -360,54 +338,60 @@ window.silktideConsentManager.init({
             </div>
 
             <figure class="castle-hero-image">
-                <img src="img/cat.gif" alt="Cripta delle Anime Sante del Purgatorio, render 3D" loading="lazy">
+                <img src="img/catacombe.jpg" alt="Catacombe della Chiesa delle Anime Sante del Purgatorio" loading="lazy">
             </figure>
         </section>
 
         <!-- ============================================================
-             SEZIONE 2 — I VERSI: il percorso in rima baciata
+             SEZIONE 2 — I VERSI: il percorso in rima baciata, su
+             sfondo scuro sfumato (stessa .section-parallax delle
+             altre pagine, per l'atmosfera giusta a questo contenuto)
              ============================================================ -->
-        <section class="sezione-versi">
-            <p class="strofa">
-                Cinque teschi sul portale stanno a guardia,<br>
-                monito che ogni vanità riguarda:
-            </p>
-            <p class="strofa">
-                al centro la tiara del Papa si posa,<br>
-                di fianco i vescovi, in fila silenziosa,
-            </p>
-            <p class="strofa">
-                poi i preti, allo stesso livello schierati —<br>
-                davanti alla morte tutti pareggiati
-            </p>
-            <p class="strofa">
-                (la livella di Totò qui prende vita:<br>
-                non conta il rango quando la vita è finita).
-            </p>
-            <p class="strofa">
-                Si entra, e i quadri accompagnano il passo<br>
-                in un cammino che parte dal basso:
-            </p>
-            <p class="strofa">
-                la fede e la carità fanno da guida,<br>
-                finché un'iscrizione il cuore non sfida:
-            </p>
-            <p class="strofa">
-                "nessuno esce da qui senza aver pagato<br>
-                un pegno" — il visitatore resta segnato.
-            </p>
-            <p class="strofa">
-                Sotto il pavimento, in silenzio, riposano<br>
-                i corpi imbalsamati che ancora si posano
-            </p>
-            <p class="strofa">
-                là dove un tempo, senza fotografie,<br>
-                si onorava la morte in queste sacre vie —
-            </p>
-            <p class="strofa">
-                per ricordare in eterno chi si amava,<br>
-                quando il ricordo su pietra si scolpiva.
-            </p>
+        <section class="section-parallax">
+            <div class="parallax-bg"></div>
+            <div class="parallax-overlay"></div>
+            <div class="parallax-content">
+                <p>
+                    Cinque teschi sul portale stanno a guardia,<br>
+                    monito che ogni vanità riguarda:
+                </p>
+                <p>
+                    al centro la tiara del Papa si posa,<br>
+                    di fianco i vescovi, in fila silenziosa,
+                </p>
+                <p>
+                    poi i preti, allo stesso livello schierati —<br>
+                    davanti alla morte tutti pareggiati
+                </p>
+                <p style="color: var(--gold-light);">
+                    (la livella di Totò qui prende vita:<br>
+                    non conta il rango quando la vita è finita).
+                </p>
+                <p>
+                    Si entra, e i quadri accompagnano il passo<br>
+                    in un cammino che parte dal basso:
+                </p>
+                <p>
+                    la fede e la carità fanno da guida,<br>
+                    finché un'iscrizione il cuore non sfida:
+                </p>
+                <p>
+                    "nessuno esce da qui senza aver pagato<br>
+                    un pegno" — il visitatore resta segnato.
+                </p>
+                <p>
+                    Sotto il pavimento, in silenzio, riposano<br>
+                    i corpi imbalsamati che ancora si posano
+                </p>
+                <p>
+                    là dove un tempo, senza fotografie,<br>
+                    si onorava la morte in queste sacre vie —
+                </p>
+                <p>
+                    per ricordare in eterno chi si amava,<br>
+                    quando il ricordo su pietra si scolpiva.
+                </p>
+            </div>
         </section>
 
         <a href="chiese-arte.html" class="btn-back-desktop">← Torna a Chiese e Arte</a>
