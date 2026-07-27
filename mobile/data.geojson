@@ -199,7 +199,7 @@
         "name": "Chiesa Anime Sante del Purgatorio",
         "type": "chiesa",
         "address": "Piazza Duomo",
-        "icona": "chiesa"
+        "icona": "animesant"
       },
       "geometry": {
         "type": "Point",

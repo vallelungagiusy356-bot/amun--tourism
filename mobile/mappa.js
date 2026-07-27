@@ -473,7 +473,7 @@ map.on('load', () => {
                 }
             });
 
-            const icone = ['cast', 'madrice', 'ann', 'bad', 'capp', 'sandom', 'chiesa', 'bar', 'ristorante', 'pub', 'ludoteca'];
+            const icone = ['cast', 'madrice', 'ann', 'bad', 'capp', 'sandom', 'animesant', 'chiesa', 'bar', 'ristorante', 'pub', 'ludoteca'];
             const promises = icone.map(nome => new Promise(resolve => {
                 map.loadImage(`img/${nome}.png`, (err, img) => {
                     if (!err) map.addImage(nome, img);
@@ -488,7 +488,7 @@ map.on('load', () => {
                     source: { type: 'geojson', data: data },
                     layout: {
                         'icon-image': ['get', 'icona'],
-                        'icon-size': 0.22,
+                        'icon-size': 0.18,
                         'icon-allow-overlap': true,
                         'text-field': ['get', 'name'],
                         'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
