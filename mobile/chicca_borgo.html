@@ -374,22 +374,24 @@ window.silktideConsentManager.init({
     <main class="mobile-layout-detail">
         
         <header class="monument-header">
-            <span class="chicca-tag">✨ La Chicca del Borgo</span>
-            <h1>Chiesa delle Anime Sante del Purgatorio</h1>
+            <span class="chicca-tag" data-i18n="pages.monuments_pages.animesante.tag">✨ La Chicca del Borgo</span>
+            <h1 data-i18n="pages.monuments_pages.animesante.title">Chiesa delle Anime Sante del Purgatorio</h1>
         </header>
 
         <div class="tooltip-eventi-wrap">
-            <a href="eventi.html" class="tooltip-eventi">🎉 Eventi in programma →</a>
+            <a href="eventi.html" class="tooltip-eventi" data-i18n="pages.monuments_pages.animesante.events_button">🎉 Eventi in programma →</a>
         </div>
 
-        <div class="monument-render-container render-dark">
+        <div class="monument-render-container render-dark render-zoomable" data-full="img/cat.gif" data-caption="Le catacombe">
             <img src="img/cat.gif" alt="Render 3D delle catacombe" class="monument-hero-image" onerror="this.src='img/avatar_castellana.png';">
-            <p class="render-caption">Le catacombe</p>
+            <span class="render-zoom-icon">🔍</span>
+            <p class="render-caption" data-i18n="pages.monuments_pages.animesante.caption_catacombe">Le catacombe</p>
         </div>
 
-        <div class="monument-render-container render-dark">
+        <div class="monument-render-container render-dark render-zoomable" data-full="img/altare.gif" data-caption="L'altare">
             <img src="img/altare.gif" alt="Render 3D dell'altare" class="monument-hero-image" onerror="this.src='img/avatar_castellana.png';">
-            <p class="render-caption">L'altare</p>
+            <span class="render-zoom-icon">🔍</span>
+            <p class="render-caption" data-i18n="pages.monuments_pages.animesante.caption_altare">L'altare</p>
         </div>
 
         <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
@@ -397,17 +399,17 @@ window.silktideConsentManager.init({
         </button>
 
         <section class="teca-cristallo descrittiva">
-            <p id="desc-text">La chiesa delle Anime Sante del Purgatorio è uno dei gioielli nascosti del borgo. Qui potrai trovare stucchi del Serpotta, tele di Giovanni Bonomo, le catacombe e anche un antico lavatoio in cui veniva svolto il primo processo della procedura di imbalsamazione. La chiesa è fruibile grazie a un'associazione, Vivere è Pensare, che oltre a garantire guide esperte la domenica organizza eventi volti alla promozione del territorio.</p>
+            <p id="desc-text" data-i18n="pages.monuments_pages.animesante.description">La chiesa delle Anime Sante del Purgatorio è uno dei gioielli nascosti del borgo. Qui potrai trovare stucchi del Serpotta, tele di Giovanni Bonomo, le catacombe e anche un antico lavatoio in cui veniva svolto il primo processo della procedura di imbalsamazione. La chiesa è fruibile grazie a un'associazione, Vivere è Pensare, che oltre a garantire guide esperte la domenica organizza eventi volti alla promozione del territorio.</p>
         </section>
 
         <section class="teca-cristallo teca-logistica">
             <div class="info-row">
-                <span class="info-label">Orari:</span>
-                <span class="info-value">Domenica: 10:00 – 13:00</span>
+                <span class="info-label" data-i18n="pages.monuments_pages.labels.hours">Orari:</span>
+                <span class="info-value" data-i18n="pages.monuments_pages.animesante.hours">Domenica: 10:00 – 13:00</span>
             </div>
             <div class="info-row" style="margin-top: 10px;">
-                <span class="info-label">Dove si trova:</span>
-                <span class="info-value">Piazza Duomo, accanto al Monte di Pietà</span>
+                <span class="info-label" data-i18n="pages.monuments_pages.labels.address">Dove si trova:</span>
+                <span class="info-value" data-i18n="pages.monuments_pages.animesante.address">Piazza Duomo, accanto al Monte di Pietà</span>
             </div>
         </section>
 
@@ -424,6 +426,15 @@ window.silktideConsentManager.init({
         <a href="monumenti.html" class="btn-back-home">← Torna ai Monumenti</a>
 
     </main>
+
+    <!-- ============================================================
+         MODALE SCHERMO INTERO — per ingrandire i render 3D
+         ============================================================ -->
+    <div id="render-modal" class="render-modal">
+        <button class="render-modal-close" id="render-modal-close-btn">✕</button>
+        <img class="render-modal-img" id="render-modal-img" src="" alt="">
+        <p class="render-modal-caption" id="render-modal-caption"></p>
+    </div>
 
     <!-- ============================================================
          CHAT CASTELLANA — collegata agli argomenti Premium specifici
@@ -470,6 +481,27 @@ window.silktideConsentManager.init({
             e.stopPropagation();
             if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; } 
             else { audio.pause(); toggleBtn.textContent = "🔇"; }
+        });
+
+        // ============================================================
+        // MODALE SCHERMO INTERO — ingrandisce i render 3D (cat.gif,
+        // altare.gif) quando l'utente tocca il riquadro immagine.
+        // ============================================================
+        const renderModal = document.getElementById('render-modal');
+        const renderModalImg = document.getElementById('render-modal-img');
+        const renderModalCaption = document.getElementById('render-modal-caption');
+        const renderModalCloseBtn = document.getElementById('render-modal-close-btn');
+
+        document.querySelectorAll('.render-zoomable').forEach(box => {
+            box.addEventListener('click', () => {
+                renderModalImg.src = box.getAttribute('data-full');
+                renderModalCaption.textContent = box.getAttribute('data-caption');
+                renderModal.classList.add('active');
+            });
+        });
+        renderModalCloseBtn.addEventListener('click', () => renderModal.classList.remove('active'));
+        renderModal.addEventListener('click', (e) => {
+            if (e.target === renderModal) renderModal.classList.remove('active');
         });
 
         // ============================================================
