@@ -488,7 +488,7 @@ map.on('load', () => {
                     source: { type: 'geojson', data: data },
                     layout: {
                         'icon-image': ['get', 'icona'],
-                        'icon-size': 0.18,
+                        'icon-size': ['coalesce', ['get', 'iconSize'], 0.25],
                         'icon-allow-overlap': true,
                         'text-field': ['get', 'name'],
                         'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
