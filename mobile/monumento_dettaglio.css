@@ -304,6 +304,53 @@ body {
     padding-bottom: 4px;
 }
 
+/* ==========================================================================
+   LA CHICCA DEL BORGO — tag sopra il titolo, didascalie immagini,
+   bottone oro "Eventi" (aggiunti per chicca_borgo.html)
+   ========================================================================== */
+.chicca-tag {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.render-caption {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    padding: 8px 0 2px 0;
+}
+
+.tooltip-eventi-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.tooltip-eventi {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    color: var(--sea-ink);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px var(--shadow-soft);
+    transition: transform 0.2s ease;
+}
+
+.tooltip-eventi:active {
+    transform: scale(0.97);
+}
+
 /* Altezze immagini per singolo monumento (invariate) */
 .monument-hero-image.img-annunziata { height: 260px !important; }
 .monument-hero-image.img-cappuccini { height: 180px; }
