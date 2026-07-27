@@ -55,7 +55,10 @@
       "verse_badia": "Più in basso, la <strong>Badia</strong> veste la terra a fiore,<br>nel ricamo in maiolica di raro splendore.",
       "route_sangiorgio": "Cuore del borgo",
       "sangiorgio": "San Giorgio Martire",
-      "verse_duomo": "Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne."
+      "verse_duomo": "Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne.",
+      "route_animesante": "Chicca nascosta",
+      "animesante": "Anime Sante del Purgatorio",
+      "verse_animesante": "Sotto il <strong>Duomo</strong>, un gioiello nascosto: stucchi del Serpotta, catacombe e un antico rito d'imbalsamazione. 🔮 Scopri il Percorso Esoterico."
     },
     "cibo_eventi_page": {
       "page_title": "Il Calendario del Borgo",
@@ -130,6 +133,21 @@
       "philosophy": "Da quel desiderio è nata la Castellana: non un semplice chatbot, ma una guida curata che accompagna il visitatore — un'audioguida viva che restituisce voce alle pietre, alle leggende e ai canti in dialetto di Caccamo, in cinque lingue diverse. Non considero questo progetto un punto d'arrivo, ma un laboratorio vivente: la cultura popolare è un patrimonio dinamico, e credo che valorizzare il territorio significhi anche custodire le voci di chi lo abita, tramandando tradizioni, filastrocche e canti alle generazioni future.",
       "freemium_model": "I contenuti storici e monumentali sono un bene pubblico e accessibile a tutti. L'esperienza 'Castellana Premium' è riservata a chi desidera un viaggio più profondo: un accesso esclusivo all'analisi tecnica del patrimonio, alle storie stratificate e al supporto personalizzato per una scoperta autentica e senza tempo.",
       "events": "Ogni immagine, ogni animazione, ogni riga di codice di Amunì — e ogni parola pronunciata dalla Castellana — è stata pensata e realizzata dal mio smartphone, tra un impegno di ricerca e le mie due bambine. Se sei arrivato fin qui, fai parte anche tu di questo piccolo laboratorio."
+    },
+    "percorso_esoterico_page": {
+      "category": "Chiese e Arte — Percorso Nascosto",
+      "title": "Il Percorso Esoterico",
+      "verse_1": "Cinque teschi sul portale stanno a guardia,<br>monito che ogni vanità riguarda:",
+      "verse_2": "al centro la tiara del Papa si posa,<br>di fianco i vescovi, in fila silenziosa,",
+      "verse_3": "poi i preti, allo stesso livello schierati —<br>davanti alla morte tutti pareggiati",
+      "verse_4": "(la livella di Totò qui prende vita:<br>non conta il rango quando la vita è finita).",
+      "verse_5": "Si entra, e i quadri accompagnano il passo<br>in un cammino che parte dal basso:",
+      "verse_6": "la fede e la carità fanno da guida,<br>finché un'iscrizione il cuore non sfida:",
+      "verse_7": "\"nessuno esce da qui senza aver pagato<br>un pegno\" — il visitatore resta segnato.",
+      "verse_8": "Sotto il pavimento, in silenzio, riposano<br>i corpi imbalsamati che ancora si posano",
+      "verse_9": "là dove un tempo, senza fotografie,<br>si onorava la morte in queste sacre vie —",
+      "verse_10": "per ricordare in eterno chi si amava,<br>quando il ricordo su pietra si scolpiva.",
+      "back_button": "← Torna a Chiese e Arte"
     }
   },
   "citizen": {
