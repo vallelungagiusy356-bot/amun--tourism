@@ -472,7 +472,7 @@ map.on('load', () => {
                 }
             });
 
-            const icone = ['castello_icona', 'duomo_icona', 'annunziata', 'badia_icona', 'cappuccini', 'san_domenico', 'chiesa', 'bar', 'ristorante', 'pub', 'ludoteca'];
+            const icone = ['cast', 'madrice', 'ann', 'bad', 'capp', 'sandom', 'chiesa', 'bar', 'ristorante', 'pub', 'ludoteca'];
             const promises = icone.map(nome => new Promise(resolve => {
                 map.loadImage(`img/${nome}.png`, (err, img) => {
                     if (!err) map.addImage(nome, img);

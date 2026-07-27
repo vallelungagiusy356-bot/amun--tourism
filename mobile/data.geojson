@@ -7,13 +7,7 @@
         "name": "Castello di Caccamo",
         "type": "castello",
         "address": "Piazza Castello",
-        "icona": "castello_icona",
-        "model": "assets/castellocacc.glb",
-        "offset": {
-          "x": 0,
-          "y": 0
-        },
-        "elevationOffset": 10
+        "icona": "cast"
       },
       "geometry": {
         "type": "Point",
@@ -29,13 +23,7 @@
         "name": "Chiesa di San Benedetto alla Badia",
         "type": "chiesa",
         "address": "Piazza Vittorio Emanuele, 4",
-        "icona": "badia_icona",
-        "model": "assets/sanbenedetto1.glb",
-        "offset": {
-          "x": 0,
-          "y": 0
-        },
-        "elevationOffset": 20
+        "icona": "bad"
       },
       "geometry": {
         "type": "Point",
@@ -67,13 +55,7 @@
         "name": "Convento dei Cappuccini",
         "type": "convento",
         "address": "Piazza Cappuccini, 4",
-        "icona": "cappuccini",
-        "model": "assets/cappuccini1.glb",
-        "offset": {
-          "x": 0,
-          "y": 0
-        },
-        "elevationOffset": 9
+        "icona": "capp"
       },
       "geometry": {
         "type": "Point",
@@ -105,13 +87,7 @@
         "name": "Parrocchia SS. Annunziata",
         "type": "chiesa",
         "address": "Piazza SS. Annunziata",
-        "icona": "annunziata",
-        "model": "assets/annunziata1.glb",
-        "offset": {
-          "x": 0,
-          "y": 0
-        },
-        "elevationOffset": 19
+        "icona": "ann"
       },
       "geometry": {
         "type": "Point",
@@ -127,13 +103,7 @@
         "name": "Chiesa Santa Maria degli Angeli",
         "type": "chiesa",
         "address": "Piazza San Domenico, 1",
-        "icona": "san_domenico",
-        "model": "assets/sandomenico1.glb",
-        "offset": {
-          "x": 0,
-          "y": 0
-        },
-        "elevationOffset": 12
+        "icona": "sandom"
       },
       "geometry": {
         "type": "Point",
@@ -261,13 +231,7 @@
         "name": "Duomo di San Giorgio Martire",
         "type": "chiesa",
         "address": "Piazza Duomo, 2",
-        "icona": "duomo_icona",
-        "model": "assets/duomosangiorgio1.glb",
-        "offset": {
-          "x": 0,
-          "y": 0
-        },
-        "elevationOffset": 35
+        "icona": "madrice"
       },
       "geometry": {
         "type": "Point",
