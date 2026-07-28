@@ -245,3 +245,16 @@ body {
 .btn-chicca:active {
     border-color: var(--terracotta-dark) !important;
 }
+
+/* Breve spiegazione di come funziona la mappa live, sotto al
+   bottone "Vai alla Mappa" */
+.map-hint {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--gold-light);
+    text-align: center;
+    padding: 6px 14px 4px 14px;
+    margin: 0;
+}
