@@ -190,7 +190,8 @@
       "annunziata": "Parrocchia SS. Annunziata",
       "sanbenedetto": "Chiesa S. Benedetto della Badia",
       "chicca_borgo": "✨ La Chicca del Borgo"
-    }
+    },
+    "map_hint": "📍 La mappa si apre mostrando tutto il borgo di Caccamo. Tocca l'icona della geolocalizzazione per attivarla: comparirà un puntino blu che segue i tuoi spostamenti in tempo reale, con distanza in metri e tempo stimato per raggiungere il punto scelto."
   },
   "citizen": {
     "church_sepolcri": "Il Periodo Pasquale",

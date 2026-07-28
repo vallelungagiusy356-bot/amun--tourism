@@ -190,7 +190,8 @@
       "annunziata": "Pfarrei SS. Annunziata",
       "sanbenedetto": "Kirche San Benedetto della Badia",
       "chicca_borgo": "✨ Das Kleinod des Dorfes"
-    }
+    },
+    "map_hint": "📍 Die Karte öffnet sich und zeigt das gesamte Dorf Caccamo. Tippen Sie auf das Standort-Symbol, um es zu aktivieren: Ein blauer Punkt erscheint und folgt Ihren Bewegungen in Echtzeit, mit Entfernung in Metern und geschätzter Zeit bis zum gewählten Ziel."
   },
   "citizen": {
     "church_sepolcri": "Die Osterzeit",

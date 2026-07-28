@@ -190,7 +190,8 @@
       "annunziata": "Paroisse SS. Annunziata",
       "sanbenedetto": "Église Saint-Benoît della Badia",
       "chicca_borgo": "✨ Le Trésor du Village"
-    }
+    },
+    "map_hint": "📍 La carte s'ouvre en montrant tout le village de Caccamo. Touchez l'icône de géolocalisation pour l'activer : un point bleu apparaîtra, suivant vos déplacements en temps réel, avec la distance en mètres et le temps estimé pour atteindre le point choisi."
   },
   "citizen": {
     "church_sepolcri": "La Période Pascale",

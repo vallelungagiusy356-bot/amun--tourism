@@ -190,7 +190,8 @@
       "annunziata": "Parish of SS. Annunziata",
       "sanbenedetto": "Church of S. Benedetto della Badia",
       "chicca_borgo": "✨ The Village Gem"
-    }
+    },
+    "map_hint": "📍 The map opens showing the whole village of Caccamo. Tap the geolocation icon to activate it: a blue dot will appear, following your movements in real time, showing the distance in metres and estimated time to reach your chosen point."
   },
   "citizen": {
     "church_sepolcri": "The Easter Season",

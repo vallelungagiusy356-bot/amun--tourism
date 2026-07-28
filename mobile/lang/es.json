@@ -190,7 +190,8 @@
       "annunziata": "Parroquia SS. Annunziata",
       "sanbenedetto": "Iglesia San Benito de la Badia",
       "chicca_borgo": "✨ La Joya del Pueblo"
-    }
+    },
+    "map_hint": "📍 El mapa se abre mostrando todo el pueblo de Caccamo. Toca el icono de geolocalización para activarlo: aparecerá un punto azul que sigue tus movimientos en tiempo real, con la distancia en metros y el tiempo estimado para llegar al punto elegido."
   },
   "citizen": {
     "church_sepolcri": "El Periodo Pascual",
