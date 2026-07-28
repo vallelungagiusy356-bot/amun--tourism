@@ -283,6 +283,25 @@ window.silktideConsentManager.init({
         }
 
         /* ===== BOTTONE "TORNA INDIETRO" — desktop ===== */
+        /* ===== ALLINEAMENTO VERSI — questa pagina eredita da
+           castello.css uno stile pensato per la prosa (testo a
+           sinistra); qui invece è una poesia e deve stare centrata,
+           allineata alla larghezza dell'immagine sopra. ===== */
+        .parallax-content {
+            max-width: 620px;
+            text-align: center;
+        }
+
+        .parallax-content p {
+            text-align: center;
+        }
+
+        @media screen and (max-width: 899px) {
+            .parallax-content {
+                text-align: center;
+            }
+        }
+
         .btn-back-desktop {
             display: block;
             width: fit-content;
