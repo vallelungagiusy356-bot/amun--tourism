@@ -233,7 +233,7 @@ window.silktideConsentManager.init({
         /* Main content */
         main {
             flex: 1;
-            padding-top: 140px;
+            padding-top: 220px;
             max-width: 780px;
             margin: 0 auto;
             width: 100%;
@@ -343,6 +343,22 @@ window.silktideConsentManager.init({
             }
         }
     </style>
+
+    <script>
+        // Adatta lo spazio sotto l'header alla sua altezza reale (cambia su schermi stretti)
+        (function () {
+            function adattaSpazioHeader() {
+                var header = document.querySelector('.dashboard');
+                var main = document.querySelector('main');
+                if (header && main) {
+                    main.style.paddingTop = (header.offsetHeight + 32) + 'px';
+                }
+            }
+            window.addEventListener('load', adattaSpazioHeader);
+            window.addEventListener('resize', adattaSpazioHeader);
+            document.addEventListener('DOMContentLoaded', adattaSpazioHeader);
+        })();
+    </script>
 </head>
 
 <body>
