@@ -336,6 +336,15 @@ window.silktideConsentManager.init({
             background: var(--cst-terracotta);
         }
     </style>
+    <!-- Tracciamento ricerca: evento monument_view per Amunì Tourism -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'monument_view',
+            monument_id: 'purgatorio',
+            monument_type: 'minore'
+        });
+    </script>
 </head>
 <body>
 
