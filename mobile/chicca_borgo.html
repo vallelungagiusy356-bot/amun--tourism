@@ -22,6 +22,12 @@
   --iconBackgroundColor: #22303B;
 }
 </style>
+<!-- Rende gtag() richiamabile da qualunque punto della pagina (serve per gli eventi personalizzati di ricerca) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+</script>
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
 <script>
 window.silktideConsentManager.init({
@@ -338,9 +344,7 @@ window.silktideConsentManager.init({
     </style>
     <!-- Tracciamento ricerca: evento monument_view per Amunì Tourism -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            event: 'monument_view',
+        window.gtag('event', 'monument_view', {
             monument_id: 'purgatorio',
             monument_type: 'minore'
         });
