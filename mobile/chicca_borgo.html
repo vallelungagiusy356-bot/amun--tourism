@@ -68,6 +68,11 @@ window.silktideConsentManager.init({
         function gtag() { window.dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-DNTGGXSSM0', { 'anonymize_ip': true });
+        // Evento di ricerca: monument_view (Amunì Tourism)
+        gtag('event', 'monument_view', {
+          monument_id: 'purgatorio',
+          monument_type: 'minore'
+        });
       }
     }
   ],
@@ -342,13 +347,6 @@ window.silktideConsentManager.init({
             background: var(--cst-terracotta);
         }
     </style>
-    <!-- Tracciamento ricerca: evento monument_view per Amunì Tourism -->
-    <script>
-        window.gtag('event', 'monument_view', {
-            monument_id: 'purgatorio',
-            monument_type: 'minore'
-        });
-    </script>
 </head>
 <body>
 
