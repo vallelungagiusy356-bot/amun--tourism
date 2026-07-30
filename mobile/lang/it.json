@@ -175,7 +175,25 @@
         "address": "Piazza Duomo, accanto al Monte di Pietà",
         "caption_catacombe": "Le catacombe",
         "caption_altare": "L'altare",
-        "events_button": "🎉 Eventi in programma →"
+        "events_button": "🌿 Vivere è Pensare →"
+      },
+      "vivereepensare_page": {
+        "title": "Associazione Culturale Vivere è Pensare",
+        "welcome": "Un punto di riferimento per chi ama Caccamo e vuole viverla attraverso arte, musica e comunità.",
+        "desc": "Nata a Caccamo, l'associazione promuove cultura, arte, musica e solidarietà nel borgo, collaborando spesso con il Comune di Caccamo, la FIDAPA sezione Caccamo, l'Associazione Amici della Musica B. Albanese e la Pro Loco.",
+        "activities_title": "Cosa organizza",
+        "activity_1": "Mostre d'arte, come le personali di pittura nella Chiesa di Sant'Antonio Abate",
+        "activity_2": "Serate musicali: jazz, quartetti di clarinetti e concerti al tramonto",
+        "activity_3": "Passeggiate culturali alla scoperta dei quartieri, delle chiese e dei segreti meno noti di Caccamo",
+        "activity_4": "\"Sensi in Corte\", percorso multisensoriale tra degustazioni, arte e musica",
+        "activity_5": "Il Premio \"Vivere è Pensare\" - Che cielo, che stelle!, che ogni anno premia storie, persone e realtà del territorio",
+        "closing": "Seguili per scoprire i prossimi eventi!",
+        "btn_instagram": "Seguili su Instagram",
+        "events_title": "🎉 Eventi di Agosto",
+        "event1_date": "📖 Giovedì 6 agosto – ore 19:00",
+        "event1_text": "Il Professor Battistella recita i versi del Purgatorio della Divina Commedia, all'interno della Chiesa delle Anime Sante del Purgatorio. Un'ora di lettura e poesia, organizzata dall'Associazione Vivere è Pensare con la collaborazione della GeA e della Confraternita delle Anime Sante del Purgatorio, con il patrocinio del Comune di Caccamo. Saranno presenti il Sindaco e altri rappresentanti istituzionali. Ingresso libero.",
+        "event2_date": "🕯️ Sabato 16 agosto – ore 18:30 – Sotto le stelle della Confraternita",
+        "event2_text": "Una serata organizzata dalla Confraternita delle Anime Sante del Purgatorio, aperta a tutta la comunità caccamese, davanti e all'interno della chiesa. Si apre con il concerto di Renato Filippello e di una violinista, seguito da un momento dedicato ai bambini e da un rosario sotto le stelle. A chiudere la serata, un momento di convivialità con pane, olio e vino. Durata prevista: circa due ore/due ore e mezza."
       }
     }
   },
