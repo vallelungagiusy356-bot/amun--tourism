@@ -176,25 +176,25 @@
         "caption_catacombe": "The catacombs",
         "caption_altare": "The altar",
         "events_button": "🌿 Vivere è Pensare Association →"
-      },
-      "vivereepensare_page": {
-        "title": "\"Vivere è Pensare\" Cultural Association",
-        "welcome": "A reference point for anyone who loves Caccamo and wants to experience it through art, music and community.",
-        "desc": "Founded in Caccamo, the association promotes culture, art, music and solidarity in the village, often working alongside the Municipality of Caccamo, FIDAPA Caccamo chapter, the \"Amici della Musica B. Albanese\" Association and the Pro Loco.",
-        "activities_title": "What they organise",
-        "activity_1": "Art exhibitions, such as painting shows in the Church of Sant'Antonio Abate",
-        "activity_2": "Musical evenings: jazz, clarinet quartets and sunset concerts",
-        "activity_3": "Cultural walks discovering the neighbourhoods, churches and lesser-known secrets of Caccamo",
-        "activity_4": "\"Sensi in Corte\", a multisensory experience with tastings, art and music",
-        "activity_5": "The \"Vivere è Pensare\" Award - Che cielo, che stelle!, which every year celebrates stories, people and realities from the local area",
-        "closing": "Follow them to discover upcoming events!",
-        "btn_instagram": "Follow on Instagram",
-        "events_title": "🎉 August Events",
-        "event1_date": "📖 Thursday 6 August – 7:00 PM",
-        "event1_text": "Professor Battistella recites the verses of Purgatorio from Dante's Divine Comedy, inside the Church of the Holy Souls of Purgatory. An hour of readings and poetry, organised by the \"Vivere è Pensare\" Association in collaboration with GeA and the Confraternity of the Holy Souls of Purgatory, under the patronage of the Municipality of Caccamo. The Mayor and other institutional representatives will be present. Free admission.",
-        "event2_date": "🕯️ Saturday 16 August – 6:30 PM – Under the Stars of the Confraternity",
-        "event2_text": "An evening organised by the Confraternity of the Holy Souls of Purgatory, open to the whole community of Caccamo, held both outside and inside the church. It opens with a concert by Renato Filippello and a violinist, followed by an activity for children and a rosary under the stars. The evening closes with a shared moment of bread, olive oil and wine. Expected duration: about two to two and a half hours."
       }
+    },
+    "vivereepensare_page": {
+      "title": "\"Vivere è Pensare\" Cultural Association",
+      "welcome": "A reference point for anyone who loves Caccamo and wants to experience it through art, music and community.",
+      "desc": "Founded in Caccamo, the association promotes culture, art, music and solidarity in the village, often working alongside the Municipality of Caccamo, FIDAPA Caccamo chapter, the \"Amici della Musica B. Albanese\" Association and the Pro Loco.",
+      "activities_title": "What they organise",
+      "activity_1": "Art exhibitions, such as painting shows in the Church of Sant'Antonio Abate",
+      "activity_2": "Musical evenings: jazz, clarinet quartets and sunset concerts",
+      "activity_3": "Cultural walks discovering the neighbourhoods, churches and lesser-known secrets of Caccamo",
+      "activity_4": "\"Sensi in Corte\", a multisensory experience with tastings, art and music",
+      "activity_5": "The \"Vivere è Pensare\" Award - Che cielo, che stelle!, which every year celebrates stories, people and realities from the local area",
+      "closing": "Follow them to discover upcoming events!",
+      "btn_instagram": "Follow on Instagram",
+      "events_title": "🎉 August Events",
+      "event1_date": "📖 Thursday 6 August – 7:00 PM",
+      "event1_text": "Professor Battistella recites the verses of Purgatorio from Dante's Divine Comedy, inside the Church of the Holy Souls of Purgatory. An hour of readings and poetry, organised by the \"Vivere è Pensare\" Association in collaboration with GeA and the Confraternity of the Holy Souls of Purgatory, under the patronage of the Municipality of Caccamo. The Mayor and other institutional representatives will be present. Free admission.",
+      "event2_date": "🕯️ Saturday 16 August – 6:30 PM – Under the Stars of the Confraternity",
+      "event2_text": "An evening organised by the Confraternity of the Holy Souls of Purgatory, open to the whole community of Caccamo, held both outside and inside the church. It opens with a concert by Renato Filippello and a violinist, followed by an activity for children and a rosary under the stars. The evening closes with a shared moment of bread, olive oil and wine. Expected duration: about two to two and a half hours."
     }
   },
   "monuments": {

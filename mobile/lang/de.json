@@ -176,25 +176,25 @@
         "caption_catacombe": "Die Katakomben",
         "caption_altare": "Der Altar",
         "events_button": "🌿 Verein Vivere è Pensare →"
-      },
-      "vivereepensare_page": {
-        "title": "Kulturverein Vivere è Pensare",
-        "welcome": "Ein Bezugspunkt für alle, die Caccamo lieben und durch Kunst, Musik und Gemeinschaft erleben möchten.",
-        "desc": "Der in Caccamo gegründete Verein fördert Kultur, Kunst, Musik und Solidarität im Ort, oft in Zusammenarbeit mit der Gemeinde Caccamo, der FIDAPA-Sektion Caccamo, dem Verein Amici della Musica B. Albanese und der Pro Loco.",
-        "activities_title": "Was er organisiert",
-        "activity_1": "Kunstausstellungen, wie die Malerei-Einzelausstellungen in der Kirche Sant'Antonio Abate",
-        "activity_2": "Musikabende: Jazz, Klarinettenquartette und Konzerte bei Sonnenuntergang",
-        "activity_3": "Kulturelle Spaziergänge zur Entdeckung der Viertel, Kirchen und weniger bekannten Geheimnisse von Caccamo",
-        "activity_4": "\"Sensi in Corte\", ein multisensorischer Rundgang mit Verkostungen, Kunst und Musik",
-        "activity_5": "Der Preis \"Vivere è Pensare\" - Che cielo, che stelle!, der jedes Jahr Geschichten, Menschen und Initiativen aus der Region auszeichnet",
-        "closing": "Folgt ihnen, um kommende Veranstaltungen zu entdecken!",
-        "btn_instagram": "Auf Instagram folgen",
-        "events_title": "🎉 Veranstaltungen im August",
-        "event1_date": "📖 Donnerstag, 6. August – 19:00 Uhr",
-        "event1_text": "Professor Battistella trägt die Verse des Purgatorio aus Dantes Göttlicher Komödie vor, im Inneren der Kirche der Heiligen Seelen des Fegefeuers. Eine Stunde Lesung und Poesie, organisiert vom Verein Vivere è Pensare in Zusammenarbeit mit der GeA und der Bruderschaft der Heiligen Seelen des Fegefeuers, unter der Schirmherrschaft der Gemeinde Caccamo. Der Bürgermeister und weitere institutionelle Vertreter werden anwesend sein. Freier Eintritt.",
-        "event2_date": "🕯️ Samstag, 16. August – 18:30 Uhr – Unter den Sternen der Bruderschaft",
-        "event2_text": "Ein von der Bruderschaft der Heiligen Seelen des Fegefeuers organisierter Abend, offen für die gesamte Gemeinschaft von Caccamo, der sowohl vor als auch in der Kirche stattfindet. Er beginnt mit einem Konzert von Renato Filippello und einer Geigerin, gefolgt von einem Programm für Kinder und einem Rosenkranzgebet unter den Sternen. Zum Abschluss gibt es ein geselliges Beisammensein mit Brot, Olivenöl und Wein. Voraussichtliche Dauer: etwa zwei bis zweieinhalb Stunden."
       }
+    },
+    "vivereepensare_page": {
+      "title": "Kulturverein Vivere è Pensare",
+      "welcome": "Ein Bezugspunkt für alle, die Caccamo lieben und durch Kunst, Musik und Gemeinschaft erleben möchten.",
+      "desc": "Der in Caccamo gegründete Verein fördert Kultur, Kunst, Musik und Solidarität im Ort, oft in Zusammenarbeit mit der Gemeinde Caccamo, der FIDAPA-Sektion Caccamo, dem Verein Amici della Musica B. Albanese und der Pro Loco.",
+      "activities_title": "Was er organisiert",
+      "activity_1": "Kunstausstellungen, wie die Malerei-Einzelausstellungen in der Kirche Sant'Antonio Abate",
+      "activity_2": "Musikabende: Jazz, Klarinettenquartette und Konzerte bei Sonnenuntergang",
+      "activity_3": "Kulturelle Spaziergänge zur Entdeckung der Viertel, Kirchen und weniger bekannten Geheimnisse von Caccamo",
+      "activity_4": "\"Sensi in Corte\", ein multisensorischer Rundgang mit Verkostungen, Kunst und Musik",
+      "activity_5": "Der Preis \"Vivere è Pensare\" - Che cielo, che stelle!, der jedes Jahr Geschichten, Menschen und Initiativen aus der Region auszeichnet",
+      "closing": "Folgt ihnen, um kommende Veranstaltungen zu entdecken!",
+      "btn_instagram": "Auf Instagram folgen",
+      "events_title": "🎉 Veranstaltungen im August",
+      "event1_date": "📖 Donnerstag, 6. August – 19:00 Uhr",
+      "event1_text": "Professor Battistella trägt die Verse des Purgatorio aus Dantes Göttlicher Komödie vor, im Inneren der Kirche der Heiligen Seelen des Fegefeuers. Eine Stunde Lesung und Poesie, organisiert vom Verein Vivere è Pensare in Zusammenarbeit mit der GeA und der Bruderschaft der Heiligen Seelen des Fegefeuers, unter der Schirmherrschaft der Gemeinde Caccamo. Der Bürgermeister und weitere institutionelle Vertreter werden anwesend sein. Freier Eintritt.",
+      "event2_date": "🕯️ Samstag, 16. August – 18:30 Uhr – Unter den Sternen der Bruderschaft",
+      "event2_text": "Ein von der Bruderschaft der Heiligen Seelen des Fegefeuers organisierter Abend, offen für die gesamte Gemeinschaft von Caccamo, der sowohl vor als auch in der Kirche stattfindet. Er beginnt mit einem Konzert von Renato Filippello und einer Geigerin, gefolgt von einem Programm für Kinder und einem Rosenkranzgebet unter den Sternen. Zum Abschluss gibt es ein geselliges Beisammensein mit Brot, Olivenöl und Wein. Voraussichtliche Dauer: etwa zwei bis zweieinhalb Stunden."
     }
   },
   "monuments": {

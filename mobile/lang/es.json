@@ -176,25 +176,25 @@
         "caption_catacombe": "Las catacumbas",
         "caption_altare": "El altar",
         "events_button": "🌿 Asociación Vivere è Pensare →"
-      },
-      "vivereepensare_page": {
-        "title": "Asociación Cultural Vivere è Pensare",
-        "welcome": "Un punto de referencia para quien ama Caccamo y quiere vivirlo a través del arte, la música y la comunidad.",
-        "desc": "Nacida en Caccamo, la asociación promueve la cultura, el arte, la música y la solidaridad en el pueblo, colaborando a menudo con el Ayuntamiento de Caccamo, la sección FIDAPA de Caccamo, la Asociación Amici della Musica B. Albanese y la Pro Loco.",
-        "activities_title": "Qué organiza",
-        "activity_1": "Exposiciones de arte, como las muestras de pintura en la Iglesia de Sant'Antonio Abate",
-        "activity_2": "Veladas musicales: jazz, cuartetos de clarinetes y conciertos al atardecer",
-        "activity_3": "Paseos culturales para descubrir los barrios, las iglesias y los secretos menos conocidos de Caccamo",
-        "activity_4": "\"Sensi in Corte\", un recorrido multisensorial entre degustaciones, arte y música",
-        "activity_5": "El Premio \"Vivere è Pensare\" - Che cielo, che stelle!, que cada año premia historias, personas y realidades del territorio",
-        "closing": "¡Síguelos para descubrir los próximos eventos!",
-        "btn_instagram": "Síguelos en Instagram",
-        "events_title": "🎉 Eventos de Agosto",
-        "event1_date": "📖 Jueves 6 de agosto – 19:00",
-        "event1_text": "El Profesor Battistella recita los versos del Purgatorio de la Divina Comedia, dentro de la Iglesia de las Ánimas Santas del Purgatorio. Una hora de lectura y poesía, organizada por la Asociación Vivere è Pensare con la colaboración de la GeA y la Cofradía de las Ánimas Santas del Purgatorio, con el patrocinio del Ayuntamiento de Caccamo. Estarán presentes el Alcalde y otros representantes institucionales. Entrada libre.",
-        "event2_date": "🕯️ Sábado 16 de agosto – 18:30 – Bajo las estrellas de la Cofradía",
-        "event2_text": "Una velada organizada por la Cofradía de las Ánimas Santas del Purgatorio, abierta a toda la comunidad de Caccamo, que se desarrolla fuera y dentro de la iglesia. Se abre con el concierto de Renato Filippello y una violinista, seguido de un momento dedicado a los niños y un rosario bajo las estrellas. La velada se cierra con un momento de convivencia con pan, aceite y vino. Duración prevista: entre dos y dos horas y media."
       }
+    },
+    "vivereepensare_page": {
+      "title": "Asociación Cultural Vivere è Pensare",
+      "welcome": "Un punto de referencia para quien ama Caccamo y quiere vivirlo a través del arte, la música y la comunidad.",
+      "desc": "Nacida en Caccamo, la asociación promueve la cultura, el arte, la música y la solidaridad en el pueblo, colaborando a menudo con el Ayuntamiento de Caccamo, la sección FIDAPA de Caccamo, la Asociación Amici della Musica B. Albanese y la Pro Loco.",
+      "activities_title": "Qué organiza",
+      "activity_1": "Exposiciones de arte, como las muestras de pintura en la Iglesia de Sant'Antonio Abate",
+      "activity_2": "Veladas musicales: jazz, cuartetos de clarinetes y conciertos al atardecer",
+      "activity_3": "Paseos culturales para descubrir los barrios, las iglesias y los secretos menos conocidos de Caccamo",
+      "activity_4": "\"Sensi in Corte\", un recorrido multisensorial entre degustaciones, arte y música",
+      "activity_5": "El Premio \"Vivere è Pensare\" - Che cielo, che stelle!, que cada año premia historias, personas y realidades del territorio",
+      "closing": "¡Síguelos para descubrir los próximos eventos!",
+      "btn_instagram": "Síguelos en Instagram",
+      "events_title": "🎉 Eventos de Agosto",
+      "event1_date": "📖 Jueves 6 de agosto – 19:00",
+      "event1_text": "El Profesor Battistella recita los versos del Purgatorio de la Divina Comedia, dentro de la Iglesia de las Ánimas Santas del Purgatorio. Una hora de lectura y poesía, organizada por la Asociación Vivere è Pensare con la colaboración de la GeA y la Cofradía de las Ánimas Santas del Purgatorio, con el patrocinio del Ayuntamiento de Caccamo. Estarán presentes el Alcalde y otros representantes institucionales. Entrada libre.",
+      "event2_date": "🕯️ Sábado 16 de agosto – 18:30 – Bajo las estrellas de la Cofradía",
+      "event2_text": "Una velada organizada por la Cofradía de las Ánimas Santas del Purgatorio, abierta a toda la comunidad de Caccamo, que se desarrolla fuera y dentro de la iglesia. Se abre con el concierto de Renato Filippello y una violinista, seguido de un momento dedicado a los niños y un rosario bajo las estrellas. La velada se cierra con un momento de convivencia con pan, aceite y vino. Duración prevista: entre dos y dos horas y media."
     }
   },
   "monuments": {
