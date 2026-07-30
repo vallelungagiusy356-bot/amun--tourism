@@ -175,7 +175,10 @@
         "address": "Piazza Duomo, neben dem Monte di Pietà",
         "caption_catacombe": "Die Katakomben",
         "caption_altare": "Der Altar",
-        "events_button": "🌿 Verein Vivere è Pensare →"
+        "events_button": "🌿 Verein Vivere è Pensare →",
+        "event_title": "🕯️ Fest der Bruderschaft",
+        "event_date": "Samstag, 16. August – 18:30 Uhr – Unter den Sternen der Bruderschaft",
+        "event_text": "Ein von der Bruderschaft der Heiligen Seelen des Fegefeuers organisierter Abend, offen für die gesamte Gemeinschaft von Caccamo, der sowohl vor als auch in der Kirche stattfindet. Er beginnt mit einem Konzert von Renato Filippello und einer Geigerin, gefolgt von einem Programm für Kinder und einem Rosenkranzgebet unter den Sternen. Zum Abschluss gibt es ein geselliges Beisammensein mit Brot, Olivenöl und Wein. Voraussichtliche Dauer: etwa zwei bis zweieinhalb Stunden."
       }
     },
     "vivereepensare_page": {
@@ -192,9 +195,7 @@
       "btn_instagram": "Auf Instagram folgen",
       "events_title": "🎉 Veranstaltungen im August",
       "event1_date": "📖 Donnerstag, 6. August – 19:00 Uhr",
-      "event1_text": "Professor Battistella trägt die Verse des Purgatorio aus Dantes Göttlicher Komödie vor, im Inneren der Kirche der Heiligen Seelen des Fegefeuers. Eine Stunde Lesung und Poesie, organisiert vom Verein Vivere è Pensare in Zusammenarbeit mit der GeA und der Bruderschaft der Heiligen Seelen des Fegefeuers, unter der Schirmherrschaft der Gemeinde Caccamo. Der Bürgermeister und weitere institutionelle Vertreter werden anwesend sein. Freier Eintritt.",
-      "event2_date": "🕯️ Samstag, 16. August – 18:30 Uhr – Unter den Sternen der Bruderschaft",
-      "event2_text": "Ein von der Bruderschaft der Heiligen Seelen des Fegefeuers organisierter Abend, offen für die gesamte Gemeinschaft von Caccamo, der sowohl vor als auch in der Kirche stattfindet. Er beginnt mit einem Konzert von Renato Filippello und einer Geigerin, gefolgt von einem Programm für Kinder und einem Rosenkranzgebet unter den Sternen. Zum Abschluss gibt es ein geselliges Beisammensein mit Brot, Olivenöl und Wein. Voraussichtliche Dauer: etwa zwei bis zweieinhalb Stunden."
+      "event1_text": "Professor Battistella trägt die Verse des Purgatorio aus Dantes Göttlicher Komödie vor, im Inneren der Kirche der Heiligen Seelen des Fegefeuers. Eine Stunde Lesung und Poesie, organisiert vom Verein Vivere è Pensare in Zusammenarbeit mit der GeA und der Bruderschaft der Heiligen Seelen des Fegefeuers, unter der Schirmherrschaft der Gemeinde Caccamo. Der Bürgermeister und weitere institutionelle Vertreter werden anwesend sein. Freier Eintritt."
     }
   },
   "monuments": {
