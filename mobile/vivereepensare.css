@@ -1,0 +1,269 @@
+/* ==========================================================================
+   AMUNÌ TOURISM — ASSOCIAZIONE VIVERE È PENSARE (mobile, allineata al resto del sito)
+   Stessa identica struttura grafica di trasporti.css.
+   ========================================================================== */
+
+:root {
+    --sky: #5B8FAE;
+    --sea: #1B4965;
+    --sea-ink: #14283A;
+
+    --stone: #EFE6D3;
+    --stone-dim: #DCCFAF;
+
+    --terracotta: #C1622D;
+    --terracotta-dark: #9C4C22;
+
+    --gold: #B8873B;
+    --gold-light: #D4AF6A;
+
+    --ink: #22303B;
+    --ink-soft: #465563;
+
+    --shadow-soft: rgba(0, 0, 0, 0.18);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+}
+
+body {
+    background: var(--stone);
+    color: var(--ink);
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+}
+
+.scene-background {
+    position: fixed;
+    inset: 0;
+    background: var(--stone);
+    z-index: -10;
+}
+
+.scene-background::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(60, 40, 20, 0.16) 100%);
+    pointer-events: none;
+}
+
+.dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 65px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(15, 25, 34, 0.92);
+    backdrop-filter: blur(18px) saturate(200%);
+    border-bottom: 2px solid var(--gold);
+    z-index: 1000;
+}
+
+.logo-container {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--gold-light);
+    white-space: nowrap;
+}
+
+.right-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex: 1 1 100%;
+}
+
+.btn-home {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    text-decoration: none;
+}
+
+.btn-home svg { color: var(--gold-light); }
+
+.lang-switcher { display: flex; gap: 5px; }
+
+.lang-switcher button {
+    width: 30px;
+    height: 30px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 2px;
+    background: rgba(239, 230, 211, 0.08);
+    border: 1px solid rgba(239, 230, 211, 0.4);
+    color: var(--stone);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.lang-switcher button.active {
+    border-color: var(--gold);
+    background: rgba(184, 135, 59, 0.25);
+    color: var(--gold-light);
+}
+
+.scroll-content {
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+    padding: 100px 16px 40px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    width: 100%;
+}
+
+.home-welcome-poetry {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.home-welcome-poetry h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: var(--sea);
+    margin-bottom: 14px;
+}
+
+.home-welcome-poetry p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.08rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+}
+
+.home-welcome-poetry .closing-line {
+    margin-top: 4px;
+    font-weight: 600;
+    color: var(--sea);
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 18px 0;
+}
+
+.stops-box {
+    text-align: left;
+    background: rgba(15, 25, 34, 0.88);
+    border: 1px solid var(--gold);
+    padding: 18px;
+    border-radius: 2px;
+    margin: 12px 0 4px 0;
+    box-shadow: 0 6px 16px var(--shadow-soft);
+}
+
+.stops-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+}
+
+.stops-box ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.stops-box li {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    color: var(--stone);
+    margin-bottom: 8px;
+}
+
+.transport-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 340px;
+}
+
+.transport-buttons .btn-barocco {
+    background: rgba(15, 25, 34, 0.88);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 14px 6px;
+    text-align: center;
+    color: var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 6px 16px var(--shadow-soft);
+    transition: border-color 0.2s ease;
+}
+
+.transport-buttons .btn-barocco:active {
+    border-color: var(--terracotta);
+}
+
+@media screen and (min-width: 900px) {
+    .dashboard {
+        min-height: 70px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        padding: 0 24px;
+    }
+
+    .logo-container { flex: 0 1 auto; }
+    .right-controls { flex: 0 1 auto; }
+
+    .dashboard .logo-title { font-size: 1.3rem; }
+
+    .lang-switcher button { width: 36px; height: 36px; }
+
+    .scroll-content { padding-top: 130px; }
+    .home-welcome-poetry { width: 45vw; max-width: 550px; }
+
+    .home-welcome-poetry h1 { font-size: 1.85rem; }
+    .home-welcome-poetry p { font-size: 1.15rem; line-height: 1.75; }
+
+    .transport-buttons .btn-barocco:hover {
+        border-color: var(--terracotta);
+    }
+}
