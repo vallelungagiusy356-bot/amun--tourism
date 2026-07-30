@@ -138,7 +138,7 @@ window.silktideConsentManager.init({
 <body>
 
     <header class="dashboard">
-        <div class="logo-title" style="display: flex; align-items: center; gap: 10px;">
+        <div class="logo-title" style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
             <img src="img/logo_A_medaglione_trasparente.png" alt="Amunì Tourism" style="width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;">
             <span data-i18n="menu.title">Amunì Tourism</span>
         </div>
@@ -276,6 +276,20 @@ window.silktideConsentManager.init({
     </div>
 
     <script>
+        // Adatta lo spazio sotto l'header alla sua altezza reale (rete di sicurezza se il menu va a capo)
+        (function () {
+            function adattaSpazioHeader() {
+                var header = document.querySelector('.dashboard');
+                var main = document.querySelector('main');
+                if (header && main && window.innerWidth >= 900) {
+                    main.style.paddingTop = (header.offsetHeight + 15) + 'px';
+                }
+            }
+            window.addEventListener('load', adattaSpazioHeader);
+            window.addEventListener('resize', adattaSpazioHeader);
+            document.addEventListener('DOMContentLoaded', adattaSpazioHeader);
+        })();
+
         let currentLang = localStorage.getItem("lang") || "it";
         let langData = {};
 
