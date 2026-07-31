@@ -32,6 +32,7 @@
   height: 40px !important;
   margin: 0 auto 10px !important;
   display: block !important;
+  visibility: hidden !important;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
@@ -849,17 +850,31 @@ window.silktideConsentManager.init({
     </footer>
 
     <script>
-        // Sposta l'iconetta dei cookie dentro il footer, invece di
-        // lasciarla "flottante" sopra i contenuti.
-        window.addEventListener('load', function() {
-            setTimeout(function() {
+        // Sposta l'iconetta dei cookie dentro il footer NELL'ISTANTE
+        // in cui viene creata da Silktide, e solo allora la rende
+        // visibile: cosi' non si vede mai comparire "al centro" della
+        // pagina prima di saltare nel footer.
+        (function() {
+            const slot = document.getElementById('footer-cookie-slot');
+            if (!slot) return;
+
+            function tryMove() {
                 const icon = document.getElementById('stcm-icon');
-                const slot = document.getElementById('footer-cookie-slot');
-                if (icon && slot) {
+                if (icon) {
                     slot.appendChild(icon);
+                    icon.style.visibility = 'visible';
+                    return true;
                 }
-            }, 800);
-        });
+                return false;
+            }
+
+            if (tryMove()) return;
+
+            const observer = new MutationObserver(function() {
+                if (tryMove()) observer.disconnect();
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+        })();
     </script>
 </body>
 </html>
