@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============================================================
+     BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
+     ============================================================ -->
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" id="silktide-consent-manager-css" href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css" integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
+<style id="silktide-consent-manager-overrides">
+#stcm-wrapper {
+  --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
+  --fontFamily: Helvetica Neue, Segoe UI, Arial, sans-serif;
+  --primaryColor: #9C4C22;
+  --backgroundColor: #efe6d3;
+  --textColor: #22303b;
+  --backdropBackgroundColor: #00000033;
+  --backdropBackgroundBlur: 0px;
+  --iconColor: #EFE6D3;
+  --iconBackgroundColor: #22303B;
+}
+
+/* Icona "riapri preferenze cookie" — rimpicciolita e alzata
+   un po' da terra, per non coprire testi e bottoni sotto di lei */
+#stcm-icon {
+  width: 48px !important;
+  height: 48px !important;
+  bottom: 14px !important;
+  left: 14px !important;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
+<script>
+window.silktideConsentManager.init({
+  backdrop: { show: false },
+  icon: { position: "bottomLeft" },
+  prompt: { position: "bottomCenter" },
+  consentTypes: [
+    {
+      id: "essential",
+      label: "Essenziali",
+      description: "<p>Cookie tecnici necessari al funzionamento del sito, come la memoria della lingua scelta e del codice Premium attivato. Non possono essere disattivati.</p>",
+      required: true,
+      onAccept: function() {}
+    },
+    {
+      id: "analytics",
+      label: "Statistiche",
+      description: "Questi cookie ci aiutano a capire come i visitatori usano il sito, in forma aggregata e anonima, per migliorare i contenuti di Amunì Tourism.",
+      required: false,
+      gtag: "analytics_storage",
+      scripts: [{ url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0", load: "async" }],
+      onAccept: function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-DNTGGXSSM0', { 'anonymize_ip': true });
+      }
+    }
+  ],
+  text: {
+    banner: {
+      description: "<p>Amunì Tourism utilizza i cookie per offrirti la migliore esperienza di navigazione e per analizzare il traffico del sito in forma anonima. Puoi scegliere quali accettare.</p>",
+      acceptAllButtonText: "Accetta tutti",
+      acceptAllButtonAccessibleLabel: "Accetta tutti i cookie",
+      rejectNonEssentialButtonText: "Rifiuta i non essenziali",
+      rejectNonEssentialButtonAccessibleLabel: "Rifiuta tutti i cookie non essenziali",
+      preferencesButtonText: "Preferenze",
+      preferencesButtonAccessibleLabel: "Apri le preferenze cookie"
+    },
+    prompt: {
+      description: "<p>Amunì Tourism utilizza i cookie per offrirti la migliore esperienza di navigazione e per analizzare il traffico del sito in forma anonima. Puoi scegliere quali accettare.</p>",
+      acceptAllButtonText: "Accetta tutti",
+      acceptAllButtonAccessibleLabel: "Accetta tutti i cookie",
+      rejectNonEssentialButtonText: "Rifiuta i non essenziali",
+      rejectNonEssentialButtonAccessibleLabel: "Rifiuta tutti i cookie non essenziali",
+      preferencesButtonText: "Preferenze",
+      preferencesButtonAccessibleLabel: "Apri le preferenze cookie"
+    },
+    preferences: {
+      title: "Personalizza le tue preferenze cookie",
+      description: "<p>Rispettiamo il tuo diritto alla privacy. Puoi scegliere di non consentire alcuni tipi di cookie. Le tue preferenze verranno applicate a tutto il sito.</p>",
+      saveButtonText: "Salva e chiudi",
+      saveButtonAccessibleLabel: "Salva le tue preferenze cookie",
+      creditLinkText: "Ottieni questo banner gratis",
+      creditLinkAccessibleLabel: "Ottieni questo banner gratis"
+    }
+  }
+});
+</script>
+
+<!-- ============================================================
+     FINE BLOCCO COOKIE + ANALYTICS
+     ============================================================ -->
+
+  <title data-i18n="pages.chiese_page.page_title">Le Chiese di Caccamo</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="chiese-arte.css">
+  <style>
+      .lang-switcher button.active {
+          border: 2px solid #B8873B !important;
+          background: rgba(184, 135, 59, 0.2) !important;
+          font-weight: bold;
+      }
+
+      /* ===== BOTTONE PREMIUM ===== */
+      .castellana-premium-cta {
+        max-width: 420px;
+        margin: 32px auto;
+        padding: 20px;
+        background: #fdf6e8;
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        font-family: 'Cormorant Garamond', serif;
+      }
+
+      .premium-cta-label {
+        margin: 0 0 14px;
+        font-weight: 600;
+        color: #5a1a20;
+      }
+
+      .premium-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 24px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        margin: 4px;
+        transition: opacity 0.2s ease;
+      }
+
+      .premium-btn:hover { opacity: 0.9; }
+
+      .premium-btn-outline {
+        background: transparent;
+        border: 2px solid #7a1f2b;
+        color: #7a1f2b;
+      }
+
+      .premium-btn-gold {
+        background: linear-gradient(135deg, #c9962f, #e0b04a);
+        color: #3a2a10;
+      }
+
+      .mic-btn.listening {
+          background: var(--terracotta);
+          animation: mic-pulse 1s ease-in-out infinite;
+      }
+      @keyframes mic-pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.12); }
+      }
+  </style>
+</head>
+
+<body>
+
+  <header class="dashboard">
+      <div class="logo-title" data-i18n="menu.title">Amunì Tourism</div>
+
+      <div class="header-right-actions">
+          <nav class="nav-desktop">
+              <a href="desktop_index.html" data-i18n="menu.home">Home</a>
+              <a href="cittadino.html" data-i18n="menu.citizen">Cittadino</a>
+          </nav>
+
+          <div class="lang-switcher">
+              <button data-lang="it">IT</button>
+              <button data-lang="en">EN</button>
+              <button data-lang="fr">FR</button>
+              <button data-lang="es">ES</button>
+              <button data-lang="de">DE</button>
+          </div>
+      </div>
+  </header>
+
+  <main class="hero">
+      <div class="hero-text">
+          <h1 data-i18n="pages.chiese_page.page_title">Le Chiese di Caccamo</h1>
+          <p class="poesia-intro" data-i18n="pages.chiese_page.poesia_intro">Cinque templi di pietra, di fede e di memoria,<br>aprono le porte su una secolare storia.</p>
+          <p class="click-hint">* Clicca su una tappa per scoprire i tesori nascosti</p>
+      </div>
+
+      <div class="path-wrap">
+          <div class="path-line"></div>
+
+          <div class="stop">
+              <div class="waypoint"></div>
+              <article class="card side-left" data-img="img/cappuccini.jpg" data-title="I Cappuccini">
+                  <div class="card-frame"><img src="img/cappuccini.jpg" alt="I Cappuccini"></div>
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_cappuccini">Punto più alto</span>
+                      <h2 data-i18n="pages.chiese_page.cappuccini">I Cappuccini</h2>
+                      <p data-i18n="pages.chiese_page.verse_cappuccini">In cima ai <strong>Cappuccini</strong> il cammino ha inizio,<br>tra una Pala d'altare e un vasto orizzonte propizio.</p>
+                  </div>
+              </article>
+          </div>
+
+          <div class="stop">
+              <div class="waypoint"></div>
+              <article class="card side-right" data-img="img/sandomenico.jpg" data-title="Santa Maria degli Angeli">
+                  <div class="card-frame"><img src="img/sandomenico.jpg" alt="Santa Maria degli Angeli"></div>
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_angeli">Silenzio</span>
+                      <h2 data-i18n="pages.chiese_page.angeli">S. Maria degli Angeli</h2>
+                      <p data-i18n="pages.chiese_page.verse_angeli">Agli <strong>Angeli</strong> riposa, nel silenzio più sacro,<br>il Beato Giovanni, del borgo simulacro.</p>
+                  </div>
+              </article>
+          </div>
+
+          <div class="stop">
+              <div class="waypoint"></div>
+              <article class="card side-left" data-img="img/annunziata.jpg" data-title="Chiesa dell'Annunziata">
+                  <div class="card-frame"><img src="img/annunziata.jpg" alt="Chiesa dell'Annunziata"></div>
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_annunziata">Volte dipinte</span>
+                      <h2 data-i18n="pages.chiese_page.annunziata">Annunziata</h2>
+                      <p data-i18n="pages.chiese_page.verse_annunziata">Poi l'<strong>Annunziata</strong> svela le sue volte dipinte,<br>e la torre campanaria dalle guardie mai vinte.</p>
+                  </div>
+              </article>
+          </div>
+
+          <div class="stop">
+              <div class="waypoint"></div>
+              <article class="card side-right" data-img="img/badia.jpg" data-title="S. Benedetto della Badia">
+                  <div class="card-frame"><img src="img/badia.jpg" alt="S. Benedetto della Badia"></div>
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_badia">Si scende</span>
+                      <h2 data-i18n="pages.chiese_page.badia">S. Benedetto della Badia</h2>
+                      <p data-i18n="pages.chiese_page.verse_badia">Più in basso, la <strong>Badia</strong> veste la terra a fiore,<br>nel ricamo in maiolica di raro splendore.</p>
+                  </div>
+              </article>
+          </div>
+
+          <div class="stop">
+              <div class="waypoint"></div>
+              <article class="card side-left" data-img="img/sangiorgio.jpg" data-title="San Giorgio Martire">
+                  <div class="card-frame"><img src="img/sangiorgio.jpg" alt="San Giorgio Martire"></div>
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_sangiorgio">Cuore del borgo</span>
+                      <h2 data-i18n="pages.chiese_page.sangiorgio">San Giorgio Martire</h2>
+                      <p data-i18n="pages.chiese_page.verse_duomo">Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne.</p>
+                  </div>
+              </article>
+          </div>
+
+          <div class="stop">
+              <div class="waypoint"></div>
+              <a href="percorso_esoterico.html" class="card card-esoterico side-right">
+                  <div class="card-text">
+                      <span class="card-route-label" data-i18n="pages.chiese_page.route_animesante">Chicca nascosta</span>
+                      <h2 data-i18n="pages.chiese_page.animesante">Anime Sante del Purgatorio</h2>
+                      <p data-i18n="pages.chiese_page.verse_animesante">Sotto il <strong>Duomo</strong>, un gioiello nascosto: stucchi del Serpotta, catacombe e un antico rito d'imbalsamazione. 🔮 Scopri il Percorso Esoterico.</p>
+                  </div>
+              </a>
+          </div>
+
+      </div>
+      <p class="poesia-outro" data-i18n="pages.chiese_page.poesia_outro">Lasciati guidare dove il tempo si è fermato...</p>
+
+      <!-- ===== BOTTONE PREMIUM ===== -->
+      <div class="castellana-premium-cta">
+        <p class="premium-cta-label">🔒 Contenuti Premium disponibili</p>
+        <button id="btn-premium-code" class="premium-btn premium-btn-outline">
+          Ho già un codice
+        </button>
+        <a
+          href="#"
+          id="btn-buy-premium"
+          class="premium-btn premium-btn-gold"
+        >
+          Acquista l'accesso — 3,90€
+        </a>
+      </div>
+  </main>
+
+  <div id="image-modal" class="modal">
+      <button class="modal-close" id="modal-close-btn">✕</button>
+      <div class="modal-content-wrapper">
+          <img class="modal-img" id="modal-target-img" src="" alt="">
+          <h2 class="modal-title" id="modal-target-title"></h2>
+      </div>
+  </div>
+
+  <div class="castellana-widget-area">
+      <div class="castellana-video-wrapper" id="chat-open-btn">
+          <video class="castellana-video" autoplay muted loop playsinline>
+              <source src="img/castellana_alpha.webm" type="video/webm">
+          </video>
+      </div>
+      <div class="castellana-tooltip" data-i18n="chat.tooltip">Click to chat</div>
+  </div>
+
+  <div class="chat-desktop" id="chat-desktop">
+      <div class="chat-header">
+          <div class="avatar-status-dot"></div>
+          <span data-i18n="chat.title">La Castellana</span>
+          <button id="voice-toggle-btn" class="close-chat-btn" title="Attiva/disattiva voce" aria-label="Attiva o disattiva la voce">🔊</button>
+          <button id="close-chat" class="close-chat-btn">✕</button>
+      </div>
+      <div class="premium-status-bar" id="premium-status-bar"></div>
+      <div class="chat-messages" id="chat-messages-box">
+          <!-- Il benvenuto viene inserito via JS -->
+      </div>
+      <div class="chat-input-row">
+          <input type="text" placeholder="Scrivi alla Castellana..." data-i18n-placeholder="chat.placeholder">
+          <button id="mic-btn" class="mic-btn" type="button" title="Parla con la Castellana" aria-label="Parla con la Castellana">🎤</button>
+          <button class="send-btn" aria-label="Invia">➤</button>
+      </div>
+  </div>
+
+  <script>
+      // --- LOGICA CHAT ---
+      const chatBtn = document.getElementById('chat-open-btn');
+      const chatBox = document.getElementById('chat-desktop');
+      const closeChat = document.getElementById('close-chat');
+
+      // ============================================================
+      // MENU DI ANTEPRIMA — stesso principio di castello.html: anche
+      // senza Premium attivo, il turista vede subito l'elenco degli
+      // argomenti disponibili per ogni chiesa (una vetrina di cosa
+      // troverebbe attivando l'accesso), invece di un semplice
+      // messaggio di benvenuto senza indicazioni concrete.
+      // ============================================================
+      const CHIESE_KNOWLEDGE = {
+          it: {
+              welcome: "Benvenuto tra le chiese di Caccamo, viandante! Sono la Castellana e ti guiderò tra storia, arte e devozione di questi luoghi sacri. Quale vuoi scoprire per primo?",
+              closing: "E da qui è tutto, viandante! Spero di esserti stata utile. Se vuoi avere altre informazioni, vieni a trovarmi nelle altre pagine!",
+              groups: [
+                  { group: "I Cappuccini", items: [
+                      { topic: "chiese.cappuccini.storia", label: "🏰 Storia" },
+                      { topic: "chiese.cappuccini.interno", label: "🕯️ Interno" },
+                      { topic: "chiese.cappuccini.dove", label: "📍 Dove si trova" }
+                  ]},
+                  { group: "Santa Maria degli Angeli", items: [
+                      { topic: "chiese.santamariaangeli.storia", label: "🏰 Storia" },
+                      { topic: "chiese.santamariaangeli.interno", label: "🕯️ Interno" },
+                      { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Esterno" },
+                      { topic: "chiese.santamariaangeli.dove", label: "📍 Dove si trova" }
+                  ]},
+                  { group: "Annunziata", items: [
+                      { topic: "chiese.annunziata.storia", label: "🏰 Storia" },
+                      { topic: "chiese.annunziata.interno", label: "🕯️ Interno" },
+                      { topic: "chiese.annunziata.dove", label: "📍 Dove si trova" }
+                  ]},
+                  { group: "La Badia", items: [
+                      { topic: "chiese.badia.storia", label: "🏰 Storia" },
+                      { topic: "chiese.badia.esterno", label: "🖼️ Esterno" },
+                      { topic: "chiese.badia.interno", label: "🕯️ Interno" },
+                      { topic: "chiese.badia.dove", label: "📍 Dove si trova" }
+                  ]},
+                  { group: "San Giorgio Martire", items: [
+                      { topic: "chiese.duomo.storia", label: "🏰 Storia" },
+                      { topic: "chiese.duomo.interno", label: "🕯️ Interno" },
+                      { topic: "chiese.duomo.dove", label: "📍 Dove si trova" },
+                      { topic: "chiese.duomo.orari", label: "🎫 Orari e biglietti" }
+                  ]}
+              ]
+          },
+          en: {
+              welcome: "Welcome to the churches of Caccamo, traveler! I am the Castellana and I will guide you through the history, art and devotion of these sacred places. Which one would you like to discover first?",
+              closing: "That's all from here, traveler! I hope I was useful. For more information, come find me on the other pages!",
+              groups: [
+                  { group: "The Capuchins", items: [
+                      { topic: "chiese.cappuccini.storia", label: "🏰 History" },
+                      { topic: "chiese.cappuccini.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.cappuccini.dove", label: "📍 Location" }
+                  ]},
+                  { group: "Santa Maria degli Angeli", items: [
+                      { topic: "chiese.santamariaangeli.storia", label: "🏰 History" },
+                      { topic: "chiese.santamariaangeli.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Exterior" },
+                      { topic: "chiese.santamariaangeli.dove", label: "📍 Location" }
+                  ]},
+                  { group: "Annunziata", items: [
+                      { topic: "chiese.annunziata.storia", label: "🏰 History" },
+                      { topic: "chiese.annunziata.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.annunziata.dove", label: "📍 Location" }
+                  ]},
+                  { group: "The Badia", items: [
+                      { topic: "chiese.badia.storia", label: "🏰 History" },
+                      { topic: "chiese.badia.esterno", label: "🖼️ Exterior" },
+                      { topic: "chiese.badia.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.badia.dove", label: "📍 Location" }
+                  ]},
+                  { group: "San Giorgio Martire", items: [
+                      { topic: "chiese.duomo.storia", label: "🏰 History" },
+                      { topic: "chiese.duomo.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.duomo.dove", label: "📍 Location" },
+                      { topic: "chiese.duomo.orari", label: "🎫 Hours & Tickets" }
+                  ]}
+              ]
+          },
+          fr: {
+              welcome: "Bienvenue parmi les églises de Caccamo, voyageur ! Je suis la Castellana et je te guiderai à travers l'histoire, l'art et la dévotion de ces lieux sacrés. Laquelle veux-tu découvrir en premier ?",
+              closing: "C'est tout pour ici, voyageur ! J'espère t'avoir été utile. Pour en savoir plus, retrouve-moi sur les autres pages !",
+              groups: [
+                  { group: "Les Capucins", items: [
+                      { topic: "chiese.cappuccini.storia", label: "🏰 Histoire" },
+                      { topic: "chiese.cappuccini.interno", label: "🕯️ Intérieur" },
+                      { topic: "chiese.cappuccini.dove", label: "📍 Où se trouve" }
+                  ]},
+                  { group: "Santa Maria degli Angeli", items: [
+                      { topic: "chiese.santamariaangeli.storia", label: "🏰 Histoire" },
+                      { topic: "chiese.santamariaangeli.interno", label: "🕯️ Intérieur" },
+                      { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Extérieur" },
+                      { topic: "chiese.santamariaangeli.dove", label: "📍 Où se trouve" }
+                  ]},
+                  { group: "Annunziata", items: [
+                      { topic: "chiese.annunziata.storia", label: "🏰 Histoire" },
+                      { topic: "chiese.annunziata.interno", label: "🕯️ Intérieur" },
+                      { topic: "chiese.annunziata.dove", label: "📍 Où se trouve" }
+                  ]},
+                  { group: "La Badia", items: [
+                      { topic: "chiese.badia.storia", label: "🏰 Histoire" },
+                      { topic: "chiese.badia.esterno", label: "🖼️ Extérieur" },
+                      { topic: "chiese.badia.interno", label: "🕯️ Intérieur" },
+                      { topic: "chiese.badia.dove", label: "📍 Où se trouve" }
+                  ]},
+                  { group: "San Giorgio Martire", items: [
+                      { topic: "chiese.duomo.storia", label: "🏰 Histoire" },
+                      { topic: "chiese.duomo.interno", label: "🕯️ Intérieur" },
+                      { topic: "chiese.duomo.dove", label: "📍 Où se trouve" },
+                      { topic: "chiese.duomo.orari", label: "🎫 Horaires & Billets" }
+                  ]}
+              ]
+          },
+          es: {
+              welcome: "¡Bienvenido a las iglesias de Caccamo, viajero! Soy la Castellana y te guiaré por la historia, el arte y la devoción de estos lugares sagrados. ¿Cuál quieres descubrir primero?",
+              closing: "¡Eso es todo por aquí, viajero! Espero haberte sido útil. Para más información, ¡búscame en las otras páginas!",
+              groups: [
+                  { group: "Los Capuchinos", items: [
+                      { topic: "chiese.cappuccini.storia", label: "🏰 Historia" },
+                      { topic: "chiese.cappuccini.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.cappuccini.dove", label: "📍 Dónde está" }
+                  ]},
+                  { group: "Santa Maria degli Angeli", items: [
+                      { topic: "chiese.santamariaangeli.storia", label: "🏰 Historia" },
+                      { topic: "chiese.santamariaangeli.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Exterior" },
+                      { topic: "chiese.santamariaangeli.dove", label: "📍 Dónde está" }
+                  ]},
+                  { group: "Annunziata", items: [
+                      { topic: "chiese.annunziata.storia", label: "🏰 Historia" },
+                      { topic: "chiese.annunziata.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.annunziata.dove", label: "📍 Dónde está" }
+                  ]},
+                  { group: "La Badia", items: [
+                      { topic: "chiese.badia.storia", label: "🏰 Historia" },
+                      { topic: "chiese.badia.esterno", label: "🖼️ Exterior" },
+                      { topic: "chiese.badia.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.badia.dove", label: "📍 Dónde está" }
+                  ]},
+                  { group: "San Giorgio Martire", items: [
+                      { topic: "chiese.duomo.storia", label: "🏰 Historia" },
+                      { topic: "chiese.duomo.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.duomo.dove", label: "📍 Dónde está" },
+                      { topic: "chiese.duomo.orari", label: "🎫 Horarios y Entradas" }
+                  ]}
+              ]
+          },
+          de: {
+              welcome: "Willkommen bei den Kirchen von Caccamo, Reisender! Ich bin die Castellana und führe dich durch die Geschichte, Kunst und Frömmigkeit dieser heiligen Orte. Welche möchtest du zuerst entdecken?",
+              closing: "Das war's von hier, Reisender! Ich hoffe, ich konnte dir helfen. Für mehr Informationen findest du mich auf den anderen Seiten!",
+              groups: [
+                  { group: "Die Kapuziner", items: [
+                      { topic: "chiese.cappuccini.storia", label: "🏰 Geschichte" },
+                      { topic: "chiese.cappuccini.interno", label: "🕯️ Innenraum" },
+                      { topic: "chiese.cappuccini.dove", label: "📍 Standort" }
+                  ]},
+                  { group: "Santa Maria degli Angeli", items: [
+                      { topic: "chiese.santamariaangeli.storia", label: "🏰 Geschichte" },
+                      { topic: "chiese.santamariaangeli.interno", label: "🕯️ Innenraum" },
+                      { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Außenansicht" },
+                      { topic: "chiese.santamariaangeli.dove", label: "📍 Standort" }
+                  ]},
+                  { group: "Annunziata", items: [
+                      { topic: "chiese.annunziata.storia", label: "🏰 Geschichte" },
+                      { topic: "chiese.annunziata.interno", label: "🕯️ Innenraum" },
+                      { topic: "chiese.annunziata.dove", label: "📍 Standort" }
+                  ]},
+                  { group: "Die Badia", items: [
+                      { topic: "chiese.badia.storia", label: "🏰 Geschichte" },
+                      { topic: "chiese.badia.esterno", label: "🖼️ Außenansicht" },
+                      { topic: "chiese.badia.interno", label: "🕯️ Innenraum" },
+                      { topic: "chiese.badia.dove", label: "📍 Standort" }
+                  ]},
+                  { group: "San Giorgio Martire", items: [
+                      { topic: "chiese.duomo.storia", label: "🏰 Geschichte" },
+                      { topic: "chiese.duomo.interno", label: "🕯️ Innenraum" },
+                      { topic: "chiese.duomo.dove", label: "📍 Standort" },
+                      { topic: "chiese.duomo.orari", label: "🎫 Öffnungszeiten & Tickets" }
+                  ]}
+              ]
+          }
+      };
+
+      let hasShownWelcome = false;
+
+      chatBtn.addEventListener('click', () => {
+          chatBox.classList.add('active');
+          updatePremiumStatusDisplay();
+          if (!hasShownWelcome) {
+              renderWelcome();
+          } else {
+              loadTopicMenu();
+          }
+      });
+      closeChat.addEventListener('click', () => {
+          chatBox.classList.remove('active');
+          castellanaZitta();
+      });
+
+      function renderWelcome() {
+          const messagesBox = document.getElementById('chat-messages-box');
+          if (!messagesBox) return;
+          messagesBox.innerHTML = '';
+          exploredGroups.clear();
+          exploredTopics.clear();
+          menuLoadedForCode = null;
+
+          const knowledge = CHIESE_KNOWLEDGE[currentLang] || CHIESE_KNOWLEDGE.it;
+          appendChatMessage(knowledge.welcome, 'castellana');
+          if (voiceEnabled) speakText(knowledge.welcome);
+
+          renderTopicMenu(knowledge.groups);
+          loadTopicMenu();
+
+          hasShownWelcome = true;
+      }
+
+      // --- LOGICA MODAL ---
+      const cards = document.querySelectorAll('.card[data-img]');
+      const modal = document.getElementById('image-modal');
+      const modalImg = document.getElementById('modal-target-img');
+      const modalTitle = document.getElementById('modal-target-title');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+      cards.forEach(card => {
+          card.addEventListener('click', () => {
+              modalImg.src = card.getAttribute('data-img');
+              modalTitle.textContent = card.getAttribute('data-title');
+              modal.classList.add('active');
+          });
+      });
+      modalCloseBtn.addEventListener('click', () => modal.classList.remove('active'));
+      modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+
+      // --- LOGICA LINGUA ---
+      let currentLang = localStorage.getItem("lang") || "it";
+      let langData = {};
+
+      function t(path, fallback) {
+          const value = path.split('.').reduce((o,i) => o ? o[i] : null, langData);
+          return value || fallback;
+      }
+
+      function loadLanguage(lang) {
+          fetch(`./lang/${lang}.json`)
+              .then(res => res.json())
+              .then(data => {
+                  langData = data;
+                  document.querySelectorAll("[data-i18n]").forEach(el => {
+                      const key = el.getAttribute("data-i18n");
+                      const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                      if (text) el.innerHTML = text;
+                  });
+                  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+                      const key = el.getAttribute("data-i18n-placeholder");
+                      const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
+                      if (text) el.placeholder = text;
+                  });
+                  document.querySelectorAll(".lang-switcher button").forEach(btn => {
+                      btn.classList.toggle("active", btn.dataset.lang === lang);
+                  });
+              })
+              .catch(err => console.error("Errore lingua:", err));
+          localStorage.setItem("lang", lang);
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+          document.querySelectorAll(".lang-switcher button").forEach(btn => {
+              btn.addEventListener("click", () => {
+                  currentLang = btn.dataset.lang;
+                  loadLanguage(currentLang);
+                  updatePremiumStatusDisplay();
+                  const oldMenu = document.querySelector('.chat-messages .topic-menu-state');
+                  if (oldMenu) oldMenu.remove();
+                  menuLoadedForCode = null;
+                  exploredGroups.clear();
+                  exploredTopics.clear();
+                  if (chatBox.classList.contains('active')) renderWelcome();
+              });
+          });
+          loadLanguage(currentLang);
+      });
+
+      // ============================================================
+      // CONNESSIONE CHAT ↔ BACKEND PYTHON
+      // ============================================================
+      const API_BASE_URL = "https://castellana.pythonanywhere.com";
+      const PREMIUM_STORAGE_KEY = "amuni_premium_access";
+
+      // ============================================================
+      // TTS AVANZATO — La Castellana parla
+      //
+      // Due correzioni rispetto a prima:
+      //
+      // 1. VOCE SEMPRE FEMMINILE, IN OGNI LINGUA: prima la voce
+      //    veniva scelta filtrando SOLO voci italiane, sempre,
+      //    indipendentemente dalla lingua selezionata. Ora si sceglie
+      //    di nuovo ogni volta, nella lingua giusta.
+      //
+      // 2. VELOCITÀ DI AVVIO: chiamare cancel() e speak() nello
+      //    stesso istante è un bug noto dei browser (Chrome/Edge).
+      //    Ora c'è una piccola pausa tra i due comandi, e le voci
+      //    vengono "svegliate" subito al caricamento della pagina.
+      // ============================================================
+      const VOICE_PREF_KEY = "amuni_voice_enabled";
+      let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
+      const voiceToggleBtn = document.getElementById("voice-toggle-btn");
+
+      let vociDisponibili = [];
+      function aggiornaVociDisponibili() {
+          vociDisponibili = window.speechSynthesis.getVoices();
+      }
+      if ("speechSynthesis" in window) {
+          aggiornaVociDisponibili();
+          window.speechSynthesis.onvoiceschanged = aggiornaVociDisponibili;
+      }
+
+      const NOMI_VOCE_FEMMINILE = {
+          "it-IT": ["Google italiano", "Elsa", "Alice", "Federica", "Silvia", "Paola"],
+          "en-US": ["Google US English", "Samantha", "Zira", "Aria", "Jenny"],
+          "fr-FR": ["Google français", "Amelie", "Julie", "Denise", "Hortense"],
+          "de-DE": ["Google Deutsch", "Anna", "Katja", "Petra", "Helena"],
+          "es-ES": ["Google español", "Monica", "Helena", "Elvira", "Paloma"]
+      };
+      const INDIZI_VOCE_MASCHILE = /male|david|mark|daniel|thomas|diego|paolo|hans|marco|luca|carlos|antonio|cosimo/i;
+
+      function trovaVoceCastellana(langCode) {
+          if (!vociDisponibili.length) vociDisponibili = window.speechSynthesis.getVoices();
+
+          const nomiPreferiti = NOMI_VOCE_FEMMINILE[langCode] || [];
+          for (const nome of nomiPreferiti) {
+              const voce = vociDisponibili.find(v => v.name.includes(nome));
+              if (voce) return voce;
+          }
+
+          const linguaBase = langCode.split('-')[0];
+          const stessaLingua = vociDisponibili.filter(v =>
+              v.lang === langCode || (v.lang || '').startsWith(linguaBase)
+          );
+
+          // Cerca automaticamente indizi di voce neurale/di qualità superiore,
+          // utile per varianti non presenti nella lista fissa sopra
+          // (es. voci "Enhanced"/"Premium" scaricate su iOS, o "Online (Natural)" di Edge)
+          const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
+          const vociDiQualita = stessaLingua.filter(v =>
+              INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
+          );
+          if (vociDiQualita.length) return vociDiQualita[0];
+
+          const nonMaschile = stessaLingua.find(v => !INDIZI_VOCE_MASCHILE.test(v.name));
+
+          return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
+      }
+
+      // ============================================================
+      // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
+      // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
+      // Servono a due cose:
+      // 1. NON devono mai comparire come testo letto o mostrato
+      //    all'utente (stripEmotionTags li rimuove per la visualizzazione)
+      // 2. Modulano rate/pitch della sintesi vocale SOLO per la frase
+      //    che racchiudono (parseEmotionalSegments + speakText)
+      // ============================================================
+      const EMOTION_PRESETS = {
+          energico:    { rate: 1.05, pitch: 1.08 },
+          malinconico: { rate: 0.85, pitch: 0.90 },
+          fiero:       { rate: 0.95, pitch: 1.05 },
+          orgoglioso:  { rate: 0.93, pitch: 1.06 },
+          giocoso:     { rate: 1.02, pitch: 1.12 },
+          dolce:       { rate: 0.88, pitch: 0.98 },
+          dramatico:   { rate: 0.85, pitch: 0.85 }
+      };
+      const EMOTION_TAG_REGEX = /\[(energico|malinconico|fiero|orgoglioso|giocoso|dolce|dramatico)\]([\s\S]*?)\[\/\1\]/gi;
+
+      function stripEmotionTags(text) {
+          if (!text) return text;
+          return text
+              .replace(EMOTION_TAG_REGEX, (match, tag, contenuto) => contenuto)
+              .replace(/\s{2,}/g, ' ')
+              .trim();
+      }
+
+      function parseEmotionalSegments(text) {
+          const segmenti = [];
+          let ultimoIndice = 0;
+          let match;
+          EMOTION_TAG_REGEX.lastIndex = 0;
+          while ((match = EMOTION_TAG_REGEX.exec(text)) !== null) {
+              if (match.index > ultimoIndice) {
+                  const prima = text.slice(ultimoIndice, match.index).trim();
+                  if (prima) segmenti.push({ text: prima, emotion: null });
+              }
+              segmenti.push({ text: match[2].trim(), emotion: match[1].toLowerCase() });
+              ultimoIndice = EMOTION_TAG_REGEX.lastIndex;
+          }
+          if (ultimoIndice < text.length) {
+              const resto = text.slice(ultimoIndice).trim();
+              if (resto) segmenti.push({ text: resto, emotion: null });
+          }
+          return segmenti;
+      }
+
+      function updateVoiceToggleIcon() {
+          if (voiceToggleBtn) voiceToggleBtn.textContent = voiceEnabled ? "🔊" : "🔇";
+      }
+      updateVoiceToggleIcon();
+
+      if (voiceToggleBtn) {
+          voiceToggleBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              voiceEnabled = !voiceEnabled;
+              localStorage.setItem(VOICE_PREF_KEY, voiceEnabled ? "on" : "off");
+              updateVoiceToggleIcon();
+              if (!voiceEnabled && "speechSynthesis" in window) {
+                  window.speechSynthesis.cancel();
+              }
+          });
+      }
+
+      function ttsLangCode(lang) {
+          const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+          return map[lang] || "it-IT";
+      }
+
+      function speakText(text) {
+          if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
+          window.speechSynthesis.cancel();
+
+          // 1. Separa i segmenti taggati ([energico]...[/energico] ecc.)
+          // 2. Spezza ogni segmento in frasi, mantenendo l'emozione associata
+          const segmenti = parseEmotionalSegments(text);
+          const frasi = [];
+          segmenti.forEach(seg => {
+              seg.text
+                  .split(/(?<=[.!?])\s+|\n+/)
+                  .map(f => f.trim())
+                  .filter(f => f.length > 0)
+                  .forEach(f => frasi.push({ text: f, emotion: seg.emotion }));
+          });
+
+          if (!frasi.length) return;
+
+          setTimeout(() => {
+              const langCode = ttsLangCode(currentLang);
+              const voce = trovaVoceCastellana(langCode);
+              let indice = 0;
+
+              function parlaFrase() {
+                  if (indice >= frasi.length || !voiceEnabled) return;
+                  const frase = frasi[indice];
+                  const preset = EMOTION_PRESETS[frase.emotion] || { rate: 0.90, pitch: 1.0 };
+                  const utterance = new SpeechSynthesisUtterance(frase.text);
+                  utterance.voice = voce;
+                  utterance.lang = langCode;
+                  // leggera variazione naturale intorno al preset dell'emozione
+                  utterance.rate = preset.rate + (Math.random() * 0.06 - 0.03);
+                  utterance.pitch = preset.pitch + (Math.random() * 0.08 - 0.04);
+                  utterance.volume = 1.0;
+                  utterance.onend = () => {
+                      indice++;
+                      setTimeout(parlaFrase, 280); // micro-pausa tra le frasi, come un respiro
+                  };
+                  window.speechSynthesis.speak(utterance);
+              }
+
+              parlaFrase();
+          }, 60);
+      }
+
+      function castellanaZitta() {
+          if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      }
+
+      // ============================================================
+      // MICROFONO — il turista può parlare invece di scrivere
+      // ============================================================
+      const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const micBtn = document.getElementById("mic-btn");
+      let recognition = null;
+      let isListening = false;
+
+      function sttLangCode(lang) {
+          const map = { it: "it-IT", en: "en-US", fr: "fr-FR", es: "es-ES", de: "de-DE" };
+          return map[lang] || "it-IT";
+      }
+
+      if (SpeechRecognitionAPI && micBtn) {
+          recognition = new SpeechRecognitionAPI();
+          recognition.continuous = false;
+          recognition.interimResults = false;
+
+          recognition.onstart = () => {
+              isListening = true;
+              micBtn.classList.add("listening");
+          };
+          recognition.onend = () => {
+              isListening = false;
+              micBtn.classList.remove("listening");
+          };
+          recognition.onerror = () => {
+              isListening = false;
+              micBtn.classList.remove("listening");
+          };
+          recognition.onresult = (event) => {
+              const testoRiconosciuto = event.results[0][0].transcript;
+              sendChatMessage(testoRiconosciuto);
+          };
+
+          micBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              if (isListening) {
+                  recognition.stop();
+                  return;
+              }
+              recognition.lang = sttLangCode(currentLang);
+              castellanaZitta();
+              try {
+                  recognition.start();
+              } catch (err) {
+                  console.error("Errore riconoscimento vocale:", err);
+              }
+          });
+      } else if (micBtn) {
+          micBtn.style.display = "none";
+      }
+
+      function getPageSlug() {
+          const path = window.location.pathname;
+          const file = path.substring(path.lastIndexOf('/') + 1);
+          return file.replace('.html', '') || 'home';
+      }
+
+      const PAGE_LINK_LABELS = {
+          it: {
+              "castello.html": "Vai al Castello →",
+              "chiese-arte.html": "Vai a Chiese e Arte →",
+              "cibo_eventi.html": "Vai a Cibo e Eventi →",
+              "cittadino.html": "Vai al Cittadino del Borgo →",
+              "leggende_e_tradizioni.html": "Vai a Leggende e Tradizioni →",
+              "desktop_index.html": "Torna alla Home →"
+          },
+          en: {
+              "castello.html": "Go to the Castle →",
+              "chiese-arte.html": "Go to Churches & Art →",
+              "cibo_eventi.html": "Go to Food & Events →",
+              "cittadino.html": "Go to Citizen of the Village →",
+              "leggende_e_tradizioni.html": "Go to Legends & Traditions →",
+              "desktop_index.html": "Back to Home →"
+          },
+          fr: {
+              "castello.html": "Aller au Château →",
+              "chiese-arte.html": "Aller à Églises et Art →",
+              "cibo_eventi.html": "Aller à Gastronomie et Événements →",
+              "cittadino.html": "Aller à Citoyen du Village →",
+              "leggende_e_tradizioni.html": "Aller à Légendes et Traditions →",
+              "desktop_index.html": "Retour à l'accueil →"
+          },
+          es: {
+              "castello.html": "Ir al Castillo →",
+              "chiese-arte.html": "Ir a Iglesias y Arte →",
+              "cibo_eventi.html": "Ir a Comida y Eventos →",
+              "cittadino.html": "Ir a Ciudadano del Pueblo →",
+              "leggende_e_tradizioni.html": "Ir a Leyendas y Tradiciones →",
+              "desktop_index.html": "Volver al Inicio →"
+          },
+          de: {
+              "castello.html": "Zum Schloss →",
+              "chiese-arte.html": "Zu Kirchen und Kunst →",
+              "cibo_eventi.html": "Zu Essen und Events →",
+              "cittadino.html": "Zum Bürger des Dorfes →",
+              "leggende_e_tradizioni.html": "Zu Legenden und Traditionen →",
+              "desktop_index.html": "Zurück zur Startseite →"
+          }
+      };
+
+      const MAP_LABEL_BY_LANG = {
+          it: "Vedi sulla mappa →", en: "See on the map →", fr: "Voir sur la carte →",
+          es: "Ver en el mapa →", de: "Auf der Karte ansehen →"
+      };
+
+      const ORARI_LABEL_BY_LANG = {
+          it: "Orari e biglietti →", en: "Hours & tickets →", fr: "Horaires et billets →",
+          es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →"
+      };
+
+      function getLinkLabel(link) {
+          if (link && link.includes('mappa.html')) {
+              return MAP_LABEL_BY_LANG[currentLang] || MAP_LABEL_BY_LANG.it;
+          }
+          if (link && link.includes('/mobile/')) {
+              return ORARI_LABEL_BY_LANG[currentLang] || ORARI_LABEL_BY_LANG.it;
+          }
+          const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
+          return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
+      }
+
+      function openMapOverlay(url) {
+          const overlay = document.createElement('div');
+          overlay.className = 'map-overlay';
+          overlay.innerHTML = `
+              <button class="map-overlay-close" aria-label="Chiudi la mappa">✕</button>
+              <iframe src="${url}" allow="geolocation" title="Mappa Amunì"></iframe>
+          `;
+          document.body.appendChild(overlay);
+          overlay.querySelector('.map-overlay-close').addEventListener('click', () => {
+              overlay.remove();
+          });
+      }
+
+      // ============================================================
+      // RENDERING MESSAGGI CHAT
+      // ============================================================
+      function appendChatMessage(text, sender, link) {
+          const messagesBox = document.getElementById('chat-messages-box');
+          if (!messagesBox) return;
+
+          const msgWrap = document.createElement('div');
+          msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
+          msgWrap.style.cssText = 'display:flex; align-items:flex-start; gap:8px;';
+
+          const textSpan = document.createElement('span');
+          textSpan.style.cssText = 'flex:1;';
+          textSpan.textContent = stripEmotionTags(text);
+          msgWrap.appendChild(textSpan);
+
+          if (sender !== 'user') {
+              const audioBtn = document.createElement('button');
+              audioBtn.innerHTML = '🔊';
+              audioBtn.title = 'Ascolta la Castellana';
+              audioBtn.style.cssText = `
+                  background: rgba(184, 135, 59, 0.15);
+                  border: none;
+                  border-radius: 50%;
+                  width: 36px;
+                  height: 36px;
+                  font-size: 16px;
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                  transition: background 0.2s;
+              `;
+              audioBtn.onmouseenter = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.35)';
+              audioBtn.onmouseleave = () => audioBtn.style.background = 'rgba(184, 135, 59, 0.15)';
+              audioBtn.onclick = () => speakText(text);
+              msgWrap.appendChild(audioBtn);
+          }
+
+          messagesBox.appendChild(msgWrap);
+
+          if (link) {
+              const btn = document.createElement('button');
+              btn.className = 'chat-link-btn';
+              btn.textContent = getLinkLabel(link);
+              btn.style.cssText = 'margin-left: 44px; margin-top: 4px;';
+              btn.addEventListener('click', () => {
+                  if (link.includes('mappa.html') || link.includes('/mobile/')) {
+                      openMapOverlay(link);
+                  } else {
+                      window.location.href = link;
+                  }
+              });
+              messagesBox.appendChild(btn);
+          }
+
+          messagesBox.scrollTop = messagesBox.scrollHeight;
+      }
+
+      // ============================================================
+      // MENU A PULSANTI — "contesto persistente"
+      // ============================================================
+      let fullTopicMenu = [];
+      let exploredGroups = new Set();
+      let exploredTopics = new Set();
+
+      function renderTopicMenu(menu) {
+          if (!menu || !menu.length) return;
+          fullTopicMenu = menu;
+          renderMenuState(null);
+      }
+
+      function renderMenuState(currentGroupName) {
+          const messagesBox = document.getElementById('chat-messages-box');
+
+          const old = document.querySelector('.chat-messages .topic-menu-state');
+          if (old) old.remove();
+
+          const wrap = document.createElement('div');
+          wrap.className = 'topic-menu topic-menu-state';
+
+          if (currentGroupName) {
+              const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
+              if (groupEntry) {
+                  groupEntry.items.forEach(it => {
+                      const b = document.createElement('button');
+                      b.className = 'topic-btn';
+                      b.textContent = it.label;
+                      b.addEventListener('click', () => sendTopicRequest(it.topic, it.label, currentGroupName));
+                      wrap.appendChild(b);
+                  });
+              }
+          }
+
+          fullTopicMenu.forEach(entry => {
+              if (entry.group) {
+                  if (exploredGroups.has(entry.group)) return;
+                  const groupBtn = document.createElement('button');
+                  groupBtn.className = 'topic-btn topic-group-btn';
+                  groupBtn.textContent = entry.group + ' ▸';
+                  groupBtn.addEventListener('click', () => renderMenuState(entry.group));
+                  wrap.appendChild(groupBtn);
+              } else {
+                  if (exploredTopics.has(entry.topic)) return;
+                  const b = document.createElement('button');
+                  b.className = 'topic-btn';
+                  b.textContent = entry.label;
+                  b.addEventListener('click', () => sendTopicRequest(entry.topic, entry.label, null));
+                  wrap.appendChild(b);
+              }
+          });
+
+          messagesBox.appendChild(wrap);
+          messagesBox.scrollTop = messagesBox.scrollHeight;
+      }
+
+      async function sendTopicRequest(topicId, label, groupName) {
+          appendChatMessage(label, 'user');
+          const old = document.querySelector('.chat-messages .topic-menu-state');
+          if (old) old.remove();
+          try {
+              const res = await fetch(`${API_BASE_URL}/chat`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      message: label,
+                      page: getPageSlug(),
+                      lang: currentLang,
+                      access_code: getStoredAccessCode() || "",
+                      topic: topicId
+                  })
+              });
+              if (!res.ok) throw new Error('Risposta non valida dal server');
+              const data = await res.json();
+              appendChatMessage(data.reply, 'castellana', data.link);
+              if (data.speak || voiceEnabled) speakText(data.reply);
+              lastTopic = data.topic || topicId;
+              if (groupName) {
+                  exploredGroups.add(groupName);
+              } else {
+                  exploredTopics.add(topicId);
+              }
+              renderMenuState(groupName);
+          } catch (err) {
+              console.error('Errore richiesta topic:', err);
+              appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+          }
+      }
+
+      let menuLoadedForCode = null;
+      let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
+      async function loadTopicMenu() {
+          const code = getStoredAccessCode();
+          if (!code || menuLoadedForCode === code) return;
+          try {
+              const res = await fetch(`${API_BASE_URL}/chat`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      message: "",
+                      page: getPageSlug(),
+                      lang: currentLang,
+                      access_code: code,
+                      topic: ""
+                  })
+              });
+              if (!res.ok) return;
+              const data = await res.json();
+              if (data.premium_active && data.menu && data.menu.length) {
+                  renderTopicMenu(data.menu);
+                  menuLoadedForCode = code;
+              }
+          } catch (err) {
+              console.error('Errore caricamento menu:', err);
+          }
+      }
+
+      function getStoredAccessCode() {
+          const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+          if (!raw) return null;
+          try {
+              const data = JSON.parse(raw);
+              if (new Date(data.expires_at) > new Date()) {
+                  return data.code;
+              } else {
+                  localStorage.removeItem(PREMIUM_STORAGE_KEY);
+                  return null;
+              }
+          } catch (e) {
+              return null;
+          }
+      }
+
+      const PREMIUM_STATUS_TEXT = {
+          it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
+          en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
+          fr: { active: (d) => `👑 Premium actif jusqu'au ${d}`, free: "🔓 Version gratuite" },
+          es: { active: (d) => `👑 Premium activo hasta el ${d}`, free: "🔓 Versión gratuita" },
+          de: { active: (d) => `👑 Premium aktiv bis ${d}`, free: "🔓 Kostenlose Version" }
+      };
+
+      function updatePremiumStatusDisplay() {
+          const bar = document.getElementById('premium-status-bar');
+          if (!bar) return;
+          const texts = PREMIUM_STATUS_TEXT[currentLang] || PREMIUM_STATUS_TEXT.it;
+          const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
+          if (raw) {
+              try {
+                  const data = JSON.parse(raw);
+                  if (new Date(data.expires_at) > new Date()) {
+                      const d = new Date(data.expires_at);
+                      const formatted = d.toLocaleDateString(currentLang, { day: 'numeric', month: 'long' }) +
+                          ' ' + d.toLocaleTimeString(currentLang, { hour: '2-digit', minute: '2-digit' });
+                      bar.textContent = texts.active(formatted);
+                      bar.classList.add('premium-active');
+                      bar.classList.remove('premium-free');
+                      return;
+                  }
+              } catch (e) { /* codice non valido, trattalo come gratuito */ }
+          }
+          bar.textContent = texts.free;
+          bar.classList.add('premium-free');
+          bar.classList.remove('premium-active');
+      }
+
+      function storeAccessCode(code, expiresAt) {
+          localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
+              code: code,
+              expires_at: expiresAt
+          }));
+      }
+
+      async function tryActivateCode(rawMessage) {
+          const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9-]+)/i);
+          if (!match) return false;
+
+          const code = match[2].toUpperCase();
+          appendChatMessage(rawMessage, 'user');
+
+          try {
+              const res = await fetch(`${API_BASE_URL}/activate-code`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ code: code, lang: currentLang })
+              });
+              const data = await res.json();
+
+              if (data.success) {
+                  storeAccessCode(code, data.expires_at);
+                  const expiryDate = new Date(data.expires_at);
+                  const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+                  appendChatMessage(t('premium.activated_prefix', 'Premium attivato! Avrai accesso ai contenuti esclusivi fino al ') + formatted + '.', 'castellana');
+                  updatePremiumStatusDisplay();
+                  loadTopicMenu();
+              } else {
+                  appendChatMessage(data.message || t('premium.invalid_code', 'Codice non valido.'), 'castellana');
+              }
+          } catch (err) {
+              console.error('Errore attivazione codice:', err);
+              appendChatMessage(t('premium.code_check_error', 'Al momento non riesco a verificare il codice — riprova tra poco.'), 'castellana');
+          }
+
+          return true;
+      }
+
+      async function sendChatMessage(text) {
+          if (!text.trim()) return;
+
+          const wasActivationAttempt = await tryActivateCode(text);
+          if (wasActivationAttempt) return;
+
+          appendChatMessage(text, 'user');
+          castellanaZitta();
+
+          try {
+              const res = await fetch(`${API_BASE_URL}/chat`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      message: text,
+                      page: getPageSlug(),
+                      lang: currentLang,
+                      access_code: getStoredAccessCode() || "",
+                      last_topic: lastTopic || ""
+                  })
+              });
+
+              if (!res.ok) throw new Error('Risposta non valida dal server');
+
+              const data = await res.json();
+              appendChatMessage(data.reply, 'castellana', data.link);
+              if (data.speak || voiceEnabled) speakText(data.reply);
+              if (data.topic) lastTopic = data.topic;
+
+          } catch (err) {
+              console.error('Errore chat:', err);
+              appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+          }
+      }
+
+      const chatInputField = document.querySelector('.chat-input-row input');
+      const sendBtn = document.querySelector('.send-btn');
+
+      function handleSend() {
+          sendChatMessage(chatInputField.value);
+          chatInputField.value = '';
+      }
+
+      if (chatInputField) {
+          chatInputField.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.keyCode === 13) {
+                  e.preventDefault();
+                  handleSend();
+              }
+          });
+      }
+      if (sendBtn) {
+          sendBtn.addEventListener('click', handleSend);
+      }
+
+      // ============================================================
+      // BOTTONE PREMIUM — "Ho già un codice" apre la chat e invita
+      // a scrivere il codice; "Acquista l'accesso" avvia Stripe.
+      // ============================================================
+      document.getElementById('btn-premium-code').addEventListener('click', () => {
+        chatBox.classList.add('active');
+        appendChatMessage(
+          t('premium.chat_code_prompt', 'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"'),
+          'castellana'
+        );
+      });
+
+      document.getElementById('btn-buy-premium').addEventListener('click', async (e) => {
+        e.preventDefault();
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+        btn.textContent = "Un momento...";
+        try {
+          const res = await fetch(`${API_BASE_URL}/create-checkout-session`, { method: "POST" });
+          const data = await res.json();
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            alert(t('premium.payment_start_error', "Non riesco ad avviare il pagamento. Riprova tra poco."));
+            btn.textContent = originalText;
+          }
+        } catch (err) {
+          console.error("Errore avvio pagamento:", err);
+          alert(t('premium.payment_connection_error', "Errore di collegamento. Riprova tra poco."));
+          btn.textContent = originalText;
+        }
+      });
+  </script>
+  <footer class="footer-copyright" style="text-align: center; padding: 30px 20px 100px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem;">
+    <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
+    <p style="font-size: 0.8rem; margin-top: 8px;">
+        Le conversazioni con la Castellana possono essere registrate in forma anonima
+        per migliorare la qualità del servizio.
+        <a href="privacy.html" style="color: #D4AF6A;">Maggiori informazioni</a>
+    </p>
+</footer>
+</body>
+</html>
