@@ -27,12 +27,10 @@
    dallo script in fondo alla pagina, e qui diventa "statica"
    cioè scorre con la pagina come un elemento normale. */
 #stcm-icon {
-  position: static !important;
-  width: 40px !important;
-  height: 40px !important;
-  margin: 0 auto 10px !important;
-  display: block !important;
-  visibility: hidden !important;
+  width: 36px !important;
+  height: 36px !important;
+  bottom: 10px !important;
+  left: 10px !important;
 }
 </style>
 <!-- Rende gtag() richiamabile da qualunque punto della pagina (serve per gli eventi personalizzati di ricerca) -->
@@ -1124,7 +1122,6 @@ window.silktideConsentManager.init({
     </script>
 
     <footer class="footer-copyright" style="text-align: center; padding: 30px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem; margin-top: 40px; position: relative; z-index: 1;">
-        <div id="footer-cookie-slot"></div>
         <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
         <p style="font-size: 0.8rem; margin-top: 8px;">
             Le conversazioni con la Castellana possono essere registrate in forma anonima
@@ -1133,32 +1130,5 @@ window.silktideConsentManager.init({
         </p>
     </footer>
 
-    <script>
-        // Sposta l'iconetta dei cookie dentro il footer NELL'ISTANTE
-        // in cui viene creata da Silktide, e solo allora la rende
-        // visibile: cosi' non si vede mai comparire "al centro" della
-        // pagina prima di saltare nel footer.
-        (function() {
-            const slot = document.getElementById('footer-cookie-slot');
-            if (!slot) return;
-
-            function tryMove() {
-                const icon = document.getElementById('stcm-icon');
-                if (icon) {
-                    slot.appendChild(icon);
-                    icon.style.visibility = 'visible';
-                    return true;
-                }
-                return false;
-            }
-
-            if (tryMove()) return;
-
-            const observer = new MutationObserver(function() {
-                if (tryMove()) observer.disconnect();
-            });
-            observer.observe(document.body, { childList: true, subtree: true });
-        })();
-    </script>
 </body>
 </html>
