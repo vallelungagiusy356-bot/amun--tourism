@@ -21,6 +21,15 @@
   --iconColor: #EFE6D3;
   --iconBackgroundColor: #22303B;
 }
+
+/* Icona "riapri preferenze cookie" — piccola e chiusa nell'angolo,
+   per non coprire testi e bottoni sotto di lei */
+#stcm-icon {
+  width: 30px !important;
+  height: 30px !important;
+  bottom: 6px !important;
+  left: 6px !important;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
 <script>
@@ -199,5 +208,14 @@ window.silktideConsentManager.init({
             loadLanguage(currentLang);
         });
     </script>
+
+    <footer class="footer-copyright" style="text-align: center; padding: 30px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem; margin-top: 40px; position: relative; z-index: 1;">
+        <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
+        <p style="font-size: 0.8rem; margin-top: 8px;">
+            Le conversazioni con la Castellana possono essere registrate in forma anonima
+            per migliorare la qualità del servizio.
+            <a href="../mobile/privacy.html" style="color: #D4AF6A;">Maggiori informazioni</a>
+        </p>
+    </footer>
 </body>
 </html>
