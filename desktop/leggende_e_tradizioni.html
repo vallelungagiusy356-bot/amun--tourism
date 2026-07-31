@@ -22,6 +22,21 @@
   --iconColor: #EFE6D3;
   --iconBackgroundColor: #22303B;
 }
+
+/* Icona "riapri preferenze cookie" — rimpicciolita e alzata
+   un po' da terra, per non coprire testi e bottoni sotto di lei */
+#stcm-icon {
+  width: 48px !important;
+  height: 48px !important;
+  bottom: 14px !important;
+  left: 14px !important;
+}
+
+/* Spazio di sicurezza in fondo alla pagina, così l'ultimo
+   contenuto non finisce mai sotto l'icona cookie fissa */
+body {
+  padding-bottom: 90px;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
 <script>
