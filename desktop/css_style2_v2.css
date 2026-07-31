@@ -803,7 +803,7 @@ body {
    ============================================================ */
 .footer-copyright {
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px 20px 100px 20px;
     color: var(--gold);
     font-size: 0.85rem;
     letter-spacing: 0.5px;
