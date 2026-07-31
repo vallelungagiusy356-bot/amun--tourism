@@ -56,7 +56,13 @@ body {
     background-size: cover;
     background-position: center;
     filter: brightness(0.88) contrast(1.12) saturate(1.2);
-    z-index: 0;
+    z-index: -1;
+    /* Evita lo sfarfallio/scomparsa del footer durante lo scroll
+       veloce su Android: forza questo sfondo su un livello grafico
+       separato, così il telefono non deve "ridisegnarlo" ogni volta
+       insieme al resto della pagina. */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .scene-background::after {
