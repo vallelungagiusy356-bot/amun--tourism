@@ -39,7 +39,8 @@ body {
     color: var(--ink);
     overflow-x: hidden;
     overflow-y: auto;
-    min-height: 100vh;
+    min-height: 100vh; /* fallback per browser meno recenti */
+    min-height: 100dvh; /* altezza reale dello schermo, aggiornata mentre scorri */
 }
 
 /* ==========================================================================
@@ -170,7 +171,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    min-height: 100vh;
+    min-height: 100vh; /* fallback per browser meno recenti */
+    min-height: 100dvh; /* altezza reale dello schermo, aggiornata mentre scorri */
     position: relative;
     z-index: 2;
 }
