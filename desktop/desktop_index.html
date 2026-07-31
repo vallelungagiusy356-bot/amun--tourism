@@ -235,8 +235,8 @@ window.silktideConsentManager.init({
                 <p data-i18n="home.install_app_text">
                     Apri Amunì dal tuo smartphone per avere sempre a portata di mano mappe, orari e trasporti — e aggiungila alla schermata Home per ritrovarla con un tocco.
                 </p>
-                <div class="btn-group">
-                    <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html" class="btn-desktop">
+                <div class="btn-group" id="app-link-area">
+                    <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html" class="btn-desktop" id="mobile-app-link">
                         🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span>
                     </a>
                 </div>
@@ -1146,6 +1146,51 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
         if (sendBtn) {
             sendBtn.addEventListener('click', handleSend);
         }
+    </script>
+
+    <script>
+    // ============================================================
+    // BOTTONE WEBAPP vs QR CODE — su schermi larghi (PC) mostra un
+    // QR code da inquadrare col telefono, invece del bottone diretto:
+    // cliccandolo da un vero computer, la versione mobile risulterebbe
+    // rimpicciolita e mal proporzionata. Su schermi stretti (già da
+    // telefono) il bottone resta cliccabile normalmente, perché lì
+    // funziona benissimo.
+    // ============================================================
+    (function() {
+        const MOBILE_URL = "https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html";
+        const area = document.getElementById('app-link-area');
+        if (!area) return;
+
+        const SOGLIA_SCHERMO_LARGO = 900; // stessa soglia usata altrove nel sito per il mobile
+
+        function mostraLinkOQr() {
+            const schermoLargo = window.innerWidth > SOGLIA_SCHERMO_LARGO;
+
+            if (schermoLargo) {
+                if (document.getElementById('mobile-qr-code')) return; // già mostrato, non rigenerare
+                area.innerHTML = `
+                    <div id="mobile-qr-code" style="text-align:center;">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(MOBILE_URL)}"
+                             alt="QR code per aprire la versione mobile di Amunì Tourism"
+                             width="180" height="180"
+                             style="border-radius: 8px; background:#fff; padding:8px; display:block; margin:0 auto;">
+                        <p style="margin-top:10px; font-size:0.9rem; color:var(--stone-dim, #DCCFAF);">
+                            📱 Inquadra il QR code con la fotocamera del telefono per aprire la versione mobile ottimizzata
+                        </p>
+                    </div>`;
+            } else {
+                if (document.getElementById('mobile-app-link')) return; // già mostrato, non rigenerare
+                area.innerHTML = `
+                    <a href="${MOBILE_URL}" class="btn-desktop" id="mobile-app-link">
+                        🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span>
+                    </a>`;
+            }
+        }
+
+        mostraLinkOQr();
+        window.addEventListener('resize', mostraLinkOQr);
+    })();
     </script>
 </body>
 </html>
