@@ -22,13 +22,16 @@
   --iconBackgroundColor: #22303B;
 }
 
-/* Icona "riapri preferenze cookie" — rimpicciolita e alzata
-   un po' da terra, per non coprire testi e bottoni sotto di lei */
+/* Icona "riapri preferenze cookie" — non più fissa in basso a
+   sinistra sopra i contenuti: viene spostata dentro il footer
+   dallo script più in basso nella pagina, e qui diventa "statica"
+   cioè scorre con la pagina come un elemento normale. */
 #stcm-icon {
-  width: 48px !important;
-  height: 48px !important;
-  bottom: 14px !important;
-  left: 14px !important;
+  position: static !important;
+  width: 40px !important;
+  height: 40px !important;
+  margin: 0 auto 10px !important;
+  display: block !important;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
@@ -1228,7 +1231,8 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
         }
     </script>
 
-    <footer class="footer-copyright" style="text-align: center; padding: 30px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem;">
+    <footer class="footer-copyright" style="text-align: center; padding: 30px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem; margin-top: 40px;">
+        <div id="footer-cookie-slot"></div>
         <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
         <p style="font-size: 0.8rem; margin-top: 8px;">
             Le conversazioni con la Castellana possono essere registrate in forma anonima
@@ -1236,6 +1240,22 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             <a href="../mobile/privacy.html" style="color: #D4AF6A;">Maggiori informazioni</a>
         </p>
     </footer>
+
+    <script>
+        // Sposta l'iconetta dei cookie (creata dallo script Silktide)
+        // dentro il footer, invece di lasciarla "flottante" sopra i
+        // contenuti. Aspettiamo un attimo perché Silktide la crea
+        // dopo il caricamento della pagina.
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const icon = document.getElementById('stcm-icon');
+                const slot = document.getElementById('footer-cookie-slot');
+                if (icon && slot) {
+                    slot.appendChild(icon);
+                }
+            }, 800);
+        });
+    </script>
 
 </body>
 </html>
