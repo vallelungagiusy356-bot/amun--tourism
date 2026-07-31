@@ -1,4 +1,4 @@
-const CACHE_NAME = "amuni-cache-v2";
+const CACHE_NAME = "amuni-cache-v3";
 const OFFLINE_URL = "./index.html";
 
 // File da pre‑cache
