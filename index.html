@@ -3,6 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <title>Amunì Tourism</title>
+
+    <!-- ============================================================
+     BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
+     Include: Silktide Consent Manager (banner GDPR, gratuito)
+     + Google Analytics G-DNTGGXSSM0 (parte SOLO dopo consenso)
+     ============================================================ -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" id="silktide-consent-manager-css" href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css" integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
+    <style id="silktide-consent-manager-overrides">
+    #stcm-wrapper {
+      --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
+      --fontFamily: Helvetica Neue, Segoe UI, Arial, sans-serif;
+      --primaryColor: #9C4C22;
+      --backgroundColor: #efe6d3;
+      --textColor: #22303b;
+      --backdropBackgroundColor: #00000033;
+      --backdropBackgroundBlur: 0px;
+      --iconColor: #EFE6D3;
+      --iconBackgroundColor: #22303B;
+    }
+    #stcm-icon {
+      width: 48px !important;
+      height: 48px !important;
+      bottom: 14px !important;
+      left: 14px !important;
+    }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
+    <script>
+    window.silktideConsentManager.init({
+      backdrop: { show: false },
+      icon: { position: "bottomLeft" },
+      prompt: { position: "bottomCenter" },
+      consentTypes: [
+        {
+          id: "essential",
+          label: "Essenziali",
+          description: "<p>Cookie tecnici necessari al funzionamento del sito, come la memoria della lingua scelta e del codice Premium attivato. Non possono essere disattivati.</p>",
+          required: true,
+          onAccept: function() {
+            // Cookie tecnici: nessuna azione necessaria
+          }
+        },
+        {
+          id: "analytics",
+          label: "Statistiche",
+          description: "Questi cookie ci aiutano a capire come i visitatori usano il sito, in forma aggregata e anonima, per migliorare i contenuti di Amunì Tourism.",
+          required: false,
+          gtag: "analytics_storage",
+          scripts: [
+            {
+              url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0",
+              load: "async"
+            }
+          ],
+          onAccept: function() {
+            // Google Analytics 4 (G-DNTGGXSSM0)
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { window.dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-DNTGGXSSM0', { 'anonymize_ip': true });
+          }
+        }
+      ],
+      text: {
+        banner: {
+          description: "<p>Amunì Tourism utilizza i cookie per offrirti la migliore esperienza di navigazione e per analizzare il traffico del sito in forma anonima. Puoi scegliere quali accettare.</p>",
+          acceptAllButtonText: "Accetta tutti",
+          acceptAllButtonAccessibleLabel: "Accetta tutti i cookie",
+          rejectNonEssentialButtonText: "Rifiuta i non essenziali",
+          rejectNonEssentialButtonAccessibleLabel: "Rifiuta tutti i cookie non essenziali",
+          preferencesButtonText: "Preferenze",
+          preferencesButtonAccessibleLabel: "Apri le preferenze cookie"
+        },
+        prompt: {
+          description: "<p>Amunì Tourism utilizza i cookie per offrirti la migliore esperienza di navigazione e per analizzare il traffico del sito in forma anonima. Puoi scegliere quali accettare.</p>",
+          acceptAllButtonText: "Accetta tutti",
+          acceptAllButtonAccessibleLabel: "Accetta tutti i cookie",
+          rejectNonEssentialButtonText: "Rifiuta i non essenziali",
+          rejectNonEssentialButtonAccessibleLabel: "Rifiuta tutti i cookie non essenziali",
+          preferencesButtonText: "Preferenze",
+          preferencesButtonAccessibleLabel: "Apri le preferenze cookie"
+        },
+        preferences: {
+          title: "Personalizza le tue preferenze cookie",
+          description: "<p>Rispettiamo il tuo diritto alla privacy. Puoi scegliere di non consentire alcuni tipi di cookie. Le tue preferenze verranno applicate a tutto il sito.</p>",
+          saveButtonText: "Salva e chiudi",
+          saveButtonAccessibleLabel: "Salva le tue preferenze cookie",
+          creditLinkText: "Ottieni questo banner gratis",
+          creditLinkAccessibleLabel: "Ottieni questo banner gratis"
+        }
+      }
+    });
+    </script>
+    <!-- ============================================================
+         FINE BLOCCO COOKIE + ANALYTICS
+         ============================================================ -->
+
     <script>
     // Inizializza il controllo dei parametri URL
     const urlParams = new URLSearchParams(window.location.search);
