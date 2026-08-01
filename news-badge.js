@@ -133,61 +133,16 @@
             }
             #news-badge-list a:last-child { border-bottom: none; padding-bottom: 0; }
             #news-badge-list a:hover { color: #fff; }
-
-            /* Stato "agganciato": quando il footer si avvicina, il tooltip
-               smette di seguire lo scroll con position:fixed e si blocca
-               appena sopra al footer, così non ci finisce mai sopra. */
-            #news-badge-wrap.footer-docked {
-                position: absolute;
-                bottom: auto;
-            }
         `;
         document.head.appendChild(style);
     }
 
-    // Distanza dal fondo pagina a cui il tooltip resta ancorato normalmente
-    // (deve combaciare con il "bottom" impostato nel CSS di #news-badge-wrap)
-    const FIXED_BOTTOM_OFFSET = 90;
-    // Spazio extra tra il tooltip agganciato e il bordo superiore del footer
-    const FOOTER_MARGIN = 20;
-
-    function initFooterDock(wrap) {
-        const footer = document.querySelector("footer.footer-copyright") || document.querySelector("footer");
-        if (!footer) return; // nessun footer trovato: il tooltip resta fixed come prima
-
-        let ticking = false;
-
-        function updatePosition() {
-            ticking = false;
-            const footerRect = footer.getBoundingClientRect();
-            const badgeHeight = wrap.offsetHeight;
-
-            // Il tooltip (fixed) occuperebbe lo spazio tra
-            // (viewport bottom - FIXED_BOTTOM_OFFSET - badgeHeight) e (viewport bottom - FIXED_BOTTOM_OFFSET).
-            // Se il bordo superiore del footer entra in quello spazio, agganciamo il tooltip.
-            const wouldOverlap = footerRect.top < (window.innerHeight - FIXED_BOTTOM_OFFSET);
-
-            if (wouldOverlap) {
-                const footerTopInDocument = footerRect.top + window.scrollY;
-                wrap.style.top = (footerTopInDocument - badgeHeight - FOOTER_MARGIN) + "px";
-                wrap.classList.add("footer-docked");
-            } else {
-                wrap.classList.remove("footer-docked");
-                wrap.style.top = "";
-            }
-        }
-
-        function onScrollOrResize() {
-            if (!ticking) {
-                ticking = true;
-                requestAnimationFrame(updatePosition);
-            }
-        }
-
-        window.addEventListener("scroll", onScrollOrResize, { passive: true });
-        window.addEventListener("resize", onScrollOrResize);
-        updatePosition();
-    }
+    // NOTA: l'aggancio sopra al footer per questo badge non è più gestito
+    // qui, ma da un unico file condiviso — widget-position-fix.js — che
+    // si occupa della stessa cosa anche per il widget della Castellana.
+    // Prima c'erano due logiche separate che si contendevano la posizione
+    // del badge (una in fixed, una in absolute): risultato imprevedibile.
+    // Ora ce n'è una sola, in un solo posto.
 
     function startPulseCycle(wrap) {
         function pulseOnce() {
@@ -241,7 +196,6 @@
         }
 
         document.body.appendChild(wrap);
-        initFooterDock(wrap);
         startPulseCycle(wrap);
     }
 
