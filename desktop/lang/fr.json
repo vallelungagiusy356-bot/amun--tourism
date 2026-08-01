@@ -25,7 +25,8 @@
     "code_check_error": "Je n'arrive pas a verifier le code pour le moment — reessaie bientot.",
     "chat_code_prompt": "Pour activer ton acces Premium, ecris-moi ici : \"code TONCODE\"",
     "payment_start_error": "Je n'arrive pas a demarrer le paiement. Reessaie bientot.",
-    "payment_connection_error": "Erreur de connexion. Reessaie bientot."
+    "payment_connection_error": "Erreur de connexion. Reessaie bientot.",
+    "launch_badge": "🎉 Prix de lancement, valable jusqu'au 1er novembre 2026 — puis 5,00 €"
   },
   "pages": {
     "castle_page": {
@@ -117,7 +118,8 @@
       "peri_who": "Comptine pour cache-cache",
       "group_preghiere": "Les Prières",
       "preghiera_title": "Prière du Soir",
-      "preghiera_who": "Berceuse protectrice"
+      "preghiera_who": "Berceuse protectrice",
+      "dialect_note": "Le texte en dialecte est présenté avec la traduction et la signification de l'expression, pas seulement la traduction littérale."
     },
     "about": {
       "category": "Le Projet",

@@ -25,7 +25,8 @@
     "code_check_error": "I can't verify the code right now — please try again shortly.",
     "chat_code_prompt": "To activate your Premium access, write to me here: \"code YOURCODE\"",
     "payment_start_error": "I can't start the payment right now. Please try again shortly.",
-    "payment_connection_error": "Connection error. Please try again shortly."
+    "payment_connection_error": "Connection error. Please try again shortly.",
+    "launch_badge": "🎉 Launch price, valid until November 1, 2026 — then €5.00"
   },
   "pages": {
     "castle_page": {
@@ -117,7 +118,8 @@
       "peri_who": "Counting rhyme for hide-and-seek",
       "group_preghiere": "Prayers",
       "preghiera_title": "Goodnight Prayer",
-      "preghiera_who": "Protective lullaby"
+      "preghiera_who": "Protective lullaby",
+      "dialect_note": "The dialect text is shown together with the translation and the meaning of the expression, not just the literal translation."
     },
     "about": {
       "category": "The Project",

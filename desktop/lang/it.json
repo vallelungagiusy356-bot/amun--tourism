@@ -25,7 +25,8 @@
     "code_check_error": "Al momento non riesco a verificare il codice — riprova tra poco.",
     "chat_code_prompt": "Per attivare il tuo accesso Premium, scrivimi qui: \"codice TUOCODICE\"",
     "payment_start_error": "Non riesco ad avviare il pagamento. Riprova tra poco.",
-    "payment_connection_error": "Errore di collegamento. Riprova tra poco."
+    "payment_connection_error": "Errore di collegamento. Riprova tra poco.",
+    "launch_badge": "🎉 Prezzo di lancio, valido fino al 1° novembre 2026 — poi 5,00€"
   },
   "pages": {
     "castle_page": {
@@ -117,7 +118,8 @@
       "peri_who": "Conta per il nascondino",
       "group_preghiere": "Le Preghiere",
       "preghiera_title": "Preghiera della Buonanotte",
-      "preghiera_who": "Ninna nanna di protezione"
+      "preghiera_who": "Ninna nanna di protezione",
+      "dialect_note": "Il testo in dialetto viene mostrato insieme alla traduzione e al significato del modo di dire, non solo alla traduzione letterale."
     },
     "about": {
       "category": "Il Progetto",

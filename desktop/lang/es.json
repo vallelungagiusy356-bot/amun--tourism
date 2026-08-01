@@ -25,7 +25,8 @@
     "code_check_error": "Ahora mismo no puedo verificar el codigo — intentalo de nuevo en un momento.",
     "chat_code_prompt": "Para activar tu acceso Premium, escribeme aqui: \"codigo TUCODIGO\"",
     "payment_start_error": "No puedo iniciar el pago. Intentalo de nuevo en un momento.",
-    "payment_connection_error": "Error de conexion. Intentalo de nuevo en un momento."
+    "payment_connection_error": "Error de conexion. Intentalo de nuevo en un momento.",
+    "launch_badge": "🎉 Precio de lanzamiento, válido hasta el 1 de noviembre de 2026 — luego 5,00 €"
   },
   "pages": {
     "castle_page": {
@@ -117,7 +118,8 @@
       "peri_who": "Cuenta para el escondite",
       "group_preghiere": "Las Oraciones",
       "preghiera_title": "Oración de Buenas Noches",
-      "preghiera_who": "Nana protectora"
+      "preghiera_who": "Nana protectora",
+      "dialect_note": "El texto en dialecto se muestra junto con la traducción y el significado de la expresión, no solo la traducción literal."
     },
     "about": {
       "category": "El Proyecto",

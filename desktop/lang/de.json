@@ -25,7 +25,8 @@
     "code_check_error": "Ich kann den Code gerade nicht uberprufen — versuch es gleich noch einmal.",
     "chat_code_prompt": "Um deinen Premium-Zugang zu aktivieren, schreib mir hier: \"code DEINCODE\"",
     "payment_start_error": "Ich kann die Zahlung gerade nicht starten. Versuch es gleich noch einmal.",
-    "payment_connection_error": "Verbindungsfehler. Versuch es gleich noch einmal."
+    "payment_connection_error": "Verbindungsfehler. Versuch es gleich noch einmal.",
+    "launch_badge": "🎉 Einführungspreis, gültig bis zum 1. November 2026 — danach 5,00 €"
   },
   "pages": {
     "castle_page": {
@@ -117,7 +118,8 @@
       "peri_who": "Abzählreim fürs Versteckspiel",
       "group_preghiere": "Die Gebete",
       "preghiera_title": "Gute-Nacht-Gebet",
-      "preghiera_who": "Schützendes Schlaflied"
+      "preghiera_who": "Schützendes Schlaflied",
+      "dialect_note": "Der Dialekttext wird zusammen mit der Übersetzung und der Bedeutung der Redewendung gezeigt, nicht nur mit der wörtlichen Übersetzung."
     },
     "about": {
       "category": "Das Projekt",
