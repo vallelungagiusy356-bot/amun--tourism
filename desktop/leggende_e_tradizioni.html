@@ -401,17 +401,6 @@ window.silktideConsentManager.init({
                     </div>
                 </section>
 
-                <!-- ===== BOTTONE PREMIUM ===== -->
-                <div class="castellana-premium-cta">
-                  <p class="premium-cta-label">🔒 Contenuti Premium disponibili</p>
-                  <button id="btn-premium-code" class="premium-btn premium-btn-outline">
-                    Ho già un codice
-                  </button>
-                  <a href="#" id="btn-buy-premium" class="premium-btn premium-btn-gold">
-                    Acquista l'accesso — 3,90€
-                  </a>
-                </div>
-
             </div>
 
             <div class="hero-col-right">
@@ -433,12 +422,24 @@ window.silktideConsentManager.init({
 
                 <div class="transcript" id="transcript"></div>
 
-                <div class="note">
+                <div class="note" data-i18n="pages.canti_page.dialect_note">
                     Il testo in dialetto viene mostrato insieme alla traduzione e al significato del modo di dire, non solo alla traduzione letterale. 
                 </div>
 
             </div>
         </div>
+
+        <!-- ===== BOTTONE PREMIUM ===== -->
+        <div class="castellana-premium-cta">
+          <p class="premium-cta-label" data-i18n="premium.cta_label">🔒 Contenuti Premium disponibili</p>
+          <button id="btn-premium-code" class="premium-btn premium-btn-outline" data-i18n="premium.btn_code">
+            Ho già un codice
+          </button>
+          <a href="#" id="btn-buy-premium" class="premium-btn premium-btn-gold" data-i18n="premium.btn_buy">
+            Acquista l'accesso — 3,90€
+          </a>
+        </div>
+
     </main>
 
     <div class="castellana-widget-area">
