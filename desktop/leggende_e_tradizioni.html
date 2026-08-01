@@ -1659,49 +1659,7 @@ window.silktideConsentManager.init({
     </p>
 </footer>
 
-<script>
-// Fa "salire" il widget della Castellana quando il footer si avvicina,
-// così resta sempre a distanza fissa sopra di lui invece di sovrapporsi
-(function() {
-  const footer = document.querySelector('.footer-copyright');
-  if (!footer) return;
-
-  const GAP = 20; // spazio tra il widget e il footer, in pixel
-
-  function trovaWidgetCastellana() {
-    return document.querySelector('.castellana-widget-area') || document.querySelector('.castellana-video-wrapper');
-  }
-
-  function aggiornaPosizione(widget, valoreBottomNormale) {
-    if (!widget) return;
-    const footerRect = footer.getBoundingClientRect();
-    const alturaSchermo = window.innerHeight;
-
-    if (footerRect.top < alturaSchermo) {
-      const sovrapposizione = alturaSchermo - footerRect.top;
-      widget.style.bottom = (sovrapposizione + GAP) + 'px';
-    } else {
-      widget.style.bottom = valoreBottomNormale;
-    }
-  }
-
-  function aggiornaTutto() {
-    aggiornaPosizione(trovaWidgetCastellana(), '');
-    aggiornaPosizione(document.getElementById('news-badge-wrap'), '90px');
-  }
-
-  window.addEventListener('scroll', aggiornaTutto, { passive: true });
-  window.addEventListener('resize', aggiornaTutto);
-
-  const attendiBadge = setInterval(() => {
-    if (document.getElementById('news-badge-wrap')) {
-      aggiornaTutto();
-      clearInterval(attendiBadge);
-    }
-  }, 300);
-
-  aggiornaTutto();
-})();
-</script>
+<!-- Sovrapposizioni (footer + chat aperta) risolte in un unico file condiviso -->
+<script src="../widget-position-fix.js"></script>
 </body>
 </html>

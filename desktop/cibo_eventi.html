@@ -1238,51 +1238,7 @@ window.silktideConsentManager.init({
     <script src="lang/estate-castello.js"></script>
     <script src="../news-badge.js"></script>
 
-    <script>
-    // Fa "salire" il widget della Castellana E il badge delle news quando il
-    // footer si avvicina, così restano sempre a distanza fissa sopra di lui
-    (function() {
-      const footer = document.querySelector('.footer-copyright');
-      if (!footer) return;
-
-      const GAP = 20; // spazio tra i widget e il footer, in pixel
-
-      function trovaWidgetCastellana() {
-        return document.querySelector('.castellana-widget-area') || document.querySelector('.castellana-video-wrapper');
-      }
-
-      function aggiornaPosizione(widget, valoreBottomNormale) {
-        if (!widget) return;
-        const footerRect = footer.getBoundingClientRect();
-        const alturaSchermo = window.innerHeight;
-
-        if (footerRect.top < alturaSchermo) {
-          const sovrapposizione = alturaSchermo - footerRect.top;
-          widget.style.bottom = (sovrapposizione + GAP) + 'px';
-        } else {
-          widget.style.bottom = valoreBottomNormale;
-        }
-      }
-
-      function aggiornaTutto() {
-        aggiornaPosizione(trovaWidgetCastellana(), '');
-        aggiornaPosizione(document.getElementById('news-badge-wrap'), '90px');
-      }
-
-      window.addEventListener('scroll', aggiornaTutto, { passive: true });
-      window.addEventListener('resize', aggiornaTutto);
-
-      // Il badge delle news compare con un piccolo ritardo (deve prima
-      // scaricare news.json), quindi lo controlliamo finché non appare
-      const attendiBadge = setInterval(() => {
-        if (document.getElementById('news-badge-wrap')) {
-          aggiornaTutto();
-          clearInterval(attendiBadge);
-        }
-      }, 300);
-
-      aggiornaTutto();
-    })();
-    </script>
+    <!-- Sovrapposizioni (footer + chat aperta) risolte in un unico file condiviso -->
+    <script src="../widget-position-fix.js"></script>
 </body>
 </html>
