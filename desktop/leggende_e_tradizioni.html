@@ -103,6 +103,36 @@ window.silktideConsentManager.init({
     <link rel="stylesheet" href="leggende_e_tradizioni.css">
 
     <style>
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 6px 0;
+        }
+        .typing-dots {
+            display: inline-flex;
+            gap: 4px;
+            padding: 8px 12px;
+            background: rgba(184, 135, 59, 0.15);
+            border-radius: 14px;
+        }
+        .typing-dots span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #b8873b;
+            opacity: 0.4;
+            animation: typing-bounce 1.2s infinite ease-in-out;
+        }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing-bounce {
+            0%, 60%, 100% { opacity: 0.4; transform: translateY(0); }
+            30% { opacity: 1; transform: translateY(-4px); }
+        }
+        .topic-back-btn {
+            opacity: 0.85;
+            font-style: italic;
+        }
         .lang-switcher button.active {
             border: 2px solid #B8873B !important;
             background: rgba(184, 135, 59, 0.2) !important;
@@ -559,15 +589,27 @@ window.silktideConsentManager.init({
 
         let hasShownMenu = false;
 
-        openBtn.addEventListener("click", () => {
+        function apriChatConAnimazione() {
             chat.classList.add("active");
             updatePremiumStatusDisplay();
             if (!hasShownMenu) {
-                renderTopicMenu(CANTI_TOPICS[currentLang] || CANTI_TOPICS.it);
                 hasShownMenu = true;
+                showTypingIndicator();
+                setTimeout(() => {
+                    hideTypingIndicator();
+                    renderTopicMenu(CANTI_TOPICS[currentLang] || CANTI_TOPICS.it);
+                    loadTopicMenu();
+                }, 900);
+            } else {
+                showTypingIndicator();
+                setTimeout(() => {
+                    hideTypingIndicator();
+                    loadTopicMenu();
+                }, 500);
             }
-            loadTopicMenu();
-        });
+        }
+
+        openBtn.addEventListener("click", apriChatConAnimazione);
         closeBtn.addEventListener("click", () => {
             chat.classList.remove("active");
             castellanaZitta();
@@ -576,15 +618,7 @@ window.silktideConsentManager.init({
         // "Chiedi alla Castellana di raccontartela" nella sezione Leggende
         // apre la stessa chat, come nelle altre pagine del sito.
         document.querySelectorAll(".ask-legend-castellana").forEach(el => {
-            el.addEventListener("click", () => {
-                chat.classList.add("active");
-                updatePremiumStatusDisplay();
-                if (!hasShownMenu) {
-                    renderTopicMenu(CANTI_TOPICS[currentLang] || CANTI_TOPICS.it);
-                    hasShownMenu = true;
-                }
-                loadTopicMenu();
-            });
+            el.addEventListener("click", apriChatConAnimazione);
         });
 
         // Leggenda "a fisarmonica": si vede solo il primo paragrafo,
@@ -1343,7 +1377,30 @@ window.silktideConsentManager.init({
                 messagesBox.appendChild(btn);
             }
 
+            if (sender === 'user') {
+                messagesBox.scrollTop = messagesBox.scrollHeight;
+            } else {
+                msgWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // ============================================================
+        // INDICATORE "STA SCRIVENDO"
+        // ============================================================
+        function showTypingIndicator() {
+            const messagesBox = document.querySelector('.chat-messages');
+            if (!messagesBox) return;
+            hideTypingIndicator();
+            const wrap = document.createElement('div');
+            wrap.className = 'typing-indicator';
+            wrap.id = 'typing-indicator';
+            wrap.innerHTML = '<span class="typing-dots"><span></span><span></span><span></span></span>';
+            messagesBox.appendChild(wrap);
             messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+        function hideTypingIndicator() {
+            const el = document.getElementById('typing-indicator');
+            if (el) el.remove();
         }
 
         // ============================================================
@@ -1371,6 +1428,12 @@ window.silktideConsentManager.init({
             wrap.className = 'topic-menu topic-menu-state';
 
             if (currentGroupName) {
+                const backBtn = document.createElement('button');
+                backBtn.className = 'topic-btn topic-back-btn';
+                backBtn.textContent = '‹ Torna al menu';
+                backBtn.addEventListener('click', () => renderMenuState(null));
+                wrap.appendChild(backBtn);
+
                 const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
                 if (groupEntry) {
                     groupEntry.items.forEach(it => {
@@ -1385,32 +1448,31 @@ window.silktideConsentManager.init({
                         wrap.appendChild(b);
                     });
                 }
+            } else {
+                fullTopicMenu.forEach(entry => {
+                    if (entry.group) {
+                        if (exploredGroups.has(entry.group)) return;
+                        const groupBtn = document.createElement('button');
+                        groupBtn.className = 'topic-btn topic-group-btn';
+                        groupBtn.textContent = entry.group + ' ▸';
+                        groupBtn.addEventListener('click', () => renderMenuState(entry.group));
+                        wrap.appendChild(groupBtn);
+                    } else {
+                        if (usedTopics.has(entry.topic)) return;
+                        const b = document.createElement('button');
+                        b.className = 'topic-btn';
+                        b.textContent = entry.label;
+                        b.addEventListener('click', () => {
+                            usedTopics.add(entry.topic);
+                            sendTopicRequest(entry.topic, entry.label, null);
+                        });
+                        wrap.appendChild(b);
+                    }
+                });
             }
-
-            fullTopicMenu.forEach(entry => {
-                if (entry.group) {
-                    if (exploredGroups.has(entry.group)) return;
-                    const groupBtn = document.createElement('button');
-                    groupBtn.className = 'topic-btn topic-group-btn';
-                    groupBtn.textContent = entry.group + ' ▸';
-                    groupBtn.addEventListener('click', () => renderMenuState(entry.group));
-                    wrap.appendChild(groupBtn);
-                } else {
-                    if (usedTopics.has(entry.topic)) return;
-                    const b = document.createElement('button');
-                    b.className = 'topic-btn';
-                    b.textContent = entry.label;
-                    b.addEventListener('click', () => {
-                        usedTopics.add(entry.topic);
-                        sendTopicRequest(entry.topic, entry.label, null);
-                    });
-                    wrap.appendChild(b);
-                }
-            });
 
             if (wrap.children.length > 0) {
                 messagesBox.appendChild(wrap);
-                messagesBox.scrollTop = messagesBox.scrollHeight;
             }
         }
 
@@ -1422,6 +1484,7 @@ window.silktideConsentManager.init({
             const messagesBox = document.querySelector('.chat-messages');
             const old = messagesBox.querySelector('.topic-menu-state');
             if (old) old.remove();
+            showTypingIndicator();
 
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
@@ -1437,6 +1500,7 @@ window.silktideConsentManager.init({
                 });
                 if (!res.ok) throw new Error('Risposta non valida dal server');
                 const data = await res.json();
+                hideTypingIndicator();
                 appendChatMessage(data.reply, 'castellana', data.link, data.audio_file);
                 if (!data.audio_file && (data.speak || voiceEnabled)) speakText(data.reply);
                 lastTopic = data.topic || topicId;
@@ -1444,6 +1508,7 @@ window.silktideConsentManager.init({
                 renderMenuState(groupName);
             } catch (err) {
                 console.error('Errore richiesta topic:', err);
+                hideTypingIndicator();
                 appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
             }
         }
@@ -1572,6 +1637,7 @@ window.silktideConsentManager.init({
             if (wasActivationAttempt) return;
 
             appendChatMessage(text, 'user');
+            showTypingIndicator();
 
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
@@ -1589,12 +1655,14 @@ window.silktideConsentManager.init({
                 if (!res.ok) throw new Error('Risposta non valida dal server');
 
                 const data = await res.json();
+                hideTypingIndicator();
                 appendChatMessage(data.reply, 'castellana', data.link, data.audio_file);
                 if (!data.audio_file && (data.speak || voiceEnabled)) speakText(data.reply);
                 if (data.topic) lastTopic = data.topic;
 
             } catch (err) {
                 console.error('Errore chat:', err);
+                hideTypingIndicator();
                 appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
             }
         }
@@ -1637,7 +1705,11 @@ window.silktideConsentManager.init({
             const originalText = btn.textContent;
             btn.textContent = "Un momento...";
             try {
-                const res = await fetch(`${API_BASE_URL}/create-checkout-session`, { method: "POST" });
+                const res = await fetch(`${API_BASE_URL}/create-checkout-session`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ return_page: "leggende_e_tradizioni.html" })
+                });
                 const data = await res.json();
                 if (data.url) {
                     window.location.href = data.url;

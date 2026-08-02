@@ -120,6 +120,36 @@ window.silktideConsentManager.init({
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css_style2_v2.css?v=2">
     <style>
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 6px 0;
+        }
+        .typing-dots {
+            display: inline-flex;
+            gap: 4px;
+            padding: 8px 12px;
+            background: rgba(184, 135, 59, 0.15);
+            border-radius: 14px;
+        }
+        .typing-dots span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #b8873b;
+            opacity: 0.4;
+            animation: typing-bounce 1.2s infinite ease-in-out;
+        }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing-bounce {
+            0%, 60%, 100% { opacity: 0.4; transform: translateY(0); }
+            30% { opacity: 1; transform: translateY(-4px); }
+        }
+        .topic-back-btn {
+            opacity: 0.85;
+            font-style: italic;
+        }
         .lang-switcher button.active {
             border: 2px solid #B8873B !important;
             background: rgba(184, 135, 59, 0.2) !important;
@@ -841,16 +871,35 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 messagesBox.appendChild(btn);
             }
 
-            messagesBox.scrollTop = messagesBox.scrollHeight;
+            if (sender === 'user') {
+                messagesBox.scrollTop = messagesBox.scrollHeight;
+            } else {
+                msg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         // ============================================================
-        // MENU A DUE LIVELLI — stesso meccanismo "gruppo -> sotto-voci"
-        // già usato nel resto del sito. currentGroupName: se valorizzato,
-        // mostra prima i pulsanti-pagina di quel gruppo, poi sotto le
-        // altre domande ancora da esplorare (quella corrente esce
-        // dall'elenco principale una volta che tutte le sue pagine sono
-        // state scelte).
+        // INDICATORE "STA SCRIVENDO"
+        // ============================================================
+        function showTypingIndicator() {
+            const messagesBox = document.getElementById('chat-messages-box');
+            if (!messagesBox) return;
+            hideTypingIndicator();
+            const wrap = document.createElement('div');
+            wrap.className = 'typing-indicator';
+            wrap.id = 'typing-indicator';
+            wrap.innerHTML = '<span class="typing-dots"><span></span><span></span><span></span></span>';
+            messagesBox.appendChild(wrap);
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+        function hideTypingIndicator() {
+            const el = document.getElementById('typing-indicator');
+            if (el) el.remove();
+        }
+
+        // ============================================================
+        // MENU A DUE LIVELLI — breadcrumb: dentro un gruppo mostro SOLO
+        // le sue voci + un pulsante "torna al menu", non tutto insieme.
         // ============================================================
         function renderMenuState(currentGroupName) {
             const messagesBox = document.getElementById('chat-messages-box');
@@ -863,6 +912,12 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             wrap.className = 'topic-menu topic-menu-state';
 
             if (currentGroupName) {
+                const backBtn = document.createElement('button');
+                backBtn.className = 'topic-btn topic-back-btn';
+                backBtn.textContent = '‹ Torna al menu';
+                backBtn.addEventListener('click', () => renderMenuState(null));
+                wrap.appendChild(backBtn);
+
                 const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
                 if (groupEntry) {
                     groupEntry.items.forEach(it => {
@@ -874,6 +929,8 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                         wrap.appendChild(b);
                     });
                 }
+                messagesBox.appendChild(wrap);
+                return;
             }
 
             fullTopicMenu.forEach(entry => {
@@ -893,16 +950,17 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             }
 
             messagesBox.appendChild(wrap);
-            messagesBox.scrollTop = messagesBox.scrollHeight;
         }
 
         function selectPageTopic(item, groupName) {
             usedTopics.add(item.topic);
             castellanaZitta();
             appendChatMessage(item.label, 'user');
+            showTypingIndicator();
 
             const knowledge = HOME_KNOWLEDGE[currentLang] || HOME_KNOWLEDGE.it;
             setTimeout(() => {
+                hideTypingIndicator();
                 appendChatMessage(knowledge.followUp, 'castellana');
                 if (voiceEnabled) speakText(knowledge.followUp);
                 setTimeout(() => {
@@ -929,11 +987,16 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             exploredGroups.clear();
 
             const knowledge = HOME_KNOWLEDGE[currentLang] || HOME_KNOWLEDGE.it;
-            appendChatMessage(knowledge.welcome, 'castellana');
-            if (voiceEnabled) speakText(knowledge.welcome);
 
-            fullTopicMenu = knowledge.groups;
-            renderMenuState(null);
+            showTypingIndicator();
+            setTimeout(() => {
+                hideTypingIndicator();
+                appendChatMessage(knowledge.welcome, 'castellana');
+                if (voiceEnabled) speakText(knowledge.welcome);
+
+                fullTopicMenu = knowledge.groups;
+                renderMenuState(null);
+            }, 900);
 
             hasShownWelcome = true;
         }
@@ -966,6 +1029,9 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 openBtn.classList.add("avatar-hidden");
                 if (!hasShownWelcome) {
                     renderWelcome();
+                } else {
+                    showTypingIndicator();
+                    setTimeout(() => hideTypingIndicator(), 500);
                 }
             });
 
@@ -982,7 +1048,9 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                     premiumBtn.textContent = "Un momento...";
                     try {
                         const res = await fetch(`${API_BASE_URL}/create-checkout-session`, {
-                            method: "POST"
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ return_page: "desktop_index.html" })
                         });
                         const data = await res.json();
                         if (data.url) {
@@ -1104,6 +1172,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
 
             appendChatMessage(text, 'user');
             castellanaZitta(); // Ferma TTS quando utente scrive
+            showTypingIndicator();
 
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
@@ -1121,12 +1190,14 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 if (!res.ok) throw new Error('Risposta non valida dal server');
 
                 const data = await res.json();
+                hideTypingIndicator();
                 appendChatMessage(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 if (data.topic) lastTopic = data.topic;
 
             } catch (err) {
                 console.error('Errore chat:', err);
+                hideTypingIndicator();
                 appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
             }
         }
