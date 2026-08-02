@@ -158,6 +158,11 @@ window.silktideConsentManager.init({
         .chat-link-btn-mobile { display: block; background: var(--cst-terracotta); color: #fff; border: none; padding: 9px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; margin: -2px 0 8px 0; }
         .topic-menu-mobile { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 10px 0; }
         .topic-btn-mobile { background: #fff; border: 1px solid var(--cst-gold); color: var(--cst-sea); padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; cursor: pointer; }
+        .typing-indicator-mobile { display: flex; align-items: center; gap: 4px; width: fit-content; padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; border-left: 2px solid var(--cst-gold); }
+        .typing-indicator-mobile span { width: 6px; height: 6px; border-radius: 50%; background: var(--cst-gold); display: inline-block; animation: typing-bounce-mobile 1.2s infinite ease-in-out; }
+        .typing-indicator-mobile span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator-mobile span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing-bounce-mobile { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
         .chat-input-row-mobile { display: flex; gap: 8px; align-items: center; }
         .chat-input-row-mobile input { flex: 1; min-width: 0; padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(184, 135, 59, 0.55); background: rgba(255,255,255,0.97); color: var(--cst-ink); font-size: 0.95rem; outline: none; }
         .mic-btn-mobile, .send-btn-mobile { border: none; width: 44px; height: 44px; border-radius: 8px; cursor: pointer; font-size: 1.05rem; color: #fff; flex-shrink: 0; }
@@ -564,36 +569,63 @@ window.silktideConsentManager.init({
             messagesBox.scrollTop = messagesBox.scrollHeight;
         }
 
+        function showTypingIndicatorMobile() {
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            if (!messagesBox) return;
+            hideTypingIndicatorMobile();
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-indicator-mobile';
+            indicator.id = 'typing-indicator-mobile';
+            indicator.innerHTML = '<span></span><span></span><span></span>';
+            messagesBox.appendChild(indicator);
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+
+        function hideTypingIndicatorMobile() {
+            const indicator = document.getElementById('typing-indicator-mobile');
+            if (indicator) indicator.remove();
+        }
+
         const SANTAMARIA_TOPICS_MOBILE = {
             it: [
                 { topic: "chiese.santamariaangeli.storia", label: "🏰 Storia" },
                 { topic: "chiese.santamariaangeli.interno", label: "🕯️ Interno" },
                 { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Esterno" },
-                { topic: "chiese.santamariaangeli.dove", label: "📍 Dove si trova" }
+                { topic: "chiese.santamariaangeli.dove", label: "📍 Dove si trova" },
+                { topic: "chiese.santamariaangeli.dintorni", label: "🗺️ Nei dintorni" },
+                { topic: "chiese.santamariaangeli.orari", label: "🎫 Orari e biglietti" }
             ],
             en: [
                 { topic: "chiese.santamariaangeli.storia", label: "🏰 History" },
                 { topic: "chiese.santamariaangeli.interno", label: "🕯️ Interior" },
                 { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Exterior" },
-                { topic: "chiese.santamariaangeli.dove", label: "📍 Location" }
+                { topic: "chiese.santamariaangeli.dove", label: "📍 Location" },
+                { topic: "chiese.santamariaangeli.dintorni", label: "🗺️ Nearby" },
+                { topic: "chiese.santamariaangeli.orari", label: "🎫 Hours & Tickets" }
             ],
             fr: [
                 { topic: "chiese.santamariaangeli.storia", label: "🏰 Histoire" },
                 { topic: "chiese.santamariaangeli.interno", label: "🕯️ Intérieur" },
                 { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Extérieur" },
-                { topic: "chiese.santamariaangeli.dove", label: "📍 Où se trouve" }
+                { topic: "chiese.santamariaangeli.dove", label: "📍 Où se trouve" },
+                { topic: "chiese.santamariaangeli.dintorni", label: "🗺️ Aux alentours" },
+                { topic: "chiese.santamariaangeli.orari", label: "🎫 Horaires & Billets" }
             ],
             es: [
                 { topic: "chiese.santamariaangeli.storia", label: "🏰 Historia" },
                 { topic: "chiese.santamariaangeli.interno", label: "🕯️ Interior" },
                 { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Exterior" },
-                { topic: "chiese.santamariaangeli.dove", label: "📍 Dónde está" }
+                { topic: "chiese.santamariaangeli.dove", label: "📍 Dónde está" },
+                { topic: "chiese.santamariaangeli.dintorni", label: "🗺️ Cercano" },
+                { topic: "chiese.santamariaangeli.orari", label: "🎫 Horarios y Entradas" }
             ],
             de: [
                 { topic: "chiese.santamariaangeli.storia", label: "🏰 Geschichte" },
                 { topic: "chiese.santamariaangeli.interno", label: "🕯️ Innenraum" },
                 { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Außenansicht" },
-                { topic: "chiese.santamariaangeli.dove", label: "📍 Standort" }
+                { topic: "chiese.santamariaangeli.dove", label: "📍 Standort" },
+                { topic: "chiese.santamariaangeli.dintorni", label: "🗺️ In der Nähe" },
+                { topic: "chiese.santamariaangeli.orari", label: "🎫 Öffnungszeiten & Tickets" }
             ]
         };
 
@@ -645,6 +677,8 @@ window.silktideConsentManager.init({
             const old = messagesBox.querySelector('.topic-menu-state-mobile');
             if (old) old.remove();
 
+            showTypingIndicatorMobile();
+
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
                     method: 'POST',
@@ -659,12 +693,14 @@ window.silktideConsentManager.init({
                 });
                 if (!res.ok) throw new Error('Risposta non valida dal server');
                 const data = await res.json();
+                hideTypingIndicatorMobile();
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 lastTopic = data.topic || topicId;
                 renderTopicMenuMobile(SANTAMARIA_TOPICS_MOBILE[currentLang] || SANTAMARIA_TOPICS_MOBILE.it);
             } catch (err) {
                 console.error('Errore richiesta topic:', err);
+                hideTypingIndicatorMobile();
                 appendChatMessageMobile('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
             }
         }
@@ -674,15 +710,18 @@ window.silktideConsentManager.init({
             if (!messagesBox) return;
             messagesBox.innerHTML = '';
             usedTopicsMobile.clear();
-
-            const welcomeText = WELCOME_MESSAGE_MOBILE[currentLang] || WELCOME_MESSAGE_MOBILE.it;
-            appendChatMessageMobile(welcomeText, 'castellana');
-            if (voiceEnabled) speakText(welcomeText);
-
-            renderTopicMenuMobile(SANTAMARIA_TOPICS_MOBILE[currentLang] || SANTAMARIA_TOPICS_MOBILE.it);
-
             hasShownWelcomeMobile = true;
             shownWelcomeLang = currentLang;
+
+            showTypingIndicatorMobile();
+            setTimeout(() => {
+                hideTypingIndicatorMobile();
+                const welcomeText = WELCOME_MESSAGE_MOBILE[currentLang] || WELCOME_MESSAGE_MOBILE.it;
+                appendChatMessageMobile(welcomeText, 'castellana');
+                if (voiceEnabled) speakText(welcomeText);
+
+                renderTopicMenuMobile(SANTAMARIA_TOPICS_MOBILE[currentLang] || SANTAMARIA_TOPICS_MOBILE.it);
+            }, 900);
         }
 
         async function tryActivateCodeMobile(rawMessage) {
@@ -725,6 +764,7 @@ window.silktideConsentManager.init({
 
             appendChatMessageMobile(text, 'user');
             castellanaZitta();
+            showTypingIndicatorMobile();
 
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
@@ -742,12 +782,14 @@ window.silktideConsentManager.init({
                 if (!res.ok) throw new Error('Risposta non valida dal server');
 
                 const data = await res.json();
+                hideTypingIndicatorMobile();
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 if (data.topic) lastTopic = data.topic;
 
             } catch (err) {
                 console.error('Errore chat:', err);
+                hideTypingIndicatorMobile();
                 appendChatMessageMobile('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
             }
         }
