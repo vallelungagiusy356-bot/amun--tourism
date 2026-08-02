@@ -99,10 +99,13 @@
 // ---------------------------------------------------------
 const BACKEND_URL = "https://castellana.pythonanywhere.com";
 
-// Legge "session_id" dall'indirizzo della pagina
-// (Stripe lo aggiunge da solo quando manda qui il cliente)
+// Stessa chiave usata dalle pagine del sito per salvare l'accesso Premium
+const PREMIUM_STORAGE_KEY = "amuni_premium_access";
+
+// Legge "session_id" e "return_page" dall'indirizzo della pagina
 const params = new URLSearchParams(window.location.search);
 const sessionId = params.get("session_id");
+const returnPage = params.get("return_page") || "desktop_index.html";
 
 const contenuto = document.getElementById("contenuto");
 
@@ -121,17 +124,57 @@ async function recuperaCodice() {
       return;
     }
 
+    const codice = dati.code;
+
+    // Attiviamo subito il codice su QUESTO dispositivo, cosi' l'utente
+    // arriva nel sito gia' con l'accesso Premium attivo, senza dover
+    // copiare/incollare nulla a mano.
+    try {
+      const attivazione = await fetch(`${BACKEND_URL}/activate-code`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: codice, lang: "it" })
+      });
+      const datiAttivazione = await attivazione.json();
+      if (datiAttivazione.success) {
+        localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
+          code: codice,
+          expires_at: datiAttivazione.expires_at
+        }));
+      }
+    } catch (e) {
+      console.error("Errore attivazione automatica:", e);
+      // Non blocchiamo la pagina: l'utente ha comunque il codice a video
+      // e potra' inserirlo a mano nella chat come prima.
+    }
+
     contenuto.innerHTML = `
-      <p>Il tuo pagamento è andato a buon fine. Ecco il tuo codice Premium, valido 4 giorni da quando lo attiverai:</p>
-      <div class="code-box" id="codice">${dati.code}</div>
+      <p>Il tuo pagamento è andato a buon fine. Il tuo accesso Premium è già attivo su questo dispositivo.</p>
+      <div class="code-box" id="codice">${codice}</div>
+      <p style="font-size:0.95rem; opacity:0.85;">Tieni da parte questo codice: ti servirà solo se vorrai usare la chat anche da un altro telefono o computer.</p>
       <button onclick="copiaCodice()">Copia codice</button>
-      <p style="font-size:0.95rem; opacity:0.85; margin-top:20px;">
-        Torna alla chat de La Castellana e inserisci questo codice per iniziare la tua visita guidata.
-      </p>
+      <button onclick="vaiOra()" style="margin-left:8px; background: var(--sea);">Vai ora</button>
+      <p class="stato" style="margin-top:20px;">Ti porto alla tua pagina tra <span id="countdown">4</span>…</p>
     `;
+
+    let secondi = 4;
+    const countdownEl = document.getElementById("countdown");
+    const timer = setInterval(() => {
+      secondi -= 1;
+      if (countdownEl) countdownEl.textContent = secondi;
+      if (secondi <= 0) {
+        clearInterval(timer);
+        vaiOra();
+      }
+    }, 1000);
+
   } catch (e) {
     contenuto.innerHTML = `<p class="errore">Errore di collegamento. Ricarica questa pagina tra qualche istante.</p>`;
   }
+}
+
+function vaiOra() {
+  window.location.href = returnPage;
 }
 
 function copiaCodice() {
