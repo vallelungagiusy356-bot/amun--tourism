@@ -102,6 +102,40 @@ window.silktideConsentManager.init({
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="chiese-arte.css">
   <style>
+    /* Puntini animati "sta scrivendo" della Castellana */
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      padding: 6px 0;
+    }
+    .typing-dots {
+      display: inline-flex;
+      gap: 4px;
+      padding: 8px 12px;
+      background: rgba(184, 135, 59, 0.15);
+      border-radius: 14px;
+    }
+    .typing-dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #b8873b;
+      opacity: 0.4;
+      animation: typing-bounce 1.2s infinite ease-in-out;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing-bounce {
+      0%, 60%, 100% { opacity: 0.4; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(-4px); }
+    }
+    /* Pulsante "torna al menu" nel sotto-menu di un monumento */
+    .topic-back-btn {
+      opacity: 0.85;
+      font-style: italic;
+    }
+  </style>
+  <style>
       .lang-switcher button.active {
           border: 2px solid #B8873B !important;
           background: rgba(184, 135, 59, 0.2) !important;
@@ -530,11 +564,15 @@ window.silktideConsentManager.init({
           menuLoadedForCode = null;
 
           const knowledge = CHIESE_KNOWLEDGE[currentLang] || CHIESE_KNOWLEDGE.it;
-          appendChatMessage(knowledge.welcome, 'castellana');
-          if (voiceEnabled) speakText(knowledge.welcome);
 
-          renderTopicMenu(knowledge.groups);
-          loadTopicMenu();
+          showTypingIndicator();
+          setTimeout(() => {
+              hideTypingIndicator();
+              appendChatMessage(knowledge.welcome, 'castellana');
+              if (voiceEnabled) speakText(knowledge.welcome);
+              renderTopicMenu(knowledge.groups);
+              loadTopicMenu();
+          }, 900);
 
           hasShownWelcome = true;
       }
@@ -986,7 +1024,34 @@ window.silktideConsentManager.init({
               messagesBox.appendChild(btn);
           }
 
+          if (sender === 'user') {
+              messagesBox.scrollTop = messagesBox.scrollHeight;
+          } else {
+              // Non forziamo lo scroll fino in fondo alla risposta: lo
+              // schermo resta fermo sull'inizio del messaggio appena
+              // arrivato, ed e' il turista a scorrere se vuole leggere
+              // il resto.
+              msgWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+      }
+
+      // ============================================================
+      // INDICATORE "STA SCRIVENDO"
+      // ============================================================
+      function showTypingIndicator() {
+          const messagesBox = document.getElementById('chat-messages-box');
+          if (!messagesBox) return;
+          hideTypingIndicator();
+          const wrap = document.createElement('div');
+          wrap.className = 'typing-indicator';
+          wrap.id = 'typing-indicator';
+          wrap.innerHTML = '<span class="typing-dots"><span></span><span></span><span></span></span>';
+          messagesBox.appendChild(wrap);
           messagesBox.scrollTop = messagesBox.scrollHeight;
+      }
+      function hideTypingIndicator() {
+          const el = document.getElementById('typing-indicator');
+          if (el) el.remove();
       }
 
       // ============================================================
@@ -1012,9 +1077,20 @@ window.silktideConsentManager.init({
           wrap.className = 'topic-menu topic-menu-state';
 
           if (currentGroupName) {
+              // Siamo dentro un monumento specifico: mostro SOLO i suoi
+              // sotto-argomenti + un pulsante per tornare al menu generale.
+              // Non mostro piu' gli altri monumenti insieme, per evitare
+              // il "muro di bottoni" confusionario.
+              const backBtn = document.createElement('button');
+              backBtn.className = 'topic-btn topic-back-btn';
+              backBtn.textContent = '‹ Torna al menu';
+              backBtn.addEventListener('click', () => renderMenuState(null));
+              wrap.appendChild(backBtn);
+
               const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
               if (groupEntry) {
                   groupEntry.items.forEach(it => {
+                      if (exploredTopics.has(it.topic)) return;
                       const b = document.createElement('button');
                       b.className = 'topic-btn';
                       b.textContent = it.label;
@@ -1022,25 +1098,26 @@ window.silktideConsentManager.init({
                       wrap.appendChild(b);
                   });
               }
+          } else {
+              // Menu generale: solo l'elenco dei monumenti/argomenti di primo livello.
+              fullTopicMenu.forEach(entry => {
+                  if (entry.group) {
+                      if (exploredGroups.has(entry.group)) return;
+                      const groupBtn = document.createElement('button');
+                      groupBtn.className = 'topic-btn topic-group-btn';
+                      groupBtn.textContent = entry.group + ' ▸';
+                      groupBtn.addEventListener('click', () => renderMenuState(entry.group));
+                      wrap.appendChild(groupBtn);
+                  } else {
+                      if (exploredTopics.has(entry.topic)) return;
+                      const b = document.createElement('button');
+                      b.className = 'topic-btn';
+                      b.textContent = entry.label;
+                      b.addEventListener('click', () => sendTopicRequest(entry.topic, entry.label, null));
+                      wrap.appendChild(b);
+                  }
+              });
           }
-
-          fullTopicMenu.forEach(entry => {
-              if (entry.group) {
-                  if (exploredGroups.has(entry.group)) return;
-                  const groupBtn = document.createElement('button');
-                  groupBtn.className = 'topic-btn topic-group-btn';
-                  groupBtn.textContent = entry.group + ' ▸';
-                  groupBtn.addEventListener('click', () => renderMenuState(entry.group));
-                  wrap.appendChild(groupBtn);
-              } else {
-                  if (exploredTopics.has(entry.topic)) return;
-                  const b = document.createElement('button');
-                  b.className = 'topic-btn';
-                  b.textContent = entry.label;
-                  b.addEventListener('click', () => sendTopicRequest(entry.topic, entry.label, null));
-                  wrap.appendChild(b);
-              }
-          });
 
           messagesBox.appendChild(wrap);
           messagesBox.scrollTop = messagesBox.scrollHeight;
@@ -1050,6 +1127,7 @@ window.silktideConsentManager.init({
           appendChatMessage(label, 'user');
           const old = document.querySelector('.chat-messages .topic-menu-state');
           if (old) old.remove();
+          showTypingIndicator();
           try {
               const res = await fetch(`${API_BASE_URL}/chat`, {
                   method: 'POST',
@@ -1064,6 +1142,7 @@ window.silktideConsentManager.init({
               });
               if (!res.ok) throw new Error('Risposta non valida dal server');
               const data = await res.json();
+              hideTypingIndicator();
               appendChatMessage(data.reply, 'castellana', data.link);
               if (data.speak || voiceEnabled) speakText(data.reply);
               lastTopic = data.topic || topicId;
@@ -1075,6 +1154,7 @@ window.silktideConsentManager.init({
               renderMenuState(groupName);
           } catch (err) {
               console.error('Errore richiesta topic:', err);
+              hideTypingIndicator();
               appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
           }
       }
@@ -1203,6 +1283,7 @@ window.silktideConsentManager.init({
 
           appendChatMessage(text, 'user');
           castellanaZitta();
+          showTypingIndicator();
 
           try {
               const res = await fetch(`${API_BASE_URL}/chat`, {
@@ -1220,12 +1301,14 @@ window.silktideConsentManager.init({
               if (!res.ok) throw new Error('Risposta non valida dal server');
 
               const data = await res.json();
+              hideTypingIndicator();
               appendChatMessage(data.reply, 'castellana', data.link);
               if (data.speak || voiceEnabled) speakText(data.reply);
               if (data.topic) lastTopic = data.topic;
 
           } catch (err) {
               console.error('Errore chat:', err);
+              hideTypingIndicator();
               appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
           }
       }
