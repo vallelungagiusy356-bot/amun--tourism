@@ -8,8 +8,13 @@
     "btn_transport": "Transportes",
     "btn_events": "Eventos",
     "btn_monuments": "Monumentos",
-    "btn_desktop_redirect": "Ir a la versión de Escritorio",
+    "btn_desktop_redirect": "Ir a la versión Web",
     "welcome_title": "Bienvenido a Caccamo"
+  },
+  "premium": {
+    "cta_label": "🔒 Contenido Premium disponible",
+    "btn_code": "Ya tengo un código",
+    "btn_buy": "Comprar el acceso — 3,90 €"
   },
   "pages": {
     "food_page": {
