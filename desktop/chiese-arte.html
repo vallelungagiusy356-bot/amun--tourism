@@ -547,7 +547,14 @@ window.silktideConsentManager.init({
           if (!hasShownWelcome) {
               renderWelcome();
           } else {
-              loadTopicMenu();
+              // Anche riaprendo la chat (non solo la prima volta) mostriamo
+              // un breve "sta scrivendo", cosi' non sembra un elemento
+              // grafico gia' pronto ma qualcosa che si sta aggiornando.
+              showTypingIndicator();
+              setTimeout(() => {
+                  hideTypingIndicator();
+                  loadTopicMenu();
+              }, 500);
           }
       });
       closeChat.addEventListener('click', () => {
@@ -1120,7 +1127,10 @@ window.silktideConsentManager.init({
           }
 
           messagesBox.appendChild(wrap);
-          messagesBox.scrollTop = messagesBox.scrollHeight;
+          // Niente scroll forzato qui: lasciamo lo schermo dove l'ha
+          // messo appendChatMessage (inizio del messaggio appena
+          // arrivato). Il turista scorre da solo se vuole vedere i
+          // bottoni sotto.
       }
 
       async function sendTopicRequest(topicId, label, groupName) {
@@ -1351,7 +1361,11 @@ window.silktideConsentManager.init({
         const originalText = btn.textContent;
         btn.textContent = "Un momento...";
         try {
-          const res = await fetch(`${API_BASE_URL}/create-checkout-session`, { method: "POST" });
+          const res = await fetch(`${API_BASE_URL}/create-checkout-session`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ return_page: "chiese-arte.html" })
+          });
           const data = await res.json();
           if (data.url) {
             window.location.href = data.url;
