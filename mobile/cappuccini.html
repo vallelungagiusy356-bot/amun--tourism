@@ -424,6 +424,10 @@ window.silktideConsentManager.init({
             <button class="btn-barocco-action btn-secondary-action" id="talk-castellana-btn-monumento">
                 👑 <span data-i18n="pages.monuments_pages.labels.btn_parla_castellana">Parla con la Castellana</span>
             </button>
+
+            <button class="btn-barocco-action" onclick="window.location.href='../desktop/chiese-arte.html'">
+                🖥️ <span data-i18n="home.btn_desktop_redirect">Vai alla versione Web</span>
+            </button>
         </div>
 
         <a href="monumenti.html" class="btn-back-home">← Torna ai Monumenti</a>
@@ -1023,14 +1027,14 @@ window.silktideConsentManager.init({
 
         if (talkCastellanaBtnMonumento) {
             talkCastellanaBtnMonumento.addEventListener('click', () => {
-                if (getStoredAccessCode()) {
-                    chatMobileBox.classList.add('active');
-                    updatePremiumStatusDisplayMobile();
-                    if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
-                        renderWelcomeMobile();
-                    }
-                } else {
-                    window.location.href = "../desktop/chiese-arte.html";
+                // Apre sempre la chat qui sulla pagina mobile, per tutti
+                // gli utenti (gratuiti e Premium). Chi vuole raggiungere
+                // il sito desktop ha il pulsante separato "Vai alla
+                // versione Web".
+                chatMobileBox.classList.add('active');
+                updatePremiumStatusDisplayMobile();
+                if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
+                    renderWelcomeMobile();
                 }
             });
         }
