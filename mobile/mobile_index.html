@@ -254,6 +254,56 @@ window.silktideConsentManager.init({
             border: 1px solid rgba(184, 135, 59, 0.4);
         }
 
+        /* ===== BOX ACQUISTO PREMIUM (mobile) — stessi due pulsanti
+           del sito desktop ("Ho già un codice" / "Acquista l'accesso"),
+           per poter comprare l'abbonamento senza dover per forza
+           passare dalla versione web. ===== */
+        .castellana-premium-cta {
+            max-width: 420px;
+            margin: 14px auto 4px;
+            padding: 16px;
+            background: rgba(239, 230, 211, 0.08);
+            border: 1px solid rgba(184, 135, 59, 0.35);
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .premium-cta-label {
+            margin: 0 0 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--cst-gold-light);
+        }
+
+        .castellana-premium-cta .premium-btn {
+            display: inline-block;
+            padding: 9px 16px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            margin: 4px;
+            transition: opacity 0.2s ease;
+        }
+
+        .castellana-premium-cta .premium-btn:hover,
+        .castellana-premium-cta .premium-btn:active {
+            opacity: 0.9;
+        }
+
+        .castellana-premium-cta .premium-btn-outline {
+            background: transparent;
+            border: 2px solid var(--cst-gold);
+            color: var(--cst-gold-light);
+        }
+
+        .castellana-premium-cta .premium-btn-gold {
+            background: linear-gradient(135deg, #c9962f, #e0b04a);
+            color: #3a2a10;
+        }
+
         .chat-messages-mobile {
             flex-grow: 1;
             overflow-y: auto;
@@ -451,27 +501,40 @@ window.silktideConsentManager.init({
 
         <!-- ============================================================
              BOTTONE "PARLA CON LA CASTELLANA"
-             Comportamento nuovo: se esiste già un codice Premium
-             valido (salvato nel browser dopo un acquisto), il click
-             apre la chat direttamente qui, senza portare l'utente sul
-             sito desktop. Se non c'è ancora un codice valido, il link
-             funziona come prima e porta alla home desktop per
-             acquistare l'accesso.
+             Comportamento aggiornato: apre SEMPRE la chat qui sulla
+             pagina mobile — sia per utenti gratuiti che Premium — invece
+             di portare a volte l'utente sul sito desktop. Chi vuole
+             raggiungere il sito desktop (per esempio per acquistare
+             l'accesso) ha il pulsante separato "Vai alla versione Web"
+             qui sotto, sempre visibile.
              ============================================================ -->
         <a href="../desktop/desktop_index.html" id="talk-castellana-btn" class="btn-castellana">
             <span data-i18n="home.talk_castellana"></span>
         </a>
 
-        <!-- Link separato e sempre visibile verso il sito desktop:
-             prima il bottone sopra faceva anche da "porta" verso il
-             desktop quando non c'era un codice Premium valido, ma
-             ora che apre la chat direttamente (se il codice c'è),
-             chi ha già Premium non aveva più modo di raggiungere il
-             desktop dalla home. Questo link resta sempre disponibile,
-             indipendentemente dallo stato del codice. -->
+        <!-- Link separato e sempre visibile verso il sito desktop, per
+             chi vuole navigare la versione web completa o acquistare
+             l'accesso Premium (l'acquisto non è ancora disponibile
+             direttamente dalla chat mobile). -->
         <a href="../desktop/desktop_index.html" class="btn-barocco btn-desktop-link">
-            🖥️ <span data-i18n="home.btn_desktop_redirect">Vai alla versione Desktop</span>
+            🖥️ <span data-i18n="home.btn_desktop_redirect">Vai alla versione Web</span>
         </a>
+
+        <!-- ===== BOTTONE PREMIUM (mobile) ===== -->
+        <div class="castellana-premium-cta">
+          <p class="premium-cta-label" data-i18n="premium.cta_label">🔒 Contenuti Premium disponibili</p>
+          <button id="btn-premium-code-mobile" class="premium-btn premium-btn-outline" data-i18n="premium.btn_code">
+            Ho già un codice
+          </button>
+          <a
+            href="#"
+            id="btn-buy-premium-mobile"
+            class="premium-btn premium-btn-gold"
+            data-i18n="premium.btn_buy"
+          >
+            Acquista l'accesso — 3,90€
+          </a>
+        </div>
 
         <div class="amuni-box">
             <div class="amuni-title" data-i18n="home.amuni_title"></div>
@@ -1208,16 +1271,15 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
 
         if (talkCastellanaBtn) {
             talkCastellanaBtn.addEventListener('click', (e) => {
-                // Solo se esiste già un codice Premium valido apriamo la
-                // chat qui: altrimenti il link segue il suo percorso
-                // normale verso la home desktop, per l'acquisto.
-                if (getStoredAccessCode()) {
-                    e.preventDefault();
-                    chatMobileBox.classList.add('active');
-                    updatePremiumStatusDisplayMobile();
-                    if (!hasShownWelcomeMobile) {
-                        renderWelcomeMobile();
-                    }
+                // Apre sempre la chat qui sulla pagina mobile, per
+                // tutti gli utenti (gratuiti e Premium). Chi vuole
+                // raggiungere il sito desktop ha il pulsante separato
+                // "Vai alla versione Web".
+                e.preventDefault();
+                chatMobileBox.classList.add('active');
+                updatePremiumStatusDisplayMobile();
+                if (!hasShownWelcomeMobile) {
+                    renderWelcomeMobile();
                 }
             });
         }
@@ -1226,6 +1288,54 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             closeChatMobileBtn.addEventListener('click', () => {
                 chatMobileBox.classList.remove('active');
                 castellanaZitta();
+            });
+        }
+
+        // --------------------------
+        // BOTTONE PREMIUM (mobile) — "Ho già un codice" apre la chat
+        // e invita a scrivere il codice; "Acquista l'accesso" avvia
+        // Stripe, con return_page verso questa stessa pagina mobile.
+        // --------------------------
+        const btnPremiumCodeMobile = document.getElementById('btn-premium-code-mobile');
+        if (btnPremiumCodeMobile) {
+            btnPremiumCodeMobile.addEventListener('click', () => {
+                chatMobileBox.classList.add('active');
+                updatePremiumStatusDisplayMobile();
+                if (!hasShownWelcomeMobile) {
+                    renderWelcomeMobile();
+                }
+                appendChatMessageMobile(
+                    'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"',
+                    'castellana'
+                );
+            });
+        }
+
+        const btnBuyPremiumMobile = document.getElementById('btn-buy-premium-mobile');
+        if (btnBuyPremiumMobile) {
+            btnBuyPremiumMobile.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const btn = e.currentTarget;
+                const originalText = btn.textContent;
+                btn.textContent = "Un momento...";
+                try {
+                    const res = await fetch(`${API_BASE_URL}/create-checkout-session`, {
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ return_page: "mobile_index.html" })
+                    });
+                    const data = await res.json();
+                    if (data.url) {
+                        window.location.href = data.url;
+                    } else {
+                        alert("Non riesco ad avviare il pagamento. Riprova tra poco.");
+                        btn.textContent = originalText;
+                    }
+                } catch (err) {
+                    console.error("Errore avvio pagamento:", err);
+                    alert("Errore di collegamento. Riprova tra poco.");
+                    btn.textContent = originalText;
+                }
             });
         }
     </script>
