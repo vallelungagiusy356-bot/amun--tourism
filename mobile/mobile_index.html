@@ -388,6 +388,42 @@ window.silktideConsentManager.init({
             font-weight: 600;
         }
 
+        /* Pulsante "‹ Torna al menu" nella vista di un gruppo */
+        .topic-back-btn-mobile {
+            border-style: dashed;
+            color: var(--cst-terracotta);
+        }
+
+        /* Indicatore "sta scrivendo" — puntini animati */
+        .typing-indicator-mobile {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            width: fit-content;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            background: #fff;
+            border-radius: 8px;
+            border-left: 2px solid var(--cst-gold);
+        }
+
+        .typing-indicator-mobile span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--cst-gold);
+            display: inline-block;
+            animation: typing-bounce-mobile 1.2s infinite ease-in-out;
+        }
+
+        .typing-indicator-mobile span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator-mobile span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing-bounce-mobile {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+            30% { transform: translateY(-4px); opacity: 1; }
+        }
+
         .chat-input-row-mobile {
             display: flex;
             gap: 8px;
@@ -520,7 +556,15 @@ window.silktideConsentManager.init({
             🖥️ <span data-i18n="home.btn_desktop_redirect">Vai alla versione Web</span>
         </a>
 
-        <!-- ===== BOTTONE PREMIUM (mobile) ===== -->
+        <div class="amuni-box">
+            <div class="amuni-title" data-i18n="home.amuni_title"></div>
+            <div class="amuni-text" data-i18n="home.amuni_text"></div>
+            <button type="button" id="install-pwa-btn-mobile" class="btn-barocco">
+                📲 Aggiungi alla schermata Home
+            </button>
+        </div>
+
+        <!-- ===== BOTTONE PREMIUM (mobile) — spostato a fine pagina ===== -->
         <div class="castellana-premium-cta">
           <p class="premium-cta-label" data-i18n="premium.cta_label">🔒 Contenuti Premium disponibili</p>
           <button id="btn-premium-code-mobile" class="premium-btn premium-btn-outline" data-i18n="premium.btn_code">
@@ -534,14 +578,6 @@ window.silktideConsentManager.init({
           >
             Acquista l'accesso — 3,90€
           </a>
-        </div>
-
-        <div class="amuni-box">
-            <div class="amuni-title" data-i18n="home.amuni_title"></div>
-            <div class="amuni-text" data-i18n="home.amuni_text"></div>
-            <button type="button" id="install-pwa-btn-mobile" class="btn-barocco">
-                📲 Aggiungi alla schermata Home
-            </button>
         </div>
     </div>
 
@@ -896,7 +932,33 @@ window.silktideConsentManager.init({
                 messagesBox.appendChild(btn);
             }
 
-            messagesBox.scrollTop = messagesBox.scrollHeight;
+            if (sender === 'user') {
+                messagesBox.scrollTop = messagesBox.scrollHeight;
+            } else {
+                msg.scrollIntoView({ block: 'start', behavior: 'smooth' });
+            }
+        }
+
+        // --------------------------
+        // INDICATORE "STA SCRIVENDO" — puntini animati mostrati prima
+        // di ogni risposta della Castellana (benvenuto, scelta di un
+        // topic, testo libero)
+        // --------------------------
+        function showTypingIndicatorMobile() {
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            if (!messagesBox) return;
+            hideTypingIndicatorMobile();
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-indicator-mobile';
+            indicator.id = 'typing-indicator-mobile';
+            indicator.innerHTML = '<span></span><span></span><span></span>';
+            messagesBox.appendChild(indicator);
+            indicator.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        }
+
+        function hideTypingIndicatorMobile() {
+            const indicator = document.getElementById('typing-indicator-mobile');
+            if (indicator) indicator.remove();
         }
 
         // I link restituiti dal backend (es. "castello.html") sono
@@ -1071,6 +1133,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             wrap.className = 'topic-menu-mobile topic-menu-state-mobile';
 
             if (currentGroupName) {
+                // Vista di un gruppo: SOLO le sue voci + pulsante per tornare al menu generale
                 const groupEntry = fullTopicMenuMobile.find(e => e.group === currentGroupName);
                 if (groupEntry) {
                     groupEntry.items.forEach(it => {
@@ -1082,16 +1145,23 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                         wrap.appendChild(b);
                     });
                 }
-            }
 
-            fullTopicMenuMobile.forEach(entry => {
-                if (exploredGroupsMobile.has(entry.group)) return;
-                const groupBtn = document.createElement('button');
-                groupBtn.className = 'topic-btn-mobile topic-group-btn-mobile';
-                groupBtn.textContent = entry.group + ' ▸';
-                groupBtn.addEventListener('click', () => renderMenuStateMobile(entry.group));
-                wrap.appendChild(groupBtn);
-            });
+                const backBtn = document.createElement('button');
+                backBtn.className = 'topic-btn-mobile topic-back-btn-mobile';
+                backBtn.textContent = '‹ Torna al menu';
+                backBtn.addEventListener('click', () => renderMenuStateMobile(null));
+                wrap.appendChild(backBtn);
+            } else {
+                // Nessun gruppo selezionato: SOLO il menu generale
+                fullTopicMenuMobile.forEach(entry => {
+                    if (exploredGroupsMobile.has(entry.group)) return;
+                    const groupBtn = document.createElement('button');
+                    groupBtn.className = 'topic-btn-mobile topic-group-btn-mobile';
+                    groupBtn.textContent = entry.group + ' ▸';
+                    groupBtn.addEventListener('click', () => renderMenuStateMobile(entry.group));
+                    wrap.appendChild(groupBtn);
+                });
+            }
 
             if (wrap.children.length === 0) {
                 const knowledge = HOME_KNOWLEDGE_MOBILE[currentLang] || HOME_KNOWLEDGE_MOBILE.it;
@@ -1101,7 +1171,6 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             }
 
             messagesBox.appendChild(wrap);
-            messagesBox.scrollTop = messagesBox.scrollHeight;
         }
 
         function selectPageTopicMobile(item, groupName) {
@@ -1110,13 +1179,15 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             appendChatMessageMobile(item.label, 'user');
 
             const knowledge = HOME_KNOWLEDGE_MOBILE[currentLang] || HOME_KNOWLEDGE_MOBILE.it;
+            showTypingIndicatorMobile();
             setTimeout(() => {
+                hideTypingIndicatorMobile();
                 appendChatMessageMobile(knowledge.followUp, 'castellana');
                 if (voiceEnabled) speakText(knowledge.followUp);
                 setTimeout(() => {
                     window.location.href = item.page;
                 }, 1600);
-            }, 300);
+            }, 900);
 
             const groupEntry = fullTopicMenuMobile.find(e => e.group === groupName);
             if (groupEntry && groupEntry.items.every(it => usedTopicsMobile.has(it.id))) {
@@ -1124,21 +1195,26 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             }
         }
 
-        function renderWelcomeMobile() {
+        function renderWelcomeMobile(onComplete) {
             const messagesBox = document.getElementById('chat-messages-mobile');
             if (!messagesBox) return;
             messagesBox.innerHTML = '';
             usedTopicsMobile.clear();
             exploredGroupsMobile.clear();
-
-            const knowledge = HOME_KNOWLEDGE_MOBILE[currentLang] || HOME_KNOWLEDGE_MOBILE.it;
-            appendChatMessageMobile(knowledge.welcome, 'castellana');
-            if (voiceEnabled) speakText(knowledge.welcome);
-
-            fullTopicMenuMobile = knowledge.groups;
-            renderMenuStateMobile(null);
-
             hasShownWelcomeMobile = true;
+
+            showTypingIndicatorMobile();
+            setTimeout(() => {
+                hideTypingIndicatorMobile();
+                const knowledge = HOME_KNOWLEDGE_MOBILE[currentLang] || HOME_KNOWLEDGE_MOBILE.it;
+                appendChatMessageMobile(knowledge.welcome, 'castellana');
+                if (voiceEnabled) speakText(knowledge.welcome);
+
+                fullTopicMenuMobile = knowledge.groups;
+                renderMenuStateMobile(null);
+
+                if (typeof onComplete === 'function') onComplete();
+            }, 900);
         }
 
         // --------------------------
@@ -1184,6 +1260,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
 
             appendChatMessageMobile(text, 'user');
             castellanaZitta();
+            showTypingIndicatorMobile();
 
             try {
                 const res = await fetch(`${API_BASE_URL}/chat`, {
@@ -1200,11 +1277,13 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 if (!res.ok) throw new Error('Risposta non valida dal server');
 
                 const data = await res.json();
+                hideTypingIndicatorMobile();
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
 
             } catch (err) {
                 console.error('Errore chat:', err);
+                hideTypingIndicatorMobile();
                 appendChatMessageMobile('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
             }
         }
@@ -1301,13 +1380,17 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             btnPremiumCodeMobile.addEventListener('click', () => {
                 chatMobileBox.classList.add('active');
                 updatePremiumStatusDisplayMobile();
+                const showCodePrompt = () => {
+                    appendChatMessageMobile(
+                        'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"',
+                        'castellana'
+                    );
+                };
                 if (!hasShownWelcomeMobile) {
-                    renderWelcomeMobile();
+                    renderWelcomeMobile(showCodePrompt);
+                } else {
+                    showCodePrompt();
                 }
-                appendChatMessageMobile(
-                    'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"',
-                    'castellana'
-                );
             });
         }
 
