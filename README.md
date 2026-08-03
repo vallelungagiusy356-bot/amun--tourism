@@ -11,12 +11,17 @@ Benvenuti nel cuore della Sicilia. **Amunì Tourism** è un'esperienza digitale 
 * **HTML5 & CSS3**: Per la struttura e il design responsivo.
 * **Python (anywhere )**: Utilizzato per la configurazione di flask,anthropic,stripe e costruire la knowledge della castellana in 5 lingue.
 * **GitHub Pages**: Per l'hosting gratuito e la pubblicazione del sito live.
+* ***Aeuba**:Collegamento DSN
 * **Stripe**:per i pagamenti
+* **Google analytics**:Per analizzare i monumenti più visitati,i paesi di provenienza dell'utente,le lingue scelte,gli eventi generati i monumenti visitati
+* ***Antrhopic**:Per naturalizzazione del linguaggio
+* ***Mapbox**:Per la mappa personalizzata
 
 ## 📂 Struttura del Repository
 * `/img`: Contiene le immagini elaborate (Castello, Castellana, Monumenti).
 * `/css`: File di stile per il layout e gli effetti visivi.
 * `/bot`: Logica Python Anywhere per il "cervello" della Castellana (In corso).
+  
 
 ## 🚀 Come Visualizzare il Progetto
 Puoi visitare la versione live del sito qui:
