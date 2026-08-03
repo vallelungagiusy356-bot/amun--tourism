@@ -9,7 +9,8 @@
     "btn_events": "Events",
     "btn_monuments": "Monuments",
     "btn_desktop_redirect": "Go to the Desktop version",
-    "welcome_title": "Welcome to Caccamo"
+    "welcome_title": "Welcome to Caccamo",
+    "btn_add_home": "Add to Home Screen"
   },
   "pages": {
     "food_page": {
@@ -132,7 +133,8 @@
         "church_notice": "⚠️ Note: These are active places of worship, dedicated to liturgical functions. For tourist visits, please respect the recommended visiting hours and avoid times of internal celebration.",
         "go_to_map": "Go to the Map",
         "listen_button": "Listen to the description",
-        "address": "Location:"
+        "address": "Location:",
+        "back_to_monuments": "Back to Monuments"
       },
       "castello": {
         "title": "The Castle of Caccamo",
@@ -240,5 +242,11 @@
     "estate_description": "A whole summer of events promoted by the Municipality: opera, music, sport and traditions at the foot of the Castle.",
     "estate_show_button": "📋 View full programme",
     "estate_hide_button": "📋 Hide programme"
+  },
+  "premium": {
+    "cta_label": "🔒 Premium content available",
+    "btn_code": "I already have a code",
+    "btn_buy": "Buy access — €3.90",
+    "launch_price_note": "🎉 Launch price"
   }
 }

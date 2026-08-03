@@ -9,12 +9,14 @@
     "btn_events": "Veranstaltungen",
     "btn_monuments": "Denkmäler",
     "btn_desktop_redirect": "Zur Web-Version",
-    "welcome_title": "Willkommen in Caccamo"
+    "welcome_title": "Willkommen in Caccamo",
+    "btn_add_home": "Zum Startbildschirm hinzufügen"
   },
   "premium": {
     "cta_label": "🔒 Premium-Inhalte verfügbar",
     "btn_code": "Ich habe bereits einen Code",
-    "btn_buy": "Zugang kaufen — 3,90 €"
+    "btn_buy": "Zugang kaufen — 3,90 €",
+    "launch_price_note": "🎉 Einführungspreis"
   },
   "pages": {
     "food_page": {
@@ -137,7 +139,8 @@
         "church_notice": "⚠️ Hinweis: Diese Gotteshäuser sind aktiv und den liturgischen Funktionen gewidmet. Für touristische Besuche bitten wir, die empfohlenen Öffnungszeiten zu beachten und Zeiten interner Feiern zu vermeiden.",
         "go_to_map": "Zur Karte",
         "listen_button": "Beschreibung anhoren",
-        "address": "Standort:"
+        "address": "Standort:",
+        "back_to_monuments": "Zurück zu den Denkmälern"
       },
       "castello": {
         "title": "Die Burg von Caccamo",

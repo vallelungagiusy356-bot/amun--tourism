@@ -9,7 +9,8 @@
     "btn_events": "Eventi",
     "btn_monuments": "Monumenti",
     "btn_desktop_redirect": "Vai alla versione Desktop",
-    "welcome_title": "Benvenuti a Caccamo"
+    "welcome_title": "Benvenuti a Caccamo",
+    "btn_add_home": "Aggiungi alla schermata Home"
   },
   "pages": {
     "food_page": {
@@ -132,7 +133,8 @@
         "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli Orari consigliati ed evitare i momenti di celebrazione interna.",
         "go_to_map": "Vai alla Mappa",
         "listen_button": "Ascolta la descrizione",
-        "address": "Dove si trova:"
+        "address": "Dove si trova:",
+        "back_to_monuments": "Torna ai Monumenti"
       },
       "castello": {
         "title": "Il Castello di Caccamo",
@@ -238,5 +240,11 @@
     "estate_description": "Un'estate intera di eventi promossa dal Comune: opera, musica, sport e tradizioni ai piedi del Castello.",
     "estate_show_button": "📋 Vedi il programma completo",
     "estate_hide_button": "📋 Nascondi il programma"
+  },
+  "premium": {
+    "cta_label": "🔒 Contenuti Premium disponibili",
+    "btn_code": "Ho già un codice",
+    "btn_buy": "Acquista l'accesso — 3,90€",
+    "launch_price_note": "🎉 Prezzo di lancio"
   }
 }
