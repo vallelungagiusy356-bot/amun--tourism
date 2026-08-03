@@ -180,7 +180,8 @@
         "events_button": "🌿 Association Vivere è Pensare →",
         "event_title": "🕯️ Fête de la Confrérie",
         "event_date": "Samedi 16 août – 18h30 – Sous les étoiles de la Confrérie",
-        "event_text": "Une soirée organisée par la Confrérie des Âmes Saintes du Purgatoire, ouverte à toute la communauté de Caccamo, se déroulant à l'extérieur et à l'intérieur de l'église. Elle s'ouvre avec le concert de Renato Filippello et d'une violoniste, suivi d'un moment dédié aux enfants et d'un rosaire sous les étoiles. La soirée se termine par un moment de convivialité avec du pain, de l'huile et du vin. Durée prévue : environ deux heures à deux heures et demie."
+        "event_text": "Une soirée organisée par la Confrérie des Âmes Saintes du Purgatoire, ouverte à toute la communauté de Caccamo, se déroulant à l'extérieur et à l'intérieur de l'église. Elle s'ouvre avec le concert de Renato Filippello et d'une violoniste, suivi d'un moment dédié aux enfants et d'un rosaire sous les étoiles. La soirée se termine par un moment de convivialité avec du pain, de l'huile et du vin. Durée prévue : environ deux heures à deux heures et demie.",
+        "confraternita_text": "La confrérie des Âmes Saintes du Purgatoire consacre du temps et des ressources à cette église : nous apprécions leur travail de bénévolat et leur persévérance. La collaboration de la confrérie avec l'association Vivere è Pensare est pensée pour l'organisation d'événements directement dans le monument, afin de vous faire apprécier sa beauté à 360 degrés."
       }
     },
     "vivereepensare_page": {
@@ -197,7 +198,9 @@
       "btn_instagram": "Suivez-les sur Instagram",
       "events_title": "🎉 Événements d'Août",
       "event1_date": "📖 Jeudi 6 août – 19h00",
-      "event1_text": "Le Professeur Battistella récite les vers du Purgatoire de la Divine Comédie, à l'intérieur de l'Église des Âmes Saintes du Purgatoire. Une heure de lecture et de poésie, organisée par l'Association Vivere è Pensare avec la collaboration de la GeA et de la Confrérie des Âmes Saintes du Purgatoire, sous le patronage de la Municipalité de Caccamo. Le Maire et d'autres représentants institutionnels seront présents. Entrée libre."
+      "event1_text": "Le Professeur Battistella récite les vers du Purgatoire de la Divine Comédie, à l'intérieur de l'Église des Âmes Saintes du Purgatoire. Une heure de lecture et de poésie, organisée par l'Association Vivere è Pensare avec la collaboration de la GeA et de la Confrérie des Âmes Saintes du Purgatoire, sous le patronage de la Municipalité de Caccamo. Le Maire et d'autres représentants institutionnels seront présents. Entrée libre.",
+      "event2_date": "🕯️ Samedi 16 août – 18h30 – Sous les étoiles de la Confrérie",
+      "event2_text": "Une soirée organisée par la Confrérie des Âmes Saintes du Purgatoire, ouverte à toute la communauté de Caccamo, se déroulant à l'extérieur et à l'intérieur de l'église. Elle s'ouvre avec le concert de Renato Filippello et d'une violoniste, suivi d'un moment dédié aux enfants et d'un rosaire sous les étoiles. La soirée se termine par un moment de convivialité avec du pain, de l'huile et du vin. Durée prévue : environ deux heures à deux heures et demie."
     }
   },
   "monuments": {

@@ -177,7 +177,11 @@
         "address": "Piazza Duomo, accanto al Monte di Pietà",
         "caption_catacombe": "Le catacombe",
         "caption_altare": "L'altare",
-        "events_button": "🌿 Vivere è Pensare →"
+        "events_button": "🌿 Vivere è Pensare →",
+        "confraternita_text": "La confraternita delle Anime Sante del Purgatorio dedica tempo e risorse a questa chiesa: apprezziamo il loro lavoro di volontariato e la loro resilienza. La simbiosi della confraternita con l'associazione Vivere è Pensare è concepita per lo svolgimento di eventi in loco nel monumento e per farvi apprezzare la sua bellezza a 360 gradi.",
+        "event_text": "Una serata organizzata dalla Confraternita delle Anime Sante del Purgatorio, aperta a tutta la comunità caccamese, davanti e all'interno della chiesa. Si apre con il concerto di Renato Filippello e di una violinista, seguito da un momento dedicato ai bambini e da un rosario sotto le stelle. A chiudere la serata, un momento di convivialità con pane, olio e vino. Durata prevista: circa due ore/due ore e mezza.",
+        "event_title": "🕯️ Festa della Confraternita",
+        "event_date": "Sabato 16 agosto – ore 18:30 – Sotto le stelle della Confraternita"
       }
     },
     "vivereepensare_page": {
