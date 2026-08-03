@@ -341,6 +341,17 @@ window.silktideConsentManager.init({
                     miniMapExpandBtn.textContent = espansa ? '✕' : '⤢';
                     miniMapExpandBtn.setAttribute('aria-label', espansa ? 'Rimpicciolisci la mappa' : 'Ingrandisci la mappa');
                 });
+
+                // Se mappa.js (dentro l'iframe) chiede più spazio perché
+                // l'utente ha toccato un punto e il fumetto dei dettagli
+                // non ci starebbe nel riquadro piccolo, lo ingrandiamo noi.
+                window.addEventListener('message', (e) => {
+                    if (e.data === 'amuni-espandi-mappa' && !miniMapWrapper.classList.contains('espansa')) {
+                        miniMapWrapper.classList.add('espansa');
+                        miniMapExpandBtn.textContent = '✕';
+                        miniMapExpandBtn.setAttribute('aria-label', 'Rimpicciolisci la mappa');
+                    }
+                });
             }
         });
 

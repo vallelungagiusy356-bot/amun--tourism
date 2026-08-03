@@ -536,17 +536,13 @@ map.on('load', () => {
                 capp: 'cappuccini',
                 animesant: 'chicca_borgo'
             };
-            // Bar e pub mostrano il proprio nome, i ristoranti "food".
-            // Nessuna di queste tre va tradotta (restano uguali in tutte le lingue).
-            const ETICHETTE_FISSE = {
-                ristorante: 'food',
-                bar: 'bar',
-                pub: 'pub'
-            };
 
             // Decide quale scritta mostrare accanto a un punto della mappa.
             function calcolaEtichetta(props, monumentiTradotti, chiesaGenerica) {
-                if (ETICHETTE_FISSE[props.icona]) return ETICHETTE_FISSE[props.icona];
+                // Bar, ristoranti e pub mostrano il proprio nome (la
+                // categoria è già indicata nella card di mangiare.html,
+                // ripeterla anche qui sulla mappa era ridondante).
+                if (['bar', 'ristorante', 'pub'].includes(props.icona)) return props.name;
                 const chiave = ICONA_TO_LABEL_KEY[props.icona];
                 if (chiave && monumentiTradotti[chiave]) return monumentiTradotti[chiave];
                 // Tutte le altre ~33 chiese (icona generica "chiesa").
@@ -613,9 +609,17 @@ map.on('load', () => {
         const p = e.features[0].properties;
         const coords = e.features[0].geometry.coordinates;
 
+        // Se questa mappa è dentro un riquadro piccolo (es. il box in
+        // fondo a mangiare.html), avvisiamo la pagina che la contiene di
+        // ingrandirla: altrimenti il fumetto con i dettagli non ha spazio
+        // e finisce tagliato/nascosto in alto.
+        if (window.parent !== window) {
+            window.parent.postMessage('amuni-espandi-mappa', '*');
+        }
+
         map.flyTo({ center: coords, zoom: 16, pitch: 45 });
 
-        new mapboxgl.Popup({ className: 'popup-medievale' }).setLngLat(coords).setHTML(`
+        new mapboxgl.Popup({ className: 'popup-medievale', maxWidth: '260px' }).setLngLat(coords).setHTML(`
             <div style="padding:5px; text-align:center;">
                 <h3 style="font-family:'Cinzel', serif; color:#CDA843;">${p.name}</h3>
                 <p style="font-size:12px;">${p.address || ''}</p>
