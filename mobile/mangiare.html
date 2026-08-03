@@ -152,8 +152,68 @@ window.silktideConsentManager.init({
             <section class="section-block" id="block-eat">
                 <div class="food-grid" id="food-container"></div>
             </section>
+
+            <section class="section-block" id="block-mini-map">
+                <div class="mini-map-wrapper" id="mini-map-wrapper">
+                    <iframe src="mappa.html" id="mini-map-frame" title="Mappa Amunì" loading="lazy"></iframe>
+                    <button id="mini-map-expand" aria-label="Ingrandisci la mappa" type="button">⤢</button>
+                </div>
+            </section>
         </div>
     </div>
+
+    <style>
+        /* ============================================================
+           RIQUADRO MAPPA PICCOLA — sezione "Mangiare"
+           Mostra la mappa già aperta ma piccola, con un bottone in alto
+           a destra per farla diventare a schermo intero (e un altro
+           bottone, al suo posto, per richiuderla).
+           ============================================================ */
+        .mini-map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            margin: 6px 0 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 3px solid #d4a056;
+            box-shadow: 0 0 20px rgba(180, 120, 60, 0.3);
+        }
+
+        .mini-map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .mini-map-wrapper button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            z-index: 2;
+            width: 34px;
+            height: 34px;
+            background: rgba(20, 40, 58, 0.85);
+            color: #EFE6D3;
+            border: 1px solid #d4a056;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        /* Quando è ingrandita: copre tutto lo schermo */
+        .mini-map-wrapper.espansa {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 999;
+            margin: 0;
+            border-radius: 0;
+        }
+    </style>
 
     <script>
         const activityMeta = {
@@ -207,6 +267,11 @@ window.silktideConsentManager.init({
                 })
                 .catch(err => console.error("Errore lingua:", err));
             localStorage.setItem("lang", lang);
+
+            // Ricarica anche la mappa piccola, così le etichette d'oro
+            // cambiano lingua insieme al resto della pagina.
+            const miniMapFrame = document.getElementById('mini-map-frame');
+            if (miniMapFrame) miniMapFrame.src = miniMapFrame.src;
         }
 
         function filterCards() {
@@ -223,6 +288,17 @@ window.silktideConsentManager.init({
                 btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
             });
             loadLanguage(localStorage.getItem("lang") || "it");
+
+            // Bottone che ingrandisce/rimpicciolisce il riquadro della mappa
+            const miniMapWrapper = document.getElementById('mini-map-wrapper');
+            const miniMapExpandBtn = document.getElementById('mini-map-expand');
+            if (miniMapWrapper && miniMapExpandBtn) {
+                miniMapExpandBtn.addEventListener('click', () => {
+                    const espansa = miniMapWrapper.classList.toggle('espansa');
+                    miniMapExpandBtn.textContent = espansa ? '✕' : '⤢';
+                    miniMapExpandBtn.setAttribute('aria-label', espansa ? 'Rimpicciolisci la mappa' : 'Ingrandisci la mappa');
+                });
+            }
         });
 
         // Service Worker

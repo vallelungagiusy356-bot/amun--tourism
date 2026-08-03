@@ -473,15 +473,67 @@ map.on('load', () => {
                 }
             });
 
+            // ============================================================
+            // ETICHETTE ORO accanto alle icone — leggono la lingua scelta
+            // dall'utente (salvata in localStorage con la chiave "lang",
+            // esattamente come fa già mangiare.html) e vanno a prendere il
+            // testo giusto dal file lang/<lingua>.json, dentro una nuova
+            // sezione chiamata "map_labels".
+            // ============================================================
+            const linguaCorrente = localStorage.getItem('lang') || 'it';
+
+            // Ponte tra il campo "icona" del geojson e le chiavi che
+            // ESISTONO GIÀ in monuments.mobile nei file lang/*.json
+            // (le stesse usate nell'elenco di monumenti.html). Non serve
+            // creare nomi nuovi: si riusano quelli che hai già tradotto.
+            const ICONA_TO_LABEL_KEY = {
+                cast: 'castello',
+                bad: 'sanbenedetto',
+                ann: 'annunziata',
+                sandom: 'santamaria',
+                madrice: 'sangiorgio',
+                capp: 'cappuccini',
+                animesant: 'chicca_borgo'
+            };
+            // Bar e pub mostrano il proprio nome, i ristoranti "food".
+            // Nessuna di queste tre va tradotta (restano uguali in tutte le lingue).
+            const ETICHETTE_FISSE = {
+                ristorante: 'food',
+                bar: 'bar',
+                pub: 'pub'
+            };
+
+            // Decide quale scritta mostrare accanto a un punto della mappa.
+            function calcolaEtichetta(props, monumentiTradotti, chiesaGenerica) {
+                if (ETICHETTE_FISSE[props.icona]) return ETICHETTE_FISSE[props.icona];
+                const chiave = ICONA_TO_LABEL_KEY[props.icona];
+                if (chiave && monumentiTradotti[chiave]) return monumentiTradotti[chiave];
+                // Tutte le altre ~33 chiese (icona generica "chiesa").
+                return chiesaGenerica;
+            }
+
+            const langPromise = fetch(`lang/${linguaCorrente}.json`)
+                .then(res => res.json())
+                .catch(() => ({})); // se il file non si trova, la mappa funziona lo stesso
+
             const icone = ['cast', 'madrice', 'ann', 'bad', 'capp', 'sandom', 'animesant', 'chiesa', 'bar', 'ristorante', 'pub', 'ludoteca'];
-            const promises = icone.map(nome => new Promise(resolve => {
+            const imgPromises = icone.map(nome => new Promise(resolve => {
                 map.loadImage(`img/${nome}.png`, (err, img) => {
                     if (!err) map.addImage(nome, img);
                     resolve();
                 });
             }));
 
-            Promise.all(promises).then(() => {
+            Promise.all([langPromise, ...imgPromises]).then(([langData]) => {
+                const monumentiTradotti = (langData && langData.monuments && langData.monuments.mobile) || {};
+                const chiesaGenerica = (langData && langData.monuments && langData.monuments.chiesa_generica) || 'Chiesa';
+
+                // Scrive l'etichetta calcolata dentro ogni punto, così il
+                // layer sotto la legge semplicemente con ['get', 'label'].
+                data.features.forEach(f => {
+                    f.properties.label = calcolaEtichetta(f.properties, monumentiTradotti, chiesaGenerica);
+                });
+
                 map.addLayer({
                     id: 'poi-github',
                     type: 'symbol',
@@ -490,7 +542,7 @@ map.on('load', () => {
                         'icon-image': ['get', 'icona'],
                         'icon-size': ['coalesce', ['get', 'iconSize'], 0.25],
                         'icon-allow-overlap': true,
-                        'text-field': ['get', 'name'],
+                        'text-field': ['get', 'label'],
                         'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
                         'text-size': 12,
                         'text-offset': [0, 1.3],
@@ -498,9 +550,9 @@ map.on('load', () => {
                         'text-allow-overlap': false
                     },
                     paint: {
-                        'text-color': '#4a3b2a',
-                        'text-halo-color': '#f7f2e8',
-                        'text-halo-width': 1.4
+                        'text-color': '#CDA843',
+                        'text-halo-color': '#2A1E12',
+                        'text-halo-width': 1.3
                     }
                 });
             });
@@ -508,7 +560,8 @@ map.on('load', () => {
             // Se siamo arrivati da un pulsante "dove si trova" / "Apri la
             // Mappa" con un monumento specifico, voliamo lì e proviamo
             // subito a disegnare il percorso reale (se la posizione è
-            // già nota, o appena diventa disponibile).
+            // già nota, o appena diventa disponibile). Non deve aspettare
+            // le etichette: parte subito.
             const focusedCoords = flyToFocusedMonument(data);
             if (focusedCoords) {
                 requestRouteTo(focusedCoords);
