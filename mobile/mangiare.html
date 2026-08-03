@@ -155,7 +155,7 @@ window.silktideConsentManager.init({
 
             <section class="section-block" id="block-mini-map">
                 <div class="mini-map-wrapper" id="mini-map-wrapper">
-                    <iframe src="mappa.html" id="mini-map-frame" title="Mappa Amunì" loading="lazy"></iframe>
+                    <iframe src="mappa.html?vista=food" id="mini-map-frame" title="Mappa Amunì" loading="lazy"></iframe>
                     <button id="mini-map-expand" aria-label="Ingrandisci la mappa" type="button">⤢</button>
                 </div>
             </section>
@@ -217,16 +217,32 @@ window.silktideConsentManager.init({
 
     <script>
         const activityMeta = {
-            "the_castle": { link: "https://www.facebook.com/share/18vZG4MXRW/", badge: "Pub" },
-            "o_chianu_fasu":{  link: "https://www.facebook.com/share/1DAqSDoxb9/",badge: "Bar" },
-            "kittipigghi": { link: "https://www.kitipigghi.it/", badge: "Pub" },
-            "chiosco_san_francesco": { link: "https://www.facebook.com/share/1B4aAYCLgD/", badge: "Solo Estate" },
-            "al_maniero": { link: "https://www.facebook.com/share/18u3GL8zLz/", badge: "Ristorante" },
-            "il_borgo": { link: "https://www.ilborgoristorante.it/", badge: "Ristorante" },
-            "a_castellana": { link: "https://www.castellana.it/", badge: "Ristorante" },
-            "caffè_royal": { link: "https://www.pasticceriacafferoyal.it/", badge: "Bar Pasticceria" },
-            "capricci_di_sicilia": { link: "https://www.facebook.com/share/1H2pDMDxFv/", badge: "Gastronomia" },
-            "la_bottega_dei_sapori": { link: "#", badge: "Pizzeria" }
+            "the_castle":       { link: "https://www.facebook.com/share/18vZG4MXRW/", badge: "pub", estivo: true },
+            "o_chianu_fasu":    { link: "https://www.facebook.com/share/1DAqSDoxb9/", badge: "bar" },
+            "kittipigghi":      { link: "https://www.kitipigghi.it/", badge: "pub" },
+            "chiosco_san_francesco": { link: "https://www.facebook.com/share/1B4aAYCLgD/", badge: "pub", estivo: true },
+            "al_maniero":       { link: "https://www.facebook.com/share/18u3GL8zLz/", badge: "ristorante" },
+            "il_borgo":         { link: "https://www.ilborgoristorante.it/", badge: "ristorante" },
+            "a_castellana":     { link: "https://www.castellana.it/", badge: "ristorante" },
+            "caffè_royal":      { link: "https://www.pasticceriacafferoyal.it/", badge: "bar_pasticceria" },
+            "capricci_di_sicilia": { link: "https://www.facebook.com/share/1H2pDMDxFv/", badge: "gastronomia" },
+            "la_bottega_dei_sapori": { link: "#", badge: "pizzeria" },
+
+            // --- Prima mancavano qui sotto: mostravano il badge di riserva "Info".
+            // Categoria confermata guardando il "type" dello stesso posto in data.geojson. ---
+            "l_officina_dei_golosi":      { link: "#", badge: "bar" },
+            "strapizzami":                { link: "#", badge: "gastronomia" },
+            "spiga_d_oro_food_and_drink":  { link: "#", badge: "ristorante" },
+            "bar_ribaudo":                 { link: "#", badge: "bar" },
+            "bar_del_carmine":             { link: "#", badge: "bar" },
+            "bar_muscarella":              { link: "#", badge: "bar" },
+
+            // --- Questi 3 non hanno un punto in data.geojson, quindi non ho
+            // una fonte certa: categoria scelta dal nome/descrizione.
+            // CONTROLLA e correggimi se non è giusta. ---
+            "pasticceria_fratelli_scimeca": { link: "#", badge: "pasticceria" },
+            "dolci_tentazioni":            { link: "#", badge: "bar" },
+            "il_dolce":                    { link: "#", badge: "bar" }
         };
 
         function renderFoodCards(data) {
@@ -234,21 +250,35 @@ window.silktideConsentManager.init({
             const cardsData = data.pages?.food_page?.cards;
             if(!container || !cardsData) return;
 
+            // Testi tradotti per i badge e per "Vedi Dettagli", presi dal
+            // file lingua appena caricato (lang/<lingua>.json).
+            const badgeLabels = data.pages?.food_page?.badges || {};
+            const testoDettagli = data.pages?.food_page?.details_button || 'Vedi Dettagli ➔';
+            const testoSoloEstate = badgeLabels.solo_estate || 'Solo Estate';
+
             container.innerHTML = ''; 
             Object.keys(cardsData).forEach(key => {
-                const meta = activityMeta[key] || { link: "#", badge: "Info" };
+                const meta = activityMeta[key] || { link: "#", badge: "info" };
                 const desc = cardsData[key];
                 const cleanTitle = key.replace(/_/g, ' ').toUpperCase();
-                
+
+                // Badge principale tradotto (Bar/Pub/Ristorante/...); se il
+                // locale è anche stagionale (estivo: true), aggiunge un
+                // secondo badge "Solo Estate" tradotto.
+                const badgeTesto = badgeLabels[meta.badge] || meta.badge;
+                const badgeHTML = meta.estivo
+                    ? `<span class="badge">${badgeTesto}</span><span class="badge badge-estivo">${testoSoloEstate}</span>`
+                    : `<span class="badge">${badgeTesto}</span>`;
+
                 const cardHTML = `
                     <a href="${meta.link}" target="_blank" class="food-card">
                         <div class="food-card-content">
                             <div class="food-card-header">
                                 <h3 class="food-card-title">${cleanTitle}</h3>
-                                <span class="badge">${meta.badge}</span>
+                                ${badgeHTML}
                             </div>
                             <p class="food-card-desc">${desc}</p>
-                            <span class="food-card-btn">Vedi Dettagli ➔</span>
+                            <span class="food-card-btn">${testoDettagli}</span>
                         </div>
                     </a>
                 `;
