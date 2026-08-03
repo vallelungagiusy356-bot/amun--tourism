@@ -39,8 +39,28 @@
         "o_chianu_fasu": "Ambiente moderno e accogliente, ideale per le colazioni.",
         "il_dolce": "Ambiente moderno e accogliente, ideale dolci tipici, rosticceria, tipico cibo da street food siciliano.",
         "bar_muscarella": "Tappa ideale per un caffè rigenerante, un gelato artigianale o un aperitivo in relax.",
-        "capricci_di_sicilia": "Gastronomia in via Termitana, ideale per una pausa veloce o un break goloso se ti trovi alla villa comunale con i bambini."
-      }
+        "capricci_di_sicilia": "Gastronomia in via Termitana, ideale per una pausa veloce o un break goloso se ti trovi alla villa comunale con i bambini.",
+        "briciole_di_pane": "Panificio e gastronomia nel cuore del borgo: pane fresco sfornato ogni giorno e specialità locali pronte da gustare.",
+        "a_ficurinnia": "Ristorante nella frazione di San Giovanni Li Greci: ottima pizza e gastronomia locale in un ambiente accogliente. Raggiungibile solo in auto, non a piedi dal centro del borgo.",
+        "agriturismo_cicala": "Cucina locale curata, in un'agriturismo immerso nel verde.",
+        "giallombardo": "Street food, dolci, gelato e colazioni: un'esperienza completa, vicino alla fermata delle Autolinee Randazzo di Gesù.",
+        "al_chiosco_da_pietro": "Accanto al campetto sportivo e al Convento dei Frati Cappuccini: ideale per un caffè o qualcosa da bere.",
+        "dai_e_vai_pub": "Vicino al campo di calcio sotto la villa comunale: perfetto per una pausa, un caffè o qualcosa da bere.",
+        "da_peppe": "Street food da gustare comodamente seduti, ai tavoli all'aperto."
+      },
+      "badges": {
+        "bar": "Bar",
+        "pub": "Pub",
+        "ristorante": "Ristorante",
+        "gastronomia": "Gastronomia",
+        "pizzeria": "Pizzeria",
+        "bar_pasticceria": "Bar Pasticceria",
+        "pasticceria": "Pasticceria",
+        "solo_estate": "Solo Estate",
+        "info": "Info",
+        "fuori_borgo": "Raggiungibile solo in auto"
+      },
+      "details_button": "Vedi Dettagli ➔"
     },
     "sleep_page": {
       "accommodations": [
@@ -200,7 +220,8 @@
       "event1_date": "📖 Giovedì 6 agosto – ore 19:00",
       "event1_text": "Il Professor Battistella recita i versi del Purgatorio della Divina Commedia, all'interno della Chiesa delle Anime Sante del Purgatorio. Un'ora di lettura e poesia, organizzata dall'Associazione Vivere è Pensare con la collaborazione della GeA e della Confraternita delle Anime Sante del Purgatorio, con il patrocinio del Comune di Caccamo. Saranno presenti il Sindaco e altri rappresentanti istituzionali. Ingresso libero.",
       "event2_date": "🕯️ Sabato 16 agosto – ore 18:30 – Sotto le stelle della Confraternita",
-      "event2_text": "Una serata organizzata dalla Confraternita delle Anime Sante del Purgatorio, aperta a tutta la comunità caccamese, davanti e all'interno della chiesa. Si apre con il concerto di Renato Filippello e di una violinista, seguito da un momento dedicato ai bambini e da un rosario sotto le stelle. A chiudere la serata, un momento di convivialità con pane, olio e vino. Durata prevista: circa due ore/due ore e mezza."
+      "event2_text": "Una serata organizzata dalla Confraternita delle Anime Sante del Purgatorio, aperta a tutta la comunità caccamese, davanti e all'interno della chiesa. Si apre con il concerto di Renato Filippello e della violinista Giada Calderone, seguito da un momento dedicato ai bambini e da un rosario sotto le stelle. A chiudere la serata, un momento di convivialità con pane, olio e vino. Durata prevista: circa due ore/due ore e mezza. La locandina dell'evento è consultabile sulle pagine social degli organizzatori.",
+      "btn_facebook": "Seguili su Facebook"
     }
   },
   "monuments": {
@@ -215,7 +236,8 @@
       "sanbenedetto": "Chiesa S. Benedetto della Badia",
       "chicca_borgo": "✨ La Chicca del Borgo"
     },
-    "map_hint": "📍 Clicca l'icona della mappa, attiva la geolocalizzazione e un punto blu indicherà la tua posizione in tempo reale sulla mappa."
+    "map_hint": "📍 Clicca l'icona della mappa, attiva la geolocalizzazione e un punto blu indicherà la tua posizione in tempo reale sulla mappa.",
+    "chiesa_generica": "Chiesa"
   },
   "citizen": {
     "church_sepolcri": "Il Periodo Pasquale",

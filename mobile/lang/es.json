@@ -39,8 +39,28 @@
         "o_chianu_fasu": "Ambiente moderno y acogedor, ideal para desayunos.",
         "il_dolce": "Ambiente moderno y acogedor, ideal para dulces típicos, rosticería y comida callejera típica siciliana.",
         "bar_muscarella": "Parada ideal para un café reparador, un helado artesanal o un aperitivo relajado.",
-        "capricci_di_sicilia": "Charcutería en via Termitana, ideal para una pausa rápida o un capricho goloso si estás en la villa municipal con niños."
-      }
+        "capricci_di_sicilia": "Charcutería en via Termitana, ideal para una pausa rápida o un capricho goloso si estás en la villa municipal con niños.",
+        "briciole_di_pane": "Panadería y tienda de gastronomía en el corazón del pueblo: pan fresco horneado a diario y especialidades locales.",
+        "a_ficurinnia": "Restaurante en la pedanía de San Giovanni Li Greci: excelente pizza y gastronomía local en un ambiente acogedor. Solo se puede llegar en coche, no a pie desde el centro del pueblo.",
+        "agriturismo_cicala": "Cocina local cuidada, en un agriturismo rodeado de vegetación.",
+        "giallombardo": "Street food, dulces, helado y desayunos: una experiencia completa, cerca de la parada de las Autolinee Randazzo di Gesù.",
+        "al_chiosco_da_pietro": "Junto al campo deportivo y al Convento de los Frailes Capuchinos: ideal para un café o algo de beber.",
+        "dai_e_vai_pub": "Cerca del campo de fútbol bajo la villa comunal: perfecto para una pausa, un café o algo de beber.",
+        "da_peppe": "Street food para disfrutar cómodamente sentado, en las mesas al aire libre."
+      },
+      "badges": {
+        "bar": "Bar",
+        "pub": "Pub",
+        "ristorante": "Restaurante",
+        "gastronomia": "Gastronomía",
+        "pizzeria": "Pizzería",
+        "bar_pasticceria": "Café y Pastelería",
+        "pasticceria": "Pastelería",
+        "solo_estate": "Solo en Verano",
+        "info": "Info",
+        "fuori_borgo": "Solo en coche"
+      },
+      "details_button": "Ver Detalles ➔"
     },
     "sleep_page": {
       "accommodations": [
@@ -200,7 +220,8 @@
       "event1_date": "📖 Jueves 6 de agosto – 19:00",
       "event1_text": "El Profesor Battistella recita los versos del Purgatorio de la Divina Comedia, dentro de la Iglesia de las Ánimas Santas del Purgatorio. Una hora de lectura y poesía, organizada por la Asociación Vivere è Pensare con la colaboración de la GeA y la Cofradía de las Ánimas Santas del Purgatorio, con el patrocinio del Ayuntamiento de Caccamo. Estarán presentes el Alcalde y otros representantes institucionales. Entrada libre.",
       "event2_date": "🕯️ Sábado 16 de agosto – 18:30 – Bajo las estrellas de la Cofradía",
-      "event2_text": "Una velada organizada por la Cofradía de las Ánimas Santas del Purgatorio, abierta a toda la comunidad de Caccamo, que se desarrolla fuera y dentro de la iglesia. Se abre con el concierto de Renato Filippello y una violinista, seguido de un momento dedicado a los niños y un rosario bajo las estrellas. La velada se cierra con un momento de convivencia con pan, aceite y vino. Duración prevista: entre dos y dos horas y media."
+      "event2_text": "Una velada organizada por la Cofradía de las Almas Santas del Purgatorio, abierta a toda la comunidad de Caccamo, delante y dentro de la iglesia. Comienza con el concierto de Renato Filippello y de la violinista Giada Calderone, seguido de un momento dedicado a los niños y un rosario bajo las estrellas. La velada termina con un momento de convivencia con pan, aceite y vino. Duración prevista: entre dos y dos horas y media. El cartel del evento se puede consultar en las páginas sociales de los organizadores.",
+      "btn_facebook": "Síguelos en Facebook"
     }
   },
   "monuments": {
@@ -215,7 +236,8 @@
       "sanbenedetto": "Iglesia San Benito de la Badia",
       "chicca_borgo": "✨ La Joya del Pueblo"
     },
-    "map_hint": "📍 Toca el icono del mapa, activa la geolocalización y un punto azul indicará tu posición en tiempo real en el mapa."
+    "map_hint": "📍 Toca el icono del mapa, activa la geolocalización y un punto azul indicará tu posición en tiempo real en el mapa.",
+    "chiesa_generica": "Iglesia"
   },
   "citizen": {
     "church_sepolcri": "El Periodo Pascual",

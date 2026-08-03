@@ -39,8 +39,28 @@
         "o_chianu_fasu": "Cadre moderne et accueillant, idéal pour les petits-déjeuners.",
         "il_dolce": "Cadre moderne et accueillant, idéal pour les douceurs typiques, la rôtisserie et la street food sicilienne traditionnelle.",
         "bar_muscarella": "Étape idéale pour un café régénérant, une glace artisanale ou un apéritif détendu.",
-        "capricci_di_sicilia": "Épicerie fine via Termitana, idéale pour une pause rapide ou une gourmandise si vous êtes à la villa communale avec les enfants."
-      }
+        "capricci_di_sicilia": "Épicerie fine via Termitana, idéale pour une pause rapide ou une gourmandise si vous êtes à la villa communale avec les enfants.",
+        "briciole_di_pane": "Boulangerie et épicerie fine au cœur du village : pain frais cuit chaque jour et spécialités locales à déguster.",
+        "a_ficurinnia": "Restaurant dans le hameau de San Giovanni Li Greci : excellente pizza et cuisine locale dans un cadre chaleureux. Accessible uniquement en voiture, pas à pied depuis le centre du village.",
+        "agriturismo_cicala": "Cuisine locale soignée, dans une ferme entourée de verdure.",
+        "giallombardo": "Street food, douceurs, glaces et petits-déjeuners : une expérience complète, près de l'arrêt des Autolinee Randazzo di Gesù.",
+        "al_chiosco_da_pietro": "À côté du terrain de sport et du Couvent des Frères Capucins : idéal pour un café ou un verre.",
+        "dai_e_vai_pub": "Près du terrain de football sous le parc municipal : parfait pour une pause, un café ou un verre.",
+        "da_peppe": "Street food à déguster confortablement assis, aux tables en extérieur."
+      },
+      "badges": {
+        "bar": "Bar",
+        "pub": "Pub",
+        "ristorante": "Restaurant",
+        "gastronomia": "Épicerie Fine",
+        "pizzeria": "Pizzeria",
+        "bar_pasticceria": "Café-Pâtisserie",
+        "pasticceria": "Pâtisserie",
+        "solo_estate": "Ouvert l'été seulement",
+        "info": "Info",
+        "fuori_borgo": "Accessible uniquement en voiture"
+      },
+      "details_button": "Voir les Détails ➔"
     },
     "sleep_page": {
       "accommodations": [
@@ -200,7 +220,8 @@
       "event1_date": "📖 Jeudi 6 août – 19h00",
       "event1_text": "Le Professeur Battistella récite les vers du Purgatoire de la Divine Comédie, à l'intérieur de l'Église des Âmes Saintes du Purgatoire. Une heure de lecture et de poésie, organisée par l'Association Vivere è Pensare avec la collaboration de la GeA et de la Confrérie des Âmes Saintes du Purgatoire, sous le patronage de la Municipalité de Caccamo. Le Maire et d'autres représentants institutionnels seront présents. Entrée libre.",
       "event2_date": "🕯️ Samedi 16 août – 18h30 – Sous les étoiles de la Confrérie",
-      "event2_text": "Une soirée organisée par la Confrérie des Âmes Saintes du Purgatoire, ouverte à toute la communauté de Caccamo, se déroulant à l'extérieur et à l'intérieur de l'église. Elle s'ouvre avec le concert de Renato Filippello et d'une violoniste, suivi d'un moment dédié aux enfants et d'un rosaire sous les étoiles. La soirée se termine par un moment de convivialité avec du pain, de l'huile et du vin. Durée prévue : environ deux heures à deux heures et demie."
+      "event2_text": "Une soirée organisée par la Confrérie des Âmes Saintes du Purgatoire, ouverte à toute la communauté de Caccamo, devant et à l'intérieur de l'église. Elle s'ouvre avec le concert de Renato Filippello et de la violoniste Giada Calderone, suivi d'un moment dédié aux enfants et d'un rosaire sous les étoiles. La soirée se termine par un moment de convivialité autour de pain, d'huile et de vin. Durée prévue : environ deux heures à deux heures et demie. L'affiche de l'événement est consultable sur les pages sociales des organisateurs.",
+      "btn_facebook": "Suivez-les sur Facebook"
     }
   },
   "monuments": {
@@ -215,7 +236,8 @@
       "sanbenedetto": "Église Saint-Benoît della Badia",
       "chicca_borgo": "✨ Le Trésor du Village"
     },
-    "map_hint": "📍 Touchez l'icône de la carte, activez la géolocalisation et un point bleu indiquera votre position en temps réel sur la carte."
+    "map_hint": "📍 Touchez l'icône de la carte, activez la géolocalisation et un point bleu indiquera votre position en temps réel sur la carte.",
+    "chiesa_generica": "Église"
   },
   "citizen": {
     "church_sepolcri": "La Période Pascale",

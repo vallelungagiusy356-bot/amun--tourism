@@ -39,8 +39,28 @@
         "o_chianu_fasu": "A modern, welcoming setting, ideal for breakfasts.",
         "il_dolce": "A modern, welcoming setting, ideal for traditional sweets, rotisserie fare, and typical Sicilian street food.",
         "bar_muscarella": "An ideal stop for a refreshing coffee, an artisan gelato or a relaxed aperitivo.",
-        "capricci_di_sicilia": "A deli on Via Termitana, perfect for a quick break or a tasty snack if you're at the municipal park with children."
-      }
+        "capricci_di_sicilia": "A deli on Via Termitana, perfect for a quick break or a tasty snack if you're at the municipal park with children.",
+        "briciole_di_pane": "Bakery and food shop in the heart of the village: fresh bread baked daily and local specialities ready to enjoy.",
+        "a_ficurinnia": "Restaurant in the hamlet of San Giovanni Li Greci: great pizza and local dishes in a welcoming setting. Reachable by car only, not on foot from the village centre.",
+        "agriturismo_cicala": "Carefully prepared local cuisine, in a farmhouse surrounded by greenery.",
+        "giallombardo": "Street food, sweets, ice cream and breakfast: a complete experience, near the Randazzo di Gesù bus stop.",
+        "al_chiosco_da_pietro": "Next to the sports field and the Capuchin Friars' Convent: ideal for a coffee or a drink.",
+        "dai_e_vai_pub": "Near the football pitch below the municipal park: perfect for a break, a coffee or a drink.",
+        "da_peppe": "Street food to enjoy comfortably seated at the outdoor tables."
+      },
+      "badges": {
+        "bar": "Bar",
+        "pub": "Pub",
+        "ristorante": "Restaurant",
+        "gastronomia": "Food Shop",
+        "pizzeria": "Pizzeria",
+        "bar_pasticceria": "Café & Pastry Shop",
+        "pasticceria": "Pastry Shop",
+        "solo_estate": "Summer Only",
+        "info": "Info",
+        "fuori_borgo": "Car access only"
+      },
+      "details_button": "See Details ➔"
     },
     "sleep_page": {
       "accommodations": [
@@ -200,7 +220,8 @@
       "event1_date": "📖 Thursday 6 August – 7:00 PM",
       "event1_text": "Professor Battistella recites the verses of Purgatorio from Dante's Divine Comedy, inside the Church of the Holy Souls of Purgatory. An hour of readings and poetry, organised by the \"Vivere è Pensare\" Association in collaboration with GeA and the Confraternity of the Holy Souls of Purgatory, under the patronage of the Municipality of Caccamo. The Mayor and other institutional representatives will be present. Free admission.",
       "event2_date": "🕯️ Saturday 16 August – 6:30 PM – Under the Stars of the Confraternity",
-      "event2_text": "An evening organised by the Confraternity of the Holy Souls of Purgatory, open to the whole community of Caccamo, held both outside and inside the church. It opens with a concert by Renato Filippello and a violinist, followed by an activity for children and a rosary under the stars. The evening closes with a shared moment of bread, olive oil and wine. Expected duration: about two to two and a half hours."
+      "event2_text": "An evening organised by the Confraternity of the Holy Souls of Purgatory, open to the whole Caccamo community, in front of and inside the church. It opens with a concert by Renato Filippello and violinist Giada Calderone, followed by a moment dedicated to children and a rosary under the stars. The evening closes with a shared moment of bread, oil and wine. Expected duration: about two to two and a half hours. The event poster can be found on the organisers' social media pages.",
+      "btn_facebook": "Follow them on Facebook"
     }
   },
   "monuments": {
@@ -215,7 +236,8 @@
       "sanbenedetto": "Church of S. Benedetto della Badia",
       "chicca_borgo": "✨ The Village Gem"
     },
-    "map_hint": "📍 Tap the map icon, enable geolocation, and a blue dot will show your position on the map in real time."
+    "map_hint": "📍 Tap the map icon, enable geolocation, and a blue dot will show your position on the map in real time.",
+    "chiesa_generica": "Church"
   },
   "citizen": {
     "church_sepolcri": "The Easter Season",
