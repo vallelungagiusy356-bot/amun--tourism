@@ -89,3 +89,16 @@ body {
 .mapboxgl-marker img {
     filter: drop-shadow(0 2px 3px rgba(0,0,0,0.35));
 }
+
+/* ============================================================
+   MODALITÀ COMPATTA — quando la mappa è dentro un riquadro piccolo
+   (es. il box in fondo a mangiare.html), nascondiamo la barra di
+   ricerca indirizzo e i pulsanti di zoom/geolocalizzazione: non c'è
+   spazio per usarli bene e finivano storti o tagliati fuori dalla
+   vista. Tornano visibili da soli non appena la mappa si ingrandisce
+   (la classe "mappa-compatta" viene tolta/aggiunta da mappa.js).
+   ============================================================ */
+body.mappa-compatta .mapboxgl-ctrl-top-right,
+body.mappa-compatta .mapboxgl-ctrl-top-left {
+    display: none !important;
+}

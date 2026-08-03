@@ -68,11 +68,33 @@ const map = new mapboxgl.Map({
 // proprie misure ogni volta che il contenitore #mappa cambia.
 // ============================================================
 if ('ResizeObserver' in window) {
-    const osservatoreMisure = new ResizeObserver(() => map.resize());
+    const osservatoreMisure = new ResizeObserver(() => {
+        map.resize();
+        aggiornaModalitaCompatta();
+    });
     osservatoreMisure.observe(document.getElementById('mappa'));
 } else {
-    window.addEventListener('resize', () => map.resize());
+    window.addEventListener('resize', () => {
+        map.resize();
+        aggiornaModalitaCompatta();
+    });
 }
+
+// ============================================================
+// MODALITÀ COMPATTA — quando la mappa è mostrata in un riquadro
+// piccolo (es. il box in fondo a mangiare.html, prima di essere
+// ingrandito), i controlli di zoom/bussola, geolocalizzazione e
+// ricerca indirizzo non hanno spazio a sufficienza e finiscono
+// storti o tagliati fuori dalla vista. Meglio nasconderli quando il
+// riquadro è piccolo: ricompaiono da soli non appena la mappa viene
+// ingrandita (vedi mappa.css per lo stile).
+// ============================================================
+const SOGLIA_MAPPA_COMPATTA = 300; // px di altezza, sotto ai quali nascondiamo i controlli
+function aggiornaModalitaCompatta() {
+    const altezza = document.getElementById('mappa').clientHeight;
+    document.body.classList.toggle('mappa-compatta', altezza < SOGLIA_MAPPA_COMPATTA);
+}
+aggiornaModalitaCompatta(); // controllo subito, appena la pagina si carica
 
 // ============================================================
 // CONTROLLI MAPPA — zoom/bussola, geolocalizzazione, ricerca indirizzo
@@ -534,7 +556,7 @@ map.on('load', () => {
                 sandom: 'santamaria',
                 madrice: 'sangiorgio',
                 capp: 'cappuccini',
-                animesant: 'chicca_borgo'
+                animesant: 'purgatorio'
             };
 
             // Decide quale scritta mostrare accanto a un punto della mappa.
