@@ -242,7 +242,18 @@ window.silktideConsentManager.init({
             // CONTROLLA e correggimi se non è giusta. ---
             "pasticceria_fratelli_scimeca": { link: "#", badge: "pasticceria" },
             "dolci_tentazioni":            { link: "#", badge: "bar" },
-            "il_dolce":                    { link: "#", badge: "bar" }
+            "il_dolce":                    { link: "#", badge: "bar" },
+
+            // --- Nuove attività, appena aggiunte alla mappa ---
+            "briciole_di_pane":            { link: "#", badge: "gastronomia" },
+            "a_ficurinnia":                { link: "#", badge: "ristorante", fuoriBorgo: true }, // frazione San Giovanni Li Greci, non a piedi
+
+            // --- Erano sulla mappa da tempo ma non avevano ancora una card ---
+            "agriturismo_cicala":          { link: "#", badge: "ristorante" },
+            "giallombardo":                { link: "#", badge: "bar" },
+            "al_chiosco_da_pietro":        { link: "#", badge: "bar" },
+            "dai_e_vai_pub":               { link: "#", badge: "pub" },
+            "da_peppe":                    { link: "#", badge: "ristorante" }
         };
 
         function renderFoodCards(data) {
@@ -255,6 +266,7 @@ window.silktideConsentManager.init({
             const badgeLabels = data.pages?.food_page?.badges || {};
             const testoDettagli = data.pages?.food_page?.details_button || 'Vedi Dettagli ➔';
             const testoSoloEstate = badgeLabels.solo_estate || 'Solo Estate';
+            const testoFuoriBorgo = badgeLabels.fuori_borgo || 'Raggiungibile solo in auto';
 
             container.innerHTML = ''; 
             Object.keys(cardsData).forEach(key => {
@@ -262,13 +274,14 @@ window.silktideConsentManager.init({
                 const desc = cardsData[key];
                 const cleanTitle = key.replace(/_/g, ' ').toUpperCase();
 
-                // Badge principale tradotto (Bar/Pub/Ristorante/...); se il
-                // locale è anche stagionale (estivo: true), aggiunge un
-                // secondo badge "Solo Estate" tradotto.
+                // Badge principale tradotto (Bar/Pub/Ristorante/...); poi
+                // eventuali badge extra (stagionale, fuori dal borgo...).
                 const badgeTesto = badgeLabels[meta.badge] || meta.badge;
-                const badgeHTML = meta.estivo
-                    ? `<span class="badge">${badgeTesto}</span><span class="badge badge-estivo">${testoSoloEstate}</span>`
-                    : `<span class="badge">${badgeTesto}</span>`;
+                const badgeExtra = [];
+                if (meta.estivo) badgeExtra.push(testoSoloEstate);
+                if (meta.fuoriBorgo) badgeExtra.push(testoFuoriBorgo);
+                const badgeHTML = `<span class="badge">${badgeTesto}</span>` +
+                    badgeExtra.map(t => `<span class="badge badge-estivo">${t}</span>`).join('');
 
                 const cardHTML = `
                     <a href="${meta.link}" target="_blank" class="food-card">
