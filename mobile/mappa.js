@@ -10,6 +10,24 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l1c2lmaTg5IiwiYSI6ImNtcGNvYXpqYTAwZ3kzNHM5a
 const urlParams = new URLSearchParams(window.location.search);
 const focusParam = urlParams.get('focus');
 
+// ============================================================
+// VISTA SELETTIVA — mappa.html?vista=food mostra SOLO bar,
+// ristoranti e pub, nascondendo monumenti e chiese: è la mappa
+// che vedi in fondo a mangiare.html.
+// Senza il parametro "vista" (come su monumenti.html e nelle
+// pagine dei singoli monumenti) la mappa resta quella generale,
+// con tutti i punti.
+// In futuro, per gli altri "attori" del sito (es. trasporti,
+// dormire), basta aggiungere qui una nuova riga con i "type"
+// giusti — non serve toccare altro codice.
+// ============================================================
+const VISTE = {
+    food: ['bar', 'ristorante', 'pub'],
+    monumenti: ['castello', 'chiesa', 'convento']
+};
+const vistaParam = urlParams.get('vista');
+const tipiConsentiti = VISTE[vistaParam] || null; // null = mostra tutto
+
 // Ponte tra lo slug usato nei link (es. "castello") e il nome
 // esatto del monumento così com'è scritto in data.geojson.
 // Se in futuro aggiungi altri monumenti con un modello 3D,
@@ -39,6 +57,22 @@ const map = new mapboxgl.Map({
     pitch: 45,
     bearing: 0
 });
+
+// ============================================================
+// CORREZIONE MISURE — se questa pagina viene mostrata dentro un
+// riquadro piccolo (es. mangiare.html) e poi il riquadro cambia
+// dimensione (es. viene ingrandito a schermo intero), Mapbox non
+// se ne accorge da solo e i controlli (zoom, bussola, e soprattutto
+// il pulsante della geolocalizzazione) restano storti o troppo
+// grandi. Questo "osservatore" dice alla mappa di ricalcolare le
+// proprie misure ogni volta che il contenitore #mappa cambia.
+// ============================================================
+if ('ResizeObserver' in window) {
+    const osservatoreMisure = new ResizeObserver(() => map.resize());
+    osservatoreMisure.observe(document.getElementById('mappa'));
+} else {
+    window.addEventListener('resize', () => map.resize());
+}
 
 // ============================================================
 // CONTROLLI MAPPA — zoom/bussola, geolocalizzazione, ricerca indirizzo
@@ -456,6 +490,13 @@ map.on('load', () => {
     fetch('data.geojson')
         .then(res => res.json())
         .then(data => {
+            // Se è richiesta una vista selettiva (es. ?vista=food),
+            // teniamo solo i punti del tipo giusto prima di fare
+            // qualsiasi altra cosa con i dati.
+            if (tipiConsentiti) {
+                data.features = data.features.filter(f => tipiConsentiti.includes(f.properties.type));
+            }
+
             data.features.forEach((feature, index) => {
                 if (feature.properties.model) {
                     map.addLayer(create3DLayer(
