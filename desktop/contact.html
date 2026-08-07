@@ -319,6 +319,8 @@ window.silktideConsentManager.init({
         .contatto-icon.email { background: var(--sea); }
         .contatto-icon.whatsapp { background: #25D366; }
         .contatto-icon.linkedin { background: #0A66C2; }
+        .contatto-icon.facebook { background: #1877F2; }
+        .contatto-icon.instagram { background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4); }
 
         .contatto-testo .label {
             font-size: 0.8rem;
@@ -454,6 +456,22 @@ window.silktideConsentManager.init({
                     <div class="valore">Giusi Vallelunga</div>
                 </div>
             </a>
+
+            <a class="contatto-card" href="https://www.facebook.com/share/1LDAW77z4x/" target="_blank" rel="noopener" id="contatto-facebook">
+                <div class="contatto-icon facebook">f</div>
+                <div class="contatto-testo">
+                    <div class="label" data-i18n="pages.contatti_page.facebook_label">Facebook</div>
+                    <div class="valore">Amunì Tourism</div>
+                </div>
+            </a>
+
+            <a class="contatto-card" href="https://www.instagram.com/amuni_toursim_26" target="_blank" rel="noopener" id="contatto-instagram">
+                <div class="contatto-icon instagram">📷</div>
+                <div class="contatto-testo">
+                    <div class="label" data-i18n="pages.contatti_page.instagram_label">Instagram</div>
+                    <div class="valore">@amuni_toursim_26</div>
+                </div>
+            </a>
         </div>
 
         <p class="contatti-nota" data-i18n="pages.contatti_page.nota">
@@ -477,7 +495,9 @@ window.silktideConsentManager.init({
             var canali = {
                 'contatto-email': 'email',
                 'contatto-whatsapp': 'whatsapp',
-                'contatto-linkedin': 'linkedin'
+                'contatto-linkedin': 'linkedin',
+                'contatto-facebook': 'facebook',
+                'contatto-instagram': 'instagram'
             };
             Object.keys(canali).forEach(function (id) {
                 var el = document.getElementById(id);
