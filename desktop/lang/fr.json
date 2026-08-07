@@ -163,6 +163,8 @@
       "email_label": "E-mail",
       "whatsapp_label": "WhatsApp",
       "linkedin_label": "LinkedIn",
+      "facebook_label": "Facebook",
+      "instagram_label": "Instagram",
       "nota": "Amunì Tourism est un projet indépendant né pour valoriser le village de Caccamo : nous répondons personnellement à chaque message, le plus rapidement possible."
     }
   },
@@ -192,6 +194,7 @@
     "premium_title": "Débloquez la Castellana Premium",
     "premium_text": "Pour 3,90 €, accédez à la Castellana pendant 4 jours : le guide multilingue qui connaît tous les secrets de Caccamo, des transports aux trésors cachés du territoire.",
     "premium_howto": "Après le paiement, ton code s'affiche directement à l'écran : écris-le dans le chat précédé du mot <strong>« code »</strong>. Chaque code fonctionne sur 2 appareils maximum — utile pour un second téléphone, un compagnon de voyage, ou en cas d'imprévu.",
-    "premium_cta": "Acheter l'accès — 3,90 €"
+    "premium_cta": "Acheter l'accès — 3,90 €",
+    "social_follow_text": "Suivez-nous sur les réseaux sociaux"
   }
 }

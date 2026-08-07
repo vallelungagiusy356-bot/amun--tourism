@@ -163,6 +163,8 @@
       "email_label": "Email",
       "whatsapp_label": "WhatsApp",
       "linkedin_label": "LinkedIn",
+      "facebook_label": "Facebook",
+      "instagram_label": "Instagram",
       "nota": "Amunì Tourism è un progetto indipendente nato per valorizzare il borgo di Caccamo: rispondiamo personalmente a ogni messaggio, il prima possibile."
     }
   },
@@ -193,6 +195,7 @@
     "premium_title": "Sblocca la Castellana Premium",
     "premium_text": "Per 3,90€ accedi alla Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.",
     "premium_howto": "Dopo il pagamento vedrai subito il tuo codice a schermo: scrivilo in chat preceduto dalla parola <strong>\"codice\"</strong>. Ogni codice funziona su fino a 2 dispositivi — utile su un secondo telefono, per chi viaggia con te, o in caso di imprevisti.",
-    "premium_cta": "Acquista l'accesso — 3,90€"
+    "premium_cta": "Acquista l'accesso — 3,90€",
+    "social_follow_text": "Seguici sui social"
   }
 }
