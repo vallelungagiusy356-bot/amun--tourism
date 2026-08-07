@@ -48,6 +48,22 @@ const FOCUS_TO_NAME = {
 const CACCAMO_CENTER = [13.666, 37.933];
 const RAGGIO_VICINANZA_KM = 15;
 
+// ============================================================
+// TESTI TRADOTTI DEL WAYFINDING (banner posizione, "min a piedi",
+// "sei arrivato" ecc.) — vengono riempiti quando la mappa carica,
+// leggendo lang/<lingua>.json (chiavi dentro monuments.wayfinding).
+// Finché non arrivano, si usano questi valori italiani di riserva,
+// così la mappa funziona comunque anche se il file non si trova.
+// ============================================================
+let wayfindingText = {
+    activate_location: '📍 Attiva la tua posizione per orientarti',
+    activate_button: 'Attiva',
+    searching: 'Ricerca in corso…',
+    far_away: 'Sembra che tu non sia ancora nei dintorni di Caccamo. Quando arriverai, la mappa ti guiderà passo passo fino al monumento!',
+    walking_time: '{min} min a piedi · {km} km',
+    arrived: '🎉 Sei arrivato!'
+};
+
 const map = new mapboxgl.Map({
     container: 'mappa',
     style: 'mapbox://styles/giusifi89/cmpl4lr6n003401r63fof43dl',
@@ -179,11 +195,11 @@ function showLocationPrompt() {
         max-width: 90%;
     `;
     banner.innerHTML = `
-        <span>📍 Attiva la tua posizione per orientarti</span>
+        <span>${wayfindingText.activate_location}</span>
         <button id="btn-attiva-posizione" style="
             background:#B8873B; color:#14283A; border:none; border-radius:2px;
             padding:6px 12px; font-weight:600; cursor:pointer; white-space:nowrap;
-        ">Attiva</button>
+        ">${wayfindingText.activate_button}</button>
         <button id="btn-chiudi-banner" style="
             background:transparent; color:#EFE6D3; border:none;
             font-size:1rem; cursor:pointer; padding:0 2px;
@@ -193,7 +209,7 @@ function showLocationPrompt() {
 
     document.getElementById('btn-attiva-posizione').addEventListener('click', () => {
         const btn = document.getElementById('btn-attiva-posizione');
-        btn.textContent = 'Ricerca in corso…';
+        btn.textContent = wayfindingText.searching;
         btn.disabled = true;
         geolocateControl.trigger();
     });
@@ -220,7 +236,7 @@ function showFarAwayMessage() {
         border: 1px solid #B8873B; border-radius: 4px; padding: 10px 16px;
         font-family: sans-serif; font-size: 0.85rem; max-width: 85%; text-align: center;
     `;
-    msg.textContent = 'Sembra che tu non sia ancora nei dintorni di Caccamo. Quando arriverai, la mappa ti guiderà passo passo fino al monumento!';
+    msg.textContent = wayfindingText.far_away;
     document.body.appendChild(msg);
     setTimeout(() => msg.remove(), 5000);
 }
@@ -270,7 +286,9 @@ function showRouteInfo(durationSeconds, distanceMeters) {
         `;
         document.body.appendChild(box);
     }
-    box.textContent = `🚶 ${minuti} min a piedi · ${km} km`;
+    box.textContent = wayfindingText.walking_time
+        .replace('{min}', minuti)
+        .replace('{km}', km);
 }
 
 // Quando il turista è arrivato a destinazione: pulisce il percorso
@@ -278,7 +296,7 @@ function showRouteInfo(durationSeconds, distanceMeters) {
 // tempo/distanza.
 function showArrivedMessage() {
     const box = document.getElementById('info-percorso');
-    if (box) box.textContent = '🎉 Sei arrivato!';
+    if (box) box.textContent = wayfindingText.arrived;
     map.getSource('route').setData({ type: 'FeatureCollection', features: [] });
 }
 
@@ -586,6 +604,13 @@ map.on('load', () => {
             Promise.all([langPromise, ...imgPromises]).then(([langData]) => {
                 const monumentiTradotti = (langData && langData.monuments && langData.monuments.mobile) || {};
                 const chiesaGenerica = (langData && langData.monuments && langData.monuments.chiesa_generica) || 'Chiesa';
+
+                // Aggiorna i testi del wayfinding (banner posizione, "min
+                // a piedi", "sei arrivato" ecc.) con la traduzione trovata
+                // nel file lingua, tenendo l'italiano come riserva per
+                // ogni singola chiave eventualmente mancante.
+                const wayfindingTradotto = (langData && langData.monuments && langData.monuments.wayfinding) || {};
+                wayfindingText = { ...wayfindingText, ...wayfindingTradotto };
 
                 // Scrive l'etichetta calcolata dentro ogni punto, così il
                 // layer sotto la legge semplicemente con ['get', 'label'].
