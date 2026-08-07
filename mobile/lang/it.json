@@ -238,6 +238,14 @@
       "purgatorio": "Chiesa Anime Sante del Purgatorio"
     },
     "map_hint": "📍 Clicca l'icona della mappa, attiva la geolocalizzazione e un punto blu indicherà la tua posizione in tempo reale sulla mappa.",
+    "wayfinding": {
+      "activate_location": "📍 Attiva la tua posizione per orientarti",
+      "activate_button": "Attiva",
+      "searching": "Ricerca in corso…",
+      "far_away": "Sembra che tu non sia ancora nei dintorni di Caccamo. Quando arriverai, la mappa ti guiderà passo passo fino al monumento!",
+      "walking_time": "🚶 {min} min a piedi · {km} km",
+      "arrived": "🎉 Sei arrivato!"
+    },
     "chiesa_generica": "Chiesa"
   },
   "citizen": {

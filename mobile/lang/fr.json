@@ -238,6 +238,14 @@
       "purgatorio": "Église des Âmes Saintes du Purgatoire"
     },
     "map_hint": "📍 Touchez l'icône de la carte, activez la géolocalisation et un point bleu indiquera votre position en temps réel sur la carte.",
+    "wayfinding": {
+      "activate_location": "📍 Active ta position pour t'orienter",
+      "activate_button": "Activer",
+      "searching": "Recherche en cours…",
+      "far_away": "Il semble que tu ne sois pas encore dans les environs de Caccamo. À ton arrivée, la carte te guidera pas à pas jusqu'au monument !",
+      "walking_time": "🚶 {min} min à pied · {km} km",
+      "arrived": "🎉 Tu es arrivé !"
+    },
     "chiesa_generica": "Église"
   },
   "citizen": {

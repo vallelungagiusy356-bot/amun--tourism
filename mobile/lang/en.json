@@ -238,6 +238,14 @@
       "purgatorio": "Church of the Holy Souls of Purgatory"
     },
     "map_hint": "📍 Tap the map icon, enable geolocation, and a blue dot will show your position on the map in real time.",
+    "wayfinding": {
+      "activate_location": "📍 Enable your location to get your bearings",
+      "activate_button": "Enable",
+      "searching": "Searching…",
+      "far_away": "It looks like you're not near Caccamo yet. When you arrive, the map will guide you step by step to the monument!",
+      "walking_time": "🚶 {min} min walk · {km} km",
+      "arrived": "🎉 You've arrived!"
+    },
     "chiesa_generica": "Church"
   },
   "citizen": {

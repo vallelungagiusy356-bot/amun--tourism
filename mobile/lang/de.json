@@ -244,6 +244,14 @@
       "purgatorio": "Kirche der Heiligen Seelen des Fegefeuers"
     },
     "map_hint": "📍 Tippe auf das Kartensymbol, aktiviere die Standortfreigabe, und ein blauer Punkt zeigt deine Position in Echtzeit auf der Karte.",
+    "wayfinding": {
+      "activate_location": "📍 Aktiviere deinen Standort, um dich zu orientieren",
+      "activate_button": "Aktivieren",
+      "searching": "Suche läuft…",
+      "far_away": "Es sieht so aus, als wärst du noch nicht in der Nähe von Caccamo. Sobald du ankommst, führt dich die Karte Schritt für Schritt zum Denkmal!",
+      "walking_time": "🚶 {min} Min. zu Fuß · {km} km",
+      "arrived": "🎉 Du bist angekommen!"
+    },
     "chiesa_generica": "Kirche"
   },
   "citizen": {
