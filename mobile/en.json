@@ -1,0 +1,285 @@
+{
+  "home": {
+    "talk_castellana": "Talk to the Castellana",
+    "amuni_title": "Amunì Tourism",
+    "amuni_text": "Amunì, in the Sicilian dialect, means <strong>'let's go'</strong>. It is a warm invitation to move, to explore, and to let yourself be guided among our thousand-year-old stones, keepers of tales, noblewomen and ancient prayers.<br><br>Don't stop your steps, look at yourself in this magic: <strong>Amunì, come, I'll show you the way.</strong>",
+    "btn_mangiare": "Eat",
+    "btn_dormire": "Sleep",
+    "btn_transport": "Transport",
+    "btn_events": "Events",
+    "btn_monuments": "Monuments",
+    "btn_desktop_redirect": "Go to the Desktop version",
+    "welcome_title": "Welcome to Caccamo",
+    "btn_add_home": "Add to Home Screen"
+  },
+  "pages": {
+    "food_page": {
+      "title": "Taste and Company in the Village",
+      "intro": "Welcome, traveler, to the section dedicated to local flavors and evenings in good company.",
+      "search_placeholder": "Search a place or a flavor...",
+      "sec_movida": "Nightlife and Evenings",
+      "sec_eat": "Restaurants, Pizzerias and Bars",
+      "no_results": "No place or flavor found matching your search.",
+      "cards": {
+        "the_castle": "Themed summer fun and evenings, in the magical night-time setting in the shadow of the medieval castle.",
+        "kittipigghi": "The go-to spot for your evenings in the village. Events, music and lively entertainment all year round.",
+        "chiosco_san_francesco": "Refresh your summer evenings outdoors, with cocktails, great company and a joyful atmosphere inside a restored and repurposed municipal villa.",
+        "al_maniero": "Carefully prepared cuisine and traditional dishes in a warm setting with a castle view.",
+        "il_borgo": "A gastronomic journey through the true flavors and culinary excellence of our land.",
+        "a_castellana": "A refined culinary experience in the heart of the village, where tradition meets elegance.",
+        "caffè_royal": "From artisan breakfasts to the finest traditional Sicilian sweets.",
+        "la_bottega_dei_sapori": "Fragrant, delicious takeaway pizzas prepared fresh with genuine ingredients.",
+        "l_officina_dei_golosi": "Artisan sweets, hearty breakfasts and indulgent coffee breaks to pamper your palate every day.",
+        "strapizzami": "Crispy, tasty pizzas made with carefully selected local ingredients.",
+        "pasticceria_fratelli_scimeca": "Masters of traditional sweets and flavors that tell our story around the world.",
+        "dolci_tentazioni": "The ideal spot for a refreshing break, great coffee and artisan gelato",
+        "bar_ribaudo": "Absolutely worth trying: their 'mattonella', the spleen sandwich, and their roast chicken.",
+        "bar_del_carmine": "A historic café, perfect for a great espresso or a refreshing gelato in total relaxation.",
+        "la_spiga_d_oro_food_and_drink": "Try the pork shank, their pizzas, and a wide selection of ready-to-eat specialities.",
+        "o_chianu_fasu": "A modern, welcoming setting, ideal for breakfasts.",
+        "il_dolce": "A modern, welcoming setting, ideal for traditional sweets, rotisserie fare, and typical Sicilian street food.",
+        "bar_muscarella": "An ideal stop for a refreshing coffee, an artisan gelato or a relaxed aperitivo.",
+        "capricci_di_sicilia": "A deli on Via Termitana, perfect for a quick break or a tasty snack if you're at the municipal park with children.",
+        "briciole_di_pane": "Bakery and food shop in the heart of the village: fresh bread baked daily and local specialities ready to enjoy.",
+        "a_ficurinnia": "Restaurant in the hamlet of San Giovanni Li Greci: great pizza and local dishes in a welcoming setting. Reachable by car only, not on foot from the village centre.",
+        "agriturismo_cicala": "Carefully prepared local cuisine, in a farmhouse surrounded by greenery.",
+        "giallombardo": "Street food, sweets, ice cream and breakfast: a complete experience, near the Randazzo di Gesù bus stop.",
+        "al_chiosco_da_pietro": "Next to the sports field and the Capuchin Friars' Convent: ideal for a coffee or a drink.",
+        "dai_e_vai_pub": "Near the football pitch below the municipal park: perfect for a break, a coffee or a drink.",
+        "da_peppe_mangia_e_saziati": "Street food to enjoy comfortably seated at the outdoor tables."
+      },
+      "badges": {
+        "bar": "Bar",
+        "pub": "Pub",
+        "ristorante": "Restaurant",
+        "gastronomia": "Food Shop",
+        "pizzeria": "Pizzeria",
+        "bar_pasticceria": "Café & Pastry Shop",
+        "pasticceria": "Pastry Shop",
+        "solo_estate": "Summer Only",
+        "info": "Info",
+        "fuori_borgo": "Car access only"
+      },
+      "details_button": "See Details ➔"
+    },
+    "sleep_page": {
+      "accommodations": [
+        {
+          "name": "De Spuches house",
+          "link": "https://www.booking.com/Share-9yidf9"
+        },
+        {
+          "name": "Il duca house & holiday",
+          "link": "https://www.booking.com/Share-fg0sxP"
+        },
+        {
+          "name": "Casa vacanze Caccamo Santa Lucia",
+          "link": "https://www.booking.com/Share-Zy5oMf"
+        },
+        {
+          "name": "A casa da Paola",
+          "link": "https://www.booking.com/Share-R2YrnE"
+        },
+        {
+          "name": "Trinacria Caccamo luxury and rooms",
+          "link": "https://www.booking.com/Share-ceKMpkE"
+        },
+        {
+          "name": "La casa dei cavalieri",
+          "link": "https://www.booking.com/Share-5n6YbS2"
+        },
+        {
+          "name": "L'opuntia sul lago",
+          "link": "https://www.booking.com/Share-6PtdvA"
+        },
+        {
+          "name": "Il cortile holiday house",
+          "link": "https://www.booking.com/Share-1bcyLa7"
+        },
+        {
+          "name": "La casa del Custode",
+          "link": "https://www.booking.com/Share-AOPAO9"
+        },
+        {
+          "name": "La casetta di Rosina",
+          "link": "https://www.booking.com/Share-LXb1QZ"
+        },
+        {
+          "name": "Casa del vecchio borgo",
+          "link": "https://www.booking.com/Share-5q8K2qH"
+        },
+        {
+          "name": "Sikania Agrirelais",
+          "link": "https://www.booking.com/Share-wc8bjRR"
+        },
+        {
+          "name": "L'arco antico",
+          "link": "https://www.booking.com/Share-WutiSb"
+        },
+        {
+          "name": "Pet friendly home",
+          "link": "https://www.booking.com/Share-ymqmBUx"
+        },
+        {
+          "name": "Batiful villa",
+          "link": "https://www.booking.com/Share-1q3QZGo"
+        },
+        {
+          "name": "More accommodations",
+          "link": "https://www.airbnb.it/s/Caccamo--Sicilia--Italia/homes?refinement_paths%5B%5D=%2Fhomes&place_id=ChIJSwQU_9hTFxMR0kj1SYf4h-w&location=Caccamo%2C+Sicilia%2C+Italia&adults=2&children=0"
+        }
+      ]
+    },
+    "transport_page": {
+      "welcome": "Welcome, traveler, to the Transport section. Here you will find the information you need to get around near the village.",
+      "company_title": "Autolinee Randazzo di Gesù",
+      "company_desc": "The bus line connects Caccamo to <strong>Termini Imerese</strong> and <strong>Palermo</strong> all year round. Taking the morning and afternoon runs (the 9am and 1pm departures) towards Palermo, you can get off at <strong>Vetrana</strong>, a well-known seaside spot, at Pietra Piatta, or at the 'Venus's navel' rock formation. From Termini Imerese you can also catch a train to <strong>Cefalù</strong> and other tourist destinations.",
+      "stops_title": "📍 Bus Stops in the Village",
+      "stop_1": "<strong>Porta Euracea:</strong> opposite the Bar Giallombardo and the building materials shop.",
+      "stop_2": "<strong>Viale Regione Siciliana:</strong> above the 'Roberta' playground (near the Axa insurance agency).",
+      "stop_3": "<strong>Piazza Cappuccini:</strong> in the shade of the old Convent.",
+      "btn_schedule": "📅 View Bus Timetables",
+      "btn_tickets": "🎫 Buy Tickets Online"
+    },
+    "monuments_pages": {
+      "labels": {
+        "hours": "Hours",
+        "tickets": "Tickets",
+        "view_map": "Open the Map",
+        "btn_buy_tickets": "Book / Buy Ticket",
+        "btn_comune_info": "Official Town Council Info",
+        "btn_parla_castellana": "Talk to the Castellana",
+        "btn_dindondan": "Explore Churches on Din Don Dan",
+        "church_notice": "⚠️ Note: These are active places of worship, dedicated to liturgical functions. For tourist visits, please respect the recommended visiting hours and avoid times of internal celebration.",
+        "go_to_map": "Go to the Map",
+        "listen_button": "Listen to the description",
+        "address": "Location:",
+        "back_to_monuments": "Back to Monuments"
+      },
+      "castello": {
+        "title": "The Castle of Caccamo",
+        "description": "The Castle has stood on this cliff since 1094, built by the Normans to dominate the San Leonardo valley. In 1160 it was the setting for the barons' conspiracy: the lord Matteo Bonello took refuge here after attempting to overthrow King William I. It is said that his ghost still wanders the Hall of the Conspiracy, in search of peace. One of the chapels even hides a trapdoor, once used to get rid of unwelcome guests.",
+        "hours": "Winter hours (16 October - 14 April): Monday afternoon - Sunday, 09:00 – 12:30 and 14:30 – 18:30. Summer hours (15 April - 15 October): Monday afternoon - Sunday, 09:00 – 12:30 and 15:30 – 19:00. Closed Monday morning.",
+        "tickets": "Full price € 6.00 | Promotional with online booking € 4.50 | Residents of the Municipality of Caccamo € 1.00 | Students aged 18-25 € 3.00 | Free under 18. Info and bookings: 091 8103233 (Mon-Fri) or 091 8149252 (Tue-Sun)."
+      },
+      "badia": {
+        "title": "Church of San Benedetto alla Badia",
+        "description": "Behind its sober façade, the church houses one of the most precious majolica floors in Sicily: 5,555 hand-painted tiles from the 18th century, with a sailing ship battling a stormy sea at its center — a symbol of the Church against the forces of evil. Locals still call it the 'parlour church' for its wealth of stucco work and gilded inlays. Many visitors choose to walk through it barefoot, out of respect and to appreciate every detail.",
+        "hours": "Tuesday to Sunday, morning: 08:00 – 13:00.",
+        "tickets": "Full price € 2.00 | Reduced € 1.00 (EU youth aged 18-25 or with a same-day Castle ticket) | Free under 18"
+      },
+      "santamaria": {
+        "title": "Church of Santa Maria degli Angeli",
+        "description": "The people of Caccamo still call it 'San Domenico', after the name of the square. It was founded in 1487 by the Dominican friar Giovanni Liccio, born right here in Caccamo — according to tradition, the Madonna herself showed him in a dream where to build it. Today the church holds his relics in a silver urn, alongside a Madonna and Child carved in 1516 by Antonello Gagini. It is the same Blessed Giovanni whom the village celebrates every May.",
+        "hours": "Monday to Saturday: Holy Mass at 08:30, morning opening 09:00 – 12:00. Sunday: Holy Masses at 08:30, 11:30 and 17:00 (opening hours in line with service times)."
+      },
+      "sangiorgio": {
+        "title": "Church of San Giorgio Martire",
+        "description": "The Cathedral stands where, according to tradition, the Normans built the first church dedicated to San Giorgio as early as 1090 — the saint said to have helped them defeat the Saracens at the Battle of Cerami in 1063. The building you see today dates back to the 17th century, but its 49-metre-tall bell tower is even older: its lower part was once a watchtower for the Castle. Inside, the baroque altar houses reliefs attributed to Francesco Laurana and a silver reliquary statue of Santa Rosalia.",
+        "hours": "Monday to Saturday: 09:00 – 12:00, Holy Mass at 18:00. Sunday: Holy Masses at 11:00 and 18:00 (opening hours in line with service times)."
+      },
+      "annunziata": {
+        "title": "Parish of SS. Annunziata",
+        "description": "Its origins date back to the 13th century, making it one of the oldest in Caccamo. It houses a large canvas by Guglielmo Borremans, the Annunciation, and stucco work from the school of Serpotta. In the 18th century it also had a majolica floor painted by the master Nicolò Sarzana — the same craftsman who later created the famous floor of the nearby Badia church. Every spring, the church comes alive for the feast of San Giuseppe, one of the most cherished traditions in the village.",
+        "hours": "Monday to Saturday: 09:00 – 12:00, Holy Mass at 18:00. Sunday: Holy Masses at 09:30, 12:00 and 19:00 (opening hours in line with service times)."
+      },
+      "cappuccini": {
+        "title": "Convent of the Capuchin Friars",
+        "description": "The Capuchin friars arrived here in 1589, bringing with them the sober, quiet style that has always distinguished their order. It is one of the last still-inhabited convents in all of western Sicily: today, as then, the friars live by prayer, manual work and the welcoming of pilgrims. Its walls tell almost two centuries of history, even before the Unification of Italy.",
+        "hours": "Accessible mainly before or after services. Open daily from 16:00 to 20:00.",
+        "secret_info": "💡 The Hidden Gems of Caccamo: The village is home to as many as 33 churches. Use the Din Don Dan map and zoom in on Caccamo to discover real-time hours and openings of lesser-known treasures and other small hidden masterpieces. From 1 to 15 August, the convent will hold the \"quindicina\", a fifteen-day novena in honour of Our Lady of the Assumption. Holy Rosary at 18:00, Coroncina at 18:30, Holy Mass at 19:00."
+      },
+      "animesante": {
+        "tag": "✨ The Village Gem",
+        "title": "Church of the Holy Souls of Purgatory",
+        "description": "The Church of the Holy Souls of Purgatory is one of the village's hidden gems. Here you'll find Serpotta stuccoes, paintings by Giovanni Bonomo, the catacombs, and even an ancient colatoio where the first stage of the embalming process once took place. The church is made accessible thanks to the Confraternity of the Holy Souls of Purgatory, which not only provides expert guides on Sundays but also organises events to promote the area.",
+        "confraternita_text": "The Confraternity of the Holy Souls in Purgatory dedicates time and resources to this church: we deeply appreciate their volunteer work and their resilience. The partnership between the confraternity and the Vivere è Pensare association is designed to host events on site within the monument, letting visitors fully appreciate its beauty from every angle.",
+        "hours": "Sunday: 10:00 AM – 1:00 PM",
+        "address": "Piazza Duomo, next to the Monte di Pietà",
+        "caption_catacombe": "The catacombs",
+        "caption_altare": "The altar",
+        "events_button": "🌿 Vivere è Pensare Association →",
+        "event_title": "🕯️ Confraternity Feast",
+        "event_date": "Saturday 16 August – 6:30 PM – Under the Stars of the Confraternity",
+        "event_text": "An evening organised by the Confraternity of the Holy Souls of Purgatory, open to the whole community of Caccamo, held both outside and inside the church. It opens with a concert by Renato Filippello and a violinist, followed by an activity for children and a rosary under the stars. The evening closes with a shared moment of bread, olive oil and wine. Expected duration: about two to two and a half hours."
+      }
+    },
+    "vivereepensare_page": {
+      "title": "\"Vivere è Pensare\" Cultural Association",
+      "welcome": "A reference point for anyone who loves Caccamo and wants to experience it through art, music and community.",
+      "desc": "Founded in Caccamo, the association promotes culture, art, music and solidarity in the village, often working alongside the Municipality of Caccamo, FIDAPA Caccamo chapter, the \"Amici della Musica B. Albanese\" Association and the Pro Loco.",
+      "activities_title": "What they organise",
+      "activity_1": "Art exhibitions, such as painting shows in the Church of Sant'Antonio Abate",
+      "activity_2": "Musical evenings: jazz, clarinet quartets and sunset concerts",
+      "activity_3": "Cultural walks discovering the neighbourhoods, churches and lesser-known secrets of Caccamo",
+      "activity_4": "\"Sensi in Corte\", a multisensory experience with tastings, art and music",
+      "activity_5": "The \"Vivere è Pensare\" Award - Che cielo, che stelle!, which every year celebrates stories, people and realities from the local area",
+      "closing": "Follow them to discover upcoming events!",
+      "btn_instagram": "Follow on Instagram",
+      "events_title": "🎉 August Events",
+      "event1_date": "📖 Thursday 6 August – 7:00 PM",
+      "event1_text": "Professor Battistella recites verses from the Purgatorio of Dante's Divine Comedy, inside the Church of the Holy Souls of Purgatory. An hour of reading and poetry, organised by the Vivere è Pensare Association with the collaboration of GeA and the Confraternity of the Holy Souls of Purgatory, under the patronage of the Municipality of Caccamo. The Mayor and other institutional representatives will attend. Free admission. Violinist Giada Calderone will also perform during the evening. The event poster can be found on the organisers' social media pages.",
+      "event2_date": "🕯️ Saturday 16 August – 6:30 PM – Under the Stars of the Confraternity",
+      "event2_text": "An evening organised by the Confraternity of the Holy Souls of Purgatory, open to the whole Caccamo community, in front of and inside the church. It opens with a concert by Renato Filippello and violinist Giada Calderone, followed by a moment dedicated to children and a rosary under the stars. The evening closes with a shared moment of bread, oil and wine. Expected duration: about two to two and a half hours. The event poster can be found on the organisers' social media pages.",
+      "btn_facebook": "Follow them on Facebook"
+    }
+  },
+  "monuments": {
+    "title": "Our Monuments",
+    "go_to_map": "Go to the Map",
+    "mobile": {
+      "castello": "Castle of Caccamo",
+      "santamaria": "Church of S. Maria degli Angeli",
+      "sangiorgio": "Church of San Giorgio Martire",
+      "cappuccini": "Convent of the Capuchin Friars",
+      "annunziata": "Parish of SS. Annunziata",
+      "sanbenedetto": "Church of S. Benedetto della Badia",
+      "chicca_borgo": "✨ The Village Gem",
+      "purgatorio": "Church of the Holy Souls of Purgatory"
+    },
+    "map_hint": "📍 Tap the map icon, enable geolocation, and a blue dot will show your position on the map in real time.",
+    "wayfinding": {
+      "activate_location": "📍 Enable your location to get your bearings",
+      "activate_button": "Enable",
+      "searching": "Searching…",
+      "far_away": "It looks like you're not near Caccamo yet. When you arrive, the map will guide you step by step to the monument!",
+      "walking_time": "🚶 {min} min walk · {km} km",
+      "arrived": "🎉 You've arrived!"
+    },
+    "chiesa_generica": "Church"
+  },
+  "citizen": {
+    "church_sepolcri": "The Easter Season",
+    "events_title": "May",
+    "food_aperitivo": "August",
+    "food_desc": "October"
+  },
+  "events_page": {
+    "title": "Rites and Feasts of the Village",
+    "intro": "Experience the most authentic soul of our village through its centuries-old traditions, where faith, history and folklore intertwine in unique and moving moments.",
+    "signuruzzu_title": "U Signuruzzu a Cavaddu",
+    "signuruzzu_desc": "On Palm Sunday, a local child plays the role of Jesus and rides through the village streets, decked out for the feast with palm fronds, on a decorated donkey. The procession stops in front of the Church of Santa Maria degli Angeli and the Cathedral of San Giorgio Martire for a moving blessing.",
+    "venerdi_title": "The Rites of Holy Week",
+    "venerdi_desc": "The atmosphere grows solemn with the altars set up in the churches for Good Friday, adorned with the typical dishes of wheat sprouted in the dark. These are followed by the solemn and moving Procession and the town's Way of the Cross.",
+    "giovanni_title": "Feast of the Blessed Giovanni",
+    "giovanni_desc": "A deeply felt occasion, lived by the whole community, which gathers around its Blessed in a climate of great devotion and popular warmth.",
+    "castellana_title": "Election of the Castellana & Historic Parade",
+    "castellana_desc": "The village plunges back into its glorious medieval past. Every year, in the second half of August, a magnificent historic parade in period costume winds through the streets of the town. Every two years, the parade culminates in the solemn election of the Castellana of the castle, for which candidacies open in February.",
+    "nicasio_title": "Feast of San Nicasio and the Palio",
+    "nicasio_desc": "Vibrant celebrations in honor of the Saint, enriched by the eagerly awaited and thrilling town Palio, which sparks excitement and rivalry among young and old alike.",
+    "sagra_title": "Sausage Festival",
+    "sagra_desc": "Every year, on the second Sunday of October, the scents of tradition fill the village. An unmissable food event to taste authentic local sausage amid songs, wine and conviviality.",
+    "facebook_group_btn": "📅 Updated events & festivals on Facebook",
+    "facebook_group_note": "A group curated by a local resident with all of Caccamo's events, always up to date.",
+    "estate_title": "🎉 Summer under the Castle (July–September)",
+    "estate_description": "A whole summer of events promoted by the Municipality: opera, music, sport and traditions at the foot of the Castle.",
+    "estate_show_button": "📋 View full programme",
+    "estate_hide_button": "📋 Hide programme"
+  },
+  "premium": {
+    "cta_label": "🔒 Premium content available",
+    "btn_code": "I already have a code",
+    "btn_buy": "Buy access — €3.90",
+    "launch_price_note": "🎉 Launch price"
+  }
+}
