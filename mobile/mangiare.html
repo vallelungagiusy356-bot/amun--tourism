@@ -208,10 +208,16 @@ window.silktideConsentManager.init({
             position: fixed;
             inset: 0;
             width: 100vw;
-            height: 100vh;
-            z-index: 999;
+            height: 100dvh;
+            z-index: 999999;
             margin: 0;
             border-radius: 0;
+        }
+
+        /* Blocca lo scorrimento dello sfondo mentre la mappa è a
+           schermo intero, per evitare l'effetto "straborda". */
+        body.mappa-aperta {
+            overflow: hidden;
         }
     </style>
 
@@ -338,6 +344,7 @@ window.silktideConsentManager.init({
             if (miniMapWrapper && miniMapExpandBtn) {
                 miniMapExpandBtn.addEventListener('click', () => {
                     const espansa = miniMapWrapper.classList.toggle('espansa');
+                    document.body.classList.toggle('mappa-aperta', espansa);
                     miniMapExpandBtn.textContent = espansa ? '✕' : '⤢';
                     miniMapExpandBtn.setAttribute('aria-label', espansa ? 'Rimpicciolisci la mappa' : 'Ingrandisci la mappa');
                 });
@@ -348,6 +355,7 @@ window.silktideConsentManager.init({
                 window.addEventListener('message', (e) => {
                     if (e.data === 'amuni-espandi-mappa' && !miniMapWrapper.classList.contains('espansa')) {
                         miniMapWrapper.classList.add('espansa');
+                        document.body.classList.add('mappa-aperta');
                         miniMapExpandBtn.textContent = '✕';
                         miniMapExpandBtn.setAttribute('aria-label', 'Rimpicciolisci la mappa');
                     }
