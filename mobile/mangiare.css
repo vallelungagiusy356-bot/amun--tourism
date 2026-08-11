@@ -206,6 +206,7 @@ body {
 
 .food-card-header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
@@ -216,6 +217,16 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
     color: var(--gold-light);
+}
+
+/* Contenitore per i badge quando sono più di uno (es. "Ristorante" +
+   "Accessibile solo in auto"): li tiene insieme e li fa andare a capo
+   in blocco, allineati a destra, invece di far uscire il testo dalla card */
+.food-card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
 }
 
 .badge {
