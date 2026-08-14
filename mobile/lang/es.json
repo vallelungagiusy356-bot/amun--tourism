@@ -171,12 +171,19 @@
       "santamaria": {
         "title": "Iglesia de Santa Maria degli Angeli",
         "description": "Los habitantes de Caccamo todavía la llaman 'San Domenico', por el nombre de la plaza. Fue fundada en 1487 por el fraile dominico Giovanni Liccio, nacido precisamente en Caccamo — según la tradición, fue la propia Virgen quien le indicó en sueños dónde construirla. Hoy la iglesia guarda sus reliquias en una urna de plata, junto a una Virgen con el Niño esculpida en 1516 por Antonello Gagini. Es el mismo Beato Giovanni que el pueblo celebra cada mes de mayo.",
-        "hours": "De lunes a sábado: Santa Misa a las 08:30, apertura matutina 09:00 – 12:00. Domingo: Santas Misas a las 08:30, 11:30 y 17:00 (apertura según los horarios de las funciones)."
+        "hours": "Horario de verano 2026 (a partir del 5 de julio): Días laborables 08:30. Domingos y festivos 08:30 y 18:00.",
+        "rettore": "La iglesia está a cargo del padre Nicasio Galbo, punto de referencia espiritual del pueblo, siempre dispuesto a recibir con los brazos abiertos a quien la visita.",
+        "restauro_vetrate": "En los últimos años la iglesia ha sido objeto de importantes obras de restauración, entre ellas la de las espléndidas vidrieras de colores: alzando la vista desde la nave central se pueden admirar sobre la entrada, y son igualmente sugestivas las de la cúpula que corona el altar.",
+        "statua_beato": "La estatua del Beato Giovanni Liccio — el \"blanquísimo lirio, hijo de Caccamo\" — ha sido trasladada recientemente a una posición más accesible para quien visita la iglesia.",
+        "bassorilievo": "Siguiendo hacia la sacristía se encuentra un bajorrelieve que representa a la Virgen, también restaurado: narra un episodio de la devoción local, la Virgen lanzando un ancla a un rico mercader de trigo que viajaba hacia Termini Imerese, salvándolo de un naufragio.",
+        "beato_giovanni_mondo": "El culto al Beato Giovanni Liccio está muy vivo también en Chicago, donde existe una numerosa comunidad de devotos. En Caccamo, una gruta dedicada a él es meta de peregrinaciones de la comunidad local, actualmente suspendidas por obras de puesta en seguridad de la zona.",
+        "beato_giovanni_link_label": "🔗 Descubre más sobre el Beato Giovanni Liccio"
       },
       "sangiorgio": {
         "title": "Iglesia de San Giorgio Martire",
         "description": "El Duomo se alza donde, según la tradición, los normandos erigieron ya en 1090 la primera iglesia dedicada a San Giorgio — el santo que, se cuenta, les ayudó a vencer a los sarracenos en la batalla de Cerami en 1063. El edificio que se ve hoy data del siglo XVII, pero su campanario de 49 metros de altura es aún más antiguo: en su parte inferior fue una torre de vigilancia del Castillo. En el interior, el altar barroco conserva relieves atribuidos a Francesco Laurana y una estatua-relicario de plata de Santa Rosalia.",
-        "hours": "De lunes a sábado: 09:00 – 12:00, Santa Misa a las 18:00. Domingo: Santas Misas a las 11:00 y 18:00 (apertura según los horarios de las funciones)."
+        "hours": "Horario de verano de las funciones: 11:00 – 18:30. Horario de invierno de las funciones: 11:00 – 18:00.",
+        "secret_info": "💒 Las Misas del domingo en Caccamo: la mañana del domingo se celebra misa también en dos iglesias menores, abiertas solo en esta ocasión. La Chiesa del Carmine (9:00) se encuentra en una zona periférica del pueblo: se llega recorriendo Via del Carmine en dirección al cuartel, y subiendo después hasta la pequeña plaza donde se alza la iglesia. La Chiesa di San Giovanni li Greci (10:00) se encuentra en cambio en una pedanía rural de Caccamo, a la que solo se puede llegar en coche. Dos paradas sugestivas para quien quiera vivir la fe local más auténtica, fuera de los caminos habituales."
       },
       "annunziata": {
         "title": "Parroquia SS. Annunziata",

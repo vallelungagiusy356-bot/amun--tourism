@@ -177,12 +177,19 @@
       "santamaria": {
         "title": "Kirche Santa Maria degli Angeli",
         "description": "Die Einwohner von Caccamo nennen sie noch heute 'San Domenico', nach dem Namen des Platzes. Sie wurde 1487 von dem Dominikanermönch Giovanni Liccio gegründet, der genau in Caccamo geboren wurde — der Überlieferung nach zeigte ihm die Madonna selbst im Traum, wo er sie erbauen sollte. Heute bewahrt die Kirche seine Reliquien in einer silbernen Urne auf, zusammen mit einer 1516 von Antonello Gagini geschnitzten Madonna mit Kind. Es ist derselbe Selige Giovanni, den das Dorf jeden Mai feiert.",
-        "hours": "Montag bis Samstag: Heilige Messe um 08:30 Uhr, morgendliche Öffnung 09:00 – 12:00 Uhr. Sonntag: Heilige Messen um 08:30, 11:30 und 17:00 Uhr (Öffnungszeiten entsprechend den Gottesdienstzeiten)."
+        "hours": "Sommeröffnungszeiten 2026 (ab 5. Juli): Werktags 08:30 Uhr. Sonn- und Feiertags 08:30 und 18:00 Uhr.",
+        "rettore": "Die Kirche wird von Pater Nicasio Galbo betreut, dem geistlichen Bezugspunkt des Dorfes, der jeden Besucher stets mit offenen Armen empfängt.",
+        "restauro_vetrate": "In den letzten Jahren wurde die Kirche umfassend restauriert, unter anderem die prächtigen bunten Glasfenster: Blickt man vom Hauptschiff aus nach oben, kann man sie über dem Eingang bewundern, ebenso eindrucksvoll sind jene in der Kuppel über dem Altar.",
+        "statua_beato": "Die Statue des Seligen Giovanni Liccio — die \"schneeweiße Lilie, Sohn von Caccamo\" — wurde vor Kurzem an einen für Besucher besser zugänglichen Platz verlegt.",
+        "bassorilievo": "Auf dem Weg zur Sakristei findet sich ein ebenfalls restauriertes Flachrelief der Madonna: Es erzählt eine Geschichte lokaler Frömmigkeit — die Madonna wirft einem reichen Getreidehändler auf dem Weg nach Termini Imerese einen Anker zu und rettet ihn so vor dem Schiffbruch.",
+        "beato_giovanni_mondo": "Die Verehrung des Seligen Giovanni Liccio ist auch in Chicago lebendig, wo es eine große Gemeinde von Anhängern gibt. In Caccamo ist eine ihm gewidmete Grotte Ziel von Pilgerfahrten der örtlichen Gemeinde, die derzeit wegen Sicherungsarbeiten im Gebiet ausgesetzt sind.",
+        "beato_giovanni_link_label": "🔗 Mehr über den Seligen Giovanni Liccio erfahren"
       },
       "sangiorgio": {
         "title": "Kirche San Giorgio Martire",
         "description": "Der Dom steht dort, wo der Überlieferung nach die Normannen bereits 1090 die erste San Giorgio geweihte Kirche errichteten — der Heilige, der ihnen der Legende nach half, die Sarazenen in der Schlacht von Cerami im Jahr 1063 zu besiegen. Das heute sichtbare Gebäude stammt aus dem 17. Jahrhundert, sein 49 Meter hoher Glockenturm ist jedoch noch älter: Sein unterer Teil war einst ein Wachturm der Burg. Im Inneren bewahrt der barocke Altar Reliefs auf, die Francesco Laurana zugeschrieben werden, sowie eine silberne Reliquienstatue der Heiligen Rosalia.",
-        "hours": "Montag bis Samstag: 09:00 – 12:00 Uhr, Heilige Messe um 18:00 Uhr. Sonntag: Heilige Messen um 11:00 und 18:00 Uhr (Öffnungszeiten entsprechend den Gottesdienstzeiten)."
+        "hours": "Sommer-Gottesdienstzeiten: 11:00 – 18:30 Uhr. Winter-Gottesdienstzeiten: 11:00 – 18:00 Uhr.",
+        "secret_info": "💒 Die Sonntagsmessen in Caccamo: Am Sonntagvormittag wird auch in zwei kleineren Kirchen Messe gefeiert, die nur zu diesem Anlass geöffnet sind. Die Chiesa del Carmine (9:00 Uhr) liegt in einem Randgebiet des Dorfes: Man erreicht sie über die Via del Carmine in Richtung Kaserne und dann bergauf bis zum kleinen Platz, an dem die Kirche steht. Die Chiesa di San Giovanni li Greci (10:00 Uhr) liegt hingegen in einem ländlichen Ortsteil von Caccamo, der nur mit dem Auto erreichbar ist. Zwei stimmungsvolle Ziele für alle, die den authentischen lokalen Glauben abseits der üblichen Wege erleben möchten."
       },
       "annunziata": {
         "title": "Pfarrei SS. Annunziata",

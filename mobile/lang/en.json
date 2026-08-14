@@ -171,12 +171,19 @@
       "santamaria": {
         "title": "Church of Santa Maria degli Angeli",
         "description": "The people of Caccamo still call it 'San Domenico', after the name of the square. It was founded in 1487 by the Dominican friar Giovanni Liccio, born right here in Caccamo — according to tradition, the Madonna herself showed him in a dream where to build it. Today the church holds his relics in a silver urn, alongside a Madonna and Child carved in 1516 by Antonello Gagini. It is the same Blessed Giovanni whom the village celebrates every May.",
-        "hours": "Monday to Saturday: Holy Mass at 08:30, morning opening 09:00 – 12:00. Sunday: Holy Masses at 08:30, 11:30 and 17:00 (opening hours in line with service times)."
+        "hours": "Summer hours 2026 (from 5 July): Weekdays 08:30. Sundays and holidays 08:30 and 18:00.",
+        "rettore": "The church is cared for by Father Nicasio Galbo, a spiritual point of reference for the village, always ready to welcome with open arms anyone who visits.",
+        "restauro_vetrate": "In recent years the church has undergone major restoration work, including the beautiful stained-glass windows: looking up from the central nave you can admire them above the entrance, and equally striking are those in the dome above the altar.",
+        "statua_beato": "The statue of Blessed Giovanni Liccio — the \"purest white lily, son of Caccamo\" — has recently been moved to a more accessible spot for visitors.",
+        "bassorilievo": "Continuing towards the sacristy you'll find a bas-relief of the Madonna, also restored: it tells a story from local devotion, of the Madonna throwing an anchor to a wealthy grain merchant sailing to Termini Imerese, saving him from a shipwreck.",
+        "beato_giovanni_mondo": "Devotion to Blessed Giovanni Liccio is also strong in Chicago, home to a large community of devotees. In Caccamo, a grotto dedicated to him is a site of pilgrimage for the local community, currently suspended for safety works in the area.",
+        "beato_giovanni_link_label": "🔗 Learn more about Blessed Giovanni Liccio"
       },
       "sangiorgio": {
         "title": "Church of San Giorgio Martire",
         "description": "The Cathedral stands where, according to tradition, the Normans built the first church dedicated to San Giorgio as early as 1090 — the saint said to have helped them defeat the Saracens at the Battle of Cerami in 1063. The building you see today dates back to the 17th century, but its 49-metre-tall bell tower is even older: its lower part was once a watchtower for the Castle. Inside, the baroque altar houses reliefs attributed to Francesco Laurana and a silver reliquary statue of Santa Rosalia.",
-        "hours": "Monday to Saturday: 09:00 – 12:00, Holy Mass at 18:00. Sunday: Holy Masses at 11:00 and 18:00 (opening hours in line with service times)."
+        "hours": "Summer service hours: 11:00 – 18:30. Winter service hours: 11:00 – 18:00.",
+        "secret_info": "💒 Sunday Masses in Caccamo: on Sunday mornings, Mass is also celebrated in two smaller churches, open only for this occasion. The Chiesa del Carmine (9:00 am) is located in a peripheral area of the village, reached by following Via del Carmine towards the barracks and then climbing up to the small square where the church stands. The Chiesa di San Giovanni li Greci (10:00 am) lies instead in a rural hamlet of Caccamo, reachable only by car. Two evocative stops for anyone wanting to experience local faith at its most authentic, off the usual paths."
       },
       "annunziata": {
         "title": "Parish of SS. Annunziata",
