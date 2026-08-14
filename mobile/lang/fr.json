@@ -171,12 +171,19 @@
       "santamaria": {
         "title": "Église Santa Maria degli Angeli",
         "description": "Les habitants de Caccamo l'appellent encore « San Domenico », du nom de la place. Elle fut fondée en 1487 par le frère dominicain Giovanni Liccio, né précisément à Caccamo — selon la tradition, c'est la Madone elle-même qui lui indiqua en songe où la construire. Aujourd'hui, l'église conserve ses reliques dans une urne en argent, ainsi qu'une Vierge à l'Enfant sculptée en 1516 par Antonello Gagini. C'est ce même Bienheureux Giovanni que le bourg célèbre chaque mois de mai.",
-        "hours": "Du lundi au samedi : Sainte Messe à 08h30, ouverture matinale 09h00 – 12h00. Dimanche : Saintes Messes à 08h30, 11h30 et 17h00 (ouverture selon les horaires des offices)."
+        "hours": "Horaires d'été 2026 (à partir du 5 juillet) : En semaine 08h30. Dimanches et jours fériés 08h30 et 18h00.",
+        "rettore": "L'église est confiée au père Nicasio Galbo, point de référence spirituel du bourg, toujours prêt à accueillir à bras ouverts quiconque la visite.",
+        "restauro_vetrate": "Ces dernières années, l'église a fait l'objet d'importants travaux de valorisation, notamment la restauration des splendides vitraux colorés : en levant les yeux depuis la nef centrale, on peut les admirer au-dessus de l'entrée, tout comme ceux, tout aussi remarquables, de la coupole surplombant l'autel.",
+        "statua_beato": "La statue du Bienheureux Giovanni Liccio — le « lys d'une blancheur immaculée, fils de Caccamo » — a été récemment déplacée vers un emplacement plus accessible pour les visiteurs.",
+        "bassorilievo": "En poursuivant vers la sacristie, on trouve un bas-relief représentant la Madone, lui aussi restauré : il raconte un épisode de la dévotion locale, la Madone lançant une ancre à un riche marchand de blé en route vers Termini Imerese, le sauvant ainsi d'un naufrage.",
+        "beato_giovanni_mondo": "Le culte du Bienheureux Giovanni Liccio est également très vivant à Chicago, où existe une importante communauté de fidèles. À Caccamo, une grotte qui lui est dédiée est un lieu de pèlerinage pour la communauté locale, actuellement suspendu en raison de travaux de sécurisation de la zone.",
+        "beato_giovanni_link_label": "🔗 En savoir plus sur le Bienheureux Giovanni Liccio"
       },
       "sangiorgio": {
         "title": "Église San Giorgio Martire",
         "description": "Le Duomo se dresse là où, selon la tradition, les Normands érigèrent dès 1090 la première église dédiée à San Giorgio — le saint qui, dit-on, les aida à vaincre les Sarrasins lors de la bataille de Cerami en 1063. L'édifice que l'on voit aujourd'hui date du XVIIe siècle, mais son clocher haut de 49 mètres est encore plus ancien : sa partie inférieure était autrefois une tour de guet du Château. À l'intérieur, l'autel baroque conserve des reliefs attribués à Francesco Laurana et une statue-reliquaire en argent de Sainte Rosalie.",
-        "hours": "Du lundi au samedi : 09h00 – 12h00, Sainte Messe à 18h00. Dimanche : Saintes Messes à 11h00 et 18h00 (ouverture selon les horaires des offices)."
+        "hours": "Horaires d'été des offices : 11h00 – 18h30. Horaires d'hiver des offices : 11h00 – 18h00.",
+        "secret_info": "💒 Les messes du dimanche à Caccamo : le dimanche matin, la messe est également célébrée dans deux petites églises, ouvertes uniquement à cette occasion. L'église du Carmine (9h00) se trouve dans une zone périphérique du village : on y accède en suivant la Via del Carmine en direction de la caserne, puis en montant jusqu'à la petite place où se dresse l'église. L'église de San Giovanni li Greci (10h00) se trouve quant à elle dans un hameau rural de Caccamo, accessible uniquement en voiture. Deux étapes évocatrices pour qui souhaite vivre la foi locale la plus authentique, loin des sentiers battus."
       },
       "annunziata": {
         "title": "Paroisse SS. Annunziata",
