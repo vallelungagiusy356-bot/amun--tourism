@@ -171,13 +171,19 @@
       "santamaria": {
         "title": "Chiesa di Santa Maria degli Angeli",
         "description": "I caccamesi la chiamano ancora \"San Domenico\", dal nome della piazza. Fu fondata nel 1487 dal frate domenicano Giovanni Liccio, nato proprio a Caccamo — secondo la tradizione, fu la Madonna stessa a indicargli in sogno dove costruirla. Oggi la chiesa custodisce le sue reliquie in un'urna d'argento, insieme a una Madonna col Bambino scolpita nel 1516 da Antonello Gagini. È lo stesso Beato Giovanni che il borgo festeggia ogni maggio.",
-        "hours": "Da lunedì a sabato: Santa Messa ore 08:30, apertura mattutina 09:00 – 12:00. Domenica: Sante Messe ore 08:30, 11:30 e 17:00 (apertura compatibile con gli orari delle funzioni)."
+        "hours": "Orario estivo 2026 (dal 5 luglio): Feriale ore 08:30. Festivo ore 08:30 e 18:00.",
+        "rettore": "La chiesa è custodita da padre Nicasio Galbo, punto di riferimento spirituale del borgo, sempre pronto ad accogliere a braccia aperte chiunque la visiti.",
+        "restauro_vetrate": "Negli ultimi anni la chiesa è stata oggetto di importanti lavori di valorizzazione, tra cui il restauro delle splendide vetrate colorate: alzando lo sguardo dalla navata centrale si possono ammirare sopra l'ingresso, e altrettanto suggestive sono quelle della cupola che sovrasta l'altare.",
+        "statua_beato": "La statua del Beato Giovanni Liccio — il \"bianchissimo giglio di Caccamo figlio\" — è stata recentemente spostata in una posizione più fruibile per chi visita la chiesa.",
+        "bassorilievo": "Proseguendo verso la sacrestia si incontra un bassorilievo raffigurante la Madonna, anch'esso restaurato: racconta un episodio della devozione locale, la Madonna che getta un'ancora a un ricco mercante di grano diretto a Termini Imerese, salvandolo da un naufragio.",
+        "beato_giovanni_mondo": "Il culto del Beato Giovanni Liccio è vivo anche a Chicago, dove esiste una comunità numerosa di devoti. A Caccamo una grotta a lui dedicata è meta di pellegrinaggi con la comunità locale, al momento sospesi per lavori di messa in sicurezza dell'area.",
+        "beato_giovanni_link_label": "🔗 Scopri di più sul Beato Giovanni Liccio"
       },
       "sangiorgio": {
         "title": "Chiesa di San Giorgio Martire",
         "description": "Il Duomo sorge dove, secondo la tradizione, i Normanni eressero già nel 1090 la prima chiesa dedicata a San Giorgio — il santo che, si narra, li aiutò a vincere i Saraceni nella battaglia di Cerami nel 1063. L'edificio che vedi oggi risale al Seicento, ma il suo campanile alto 49 metri è ancora più antico: nella parte inferiore era una torre di avvistamento del Castello. All'interno, l'altare barocco custodisce rilievi attribuiti a Francesco Laurana e una statua-reliquiario d'argento di Santa Rosalia.",
-        "hours": "Da lunedì a sabato: 09:00 – 12:00, Santa Messa ore 18:00. Domenica: Sante Messe dalle 11:00 alle 18:30 (orario estivo) o alle 18:00 (orario invernale).",
-        "secret_info": "💒 Le Messe della Domenica a Caccamo: la mattina della domenica, oltre alla Chiesa Madre, si celebra messa anche in due piccole chiese di campagna, aperte solo in questa occasione: la Chiesa del Carmine (ore 9:00) e la Chiesa di San Giovanni li Greci (ore 10:00), quest'ultima in una frazione di Caccamo raggiungibile solo in auto. Un'esperienza suggestiva per chi vuole vivere la fede locale più autentica, fuori dai percorsi abituali."
+        "hours": "Orario estivo funzioni: 11:00 – 18:30. Orario invernale funzioni: 11:00 – 18:00.",
+        "secret_info": "💒 Le Messe della Domenica a Caccamo: la mattina della domenica si celebra messa anche in due chiese minori, aperte solo in questa occasione. La Chiesa del Carmine (ore 9:00) si trova in una zona periferica del paese: si raggiunge percorrendo Via del Carmine in direzione della caserma, per poi salire fino alla piccola piazza dove sorge la chiesa. La Chiesa di San Giovanni li Greci (ore 10:00) si trova invece in una frazione di campagna di Caccamo, raggiungibile solo in auto. Due tappe suggestive per chi vuole vivere la fede locale più autentica, fuori dai percorsi abituali."
       },
       "annunziata": {
         "title": "Parrocchia SS. Annunziata",
