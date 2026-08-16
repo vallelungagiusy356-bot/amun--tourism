@@ -149,6 +149,66 @@ let userLocation = null;      // [lng, lat] dell'utente, appena disponibile
 let pendingRouteTarget = null; // coordinate del monumento in attesa della posizione
 let bannerVisible = false;
 
+// ============================================================
+// "SEI VICINO" — quando il GPS è attivo, ogni punto della mappa
+// (monumento o attività) può "accendersi" se il turista gli è
+// vicino. Due soglie, non una sola: nei vicoli stretti del centro
+// storico il GPS del telefono può sbagliare di diversi metri, e
+// con due livelli l'icona si accende comunque anche se il GPS
+// non è preciso al metro.
+//   livello 2 = "sei davanti"   (entro RAGGIO_VICINO_FORTE_M)
+//   livello 1 = "sei nei paraggi" (entro RAGGIO_VICINO_LEGGERO_M)
+//   livello 0 = normale (fuori da entrambi i raggi)
+// ============================================================
+const RAGGIO_VICINO_FORTE_M = 180;
+const RAGGIO_VICINO_LEGGERO_M = 450;
+let poiVicinanza = []; // riempito quando arrivano i dati del geojson: [{id, coords}]
+
+// Ricalcola il livello di vicinanza per ogni punto e lo scrive
+// nella mappa (feature-state): sono i livelli letti dalle icone e
+// dal cerchio "alone" per decidere come mostrarsi.
+function aggiornaVicinanza() {
+    if (!userLocation || poiVicinanza.length === 0) return;
+    poiVicinanza.forEach(poi => {
+        const distanzaM = haversineKm(userLocation, poi.coords) * 1000;
+        let livello = 0;
+        if (distanzaM <= RAGGIO_VICINO_FORTE_M) livello = 2;
+        else if (distanzaM <= RAGGIO_VICINO_LEGGERO_M) livello = 1;
+        map.setFeatureState({ source: 'poi-data', id: poi.id }, { vicinanza: livello });
+    });
+}
+
+// ============================================================
+// EFFETTO "PULSANTE" DELL'ALONE — invece di stare fisso, il
+// cerchio dorato si allarga e si stringe piano piano, come un
+// respiro. Non lo animiamo fotogramma per fotogramma (troppo
+// pesante per un telefono): ogni PULSE_INTERVAL_MS cambiamo solo
+// la misura "obiettivo", e la sfumatura fluida da una misura
+// all'altra la fa da sola Mapbox grazie a "circle-radius-transition"
+// impostato più sotto, quando creiamo il layer dell'alone.
+// ============================================================
+const PULSE_INTERVAL_MS = 900; // ogni quanto cambia la fase (respiro lento)
+let faseAloneGrande = false;
+
+function disegnaAlone() {
+    const fattore = faseAloneGrande ? 1.3 : 0.8; // "gonfio" oppure "sgonfio"
+    map.setPaintProperty('poi-vicinanza-alone', 'circle-radius', ['case',
+        ['==', ['feature-state', 'vicinanza'], 2], 22 * fattore,
+        ['==', ['feature-state', 'vicinanza'], 1], 16 * fattore,
+        0
+    ]);
+    map.setPaintProperty('poi-vicinanza-alone', 'circle-opacity', ['case',
+        ['==', ['feature-state', 'vicinanza'], 2], 0.38 * fattore,
+        ['==', ['feature-state', 'vicinanza'], 1], 0.20 * fattore,
+        0
+    ]);
+}
+
+setInterval(() => {
+    faseAloneGrande = !faseAloneGrande;
+    disegnaAlone();
+}, PULSE_INTERVAL_MS);
+
 // --- WAYFINDING IN TEMPO REALE -------------------------------
 // Mentre il turista cammina con un percorso attivo, la posizione
 // si aggiorna continuamente da sola (trackUserLocation è già
@@ -365,6 +425,7 @@ function requestRouteTo(destCoords) {
 geolocateControl.on('geolocate', (position) => {
     userLocation = [position.coords.longitude, position.coords.latitude];
     removeLocationPrompt();
+    aggiornaVicinanza(); // riaccende/spegne le icone vicine ad ogni aggiornamento GPS
     if (pendingRouteTarget) {
         const target = pendingRouteTarget;
         pendingRouteTarget = null;
@@ -537,6 +598,40 @@ map.on('load', () => {
                 data.features = data.features.filter(f => tipiConsentiti.includes(f.properties.type));
             }
 
+            // ============================================================
+            // SORGENTE UNICA DEI PUNTI — un solo posto ("poi-data") da cui
+            // leggono sia le icone che il cerchio "alone" di vicinanza.
+            // generateId:true dà un numero identificativo automatico ad
+            // ogni punto, necessario per accendere/spegnere il cerchio
+            // punto per punto (feature-state).
+            // ============================================================
+            map.addSource('poi-data', { type: 'geojson', data: data, generateId: true });
+
+            // Elenco leggero (solo id + coordinate) per calcolare in
+            // fretta la distanza dal turista ad ogni punto.
+            poiVicinanza = data.features.map((f, idx) => ({ id: idx, coords: f.geometry.coordinates }));
+            aggiornaVicinanza(); // nel caso la posizione fosse già nota
+
+            // Cerchio dorato che si accende SOTTO l'icona quando il
+            // turista è nei paraggi (leggero) o proprio davanti (forte).
+            // Va aggiunto prima delle icone, così resta visivamente sotto.
+            map.addLayer({
+                id: 'poi-vicinanza-alone',
+                type: 'circle',
+                source: 'poi-data',
+                paint: {
+                    'circle-color': '#CDA843',
+                    'circle-blur': 0.6,
+                    // Le "-transition" sono il segreto del pulsare morbido:
+                    // ogni volta che disegnaAlone() cambia la misura del
+                    // cerchio, Mapbox non salta di scatto alla nuova misura
+                    // ma ci arriva scivolando in 900ms, come un respiro.
+                    'circle-radius-transition': { duration: 900, delay: 0 },
+                    'circle-opacity-transition': { duration: 900, delay: 0 }
+                }
+            });
+            disegnaAlone(); // imposta subito la prima misura (fase "sgonfia")
+
             data.features.forEach((feature, index) => {
                 if (feature.properties.model) {
                     map.addLayer(create3DLayer(
@@ -621,10 +716,19 @@ map.on('load', () => {
                 map.addLayer({
                     id: 'poi-github',
                     type: 'symbol',
-                    source: { type: 'geojson', data: data },
+                    source: 'poi-data',
                     layout: {
                         'icon-image': ['get', 'icona'],
-                        'icon-size': ['coalesce', ['get', 'iconSize'], 0.25],
+                        // Icona più grande quando il turista è vicino: 1.5x se
+                        // è "davanti" al monumento/attività, 1.2x se è nei
+                        // paraggi, dimensione normale altrimenti. La misura
+                        // di partenza (iconSize) resta quella già definita
+                        // punto per punto nel geojson, se presente.
+                        'icon-size': ['case',
+                            ['==', ['feature-state', 'vicinanza'], 2], ['*', ['coalesce', ['get', 'iconSize'], 0.25], 1.5],
+                            ['==', ['feature-state', 'vicinanza'], 1], ['*', ['coalesce', ['get', 'iconSize'], 0.25], 1.2],
+                            ['coalesce', ['get', 'iconSize'], 0.25]
+                        ],
                         'icon-allow-overlap': true,
                         'text-field': ['get', 'label'],
                         'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
