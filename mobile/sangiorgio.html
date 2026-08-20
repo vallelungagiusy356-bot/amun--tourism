@@ -425,9 +425,14 @@ window.silktideConsentManager.init({
             <img src="img/san_giorgio_martire.gif" alt="San Giorgio" class="monument-hero-image img-sangiorgio">
         </div>
 
-        <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
-            🔊 <span data-i18n="pages.monuments_pages.labels.listen_button">Ascolta la descrizione</span>
-        </button>
+        <div class="listen-gallery-row">
+            <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
+                🔊 <span data-i18n="pages.monuments_pages.labels.listen_button">Ascolta la descrizione</span>
+            </button>
+            <button class="btn-gallery" id="btn-open-gallery" onclick="openGallery()">
+                🖼️ <span data-i18n="pages.monuments_pages.labels.gallery_button">Galleria</span>
+            </button>
+        </div>
 
         <section class="teca-cristallo descrittiva">
             <p id="desc-text" data-i18n="pages.monuments_pages.sangiorgio.description">Il Duomo sorge dove, secondo la tradizione, i Normanni eressero già nel 1090 la prima chiesa dedicata a San Giorgio — il santo che, si narra, li aiutò a vincere i Saraceni nella battaglia di Cerami nel 1063. L'edificio che vedi oggi risale al Seicento, ma il suo campanile alto 49 metri è ancora più antico: nella parte inferiore era una torre di avvistamento del Castello. All'interno, l'altare barocco custodisce rilievi attribuiti a Francesco Laurana e una statua-reliquiario d'argento di Santa Rosalia.</p>
@@ -465,6 +470,101 @@ window.silktideConsentManager.init({
         <a href="monumenti.html" class="btn-back-home">← <span data-i18n="pages.monuments_pages.labels.back_to_monuments">Torna ai Monumenti</span></a>
 
     </main>
+
+    <!-- ============================================================
+         GALLERIA FOTO — San Giorgio Martire
+         Modale a schermo intero, si apre col bottone "Galleria".
+         Per riusare su un'altra chiesa: copia questo blocco + il
+         blocco CSS ".gallery-modal" + lo script GALLERY_IMAGES qui
+         sotto, cambia solo l'array delle foto.
+         ============================================================ -->
+    <div class="gallery-modal" id="gallery-modal">
+        <div class="gallery-modal-header">
+            <span class="gallery-counter" id="gallery-counter">1 / 11</span>
+            <button class="gallery-close-btn" id="gallery-close-btn" aria-label="Chiudi galleria">✕</button>
+        </div>
+        <div class="gallery-modal-body">
+            <button class="gallery-arrow gallery-arrow-left" id="gallery-prev-btn" aria-label="Foto precedente">‹</button>
+            <img class="gallery-modal-image" id="gallery-modal-image" src="" alt="">
+            <button class="gallery-arrow gallery-arrow-right" id="gallery-next-btn" aria-label="Foto successiva">›</button>
+        </div>
+        <p class="gallery-caption" id="gallery-caption"></p>
+    </div>
+
+    <script>
+        // --------------------------
+        // GALLERIA FOTO — San Giorgio Martire
+        // --------------------------
+        const GALLERY_IMAGES = [
+            { src: "img/navata_centrale.jpg", caption: "Navata principale" },
+            { src: "img/san_isidoro.jpg", caption: "Quadro di Sant'Isidoro" },
+            { src: "img/dettagliocappellare.jpg", caption: "Particolare della cappella delle reliquie" },
+            { src: "img/sangiorgio_organo.jpg", caption: "L'organo" },
+            { src: "img/navata.jpg", caption: "La navata" },
+            { src: "img/cappelladellerelique.jpg", caption: "Cappella delle reliquie" },
+            { src: "img/sangiorgio_cupola.jpg", caption: "La cupola" },
+            { src: "img/sangiorgiorgio_affreschi_volta.jpg", caption: "Affreschi della volta" },
+            { src: "img/sangiorgio_statua.jpg", caption: "Statua" },
+            { src: "img/beato_giovanni_quadr.jpg", caption: "Quadro del Beato Giovanni" },
+            { src: "img/martirio_sanseb.jpg", caption: "Martirio di San Sebastiano" }
+        ];
+
+        let currentGalleryIndex = 0;
+
+        function openGallery() {
+            currentGalleryIndex = 0;
+            showGalleryImage(currentGalleryIndex);
+            document.getElementById('gallery-modal').classList.add('active');
+        }
+
+        function closeGallery() {
+            document.getElementById('gallery-modal').classList.remove('active');
+        }
+
+        function showGalleryImage(index) {
+            const img = GALLERY_IMAGES[index];
+            document.getElementById('gallery-modal-image').src = img.src;
+            document.getElementById('gallery-modal-image').alt = img.caption;
+            document.getElementById('gallery-caption').textContent = img.caption;
+            document.getElementById('gallery-counter').textContent = (index + 1) + ' / ' + GALLERY_IMAGES.length;
+        }
+
+        function showNextGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex + 1) % GALLERY_IMAGES.length;
+            showGalleryImage(currentGalleryIndex);
+        }
+
+        function showPrevGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+            showGalleryImage(currentGalleryIndex);
+        }
+
+        document.getElementById('gallery-close-btn').addEventListener('click', closeGallery);
+        document.getElementById('gallery-next-btn').addEventListener('click', showNextGalleryImage);
+        document.getElementById('gallery-prev-btn').addEventListener('click', showPrevGalleryImage);
+
+        // Tocca lo sfondo scuro (fuori dalla foto) per chiudere
+        document.getElementById('gallery-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeGallery();
+        });
+
+        // Scorrimento con swipe (dito) sulla foto, utile su mobile
+        (function() {
+            const imgEl = document.getElementById('gallery-modal-image');
+            let touchStartX = 0;
+            imgEl.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            imgEl.addEventListener('touchend', function(e) {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchEndX - touchStartX;
+                if (Math.abs(diff) > 40) {
+                    if (diff < 0) showNextGalleryImage();
+                    else showPrevGalleryImage();
+                }
+            });
+        })();
+    </script>
 
     <!-- ============================================================
          CHAT CASTELLANA — collegata agli argomenti Premium specifici
