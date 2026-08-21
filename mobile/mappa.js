@@ -165,8 +165,10 @@ const RAGGIO_VICINO_LEGGERO_M = 450;
 let poiVicinanza = []; // riempito quando arrivano i dati del geojson: [{id, coords}]
 
 // Ricalcola il livello di vicinanza per ogni punto e lo scrive
-// nella mappa (feature-state): sono i livelli letti dalle icone e
-// dal cerchio "alone" per decidere come mostrarsi.
+// nella mappa (feature-state): sono i livelli letti dal cerchio
+// "alone" per decidere come mostrarsi (l'icona resta a dimensione
+// fissa: Mapbox non permette di leggere il feature-state dentro
+// icon-size, solo dentro proprietà "paint" come il cerchio).
 function aggiornaVicinanza() {
     if (!userLocation || poiVicinanza.length === 0) return;
     poiVicinanza.forEach(poi => {
@@ -425,7 +427,7 @@ function requestRouteTo(destCoords) {
 geolocateControl.on('geolocate', (position) => {
     userLocation = [position.coords.longitude, position.coords.latitude];
     removeLocationPrompt();
-    aggiornaVicinanza(); // riaccende/spegne le icone vicine ad ogni aggiornamento GPS
+    aggiornaVicinanza(); // riaccende/spegne il cerchio vicino ad ogni aggiornamento GPS
     if (pendingRouteTarget) {
         const target = pendingRouteTarget;
         pendingRouteTarget = null;
@@ -719,16 +721,21 @@ map.on('load', () => {
                     source: 'poi-data',
                     layout: {
                         'icon-image': ['get', 'icona'],
-                        // Icona più grande quando il turista è vicino: 1.5x se
-                        // è "davanti" al monumento/attività, 1.2x se è nei
-                        // paraggi, dimensione normale altrimenti. La misura
-                        // di partenza (iconSize) resta quella già definita
-                        // punto per punto nel geojson, se presente.
-                        'icon-size': ['case',
-                            ['==', ['feature-state', 'vicinanza'], 2], ['*', ['coalesce', ['get', 'iconSize'], 0.25], 1.5],
-                            ['==', ['feature-state', 'vicinanza'], 1], ['*', ['coalesce', ['get', 'iconSize'], 0.25], 1.2],
-                            ['coalesce', ['get', 'iconSize'], 0.25]
-                        ],
+                        // FIX: la dimensione dell'icona (icon-size) è una
+                        // proprietà "layout", e Mapbox NON permette di
+                        // leggere il feature-state (vicinanza) dentro le
+                        // proprietà layout — solo dentro le proprietà
+                        // "paint" (come il cerchio dorato qui sopra). Prima
+                        // qui c'era un'espressione che leggeva la vicinanza
+                        // per ingrandire l'icona: essendo non valida,
+                        // Mapbox rifiutava di creare l'intero layer delle
+                        // icone, ed è per questo che erano sparite TUTTE.
+                        // Ora la dimensione resta fissa (quella già
+                        // definita punto per punto nel geojson, se
+                        // presente): l'effetto "sei vicino" resta comunque
+                        // visibile grazie al cerchio dorato pulsante sotto
+                        // l'icona.
+                        'icon-size': ['coalesce', ['get', 'iconSize'], 0.25],
                         'icon-allow-overlap': true,
                         'text-field': ['get', 'label'],
                         'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
