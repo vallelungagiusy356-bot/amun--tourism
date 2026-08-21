@@ -1,5 +1,9 @@
 let currentLang = localStorage.getItem("lang") || "it";
 
+// Dati della lingua corrente, resi disponibili a tutta la pagina
+// (es. usati dallo script della galleria foto per tradurre le didascalie).
+window.i18nData = null;
+
 function loadLanguage(lang) {
     fetch(`lang/${lang}.json`)
         .then(res => {
@@ -7,6 +11,8 @@ function loadLanguage(lang) {
             return res.json();
         })
         .then(data => {
+            window.i18nData = data;
+
             // Aggiorna la lingua della pagina per la sintesi vocale
             const speechLangMap = { it: "it-IT", en: "en-US", fr: "fr-FR", de: "de-DE", es: "es-ES" };
             document.documentElement.lang = speechLangMap[lang] || "it-IT";
@@ -40,10 +46,28 @@ function loadLanguage(lang) {
                     btn.classList.remove("active");
                 }
             });
+
+            // Avvisa il resto della pagina che la lingua è cambiata,
+            // così elementi generati via JS (es. galleria foto) possono
+            // aggiornare i loro testi senza bisogno di data-i18n.
+            document.dispatchEvent(new CustomEvent("languageChanged", { detail: { lang } }));
         })
         .catch(err => console.error("Errore nel caricamento delle lingue di Amunì:", err));
 
     localStorage.setItem("lang", lang);
+}
+
+// Legge una traduzione dai dati già caricati usando una chiave puntata
+// (es. "pages.monuments_pages.sangiorgio_gallery.navata_centrale").
+// Se manca, ritorna il testo di riserva passato come secondo parametro.
+function getI18nText(key, fallback) {
+    if (!window.i18nData) return fallback || "";
+    try {
+        const text = key.split('.').reduce((o, i) => (o ? o[i] : null), window.i18nData);
+        return text || fallback || "";
+    } catch (e) {
+        return fallback || "";
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
