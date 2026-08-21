@@ -153,6 +153,7 @@
         "church_notice": "⚠️ Nota: I luoghi di culto sono attivi e dedicati alle funzioni liturgiche. Per le visite turistiche si prega di rispettare gli Orari consigliati ed evitare i momenti di celebrazione interna.",
         "go_to_map": "Vai alla Mappa",
         "listen_button": "Ascolta la descrizione",
+        "gallery_button": "Galleria",
         "address": "Dove si trova:",
         "back_to_monuments": "Torna ai Monumenti"
       },
@@ -185,10 +186,26 @@
         "hours": "Orario estivo funzioni: 11:00 – 18:30. Orario invernale funzioni: 11:00 – 18:00.",
         "secret_info": "💒 Le Messe della Domenica a Caccamo: la mattina della domenica si celebra messa anche in due chiese minori, aperte solo in questa occasione. La Chiesa del Carmine (ore 9:00) si trova in una zona periferica del paese: si raggiunge percorrendo Via del Carmine in direzione della caserma, per poi salire fino alla piccola piazza dove sorge la chiesa. La Chiesa di San Giovanni li Greci (ore 10:00) si trova invece in una frazione di campagna di Caccamo, raggiungibile solo in auto. Due tappe suggestive per chi vuole vivere la fede locale più autentica, fuori dai percorsi abituali."
       },
+      "sangiorgio_gallery": {
+        "navata_centrale": "Navata principale",
+        "san_isidoro": "Quadro di Sant'Isidoro",
+        "dettagliocappellare": "Particolare della cappella delle reliquie",
+        "organo": "L'organo",
+        "cappella_reliquie": "Cappella delle reliquie",
+        "cupola": "La cupola",
+        "affreschi_volta": "Affreschi della volta",
+        "statua": "Statua di San Giorgio",
+        "beato_giovanni": "Quadro del Beato Giovanni",
+        "martirio_sanseb": "Martirio di San Sebastiano"
+      },
       "annunziata": {
         "title": "Parrocchia SS. Annunziata",
         "description": "Le sue origini risalgono al Duecento, tra le più antiche di Caccamo. Custodisce una grande tela di Guglielmo Borremans, l'Annunciazione, e stucchi della scuola di Serpotta. Nel Settecento ospitava anche un pavimento in maiolica dipinto dal maestro Nicolò Sarzana — lo stesso artigiano che realizzò poi il celebre pavimento della Badia poco distante. Ogni primavera, la chiesa si anima per la festa di San Giuseppe, tra le tradizioni più sentite del borgo.",
-        "hours": "Da lunedì a sabato: 09:00 – 12:00, Santa Messa ore 18:00. Domenica: Sante Messe ore 09:30, 12:00 e 19:00 (apertura compatibile con gli orari delle funzioni)."
+        "hours": "Orario estivo feriale: Santa Messa ore 18:00 (nel mese di Agosto ore 19:00). Festivo: Sante Messe ore 09:30, 12:00 e 19:00.",
+        "fiera_agosto_tag": "🎉 Fiera d'Agosto 2026",
+        "fiera_agosto_title": "Festeggiamenti in onore di San Nicasio Martire",
+        "fiera_agosto_description": "Dal 23 al 30 agosto, Solenne Ottavario: Rosario ore 18:00, Coroncina 18:30, Santa Messa ore 19:00. Domenica 30 agosto: giornata di festa con Alborata e Solenni Vespri. Lunedì 31 agosto: Solennità di San Nicasio Martire, patrono di Caccamo — Messa solenne con Panegirico (ore 11:00), Messa con le Autorità Civili e Militari (ore 18:00), Uscita solenne e Processione con spettacolo pirotecnico (ore 19:30). Domenica 13 settembre: Reposizione della reliquia.",
+        "facebook_label": "📘 Segui la Parrocchia su Facebook"
       },
       "cappuccini": {
         "title": "Convento dei Frati Cappuccini",
