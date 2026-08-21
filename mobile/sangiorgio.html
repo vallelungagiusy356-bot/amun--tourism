@@ -496,16 +496,16 @@ window.silktideConsentManager.init({
         // GALLERIA FOTO — San Giorgio Martire
         // --------------------------
         const GALLERY_IMAGES = [
-            { src: "img/navata_centrale.jpg", caption: "Navata principale" },
-            { src: "img/san_isidoro.jpg", caption: "Quadro di Sant'Isidoro" },
-            { src: "img/dettagliocappellare.jpg", caption: "Particolare della cappella delle reliquie" },
-            { src: "img/sangiorgio_organo.jpg", caption: "L'organo" },
-            { src: "img/cappelladellerelique.jpg", caption: "Cappella delle reliquie" },
-            { src: "img/sangiorgio_cupola.jpg", caption: "La cupola" },
-            { src: "img/sangiorgiorgio_affreschi_volta.jpg", caption: "Affreschi della volta" },
-            { src: "img/sangiorgio_statua.jpg", caption: "Statua di San Giorgio" },
-            { src: "img/beato_giovanni_quadr.jpg", caption: "Quadro del Beato Giovanni" },
-            { src: "img/martirio_sanseb.jpg", caption: "Martirio di San Sebastiano" }
+            { src: "img/navata_centrale.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.navata_centrale", fallback: "Navata principale" },
+            { src: "img/san_isidoro.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.san_isidoro", fallback: "Quadro di Sant'Isidoro" },
+            { src: "img/dettagliocappellare.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.dettagliocappellare", fallback: "Particolare della cappella delle reliquie" },
+            { src: "img/sangiorgio_organo.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.organo", fallback: "L'organo" },
+            { src: "img/cappelladellerelique.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.cappella_reliquie", fallback: "Cappella delle reliquie" },
+            { src: "img/sangiorgio_cupola.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.cupola", fallback: "La cupola" },
+            { src: "img/sangiorgiorgio_affreschi_volta.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.affreschi_volta", fallback: "Affreschi della volta" },
+            { src: "img/sangiorgio_statua.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.statua", fallback: "Statua di San Giorgio" },
+            { src: "img/beato_giovanni_quadr.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.beato_giovanni", fallback: "Quadro del Beato Giovanni" },
+            { src: "img/martirio_sanseb.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.martirio_sanseb", fallback: "Martirio di San Sebastiano" }
         ];
 
         let currentGalleryIndex = 0;
@@ -522,11 +522,24 @@ window.silktideConsentManager.init({
 
         function showGalleryImage(index) {
             const img = GALLERY_IMAGES[index];
+            const caption = (typeof getI18nText === 'function')
+                ? getI18nText(img.captionKey, img.fallback)
+                : img.fallback;
             document.getElementById('gallery-modal-image').src = img.src;
-            document.getElementById('gallery-modal-image').alt = img.caption;
-            document.getElementById('gallery-caption').textContent = img.caption;
+            document.getElementById('gallery-modal-image').alt = caption;
+            document.getElementById('gallery-caption').textContent = caption;
             document.getElementById('gallery-counter').textContent = (index + 1) + ' / ' + GALLERY_IMAGES.length;
         }
+
+        // Se l'utente cambia lingua mentre la galleria è aperta,
+        // aggiorna subito la didascalia mostrata (senza aspettare
+        // che venga toccata una freccia).
+        document.addEventListener('languageChanged', function() {
+            const modal = document.getElementById('gallery-modal');
+            if (modal && modal.classList.contains('active')) {
+                showGalleryImage(currentGalleryIndex);
+            }
+        });
 
         function showNextGalleryImage() {
             currentGalleryIndex = (currentGalleryIndex + 1) % GALLERY_IMAGES.length;
