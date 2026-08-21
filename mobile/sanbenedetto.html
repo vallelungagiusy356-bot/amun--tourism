@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- ============================================================
-     BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
-     ============================================================ -->
-
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" id="silktide-consent-manager-css" href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css" integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" id="silktide-consent-manager-css" href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css" integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
 <style id="silktide-consent-manager-overrides">
 #stcm-wrapper {
   --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
@@ -21,9 +17,6 @@
   --iconColor: #EFE6D3;
   --iconBackgroundColor: #22303B;
 }
-
-/* Icona "riapri preferenze cookie" — piccola e chiusa nell'angolo,
-   per non coprire testi e bottoni sotto di lei */
 #stcm-icon {
   width: 30px !important;
   height: 30px !important;
@@ -34,24 +27,16 @@
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
 <script>
 window.silktideConsentManager.init({
-  backdrop: {
-    show: false
-  },
-  icon: {
-    position: "bottomLeft"
-  },
-  prompt: {
-    position: "bottomCenter"
-  },
+  backdrop: { show: false },
+  icon: { position: "bottomLeft" },
+  prompt: { position: "bottomCenter" },
   consentTypes: [
     {
       id: "essential",
       label: "Essenziali",
       description: "<p>Cookie tecnici necessari al funzionamento del sito, come la memoria della lingua scelta e del codice Premium attivato. Non possono essere disattivati.</p>",
       required: true,
-      onAccept: function() {
-        // Cookie tecnici: nessuna azione necessaria
-      }
+      onAccept: function() {}
     },
     {
       id: "analytics",
@@ -59,23 +44,13 @@ window.silktideConsentManager.init({
       description: "Questi cookie ci aiutano a capire come i visitatori usano il sito, in forma aggregata e anonima, per migliorare i contenuti di Amunì Tourism.",
       required: false,
       gtag: "analytics_storage",
-      scripts: [
-        {
-          url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0",
-          load: "async"
-        }
-      ],
+      scripts: [{ url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0", load: "async" }],
       onAccept: function() {
-        // Google Analytics 4 (G-DNTGGXSSM0)
         window.dataLayer = window.dataLayer || [];
         function gtag() { window.dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-DNTGGXSSM0', { 'anonymize_ip': true });
-        // Evento di ricerca: monument_view (Amunì Tourism)
-        gtag('event', 'monument_view', {
-          monument_id: 'badia',
-          monument_type: 'maggiore'
-        });
+        gtag('event', 'monument_view', { monument_id: 'badia', monument_type: 'maggiore' });
       }
     }
   ],
@@ -110,10 +85,6 @@ window.silktideConsentManager.init({
 });
 </script>
 
-<!-- ============================================================
-     FINE BLOCCO COOKIE + ANALYTICS
-     ============================================================ -->
-
     <title data-i18n="pages.monuments_pages.badia.title">Chiesa di San Benedetto alla Badia</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -123,10 +94,6 @@ window.silktideConsentManager.init({
     <link rel="stylesheet" href="monumento_dettaglio.css">
     <meta name="theme-color" content="#14283A">
 
-    <!-- ============================================================
-         STILE CHAT CASTELLANA — scritto qui in autonomia, senza
-         toccare monumento_dettaglio.css.
-         ============================================================ -->
     <style>
         :root {
             --cst-gold: #B8873B;
@@ -138,246 +105,57 @@ window.silktideConsentManager.init({
             --cst-ink: #22303B;
             --cst-cream: #F3ECDC;
         }
-
         .chat-mobile {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 78vh;
-            max-height: 640px;
-            background: rgba(15, 25, 34, 0.97);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid var(--cst-gold);
-            border-radius: 16px 16px 0 0;
-            padding: 16px;
-            display: none;
-            flex-direction: column;
-            z-index: 999999;
-            box-shadow: 0 -8px 30px rgba(0,0,0,0.5);
-            box-sizing: border-box;
+            position: fixed; left: 0; right: 0; bottom: 0; width: 100%;
+            height: 78vh; max-height: 640px;
+            background: rgba(15, 25, 34, 0.97); backdrop-filter: blur(10px);
+            border-top: 1px solid var(--cst-gold); border-radius: 16px 16px 0 0;
+            padding: 16px; display: none; flex-direction: column; z-index: 999999;
+            box-shadow: 0 -8px 30px rgba(0,0,0,0.5); box-sizing: border-box;
         }
-
-        .chat-mobile.active {
-            display: flex;
-            animation: chatMobileFadeIn 0.25s ease forwards;
-        }
-
-        @keyframes chatMobileFadeIn {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        .chat-mobile.active { display: flex; animation: chatMobileFadeIn 0.25s ease forwards; }
+        @keyframes chatMobileFadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         .chat-mobile-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--cst-cream);
-            background: var(--cst-sea-ink);
-            margin: -16px -16px 12px -16px;
-            padding: 14px 16px;
-            border-radius: 16px 16px 0 0;
-            border-bottom: 1px solid var(--cst-gold);
+            display: flex; align-items: center; gap: 8px; color: var(--cst-cream);
+            background: var(--cst-sea-ink); margin: -16px -16px 12px -16px;
+            padding: 14px 16px; border-radius: 16px 16px 0 0; border-bottom: 1px solid var(--cst-gold);
         }
-
-        .chat-mobile-header .avatar-status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #5FD068;
-            box-shadow: 0 0 6px #5FD068;
-        }
-
-        .chat-mobile-header span.chat-title-mobile {
-            flex-grow: 1;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .close-chat-btn-mobile,
-        .voice-toggle-btn-mobile {
-            background: transparent;
-            border: none;
-            color: var(--cst-cream);
-            font-size: 1.15rem;
-            cursor: pointer;
-            padding: 2px 6px;
-        }
-
+        .chat-mobile-header .avatar-status-dot { width: 8px; height: 8px; border-radius: 50%; background: #5FD068; box-shadow: 0 0 6px #5FD068; }
+        .chat-mobile-header span.chat-title-mobile { flex-grow: 1; font-weight: 600; font-size: 0.95rem; }
+        .close-chat-btn-mobile, .voice-toggle-btn-mobile { background: transparent; border: none; color: var(--cst-cream); font-size: 1.15rem; cursor: pointer; padding: 2px 6px; }
         .premium-status-bar-mobile {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-align: center;
-            padding: 5px 8px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            letter-spacing: 0.2px;
-            background: rgba(239, 230, 211, 0.08);
-            color: var(--cst-cream);
-            border: 1px solid rgba(239, 230, 211, 0.25);
+            font-size: 0.75rem; font-weight: 600; text-align: center; padding: 5px 8px;
+            margin-bottom: 10px; border-radius: 6px; letter-spacing: 0.2px;
+            background: rgba(239, 230, 211, 0.08); color: var(--cst-cream); border: 1px solid rgba(239, 230, 211, 0.25);
         }
-
-        .premium-status-bar-mobile.premium-active {
-            background: rgba(184, 135, 59, 0.18);
-            color: var(--cst-gold-light);
-            border: 1px solid rgba(184, 135, 59, 0.4);
-        }
-
-        .chat-messages-mobile {
-            flex-grow: 1;
-            overflow-y: auto;
-            margin-bottom: 10px;
-            -webkit-overflow-scrolling: touch;
-        }
-
+        .premium-status-bar-mobile.premium-active { background: rgba(184, 135, 59, 0.18); color: var(--cst-gold-light); border: 1px solid rgba(184, 135, 59, 0.4); }
+        .chat-messages-mobile { flex-grow: 1; overflow-y: auto; margin-bottom: 10px; -webkit-overflow-scrolling: touch; }
         .chat-messages-mobile .message-mobile {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            color: var(--cst-ink);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            background: #fff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            max-width: 90%;
-            border-left: 2px solid var(--cst-gold);
+            display: flex; align-items: flex-start; gap: 8px; color: var(--cst-ink);
+            font-size: 0.9rem; line-height: 1.5; background: #fff; padding: 8px 12px;
+            border-radius: 8px; margin-bottom: 8px; max-width: 90%; border-left: 2px solid var(--cst-gold);
         }
-
-        .chat-messages-mobile .message-mobile span {
-            flex: 1;
-        }
-
+        .chat-messages-mobile .message-mobile span { flex: 1; }
         .chat-messages-mobile .message-mobile.user-msg-mobile {
-            background: var(--cst-sea);
-            color: #fff;
-            border-left: none;
-            border-right: 2px solid var(--cst-gold);
-            margin-left: auto;
-            flex-direction: row-reverse;
-            text-align: right;
+            background: var(--cst-sea); color: #fff; border-left: none; border-right: 2px solid var(--cst-gold);
+            margin-left: auto; flex-direction: row-reverse; text-align: right;
         }
-
-        .audio-btn-mobile {
-            background: rgba(184, 135, 59, 0.12);
-            border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            font-size: 14px;
-            cursor: pointer;
-            flex-shrink: 0;
-            color: var(--cst-gold);
-        }
-
-        .chat-link-btn-mobile {
-            display: block;
-            background: var(--cst-terracotta);
-            color: #fff;
-            border: none;
-            padding: 9px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin: -2px 0 8px 0;
-        }
-
-        .topic-menu-mobile {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin: 2px 0 10px 0;
-        }
-
-        .topic-btn-mobile {
-            background: #fff;
-            border: 1px solid var(--cst-gold);
-            color: var(--cst-sea);
-            padding: 7px 13px;
-            border-radius: 999px;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-
-        .typing-indicator-mobile {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            width: fit-content;
-            padding: 10px 14px;
-            margin-bottom: 8px;
-            background: #fff;
-            border-radius: 8px;
-            border-left: 2px solid var(--cst-gold);
-        }
-
-        .typing-indicator-mobile span {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--cst-gold);
-            display: inline-block;
-            animation: typing-bounce-mobile 1.2s infinite ease-in-out;
-        }
-
+        .audio-btn-mobile { background: rgba(184, 135, 59, 0.12); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 14px; cursor: pointer; flex-shrink: 0; color: var(--cst-gold); }
+        .chat-link-btn-mobile { display: block; background: var(--cst-terracotta); color: #fff; border: none; padding: 9px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; margin: -2px 0 8px 0; }
+        .topic-menu-mobile { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 10px 0; }
+        .topic-btn-mobile { background: #fff; border: 1px solid var(--cst-gold); color: var(--cst-sea); padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; cursor: pointer; }
+        .typing-indicator-mobile { display: flex; align-items: center; gap: 4px; width: fit-content; padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; border-left: 2px solid var(--cst-gold); }
+        .typing-indicator-mobile span { width: 6px; height: 6px; border-radius: 50%; background: var(--cst-gold); display: inline-block; animation: typing-bounce-mobile 1.2s infinite ease-in-out; }
         .typing-indicator-mobile span:nth-child(2) { animation-delay: 0.2s; }
         .typing-indicator-mobile span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes typing-bounce-mobile {
-            0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-            30% { transform: translateY(-4px); opacity: 1; }
-        }
-
-        .chat-input-row-mobile {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .chat-input-row-mobile input {
-            flex: 1;
-            min-width: 0;
-            padding: 12px 14px;
-            border-radius: 8px;
-            border: 1px solid rgba(184, 135, 59, 0.55);
-            background: rgba(255,255,255,0.97);
-            color: var(--cst-ink);
-            font-size: 0.95rem;
-            outline: none;
-        }
-
-        .mic-btn-mobile,
-        .send-btn-mobile {
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.05rem;
-            color: #fff;
-            flex-shrink: 0;
-        }
-
-        .mic-btn-mobile {
-            background: #6B1F2A;
-        }
-
-        .mic-btn-mobile.listening {
-            background: var(--cst-terracotta);
-            animation: micPulseMobile 1s ease-in-out infinite;
-        }
-
-        @keyframes micPulseMobile {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.12); }
-        }
-
-        .send-btn-mobile {
-            background: var(--cst-terracotta);
-        }
+        @keyframes typing-bounce-mobile { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
+        .chat-input-row-mobile { display: flex; gap: 8px; align-items: center; }
+        .chat-input-row-mobile input { flex: 1; min-width: 0; padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(184, 135, 59, 0.55); background: rgba(255,255,255,0.97); color: var(--cst-ink); font-size: 0.95rem; outline: none; }
+        .mic-btn-mobile, .send-btn-mobile { border: none; width: 44px; height: 44px; border-radius: 8px; cursor: pointer; font-size: 1.05rem; color: #fff; flex-shrink: 0; }
+        .mic-btn-mobile { background: #6B1F2A; }
+        .mic-btn-mobile.listening { background: var(--cst-terracotta); animation: micPulseMobile 1s ease-in-out infinite; }
+        @keyframes micPulseMobile { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+        .send-btn-mobile { background: var(--cst-terracotta); }
     </style>
 </head>
 <body>
@@ -424,9 +202,14 @@ window.silktideConsentManager.init({
             <img src="img/dettagli_badia.gif" alt="San Benedetto alla Badia" class="monument-hero-image img-badia" onerror="this.src='img/avatar_castellana.png';">
         </div>
 
-        <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
-            🔊 <span data-i18n="pages.monuments_pages.labels.listen_button">Ascolta la descrizione</span>
-        </button>
+        <div class="listen-gallery-row">
+            <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
+                🔊 <span data-i18n="pages.monuments_pages.labels.listen_button">Ascolta la descrizione</span>
+            </button>
+            <button class="btn-gallery" id="btn-open-gallery" onclick="openGallery()">
+                🖼️ <span data-i18n="pages.monuments_pages.labels.gallery_button">Galleria</span>
+            </button>
+        </div>
 
         <section class="teca-cristallo descrittiva">
             <p id="desc-text" data-i18n="pages.monuments_pages.badia.description">Dietro la sua facciata sobria, la chiesa custodisce uno dei pavimenti in maiolica più preziosi di Sicilia: 5.555 mattonelle dipinte a mano nel Settecento, con al centro un veliero che lotta contro un mare in tempesta — simbolo della Chiesa contro le forze del male. Gli abitanti la chiamano ancora oggi "chiesa-salotto", per la ricchezza di stucchi e intarsi dorati. Molti visitatori scelgono di percorrerla a piedi scalzi, per rispetto e per goderne ogni dettaglio.</p>
@@ -462,6 +245,107 @@ window.silktideConsentManager.init({
     </main>
 
     <!-- ============================================================
+         GALLERIA FOTO — San Benedetto alla Badia
+         Stesso schema riusabile già usato su San Giorgio Martire.
+         ============================================================ -->
+    <div class="gallery-modal" id="gallery-modal">
+        <div class="gallery-modal-header">
+            <span class="gallery-counter" id="gallery-counter">1 / 12</span>
+            <button class="gallery-close-btn" id="gallery-close-btn" aria-label="Chiudi galleria">✕</button>
+        </div>
+        <div class="gallery-modal-body">
+            <button class="gallery-arrow gallery-arrow-left" id="gallery-prev-btn" aria-label="Foto precedente">‹</button>
+            <img class="gallery-modal-image" id="gallery-modal-image" src="" alt="">
+            <button class="gallery-arrow gallery-arrow-right" id="gallery-next-btn" aria-label="Foto successiva">›</button>
+        </div>
+        <p class="gallery-caption" id="gallery-caption"></p>
+    </div>
+
+    <script>
+        // --------------------------
+        // GALLERIA FOTO — San Benedetto alla Badia
+        // --------------------------
+        const GALLERY_IMAGES = [
+            { src: "img/pavimentoinmaiolica.jpg", captionKey: "pages.monuments_pages.badia_gallery.pavimento", fallback: "Il pavimento in maiolica" },
+            { src: "img/particolare_maioliche.jpg", captionKey: "pages.monuments_pages.badia_gallery.particolare_maioliche", fallback: "Particolare delle maioliche" },
+            { src: "img/particolari_maioliche_presbiterio.png", captionKey: "pages.monuments_pages.badia_gallery.maioliche_presbiterio", fallback: "Maioliche del presbiterio" },
+            { src: "img/sacrifiodiisacco_nal_presbiterio.jpg", captionKey: "pages.monuments_pages.badia_gallery.sacrificio_isacco", fallback: "Il sacrificio di Isacco nel presbiterio" },
+            { src: "img/sanbenedettodettaleregole.jpg", captionKey: "pages.monuments_pages.badia_gallery.san_benedetto_regole", fallback: "San Benedetto detta le Regole" },
+            { src: "img/immacolataconcezione.jpg", captionKey: "pages.monuments_pages.badia_gallery.immacolata", fallback: "Immacolata Concezione" },
+            { src: "img/crocifisso_sanbenedetto_santascolastica.jpg", captionKey: "pages.monuments_pages.badia_gallery.crocifisso", fallback: "Crocifisso tra San Benedetto e Santa Scolastica" },
+            { src: "img/comunichino_presbiterio.jpg", captionKey: "pages.monuments_pages.badia_gallery.comunichino", fallback: "Comunichino nel presbiterio" },
+            { src: "img/particolare_affresco.jpg", captionKey: "pages.monuments_pages.badia_gallery.particolare_affresco", fallback: "Particolare di affresco" },
+            { src: "img/volta_e_cancellata.jpg", captionKey: "pages.monuments_pages.badia_gallery.volta_cancellata", fallback: "La volta e la cancellata" },
+            { src: "img/cancellata_ferrobattuto.jpg", captionKey: "pages.monuments_pages.badia_gallery.cancellata_ferro", fallback: "Cancellata in ferro battuto" },
+            { src: "img/cancellata_ferrobattuto_matroneo.jpg", captionKey: "pages.monuments_pages.badia_gallery.cancellata_matroneo", fallback: "Cancellata del matroneo" }
+        ];
+
+        let currentGalleryIndex = 0;
+
+        function openGallery() {
+            currentGalleryIndex = 0;
+            showGalleryImage(currentGalleryIndex);
+            document.getElementById('gallery-modal').classList.add('active');
+        }
+
+        function closeGallery() {
+            document.getElementById('gallery-modal').classList.remove('active');
+        }
+
+        function showGalleryImage(index) {
+            const img = GALLERY_IMAGES[index];
+            const caption = (typeof getI18nText === 'function')
+                ? getI18nText(img.captionKey, img.fallback)
+                : img.fallback;
+            document.getElementById('gallery-modal-image').src = img.src;
+            document.getElementById('gallery-modal-image').alt = caption;
+            document.getElementById('gallery-caption').textContent = caption;
+            document.getElementById('gallery-counter').textContent = (index + 1) + ' / ' + GALLERY_IMAGES.length;
+        }
+
+        function showNextGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex + 1) % GALLERY_IMAGES.length;
+            showGalleryImage(currentGalleryIndex);
+        }
+
+        function showPrevGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+            showGalleryImage(currentGalleryIndex);
+        }
+
+        document.getElementById('gallery-close-btn').addEventListener('click', closeGallery);
+        document.getElementById('gallery-next-btn').addEventListener('click', showNextGalleryImage);
+        document.getElementById('gallery-prev-btn').addEventListener('click', showPrevGalleryImage);
+
+        document.getElementById('gallery-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeGallery();
+        });
+
+        (function() {
+            const imgEl = document.getElementById('gallery-modal-image');
+            let touchStartX = 0;
+            imgEl.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            imgEl.addEventListener('touchend', function(e) {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchEndX - touchStartX;
+                if (Math.abs(diff) > 40) {
+                    if (diff < 0) showNextGalleryImage();
+                    else showPrevGalleryImage();
+                }
+            });
+        })();
+
+        document.addEventListener('languageChanged', function() {
+            const modal = document.getElementById('gallery-modal');
+            if (modal && modal.classList.contains('active')) {
+                showGalleryImage(currentGalleryIndex);
+            }
+        });
+    </script>
+
+    <!-- ============================================================
          CHAT CASTELLANA — collegata agli argomenti Premium specifici
          della Badia (chiese.badia.*).
          ============================================================ -->
@@ -485,14 +369,6 @@ window.silktideConsentManager.init({
 
     <script>
       (function() {
-        // Tutto il codice qui dentro e racchiuso in una funzione che
-        // si esegue subito da sola: le sue variabili (currentLang,
-        // speakText, audio, ecc.) restano private e non entrano in
-        // conflitto con quelle gia usate in monument_translation.js.
-        // Musica di sottofondo della pagina. La sintesi vocale
-        // dell'audioguida (toggleReadAloud) arriva da
-        // monument_translation.js, condivisa da tutte le pagine
-        // dei monumenti.
         const audio = document.getElementById("bg-music"); audio.volume = 0.2;
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
@@ -508,9 +384,6 @@ window.silktideConsentManager.init({
             else { audio.pause(); toggleBtn.textContent = "🔇"; }
         });
 
-        // ============================================================
-        // ================  CHAT CASTELLANA (MOBILE)  ================
-        // ============================================================
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
         const VOICE_PREF_KEY = "amuni_voice_enabled";
@@ -539,9 +412,6 @@ window.silktideConsentManager.init({
             }));
         }
 
-        // --------------------------
-        // TTS
-        // --------------------------
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
         const voiceToggleBtnMobile = document.getElementById("voice-toggle-btn-mobile");
 
@@ -575,9 +445,6 @@ window.silktideConsentManager.init({
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
 
-            // Cerca automaticamente indizi di voce neurale/di qualità superiore,
-            // utile per varianti non presenti nella lista fissa sopra
-            // (es. voci "Enhanced"/"Premium" scaricate su iOS, o "Online (Natural)" di Edge)
             const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
             const vociDiQualita = stessaLingua.filter(v =>
                 INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -588,15 +455,6 @@ window.silktideConsentManager.init({
             return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
         }
 
-        // ============================================================
-        // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
-        // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
-        // Servono a due cose:
-        // 1. NON devono mai comparire come testo letto o mostrato
-        //    all'utente (stripEmotionTags li rimuove per la visualizzazione)
-        // 2. Modulano rate/pitch della sintesi vocale SOLO per la frase
-        //    che racchiudono (parseEmotionalSegments + speakText)
-        // ============================================================
         const EMOTION_PRESETS = {
             energico:    { rate: 1.05, pitch: 1.08 },
             malinconico: { rate: 0.85, pitch: 0.90 },
@@ -702,9 +560,6 @@ window.silktideConsentManager.init({
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         }
 
-        // --------------------------
-        // MICROFONO
-        // --------------------------
         const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
         const micBtnMobile = document.getElementById("mic-btn-mobile");
         let recognitionMobile = null;
@@ -755,10 +610,6 @@ window.silktideConsentManager.init({
             micBtnMobile.style.display = "none";
         }
 
-        // --------------------------
-        // LINK — i link restituiti dal backend vanno fatti puntare
-        // a "../desktop/", perché le pagine desktop stanno lì.
-        // --------------------------
         function resolveLinkPathMobile(link) {
             if (!link) return link;
             if (link.startsWith("http") || link.startsWith("../desktop/") || link.startsWith("/mobile/")) {
@@ -767,9 +618,6 @@ window.silktideConsentManager.init({
             return "../desktop/" + link;
         }
 
-        // --------------------------
-        // RENDERING MESSAGGI
-        // --------------------------
         function appendChatMessageMobile(text, sender, link) {
             const messagesBox = document.getElementById('chat-messages-mobile');
             if (!messagesBox) return;
@@ -820,10 +668,6 @@ window.silktideConsentManager.init({
             if (indicator) indicator.remove();
         }
 
-        // --------------------------
-        // ARGOMENTI PREMIUM — solo quelli della Badia,
-        // stessi id usati dal backend/chiese-arte.html.
-        // --------------------------
         const BADIA_TOPICS_MOBILE = {
             it: [
                 { topic: "chiese.badia.storia", label: "🏰 Storia" },
@@ -905,7 +749,7 @@ window.silktideConsentManager.init({
             }
         }
 
-        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
+        let lastTopic = null;
 
         async function sendTopicRequestMobile(topicId, label) {
             appendChatMessageMobile(label, 'user');
@@ -961,9 +805,6 @@ window.silktideConsentManager.init({
             }, 900);
         }
 
-        // --------------------------
-        // ATTIVAZIONE CODICE + MESSAGGI LIBERI
-        // --------------------------
         async function tryActivateCodeMobile(rawMessage) {
             const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9-]+)/i);
             if (!match) return false;
@@ -1054,9 +895,6 @@ window.silktideConsentManager.init({
             sendBtnMobile.addEventListener('click', handleSendMobile);
         }
 
-        // --------------------------
-        // INDICATORE PREMIUM
-        // --------------------------
         const PREMIUM_STATUS_TEXT_MOBILE = {
             it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
             en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
@@ -1087,19 +925,12 @@ window.silktideConsentManager.init({
             bar.classList.remove('premium-active');
         }
 
-        // --------------------------
-        // APERTURA / CHIUSURA CHAT
-        // --------------------------
         const chatMobileBox = document.getElementById('chat-mobile');
         const closeChatMobileBtn = document.getElementById('close-chat-mobile');
         const talkCastellanaBtnMonumento = document.getElementById('talk-castellana-btn-monumento');
 
         if (talkCastellanaBtnMonumento) {
             talkCastellanaBtnMonumento.addEventListener('click', () => {
-                // Apre sempre la chat qui sulla pagina mobile, per tutti
-                // gli utenti (gratuiti e Premium). Chi vuole raggiungere
-                // il sito desktop ha il pulsante separato "Vai alla
-                // versione Web".
                 chatMobileBox.classList.add('active');
                 updatePremiumStatusDisplayMobile();
                 if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
