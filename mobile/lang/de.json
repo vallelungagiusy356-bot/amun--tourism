@@ -159,6 +159,7 @@
         "church_notice": "⚠️ Hinweis: Diese Gotteshäuser sind aktiv und den liturgischen Funktionen gewidmet. Für touristische Besuche bitten wir, die empfohlenen Öffnungszeiten zu beachten und Zeiten interner Feiern zu vermeiden.",
         "go_to_map": "Zur Karte",
         "listen_button": "Beschreibung anhoren",
+        "gallery_button": "Galerie",
         "address": "Standort:",
         "back_to_monuments": "Zurück zu den Denkmälern"
       },
@@ -191,10 +192,26 @@
         "hours": "Sommer-Gottesdienstzeiten: 11:00 – 18:30 Uhr. Winter-Gottesdienstzeiten: 11:00 – 18:00 Uhr.",
         "secret_info": "💒 Die Sonntagsmessen in Caccamo: Am Sonntagvormittag wird auch in zwei kleineren Kirchen Messe gefeiert, die nur zu diesem Anlass geöffnet sind. Die Chiesa del Carmine (9:00 Uhr) liegt in einem Randgebiet des Dorfes: Man erreicht sie über die Via del Carmine in Richtung Kaserne und dann bergauf bis zum kleinen Platz, an dem die Kirche steht. Die Chiesa di San Giovanni li Greci (10:00 Uhr) liegt hingegen in einem ländlichen Ortsteil von Caccamo, der nur mit dem Auto erreichbar ist. Zwei stimmungsvolle Ziele für alle, die den authentischen lokalen Glauben abseits der üblichen Wege erleben möchten."
       },
+      "sangiorgio_gallery": {
+        "navata_centrale": "Hauptschiff",
+        "san_isidoro": "Gemälde des Heiligen Isidor",
+        "dettagliocappellare": "Detail der Reliquienkapelle",
+        "organo": "Die Orgel",
+        "cappella_reliquie": "Reliquienkapelle",
+        "cupola": "Die Kuppel",
+        "affreschi_volta": "Deckenfresken",
+        "statua": "Statue des San Giorgio",
+        "beato_giovanni": "Gemälde des Seligen Giovanni",
+        "martirio_sanseb": "Martyrium des Heiligen Sebastian"
+      },
       "annunziata": {
         "title": "Pfarrei SS. Annunziata",
         "description": "Ihre Ursprünge reichen bis ins 13. Jahrhundert zurück und machen sie zu einer der ältesten in Caccamo. Sie bewahrt ein großes Gemälde von Guglielmo Borremans, die Verkündigung, sowie Stuckarbeiten der Schule Serpottas. Im 18. Jahrhundert besaß sie zudem einen Majolika-Boden, bemalt vom Meister Nicolò Sarzana — demselben Handwerker, der später den berühmten Boden der nahegelegenen Badia-Kirche schuf. Jeden Frühling erwacht die Kirche zum Fest des San Giuseppe, einer der lebendigsten Traditionen des Dorfes.",
-        "hours": "Montag bis Samstag: 09:00 – 12:00 Uhr, Heilige Messe um 18:00 Uhr. Sonntag: Heilige Messen um 09:30, 12:00 und 19:00 Uhr (Öffnungszeiten entsprechend den Gottesdienstzeiten)."
+        "hours": "Sommer-Werktagszeiten: Heilige Messe um 18:00 Uhr (im August um 19:00 Uhr). Sonn- und Feiertags: Heilige Messen um 09:30, 12:00 und 19:00 Uhr.",
+        "fiera_agosto_tag": "🎉 Augustfest 2026",
+        "fiera_agosto_title": "Feierlichkeiten zu Ehren des Heiligen Nikasius Märtyrer",
+        "fiera_agosto_description": "Vom 23. bis 30. August, Feierliche Oktav: Rosenkranz um 18:00 Uhr, Kleine Krone um 18:30 Uhr, Heilige Messe um 19:00 Uhr. Sonntag, 30. August: Festtag mit Morgengeläut und Feierlicher Vesper. Montag, 31. August: Hochfest des Heiligen Nikasius Märtyrer, Schutzpatron von Caccamo — Feierliche Messe mit Lobrede (11:00 Uhr), Messe mit den Zivil- und Militärbehörden (18:00 Uhr), Feierlicher Auszug und Prozession mit Feuerwerk (19:30 Uhr). Sonntag, 13. September: Rückführung der Reliquie.",
+        "facebook_label": "📘 Folgen Sie der Pfarrei auf Facebook"
       },
       "cappuccini": {
         "title": "Kloster der Kapuzinerbrüder",
