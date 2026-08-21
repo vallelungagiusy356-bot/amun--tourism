@@ -153,6 +153,7 @@
         "church_notice": "⚠️ Nota: Estos son lugares de culto activos, dedicados a las funciones litúrgicas. Para las visitas turísticas, se ruega respetar los horarios recomendados y evitar los momentos de celebración interna.",
         "go_to_map": "Ir al Mapa",
         "listen_button": "Escuchar la descripcion",
+        "gallery_button": "Galería",
         "address": "Dónde se encuentra:",
         "back_to_monuments": "Volver a los Monumentos"
       },
@@ -185,10 +186,26 @@
         "hours": "Horario de verano de las funciones: 11:00 – 18:30. Horario de invierno de las funciones: 11:00 – 18:00.",
         "secret_info": "💒 Las Misas del domingo en Caccamo: la mañana del domingo se celebra misa también en dos iglesias menores, abiertas solo en esta ocasión. La Chiesa del Carmine (9:00) se encuentra en una zona periférica del pueblo: se llega recorriendo Via del Carmine en dirección al cuartel, y subiendo después hasta la pequeña plaza donde se alza la iglesia. La Chiesa di San Giovanni li Greci (10:00) se encuentra en cambio en una pedanía rural de Caccamo, a la que solo se puede llegar en coche. Dos paradas sugestivas para quien quiera vivir la fe local más auténtica, fuera de los caminos habituales."
       },
+      "sangiorgio_gallery": {
+        "navata_centrale": "Nave principal",
+        "san_isidoro": "Cuadro de San Isidoro",
+        "dettagliocappellare": "Detalle de la capilla de las reliquias",
+        "organo": "El órgano",
+        "cappella_reliquie": "Capilla de las reliquias",
+        "cupola": "La cúpula",
+        "affreschi_volta": "Frescos de la bóveda",
+        "statua": "Estatua de San Giorgio",
+        "beato_giovanni": "Cuadro del Beato Giovanni",
+        "martirio_sanseb": "Martirio de San Sebastián"
+      },
       "annunziata": {
         "title": "Parroquia SS. Annunziata",
         "description": "Sus orígenes se remontan al siglo XIII, siendo una de las más antiguas de Caccamo. Conserva un gran lienzo de Guglielmo Borremans, la Anunciación, y estucos de la escuela de Serpotta. En el siglo XVIII albergaba también un suelo de mayólica pintado por el maestro Nicolò Sarzana — el mismo artesano que realizó después el célebre suelo de la Badia, muy cerca de allí. Cada primavera, la iglesia se anima con la fiesta de San Giuseppe, una de las tradiciones más sentidas del pueblo.",
-        "hours": "De lunes a sábado: 09:00 – 12:00, Santa Misa a las 18:00. Domingo: Santas Misas a las 09:30, 12:00 y 19:00 (apertura según los horarios de las funciones)."
+        "hours": "Horario de verano entre semana: Santa Misa a las 18:00 (en agosto a las 19:00). Domingos y festivos: Santas Misas a las 09:30, 12:00 y 19:00.",
+        "fiera_agosto_tag": "🎉 Feria de Agosto 2026",
+        "fiera_agosto_title": "Festejos en honor a San Nicasio Mártir",
+        "fiera_agosto_description": "Del 23 al 30 de agosto, Solemne Octavario: Rosario a las 18:00, Coronilla a las 18:30, Santa Misa a las 19:00. Domingo 30 de agosto: jornada de fiesta con toque del alba y Solemnes Vísperas. Lunes 31 de agosto: Solemnidad de San Nicasio Mártir, patrono de Caccamo — Misa solemne con Panegírico (11:00), Misa con las Autoridades Civiles y Militares (18:00), Salida solemne y Procesión con espectáculo pirotécnico (19:30). Domingo 13 de septiembre: Reposición de la reliquia.",
+        "facebook_label": "📘 Sigue a la Parroquia en Facebook"
       },
       "cappuccini": {
         "title": "Convento de los Frailes Capuchinos",
