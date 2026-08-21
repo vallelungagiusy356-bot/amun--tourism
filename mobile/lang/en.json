@@ -169,6 +169,20 @@
         "hours": "Tuesday to Sunday, morning: 08:00 – 13:00.",
         "tickets": "Full price € 2.00 | Reduced € 1.00 (EU youth aged 18-25 or with a same-day Castle ticket) | Free under 18"
       },
+      "badia_gallery": {
+        "pavimento": "The majolica floor",
+        "particolare_maioliche": "Detail of the majolica tiles",
+        "maioliche_presbiterio": "Majolica tiles of the presbytery",
+        "sacrificio_isacco": "The Sacrifice of Isaac in the presbytery",
+        "san_benedetto_regole": "Saint Benedict dictating the Rule",
+        "immacolata": "Immaculate Conception",
+        "crocifisso": "Crucifix between Saint Benedict and Saint Scholastica",
+        "comunichino": "Communion rail in the presbytery",
+        "particolare_affresco": "Fresco detail",
+        "volta_cancellata": "The vault and the grille",
+        "cancellata_ferro": "Wrought-iron grille",
+        "cancellata_matroneo": "Matroneum grille"
+      },
       "santamaria": {
         "title": "Church of Santa Maria degli Angeli",
         "description": "The people of Caccamo still call it 'San Domenico', after the name of the square. It was founded in 1487 by the Dominican friar Giovanni Liccio, born right here in Caccamo — according to tradition, the Madonna herself showed him in a dream where to build it. Today the church holds his relics in a silver urn, alongside a Madonna and Child carved in 1516 by Antonello Gagini. It is the same Blessed Giovanni whom the village celebrates every May.",
