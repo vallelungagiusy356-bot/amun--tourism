@@ -266,7 +266,7 @@ window.silktideConsentManager.init({
 
           <div class="stop">
               <div class="waypoint"></div>
-              <article class="card side-right" data-img="img/badia.jpg" data-title="S. Benedetto della Badia">
+              <article class="card side-right" data-img="img/badia.jpg" data-title="S. Benedetto della Badia" data-gallery="badia">
                   <div class="card-frame"><img src="img/badia.jpg" alt="S. Benedetto della Badia"></div>
                   <div class="card-text">
                       <span class="card-route-label" data-i18n="pages.chiese_page.route_badia">Si scende</span>
@@ -322,7 +322,12 @@ window.silktideConsentManager.init({
   <div id="image-modal" class="modal">
       <button class="modal-close" id="modal-close-btn">✕</button>
       <div class="modal-content-wrapper">
-          <img class="modal-img" id="modal-target-img" src="" alt="">
+          <div class="modal-image-stage">
+              <button class="modal-gallery-arrow modal-gallery-arrow-left" id="modal-gallery-prev" aria-label="Foto precedente">‹</button>
+              <img class="modal-img" id="modal-target-img" src="" alt="">
+              <button class="modal-gallery-arrow modal-gallery-arrow-right" id="modal-gallery-next" aria-label="Foto successiva">›</button>
+          </div>
+          <span class="modal-gallery-counter" id="modal-gallery-counter"></span>
           <h2 class="modal-title" id="modal-target-title"></h2>
       </div>
   </div>
@@ -355,6 +360,88 @@ window.silktideConsentManager.init({
   </div>
 
   <script>
+      // ============================================================
+      // GALLERIA DESKTOP — carosello dentro il modale che si apre
+      // cliccando una card. Per ora solo la Badia ha una galleria
+      // vera e propria (chiave "badia" qui sotto); le altre chiese
+      // continuano a mostrare la sola foto esterna come prima,
+      // perché non hanno un array corrispondente in questo oggetto.
+      //
+      // COME AGGIUNGERE UNA GALLERIA A UN'ALTRA CHIESA:
+      // 1. Aggiungi qui sotto una nuova chiave (es. "sangiorgio": [...])
+      // 2. Nella card HTML di quella chiesa aggiungi l'attributo
+      //    data-gallery="sangiorgio"
+      // ============================================================
+      const DESKTOP_GALLERY_IMAGES = {
+          badia: [
+              { src: "img/badia.jpg", captionKey: "pages.chiese_page.badia_gallery.esterno", fallback: "Esterno della chiesa" },
+              { src: "img/pavimento_in-maiolica.png", captionKey: "pages.chiese_page.badia_gallery.pavimento", fallback: "Il pavimento in maiolica" },
+              { src: "img/particolare_maiolica.png", captionKey: "pages.chiese_page.badia_gallery.particolare_maiolica", fallback: "Particolare delle maioliche" },
+              { src: "img/particolare_maiolica_presbuterio.png", captionKey: "pages.chiese_page.badia_gallery.maioliche_presbiterio", fallback: "Maioliche del presbiterio" },
+              { src: "img/sacrificiodiisacco.jpg", captionKey: "pages.chiese_page.badia_gallery.sacrificio_isacco", fallback: "Il sacrificio di Isacco nel presbiterio" },
+              { src: "img/sanbenedettodettaleregole.jpg", captionKey: "pages.chiese_page.badia_gallery.san_benedetto_regole", fallback: "San Benedetto detta le Regole" },
+              { src: "img/immacolataconcezione.jpg", captionKey: "pages.chiese_page.badia_gallery.immacolata", fallback: "Immacolata Concezione" },
+              { src: "img/crocifisso_sansomenico_santasvolastica.png", captionKey: "pages.chiese_page.badia_gallery.crocifisso", fallback: "Crocifisso tra San Benedetto e Santa Scolastica" },
+              { src: "img/lamadonnadellaneve.png", captionKey: "pages.chiese_page.badia_gallery.madonna_neve", fallback: "La Madonna della Neve" },
+              { src: "img/affresco_matronèo_assunzione.png", captionKey: "pages.chiese_page.badia_gallery.affresco_matroneo", fallback: "Affresco del matroneo — Assunzione" }
+          ]
+      };
+
+      let currentModalGallery = null;
+      let currentModalIndex = 0;
+
+      function showModalImage(index) {
+          if (!currentModalGallery) return;
+          const item = currentModalGallery[index];
+          const caption = (typeof t === 'function') ? t(item.captionKey, item.fallback) : item.fallback;
+          document.getElementById('modal-target-img').src = item.src;
+          document.getElementById('modal-target-img').alt = caption;
+          document.getElementById('modal-target-title').textContent = caption;
+          const counterEl = document.getElementById('modal-gallery-counter');
+          if (currentModalGallery.length > 1) {
+              counterEl.textContent = (index + 1) + ' / ' + currentModalGallery.length;
+              counterEl.style.display = 'block';
+          } else {
+              counterEl.style.display = 'none';
+          }
+          const arrowsVisible = currentModalGallery.length > 1;
+          document.getElementById('modal-gallery-prev').style.display = arrowsVisible ? 'flex' : 'none';
+          document.getElementById('modal-gallery-next').style.display = arrowsVisible ? 'flex' : 'none';
+      }
+
+      function showNextModalImage() {
+          if (!currentModalGallery) return;
+          currentModalIndex = (currentModalIndex + 1) % currentModalGallery.length;
+          showModalImage(currentModalIndex);
+      }
+
+      function showPrevModalImage() {
+          if (!currentModalGallery) return;
+          currentModalIndex = (currentModalIndex - 1 + currentModalGallery.length) % currentModalGallery.length;
+          showModalImage(currentModalIndex);
+      }
+
+      document.getElementById('modal-gallery-next').addEventListener('click', (e) => {
+          e.stopPropagation();
+          showNextModalImage();
+      });
+      document.getElementById('modal-gallery-prev').addEventListener('click', (e) => {
+          e.stopPropagation();
+          showPrevModalImage();
+      });
+
+      document.addEventListener('keydown', (e) => {
+          const modalEl = document.getElementById('image-modal');
+          if (!modalEl.classList.contains('active')) return;
+          if (e.key === 'ArrowRight') showNextModalImage();
+          if (e.key === 'ArrowLeft') showPrevModalImage();
+          if (e.key === 'Escape') modalEl.classList.remove('active');
+      });
+
+      document.addEventListener('languageChanged', () => {
+          if (currentModalGallery) showModalImage(currentModalIndex);
+      });
+
       // --- LOGICA CHAT ---
       const chatBtn = document.getElementById('chat-open-btn');
       const chatBox = document.getElementById('chat-desktop');
@@ -593,8 +680,25 @@ window.silktideConsentManager.init({
       const modalCloseBtn = document.getElementById('modal-close-btn');
       cards.forEach(card => {
           card.addEventListener('click', () => {
-              modalImg.src = card.getAttribute('data-img');
-              modalTitle.textContent = card.getAttribute('data-title');
+              const galleryKey = card.getAttribute('data-gallery');
+              const gallery = galleryKey ? DESKTOP_GALLERY_IMAGES[galleryKey] : null;
+
+              if (gallery && gallery.length) {
+                  currentModalGallery = gallery;
+                  currentModalIndex = 0;
+                  showModalImage(0);
+              } else {
+                  // Comportamento originale: nessuna galleria collegata,
+                  // si mostra solo la foto esterna della card, come prima.
+                  currentModalGallery = null;
+                  modalImg.src = card.getAttribute('data-img');
+                  modalImg.alt = card.getAttribute('data-title');
+                  modalTitle.textContent = card.getAttribute('data-title');
+                  document.getElementById('modal-gallery-counter').style.display = 'none';
+                  document.getElementById('modal-gallery-prev').style.display = 'none';
+                  document.getElementById('modal-gallery-next').style.display = 'none';
+              }
+
               modal.classList.add('active');
           });
       });
@@ -628,6 +732,7 @@ window.silktideConsentManager.init({
                   document.querySelectorAll(".lang-switcher button").forEach(btn => {
                       btn.classList.toggle("active", btn.dataset.lang === lang);
                   });
+                  document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
               })
               .catch(err => console.error("Errore lingua:", err));
           localStorage.setItem("lang", lang);
