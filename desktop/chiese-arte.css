@@ -433,6 +433,19 @@ body::before {
   transform: scale(1);
 }
 
+/* Contenitore immagine + frecce del carosello. Su card senza
+   galleria collegata, le frecce restano semplicemente nascoste
+   (display:none impostato via JS) e questo blocco si comporta
+   come prima: una singola immagine centrata. */
+.modal-image-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 70vh;
+}
+
 .modal-img {
   max-width: 100%;
   max-height: 70vh;
@@ -440,6 +453,41 @@ body::before {
   border-radius: 2px;
   border: 1px solid var(--gold);
   box-shadow: 0 0 30px var(--shadow-strong);
+}
+
+.modal-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(15, 25, 34, 0.55);
+  border: 1px solid var(--gold);
+  color: var(--stone);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s ease;
+}
+
+.modal-gallery-arrow:hover {
+  background: rgba(184, 135, 59, 0.55);
+}
+
+.modal-gallery-arrow-left { left: 12px; }
+.modal-gallery-arrow-right { right: 12px; }
+
+.modal-gallery-counter {
+  display: none;
+  color: var(--gold-light);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  margin-top: 12px;
 }
 
 .modal-title {
