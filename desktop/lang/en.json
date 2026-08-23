@@ -23,7 +23,7 @@
     "activated_prefix": "Premium activated! You'll have access to exclusive content until ",
     "invalid_code": "Invalid code.",
     "code_check_error": "I can't verify the code right now — please try again shortly.",
-    "chat_code_prompt": "To activate your Premium access, write to me here: \"code YOURCODE\"",
+    "chat_code_prompt": "To activate your Premium access, write to me here: “code YOURCODE”",
     "payment_start_error": "I can't start the payment right now. Please try again shortly.",
     "payment_connection_error": "Connection error. Please try again shortly.",
     "launch_badge": "🎉 Launch price, valid until November 1, 2026 — then €5.00"
@@ -59,7 +59,29 @@
       "verse_duomo": "Enter the great <strong>Duomo</strong>, majestic and solemn,<br>among Gagini's marbles and the ever-present Stomer altarpiece.",
       "route_animesante": "Hidden gem",
       "animesante": "Holy Souls of Purgatory",
-      "verse_animesante": "Above the <strong>Duomo</strong>, a hidden gem: Serpotta stuccoes, catacombs and an ancient embalming rite. 🔮 Discover the Esoteric Path."
+      "verse_animesante": "Above the <strong>Duomo</strong>, a hidden gem: Serpotta stuccoes, catacombs and an ancient embalming rite. 🔮 Discover the Esoteric Path.",
+      "badia_gallery": {
+        "esterno": "Exterior of the church",
+        "pavimento": "The majolica floor",
+        "particolare_maiolica": "Detail of the majolica tiles",
+        "maioliche_presbiterio": "Majolica tiles of the presbytery",
+        "sacrificio_isacco": "The Sacrifice of Isaac in the presbytery",
+        "san_benedetto_regole": "Saint Benedict dictating the Rule",
+        "immacolata": "Immaculate Conception",
+        "crocifisso": "Crucifix between Saint Benedict and Saint Scholastica",
+        "madonna_neve": "Our Lady of the Snow",
+        "affresco_matroneo": "Fresco of the matroneum — Assumption"
+      },
+      "sangiorgio_gallery": {
+        "esterno": "Exterior of the church",
+        "cupola": "The dome",
+        "affreschi_navata": "Frescoes of the nave",
+        "affreschi_presbiterio": "Frescoes of the presbytery",
+        "statua": "Statue of San Giorgio",
+        "martirio_sanseb": "Martyrdom of Saint Sebastian",
+        "beato_giovanni": "Painting of the Blessed Giovanni Liccio",
+        "stomer": "Work by Stomer"
+      }
     },
     "cibo_eventi_page": {
       "page_title": "The Village Calendar",
@@ -72,8 +94,8 @@
       "s1_tags": "Sausage Festival · Capuchins' Nativity Scene · Santo Domenico Nativity Scene · Tree below the Castle",
       "s2_period": "March — April",
       "s2_title": "Holy Week",
-      "s2_body": "The week opens on Palm Sunday with U Signuruzzu a Cavaddu, when a local child plays Jesus in the entry into Jerusalem. Good Friday evening brings the living Way of the Cross: the Madonna with the pierced heart meets Christ on a bed of roses. The same day, it is customary to \"visit the sepulchres\" — churches left open, altars set up with sprouted wheat, recalling Mary and Magdalene going to Christ's tomb.",
-      "s2_tags": "U Signuruzzu a Cavaddu — Palm Sunday · Living Way of the Cross — Good Friday · Visiting the sepulchres · Supper Bread · Almond \"little sheep\"",
+      "s2_body": "The week opens on Palm Sunday with U Signuruzzu a Cavaddu, when a local child plays Jesus in the entry into Jerusalem. Good Friday evening brings the living Way of the Cross: the Madonna with the pierced heart meets Christ on a bed of roses. The same day, it is customary to “visit the sepulchres” — churches left open, altars set up with sprouted wheat, recalling Mary and Magdalene going to Christ's tomb.",
+      "s2_tags": "U Signuruzzu a Cavaddu — Palm Sunday · Living Way of the Cross — Good Friday · Visiting the sepulchres · Supper Bread · Almond “little sheep”",
       "s3_period": "Last Sunday of May",
       "s3_title": "Blessed Giovanni Liccio",
       "s3_body": "Not just any saint, but a patron who is truly Caccamo's own: the Blessed Giovanni Liccio is a son of the village, which is why his feast is among the most heartfelt by the community. The procession crosses the whole town, especially the old quarter — a unique way to see the village in a different light and feel part of the community.",
@@ -130,7 +152,7 @@
       "concept": "Amunì is an ecosystem made of two distinct yet connected experiences: a desktop site, narrative and poetic, designed for those who want to immerse themselves in the town's history and soul before even setting off; and a mobile web app, practical and immediate, designed for those already in Caccamo. Two different languages for two different moments of the journey, with the Castellana always present, but with content specific to every page she appears on.",
       "desktop_experience": "On the desktop site, every page tells the story of the town in carefully chosen words: the Castle page features verses written personally for the project, a photograph of the fortress, and brief historical notes. The rest of the storytelling is entrusted to the Castellana's voice in chat, with topics dedicated to each section. On the Churches and Art page, the monuments follow their real geographical position, from the highest point of the town to the lowest, like a genuine walking itinerary. On the Food and Events page, a calendar covers the whole year to guide visits toward seasonal festivals and celebrations. On the Legends and Traditions page you'll find cunti (folk tales), prayers and local sayings recorded live: every recording scrolls like karaoke, with the text advancing in sync, alongside its meaning explained in five languages.",
       "first_encounter": "On the desktop homepage, set against a view of Caccamo, a poetic text introduces the project and the Premium chat. Opening the conversation, the Castellana tells, out loud, the origins of Caccamo and a few curiosities: at the end, a small menu guides visitors straight to the theme that interests them most, from a food-and-wine trail to a tour of the churches.",
-      "mobile_experience": "The mobile version is built to be practical: it can be added to your home screen like a real app, with essential sections for those already on the ground — Eat, Sleep, Transport and Events. Monument pages include a map that leads straight to the site with real-time geolocation, a short historical note with voice narration, opening hours and, where needed, ticket information. In every monument section, a \"Talk to the Castellana\" button links back to the matching conversation on the desktop version."
+      "mobile_experience": "The mobile version is built to be practical: it can be added to your home screen like a real app, with essential sections for those already on the ground — Eat, Sleep, Transport and Events. Monument pages include a map that leads straight to the site with real-time geolocation, a short historical note with voice narration, opening hours and, where needed, ticket information. In every monument section, a “Talk to the Castellana” button links back to the matching conversation on the desktop version."
     },
     "chi_siamo": {
       "category": "Our Story",
@@ -146,10 +168,10 @@
       "verse_1": "Five skulls keep watch upon the gate,<br>a warning to all vanity and state:",
       "verse_2": "at the centre the Pope's tiara lies,<br>beside it bishops, in silent guise,",
       "verse_3": "then priests, all levelled, standing side by side —<br>before death none are ranked, none can hide",
-      "verse_4": "(Totò's \"Livella\" lives on in this place:<br>rank means nothing once life leaves the face).",
+      "verse_4": "(Totò's “Livella” lives on in this place:<br>rank means nothing once life leaves the face).",
       "verse_5": "You enter, and paintings walk beside your pace,<br>a journey that begins from humble grace:",
       "verse_6": "faith and charity lead the way,<br>until an inscription dares the heart to stay:",
-      "verse_7": "\"none shall leave this place without a toll paid\" —<br>the visitor departs forever marked, unswayed.",
+      "verse_7": "“none shall leave this place without a toll paid” —<br>the visitor departs forever marked, unswayed.",
       "verse_8": "Beneath the floor, in silence, they still lie,<br>the embalmed bodies, watching time go by,",
       "verse_9": "where once, before the camera's flash was known,<br>death was honoured here, in stone alone —",
       "verse_10": "to keep forever those who once were loved,<br>when memory itself in stone was carved.",
@@ -194,7 +216,7 @@
     "scan_qr": "Scan the QR code",
     "premium_title": "Unlock the Premium Castellana",
     "premium_text": "For €3.90, you get access to the Castellana for 4 days: the multilingual guide who knows every secret of Caccamo, from transport to the hidden gems of the area.",
-    "premium_howto": "After payment you'll see your code right on the screen: type it in chat preceded by the word <strong>\"code\"</strong>. Each code works on up to 2 devices — handy for a second phone, a travel companion, or if anything unexpected comes up.",
+    "premium_howto": "After payment you'll see your code right on the screen: type it in chat preceded by the word <strong>“code”</strong>. Each code works on up to 2 devices — handy for a second phone, a travel companion, or if anything unexpected comes up.",
     "premium_cta": "Buy access — €3.90",
     "social_follow_text": "Follow us on social media"
   }
