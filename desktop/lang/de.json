@@ -52,14 +52,36 @@
       "annunziata": "Annunziata",
       "verse_annunziata": "Dann enthüllt die <strong>Annunziata</strong> ihre bemalten Gewölbe,<br>und den Glockenturm, von seinen Wächtern nie bezwungen.",
       "route_badia": "Es geht bergab",
-      "badia": "S. Benedetto della Badia",
+      "badia": "S. Benedetto alla Badia",
       "verse_badia": "Weiter unten kleidet die <strong>Badia</strong> die Erde in Blumen,<br>mit einer Majolika-Stickerei von seltener Pracht.",
       "route_sangiorgio": "Herz des Dorfes",
       "sangiorgio": "San Giorgio Martire",
       "verse_duomo": "Tritt ein in den großen <strong>Dom</strong>, majestätisch und feierlich,<br>zwischen den Marmorwerken Gaginis und dem immerwährenden Stomer-Altarbild.",
       "route_animesante": "Verstecktes Kleinod",
       "animesante": "Heilige Seelen des Fegefeuers",
-      "verse_animesante": "Über dem <strong>Dom</strong>, ein verstecktes Kleinod: Serpotta-Stuckarbeiten, Katakomben und ein alter Einbalsamierungsritus. 🔮 Entdecken Sie den Esoterischen Pfad."
+      "verse_animesante": "Über dem <strong>Dom</strong>, ein verstecktes Kleinod: Serpotta-Stuckarbeiten, Katakomben und ein alter Einbalsamierungsritus. 🔮 Entdecken Sie den Esoterischen Pfad.",
+      "badia_gallery": {
+        "esterno": "Außenansicht der Kirche",
+        "pavimento": "Der Majolika-Boden",
+        "particolare_maiolica": "Detail der Majolika-Fliesen",
+        "maioliche_presbiterio": "Majoliken des Presbyteriums",
+        "sacrificio_isacco": "Das Opfer Isaaks im Presbyterium",
+        "san_benedetto_regole": "Der Heilige Benedikt diktiert die Regel",
+        "immacolata": "Unbefleckte Empfängnis",
+        "crocifisso": "Kruzifix zwischen dem Heiligen Benedikt und der Heiligen Scholastika",
+        "madonna_neve": "Maria Schnee",
+        "affresco_matroneo": "Fresko der Empore — Mariä Himmelfahrt"
+      },
+      "sangiorgio_gallery": {
+        "esterno": "Außenansicht der Kirche",
+        "cupola": "Die Kuppel",
+        "affreschi_navata": "Fresken des Kirchenschiffs",
+        "affreschi_presbiterio": "Fresken des Presbyteriums",
+        "statua": "Statue des San Giorgio",
+        "martirio_sanseb": "Martyrium des Heiligen Sebastian",
+        "beato_giovanni": "Gemälde des Seligen Giovanni Liccio",
+        "stomer": "Werk von Stomer"
+      }
     },
     "cibo_eventi_page": {
       "page_title": "Der Dorfkalender",
@@ -72,8 +94,8 @@
       "s1_tags": "Wurstfest · Krippe der Kapuziner · Krippe von Santo Domenico · Baum unterhalb der Burg",
       "s2_period": "März — April",
       "s2_title": "Karwoche",
-      "s2_body": "Die Woche beginnt am Palmsonntag mit U Signuruzzu a Cavaddu, wenn ein Kind aus dem Ort Jesu Einzug in Jerusalem darstellt. Am Karfreitagabend findet der lebende Kreuzweg statt: die Madonna mit durchbohrtem Herzen begegnet Christus auf einem Rosenbett. Am selben Tag ist es Brauch, „die Gräber zu besuchen“ — die Kirchen bleiben geöffnet, die Altäre werden mit im Dunkeln gekeimtem Weizen geschmückt, in Erinnerung an Maria und Magdalena, die zum Grab Christi gehen.",
-      "s2_tags": "U Signuruzzu a Cavaddu — Palmsonntag · Lebender Kreuzweg — Karfreitag · Besuch der Gräber · Abendmahlsbrot · Mandel-„Schäfchen“",
+      "s2_body": "Die Woche beginnt am Palmsonntag mit U Signuruzzu a Cavaddu, wenn ein Kind aus dem Ort Jesu Einzug in Jerusalem darstellt. Am Karfreitagabend findet der lebende Kreuzweg statt: die Madonna mit durchbohrtem Herzen begegnet Christus auf einem Rosenbett. Am selben Tag ist es Brauch, „die Gräber zu besuchen\" — die Kirchen bleiben geöffnet, die Altäre werden mit im Dunkeln gekeimtem Weizen geschmückt, in Erinnerung an Maria und Magdalena, die zum Grab Christi gehen.",
+      "s2_tags": "U Signuruzzu a Cavaddu — Palmsonntag · Lebender Kreuzweg — Karfreitag · Besuch der Gräber · Abendmahlsbrot · Mandel-„Schäfchen\u201c",
       "s3_period": "Letzter Sonntag im Mai",
       "s3_title": "Seliger Giovanni Liccio",
       "s3_body": "Kein gewöhnlicher Heiliger, sondern ein ganz und gar caccamesischer Schutzpatron: der Selige Giovanni Liccio ist ein Sohn des Dorfes, weshalb sein Fest zu den von der Gemeinschaft am tiefsten empfundenen zählt. Die Prozession durchquert das ganze Dorf, insbesondere die Altstadt — eine einzigartige Gelegenheit, das Dorf in einem anderen Licht zu sehen und sich als Teil der Gemeinschaft zu fühlen.",
@@ -137,7 +159,7 @@
       "title": "Über Uns: Eine Geschichte der Vision",
       "founder_bio": "Das Projekt Amunì entstand aus meiner doppelten Natur: der analytischen Präzision einer Chemieforscherin und der Leidenschaft, autodidaktisch erworben, für die Programmierung. Ich hatte keinerlei informatischen Hintergrund: Ich habe durch Ausprobieren gelernt, einen Versuch nach dem anderen, angetrieben vom Wunsch, ein Gebiet so zu erzählen, wie es das verdient — ein Gebiet, das ich seit zu vielen Jahren vernachlässigt fühlte.",
       "philosophy": "Aus diesem Wunsch entstand die Castellana: kein einfacher Chatbot, sondern eine sorgfältig gestaltete Führerin, die den Besucher begleitet — eine lebendige Audioguide, die den Steinen, Legenden und Dialektliedern von Caccamo in fünf verschiedenen Sprachen wieder eine Stimme gibt. Ich betrachte dieses Projekt nicht als Endpunkt, sondern als lebendiges Labor: Die Volkskultur ist ein dynamisches Erbe, und ich glaube, dass die Aufwertung eines Gebiets auch bedeutet, die Stimmen derer zu bewahren, die dort leben, und Traditionen, Kinderreime und Lieder an künftige Generationen weiterzugeben.",
-      "freemium_model": "Die historischen und monumentalen Inhalte sind ein öffentliches Gut, für alle zugänglich. Das Erlebnis „Castellana Premium“ ist denjenigen vorbehalten, die eine tiefere Reise wünschen: exklusiver Zugang zur technischen Analyse des Erbes, zu vielschichtigen Geschichten und zu persönlicher Unterstützung für eine authentische, zeitlose Entdeckung.",
+      "freemium_model": "Die historischen und monumentalen Inhalte sind ein öffentliches Gut, für alle zugänglich. Das Erlebnis „Castellana Premium\" ist denjenigen vorbehalten, die eine tiefere Reise wünschen: exklusiver Zugang zur technischen Analyse des Erbes, zu vielschichtigen Geschichten und zu persönlicher Unterstützung für eine authentische, zeitlose Entdeckung.",
       "events": "Jedes Bild, jede Animation, jede Zeile Code von Amunì — und jedes von der Castellana gesprochene Wort — wurde von meinem Smartphone aus erdacht und umgesetzt, zwischen meiner Forschungsarbeit und meinen zwei kleinen Töchtern. Wenn du bis hierher gekommen bist, gehörst auch du zu diesem kleinen Labor."
     },
     "percorso_esoterico_page": {
