@@ -23,7 +23,7 @@
     "activated_prefix": "Premium active ! Tu auras acces aux contenus exclusifs jusqu'au ",
     "invalid_code": "Code non valide.",
     "code_check_error": "Je n'arrive pas a verifier le code pour le moment — reessaie bientot.",
-    "chat_code_prompt": "Pour activer ton acces Premium, ecris-moi ici : \"code TONCODE\"",
+    "chat_code_prompt": "Pour activer ton acces Premium, ecris-moi ici : “code TONCODE”",
     "payment_start_error": "Je n'arrive pas a demarrer le paiement. Reessaie bientot.",
     "payment_connection_error": "Erreur de connexion. Reessaie bientot.",
     "launch_badge": "🎉 Prix de lancement, valable jusqu'au 1er novembre 2026 — puis 5,00 €"
@@ -59,7 +59,29 @@
       "verse_duomo": "Entrez dans le grand <strong>Duomo</strong>, majestueux et solennel,<br>parmi les marbres du Gagini et le retable éternel du Stomer.",
       "route_animesante": "Trésor caché",
       "animesante": "Âmes Saintes du Purgatoire",
-      "verse_animesante": "Au-dessus du <strong>Duomo</strong>, un joyau caché : stucs du Serpotta, catacombes et un ancien rite d'embaumement. 🔮 Découvrez le Parcours Ésotérique."
+      "verse_animesante": "Au-dessus du <strong>Duomo</strong>, un joyau caché : stucs du Serpotta, catacombes et un ancien rite d'embaumement. 🔮 Découvrez le Parcours Ésotérique.",
+      "badia_gallery": {
+        "esterno": "Extérieur de l'église",
+        "pavimento": "Le sol en majolique",
+        "particolare_maiolica": "Détail des majoliques",
+        "maioliche_presbiterio": "Majoliques du presbytère",
+        "sacrificio_isacco": "Le sacrifice d'Isaac dans le presbytère",
+        "san_benedetto_regole": "Saint Benoît dictant la Règle",
+        "immacolata": "Immaculée Conception",
+        "crocifisso": "Crucifix entre Saint Benoît et Sainte Scholastique",
+        "madonna_neve": "Notre-Dame des Neiges",
+        "affresco_matroneo": "Fresque de la tribune — Assomption"
+      },
+      "sangiorgio_gallery": {
+        "esterno": "Extérieur de l'église",
+        "cupola": "La coupole",
+        "affreschi_navata": "Fresques de la nef",
+        "affreschi_presbiterio": "Fresques du presbytère",
+        "statua": "Statue de San Giorgio",
+        "martirio_sanseb": "Martyre de Saint Sébastien",
+        "beato_giovanni": "Tableau du Bienheureux Giovanni Liccio",
+        "stomer": "Œuvre de Stomer"
+      }
     },
     "cibo_eventi_page": {
       "page_title": "Le Calendrier du Bourg",
