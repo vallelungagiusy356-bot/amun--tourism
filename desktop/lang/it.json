@@ -23,7 +23,7 @@
     "activated_prefix": "Premium attivato! Avrai accesso ai contenuti esclusivi fino al ",
     "invalid_code": "Codice non valido.",
     "code_check_error": "Al momento non riesco a verificare il codice — riprova tra poco.",
-    "chat_code_prompt": "Per attivare il tuo accesso Premium, scrivimi qui: \"codice TUOCODICE\"",
+    "chat_code_prompt": "Per attivare il tuo accesso Premium, scrivimi qui: “codice TUOCODICE”",
     "payment_start_error": "Non riesco ad avviare il pagamento. Riprova tra poco.",
     "payment_connection_error": "Errore di collegamento. Riprova tra poco.",
     "launch_badge": "🎉 Prezzo di lancio, valido fino al 1° novembre 2026 — poi 5,00€"
@@ -59,7 +59,29 @@
       "verse_duomo": "Entra nel gran <strong>Duomo</strong>, maestoso e solenne,<br>tra i marmi del Gagini e lo Stomer perenne.",
       "route_animesante": "Chicca nascosta",
       "animesante": "Anime Sante del Purgatorio",
-      "verse_animesante": "Sopra il <strong>Duomo</strong>, un gioiello nascosto: stucchi del Serpotta, catacombe e un antico rito d'imbalsamazione. 🔮 Scopri il Percorso Esoterico."
+      "verse_animesante": "Sopra il <strong>Duomo</strong>, un gioiello nascosto: stucchi del Serpotta, catacombe e un antico rito d'imbalsamazione. 🔮 Scopri il Percorso Esoterico.",
+      "badia_gallery": {
+        "esterno": "Esterno della chiesa",
+        "pavimento": "Il pavimento in maiolica",
+        "particolare_maiolica": "Particolare delle maioliche",
+        "maioliche_presbiterio": "Maioliche del presbiterio",
+        "sacrificio_isacco": "Il sacrificio di Isacco nel presbiterio",
+        "san_benedetto_regole": "San Benedetto detta le Regole",
+        "immacolata": "Immacolata Concezione",
+        "crocifisso": "Crocifisso tra San Benedetto e Santa Scolastica",
+        "madonna_neve": "La Madonna della Neve",
+        "affresco_matroneo": "Affresco del matroneo — Assunzione"
+      },
+      "sangiorgio_gallery": {
+        "esterno": "Esterno della chiesa",
+        "cupola": "La cupola",
+        "affreschi_navata": "Affreschi della navata",
+        "affreschi_presbiterio": "Affreschi del presbiterio",
+        "statua": "Statua di San Giorgio",
+        "martirio_sanseb": "Martirio di San Sebastiano",
+        "beato_giovanni": "Quadro del Beato Giovanni Liccio",
+        "stomer": "Opera dello Stomer"
+      }
     },
     "cibo_eventi_page": {
       "page_title": "Il Calendario del Borgo",
@@ -72,7 +94,7 @@
       "s1_tags": "Sagra della Salsiccia · Presepe dei Cappuccini · Presepe di Santo Domenico · Albero sotto il Castello",
       "s2_period": "Marzo — Aprile",
       "s2_title": "Settimana Santa",
-      "s2_body": "La settimana si apre la Domenica delle Palme con U Signuruzzu a Cavaddu, quando un bambino del paese impersona Gesù nell'ingresso a Gerusalemme. Il Venerdì Santo sera è la Via Crucis vivente: la Madonna dal cuore trafitto incontra il Cristo su un letto di rose. Lo stesso giorno si usa \"girare i sepolcri\" — le chiese aperte, gli altari allestiti con il grano fiorito, a ricordare Maria e la Maddalena che si recano al sepolcro di Cristo.",
+      "s2_body": "La settimana si apre la Domenica delle Palme con U Signuruzzu a Cavaddu, quando un bambino del paese impersona Gesù nell'ingresso a Gerusalemme. Il Venerdì Santo sera è la Via Crucis vivente: la Madonna dal cuore trafitto incontra il Cristo su un letto di rose. Lo stesso giorno si usa “girare i sepolcri” — le chiese aperte, gli altari allestiti con il grano fiorito, a ricordare Maria e la Maddalena che si recano al sepolcro di Cristo.",
       "s2_tags": "U Signuruzzu a Cavaddu — Domenica delle Palme · Via Crucis vivente — Venerdì Santo · Giro dei sepolcri · Pane di Cena · Pecorelle di mandorla",
       "s3_period": "Ultima Domenica di Maggio",
       "s3_title": "Beato Giovanni Liccio",
@@ -149,7 +171,7 @@
       "verse_4": "(la livella di Totò qui prende vita:<br>non conta il rango quando la vita è finita).",
       "verse_5": "Si entra, e i quadri accompagnano il passo<br>in un cammino che parte dal basso:",
       "verse_6": "la fede e la carità fanno da guida,<br>finché un'iscrizione il cuore non sfida:",
-      "verse_7": "\"nessuno esce da qui senza aver pagato<br>un pegno\" — il visitatore resta segnato.",
+      "verse_7": "“nessuno esce da qui senza aver pagato<br>un pegno” — il visitatore resta segnato.",
       "verse_8": "Sotto il pavimento, in silenzio, riposano<br>i corpi imbalsamati che ancora si posano",
       "verse_9": "là dove un tempo, senza fotografie,<br>si onorava la morte in queste sacre vie —",
       "verse_10": "per ricordare in eterno chi si amava,<br>quando il ricordo su pietra si scolpiva.",
