@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- ============================================================
-     BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
-     ============================================================ -->
-
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" id="silktide-consent-manager-css" href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css" integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
 <style id="silktide-consent-manager-overrides">
 #stcm-wrapper {
@@ -21,11 +17,6 @@
   --iconColor: #EFE6D3;
   --iconBackgroundColor: #22303B;
 }
-
-/* Icona "riapri preferenze cookie" — non più fissa in basso a
-   sinistra sopra i contenuti: viene spostata dentro il footer
-   dallo script in fondo alla pagina, e qui diventa "statica"
-   cioè scorre con la pagina come un elemento normale. */
 #stcm-icon {
   width: 30px !important;
   height: 30px !important;
@@ -59,7 +50,6 @@ window.silktideConsentManager.init({
         function gtag() { window.dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-DNTGGXSSM0', { 'anonymize_ip': true });
-        // Evento di ricerca: monument_view (Amunì Tourism)
         gtag('event', 'monument_view', {
           monument_id: 'annunziata',
           monument_type: 'maggiore'
@@ -97,10 +87,6 @@ window.silktideConsentManager.init({
   }
 });
 </script>
-
-<!-- ============================================================
-     FINE BLOCCO COOKIE + ANALYTICS
-     ============================================================ -->
 
     <title data-i18n="pages.monuments_pages.annunziata.title">Parrocchia SS. Annunziata</title>
     
@@ -219,9 +205,14 @@ window.silktideConsentManager.init({
             <img src="img/annunziata_cacc.gif" alt="Parrocchia SS. Annunziata" class="monument-hero-image img-annunziata" onerror="this.src='img/avatar_castellana.png';">
         </div>
 
-        <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
-            🔊 <span data-i18n="pages.monuments_pages.labels.listen_button">Ascolta la descrizione</span>
-        </button>
+        <div class="listen-gallery-row">
+            <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
+                🔊 <span data-i18n="pages.monuments_pages.labels.listen_button">Ascolta la descrizione</span>
+            </button>
+            <button class="btn-gallery" id="btn-open-gallery" onclick="openGallery()">
+                🖼️ <span data-i18n="pages.monuments_pages.labels.gallery_button">Galleria</span>
+            </button>
+        </div>
 
         <section class="teca-cristallo descrittiva">
             <p id="desc-text" data-i18n="pages.monuments_pages.annunziata.description">La chiesa risale al Quattrocento, ma è stata ampliata più volte nei secoli successivi. Le sue volte affrescate raccontano scene dell'Annunciazione, e la torre campanaria — tra le più alte del borgo — un tempo fungeva anche da punto di guardia. Nella navata laterale è custodito un antico organo a canne, ancora funzionante, usato nelle celebrazioni più solenni.</p>
@@ -265,6 +256,102 @@ window.silktideConsentManager.init({
 
     </main>
 
+    <!-- ============================================================
+         GALLERIA FOTO — Parrocchia SS. Annunziata
+         Stesso schema riusabile già usato su San Giorgio e Badia.
+         ============================================================ -->
+    <div class="gallery-modal" id="gallery-modal">
+        <div class="gallery-modal-header">
+            <span class="gallery-counter" id="gallery-counter">1 / 7</span>
+            <button class="gallery-close-btn" id="gallery-close-btn" aria-label="Chiudi galleria">✕</button>
+        </div>
+        <div class="gallery-modal-body">
+            <button class="gallery-arrow gallery-arrow-left" id="gallery-prev-btn" aria-label="Foto precedente">‹</button>
+            <img class="gallery-modal-image" id="gallery-modal-image" src="" alt="">
+            <button class="gallery-arrow gallery-arrow-right" id="gallery-next-btn" aria-label="Foto successiva">›</button>
+        </div>
+        <p class="gallery-caption" id="gallery-caption"></p>
+    </div>
+
+    <script>
+        // --------------------------
+        // GALLERIA FOTO — Parrocchia SS. Annunziata
+        // --------------------------
+        const GALLERY_IMAGES = [
+            { src: "img/navata_centr_presbiterio.jpg", captionKey: "pages.monuments_pages.annunziata_gallery.navata_presbiterio", fallback: "Navata centrale e presbiterio" },
+            { src: "img/cupola_e_volta_presbiterio.jpg", captionKey: "pages.monuments_pages.annunziata_gallery.cupola_volta", fallback: "Cupola e volta del presbiterio" },
+            { src: "img/altare_dellabside_maggiore.jpg", captionKey: "pages.monuments_pages.annunziata_gallery.altare_abside", fallback: "Altare dell'abside maggiore" },
+            { src: "img/crocifisso_e_apparato_scultoreo.jpg", captionKey: "pages.monuments_pages.annunziata_gallery.crocifisso", fallback: "Crocifisso e apparato scultoreo" },
+            { src: "img/immacolata_concezione_ann.jpg", captionKey: "pages.monuments_pages.annunziata_gallery.immacolata", fallback: "Immacolata Concezione" },
+            { src: "img/organo.jpg", captionKey: "pages.monuments_pages.annunziata_gallery.organo", fallback: "L'organo" },
+            { src: "img/santa_rosalia_pellegrina.jpg", captionKey: "pages.monuments_pages.annunziata_gallery.santa_rosalia", fallback: "Santa Rosalia Pellegrina" }
+        ];
+
+        let currentGalleryIndex = 0;
+
+        function openGallery() {
+            currentGalleryIndex = 0;
+            showGalleryImage(currentGalleryIndex);
+            document.getElementById('gallery-modal').classList.add('active');
+        }
+
+        function closeGallery() {
+            document.getElementById('gallery-modal').classList.remove('active');
+        }
+
+        function showGalleryImage(index) {
+            const img = GALLERY_IMAGES[index];
+            const caption = (typeof getI18nText === 'function')
+                ? getI18nText(img.captionKey, img.fallback)
+                : img.fallback;
+            document.getElementById('gallery-modal-image').src = img.src;
+            document.getElementById('gallery-modal-image').alt = caption;
+            document.getElementById('gallery-caption').textContent = caption;
+            document.getElementById('gallery-counter').textContent = (index + 1) + ' / ' + GALLERY_IMAGES.length;
+        }
+
+        function showNextGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex + 1) % GALLERY_IMAGES.length;
+            showGalleryImage(currentGalleryIndex);
+        }
+
+        function showPrevGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+            showGalleryImage(currentGalleryIndex);
+        }
+
+        document.getElementById('gallery-close-btn').addEventListener('click', closeGallery);
+        document.getElementById('gallery-next-btn').addEventListener('click', showNextGalleryImage);
+        document.getElementById('gallery-prev-btn').addEventListener('click', showPrevGalleryImage);
+
+        document.getElementById('gallery-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeGallery();
+        });
+
+        (function() {
+            const imgEl = document.getElementById('gallery-modal-image');
+            let touchStartX = 0;
+            imgEl.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            imgEl.addEventListener('touchend', function(e) {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchEndX - touchStartX;
+                if (Math.abs(diff) > 40) {
+                    if (diff < 0) showNextGalleryImage();
+                    else showPrevGalleryImage();
+                }
+            });
+        })();
+
+        document.addEventListener('languageChanged', function() {
+            const modal = document.getElementById('gallery-modal');
+            if (modal && modal.classList.contains('active')) {
+                showGalleryImage(currentGalleryIndex);
+            }
+        });
+    </script>
+
     <div class="chat-mobile" id="chat-mobile">
         <div class="chat-mobile-header">
             <div class="avatar-status-dot"></div>
@@ -285,10 +372,6 @@ window.silktideConsentManager.init({
 
     <script>
       (function() {
-        // Tutto il codice qui dentro è racchiuso in una funzione che
-        // si esegue subito da sola: le sue variabili (currentLang,
-        // speakText, audio, ecc.) restano private e non entrano in
-        // conflitto con quelle già usate in monument_translation.js.
         const audio = document.getElementById("bg-music"); audio.volume = 0.2;
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
@@ -304,9 +387,6 @@ window.silktideConsentManager.init({
             else { audio.pause(); toggleBtn.textContent = "🔇"; }
         });
 
-        // ============================================================
-        // CHAT CASTELLANA (MOBILE)
-        // ============================================================
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
         const VOICE_PREF_KEY = "amuni_voice_enabled";
@@ -368,9 +448,6 @@ window.silktideConsentManager.init({
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
 
-            // Cerca automaticamente indizi di voce neurale/di qualità superiore,
-            // utile per varianti non presenti nella lista fissa sopra
-            // (es. voci "Enhanced"/"Premium" scaricate su iOS, o "Online (Natural)" di Edge)
             const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
             const vociDiQualita = stessaLingua.filter(v =>
                 INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -381,15 +458,6 @@ window.silktideConsentManager.init({
             return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
         }
 
-        // ============================================================
-        // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
-        // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
-        // Servono a due cose:
-        // 1. NON devono mai comparire come testo letto o mostrato
-        //    all'utente (stripEmotionTags li rimuove per la visualizzazione)
-        // 2. Modulano rate/pitch della sintesi vocale SOLO per la frase
-        //    che racchiudono (parseEmotionalSegments + speakText)
-        // ============================================================
         const EMOTION_PRESETS = {
             energico:    { rate: 1.05, pitch: 1.08 },
             malinconico: { rate: 0.85, pitch: 0.90 },
@@ -679,7 +747,7 @@ window.silktideConsentManager.init({
             }
         }
 
-        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
+        let lastTopic = null;
 
         async function sendTopicRequestMobile(topicId, label) {
             appendChatMessageMobile(label, 'user');
@@ -861,10 +929,6 @@ window.silktideConsentManager.init({
 
         if (talkCastellanaBtnMonumento) {
             talkCastellanaBtnMonumento.addEventListener('click', () => {
-                // Apre sempre la chat qui sulla pagina mobile, per tutti
-                // gli utenti (gratuiti e Premium). Chi vuole raggiungere
-                // il sito desktop ha il pulsante separato "Vai alla
-                // versione Web".
                 chatMobileBox.classList.add('active');
                 updatePremiumStatusDisplayMobile();
                 if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
