@@ -254,7 +254,7 @@ window.silktideConsentManager.init({
 
           <div class="stop">
               <div class="waypoint"></div>
-              <article class="card side-left" data-img="img/annunziata.jpg" data-title="Chiesa dell'Annunziata">
+              <article class="card side-left" data-img="img/annunziata.jpg" data-title="Chiesa dell'Annunziata" data-gallery="annunziata">
                   <div class="card-frame"><img src="img/annunziata.jpg" alt="Chiesa dell'Annunziata"></div>
                   <div class="card-text">
                       <span class="card-route-label" data-i18n="pages.chiese_page.route_annunziata">Volte dipinte</span>
@@ -375,25 +375,43 @@ window.silktideConsentManager.init({
       const DESKTOP_GALLERY_IMAGES = {
           badia: [
               { src: "img/badia.jpg", captionKey: "pages.chiese_page.badia_gallery.esterno", fallback: "Esterno della chiesa" },
-              { src: "img/pavimento_in-maiolica.png", captionKey: "pages.chiese_page.badia_gallery.pavimento", fallback: "Il pavimento in maiolica" },
-              { src: "img/particolare_maiolica.png", captionKey: "pages.chiese_page.badia_gallery.particolare_maiolica", fallback: "Particolare delle maioliche" },
-              { src: "img/particolare_maiolica_presbuterio.png", captionKey: "pages.chiese_page.badia_gallery.maioliche_presbiterio", fallback: "Maioliche del presbiterio" },
-              { src: "img/sacrificiodiisacco.jpg", captionKey: "pages.chiese_page.badia_gallery.sacrificio_isacco", fallback: "Il sacrificio di Isacco nel presbiterio" },
-              { src: "img/sanbenedettodettaleregole.jpg", captionKey: "pages.chiese_page.badia_gallery.san_benedetto_regole", fallback: "San Benedetto detta le Regole" },
-              { src: "img/immacolataconcezione.jpg", captionKey: "pages.chiese_page.badia_gallery.immacolata", fallback: "Immacolata Concezione" },
-              { src: "img/crocifisso_sansomenico_santasvolastica.png", captionKey: "pages.chiese_page.badia_gallery.crocifisso", fallback: "Crocifisso tra San Benedetto e Santa Scolastica" },
-              { src: "img/lamadonnadellaneve.png", captionKey: "pages.chiese_page.badia_gallery.madonna_neve", fallback: "La Madonna della Neve" },
-              { src: "img/affresco_matronèo_assunzione.png", captionKey: "pages.chiese_page.badia_gallery.affresco_matroneo", fallback: "Affresco del matroneo — Assunzione" }
+              { src: "../gallery-chiese/pavimento_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.pavimento", fallback: "Il pavimento in maiolica" },
+              { src: "../gallery-chiese/particolare_maiolica_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.particolare_maiolica", fallback: "Particolare delle maioliche" },
+              { src: "../gallery-chiese/maioliche_presbiterio_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.maioliche_presbiterio", fallback: "Maioliche del presbiterio" },
+              { src: "../gallery-chiese/sacrificio_isacco_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.sacrificio_isacco", fallback: "Il sacrificio di Isacco nel presbiterio" },
+              { src: "../gallery-chiese/sanbenedetto_regole_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.san_benedetto_regole", fallback: "San Benedetto detta le Regole" },
+              { src: "../gallery-chiese/immacolata_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.immacolata", fallback: "Immacolata Concezione" },
+              { src: "../gallery-chiese/crocifisso_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.crocifisso", fallback: "Crocifisso tra San Benedetto e Santa Scolastica" },
+              { src: "../gallery-chiese/comunichino_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.comunichino", fallback: "Comunichino nel presbiterio" },
+              { src: "../gallery-chiese/affresco_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.particolare_affresco", fallback: "Particolare di affresco" },
+              { src: "../gallery-chiese/volta_cancellata_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.volta_cancellata", fallback: "La volta e la cancellata" },
+              { src: "../gallery-chiese/cancellata_ferro_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.cancellata_ferro", fallback: "Cancellata in ferro battuto" },
+              { src: "../gallery-chiese/cancellata_matroneo_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.cancellata_matroneo", fallback: "Cancellata del matroneo" },
+              { src: "../gallery-chiese/madonna_neve_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.madonna_neve", fallback: "La Madonna della Neve" },
+              { src: "../gallery-chiese/navata_sanben_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.navata_sanben", fallback: "La navata" }
           ],
           sangiorgio: [
               { src: "img/sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.esterno", fallback: "Esterno della chiesa" },
-              { src: "img/sangiorgio_cupola.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.cupola", fallback: "La cupola" },
-              { src: "img/affreshi_navata.png", captionKey: "pages.chiese_page.sangiorgio_gallery.affreschi_navata", fallback: "Affreschi della navata" },
-              { src: "img/affreschi_presbiterio.png", captionKey: "pages.chiese_page.sangiorgio_gallery.affreschi_presbiterio", fallback: "Affreschi del presbiterio" },
-              { src: "img/sangiorgio_statua.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.statua", fallback: "Statua di San Giorgio" },
-              { src: "img/martirio_san_sebastiano.png", captionKey: "pages.chiese_page.sangiorgio_gallery.martirio_sanseb", fallback: "Martirio di San Sebastiano" },
-              { src: "img/beato_giovanni_liccio.png", captionKey: "pages.chiese_page.sangiorgio_gallery.beato_giovanni", fallback: "Quadro del Beato Giovanni Liccio" },
-              { src: "img/sanbenedetto_stromer.png", captionKey: "pages.chiese_page.sangiorgio_gallery.stomer", fallback: "Opera dello Stomer" }
+              { src: "../gallery-chiese/navata_centrale_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.navata_centrale", fallback: "Navata principale" },
+              { src: "../gallery-chiese/dettagliocappellare_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.dettagliocappellare", fallback: "Particolare della cappella delle reliquie" },
+              { src: "../gallery-chiese/organo_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.organo", fallback: "L'organo" },
+              { src: "../gallery-chiese/cappelladellerelique_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.cappella_reliquie", fallback: "Cappella delle reliquie" },
+              { src: "../gallery-chiese/cupola_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.cupola", fallback: "La cupola" },
+              { src: "../gallery-chiese/affreschi_presbiterio_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.affreschi_presbiterio", fallback: "Affreschi del presbiterio" },
+              { src: "../gallery-chiese/statua_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.statua", fallback: "Statua di San Giorgio" },
+              { src: "../gallery-chiese/martirio_sansebastiano_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.martirio_sanseb", fallback: "Martirio di San Sebastiano" },
+              { src: "../gallery-chiese/beato_giovanni_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.beato_giovanni", fallback: "Quadro del Beato Giovanni Liccio" },
+              { src: "../gallery-chiese/stomer_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.stomer", fallback: "Opera dello Stomer" }
+          ],
+          annunziata: [
+              { src: "img/annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.esterno", fallback: "Esterno della chiesa" },
+              { src: "../gallery-chiese/navata_presbiterio_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.navata_presbiterio", fallback: "Navata centrale e presbiterio" },
+              { src: "../gallery-chiese/cupola_volta_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.cupola_volta", fallback: "Cupola e volta del presbiterio" },
+              { src: "../gallery-chiese/altare_abside_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.altare_abside", fallback: "Altare dell'abside maggiore" },
+              { src: "../gallery-chiese/crocifisso_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.crocifisso", fallback: "Crocifisso e apparato scultoreo" },
+              { src: "../gallery-chiese/immacolata_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.immacolata", fallback: "Immacolata Concezione" },
+              { src: "../gallery-chiese/organo_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.organo", fallback: "L'organo" },
+              { src: "../gallery-chiese/santa_rosalia_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.santa_rosalia", fallback: "Santa Rosalia Pellegrina" }
           ]
       };
 
