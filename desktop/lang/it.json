@@ -70,17 +70,35 @@
         "immacolata": "Immacolata Concezione",
         "crocifisso": "Crocifisso tra San Benedetto e Santa Scolastica",
         "madonna_neve": "La Madonna della Neve",
-        "affresco_matroneo": "Affresco del matroneo — Assunzione"
+        "navata_sanben": "La navata",
+        "comunichino": "Comunichino nel presbiterio",
+        "particolare_affresco": "Particolare di affresco",
+        "volta_cancellata": "La volta e la cancellata",
+        "cancellata_ferro": "Cancellata in ferro battuto",
+        "cancellata_matroneo": "Cancellata del matroneo"
       },
       "sangiorgio_gallery": {
         "esterno": "Esterno della chiesa",
+        "navata_centrale": "Navata principale",
+        "dettagliocappellare": "Particolare della cappella delle reliquie",
+        "organo": "L'organo",
+        "cappella_reliquie": "Cappella delle reliquie",
         "cupola": "La cupola",
-        "affreschi_navata": "Affreschi della navata",
         "affreschi_presbiterio": "Affreschi del presbiterio",
         "statua": "Statua di San Giorgio",
         "martirio_sanseb": "Martirio di San Sebastiano",
         "beato_giovanni": "Quadro del Beato Giovanni Liccio",
         "stomer": "Opera dello Stomer"
+      },
+      "annunziata_gallery": {
+        "esterno": "Esterno della chiesa",
+        "navata_presbiterio": "Navata centrale e presbiterio",
+        "cupola_volta": "Cupola e volta del presbiterio",
+        "altare_abside": "Altare dell'abside maggiore",
+        "crocifisso": "Crocifisso e apparato scultoreo",
+        "immacolata": "Immacolata Concezione",
+        "organo": "L'organo",
+        "santa_rosalia": "Santa Rosalia Pellegrina"
       }
     },
     "cibo_eventi_page": {
