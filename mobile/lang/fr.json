@@ -181,7 +181,9 @@
         "particolare_affresco": "Détail de fresque",
         "volta_cancellata": "La voûte et la grille",
         "cancellata_ferro": "Grille en fer forgé",
-        "cancellata_matroneo": "Grille de la tribune"
+        "cancellata_matroneo": "Grille de la tribune",
+        "madonna_neve": "Notre-Dame des Neiges",
+        "navata_sanben": "La nef"
       },
       "santamaria": {
         "title": "Église Santa Maria degli Angeli",
@@ -202,15 +204,15 @@
       },
       "sangiorgio_gallery": {
         "navata_centrale": "Nef principale",
-        "san_isidoro": "Tableau de Saint Isidore",
         "dettagliocappellare": "Détail de la chapelle des reliques",
         "organo": "L'orgue",
         "cappella_reliquie": "Chapelle des reliques",
         "cupola": "La coupole",
-        "affreschi_volta": "Fresques de la voûte",
         "statua": "Statue de San Giorgio",
         "beato_giovanni": "Tableau du Bienheureux Giovanni",
-        "martirio_sanseb": "Martyre de Saint Sébastien"
+        "martirio_sanseb": "Martyre de Saint Sébastien",
+        "affreschi_presbiterio": "Fresques du presbytère",
+        "stomer": "Œuvre de Stomer"
       },
       "annunziata": {
         "title": "Paroisse SS. Annunziata",
