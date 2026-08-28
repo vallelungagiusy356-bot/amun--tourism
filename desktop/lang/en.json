@@ -70,17 +70,35 @@
         "immacolata": "Immaculate Conception",
         "crocifisso": "Crucifix between Saint Benedict and Saint Scholastica",
         "madonna_neve": "Our Lady of the Snow",
-        "affresco_matroneo": "Fresco of the matroneum — Assumption"
+        "navata_sanben": "The nave",
+        "comunichino": "Communion rail in the presbytery",
+        "particolare_affresco": "Fresco detail",
+        "volta_cancellata": "The vault and the grille",
+        "cancellata_ferro": "Wrought-iron grille",
+        "cancellata_matroneo": "Matroneum grille"
       },
       "sangiorgio_gallery": {
         "esterno": "Exterior of the church",
+        "navata_centrale": "Main nave",
+        "dettagliocappellare": "Detail of the Chapel of the Relics",
+        "organo": "The organ",
+        "cappella_reliquie": "Chapel of the Relics",
         "cupola": "The dome",
-        "affreschi_navata": "Frescoes of the nave",
         "affreschi_presbiterio": "Frescoes of the presbytery",
         "statua": "Statue of San Giorgio",
         "martirio_sanseb": "Martyrdom of Saint Sebastian",
         "beato_giovanni": "Painting of the Blessed Giovanni Liccio",
         "stomer": "Work by Stomer"
+      },
+      "annunziata_gallery": {
+        "esterno": "Exterior of the church",
+        "navata_presbiterio": "Central nave and presbytery",
+        "cupola_volta": "Dome and vault of the presbytery",
+        "altare_abside": "Altar of the main apse",
+        "crocifisso": "Crucifix and sculptural ensemble",
+        "immacolata": "Immaculate Conception",
+        "organo": "The organ",
+        "santa_rosalia": "Santa Rosalia the Pilgrim"
       }
     },
     "cibo_eventi_page": {
