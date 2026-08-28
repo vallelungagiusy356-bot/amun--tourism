@@ -187,7 +187,9 @@
         "particolare_affresco": "Freskendetail",
         "volta_cancellata": "Das Gewölbe und das Gitter",
         "cancellata_ferro": "Schmiedeeisernes Gitter",
-        "cancellata_matroneo": "Gitter der Empore"
+        "cancellata_matroneo": "Gitter der Empore",
+        "madonna_neve": "Maria Schnee",
+        "navata_sanben": "Das Kirchenschiff"
       },
       "santamaria": {
         "title": "Kirche Santa Maria degli Angeli",
@@ -208,15 +210,15 @@
       },
       "sangiorgio_gallery": {
         "navata_centrale": "Hauptschiff",
-        "san_isidoro": "Gemälde des Heiligen Isidor",
         "dettagliocappellare": "Detail der Reliquienkapelle",
         "organo": "Die Orgel",
         "cappella_reliquie": "Reliquienkapelle",
         "cupola": "Die Kuppel",
-        "affreschi_volta": "Deckenfresken",
         "statua": "Statue des San Giorgio",
         "beato_giovanni": "Gemälde des Seligen Giovanni",
-        "martirio_sanseb": "Martyrium des Heiligen Sebastian"
+        "martirio_sanseb": "Martyrium des Heiligen Sebastian",
+        "affreschi_presbiterio": "Fresken des Presbyteriums",
+        "stomer": "Werk von Stomer"
       },
       "annunziata": {
         "title": "Pfarrei SS. Annunziata",
