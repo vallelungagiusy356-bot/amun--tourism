@@ -70,17 +70,35 @@
         "immacolata": "Unbefleckte Empfängnis",
         "crocifisso": "Kruzifix zwischen dem Heiligen Benedikt und der Heiligen Scholastika",
         "madonna_neve": "Maria Schnee",
-        "affresco_matroneo": "Fresko der Empore — Mariä Himmelfahrt"
+        "navata_sanben": "Das Kirchenschiff",
+        "comunichino": "Kommunionbank im Presbyterium",
+        "particolare_affresco": "Freskendetail",
+        "volta_cancellata": "Das Gewölbe und das Gitter",
+        "cancellata_ferro": "Schmiedeeisernes Gitter",
+        "cancellata_matroneo": "Gitter der Empore"
       },
       "sangiorgio_gallery": {
         "esterno": "Außenansicht der Kirche",
+        "navata_centrale": "Hauptschiff",
+        "dettagliocappellare": "Detail der Reliquienkapelle",
+        "organo": "Die Orgel",
+        "cappella_reliquie": "Reliquienkapelle",
         "cupola": "Die Kuppel",
-        "affreschi_navata": "Fresken des Kirchenschiffs",
         "affreschi_presbiterio": "Fresken des Presbyteriums",
         "statua": "Statue des San Giorgio",
         "martirio_sanseb": "Martyrium des Heiligen Sebastian",
         "beato_giovanni": "Gemälde des Seligen Giovanni Liccio",
         "stomer": "Werk von Stomer"
+      },
+      "annunziata_gallery": {
+        "esterno": "Außenansicht der Kirche",
+        "navata_presbiterio": "Hauptschiff und Presbyterium",
+        "cupola_volta": "Kuppel und Gewölbe des Presbyteriums",
+        "altare_abside": "Altar der Hauptapsis",
+        "crocifisso": "Kruzifix und Skulpturenensemble",
+        "immacolata": "Unbefleckte Empfängnis",
+        "organo": "Die Orgel",
+        "santa_rosalia": "Santa Rosalia Pellegrina"
       }
     },
     "cibo_eventi_page": {
