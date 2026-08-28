@@ -70,17 +70,35 @@
         "immacolata": "Inmaculada Concepción",
         "crocifisso": "Crucifijo entre San Benito y Santa Escolástica",
         "madonna_neve": "La Virgen de las Nieves",
-        "affresco_matroneo": "Fresco del matroneo — Asunción"
+        "navata_sanben": "La nave",
+        "comunichino": "Comulgatorio en el presbiterio",
+        "particolare_affresco": "Detalle de fresco",
+        "volta_cancellata": "La bóveda y la cancela",
+        "cancellata_ferro": "Cancela de hierro forjado",
+        "cancellata_matroneo": "Cancela del matroneo"
       },
       "sangiorgio_gallery": {
         "esterno": "Exterior de la iglesia",
+        "navata_centrale": "Nave principal",
+        "dettagliocappellare": "Detalle de la capilla de las reliquias",
+        "organo": "El órgano",
+        "cappella_reliquie": "Capilla de las reliquias",
         "cupola": "La cúpula",
-        "affreschi_navata": "Frescos de la nave",
         "affreschi_presbiterio": "Frescos del presbiterio",
         "statua": "Estatua de San Giorgio",
         "martirio_sanseb": "Martirio de San Sebastián",
         "beato_giovanni": "Cuadro del Beato Giovanni Liccio",
         "stomer": "Obra de Stomer"
+      },
+      "annunziata_gallery": {
+        "esterno": "Exterior de la iglesia",
+        "navata_presbiterio": "Nave central y presbiterio",
+        "cupola_volta": "Cúpula y bóveda del presbiterio",
+        "altare_abside": "Altar del ábside mayor",
+        "crocifisso": "Crucifijo y conjunto escultórico",
+        "immacolata": "Inmaculada Concepción",
+        "organo": "El órgano",
+        "santa_rosalia": "Santa Rosalía Peregrina"
       }
     },
     "cibo_eventi_page": {
