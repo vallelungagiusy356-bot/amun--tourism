@@ -70,17 +70,35 @@
         "immacolata": "Immaculée Conception",
         "crocifisso": "Crucifix entre Saint Benoît et Sainte Scholastique",
         "madonna_neve": "Notre-Dame des Neiges",
-        "affresco_matroneo": "Fresque de la tribune — Assomption"
+        "navata_sanben": "La nef",
+        "comunichino": "Balustrade de communion dans le presbytère",
+        "particolare_affresco": "Détail de fresque",
+        "volta_cancellata": "La voûte et la grille",
+        "cancellata_ferro": "Grille en fer forgé",
+        "cancellata_matroneo": "Grille de la tribune"
       },
       "sangiorgio_gallery": {
         "esterno": "Extérieur de l'église",
+        "navata_centrale": "Nef principale",
+        "dettagliocappellare": "Détail de la chapelle des reliques",
+        "organo": "L'orgue",
+        "cappella_reliquie": "Chapelle des reliques",
         "cupola": "La coupole",
-        "affreschi_navata": "Fresques de la nef",
         "affreschi_presbiterio": "Fresques du presbytère",
         "statua": "Statue de San Giorgio",
         "martirio_sanseb": "Martyre de Saint Sébastien",
         "beato_giovanni": "Tableau du Bienheureux Giovanni Liccio",
         "stomer": "Œuvre de Stomer"
+      },
+      "annunziata_gallery": {
+        "esterno": "Extérieur de l'église",
+        "navata_presbiterio": "Nef centrale et presbytère",
+        "cupola_volta": "Coupole et voûte du presbytère",
+        "altare_abside": "Autel de l'abside majeure",
+        "crocifisso": "Crucifix et ensemble sculptural",
+        "immacolata": "Immaculée Conception",
+        "organo": "L'orgue",
+        "santa_rosalia": "Sainte Rosalie Pèlerine"
       }
     },
     "cibo_eventi_page": {
