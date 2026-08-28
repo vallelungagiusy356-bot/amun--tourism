@@ -181,7 +181,9 @@
         "particolare_affresco": "Detalle de fresco",
         "volta_cancellata": "La bóveda y la cancela",
         "cancellata_ferro": "Cancela de hierro forjado",
-        "cancellata_matroneo": "Cancela del matroneo"
+        "cancellata_matroneo": "Cancela del matroneo",
+        "madonna_neve": "La Virgen de las Nieves",
+        "navata_sanben": "La nave"
       },
       "santamaria": {
         "title": "Iglesia de Santa Maria degli Angeli",
@@ -202,15 +204,15 @@
       },
       "sangiorgio_gallery": {
         "navata_centrale": "Nave principal",
-        "san_isidoro": "Cuadro de San Isidoro",
         "dettagliocappellare": "Detalle de la capilla de las reliquias",
         "organo": "El órgano",
         "cappella_reliquie": "Capilla de las reliquias",
         "cupola": "La cúpula",
-        "affreschi_volta": "Frescos de la bóveda",
         "statua": "Estatua de San Giorgio",
         "beato_giovanni": "Cuadro del Beato Giovanni",
-        "martirio_sanseb": "Martirio de San Sebastián"
+        "martirio_sanseb": "Martirio de San Sebastián",
+        "affreschi_presbiterio": "Frescos del presbiterio",
+        "stomer": "Obra de Stomer"
       },
       "annunziata": {
         "title": "Parroquia SS. Annunziata",
