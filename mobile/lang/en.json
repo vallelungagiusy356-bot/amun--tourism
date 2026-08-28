@@ -181,7 +181,9 @@
         "particolare_affresco": "Fresco detail",
         "volta_cancellata": "The vault and the grille",
         "cancellata_ferro": "Wrought-iron grille",
-        "cancellata_matroneo": "Matroneum grille"
+        "cancellata_matroneo": "Matroneum grille",
+        "madonna_neve": "Our Lady of the Snow",
+        "navata_sanben": "The nave"
       },
       "santamaria": {
         "title": "Church of Santa Maria degli Angeli",
@@ -202,15 +204,15 @@
       },
       "sangiorgio_gallery": {
         "navata_centrale": "Main nave",
-        "san_isidoro": "Painting of Saint Isidore",
         "dettagliocappellare": "Detail of the Chapel of the Relics",
         "organo": "The organ",
         "cappella_reliquie": "Chapel of the Relics",
         "cupola": "The dome",
-        "affreschi_volta": "Ceiling frescoes",
         "statua": "Statue of San Giorgio",
         "beato_giovanni": "Painting of the Blessed Giovanni",
-        "martirio_sanseb": "Martyrdom of Saint Sebastian"
+        "martirio_sanseb": "Martyrdom of Saint Sebastian",
+        "affreschi_presbiterio": "Frescoes of the presbytery",
+        "stomer": "Work by Stomer"
       },
       "annunziata": {
         "title": "Parish of SS. Annunziata",
