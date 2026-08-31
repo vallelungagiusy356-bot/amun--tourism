@@ -238,6 +238,13 @@
         "hours": "Accessibile principalmente prima o dopo le funzioni. Tutti i giorni dalle 16 alle 20.",
         "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti e altri piccoli capolavori diffusi. Dall'1 al 15 agosto presso il convento si terrà la quindicina, in onore di Maria SS. Assunta in cielo. Santo Rosario ore 18, Coroncina ore 18,30, Santa Messa alle 19,00 . "
       },
+      "cappuccini_gallery": {
+        "pala_altare": "Pala d'altare",
+        "sacra_famiglia": "Sacra Famiglia",
+        "crocifisso": "Crocifisso",
+        "madonna_di_lourdes": "Madonna di Lourdes",
+        "san_rocco": "San Rocco di Montpellier"
+      },
       "animesante": {
         "tag": "✨ La Chicca del Borgo",
         "title": "Chiesa delle Anime Sante del Purgatorio",
