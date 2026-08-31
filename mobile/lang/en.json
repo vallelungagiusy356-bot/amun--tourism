@@ -238,6 +238,13 @@
         "hours": "Accessible mainly before or after services. Open daily from 16:00 to 20:00.",
         "secret_info": "💡 The Hidden Gems of Caccamo: The village is home to as many as 33 churches. Use the Din Don Dan map and zoom in on Caccamo to discover real-time hours and openings of lesser-known treasures and other small hidden masterpieces. From 1 to 15 August, the convent will hold the \"quindicina\", a fifteen-day novena in honour of Our Lady of the Assumption. Holy Rosary at 18:00, Coroncina at 18:30, Holy Mass at 19:00."
       },
+      "cappuccini_gallery": {
+        "pala_altare": "Altarpiece",
+        "sacra_famiglia": "Holy Family",
+        "crocifisso": "Crucifix",
+        "madonna_di_lourdes": "Our Lady of Lourdes",
+        "san_rocco": "Saint Roch of Montpellier"
+      },
       "animesante": {
         "tag": "✨ The Village Gem",
         "title": "Church of the Holy Souls of Purgatory",
