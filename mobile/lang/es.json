@@ -238,6 +238,13 @@
         "hours": "Accesible principalmente antes o después de las funciones religiosas. Abierto todos los días de 16:00 a 20:00.",
         "secret_info": "💡 Las Joyas Escondidas de Caccamo: el pueblo alberga nada menos que 33 iglesias. Utiliza el mapa de Din Don Dan y amplía la vista sobre Caccamo para descubrir los horarios y aperturas en tiempo real de tesoros menos conocidos y otras pequeñas obras maestras repartidas por el pueblo. Del 1 al 15 de agosto, el convento celebrará la \"quindicina\", novena de quince días en honor a la Virgen de la Asunción. Santo Rosario a las 18:00, Coroncina a las 18:30, Santa Misa a las 19:00."
       },
+      "cappuccini_gallery": {
+        "pala_altare": "Retablo del altar",
+        "sacra_famiglia": "Sagrada Familia",
+        "crocifisso": "Crucifijo",
+        "madonna_di_lourdes": "Virgen de Lourdes",
+        "san_rocco": "San Roque de Montpellier"
+      },
       "animesante": {
         "tag": "✨ La Joya del Pueblo",
         "title": "Iglesia de las Santas Ánimas del Purgatorio",
