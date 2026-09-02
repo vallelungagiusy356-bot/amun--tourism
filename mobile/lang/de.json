@@ -244,6 +244,13 @@
         "hours": "Zugänglich hauptsächlich vor oder nach den Gottesdiensten. Täglich geöffnet von 16:00 bis 20:00 Uhr.",
         "secret_info": "💡 Die verborgenen Schätze von Caccamo: Das Dorf beherbergt nicht weniger als 33 Kirchen. Nutzen Sie die Karte von Din Don Dan und zoomen Sie auf Caccamo, um in Echtzeit Öffnungszeiten weniger bekannter Schätze und anderer kleiner, verstreuter Meisterwerke zu entdecken. Vom 1. bis 15. August findet im Kloster die \"quindicina\" statt, eine fünfzehntägige Novene zu Ehren Mariä Himmelfahrt. Heiliger Rosenkranz um 18:00 Uhr, Coroncina um 18:30 Uhr, Heilige Messe um 19:00 Uhr."
       },
+      "cappuccini_gallery": {
+        "pala_altare": "Altarbild",
+        "sacra_famiglia": "Heilige Familie",
+        "crocifisso": "Kruzifix",
+        "madonna_di_lourdes": "Unsere Liebe Frau von Lourdes",
+        "san_rocco": "Heiliger Rochus von Montpellier"
+      },
       "animesante": {
         "tag": "✨ Das Kleinod des Dorfes",
         "title": "Kirche der Heiligen Seelen des Fegefeuers",
