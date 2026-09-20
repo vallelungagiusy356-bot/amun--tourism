@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Amunì Tourism è la guida turistica digitale di Caccamo, in Sicilia: Castello normanno, chiese storiche, leggende e tradizioni del borgo raccontati da un'audioguida vocale in 5 lingue. Scopri cosa vedere e come organizzare la tua visita a Caccamo.">
+    <link rel="canonical" href="https://www.amunitourism.it/desktop/desktop_index.html">
 
     <!-- ============================================================
      BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
@@ -172,6 +173,55 @@ window.silktideConsentManager.init({
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.18); }
         }
+
+        /* ============================================================
+           MAPPA DEL SITO IN FONDO ALLA PAGINA
+           Collegamenti veri alle sezioni del sito: prima erano
+           raggiungibili solo dai pulsanti della chat, che per i motori
+           di ricerca non sono link. Serve anche ai visitatori che
+           preferiscono navigare senza passare dalla Castellana.
+           ============================================================ */
+        .site-map-footer {
+            background: rgba(15, 25, 34, 0.95);
+            border-top: 1px solid rgba(184, 135, 59, 0.45);
+            padding: 40px 20px 10px;
+        }
+        .site-map-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+        .site-map-col {
+            flex: 1 1 240px;
+        }
+        .site-map-col h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: #D4AF6A;
+            margin: 0 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(184, 135, 59, 0.35);
+        }
+        .site-map-col ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .site-map-col li {
+            margin-bottom: 8px;
+        }
+        .site-map-col a {
+            color: #DCCFAF;
+            text-decoration: none;
+            font-size: 0.92rem;
+            transition: color 0.2s ease;
+        }
+        .site-map-col a:hover {
+            color: #D4AF6A;
+        }
     </style>
 </head>
 
@@ -267,7 +317,7 @@ window.silktideConsentManager.init({
                     Apri Amunì dal tuo smartphone per avere sempre a portata di mano mappe, orari e trasporti — e aggiungila alla schermata Home per ritrovarla con un tocco.
                 </p>
                 <div class="btn-group" id="app-link-area">
-                    <a href="https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html" class="btn-desktop" id="mobile-app-link">
+                    <a href="https://www.amunitourism.it/mobile/mobile_index.html" class="btn-desktop" id="mobile-app-link">
                         🌐 <span data-i18n="home.open_webapp">Vai alla WebApp</span>
                     </a>
                 </div>
@@ -303,6 +353,51 @@ window.silktideConsentManager.init({
             <a href="https://www.instagram.com/amuni_toursim_26" target="_blank" rel="noopener" aria-label="Instagram" style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none;">📷</a>
         </div>
     </div>
+
+    <!-- ============================================================
+         MAPPA DEL SITO — collegamenti veri a tutte le sezioni.
+         Prima castello, chiese, cibo, leggende e percorso esoterico
+         erano raggiungibili SOLO dai pulsanti della chat: per Google
+         quei pulsanti non sono link, quindi quelle pagine risultavano
+         irraggiungibili e non venivano indicizzate.
+         ============================================================ -->
+    <nav class="site-map-footer" aria-label="Mappa del sito">
+        <div class="site-map-inner">
+
+            <div class="site-map-col">
+                <h3>Scopri Caccamo</h3>
+                <ul>
+                    <li><a href="castello.html">Il Castello di Caccamo</a></li>
+                    <li><a href="chiese-arte.html">Chiese e arte</a></li>
+                    <li><a href="leggende_e_tradizioni.html">Leggende e tradizioni</a></li>
+                    <li><a href="percorso_esoterico.html">Il percorso esoterico</a></li>
+                    <li><a href="cibo_eventi.html">Cibo ed eventi</a></li>
+                </ul>
+            </div>
+
+            <div class="site-map-col">
+                <h3>Vivere il borgo</h3>
+                <ul>
+                    <li><a href="cittadino.html">Cittadino del borgo</a></li>
+                    <li><a href="https://www.amunitourism.it/mobile/mobile_index.html">Versione mobile</a></li>
+                    <li><a href="https://www.amunitourism.it/mobile/mangiare.html">Dove mangiare</a></li>
+                    <li><a href="https://www.amunitourism.it/mobile/dormire.html">Dove dormire</a></li>
+                    <li><a href="https://www.amunitourism.it/mobile/trasporti.html">Come arrivare</a></li>
+                </ul>
+            </div>
+
+            <div class="site-map-col">
+                <h3>Il progetto</h3>
+                <ul>
+                    <li><a href="about.html">Il progetto Amunì</a></li>
+                    <li><a href="chi_siamo.html">Chi siamo</a></li>
+                    <li><a href="contact.html">Contatti</a></li>
+                    <li><a href="privacy.html">Privacy e cookie</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
 
     <footer class="footer-copyright">
         <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
@@ -1245,9 +1340,14 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
     // rimpicciolita e mal proporzionata. Su schermi stretti (già da
     // telefono) il bottone resta cliccabile normalmente, perché lì
     // funziona benissimo.
+    //
+    // NOTA: l'indirizzo usa il dominio amunitourism.it. Prima puntava
+    // all'indirizzo grezzo di GitHub Pages: chi inquadrava il QR
+    // finiva su un dominio diverso, fuori da Analytics e da Search
+    // Console, con gli stessi contenuti pubblicati su due indirizzi.
     // ============================================================
     (function() {
-        const MOBILE_URL = "https://vallelungagiusy356-bot.github.io/amun--tourism/mobile/mobile_index.html";
+        const MOBILE_URL = "https://www.amunitourism.it/mobile/mobile_index.html";
         const area = document.getElementById('app-link-area');
         if (!area) return;
 
@@ -1283,3 +1383,4 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
     </script>
 </body>
 </html>
+
