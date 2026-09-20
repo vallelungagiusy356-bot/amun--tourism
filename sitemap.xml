@@ -8,13 +8,130 @@
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- ===== HOMEPAGE (porta d'ingresso del sito) ===== -->
+
+  <url>
+    <loc>https://www.amunitourism.it/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ===== VERSIONE MOBILE ===== -->
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/mobile_index.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/monumenti.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/castello_di_caccamo.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/sangiorgio.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/santamaria.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/annunziata.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/sanbenedetto.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/cappuccini.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/chicca_borgo.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/mappa.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/eventi.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/mangiare.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/dormire.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/trasporti.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amunitourism.it/mobile/privacy.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
   <!-- ===== VERSIONE DESKTOP ===== -->
 
   <url>
     <loc>https://www.amunitourism.it/desktop/desktop_index.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
@@ -67,6 +184,13 @@
   </url>
 
   <url>
+    <loc>https://www.amunitourism.it/desktop/contact.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
     <loc>https://www.amunitourism.it/desktop/cittadino.html</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -78,92 +202,6 @@
     <lastmod>2026-08-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
-  </url>
-
-  <!-- ===== VERSIONE MOBILE ===== -->
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/mobile_index.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/sangiorgio.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/santamaria.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/sandomenico.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/annunziata.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/sanbenedetto.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/cappuccini.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/chicca_borgo.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/eventi.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/mangiare.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/dormire.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://www.amunitourism.it/mobile/trasporti.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
   </url>
 
 </urlset>
