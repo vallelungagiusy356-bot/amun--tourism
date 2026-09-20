@@ -134,6 +134,20 @@ window.silktideConsentManager.init({
       opacity: 0.85;
       font-style: italic;
     }
+    .topic-btn-with-thumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 6px;
+}
+.topic-btn-thumb {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid rgba(184, 135, 59, 0.5);
+}
   </style>
   <style>
       .lang-switcher button.active {
@@ -1218,25 +1232,74 @@ window.silktideConsentManager.init({
           wrap.className = 'topic-menu topic-menu-state';
 
           if (currentGroupName) {
-              // Siamo dentro un monumento specifico: mostro SOLO i suoi
-              // sotto-argomenti + un pulsante per tornare al menu generale.
-              // Non mostro piu' gli altri monumenti insieme, per evitare
-              // il "muro di bottoni" confusionario.
-              const backBtn = document.createElement('button');
-              backBtn.className = 'topic-btn topic-back-btn';
-              backBtn.textContent = '‹ Torna al menu';
-              backBtn.addEventListener('click', () => renderMenuState(null));
-              wrap.appendChild(backBtn);
+              // ============================================================
+// SOSTITUISCI l'intera funzione renderMenuState esistente
+// con questa versione. Fa la stessa cosa di prima, ma se un
+// topic ha il campo "thumb", disegna anche la sua miniatura
+// dentro il pulsante.
+// ============================================================
+function renderMenuState(currentGroupName) {
+    const messagesBox = document.getElementById('chat-messages-box');
 
-              const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
-              if (groupEntry) {
-                  groupEntry.items.forEach(it => {
-                      if (exploredTopics.has(it.topic)) return;
-                      const b = document.createElement('button');
-                      b.className = 'topic-btn';
-                      b.textContent = it.label;
-                      b.addEventListener('click', () => sendTopicRequest(it.topic, it.label, currentGroupName));
-                      wrap.appendChild(b);
+    const old = document.querySelector('.chat-messages .topic-menu-state');
+    if (old) old.remove();
+
+    const wrap = document.createElement('div');
+    wrap.className = 'topic-menu topic-menu-state';
+
+    // Crea un pulsante-topic, con miniatura se disponibile
+    function makeTopicButton(it, groupName) {
+        const b = document.createElement('button');
+        b.className = 'topic-btn';
+        if (it.thumb) {
+            b.classList.add('topic-btn-with-thumb');
+            const img = document.createElement('img');
+            img.className = 'topic-btn-thumb';
+            img.src = '../gallery-chiese/thumbs/' + it.thumb;
+            img.alt = '';
+            img.loading = 'lazy';
+            b.appendChild(img);
+        }
+        const labelSpan = document.createElement('span');
+        labelSpan.textContent = it.label;
+        b.appendChild(labelSpan);
+        b.addEventListener('click', () => sendTopicRequest(it.topic, it.label, groupName));
+        return b;
+    }
+
+    if (currentGroupName) {
+        const backBtn = document.createElement('button');
+        backBtn.className = 'topic-btn topic-back-btn';
+        backBtn.textContent = '‹ Torna al menu';
+        backBtn.addEventListener('click', () => renderMenuState(null));
+        wrap.appendChild(backBtn);
+
+        const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
+        if (groupEntry) {
+            groupEntry.items.forEach(it => {
+                if (exploredTopics.has(it.topic)) return;
+                wrap.appendChild(makeTopicButton(it, currentGroupName));
+            });
+        }
+    } else {
+        fullTopicMenu.forEach(entry => {
+            if (entry.group) {
+                if (exploredGroups.has(entry.group)) return;
+                const groupBtn = document.createElement('button');
+                groupBtn.className = 'topic-btn topic-group-btn';
+                groupBtn.textContent = entry.group + ' ▸';
+                groupBtn.addEventListener('click', () => renderMenuState(entry.group));
+                wrap.appendChild(groupBtn);
+            } else {
+                if (exploredTopics.has(entry.topic)) return;
+                wrap.appendChild(makeTopicButton(entry, null));
+            }
+        });
+    }
+
+    messagesBox.appendChild(wrap);
+}
+
                   });
               }
           } else {
