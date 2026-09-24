@@ -1314,11 +1314,21 @@ window.silktideConsentManager.init({
               appendChatMessage(data.reply, 'castellana', data.link);
               if (data.speak || voiceEnabled) speakText(data.reply);
               lastTopic = data.topic || topicId;
+
+              // Segna SEMPRE la singola opera come vista (serve sia dentro
+              // il gruppo sia per capire quando il gruppo e' esaurito).
+              exploredTopics.add(topicId);
+
+              // Il pulsante del gruppo sparisce dal menu principale SOLO
+              // quando tutte le sue voci sono state esplorate, non alla prima.
               if (groupName) {
-                  exploredGroups.add(groupName);
-              } else {
-                  exploredTopics.add(topicId);
+                  const groupEntry = fullTopicMenu.find(e => e.group === groupName);
+                  const tutteViste = groupEntry && groupEntry.items.every(it => exploredTopics.has(it.topic));
+                  if (tutteViste) {
+                      exploredGroups.add(groupName);
+                  }
               }
+
               renderMenuState(groupName);
           } catch (err) {
               console.error('Errore richiesta topic:', err);
