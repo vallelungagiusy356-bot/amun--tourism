@@ -219,8 +219,8 @@ window.silktideConsentManager.init({
 
         /* Pulsante "‹ Torna al menu" nella vista di un gruppo */
         .topic-back-btn {
-            border-style: dashed;
-            color: var(--terracotta);
+            opacity: 0.85;
+            font-style: italic;
         }
 
         .topic-back-btn:hover {
@@ -889,7 +889,7 @@ window.silktideConsentManager.init({
                 btn.className = 'chat-link-btn';
                 btn.textContent = getLinkLabel(link);
                 btn.onclick = () => {
-                    if (link.includes('mappa.html') || link.includes('/mobile/')) {
+                    if (link.includes('mappa.html')) {
                         openMapOverlay(link);
                     } else {
                         window.location.href = link;
@@ -906,9 +906,7 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // INDICATORE "STA SCRIVENDO" — puntini animati mostrati prima
-        // di ogni risposta della Castellana (benvenuto, riapertura chat,
-        // topic o testo libero)
+        // INDICATORE "STA SCRIVENDO"
         // ============================================================
         function showTypingIndicator() {
             const messagesBox = document.getElementById('chat-messages-box');
@@ -1083,11 +1081,30 @@ window.silktideConsentManager.init({
             es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →"
         };
 
+        const MOBILE_ORARI_FILES = new Set([
+            'sangiorgio.html', 'santamaria.html', 'sanbenedetto.html',
+            'annunziata.html', 'cappuccini.html', 'castello_di_caccamo.html'
+        ]);
+
+        const MOBILE_PAGE_LABELS = {
+            it: { 'mangiare.html': "Vai a Mangiare →", 'dormire.html': "Vai a Dormire →", 'trasporti.html': "Vai ai Trasporti →" },
+            en: { 'mangiare.html': "Go to Eat →", 'dormire.html': "Go to Sleep →", 'trasporti.html': "Go to Transport →" },
+            fr: { 'mangiare.html': "Aller à Manger →", 'dormire.html': "Aller à Dormir →", 'trasporti.html': "Aller aux Transports →" },
+            es: { 'mangiare.html': "Ir a Comer →", 'dormire.html': "Ir a Dormir →", 'trasporti.html': "Ir a Transportes →" },
+            de: { 'mangiare.html': "Zu Essen →", 'dormire.html': "Zu Schlafen →", 'trasporti.html': "Zu Transport →" }
+        };
+
         function getLinkLabel(link) {
             if (link && link.includes('mappa.html')) {
                 return MAP_LABEL_BY_LANG[currentLang] || MAP_LABEL_BY_LANG.it;
             }
             if (link && link.includes('/mobile/')) {
+                const fileName = link.split('/').pop();
+                if (MOBILE_ORARI_FILES.has(fileName)) {
+                    return ORARI_LABEL_BY_LANG[currentLang] || ORARI_LABEL_BY_LANG.it;
+                }
+                const paginaTable = MOBILE_PAGE_LABELS[currentLang] || MOBILE_PAGE_LABELS.it;
+                if (paginaTable[fileName]) return paginaTable[fileName];
                 return ORARI_LABEL_BY_LANG[currentLang] || ORARI_LABEL_BY_LANG.it;
             }
             const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
