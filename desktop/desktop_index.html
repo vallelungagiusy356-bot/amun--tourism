@@ -1030,7 +1030,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
                 if (groupEntry) {
                     groupEntry.items.forEach(it => {
-                        if (usedTopics.has(it.topic)) return;
+                        if (usedTopics.has(it.id)) return;
                         const b = document.createElement('button');
                         b.className = 'topic-btn';
                         b.textContent = it.label;
@@ -1061,8 +1061,17 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             messagesBox.appendChild(wrap);
         }
 
+        // ============================================================
+        // NUOVO — segnale per "sono arrivato dal tour enogastronomico":
+        // lasciato prima di cambiare pagina, letto da cibo_eventi.html
+        // appena apre la chat, per mostrare il saluto stagionale vero
+        // invece del solito benvenuto fisso.
+        // ============================================================
+        const TOUR_ENO_FLAG_KEY = "amuni_tour_eno_entry";
+        const GRUPPO_TOUR_ENO = "Hai voglia di un tour enogastronomico?";
+
         function selectPageTopic(item, groupName) {
-            usedTopics.add(item.topic);
+            usedTopics.add(item.id);
             castellanaZitta();
             appendChatMessage(item.label, 'user');
             showTypingIndicator();
@@ -1073,6 +1082,13 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 appendChatMessage(knowledge.followUp, 'castellana');
                 if (voiceEnabled) speakText(knowledge.followUp);
                 setTimeout(() => {
+                    // NUOVO — solo per "Cibo ed Eventi" scelto dal gruppo
+                    // del tour enogastronomico: lasciamo il segnale prima
+                    // di partire, cosi' la pagina di destinazione sa
+                    // da dove arriva il turista.
+                    if (item.id === "cibo_eventi" && groupName === GRUPPO_TOUR_ENO) {
+                        sessionStorage.setItem(TOUR_ENO_FLAG_KEY, "1");
+                    }
                     window.location.href = item.page;
                 }, 1600);
             }, 300);
@@ -1080,7 +1096,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             // Se tutte le voci di questo gruppo sono state scelte, il
             // gruppo si considera esaurito e non ricompare più.
             const groupEntry = fullTopicMenu.find(e => e.group === groupName);
-            if (groupEntry && groupEntry.items.every(it => usedTopics.has(it.topic))) {
+            if (groupEntry && groupEntry.items.every(it => usedTopics.has(it.id))) {
                 exploredGroups.add(groupName);
             }
         }
@@ -1383,4 +1399,3 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
     </script>
 </body>
 </html>
-
