@@ -483,8 +483,6 @@ Come funziona la chat? Scegli qui sotto cosa ti va di fare, e ti guido verso le 
                     {
                         group: "Hai voglia di un tour enogastronomico?",
                         items: [
-                            { id: "castello", label: "🏰 Castello", page: "castello.html" },
-                            { id: "chiese", label: "⛪ Chiese", page: "chiese-arte.html" },
                             { id: "cibo_eventi", label: "🍷 Cibo ed Eventi", page: "cibo_eventi.html" }
                         ]
                     },
@@ -524,8 +522,6 @@ How does the chat work? Choose below what you feel like doing, and I'll guide yo
                     {
                         group: "Fancy a food & wine tour?",
                         items: [
-                            { id: "castello", label: "🏰 Castle", page: "castello.html" },
-                            { id: "chiese", label: "⛪ Churches", page: "chiese-arte.html" },
                             { id: "cibo_eventi", label: "🍷 Food & Events", page: "cibo_eventi.html" }
                         ]
                     },
@@ -565,8 +561,6 @@ Comment fonctionne le chat ? Choisis ci-dessous ce que tu as envie de faire, je 
                     {
                         group: "Envie d'une visite gastronomique?",
                         items: [
-                            { id: "castello", label: "🏰 Château", page: "castello.html" },
-                            { id: "chiese", label: "⛪ Églises", page: "chiese-arte.html" },
                             { id: "cibo_eventi", label: "🍷 Cuisine & Fêtes", page: "cibo_eventi.html" }
                         ]
                     },
@@ -606,8 +600,6 @@ Déjame contarte los orígenes del pueblo: Caccamo se alza sobre un espolón roc
                     {
                         group: "¿Te apetece un tour gastronómico?",
                         items: [
-                            { id: "castello", label: "🏰 Castillo", page: "castello.html" },
-                            { id: "chiese", label: "⛪ Iglesias", page: "chiese-arte.html" },
                             { id: "cibo_eventi", label: "🍷 Comida y Fiestas", page: "cibo_eventi.html" }
                         ]
                     },
@@ -647,8 +639,6 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                     {
                         group: "Lust auf eine Genusstour?",
                         items: [
-                            { id: "castello", label: "🏰 Burg", page: "castello.html" },
-                            { id: "chiese", label: "⛪ Kirchen", page: "chiese-arte.html" },
                             { id: "cibo_eventi", label: "🍷 Essen & Feste", page: "cibo_eventi.html" }
                         ]
                     },
@@ -1046,8 +1036,17 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 if (exploredGroups.has(entry.group)) return;
                 const groupBtn = document.createElement('button');
                 groupBtn.className = 'topic-btn topic-group-btn';
-                groupBtn.textContent = entry.group + ' ▸';
-                groupBtn.addEventListener('click', () => renderMenuState(entry.group));
+                if (entry.items.length === 1) {
+                    // NUOVO — un gruppo con una sola voce (es. il tour
+                    // enogastronomico, che porta solo a Cibo ed Eventi)
+                    // non ha bisogno di un sottomenu intermedio: il
+                    // click sul gruppo sceglie direttamente quella voce.
+                    groupBtn.textContent = entry.group;
+                    groupBtn.addEventListener('click', () => selectPageTopic(entry.items[0], entry.group));
+                } else {
+                    groupBtn.textContent = entry.group + ' ▸';
+                    groupBtn.addEventListener('click', () => renderMenuState(entry.group));
+                }
                 wrap.appendChild(groupBtn);
             });
 
