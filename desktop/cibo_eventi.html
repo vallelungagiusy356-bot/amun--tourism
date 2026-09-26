@@ -490,17 +490,83 @@ window.silktideConsentManager.init({
 
         let hasShownMenu = false;
 
-        openBtn.addEventListener("click", () => {
-            chat.classList.add("active");
-            updatePremiumStatusDisplay();
-            if (!hasShownMenu) {
+        // ============================================================
+        // NUOVO — segnale "vengo dal tour enogastronomico", lasciato
+        // dalla Home (sessionStorage) prima di navigare qui. Se c'e',
+        // al primo apertura della chat chiediamo al backend il saluto
+        // stagionale vero (topic "cibo.tour_enogastronomico") invece
+        // del solito menu di anteprima fisso.
+        // ============================================================
+        const TOUR_ENO_FLAG_KEY = "amuni_tour_eno_entry";
+
+        async function renderTourEnoWelcome() {
+            const code = getStoredAccessCode();
+            if (!code) {
+                // Senza Premium attivo non possiamo interrogare il
+                // topic speciale: ripieghiamo sul menu di anteprima
+                // normale, come se il segnale non ci fosse.
                 showTypingIndicator();
                 setTimeout(() => {
                     hideTypingIndicator();
                     renderTopicMenu(CIBO_EVENTI_TOPICS[currentLang] || CIBO_EVENTI_TOPICS.it);
-                    hasShownMenu = true;
                     loadTopicMenu();
                 }, 900);
+                return;
+            }
+
+            showTypingIndicator();
+            try {
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: "",
+                        page: getPageSlug(),
+                        lang: currentLang,
+                        access_code: code,
+                        topic: "cibo.tour_enogastronomico"
+                    })
+                });
+                if (!res.ok) throw new Error('Risposta non valida dal server');
+                const data = await res.json();
+                hideTypingIndicator();
+                appendChatMessage(data.reply, 'castellana', data.link);
+                if (data.speak || voiceEnabled) speakText(data.reply);
+                if (data.topic) lastTopic = data.topic;
+
+                // Le voci stagionali (es. Pane a Cena, Pecorelle) arrivano
+                // come elenco semplice, non raggruppato: le mettiamo prima,
+                // seguite dai gruppi normali della pagina per chi vuole
+                // continuare a esplorare.
+                const menuStagionale = (data.menu && data.menu.length) ? data.menu : [];
+                fullTopicMenu = menuStagionale.concat(CIBO_EVENTI_TOPICS[currentLang] || CIBO_EVENTI_TOPICS.it);
+                renderMenuState(null);
+                menuLoadedForCode = code;
+            } catch (err) {
+                console.error('Errore saluto tour enogastronomico:', err);
+                hideTypingIndicator();
+                renderTopicMenu(CIBO_EVENTI_TOPICS[currentLang] || CIBO_EVENTI_TOPICS.it);
+                loadTopicMenu();
+            }
+        }
+
+        openBtn.addEventListener("click", () => {
+            chat.classList.add("active");
+            updatePremiumStatusDisplay();
+            if (!hasShownMenu) {
+                hasShownMenu = true;
+                const vieneDalTourEno = sessionStorage.getItem(TOUR_ENO_FLAG_KEY) === "1";
+                sessionStorage.removeItem(TOUR_ENO_FLAG_KEY);
+                if (vieneDalTourEno) {
+                    renderTourEnoWelcome();
+                } else {
+                    showTypingIndicator();
+                    setTimeout(() => {
+                        hideTypingIndicator();
+                        renderTopicMenu(CIBO_EVENTI_TOPICS[currentLang] || CIBO_EVENTI_TOPICS.it);
+                        loadTopicMenu();
+                    }, 900);
+                }
             } else {
                 showTypingIndicator();
                 setTimeout(() => {
