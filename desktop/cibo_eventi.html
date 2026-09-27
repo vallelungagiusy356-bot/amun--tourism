@@ -491,20 +491,14 @@ window.silktideConsentManager.init({
         let hasShownMenu = false;
 
         // ============================================================
-        // NUOVO — segnale "vengo dal tour enogastronomico", lasciato
-        // dalla Home (sessionStorage) prima di navigare qui. Se c'e',
-        // al primo apertura della chat chiediamo al backend il saluto
-        // stagionale vero (topic "cibo.tour_enogastronomico") invece
-        // del solito menu di anteprima fisso.
+        // Segnale "vengo dal tour enogastronomico", lasciato dalla
+        // Home (sessionStorage) prima di navigare qui.
         // ============================================================
         const TOUR_ENO_FLAG_KEY = "amuni_tour_eno_entry";
 
         async function renderTourEnoWelcome() {
             const code = getStoredAccessCode();
             if (!code) {
-                // Senza Premium attivo non possiamo interrogare il
-                // topic speciale: ripieghiamo sul menu di anteprima
-                // normale, come se il segnale non ci fosse.
                 showTypingIndicator();
                 setTimeout(() => {
                     hideTypingIndicator();
@@ -534,10 +528,6 @@ window.silktideConsentManager.init({
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 if (data.topic) lastTopic = data.topic;
 
-                // Le voci stagionali (es. Pane a Cena, Pecorelle) arrivano
-                // come elenco semplice, non raggruppato: le mettiamo prima,
-                // seguite dai gruppi normali della pagina per chi vuole
-                // continuare a esplorare.
                 const menuStagionale = (data.menu && data.menu.length) ? data.menu : [];
                 fullTopicMenu = menuStagionale.concat(CIBO_EVENTI_TOPICS[currentLang] || CIBO_EVENTI_TOPICS.it);
                 renderMenuState(null);
@@ -661,18 +651,6 @@ window.silktideConsentManager.init({
 
         // ============================================================
         // TTS AVANZATO — La Castellana parla
-        //
-        // Due correzioni rispetto a prima:
-        //
-        // 1. VOCE SEMPRE FEMMINILE, IN OGNI LINGUA: prima la voce
-        //    veniva scelta filtrando SOLO voci italiane, sempre,
-        //    indipendentemente dalla lingua selezionata. Ora si sceglie
-        //    di nuovo ogni volta, nella lingua giusta.
-        //
-        // 2. VELOCITÀ DI AVVIO: chiamare cancel() e speak() nello
-        //    stesso istante è un bug noto dei browser (Chrome/Edge).
-        //    Ora c'è una piccola pausa tra i due comandi, e le voci
-        //    vengono "svegliate" subito al caricamento della pagina.
         // ============================================================
         const VOICE_PREF_KEY = "amuni_voice_enabled";
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
@@ -710,9 +688,6 @@ window.silktideConsentManager.init({
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
 
-            // Cerca automaticamente indizi di voce neurale/di qualità superiore,
-            // utile per varianti non presenti nella lista fissa sopra
-            // (es. voci "Enhanced"/"Premium" scaricate su iOS, o "Online (Natural)" di Edge)
             const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
             const vociDiQualita = stessaLingua.filter(v =>
                 INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -725,13 +700,7 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
-        // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
-        // Servono a due cose:
-        // 1. NON devono mai comparire come testo letto o mostrato
-        //    all'utente (stripEmotionTags li rimuove per la visualizzazione)
-        // 2. Modulano rate/pitch della sintesi vocale SOLO per la frase
-        //    che racchiudono (parseEmotionalSegments + speakText)
+        // TAG EMOTIVI DELLA KNOWLEDGE BASE
         // ============================================================
         const EMOTION_PRESETS = {
             energico:    { rate: 1.05, pitch: 1.08 },
@@ -957,14 +926,18 @@ window.silktideConsentManager.init({
             es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →"
         };
 
-        // Messaggio quando gli argomenti disponibili in questa pagina sono
-        // finiti tutti — stesso testo usato in tutte le pagine del sito.
         const CLOSING_MESSAGES = {
             it: "E da qui è tutto, viandante! Spero di esserti stata utile. Se vuoi avere altre informazioni, vieni a trovarmi nelle altre pagine!",
             en: "That's all from here, traveler! I hope I was useful. For more information, come find me on the other pages!",
             fr: "C'est tout pour ici, voyageur ! J'espère t'avoir été utile. Pour en savoir plus, retrouve-moi sur les autres pages !",
             es: "¡Eso es todo por aquí, viajero! Espero haberte sido útil. Para más información, ¡búscame en las otras páginas!",
             de: "Das war's von hier, Reisender! Ich hoffe, ich konnte dir helfen. Für mehr Informationen findest du mich auf den anderen Seiten!"
+        };
+
+        // NUOVO — testo del pulsante per uscire dalle opzioni una tantum
+        const BACK_TO_MENU_LABELS = {
+            it: "‹ Torna al menu", en: "‹ Back to menu", fr: "‹ Retour au menu",
+            es: "‹ Volver al menú", de: "‹ Zurück zum Menü"
         };
 
         function getLinkLabel(link) {
@@ -995,11 +968,7 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // RENDERING MESSAGGI CHAT — una sola scatola per messaggio
-        // (.message / .message.user-msg), come castello.html e
-        // chiese-arte.html. Prima c'era una .message-bubble interna
-        // con un secondo sfondo scritto a mano: scatola dentro la
-        // scatola, con doppio bordo/sfondo indesiderato.
+        // RENDERING MESSAGGI CHAT
         // ============================================================
         function appendChatMessage(text, sender, link) {
             const messagesBox = document.querySelector('.chat-messages');
@@ -1027,12 +996,6 @@ window.silktideConsentManager.init({
                 btn.className = 'chat-link-btn';
                 btn.textContent = getLinkLabel(link);
                 btn.addEventListener('click', () => {
-                    // "/mobile/" da solo indica una pagina pensata per la
-                    // finestra sovrapposta (mappa, orari) — ma mangiare.html
-                    // è una pagina di contenuto vera e propria (ricette),
-                    // va quindi esclusa ed aperta come pagina intera,
-                    // altrimenti finiva schiacciata nel piccolo overlay e
-                    // sembrava "non funzionare".
                     if (link.includes('mappa.html') || (link.includes('/mobile/') && !link.includes('mangiare.html'))) {
                         openMapOverlay(link);
                     } else {
@@ -1050,9 +1013,7 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // INDICATORE "STA SCRIVENDO" — puntini animati mostrati prima
-        // di ogni risposta della Castellana (apertura chat, topic o
-        // testo libero)
+        // INDICATORE "STA SCRIVENDO"
         // ============================================================
         function showTypingIndicator() {
             const messagesBox = document.querySelector('.chat-messages');
@@ -1072,10 +1033,7 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // MENU A PULSANTI — versione con contesto persistente: dopo
-        // ogni risposta, ricompaiono le altre voci dello stesso evento
-        // appena trattato, e sotto quelle il resto degli eventi ancora
-        // da esplorare (tranne quello appena affrontato).
+        // MENU A PULSANTI — versione con contesto persistente
         // ============================================================
         let fullTopicMenu = [];
         let exploredGroups = new Set();
@@ -1096,7 +1054,6 @@ window.silktideConsentManager.init({
             wrap.className = 'topic-menu topic-menu-state';
 
             if (currentGroupName) {
-                // Vista di un gruppo: SOLO le sue voci + pulsante per tornare al menu generale
                 const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
                 if (groupEntry) {
                     groupEntry.items.forEach(it => {
@@ -1114,11 +1071,10 @@ window.silktideConsentManager.init({
 
                 const backBtn = document.createElement('button');
                 backBtn.className = 'topic-btn topic-back-btn';
-                backBtn.textContent = '‹ Torna al menu';
+                backBtn.textContent = BACK_TO_MENU_LABELS[currentLang] || BACK_TO_MENU_LABELS.it;
                 backBtn.addEventListener('click', () => renderMenuState(null));
                 wrap.appendChild(backBtn);
             } else {
-                // Nessun gruppo selezionato: SOLO il menu generale
                 fullTopicMenu.forEach(entry => {
                     if (entry.group) {
                         if (exploredGroups.has(entry.group)) return;
@@ -1150,6 +1106,52 @@ window.silktideConsentManager.init({
             }
         }
 
+        // ============================================================
+        // NUOVO — OPZIONI "UNA TANTUM" INVIATE DAL BACKEND
+        //
+        // A volte la Castellana risponde con una domanda e dei pulsanti
+        // da scegliere (es. "in che zona del paese ti trovi?" + le zone).
+        // Il backend li manda nel campo "menu" della risposta, come
+        // semplice elenco di voci {topic, label}. Prima la pagina li
+        // ignorava: ora li mostra al posto del menu normale, per quella
+        // sola scelta. Dopo la scelta (o toccando "Torna al menu") il
+        // menu normale della pagina ricompare da solo.
+        //
+        // I menu "a gruppi" (quelli con dentro "group") restano gestiti
+        // come prima: qui prendiamo solo gli elenchi semplici.
+        // ============================================================
+        function isOneOffOptionList(menu) {
+            return Array.isArray(menu) && menu.length > 0 &&
+                   menu.every(voce => voce && voce.topic && voce.label && !voce.group);
+        }
+
+        function renderReplyOptions(options, returnGroup) {
+            const messagesBox = document.querySelector('.chat-messages');
+            const old = messagesBox.querySelector('.topic-menu-state');
+            if (old) old.remove();
+
+            const wrap = document.createElement('div');
+            wrap.className = 'topic-menu topic-menu-state';
+
+            options.forEach(opt => {
+                const b = document.createElement('button');
+                b.className = 'topic-btn';
+                b.textContent = opt.label;
+                b.addEventListener('click', () => {
+                    sendTopicRequest(opt.topic, opt.label, returnGroup);
+                });
+                wrap.appendChild(b);
+            });
+
+            const backBtn = document.createElement('button');
+            backBtn.className = 'topic-btn topic-back-btn';
+            backBtn.textContent = BACK_TO_MENU_LABELS[currentLang] || BACK_TO_MENU_LABELS.it;
+            backBtn.addEventListener('click', () => renderMenuState(returnGroup));
+            wrap.appendChild(backBtn);
+
+            messagesBox.appendChild(wrap);
+        }
+
         async function sendTopicRequest(topicId, label, groupName) {
             appendChatMessage(label, 'user');
 
@@ -1177,8 +1179,16 @@ window.silktideConsentManager.init({
                 appendChatMessage(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 lastTopic = data.topic || topicId;
-                if (groupName) exploredGroups.add(groupName);
-                renderMenuState(groupName);
+
+                // NUOVO — se la risposta porta con sé delle opzioni da
+                // scegliere (es. le zone), mostriamo quelle; altrimenti
+                // il menu normale, come prima.
+                if (isOneOffOptionList(data.menu)) {
+                    renderReplyOptions(data.menu, groupName);
+                } else {
+                    if (groupName) exploredGroups.add(groupName);
+                    renderMenuState(groupName);
+                }
             } catch (err) {
                 console.error('Errore richiesta topic:', err);
                 hideTypingIndicator();
@@ -1336,6 +1346,13 @@ window.silktideConsentManager.init({
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 if (data.topic) lastTopic = data.topic;
 
+                // NUOVO — anche a testo libero la Castellana può rispondere
+                // con dei pulsanti da scegliere (es. dopo "dove compro la
+                // carne?" arrivano le zone): li mostriamo sotto la risposta.
+                if (isOneOffOptionList(data.menu)) {
+                    renderReplyOptions(data.menu, null);
+                }
+
             } catch (err) {
                 console.error('Errore chat:', err);
                 hideTypingIndicator();
@@ -1364,8 +1381,7 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
-        // BOTTONE PREMIUM — "Ho già un codice" apre la chat e invita
-        // a scrivere il codice; "Acquista l'accesso" avvia Stripe.
+        // BOTTONE PREMIUM
         // ============================================================
         document.getElementById('btn-premium-code').addEventListener('click', () => {
           chat.classList.add('active');
