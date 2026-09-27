@@ -934,6 +934,12 @@ window.silktideConsentManager.init({
             de: "Das war's von hier, Reisender! Ich hoffe, ich konnte dir helfen. Für mehr Informationen findest du mich auf den anderen Seiten!"
         };
 
+        // NUOVO — pulsante verso la pagina Eventi (risposta "cosa fare stasera")
+        const EVENTI_LABEL_BY_LANG = {
+            it: "Vai agli Eventi →", en: "Go to Events →", fr: "Aller aux Événements →",
+            es: "Ir a Eventos →", de: "Zu den Veranstaltungen →"
+        };
+
         // NUOVO — testo del pulsante per uscire dalle opzioni una tantum
         const BACK_TO_MENU_LABELS = {
             it: "‹ Torna al menu", en: "‹ Back to menu", fr: "‹ Retour au menu",
@@ -941,6 +947,9 @@ window.silktideConsentManager.init({
         };
 
         function getLinkLabel(link) {
+            if (link && link.includes('eventi.html') && link.includes('/mobile/')) {
+                return EVENTI_LABEL_BY_LANG[currentLang] || EVENTI_LABEL_BY_LANG.it;
+            }
             if (link && link.includes('mangiare.html')) {
                 return MANGIARE_LABEL_BY_LANG[currentLang] || MANGIARE_LABEL_BY_LANG.it;
             }
@@ -968,6 +977,38 @@ window.silktideConsentManager.init({
         }
 
         // ============================================================
+        // NUOVO — LINK CLICCABILI DENTRO IL TESTO
+        // Prima un indirizzo scritto dentro la risposta (es. Balarm)
+        // restava testo semplice. Ora diventa un link vero, che si
+        // apre in una nuova scheda. Il resto del testo resta testo
+        // semplice, esattamente come prima (nessun rischio di codice
+        // estraneo inserito nella pagina).
+        // ============================================================
+        const URL_NEL_TESTO = /(https?:\/\/[^\s]+[^\s.,;:!?)])/g;
+
+        function riempiTestoConLink(contenitore, testo) {
+            let ultimo = 0;
+            let match;
+            URL_NEL_TESTO.lastIndex = 0;
+            while ((match = URL_NEL_TESTO.exec(testo)) !== null) {
+                if (match.index > ultimo) {
+                    contenitore.appendChild(document.createTextNode(testo.slice(ultimo, match.index)));
+                }
+                const a = document.createElement('a');
+                a.href = match[0];
+                a.textContent = match[0];
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.style.wordBreak = 'break-all';
+                contenitore.appendChild(a);
+                ultimo = URL_NEL_TESTO.lastIndex;
+            }
+            if (ultimo < testo.length) {
+                contenitore.appendChild(document.createTextNode(testo.slice(ultimo)));
+            }
+        }
+
+        // ============================================================
         // RENDERING MESSAGGI CHAT
         // ============================================================
         function appendChatMessage(text, sender, link) {
@@ -977,7 +1018,7 @@ window.silktideConsentManager.init({
             msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
 
             const textSpan = document.createElement('span');
-            textSpan.textContent = stripEmotionTags(text);
+            riempiTestoConLink(textSpan, stripEmotionTags(text));
             msgWrap.appendChild(textSpan);
 
             if (sender !== 'user') {
@@ -996,7 +1037,10 @@ window.silktideConsentManager.init({
                 btn.className = 'chat-link-btn';
                 btn.textContent = getLinkLabel(link);
                 btn.addEventListener('click', () => {
-                    if (link.includes('mappa.html') || (link.includes('/mobile/') && !link.includes('mangiare.html'))) {
+                    // mangiare.html ed eventi.html sono pagine vere e proprie:
+                    // si aprono a pagina intera, non nella finestrella sovrapposta
+                    const paginaIntera = link.includes('mangiare.html') || link.includes('eventi.html');
+                    if (link.includes('mappa.html') || (link.includes('/mobile/') && !paginaIntera)) {
                         openMapOverlay(link);
                     } else {
                         window.location.href = link;
@@ -1351,6 +1395,11 @@ window.silktideConsentManager.init({
                 // carne?" arrivano le zone): li mostriamo sotto la risposta.
                 if (isOneOffOptionList(data.menu)) {
                     renderReplyOptions(data.menu, null);
+                } else if (data.menu && data.menu.length) {
+                    // NUOVO — "ecco le opzioni che ho su questa pagina":
+                    // prima non compariva nulla. Ora ripresentiamo sotto
+                    // la risposta il menu della pagina.
+                    renderMenuState(null);
                 }
 
             } catch (err) {
