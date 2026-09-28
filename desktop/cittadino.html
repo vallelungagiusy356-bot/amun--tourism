@@ -156,24 +156,86 @@ window.silktideConsentManager.init({
             50% { transform: scale(1.18); }
         }
 
-        /* ===== BOTTONE PREMIUM — stesso riquadro delle altre pagine
-           (prima su questa pagina mancava del tutto) ===== */
+        /* ===== BOTTONE PREMIUM — stesso riquadro delle altre pagine.
+           Le misure dei testi sono scritte in modo esplicito (con
+           !important) perché questa pagina, a differenza delle altre,
+           ha regole per i paragrafi che li ingrandivano a dismisura:
+           era il riquadro "sproporzionato". ===== */
         .castellana-premium-cta {
-          max-width: 420px;
-          margin: 32px auto 120px auto;
-          padding: 20px;
+          max-width: 400px;
+          margin: 28px auto 120px auto;
+          padding: 18px 20px;
           background: #fdf6e8;
           border-radius: 14px;
           text-align: center;
           box-shadow: 0 4px 16px rgba(0,0,0,0.15);
           font-family: 'Cormorant Garamond', serif;
           position: relative;
+          box-sizing: border-box;
         }
 
-        .premium-cta-label {
-          margin: 0 0 14px;
-          font-weight: 600;
+        .castellana-premium-cta p,
+        .castellana-premium-cta div,
+        .castellana-premium-cta small {
+          font-size: 0.9rem !important;
+          line-height: 1.4 !important;
+          margin: 0 0 8px !important;
           color: #5a1a20;
+          font-family: 'Cormorant Garamond', serif;
+        }
+
+        .castellana-premium-cta .premium-cta-label {
+          font-size: 1.05rem !important;
+          font-weight: 600;
+          margin: 0 0 12px !important;
+          color: #5a1a20;
+        }
+
+        /* ===== VIDEO "L'ESTATE A CACCAMO" ===== */
+        .estate-video-section {
+          max-width: 760px;
+          margin: 34px auto 10px;
+          padding: 20px 20px 22px;
+          box-sizing: border-box;
+          text-align: center;
+          background: rgba(15, 25, 34, 0.82);
+          border: 1px solid rgba(184, 135, 59, 0.55);
+          border-radius: 6px;
+          box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35);
+          position: relative;
+        }
+
+        .estate-video-section h2 {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(1.35rem, 3.4vw, 1.8rem) !important;
+          color: #D4AF6A;
+          margin: 0 0 6px !important;
+        }
+
+        .estate-video-sub {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.05rem !important;
+          line-height: 1.45 !important;
+          color: #F3ECDC;
+          margin: 0 0 14px !important;
+        }
+
+        .estate-video-frame {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          background: #000;
+          border-radius: 4px;
+          overflow: hidden;
+        }
+
+        .estate-video-frame video {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          background: #000;
         }
 
         .premium-btn {
@@ -263,6 +325,24 @@ window.silktideConsentManager.init({
             </div>
         </section>
     </main>
+
+    <!-- ============================================================
+         VIDEO "L'ESTATE A CACCAMO" (1 min e 30) — riempie lo spazio
+         sotto le quattro card.
+         Il file va caricato nella cartella desktop/video/ con il nome
+         estate_caccamo.mp4 (oppure cambia il nome qui sotto).
+         Finché il file non c'è, la sezione resta nascosta: il turista
+         non vede mai un lettore rotto.
+         ============================================================ -->
+    <section class="estate-video-section" id="video-estate" style="display:none;">
+        <h2 data-local-i18n="video_title">L'estate a Caccamo</h2>
+        <p class="estate-video-sub" data-local-i18n="video_sub">Un minuto e mezzo tra gli eventi che abbiamo vissuto quest'estate: musica, tradizioni e feste nel borgo.</p>
+        <div class="estate-video-frame">
+            <video id="estate-video" controls playsinline preload="metadata">
+                <source src="video/estate_caccamo.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
 
     <!-- ===== BOTTONE PREMIUM ===== -->
     <div class="castellana-premium-cta">
@@ -373,6 +453,44 @@ window.silktideConsentManager.init({
             });
 
             let currentLang = localStorage.getItem("lang") || "it";
+
+            // ============================================================
+            // VIDEO "L'ESTATE A CACCAMO" — testi nelle 5 lingue e
+            // visibilità: la sezione compare solo se il file video esiste.
+            // ============================================================
+            const TESTI_VIDEO = {
+                it: { video_title: "L'estate a Caccamo", video_sub: "Un minuto e mezzo tra gli eventi che abbiamo vissuto quest'estate: musica, tradizioni e feste nel borgo." },
+                en: { video_title: "Summer in Caccamo", video_sub: "A minute and a half of the events we lived this summer: music, traditions and festivals in the village." },
+                fr: { video_title: "L'été à Caccamo", video_sub: "Une minute et demie au cœur des événements de cet été : musique, traditions et fêtes dans le village." },
+                es: { video_title: "El verano en Caccamo", video_sub: "Un minuto y medio con los eventos que vivimos este verano: música, tradiciones y fiestas en el pueblo." },
+                de: { video_title: "Sommer in Caccamo", video_sub: "Anderthalb Minuten mit den Veranstaltungen dieses Sommers: Musik, Traditionen und Feste im Dorf." }
+            };
+
+            function applyLocalTexts() {
+                const set = TESTI_VIDEO[currentLang] || TESTI_VIDEO.it;
+                document.querySelectorAll('[data-local-i18n]').forEach(el => {
+                    const testo = set[el.getAttribute('data-local-i18n')] || TESTI_VIDEO.it[el.getAttribute('data-local-i18n')];
+                    if (testo) el.textContent = testo;
+                });
+            }
+
+            const sezioneVideo = document.getElementById('video-estate');
+            const sorgenteVideo = document.querySelector('#estate-video source');
+            if (sezioneVideo && sorgenteVideo) {
+                // Controlliamo se il file esiste davvero prima di mostrare la sezione
+                fetch(sorgenteVideo.getAttribute('src'), { method: 'HEAD' })
+                    .then(r => {
+                        if (!r.ok) return;
+                        sezioneVideo.style.display = '';
+                        // Arrivati dal link "Rivivi l'estate" della pagina Eventi: scorri fino al video
+                        if (window.location.hash === '#video-estate') {
+                            sezioneVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    })
+                    .catch(() => { /* file assente: la sezione resta nascosta */ });
+            }
+            applyLocalTexts();
+
             // NUOVO — le traduzioni caricate, per usarle anche nei messaggi
             // della chat (prima l'attivazione del codice era solo in italiano)
             let langData = {};
@@ -400,6 +518,7 @@ window.silktideConsentManager.init({
                         document.querySelectorAll(".lang-switcher button").forEach(btn => {
                             btn.classList.toggle("active", btn.dataset.lang === lang);
                         });
+                        applyLocalTexts();
                     })
                     .catch(err => console.error("Errore lingua:", err));
                 localStorage.setItem("lang", lang);
