@@ -227,6 +227,140 @@ window.silktideConsentManager.init({
         }
 
         .facebook-group-btn:hover { opacity: 0.9; }
+
+        /* ===== RIQUADRO "PROSSIMO EVENTO" (Sagra della Salsiccia) ===== */
+        .sagra-highlight {
+            grid-column: 1 / -1;
+            flex: 1 1 100%;
+            width: 100%;
+            max-width: 1040px;
+            margin: 8px auto 30px;
+            box-sizing: border-box;
+            padding: 26px 28px 20px;
+            text-align: center;
+            color: #fff7e6;
+            background: linear-gradient(135deg, #7a1f2b 0%, #9C4C22 55%, #B8873B 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+        }
+        .sagra-badge {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: #3a2a10;
+            background: #f0d28a;
+            border-radius: 999px;
+            padding: 4px 14px;
+        }
+        .sagra-highlight h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+            margin: 12px 0 4px;
+            color: #fff;
+        }
+        .sagra-dates {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+            color: #f0d28a;
+            margin: 0 0 6px;
+        }
+        .sagra-countdown {
+            display: inline-block;
+            margin: 8px 0 12px;
+            padding: 5px 16px;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #3a2a10;
+            background: #fff7e6;
+        }
+        .sagra-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.18rem;
+            line-height: 1.55;
+            max-width: 760px;
+            margin: 0 auto 16px;
+        }
+        .sagra-days {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            text-align: left;
+        }
+        .sagra-day {
+            flex: 1 1 260px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.12);
+            border-left: 3px solid #f0d28a;
+        }
+        .sagra-day h3 {
+            margin: 0 0 4px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: #fff;
+        }
+        .sagra-day p {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            line-height: 1.45;
+        }
+        .sagra-program {
+            margin-top: 16px;
+            padding: 14px 18px;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.18);
+            border-radius: 3px;
+        }
+        .sagra-program h3 {
+            margin: 0 0 8px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: #f0d28a;
+        }
+        .sagra-program h4 {
+            margin: 10px 0 4px;
+            font-size: 0.95rem;
+            text-transform: capitalize;
+            color: #fff;
+        }
+        .sagra-program ul { margin: 0; padding-left: 18px; }
+        .sagra-program li {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.08rem;
+            line-height: 1.5;
+        }
+        .sagra-program-vuoto {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.08rem;
+        }
+        .sagra-highlight .ask-castellana {
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff7e6;
+            cursor: pointer;
+        }
+
+        /* Pulsante "Rivivi l'estate" nella scheda Estate sotto il Castello */
+        .estate-video-link {
+            display: inline-block;
+            margin: 6px 0 4px;
+            padding: 8px 16px;
+            border: 1px solid #B8873B;
+            border-radius: 2px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #1B4965;
+            background: #fff;
+        }
+        .estate-video-link:hover { background: #B8873B; color: #fff; }
     </style>
 </head>
 
@@ -264,6 +398,35 @@ window.silktideConsentManager.init({
         <span class="category-tag" data-i18n="pages.cibo_eventi_page.category">Cibo &amp; Eventi</span>
         <h1 data-i18n="pages.cibo_eventi_page.page_title">Il Calendario del Borgo</h1>
         <p class="subtitle" data-i18n="pages.cibo_eventi_page.subtitle">Quattro stagioni, quattro modi di vivere Caccamo</p>
+
+        <!-- ============================================================
+             PROSSIMO EVENTO — Sagra della Salsiccia.
+             Date e programma si aggiornano nel blocco "SAGRA" in fondo
+             alla pagina (cerca "CONFIGURAZIONE SAGRA"). Il riquadro
+             sparisce da solo il giorno dopo la fine dell'evento.
+             ============================================================ -->
+        <section class="sagra-highlight" id="sagra-highlight">
+            <span class="sagra-badge" data-local-i18n="sagra_badge">🔥 Prossimo evento</span>
+            <h2 data-local-i18n="sagra_title">Sagra della Salsiccia</h2>
+            <p class="sagra-dates" data-local-i18n="sagra_dates">Sabato 10 e domenica 11 ottobre 2026</p>
+            <div class="sagra-countdown" id="sagra-countdown"></div>
+            <p class="sagra-desc" data-local-i18n="sagra_desc">Uno dei fiori all'occhiello del borgo, con più di 40.000 visitatori all'anno: due giorni per assaggiare la nostra salsiccia tra musica, griglie e prodotti del territorio.</p>
+
+            <div class="sagra-days">
+                <div class="sagra-day">
+                    <h3 data-local-i18n="sagra_sat_title">Sabato 10 · Il mercato</h3>
+                    <p data-local-i18n="sagra_sat_text">Si parte con il mercato vicino a San Domenico e con i preparativi che portano alla sagra.</p>
+                </div>
+                <div class="sagra-day">
+                    <h3 data-local-i18n="sagra_sun_title">Domenica 11 · La sagra</h3>
+                    <p data-local-i18n="sagra_sun_text">Musica dal vivo, griglie con panino caldo e salsiccia, un bicchiere di vino e i prodotti di tanti produttori e artigiani della zona.</p>
+                </div>
+            </div>
+
+            <div class="sagra-program" id="sagra-program"></div>
+
+            <div class="ask-castellana" data-i18n="pages.cibo_eventi_page.cta">Chiedi alla Castellana di raccontartela</div>
+        </section>
 
         <section class="season-card s1">
             <div class="season-head">
@@ -315,16 +478,13 @@ window.silktideConsentManager.init({
 
         <section class="season-card s5">
             <div class="season-head">
-                <span class="period" data-i18n="pages.cibo_eventi_page.s5_period">Luglio — Settembre</span>
+                <span class="period" data-local-i18n="estate_period">Estate 2026 · Com'è andata</span>
                 <h2 data-i18n="pages.cibo_eventi_page.s5_title">Estate sotto il Castello</h2>
             </div>
             <div class="season-body">
-                <p data-i18n="pages.cibo_eventi_page.s5_body">Un'intera estate di musica, teatro, sport e tradizioni ai piedi del Castello: dalle Master Class di Canto Lirico alle serate di musica siciliana, dal Corteo Storico della Castellana ai concerti bandistici, fino alla Festa della Pizza e al Trofeo Nazionale di Kart. Un calendario ricco che accompagna il borgo da luglio a settembre.</p>
+                <p data-local-i18n="estate_body">Un'intera estate di musica, teatro, sport e tradizioni ai piedi del Castello: le Master Class di Canto Lirico, le serate di musica siciliana, il Corteo Storico della Castellana, i concerti bandistici, la Festa della Pizza e il Trofeo Nazionale di Kart. Il calendario è ormai alle spalle, ma le immagini restano.</p>
                 <div class="tag-row" data-i18n="pages.cibo_eventi_page.s5_tags">Master Class di Canto Lirico · Corteo Storico della Castellana · Concerti Bandistici · Festa della Pizza · Trofeo Nazionale Kart</div>
-                <button class="programma-toggle" id="programma-toggle-btn">
-                    📋 Vedi il programma completo
-                </button>
-                <div class="programma-lista" id="programma-lista"></div>
+                <a class="estate-video-link" href="cittadino.html#video-estate" data-local-i18n="estate_video_btn">🎬 Rivivi l'estate nel video</a>
                 <div class="ask-castellana" data-i18n="pages.cibo_eventi_page.cta">Chiedi alla Castellana di raccontartela</div>
             </div>
         </section>
@@ -619,6 +779,8 @@ window.silktideConsentManager.init({
                     document.querySelectorAll(".lang-switcher button").forEach(btn => {
                         btn.classList.toggle("active", btn.dataset.lang === lang);
                     });
+                    // NUOVO — testi della Sagra e dell'Estate (vedi script in fondo)
+                    if (typeof applyLocalTexts === 'function') applyLocalTexts();
                 })
                 .catch(err => console.error("Errore lingua:", err));
             localStorage.setItem("lang", lang);
@@ -960,7 +1122,8 @@ window.silktideConsentManager.init({
                 return ORARI_LABEL_BY_LANG[currentLang] || ORARI_LABEL_BY_LANG.it;
             }
             const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
-            return table[link] || PAGE_LINK_LABELS.it[link] || "Scopri di più →";
+            const pagina = (link || '').split('?')[0].split('#')[0];
+            return table[pagina] || PAGE_LINK_LABELS.it[pagina] || "Scopri di più →";
         }
 
         function openMapOverlay(url) {
@@ -1473,7 +1636,203 @@ window.silktideConsentManager.init({
         <a href="privacy.html" style="color: #D4AF6A;">Maggiori informazioni</a>
     </p>
     </footer>
-    <script src="lang/estate-castello.js"></script>
+
+    <script>
+    // ============================================================
+    // CONFIGURAZIONE SAGRA — l'unico punto da modificare
+    //
+    // 1) DATE: cambia "inizio" e "fine" (formato AAAA-MM-GG).
+    //    Il giorno dopo "fine" il riquadro sparisce da solo.
+    //
+    // 2) PROGRAMMA: quando viene reso noto, compilalo qui sotto,
+    //    un giorno alla volta. Esempio:
+    //
+    //    programma: [
+    //        { data: "2026-10-10", voci: ["ore 09:00 — Mercato in Piazza San Domenico"] },
+    //        { data: "2026-10-11", voci: ["ore 11:00 — Apertura stand", "ore 21:00 — Concerto"] }
+    //    ]
+    //
+    //    Il nome del giorno ("sabato 10 ottobre") si scrive da solo
+    //    nella lingua del turista. Finché "programma" è vuoto, la
+    //    pagina mostra "Il programma sarà pubblicato qui".
+    // ============================================================
+    const SAGRA = {
+        inizio: "2026-10-10",
+        fine: "2026-10-11",
+        programma: []
+    };
+
+    // ------------------------------------------------------------
+    // TESTI del riquadro Sagra e della scheda Estate, nelle 5 lingue.
+    // (Sono qui e non nei file lang/*.json così puoi cambiarli
+    // senza toccare le traduzioni del resto del sito.)
+    // ------------------------------------------------------------
+    const TESTI_LOCALI = {
+        it: {
+            sagra_badge: "🔥 Prossimo evento",
+            sagra_title: "Sagra della Salsiccia",
+            sagra_dates: "Sabato 10 e domenica 11 ottobre 2026",
+            sagra_desc: "Uno dei fiori all'occhiello del borgo, con più di 40.000 visitatori all'anno: due giorni per assaggiare la nostra salsiccia tra musica, griglie e prodotti del territorio.",
+            sagra_sat_title: "Sabato 10 · Il mercato",
+            sagra_sat_text: "Si parte con il mercato vicino a San Domenico e con i preparativi che portano alla sagra.",
+            sagra_sun_title: "Domenica 11 · La sagra",
+            sagra_sun_text: "Musica dal vivo, griglie con panino caldo e salsiccia, un bicchiere di vino e i prodotti di tanti produttori e artigiani della zona.",
+            sagra_program_title: "Il programma",
+            sagra_program_empty: "Il programma dettagliato sarà pubblicato qui non appena reso noto.",
+            sagra_cd_days: "Mancano {n} giorni",
+            sagra_cd_one: "Manca 1 giorno",
+            sagra_cd_now: "In corso adesso!",
+            estate_period: "Estate 2026 · Com'è andata",
+            estate_body: "Un'intera estate di musica, teatro, sport e tradizioni ai piedi del Castello: le Master Class di Canto Lirico, le serate di musica siciliana, il Corteo Storico della Castellana, i concerti bandistici, la Festa della Pizza e il Trofeo Nazionale di Kart. Il calendario è ormai alle spalle, ma le immagini restano.",
+            estate_video_btn: "🎬 Rivivi l'estate nel video"
+        },
+        en: {
+            sagra_badge: "🔥 Next event",
+            sagra_title: "Sausage Festival",
+            sagra_dates: "Saturday 10 and Sunday 11 October 2026",
+            sagra_desc: "One of the village's flagship events, with more than 40,000 visitors a year: two days to taste our sausage among music, grills and local products.",
+            sagra_sat_title: "Saturday 10 · The market",
+            sagra_sat_text: "It starts with the market near San Domenico and the preparations leading up to the festival.",
+            sagra_sun_title: "Sunday 11 · The festival",
+            sagra_sun_text: "Live music, grills with hot sandwiches and sausage, a glass of wine and the products of many local producers and craftsmen.",
+            sagra_program_title: "The programme",
+            sagra_program_empty: "The detailed programme will be published here as soon as it is announced.",
+            sagra_cd_days: "{n} days to go",
+            sagra_cd_one: "1 day to go",
+            sagra_cd_now: "Happening now!",
+            estate_period: "Summer 2026 · How it went",
+            estate_body: "A whole summer of music, theatre, sport and traditions at the foot of the Castle: the Opera Singing Master Classes, the Sicilian music evenings, the Historic Parade of the Castellana, the brass band concerts, the Pizza Festival and the National Kart Trophy. The calendar is now behind us, but the images remain.",
+            estate_video_btn: "🎬 Relive the summer in the video"
+        },
+        fr: {
+            sagra_badge: "🔥 Prochain événement",
+            sagra_title: "Fête de la Saucisse",
+            sagra_dates: "Samedi 10 et dimanche 11 octobre 2026",
+            sagra_desc: "L'un des fleurons du village, avec plus de 40 000 visiteurs par an : deux jours pour goûter notre saucisse entre musique, grillades et produits du terroir.",
+            sagra_sat_title: "Samedi 10 · Le marché",
+            sagra_sat_text: "On commence par le marché près de San Domenico et les préparatifs qui mènent à la fête.",
+            sagra_sun_title: "Dimanche 11 · La fête",
+            sagra_sun_text: "Musique live, grillades avec sandwich chaud à la saucisse, un verre de vin et les produits de nombreux producteurs et artisans de la région.",
+            sagra_program_title: "Le programme",
+            sagra_program_empty: "Le programme détaillé sera publié ici dès qu'il sera connu.",
+            sagra_cd_days: "Plus que {n} jours",
+            sagra_cd_one: "Plus qu'1 jour",
+            sagra_cd_now: "En cours !",
+            estate_period: "Été 2026 · Comment ça s'est passé",
+            estate_body: "Tout un été de musique, de théâtre, de sport et de traditions au pied du Château : les Master Class de chant lyrique, les soirées de musique sicilienne, le Cortège historique de la Castellana, les concerts de fanfare, la Fête de la Pizza et le Trophée national de Kart. Le calendrier est désormais derrière nous, mais les images restent.",
+            estate_video_btn: "🎬 Revivre l'été en vidéo"
+        },
+        es: {
+            sagra_badge: "🔥 Próximo evento",
+            sagra_title: "Fiesta de la Salchicha",
+            sagra_dates: "Sábado 10 y domingo 11 de octubre de 2026",
+            sagra_desc: "Uno de los grandes eventos del pueblo, con más de 40.000 visitantes al año: dos días para probar nuestra salchicha entre música, parrillas y productos de la zona.",
+            sagra_sat_title: "Sábado 10 · El mercado",
+            sagra_sat_text: "Se empieza con el mercado cerca de San Domenico y con los preparativos que llevan a la fiesta.",
+            sagra_sun_title: "Domingo 11 · La fiesta",
+            sagra_sun_text: "Música en directo, parrillas con bocadillo caliente de salchicha, una copa de vino y los productos de muchos productores y artesanos de la zona.",
+            sagra_program_title: "El programa",
+            sagra_program_empty: "El programa detallado se publicará aquí en cuanto se conozca.",
+            sagra_cd_days: "Faltan {n} días",
+            sagra_cd_one: "Falta 1 día",
+            sagra_cd_now: "¡En curso ahora!",
+            estate_period: "Verano 2026 · Cómo fue",
+            estate_body: "Todo un verano de música, teatro, deporte y tradiciones a los pies del Castillo: las Master Class de Canto Lírico, las veladas de música siciliana, el Cortejo Histórico de la Castellana, los conciertos de banda, la Fiesta de la Pizza y el Trofeo Nacional de Kart. El calendario ya es cosa del pasado, pero las imágenes quedan.",
+            estate_video_btn: "🎬 Revive el verano en el vídeo"
+        },
+        de: {
+            sagra_badge: "🔥 Nächste Veranstaltung",
+            sagra_title: "Wurstfest",
+            sagra_dates: "Samstag, 10., und Sonntag, 11. Oktober 2026",
+            sagra_desc: "Eines der Aushängeschilder des Dorfes, mit mehr als 40.000 Besuchern im Jahr: zwei Tage, um unsere Wurst zu probieren, zwischen Musik, Grillständen und regionalen Produkten.",
+            sagra_sat_title: "Samstag, 10. · Der Markt",
+            sagra_sat_text: "Es beginnt mit dem Markt bei San Domenico und den Vorbereitungen auf das Fest.",
+            sagra_sun_title: "Sonntag, 11. · Das Fest",
+            sagra_sun_text: "Live-Musik, Grills mit warmem Wurstbrötchen, ein Glas Wein und die Produkte vieler Erzeuger und Handwerker der Region.",
+            sagra_program_title: "Das Programm",
+            sagra_program_empty: "Das detaillierte Programm wird hier veröffentlicht, sobald es bekannt ist.",
+            sagra_cd_days: "Noch {n} Tage",
+            sagra_cd_one: "Noch 1 Tag",
+            sagra_cd_now: "Läuft gerade!",
+            estate_period: "Sommer 2026 · Wie es war",
+            estate_body: "Ein ganzer Sommer voller Musik, Theater, Sport und Traditionen zu Füßen der Burg: die Meisterkurse für klassischen Gesang, die sizilianischen Musikabende, der historische Umzug der Castellana, die Blaskonzerte, das Pizzafest und die Nationale Kart-Trophäe. Der Kalender liegt nun hinter uns, aber die Bilder bleiben.",
+            estate_video_btn: "🎬 Den Sommer im Video erleben"
+        }
+    };
+
+    function tl(chiave) {
+        const lingua = (typeof currentLang !== 'undefined' && TESTI_LOCALI[currentLang]) ? currentLang : 'it';
+        return TESTI_LOCALI[lingua][chiave] || TESTI_LOCALI.it[chiave] || '';
+    }
+
+    function statoSagra() {
+        const oggi = new Date(); oggi.setHours(0, 0, 0, 0);
+        const inizio = new Date(SAGRA.inizio + "T00:00:00");
+        const fine = new Date(SAGRA.fine + "T00:00:00");
+        if (oggi > fine) return { stato: 'finita' };
+        if (oggi >= inizio) return { stato: 'incorso' };
+        return { stato: 'futuro', giorni: Math.round((inizio - oggi) / 86400000) };
+    }
+
+    function renderCountdownSagra() {
+        const box = document.getElementById('sagra-countdown');
+        if (!box) return;
+        const st = statoSagra();
+        if (st.stato === 'finita') { box.textContent = ''; return; }
+        if (st.stato === 'incorso') { box.textContent = tl('sagra_cd_now'); return; }
+        box.textContent = st.giorni === 1 ? tl('sagra_cd_one') : tl('sagra_cd_days').replace('{n}', st.giorni);
+    }
+
+    function renderProgrammaSagra() {
+        const box = document.getElementById('sagra-program');
+        if (!box) return;
+        box.innerHTML = '';
+        const titolo = document.createElement('h3');
+        titolo.textContent = tl('sagra_program_title');
+        box.appendChild(titolo);
+
+        if (!SAGRA.programma.length) {
+            const vuoto = document.createElement('p');
+            vuoto.className = 'sagra-program-vuoto';
+            vuoto.textContent = tl('sagra_program_empty');
+            box.appendChild(vuoto);
+            return;
+        }
+        SAGRA.programma.forEach(giorno => {
+            const h = document.createElement('h4');
+            h.textContent = new Date(giorno.data + "T00:00:00").toLocaleDateString(
+                (typeof currentLang !== 'undefined' ? currentLang : 'it'),
+                { weekday: 'long', day: 'numeric', month: 'long' }
+            );
+            box.appendChild(h);
+            const ul = document.createElement('ul');
+            giorno.voci.forEach(voce => {
+                const li = document.createElement('li');
+                li.textContent = voce;
+                ul.appendChild(li);
+            });
+            box.appendChild(ul);
+        });
+    }
+
+    function applyLocalTexts() {
+        document.querySelectorAll('[data-local-i18n]').forEach(el => {
+            const testo = tl(el.getAttribute('data-local-i18n'));
+            if (testo) el.textContent = testo;
+        });
+        renderCountdownSagra();
+        renderProgrammaSagra();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Finito l'evento, il riquadro sparisce da solo
+        if (statoSagra().stato === 'finita') {
+            const riquadro = document.getElementById('sagra-highlight');
+            if (riquadro) riquadro.style.display = 'none';
+        }
+        applyLocalTexts();
+    });
+    </script>
     <script src="../news-badge.js"></script>
 
     <!-- Sovrapposizioni (footer + chat aperta) risolte in un unico file condiviso -->
