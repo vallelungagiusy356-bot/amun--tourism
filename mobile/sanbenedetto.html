@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="stylesheet" id="silktide-consent-manager-css" href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css" integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
+    <!-- ============================================================
+     BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
+     ============================================================ -->
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" id="silktide-consent-manager-css" href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css" integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
 <style id="silktide-consent-manager-overrides">
 #stcm-wrapper {
   --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
@@ -17,6 +21,9 @@
   --iconColor: #EFE6D3;
   --iconBackgroundColor: #22303B;
 }
+
+/* Icona "riapri preferenze cookie" — piccola e chiusa nell'angolo,
+   per non coprire testi e bottoni sotto di lei */
 #stcm-icon {
   width: 30px !important;
   height: 30px !important;
@@ -50,7 +57,11 @@ window.silktideConsentManager.init({
         function gtag() { window.dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-DNTGGXSSM0', { 'anonymize_ip': true });
-        gtag('event', 'monument_view', { monument_id: 'badia', monument_type: 'maggiore' });
+        // Evento di ricerca: monument_view (Amunì Tourism)
+        gtag('event', 'monument_view', {
+          monument_id: 'badia',
+          monument_type: 'maggiore'
+        });
       }
     }
   ],
@@ -85,12 +96,16 @@ window.silktideConsentManager.init({
 });
 </script>
 
+<!-- ============================================================
+     FINE BLOCCO COOKIE + ANALYTICS
+     ============================================================ -->
+
     <title data-i18n="pages.monuments_pages.badia.title">Chiesa di San Benedetto alla Badia</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="monumento_dettaglio.css">
     <meta name="theme-color" content="#14283A">
 
@@ -144,6 +159,7 @@ window.silktideConsentManager.init({
         .chat-link-btn-mobile { display: block; background: var(--cst-terracotta); color: #fff; border: none; padding: 9px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; margin: -2px 0 8px 0; }
         .topic-menu-mobile { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 10px 0; }
         .topic-btn-mobile { background: #fff; border: 1px solid var(--cst-gold); color: var(--cst-sea); padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; cursor: pointer; }
+        .topic-back-btn-mobile { border-style: dashed; color: var(--cst-terracotta); }
         .typing-indicator-mobile { display: flex; align-items: center; gap: 4px; width: fit-content; padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; border-left: 2px solid var(--cst-gold); }
         .typing-indicator-mobile span { width: 6px; height: 6px; border-radius: 50%; background: var(--cst-gold); display: inline-block; animation: typing-bounce-mobile 1.2s infinite ease-in-out; }
         .typing-indicator-mobile span:nth-child(2) { animation-delay: 0.2s; }
@@ -161,7 +177,7 @@ window.silktideConsentManager.init({
 <body>
 
     <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
-    
+
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
@@ -193,7 +209,7 @@ window.silktideConsentManager.init({
     </header>
 
     <main class="mobile-layout-detail">
-        
+
         <header class="monument-header">
             <h1 data-i18n="pages.monuments_pages.badia.title">Chiesa di San Benedetto alla Badia</h1>
         </header>
@@ -230,7 +246,7 @@ window.silktideConsentManager.init({
             <button class="btn-barocco-action" onclick="window.location.href='mappa.html?focus=badia&vista=monumenti'">
                 🌐 <span data-i18n="pages.monuments_pages.labels.view_map">Apri la Mappa</span>
             </button>
-            
+
             <button class="btn-barocco-action btn-secondary-action" id="talk-castellana-btn-monumento">
                 👑 <span data-i18n="pages.monuments_pages.labels.btn_parla_castellana">Parla con la Castellana</span>
             </button>
@@ -244,10 +260,6 @@ window.silktideConsentManager.init({
 
     </main>
 
-    <!-- ============================================================
-         GALLERIA FOTO — San Benedetto alla Badia
-         Stesso schema riusabile già usato su San Giorgio Martire.
-         ============================================================ -->
     <div class="gallery-modal" id="gallery-modal">
         <div class="gallery-modal-header">
             <span class="gallery-counter" id="gallery-counter">1 / 12</span>
@@ -266,21 +278,77 @@ window.silktideConsentManager.init({
         // GALLERIA FOTO — San Benedetto alla Badia
         // --------------------------
         const GALLERY_IMAGES = [
-            { src: "../gallery-chiese/pavimento_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.pavimento", fallback: "Il pavimento in maiolica" },
-            { src: "../gallery-chiese/particolare_maiolica_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.particolare_maioliche", fallback: "Particolare delle maioliche" },
-            { src: "../gallery-chiese/maioliche_presbiterio_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.maioliche_presbiterio", fallback: "Maioliche del presbiterio" },
-            { src: "../gallery-chiese/sacrificio_isacco_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.sacrificio_isacco", fallback: "Il sacrificio di Isacco nel presbiterio" },
-            { src: "../gallery-chiese/sanbenedetto_regole_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.san_benedetto_regole", fallback: "San Benedetto detta le Regole" },
-            { src: "../gallery-chiese/immacolata_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.immacolata", fallback: "Immacolata Concezione" },
-            { src: "../gallery-chiese/crocifisso_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.crocifisso", fallback: "Crocifisso tra San Benedetto e Santa Scolastica" },
-            { src: "../gallery-chiese/comunichino_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.comunichino", fallback: "Comunichino nel presbiterio" },
-            { src: "../gallery-chiese/affresco_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.particolare_affresco", fallback: "Particolare di affresco" },
-            { src: "../gallery-chiese/volta_cancellata_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.volta_cancellata", fallback: "La volta e la cancellata" },
-            { src: "../gallery-chiese/cancellata_ferro_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.cancellata_ferro", fallback: "Cancellata in ferro battuto" },
-            { src: "../gallery-chiese/cancellata_matroneo_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.cancellata_matroneo", fallback: "Cancellata del matroneo" },
-            { src: "../gallery-chiese/madonna_neve_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.madonna_neve", fallback: "La Madonna della Neve" },
-            { src: "../gallery-chiese/navata_sanben_badia.jpg", captionKey: "pages.monuments_pages.badia_gallery.navata_sanben", fallback: "La navata" }
-        ];
+        {
+                "src": "../gallery-chiese/pavimento_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.pavimento",
+                "fallback": "Il pavimento in maiolica"
+        },
+        {
+                "src": "../gallery-chiese/particolare_maiolica_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.particolare_maioliche",
+                "fallback": "Particolare delle maioliche"
+        },
+        {
+                "src": "../gallery-chiese/maioliche_presbiterio_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.maioliche_presbiterio",
+                "fallback": "Maioliche del presbiterio"
+        },
+        {
+                "src": "../gallery-chiese/sacrificio_isacco_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.sacrificio_isacco",
+                "fallback": "Il sacrificio di Isacco nel presbiterio"
+        },
+        {
+                "src": "../gallery-chiese/sanbenedetto_regole_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.san_benedetto_regole",
+                "fallback": "San Benedetto detta le Regole"
+        },
+        {
+                "src": "../gallery-chiese/immacolata_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.immacolata",
+                "fallback": "Immacolata Concezione"
+        },
+        {
+                "src": "../gallery-chiese/crocifisso_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.crocifisso",
+                "fallback": "Crocifisso tra San Benedetto e Santa Scolastica"
+        },
+        {
+                "src": "../gallery-chiese/comunichino_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.comunichino",
+                "fallback": "Comunichino nel presbiterio"
+        },
+        {
+                "src": "../gallery-chiese/affresco_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.particolare_affresco",
+                "fallback": "Particolare di affresco"
+        },
+        {
+                "src": "../gallery-chiese/volta_cancellata_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.volta_cancellata",
+                "fallback": "La volta e la cancellata"
+        },
+        {
+                "src": "../gallery-chiese/cancellata_ferro_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.cancellata_ferro",
+                "fallback": "Cancellata in ferro battuto"
+        },
+        {
+                "src": "../gallery-chiese/cancellata_matroneo_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.cancellata_matroneo",
+                "fallback": "Cancellata del matroneo"
+        },
+        {
+                "src": "../gallery-chiese/madonna_neve_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.madonna_neve",
+                "fallback": "La Madonna della Neve"
+        },
+        {
+                "src": "../gallery-chiese/navata_sanben_badia.jpg",
+                "captionKey": "pages.monuments_pages.badia_gallery.navata_sanben",
+                "fallback": "La navata"
+        }
+];
 
         let currentGalleryIndex = 0;
 
@@ -319,10 +387,12 @@ window.silktideConsentManager.init({
         document.getElementById('gallery-next-btn').addEventListener('click', showNextGalleryImage);
         document.getElementById('gallery-prev-btn').addEventListener('click', showPrevGalleryImage);
 
+        // Tocca lo sfondo scuro (fuori dalla foto) per chiudere
         document.getElementById('gallery-modal').addEventListener('click', function(e) {
             if (e.target === this) closeGallery();
         });
 
+        // Scorrimento con swipe (dito) sulla foto
         (function() {
             const imgEl = document.getElementById('gallery-modal-image');
             let touchStartX = 0;
@@ -339,6 +409,7 @@ window.silktideConsentManager.init({
             });
         })();
 
+        // Se si cambia lingua con la galleria aperta, aggiorna la didascalia
         document.addEventListener('languageChanged', function() {
             const modal = document.getElementById('gallery-modal');
             if (modal && modal.classList.contains('active')) {
@@ -347,10 +418,7 @@ window.silktideConsentManager.init({
         });
     </script>
 
-    <!-- ============================================================
-         CHAT CASTELLANA — collegata agli argomenti Premium specifici
-         della Badia (chiese.badia.*).
-         ============================================================ -->
+
     <div class="chat-mobile" id="chat-mobile">
         <div class="chat-mobile-header">
             <div class="avatar-status-dot"></div>
@@ -371,6 +439,10 @@ window.silktideConsentManager.init({
 
     <script>
       (function() {
+        // Tutto il codice qui dentro e racchiuso in una funzione che
+        // si esegue subito da sola: le sue variabili (currentLang,
+        // speakText, audio, ecc.) restano private e non entrano in
+        // conflitto con quelle gia usate in monument_translation.js.
         const audio = document.getElementById("bg-music"); audio.volume = 0.2;
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
@@ -382,14 +454,19 @@ window.silktideConsentManager.init({
 
         toggleBtn.addEventListener("click", (e) => {
             e.stopPropagation();
-            if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; } 
+            if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; }
             else { audio.pause(); toggleBtn.textContent = "🔇"; }
         });
 
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
         const VOICE_PREF_KEY = "amuni_voice_enabled";
+        // NUOVO — in quale monumento ci troviamo. Il backend lo usa per
+        // capire quando il turista chiede di un altro monumento e
+        // mandarlo alla pagina giusta invece di rispondere qui.
+        const MONUMENT_ID = "chiese.badia";
         let currentLang = localStorage.getItem("lang") || "it";
+        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
 
         function getStoredAccessCode() {
             const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
@@ -414,6 +491,9 @@ window.silktideConsentManager.init({
             }));
         }
 
+        // --------------------------
+        // TTS
+        // --------------------------
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
         const voiceToggleBtnMobile = document.getElementById("voice-toggle-btn-mobile");
 
@@ -447,6 +527,7 @@ window.silktideConsentManager.init({
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
 
+            // Cerca automaticamente indizi di voce neurale/di qualità superiore
             const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
             const vociDiQualita = stessaLingua.filter(v =>
                 INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -457,6 +538,10 @@ window.silktideConsentManager.init({
             return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
         }
 
+        // ============================================================
+        // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
+        // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
+        // ============================================================
         const EMOTION_PRESETS = {
             energico:    { rate: 1.05, pitch: 1.08 },
             malinconico: { rate: 0.85, pitch: 0.90 },
@@ -562,6 +647,9 @@ window.silktideConsentManager.init({
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         }
 
+        // --------------------------
+        // MICROFONO
+        // --------------------------
         const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
         const micBtnMobile = document.getElementById("mic-btn-mobile");
         let recognitionMobile = null;
@@ -612,12 +700,81 @@ window.silktideConsentManager.init({
             micBtnMobile.style.display = "none";
         }
 
+        // --------------------------
+        // LINK — i link mandati dal backend possono essere:
+        //   "castello.html"          -> pagina desktop, va in "../desktop/"
+        //   "../mobile/xxx.html"     -> pagina mobile, gia' corretta cosi'
+        //   "https://..."            -> indirizzo completo
+        // --------------------------
         function resolveLinkPathMobile(link) {
             if (!link) return link;
-            if (link.startsWith("http") || link.startsWith("../desktop/") || link.startsWith("/mobile/")) {
+            if (link.startsWith("http") || link.startsWith("../desktop/") ||
+                link.startsWith("../mobile/") || link.startsWith("/mobile/")) {
                 return link;
             }
             return "../desktop/" + link;
+        }
+
+        // NUOVO — testo del pulsante-link, nella lingua della pagina.
+        // Prima era sempre "Vai alla pagina →".
+        const LINK_LABELS_MOBILE = {
+            eventi:    { it: "Vai agli Eventi →", en: "Go to Events →", fr: "Aller aux Événements →", es: "Ir a Eventos →", de: "Zu den Veranstaltungen →" },
+            mangiare:  { it: "Vai a Mangiare e Bere →", en: "Go to Eat & Drink →", fr: "Aller à Manger et Boire →", es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →" },
+            castello:  { it: "Vai al Castello →", en: "Go to the Castle →", fr: "Aller au Château →", es: "Ir al Castillo →", de: "Zum Schloss →" },
+            monumenti: { it: "Vai ai Monumenti →", en: "Go to Monuments →", fr: "Aller aux Monuments →", es: "Ir a Monumentos →", de: "Zu den Denkmälern →" },
+            chiesa:    { it: "Vai alla chiesa →", en: "Go to the church →", fr: "Aller à l'église →", es: "Ir a la iglesia →", de: "Zur Kirche →" },
+            mappa:     { it: "Vedi sulla mappa →", en: "See on the map →", fr: "Voir sur la carte →", es: "Ver en el mapa →", de: "Auf der Karte ansehen →" },
+            orari:     { it: "Orari e biglietti →", en: "Hours & tickets →", fr: "Horaires et billets →", es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →" },
+            generico:  { it: "Vai alla pagina →", en: "Go to the page →", fr: "Aller à la page →", es: "Ir a la página →", de: "Zur Seite →" }
+        };
+
+        function isLinkAllaPaginaCorrente(link) {
+            const file = (link || "").split('?')[0].split('/').pop();
+            const corrente = window.location.pathname.split('/').pop();
+            return !!file && file === corrente;
+        }
+
+        function getLinkLabelMobile(link) {
+            const scegli = (k) => LINK_LABELS_MOBILE[k][currentLang] || LINK_LABELS_MOBILE[k].it;
+            if (!link) return scegli('generico');
+            if (isLinkAllaPaginaCorrente(link)) return scegli('orari');
+            if (link.includes('eventi.html')) return scegli('eventi');
+            if (link.includes('mangiare.html')) return scegli('mangiare');
+            if (link.includes('castello_di_caccamo') || link.includes('castello.html')) return scegli('castello');
+            if (link.includes('monumenti.html')) return scegli('monumenti');
+            if (link.includes('mappa.html')) return scegli('mappa');
+            if (/(sangiorgio|santamaria|sanbenedetto|annunziata|cappuccini)\.html/.test(link)) return scegli('chiesa');
+            return scegli('generico');
+        }
+
+        // NUOVO — gli indirizzi web scritti dentro le risposte (es. il
+        // calendario eventi di Palermo) diventano link cliccabili. Il
+        // resto resta testo semplice: nessun codice estraneo nella pagina.
+        const URL_NEL_TESTO = /(https?:\/\/[^\s]+[^\s.,;:!?)])/g;
+
+        function riempiTestoConLinkMobile(contenitore, testo) {
+            testo.split('\n').forEach((riga, i) => {
+                if (i > 0) contenitore.appendChild(document.createElement('br'));
+                let ultimo = 0;
+                let match;
+                URL_NEL_TESTO.lastIndex = 0;
+                while ((match = URL_NEL_TESTO.exec(riga)) !== null) {
+                    if (match.index > ultimo) {
+                        contenitore.appendChild(document.createTextNode(riga.slice(ultimo, match.index)));
+                    }
+                    const a = document.createElement('a');
+                    a.href = match[0];
+                    a.textContent = match[0];
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.style.wordBreak = 'break-all';
+                    contenitore.appendChild(a);
+                    ultimo = URL_NEL_TESTO.lastIndex;
+                }
+                if (ultimo < riga.length) {
+                    contenitore.appendChild(document.createTextNode(riga.slice(ultimo)));
+                }
+            });
         }
 
         function appendChatMessageMobile(text, sender, link) {
@@ -628,7 +785,7 @@ window.silktideConsentManager.init({
             msg.className = 'message-mobile' + (sender === 'user' ? ' user-msg-mobile' : '');
 
             const textSpan = document.createElement('span');
-            textSpan.innerHTML = stripEmotionTags(text).replace(/\n/g, '<br>');
+            riempiTestoConLinkMobile(textSpan, stripEmotionTags(text));
             msg.appendChild(textSpan);
 
             if (sender !== 'user') {
@@ -645,8 +802,19 @@ window.silktideConsentManager.init({
             if (link) {
                 const btn = document.createElement('button');
                 btn.className = 'chat-link-btn-mobile';
-                btn.textContent = 'Vai alla pagina →';
-                btn.onclick = () => window.location.href = resolveLinkPathMobile(link);
+                btn.textContent = getLinkLabelMobile(link);
+                btn.onclick = () => {
+                    // Se il link porta a questa stessa pagina (es. "Orari e
+                    // biglietti"), non ricarichiamo: chiudiamo la chat e
+                    // mostriamo la scheda con gli orari.
+                    if (isLinkAllaPaginaCorrente(link)) {
+                        chatMobileBox.classList.remove('active');
+                        const scheda = document.querySelector('.teca-logistica');
+                        if (scheda) scheda.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        return;
+                    }
+                    window.location.href = resolveLinkPathMobile(link);
+                };
                 messagesBox.appendChild(btn);
             }
 
@@ -670,59 +838,160 @@ window.silktideConsentManager.init({
             if (indicator) indicator.remove();
         }
 
-        const BADIA_TOPICS_MOBILE = {
-            it: [
-                { topic: "chiese.badia.storia", label: "🏰 Storia" },
-                { topic: "chiese.badia.esterno", label: "🖼️ Esterno" },
-                { topic: "chiese.badia.interno", label: "🕯️ Interno" },
-                { topic: "chiese.badia.dove", label: "📍 Dove si trova" },
-                { topic: "chiese.badia.dintorni", label: "🗺️ Nei dintorni" },
-                { topic: "chiese.badia.orari", label: "🎫 Orari e biglietti" }
+        // --------------------------
+        // ARGOMENTI PREMIUM — solo quelli di questo monumento,
+        // stessi id usati dal backend.
+        // --------------------------
+        const TOPICS_MOBILE = {
+            "it": [
+                        {
+                                    "topic": "chiese.badia.storia",
+                                    "label": "🏰 Storia"
+                        },
+                        {
+                                    "topic": "chiese.badia.esterno",
+                                    "label": "🖼️ Esterno"
+                        },
+                        {
+                                    "topic": "chiese.badia.interno",
+                                    "label": "🕯️ Interno"
+                        },
+                        {
+                                    "topic": "chiese.badia.dove",
+                                    "label": "📍 Dove si trova"
+                        },
+                        {
+                                    "topic": "chiese.badia.dintorni",
+                                    "label": "🗺️ Nei dintorni"
+                        },
+                        {
+                                    "topic": "chiese.badia.orari",
+                                    "label": "🎫 Orari e biglietti"
+                        }
             ],
-            en: [
-                { topic: "chiese.badia.storia", label: "🏰 History" },
-                { topic: "chiese.badia.esterno", label: "🖼️ Exterior" },
-                { topic: "chiese.badia.interno", label: "🕯️ Interior" },
-                { topic: "chiese.badia.dove", label: "📍 Location" },
-                { topic: "chiese.badia.dintorni", label: "🗺️ Nearby" },
-                { topic: "chiese.badia.orari", label: "🎫 Hours & Tickets" }
+            "en": [
+                        {
+                                    "topic": "chiese.badia.storia",
+                                    "label": "🏰 History"
+                        },
+                        {
+                                    "topic": "chiese.badia.esterno",
+                                    "label": "🖼️ Exterior"
+                        },
+                        {
+                                    "topic": "chiese.badia.interno",
+                                    "label": "🕯️ Interior"
+                        },
+                        {
+                                    "topic": "chiese.badia.dove",
+                                    "label": "📍 Location"
+                        },
+                        {
+                                    "topic": "chiese.badia.dintorni",
+                                    "label": "🗺️ Nearby"
+                        },
+                        {
+                                    "topic": "chiese.badia.orari",
+                                    "label": "🎫 Hours & Tickets"
+                        }
             ],
-            fr: [
-                { topic: "chiese.badia.storia", label: "🏰 Histoire" },
-                { topic: "chiese.badia.esterno", label: "🖼️ Extérieur" },
-                { topic: "chiese.badia.interno", label: "🕯️ Intérieur" },
-                { topic: "chiese.badia.dove", label: "📍 Où se trouve" },
-                { topic: "chiese.badia.dintorni", label: "🗺️ Aux alentours" },
-                { topic: "chiese.badia.orari", label: "🎫 Horaires & Billets" }
+            "fr": [
+                        {
+                                    "topic": "chiese.badia.storia",
+                                    "label": "🏰 Histoire"
+                        },
+                        {
+                                    "topic": "chiese.badia.esterno",
+                                    "label": "🖼️ Extérieur"
+                        },
+                        {
+                                    "topic": "chiese.badia.interno",
+                                    "label": "🕯️ Intérieur"
+                        },
+                        {
+                                    "topic": "chiese.badia.dove",
+                                    "label": "📍 Où se trouve"
+                        },
+                        {
+                                    "topic": "chiese.badia.dintorni",
+                                    "label": "🗺️ Aux alentours"
+                        },
+                        {
+                                    "topic": "chiese.badia.orari",
+                                    "label": "🎫 Horaires & Billets"
+                        }
             ],
-            es: [
-                { topic: "chiese.badia.storia", label: "🏰 Historia" },
-                { topic: "chiese.badia.esterno", label: "🖼️ Exterior" },
-                { topic: "chiese.badia.interno", label: "🕯️ Interior" },
-                { topic: "chiese.badia.dove", label: "📍 Dónde está" },
-                { topic: "chiese.badia.dintorni", label: "🗺️ Cercano" },
-                { topic: "chiese.badia.orari", label: "🎫 Horarios y Entradas" }
+            "es": [
+                        {
+                                    "topic": "chiese.badia.storia",
+                                    "label": "🏰 Historia"
+                        },
+                        {
+                                    "topic": "chiese.badia.esterno",
+                                    "label": "🖼️ Exterior"
+                        },
+                        {
+                                    "topic": "chiese.badia.interno",
+                                    "label": "🕯️ Interior"
+                        },
+                        {
+                                    "topic": "chiese.badia.dove",
+                                    "label": "📍 Dónde está"
+                        },
+                        {
+                                    "topic": "chiese.badia.dintorni",
+                                    "label": "🗺️ Cercano"
+                        },
+                        {
+                                    "topic": "chiese.badia.orari",
+                                    "label": "🎫 Horarios y Entradas"
+                        }
             ],
-            de: [
-                { topic: "chiese.badia.storia", label: "🏰 Geschichte" },
-                { topic: "chiese.badia.esterno", label: "🖼️ Außenansicht" },
-                { topic: "chiese.badia.interno", label: "🕯️ Innenraum" },
-                { topic: "chiese.badia.dove", label: "📍 Standort" },
-                { topic: "chiese.badia.dintorni", label: "🗺️ In der Nähe" },
-                { topic: "chiese.badia.orari", label: "🎫 Öffnungszeiten & Tickets" }
+            "de": [
+                        {
+                                    "topic": "chiese.badia.storia",
+                                    "label": "🏰 Geschichte"
+                        },
+                        {
+                                    "topic": "chiese.badia.esterno",
+                                    "label": "🖼️ Außenansicht"
+                        },
+                        {
+                                    "topic": "chiese.badia.interno",
+                                    "label": "🕯️ Innenraum"
+                        },
+                        {
+                                    "topic": "chiese.badia.dove",
+                                    "label": "📍 Standort"
+                        },
+                        {
+                                    "topic": "chiese.badia.dintorni",
+                                    "label": "🗺️ In der Nähe"
+                        },
+                        {
+                                    "topic": "chiese.badia.orari",
+                                    "label": "🎫 Öffnungszeiten & Tickets"
+                        }
             ]
-        };
+};
 
         const WELCOME_MESSAGE_MOBILE = {
-            it: "Benvenuto alla Badia di San Benedetto, viandante! Cosa vuoi scoprire?",
-            en: "Welcome to the Abbey of San Benedetto, traveler! What would you like to discover?",
-            fr: "Bienvenue a l'Abbaye de San Benedetto, voyageur ! Que veux-tu decouvrir ?",
-            es: "Bienvenido a la Abadia de San Benedetto, viajero! Que quieres descubrir?",
-            de: "Willkommen in der Abtei von San Benedetto, Reisender! Was mochtest du entdecken?"
+            "it": "Benvenuto alla Badia di San Benedetto, viandante! Cosa vuoi scoprire?",
+            "en": "Welcome to the Abbey of San Benedetto, traveler! What would you like to discover?",
+            "fr": "Bienvenue a l'Abbaye de San Benedetto, voyageur ! Que veux-tu decouvrir ?",
+            "es": "Bienvenido a la Abadia de San Benedetto, viajero! Que quieres descubrir?",
+            "de": "Willkommen in der Abtei von San Benedetto, Reisender! Was mochtest du entdecken?"
+};
+
+        const BACK_TO_MENU_LABELS_MOBILE = {
+            it: "‹ Torna al menu", en: "‹ Back to menu", fr: "‹ Retour au menu",
+            es: "‹ Volver al menú", de: "‹ Zurück zum Menü"
         };
 
         let usedTopicsMobile = new Set();
         let hasShownWelcomeMobile = false;
+        // Ricorda in quale lingua e stato mostrato l'ultimo benvenuto:
+        // se currentLang cambia, il benvenuto va ridisegnato.
         let shownWelcomeLang = null;
 
         function renderTopicMenuMobile(menu) {
@@ -751,7 +1020,44 @@ window.silktideConsentManager.init({
             }
         }
 
-        let lastTopic = null;
+        // ============================================================
+        // NUOVO — OPZIONI "UNA TANTUM" INVIATE DAL BACKEND
+        // Quando la Castellana risponde con una domanda e dei pulsanti
+        // da scegliere (es. "in che zona del paese ti trovi?" + le
+        // zone), questi arrivano nel campo "menu" della risposta come
+        // semplice elenco {topic, label}. Prima venivano ignorati.
+        // ============================================================
+        function isOneOffOptionListMobile(menu) {
+            return Array.isArray(menu) && menu.length > 0 &&
+                   menu.every(voce => voce && voce.topic && voce.label && !voce.group);
+        }
+
+        function renderReplyOptionsMobile(options) {
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            if (!messagesBox) return;
+            const old = messagesBox.querySelector('.topic-menu-state-mobile');
+            if (old) old.remove();
+
+            const wrap = document.createElement('div');
+            wrap.className = 'topic-menu-mobile topic-menu-state-mobile';
+
+            options.forEach(opt => {
+                const b = document.createElement('button');
+                b.className = 'topic-btn-mobile';
+                b.textContent = opt.label;
+                b.addEventListener('click', () => sendTopicRequestMobile(opt.topic, opt.label));
+                wrap.appendChild(b);
+            });
+
+            const backBtn = document.createElement('button');
+            backBtn.className = 'topic-btn-mobile topic-back-btn-mobile';
+            backBtn.textContent = BACK_TO_MENU_LABELS_MOBILE[currentLang] || BACK_TO_MENU_LABELS_MOBILE.it;
+            backBtn.addEventListener('click', () => renderTopicMenuMobile(TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it));
+            wrap.appendChild(backBtn);
+
+            messagesBox.appendChild(wrap);
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
 
         async function sendTopicRequestMobile(topicId, label) {
             appendChatMessageMobile(label, 'user');
@@ -771,7 +1077,9 @@ window.silktideConsentManager.init({
                         page: "chiese-arte",
                         lang: currentLang,
                         access_code: getStoredAccessCode() || "",
-                        topic: topicId
+                        topic: topicId,
+                        platform: "mobile",
+                        monument: MONUMENT_ID
                     })
                 });
                 if (!res.ok) throw new Error('Risposta non valida dal server');
@@ -780,7 +1088,12 @@ window.silktideConsentManager.init({
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 lastTopic = data.topic || topicId;
-                renderTopicMenuMobile(BADIA_TOPICS_MOBILE[currentLang] || BADIA_TOPICS_MOBILE.it);
+
+                if (isOneOffOptionListMobile(data.menu)) {
+                    renderReplyOptionsMobile(data.menu);
+                } else {
+                    renderTopicMenuMobile(TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it);
+                }
             } catch (err) {
                 console.error('Errore richiesta topic:', err);
                 hideTypingIndicatorMobile();
@@ -803,10 +1116,13 @@ window.silktideConsentManager.init({
                 appendChatMessageMobile(welcomeText, 'castellana');
                 if (voiceEnabled) speakText(welcomeText);
 
-                renderTopicMenuMobile(BADIA_TOPICS_MOBILE[currentLang] || BADIA_TOPICS_MOBILE.it);
+                renderTopicMenuMobile(TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it);
             }, 900);
         }
 
+        // --------------------------
+        // ATTIVAZIONE CODICE + MESSAGGI LIBERI
+        // --------------------------
         async function tryActivateCodeMobile(rawMessage) {
             const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9-]+)/i);
             if (!match) return false;
@@ -858,7 +1174,12 @@ window.silktideConsentManager.init({
                         page: "chiese-arte",
                         lang: currentLang,
                         access_code: getStoredAccessCode() || "",
-                        last_topic: lastTopic || ""
+                        last_topic: lastTopic || "",
+                        // NUOVO — siamo sul mobile e in questo monumento:
+                        // cosi' il backend manda alla pagina giusta quando
+                        // si chiede di un altro monumento.
+                        platform: "mobile",
+                        monument: MONUMENT_ID
                     })
                 });
 
@@ -869,6 +1190,15 @@ window.silktideConsentManager.init({
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 if (data.topic) lastTopic = data.topic;
+
+                // NUOVO — scelte da fare (es. le zone) oppure, se la
+                // Castellana non ha capito, di nuovo il menu di questo
+                // monumento.
+                if (isOneOffOptionListMobile(data.menu)) {
+                    renderReplyOptionsMobile(data.menu);
+                } else if (data.menu && data.menu.length) {
+                    renderTopicMenuMobile(TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it);
+                }
 
             } catch (err) {
                 console.error('Errore chat:', err);
@@ -897,6 +1227,9 @@ window.silktideConsentManager.init({
             sendBtnMobile.addEventListener('click', handleSendMobile);
         }
 
+        // --------------------------
+        // INDICATORE PREMIUM
+        // --------------------------
         const PREMIUM_STATUS_TEXT_MOBILE = {
             it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
             en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
@@ -927,20 +1260,32 @@ window.silktideConsentManager.init({
             bar.classList.remove('premium-active');
         }
 
+        // --------------------------
+        // APERTURA / CHIUSURA CHAT
+        // --------------------------
         const chatMobileBox = document.getElementById('chat-mobile');
         const closeChatMobileBtn = document.getElementById('close-chat-mobile');
         const talkCastellanaBtnMonumento = document.getElementById('talk-castellana-btn-monumento');
 
         if (talkCastellanaBtnMonumento) {
             talkCastellanaBtnMonumento.addEventListener('click', () => {
+                // Apre sempre la chat qui sulla pagina mobile, per tutti
+                // gli utenti (gratuiti e Premium). Chi vuole raggiungere
+                // il sito desktop ha il pulsante separato "Vai alla
+                // versione Web".
                 chatMobileBox.classList.add('active');
                 updatePremiumStatusDisplayMobile();
+                // Ridisegna il benvenuto se non e mai stato mostrato,
+                // OPPURE se la lingua e cambiata da allora.
                 if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
                     renderWelcomeMobile();
                 }
             });
         }
 
+        // Il selettore lingua in alto e gestito da monument_translation.js
+        // per il testo della pagina, ma non "parla" con la chat. Qui la
+        // chat si mette in ascolto per conto proprio.
         document.querySelectorAll(".lang-switcher button").forEach(function(btn) {
             btn.addEventListener("click", function() {
                 currentLang = btn.dataset.lang;
