@@ -8,10 +8,6 @@
 
     <!-- ============================================================
      BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
-     Da incollare dentro <head> di OGNI pagina del sito,
-     subito dopo <meta name="viewport" ...>.
-     Include: Silktide Consent Manager (banner GDPR, gratuito)
-     + Google Analytics G-DNTGGXSSM0 (parte SOLO dopo consenso)
      ============================================================ -->
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -41,24 +37,16 @@
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
 <script>
 window.silktideConsentManager.init({
-  backdrop: {
-    show: false
-  },
-  icon: {
-    position: "bottomLeft"
-  },
-  prompt: {
-    position: "bottomCenter"
-  },
+  backdrop: { show: false },
+  icon: { position: "bottomLeft" },
+  prompt: { position: "bottomCenter" },
   consentTypes: [
     {
       id: "essential",
       label: "Essenziali",
       description: "<p>Cookie tecnici necessari al funzionamento del sito, come la memoria della lingua scelta e del codice Premium attivato. Non possono essere disattivati.</p>",
       required: true,
-      onAccept: function() {
-        // Cookie tecnici: nessuna azione necessaria
-      }
+      onAccept: function() {}
     },
     {
       id: "analytics",
@@ -66,14 +54,8 @@ window.silktideConsentManager.init({
       description: "Questi cookie ci aiutano a capire come i visitatori usano il sito, in forma aggregata e anonima, per migliorare i contenuti di Amunì Tourism.",
       required: false,
       gtag: "analytics_storage",
-      scripts: [
-        {
-          url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0",
-          load: "async"
-        }
-      ],
+      scripts: [{ url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0", load: "async" }],
       onAccept: function() {
-        // Google Analytics 4 (G-DNTGGXSSM0)
         window.dataLayer = window.dataLayer || [];
         function gtag() { window.dataLayer.push(arguments); }
         gtag('js', new Date());
@@ -304,11 +286,8 @@ window.silktideConsentManager.init({
         </section>
 
         <!-- ============================================================
-             SEZIONE "PORTA AMUNÌ CON TE" — semplificata: rimosso il QR
-             code (ridondante su un sito già visitato da computer) e il
-             vecchio bottone "Aggiungi alla schermata Home", che faceva
-             comunque la stessa cosa del link qui sotto. Un solo invito
-             chiaro a passare al telefono per la versione pratica.
+             SEZIONE "PORTA AMUNÌ CON TE" — un solo invito chiaro a
+             passare al telefono per la versione pratica.
              ============================================================ -->
         <section class="section-flat install-app-desktop install-section">
             <div class="install-left">
@@ -452,11 +431,9 @@ window.silktideConsentManager.init({
         // KNOWLEDGE BASE — Home Page
         // ============================================================
         // Struttura a DUE LIVELLI, stesso meccanismo "gruppo -> sotto-voci"
-        // già usato nel resto del sito (es. le chiese raggruppate per
-        // monumento): prima compaiono le 4 domande, cliccandone una
-        // compaiono i pulsanti delle pagine pertinenti a quella domanda.
-        // Le stesse pagine possono comparire sotto più di una domanda
-        // (es. Castello sia nel tour classico sia in quello enogastronomico):
+        // già usato nel resto del sito: prima compaiono le 4 domande,
+        // cliccandone una compaiono i pulsanti delle pagine pertinenti.
+        // Le stesse pagine possono comparire sotto più di una domanda:
         // usano sempre lo stesso "id", quindi una volta scelta una pagina
         // non ricompare più negli altri gruppi già visti.
         const HOME_KNOWLEDGE = {
@@ -664,6 +641,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
         let exploredGroups = new Set();
         let fullTopicMenu = [];
         let hasShownWelcome = false;
+        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
 
         function loadLanguage(lang) {
             fetch(`lang/${lang}.json`)
@@ -694,27 +672,9 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
         }
 
         // ============================================================
-        // TTS AVANZATO — La Castellana parla
-        //
-        // Tre correzioni rispetto a prima:
-        //
-        // 1. VOCE SEMPRE FEMMINILE, IN OGNI LINGUA: prima la voce veniva
-        //    scelta una sola volta filtrando solo le voci italiane, e poi
-        //    riusata anche quando la lingua cambiava — risultato: parlando
-        //    in inglese/francese/ecc. veniva comunque assegnata una voce
-        //    italiana, in conflitto con la lingua del testo. Il browser
-        //    a quel punto ignora la voce forzata e ripiega su una voce
-        //    di sistema per quella lingua, spesso maschile. Ora la voce
-        //    si sceglie di nuovo ogni volta, filtrando le voci della
-        //    lingua giusta.
-        //
-        // 2. VELOCITÀ DI AVVIO: chiamare cancel() e speak() nello stesso
-        //    istante è un bug noto dei browser (Chrome/Edge in primis):
-        //    il motore vocale ha bisogno di un attimo per "resettarsi",
-        //    altrimenti l'audio parte con un ritardo percepibile. Ora c'è
-        //    una piccola pausa tra i due comandi. Le voci vengono inoltre
-        //    "svegliate" subito al caricamento della pagina, non solo al
-        //    primo utilizzo.
+        // TTS AVANZATO — La Castellana parla (voce sempre femminile,
+        // scelta ogni volta nella lingua giusta; piccola pausa tra
+        // cancel() e speak() per evitare il ritardo di avvio).
         // ============================================================
         const VOICE_PREF_KEY = "amuni_voice_enabled";
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
@@ -753,9 +713,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
 
-            // Cerca automaticamente indizi di voce neurale/di qualità superiore,
-            // utile per varianti non presenti nella lista fissa sopra
-            // (es. voci "Enhanced"/"Premium" scaricate su iOS, o "Online (Natural)" di Edge)
+            // Cerca automaticamente indizi di voce neurale/di qualità superiore
             const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
             const vociDiQualita = stessaLingua.filter(v =>
                 INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -770,11 +728,8 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
         // ============================================================
         // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
         // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
-        // Servono a due cose:
-        // 1. NON devono mai comparire come testo letto o mostrato
-        //    all'utente (stripEmotionTags li rimuove per la visualizzazione)
-        // 2. Modulano rate/pitch della sintesi vocale SOLO per la frase
-        //    che racchiudono (parseEmotionalSegments + speakText)
+        // Non devono mai comparire come testo mostrato o letto; modulano
+        // rate/pitch della sintesi vocale solo per la frase che racchiudono.
         // ============================================================
         const EMOTION_PRESETS = {
             energico:    { rate: 1.05, pitch: 1.08 },
@@ -887,9 +842,6 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
 
         // ============================================================
         // MICROFONO — il turista può parlare invece di scrivere
-        // (Web Speech API, riconoscimento vocale del browser: gratuito,
-        // funziona su Chrome/Edge; su browser non supportati il
-        // pulsante si nasconde automaticamente).
         // ============================================================
         const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
         const micBtn = document.getElementById("mic-btn");
@@ -950,6 +902,160 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
         }
 
         // ============================================================
+        // ETICHETTE DEI PULSANTI-LINK
+        // Prima ogni link nella chat della Home si chiamava "Vedi sulla
+        // mappa →", anche quando portava a Mangiare o a Eventi.
+        // ============================================================
+        const PAGE_LINK_LABELS = {
+            it: {
+                "castello.html": "Vai al Castello →",
+                "chiese-arte.html": "Vai a Chiese e Arte →",
+                "cibo_eventi.html": "Vai a Cibo e Eventi →",
+                "cittadino.html": "Vai al Cittadino del Borgo →",
+                "leggende_e_tradizioni.html": "Vai a Leggende e Tradizioni →",
+                "desktop_index.html": "Torna alla Home →"
+            },
+            en: {
+                "castello.html": "Go to the Castle →",
+                "chiese-arte.html": "Go to Churches & Art →",
+                "cibo_eventi.html": "Go to Food & Events →",
+                "cittadino.html": "Go to Citizen of the Village →",
+                "leggende_e_tradizioni.html": "Go to Legends & Traditions →",
+                "desktop_index.html": "Back to Home →"
+            },
+            fr: {
+                "castello.html": "Aller au Château →",
+                "chiese-arte.html": "Aller à Églises et Art →",
+                "cibo_eventi.html": "Aller à Gastronomie et Événements →",
+                "cittadino.html": "Aller à Citoyen du Village →",
+                "leggende_e_tradizioni.html": "Aller à Légendes et Traditions →",
+                "desktop_index.html": "Retour à l'accueil →"
+            },
+            es: {
+                "castello.html": "Ir al Castillo →",
+                "chiese-arte.html": "Ir a Iglesias y Arte →",
+                "cibo_eventi.html": "Ir a Comida y Eventos →",
+                "cittadino.html": "Ir a Ciudadano del Pueblo →",
+                "leggende_e_tradizioni.html": "Ir a Leyendas y Tradiciones →",
+                "desktop_index.html": "Volver al Inicio →"
+            },
+            de: {
+                "castello.html": "Zum Schloss →",
+                "chiese-arte.html": "Zu Kirchen und Kunst →",
+                "cibo_eventi.html": "Zu Essen und Events →",
+                "cittadino.html": "Zum Bürger des Dorfes →",
+                "leggende_e_tradizioni.html": "Zu Legenden und Traditionen →",
+                "desktop_index.html": "Zurück zur Startseite →"
+            }
+        };
+
+        const MAP_LABEL_BY_LANG = {
+            it: "Vedi sulla mappa →", en: "See on the map →", fr: "Voir sur la carte →",
+            es: "Ver en el mapa →", de: "Auf der Karte ansehen →"
+        };
+
+        const ORARI_LABEL_BY_LANG = {
+            it: "Orari e biglietti →", en: "Hours & tickets →", fr: "Horaires et billets →",
+            es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →"
+        };
+
+        const MANGIARE_LABEL_BY_LANG = {
+            it: "Vai a Mangiare e Bere →", en: "Go to Eat & Drink →", fr: "Aller à Manger et Boire →",
+            es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →"
+        };
+
+        const EVENTI_LABEL_BY_LANG = {
+            it: "Vai agli Eventi →", en: "Go to Events →", fr: "Aller aux Événements →",
+            es: "Ir a Eventos →", de: "Zu den Veranstaltungen →"
+        };
+
+        const TRASPORTI_LABEL_BY_LANG = {
+            it: "Vai a Trasporti →", en: "Go to Transport →", fr: "Aller aux Transports →",
+            es: "Ir a Transportes →", de: "Zu Verkehr & Transport →"
+        };
+
+        const DORMIRE_LABEL_BY_LANG = {
+            it: "Vai a Dove Dormire →", en: "Go to Where to Stay →", fr: "Aller à Où dormir →",
+            es: "Ir a Dónde dormir →", de: "Zu Unterkünften →"
+        };
+
+        const BACK_TO_MENU_LABELS = {
+            it: "‹ Torna al menu", en: "‹ Back to menu", fr: "‹ Retour au menu",
+            es: "‹ Volver al menú", de: "‹ Zurück zum Menü"
+        };
+
+        // Pagine "vere" che si aprono a pagina intera (mappa e schede
+        // orari restano invece nella finestrella sovrapposta).
+        const PAGINE_INTERE = ['mangiare.html', 'eventi.html', 'trasporti.html', 'dormire.html'];
+
+        function getLinkLabel(link) {
+            if (link && link.includes('/mobile/') && link.includes('eventi.html')) {
+                return EVENTI_LABEL_BY_LANG[currentLang] || EVENTI_LABEL_BY_LANG.it;
+            }
+            if (link && link.includes('mangiare.html')) {
+                return MANGIARE_LABEL_BY_LANG[currentLang] || MANGIARE_LABEL_BY_LANG.it;
+            }
+            if (link && link.includes('trasporti.html')) {
+                return TRASPORTI_LABEL_BY_LANG[currentLang] || TRASPORTI_LABEL_BY_LANG.it;
+            }
+            if (link && link.includes('dormire.html')) {
+                return DORMIRE_LABEL_BY_LANG[currentLang] || DORMIRE_LABEL_BY_LANG.it;
+            }
+            if (link && link.includes('mappa.html')) {
+                return MAP_LABEL_BY_LANG[currentLang] || MAP_LABEL_BY_LANG.it;
+            }
+            if (link && link.includes('/mobile/')) {
+                return ORARI_LABEL_BY_LANG[currentLang] || ORARI_LABEL_BY_LANG.it;
+            }
+            const table = PAGE_LINK_LABELS[currentLang] || PAGE_LINK_LABELS.it;
+            // si ignora la parte ?chat=... quando si cerca il nome della pagina
+            const pagina = (link || '').split('?')[0].split('#')[0];
+            return table[pagina] || PAGE_LINK_LABELS.it[pagina] || "Scopri di più →";
+        }
+
+        function openMapOverlay(url) {
+            const overlay = document.createElement('div');
+            overlay.className = 'map-overlay';
+            overlay.innerHTML = `
+                <button class="map-overlay-close" aria-label="Chiudi la mappa">✕</button>
+                <iframe src="${url}" allow="geolocation" title="Mappa Amunì"></iframe>
+            `;
+            document.body.appendChild(overlay);
+            overlay.querySelector('.map-overlay-close').addEventListener('click', () => {
+                overlay.remove();
+            });
+        }
+
+        // Gli indirizzi web scritti dentro le risposte diventano link
+        // cliccabili; il resto resta testo semplice.
+        const URL_NEL_TESTO = /(https?:\/\/[^\s]+[^\s.,;:!?)])/g;
+
+        function riempiTestoConLink(contenitore, testo) {
+            testo.split('\n').forEach((riga, i) => {
+                if (i > 0) contenitore.appendChild(document.createElement('br'));
+                let ultimo = 0;
+                let match;
+                URL_NEL_TESTO.lastIndex = 0;
+                while ((match = URL_NEL_TESTO.exec(riga)) !== null) {
+                    if (match.index > ultimo) {
+                        contenitore.appendChild(document.createTextNode(riga.slice(ultimo, match.index)));
+                    }
+                    const a = document.createElement('a');
+                    a.href = match[0];
+                    a.textContent = match[0];
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.style.wordBreak = 'break-all';
+                    contenitore.appendChild(a);
+                    ultimo = URL_NEL_TESTO.lastIndex;
+                }
+                if (ultimo < riga.length) {
+                    contenitore.appendChild(document.createTextNode(riga.slice(ultimo)));
+                }
+            });
+        }
+
+        // ============================================================
         // RENDERING MESSAGGI CHAT — stesse classi del resto del sito
         // (.message / .message.user-msg dentro .chat-messages).
         // ============================================================
@@ -959,14 +1065,21 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
 
             const msg = document.createElement('div');
             msg.className = 'message' + (sender === 'user' ? ' user-msg' : '');
-            msg.innerHTML = stripEmotionTags(text).replace(/\n/g, '<br>');
+            riempiTestoConLink(msg, stripEmotionTags(text));
             messagesBox.appendChild(msg);
 
             if (link) {
                 const btn = document.createElement('button');
                 btn.className = 'chat-link-btn';
-                btn.textContent = 'Vedi sulla mappa →';
-                btn.onclick = () => window.location.href = link;
+                btn.textContent = getLinkLabel(link);
+                btn.onclick = () => {
+                    const paginaIntera = PAGINE_INTERE.some(p => link.includes(p));
+                    if (link.includes('mappa.html') || (link.includes('/mobile/') && !paginaIntera)) {
+                        openMapOverlay(link);
+                    } else {
+                        window.location.href = link;
+                    }
+                };
                 messagesBox.appendChild(btn);
             }
 
@@ -1013,7 +1126,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             if (currentGroupName) {
                 const backBtn = document.createElement('button');
                 backBtn.className = 'topic-btn topic-back-btn';
-                backBtn.textContent = '‹ Torna al menu';
+                backBtn.textContent = BACK_TO_MENU_LABELS[currentLang] || BACK_TO_MENU_LABELS.it;
                 backBtn.addEventListener('click', () => renderMenuState(null));
                 wrap.appendChild(backBtn);
 
@@ -1037,10 +1150,10 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 const groupBtn = document.createElement('button');
                 groupBtn.className = 'topic-btn topic-group-btn';
                 if (entry.items.length === 1) {
-                    // NUOVO — un gruppo con una sola voce (es. il tour
-                    // enogastronomico, che porta solo a Cibo ed Eventi)
-                    // non ha bisogno di un sottomenu intermedio: il
-                    // click sul gruppo sceglie direttamente quella voce.
+                    // Un gruppo con una sola voce (es. il tour enogastronomico,
+                    // che porta solo a Cibo ed Eventi) non ha bisogno di un
+                    // sottomenù: il click sul gruppo sceglie direttamente
+                    // quella voce.
                     groupBtn.textContent = entry.group;
                     groupBtn.addEventListener('click', () => selectPageTopic(entry.items[0], entry.group));
                 } else {
@@ -1061,10 +1174,10 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
         }
 
         // ============================================================
-        // NUOVO — segnale per "sono arrivato dal tour enogastronomico":
-        // lasciato prima di cambiare pagina, letto da cibo_eventi.html
-        // appena apre la chat, per mostrare il saluto stagionale vero
-        // invece del solito benvenuto fisso.
+        // Segnale "sono arrivato dal tour enogastronomico": lasciato
+        // prima di cambiare pagina, letto da cibo_eventi.html appena
+        // apre la chat, per mostrare il saluto stagionale vero invece
+        // del solito benvenuto fisso.
         // ============================================================
         const TOUR_ENO_FLAG_KEY = "amuni_tour_eno_entry";
         const GRUPPO_TOUR_ENO = "Hai voglia di un tour enogastronomico?";
@@ -1081,10 +1194,6 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 appendChatMessage(knowledge.followUp, 'castellana');
                 if (voiceEnabled) speakText(knowledge.followUp);
                 setTimeout(() => {
-                    // NUOVO — solo per "Cibo ed Eventi" scelto dal gruppo
-                    // del tour enogastronomico: lasciamo il segnale prima
-                    // di partire, cosi' la pagina di destinazione sa
-                    // da dove arriva il turista.
                     if (item.id === "cibo_eventi" && groupName === GRUPPO_TOUR_ENO) {
                         sessionStorage.setItem(TOUR_ENO_FLAG_KEY, "1");
                     }
@@ -1126,18 +1235,39 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
         }
 
         // ============================================================
-        // FIX "torna indietro col browser" — quando arrivi su questa
-        // pagina tornando indietro da un'altra (es. dopo un pulsante
-        // topic), alcuni browser mobili ripristinano la pagina dalla
-        // loro cache interna invece di ricaricarla da zero: la chat
-        // poteva restare "aperta" ma vuota. pageshow scatta sia al
-        // primo caricamento sia al ritorno da cache: qui forziamo
-        // sempre la chat chiusa, così parte sempre pulita.
+        // NUOVO — RIPARTENZA PULITA
+        // Riporta la chat allo stato iniziale: vuota, senza argomenti già
+        // scelti, pronta per una nuova conversazione.
+        // ============================================================
+        function resetChatHome() {
+            const messagesBox = document.getElementById('chat-messages-box');
+            if (messagesBox) messagesBox.innerHTML = '';
+            hideTypingIndicator();
+            usedTopics.clear();
+            exploredGroups.clear();
+            fullTopicMenu = [];
+            hasShownWelcome = false;
+            lastTopic = null;
+        }
+
+        // ============================================================
+        // TORNARE INDIETRO CON IL BROWSER
+        // Quando dal menu della chat si va in un'altra pagina e poi si
+        // torna indietro, alcuni browser ripresentano la pagina "congelata"
+        // com'era: chat aperta e Castellana nascosta (la chat, quando è
+        // aperta, nasconde l'avatar). Prima qui si richiudeva la chat ma
+        // NON si rimetteva a posto la Castellana: sparivano tutte e due e
+        // servivano un aggiornamento della pagina.
+        // Ora: chat chiusa, Castellana di nuovo visibile, conversazione
+        // che riparte da capo.
         // ============================================================
         window.addEventListener("pageshow", () => {
             const chat = document.getElementById("chat-box");
+            const avatar = document.getElementById("chat-open-btn");
             if (chat) chat.classList.remove("active");
-            if (typeof castellanaZitta === "function") castellanaZitta();
+            if (avatar) avatar.classList.remove("avatar-hidden");
+            castellanaZitta();
+            resetChatHome();
         });
 
         // ============================================================
@@ -1221,7 +1351,7 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
         })();
 
         // ============================================================
-        // API E CHAT (invariato dal tuo codice originale)
+        // API E CHAT
         // ============================================================
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
@@ -1286,7 +1416,79 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             return true;
         }
 
-        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
+        // ============================================================
+        // OPZIONI "UNA TANTUM" INVIATE DAL BACKEND
+        // A volte la Castellana risponde con una domanda e dei pulsanti da
+        // scegliere (es. "in che zona del paese ti trovi?" + le zone).
+        // Arrivano nel campo "menu" come elenco {topic, label}.
+        // ============================================================
+        function isOneOffOptionList(menu) {
+            return Array.isArray(menu) && menu.length > 0 &&
+                   menu.every(voce => voce && voce.topic && voce.label && !voce.group);
+        }
+
+        function renderReplyOptions(options) {
+            const messagesBox = document.getElementById('chat-messages-box');
+            if (!messagesBox) return;
+            const old = messagesBox.querySelector('.topic-menu-state');
+            if (old) old.remove();
+
+            const wrap = document.createElement('div');
+            wrap.className = 'topic-menu topic-menu-state';
+
+            options.forEach(opt => {
+                const b = document.createElement('button');
+                b.className = 'topic-btn';
+                b.textContent = opt.label;
+                b.addEventListener('click', () => sendTopicRequest(opt.topic, opt.label));
+                wrap.appendChild(b);
+            });
+
+            const backBtn = document.createElement('button');
+            backBtn.className = 'topic-btn topic-back-btn';
+            backBtn.textContent = BACK_TO_MENU_LABELS[currentLang] || BACK_TO_MENU_LABELS.it;
+            backBtn.addEventListener('click', () => renderMenuState(null));
+            wrap.appendChild(backBtn);
+
+            messagesBox.appendChild(wrap);
+        }
+
+        async function sendTopicRequest(topicId, label) {
+            appendChatMessage(label, 'user');
+            const messagesBox = document.getElementById('chat-messages-box');
+            const old = messagesBox.querySelector('.topic-menu-state');
+            if (old) old.remove();
+            showTypingIndicator();
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: label,
+                        page: getPageSlug(),
+                        lang: currentLang,
+                        access_code: getStoredAccessCode() || "",
+                        topic: topicId
+                    })
+                });
+                if (!res.ok) throw new Error('Risposta non valida dal server');
+                const data = await res.json();
+                hideTypingIndicator();
+                appendChatMessage(data.reply, 'castellana', data.link);
+                if (data.speak || voiceEnabled) speakText(data.reply);
+                lastTopic = data.topic || topicId;
+                if (isOneOffOptionList(data.menu)) {
+                    renderReplyOptions(data.menu);
+                } else {
+                    renderMenuState(null);
+                }
+            } catch (err) {
+                console.error('Errore richiesta topic:', err);
+                hideTypingIndicator();
+                appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+            }
+        }
 
         async function sendChatMessage(text) {
             if (!text.trim()) return;
@@ -1318,6 +1520,11 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 appendChatMessage(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 if (data.topic) lastTopic = data.topic;
+
+                // Scelte da fare (es. le zone dopo "dove compro la carne?")
+                if (isOneOffOptionList(data.menu)) {
+                    renderReplyOptions(data.menu);
+                }
 
             } catch (err) {
                 console.error('Errore chat:', err);
@@ -1353,13 +1560,9 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
     // QR code da inquadrare col telefono, invece del bottone diretto:
     // cliccandolo da un vero computer, la versione mobile risulterebbe
     // rimpicciolita e mal proporzionata. Su schermi stretti (già da
-    // telefono) il bottone resta cliccabile normalmente, perché lì
-    // funziona benissimo.
-    //
-    // NOTA: l'indirizzo usa il dominio amunitourism.it. Prima puntava
-    // all'indirizzo grezzo di GitHub Pages: chi inquadrava il QR
-    // finiva su un dominio diverso, fuori da Analytics e da Search
-    // Console, con gli stessi contenuti pubblicati su due indirizzi.
+    // telefono) il bottone resta cliccabile normalmente.
+    // L'indirizzo usa il dominio amunitourism.it (non quello grezzo di
+    // GitHub Pages), così le visite restano dentro Analytics e Search Console.
     // ============================================================
     (function() {
         const MOBILE_URL = "https://www.amunitourism.it/mobile/mobile_index.html";
