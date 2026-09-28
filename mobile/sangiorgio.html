@@ -34,24 +34,16 @@
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
 <script>
 window.silktideConsentManager.init({
-  backdrop: {
-    show: false
-  },
-  icon: {
-    position: "bottomLeft"
-  },
-  prompt: {
-    position: "bottomCenter"
-  },
+  backdrop: { show: false },
+  icon: { position: "bottomLeft" },
+  prompt: { position: "bottomCenter" },
   consentTypes: [
     {
       id: "essential",
       label: "Essenziali",
       description: "<p>Cookie tecnici necessari al funzionamento del sito, come la memoria della lingua scelta e del codice Premium attivato. Non possono essere disattivati.</p>",
       required: true,
-      onAccept: function() {
-        // Cookie tecnici: nessuna azione necessaria
-      }
+      onAccept: function() {}
     },
     {
       id: "analytics",
@@ -59,14 +51,8 @@ window.silktideConsentManager.init({
       description: "Questi cookie ci aiutano a capire come i visitatori usano il sito, in forma aggregata e anonima, per migliorare i contenuti di Amunì Tourism.",
       required: false,
       gtag: "analytics_storage",
-      scripts: [
-        {
-          url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0",
-          load: "async"
-        }
-      ],
+      scripts: [{ url: "https://www.googletagmanager.com/gtag/js?id=G-DNTGGXSSM0", load: "async" }],
       onAccept: function() {
-        // Google Analytics 4 (G-DNTGGXSSM0)
         window.dataLayer = window.dataLayer || [];
         function gtag() { window.dataLayer.push(arguments); }
         gtag('js', new Date());
@@ -115,18 +101,14 @@ window.silktideConsentManager.init({
      ============================================================ -->
 
     <title data-i18n="pages.monuments_pages.sangiorgio.title">Chiesa di San Giorgio Martire</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="monumento_dettaglio.css">
     <meta name="theme-color" content="#14283A">
 
-    <!-- ============================================================
-         STILE CHAT CASTELLANA — scritto qui in autonomia, senza
-         toccare monumento_dettaglio.css.
-         ============================================================ -->
     <style>
         :root {
             --cst-gold: #B8873B;
@@ -138,253 +120,64 @@ window.silktideConsentManager.init({
             --cst-ink: #22303B;
             --cst-cream: #F3ECDC;
         }
-
         .chat-mobile {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 78vh;
-            max-height: 640px;
-            background: rgba(15, 25, 34, 0.97);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid var(--cst-gold);
-            border-radius: 16px 16px 0 0;
-            padding: 16px;
-            display: none;
-            flex-direction: column;
-            z-index: 999999;
-            box-shadow: 0 -8px 30px rgba(0,0,0,0.5);
-            box-sizing: border-box;
+            position: fixed; left: 0; right: 0; bottom: 0; width: 100%;
+            height: 78vh; max-height: 640px;
+            background: rgba(15, 25, 34, 0.97); backdrop-filter: blur(10px);
+            border-top: 1px solid var(--cst-gold); border-radius: 16px 16px 0 0;
+            padding: 16px; display: none; flex-direction: column; z-index: 999999;
+            box-shadow: 0 -8px 30px rgba(0,0,0,0.5); box-sizing: border-box;
         }
-
-        .chat-mobile.active {
-            display: flex;
-            animation: chatMobileFadeIn 0.25s ease forwards;
-        }
-
-        @keyframes chatMobileFadeIn {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        .chat-mobile.active { display: flex; animation: chatMobileFadeIn 0.25s ease forwards; }
+        @keyframes chatMobileFadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         .chat-mobile-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--cst-cream);
-            background: var(--cst-sea-ink);
-            margin: -16px -16px 12px -16px;
-            padding: 14px 16px;
-            border-radius: 16px 16px 0 0;
-            border-bottom: 1px solid var(--cst-gold);
+            display: flex; align-items: center; gap: 8px; color: var(--cst-cream);
+            background: var(--cst-sea-ink); margin: -16px -16px 12px -16px;
+            padding: 14px 16px; border-radius: 16px 16px 0 0; border-bottom: 1px solid var(--cst-gold);
         }
-
-        .chat-mobile-header .avatar-status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #5FD068;
-            box-shadow: 0 0 6px #5FD068;
-        }
-
-        .chat-mobile-header span.chat-title-mobile {
-            flex-grow: 1;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .close-chat-btn-mobile,
-        .voice-toggle-btn-mobile {
-            background: transparent;
-            border: none;
-            color: var(--cst-cream);
-            font-size: 1.15rem;
-            cursor: pointer;
-            padding: 2px 6px;
-        }
-
+        .chat-mobile-header .avatar-status-dot { width: 8px; height: 8px; border-radius: 50%; background: #5FD068; box-shadow: 0 0 6px #5FD068; }
+        .chat-mobile-header span.chat-title-mobile { flex-grow: 1; font-weight: 600; font-size: 0.95rem; }
+        .close-chat-btn-mobile, .voice-toggle-btn-mobile { background: transparent; border: none; color: var(--cst-cream); font-size: 1.15rem; cursor: pointer; padding: 2px 6px; }
         .premium-status-bar-mobile {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-align: center;
-            padding: 5px 8px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            letter-spacing: 0.2px;
-            background: rgba(239, 230, 211, 0.08);
-            color: var(--cst-cream);
-            border: 1px solid rgba(239, 230, 211, 0.25);
+            font-size: 0.75rem; font-weight: 600; text-align: center; padding: 5px 8px;
+            margin-bottom: 10px; border-radius: 6px; letter-spacing: 0.2px;
+            background: rgba(239, 230, 211, 0.08); color: var(--cst-cream); border: 1px solid rgba(239, 230, 211, 0.25);
         }
-
-        .premium-status-bar-mobile.premium-active {
-            background: rgba(184, 135, 59, 0.18);
-            color: var(--cst-gold-light);
-            border: 1px solid rgba(184, 135, 59, 0.4);
-        }
-
-        .chat-messages-mobile {
-            flex-grow: 1;
-            overflow-y: auto;
-            margin-bottom: 10px;
-            -webkit-overflow-scrolling: touch;
-        }
-
+        .premium-status-bar-mobile.premium-active { background: rgba(184, 135, 59, 0.18); color: var(--cst-gold-light); border: 1px solid rgba(184, 135, 59, 0.4); }
+        .chat-messages-mobile { flex-grow: 1; overflow-y: auto; margin-bottom: 10px; -webkit-overflow-scrolling: touch; }
         .chat-messages-mobile .message-mobile {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            color: var(--cst-ink);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            background: #fff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            max-width: 90%;
-            border-left: 2px solid var(--cst-gold);
+            display: flex; align-items: flex-start; gap: 8px; color: var(--cst-ink);
+            font-size: 0.9rem; line-height: 1.5; background: #fff; padding: 8px 12px;
+            border-radius: 8px; margin-bottom: 8px; max-width: 90%; border-left: 2px solid var(--cst-gold);
         }
-
-        .chat-messages-mobile .message-mobile span {
-            flex: 1;
-        }
-
+        .chat-messages-mobile .message-mobile span { flex: 1; }
         .chat-messages-mobile .message-mobile.user-msg-mobile {
-            background: var(--cst-sea);
-            color: #fff;
-            border-left: none;
-            border-right: 2px solid var(--cst-gold);
-            margin-left: auto;
-            flex-direction: row-reverse;
-            text-align: right;
+            background: var(--cst-sea); color: #fff; border-left: none; border-right: 2px solid var(--cst-gold);
+            margin-left: auto; flex-direction: row-reverse; text-align: right;
         }
-
-        .audio-btn-mobile {
-            background: rgba(184, 135, 59, 0.12);
-            border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            font-size: 14px;
-            cursor: pointer;
-            flex-shrink: 0;
-            color: var(--cst-gold);
-        }
-
-        .chat-link-btn-mobile {
-            display: block;
-            background: var(--cst-terracotta);
-            color: #fff;
-            border: none;
-            padding: 9px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin: -2px 0 8px 0;
-        }
-
-        .topic-menu-mobile {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin: 2px 0 10px 0;
-        }
-
-        .topic-btn-mobile {
-            background: #fff;
-            border: 1px solid var(--cst-gold);
-            color: var(--cst-sea);
-            padding: 7px 13px;
-            border-radius: 999px;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-
-        .typing-indicator-mobile {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            width: fit-content;
-            padding: 10px 14px;
-            margin-bottom: 8px;
-            background: #fff;
-            border-radius: 8px;
-            border-left: 2px solid var(--cst-gold);
-        }
-
-        .typing-indicator-mobile span {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--cst-gold);
-            display: inline-block;
-            animation: typing-bounce-mobile 1.2s infinite ease-in-out;
-        }
-
+        .audio-btn-mobile { background: rgba(184, 135, 59, 0.12); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 14px; cursor: pointer; flex-shrink: 0; color: var(--cst-gold); }
+        .chat-link-btn-mobile { display: block; background: var(--cst-terracotta); color: #fff; border: none; padding: 9px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; margin: -2px 0 8px 0; }
+        .topic-menu-mobile { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 10px 0; }
+        .topic-btn-mobile { background: #fff; border: 1px solid var(--cst-gold); color: var(--cst-sea); padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; cursor: pointer; }
+        .topic-back-btn-mobile { border-style: dashed; color: var(--cst-terracotta); }
+        .typing-indicator-mobile { display: flex; align-items: center; gap: 4px; width: fit-content; padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; border-left: 2px solid var(--cst-gold); }
+        .typing-indicator-mobile span { width: 6px; height: 6px; border-radius: 50%; background: var(--cst-gold); display: inline-block; animation: typing-bounce-mobile 1.2s infinite ease-in-out; }
         .typing-indicator-mobile span:nth-child(2) { animation-delay: 0.2s; }
         .typing-indicator-mobile span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes typing-bounce-mobile {
-            0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-            30% { transform: translateY(-4px); opacity: 1; }
-        }
-
-        .chat-input-row-mobile {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .chat-input-row-mobile input {
-            flex: 1;
-            min-width: 0;
-            padding: 12px 14px;
-            border-radius: 8px;
-            border: 1px solid rgba(184, 135, 59, 0.55);
-            background: rgba(255,255,255,0.97);
-            color: var(--cst-ink);
-            font-size: 0.95rem;
-            outline: none;
-        }
-
-        .mic-btn-mobile,
-        .send-btn-mobile {
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.05rem;
-            color: #fff;
-            flex-shrink: 0;
-        }
-
-        .mic-btn-mobile {
-            background: #6B1F2A;
-        }
-
-        .mic-btn-mobile.listening {
-            background: var(--cst-terracotta);
-            animation: micPulseMobile 1s ease-in-out infinite;
-        }
-
-        @keyframes micPulseMobile {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.12); }
-        }
-
-        .send-btn-mobile {
-            background: var(--cst-terracotta);
-        }
+        @keyframes typing-bounce-mobile { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
+        .chat-input-row-mobile { display: flex; gap: 8px; align-items: center; }
+        .chat-input-row-mobile input { flex: 1; min-width: 0; padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(184, 135, 59, 0.55); background: rgba(255,255,255,0.97); color: var(--cst-ink); font-size: 0.95rem; outline: none; }
+        .mic-btn-mobile, .send-btn-mobile { border: none; width: 44px; height: 44px; border-radius: 8px; cursor: pointer; font-size: 1.05rem; color: #fff; flex-shrink: 0; }
+        .mic-btn-mobile { background: #6B1F2A; }
+        .mic-btn-mobile.listening { background: var(--cst-terracotta); animation: micPulseMobile 1s ease-in-out infinite; }
+        @keyframes micPulseMobile { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+        .send-btn-mobile { background: var(--cst-terracotta); }
     </style>
 </head>
 <body>
 
-    <!-- Audio ed elementi di sblocco -->
     <button id="audio-trigger" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; border:none; background:transparent; z-index:9999;"></button>
-    
+
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
@@ -416,7 +209,7 @@ window.silktideConsentManager.init({
     </header>
 
     <main class="mobile-layout-detail">
-        
+
         <header class="monument-header">
             <h1 data-i18n="pages.monuments_pages.sangiorgio.title">Chiesa di San Giorgio Martire</h1>
         </header>
@@ -457,7 +250,7 @@ window.silktideConsentManager.init({
             <button class="btn-barocco-action" onclick="window.location.href='mappa.html?focus=sangiorgio&vista=monumenti'">
                 🌐 <span data-i18n="pages.monuments_pages.labels.view_map">Apri la Mappa</span>
             </button>
-            
+
             <button class="btn-barocco-action btn-secondary-action" id="talk-castellana-btn-monumento">
                 👑 <span data-i18n="pages.monuments_pages.labels.btn_parla_castellana">Parla con la Castellana</span>
             </button>
@@ -471,13 +264,6 @@ window.silktideConsentManager.init({
 
     </main>
 
-    <!-- ============================================================
-         GALLERIA FOTO — San Giorgio Martire
-         Modale a schermo intero, si apre col bottone "Galleria".
-         Per riusare su un'altra chiesa: copia questo blocco + il
-         blocco CSS ".gallery-modal" + lo script GALLERY_IMAGES qui
-         sotto, cambia solo l'array delle foto.
-         ============================================================ -->
     <div class="gallery-modal" id="gallery-modal">
         <div class="gallery-modal-header">
             <span class="gallery-counter" id="gallery-counter">1 / 10</span>
@@ -496,17 +282,57 @@ window.silktideConsentManager.init({
         // GALLERIA FOTO — San Giorgio Martire
         // --------------------------
         const GALLERY_IMAGES = [
-            { src: "../gallery-chiese/navata_centrale_sangiorgio.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.navata_centrale", fallback: "Navata principale" },
-            { src: "../gallery-chiese/dettagliocappellare_sangiorgio.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.dettagliocappellare", fallback: "Particolare della cappella delle reliquie" },
-            { src: "../gallery-chiese/organo_sangiorgio.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.organo", fallback: "L'organo" },
-            { src: "../gallery-chiese/cappelladellerelique_sangiorgio.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.cappella_reliquie", fallback: "Cappella delle reliquie" },
-            { src: "../gallery-chiese/cupola_sangiorgio.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.cupola", fallback: "La cupola" },
-            { src: "../gallery-chiese/statua_sangiorgio.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.statua", fallback: "Statua di San Giorgio" },
-            { src: "../gallery-chiese/beato_giovanni_sangiorgio.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.beato_giovanni", fallback: "Quadro del Beato Giovanni" },
-            { src: "../gallery-chiese/martirio_sansebastiano_sangiorgio.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.martirio_sanseb", fallback: "Martirio di San Sebastiano" },
-            { src: "../gallery-chiese/affreschi_presbiterio_sangiorgio.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.affreschi_presbiterio", fallback: "Affreschi del presbiterio" },
-            { src: "../gallery-chiese/stomer_sangiorgio.jpg", captionKey: "pages.monuments_pages.sangiorgio_gallery.stomer", fallback: "Opera dello Stomer" }
-        ];
+        {
+                "src": "../gallery-chiese/navata_centrale_sangiorgio.jpg",
+                "captionKey": "pages.monuments_pages.sangiorgio_gallery.navata_centrale",
+                "fallback": "Navata principale"
+        },
+        {
+                "src": "../gallery-chiese/dettagliocappellare_sangiorgio.jpg",
+                "captionKey": "pages.monuments_pages.sangiorgio_gallery.dettagliocappellare",
+                "fallback": "Particolare della cappella delle reliquie"
+        },
+        {
+                "src": "../gallery-chiese/organo_sangiorgio.jpg",
+                "captionKey": "pages.monuments_pages.sangiorgio_gallery.organo",
+                "fallback": "L'organo"
+        },
+        {
+                "src": "../gallery-chiese/cappelladellerelique_sangiorgio.jpg",
+                "captionKey": "pages.monuments_pages.sangiorgio_gallery.cappella_reliquie",
+                "fallback": "Cappella delle reliquie"
+        },
+        {
+                "src": "../gallery-chiese/cupola_sangiorgio.jpg",
+                "captionKey": "pages.monuments_pages.sangiorgio_gallery.cupola",
+                "fallback": "La cupola"
+        },
+        {
+                "src": "../gallery-chiese/statua_sangiorgio.jpg",
+                "captionKey": "pages.monuments_pages.sangiorgio_gallery.statua",
+                "fallback": "Statua di San Giorgio"
+        },
+        {
+                "src": "../gallery-chiese/beato_giovanni_sangiorgio.jpg",
+                "captionKey": "pages.monuments_pages.sangiorgio_gallery.beato_giovanni",
+                "fallback": "Quadro del Beato Giovanni"
+        },
+        {
+                "src": "../gallery-chiese/martirio_sansebastiano_sangiorgio.jpg",
+                "captionKey": "pages.monuments_pages.sangiorgio_gallery.martirio_sanseb",
+                "fallback": "Martirio di San Sebastiano"
+        },
+        {
+                "src": "../gallery-chiese/affreschi_presbiterio_sangiorgio.jpg",
+                "captionKey": "pages.monuments_pages.sangiorgio_gallery.affreschi_presbiterio",
+                "fallback": "Affreschi del presbiterio"
+        },
+        {
+                "src": "../gallery-chiese/stomer_sangiorgio.jpg",
+                "captionKey": "pages.monuments_pages.sangiorgio_gallery.stomer",
+                "fallback": "Opera dello Stomer"
+        }
+];
 
         let currentGalleryIndex = 0;
 
@@ -531,16 +357,6 @@ window.silktideConsentManager.init({
             document.getElementById('gallery-counter').textContent = (index + 1) + ' / ' + GALLERY_IMAGES.length;
         }
 
-        // Se l'utente cambia lingua mentre la galleria è aperta,
-        // aggiorna subito la didascalia mostrata (senza aspettare
-        // che venga toccata una freccia).
-        document.addEventListener('languageChanged', function() {
-            const modal = document.getElementById('gallery-modal');
-            if (modal && modal.classList.contains('active')) {
-                showGalleryImage(currentGalleryIndex);
-            }
-        });
-
         function showNextGalleryImage() {
             currentGalleryIndex = (currentGalleryIndex + 1) % GALLERY_IMAGES.length;
             showGalleryImage(currentGalleryIndex);
@@ -560,7 +376,7 @@ window.silktideConsentManager.init({
             if (e.target === this) closeGallery();
         });
 
-        // Scorrimento con swipe (dito) sulla foto, utile su mobile
+        // Scorrimento con swipe (dito) sulla foto
         (function() {
             const imgEl = document.getElementById('gallery-modal-image');
             let touchStartX = 0;
@@ -576,13 +392,18 @@ window.silktideConsentManager.init({
                 }
             });
         })();
+
+        // Se si cambia lingua con la galleria aperta, aggiorna la didascalia
+        document.addEventListener('languageChanged', function() {
+            const modal = document.getElementById('gallery-modal');
+            if (modal && modal.classList.contains('active')) {
+                showGalleryImage(currentGalleryIndex);
+            }
+        });
     </script>
 
-    <!-- ============================================================
-         CHAT CASTELLANA — collegata agli argomenti Premium specifici
-         del Duomo (chiese.duomo.*), stessi id usati dalla chat
-         chiese-arte.html su desktop.
-         ============================================================ -->
+
+
     <div class="chat-mobile" id="chat-mobile">
         <div class="chat-mobile-header">
             <div class="avatar-status-dot"></div>
@@ -607,10 +428,6 @@ window.silktideConsentManager.init({
         // si esegue subito da sola: le sue variabili (currentLang,
         // speakText, audio, ecc.) restano private e non entrano in
         // conflitto con quelle gia usate in monument_translation.js.
-        // Musica di sottofondo della pagina. La sintesi vocale
-        // dell'audioguida (toggleReadAloud) arriva da
-        // monument_translation.js, condivisa da tutte le pagine
-        // dei monumenti.
         const audio = document.getElementById("bg-music"); audio.volume = 0.2;
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
@@ -622,17 +439,20 @@ window.silktideConsentManager.init({
 
         toggleBtn.addEventListener("click", (e) => {
             e.stopPropagation();
-            if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; } 
+            if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; }
             else { audio.pause(); toggleBtn.textContent = "🔇"; }
         });
 
-        // ============================================================
-        // ================  CHAT CASTELLANA (MOBILE)  ================
-        // ============================================================
+
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
         const VOICE_PREF_KEY = "amuni_voice_enabled";
+        // NUOVO — in quale monumento ci troviamo. Il backend lo usa per
+        // capire quando il turista chiede di un altro monumento e
+        // mandarlo alla pagina giusta invece di rispondere qui.
+        const MONUMENT_ID = "chiese.duomo";
         let currentLang = localStorage.getItem("lang") || "it";
+        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
 
         function getStoredAccessCode() {
             const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
@@ -693,9 +513,7 @@ window.silktideConsentManager.init({
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
 
-            // Cerca automaticamente indizi di voce neurale/di qualità superiore,
-            // utile per varianti non presenti nella lista fissa sopra
-            // (es. voci "Enhanced"/"Premium" scaricate su iOS, o "Online (Natural)" di Edge)
+            // Cerca automaticamente indizi di voce neurale/di qualità superiore
             const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
             const vociDiQualita = stessaLingua.filter(v =>
                 INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -709,11 +527,6 @@ window.silktideConsentManager.init({
         // ============================================================
         // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
         // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
-        // Servono a due cose:
-        // 1. NON devono mai comparire come testo letto o mostrato
-        //    all'utente (stripEmotionTags li rimuove per la visualizzazione)
-        // 2. Modulano rate/pitch della sintesi vocale SOLO per la frase
-        //    che racchiudono (parseEmotionalSegments + speakText)
         // ============================================================
         const EMOTION_PRESETS = {
             energico:    { rate: 1.05, pitch: 1.08 },
@@ -874,20 +687,82 @@ window.silktideConsentManager.init({
         }
 
         // --------------------------
-        // LINK — i link restituiti dal backend vanno fatti puntare
-        // a "../desktop/", perché le pagine desktop stanno lì.
+        // LINK — i link mandati dal backend possono essere:
+        //   "castello.html"          -> pagina desktop, va in "../desktop/"
+        //   "../mobile/xxx.html"     -> pagina mobile, gia' corretta cosi'
+        //   "https://..."            -> indirizzo completo
         // --------------------------
         function resolveLinkPathMobile(link) {
             if (!link) return link;
-            if (link.startsWith("http") || link.startsWith("../desktop/") || link.startsWith("/mobile/")) {
+            if (link.startsWith("http") || link.startsWith("../desktop/") ||
+                link.startsWith("../mobile/") || link.startsWith("/mobile/")) {
                 return link;
             }
             return "../desktop/" + link;
         }
 
-        // --------------------------
-        // RENDERING MESSAGGI
-        // --------------------------
+        // NUOVO — testo del pulsante-link, nella lingua della pagina.
+        // Prima era sempre "Vai alla pagina →".
+        const LINK_LABELS_MOBILE = {
+            eventi:    { it: "Vai agli Eventi →", en: "Go to Events →", fr: "Aller aux Événements →", es: "Ir a Eventos →", de: "Zu den Veranstaltungen →" },
+            mangiare:  { it: "Vai a Mangiare e Bere →", en: "Go to Eat & Drink →", fr: "Aller à Manger et Boire →", es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →" },
+            castello:  { it: "Vai al Castello →", en: "Go to the Castle →", fr: "Aller au Château →", es: "Ir al Castillo →", de: "Zum Schloss →" },
+            monumenti: { it: "Vai ai Monumenti →", en: "Go to Monuments →", fr: "Aller aux Monuments →", es: "Ir a Monumentos →", de: "Zu den Denkmälern →" },
+            chiesa:    { it: "Vai alla chiesa →", en: "Go to the church →", fr: "Aller à l'église →", es: "Ir a la iglesia →", de: "Zur Kirche →" },
+            mappa:     { it: "Vedi sulla mappa →", en: "See on the map →", fr: "Voir sur la carte →", es: "Ver en el mapa →", de: "Auf der Karte ansehen →" },
+            orari:     { it: "Orari e biglietti →", en: "Hours & tickets →", fr: "Horaires et billets →", es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →" },
+            generico:  { it: "Vai alla pagina →", en: "Go to the page →", fr: "Aller à la page →", es: "Ir a la página →", de: "Zur Seite →" }
+        };
+
+        function isLinkAllaPaginaCorrente(link) {
+            const file = (link || "").split('?')[0].split('/').pop();
+            const corrente = window.location.pathname.split('/').pop();
+            return !!file && file === corrente;
+        }
+
+        function getLinkLabelMobile(link) {
+            const scegli = (k) => LINK_LABELS_MOBILE[k][currentLang] || LINK_LABELS_MOBILE[k].it;
+            if (!link) return scegli('generico');
+            if (isLinkAllaPaginaCorrente(link)) return scegli('orari');
+            if (link.includes('eventi.html')) return scegli('eventi');
+            if (link.includes('mangiare.html')) return scegli('mangiare');
+            if (link.includes('castello_di_caccamo') || link.includes('castello.html')) return scegli('castello');
+            if (link.includes('monumenti.html')) return scegli('monumenti');
+            if (link.includes('mappa.html')) return scegli('mappa');
+            if (/(sangiorgio|santamaria|sanbenedetto|annunziata|cappuccini)\.html/.test(link)) return scegli('chiesa');
+            return scegli('generico');
+        }
+
+        // NUOVO — gli indirizzi web scritti dentro le risposte (es. il
+        // calendario eventi di Palermo) diventano link cliccabili. Il
+        // resto resta testo semplice: nessun codice estraneo nella pagina.
+        const URL_NEL_TESTO = /(https?:\/\/[^\s]+[^\s.,;:!?)])/g;
+
+        function riempiTestoConLinkMobile(contenitore, testo) {
+            testo.split('\n').forEach((riga, i) => {
+                if (i > 0) contenitore.appendChild(document.createElement('br'));
+                let ultimo = 0;
+                let match;
+                URL_NEL_TESTO.lastIndex = 0;
+                while ((match = URL_NEL_TESTO.exec(riga)) !== null) {
+                    if (match.index > ultimo) {
+                        contenitore.appendChild(document.createTextNode(riga.slice(ultimo, match.index)));
+                    }
+                    const a = document.createElement('a');
+                    a.href = match[0];
+                    a.textContent = match[0];
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.style.wordBreak = 'break-all';
+                    contenitore.appendChild(a);
+                    ultimo = URL_NEL_TESTO.lastIndex;
+                }
+                if (ultimo < riga.length) {
+                    contenitore.appendChild(document.createTextNode(riga.slice(ultimo)));
+                }
+            });
+        }
+
         function appendChatMessageMobile(text, sender, link) {
             const messagesBox = document.getElementById('chat-messages-mobile');
             if (!messagesBox) return;
@@ -896,7 +771,7 @@ window.silktideConsentManager.init({
             msg.className = 'message-mobile' + (sender === 'user' ? ' user-msg-mobile' : '');
 
             const textSpan = document.createElement('span');
-            textSpan.innerHTML = stripEmotionTags(text).replace(/\n/g, '<br>');
+            riempiTestoConLinkMobile(textSpan, stripEmotionTags(text));
             msg.appendChild(textSpan);
 
             if (sender !== 'user') {
@@ -913,8 +788,19 @@ window.silktideConsentManager.init({
             if (link) {
                 const btn = document.createElement('button');
                 btn.className = 'chat-link-btn-mobile';
-                btn.textContent = 'Vai alla pagina →';
-                btn.onclick = () => window.location.href = resolveLinkPathMobile(link);
+                btn.textContent = getLinkLabelMobile(link);
+                btn.onclick = () => {
+                    // Se il link porta a questa stessa pagina (es. "Orari e
+                    // biglietti"), non ricarichiamo: chiudiamo la chat e
+                    // mostriamo la scheda con gli orari.
+                    if (isLinkAllaPaginaCorrente(link)) {
+                        chatMobileBox.classList.remove('active');
+                        const scheda = document.querySelector('.teca-logistica');
+                        if (scheda) scheda.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        return;
+                    }
+                    window.location.href = resolveLinkPathMobile(link);
+                };
                 messagesBox.appendChild(btn);
             }
 
@@ -939,59 +825,150 @@ window.silktideConsentManager.init({
         }
 
         // --------------------------
-        // ARGOMENTI PREMIUM — solo quelli del Duomo (San Giorgio),
-        // stessi id usati dal backend/chiese-arte.html.
+        // ARGOMENTI PREMIUM — solo quelli di questo monumento,
+        // stessi id usati dal backend.
         // --------------------------
-        const DUOMO_TOPICS_MOBILE = {
-            it: [
-                { topic: "chiese.duomo.storia", label: "🏰 Storia" },
-                { topic: "chiese.duomo.interno", label: "🕯️ Interno" },
-                { topic: "chiese.duomo.dove", label: "📍 Dove si trova" },
-                { topic: "chiese.duomo.dintorni", label: "🗺️ Nei dintorni" },
-                { topic: "chiese.duomo.orari", label: "🎫 Orari e biglietti" }
+        const TOPICS_MOBILE = {
+            "it": [
+                        {
+                                    "topic": "chiese.duomo.storia",
+                                    "label": "🖼️ Esterno"
+                        },
+                        {
+                                    "topic": "chiese.duomo.interno",
+                                    "label": "🏰 Storia"
+                        },
+                        {
+                                    "topic": "chiese.duomo.dove",
+                                    "label": "📍 Dove si trova"
+                        },
+                        {
+                                    "topic": "chiese.duomo.dintorni",
+                                    "label": "🗺️ Nei dintorni"
+                        },
+                        {
+                                    "topic": "chiese.duomo.orari",
+                                    "label": "🎫 Orari e biglietti"
+                        }
             ],
-            en: [
-                { topic: "chiese.duomo.storia", label: "🏰 History" },
-                { topic: "chiese.duomo.interno", label: "🕯️ Interior" },
-                { topic: "chiese.duomo.dove", label: "📍 Location" },
-                { topic: "chiese.duomo.dintorni", label: "🗺️ Nearby" },
-                { topic: "chiese.duomo.orari", label: "🎫 Hours & Tickets" }
+            "en": [
+                        {
+                                    "topic": "chiese.duomo.storia",
+                                    "label": "🖼️ Exterior"
+                        },
+                        {
+                                    "topic": "chiese.duomo.interno",
+                                    "label": "🏰 History"
+                        },
+                        {
+                                    "topic": "chiese.duomo.dove",
+                                    "label": "📍 Location"
+                        },
+                        {
+                                    "topic": "chiese.duomo.dintorni",
+                                    "label": "🗺️ Nearby"
+                        },
+                        {
+                                    "topic": "chiese.duomo.orari",
+                                    "label": "🎫 Hours & Tickets"
+                        }
             ],
-            fr: [
-                { topic: "chiese.duomo.storia", label: "🏰 Histoire" },
-                { topic: "chiese.duomo.interno", label: "🕯️ Intérieur" },
-                { topic: "chiese.duomo.dove", label: "📍 Où se trouve" },
-                { topic: "chiese.duomo.dintorni", label: "🗺️ Aux alentours" },
-                { topic: "chiese.duomo.orari", label: "🎫 Horaires & Billets" }
+            "fr": [
+                        {
+                                    "topic": "chiese.duomo.storia",
+                                    "label": "🖼️ Extérieur"
+                        },
+                        {
+                                    "topic": "chiese.duomo.interno",
+                                    "label": "🏰 Histoire"
+                        },
+                        {
+                                    "topic": "chiese.duomo.dove",
+                                    "label": "📍 Où se trouve"
+                        },
+                        {
+                                    "topic": "chiese.duomo.dintorni",
+                                    "label": "🗺️ Aux alentours"
+                        },
+                        {
+                                    "topic": "chiese.duomo.orari",
+                                    "label": "🎫 Horaires & Billets"
+                        }
             ],
-            es: [
-                { topic: "chiese.duomo.storia", label: "🏰 Historia" },
-                { topic: "chiese.duomo.interno", label: "🕯️ Interior" },
-                { topic: "chiese.duomo.dove", label: "📍 Dónde está" },
-                { topic: "chiese.duomo.dintorni", label: "🗺️ Cercano" },
-                { topic: "chiese.duomo.orari", label: "🎫 Horarios y Entradas" }
+            "es": [
+                        {
+                                    "topic": "chiese.duomo.storia",
+                                    "label": "🖼️ Exterior"
+                        },
+                        {
+                                    "topic": "chiese.duomo.interno",
+                                    "label": "🏰 Historia"
+                        },
+                        {
+                                    "topic": "chiese.duomo.dove",
+                                    "label": "📍 Dónde está"
+                        },
+                        {
+                                    "topic": "chiese.duomo.dintorni",
+                                    "label": "🗺️ Cercano"
+                        },
+                        {
+                                    "topic": "chiese.duomo.orari",
+                                    "label": "🎫 Horarios y Entradas"
+                        }
             ],
-            de: [
-                { topic: "chiese.duomo.storia", label: "🏰 Geschichte" },
-                { topic: "chiese.duomo.interno", label: "🕯️ Innenraum" },
-                { topic: "chiese.duomo.dove", label: "📍 Standort" },
-                { topic: "chiese.duomo.dintorni", label: "🗺️ In der Nähe" },
-                { topic: "chiese.duomo.orari", label: "🎫 Öffnungszeiten & Tickets" }
+            "de": [
+                        {
+                                    "topic": "chiese.duomo.storia",
+                                    "label": "🖼️ Außenansicht"
+                        },
+                        {
+                                    "topic": "chiese.duomo.interno",
+                                    "label": "🏰 Geschichte"
+                        },
+                        {
+                                    "topic": "chiese.duomo.dove",
+                                    "label": "📍 Standort"
+                        },
+                        {
+                                    "topic": "chiese.duomo.dintorni",
+                                    "label": "🗺️ In der Nähe"
+                        },
+                        {
+                                    "topic": "chiese.duomo.orari",
+                                    "label": "🎫 Öffnungszeiten & Tickets"
+                        }
             ]
-        };
+};
 
         const WELCOME_MESSAGE_MOBILE = {
-            it: "Benvenuto al Duomo di San Giorgio Martire, viandante! Cosa vuoi scoprire?",
-            en: "Welcome to the Cathedral of San Giorgio Martire, traveler! What would you like to discover?",
-            fr: "Bienvenue a la Cathedrale de San Giorgio Martire, voyageur ! Que veux-tu decouvrir ?",
-            es: "Bienvenido a la Catedral de San Giorgio Martire, viajero! Que quieres descubrir?",
-            de: "Willkommen im Dom von San Giorgio Martire, Reisender! Was mochtest du entdecken?"
+            "it": "Benvenuto al Duomo di San Giorgio Martire, viandante! Cosa vuoi scoprire?",
+            "en": "Welcome to the Cathedral of San Giorgio Martire, traveler! What would you like to discover?",
+            "fr": "Bienvenue a la Cathedrale de San Giorgio Martire, voyageur ! Que veux-tu decouvrir ?",
+            "es": "Bienvenido a la Catedral de San Giorgio Martire, viajero! Que quieres descubrir?",
+            "de": "Willkommen im Dom von San Giorgio Martire, Reisender! Was mochtest du entdecken?"
+};
+
+        // Percorsi a tappe (es. il tour del Castello): dopo una tappa compare
+        // il pulsante per passare alla successiva. Vuoto se la pagina non ne ha.
+        const NEXT_STEPS_MOBILE = {};
+
+        function extraStepsFor(topicId) {
+            const next = NEXT_STEPS_MOBILE[topicId];
+            if (!next) return [];
+            return [{ topic: next.topic, label: next.label[currentLang] || next.label.it }];
+        }
+
+        const BACK_TO_MENU_LABELS_MOBILE = {
+            it: "‹ Torna al menu", en: "‹ Back to menu", fr: "‹ Retour au menu",
+            es: "‹ Volver al menú", de: "‹ Zurück zum Menü"
         };
 
         let usedTopicsMobile = new Set();
         let hasShownWelcomeMobile = false;
+        // Ricorda in quale lingua e stato mostrato l'ultimo benvenuto:
+        // se currentLang cambia, il benvenuto va ridisegnato.
         let shownWelcomeLang = null;
-        let menuLoadedForCodeMobile = null;
 
         function renderTopicMenuMobile(menu) {
             const messagesBox = document.getElementById('chat-messages-mobile');
@@ -1019,7 +996,44 @@ window.silktideConsentManager.init({
             }
         }
 
-        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
+        // ============================================================
+        // NUOVO — OPZIONI "UNA TANTUM" INVIATE DAL BACKEND
+        // Quando la Castellana risponde con una domanda e dei pulsanti
+        // da scegliere (es. "in che zona del paese ti trovi?" + le
+        // zone), questi arrivano nel campo "menu" della risposta come
+        // semplice elenco {topic, label}. Prima venivano ignorati.
+        // ============================================================
+        function isOneOffOptionListMobile(menu) {
+            return Array.isArray(menu) && menu.length > 0 &&
+                   menu.every(voce => voce && voce.topic && voce.label && !voce.group);
+        }
+
+        function renderReplyOptionsMobile(options) {
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            if (!messagesBox) return;
+            const old = messagesBox.querySelector('.topic-menu-state-mobile');
+            if (old) old.remove();
+
+            const wrap = document.createElement('div');
+            wrap.className = 'topic-menu-mobile topic-menu-state-mobile';
+
+            options.forEach(opt => {
+                const b = document.createElement('button');
+                b.className = 'topic-btn-mobile';
+                b.textContent = opt.label;
+                b.addEventListener('click', () => sendTopicRequestMobile(opt.topic, opt.label));
+                wrap.appendChild(b);
+            });
+
+            const backBtn = document.createElement('button');
+            backBtn.className = 'topic-btn-mobile topic-back-btn-mobile';
+            backBtn.textContent = BACK_TO_MENU_LABELS_MOBILE[currentLang] || BACK_TO_MENU_LABELS_MOBILE.it;
+            backBtn.addEventListener('click', () => renderTopicMenuMobile(TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it));
+            wrap.appendChild(backBtn);
+
+            messagesBox.appendChild(wrap);
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
 
         async function sendTopicRequestMobile(topicId, label) {
             appendChatMessageMobile(label, 'user');
@@ -1039,7 +1053,9 @@ window.silktideConsentManager.init({
                         page: "chiese-arte",
                         lang: currentLang,
                         access_code: getStoredAccessCode() || "",
-                        topic: topicId
+                        topic: topicId,
+                        platform: "mobile",
+                        monument: MONUMENT_ID
                     })
                 });
                 if (!res.ok) throw new Error('Risposta non valida dal server');
@@ -1048,7 +1064,13 @@ window.silktideConsentManager.init({
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 lastTopic = data.topic || topicId;
-                renderTopicMenuMobile(DUOMO_TOPICS_MOBILE[currentLang] || DUOMO_TOPICS_MOBILE.it);
+
+                if (isOneOffOptionListMobile(data.menu)) {
+                    renderReplyOptionsMobile(data.menu);
+                } else {
+                    const base = TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it;
+                    renderTopicMenuMobile(extraStepsFor(topicId).concat(base));
+                }
             } catch (err) {
                 console.error('Errore richiesta topic:', err);
                 hideTypingIndicatorMobile();
@@ -1061,7 +1083,6 @@ window.silktideConsentManager.init({
             if (!messagesBox) return;
             messagesBox.innerHTML = '';
             usedTopicsMobile.clear();
-            menuLoadedForCodeMobile = null;
             hasShownWelcomeMobile = true;
             shownWelcomeLang = currentLang;
 
@@ -1072,7 +1093,7 @@ window.silktideConsentManager.init({
                 appendChatMessageMobile(welcomeText, 'castellana');
                 if (voiceEnabled) speakText(welcomeText);
 
-                renderTopicMenuMobile(DUOMO_TOPICS_MOBILE[currentLang] || DUOMO_TOPICS_MOBILE.it);
+                renderTopicMenuMobile(TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it);
             }, 900);
         }
 
@@ -1130,7 +1151,12 @@ window.silktideConsentManager.init({
                         page: "chiese-arte",
                         lang: currentLang,
                         access_code: getStoredAccessCode() || "",
-                        last_topic: lastTopic || ""
+                        last_topic: lastTopic || "",
+                        // NUOVO — siamo sul mobile e in questo monumento:
+                        // cosi' il backend manda alla pagina giusta quando
+                        // si chiede di un altro monumento.
+                        platform: "mobile",
+                        monument: MONUMENT_ID
                     })
                 });
 
@@ -1141,6 +1167,15 @@ window.silktideConsentManager.init({
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 if (data.topic) lastTopic = data.topic;
+
+                // NUOVO — scelte da fare (es. le zone) oppure, se la
+                // Castellana non ha capito, di nuovo il menu di questo
+                // monumento.
+                if (isOneOffOptionListMobile(data.menu)) {
+                    renderReplyOptionsMobile(data.menu);
+                } else if (data.menu && data.menu.length) {
+                    renderTopicMenuMobile(TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it);
+                }
 
             } catch (err) {
                 console.error('Errore chat:', err);
@@ -1217,12 +1252,17 @@ window.silktideConsentManager.init({
                 // versione Web".
                 chatMobileBox.classList.add('active');
                 updatePremiumStatusDisplayMobile();
+                // Ridisegna il benvenuto se non e mai stato mostrato,
+                // OPPURE se la lingua e cambiata da allora.
                 if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
                     renderWelcomeMobile();
                 }
             });
         }
 
+        // Il selettore lingua in alto e gestito da monument_translation.js
+        // per il testo della pagina, ma non "parla" con la chat. Qui la
+        // chat si mette in ascolto per conto proprio.
         document.querySelectorAll(".lang-switcher button").forEach(function(btn) {
             btn.addEventListener("click", function() {
                 currentLang = btn.dataset.lang;
