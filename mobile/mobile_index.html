@@ -996,8 +996,6 @@ Come funziona la chat? Scegli qui sotto cosa ti va di fare, e ti guido verso le 
                     {
                         group: "Hai voglia di un tour enogastronomico?",
                         items: [
-                            { id: "castello", label: "🏰 Castello", page: "../desktop/castello.html" },
-                            { id: "chiese", label: "⛪ Chiese", page: "../desktop/chiese-arte.html" },
                             { id: "cibo_eventi", label: "🍷 Cibo ed Eventi", page: "../desktop/cibo_eventi.html" }
                         ]
                     },
@@ -1028,8 +1026,6 @@ How does the chat work? Choose below what you feel like doing, and I'll guide yo
                         { id: "chiese", label: "⛪ Churches", page: "../desktop/chiese-arte.html" }
                     ]},
                     { group: "Fancy a food & wine tour?", items: [
-                        { id: "castello", label: "🏰 Castle", page: "../desktop/castello.html" },
-                        { id: "chiese", label: "⛪ Churches", page: "../desktop/chiese-arte.html" },
                         { id: "cibo_eventi", label: "🍷 Food & Events", page: "../desktop/cibo_eventi.html" }
                     ]},
                     { group: "Want to feel like a local?", items: [
@@ -1053,8 +1049,6 @@ Comment fonctionne le chat ? Choisis ci-dessous ce que tu as envie de faire, je 
                         { id: "chiese", label: "⛪ Églises", page: "../desktop/chiese-arte.html" }
                     ]},
                     { group: "Envie d'une visite gastronomique?", items: [
-                        { id: "castello", label: "🏰 Château", page: "../desktop/castello.html" },
-                        { id: "chiese", label: "⛪ Églises", page: "../desktop/chiese-arte.html" },
                         { id: "cibo_eventi", label: "🍷 Cuisine & Fêtes", page: "../desktop/cibo_eventi.html" }
                     ]},
                     { group: "Envie de te sentir comme un habitant?", items: [
@@ -1078,8 +1072,6 @@ Comment fonctionne le chat ? Choisis ci-dessous ce que tu as envie de faire, je 
                         { id: "chiese", label: "⛪ Iglesias", page: "../desktop/chiese-arte.html" }
                     ]},
                     { group: "¿Te apetece un tour gastronómico?", items: [
-                        { id: "castello", label: "🏰 Castillo", page: "../desktop/castello.html" },
-                        { id: "chiese", label: "⛪ Iglesias", page: "../desktop/chiese-arte.html" },
                         { id: "cibo_eventi", label: "🍷 Comida y Fiestas", page: "../desktop/cibo_eventi.html" }
                     ]},
                     { group: "¿Quieres sentirte parte del pueblo?", items: [
@@ -1103,8 +1095,6 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                         { id: "chiese", label: "⛪ Kirchen", page: "../desktop/chiese-arte.html" }
                     ]},
                     { group: "Lust auf eine Genusstour?", items: [
-                        { id: "castello", label: "🏰 Burg", page: "../desktop/castello.html" },
-                        { id: "chiese", label: "⛪ Kirchen", page: "../desktop/chiese-arte.html" },
                         { id: "cibo_eventi", label: "🍷 Essen & Feste", page: "../desktop/cibo_eventi.html" }
                     ]},
                     { group: "Möchtest du dich wie ein Einheimischer fühlen?", items: [
@@ -1153,13 +1143,22 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 backBtn.addEventListener('click', () => renderMenuStateMobile(null));
                 wrap.appendChild(backBtn);
             } else {
-                // Nessun gruppo selezionato: SOLO il menu generale
+                // Nessun gruppo selezionato: SOLO il menu generale.
+                // NUOVO — un gruppo con una sola voce (es. il tour
+                // enogastronomico, che porta solo a Cibo ed Eventi) non
+                // apre più un sottomenù intermedio: il click sceglie
+                // direttamente quella voce, come sulla home desktop.
                 fullTopicMenuMobile.forEach(entry => {
                     if (exploredGroupsMobile.has(entry.group)) return;
                     const groupBtn = document.createElement('button');
                     groupBtn.className = 'topic-btn-mobile topic-group-btn-mobile';
-                    groupBtn.textContent = entry.group + ' ▸';
-                    groupBtn.addEventListener('click', () => renderMenuStateMobile(entry.group));
+                    if (entry.items.length === 1) {
+                        groupBtn.textContent = entry.group;
+                        groupBtn.addEventListener('click', () => selectPageTopicMobile(entry.items[0], entry.group));
+                    } else {
+                        groupBtn.textContent = entry.group + ' ▸';
+                        groupBtn.addEventListener('click', () => renderMenuStateMobile(entry.group));
+                    }
                     wrap.appendChild(groupBtn);
                 });
             }
@@ -1218,6 +1217,78 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             }, 900);
         }
 
+        // ============================================================
+        // NUOVO — OPZIONI "UNA TANTUM" INVIATE DAL BACKEND
+        // Stessa idea gia' introdotta su cibo_eventi.html: quando il
+        // backend manda una domanda con delle scelte (es. "in che zona
+        // del paese ti trovi?" + le zone), la chat mobile le mostra al
+        // posto del solito indicatore "sta scrivendo esaurito". Prima
+        // "data.menu" veniva ignorato del tutto su questa pagina.
+        // ============================================================
+        function isOneOffOptionListMobile(menu) {
+            return Array.isArray(menu) && menu.length > 0 &&
+                   menu.every(voce => voce && voce.topic && voce.label && !voce.group);
+        }
+
+        function renderReplyOptionsMobile(options) {
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            if (!messagesBox) return;
+            const old = messagesBox.querySelector('.topic-menu-state-mobile');
+            if (old) old.remove();
+
+            const wrap = document.createElement('div');
+            wrap.className = 'topic-menu-mobile topic-menu-state-mobile';
+
+            options.forEach(opt => {
+                const b = document.createElement('button');
+                b.className = 'topic-btn-mobile';
+                b.textContent = opt.label;
+                b.addEventListener('click', () => {
+                    appendChatMessageMobile(opt.label, 'user');
+                    inviaTopicMobile(opt.topic, opt.label);
+                });
+                wrap.appendChild(b);
+            });
+
+            messagesBox.appendChild(wrap);
+        }
+
+        // NUOVO — invia al backend un topic scelto da un pulsante di
+        // risposta (es. una zona), riusando la stessa logica di
+        // sendChatMessageMobile ma senza duplicare il messaggio utente
+        // (gia' mostrato da renderReplyOptionsMobile).
+        async function inviaTopicMobile(topicId, label) {
+            showTypingIndicatorMobile();
+            try {
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: label,
+                        page: "home",
+                        lang: currentLang,
+                        access_code: getStoredAccessCode() || "",
+                        topic: topicId,
+                        last_topic: lastTopicMobile || "",
+                        platform: "mobile"
+                    })
+                });
+                if (!res.ok) throw new Error('Risposta non valida dal server');
+                const data = await res.json();
+                hideTypingIndicatorMobile();
+                appendChatMessageMobile(data.reply, 'castellana', data.link);
+                if (data.speak || voiceEnabled) speakText(data.reply);
+                if (data.topic) lastTopicMobile = data.topic;
+                if (isOneOffOptionListMobile(data.menu)) {
+                    renderReplyOptionsMobile(data.menu);
+                }
+            } catch (err) {
+                console.error('Errore richiesta topic (mobile):', err);
+                hideTypingIndicatorMobile();
+                appendChatMessageMobile('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+            }
+        }
+
         // --------------------------
         // ATTIVAZIONE CODICE + MESSAGGI LIBERI
         // --------------------------
@@ -1253,6 +1324,12 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
             return true;
         }
 
+        // NUOVO — ultimo argomento toccato, per dare contesto al router
+        // quando il turista scrive a testo libero (es. dopo "Pane a
+        // Cena", "oggi li posso mangiare?"). Prima non veniva mandato
+        // affatto: ogni domanda partiva senza memoria della precedente.
+        let lastTopicMobile = null;
+
         async function sendChatMessageMobile(text) {
             if (!text.trim()) return;
 
@@ -1271,7 +1348,13 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                         message: text,
                         page: "home",
                         lang: currentLang,
-                        access_code: getStoredAccessCode() || ""
+                        access_code: getStoredAccessCode() || "",
+                        last_topic: lastTopicMobile || "",
+                        // NUOVO — dice al backend che siamo sul mobile,
+                        // cosi' un eventuale reindirizzamento (es. verso
+                        // il Castello o una chiesa) usa i link mobile
+                        // invece di quelli desktop.
+                        platform: "mobile"
                     })
                 });
 
@@ -1281,6 +1364,13 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                 hideTypingIndicatorMobile();
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
+                if (data.topic) lastTopicMobile = data.topic;
+
+                // NUOVO — se la risposta porta con se' delle opzioni da
+                // scegliere (es. le zone), le mostriamo sotto la risposta.
+                if (isOneOffOptionListMobile(data.menu)) {
+                    renderReplyOptionsMobile(data.menu);
+                }
 
             } catch (err) {
                 console.error('Errore chat:', err);
