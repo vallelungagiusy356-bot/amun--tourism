@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vivi Caccamo come un cittadino del borgo: trasporti e mercati, modi di dire in dialetto siciliano, leggende e tradizioni, chiese, cibo ed eventi. Scegli un quadrante e parla con la Castellana.">
 
     <!-- ============================================================
      BLOCCO COOKIE BANNER + GOOGLE ANALYTICS — Amunì Tourism
@@ -154,6 +155,52 @@ window.silktideConsentManager.init({
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.18); }
         }
+
+        /* ===== BOTTONE PREMIUM — stesso riquadro delle altre pagine
+           (prima su questa pagina mancava del tutto) ===== */
+        .castellana-premium-cta {
+          max-width: 420px;
+          margin: 32px auto 120px auto;
+          padding: 20px;
+          background: #fdf6e8;
+          border-radius: 14px;
+          text-align: center;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+          font-family: 'Cormorant Garamond', serif;
+          position: relative;
+        }
+
+        .premium-cta-label {
+          margin: 0 0 14px;
+          font-weight: 600;
+          color: #5a1a20;
+        }
+
+        .premium-btn {
+          display: inline-block;
+          padding: 10px 20px;
+          border-radius: 24px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          border: none;
+          margin: 4px;
+          transition: opacity 0.2s ease;
+        }
+
+        .premium-btn:hover { opacity: 0.9; }
+
+        .premium-btn-outline {
+          background: transparent;
+          border: 2px solid #7a1f2b;
+          color: #7a1f2b;
+        }
+
+        .premium-btn-gold {
+          background: linear-gradient(135deg, #c9962f, #e0b04a);
+          color: #3a2a10;
+        }
     </style>
 </head>
 <body>
@@ -217,6 +264,17 @@ window.silktideConsentManager.init({
         </section>
     </main>
 
+    <!-- ===== BOTTONE PREMIUM ===== -->
+    <div class="castellana-premium-cta">
+      <p class="premium-cta-label" data-i18n="premium.cta_label">🔒 Contenuti Premium disponibili</p>
+      <button id="btn-premium-code" class="premium-btn premium-btn-outline" data-i18n="premium.btn_code">
+        Ho già un codice
+      </button>
+      <a href="#" id="btn-buy-premium" class="premium-btn premium-btn-gold" data-i18n="premium.btn_buy">
+        Acquista l'accesso — 3,90€
+      </a>
+    </div>
+
     <div class="castellana-video-wrapper" id="chat-open-btn">
         <video class="castellana-video" autoplay muted loop playsinline>
             <source src="img/castellana_alpha.webm" type="video/webm">
@@ -249,14 +307,22 @@ window.silktideConsentManager.init({
             const openBtn = document.getElementById("chat-open-btn");
             let hasShownMenu = false;
 
+            // NUOVO — le quattro card sono <section> cliccabili: con la
+            // tastiera (Invio o Spazio) ora si attivano come un pulsante.
+            document.querySelectorAll('.quadrant[role="button"]').forEach(card => {
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        card.click();
+                    }
+                });
+            });
+
             // ============================================================
-            // MENU DI ANTEPRIMA — stesso principio già usato in
-            // castello.html e chiese-arte.html: anche senza Premium
-            // attivo, il turista vede subito le due voci disponibili
-            // (Trasporti e Curiosità), invece del solo messaggio di
-            // benvenuto senza indicazioni concrete. Se poi il codice
-            // Premium è valido, loadTopicMenu() sovrascrive con il
-            // menu reale del backend, esattamente come prima.
+            // MENU DI ANTEPRIMA — anche senza Premium attivo, il turista
+            // vede subito le due voci disponibili (Trasporti e Curiosità).
+            // Se poi il codice Premium è valido, loadTopicMenu() sovrascrive
+            // con il menu reale del backend.
             // ============================================================
             const CITTADINO_TOPICS = {
                 it: [
@@ -307,10 +373,20 @@ window.silktideConsentManager.init({
             });
 
             let currentLang = localStorage.getItem("lang") || "it";
+            // NUOVO — le traduzioni caricate, per usarle anche nei messaggi
+            // della chat (prima l'attivazione del codice era solo in italiano)
+            let langData = {};
+
+            function t(path, fallback) {
+                const value = path.split('.').reduce((o, i) => o ? o[i] : null, langData);
+                return value || fallback;
+            }
+
             function loadLanguage(lang) {
                 fetch(`./lang/${lang}.json`)
                     .then(res => res.json())
                     .then(data => {
+                        langData = data;
                         document.querySelectorAll("[data-i18n]").forEach(el => {
                             const key = el.getAttribute("data-i18n");
                             const text = key.split('.').reduce((o,i) => o ? o[i] : null, data);
@@ -355,22 +431,6 @@ window.silktideConsentManager.init({
 
             // ============================================================
             // TTS AVANZATO — La Castellana parla
-            //
-            // Due correzioni rispetto a prima:
-            //
-            // 1. VOCE SEMPRE FEMMINILE, IN OGNI LINGUA: prima la voce
-            //    veniva scelta filtrando SOLO voci italiane, sempre,
-            //    indipendentemente dalla lingua selezionata — parlando in
-            //    inglese/francese/ecc. veniva comunque usata una voce
-            //    italiana, in conflitto con la lingua del testo. Ora la
-            //    voce si sceglie di nuovo ogni volta, nella lingua giusta.
-            //
-            // 2. VELOCITÀ DI AVVIO: chiamare cancel() e speak() nello
-            //    stesso istante è un bug noto dei browser (Chrome/Edge):
-            //    il motore vocale ha bisogno di un attimo per "resettarsi",
-            //    altrimenti l'audio parte con un ritardo percepibile. Ora
-            //    c'è una piccola pausa tra i due comandi, e le voci
-            //    vengono "svegliate" subito al caricamento della pagina.
             // ============================================================
             const VOICE_PREF_KEY = "amuni_voice_enabled";
             let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
@@ -408,9 +468,7 @@ window.silktideConsentManager.init({
                     v.lang === langCode || (v.lang || '').startsWith(linguaBase)
                 );
 
-                // Cerca automaticamente indizi di voce neurale/di qualità superiore,
-                // utile per varianti non presenti nella lista fissa sopra
-                // (es. voci "Enhanced"/"Premium" scaricate su iOS, o "Online (Natural)" di Edge)
+                // Cerca automaticamente indizi di voce neurale/di qualità superiore
                 const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
                 const vociDiQualita = stessaLingua.filter(v =>
                     INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -425,11 +483,6 @@ window.silktideConsentManager.init({
             // ============================================================
             // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
             // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
-            // Servono a due cose:
-            // 1. NON devono mai comparire come testo letto o mostrato
-            //    all'utente (stripEmotionTags li rimuove per la visualizzazione)
-            // 2. Modulano rate/pitch della sintesi vocale SOLO per la frase
-            //    che racchiudono (parseEmotionalSegments + speakText)
             // ============================================================
             const EMOTION_PRESETS = {
                 energico:    { rate: 1.05, pitch: 1.08 },
@@ -534,16 +587,12 @@ window.silktideConsentManager.init({
                 }, 60);
             }
 
-
             function castellanaZitta() {
                 if ("speechSynthesis" in window) window.speechSynthesis.cancel();
             }
 
             // ============================================================
             // MICROFONO — il turista può parlare invece di scrivere
-            // (Web Speech API, riconoscimento vocale del browser: gratuito,
-            // funziona su Chrome/Edge; su browser non supportati il
-            // pulsante si nasconde automaticamente).
             // ============================================================
             const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
             const micBtn = document.getElementById("mic-btn");
@@ -654,7 +703,62 @@ window.silktideConsentManager.init({
                 es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →"
             };
 
+            // NUOVO — prima "Trasporti" e "Dormire" avevano la scritta
+            // "Orari e biglietti →" e si aprivano nella finestrella
+            // sovrapposta. Ora ogni pagina ha la sua scritta e si apre
+            // a pagina intera.
+            const TRASPORTI_LABEL_BY_LANG = {
+                it: "Vai a Trasporti →", en: "Go to Transport →", fr: "Aller aux Transports →",
+                es: "Ir a Transportes →", de: "Zu Verkehr & Transport →"
+            };
+
+            const DORMIRE_LABEL_BY_LANG = {
+                it: "Vai a Dove Dormire →", en: "Go to Where to Stay →", fr: "Aller à Où dormir →",
+                es: "Ir a Dónde dormir →", de: "Zu Unterkünften →"
+            };
+
+            const MANGIARE_LABEL_BY_LANG = {
+                it: "Vai a Mangiare e Bere →", en: "Go to Eat & Drink →", fr: "Aller à Manger et Boire →",
+                es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →"
+            };
+
+            const EVENTI_LABEL_BY_LANG = {
+                it: "Vai agli Eventi →", en: "Go to Events →", fr: "Aller aux Événements →",
+                es: "Ir a Eventos →", de: "Zu den Veranstaltungen →"
+            };
+
+            const BACK_TO_MENU_LABELS = {
+                it: "‹ Torna al menu", en: "‹ Back to menu", fr: "‹ Retour au menu",
+                es: "‹ Volver al menú", de: "‹ Zurück zum Menü"
+            };
+
+            // Messaggio quando gli argomenti disponibili in questa pagina
+            // sono finiti tutti — stesso testo usato in tutte le pagine.
+            const CLOSING_MESSAGES = {
+                it: "E da qui è tutto, viandante! Spero di esserti stata utile. Se vuoi avere altre informazioni, vieni a trovarmi nelle altre pagine!",
+                en: "That's all from here, traveler! I hope I was useful. For more information, come find me on the other pages!",
+                fr: "C'est tout pour ici, voyageur ! J'espère t'avoir été utile. Pour en savoir plus, retrouve-moi sur les autres pages !",
+                es: "¡Eso es todo por aquí, viajero! Espero haberte sido útil. Para más información, ¡búscame en las otras páginas!",
+                de: "Das war's von hier, Reisender! Ich hoffe, ich konnte dir helfen. Für mehr Informationen findest du mich auf den anderen Seiten!"
+            };
+
+            // Pagine "vere" che si aprono a pagina intera (mappa e schede
+            // orari restano invece nella finestrella sovrapposta).
+            const PAGINE_INTERE = ['mangiare.html', 'eventi.html', 'trasporti.html', 'dormire.html'];
+
             function getLinkLabel(link) {
+                if (link && link.includes('/mobile/') && link.includes('eventi.html')) {
+                    return EVENTI_LABEL_BY_LANG[currentLang] || EVENTI_LABEL_BY_LANG.it;
+                }
+                if (link && link.includes('mangiare.html')) {
+                    return MANGIARE_LABEL_BY_LANG[currentLang] || MANGIARE_LABEL_BY_LANG.it;
+                }
+                if (link && link.includes('trasporti.html')) {
+                    return TRASPORTI_LABEL_BY_LANG[currentLang] || TRASPORTI_LABEL_BY_LANG.it;
+                }
+                if (link && link.includes('dormire.html')) {
+                    return DORMIRE_LABEL_BY_LANG[currentLang] || DORMIRE_LABEL_BY_LANG.it;
+                }
                 if (link && link.includes('mappa.html')) {
                     return MAP_LABEL_BY_LANG[currentLang] || MAP_LABEL_BY_LANG.it;
                 }
@@ -679,6 +783,36 @@ window.silktideConsentManager.init({
             }
 
             // ============================================================
+            // NUOVO — LINK CLICCABILI DENTRO IL TESTO
+            // Un indirizzo scritto dentro la risposta (es. il calendario
+            // eventi di Palermo) diventa un link vero, che si apre in una
+            // nuova scheda. Il resto resta testo semplice.
+            // ============================================================
+            const URL_NEL_TESTO = /(https?:\/\/[^\s]+[^\s.,;:!?)])/g;
+
+            function riempiTestoConLink(contenitore, testo) {
+                let ultimo = 0;
+                let match;
+                URL_NEL_TESTO.lastIndex = 0;
+                while ((match = URL_NEL_TESTO.exec(testo)) !== null) {
+                    if (match.index > ultimo) {
+                        contenitore.appendChild(document.createTextNode(testo.slice(ultimo, match.index)));
+                    }
+                    const a = document.createElement('a');
+                    a.href = match[0];
+                    a.textContent = match[0];
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.style.wordBreak = 'break-all';
+                    contenitore.appendChild(a);
+                    ultimo = URL_NEL_TESTO.lastIndex;
+                }
+                if (ultimo < testo.length) {
+                    contenitore.appendChild(document.createTextNode(testo.slice(ultimo)));
+                }
+            }
+
+            // ============================================================
             // RENDERING MESSAGGI CHAT — una sola scatola per messaggio
             // (.message / .message.user-msg), come castello.html e
             // chiese-arte.html.
@@ -690,7 +824,7 @@ window.silktideConsentManager.init({
                 msgWrap.className = 'message' + (sender === 'user' ? ' user-msg' : '');
 
                 const textSpan = document.createElement('span');
-                textSpan.textContent = stripEmotionTags(text);
+                riempiTestoConLink(textSpan, stripEmotionTags(text));
                 msgWrap.appendChild(textSpan);
 
                 if (sender !== 'user') {
@@ -709,7 +843,8 @@ window.silktideConsentManager.init({
                     btn.className = 'chat-link-btn';
                     btn.textContent = getLinkLabel(link);
                     btn.addEventListener('click', () => {
-                        if (link.includes('mappa.html') || link.includes('/mobile/')) {
+                        const paginaIntera = PAGINE_INTERE.some(p => link.includes(p));
+                        if (link.includes('mappa.html') || (link.includes('/mobile/') && !paginaIntera)) {
                             openMapOverlay(link);
                         } else {
                             window.location.href = link;
@@ -746,9 +881,7 @@ window.silktideConsentManager.init({
 
             // ============================================================
             // MENU A PULSANTI — versione con contesto persistente: dopo
-            // ogni risposta, ricompaiono le altre voci dello stesso
-            // argomento appena trattato, e sotto quelle il resto degli
-            // argomenti ancora da esplorare (tranne quello affrontato).
+            // ogni risposta, ricompaiono le voci ancora da esplorare.
             // ============================================================
             let fullTopicMenu = [];
             let exploredGroups = new Set();
@@ -771,7 +904,7 @@ window.silktideConsentManager.init({
                 if (currentGroupName) {
                     const backBtn = document.createElement('button');
                     backBtn.className = 'topic-btn topic-back-btn';
-                    backBtn.textContent = '‹ Torna al menu';
+                    backBtn.textContent = BACK_TO_MENU_LABELS[currentLang] || BACK_TO_MENU_LABELS.it;
                     backBtn.addEventListener('click', () => renderMenuState(null));
                     wrap.appendChild(backBtn);
 
@@ -814,7 +947,50 @@ window.silktideConsentManager.init({
 
                 if (wrap.children.length > 0) {
                     messagesBox.appendChild(wrap);
+                } else {
+                    // NUOVO — argomenti finiti: come sulle altre pagine, la
+                    // Castellana saluta invece di restare in silenzio.
+                    const closingText = CLOSING_MESSAGES[currentLang] || CLOSING_MESSAGES.it;
+                    appendChatMessage(closingText, 'castellana');
+                    if (voiceEnabled) speakText(closingText);
                 }
+            }
+
+            // ============================================================
+            // NUOVO — OPZIONI "UNA TANTUM" INVIATE DAL BACKEND
+            // A volte la Castellana risponde con una domanda e dei pulsanti
+            // da scegliere (es. "in che zona del paese ti trovi?" + le
+            // zone). Il backend li manda nel campo "menu" come semplice
+            // elenco {topic, label}. Prima la pagina li ignorava.
+            // ============================================================
+            function isOneOffOptionList(menu) {
+                return Array.isArray(menu) && menu.length > 0 &&
+                       menu.every(voce => voce && voce.topic && voce.label && !voce.group);
+            }
+
+            function renderReplyOptions(options) {
+                const messagesBox = document.querySelector('.chat-messages');
+                const old = messagesBox.querySelector('.topic-menu-state');
+                if (old) old.remove();
+
+                const wrap = document.createElement('div');
+                wrap.className = 'topic-menu topic-menu-state';
+
+                options.forEach(opt => {
+                    const b = document.createElement('button');
+                    b.className = 'topic-btn';
+                    b.textContent = opt.label;
+                    b.addEventListener('click', () => sendTopicRequest(opt.topic, opt.label, null));
+                    wrap.appendChild(b);
+                });
+
+                const backBtn = document.createElement('button');
+                backBtn.className = 'topic-btn topic-back-btn';
+                backBtn.textContent = BACK_TO_MENU_LABELS[currentLang] || BACK_TO_MENU_LABELS.it;
+                backBtn.addEventListener('click', () => renderMenuState(null));
+                wrap.appendChild(backBtn);
+
+                messagesBox.appendChild(wrap);
             }
 
             async function sendTopicRequest(topicId, label, groupName) {
@@ -844,7 +1020,12 @@ window.silktideConsentManager.init({
                     if (data.speak || voiceEnabled) speakText(data.reply);
                     lastTopic = data.topic || topicId;
                     if (groupName) exploredGroups.add(groupName);
-                    renderMenuState(groupName);
+
+                    if (isOneOffOptionList(data.menu)) {
+                        renderReplyOptions(data.menu);
+                    } else {
+                        renderMenuState(groupName);
+                    }
                 } catch (err) {
                     console.error('Errore richiesta topic:', err);
                     hideTypingIndicator();
@@ -954,15 +1135,15 @@ window.silktideConsentManager.init({
                         storeAccessCode(code, data.expires_at);
                         const expiryDate = new Date(data.expires_at);
                         const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
-                        appendChatMessage(`Premium attivato! Avrai accesso ai contenuti esclusivi fino al ${formatted}.`, 'castellana');
+                        appendChatMessage(t('premium.activated_prefix', 'Premium attivato! Avrai accesso ai contenuti esclusivi fino al ') + formatted + '.', 'castellana');
                         updatePremiumStatusDisplay();
                         loadTopicMenu();
                     } else {
-                        appendChatMessage(data.message || 'Codice non valido.', 'castellana');
+                        appendChatMessage(data.message || t('premium.invalid_code', 'Codice non valido.'), 'castellana');
                     }
                 } catch (err) {
                     console.error('Errore attivazione codice:', err);
-                    appendChatMessage('Al momento non riesco a verificare il codice — riprova tra poco.', 'castellana');
+                    appendChatMessage(t('premium.code_check_error', 'Al momento non riesco a verificare il codice — riprova tra poco.'), 'castellana');
                 }
 
                 return true;
@@ -999,6 +1180,14 @@ window.silktideConsentManager.init({
                     if (data.speak || voiceEnabled) speakText(data.reply);
                     if (data.topic) lastTopic = data.topic;
 
+                    // NUOVO — scelte da fare (es. le zone) oppure, se la
+                    // Castellana non ha capito, di nuovo il menu della pagina.
+                    if (isOneOffOptionList(data.menu)) {
+                        renderReplyOptions(data.menu);
+                    } else if (data.menu && data.menu.length) {
+                        renderMenuState(null);
+                    }
+
                 } catch (err) {
                     console.error('Errore chat:', err);
                     hideTypingIndicator();
@@ -1025,6 +1214,44 @@ window.silktideConsentManager.init({
             if (sendBtn) {
                 sendBtn.addEventListener('click', handleSend);
             }
+
+            // ============================================================
+            // NUOVO — BOTTONE PREMIUM: "Ho già un codice" apre la chat e
+            // invita a scrivere il codice; "Acquista l'accesso" avvia Stripe.
+            // ============================================================
+            document.getElementById('btn-premium-code').addEventListener('click', () => {
+                chat.classList.add('active');
+                updatePremiumStatusDisplay();
+                appendChatMessage(
+                    t('premium.chat_code_prompt', 'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"'),
+                    'castellana'
+                );
+            });
+
+            document.getElementById('btn-buy-premium').addEventListener('click', async (e) => {
+                e.preventDefault();
+                const btn = e.currentTarget;
+                const originalText = btn.textContent;
+                btn.textContent = "Un momento...";
+                try {
+                    const res = await fetch(`${API_BASE_URL}/create-checkout-session`, {
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ return_page: "cittadino.html" })
+                    });
+                    const data = await res.json();
+                    if (data.url) {
+                        window.location.href = data.url;
+                    } else {
+                        alert(t('premium.payment_start_error', "Non riesco ad avviare il pagamento. Riprova tra poco."));
+                        btn.textContent = originalText;
+                    }
+                } catch (err) {
+                    console.error("Errore avvio pagamento:", err);
+                    alert(t('premium.payment_connection_error', "Errore di collegamento. Riprova tra poco."));
+                    btn.textContent = originalText;
+                }
+            });
         });
     </script>
     <footer class="footer-copyright" style="text-align: center; padding: 30px 20px 100px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem;">
@@ -1038,5 +1265,6 @@ window.silktideConsentManager.init({
 
 <!-- Sovrapposizioni (footer + chat aperta) risolte in un unico file condiviso -->
 <script src="../widget-position-fix.js"></script>
+<script src="../premium-launch-price.js"></script>
 </body>
 </html>
