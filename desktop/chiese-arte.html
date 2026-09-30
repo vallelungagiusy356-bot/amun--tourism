@@ -376,193 +376,53 @@ window.silktideConsentManager.init({
   <script>
       // ============================================================
       // GALLERIA DESKTOP — carosello dentro il modale che si apre
-      // cliccando una card. Le chiese con una galleria vera e propria
-      // sono Badia, San Giorgio e Annunziata; le altre mostrano la
-      // sola foto esterna.
+      // cliccando una card. Per ora solo la Badia ha una galleria
+      // vera e propria (chiave "badia" qui sotto); le altre chiese
+      // continuano a mostrare la sola foto esterna come prima,
+      // perché non hanno un array corrispondente in questo oggetto.
       //
       // COME AGGIUNGERE UNA GALLERIA A UN'ALTRA CHIESA:
-      // 1. Aggiungi qui sotto una nuova chiave (es. "cappuccini": [...])
+      // 1. Aggiungi qui sotto una nuova chiave (es. "sangiorgio": [...])
       // 2. Nella card HTML di quella chiesa aggiungi l'attributo
-      //    data-gallery="cappuccini"
+      //    data-gallery="sangiorgio"
       // ============================================================
       const DESKTOP_GALLERY_IMAGES = {
-          "badia": [
-                    {
-                              "src": "img/badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.esterno",
-                              "fallback": "Esterno della chiesa"
-                    },
-                    {
-                              "src": "../gallery-chiese/pavimento_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.pavimento",
-                              "fallback": "Il pavimento in maiolica"
-                    },
-                    {
-                              "src": "../gallery-chiese/particolare_maiolica_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.particolare_maiolica",
-                              "fallback": "Particolare delle maioliche"
-                    },
-                    {
-                              "src": "../gallery-chiese/maioliche_presbiterio_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.maioliche_presbiterio",
-                              "fallback": "Maioliche del presbiterio"
-                    },
-                    {
-                              "src": "../gallery-chiese/sacrificio_isacco_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.sacrificio_isacco",
-                              "fallback": "Il sacrificio di Isacco nel presbiterio"
-                    },
-                    {
-                              "src": "../gallery-chiese/sanbenedetto_regole_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.san_benedetto_regole",
-                              "fallback": "San Benedetto detta le Regole"
-                    },
-                    {
-                              "src": "../gallery-chiese/immacolata_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.immacolata",
-                              "fallback": "Immacolata Concezione"
-                    },
-                    {
-                              "src": "../gallery-chiese/crocifisso_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.crocifisso",
-                              "fallback": "Crocifisso tra San Benedetto e Santa Scolastica"
-                    },
-                    {
-                              "src": "../gallery-chiese/comunichino_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.comunichino",
-                              "fallback": "Comunichino nel presbiterio"
-                    },
-                    {
-                              "src": "../gallery-chiese/affresco_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.particolare_affresco",
-                              "fallback": "Particolare di affresco"
-                    },
-                    {
-                              "src": "../gallery-chiese/volta_cancellata_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.volta_cancellata",
-                              "fallback": "La volta e la cancellata"
-                    },
-                    {
-                              "src": "../gallery-chiese/cancellata_ferro_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.cancellata_ferro",
-                              "fallback": "Cancellata in ferro battuto"
-                    },
-                    {
-                              "src": "../gallery-chiese/cancellata_matroneo_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.cancellata_matroneo",
-                              "fallback": "Cancellata del matroneo"
-                    },
-                    {
-                              "src": "../gallery-chiese/madonna_neve_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.madonna_neve",
-                              "fallback": "La Madonna della Neve"
-                    },
-                    {
-                              "src": "../gallery-chiese/navata_sanben_badia.jpg",
-                              "captionKey": "pages.chiese_page.badia_gallery.navata_sanben",
-                              "fallback": "La navata"
-                    }
+          badia: [
+              { src: "img/badia.jpg", captionKey: "pages.chiese_page.badia_gallery.esterno", fallback: "Esterno della chiesa" },
+              { src: "../gallery-chiese/pavimento_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.pavimento", fallback: "Il pavimento in maiolica" },
+              { src: "../gallery-chiese/particolare_maiolica_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.particolare_maiolica", fallback: "Particolare delle maioliche" },
+              { src: "../gallery-chiese/maioliche_presbiterio_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.maioliche_presbiterio", fallback: "Maioliche del presbiterio" },
+              { src: "../gallery-chiese/sacrificio_isacco_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.sacrificio_isacco", fallback: "Il sacrificio di Isacco nel presbiterio" },
+              { src: "../gallery-chiese/navata_sanben_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.navata_sanben", fallback: "La navata" },
+              { src: "../gallery-chiese/madonna_neve_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.madonna_neve", fallback: "La Madonna della Neve" },
+              { src: "../gallery-chiese/sanbenedetto_regole_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.san_benedetto_regole", fallback: "San Benedetto detta le Regole" },
+              { src: "../gallery-chiese/crocifisso_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.crocifisso", fallback: "Crocifisso tra San Benedetto e Santa Scolastica" },
+              { src: "../gallery-chiese/cancellata_ferro_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.cancellata_ferro", fallback: "Cancellata in ferro battuto" }
           ],
-          "sangiorgio": [
-                    {
-                              "src": "img/sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.esterno",
-                              "fallback": "Esterno della chiesa"
-                    },
-                    {
-                              "src": "../gallery-chiese/navata_centrale_sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.navata_centrale",
-                              "fallback": "Navata principale"
-                    },
-                    {
-                              "src": "../gallery-chiese/dettagliocappellare_sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.dettagliocappellare",
-                              "fallback": "Particolare della cappella delle reliquie"
-                    },
-                    {
-                              "src": "../gallery-chiese/organo_sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.organo",
-                              "fallback": "L'organo"
-                    },
-                    {
-                              "src": "../gallery-chiese/cappelladellerelique_sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.cappella_reliquie",
-                              "fallback": "Cappella delle reliquie"
-                    },
-                    {
-                              "src": "../gallery-chiese/cupola_sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.cupola",
-                              "fallback": "La cupola"
-                    },
-                    {
-                              "src": "../gallery-chiese/affreschi_presbiterio_sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.affreschi_presbiterio",
-                              "fallback": "Affreschi del presbiterio"
-                    },
-                    {
-                              "src": "../gallery-chiese/statua_sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.statua",
-                              "fallback": "Statua di San Giorgio"
-                    },
-                    {
-                              "src": "../gallery-chiese/martirio_sansebastiano_sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.martirio_sanseb",
-                              "fallback": "Martirio di San Sebastiano"
-                    },
-                    {
-                              "src": "../gallery-chiese/beato_giovanni_sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.beato_giovanni",
-                              "fallback": "Quadro del Beato Giovanni Liccio"
-                    },
-                    {
-                              "src": "../gallery-chiese/stomer_sangiorgio.jpg",
-                              "captionKey": "pages.chiese_page.sangiorgio_gallery.stomer",
-                              "fallback": "Opera dello Stomer"
-                    }
+          sangiorgio: [
+              { src: "img/sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.esterno", fallback: "Esterno della chiesa" },
+              { src: "../gallery-chiese/navata_centrale_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.navata_centrale", fallback: "Navata principale" },
+              { src: "../gallery-chiese/dettagliocappellare_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.dettagliocappellare", fallback: "Particolare della cappella delle reliquie" },
+              { src: "../gallery-chiese/organo_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.organo", fallback: "L'organo" },
+              { src: "../gallery-chiese/cappelladellerelique_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.cappella_reliquie", fallback: "Cappella delle reliquie" },
+              { src: "../gallery-chiese/cupola_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.cupola", fallback: "La cupola" },
+              { src: "../gallery-chiese/affreschi_presbiterio_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.affreschi_presbiterio", fallback: "Affreschi del presbiterio" },
+              { src: "../gallery-chiese/statua_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.statua", fallback: "Statua di San Giorgio" },
+              { src: "../gallery-chiese/martirio_sansebastiano_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.martirio_sanseb", fallback: "Martirio di San Sebastiano" },
+              { src: "../gallery-chiese/beato_giovanni_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.beato_giovanni", fallback: "Quadro del Beato Giovanni Liccio" },
+              { src: "../gallery-chiese/stomer_sangiorgio.jpg", captionKey: "pages.chiese_page.sangiorgio_gallery.stomer", fallback: "Opera dello Stomer" }
           ],
-          "annunziata": [
-                    {
-                              "src": "img/annunziata.jpg",
-                              "captionKey": "pages.chiese_page.annunziata_gallery.esterno",
-                              "fallback": "Esterno della chiesa"
-                    },
-                    {
-                              "src": "../gallery-chiese/navata_presbiterio_annunziata.jpg",
-                              "captionKey": "pages.chiese_page.annunziata_gallery.navata_presbiterio",
-                              "fallback": "Navata centrale e presbiterio"
-                    },
-                    {
-                              "src": "../gallery-chiese/cupola_volta_annunziata.jpg",
-                              "captionKey": "pages.chiese_page.annunziata_gallery.cupola_volta",
-                              "fallback": "Cupola e volta del presbiterio"
-                    },
-                    {
-                              "src": "../gallery-chiese/altare_abside_annunziata.jpg",
-                              "captionKey": "pages.chiese_page.annunziata_gallery.altare_abside",
-                              "fallback": "Altare dell'abside maggiore"
-                    },
-                    {
-                              "src": "../gallery-chiese/crocifisso_annunziata.jpg",
-                              "captionKey": "pages.chiese_page.annunziata_gallery.crocifisso",
-                              "fallback": "Crocifisso e apparato scultoreo"
-                    },
-                    {
-                              "src": "../gallery-chiese/immacolata_annunziata.jpg",
-                              "captionKey": "pages.chiese_page.annunziata_gallery.immacolata",
-                              "fallback": "Immacolata Concezione"
-                    },
-                    {
-                              "src": "../gallery-chiese/organo_annunziata.jpg",
-                              "captionKey": "pages.chiese_page.annunziata_gallery.organo",
-                              "fallback": "L'organo"
-                    },
-                    {
-                              "src": "../gallery-chiese/santa_rosalia_annunziata.jpg",
-                              "captionKey": "pages.chiese_page.annunziata_gallery.santa_rosalia",
-                              "fallback": "Santa Rosalia Pellegrina"
-                    }
+          annunziata: [
+              { src: "img/annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.esterno", fallback: "Esterno della chiesa" },
+              { src: "../gallery-chiese/navata_presbiterio_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.navata_presbiterio", fallback: "Navata centrale e presbiterio" },
+              { src: "../gallery-chiese/cupola_volta_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.cupola_volta", fallback: "Cupola e volta del presbiterio" },
+              { src: "../gallery-chiese/altare_abside_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.altare_abside", fallback: "Altare dell'abside maggiore" },
+              { src: "../gallery-chiese/crocifisso_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.crocifisso", fallback: "Crocifisso e apparato scultoreo" },
+              { src: "../gallery-chiese/immacolata_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.immacolata", fallback: "Immacolata Concezione" },
+              { src: "../gallery-chiese/organo_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.organo", fallback: "L'organo" },
+              { src: "../gallery-chiese/santa_rosalia_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.santa_rosalia", fallback: "Santa Rosalia Pellegrina" }
           ]
-};
+      };
 
       let currentModalGallery = null;
       let currentModalIndex = 0;
@@ -625,527 +485,184 @@ window.silktideConsentManager.init({
       const closeChat = document.getElementById('close-chat');
 
       // ============================================================
-      // MENU DI ANTEPRIMA — anche senza Premium attivo, il turista
-      // vede subito l'elenco degli argomenti disponibili per ogni
-      // chiesa (una vetrina di cosa troverebbe attivando l'accesso).
+      // MENU DI ANTEPRIMA — stesso principio di castello.html: anche
+      // senza Premium attivo, il turista vede subito l'elenco degli
+      // argomenti disponibili per ogni chiesa (una vetrina di cosa
+      // troverebbe attivando l'accesso), invece di un semplice
+      // messaggio di benvenuto senza indicazioni concrete.
       // ============================================================
       const CHIESE_KNOWLEDGE = {
-          "it": {
-                    "welcome": "Benvenuto tra le chiese di Caccamo, viandante! Sono la Castellana e ti guiderò tra storia, arte e devozione di questi luoghi sacri. Quale vuoi scoprire per primo?",
-                    "closing": "E da qui è tutto, viandante! Spero di esserti stata utile. Se vuoi avere altre informazioni, vieni a trovarmi nelle altre pagine!",
-                    "groups": [
-                              {
-                                        "group": "I Cappuccini",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.cappuccini.storia",
-                                                            "label": "🖼️ Esterno"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.cappuccini.interno",
-                                                            "label": "🕯️ Interno"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.cappuccini.dove",
-                                                            "label": "📍 Dove si trova"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Santa Maria degli Angeli",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.storia",
-                                                            "label": "🏰 Storia"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.interno",
-                                                            "label": "🕯️ Interno"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.esterno",
-                                                            "label": "🖼️ Esterno"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.dove",
-                                                            "label": "📍 Dove si trova"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Annunziata",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.annunziata.storia",
-                                                            "label": "🏰 Storia"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.annunziata.interno",
-                                                            "label": "🕯️ Interno"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.annunziata.dove",
-                                                            "label": "📍 Dove si trova"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "La Badia",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.badia.storia",
-                                                            "label": "🏰 Storia"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.esterno",
-                                                            "label": "🖼️ Esterno"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.interno",
-                                                            "label": "🕯️ Interno"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.dove",
-                                                            "label": "📍 Dove si trova"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "San Giorgio Martire",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.duomo.storia",
-                                                            "label": "🖼️ Esterno"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.interno",
-                                                            "label": "🏰 Storia"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.dove",
-                                                            "label": "📍 Dove si trova"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.orari",
-                                                            "label": "🎫 Orari e biglietti"
-                                                  }
-                                        ]
-                              }
-                    ]
+          it: {
+              welcome: "Benvenuto tra le chiese di Caccamo, viandante! Sono la Castellana e ti guiderò tra storia, arte e devozione di questi luoghi sacri. Quale vuoi scoprire per primo?",
+              closing: "E da qui è tutto, viandante! Spero di esserti stata utile. Se vuoi avere altre informazioni, vieni a trovarmi nelle altre pagine!",
+              groups: [
+                  { group: "I Cappuccini", items: [
+                      { topic: "chiese.cappuccini.storia", label: "🏰 Storia" },
+                      { topic: "chiese.cappuccini.interno", label: "🕯️ Interno" },
+                      { topic: "chiese.cappuccini.dove", label: "📍 Dove si trova" }
+                  ]},
+                  { group: "Santa Maria degli Angeli", items: [
+                      { topic: "chiese.santamariaangeli.storia", label: "🏰 Storia" },
+                      { topic: "chiese.santamariaangeli.interno", label: "🕯️ Interno" },
+                      { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Esterno" },
+                      { topic: "chiese.santamariaangeli.dove", label: "📍 Dove si trova" }
+                  ]},
+                  { group: "Annunziata", items: [
+                      { topic: "chiese.annunziata.storia", label: "🏰 Storia" },
+                      { topic: "chiese.annunziata.interno", label: "🕯️ Interno" },
+                      { topic: "chiese.annunziata.dove", label: "📍 Dove si trova" }
+                  ]},
+                  { group: "La Badia", items: [
+                      { topic: "chiese.badia.storia", label: "🏰 Storia" },
+                      { topic: "chiese.badia.esterno", label: "🖼️ Esterno" },
+                      { topic: "chiese.badia.interno", label: "🕯️ Interno" },
+                      { topic: "chiese.badia.dove", label: "📍 Dove si trova" }
+                  ]},
+                  { group: "San Giorgio Martire", items: [
+                      { topic: "chiese.duomo.storia", label: "🏰 Storia" },
+                      { topic: "chiese.duomo.interno", label: "🕯️ Interno" },
+                      { topic: "chiese.duomo.dove", label: "📍 Dove si trova" },
+                      { topic: "chiese.duomo.orari", label: "🎫 Orari e biglietti" }
+                  ]}
+              ]
           },
-          "en": {
-                    "welcome": "Welcome to the churches of Caccamo, traveler! I am the Castellana and I will guide you through the history, art and devotion of these sacred places. Which one would you like to discover first?",
-                    "closing": "That's all from here, traveler! I hope I was useful. For more information, come find me on the other pages!",
-                    "groups": [
-                              {
-                                        "group": "The Capuchins",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.cappuccini.storia",
-                                                            "label": "🖼️ Exterior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.cappuccini.interno",
-                                                            "label": "🕯️ Interior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.cappuccini.dove",
-                                                            "label": "📍 Location"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Santa Maria degli Angeli",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.storia",
-                                                            "label": "🏰 History"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.interno",
-                                                            "label": "🕯️ Interior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.esterno",
-                                                            "label": "🖼️ Exterior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.dove",
-                                                            "label": "📍 Location"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Annunziata",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.annunziata.storia",
-                                                            "label": "🏰 History"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.annunziata.interno",
-                                                            "label": "🕯️ Interior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.annunziata.dove",
-                                                            "label": "📍 Location"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "The Badia",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.badia.storia",
-                                                            "label": "🏰 History"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.esterno",
-                                                            "label": "🖼️ Exterior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.interno",
-                                                            "label": "🕯️ Interior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.dove",
-                                                            "label": "📍 Location"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "San Giorgio Martire",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.duomo.storia",
-                                                            "label": "🖼️ Exterior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.interno",
-                                                            "label": "🏰 History"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.dove",
-                                                            "label": "📍 Location"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.orari",
-                                                            "label": "🎫 Hours & Tickets"
-                                                  }
-                                        ]
-                              }
-                    ]
+          en: {
+              welcome: "Welcome to the churches of Caccamo, traveler! I am the Castellana and I will guide you through the history, art and devotion of these sacred places. Which one would you like to discover first?",
+              closing: "That's all from here, traveler! I hope I was useful. For more information, come find me on the other pages!",
+              groups: [
+                  { group: "The Capuchins", items: [
+                      { topic: "chiese.cappuccini.storia", label: "🏰 History" },
+                      { topic: "chiese.cappuccini.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.cappuccini.dove", label: "📍 Location" }
+                  ]},
+                  { group: "Santa Maria degli Angeli", items: [
+                      { topic: "chiese.santamariaangeli.storia", label: "🏰 History" },
+                      { topic: "chiese.santamariaangeli.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Exterior" },
+                      { topic: "chiese.santamariaangeli.dove", label: "📍 Location" }
+                  ]},
+                  { group: "Annunziata", items: [
+                      { topic: "chiese.annunziata.storia", label: "🏰 History" },
+                      { topic: "chiese.annunziata.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.annunziata.dove", label: "📍 Location" }
+                  ]},
+                  { group: "The Badia", items: [
+                      { topic: "chiese.badia.storia", label: "🏰 History" },
+                      { topic: "chiese.badia.esterno", label: "🖼️ Exterior" },
+                      { topic: "chiese.badia.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.badia.dove", label: "📍 Location" }
+                  ]},
+                  { group: "San Giorgio Martire", items: [
+                      { topic: "chiese.duomo.storia", label: "🏰 History" },
+                      { topic: "chiese.duomo.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.duomo.dove", label: "📍 Location" },
+                      { topic: "chiese.duomo.orari", label: "🎫 Hours & Tickets" }
+                  ]}
+              ]
           },
-          "fr": {
-                    "welcome": "Bienvenue parmi les églises de Caccamo, voyageur ! Je suis la Castellana et je te guiderai à travers l'histoire, l'art et la dévotion de ces lieux sacrés. Laquelle veux-tu découvrir en premier ?",
-                    "closing": "C'est tout pour ici, voyageur ! J'espère t'avoir été utile. Pour en savoir plus, retrouve-moi sur les autres pages !",
-                    "groups": [
-                              {
-                                        "group": "Les Capucins",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.cappuccini.storia",
-                                                            "label": "🖼️ Extérieur"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.cappuccini.interno",
-                                                            "label": "🕯️ Intérieur"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.cappuccini.dove",
-                                                            "label": "📍 Où se trouve"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Santa Maria degli Angeli",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.storia",
-                                                            "label": "🏰 Histoire"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.interno",
-                                                            "label": "🕯️ Intérieur"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.esterno",
-                                                            "label": "🖼️ Extérieur"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.dove",
-                                                            "label": "📍 Où se trouve"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Annunziata",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.annunziata.storia",
-                                                            "label": "🏰 Histoire"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.annunziata.interno",
-                                                            "label": "🕯️ Intérieur"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.annunziata.dove",
-                                                            "label": "📍 Où se trouve"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "La Badia",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.badia.storia",
-                                                            "label": "🏰 Histoire"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.esterno",
-                                                            "label": "🖼️ Extérieur"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.interno",
-                                                            "label": "🕯️ Intérieur"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.dove",
-                                                            "label": "📍 Où se trouve"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "San Giorgio Martire",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.duomo.storia",
-                                                            "label": "🖼️ Extérieur"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.interno",
-                                                            "label": "🏰 Histoire"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.dove",
-                                                            "label": "📍 Où se trouve"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.orari",
-                                                            "label": "🎫 Horaires & Billets"
-                                                  }
-                                        ]
-                              }
-                    ]
+          fr: {
+              welcome: "Bienvenue parmi les églises de Caccamo, voyageur ! Je suis la Castellana et je te guiderai à travers l'histoire, l'art et la dévotion de ces lieux sacrés. Laquelle veux-tu découvrir en premier ?",
+              closing: "C'est tout pour ici, voyageur ! J'espère t'avoir été utile. Pour en savoir plus, retrouve-moi sur les autres pages !",
+              groups: [
+                  { group: "Les Capucins", items: [
+                      { topic: "chiese.cappuccini.storia", label: "🏰 Histoire" },
+                      { topic: "chiese.cappuccini.interno", label: "🕯️ Intérieur" },
+                      { topic: "chiese.cappuccini.dove", label: "📍 Où se trouve" }
+                  ]},
+                  { group: "Santa Maria degli Angeli", items: [
+                      { topic: "chiese.santamariaangeli.storia", label: "🏰 Histoire" },
+                      { topic: "chiese.santamariaangeli.interno", label: "🕯️ Intérieur" },
+                      { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Extérieur" },
+                      { topic: "chiese.santamariaangeli.dove", label: "📍 Où se trouve" }
+                  ]},
+                  { group: "Annunziata", items: [
+                      { topic: "chiese.annunziata.storia", label: "🏰 Histoire" },
+                      { topic: "chiese.annunziata.interno", label: "🕯️ Intérieur" },
+                      { topic: "chiese.annunziata.dove", label: "📍 Où se trouve" }
+                  ]},
+                  { group: "La Badia", items: [
+                      { topic: "chiese.badia.storia", label: "🏰 Histoire" },
+                      { topic: "chiese.badia.esterno", label: "🖼️ Extérieur" },
+                      { topic: "chiese.badia.interno", label: "🕯️ Intérieur" },
+                      { topic: "chiese.badia.dove", label: "📍 Où se trouve" }
+                  ]},
+                  { group: "San Giorgio Martire", items: [
+                      { topic: "chiese.duomo.storia", label: "🏰 Histoire" },
+                      { topic: "chiese.duomo.interno", label: "🕯️ Intérieur" },
+                      { topic: "chiese.duomo.dove", label: "📍 Où se trouve" },
+                      { topic: "chiese.duomo.orari", label: "🎫 Horaires & Billets" }
+                  ]}
+              ]
           },
-          "es": {
-                    "welcome": "¡Bienvenido a las iglesias de Caccamo, viajero! Soy la Castellana y te guiaré por la historia, el arte y la devoción de estos lugares sagrados. ¿Cuál quieres descubrir primero?",
-                    "closing": "¡Eso es todo por aquí, viajero! Espero haberte sido útil. Para más información, ¡búscame en las otras páginas!",
-                    "groups": [
-                              {
-                                        "group": "Los Capuchinos",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.cappuccini.storia",
-                                                            "label": "🖼️ Exterior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.cappuccini.interno",
-                                                            "label": "🕯️ Interior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.cappuccini.dove",
-                                                            "label": "📍 Dónde está"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Santa Maria degli Angeli",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.storia",
-                                                            "label": "🏰 Historia"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.interno",
-                                                            "label": "🕯️ Interior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.esterno",
-                                                            "label": "🖼️ Exterior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.dove",
-                                                            "label": "📍 Dónde está"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Annunziata",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.annunziata.storia",
-                                                            "label": "🏰 Historia"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.annunziata.interno",
-                                                            "label": "🕯️ Interior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.annunziata.dove",
-                                                            "label": "📍 Dónde está"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "La Badia",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.badia.storia",
-                                                            "label": "🏰 Historia"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.esterno",
-                                                            "label": "🖼️ Exterior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.interno",
-                                                            "label": "🕯️ Interior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.dove",
-                                                            "label": "📍 Dónde está"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "San Giorgio Martire",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.duomo.storia",
-                                                            "label": "🖼️ Exterior"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.interno",
-                                                            "label": "🏰 Historia"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.dove",
-                                                            "label": "📍 Dónde está"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.orari",
-                                                            "label": "🎫 Horarios y Entradas"
-                                                  }
-                                        ]
-                              }
-                    ]
+          es: {
+              welcome: "¡Bienvenido a las iglesias de Caccamo, viajero! Soy la Castellana y te guiaré por la historia, el arte y la devoción de estos lugares sagrados. ¿Cuál quieres descubrir primero?",
+              closing: "¡Eso es todo por aquí, viajero! Espero haberte sido útil. Para más información, ¡búscame en las otras páginas!",
+              groups: [
+                  { group: "Los Capuchinos", items: [
+                      { topic: "chiese.cappuccini.storia", label: "🏰 Historia" },
+                      { topic: "chiese.cappuccini.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.cappuccini.dove", label: "📍 Dónde está" }
+                  ]},
+                  { group: "Santa Maria degli Angeli", items: [
+                      { topic: "chiese.santamariaangeli.storia", label: "🏰 Historia" },
+                      { topic: "chiese.santamariaangeli.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Exterior" },
+                      { topic: "chiese.santamariaangeli.dove", label: "📍 Dónde está" }
+                  ]},
+                  { group: "Annunziata", items: [
+                      { topic: "chiese.annunziata.storia", label: "🏰 Historia" },
+                      { topic: "chiese.annunziata.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.annunziata.dove", label: "📍 Dónde está" }
+                  ]},
+                  { group: "La Badia", items: [
+                      { topic: "chiese.badia.storia", label: "🏰 Historia" },
+                      { topic: "chiese.badia.esterno", label: "🖼️ Exterior" },
+                      { topic: "chiese.badia.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.badia.dove", label: "📍 Dónde está" }
+                  ]},
+                  { group: "San Giorgio Martire", items: [
+                      { topic: "chiese.duomo.storia", label: "🏰 Historia" },
+                      { topic: "chiese.duomo.interno", label: "🕯️ Interior" },
+                      { topic: "chiese.duomo.dove", label: "📍 Dónde está" },
+                      { topic: "chiese.duomo.orari", label: "🎫 Horarios y Entradas" }
+                  ]}
+              ]
           },
-          "de": {
-                    "welcome": "Willkommen bei den Kirchen von Caccamo, Reisender! Ich bin die Castellana und führe dich durch die Geschichte, Kunst und Frömmigkeit dieser heiligen Orte. Welche möchtest du zuerst entdecken?",
-                    "closing": "Das war's von hier, Reisender! Ich hoffe, ich konnte dir helfen. Für mehr Informationen findest du mich auf den anderen Seiten!",
-                    "groups": [
-                              {
-                                        "group": "Die Kapuziner",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.cappuccini.storia",
-                                                            "label": "🖼️ Außenansicht"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.cappuccini.interno",
-                                                            "label": "🕯️ Innenraum"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.cappuccini.dove",
-                                                            "label": "📍 Standort"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Santa Maria degli Angeli",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.storia",
-                                                            "label": "🏰 Geschichte"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.interno",
-                                                            "label": "🕯️ Innenraum"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.esterno",
-                                                            "label": "🖼️ Außenansicht"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.santamariaangeli.dove",
-                                                            "label": "📍 Standort"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Annunziata",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.annunziata.storia",
-                                                            "label": "🏰 Geschichte"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.annunziata.interno",
-                                                            "label": "🕯️ Innenraum"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.annunziata.dove",
-                                                            "label": "📍 Standort"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "Die Badia",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.badia.storia",
-                                                            "label": "🏰 Geschichte"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.esterno",
-                                                            "label": "🖼️ Außenansicht"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.interno",
-                                                            "label": "🕯️ Innenraum"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.badia.dove",
-                                                            "label": "📍 Standort"
-                                                  }
-                                        ]
-                              },
-                              {
-                                        "group": "San Giorgio Martire",
-                                        "items": [
-                                                  {
-                                                            "topic": "chiese.duomo.storia",
-                                                            "label": "🖼️ Außenansicht"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.interno",
-                                                            "label": "🏰 Geschichte"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.dove",
-                                                            "label": "📍 Standort"
-                                                  },
-                                                  {
-                                                            "topic": "chiese.duomo.orari",
-                                                            "label": "🎫 Öffnungszeiten & Tickets"
-                                                  }
-                                        ]
-                              }
-                    ]
+          de: {
+              welcome: "Willkommen bei den Kirchen von Caccamo, Reisender! Ich bin die Castellana und führe dich durch die Geschichte, Kunst und Frömmigkeit dieser heiligen Orte. Welche möchtest du zuerst entdecken?",
+              closing: "Das war's von hier, Reisender! Ich hoffe, ich konnte dir helfen. Für mehr Informationen findest du mich auf den anderen Seiten!",
+              groups: [
+                  { group: "Die Kapuziner", items: [
+                      { topic: "chiese.cappuccini.storia", label: "🏰 Geschichte" },
+                      { topic: "chiese.cappuccini.interno", label: "🕯️ Innenraum" },
+                      { topic: "chiese.cappuccini.dove", label: "📍 Standort" }
+                  ]},
+                  { group: "Santa Maria degli Angeli", items: [
+                      { topic: "chiese.santamariaangeli.storia", label: "🏰 Geschichte" },
+                      { topic: "chiese.santamariaangeli.interno", label: "🕯️ Innenraum" },
+                      { topic: "chiese.santamariaangeli.esterno", label: "🖼️ Außenansicht" },
+                      { topic: "chiese.santamariaangeli.dove", label: "📍 Standort" }
+                  ]},
+                  { group: "Annunziata", items: [
+                      { topic: "chiese.annunziata.storia", label: "🏰 Geschichte" },
+                      { topic: "chiese.annunziata.interno", label: "🕯️ Innenraum" },
+                      { topic: "chiese.annunziata.dove", label: "📍 Standort" }
+                  ]},
+                  { group: "Die Badia", items: [
+                      { topic: "chiese.badia.storia", label: "🏰 Geschichte" },
+                      { topic: "chiese.badia.esterno", label: "🖼️ Außenansicht" },
+                      { topic: "chiese.badia.interno", label: "🕯️ Innenraum" },
+                      { topic: "chiese.badia.dove", label: "📍 Standort" }
+                  ]},
+                  { group: "San Giorgio Martire", items: [
+                      { topic: "chiese.duomo.storia", label: "🏰 Geschichte" },
+                      { topic: "chiese.duomo.interno", label: "🕯️ Innenraum" },
+                      { topic: "chiese.duomo.dove", label: "📍 Standort" },
+                      { topic: "chiese.duomo.orari", label: "🎫 Öffnungszeiten & Tickets" }
+                  ]}
+              ]
           }
-};
+      };
 
       let hasShownWelcome = false;
 
@@ -1155,8 +672,6 @@ window.silktideConsentManager.init({
           if (!hasShownWelcome) {
               renderWelcome();
           } else {
-              // Anche riaprendo la chat (non solo la prima volta) mostriamo
-              // un breve "sta scrivendo".
               showTypingIndicator();
               setTimeout(() => {
                   hideTypingIndicator();
@@ -1207,8 +722,6 @@ window.silktideConsentManager.init({
                   currentModalIndex = 0;
                   showModalImage(0);
               } else {
-                  // Nessuna galleria collegata: si mostra solo la foto
-                  // esterna della card.
                   currentModalGallery = null;
                   modalImg.src = card.getAttribute('data-img');
                   modalImg.alt = card.getAttribute('data-title');
@@ -1279,9 +792,6 @@ window.silktideConsentManager.init({
       const API_BASE_URL = "https://castellana.pythonanywhere.com";
       const PREMIUM_STORAGE_KEY = "amuni_premium_access";
 
-      // ============================================================
-      // TTS AVANZATO — La Castellana parla
-      // ============================================================
       const VOICE_PREF_KEY = "amuni_voice_enabled";
       let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
       const voiceToggleBtn = document.getElementById("voice-toggle-btn");
@@ -1318,7 +828,6 @@ window.silktideConsentManager.init({
               v.lang === langCode || (v.lang || '').startsWith(linguaBase)
           );
 
-          // Cerca automaticamente indizi di voce neurale/di qualità superiore
           const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
           const vociDiQualita = stessaLingua.filter(v =>
               INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -1330,10 +839,6 @@ window.silktideConsentManager.init({
           return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
       }
 
-      // ============================================================
-      // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
-      // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
-      // ============================================================
       const EMOTION_PRESETS = {
           energico:    { rate: 1.05, pitch: 1.08 },
           malinconico: { rate: 0.85, pitch: 0.90 },
@@ -1399,8 +904,6 @@ window.silktideConsentManager.init({
           if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
           window.speechSynthesis.cancel();
 
-          // 1. Separa i segmenti taggati ([energico]...[/energico] ecc.)
-          // 2. Spezza ogni segmento in frasi, mantenendo l'emozione associata
           const segmenti = parseEmotionalSegments(text);
           const frasi = [];
           segmenti.forEach(seg => {
@@ -1425,13 +928,12 @@ window.silktideConsentManager.init({
                   const utterance = new SpeechSynthesisUtterance(frase.text);
                   utterance.voice = voce;
                   utterance.lang = langCode;
-                  // leggera variazione naturale intorno al preset dell'emozione
                   utterance.rate = preset.rate + (Math.random() * 0.06 - 0.03);
                   utterance.pitch = preset.pitch + (Math.random() * 0.08 - 0.04);
                   utterance.volume = 1.0;
                   utterance.onend = () => {
                       indice++;
-                      setTimeout(parlaFrase, 280); // micro-pausa tra le frasi, come un respiro
+                      setTimeout(parlaFrase, 280);
                   };
                   window.speechSynthesis.speak(utterance);
               }
@@ -1444,9 +946,6 @@ window.silktideConsentManager.init({
           if ("speechSynthesis" in window) window.speechSynthesis.cancel();
       }
 
-      // ============================================================
-      // MICROFONO — il turista può parlare invece di scrivere
-      // ============================================================
       const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
       const micBtn = document.getElementById("mic-btn");
       let recognition = null;
@@ -1556,31 +1055,7 @@ window.silktideConsentManager.init({
           es: "Horarios y entradas →", de: "Öffnungszeiten & Tickets →"
       };
 
-      // NUOVO — prima mancavano: i link a Mangiare ed Eventi venivano
-      // etichettati "Orari e biglietti →" e aperti nella finestrella
-      // sovrapposta, dove non si vedevano bene.
-      const MANGIARE_LABEL_BY_LANG = {
-          it: "Vai a Mangiare e Bere →", en: "Go to Eat & Drink →", fr: "Aller à Manger et Boire →",
-          es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →"
-      };
-
-      const EVENTI_LABEL_BY_LANG = {
-          it: "Vai agli Eventi →", en: "Go to Events →", fr: "Aller aux Événements →",
-          es: "Ir a Eventos →", de: "Zu den Veranstaltungen →"
-      };
-
-      const BACK_TO_MENU_LABELS = {
-          it: "‹ Torna al menu", en: "‹ Back to menu", fr: "‹ Retour au menu",
-          es: "‹ Volver al menú", de: "‹ Zurück zum Menü"
-      };
-
       function getLinkLabel(link) {
-          if (link && link.includes('eventi.html') && link.includes('/mobile/')) {
-              return EVENTI_LABEL_BY_LANG[currentLang] || EVENTI_LABEL_BY_LANG.it;
-          }
-          if (link && link.includes('mangiare.html')) {
-              return MANGIARE_LABEL_BY_LANG[currentLang] || MANGIARE_LABEL_BY_LANG.it;
-          }
           if (link && link.includes('mappa.html')) {
               return MAP_LABEL_BY_LANG[currentLang] || MAP_LABEL_BY_LANG.it;
           }
@@ -1604,39 +1079,6 @@ window.silktideConsentManager.init({
           });
       }
 
-      // ============================================================
-      // NUOVO — LINK CLICCABILI DENTRO IL TESTO
-      // Un indirizzo scritto dentro la risposta (es. il calendario
-      // eventi di Palermo) diventa un link vero, che si apre in una
-      // nuova scheda. Il resto resta testo semplice.
-      // ============================================================
-      const URL_NEL_TESTO = /(https?:\/\/[^\s]+[^\s.,;:!?)])/g;
-
-      function riempiTestoConLink(contenitore, testo) {
-          let ultimo = 0;
-          let match;
-          URL_NEL_TESTO.lastIndex = 0;
-          while ((match = URL_NEL_TESTO.exec(testo)) !== null) {
-              if (match.index > ultimo) {
-                  contenitore.appendChild(document.createTextNode(testo.slice(ultimo, match.index)));
-              }
-              const a = document.createElement('a');
-              a.href = match[0];
-              a.textContent = match[0];
-              a.target = '_blank';
-              a.rel = 'noopener';
-              a.style.wordBreak = 'break-all';
-              contenitore.appendChild(a);
-              ultimo = URL_NEL_TESTO.lastIndex;
-          }
-          if (ultimo < testo.length) {
-              contenitore.appendChild(document.createTextNode(testo.slice(ultimo)));
-          }
-      }
-
-      // ============================================================
-      // RENDERING MESSAGGI CHAT
-      // ============================================================
       function appendChatMessage(text, sender, link) {
           const messagesBox = document.getElementById('chat-messages-box');
           if (!messagesBox) return;
@@ -1647,7 +1089,7 @@ window.silktideConsentManager.init({
 
           const textSpan = document.createElement('span');
           textSpan.style.cssText = 'flex:1;';
-          riempiTestoConLink(textSpan, stripEmotionTags(text));
+          textSpan.textContent = stripEmotionTags(text);
           msgWrap.appendChild(textSpan);
 
           if (sender !== 'user') {
@@ -1682,11 +1124,7 @@ window.silktideConsentManager.init({
               btn.textContent = getLinkLabel(link);
               btn.style.cssText = 'margin-left: 44px; margin-top: 4px;';
               btn.addEventListener('click', () => {
-                  // mangiare.html ed eventi.html sono pagine vere e proprie:
-                  // si aprono a pagina intera. Mappa e orari, invece, restano
-                  // nella finestrella sovrapposta.
-                  const paginaIntera = link.includes('mangiare.html') || link.includes('eventi.html');
-                  if (link.includes('mappa.html') || (link.includes('/mobile/') && !paginaIntera)) {
+                  if (link.includes('mappa.html') || link.includes('/mobile/')) {
                       openMapOverlay(link);
                   } else {
                       window.location.href = link;
@@ -1698,17 +1136,10 @@ window.silktideConsentManager.init({
           if (sender === 'user') {
               messagesBox.scrollTop = messagesBox.scrollHeight;
           } else {
-              // Non forziamo lo scroll fino in fondo alla risposta: lo
-              // schermo resta fermo sull'inizio del messaggio appena
-              // arrivato, ed e' il turista a scorrere se vuole leggere
-              // il resto.
               msgWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
       }
 
-      // ============================================================
-      // INDICATORE "STA SCRIVENDO"
-      // ============================================================
       function showTypingIndicator() {
           const messagesBox = document.getElementById('chat-messages-box');
           if (!messagesBox) return;
@@ -1725,9 +1156,6 @@ window.silktideConsentManager.init({
           if (el) el.remove();
       }
 
-      // ============================================================
-      // MENU A PULSANTI — "contesto persistente"
-      // ============================================================
       let fullTopicMenu = [];
       let exploredGroups = new Set();
       let exploredTopics = new Set();
@@ -1747,7 +1175,6 @@ window.silktideConsentManager.init({
           const wrap = document.createElement('div');
           wrap.className = 'topic-menu topic-menu-state';
 
-          // Crea un pulsante-topic, con miniatura se disponibile
           function makeTopicButton(it, groupName) {
               const b = document.createElement('button');
               b.className = 'topic-btn';
@@ -1768,11 +1195,9 @@ window.silktideConsentManager.init({
           }
 
           if (currentGroupName) {
-              // Siamo dentro un monumento specifico: mostro SOLO i suoi
-              // sotto-argomenti + un pulsante per tornare al menu generale.
               const backBtn = document.createElement('button');
               backBtn.className = 'topic-btn topic-back-btn';
-              backBtn.textContent = BACK_TO_MENU_LABELS[currentLang] || BACK_TO_MENU_LABELS.it;
+              backBtn.textContent = '‹ Torna al menu';
               backBtn.addEventListener('click', () => renderMenuState(null));
               wrap.appendChild(backBtn);
 
@@ -1784,7 +1209,6 @@ window.silktideConsentManager.init({
                   });
               }
           } else {
-              // Menu generale: solo l'elenco dei monumenti/argomenti di primo livello.
               fullTopicMenu.forEach(entry => {
                   if (entry.group) {
                       if (exploredGroups.has(entry.group)) return;
@@ -1799,50 +1223,6 @@ window.silktideConsentManager.init({
                   }
               });
           }
-
-          messagesBox.appendChild(wrap);
-          // Niente scroll forzato qui: lasciamo lo schermo dove l'ha
-          // messo appendChatMessage (inizio del messaggio appena
-          // arrivato). Il turista scorre da solo se vuole vedere i
-          // bottoni sotto.
-      }
-
-      // ============================================================
-      // NUOVO — OPZIONI "UNA TANTUM" INVIATE DAL BACKEND
-      // A volte la Castellana risponde con una domanda e dei pulsanti
-      // da scegliere (es. "in che zona del paese ti trovi?" + le zone).
-      // Il backend li manda nel campo "menu" come semplice elenco
-      // {topic, label}. Prima la pagina li ignorava. Ora li mostra al
-      // posto del menu normale, per quella sola scelta; dopo la scelta
-      // (o toccando "Torna al menu") il menu della pagina ricompare.
-      // I menu "a gruppi" restano gestiti come prima.
-      // ============================================================
-      function isOneOffOptionList(menu) {
-          return Array.isArray(menu) && menu.length > 0 &&
-                 menu.every(voce => voce && voce.topic && voce.label && !voce.group);
-      }
-
-      function renderReplyOptions(options, returnGroup) {
-          const old = document.querySelector('.chat-messages .topic-menu-state');
-          if (old) old.remove();
-
-          const messagesBox = document.getElementById('chat-messages-box');
-          const wrap = document.createElement('div');
-          wrap.className = 'topic-menu topic-menu-state';
-
-          options.forEach(opt => {
-              const b = document.createElement('button');
-              b.className = 'topic-btn';
-              b.textContent = opt.label;
-              b.addEventListener('click', () => sendTopicRequest(opt.topic, opt.label, returnGroup));
-              wrap.appendChild(b);
-          });
-
-          const backBtn = document.createElement('button');
-          backBtn.className = 'topic-btn topic-back-btn';
-          backBtn.textContent = BACK_TO_MENU_LABELS[currentLang] || BACK_TO_MENU_LABELS.it;
-          backBtn.addEventListener('click', () => renderMenuState(returnGroup));
-          wrap.appendChild(backBtn);
 
           messagesBox.appendChild(wrap);
       }
@@ -1871,12 +1251,8 @@ window.silktideConsentManager.init({
               if (data.speak || voiceEnabled) speakText(data.reply);
               lastTopic = data.topic || topicId;
 
-              // Segna SEMPRE la singola opera come vista (serve sia dentro
-              // il gruppo sia per capire quando il gruppo e' esaurito).
               exploredTopics.add(topicId);
 
-              // Il pulsante del gruppo sparisce dal menu principale SOLO
-              // quando tutte le sue voci sono state esplorate, non alla prima.
               if (groupName) {
                   const groupEntry = fullTopicMenu.find(e => e.group === groupName);
                   const tutteViste = groupEntry && groupEntry.items.every(it => exploredTopics.has(it.topic));
@@ -1885,13 +1261,7 @@ window.silktideConsentManager.init({
                   }
               }
 
-              // NUOVO — se la risposta porta con se' delle scelte da fare
-              // (es. le zone) mostriamo quelle; altrimenti il menu normale.
-              if (isOneOffOptionList(data.menu)) {
-                  renderReplyOptions(data.menu, groupName);
-              } else {
-                  renderMenuState(groupName);
-              }
+              renderMenuState(groupName);
           } catch (err) {
               console.error('Errore richiesta topic:', err);
               hideTypingIndicator();
@@ -1900,7 +1270,7 @@ window.silktideConsentManager.init({
       }
 
       let menuLoadedForCode = null;
-      let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
+      let lastTopic = null;
       async function loadTopicMenu() {
           const code = getStoredAccessCode();
           if (!code || menuLoadedForCode === code) return;
@@ -1965,4 +1335,158 @@ window.silktideConsentManager.init({
                           ' ' + d.toLocaleTimeString(currentLang, { hour: '2-digit', minute: '2-digit' });
                       bar.textContent = texts.active(formatted);
                       bar.classList.add('premium-active');
-              
+                      bar.classList.remove('premium-free');
+                      return;
+                  }
+              } catch (e) { /* codice non valido, trattalo come gratuito */ }
+          }
+          bar.textContent = texts.free;
+          bar.classList.add('premium-free');
+          bar.classList.remove('premium-active');
+      }
+
+      function storeAccessCode(code, expiresAt) {
+          localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
+              code: code,
+              expires_at: expiresAt
+          }));
+      }
+
+      async function tryActivateCode(rawMessage) {
+          const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9-]+)/i);
+          if (!match) return false;
+
+          const code = match[2].toUpperCase();
+          appendChatMessage(rawMessage, 'user');
+
+          try {
+              const res = await fetch(`${API_BASE_URL}/activate-code`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ code: code, lang: currentLang })
+              });
+              const data = await res.json();
+
+              if (data.success) {
+                  storeAccessCode(code, data.expires_at);
+                  const expiryDate = new Date(data.expires_at);
+                  const formatted = expiryDate.toLocaleDateString(currentLang, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+                  appendChatMessage(t('premium.activated_prefix', 'Premium attivato! Avrai accesso ai contenuti esclusivi fino al ') + formatted + '.', 'castellana');
+                  updatePremiumStatusDisplay();
+                  loadTopicMenu();
+              } else {
+                  appendChatMessage(data.message || t('premium.invalid_code', 'Codice non valido.'), 'castellana');
+              }
+          } catch (err) {
+              console.error('Errore attivazione codice:', err);
+              appendChatMessage(t('premium.code_check_error', 'Al momento non riesco a verificare il codice — riprova tra poco.'), 'castellana');
+          }
+
+          return true;
+      }
+
+      async function sendChatMessage(text) {
+          if (!text.trim()) return;
+
+          const wasActivationAttempt = await tryActivateCode(text);
+          if (wasActivationAttempt) return;
+
+          appendChatMessage(text, 'user');
+          castellanaZitta();
+          showTypingIndicator();
+
+          try {
+              const res = await fetch(`${API_BASE_URL}/chat`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      message: text,
+                      page: getPageSlug(),
+                      lang: currentLang,
+                      access_code: getStoredAccessCode() || "",
+                      last_topic: lastTopic || ""
+                  })
+              });
+
+              if (!res.ok) throw new Error('Risposta non valida dal server');
+
+              const data = await res.json();
+              hideTypingIndicator();
+              appendChatMessage(data.reply, 'castellana', data.link);
+              if (data.speak || voiceEnabled) speakText(data.reply);
+              if (data.topic) lastTopic = data.topic;
+
+          } catch (err) {
+              console.error('Errore chat:', err);
+              hideTypingIndicator();
+              appendChatMessage('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+          }
+      }
+
+      const chatInputField = document.querySelector('.chat-input-row input');
+      const sendBtn = document.querySelector('.send-btn');
+
+      function handleSend() {
+          sendChatMessage(chatInputField.value);
+          chatInputField.value = '';
+      }
+
+      if (chatInputField) {
+          chatInputField.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.keyCode === 13) {
+                  e.preventDefault();
+                  handleSend();
+              }
+          });
+      }
+      if (sendBtn) {
+          sendBtn.addEventListener('click', handleSend);
+      }
+
+      document.getElementById('btn-premium-code').addEventListener('click', () => {
+        chatBox.classList.add('active');
+        appendChatMessage(
+          t('premium.chat_code_prompt', 'Per attivare il tuo accesso Premium, scrivimi qui: "codice TUOCODICE"'),
+          'castellana'
+        );
+      });
+
+      document.getElementById('btn-buy-premium').addEventListener('click', async (e) => {
+        e.preventDefault();
+        const btn = e.currentTarget;
+        const originalText = btn.textContent;
+        btn.textContent = "Un momento...";
+        try {
+          const res = await fetch(`${API_BASE_URL}/create-checkout-session`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ return_page: "chiese-arte.html" })
+          });
+          const data = await res.json();
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            alert(t('premium.payment_start_error', "Non riesco ad avviare il pagamento. Riprova tra poco."));
+            btn.textContent = originalText;
+          }
+        } catch (err) {
+          console.error("Errore avvio pagamento:", err);
+          alert(t('premium.payment_connection_error', "Errore di collegamento. Riprova tra poco."));
+          btn.textContent = originalText;
+        }
+      });
+  </script>
+  <footer class="footer-copyright" style="text-align: center; padding: 30px 20px 100px 20px; background: rgba(15, 25, 34, 0.95); color: #DCCFAF; font-size: 0.85rem;">
+    <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
+    <p style="font-size: 0.8rem; margin-top: 8px;">
+        Le conversazioni con la Castellana possono essere registrate in forma anonima
+        per migliorare la qualità del servizio.
+        <a href="privacy.html" style="color: #D4AF6A;">Maggiori informazioni</a>
+    </p>
+</footer>
+
+<!-- Sovrapposizioni (footer + chat aperta) risolte in un unico file condiviso -->
+<script src="../widget-position-fix.js"></script>
+<script src="../premium-launch-price.js"></script>
+</body>
+</html>
