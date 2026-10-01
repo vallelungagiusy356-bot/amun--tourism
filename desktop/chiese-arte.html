@@ -256,7 +256,7 @@ window.silktideConsentManager.init({
 
           <div class="stop">
               <div class="waypoint"></div>
-              <article class="card side-right" data-img="img/sandomenico.jpg" data-title="Santa Maria degli Angeli">
+              <article class="card side-right" data-img="img/sandomenico.jpg" data-title="Santa Maria degli Angeli" data-gallery="santamaria">
                   <div class="card-frame"><img src="img/sandomenico.jpg" alt="Santa Maria degli Angeli"></div>
                   <div class="card-text">
                       <span class="card-route-label" data-i18n="pages.chiese_page.route_angeli">Silenzio</span>
@@ -387,6 +387,15 @@ window.silktideConsentManager.init({
       //    data-gallery="sangiorgio"
       // ============================================================
       const DESKTOP_GALLERY_IMAGES = {
+          santamaria: [
+              { src: "img/sandomenico.jpg", captionKey: "pages.chiese_page.santamaria_gallery.esterno", fallback: "Esterno della chiesa" },
+              { src: "../gallery-chiese/madonna_angeli_santamaria.jpg", captionKey: "pages.chiese_page.santamaria_gallery.madonna_angeli", fallback: "La Madonna degli Angeli" },
+              { src: "../gallery-chiese/madonna_gagini_santamaria.jpg", captionKey: "pages.chiese_page.santamaria_gallery.madonna_gagini", fallback: "La Madonna col Bambino del Gagini" },
+              { src: "../gallery-chiese/madonna_visita_poveri_santamaria.jpg", captionKey: "pages.chiese_page.santamaria_gallery.madonna_visita_poveri", fallback: "La Madonna Visita Poveri" },
+              { src: "../gallery-chiese/levitazione_sangiuseppe_santamaria.jpg", captionKey: "pages.chiese_page.santamaria_gallery.levitazione_sangiuseppe", fallback: "La Levitazione di San Giuseppe da Copertino" },
+              { src: "../gallery-chiese/sstrinita_santamaria.jpg", captionKey: "pages.chiese_page.santamaria_gallery.sstrinita", fallback: "La SS. Trinità con San Michele Arcangelo" },
+              { src: "../gallery-chiese/urna_beato_santamaria.jpg", captionKey: "pages.chiese_page.santamaria_gallery.urna_beato", fallback: "L'Urna del Beato Giovanni Liccio" }
+          ],
           badia: [
               { src: "img/badia.jpg", captionKey: "pages.chiese_page.badia_gallery.esterno", fallback: "Esterno della chiesa" },
               { src: "../gallery-chiese/pavimento_badia.jpg", captionKey: "pages.chiese_page.badia_gallery.pavimento", fallback: "Il pavimento in maiolica" },
