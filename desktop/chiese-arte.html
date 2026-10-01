@@ -244,7 +244,7 @@ window.silktideConsentManager.init({
 
           <div class="stop">
               <div class="waypoint"></div>
-              <article class="card side-left" data-img="img/cappuccini.jpg" data-title="I Cappuccini">
+              <article class="card side-left" data-img="img/cappuccini.jpg" data-title="I Cappuccini" data-gallery="cappuccini">
                   <div class="card-frame"><img src="img/cappuccini.jpg" alt="I Cappuccini"></div>
                   <div class="card-text">
                       <span class="card-route-label" data-i18n="pages.chiese_page.route_cappuccini">Punto più alto</span>
@@ -387,6 +387,14 @@ window.silktideConsentManager.init({
       //    data-gallery="sangiorgio"
       // ============================================================
       const DESKTOP_GALLERY_IMAGES = {
+          cappuccini: [
+              { src: "img/cappuccini.jpg", captionKey: "pages.chiese_page.cappuccini_gallery.esterno", fallback: "Esterno del convento" },
+              { src: "../gallery-chiese/pala_altare_cappuccini.jpg", captionKey: "pages.chiese_page.cappuccini_gallery.porziuncola", fallback: "La Porziuncola, pala dell'altare maggiore" },
+              { src: "../gallery-chiese/sacra_famiglia_cappuccini.jpg", captionKey: "pages.chiese_page.cappuccini_gallery.sacrafamiglia", fallback: "La Sacra Famiglia" },
+              { src: "../gallery-chiese/san_rocco_di_montpeiler_cappuccini.jpg", captionKey: "pages.chiese_page.cappuccini_gallery.sanrocco", fallback: "San Rocco" },
+              { src: "../gallery-chiese/crocifisso_cappuccini.jpg", captionKey: "pages.chiese_page.cappuccini_gallery.crocifisso", fallback: "Il Crocifisso" },
+              { src: "../gallery-chiese/madonna_di_lourdes_cappuccini.jpg", captionKey: "pages.chiese_page.cappuccini_gallery.madonna_lourdes", fallback: "La Madonna di Lourdes" }
+          ],
           santamaria: [
               { src: "img/sandomenico.jpg", captionKey: "pages.chiese_page.santamaria_gallery.esterno", fallback: "Esterno della chiesa" },
               { src: "../gallery-chiese/madonna_angeli_santamaria.jpg", captionKey: "pages.chiese_page.santamaria_gallery.madonna_angeli", fallback: "La Madonna degli Angeli" },
