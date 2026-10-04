@@ -218,9 +218,14 @@ window.silktideConsentManager.init({
             <img src="img/castello_cacc.gif" alt="Il Castello di Caccamo" class="monument-hero-image img-castello" onerror="this.src='img/avatar_castellana.png';">
         </div>
 
-        <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
-            🔊 <span data-i18n="pages.monuments_pages.labels.listen_button">Ascolta la descrizione</span>
-        </button>
+        <div class="listen-gallery-row">
+            <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
+                🔊 <span data-i18n="pages.monuments_pages.labels.listen_button">Ascolta la descrizione</span>
+            </button>
+            <button class="btn-gallery" id="btn-open-gallery" onclick="openGallery()">
+                🖼️ <span data-i18n="pages.monuments_pages.labels.gallery_button">Galleria</span>
+            </button>
+        </div>
 
         <section class="teca-cristallo descrittiva">
             <p id="desc-text" data-i18n="pages.monuments_pages.castello.description">Il Castello sorge su questa rupe dal 1094, eretto dai Normanni per dominare la valle del San Leonardo. Nel 1160 fu teatro della congiura dei baroni: il signore Matteo Bonello vi si rifugiò dopo aver tentato di rovesciare il re Guglielmo I. Si narra che il suo fantasma vaghi ancora nella Sala della Congiura, in cerca di pace. Una delle cappelle nasconde persino una botola, un tempo usata per liberarsi degli ospiti sgraditi.</p>
@@ -259,6 +264,133 @@ window.silktideConsentManager.init({
 
     </main>
 
+    <div class="gallery-modal" id="gallery-modal">
+        <div class="gallery-modal-header">
+            <span class="gallery-counter" id="gallery-counter">1 / 6</span>
+            <button class="gallery-close-btn" id="gallery-close-btn" aria-label="Chiudi galleria">✕</button>
+        </div>
+        <div class="gallery-modal-body">
+            <button class="gallery-arrow gallery-arrow-left" id="gallery-prev-btn" aria-label="Foto precedente">‹</button>
+            <img class="gallery-modal-image" id="gallery-modal-image" src="" alt="">
+            <button class="gallery-arrow gallery-arrow-right" id="gallery-next-btn" aria-label="Foto successiva">›</button>
+        </div>
+        <p class="gallery-caption" id="gallery-caption"></p>
+    </div>
+
+    <script>
+        // --------------------------
+        // GALLERIA FOTO — Castello di Caccamo
+        // --------------------------
+        const GALLERY_IMAGES = [
+        {
+                "src": "../gallery-chiese/squarcio_castello.jpg",
+                "captionKey": "pages.monuments_pages.castello_gallery.vicolo",
+                "fallback": "Uno scorcio del borgo verso il Castello"
+        },
+        {
+                "src": "../gallery-chiese/cordata_princi_castello.jpg",
+                "captionKey": "pages.monuments_pages.castello_gallery.ingresso",
+                "fallback": "La rampa d'ingresso"
+        },
+        {
+                "src": "../gallery-chiese/ingresso_ala_prades.jpg",
+                "captionKey": "pages.monuments_pages.castello_gallery.ala_prades",
+                "fallback": "L'Ala Prades"
+        },
+        {
+                "src": "../gallery-chiese/ingresso_grancorte_castello.jpg",
+                "captionKey": "pages.monuments_pages.castello_gallery.grancorte",
+                "fallback": "La Gran Corte"
+        },
+        {
+                "src": "../gallery-chiese/cappella_castello.jpg",
+                "captionKey": "pages.monuments_pages.castello_gallery.cappella",
+                "fallback": "La Cappella"
+        },
+        {
+                "src": "../gallery-chiese/entrata_prig_castello.jpg",
+                "captionKey": "pages.monuments_pages.castello_gallery.ingresso_prigioni",
+                "fallback": "L'ingresso alle Prigioni"
+        },
+        {
+                "src": "../gallery-chiese/interno_prig_castello.jpg",
+                "captionKey": "pages.monuments_pages.castello_gallery.prigioni",
+                "fallback": "Le Prigioni"
+        },
+        {
+                "src": "../gallery-chiese/panorama_terr_castello.jpg",
+                "captionKey": "pages.monuments_pages.castello_gallery.terrazza",
+                "fallback": "La Terrazza degli Impiccati"
+        }
+];
+
+        let currentGalleryIndex = 0;
+
+        function openGallery() {
+            currentGalleryIndex = 0;
+            showGalleryImage(currentGalleryIndex);
+            document.getElementById('gallery-modal').classList.add('active');
+        }
+
+        function closeGallery() {
+            document.getElementById('gallery-modal').classList.remove('active');
+        }
+
+        function showGalleryImage(index) {
+            const img = GALLERY_IMAGES[index];
+            const caption = (typeof getI18nText === 'function')
+                ? getI18nText(img.captionKey, img.fallback)
+                : img.fallback;
+            document.getElementById('gallery-modal-image').src = img.src;
+            document.getElementById('gallery-modal-image').alt = caption;
+            document.getElementById('gallery-caption').textContent = caption;
+            document.getElementById('gallery-counter').textContent = (index + 1) + ' / ' + GALLERY_IMAGES.length;
+        }
+
+        function showNextGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex + 1) % GALLERY_IMAGES.length;
+            showGalleryImage(currentGalleryIndex);
+        }
+
+        function showPrevGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+            showGalleryImage(currentGalleryIndex);
+        }
+
+        document.getElementById('gallery-close-btn').addEventListener('click', closeGallery);
+        document.getElementById('gallery-next-btn').addEventListener('click', showNextGalleryImage);
+        document.getElementById('gallery-prev-btn').addEventListener('click', showPrevGalleryImage);
+
+        // Tocca lo sfondo scuro (fuori dalla foto) per chiudere
+        document.getElementById('gallery-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeGallery();
+        });
+
+        // Scorrimento con swipe (dito) sulla foto
+        (function() {
+            const imgEl = document.getElementById('gallery-modal-image');
+            let touchStartX = 0;
+            imgEl.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            imgEl.addEventListener('touchend', function(e) {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchEndX - touchStartX;
+                if (Math.abs(diff) > 40) {
+                    if (diff < 0) showNextGalleryImage();
+                    else showPrevGalleryImage();
+                }
+            });
+        })();
+
+        // Se si cambia lingua con la galleria aperta, aggiorna la didascalia
+        document.addEventListener('languageChanged', function() {
+            const modal = document.getElementById('gallery-modal');
+            if (modal && modal.classList.contains('active')) {
+                showGalleryImage(currentGalleryIndex);
+            }
+        });
+    </script>
 
     <div class="chat-mobile" id="chat-mobile">
         <div class="chat-mobile-header">
@@ -280,10 +412,6 @@ window.silktideConsentManager.init({
 
     <script>
       (function() {
-        // Tutto il codice qui dentro e racchiuso in una funzione che
-        // si esegue subito da sola: le sue variabili (currentLang,
-        // speakText, audio, ecc.) restano private e non entrano in
-        // conflitto con quelle gia usate in monument_translation.js.
         const audio = document.getElementById("bg-music"); audio.volume = 0.2;
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
@@ -303,12 +431,9 @@ window.silktideConsentManager.init({
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
         const VOICE_PREF_KEY = "amuni_voice_enabled";
-        // NUOVO — in quale monumento ci troviamo. Il backend lo usa per
-        // capire quando il turista chiede di un altro monumento e
-        // mandarlo alla pagina giusta invece di rispondere qui.
         const MONUMENT_ID = "castello";
         let currentLang = localStorage.getItem("lang") || "it";
-        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
+        let lastTopic = null;
 
         function getStoredAccessCode() {
             const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
@@ -333,9 +458,6 @@ window.silktideConsentManager.init({
             }));
         }
 
-        // --------------------------
-        // TTS
-        // --------------------------
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
         const voiceToggleBtnMobile = document.getElementById("voice-toggle-btn-mobile");
 
@@ -369,7 +491,6 @@ window.silktideConsentManager.init({
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
 
-            // Cerca automaticamente indizi di voce neurale/di qualità superiore
             const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
             const vociDiQualita = stessaLingua.filter(v =>
                 INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -380,10 +501,6 @@ window.silktideConsentManager.init({
             return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
         }
 
-        // ============================================================
-        // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
-        // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
-        // ============================================================
         const EMOTION_PRESETS = {
             energico:    { rate: 1.05, pitch: 1.08 },
             malinconico: { rate: 0.85, pitch: 0.90 },
@@ -489,9 +606,6 @@ window.silktideConsentManager.init({
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         }
 
-        // --------------------------
-        // MICROFONO
-        // --------------------------
         const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
         const micBtnMobile = document.getElementById("mic-btn-mobile");
         let recognitionMobile = null;
@@ -542,12 +656,6 @@ window.silktideConsentManager.init({
             micBtnMobile.style.display = "none";
         }
 
-        // --------------------------
-        // LINK — i link mandati dal backend possono essere:
-        //   "castello.html"          -> pagina desktop, va in "../desktop/"
-        //   "../mobile/xxx.html"     -> pagina mobile, gia' corretta cosi'
-        //   "https://..."            -> indirizzo completo
-        // --------------------------
         function resolveLinkPathMobile(link) {
             if (!link) return link;
             if (link.startsWith("http") || link.startsWith("../desktop/") ||
@@ -557,8 +665,6 @@ window.silktideConsentManager.init({
             return "../desktop/" + link;
         }
 
-        // NUOVO — testo del pulsante-link, nella lingua della pagina.
-        // Prima era sempre "Vai alla pagina →".
         const LINK_LABELS_MOBILE = {
             eventi:    { it: "Vai agli Eventi →", en: "Go to Events →", fr: "Aller aux Événements →", es: "Ir a Eventos →", de: "Zu den Veranstaltungen →" },
             mangiare:  { it: "Vai a Mangiare e Bere →", en: "Go to Eat & Drink →", fr: "Aller à Manger et Boire →", es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →" },
@@ -589,9 +695,6 @@ window.silktideConsentManager.init({
             return scegli('generico');
         }
 
-        // NUOVO — gli indirizzi web scritti dentro le risposte (es. il
-        // calendario eventi di Palermo) diventano link cliccabili. Il
-        // resto resta testo semplice: nessun codice estraneo nella pagina.
         const URL_NEL_TESTO = /(https?:\/\/[^\s]+[^\s.,;:!?)])/g;
 
         function riempiTestoConLinkMobile(contenitore, testo) {
@@ -646,9 +749,6 @@ window.silktideConsentManager.init({
                 btn.className = 'chat-link-btn-mobile';
                 btn.textContent = getLinkLabelMobile(link);
                 btn.onclick = () => {
-                    // Se il link porta a questa stessa pagina (es. "Orari e
-                    // biglietti"), non ricarichiamo: chiudiamo la chat e
-                    // mostriamo la scheda con gli orari.
                     if (isLinkAllaPaginaCorrente(link)) {
                         chatMobileBox.classList.remove('active');
                         const scheda = document.querySelector('.teca-logistica');
@@ -680,10 +780,6 @@ window.silktideConsentManager.init({
             if (indicator) indicator.remove();
         }
 
-        // --------------------------
-        // ARGOMENTI PREMIUM — solo quelli di questo monumento,
-        // stessi id usati dal backend.
-        // --------------------------
         const TOPICS_MOBILE = {
             "it": [
                         {
@@ -829,8 +925,6 @@ window.silktideConsentManager.init({
             "de": "Willkommen auf der Burg von Caccamo, Reisender! Was mochtest du entdecken?"
 };
 
-        // Percorsi a tappe (es. il tour del Castello): dopo una tappa compare
-        // il pulsante per passare alla successiva. Vuoto se la pagina non ne ha.
         const NEXT_STEPS_MOBILE = {
             "castello.tour.ingresso": {
                         "topic": "castello.tour.ala_prades",
@@ -897,8 +991,6 @@ window.silktideConsentManager.init({
 
         let usedTopicsMobile = new Set();
         let hasShownWelcomeMobile = false;
-        // Ricorda in quale lingua e stato mostrato l'ultimo benvenuto:
-        // se currentLang cambia, il benvenuto va ridisegnato.
         let shownWelcomeLang = null;
 
         function renderTopicMenuMobile(menu) {
@@ -927,13 +1019,6 @@ window.silktideConsentManager.init({
             }
         }
 
-        // ============================================================
-        // NUOVO — OPZIONI "UNA TANTUM" INVIATE DAL BACKEND
-        // Quando la Castellana risponde con una domanda e dei pulsanti
-        // da scegliere (es. "in che zona del paese ti trovi?" + le
-        // zone), questi arrivano nel campo "menu" della risposta come
-        // semplice elenco {topic, label}. Prima venivano ignorati.
-        // ============================================================
         function isOneOffOptionListMobile(menu) {
             return Array.isArray(menu) && menu.length > 0 &&
                    menu.every(voce => voce && voce.topic && voce.label && !voce.group);
@@ -1028,9 +1113,6 @@ window.silktideConsentManager.init({
             }, 900);
         }
 
-        // --------------------------
-        // ATTIVAZIONE CODICE + MESSAGGI LIBERI
-        // --------------------------
         async function tryActivateCodeMobile(rawMessage) {
             const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9-]+)/i);
             if (!match) return false;
@@ -1083,9 +1165,6 @@ window.silktideConsentManager.init({
                         lang: currentLang,
                         access_code: getStoredAccessCode() || "",
                         last_topic: lastTopic || "",
-                        // NUOVO — siamo sul mobile e in questo monumento:
-                        // cosi' il backend manda alla pagina giusta quando
-                        // si chiede di un altro monumento.
                         platform: "mobile",
                         monument: MONUMENT_ID
                     })
@@ -1099,9 +1178,6 @@ window.silktideConsentManager.init({
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 if (data.topic) lastTopic = data.topic;
 
-                // NUOVO — scelte da fare (es. le zone) oppure, se la
-                // Castellana non ha capito, di nuovo il menu di questo
-                // monumento.
                 if (isOneOffOptionListMobile(data.menu)) {
                     renderReplyOptionsMobile(data.menu);
                 } else if (data.menu && data.menu.length) {
@@ -1135,9 +1211,6 @@ window.silktideConsentManager.init({
             sendBtnMobile.addEventListener('click', handleSendMobile);
         }
 
-        // --------------------------
-        // INDICATORE PREMIUM
-        // --------------------------
         const PREMIUM_STATUS_TEXT_MOBILE = {
             it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
             en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
@@ -1162,38 +1235,26 @@ window.silktideConsentManager.init({
                         bar.classList.add('premium-active');
                         return;
                     }
-                } catch (e) { /* codice non valido, trattalo come gratuito */ }
+                } catch (e) { }
             }
             bar.textContent = texts.free;
             bar.classList.remove('premium-active');
         }
 
-        // --------------------------
-        // APERTURA / CHIUSURA CHAT
-        // --------------------------
         const chatMobileBox = document.getElementById('chat-mobile');
         const closeChatMobileBtn = document.getElementById('close-chat-mobile');
         const talkCastellanaBtnMonumento = document.getElementById('talk-castellana-btn-monumento');
 
         if (talkCastellanaBtnMonumento) {
             talkCastellanaBtnMonumento.addEventListener('click', () => {
-                // Apre sempre la chat qui sulla pagina mobile, per tutti
-                // gli utenti (gratuiti e Premium). Chi vuole raggiungere
-                // il sito desktop ha il pulsante separato "Vai alla
-                // versione Web".
                 chatMobileBox.classList.add('active');
                 updatePremiumStatusDisplayMobile();
-                // Ridisegna il benvenuto se non e mai stato mostrato,
-                // OPPURE se la lingua e cambiata da allora.
                 if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
                     renderWelcomeMobile();
                 }
             });
         }
 
-        // Il selettore lingua in alto e gestito da monument_translation.js
-        // per il testo della pagina, ma non "parla" con la chat. Qui la
-        // chat si mette in ascolto per conto proprio.
         document.querySelectorAll(".lang-switcher button").forEach(function(btn) {
             btn.addEventListener("click", function() {
                 currentLang = btn.dataset.lang;
@@ -1211,17 +1272,9 @@ window.silktideConsentManager.init({
             });
         }
 
-        // ============================================================
-        // NUOVO — ARRIVO DA UN RIMANDO DELLA CASTELLANA
-        // Quando la Castellana, da un'altra pagina, manda qui il turista,
-        // il link finisce con ?chat=<argomento> (oppure ?chat=open). Prima
-        // la pagina si apriva e la chat restava chiusa. Ora la chat si apre
-        // da sola e mostra subito l'argomento chiesto.
-        // ============================================================
         function apriChatDaLink() {
             const richiesta = new URLSearchParams(window.location.search).get('chat');
             if (!richiesta) return;
-            // togliamo il parametro dall'indirizzo: se si ricarica la pagina non si riapre
             history.replaceState(null, '', window.location.pathname + window.location.hash);
 
             chatMobileBox.classList.add('active');
@@ -1231,7 +1284,6 @@ window.silktideConsentManager.init({
                 renderWelcomeMobile();
                 return;
             }
-            // argomento preciso: niente benvenuto, si va dritti alla risposta
             document.getElementById('chat-messages-mobile').innerHTML = '';
             hasShownWelcomeMobile = true;
             shownWelcomeLang = currentLang;
