@@ -114,10 +114,6 @@ window.silktideConsentManager.init({
             font-weight: bold;
         }
 
-        /* ===== STILI CHAT — allineati a chiese-arte.html/cibo_eventi.html:
-           Castellana bianca/oro, tu blu scuro/oro, pillola bianca per i
-           topic. Prima qui erano crema/bianco con font Cormorant Garamond:
-           per questo la chat sembrava "un'altra pagina". ===== */
         .chat-messages {
             padding: 16px;
         }
@@ -155,7 +151,6 @@ window.silktideConsentManager.init({
             color: inherit;
         }
 
-        /* Pulsante audio */
         .audio-btn {
             background: rgba(184, 135, 59, 0.12);
             border: none;
@@ -182,7 +177,6 @@ window.silktideConsentManager.init({
             transform: scale(0.95);
         }
 
-        /* Menu topic */
         .topic-menu {
             display: flex;
             flex-wrap: wrap;
@@ -217,7 +211,6 @@ window.silktideConsentManager.init({
             color: #fff;
         }
 
-        /* Pulsante "‹ Torna al menu" nella vista di un gruppo */
         .topic-back-btn {
             opacity: 0.85;
             font-style: italic;
@@ -228,7 +221,6 @@ window.silktideConsentManager.init({
             color: #fff;
         }
 
-        /* Indicatore "sta scrivendo" — puntini animati */
         .typing-indicator {
             display: flex;
             align-items: center;
@@ -258,7 +250,6 @@ window.silktideConsentManager.init({
             30% { transform: translateY(-4px); opacity: 1; }
         }
 
-        /* Link sotto messaggio */
         .chat-link-btn {
             display: block;
             background: var(--terracotta);
@@ -337,6 +328,100 @@ window.silktideConsentManager.init({
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.18); }
         }
+
+        /* ===== GALLERIA FOTO — stesso modal a carosello usato in
+           chiese-arte.html, replicato qui per il Castello. ===== */
+        .gallery-trigger-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 18px auto 0;
+            padding: 10px 22px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .gallery-trigger-btn:hover {
+            background: var(--gold);
+            color: #fff;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 16, 22, 0.94);
+            z-index: 100000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .modal.active { display: flex; }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .modal-content-wrapper {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-image-stage {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+        .modal-img {
+            max-width: 100%;
+            max-height: 72vh;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .modal-gallery-arrow {
+            background: rgba(255,255,255,0.12);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .modal-gallery-arrow:hover { background: rgba(255,255,255,0.25); }
+        .modal-gallery-counter {
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-top: 12px;
+            display: none;
+        }
+        .modal-title {
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-top: 6px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -375,6 +460,12 @@ window.silktideConsentManager.init({
             <figure class="castle-hero-image">
                 <img src="img/castello2.jpg" alt="Il Castello di Caccamo" loading="lazy">
             </figure>
+
+            <div style="text-align:center;">
+                <button class="gallery-trigger-btn" id="castello-gallery-btn" type="button">
+                    📸 <span data-i18n="pages.castle_page.gallery_btn">Galleria Fotografica</span>
+                </button>
+            </div>
 
             <div class="poesia-corpo hero-intro">
                 <p data-i18n="pages.castle_page.rhyme_1">
@@ -428,6 +519,19 @@ window.silktideConsentManager.init({
 
     </main>
 
+    <div id="image-modal" class="modal">
+        <button class="modal-close" id="modal-close-btn">✕</button>
+        <div class="modal-content-wrapper">
+            <div class="modal-image-stage">
+                <button class="modal-gallery-arrow modal-gallery-arrow-left" id="modal-gallery-prev" aria-label="Foto precedente">‹</button>
+                <img class="modal-img" id="modal-target-img" src="" alt="">
+                <button class="modal-gallery-arrow modal-gallery-arrow-right" id="modal-gallery-next" aria-label="Foto successiva">›</button>
+            </div>
+            <span class="modal-gallery-counter" id="modal-gallery-counter"></span>
+            <h2 class="modal-title" id="modal-target-title"></h2>
+        </div>
+    </div>
+
     <!-- 👑 WIDGET CASTELLANA -->
     <div class="castellana-widget-area">
         <div class="castellana-video-wrapper" id="chat-open-btn">
@@ -465,10 +569,6 @@ window.silktideConsentManager.init({
         openBtn.addEventListener("click", () => {
             chat.classList.add("active");
             updatePremiumStatusDisplay();
-            // Ri-genera il benvenuto non solo la prima volta, ma anche se
-            // la lingua è cambiata da quando l'abbiamo mostrato l'ultima volta
-            // (altrimenti il testo resta fissato nella lingua di quando la
-            // chat fu aperta per la prima volta, ignorando i cambi successivi).
             if (!hasShownWelcome || welcomeLangShown !== currentLang) {
                 showTypingIndicator();
                 setTimeout(() => {
@@ -492,10 +592,89 @@ window.silktideConsentManager.init({
         let langData = {};
 
         // ============================================================
-        // KNOWLEDGE BASE — Castello (flusso sequenziale)
-        // Il testo di "closing" è lo stesso in tutte le pagine del sito
-        // (vedi CLOSING_MESSAGES nelle altre pagine), per coerenza.
+        // GALLERIA DESKTOP — stesso carosello di chiese-arte.html.
+        // Le didascalie usano captionKey nel namespace pages.castle_page.gallery.*
+        // (da aggiungere nei file lang/*.json); il fallback italiano
+        // compare finché quella chiave non esiste ancora nel JSON.
         // ============================================================
+        const CASTELLO_GALLERY = [
+            { src: "img/castello2.jpg", captionKey: "pages.castle_page.gallery.esterno", fallback: "Il Castello visto dall'esterno" },
+            { src: "../gallery-chiese/squarcio_castello.jpg", captionKey: "pages.castle_page.gallery.vicolo", fallback: "Uno scorcio del borgo verso il Castello" },
+            { src: "../gallery-chiese/cordata_princi_castello.jpg", captionKey: "pages.castle_page.gallery.ingresso", fallback: "La rampa d'ingresso" },
+            { src: "../gallery-chiese/ingresso_ala_prades.jpg", captionKey: "pages.castle_page.gallery.ala_prades", fallback: "L'Ala Prades" },
+            { src: "../gallery-chiese/ingresso_grancorte_castello.jpg", captionKey: "pages.castle_page.gallery.grancorte", fallback: "La Gran Corte" },
+            { src: "../gallery-chiese/cappella_castello.jpg", captionKey: "pages.castle_page.gallery.cappella", fallback: "La Cappella" },
+            { src: "../gallery-chiese/entrata_prig_castello.jpg", captionKey: "pages.castle_page.gallery.ingresso_prigioni", fallback: "L'ingresso alle Prigioni" },
+            { src: "../gallery-chiese/interno_prig_castello.jpg", captionKey: "pages.castle_page.gallery.prigioni", fallback: "Le Prigioni" },
+            { src: "../gallery-chiese/panorama_terr_castello.jpg", captionKey: "pages.castle_page.gallery.terrazza", fallback: "La Terrazza degli Impiccati" }
+        ];
+
+        let currentModalGallery = null;
+        let currentModalIndex = 0;
+
+        function showModalImage(index) {
+            if (!currentModalGallery) return;
+            const item = currentModalGallery[index];
+            const caption = (typeof t === 'function') ? t(item.captionKey, item.fallback) : item.fallback;
+            document.getElementById('modal-target-img').src = item.src;
+            document.getElementById('modal-target-img').alt = caption;
+            document.getElementById('modal-target-title').textContent = caption;
+            const counterEl = document.getElementById('modal-gallery-counter');
+            if (currentModalGallery.length > 1) {
+                counterEl.textContent = (index + 1) + ' / ' + currentModalGallery.length;
+                counterEl.style.display = 'block';
+            } else {
+                counterEl.style.display = 'none';
+            }
+            const arrowsVisible = currentModalGallery.length > 1;
+            document.getElementById('modal-gallery-prev').style.display = arrowsVisible ? 'flex' : 'none';
+            document.getElementById('modal-gallery-next').style.display = arrowsVisible ? 'flex' : 'none';
+        }
+
+        function showNextModalImage() {
+            if (!currentModalGallery) return;
+            currentModalIndex = (currentModalIndex + 1) % currentModalGallery.length;
+            showModalImage(currentModalIndex);
+        }
+
+        function showPrevModalImage() {
+            if (!currentModalGallery) return;
+            currentModalIndex = (currentModalIndex - 1 + currentModalGallery.length) % currentModalGallery.length;
+            showModalImage(currentModalIndex);
+        }
+
+        document.getElementById('castello-gallery-btn').addEventListener('click', () => {
+            currentModalGallery = CASTELLO_GALLERY;
+            currentModalIndex = 0;
+            showModalImage(0);
+            document.getElementById('image-modal').classList.add('active');
+        });
+
+        document.getElementById('modal-gallery-next').addEventListener('click', (e) => {
+            e.stopPropagation();
+            showNextModalImage();
+        });
+        document.getElementById('modal-gallery-prev').addEventListener('click', (e) => {
+            e.stopPropagation();
+            showPrevModalImage();
+        });
+        document.getElementById('modal-close-btn').addEventListener('click', () => {
+            document.getElementById('image-modal').classList.remove('active');
+        });
+        document.getElementById('image-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'image-modal') e.currentTarget.classList.remove('active');
+        });
+        document.addEventListener('keydown', (e) => {
+            const modalEl = document.getElementById('image-modal');
+            if (!modalEl.classList.contains('active')) return;
+            if (e.key === 'ArrowRight') showNextModalImage();
+            if (e.key === 'ArrowLeft') showPrevModalImage();
+            if (e.key === 'Escape') modalEl.classList.remove('active');
+        });
+        document.addEventListener('languageChanged', () => {
+            if (currentModalGallery) showModalImage(currentModalIndex);
+        });
+
         const CASTELLO_KNOWLEDGE = {
             it: {
                 welcome: "Benvenuto al Castello di Caccamo, viandante! Sono la Castellana e ti guidero attraverso la storia, l'architettura e i segreti di questa fortezza normanna. Cosa vuoi scoprire?",
@@ -568,9 +747,9 @@ window.silktideConsentManager.init({
         let exploredGroups = new Set();
         let fullTopicMenu = [];
         let menuLoadedForCode = null;
-        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
+        let lastTopic = null;
         let hasShownWelcome = false;
-        let welcomeLangShown = null; // lingua in cui è stato mostrato l'ultimo benvenuto
+        let welcomeLangShown = null;
 
         function t(path, fallback) {
             const value = path.split('.').reduce((o,i) => o ? o[i] : null, langData);
@@ -623,23 +802,6 @@ window.silktideConsentManager.init({
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
 
-        // ============================================================
-        // TTS AVANZATO — La Castellana parla
-        //
-        // Due correzioni rispetto a prima:
-        //
-        // 1. VOCE SEMPRE FEMMINILE, IN OGNI LINGUA: prima la voce
-        //    veniva scelta filtrando SOLO voci italiane, sempre,
-        //    indipendentemente dalla lingua selezionata. Ora si sceglie
-        //    di nuovo ogni volta, nella lingua giusta.
-        //
-        // 2. VELOCITÀ DI AVVIO: chiamare cancel() e speak() nello
-        //    stesso istante è un bug noto dei browser (Chrome/Edge):
-        //    il motore vocale ha bisogno di un attimo per "resettarsi".
-        //    Ora c'è una piccola pausa tra i due comandi, e le voci
-        //    vengono "svegliate" subito al caricamento della pagina
-        //    invece che al primo utilizzo.
-        // ============================================================
         const VOICE_PREF_KEY = "amuni_voice_enabled";
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
         const voiceToggleBtn = document.getElementById("voice-toggle-btn");
@@ -676,9 +838,6 @@ window.silktideConsentManager.init({
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
 
-            // Cerca automaticamente indizi di voce neurale/di qualità superiore,
-            // utile per varianti non presenti nella lista fissa sopra
-            // (es. voci "Enhanced"/"Premium" scaricate su iOS, o "Online (Natural)" di Edge)
             const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
             const vociDiQualita = stessaLingua.filter(v =>
                 INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -690,15 +849,6 @@ window.silktideConsentManager.init({
             return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
         }
 
-        // ============================================================
-        // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
-        // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
-        // Servono a due cose:
-        // 1. NON devono mai comparire come testo letto o mostrato
-        //    all'utente (stripEmotionTags li rimuove per la visualizzazione)
-        // 2. Modulano rate/pitch della sintesi vocale SOLO per la frase
-        //    che racchiudono (parseEmotionalSegments + speakText)
-        // ============================================================
         const EMOTION_PRESETS = {
             energico:    { rate: 1.05, pitch: 1.08 },
             malinconico: { rate: 0.85, pitch: 0.90 },
@@ -806,9 +956,6 @@ window.silktideConsentManager.init({
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         }
 
-        // ============================================================
-        // MICROFONO — il turista può parlare invece di scrivere
-        // ============================================================
         const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
         const micBtn = document.getElementById("mic-btn");
         let recognition = null;
@@ -859,9 +1006,6 @@ window.silktideConsentManager.init({
             micBtn.style.display = "none";
         }
 
-        // ============================================================
-        // RENDERING MESSAGGI CHAT — una sola scatola per messaggio
-        // ============================================================
         function appendChatMessage(text, sender, link) {
             const messagesBox = document.getElementById('chat-messages-box');
             if (!messagesBox) return;
@@ -905,9 +1049,6 @@ window.silktideConsentManager.init({
             }
         }
 
-        // ============================================================
-        // INDICATORE "STA SCRIVENDO"
-        // ============================================================
         function showTypingIndicator() {
             const messagesBox = document.getElementById('chat-messages-box');
             if (!messagesBox) return;
@@ -925,9 +1066,6 @@ window.silktideConsentManager.init({
             if (indicator) indicator.remove();
         }
 
-        // ============================================================
-        // MENU A PULSANTI — versione con contesto persistente
-        // ============================================================
         function renderTopicMenu(menu) {
             if (!menu || !menu.length) return;
             fullTopicMenu = menu;
@@ -943,7 +1081,6 @@ window.silktideConsentManager.init({
             wrap.className = 'topic-menu topic-menu-state';
 
             if (currentGroupName) {
-                // Vista di un gruppo: SOLO le sue voci + pulsante per tornare al menu generale
                 const groupEntry = fullTopicMenu.find(e => e.group === currentGroupName);
                 if (groupEntry) {
                     groupEntry.items.forEach(it => {
@@ -965,7 +1102,6 @@ window.silktideConsentManager.init({
                 backBtn.addEventListener('click', () => renderMenuState(null));
                 wrap.appendChild(backBtn);
             } else {
-                // Nessun gruppo selezionato: SOLO il menu generale
                 fullTopicMenu.forEach(entry => {
                     if (entry.group) {
                         if (exploredGroups.has(entry.group)) return;
@@ -998,9 +1134,6 @@ window.silktideConsentManager.init({
             messagesBox.appendChild(wrap);
         }
 
-        // ============================================================
-        // BENVENUTO INIZIALE
-        // ============================================================
         function renderWelcome() {
             const messagesBox = document.getElementById('chat-messages-box');
             if (!messagesBox) return;
@@ -1124,9 +1257,6 @@ window.silktideConsentManager.init({
             });
         }
 
-        // ============================================================
-        // INVIO TOPIC AL BACKEND
-        // ============================================================
         async function sendTopicRequest(topicId, label, groupName) {
             appendChatMessage(label, 'user');
 
@@ -1163,9 +1293,6 @@ window.silktideConsentManager.init({
             }
         }
 
-        // ============================================================
-        // CARICAMENTO MENU DAL BACKEND (Premium)
-        // ============================================================
         async function loadTopicMenu() {
             const code = getStoredAccessCode();
             if (!code || menuLoadedForCode === code) return;
@@ -1192,9 +1319,6 @@ window.silktideConsentManager.init({
             }
         }
 
-        // ============================================================
-        // PREMIUM E CODICI
-        // ============================================================
         function getStoredAccessCode() {
             const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
             if (!raw) return null;
@@ -1341,14 +1465,6 @@ window.silktideConsentManager.init({
             sendBtn.addEventListener('click', handleSend);
         }
 
-        // ============================================================
-        // BOTTONE PREMIUM — "Ho già un codice" apre la chat e invita
-        // a scrivere il codice; "Acquista l'accesso" avvia Stripe.
-        // Un solo listener per ciascun bottone (prima ce n'erano due
-        // sul bottone di acquisto: uno vecchio con un alert finto e
-        // uno nuovo che avvia davvero Stripe — venivano eseguiti
-        // entrambi in sequenza).
-        // ============================================================
         document.getElementById('btn-premium-code').addEventListener('click', () => {
             chat.classList.add('active');
             appendChatMessage(
