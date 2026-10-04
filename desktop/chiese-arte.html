@@ -208,6 +208,21 @@ window.silktideConsentManager.init({
           0%, 100% { transform: scale(1); }
           50% { transform: scale(1.12); }
       }
+
+      /* ===== Link al Percorso Esoterico dentro la card del Purgatorio —
+         la card ora si comporta come le altre (click = galleria foto),
+         questo link resta cliccabile separatamente per andare alla
+         pagina dedicata, senza aprire la galleria. ===== */
+      .card-esoterico-link {
+          display: inline-block;
+          margin-top: 10px;
+          font-weight: 600;
+          color: #7a1f2b;
+          text-decoration: none;
+          border-bottom: 1px solid #7a1f2b;
+          transition: opacity 0.2s ease;
+      }
+      .card-esoterico-link:hover { opacity: 0.75; }
   </style>
 </head>
 
@@ -304,13 +319,15 @@ window.silktideConsentManager.init({
 
           <div class="stop">
               <div class="waypoint"></div>
-              <a href="percorso_esoterico.html" class="card card-esoterico side-right">
+              <article class="card side-right" data-img="../gallery-chiese/interno_purgatorio.jpg" data-title="Anime Sante del Purgatorio" data-gallery="purgatorio">
+                  <div class="card-frame"><img src="../gallery-chiese/interno_purgatorio.jpg" alt="Anime Sante del Purgatorio"></div>
                   <div class="card-text">
                       <span class="card-route-label" data-i18n="pages.chiese_page.route_animesante">Chicca nascosta</span>
                       <h2 data-i18n="pages.chiese_page.animesante">Anime Sante del Purgatorio</h2>
-                      <p data-i18n="pages.chiese_page.verse_animesante">Sopra il <strong>Duomo</strong>, un gioiello nascosto: stucchi del Serpotta, catacombe e un antico rito d'imbalsamazione. 🔮 Scopri il Percorso Esoterico.</p>
+                      <p data-i18n="pages.chiese_page.verse_animesante">Sopra il <strong>Duomo</strong>, un gioiello nascosto: stucchi del Serpotta, catacombe e un antico rito d'imbalsamazione.</p>
+                      <a href="percorso_esoterico.html" class="card-esoterico-link" data-i18n="pages.chiese_page.esoterico_link" onclick="event.stopPropagation();">🔮 Scopri il Percorso Esoterico →</a>
                   </div>
-              </a>
+              </article>
           </div>
 
       </div>
@@ -374,18 +391,6 @@ window.silktideConsentManager.init({
   </div>
 
   <script>
-      // ============================================================
-      // GALLERIA DESKTOP — carosello dentro il modale che si apre
-      // cliccando una card. Per ora solo la Badia ha una galleria
-      // vera e propria (chiave "badia" qui sotto); le altre chiese
-      // continuano a mostrare la sola foto esterna come prima,
-      // perché non hanno un array corrispondente in questo oggetto.
-      //
-      // COME AGGIUNGERE UNA GALLERIA A UN'ALTRA CHIESA:
-      // 1. Aggiungi qui sotto una nuova chiave (es. "sangiorgio": [...])
-      // 2. Nella card HTML di quella chiesa aggiungi l'attributo
-      //    data-gallery="sangiorgio"
-      // ============================================================
       const DESKTOP_GALLERY_IMAGES = {
           cappuccini: [
               { src: "img/cappuccini.jpg", captionKey: "pages.chiese_page.cappuccini_gallery.esterno", fallback: "Esterno del convento" },
@@ -438,6 +443,16 @@ window.silktideConsentManager.init({
               { src: "../gallery-chiese/immacolata_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.immacolata", fallback: "Immacolata Concezione" },
               { src: "../gallery-chiese/organo_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.organo", fallback: "L'organo" },
               { src: "../gallery-chiese/santa_rosalia_annunziata.jpg", captionKey: "pages.chiese_page.annunziata_gallery.santa_rosalia", fallback: "Santa Rosalia Pellegrina" }
+          ],
+          purgatorio: [
+              { src: "../gallery-chiese/interno_purgatorio.jpg", captionKey: "pages.chiese_page.purgatorio_gallery.interno", fallback: "Interno della chiesa" },
+              { src: "../gallery-chiese/ostensorio_purgatorio.jpg", captionKey: "pages.chiese_page.purgatorio_gallery.ostensorio", fallback: "L'Adorazione dell'Ostensorio" },
+              { src: "../gallery-chiese/sanfilipponeri_purgatorio.jpg", captionKey: "pages.chiese_page.purgatorio_gallery.sanfilipponeri", fallback: "San Filippo Neri in preghiera" },
+              { src: "../gallery-chiese/messa_di_suffraggio_animesante.jpg", captionKey: "pages.chiese_page.purgatorio_gallery.messasuffragio", fallback: "La Messa di Suffragio e le Anime Purganti" },
+              { src: "../gallery-chiese/madonna_carmelo_purgatorio.jpg", captionKey: "pages.chiese_page.purgatorio_gallery.madonnacarmelo", fallback: "La Madonna del Carmelo" },
+              { src: "../gallery-chiese/sangiovanni_immacolata_purgatorio.jpg", captionKey: "pages.chiese_page.purgatorio_gallery.sangiovanniimmacolata", fallback: "San Giovanni Evangelista e l'Immacolata Concezione" },
+              { src: "../gallery-chiese/adorazione_pastori_purgatorio.jpg", captionKey: "pages.chiese_page.purgatorio_gallery.adorazionepastori", fallback: "L'Adorazione dei Pastori" },
+              { src: "../gallery-chiese/crocifisso_purgatorio.jpg", captionKey: "pages.chiese_page.purgatorio_gallery.crocifisso", fallback: "Il Crocifisso" }
           ]
       };
 
@@ -501,13 +516,6 @@ window.silktideConsentManager.init({
       const chatBox = document.getElementById('chat-desktop');
       const closeChat = document.getElementById('close-chat');
 
-      // ============================================================
-      // MENU DI ANTEPRIMA — stesso principio di castello.html: anche
-      // senza Premium attivo, il turista vede subito l'elenco degli
-      // argomenti disponibili per ogni chiesa (una vetrina di cosa
-      // troverebbe attivando l'accesso), invece di un semplice
-      // messaggio di benvenuto senza indicazioni concrete.
-      // ============================================================
       const CHIESE_KNOWLEDGE = {
           it: {
               welcome: "Benvenuto tra le chiese di Caccamo, viandante! Sono la Castellana e ti guiderò tra storia, arte e devozione di questi luoghi sacri. Quale vuoi scoprire per primo?",
