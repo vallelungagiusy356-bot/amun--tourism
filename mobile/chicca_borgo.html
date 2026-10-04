@@ -227,9 +227,14 @@ window.silktideConsentManager.init({
             <p class="render-caption" data-i18n="pages.monuments_pages.animesante.caption_catacombe">Le catacombe</p>
         </div>
 
-        <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
-            🔊 <span data-i18n="pages.monuments_pages.labels.listen_button">Ascolta la descrizione</span>
-        </button>
+        <div class="listen-gallery-row">
+            <button class="btn-listen" id="btn-listen-desc" onclick="toggleReadAloud(this, 'desc-text')">
+                🔊 <span data-i18n="pages.monuments_pages.labels.listen_button">Ascolta la descrizione</span>
+            </button>
+            <button class="btn-gallery" id="btn-open-gallery" onclick="openGallery()">
+                🖼️ <span data-i18n="pages.monuments_pages.labels.gallery_button">Galleria</span>
+            </button>
+        </div>
 
         <section class="teca-cristallo descrittiva">
             <p id="desc-text" data-i18n="pages.monuments_pages.animesante.description">La chiesa delle Anime Sante del Purgatorio è uno dei gioielli nascosti del borgo. Qui potrai trovare stucchi del Serpotta, tele di Giovanni Bonomo, le catacombe e anche un antico colatoio in cui veniva svolto il primo processo della procedura di imbalsamazione. La chiesa è fruibile grazie alla Confraternita delle Anime Sante del Purgatorio, che oltre a garantire guide esperte la domenica organizza eventi volti alla promozione del territorio.</p>
@@ -286,6 +291,137 @@ window.silktideConsentManager.init({
         <img class="render-modal-img" id="render-modal-img" src="" alt="">
         <p class="render-modal-caption" id="render-modal-caption"></p>
     </div>
+
+    <!-- ============================================================
+         GALLERIA FOTO — Anime Sante del Purgatorio
+         ============================================================ -->
+    <div class="gallery-modal" id="gallery-modal">
+        <div class="gallery-modal-header">
+            <span class="gallery-counter" id="gallery-counter">1 / 8</span>
+            <button class="gallery-close-btn" id="gallery-close-btn" aria-label="Chiudi galleria">✕</button>
+        </div>
+        <div class="gallery-modal-body">
+            <button class="gallery-arrow gallery-arrow-left" id="gallery-prev-btn" aria-label="Foto precedente">‹</button>
+            <img class="gallery-modal-image" id="gallery-modal-image" src="" alt="">
+            <button class="gallery-arrow gallery-arrow-right" id="gallery-next-btn" aria-label="Foto successiva">›</button>
+        </div>
+        <p class="gallery-caption" id="gallery-caption"></p>
+    </div>
+
+    <script>
+        // --------------------------
+        // GALLERIA FOTO — Anime Sante del Purgatorio
+        // --------------------------
+        const GALLERY_IMAGES = [
+        {
+                "src": "../gallery-chiese/interno_purgatorio.jpg",
+                "captionKey": "pages.monuments_pages.purgatorio_gallery.interno",
+                "fallback": "Interno della chiesa"
+        },
+        {
+                "src": "../gallery-chiese/ostensorio_purgatorio.jpg",
+                "captionKey": "pages.monuments_pages.purgatorio_gallery.ostensorio",
+                "fallback": "L'Adorazione dell'Ostensorio"
+        },
+        {
+                "src": "../gallery-chiese/sanfilipponeri_purgatorio.jpg",
+                "captionKey": "pages.monuments_pages.purgatorio_gallery.sanfilipponeri",
+                "fallback": "San Filippo Neri in preghiera"
+        },
+        {
+                "src": "../gallery-chiese/messa_di_suffraggio_animesante.jpg",
+                "captionKey": "pages.monuments_pages.purgatorio_gallery.messasuffragio",
+                "fallback": "La Messa di Suffragio e le Anime Purganti"
+        },
+        {
+                "src": "../gallery-chiese/madonna_carmelo_purgatorio.jpg",
+                "captionKey": "pages.monuments_pages.purgatorio_gallery.madonnacarmelo",
+                "fallback": "La Madonna del Carmelo"
+        },
+        {
+                "src": "../gallery-chiese/sangiovanni_immacolata_purgatorio.jpg",
+                "captionKey": "pages.monuments_pages.purgatorio_gallery.sangiovanniimmacolata",
+                "fallback": "San Giovanni Evangelista e l'Immacolata Concezione"
+        },
+        {
+                "src": "../gallery-chiese/adorazione_pastori_purgatorio.jpg",
+                "captionKey": "pages.monuments_pages.purgatorio_gallery.adorazionepastori",
+                "fallback": "L'Adorazione dei Pastori"
+        },
+        {
+                "src": "../gallery-chiese/crocifisso_purgatorio.jpg",
+                "captionKey": "pages.monuments_pages.purgatorio_gallery.crocifisso",
+                "fallback": "Il Crocifisso"
+        }
+];
+
+        let currentGalleryIndex = 0;
+
+        function openGallery() {
+            currentGalleryIndex = 0;
+            showGalleryImage(currentGalleryIndex);
+            document.getElementById('gallery-modal').classList.add('active');
+        }
+
+        function closeGallery() {
+            document.getElementById('gallery-modal').classList.remove('active');
+        }
+
+        function showGalleryImage(index) {
+            const img = GALLERY_IMAGES[index];
+            const caption = (typeof getI18nText === 'function')
+                ? getI18nText(img.captionKey, img.fallback)
+                : img.fallback;
+            document.getElementById('gallery-modal-image').src = img.src;
+            document.getElementById('gallery-modal-image').alt = caption;
+            document.getElementById('gallery-caption').textContent = caption;
+            document.getElementById('gallery-counter').textContent = (index + 1) + ' / ' + GALLERY_IMAGES.length;
+        }
+
+        function showNextGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex + 1) % GALLERY_IMAGES.length;
+            showGalleryImage(currentGalleryIndex);
+        }
+
+        function showPrevGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+            showGalleryImage(currentGalleryIndex);
+        }
+
+        document.getElementById('gallery-close-btn').addEventListener('click', closeGallery);
+        document.getElementById('gallery-next-btn').addEventListener('click', showNextGalleryImage);
+        document.getElementById('gallery-prev-btn').addEventListener('click', showPrevGalleryImage);
+
+        // Tocca lo sfondo scuro (fuori dalla foto) per chiudere
+        document.getElementById('gallery-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeGallery();
+        });
+
+        // Scorrimento con swipe (dito) sulla foto
+        (function() {
+            const imgEl = document.getElementById('gallery-modal-image');
+            let touchStartX = 0;
+            imgEl.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            imgEl.addEventListener('touchend', function(e) {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchEndX - touchStartX;
+                if (Math.abs(diff) > 40) {
+                    if (diff < 0) showNextGalleryImage();
+                    else showPrevGalleryImage();
+                }
+            });
+        })();
+
+        // Se si cambia lingua con la galleria aperta, aggiorna la didascalia
+        document.addEventListener('languageChanged', function() {
+            const modal = document.getElementById('gallery-modal');
+            if (modal && modal.classList.contains('active')) {
+                showGalleryImage(currentGalleryIndex);
+            }
+        });
+    </script>
 
     <div class="chat-mobile" id="chat-mobile">
         <div class="chat-mobile-header">
@@ -920,7 +1056,7 @@ window.silktideConsentManager.init({
         }
 
         async function sendTopicRequestMobile(topicId, label) {
-            appendChatMessageMobile(label, 'user');
+            if (label) appendChatMessageMobile(label, 'user');
 
             const messagesBox = document.getElementById('chat-messages-mobile');
             const old = messagesBox.querySelector('.topic-menu-state-mobile');
