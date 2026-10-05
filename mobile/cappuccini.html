@@ -163,6 +163,7 @@ window.silktideConsentManager.init({
 
         /* NUOVO — i pulsanti non si allargano più alla stessa altezza delle miniature */
         .topic-menu-mobile { align-items: flex-start; }
+        .topic-menu-break { flex-basis: 100%; height: 0; }
         /* NUOVO — pulsanti con miniatura (le opere d'arte) */
         .topic-btn-mobile.topic-thumb-btn-mobile {
             display: flex; flex-direction: column; align-items: center; gap: 4px;
@@ -988,8 +989,16 @@ window.silktideConsentManager.init({
             const wrap = document.createElement('div');
             wrap.className = 'topic-menu-mobile topic-menu-state-mobile';
 
+            let separatoreMesso = false;
             menu.forEach(entry => {
                 if (usedTopicsMobile.has(entry.topic)) return;
+                // NUOVO — le miniature vanno tutte insieme, sulla riga sotto i pulsanti
+                if (entry.thumb && !separatoreMesso) {
+                    const a_capo = document.createElement('div');
+                    a_capo.className = 'topic-menu-break';
+                    wrap.appendChild(a_capo);
+                    separatoreMesso = true;
+                }
                 const b = document.createElement('button');
                 b.className = 'topic-btn-mobile';
                 if (entry.thumb) {
