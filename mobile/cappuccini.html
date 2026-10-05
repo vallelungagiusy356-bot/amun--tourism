@@ -160,6 +160,18 @@ window.silktideConsentManager.init({
         .topic-menu-mobile { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 10px 0; }
         .topic-btn-mobile { background: #fff; border: 1px solid var(--cst-gold); color: var(--cst-sea); padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; cursor: pointer; }
         .topic-back-btn-mobile { border-style: dashed; color: var(--cst-terracotta); }
+
+        /* NUOVO — pulsanti con miniatura (le opere d'arte) */
+        .topic-btn-mobile.topic-thumb-btn-mobile {
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            width: 92px; padding: 4px 4px 6px; border-radius: 12px;
+            font-size: 0.7rem; line-height: 1.2; text-align: center;
+        }
+        .topic-thumb-btn-mobile img {
+            width: 82px; height: 82px; object-fit: cover; border-radius: 9px;
+            background: rgba(184, 135, 59, 0.15); display: block;
+        }
+
         .typing-indicator-mobile { display: flex; align-items: center; gap: 4px; width: fit-content; padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; border-left: 2px solid var(--cst-gold); }
         .typing-indicator-mobile span { width: 6px; height: 6px; border-radius: 50%; background: var(--cst-gold); display: inline-block; animation: typing-bounce-mobile 1.2s infinite ease-in-out; }
         .typing-indicator-mobile span:nth-child(2) { animation-delay: 0.2s; }
@@ -395,7 +407,8 @@ window.silktideConsentManager.init({
 
     <script src="monument_translation.js"></script>
     <script src="tour_visivo.js"></script>
-     <script src="premium_mobile.js"></script>
+    <script src="premium_mobile.js"></script>
+
     <script>
       (function() {
         // Tutto il codice qui dentro e racchiuso in una funzione che
@@ -801,6 +814,8 @@ window.silktideConsentManager.init({
         // --------------------------
         // ARGOMENTI PREMIUM — solo quelli di questo monumento,
         // stessi id usati dal backend.
+        // NUOVO — le voci con "thumb" (le opere d'arte) compaiono con la
+        // miniatura. In italiano ci sono le tre opere con foto.
         // --------------------------
         const TOPICS_MOBILE = {
             "it": [
@@ -823,6 +838,21 @@ window.silktideConsentManager.init({
                         {
                                     "topic": "chiese.cappuccini.orari",
                                     "label": "🎫 Orari e biglietti"
+                        },
+                        {
+                                    "topic": "chiese.cappuccini.opere.porziuncola",
+                                    "label": "La Porziuncola",
+                                    "thumb": "pala_altare_cappuccini.jpg"
+                        },
+                        {
+                                    "topic": "chiese.cappuccini.opere.sacrafamiglia",
+                                    "label": "La Sacra Famiglia",
+                                    "thumb": "sacra_famiglia_cappuccini.jpg"
+                        },
+                        {
+                                    "topic": "chiese.cappuccini.opere.sanrocco",
+                                    "label": "San Rocco",
+                                    "thumb": "san_rocco_di_montpeiler_cappuccini.jpg"
                         }
             ],
             "en": [
@@ -915,6 +945,10 @@ window.silktideConsentManager.init({
             ]
 };
 
+        // NUOVO — dove stanno le miniature (cartella "thumbs" dentro "gallery-chiese").
+        // Se una miniatura manca, la pagina ripiega sulla foto grande della galleria.
+        const THUMB_BASES = ["../gallery-chiese/thumbs/", "../gallery-chiese/"];
+
         const WELCOME_MESSAGE_MOBILE = {
             "it": "Benvenuto al Convento dei Cappuccini, viandante! Cosa vuoi scoprire?",
             "en": "Welcome to the Capuchin Convent, traveler! What would you like to discover?",
@@ -956,7 +990,31 @@ window.silktideConsentManager.init({
                 if (usedTopicsMobile.has(entry.topic)) return;
                 const b = document.createElement('button');
                 b.className = 'topic-btn-mobile';
-                b.textContent = entry.label;
+                if (entry.thumb) {
+                    // NUOVO — pulsante con miniatura. Se la foto non si carica
+                    // torna un normale pulsante di solo testo.
+                    b.classList.add('topic-thumb-btn-mobile');
+                    const img = document.createElement('img');
+                    let tentativo = 0;
+                    img.alt = '';
+                    img.decoding = 'async';
+                    img.onerror = () => {
+                        tentativo++;
+                        if (tentativo < THUMB_BASES.length) {
+                            img.src = THUMB_BASES[tentativo] + entry.thumb;
+                        } else {
+                            img.remove();
+                            b.classList.remove('topic-thumb-btn-mobile');
+                        }
+                    };
+                    img.src = THUMB_BASES[0] + entry.thumb;
+                    b.appendChild(img);
+                    const etichetta = document.createElement('span');
+                    etichetta.textContent = entry.label;
+                    b.appendChild(etichetta);
+                } else {
+                    b.textContent = entry.label;
+                }
                 b.addEventListener('click', () => {
                     usedTopicsMobile.add(entry.topic);
                     sendTopicRequestMobile(entry.topic, entry.label);
