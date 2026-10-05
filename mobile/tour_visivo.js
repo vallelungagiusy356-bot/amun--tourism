@@ -45,10 +45,12 @@
     },
     {
       nome: "Il Miracolo di Sant'Isidoro (Stomer)",
-      riconosci: "miracolo di sant'isidoro agricola",
+      riconosci: 'contadino spagnolo',
       immagine: '../gallery-chiese/stomer_sangiorgio_zoom.jpg',
+      immagineAlt: '../gallery-chiese/stomer_sangiorgio.jpg',   // se manca la foto _zoom, usa questa
       cue: [
         { parola: "miracolo di sant'isidoro", x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'delle tele più importanti', x: 0.50, y: 0.50, larg: 1.00 },
         { parola: 'contadino spagnolo',        x: 0.33, y: 0.60, larg: 0.55 },
         { parola: 'bastone',                   x: 0.27, y: 0.74, larg: 0.55 },
         { parola: 'compagni assetati',         x: 0.68, y: 0.58, larg: 0.60 },
@@ -63,6 +65,7 @@
       nome: 'Gli Affreschi del Coro',
       riconosci: 'nella volta del coro',
       immagine: '../gallery-chiese/affreschi_presbiterio_sangiorgio_zoom.jpg',
+      immagineAlt: '../gallery-chiese/affreschi_presbiterio_sangiorgio.jpg',   // se manca la foto _zoom, usa questa
       cue: [
         { parola: 'nella volta del coro',      x: 0.50, y: 0.45, larg: 1.00 },
         { parola: 'immacolata',                x: 0.40, y: 0.40, larg: 0.50 },
@@ -204,7 +207,17 @@
       if (cuePendente) { const c = cuePendente; cuePendente = null; applicaCue(c); }
       mostraDebug();
     });
-    viewer.addHandler('open-failed', function () { console.error('Immagine non trovata:', tour.immagine); chiudiTour(); });
+    let provataAlt = false;
+    viewer.addHandler('open-failed', function () {
+      if (tour.immagineAlt && !provataAlt) {
+        provataAlt = true;
+        console.warn('Foto non trovata, provo quella di riserva:', tour.immagine);
+        viewer.open({ type: 'image', url: tour.immagineAlt });
+        return;
+      }
+      console.error('Immagine non trovata:', tour.immagine);
+      chiudiTour();
+    });
     viewer.addHandler('animation-finish', mostraDebug);
   }
 
