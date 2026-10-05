@@ -3,7 +3,8 @@
    La Castellana racconta un'opera e il quadro si sposta e si
    ingrandisce da solo sul dettaglio di cui sta parlando.
 
-   OPERE CON LO ZOOM: Sacra Famiglia (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo). Solo italiano.
+   OPERE CON LO ZOOM GUIDATO: Sacra Famiglia (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo).
+   ALTRE OPERE E TAPPE DEL CASTELLO: il quadro si apre comunque in alto e si ingrandisce con le dita. Solo italiano.
    Non modifica la chat, il backend né la knowledge base: si "aggancia"
    alla voce già esistente e riconosce l'opera dalla prima frase.
 
@@ -74,9 +75,113 @@
         { parola: 'veduta del castello',       x: 0.80, y: 0.50, larg: 0.38 },
         { parola: 'san giorgio',               x: 0.56, y: 0.58, larg: 0.35 },
         { parola: 'compatroni',                x: 0.52, y: 0.64, larg: 0.95 },
+        { parola: 'beato giovanni liccio',     x: 0.41, y: 0.61, larg: 0.28 },
+        { parola: 'santa rosalia',             x: 0.30, y: 0.62, larg: 0.28 },
+        { parola: 'san teotista',              x: 0.19, y: 0.65, larg: 0.28 },
+        { parola: 'san rocco',                 x: 0.71, y: 0.61, larg: 0.28 },
+        { parola: 'suor febronia',             x: 0.79, y: 0.63, larg: 0.28 },
+        { parola: 'san nicasio',               x: 0.86, y: 0.65, larg: 0.28 },
         { parola: 'questi affreschi',          x: 0.50, y: 0.45, larg: 1.00 },
         { parola: 'vi va di vedere',           x: 0.50, y: 0.45, larg: 1.00 }
       ]
+    },
+    {
+      nome: 'La Cappella delle Reliquie',
+      riconosci: 'ricco reliquiario ligneo dorato',
+      immagine: '../gallery-chiese/cappelladellerelique_sangiorgio.jpg',
+      cue: []   // nessun movimento automatico: si ingrandisce con le dita
+    },
+    {
+      nome: 'Il Martirio di San Sebastiano',
+      riconosci: 'giuseppe velasco',
+      immagine: '../gallery-chiese/martirio_sansebastiano_sangiorgio.jpg',
+      cue: []   // nessun movimento automatico: si ingrandisce con le dita
+    },
+    {
+      nome: 'Il Beato Giovanni Liccio',
+      riconosci: 'carlo ameglio',
+      immagine: '../gallery-chiese/beato_giovanni_sangiorgio.jpg',
+      cue: []   // nessun movimento automatico: si ingrandisce con le dita
+    },
+    {
+      nome: 'La Cupola',
+      riconosci: 'giovanni battista cascione',
+      immagine: '../gallery-chiese/cupola_sangiorgio.jpg',
+      cue: []   // nessun movimento automatico: si ingrandisce con le dita
+    },
+    {
+      nome: 'La Porziuncola',
+      riconosci: "grande tela dell'altare maggiore",
+      immagine: '../gallery-chiese/pala_altare_cappuccini.jpg',
+      cue: []   // nessun movimento automatico: si ingrandisce con le dita
+    },
+    {
+      nome: 'San Rocco',
+      riconosci: 'assai cara alla nostra comunità',
+      immagine: '../gallery-chiese/san_rocco_di_montpeiler_cappuccini.jpg',
+      cue: []   // nessun movimento automatico: si ingrandisce con le dita
+    },
+    {
+      nome: "L'Adorazione dei Pastori",
+      riconosci: 'gesù appena nato',
+      immagine: '../gallery-chiese/adorazione_animesante.jpg',
+      cue: [
+        { parola: 'al centro, maria',   x: 0.41, y: 0.65, larg: 0.47 },
+        { parola: 'san giuseppe',       x: 0.32, y: 0.54, larg: 0.43 },
+        { parola: 'agnello',            x: 0.23, y: 0.71, larg: 0.40 },
+        { parola: 'turbante giallo',    x: 0.76, y: 0.65, larg: 0.43 },
+        { parola: 'gallo',              x: 0.56, y: 0.80, larg: 0.33 },
+        { parola: 'in volo',            x: 0.46, y: 0.31, larg: 0.52 },
+        { parola: 'vi va di vedere',    x: 0.50, y: 0.50, larg: 0.95 }
+      ]
+    },
+    {
+      nome: 'La Messa di Suffragio',
+      riconosci: 'forza della preghiera per i defunti',
+      immagine: '../gallery-chiese/messa_di_suffraggio_animesante.jpg',
+      cue: [
+        { parola: 'forza della preghiera', x: 0.53, y: 0.51, larg: 0.89 },
+        { parola: 'sacerdote',             x: 0.42, y: 0.53, larg: 0.40 },
+        { parola: 'paramenti rosa',        x: 0.43, y: 0.62, larg: 0.37 },
+        { parola: 'chierichetto',          x: 0.27, y: 0.75, larg: 0.36 },
+        { parola: 'due chierici',          x: 0.59, y: 0.72, larg: 0.40 },
+        { parola: 'madonna',               x: 0.28, y: 0.24, larg: 0.37 },
+        { parola: 'cristo',                x: 0.34, y: 0.18, larg: 0.36 },
+        { parola: 'dio padre',             x: 0.68, y: 0.17, larg: 0.36 },
+        { parola: 'colomba',               x: 0.53, y: 0.18, larg: 0.34 },
+        { parola: 'un angelo solleva',     x: 0.68, y: 0.51, larg: 0.37 },
+        { parola: 'tra le fiamme',         x: 0.80, y: 0.73, larg: 0.36 },
+        { parola: 'vi va di vedere',       x: 0.53, y: 0.51, larg: 0.89 }
+      ]
+    },
+    {
+      nome: "Castello: l'ingresso",
+      riconosci: "salite la rampa cordonata",
+      immagine: '../gallery-chiese/cordata_princi_castello.jpg',
+      cue: []   // nessun movimento automatico: si ingrandisce con le dita
+    },
+    {
+      nome: "Castello: Ala Prades",
+      riconosci: "siete nell'ala prades",
+      immagine: '../gallery-chiese/ingresso_ala_prades.jpg',
+      cue: []   // nessun movimento automatico: si ingrandisce con le dita
+    },
+    {
+      nome: 'Castello: Gran Corte e Cappella',
+      riconosci: 'siete nella gran corte',
+      immagine: '../gallery-chiese/ingresso_grancorte_castello.jpg',
+      cue: [
+        { parola: 'gran corte',        tutto: true },
+        { parola: 'cappella di corte', immagine: '../gallery-chiese/cappella_castello.jpg' },
+        { parola: 'le prigioni',       immagine: '../gallery-chiese/entrata_prig_castello.jpg' },
+        { parola: 'graffiti',          immagine: '../gallery-chiese/interno_prig_castello.jpg' }
+      ]
+    },
+    {
+      nome: "Castello: la Terrazza",
+      riconosci: "siete sulla terrazza degli impiccati",
+      immagine: '../gallery-chiese/panorama_terr_castello.jpg',
+      cue: []   // nessun movimento automatico: si ingrandisce con le dita
     }
   ];
 
@@ -99,6 +204,10 @@
       top:calc(env(safe-area-inset-top, 0px) + 10px);
       width:36px; height:36px; border-radius:50%; border:none; cursor:pointer;
       background:rgba(15,25,34,0.75); color:#F3ECDC; font-size:1rem; }
+    #tour-hint { position:absolute; z-index:5; left:50%; bottom:12px; transform:translateX(-50%);
+      padding:6px 12px; border-radius:999px; background:rgba(15,25,34,0.75); color:#F3ECDC;
+      font-size:0.8rem; opacity:0; pointer-events:none; transition:opacity .5s; }
+    #tour-hint.visibile { opacity:1; }
     #tour-debug { position:absolute; z-index:5; left:8px; bottom:8px; padding:5px 9px;
       border-radius:6px; background:rgba(0,0,0,0.75); color:#D4AF6A;
       font:600 0.8rem monospace; display:none; }
@@ -110,11 +219,19 @@
   box.innerHTML =
     '<div id="tour-viewer-img"></div>' +
     '<button id="tour-viewer-close" aria-label="Chiudi il quadro">✕</button>' +
+    '<div id="tour-hint">🔍 Pizzica per ingrandire</div>' +
     '<div id="tour-debug"></div>';
   document.body.appendChild(box);
 
   const boxImg = box.querySelector('#tour-viewer-img');
   const boxDebug = box.querySelector('#tour-debug');
+  const boxHint = box.querySelector('#tour-hint');
+  let timerHint = null;
+  function mostraHint() {
+    boxHint.classList.add('visibile');
+    clearTimeout(timerHint);
+    timerHint = setTimeout(function () { boxHint.classList.remove('visibile'); }, 4500);
+  }
   if (DEBUG) boxDebug.style.display = 'block';
 
   // ------------------------------------------------------------
@@ -151,6 +268,7 @@
   function chiudiTour() {
     fermaTimers();
     tourAttivo = null;
+    boxHint.classList.remove('visibile');
     cuePendente = null;
     document.body.classList.remove('tour-attivo');
     if (viewer) { try { viewer.destroy(); } catch (e) {} viewer = null; }
@@ -172,6 +290,11 @@
 
   function applicaCue(c) {
     if (!viewer || !viewer.world.getItemCount()) { cuePendente = c; return; }
+    if (c.immagine) {
+      cuePendente = { tutto: true };
+      viewer.open({ type: 'image', url: c.immagine });
+      return;
+    }
     const vp = viewer.viewport;
     if (c.tutto) { vp.goHome(); return; }
     vp.panTo(new OpenSeadragon.Point(c.x, c.y * aspetto()));
@@ -204,6 +327,7 @@
       gestureSettingsMouse: { clickToZoom: false }
     });
     viewer.addHandler('open', function () {
+      if (!tour.cue.length) mostraHint();
       if (cuePendente) { const c = cuePendente; cuePendente = null; applicaCue(c); }
       mostraDebug();
     });
