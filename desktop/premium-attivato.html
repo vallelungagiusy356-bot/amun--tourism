@@ -82,6 +82,9 @@
 
   .stato { font-size: 1rem; opacity: 0.8; }
   .errore { color: #e07a6b; }
+
+  .legale { font-size: 0.9rem; opacity: 0.7; margin-top: 26px; }
+  .legale a { color: var(--gold); }
 </style>
 </head>
 <body>
@@ -91,6 +94,10 @@
   <div id="contenuto">
     <p class="stato">Sto verificando il tuo pagamento…</p>
   </div>
+  <p class="legale">
+    <a href="condizioni_premium.html">Condizioni del servizio</a> ·
+    <a href="privacy.html">Privacy</a>
+  </p>
 </div>
 
 <script>
@@ -105,7 +112,8 @@ const PREMIUM_STORAGE_KEY = "amuni_premium_access";
 // Legge "session_id" e "return_page" dall'indirizzo della pagina
 const params = new URLSearchParams(window.location.search);
 const sessionId = params.get("session_id");
-const returnPage = params.get("return_page") || "desktop_index.html";
+const returnPageGrezzo = params.get("return_page") || "";
+const returnPage = /^[A-Za-z0-9_-]+\.html$/.test(returnPageGrezzo) ? returnPageGrezzo : "desktop_index.html";
 
 const contenuto = document.getElementById("contenuto");
 
@@ -151,13 +159,13 @@ async function recuperaCodice() {
     contenuto.innerHTML = `
       <p>Il tuo pagamento è andato a buon fine. Il tuo accesso Premium è già attivo su questo dispositivo.</p>
       <div class="code-box" id="codice">${codice}</div>
-      <p style="font-size:0.95rem; opacity:0.85;">Tieni da parte questo codice: ti servirà solo se vorrai usare la chat anche da un altro telefono o computer.</p>
+      <p style="font-size:0.95rem; opacity:0.85;">Tieni da parte questo codice: ti servirà solo se vorrai usare la chat anche da un altro telefono o computer. Lo riceverai anche per email, all'indirizzo che hai usato per pagare (controlla anche lo spam).</p>
       <button onclick="copiaCodice()">Copia codice</button>
       <button onclick="vaiOra()" style="margin-left:8px; background: var(--sea);">Vai ora</button>
-      <p class="stato" style="margin-top:20px;">Ti porto alla tua pagina tra <span id="countdown">4</span>…</p>
+      <p class="stato" style="margin-top:20px;">Ti porto alla tua pagina tra <span id="countdown">8</span>…</p>
     `;
 
-    let secondi = 4;
+    let secondi = 8;
     const countdownEl = document.getElementById("countdown");
     const timer = setInterval(() => {
       secondi -= 1;
