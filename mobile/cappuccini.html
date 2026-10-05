@@ -161,10 +161,12 @@ window.silktideConsentManager.init({
         .topic-btn-mobile { background: #fff; border: 1px solid var(--cst-gold); color: var(--cst-sea); padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; cursor: pointer; }
         .topic-back-btn-mobile { border-style: dashed; color: var(--cst-terracotta); }
 
+        /* NUOVO — i pulsanti non si allargano più alla stessa altezza delle miniature */
+        .topic-menu-mobile { align-items: flex-start; }
         /* NUOVO — pulsanti con miniatura (le opere d'arte) */
         .topic-btn-mobile.topic-thumb-btn-mobile {
             display: flex; flex-direction: column; align-items: center; gap: 4px;
-            width: 92px; padding: 4px 4px 6px; border-radius: 12px;
+            flex: 0 0 auto; width: 92px; padding: 4px 4px 6px; border-radius: 12px;
             font-size: 0.7rem; line-height: 1.2; text-align: center;
         }
         .topic-thumb-btn-mobile img {
