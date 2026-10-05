@@ -36,8 +36,8 @@
         { parola: 'azzurro del manto',      x: 0.45, y: 0.60, larg: 0.45 },
         { parola: "mani di sant'anna",      x: 0.62, y: 0.65, larg: 0.40 },
         { parola: 'bastone fiorito',        x: 0.24, y: 0.32, larg: 0.35 },
-        { parola: 'vecchio seduto',         x: 0.17, y: 0.72, larg: 0.38 },
-        { parola: 'bambino riccioluto',     x: 0.33, y: 0.67, larg: 0.30 },
+        { parola: 'vecchio seduto',         x: 0.20, y: 0.64, larg: 0.38 },
+        { parola: 'bambino riccioluto',     x: 0.33, y: 0.64, larg: 0.36 },
         { parola: 'guardate i volti',       x: 0.52, y: 0.47, larg: 0.50 },
         { parola: 'giuseppe testa',         x: 0.52, y: 0.47, larg: 0.90 },
         { parola: 'vi va di vedere',        x: 0.52, y: 0.47, larg: 0.90 }
