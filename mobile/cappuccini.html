@@ -270,9 +270,7 @@ window.silktideConsentManager.init({
             <button class="gallery-close-btn" id="gallery-close-btn" aria-label="Chiudi galleria">✕</button>
         </div>
         <div class="gallery-modal-body">
-            <button class="gallery-arrow gallery-arrow-left" id="gallery-prev-btn" aria-label="Foto precedente">‹</button>
-            <img class="gallery-modal-image" id="gallery-modal-image" src="" alt="">
-            <button class="gallery-arrow gallery-arrow-right" id="gallery-next-btn" aria-label="Foto successiva">›</button>
+            <img class="gallery-modal-image" id="gallery-modal-image" src="" alt="" style="cursor: pointer;">
         </div>
         <p class="gallery-caption" id="gallery-caption"></p>
     </div>
@@ -343,8 +341,8 @@ window.silktideConsentManager.init({
         }
 
         document.getElementById('gallery-close-btn').addEventListener('click', closeGallery);
-        document.getElementById('gallery-next-btn').addEventListener('click', showNextGalleryImage);
-        document.getElementById('gallery-prev-btn').addEventListener('click', showPrevGalleryImage);
+        // Tocca la foto per passare alla successiva (oltre allo swipe)
+        document.getElementById('gallery-modal-image').addEventListener('click', showNextGalleryImage);
 
         // Tocca lo sfondo scuro (fuori dalla foto) per chiudere
         document.getElementById('gallery-modal').addEventListener('click', function(e) {
