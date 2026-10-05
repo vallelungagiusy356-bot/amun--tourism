@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Privacy | Amunì Tourism</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
@@ -128,7 +129,19 @@
             margin: 0 0 1.1rem;
         }
 
+        ul { padding-left: 22px; margin: 0 0 1.1rem; }
+
+        li {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--ink);
+            margin-bottom: 0.4rem;
+        }
+
         strong { color: var(--terracotta-dark); }
+
+        .compila { background: #fff3c4; padding: 0 4px; border-radius: 3px; }
 
         .highlight-box {
             background: rgba(193, 98, 45, 0.08);
@@ -178,15 +191,23 @@
         <h2>Chat "La Castellana"</h2>
         <p>
             Il servizio di chat "La Castellana" di Amunì Tourism tratta i seguenti dati,
-            nel modo descritto qui sotto.
+            nel modo descritto qui sotto. Ultimo aggiornamento: 5 ottobre 2026.
+        </p>
+
+        <h2>Titolare del trattamento</h2>
+        <p>
+            Il titolare del trattamento è <span class="compila">[NOME E COGNOME o DENOMINAZIONE]</span>.
+            Per contattarci usa la pagina <a href="contact.html">Contatti</a>.
         </p>
 
         <h2>Cosa registriamo</h2>
         <p>
             Le domande poste alla Castellana e le risposte fornite, insieme alla pagina
-            del sito da cui la conversazione è avvenuta, alla lingua selezionata e alla
-            data. <strong>Non registriamo nomi, email, numeri di telefono o altri dati
-            identificativi</strong>: la conversazione è anonima.
+            del sito da cui la conversazione è avvenuta, alla lingua selezionata, all'argomento
+            scelto e alla data. <strong>Non salviamo il tuo indirizzo IP e non ti
+            colleghiamo a un profilo</strong>: la conversazione è anonima. Se nel messaggio
+            scrivi per errore un indirizzo email o un codice Premium, vengono cancellati
+            automaticamente prima del salvataggio.
         </p>
 
         <h2>Perché lo facciamo</h2>
@@ -197,10 +218,28 @@
 
         <h2>Come funziona il servizio</h2>
         <p>
-            Le risposte della versione Premium sono generate tramite un servizio di
-            intelligenza artificiale di Anthropic (Claude). Le domande inviate alla chat
-            vengono elaborate da tale servizio ai soli fini della generazione della risposta.
+            Per gli utenti Premium, il testo dei messaggi viene inviato ad Anthropic
+            (Stati Uniti), fornitore dell'intelligenza artificiale Claude, al solo scopo
+            di capire la domanda e scegliere la risposta giusta. Le risposte partono sempre
+            da testi preparati da noi. Il server della chat è ospitato presso PythonAnywhere.
         </p>
+
+        <h2>Microfono e voce</h2>
+        <p>
+            Se usi il microfono, il riconoscimento vocale è eseguito dal tuo browser: noi
+            non riceviamo né registriamo l'audio, ma solo il testo riconosciuto, come se
+            lo avessi scritto. Il browser può inviare l'audio al fornitore del proprio
+            servizio vocale (per esempio Google, se usi Chrome). La voce della Castellana
+            è generata sul tuo telefono.
+        </p>
+
+        <h2>Versione Premium e pagamento</h2>
+        <ul>
+            <li>Il pagamento è gestito da <strong>Stripe</strong>: i dati della carta non passano dai nostri server.</li>
+            <li>Da Stripe riceviamo l'indirizzo email usato per pagare e lo conserviamo insieme al codice Premium, per permetterti di recuperare il codice se lo perdi. Conserviamo questi dati per <span class="compila">[PERIODO, ad esempio 12 mesi]</span>.</li>
+            <li>Del codice teniamo anche la data di attivazione e il numero di dispositivi e di domande utilizzate, per far rispettare i limiti d'uso.</li>
+            <li>Il codice, la lingua e la scelta di voce accesa o spenta vengono ricordati nel tuo telefono (memoria del browser). Sono dati tecnici necessari al funzionamento.</li>
+        </ul>
 
         <h2>Conservazione</h2>
         <p>
@@ -215,6 +254,24 @@
                 bisogno per aiutarti!
             </p>
         </div>
+
+        <h2>Cookie e Analytics</h2>
+        <p>
+            Questo sito utilizza cookie tecnici essenziali al funzionamento (come la
+            memoria della lingua scelta e del codice Premium) e, solo previo consenso,
+            cookie statistici di Google Analytics per capire in forma aggregata e
+            anonima come viene usato il sito. Le conversazioni con la Castellana non
+            vengono inviate a Google Analytics.
+        </p>
+
+        <h2>I tuoi diritti</h2>
+        <p>
+            Puoi chiedere di sapere quali dati abbiamo, di correggerli o di cancellarli.
+            Le conversazioni non sono collegate a te, quindi potremmo non riuscire a
+            individuare quella che ti riguarda. Se ritieni che i tuoi dati non siano
+            trattati correttamente, puoi rivolgerti al Garante per la protezione dei dati
+            personali (garanteprivacy.it).
+        </p>
 
         <h2>Contatti</h2>
         <p>
