@@ -160,6 +160,21 @@ window.silktideConsentManager.init({
         .topic-menu-mobile { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 10px 0; }
         .topic-btn-mobile { background: #fff; border: 1px solid var(--cst-gold); color: var(--cst-sea); padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; cursor: pointer; }
         .topic-back-btn-mobile { border-style: dashed; color: var(--cst-terracotta); }
+
+        /* NUOVO — i pulsanti non si allargano più alla stessa altezza delle miniature */
+        .topic-menu-mobile { align-items: flex-start; }
+        .topic-menu-break { flex-basis: 100%; height: 0; }
+        /* NUOVO — pulsanti con miniatura (le opere d'arte) */
+        .topic-btn-mobile.topic-thumb-btn-mobile {
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            flex: 0 0 auto; width: 92px; padding: 4px 4px 6px; border-radius: 12px;
+            font-size: 0.7rem; line-height: 1.2; text-align: center;
+        }
+        .topic-thumb-btn-mobile img {
+            width: 82px; height: 82px; object-fit: cover; border-radius: 9px;
+            background: rgba(184, 135, 59, 0.15); display: block;
+        }
+
         .typing-indicator-mobile { display: flex; align-items: center; gap: 4px; width: fit-content; padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; border-left: 2px solid var(--cst-gold); }
         .typing-indicator-mobile span { width: 6px; height: 6px; border-radius: 50%; background: var(--cst-gold); display: inline-block; animation: typing-bounce-mobile 1.2s infinite ease-in-out; }
         .typing-indicator-mobile span:nth-child(2) { animation-delay: 0.2s; }
@@ -266,7 +281,7 @@ window.silktideConsentManager.init({
 
     <div class="gallery-modal" id="gallery-modal">
         <div class="gallery-modal-header">
-            <span class="gallery-counter" id="gallery-counter">1 / 6</span>
+            <span class="gallery-counter" id="gallery-counter">1 / 8</span>
             <button class="gallery-close-btn" id="gallery-close-btn" aria-label="Chiudi galleria">✕</button>
         </div>
         <div class="gallery-modal-body">
@@ -390,6 +405,8 @@ window.silktideConsentManager.init({
         });
     </script>
 
+
+
     <div class="chat-mobile" id="chat-mobile">
         <div class="chat-mobile-header">
             <div class="avatar-status-dot"></div>
@@ -407,9 +424,15 @@ window.silktideConsentManager.init({
     </div>
 
     <script src="monument_translation.js"></script>
+    <script src="tour_visivo.js"></script>
+    <script src="premium_mobile.js"></script>
 
     <script>
       (function() {
+        // Tutto il codice qui dentro e racchiuso in una funzione che
+        // si esegue subito da sola: le sue variabili (currentLang,
+        // speakText, audio, ecc.) restano private e non entrano in
+        // conflitto con quelle gia usate in monument_translation.js.
         const audio = document.getElementById("bg-music"); audio.volume = 0.2;
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
@@ -429,9 +452,12 @@ window.silktideConsentManager.init({
         const API_BASE_URL = "https://castellana.pythonanywhere.com";
         const PREMIUM_STORAGE_KEY = "amuni_premium_access";
         const VOICE_PREF_KEY = "amuni_voice_enabled";
+        // NUOVO — in quale monumento ci troviamo. Il backend lo usa per
+        // capire quando il turista chiede di un altro monumento e
+        // mandarlo alla pagina giusta invece di rispondere qui.
         const MONUMENT_ID = "castello";
         let currentLang = localStorage.getItem("lang") || "it";
-        let lastTopic = null;
+        let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
 
         function getStoredAccessCode() {
             const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
@@ -456,6 +482,9 @@ window.silktideConsentManager.init({
             }));
         }
 
+        // --------------------------
+        // TTS
+        // --------------------------
         let voiceEnabled = localStorage.getItem(VOICE_PREF_KEY) !== "off";
         const voiceToggleBtnMobile = document.getElementById("voice-toggle-btn-mobile");
 
@@ -489,6 +518,7 @@ window.silktideConsentManager.init({
                 v.lang === langCode || (v.lang || '').startsWith(linguaBase)
             );
 
+            // Cerca automaticamente indizi di voce neurale/di qualità superiore
             const INDIZI_QUALITA = /online \(natural\)|enhanced|premium|neural/i;
             const vociDiQualita = stessaLingua.filter(v =>
                 INDIZI_QUALITA.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
@@ -499,6 +529,10 @@ window.silktideConsentManager.init({
             return nonMaschile || stessaLingua[0] || vociDisponibili[0] || null;
         }
 
+        // ============================================================
+        // TAG EMOTIVI DELLA KNOWLEDGE BASE — [energico], [malinconico],
+        // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
+        // ============================================================
         const EMOTION_PRESETS = {
             energico:    { rate: 1.05, pitch: 1.08 },
             malinconico: { rate: 0.85, pitch: 0.90 },
@@ -604,6 +638,9 @@ window.silktideConsentManager.init({
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         }
 
+        // --------------------------
+        // MICROFONO
+        // --------------------------
         const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
         const micBtnMobile = document.getElementById("mic-btn-mobile");
         let recognitionMobile = null;
@@ -654,6 +691,12 @@ window.silktideConsentManager.init({
             micBtnMobile.style.display = "none";
         }
 
+        // --------------------------
+        // LINK — i link mandati dal backend possono essere:
+        //   "castello.html"          -> pagina desktop, va in "../desktop/"
+        //   "../mobile/xxx.html"     -> pagina mobile, gia' corretta cosi'
+        //   "https://..."            -> indirizzo completo
+        // --------------------------
         function resolveLinkPathMobile(link) {
             if (!link) return link;
             if (link.startsWith("http") || link.startsWith("../desktop/") ||
@@ -663,6 +706,8 @@ window.silktideConsentManager.init({
             return "../desktop/" + link;
         }
 
+        // NUOVO — testo del pulsante-link, nella lingua della pagina.
+        // Prima era sempre "Vai alla pagina →".
         const LINK_LABELS_MOBILE = {
             eventi:    { it: "Vai agli Eventi →", en: "Go to Events →", fr: "Aller aux Événements →", es: "Ir a Eventos →", de: "Zu den Veranstaltungen →" },
             mangiare:  { it: "Vai a Mangiare e Bere →", en: "Go to Eat & Drink →", fr: "Aller à Manger et Boire →", es: "Ir a Comer y Beber →", de: "Zu Essen und Trinken →" },
@@ -693,6 +738,9 @@ window.silktideConsentManager.init({
             return scegli('generico');
         }
 
+        // NUOVO — gli indirizzi web scritti dentro le risposte (es. il
+        // calendario eventi di Palermo) diventano link cliccabili. Il
+        // resto resta testo semplice: nessun codice estraneo nella pagina.
         const URL_NEL_TESTO = /(https?:\/\/[^\s]+[^\s.,;:!?)])/g;
 
         function riempiTestoConLinkMobile(contenitore, testo) {
@@ -747,6 +795,9 @@ window.silktideConsentManager.init({
                 btn.className = 'chat-link-btn-mobile';
                 btn.textContent = getLinkLabelMobile(link);
                 btn.onclick = () => {
+                    // Se il link porta a questa stessa pagina (es. "Orari e
+                    // biglietti"), non ricarichiamo: chiudiamo la chat e
+                    // mostriamo la scheda con gli orari.
                     if (isLinkAllaPaginaCorrente(link)) {
                         chatMobileBox.classList.remove('active');
                         const scheda = document.querySelector('.teca-logistica');
@@ -778,142 +829,152 @@ window.silktideConsentManager.init({
             if (indicator) indicator.remove();
         }
 
+        // --------------------------
+        // ARGOMENTI PREMIUM — solo quelli di questo monumento,
+        // stessi id usati dal backend.
+        // NUOVO — le voci con "thumb" (le opere d'arte) compaiono con la
+        // miniatura. In italiano ci sono le tre opere con foto.
+        // --------------------------
         const TOPICS_MOBILE = {
             "it": [
-                        {
-                                    "topic": "castello.storia",
-                                    "label": "🏰 Storia"
-                        },
-                        {
-                                    "topic": "castello.architettura",
-                                    "label": "🏛️ Architettura"
-                        },
-                        {
-                                    "topic": "castello.tour.ingresso",
-                                    "label": "🚶 Tour a tappe"
-                        },
-                        {
-                                    "topic": "castello.dove",
-                                    "label": "📍 Dove si trova"
-                        },
-                        {
-                                    "topic": "castello.curiosita",
-                                    "label": "✨ Curiosità e leggende"
-                        },
-                        {
-                                    "topic": "castello.dintorni",
-                                    "label": "🗺️ Nei dintorni"
-                        },
-                        {
-                                    "topic": "castello.orari_biglietti_note",
-                                    "label": "🎫 Orari e biglietti"
-                        }
+                {
+                    "topic": "castello.storia",
+                    "label": "🏰 Storia"
+                },
+                {
+                    "topic": "castello.architettura",
+                    "label": "🏛️ Architettura"
+                },
+                {
+                    "topic": "castello.tour.ingresso",
+                    "label": "🚶 Tour a tappe"
+                },
+                {
+                    "topic": "castello.dove",
+                    "label": "📍 Dove si trova"
+                },
+                {
+                    "topic": "castello.curiosita",
+                    "label": "✨ Curiosità e leggende"
+                },
+                {
+                    "topic": "castello.dintorni",
+                    "label": "🗺️ Nei dintorni"
+                },
+                {
+                    "topic": "castello.orari_biglietti_note",
+                    "label": "🎫 Orari e biglietti"
+                }
             ],
             "en": [
-                        {
-                                    "topic": "castello.storia",
-                                    "label": "🏰 History"
-                        },
-                        {
-                                    "topic": "castello.tour.ingresso",
-                                    "label": "🚶 Step-by-step tour"
-                        },
-                        {
-                                    "topic": "castello.dove",
-                                    "label": "📍 Where it is"
-                        },
-                        {
-                                    "topic": "castello.curiosita",
-                                    "label": "✨ Curiosities & Legends"
-                        },
-                        {
-                                    "topic": "castello.dintorni",
-                                    "label": "🗺️ Nearby"
-                        },
-                        {
-                                    "topic": "castello.orari_biglietti_note",
-                                    "label": "🎫 Hours & Tickets"
-                        }
+                {
+                    "topic": "castello.storia",
+                    "label": "🏰 History"
+                },
+                {
+                    "topic": "castello.tour.ingresso",
+                    "label": "🚶 Step-by-step tour"
+                },
+                {
+                    "topic": "castello.dove",
+                    "label": "📍 Where it is"
+                },
+                {
+                    "topic": "castello.curiosita",
+                    "label": "✨ Curiosities & Legends"
+                },
+                {
+                    "topic": "castello.dintorni",
+                    "label": "🗺️ Nearby"
+                },
+                {
+                    "topic": "castello.orari_biglietti_note",
+                    "label": "🎫 Hours & Tickets"
+                }
             ],
             "fr": [
-                        {
-                                    "topic": "castello.storia",
-                                    "label": "🏰 Histoire"
-                        },
-                        {
-                                    "topic": "castello.tour.ingresso",
-                                    "label": "🚶 Visite étape par étape"
-                        },
-                        {
-                                    "topic": "castello.dove",
-                                    "label": "📍 Où c'est"
-                        },
-                        {
-                                    "topic": "castello.curiosita",
-                                    "label": "✨ Curiosités"
-                        },
-                        {
-                                    "topic": "castello.dintorni",
-                                    "label": "🗺️ Aux alentours"
-                        },
-                        {
-                                    "topic": "castello.orari_biglietti_note",
-                                    "label": "🎫 Horaires & Billets"
-                        }
+                {
+                    "topic": "castello.storia",
+                    "label": "🏰 Histoire"
+                },
+                {
+                    "topic": "castello.tour.ingresso",
+                    "label": "🚶 Visite étape par étape"
+                },
+                {
+                    "topic": "castello.dove",
+                    "label": "📍 Où c'est"
+                },
+                {
+                    "topic": "castello.curiosita",
+                    "label": "✨ Curiosités"
+                },
+                {
+                    "topic": "castello.dintorni",
+                    "label": "🗺️ Aux alentours"
+                },
+                {
+                    "topic": "castello.orari_biglietti_note",
+                    "label": "🎫 Horaires & Billets"
+                }
             ],
             "es": [
-                        {
-                                    "topic": "castello.storia",
-                                    "label": "🏰 Historia"
-                        },
-                        {
-                                    "topic": "castello.tour.ingresso",
-                                    "label": "🚶 Visita paso a paso"
-                        },
-                        {
-                                    "topic": "castello.dove",
-                                    "label": "📍 Dónde está"
-                        },
-                        {
-                                    "topic": "castello.curiosita",
-                                    "label": "✨ Curiosidades"
-                        },
-                        {
-                                    "topic": "castello.dintorni",
-                                    "label": "🗺️ Cercano"
-                        },
-                        {
-                                    "topic": "castello.orari_biglietti_note",
-                                    "label": "🎫 Horarios y Entradas"
-                        }
+                {
+                    "topic": "castello.storia",
+                    "label": "🏰 Historia"
+                },
+                {
+                    "topic": "castello.tour.ingresso",
+                    "label": "🚶 Visita paso a paso"
+                },
+                {
+                    "topic": "castello.dove",
+                    "label": "📍 Dónde está"
+                },
+                {
+                    "topic": "castello.curiosita",
+                    "label": "✨ Curiosidades"
+                },
+                {
+                    "topic": "castello.dintorni",
+                    "label": "🗺️ Cercano"
+                },
+                {
+                    "topic": "castello.orari_biglietti_note",
+                    "label": "🎫 Horarios y Entradas"
+                }
             ],
             "de": [
-                        {
-                                    "topic": "castello.storia",
-                                    "label": "🏰 Geschichte"
-                        },
-                        {
-                                    "topic": "castello.tour.ingresso",
-                                    "label": "🚶 Tour Schritt für Schritt"
-                        },
-                        {
-                                    "topic": "castello.dove",
-                                    "label": "📍 Wo es ist"
-                        },
-                        {
-                                    "topic": "castello.curiosita",
-                                    "label": "✨ Kuriositäten"
-                        },
-                        {
-                                    "topic": "castello.dintorni",
-                                    "label": "🗺️ In der Nähe"
-                        },
-                        {
-                                    "topic": "castello.orari_biglietti_note",
-                                    "label": "🎫 Öffnungszeiten & Tickets"
-                        }
+                {
+                    "topic": "castello.storia",
+                    "label": "🏰 Geschichte"
+                },
+                {
+                    "topic": "castello.tour.ingresso",
+                    "label": "🚶 Tour Schritt für Schritt"
+                },
+                {
+                    "topic": "castello.dove",
+                    "label": "📍 Wo es ist"
+                },
+                {
+                    "topic": "castello.curiosita",
+                    "label": "✨ Kuriositäten"
+                },
+                {
+                    "topic": "castello.dintorni",
+                    "label": "🗺️ In der Nähe"
+                },
+                {
+                    "topic": "castello.orari_biglietti_note",
+                    "label": "🎫 Öffnungszeiten & Tickets"
+                }
             ]
-};
+        };
+
+        // NUOVO — dove stanno le miniature (cartella "thumbs" dentro "gallery-chiese").
+        // Se una miniatura manca, la pagina ripiega sulla foto grande della galleria.
+        const THUMB_BASES = ["../gallery-chiese/thumbs/", "../gallery-chiese/"];
 
         const WELCOME_MESSAGE_MOBILE = {
             "it": "Benvenuto al Castello di Caccamo, viandante! Cosa vuoi scoprire?",
@@ -921,65 +982,70 @@ window.silktideConsentManager.init({
             "fr": "Bienvenue au Chateau de Caccamo, voyageur ! Que veux-tu decouvrir ?",
             "es": "Bienvenido al Castillo de Caccamo, viajero! Que quieres descubrir?",
             "de": "Willkommen auf der Burg von Caccamo, Reisender! Was mochtest du entdecken?"
-};
+        };
 
+        // Percorsi a tappe (es. il tour del Castello): dopo una tappa compare
+        // il pulsante per passare alla successiva. Vuoto se la pagina non ne ha.
         const NEXT_STEPS_MOBILE = {
             "castello.tour.ingresso": {
-                        "topic": "castello.tour.ala_prades",
-                        "label": {
-                                    "it": "➡️ Prossima tappa",
-                                    "en": "➡️ Next stop",
-                                    "fr": "➡️ Étape suivante",
-                                    "es": "➡️ Siguiente parada",
-                                    "de": "➡️ Nächste Station"
-                        }
+                "topic": "castello.tour.ala_prades",
+                "label": {
+                    "it": "➡️ Ala Prades",
+                    "en": "➡️ Next stop",
+                    "fr": "➡️ Étape suivante",
+                    "es": "➡️ Siguiente parada",
+                    "de": "➡️ Nächste Station"
+                },
+                "thumb": "ingresso_ala_prades.jpg"
             },
             "castello.tour.ala_prades": {
-                        "topic": "castello.tour.corte_cappella",
-                        "label": {
-                                    "it": "➡️ Prossima tappa",
-                                    "en": "➡️ Next stop",
-                                    "fr": "➡️ Étape suivante",
-                                    "es": "➡️ Siguiente parada",
-                                    "de": "➡️ Nächste Station"
-                        }
+                "topic": "castello.tour.corte_cappella",
+                "label": {
+                    "it": "➡️ Gran Corte",
+                    "en": "➡️ Next stop",
+                    "fr": "➡️ Étape suivante",
+                    "es": "➡️ Siguiente parada",
+                    "de": "➡️ Nächste Station"
+                },
+                "thumb": "ingresso_grancorte_castello.jpg"
             },
             "castello.tour.corte_cappella": {
-                        "topic": "castello.tour.ala_amato",
-                        "label": {
-                                    "it": "➡️ Prossima tappa",
-                                    "en": "➡️ Next stop",
-                                    "fr": "➡️ Étape suivante",
-                                    "es": "➡️ Siguiente parada",
-                                    "de": "➡️ Nächste Station"
-                        }
+                "topic": "castello.tour.ala_amato",
+                "label": {
+                    "it": "➡️ Prossima tappa",
+                    "en": "➡️ Next stop",
+                    "fr": "➡️ Étape suivante",
+                    "es": "➡️ Siguiente parada",
+                    "de": "➡️ Nächste Station"
+                }
             },
             "castello.tour.ala_amato": {
-                        "topic": "castello.tour.terrazza",
-                        "label": {
-                                    "it": "➡️ Prossima tappa",
-                                    "en": "➡️ Next stop",
-                                    "fr": "➡️ Étape suivante",
-                                    "es": "➡️ Siguiente parada",
-                                    "de": "➡️ Nächste Station"
-                        }
+                "topic": "castello.tour.terrazza",
+                "label": {
+                    "it": "➡️ Terrazza",
+                    "en": "➡️ Next stop",
+                    "fr": "➡️ Étape suivante",
+                    "es": "➡️ Siguiente parada",
+                    "de": "➡️ Nächste Station"
+                },
+                "thumb": "panorama_terr_castello.jpg"
             },
             "castello.tour.terrazza": {
-                        "topic": "castello.tour.fine",
-                        "label": {
-                                    "it": "➡️ Prossima tappa",
-                                    "en": "➡️ Next stop",
-                                    "fr": "➡️ Étape suivante",
-                                    "es": "➡️ Siguiente parada",
-                                    "de": "➡️ Nächste Station"
-                        }
+                "topic": "castello.tour.fine",
+                "label": {
+                    "it": "➡️ Fine del tour",
+                    "en": "➡️ Next stop",
+                    "fr": "➡️ Étape suivante",
+                    "es": "➡️ Siguiente parada",
+                    "de": "➡️ Nächste Station"
+                }
             }
-};
+        };
 
         function extraStepsFor(topicId) {
             const next = NEXT_STEPS_MOBILE[topicId];
             if (!next) return [];
-            return [{ topic: next.topic, label: next.label[currentLang] || next.label.it }];
+            return [{ topic: next.topic, label: next.label[currentLang] || next.label.it, thumb: (currentLang === 'it' ? next.thumb : undefined) }];
         }
 
         const BACK_TO_MENU_LABELS_MOBILE = {
@@ -989,6 +1055,8 @@ window.silktideConsentManager.init({
 
         let usedTopicsMobile = new Set();
         let hasShownWelcomeMobile = false;
+        // Ricorda in quale lingua e stato mostrato l'ultimo benvenuto:
+        // se currentLang cambia, il benvenuto va ridisegnato.
         let shownWelcomeLang = null;
 
         function renderTopicMenuMobile(menu) {
@@ -999,11 +1067,44 @@ window.silktideConsentManager.init({
             const wrap = document.createElement('div');
             wrap.className = 'topic-menu-mobile topic-menu-state-mobile';
 
-            menu.forEach(entry => {
+            let separatoreMesso = false;
+            const ordinato = menu.filter(e => !e.thumb).concat(menu.filter(e => e.thumb));
+            ordinato.forEach(entry => {
                 if (usedTopicsMobile.has(entry.topic)) return;
+                // NUOVO — le miniature vanno tutte insieme, sulla riga sotto i pulsanti
+                if (entry.thumb && !separatoreMesso) {
+                    const a_capo = document.createElement('div');
+                    a_capo.className = 'topic-menu-break';
+                    wrap.appendChild(a_capo);
+                    separatoreMesso = true;
+                }
                 const b = document.createElement('button');
                 b.className = 'topic-btn-mobile';
-                b.textContent = entry.label;
+                if (entry.thumb) {
+                    // NUOVO — pulsante con miniatura. Se la foto non si carica
+                    // torna un normale pulsante di solo testo.
+                    b.classList.add('topic-thumb-btn-mobile');
+                    const img = document.createElement('img');
+                    let tentativo = 0;
+                    img.alt = '';
+                    img.decoding = 'async';
+                    img.onerror = () => {
+                        tentativo++;
+                        if (tentativo < THUMB_BASES.length) {
+                            img.src = THUMB_BASES[tentativo] + entry.thumb;
+                        } else {
+                            img.remove();
+                            b.classList.remove('topic-thumb-btn-mobile');
+                        }
+                    };
+                    img.src = THUMB_BASES[0] + entry.thumb;
+                    b.appendChild(img);
+                    const etichetta = document.createElement('span');
+                    etichetta.textContent = entry.label;
+                    b.appendChild(etichetta);
+                } else {
+                    b.textContent = entry.label;
+                }
                 b.addEventListener('click', () => {
                     usedTopicsMobile.add(entry.topic);
                     sendTopicRequestMobile(entry.topic, entry.label);
@@ -1017,6 +1118,13 @@ window.silktideConsentManager.init({
             }
         }
 
+        // ============================================================
+        // NUOVO — OPZIONI "UNA TANTUM" INVIATE DAL BACKEND
+        // Quando la Castellana risponde con una domanda e dei pulsanti
+        // da scegliere (es. "in che zona del paese ti trovi?" + le
+        // zone), questi arrivano nel campo "menu" della risposta come
+        // semplice elenco {topic, label}. Prima venivano ignorati.
+        // ============================================================
         function isOneOffOptionListMobile(menu) {
             return Array.isArray(menu) && menu.length > 0 &&
                    menu.every(voce => voce && voce.topic && voce.label && !voce.group);
@@ -1111,6 +1219,9 @@ window.silktideConsentManager.init({
             }, 900);
         }
 
+        // --------------------------
+        // ATTIVAZIONE CODICE + MESSAGGI LIBERI
+        // --------------------------
         async function tryActivateCodeMobile(rawMessage) {
             const match = rawMessage.match(/^(codice|code)\s+([A-Za-z0-9-]+)/i);
             if (!match) return false;
@@ -1163,6 +1274,9 @@ window.silktideConsentManager.init({
                         lang: currentLang,
                         access_code: getStoredAccessCode() || "",
                         last_topic: lastTopic || "",
+                        // NUOVO — siamo sul mobile e in questo monumento:
+                        // cosi' il backend manda alla pagina giusta quando
+                        // si chiede di un altro monumento.
                         platform: "mobile",
                         monument: MONUMENT_ID
                     })
@@ -1176,6 +1290,9 @@ window.silktideConsentManager.init({
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 if (data.topic) lastTopic = data.topic;
 
+                // NUOVO — scelte da fare (es. le zone) oppure, se la
+                // Castellana non ha capito, di nuovo il menu di questo
+                // monumento.
                 if (isOneOffOptionListMobile(data.menu)) {
                     renderReplyOptionsMobile(data.menu);
                 } else if (data.menu && data.menu.length) {
@@ -1209,6 +1326,9 @@ window.silktideConsentManager.init({
             sendBtnMobile.addEventListener('click', handleSendMobile);
         }
 
+        // --------------------------
+        // INDICATORE PREMIUM
+        // --------------------------
         const PREMIUM_STATUS_TEXT_MOBILE = {
             it: { active: (d) => `👑 Premium attivo fino al ${d}`, free: "🔓 Versione gratuita" },
             en: { active: (d) => `👑 Premium active until ${d}`, free: "🔓 Free version" },
@@ -1233,26 +1353,38 @@ window.silktideConsentManager.init({
                         bar.classList.add('premium-active');
                         return;
                     }
-                } catch (e) { }
+                } catch (e) { /* codice non valido, trattalo come gratuito */ }
             }
             bar.textContent = texts.free;
             bar.classList.remove('premium-active');
         }
 
+        // --------------------------
+        // APERTURA / CHIUSURA CHAT
+        // --------------------------
         const chatMobileBox = document.getElementById('chat-mobile');
         const closeChatMobileBtn = document.getElementById('close-chat-mobile');
         const talkCastellanaBtnMonumento = document.getElementById('talk-castellana-btn-monumento');
 
         if (talkCastellanaBtnMonumento) {
             talkCastellanaBtnMonumento.addEventListener('click', () => {
+                // Apre sempre la chat qui sulla pagina mobile, per tutti
+                // gli utenti (gratuiti e Premium). Chi vuole raggiungere
+                // il sito desktop ha il pulsante separato "Vai alla
+                // versione Web".
                 chatMobileBox.classList.add('active');
                 updatePremiumStatusDisplayMobile();
+                // Ridisegna il benvenuto se non e mai stato mostrato,
+                // OPPURE se la lingua e cambiata da allora.
                 if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
                     renderWelcomeMobile();
                 }
             });
         }
 
+        // Il selettore lingua in alto e gestito da monument_translation.js
+        // per il testo della pagina, ma non "parla" con la chat. Qui la
+        // chat si mette in ascolto per conto proprio.
         document.querySelectorAll(".lang-switcher button").forEach(function(btn) {
             btn.addEventListener("click", function() {
                 currentLang = btn.dataset.lang;
@@ -1270,9 +1402,17 @@ window.silktideConsentManager.init({
             });
         }
 
+        // ============================================================
+        // NUOVO — ARRIVO DA UN RIMANDO DELLA CASTELLANA
+        // Quando la Castellana, da un'altra pagina, manda qui il turista,
+        // il link finisce con ?chat=<argomento> (oppure ?chat=open). Prima
+        // la pagina si apriva e la chat restava chiusa. Ora la chat si apre
+        // da sola e mostra subito l'argomento chiesto.
+        // ============================================================
         function apriChatDaLink() {
             const richiesta = new URLSearchParams(window.location.search).get('chat');
             if (!richiesta) return;
+            // togliamo il parametro dall'indirizzo: se si ricarica la pagina non si riapre
             history.replaceState(null, '', window.location.pathname + window.location.hash);
 
             chatMobileBox.classList.add('active');
@@ -1282,6 +1422,7 @@ window.silktideConsentManager.init({
                 renderWelcomeMobile();
                 return;
             }
+            // argomento preciso: niente benvenuto, si va dritti alla risposta
             document.getElementById('chat-messages-mobile').innerHTML = '';
             hasShownWelcomeMobile = true;
             shownWelcomeLang = currentLang;
