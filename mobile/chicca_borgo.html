@@ -166,6 +166,21 @@ window.silktideConsentManager.init({
         .topic-menu-mobile { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 10px 0; }
         .topic-btn-mobile { background: #fff; border: 1px solid var(--cst-gold); color: var(--cst-sea); padding: 7px 13px; border-radius: 999px; font-size: 0.8rem; cursor: pointer; }
         .topic-back-btn-mobile { border-style: dashed; color: var(--cst-terracotta); }
+
+        /* NUOVO — i pulsanti non si allargano più alla stessa altezza delle miniature */
+        .topic-menu-mobile { align-items: flex-start; }
+        .topic-menu-break { flex-basis: 100%; height: 0; }
+        /* NUOVO — pulsanti con miniatura (le opere d'arte) */
+        .topic-btn-mobile.topic-thumb-btn-mobile {
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            flex: 0 0 auto; width: 92px; padding: 4px 4px 6px; border-radius: 12px;
+            font-size: 0.7rem; line-height: 1.2; text-align: center;
+        }
+        .topic-thumb-btn-mobile img {
+            width: 82px; height: 82px; object-fit: cover; border-radius: 9px;
+            background: rgba(184, 135, 59, 0.15); display: block;
+        }
+
         .typing-indicator-mobile { display: flex; align-items: center; gap: 4px; width: fit-content; padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; border-left: 2px solid var(--cst-gold); }
         .typing-indicator-mobile span { width: 6px; height: 6px; border-radius: 50%; background: var(--cst-gold); display: inline-block; animation: typing-bounce-mobile 1.2s infinite ease-in-out; }
         .typing-indicator-mobile span:nth-child(2) { animation-delay: 0.2s; }
@@ -292,9 +307,6 @@ window.silktideConsentManager.init({
         <p class="render-modal-caption" id="render-modal-caption"></p>
     </div>
 
-    <!-- ============================================================
-         GALLERIA FOTO — Anime Sante del Purgatorio
-         ============================================================ -->
     <div class="gallery-modal" id="gallery-modal">
         <div class="gallery-modal-header">
             <span class="gallery-counter" id="gallery-counter">1 / 8</span>
@@ -421,6 +433,8 @@ window.silktideConsentManager.init({
         });
     </script>
 
+
+
     <div class="chat-mobile" id="chat-mobile">
         <div class="chat-mobile-header">
             <div class="avatar-status-dot"></div>
@@ -438,6 +452,8 @@ window.silktideConsentManager.init({
     </div>
 
     <script src="monument_translation.js"></script>
+    <script src="tour_visivo.js"></script>
+    <script src="premium_mobile.js"></script>
 
     <script>
       (function() {
@@ -865,99 +881,115 @@ window.silktideConsentManager.init({
         // --------------------------
         // ARGOMENTI PREMIUM — solo quelli di questo monumento,
         // stessi id usati dal backend.
+        // NUOVO — le voci con "thumb" (le opere d'arte) compaiono con la
+        // miniatura. In italiano ci sono le tre opere con foto.
         // --------------------------
         const TOPICS_MOBILE = {
             "it": [
-                        {
-                                    "topic": "chiese.purgatorio.storia",
-                                    "label": "🏛️ Storia"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.catacombe",
-                                    "label": "💀 Le catacombe"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.colatoio",
-                                    "label": "⚱️ Il colatoio"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.orari",
-                                    "label": "📍 Orari e visite"
-                        }
+                {
+                    "topic": "chiese.purgatorio.storia",
+                    "label": "🏛️ Storia"
+                },
+                {
+                    "topic": "chiese.purgatorio.catacombe",
+                    "label": "💀 Le catacombe"
+                },
+                {
+                    "topic": "chiese.purgatorio.colatoio",
+                    "label": "⚱️ Il colatoio"
+                },
+                {
+                    "topic": "chiese.purgatorio.orari",
+                    "label": "📍 Orari e visite"
+                },
+                {
+                    "topic": "chiese.purgatorio.opere.adorazionepastori",
+                    "label": "L'Adorazione dei Pastori",
+                    "thumb": "adorazione_animesante.jpg"
+                },
+                {
+                    "topic": "chiese.purgatorio.opere.messasuffragio",
+                    "label": "La Messa di Suffragio",
+                    "thumb": "messa_di_suffraggio_animesante.jpg"
+                }
             ],
             "en": [
-                        {
-                                    "topic": "chiese.purgatorio.storia",
-                                    "label": "🏛️ History"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.catacombe",
-                                    "label": "💀 The catacombs"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.colatoio",
-                                    "label": "⚱️ The colatoio"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.orari",
-                                    "label": "📍 Hours & visits"
-                        }
+                {
+                    "topic": "chiese.purgatorio.storia",
+                    "label": "🏛️ History"
+                },
+                {
+                    "topic": "chiese.purgatorio.catacombe",
+                    "label": "💀 The catacombs"
+                },
+                {
+                    "topic": "chiese.purgatorio.colatoio",
+                    "label": "⚱️ The colatoio"
+                },
+                {
+                    "topic": "chiese.purgatorio.orari",
+                    "label": "📍 Hours & visits"
+                }
             ],
             "fr": [
-                        {
-                                    "topic": "chiese.purgatorio.storia",
-                                    "label": "🏛️ Histoire"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.catacombe",
-                                    "label": "💀 Les catacombes"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.colatoio",
-                                    "label": "⚱️ Le colatoio"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.orari",
-                                    "label": "📍 Horaires et visites"
-                        }
+                {
+                    "topic": "chiese.purgatorio.storia",
+                    "label": "🏛️ Histoire"
+                },
+                {
+                    "topic": "chiese.purgatorio.catacombe",
+                    "label": "💀 Les catacombes"
+                },
+                {
+                    "topic": "chiese.purgatorio.colatoio",
+                    "label": "⚱️ Le colatoio"
+                },
+                {
+                    "topic": "chiese.purgatorio.orari",
+                    "label": "📍 Horaires et visites"
+                }
             ],
             "es": [
-                        {
-                                    "topic": "chiese.purgatorio.storia",
-                                    "label": "🏛️ Historia"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.catacombe",
-                                    "label": "💀 Las catacumbas"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.colatoio",
-                                    "label": "⚱️ El colatoio"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.orari",
-                                    "label": "📍 Horarios y visitas"
-                        }
+                {
+                    "topic": "chiese.purgatorio.storia",
+                    "label": "🏛️ Historia"
+                },
+                {
+                    "topic": "chiese.purgatorio.catacombe",
+                    "label": "💀 Las catacumbas"
+                },
+                {
+                    "topic": "chiese.purgatorio.colatoio",
+                    "label": "⚱️ El colatoio"
+                },
+                {
+                    "topic": "chiese.purgatorio.orari",
+                    "label": "📍 Horarios y visitas"
+                }
             ],
             "de": [
-                        {
-                                    "topic": "chiese.purgatorio.storia",
-                                    "label": "🏛️ Geschichte"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.catacombe",
-                                    "label": "💀 Die Katakomben"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.colatoio",
-                                    "label": "⚱️ Der Colatoio"
-                        },
-                        {
-                                    "topic": "chiese.purgatorio.orari",
-                                    "label": "📍 Öffnungszeiten & Führungen"
-                        }
+                {
+                    "topic": "chiese.purgatorio.storia",
+                    "label": "🏛️ Geschichte"
+                },
+                {
+                    "topic": "chiese.purgatorio.catacombe",
+                    "label": "💀 Die Katakomben"
+                },
+                {
+                    "topic": "chiese.purgatorio.colatoio",
+                    "label": "⚱️ Der Colatoio"
+                },
+                {
+                    "topic": "chiese.purgatorio.orari",
+                    "label": "📍 Öffnungszeiten & Führungen"
+                }
             ]
-};
+        };
+
+        // NUOVO — dove stanno le miniature (cartella "thumbs" dentro "gallery-chiese").
+        // Se una miniatura manca, la pagina ripiega sulla foto grande della galleria.
+        const THUMB_BASES = ["../gallery-chiese/thumbs/", "../gallery-chiese/"];
 
         const WELCOME_MESSAGE_MOBILE = {
             "it": "Benvenuto in questo angolo nascosto del borgo, viandante! Sono la Castellana e ti racconterò i segreti della Chiesa delle Anime Sante del Purgatorio. Cosa vuoi scoprire?",
@@ -965,7 +997,7 @@ window.silktideConsentManager.init({
             "fr": "Bienvenue dans ce coin caché du village, voyageur ! Je suis la Castellana et je vais te raconter les secrets de l'Église des Âmes Saintes du Purgatoire. Que veux-tu découvrir ?",
             "es": "¡Bienvenido a este rincón escondido del pueblo, viajero! Soy la Castellana y te contaré los secretos de la Iglesia de las Santas Ánimas del Purgatorio. ¿Qué quieres descubrir?",
             "de": "Willkommen in dieser versteckten Ecke des Dorfes, Reisender! Ich bin die Castellana und erzähle dir die Geheimnisse der Kirche der Heiligen Seelen des Fegefeuers. Was möchtest du entdecken?"
-};
+        };
 
         // Percorsi a tappe (es. il tour del Castello): dopo una tappa compare
         // il pulsante per passare alla successiva. Vuoto se la pagina non ne ha.
@@ -996,11 +1028,43 @@ window.silktideConsentManager.init({
             const wrap = document.createElement('div');
             wrap.className = 'topic-menu-mobile topic-menu-state-mobile';
 
+            let separatoreMesso = false;
             menu.forEach(entry => {
                 if (usedTopicsMobile.has(entry.topic)) return;
+                // NUOVO — le miniature vanno tutte insieme, sulla riga sotto i pulsanti
+                if (entry.thumb && !separatoreMesso) {
+                    const a_capo = document.createElement('div');
+                    a_capo.className = 'topic-menu-break';
+                    wrap.appendChild(a_capo);
+                    separatoreMesso = true;
+                }
                 const b = document.createElement('button');
                 b.className = 'topic-btn-mobile';
-                b.textContent = entry.label;
+                if (entry.thumb) {
+                    // NUOVO — pulsante con miniatura. Se la foto non si carica
+                    // torna un normale pulsante di solo testo.
+                    b.classList.add('topic-thumb-btn-mobile');
+                    const img = document.createElement('img');
+                    let tentativo = 0;
+                    img.alt = '';
+                    img.decoding = 'async';
+                    img.onerror = () => {
+                        tentativo++;
+                        if (tentativo < THUMB_BASES.length) {
+                            img.src = THUMB_BASES[tentativo] + entry.thumb;
+                        } else {
+                            img.remove();
+                            b.classList.remove('topic-thumb-btn-mobile');
+                        }
+                    };
+                    img.src = THUMB_BASES[0] + entry.thumb;
+                    b.appendChild(img);
+                    const etichetta = document.createElement('span');
+                    etichetta.textContent = entry.label;
+                    b.appendChild(etichetta);
+                } else {
+                    b.textContent = entry.label;
+                }
                 b.addEventListener('click', () => {
                     usedTopicsMobile.add(entry.topic);
                     sendTopicRequestMobile(entry.topic, entry.label);
@@ -1297,6 +1361,37 @@ window.silktideConsentManager.init({
                 castellanaZitta();
             });
         }
+
+        // ============================================================
+        // NUOVO — ARRIVO DA UN RIMANDO DELLA CASTELLANA
+        // Quando la Castellana, da un'altra pagina, manda qui il turista,
+        // il link finisce con ?chat=<argomento> (oppure ?chat=open). Prima
+        // la pagina si apriva e la chat restava chiusa. Ora la chat si apre
+        // da sola e mostra subito l'argomento chiesto.
+        // ============================================================
+        function apriChatDaLink() {
+            const richiesta = new URLSearchParams(window.location.search).get('chat');
+            if (!richiesta) return;
+            // togliamo il parametro dall'indirizzo: se si ricarica la pagina non si riapre
+            history.replaceState(null, '', window.location.pathname + window.location.hash);
+
+            chatMobileBox.classList.add('active');
+            updatePremiumStatusDisplayMobile();
+
+            if (richiesta === 'open') {
+                renderWelcomeMobile();
+                return;
+            }
+            // argomento preciso: niente benvenuto, si va dritti alla risposta
+            document.getElementById('chat-messages-mobile').innerHTML = '';
+            hasShownWelcomeMobile = true;
+            shownWelcomeLang = currentLang;
+            const menu = TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it;
+            const voce = menu.find(v => v.topic === richiesta);
+            if (voce) usedTopicsMobile.add(richiesta);
+            sendTopicRequestMobile(richiesta, voce ? voce.label : '');
+        }
+        apriChatDaLink();
       })();
     </script>
 
