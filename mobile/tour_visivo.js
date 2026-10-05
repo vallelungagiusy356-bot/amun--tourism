@@ -3,7 +3,7 @@
    La Castellana racconta un'opera e il quadro si sposta e si
    ingrandisce da solo sul dettaglio di cui sta parlando.
 
-   PROVA: solo la Sacra Famiglia (Convento dei Cappuccini), solo italiano.
+   OPERE CON LO ZOOM: Sacra Famiglia (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo). Solo italiano.
    Non modifica la chat, il backend né la knowledge base: si "aggancia"
    alla voce già esistente e riconosce l'opera dalla prima frase.
 
@@ -41,6 +41,38 @@
         { parola: 'guardate i volti',       x: 0.52, y: 0.47, larg: 0.50 },
         { parola: 'giuseppe testa',         x: 0.52, y: 0.47, larg: 0.90 },
         { parola: 'vi va di vedere',        x: 0.52, y: 0.47, larg: 0.90 }
+      ]
+    },
+    {
+      nome: "Il Miracolo di Sant'Isidoro (Stomer)",
+      riconosci: "miracolo di sant'isidoro agricola",
+      immagine: '../gallery-chiese/stomer_sangiorgio_zoom.jpg',
+      cue: [
+        { parola: "miracolo di sant'isidoro", x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'contadino spagnolo',        x: 0.33, y: 0.60, larg: 0.55 },
+        { parola: 'bastone',                   x: 0.27, y: 0.74, larg: 0.55 },
+        { parola: 'compagni assetati',         x: 0.68, y: 0.58, larg: 0.60 },
+        { parola: 'luce drammatica',           x: 0.50, y: 0.31, larg: 0.70 },
+        { parola: 'mani callose',              x: 0.42, y: 0.49, larg: 0.40 },
+        { parola: 'volti segnati',             x: 0.68, y: 0.49, larg: 0.50 },
+        { parola: 'madonna col bambino',       x: 0.64, y: 0.22, larg: 0.50 },
+        { parola: 'vi va di vedere',           x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Gli Affreschi del Coro',
+      riconosci: 'nella volta del coro',
+      immagine: '../gallery-chiese/affreschi_presbiterio_sangiorgio_zoom.jpg',
+      cue: [
+        { parola: 'nella volta del coro',      x: 0.50, y: 0.45, larg: 1.00 },
+        { parola: 'immacolata',                x: 0.40, y: 0.40, larg: 0.50 },
+        { parola: "sull'altra nuvola",         x: 0.77, y: 0.27, larg: 0.50 },
+        { parola: 'luce intensa',               x: 0.52, y: 0.27, larg: 0.80 },
+        { parola: 'veduta del castello',       x: 0.80, y: 0.50, larg: 0.38 },
+        { parola: 'san giorgio',               x: 0.56, y: 0.58, larg: 0.35 },
+        { parola: 'compatroni',                x: 0.52, y: 0.64, larg: 0.95 },
+        { parola: 'questi affreschi',          x: 0.50, y: 0.45, larg: 1.00 },
+        { parola: 'vi va di vedere',           x: 0.50, y: 0.45, larg: 1.00 }
       ]
     }
   ];
