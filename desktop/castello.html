@@ -523,11 +523,10 @@ window.silktideConsentManager.init({
         <button class="modal-close" id="modal-close-btn">✕</button>
         <div class="modal-content-wrapper">
             <div class="modal-image-stage">
-                <button class="modal-gallery-arrow modal-gallery-arrow-left" id="modal-gallery-prev" aria-label="Foto precedente">‹</button>
-                <img class="modal-img" id="modal-target-img" src="" alt="">
-                <button class="modal-gallery-arrow modal-gallery-arrow-right" id="modal-gallery-next" aria-label="Foto successiva">›</button>
+                <img class="modal-img" id="modal-target-img" src="" alt="" style="cursor: pointer;" title="Tocca per la foto successiva">
             </div>
             <span class="modal-gallery-counter" id="modal-gallery-counter"></span>
+            <p class="modal-gallery-hint" id="modal-gallery-hint" style="color: var(--cst-gold); font-size: 0.78rem; margin: 4px 0 0; display:none;">‹ tocca la foto per scorrere, o usa le frecce della tastiera ›</p>
             <h2 class="modal-title" id="modal-target-title"></h2>
         </div>
     </div>
@@ -626,9 +625,8 @@ window.silktideConsentManager.init({
             } else {
                 counterEl.style.display = 'none';
             }
-            const arrowsVisible = currentModalGallery.length > 1;
-            document.getElementById('modal-gallery-prev').style.display = arrowsVisible ? 'flex' : 'none';
-            document.getElementById('modal-gallery-next').style.display = arrowsVisible ? 'flex' : 'none';
+            const hintEl = document.getElementById('modal-gallery-hint');
+            if (hintEl) hintEl.style.display = (currentModalGallery.length > 1) ? 'block' : 'none';
         }
 
         function showNextModalImage() {
@@ -650,13 +648,10 @@ window.silktideConsentManager.init({
             document.getElementById('image-modal').classList.add('active');
         });
 
-        document.getElementById('modal-gallery-next').addEventListener('click', (e) => {
+        // Tocca/clicca la foto per passare alla successiva del carosello
+        document.getElementById('modal-target-img').addEventListener('click', (e) => {
             e.stopPropagation();
-            showNextModalImage();
-        });
-        document.getElementById('modal-gallery-prev').addEventListener('click', (e) => {
-            e.stopPropagation();
-            showPrevModalImage();
+            if (currentModalGallery && currentModalGallery.length > 1) showNextModalImage();
         });
         document.getElementById('modal-close-btn').addEventListener('click', () => {
             document.getElementById('image-modal').classList.remove('active');
