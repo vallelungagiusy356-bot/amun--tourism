@@ -54,6 +54,7 @@
         { parola: 'delle tele più importanti', x: 0.50, y: 0.50, larg: 1.00 },
         { parola: 'contadino spagnolo',        x: 0.33, y: 0.60, larg: 0.55 },
         { parola: 'bastone',                   x: 0.27, y: 0.74, larg: 0.55 },
+        { parola: "fonte d'acqua",            x: 0.24, y: 0.80, larg: 0.45 },
         { parola: 'compagni assetati',         x: 0.68, y: 0.58, larg: 0.60 },
         { parola: 'luce drammatica',           x: 0.50, y: 0.31, larg: 0.70 },
         { parola: 'mani callose',              x: 0.42, y: 0.49, larg: 0.40 },
@@ -75,12 +76,12 @@
         { parola: 'veduta del castello',       x: 0.80, y: 0.50, larg: 0.38 },
         { parola: 'san giorgio',               x: 0.56, y: 0.58, larg: 0.35 },
         { parola: 'compatroni',                x: 0.52, y: 0.64, larg: 0.95 },
-        { parola: 'beato giovanni liccio',     x: 0.41, y: 0.61, larg: 0.28 },
-        { parola: 'santa rosalia',             x: 0.30, y: 0.62, larg: 0.28 },
-        { parola: 'san teotista',              x: 0.19, y: 0.65, larg: 0.28 },
-        { parola: 'san rocco',                 x: 0.71, y: 0.61, larg: 0.28 },
-        { parola: 'suor febronia',             x: 0.79, y: 0.63, larg: 0.28 },
-        { parola: 'san nicasio',               x: 0.86, y: 0.65, larg: 0.28 },
+        { parola: 'beato giovanni liccio',     x: 0.71, y: 0.61, larg: 0.28 },
+        { parola: 'santa rosalia',             x: 0.79, y: 0.63, larg: 0.28 },
+        { parola: 'san teotista',              x: 0.86, y: 0.65, larg: 0.28 },
+        { parola: 'san rocco',                 x: 0.41, y: 0.61, larg: 0.28 },
+        { parola: 'suor febronia',             x: 0.30, y: 0.62, larg: 0.28 },
+        { parola: 'san nicasio',               x: 0.19, y: 0.65, larg: 0.28 },
         { parola: 'questi affreschi',          x: 0.50, y: 0.45, larg: 1.00 },
         { parola: 'vi va di vedere',           x: 0.50, y: 0.45, larg: 1.00 }
       ]
@@ -317,9 +318,19 @@
   let cuePendente = null;
   let timers = [];
 
+  // quanto resta inquadrato un dettaglio prima di tornare alla visione intera
+  const HOLD_MS = 6500;
+  let timerHold = null;
+
   function fermaTimers() {
     timers.forEach(clearTimeout);
     timers = [];
+    clearTimeout(timerHold);
+  }
+
+  // torna alla visione intera del quadro
+  function tornaPanoramica() {
+    if (viewer && viewer.world.getItemCount()) viewer.viewport.goHome();
   }
 
   function chiudiTour() {
@@ -353,9 +364,12 @@
       return;
     }
     const vp = viewer.viewport;
+    clearTimeout(timerHold);
     if (c.tutto) { vp.goHome(); return; }
     vp.panTo(new OpenSeadragon.Point(c.x, c.y * aspetto()));
     vp.zoomTo(1 / c.larg);
+    // dopo un po' si torna alla visione intera, se non arriva un altro dettaglio
+    timerHold = setTimeout(tornaPanoramica, HOLD_MS);
   }
 
   async function apriTour(tour) {
@@ -422,19 +436,28 @@
     if (!tourAttivo) return;
 
     const rate = utt.rate || 1;
+    let nellaFrase = false;
     tourAttivo.cue.forEach(function (c) {
       const i = testo.indexOf(c.parola);
       if (i === -1) return;
+      nellaFrase = true;
       const ritardo = i < 8 ? 0 : Math.round(i * MS_PER_CARATTERE / rate);
       if (ritardo === 0) applicaCue(c);
       else timers.push(setTimeout(function () { applicaCue(c); }, ritardo));
     });
+    // frase senza nessun dettaglio da mostrare: si torna alla visione intera
+    if (!nellaFrase && tourAttivo.cue.length) timers.push(setTimeout(tornaPanoramica, 700));
   }
 
   if ('speechSynthesis' in window) {
     const speakOriginale = window.speechSynthesis.speak;
     window.speechSynthesis.speak = function (utt) {
       try { utt.addEventListener('start', function () { sulParlato(utt); }); } catch (e) {}
+      // quando la Castellana smette di parlare (o la voce viene interrotta) il quadro torna intero
+      const alFine = function () {
+        if (tourAttivo && tourAttivo.cue.length) timers.push(setTimeout(tornaPanoramica, 1500));
+      };
+      try { utt.addEventListener('end', alFine); utt.addEventListener('error', alFine); } catch (e) {}
       return speakOriginale.call(window.speechSynthesis, utt);
     };
   }
