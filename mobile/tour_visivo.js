@@ -155,6 +155,54 @@
       ]
     },
     {
+      nome: "L'Adorazione dell'Ostensorio",
+      riconosci: "adorazione dell'ostensorio",
+      immagine: '../gallery-chiese/adorazione_eucaristica_animesante.jpg',
+      cue: [
+        { parola: "l'ostensorio con l'ostia", x: 0.50, y: 0.20, larg: 0.50 },
+        { parola: "santo vescovo", x: 0.26, y: 0.62, larg: 0.48 },
+        { parola: "san francesco d'assisi", x: 0.72, y: 0.60, larg: 0.48 },
+        { parola: "due putti", x: 0.50, y: 0.80, larg: 0.40 },
+        { parola: "teschio", x: 0.76, y: 0.86, larg: 0.35 },
+        { parola: "vi va di vedere", x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: "San Filippo Neri",
+      riconosci: "siete davanti a san filippo neri",
+      immagine: '../gallery-chiese/sanfilippo_animesante.jpg',
+      cue: [
+        { parola: "madonna con il bambino", x: 0.24, y: 0.17, larg: 0.45 },
+        { parola: "camera da letto", x: 0.25, y: 0.80, larg: 0.50 },
+        { parola: "imbarcazione", x: 0.75, y: 0.80, larg: 0.50 },
+        { parola: "vi va di vedere", x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: "San Giovanni e l'Immacolata",
+      riconosci: "san giovanni evangelista con l'immacolata",
+      immagine: '../gallery-chiese/vergine_imm_animesante.jpg',
+      cue: [
+        { parola: "il giovane giovanni", x: 0.62, y: 0.58, larg: 0.60 },
+        { parola: "libro sacro", x: 0.80, y: 0.64, larg: 0.35 },
+        { parola: "la vergine immacolata", x: 0.30, y: 0.20, larg: 0.55 },
+        { parola: "falce di luna", x: 0.22, y: 0.44, larg: 0.30 },
+        { parola: "vi va di vedere", x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: "La Madonna del Carmelo",
+      riconosci: "siete davanti alla madonna del carmelo",
+      immagine: '../gallery-chiese/madonna_del_carmelo_animesante.jpg',
+      cue: [
+        { parola: "incoronata", x: 0.60, y: 0.22, larg: 0.55 },
+        { parola: "giovanni della croce", x: 0.24, y: 0.56, larg: 0.45 },
+        { parola: "un putto", x: 0.46, y: 0.78, larg: 0.42 },
+        { parola: "una grande croce", x: 0.78, y: 0.62, larg: 0.45 },
+        { parola: "vi va di vedere", x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
       nome: "Castello: l'ingresso",
       riconosci: "salite la rampa cordonata",
       immagine: '../gallery-chiese/cordata_princi_castello.jpg',
@@ -167,14 +215,23 @@
       cue: []   // nessun movimento automatico: si ingrandisce con le dita
     },
     {
-      nome: 'Castello: Gran Corte e Cappella',
+      nome: 'Castello: Gran Corte',
       riconosci: 'siete nella gran corte',
       immagine: '../gallery-chiese/ingresso_grancorte_castello.jpg',
+      cue: []
+    },
+    {
+      nome: 'Castello: la Cappella',
+      riconosci: 'siete nella cappella di corte',
+      immagine: '../gallery-chiese/cappella_castello.jpg',
+      cue: []
+    },
+    {
+      nome: 'Castello: le Prigioni',
+      riconosci: 'siete nelle prigioni del castello',
+      immagine: '../gallery-chiese/entrata_prig_castello.jpg',
       cue: [
-        { parola: 'gran corte',        tutto: true },
-        { parola: 'cappella di corte', immagine: '../gallery-chiese/cappella_castello.jpg' },
-        { parola: 'le prigioni',       immagine: '../gallery-chiese/entrata_prig_castello.jpg' },
-        { parola: 'graffiti',          immagine: '../gallery-chiese/interno_prig_castello.jpg' }
+        { parola: 'catena', immagine: '../gallery-chiese/interno_prig_castello.jpg' }
       ]
     },
     {
