@@ -292,3 +292,16 @@ body {
         max-width: 520px;
     }
 }
+
+/* ==========================================================================
+   FOOTER SEMPRE IN FONDO — se la pagina è corta (tablet), il piè di pagina
+   scende fino al bordo basso dello schermo invece di restare a metà.
+   ========================================================================== */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.footer-copyright {
+    margin-top: auto !important;
+}
