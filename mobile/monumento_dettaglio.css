@@ -622,3 +622,41 @@ body {
 
 .monument-hero-image.img-badia { object-position: center 60%; }
 .monument-hero-image.img-castello { object-position: 40% center; }
+
+/* ==========================================================================
+   TABLET E SCHERMI LARGHI
+   Su telefono non cambia nulla. Dai 560 px in su (tablet, telefono
+   girato di lato) la pagina resta larga come su un telefono e si
+   centra: cosi' il render 3D mantiene le proporzioni di sempre e non
+   viene ingrandito e tagliato. La chat segue la stessa larghezza.
+   ========================================================================== */
+@media (min-width: 560px) {
+    .mobile-layout-detail {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* l'altezza dei render diventa proporzionale alla larghezza
+       (stesse proporzioni che hanno sul telefono da 390 px) */
+    .monument-hero-image,
+    .monument-hero-image.img-annunziata,
+    .monument-hero-image.img-cappuccini,
+    .monument-hero-image.img-castello,
+    .monument-hero-image.img-sangiorgio,
+    .monument-hero-image.img-sandomenico {
+        height: auto !important;
+        aspect-ratio: 356 / 250;
+    }
+    .monument-hero-image.img-annunziata,
+    .monument-hero-image.img-sandomenico { aspect-ratio: 356 / 260; }
+    .monument-hero-image.img-cappuccini  { aspect-ratio: 356 / 180; }
+    .monument-hero-image.img-castello    { aspect-ratio: 356 / 280; }
+    .monument-hero-image.img-sangiorgio  { aspect-ratio: 356 / 300; }
+
+    .chat-mobile {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
