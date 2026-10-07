@@ -3,7 +3,7 @@
    La Castellana racconta un'opera e il quadro si sposta e si
    ingrandisce da solo sul dettaglio di cui sta parlando.
 
-   OPERE CON LO ZOOM GUIDATO: Sacra Famiglia (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo), le 6 opere di Santa Maria degli Angeli.
+   OPERE CON LO ZOOM GUIDATO: Sacra Famiglia (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo), le 6 opere di Santa Maria degli Angeli e le 6 opere della Badia.
    ALTRE OPERE E TAPPE DEL CASTELLO: il quadro si apre comunque in alto e si ingrandisce con le dita. Solo italiano.
    Non modifica la chat, il backend né la knowledge base: si "aggancia"
    alla voce già esistente e riconosce l'opera dalla prima frase.
@@ -274,6 +274,77 @@
         { parola: 'urna reliquiario',       x: 0.50, y: 0.50, larg: 1.00 },
         { parola: 'resti mortali',          x: 0.50, y: 0.66, larg: 0.28 },
         { parola: 'figura in cera',         x: 0.50, y: 0.52, larg: 0.35 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Badia: il Pavimento in Maiolica',
+      riconosci: '5.555 mattonelle maiolicate',
+      immagine: '../gallery-chiese/pavimento_badia.jpg',
+      cue: []   // nessun movimento automatico: si ingrandisce con le dita
+    },
+    {
+      nome: 'Badia: il Sacrificio di Isacco',
+      riconosci: "sull'abside del presbiterio",
+      immagine: '../gallery-chiese/sacrificio_isacco_badia.jpg',
+      cue: [
+        { parola: "sull'abside",            x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'abramo',                 x: 0.58, y: 0.24, larg: 0.55 },
+        { parola: 'figlio isacco',          x: 0.46, y: 0.31, larg: 0.40 },
+        { parola: "dall'angelo",            x: 0.47, y: 0.15, larg: 0.40 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Badia: San Benedetto, Mauro e Placido',
+      riconosci: 'affresco più elaborato di tutta la badia',
+      immagine: '../gallery-chiese/navata_sanben_badia.jpg',
+      cue: [
+        { parola: 'affresco più elaborato', x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'accoglienza',            x: 0.50, y: 0.46, larg: 0.55 },
+        { parola: 'cornice dipinta',        x: 0.50, y: 0.66, larg: 0.55 },
+        { parola: 'un piede',               x: 0.52, y: 0.78, larg: 0.40 },
+        { parola: 'lancia',                 x: 0.45, y: 0.70, larg: 0.50 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Badia: la Madonna della Neve',
+      riconosci: "pala d'altare di antonino spadafora",
+      immagine: '../gallery-chiese/madonna_neve_badia.jpg',
+      cue: [
+        { parola: "pala d'altare",          x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'nuvole dorate',          x: 0.55, y: 0.33, larg: 0.85 },
+        { parola: 'cherubini',              x: 0.80, y: 0.32, larg: 0.40 },
+        { parola: 'la vergine siede',       x: 0.48, y: 0.37, larg: 0.55 },
+        { parola: 'paesaggio di campagna',  x: 0.50, y: 0.67, larg: 0.55 },
+        { parola: 'san lorenzo',            x: 0.20, y: 0.60, larg: 0.45 },
+        { parola: 'santo stefano',          x: 0.82, y: 0.52, larg: 0.40 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Badia: San Benedetto indica la Regola',
+      riconosci: 'attribuita a mariano rossi',
+      immagine: '../gallery-chiese/sanbenedetto_regole_badia.jpg',
+      cue: [
+        { parola: 'tela del settecento',    x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'san benedetto avvolto',  x: 0.36, y: 0.23, larg: 0.55 },
+        { parola: 'libro della regola',     x: 0.70, y: 0.21, larg: 0.35 },
+        { parola: 'sovrano',                x: 0.25, y: 0.52, larg: 0.50 },
+        { parola: 'monache',                x: 0.72, y: 0.45, larg: 0.50 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Badia: il Crocifisso',
+      riconosci: 'francesco quaresima',
+      immagine: '../gallery-chiese/crocifisso_badia.jpg',
+      cue: [
+        { parola: 'firmata e datata',       x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'cristo crocifisso',      x: 0.55, y: 0.30, larg: 0.60 },
+        { parola: 'a sinistra san benedetto', x: 0.27, y: 0.44, larg: 0.45 },
+        { parola: 'santa scolastica',       x: 0.78, y: 0.48, larg: 0.40 },
         { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
       ]
     },
