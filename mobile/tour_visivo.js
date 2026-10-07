@@ -411,6 +411,10 @@
       padding:6px 12px; border-radius:999px; background:rgba(15,25,34,0.75); color:#F3ECDC;
       font-size:0.8rem; opacity:0; pointer-events:none; transition:opacity .5s; }
     #tour-hint.visibile { opacity:1; }
+    /* tablet: il quadro resta largo quanto la pagina e la chat (480 px), centrato */
+    @media (min-width:560px) {
+      #tour-viewer { left:50%; right:auto; width:480px; max-width:100%; transform:translateX(-50%); }
+    }
     #tour-debug { position:absolute; z-index:5; left:8px; bottom:8px; padding:5px 9px;
       border-radius:6px; background:rgba(0,0,0,0.75); color:#D4AF6A;
       font:600 0.8rem monospace; display:none; }
