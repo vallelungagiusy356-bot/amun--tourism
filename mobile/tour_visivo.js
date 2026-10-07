@@ -3,7 +3,7 @@
    La Castellana racconta un'opera e il quadro si sposta e si
    ingrandisce da solo sul dettaglio di cui sta parlando.
 
-   OPERE CON LO ZOOM GUIDATO: Sacra Famiglia (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo).
+   OPERE CON LO ZOOM GUIDATO: Sacra Famiglia (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo), le 6 opere di Santa Maria degli Angeli.
    ALTRE OPERE E TAPPE DEL CASTELLO: il quadro si apre comunque in alto e si ingrandisce con le dita. Solo italiano.
    Non modifica la chat, il backend né la knowledge base: si "aggancia"
    alla voce già esistente e riconosce l'opera dalla prima frase.
@@ -201,6 +201,80 @@
         { parola: "un putto", x: 0.46, y: 0.78, larg: 0.42 },
         { parola: "una grande croce", x: 0.78, y: 0.62, larg: 0.45 },
         { parola: "vi va di vedere", x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Santa Maria: la Madonna degli Angeli',
+      riconosci: 'opera del maestro fiorentino gregorio di lorenzo',
+      immagine: '../gallery-chiese/madonna_angeli_santamaria.jpg',
+      cue: [
+        { parola: 'altorilievo in marmo',   x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'regge il bambino',       x: 0.50, y: 0.28, larg: 0.60 },
+        { parola: 'un uomo tra le onde',    x: 0.20, y: 0.82, larg: 0.45 },
+        { parola: 'figura demoniaca',       x: 0.43, y: 0.82, larg: 0.45 },
+        { parola: 'veduta di una città',    x: 0.77, y: 0.82, larg: 0.45 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Santa Maria: la Madonna col Bambino (Gagini)',
+      riconosci: 'opera di antonello gagini',
+      immagine: '../gallery-chiese/madonna_gagini_santamaria.jpg',
+      cue: [
+        { parola: 'cappella del rosario',   x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'un panneggio',           x: 0.52, y: 0.42, larg: 0.40 },
+        { parola: 'il bambino colto',       x: 0.56, y: 0.31, larg: 0.30 },
+        { parola: 'alla base della statua', x: 0.52, y: 0.56, larg: 0.45 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Santa Maria: la Madonna Visita Poveri',
+      riconosci: 'tela a olio del pittore manierista',
+      immagine: '../gallery-chiese/madonna_visita_poveri_santamaria.jpg',
+      cue: [
+        { parola: 'tela a olio',            x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'la vergine con il bambino', x: 0.33, y: 0.37, larg: 0.45 },
+        { parola: 'in ginocchio',           x: 0.60, y: 0.58, larg: 0.45 },
+        { parola: 'cornice figurata',       x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'tondi e riquadri',       x: 0.21, y: 0.45, larg: 0.30 },
+        { parola: 'i miracoli',             x: 0.80, y: 0.35, larg: 0.30 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Santa Maria: la Levitazione di San Giuseppe da Copertino',
+      riconosci: 'aloisio rizzo',
+      immagine: '../gallery-chiese/levitazione_sangiuseppe_santamaria.jpg',
+      cue: [
+        { parola: 'cappella del ss. crocifisso', x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'raffigura',              x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'levitazione',            x: 0.43, y: 0.24, larg: 0.45 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: 'Santa Maria: la SS. Trinità con San Michele',
+      riconosci: 'antonino spatafora',
+      immagine: '../gallery-chiese/sstrinita_santamaria.jpg',
+      cue: [
+        { parola: 'registro superiore',     x: 0.52, y: 0.38, larg: 0.75 },
+        { parola: 'registro inferiore',     x: 0.50, y: 0.65, larg: 0.95 },
+        { parola: 'san michele arcangelo',  x: 0.26, y: 0.68, larg: 0.45 },
+        { parola: 'beato giovanni liccio',  x: 0.60, y: 0.68, larg: 0.45 },
+        { parola: 'andrea',                 x: 0.82, y: 0.62, larg: 0.40 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: "Santa Maria: l'Urna del Beato Giovanni Liccio",
+      riconosci: 'consacrata nella conformazione attuale',
+      immagine: '../gallery-chiese/urna_beato_santamaria.jpg',
+      cue: [
+        { parola: 'urna reliquiario',       x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'resti mortali',          x: 0.50, y: 0.66, larg: 0.28 },
+        { parola: 'figura in cera',         x: 0.50, y: 0.52, larg: 0.35 },
+        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
       ]
     },
     {
