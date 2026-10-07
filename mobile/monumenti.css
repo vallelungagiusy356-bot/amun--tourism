@@ -258,3 +258,37 @@ body {
     padding: 6px 14px 4px 14px;
     margin: 0;
 }
+/* ==========================================================================
+   TABLET (schermi da 560px in su) — la pagina resta a tutta larghezza,
+   ma bottoni e testi si ingrandiscono in modo proporzionato.
+   Sul telefono non cambia nulla.
+   ========================================================================== */
+@media (min-width: 560px) {
+    .dashboard {
+        min-height: 78px;
+        padding: 12px 24px;
+    }
+    .logo-title { font-size: 1.25rem; }
+    .btn-home { width: 40px; height: 40px; }
+    .lang-switcher button { width: 36px; height: 36px; font-size: 0.82rem; }
+
+    .scroll-content {
+        padding-top: 125px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .home-welcome-poetry h1 { font-size: 2rem; margin-bottom: 26px; }
+
+    .event-buttons {
+        max-width: 520px;
+        gap: 16px;
+    }
+    .btn-barocco {
+        padding: 18px 20px;
+        font-size: 1.15rem;
+    }
+    .map-hint {
+        font-size: 1.05rem;
+        max-width: 520px;
+    }
+}
