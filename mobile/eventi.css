@@ -361,3 +361,80 @@ body {
 .btn-home svg {
     color: var(--gold-light);
 }
+/* ==========================================================================
+   TABLET (da 560px a 899px) — stessa idea delle altre pagine: contenuti
+   più grandi e centrati, margini più stretti, footer sempre in fondo
+   ========================================================================== */
+@media screen and (min-width: 560px) and (max-width: 899px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .footer-copyright { margin-top: auto !important; }
+
+    .dashboard { min-height: 78px; }
+    .logo-title { font-size: 1.25rem; }
+    .btn-home { width: 40px; height: 40px; }
+    .lang-switcher button { width: 36px; height: 36px; font-size: 0.8rem; }
+
+    .scroll-content {
+        padding-top: 125px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .home-welcome-poetry { max-width: 640px; }
+    .home-welcome-poetry h1 { font-size: 2rem; }
+    .home-welcome-poetry p { font-size: 1.25rem; }
+
+    .event-section { max-width: 640px; margin-left: auto; margin-right: auto; }
+    .event-season-title { font-size: 1.45rem; }
+
+    .event-detail-box { padding: 20px 24px; }
+    .event-detail-box h3 { font-size: 1.2rem; }
+    .event-detail-box p { font-size: 1.15rem; line-height: 1.6; }
+
+    .programma-toggle-mobile { font-size: 1.05rem; padding: 14px; }
+    .programma-lista-mobile { max-height: 420px; }
+    .evento-data { font-size: 1.05rem; }
+    .evento-dettagli { font-size: 1.1rem; }
+    .evento-luogo { font-size: 0.95rem; }
+
+    .event-buttons { max-width: 520px; gap: 16px; }
+    .event-buttons .btn-barocco { padding: 18px 20px; font-size: 1.15rem; }
+    .desktop-tip { font-size: 1.05rem; }
+}
+
+/* ==========================================================================
+   PROGRAMMA SAGRA — giorni e luoghi dentro la lista del programma
+   ========================================================================== */
+.sagra-lista { max-height: 60vh; }
+
+.sagra-giorno {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--gold-light);
+    background: rgba(184, 135, 59, 0.18);
+    border-left: 3px solid var(--gold);
+    padding: 8px 10px;
+    margin: 14px 0 4px 0;
+}
+.sagra-giorno:first-child { margin-top: 0; }
+
+.sagra-luogo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--terracotta);
+    letter-spacing: 0.3px;
+    margin: 12px 0 2px 0;
+}
+.sagra-lista .evento-riga .evento-data { margin-right: 4px; }
+
+@media screen and (min-width: 560px) and (max-width: 899px) {
+    .sagra-giorno { font-size: 1.2rem; }
+    .sagra-luogo { font-size: 1.08rem; }
+}
