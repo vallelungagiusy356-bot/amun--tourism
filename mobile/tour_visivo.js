@@ -3,7 +3,7 @@
    La Castellana racconta un'opera e il quadro si sposta e si
    ingrandisce da solo sul dettaglio di cui sta parlando.
 
-   OPERE CON LO ZOOM GUIDATO: Sacra Famiglia (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo), le 6 opere di Santa Maria degli Angeli e le 6 opere della Badia.
+   OPERE CON LO ZOOM GUIDATO: Sacra Famiglia e San Rocco (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo), le 6 opere di Santa Maria degli Angeli, le 6 opere della Badia e le 5 opere dell'Annunziata.
    ALTRE OPERE E TAPPE DEL CASTELLO: il quadro si apre comunque in alto e si ingrandisce con le dita. Solo italiano.
    Non modifica la chat, il backend né la knowledge base: si "aggancia"
    alla voce già esistente e riconosce l'opera dalla prima frase.
@@ -33,15 +33,28 @@
       riconosci: 'pala della cappella laterale sinistra',
       immagine: '../gallery-chiese/sacra_famiglia_cappuccini.jpg',
       cue: [
-        { parola: 'pala della cappella',   x: 0.52, y: 0.47, larg: 0.90 },
-        { parola: 'azzurro del manto',      x: 0.45, y: 0.60, larg: 0.45 },
-        { parola: "mani di sant'anna",      x: 0.62, y: 0.65, larg: 0.40 },
-        { parola: 'bastone fiorito',        x: 0.24, y: 0.32, larg: 0.35 },
-        { parola: 'vecchio seduto',         x: 0.20, y: 0.64, larg: 0.38 },
-        { parola: 'bambino riccioluto',     x: 0.33, y: 0.64, larg: 0.36 },
-        { parola: 'guardate i volti',       x: 0.52, y: 0.47, larg: 0.50 },
-        { parola: 'giuseppe testa',         x: 0.52, y: 0.47, larg: 0.90 },
-        { parola: 'vi va di vedere',        x: 0.52, y: 0.47, larg: 0.90 }
+        { parola: "pala della cappella", tutto: true },
+        { parola: "azzurro del manto", x: 0.440, y: 0.620, larg: 0.40 },
+        { parola: "mani di sant'anna", x: 0.590, y: 0.640, larg: 0.36 },
+        { parola: "bastone fiorito", x: 0.360, y: 0.270, larg: 0.28 },
+        { parola: "vecchio seduto", x: 0.240, y: 0.740, larg: 0.44 },
+        { parola: "bambino riccioluto", x: 0.350, y: 0.685, larg: 0.30 },
+        { parola: "guardate i volti", x: 0.580, y: 0.480, larg: 0.55 },
+        { parola: "vi va di vedere", tutto: true }
+      ]
+    },
+    {
+      nome: 'San Rocco',
+      riconosci: "scultura in legno dipinto, opera di un maestro siciliano",
+      immagine: '../gallery-chiese/san_rocco_di_montpeiler_cappuccini.jpg',
+      cue: [
+        { parola: "san rocco si riconosce", x: 0.500, y: 0.450, larg: 0.75 },
+        { parola: "bastone del pellegrino", x: 0.330, y: 0.300, larg: 0.40 },
+        { parola: "la mantellina", x: 0.460, y: 0.340, larg: 0.30 },
+        { parola: "la piaga della peste", x: 0.620, y: 0.460, larg: 0.30 },
+        { parola: "cagnolino", x: 0.455, y: 0.760, larg: 0.30 },
+        { parola: "tozzo di pane", x: 0.500, y: 0.720, larg: 0.20 },
+        { parola: "il cane", x: 0.460, y: 0.750, larg: 0.35 }
       ]
     },
     {
@@ -114,12 +127,6 @@
       nome: 'La Porziuncola',
       riconosci: "grande tela dell'altare maggiore",
       immagine: '../gallery-chiese/pala_altare_cappuccini.jpg',
-      cue: []   // nessun movimento automatico: si ingrandisce con le dita
-    },
-    {
-      nome: 'San Rocco',
-      riconosci: 'assai cara alla nostra comunità',
-      immagine: '../gallery-chiese/san_rocco_di_montpeiler_cappuccini.jpg',
       cue: []   // nessun movimento automatico: si ingrandisce con le dita
     },
     {
@@ -346,6 +353,96 @@
         { parola: 'a sinistra san benedetto', x: 0.27, y: 0.44, larg: 0.45 },
         { parola: 'santa scolastica',       x: 0.78, y: 0.48, larg: 0.40 },
         { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+      ]
+    },
+    {
+      nome: "Annunziata: il Crocifisso e l'Addolorata",
+      riconosci: "tutto giocato sul bianco e sull'oro",
+      immagine: "../gallery-chiese/crocifisso_annunziata.jpg",
+      cue: [
+        { parola: "grande insieme scultoreo", tutto: true },
+        { parola: "il cristo crocifisso", x: 0.500, y: 0.470, larg: 0.55 },
+        { parola: "la croce scura", x: 0.500, y: 0.410, larg: 0.45 },
+        { parola: "due angioletti", x: 0.500, y: 0.500, larg: 0.75 },
+        { parola: "madonna addolorata", x: 0.500, y: 0.665, larg: 0.45 },
+        { parola: "mani giunte", x: 0.535, y: 0.650, larg: 0.22 },
+        { parola: "spada dorata", x: 0.550, y: 0.620, larg: 0.22 },
+        { parola: "piccolo angelo", x: 0.560, y: 0.700, larg: 0.22 },
+        { parola: "a sinistra una figura", x: 0.150, y: 0.590, larg: 0.33 },
+        { parola: "benda sugli occhi", x: 0.860, y: 0.590, larg: 0.33 },
+        { parola: "due angeli seduti", x: 0.500, y: 0.200, larg: 0.70 },
+        { parola: "uno con una croce", x: 0.270, y: 0.180, larg: 0.40 },
+        { parola: "dei putti", x: 0.500, y: 0.290, larg: 1.00 }
+      ]
+    },
+    {
+      nome: "Annunziata: Santa Rosalia Pellegrina",
+      riconosci: "decorata con motivi floreali",
+      immagine: "../gallery-chiese/santa_rosalia_annunziata.jpg",
+      cue: [
+        { parola: "ricca cornice", x: 0.500, y: 0.560, larg: 1.00 },
+        { parola: "una giovane donna", x: 0.500, y: 0.500, larg: 0.42 },
+        { parola: "corona di fiori", x: 0.490, y: 0.425, larg: 0.22 },
+        { parola: "braccia sono incrociate", x: 0.510, y: 0.505, larg: 0.24 },
+        { parola: "il volto", x: 0.490, y: 0.445, larg: 0.20 },
+        { parola: "manto verde oliva", x: 0.520, y: 0.580, larg: 0.34 },
+        { parola: "sandali", x: 0.520, y: 0.715, larg: 0.25 },
+        { parola: "due angeli", x: 0.500, y: 0.630, larg: 0.62 },
+        { parola: "quello a sinistra", x: 0.335, y: 0.640, larg: 0.30 },
+        { parola: "quello a destra", x: 0.670, y: 0.620, larg: 0.30 },
+        { parola: "figura della vergine", x: 0.330, y: 0.430, larg: 0.26 },
+        { parola: "sullo sfondo a destra", x: 0.680, y: 0.500, larg: 0.32 },
+        { parola: "piccola costruzione", x: 0.680, y: 0.478, larg: 0.16 }
+      ]
+    },
+    {
+      nome: "Annunziata: l'Immacolata",
+      riconosci: "statua policroma, custodita",
+      immagine: "../gallery-chiese/immacolata_annunziata.jpg",
+      cue: [
+        { parola: "statua policroma", tutto: true },
+        { parola: "velo bianco", x: 0.500, y: 0.290, larg: 0.45 },
+        { parola: "volto sereno", x: 0.500, y: 0.300, larg: 0.28 },
+        { parola: "mani sono giunte", x: 0.640, y: 0.385, larg: 0.35 },
+        { parola: "raggiera dorata", x: 0.500, y: 0.280, larg: 0.50 },
+        { parola: "veste dorata", x: 0.500, y: 0.440, larg: 0.50 },
+        { parola: "manica argentata", x: 0.530, y: 0.430, larg: 0.30 },
+        { parola: "cintura argento", x: 0.500, y: 0.457, larg: 0.35 },
+        { parola: "ampio manto blu", x: 0.450, y: 0.560, larg: 0.80 },
+        { parola: "stelle dorate", x: 0.400, y: 0.520, larg: 0.45 },
+        { parola: "i piedi poggiano", x: 0.550, y: 0.780, larg: 0.40 },
+        { parola: "quattro testine", x: 0.500, y: 0.800, larg: 0.70 }
+      ]
+    },
+    {
+      nome: "Annunziata: la Cupola e il Presbiterio",
+      riconosci: "la luce dorata di questo presbiterio",
+      immagine: "../gallery-chiese/cupola_volta_annunziata.jpg",
+      cue: [
+        { parola: "alzate lo sguardo", tutto: true },
+        { parola: "nella cupola", x: 0.510, y: 0.290, larg: 0.85 },
+        { parola: "nei pennacchi", x: 0.500, y: 0.400, larg: 1.00 },
+        { parola: "secondo le fonti", x: 0.510, y: 0.310, larg: 0.90 },
+        { parola: "lampadario di cristallo", x: 0.520, y: 0.460, larg: 0.85 },
+        { parola: "drappi rossi", x: 0.500, y: 0.760, larg: 0.70 },
+        { parola: "croce rossa", x: 0.510, y: 0.830, larg: 0.30 },
+        { parola: "statua in piedi", x: 0.500, y: 0.875, larg: 0.28 },
+        { parola: "raggiera d'oro", x: 0.510, y: 0.740, larg: 0.40 },
+        { parola: "una vetrata", x: 0.500, y: 0.680, larg: 0.30 }
+      ]
+    },
+    {
+      nome: "Annunziata: l'Organo",
+      riconosci: "trovate l'organo a canne",
+      immagine: "../gallery-chiese/organo_annunziata.jpg",
+      cue: [
+        { parola: "l'organo a canne", tutto: true },
+        { parola: "ditta schimicci", x: 0.500, y: 0.560, larg: 0.95 },
+        { parola: "cassa antica", x: 0.500, y: 0.550, larg: 0.85 },
+        { parola: "aperture a punta", x: 0.500, y: 0.500, larg: 0.42 },
+        { parola: "canne alte e argentate", x: 0.500, y: 0.580, larg: 1.00 },
+        { parola: "un drappo giallo e rosso", x: 0.500, y: 0.820, larg: 0.70 },
+        { parola: "piccola vetrata", x: 0.560, y: 0.300, larg: 0.30 }
       ]
     },
     {
