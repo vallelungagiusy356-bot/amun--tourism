@@ -632,7 +632,7 @@ body {
    ========================================================================== */
 @media (min-width: 560px) {
     .mobile-layout-detail {
-        max-width: 480px;
+        max-width: 600px;
         margin-left: auto;
         margin-right: auto;
     }
