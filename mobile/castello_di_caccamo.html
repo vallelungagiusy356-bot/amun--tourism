@@ -175,6 +175,22 @@ window.silktideConsentManager.init({
             background: rgba(184, 135, 59, 0.15); display: block;
         }
 
+        .topic-back-btn-mobile { border-style: dashed; color: var(--cst-terracotta); }
+
+        /* NUOVO — i pulsanti non si allargano più alla stessa altezza delle miniature */
+        .topic-menu-mobile { align-items: flex-start; }
+        .topic-menu-break { flex-basis: 100%; height: 0; }
+        /* NUOVO — pulsanti con miniatura (le opere d'arte) */
+        .topic-btn-mobile.topic-thumb-btn-mobile {
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            flex: 0 0 auto; width: 92px; padding: 4px 4px 6px; border-radius: 12px;
+            font-size: 0.7rem; line-height: 1.2; text-align: center;
+        }
+        .topic-thumb-btn-mobile img {
+            width: 82px; height: 82px; object-fit: cover; border-radius: 9px;
+            background: rgba(184, 135, 59, 0.15); display: block;
+        }
+
         .typing-indicator-mobile { display: flex; align-items: center; gap: 4px; width: fit-content; padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; border-left: 2px solid var(--cst-gold); }
         .typing-indicator-mobile span { width: 6px; height: 6px; border-radius: 50%; background: var(--cst-gold); display: inline-block; animation: typing-bounce-mobile 1.2s infinite ease-in-out; }
         .typing-indicator-mobile span:nth-child(2) { animation-delay: 0.2s; }
@@ -187,6 +203,20 @@ window.silktideConsentManager.init({
         .mic-btn-mobile.listening { background: var(--cst-terracotta); animation: micPulseMobile 1s ease-in-out infinite; }
         @keyframes micPulseMobile { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
         .send-btn-mobile { background: var(--cst-terracotta); }
+        /* NUOVO — pannellino per il volume della musica di sottofondo */
+        .music-panel {
+            position: fixed; top: 70px; right: 12px; z-index: 1000001;
+            background: rgba(15, 25, 34, 0.97); border: 1px solid var(--cst-gold);
+            border-radius: 12px; padding: 12px 14px; width: 220px; display: none;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.5); color: var(--cst-cream); box-sizing: border-box;
+        }
+        .music-panel.open { display: block; }
+        .music-panel label { display: block; font-size: 0.8rem; margin-bottom: 8px; }
+        .music-panel input[type="range"] { width: 100%; accent-color: var(--cst-gold); }
+        .music-panel button {
+            margin-top: 10px; width: 100%; background: transparent; color: var(--cst-cream);
+            border: 1px solid var(--cst-gold); border-radius: 8px; padding: 8px; font-size: 0.8rem; cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -196,6 +226,12 @@ window.silktideConsentManager.init({
     <audio id="bg-music" loop>
         <source src="audio/more-epic-lorem-ipsum-by-ende-dot-app.mp3" type="audio/mpeg">
     </audio>
+
+    <div class="music-panel" id="music-panel">
+        <label for="music-volume">🎵 Volume della musica</label>
+        <input type="range" id="music-volume" min="0" max="100" step="1" value="20">
+        <button id="music-pause-btn" type="button">Metti in pausa la musica</button>
+    </div>
 
     <div class="scene-background"></div>
 
@@ -433,19 +469,48 @@ window.silktideConsentManager.init({
         // si esegue subito da sola: le sue variabili (currentLang,
         // speakText, audio, ecc.) restano private e non entrano in
         // conflitto con quelle gia usate in monument_translation.js.
-        const audio = document.getElementById("bg-music"); audio.volume = 0.2;
+        // NUOVO — volume della musica regolabile, ricordato dal telefono
+        const MUSIC_VOL_KEY = "amuni_music_volume";
+        let volSalvato = parseFloat(localStorage.getItem(MUSIC_VOL_KEY));
+        if (isNaN(volSalvato) || volSalvato < 0 || volSalvato > 1) volSalvato = 0.2;
+        const audio = document.getElementById("bg-music"); audio.volume = volSalvato;
         const trigger = document.getElementById("audio-trigger");
         const toggleBtn = document.getElementById("toggle-music");
+        const musicPanel = document.getElementById("music-panel");
+        const musicSlider = document.getElementById("music-volume");
+        const musicPauseBtn = document.getElementById("music-pause-btn");
+        musicSlider.value = Math.round(volSalvato * 100);
+
+        function aggiornaIconaMusica() {
+            toggleBtn.textContent = (audio.paused || audio.volume === 0) ? "🔇" : "🔈";
+            musicPauseBtn.textContent = audio.paused ? "Riattiva la musica" : "Metti in pausa la musica";
+        }
 
         trigger.addEventListener("click", () => {
-            audio.play();
+            audio.play().catch(() => {});
             trigger.style.display = "none";
+            aggiornaIconaMusica();
         });
 
+        // Il tasto altoparlante ora apre/chiude il pannellino del volume
         toggleBtn.addEventListener("click", (e) => {
             e.stopPropagation();
-            if (audio.paused) { audio.play(); toggleBtn.textContent = "🔈"; }
-            else { audio.pause(); toggleBtn.textContent = "🔇"; }
+            musicPanel.classList.toggle("open");
+        });
+        musicPanel.addEventListener("click", (e) => e.stopPropagation());
+        document.addEventListener("click", () => musicPanel.classList.remove("open"));
+
+        musicSlider.addEventListener("input", () => {
+            const v = musicSlider.value / 100;
+            audio.volume = v;
+            try { localStorage.setItem(MUSIC_VOL_KEY, String(v)); } catch (e) {}
+            aggiornaIconaMusica();
+        });
+
+        musicPauseBtn.addEventListener("click", () => {
+            if (audio.paused) { audio.play().catch(() => {}); }
+            else { audio.pause(); }
+            aggiornaIconaMusica();
         });
 
 
@@ -458,6 +523,19 @@ window.silktideConsentManager.init({
         const MONUMENT_ID = "castello";
         let currentLang = localStorage.getItem("lang") || "it";
         let lastTopic = null; // ultimo argomento toccato, per dare contesto al router in caso di testo libero
+
+        // ============================================================
+        // NUOVO — MEMORIA DELLA CHAT
+        // La conversazione si salva nella memoria "di sessione" del
+        // telefono (sparisce da sola quando si chiude il browser).
+        // - Si RIPRISTINA solo se torni indietro da un'altra pagina.
+        // - Si AZZERA quando tocchi la X della chat (nuovi visitatori).
+        // - Si azzera anche dopo 30 minuti di inattivita.
+        // ============================================================
+        const CHAT_STATE_KEY = "amuni_chat_state_" + MONUMENT_ID;
+        const CHAT_MAX_INATTIVITA_MS = 30 * 60 * 1000;
+        let chatLog = [];                 // tutti i messaggi mostrati finora
+        let ultimaAttivitaChat = Date.now();
 
         function getStoredAccessCode() {
             const raw = localStorage.getItem(PREMIUM_STORAGE_KEY);
@@ -508,6 +586,16 @@ window.silktideConsentManager.init({
 
         function trovaVoceCastellana(langCode) {
             if (!vociDisponibili.length) vociDisponibili = window.speechSynthesis.getVoices();
+            // NUOVO — prima si cerca una voce "naturale/neurale" di buona qualita,
+            // se il telefono ne ha una; solo dopo si usano i nomi dell'elenco.
+            const baseLingua = langCode.split('-')[0];
+            const INDIZI_NATURALE = /natural|neural|online|premium|enhanced|wavenet|studio/i;
+            const vociNaturali = vociDisponibili.filter(v =>
+                ((v.lang || '').replace('_', '-') === langCode || (v.lang || '').startsWith(baseLingua)) &&
+                INDIZI_NATURALE.test(v.name) && !INDIZI_VOCE_MASCHILE.test(v.name)
+            );
+            if (vociNaturali.length) return vociNaturali[0];
+
             const nomiPreferiti = NOMI_VOCE_FEMMINILE[langCode] || [];
             for (const nome of nomiPreferiti) {
                 const voce = vociDisponibili.find(v => v.name.includes(nome));
@@ -534,13 +622,14 @@ window.silktideConsentManager.init({
         // [fiero], [orgoglioso], [giocoso], [dolce], [dramatico].
         // ============================================================
         const EMOTION_PRESETS = {
-            energico:    { rate: 1.05, pitch: 1.08 },
-            malinconico: { rate: 0.85, pitch: 0.90 },
-            fiero:       { rate: 0.95, pitch: 1.05 },
-            orgoglioso:  { rate: 0.93, pitch: 1.06 },
-            giocoso:     { rate: 1.02, pitch: 1.12 },
-            dolce:       { rate: 0.88, pitch: 0.98 },
-            dramatico:   { rate: 0.85, pitch: 0.85 }
+            // NUOVO — cambi di tono piu leggeri: meno effetto "robot"
+            energico:    { rate: 1.00, pitch: 1.03 },
+            malinconico: { rate: 0.90, pitch: 0.96 },
+            fiero:       { rate: 0.96, pitch: 1.02 },
+            orgoglioso:  { rate: 0.95, pitch: 1.02 },
+            giocoso:     { rate: 1.00, pitch: 1.05 },
+            dolce:       { rate: 0.92, pitch: 0.99 },
+            dramatico:   { rate: 0.90, pitch: 0.94 }
         };
         const EMOTION_TAG_REGEX = /\[(energico|malinconico|fiero|orgoglioso|giocoso|dolce|dramatico)\]([\s\S]*?)\[\/\1\]/gi;
 
@@ -616,16 +705,16 @@ window.silktideConsentManager.init({
                 function parlaFrase() {
                     if (indice >= frasi.length || !voiceEnabled) return;
                     const frase = frasi[indice];
-                    const preset = EMOTION_PRESETS[frase.emotion] || { rate: 0.90, pitch: 1.0 };
+                    const preset = EMOTION_PRESETS[frase.emotion] || { rate: 0.95, pitch: 1.0 };
                     const utterance = new SpeechSynthesisUtterance(frase.text);
                     utterance.voice = voce;
                     utterance.lang = langCode;
-                    utterance.rate = preset.rate + (Math.random() * 0.06 - 0.03);
-                    utterance.pitch = preset.pitch + (Math.random() * 0.08 - 0.04);
+                    utterance.rate = preset.rate + (Math.random() * 0.02 - 0.01);
+                    utterance.pitch = preset.pitch + (Math.random() * 0.02 - 0.01);
                     utterance.volume = 1.0;
                     utterance.onend = () => {
                         indice++;
-                        setTimeout(parlaFrase, 280);
+                        setTimeout(parlaFrase, 160);
                     };
                     window.speechSynthesis.speak(utterance);
                 }
@@ -768,7 +857,38 @@ window.silktideConsentManager.init({
             });
         }
 
-        function appendChatMessageMobile(text, sender, link) {
+        // NUOVO — salva la conversazione nella memoria di sessione
+        function salvaStatoChat() {
+            ultimaAttivitaChat = Date.now();
+            try {
+                sessionStorage.setItem(CHAT_STATE_KEY, JSON.stringify({
+                    ts: Date.now(),
+                    lang: currentLang,
+                    open: chatMobileBox.classList.contains('active'),
+                    log: chatLog,
+                    used: Array.from(usedTopicsMobile),
+                    lastTopic: lastTopic
+                }));
+            } catch (e) { /* memoria piena o bloccata: pazienza */ }
+        }
+
+        // NUOVO — cancella tutto e riparte da zero (nuovi visitatori)
+        function azzeraChat() {
+            try { sessionStorage.removeItem(CHAT_STATE_KEY); } catch (e) {}
+            chatLog = [];
+            usedTopicsMobile.clear();
+            lastTopic = null;
+            hasShownWelcomeMobile = false;
+            shownWelcomeLang = null;
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            if (messagesBox) messagesBox.innerHTML = '';
+            const campo = document.getElementById('chat-input-mobile');
+            if (campo) campo.value = '';
+        }
+
+        // Il quarto parametro "senzaSalvare" serve solo quando si
+        // ricostruisce una chat gia salvata.
+        function appendChatMessageMobile(text, sender, link, senzaSalvare) {
             const messagesBox = document.getElementById('chat-messages-mobile');
             if (!messagesBox) return;
 
@@ -802,14 +922,21 @@ window.silktideConsentManager.init({
                         chatMobileBox.classList.remove('active');
                         const scheda = document.querySelector('.teca-logistica');
                         if (scheda) scheda.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        salvaStatoChat();
                         return;
                     }
+                    salvaStatoChat();
                     window.location.href = resolveLinkPathMobile(link);
                 };
                 messagesBox.appendChild(btn);
             }
 
             messagesBox.scrollTop = messagesBox.scrollHeight;
+
+            if (!senzaSalvare) {
+                chatLog.push({ text: text, sender: sender, link: link || null });
+                salvaStatoChat();
+            }
         }
 
         function showTypingIndicatorMobile() {
@@ -1076,8 +1203,7 @@ window.silktideConsentManager.init({
             wrap.className = 'topic-menu-mobile topic-menu-state-mobile';
 
             let separatoreMesso = false;
-            const ordinato = menu.filter(e => !e.thumb).concat(menu.filter(e => e.thumb));
-            ordinato.forEach(entry => {
+            menu.forEach(entry => {
                 if (usedTopicsMobile.has(entry.topic)) return;
                 // NUOVO — le miniature vanno tutte insieme, sulla riga sotto i pulsanti
                 if (entry.thumb && !separatoreMesso) {
@@ -1165,8 +1291,28 @@ window.silktideConsentManager.init({
             messagesBox.scrollTop = messagesBox.scrollHeight;
         }
 
+        // NUOVO — dopo OGNI risposta (con i tasti o scrivendo a mano)
+        // decide cosa mostrare sotto:
+        //  - se il backend propone scelte "vere" (es. le zone del paese)
+        //    si mostrano quelle;
+        //  - in tutti gli altri casi, anche quando le scelte del backend
+        //    sono solo argomenti di questa chiesa, si rimostra il menu
+        //    completo CON LE MINIATURE delle opere non ancora ascoltate.
+        function mostraMenuDopoRisposta(menuDalBackend, topicId) {
+            const base = TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it;
+            const sonoArgomentiDiQuestaPagina = isOneOffOptionListMobile(menuDalBackend) &&
+                menuDalBackend.every(v => base.some(b => b.topic === v.topic));
+            if (isOneOffOptionListMobile(menuDalBackend) && !sonoArgomentiDiQuestaPagina) {
+                renderReplyOptionsMobile(menuDalBackend);
+            } else {
+                renderTopicMenuMobile(extraStepsFor(topicId).concat(base));
+            }
+        }
+
         async function sendTopicRequestMobile(topicId, label) {
             if (label) appendChatMessageMobile(label, 'user');
+            usedTopicsMobile.add(topicId);
+            salvaStatoChat();
 
             const messagesBox = document.getElementById('chat-messages-mobile');
             const old = messagesBox.querySelector('.topic-menu-state-mobile');
@@ -1180,7 +1326,7 @@ window.silktideConsentManager.init({
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         message: label,
-                        page: "castello",
+                        page: "chiese-arte",
                         lang: currentLang,
                         access_code: getStoredAccessCode() || "",
                         topic: topicId,
@@ -1194,17 +1340,14 @@ window.silktideConsentManager.init({
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
                 lastTopic = data.topic || topicId;
+                salvaStatoChat();
 
-                if (isOneOffOptionListMobile(data.menu)) {
-                    renderReplyOptionsMobile(data.menu);
-                } else {
-                    const base = TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it;
-                    renderTopicMenuMobile(extraStepsFor(topicId).concat(base));
-                }
+                mostraMenuDopoRisposta(data.menu, topicId);
             } catch (err) {
                 console.error('Errore richiesta topic:', err);
                 hideTypingIndicatorMobile();
                 appendChatMessageMobile('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+                mostraMenuDopoRisposta(null, topicId);
             }
         }
 
@@ -1213,6 +1356,7 @@ window.silktideConsentManager.init({
             if (!messagesBox) return;
             messagesBox.innerHTML = '';
             usedTopicsMobile.clear();
+            chatLog = [];
             hasShownWelcomeMobile = true;
             shownWelcomeLang = currentLang;
 
@@ -1235,7 +1379,8 @@ window.silktideConsentManager.init({
             if (!match) return false;
 
             const code = match[2].toUpperCase();
-            appendChatMessageMobile(rawMessage, 'user');
+            // NUOVO — il codice Premium non viene salvato nella memoria della chat
+            appendChatMessageMobile(rawMessage, 'user', null, true);
 
             try {
                 const res = await fetch(`${API_BASE_URL}/activate-code`, {
@@ -1262,6 +1407,29 @@ window.silktideConsentManager.init({
             return true;
         }
 
+        // NUOVO — richieste generiche tipo "voglio vedere i quadri",
+        // "le altre tele", "continuo con le opere": la pagina mostra
+        // direttamente le miniature, senza chiedere al server (che
+        // rispondeva con una sola opera a caso).
+        // Se la frase nomina un'opera precisa, la gestisce il server.
+        const RICHIESTA_OPERE_GENERICA = /\b(quadr[io]|tel[ae]|opere|dipint[io]|miniature)\b/i;
+        const NOME_OPERA_PRECISA = /(?!x)x/i;
+
+        function gestisciRichiestaOpereGenerica(text) {
+            if (currentLang !== 'it') return false;
+            if (!RICHIESTA_OPERE_GENERICA.test(text) || NOME_OPERA_PRECISA.test(text)) return false;
+
+            const base = TOPICS_MOBILE.it;
+            if (!base.some(e => e.thumb)) return false; // questa chiesa non ha schede opere
+            const rimaste = base.filter(e => e.thumb && !usedTopicsMobile.has(e.topic));
+            const risposta = rimaste.length
+                ? "Ecco le opere della chiesa: toccate la miniatura di quella che vi incuriosisce di più."
+                : "Le opere della chiesa le avete già ascoltate tutte! Volete scoprire qualcos'altro?";
+            appendChatMessageMobile(risposta, 'castellana');
+            renderTopicMenuMobile(base);
+            return true;
+        }
+
         async function sendChatMessageMobile(text) {
             if (!text.trim()) return;
 
@@ -1270,6 +1438,9 @@ window.silktideConsentManager.init({
 
             appendChatMessageMobile(text, 'user');
             castellanaZitta();
+
+            if (gestisciRichiestaOpereGenerica(text)) return;
+
             showTypingIndicatorMobile();
 
             try {
@@ -1278,7 +1449,7 @@ window.silktideConsentManager.init({
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         message: text,
-                        page: "castello",
+                        page: "chiese-arte",
                         lang: currentLang,
                         access_code: getStoredAccessCode() || "",
                         last_topic: lastTopic || "",
@@ -1296,21 +1467,23 @@ window.silktideConsentManager.init({
                 hideTypingIndicatorMobile();
                 appendChatMessageMobile(data.reply, 'castellana', data.link);
                 if (data.speak || voiceEnabled) speakText(data.reply);
-                if (data.topic) lastTopic = data.topic;
-
-                // NUOVO — scelte da fare (es. le zone) oppure, se la
-                // Castellana non ha capito, di nuovo il menu di questo
-                // monumento.
-                if (isOneOffOptionListMobile(data.menu)) {
-                    renderReplyOptionsMobile(data.menu);
-                } else if (data.menu && data.menu.length) {
-                    renderTopicMenuMobile(TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it);
+                if (data.topic) {
+                    lastTopic = data.topic;
+                    // NUOVO — quello che e stato appena raccontato non
+                    // viene riproposto nel menu
+                    usedTopicsMobile.add(data.topic);
                 }
+                salvaStatoChat();
+
+                // NUOVO — sotto la risposta compare SEMPRE il menu con le
+                // miniature (prima spariva se scrivevi a mano).
+                mostraMenuDopoRisposta(data.menu, data.topic || lastTopic);
 
             } catch (err) {
                 console.error('Errore chat:', err);
                 hideTypingIndicatorMobile();
                 appendChatMessageMobile('Al momento non riesco a risponderti — riprova tra poco.', 'castellana');
+                mostraMenuDopoRisposta(null, lastTopic);
             }
         }
 
@@ -1376,6 +1549,11 @@ window.silktideConsentManager.init({
 
         if (talkCastellanaBtnMonumento) {
             talkCastellanaBtnMonumento.addEventListener('click', () => {
+                // NUOVO — se la pagina e rimasta ferma per piu di 30 minuti
+                // senza che nessuno la usasse, si riparte da zero.
+                if (hasShownWelcomeMobile && (Date.now() - ultimaAttivitaChat) > CHAT_MAX_INATTIVITA_MS) {
+                    azzeraChat();
+                }
                 // Apre sempre la chat qui sulla pagina mobile, per tutti
                 // gli utenti (gratuiti e Premium). Chi vuole raggiungere
                 // il sito desktop ha il pulsante separato "Vai alla
@@ -1386,6 +1564,8 @@ window.silktideConsentManager.init({
                 // OPPURE se la lingua e cambiata da allora.
                 if (!hasShownWelcomeMobile || shownWelcomeLang !== currentLang) {
                     renderWelcomeMobile();
+                } else {
+                    salvaStatoChat();
                 }
             });
         }
@@ -1403,11 +1583,61 @@ window.silktideConsentManager.init({
             });
         });
 
+        // NUOVO — la X chiude la chat E cancella la conversazione:
+        // alla prossima apertura (nuovi visitatori) si riparte da zero.
         if (closeChatMobileBtn) {
             closeChatMobileBtn.addEventListener('click', () => {
                 chatMobileBox.classList.remove('active');
                 castellanaZitta();
+                azzeraChat();
             });
+        }
+
+        // ============================================================
+        // NUOVO — RIPRISTINO DELLA CHAT AL RITORNO
+        // Se esci dalla pagina (es. con un pulsante della chat) e poi
+        // torni indietro, la conversazione ricompare com'era, con la
+        // chat gia aperta. Se invece la pagina viene aperta da zero
+        // (link nuovo, ricarica), la chat riparte pulita.
+        // ============================================================
+        function tornatoIndietro() {
+            try {
+                const nav = performance.getEntriesByType('navigation')[0];
+                return !!nav && nav.type === 'back_forward';
+            } catch (e) { return false; }
+        }
+
+        function ripristinaChat() {
+            let salvato = null;
+            try { salvato = JSON.parse(sessionStorage.getItem(CHAT_STATE_KEY) || 'null'); } catch (e) {}
+
+            const valido = salvato && Array.isArray(salvato.log) && salvato.log.length &&
+                           salvato.lang === currentLang &&
+                           (Date.now() - salvato.ts) < CHAT_MAX_INATTIVITA_MS &&
+                           tornatoIndietro();
+
+            if (!valido) {
+                try { sessionStorage.removeItem(CHAT_STATE_KEY); } catch (e) {}
+                return false;
+            }
+
+            const messagesBox = document.getElementById('chat-messages-mobile');
+            messagesBox.innerHTML = '';
+            chatLog = salvato.log.slice();
+            usedTopicsMobile.clear();
+            (salvato.used || []).forEach(t => usedTopicsMobile.add(t));
+            lastTopic = salvato.lastTopic || null;
+            salvato.log.forEach(m => appendChatMessageMobile(m.text, m.sender, m.link, true));
+            hasShownWelcomeMobile = true;
+            shownWelcomeLang = currentLang;
+            renderTopicMenuMobile(TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it);
+
+            if (salvato.open) {
+                chatMobileBox.classList.add('active');
+                updatePremiumStatusDisplayMobile();
+            }
+            ultimaAttivitaChat = Date.now();
+            return true;
         }
 
         // ============================================================
@@ -1423,6 +1653,7 @@ window.silktideConsentManager.init({
             // togliamo il parametro dall'indirizzo: se si ricarica la pagina non si riapre
             history.replaceState(null, '', window.location.pathname + window.location.hash);
 
+            azzeraChat();
             chatMobileBox.classList.add('active');
             updatePremiumStatusDisplayMobile();
 
@@ -1431,7 +1662,6 @@ window.silktideConsentManager.init({
                 return;
             }
             // argomento preciso: niente benvenuto, si va dritti alla risposta
-            document.getElementById('chat-messages-mobile').innerHTML = '';
             hasShownWelcomeMobile = true;
             shownWelcomeLang = currentLang;
             const menu = TOPICS_MOBILE[currentLang] || TOPICS_MOBILE.it;
@@ -1439,7 +1669,14 @@ window.silktideConsentManager.init({
             if (voce) usedTopicsMobile.add(richiesta);
             sendTopicRequestMobile(richiesta, voce ? voce.label : '');
         }
-        apriChatDaLink();
+
+        // All'apertura della pagina: o si arriva da un rimando con
+        // ?chat=..., o si torna indietro da un'altra pagina, o si parte pulito.
+        if (new URLSearchParams(window.location.search).get('chat')) {
+            apriChatDaLink();
+        } else {
+            ripristinaChat();
+        }
       })();
     </script>
 
