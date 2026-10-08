@@ -423,8 +423,10 @@ window.silktideConsentManager.init({
             <div class="event-section">
                 <h2 class="event-season-title">🍂 <span data-i18n="citizen.food_desc">Ottobre</span></h2>
                 <div class="event-detail-box">
-                    <h3 data-i18n="events_page.sagra_title">Sagra della Salsiccia (12 Ottobre)</h3>
-                    <p data-i18n="events_page.sagra_desc">Ogni anno, il 12 ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità.</p>
+                    <h3 id="sagra-title">Sagra della Salsiccia – XVII edizione (10-11 ottobre)</h3>
+                    <p id="sagra-desc">Sabato 10 e domenica 11 ottobre 2026 i profumi della tradizione invadono il borgo: un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra musica dal vivo, spettacoli, corteo storico e convivialità.</p>
+                    <button class="programma-toggle-mobile" id="sagra-toggle-btn">📋 Vedi il programma completo</button>
+                    <div class="programma-lista-mobile sagra-lista" id="sagra-lista"></div>
                 </div>
             </div>
         </main>
@@ -1076,6 +1078,369 @@ window.silktideConsentManager.init({
                 }
             });
         });
+    </script>
+    <script>
+    /* ==========================================================
+       SAGRA DELLA SALSICCIA 2026 — programma (10-11 ottobre)
+       Tutto il contenuto della sagra sta qui: titolo, testo e
+       programma nelle 5 lingue. L'anno prossimo basta cambiare
+       i dati in questo blocco.
+       ========================================================== */
+    (function () {
+        const LANGS = ['it', 'en', 'fr', 'de', 'es'];
+        const UI = {
+            title: {
+                it: "Sagra della Salsiccia – XVII edizione (10-11 ottobre)",
+                en: "Sausage Festival – 17th edition (10–11 October)",
+                fr: "Fête de la Saucisse – 17e édition (10-11 octobre)",
+                de: "Wurstfest – 17. Ausgabe (10.–11. Oktober)",
+                es: "Fiesta de la Salchicha – 17.ª edición (10-11 de octubre)"
+            },
+            desc: {
+                it: "Sabato 10 e domenica 11 ottobre 2026 i profumi della tradizione invadono il borgo: un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra musica dal vivo, spettacoli, corteo storico e convivialità.",
+                en: "On Saturday 10 and Sunday 11 October 2026 the scents of tradition fill the village: an unmissable food event to taste authentic local sausage, with live music, shows, a historical parade and good company.",
+                fr: "Le samedi 10 et le dimanche 11 octobre 2026, les parfums de la tradition envahissent le village : un rendez-vous gastronomique incontournable pour goûter l'authentique saucisse locale, entre musique live, spectacles, cortège historique et convivialité.",
+                de: "Am Samstag, 10., und Sonntag, 11. Oktober 2026, erfüllen die Düfte der Tradition das Dorf: ein kulinarisches Highlight, um die echte lokale Wurst zu probieren – mit Livemusik, Shows, historischem Umzug und Geselligkeit.",
+                es: "El sábado 10 y el domingo 11 de octubre de 2026 los aromas de la tradición invaden el pueblo: una cita gastronómica imprescindible para probar la auténtica salchicha local, entre música en directo, espectáculos, cortejo histórico y convivencia."
+            },
+            show: {
+                it: "📋 Vedi il programma completo",
+                en: "📋 See the full programme",
+                fr: "📋 Voir le programme complet",
+                de: "📋 Das ganze Programm ansehen",
+                es: "📋 Ver el programa completo"
+            },
+            hide: {
+                it: "✕ Chiudi il programma",
+                en: "✕ Close the programme",
+                fr: "✕ Fermer le programme",
+                de: "✕ Programm schließen",
+                es: "✕ Cerrar el programa"
+            },
+            from: { it: "dalle", en: "from", fr: "dès", de: "ab", es: "desde" },
+            to: { it: "alle", en: "to", fr: "à", de: "bis", es: "hasta" },
+            sat: {
+                it: "Sabato 10 ottobre – dalle 18:00",
+                en: "Saturday 10 October – from 6 pm",
+                fr: "Samedi 10 octobre – dès 18h",
+                de: "Samstag, 10. Oktober – ab 18 Uhr",
+                es: "Sábado 10 de octubre – desde las 18:00"
+            },
+            sun: {
+                it: "Domenica 11 ottobre – dalle 10:00",
+                en: "Sunday 11 October – from 10 am",
+                fr: "Dimanche 11 octobre – dès 10h",
+                de: "Sonntag, 11. Oktober – ab 10 Uhr",
+                es: "Domingo 11 de octubre – desde las 10:00"
+            },
+            castle: {
+                it: "Domenica al Castello",
+                en: "Sunday at the Castle",
+                fr: "Dimanche au Château",
+                de: "Sonntag auf der Burg",
+                es: "Domingo en el Castillo"
+            },
+            visits: {
+                it: "Aperture e visite",
+                en: "Opening hours and visits",
+                fr: "Horaires et visites",
+                de: "Öffnungszeiten und Führungen",
+                es: "Horarios y visitas"
+            },
+            site: {
+                it: "Programma ufficiale:",
+                en: "Official programme:",
+                fr: "Programme officiel :",
+                de: "Offizielles Programm:",
+                es: "Programa oficial:"
+            }
+        };
+
+        // Frasi descrittive (i nomi di artisti e gruppi non si traducono)
+        const T = {
+            inaug: {
+                it: "Inaugurazione della XVII edizione con il Sindaco di Caccamo Franco Fiore, l'Assessore Regionale alle Attività Produttive Edy Tamajo e le autorità civili e militari. Presenta Vincenzo Canzone",
+                en: "Opening of the 17th edition with the Mayor of Caccamo Franco Fiore, the Regional Councillor for Productive Activities Edy Tamajo and the civil and military authorities. Hosted by Vincenzo Canzone",
+                fr: "Inauguration de la 17e édition en présence du maire de Caccamo Franco Fiore, de l'assesseur régional aux Activités productives Edy Tamajo et des autorités civiles et militaires. Présente Vincenzo Canzone",
+                de: "Eröffnung der 17. Ausgabe mit dem Bürgermeister von Caccamo Franco Fiore, dem Regionalassessor für Produktive Tätigkeiten Edy Tamajo und den zivilen und militärischen Behörden. Moderation: Vincenzo Canzone",
+                es: "Inauguración de la 17.ª edición con el alcalde de Caccamo Franco Fiore, el consejero regional de Actividades Productivas Edy Tamajo y las autoridades civiles y militares. Presenta Vincenzo Canzone"
+            },
+            banda: {
+                it: "Sfilata per le vie del paese del Complesso Bandistico Città di Caccamo",
+                en: "Parade through the streets of the village by the Città di Caccamo band",
+                fr: "Défilé dans les rues du village de l'ensemble musical Città di Caccamo",
+                de: "Umzug durch die Straßen des Dorfes mit der Blaskapelle Città di Caccamo",
+                es: "Desfile por las calles del pueblo de la banda Città di Caccamo"
+            },
+            djanim: {
+                it: "DJ set e animazione a cura di Gea Master Music con Davide Capitano e Ronny Sax",
+                en: "DJ set and entertainment by Gea Master Music with Davide Capitano and Ronny Sax",
+                fr: "DJ set et animation par Gea Master Music avec Davide Capitano et Ronny Sax",
+                de: "DJ-Set und Animation von Gea Master Music mit Davide Capitano und Ronny Sax",
+                es: "DJ set y animación a cargo de Gea Master Music con Davide Capitano y Ronny Sax"
+            },
+            cabaret: {
+                it: "“I 4 Gusti” – Spettacolo di cabaret",
+                en: "“I 4 Gusti” – Cabaret show",
+                fr: "« I 4 Gusti » – Spectacle de cabaret",
+                de: "„I 4 Gusti“ – Kabarettshow",
+                es: "«I 4 Gusti» – Espectáculo de cabaret"
+            },
+            corteo: {
+                it: "Partenza del Corteo storico “La Castellana di Caccamo” con le Damigelle d'Onore, i Tamburinari famiglia Catanese e i Trombettieri “Città di Caccamo”",
+                en: "Departure of the historical parade “La Castellana di Caccamo” with the Maids of Honour, the Catanese family drummers and the “Città di Caccamo” trumpeters",
+                fr: "Départ du cortège historique « La Castellana di Caccamo » avec les demoiselles d'honneur, les tambours de la famille Catanese et les trompettistes « Città di Caccamo »",
+                de: "Start des historischen Umzugs „La Castellana di Caccamo“ mit den Ehrendamen, den Trommlern der Familie Catanese und den Trompetern „Città di Caccamo“",
+                es: "Salida del cortejo histórico «La Castellana di Caccamo» con las damas de honor, los tamborileros de la familia Catanese y los trompeteros «Città di Caccamo»"
+            },
+            animmus: {
+                it: "Animazione e musica con Peppuccio Pampinella",
+                en: "Entertainment and music with Peppuccio Pampinella",
+                fr: "Animation et musique avec Peppuccio Pampinella",
+                de: "Animation und Musik mit Peppuccio Pampinella",
+                es: "Animación y música con Peppuccio Pampinella"
+            },
+            luna: {
+                it: "Clown Simpaticoni presentano “Il piccolo Luna Park”: zucchero filato, pop corn, palloncini, gadget, musica e animazione per bambini",
+                en: "Clown Simpaticoni present “The Little Luna Park”: candy floss, popcorn, balloons, gadgets, music and entertainment for children",
+                fr: "Les clowns Simpaticoni présentent « Le petit Luna Park » : barbe à papa, pop-corn, ballons, gadgets, musique et animation pour les enfants",
+                de: "Die Clowns Simpaticoni präsentieren „Der kleine Luna Park“: Zuckerwatte, Popcorn, Luftballons, Gadgets, Musik und Animation für Kinder",
+                es: "Los payasos Simpaticoni presentan «El pequeño Luna Park»: algodón de azúcar, palomitas, globos, regalos, música y animación para niños"
+            },
+            giochi: {
+                it: "Musica, animazione e giochi della tradizione popolare",
+                en: "Music, entertainment and traditional folk games",
+                fr: "Musique, animation et jeux de la tradition populaire",
+                de: "Musik, Animation und traditionelle Volksspiele",
+                es: "Música, animación y juegos de la tradición popular"
+            },
+            fanta: {
+                it: "Salvatore Rosso presenta “Fantazampa Oooh My Dogs”",
+                en: "Salvatore Rosso presents “Fantazampa Oooh My Dogs”",
+                fr: "Salvatore Rosso présente « Fantazampa Oooh My Dogs »",
+                de: "Salvatore Rosso präsentiert „Fantazampa Oooh My Dogs“",
+                es: "Salvatore Rosso presenta «Fantazampa Oooh My Dogs»"
+            },
+            cooking: {
+                it: "Show cooking a cura dell'Istituto Alberghiero M. Geraci",
+                en: "Cooking show by the M. Geraci Hotel Management School",
+                fr: "Show cooking de l'Institut hôtelier M. Geraci",
+                de: "Showkochen der Hotelfachschule M. Geraci",
+                es: "Show cooking a cargo del Instituto Hotelero M. Geraci"
+            },
+            accoglienza: {
+                it: "Accoglienza della Castellana e delle Damigelle d'onore nell'Atrio e Sala Amato, con animazione musicale del prof. Giovanni Panzeca",
+                en: "Welcome by the Castellana and the Maids of Honour in the Atrium and Sala Amato, with musical entertainment by Prof. Giovanni Panzeca",
+                fr: "Accueil par la Castellana et les demoiselles d'honneur dans l'atrium et la Sala Amato, avec animation musicale du prof. Giovanni Panzeca",
+                de: "Empfang durch die Castellana und die Ehrendamen im Atrium und in der Sala Amato, mit musikalischer Unterhaltung von Prof. Giovanni Panzeca",
+                es: "Recibimiento de la Castellana y las damas de honor en el atrio y la Sala Amato, con animación musical del prof. Giovanni Panzeca"
+            },
+            leggenda: {
+                it: "“La Leggenda di Matteo Bonello” raccontata da Dario Spatafora",
+                en: "“The Legend of Matteo Bonello” told by Dario Spatafora",
+                fr: "« La Légende de Matteo Bonello » racontée par Dario Spatafora",
+                de: "„Die Legende von Matteo Bonello“, erzählt von Dario Spatafora",
+                es: "«La leyenda de Matteo Bonello» contada por Dario Spatafora"
+            },
+            origini: {
+                it: "“Caccamo, il Castello, le Origini” con la narrazione di Mimmo Rizzo, nel Terrazzo “Bellavista”",
+                en: "“Caccamo, the Castle, the Origins” narrated by Mimmo Rizzo on the “Bellavista” Terrace",
+                fr: "« Caccamo, le Château, les Origines » avec la narration de Mimmo Rizzo, sur la terrasse « Bellavista »",
+                de: "„Caccamo, die Burg, die Ursprünge“ – erzählt von Mimmo Rizzo auf der Terrasse „Bellavista“",
+                es: "«Caccamo, el Castillo, los Orígenes» con la narración de Mimmo Rizzo, en la terraza «Bellavista»"
+            },
+            sottovoce: {
+                it: "“SottoVoce” – Jazz standards & more. Voce Giovanna Savarino, chitarra Benny Galeazzo",
+                en: "“SottoVoce” – Jazz standards & more. Vocals Giovanna Savarino, guitar Benny Galeazzo",
+                fr: "« SottoVoce » – Jazz standards & more. Voix Giovanna Savarino, guitare Benny Galeazzo",
+                de: "„SottoVoce“ – Jazz Standards & more. Gesang Giovanna Savarino, Gitarre Benny Galeazzo",
+                es: "«SottoVoce» – Jazz standards & more. Voz Giovanna Savarino, guitarra Benny Galeazzo"
+            },
+            geraci: {
+                it: "In collaborazione con l'Istituto Alberghiero M. Geraci",
+                en: "In collaboration with the M. Geraci Hotel Management School",
+                fr: "En collaboration avec l'Institut hôtelier M. Geraci",
+                de: "In Zusammenarbeit mit der Hotelfachschule M. Geraci",
+                es: "En colaboración con el Instituto Hotelero M. Geraci"
+            },
+            castello_sab: {
+                it: "Castello Medievale: 9:00–12:30 e 15:00–21:00",
+                en: "Medieval Castle: 9:00–12:30 and 15:00–21:00",
+                fr: "Château médiéval : 9h00–12h30 et 15h00–21h00",
+                de: "Mittelalterliche Burg: 9:00–12:30 und 15:00–21:00 Uhr",
+                es: "Castillo medieval: 9:00–12:30 y 15:00–21:00"
+            },
+            duomo: {
+                it: "Da visitare anche: il Duomo",
+                en: "Also worth visiting: the Cathedral",
+                fr: "À visiter aussi : la cathédrale",
+                de: "Ebenfalls sehenswert: der Dom",
+                es: "También para visitar: la catedral"
+            },
+            castello_dom: {
+                it: "Castello Medievale: 10:00–21:00 (ingresso a pagamento)",
+                en: "Medieval Castle: 10:00–21:00 (paid admission)",
+                fr: "Château médiéval : 10h00–21h00 (entrée payante)",
+                de: "Mittelalterliche Burg: 10:00–21:00 Uhr (kostenpflichtiger Eintritt)",
+                es: "Castillo medieval: 10:00–21:00 (entrada de pago)"
+            },
+            badia: {
+                it: "Chiesa di S. Benedetto alla Badia: 9:00–14:00 (ingresso a pagamento)",
+                en: "Church of S. Benedetto alla Badia: 9:00–14:00 (paid admission)",
+                fr: "Église S. Benedetto alla Badia : 9h00–14h00 (entrée payante)",
+                de: "Kirche S. Benedetto alla Badia: 9:00–14:00 Uhr (kostenpflichtiger Eintritt)",
+                es: "Iglesia de S. Benedetto alla Badia: 9:00–14:00 (entrada de pago)"
+            },
+            catacombe: {
+                it: "Chiesa Anime Sante del Purgatorio e Catacombe (visite guidate): 10:00–19:00",
+                en: "Church of the Holy Souls in Purgatory and Catacombs (guided tours): 10:00–19:00",
+                fr: "Église des Âmes saintes du Purgatoire et catacombes (visites guidées) : 10h00–19h00",
+                de: "Kirche der Heiligen Seelen im Fegefeuer und Katakomben (Führungen): 10:00–19:00 Uhr",
+                es: "Iglesia de las Almas Santas del Purgatorio y catacumbas (visitas guiadas): 10:00–19:00"
+            }
+        };
+
+        // Programma. t = orario; f = "dalle..." ; x = testo fisso (nomi) oppure k = frase tradotta
+        const DAYS = [
+            { id: 'sat', groups: [
+                { p: "Via Termitana", rows: [
+                    { t: "18:00", k: "banda" },
+                    { t: "18:30", k: "inaug" },
+                    { t: "19:00", x: "Dj Set – DJ AR3M e Corrado Spisa" },
+                    { t: "21:30", x: "AREA 51 – Live Band" },
+                    { t: "23:00", x: "Dj Set – Corrado Spisa" }
+                ]},
+                { p: "Largo Pietro Spica", rows: [
+                    { t: "19:00", k: "djanim" }
+                ]},
+                { p: "Porta Euracea", rows: [
+                    { t: "19:00", x: "Aperisasizza con Luca Scimeca & Angel Sax" },
+                    { t: "21:00", x: "Giacomo Tantillo & The Zisas – Bandistikamente" },
+                    { t: "22:30", k: "cabaret" }
+                ]},
+                { p: "Piazza Torina", rows: [
+                    { t: "19:00", f: 1, x: "Giusy & Francesco – Live Music" },
+                    { t: "22:00", x: "Gabriel (from Spin Rockets)" }
+                ]},
+                { p: "Via del Carmine", rows: [
+                    { t: "19:00", f: 1, x: "Duo Live – Angela & Francesco" }
+                ]},
+                { p: "Piazza SS. Annunziata", rows: [
+                    { t: "18:30", x: "Bellini Radio Live" },
+                    { t: "22:30", x: "Adabell Live Duo" }
+                ]}
+            ], info: ["castello_sab", "catacombe"] },
+            { id: 'sun', groups: [
+                { p: "Via Termitana", rows: [
+                    { t: "11:00", x: "Trio Live (Serena, Giuseppe e Ronny Sax)" },
+                    { t: "14:00", x: "DJ Set – Luca Scimeca" },
+                    { t: "17:00", x: "Io e il Maestro (Enzo Valenti DJ & Nino Scorsone)" },
+                    { t: "19:00", x: "Italian Music Live (Miko, E. Valenti, Ronny Sax)" }
+                ]},
+                { p: "Largo Pietro Spica", rows: [
+                    { t: "11:00", x: "Giorgio Saso, Ezio La Rosa e Giacomo Gattuccio – Live Music" },
+                    { t: "14:00", x: "Io e il Maestro (Enzo Valenti DJ & Nino Scorsone)" },
+                    { t: "17:00", x: "Akustika (Adriana e Salvo)" },
+                    { t: "19:00", x: "Vibrae" }
+                ]},
+                { p: "Piazza Torina", rows: [
+                    { t: "11:00", f: 1, x: "SSS Iannelli Show" },
+                    { t: "15:00", x: "R. Castelluzzo & Lorant – Live Two" },
+                    { t: "17:00", x: "SSS Iannelli Show" }
+                ]},
+                { p: "Porta Euracea", rows: [
+                    { t: "11:00", f: 1, x: "“Radio 90” – Gialled & Dj Francesco Crispo" },
+                    { t: "12:00 · 18:00", k: "cooking" },
+                    { t: "15:00", x: "“Radio Latina” – SSS Iannelli Show" },
+                    { t: "17:00", x: "“Radio Freccia” – Peppuccio Pampinella" },
+                    { t: "19:00", x: "I Nodi – Live band" }
+                ]},
+                { p: "Via del Carmine", rows: [
+                    { t: "10:00", k: "corteo" },
+                    { t: "11:00", f: 1, k: "animmus" },
+                    { t: "11:00 – 18:00", k: "luna" },
+                    { t: "11:00 · 12:00 · 13:00 · 15:00 · 16:00 · 17:00", k: "giochi" },
+                    { t: "14:00 · 17:00", k: "fanta" },
+                    { t: "17:00", x: "Free Pop – Live Music" }
+                ]},
+                { p: "Piazza SS. Annunziata", rows: [
+                    { t: "13:00", x: "Latina-Flores – live band" },
+                    { t: "18:30", x: "Idea 77 – Vasco Tribute Band" },
+                    { t: "21:00", f: 1, x: "The Sagra's Closing – Dj AR3M" }
+                ]},
+                { pk: "castle", rows: [
+                    { t: "11:30", f: 1, k: "accoglienza" },
+                    { t: "12:00", k: "leggenda" },
+                    { t: "12:30 · 17:00", k: "sottovoce" },
+                    { t: "13:00", f: 1, k: "origini" },
+                    { t: "", k: "geraci" }
+                ]}
+            ], info: ["castello_dom", "badia", "catacombe"] }
+        ];
+
+        function esc(s) {
+            return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        function currentLang() {
+            const l = localStorage.getItem('linguaSelezionata') || 'it';
+            return LANGS.indexOf(l) >= 0 ? l : 'it';
+        }
+
+        function renderSagra(lang) {
+            const titleEl = document.getElementById('sagra-title');
+            const descEl = document.getElementById('sagra-desc');
+            const btn = document.getElementById('sagra-toggle-btn');
+            const list = document.getElementById('sagra-lista');
+            if (!titleEl || !list) return;
+
+            titleEl.textContent = UI.title[lang];
+            descEl.textContent = UI.desc[lang];
+            btn.textContent = list.classList.contains('aperto') ? UI.hide[lang] : UI.show[lang];
+
+            let html = '';
+            DAYS.forEach(function (day) {
+                html += '<div class="sagra-giorno">' + esc(UI[day.id][lang]) + '</div>';
+                day.groups.forEach(function (g) {
+                    const nome = g.pk ? UI[g.pk][lang] : g.p;
+                    html += '<div class="sagra-luogo">' + (g.pk ? '🏰 ' : '📍 ') + esc(nome) + '</div>';
+                    g.rows.forEach(function (r) {
+                        const testo = r.k ? T[r.k][lang] : r.x;
+                        const ora = r.t ? ((r.f ? UI.from[lang] + ' ' : '') + r.t) : '';
+                        html += '<div class="evento-riga">' +
+                            (ora ? '<span class="evento-data">' + esc(ora) + '</span> ' : '') +
+                            '<span class="evento-dettagli">' + esc(testo) + '</span></div>';
+                    });
+                });
+                html += '<div class="sagra-luogo">ℹ️ ' + esc(UI.visits[lang]) + '</div>';
+                day.info.forEach(function (k) {
+                    html += '<div class="evento-riga"><span class="evento-dettagli">' + esc(T[k][lang]) + '</span></div>';
+                });
+            });
+            html += '<div class="evento-riga"><span class="evento-luogo">' + esc(UI.site[lang]) +
+                ' www.sagrasalsicciacaccamo.altervista.org</span></div>';
+            list.innerHTML = html;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const btn = document.getElementById('sagra-toggle-btn');
+            const list = document.getElementById('sagra-lista');
+            renderSagra(currentLang());
+
+            if (btn && list) {
+                btn.addEventListener('click', function () {
+                    list.classList.toggle('aperto');
+                    btn.textContent = list.classList.contains('aperto') ? UI.hide[currentLang()] : UI.show[currentLang()];
+                });
+            }
+            // cambio lingua: la pagina salva la lingua e poi traduce; noi ci ridisegniamo subito dopo
+            document.querySelectorAll('.lang-switcher button').forEach(function (b) {
+                b.addEventListener('click', function () {
+                    setTimeout(function () { renderSagra(b.getAttribute('data-lang')); }, 0);
+                });
+            });
+        });
+    })();
     </script>
     <script src="../news-badge.js"></script>
 
