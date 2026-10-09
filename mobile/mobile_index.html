@@ -819,6 +819,7 @@ window.silktideConsentManager.init({
                 voiceEnabled = !voiceEnabled;
                 localStorage.setItem(VOICE_PREF_KEY, voiceEnabled ? "on" : "off");
                 updateVoiceToggleIconMobile();
+                if (!voiceEnabled) fermaClip();
                 if (!voiceEnabled && "speechSynthesis" in window) window.speechSynthesis.cancel();
             });
         }
@@ -828,7 +829,70 @@ window.silktideConsentManager.init({
             return map[lang] || "it-IT";
         }
 
+        // ============================================================
+        // VOCE REGISTRATA DELLA CASTELLANA (prova)
+        // Se esiste il file audio del saluto, si ascolta quello; se manca
+        // o non si carica, parla la voce del telefono come prima.
+        // I file stanno in ../voce-castellana/ (uno per lingua).
+        // ============================================================
+        const CLIP_BASE = "../voce-castellana/";
+        const CLIP_PREFIX = "mobile";
+        let clipCorrente = null;
+        let clipToken = 0;
+
+        function trovaNomeClip(text) {
+            let k = null;
+            try { k = HOME_KNOWLEDGE_MOBILE[currentLang]; } catch (e) { k = null; }
+            if (!k) return null;
+            const nomi = { welcome: "welcome", closing: "closing", followUp: "followup" };
+            for (const campo in nomi) {
+                if (k[campo] && k[campo] === text) return nomi[campo];
+            }
+            return null;
+        }
+
+        function fermaClip() {
+            clipToken++;
+            if (clipCorrente) {
+                try { clipCorrente.pause(); } catch (e) {}
+                clipCorrente = null;
+            }
+        }
+
         function speakText(text) {
+            if (!voiceEnabled || !text) return;
+            const nome = trovaNomeClip(text);
+            if (nome) {
+                fermaClip();
+                if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+                const mio = clipToken;
+                const estensioni = ["mp3", "m4a"];
+                const base = CLIP_BASE + CLIP_PREFIX + "_" + nome + "_" + currentLang + ".";
+                const provaEstensione = (i) => {
+                    if (mio !== clipToken) return;
+                    if (i >= estensioni.length) {
+                        clipCorrente = null;
+                        parlaConVoceTelefono(text);
+                        return;
+                    }
+                    const audioClip = new Audio(base + estensioni[i]);
+                    clipCorrente = audioClip;
+                    let giaGestito = false;
+                    const prossimo = () => {
+                        if (giaGestito) return;
+                        giaGestito = true;
+                        provaEstensione(i + 1);
+                    };
+                    audioClip.addEventListener("error", prossimo);
+                    audioClip.play().catch(prossimo);
+                };
+                provaEstensione(0);
+                return;
+            }
+            parlaConVoceTelefono(text);
+        }
+
+        function parlaConVoceTelefono(text) {
             if (!voiceEnabled || !text || !("speechSynthesis" in window)) return;
             window.speechSynthesis.cancel();
             setTimeout(() => {
@@ -844,6 +908,7 @@ window.silktideConsentManager.init({
         }
 
         function castellanaZitta() {
+            fermaClip();
             if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         }
 
