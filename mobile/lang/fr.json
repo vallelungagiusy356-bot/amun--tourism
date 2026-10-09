@@ -165,7 +165,7 @@
       },
       "badia": {
         "title": "Église San Benedetto alla Badia",
-        "description": "Derrière sa façade sobre, l'église abrite l'un des sols en majolique les plus précieux de Sicile : 5 555 carreaux peints à la main au XVIIIe siècle, avec au centre un voilier luttant contre une mer déchaînée — symbole de l'Église contre les forces du mal. Les habitants l'appellent encore aujourd'hui « l'église-salon », pour la richesse de ses stucs et de ses incrustations dorées. Beaucoup de visiteurs choisissent de la parcourir pieds nus, par respect et pour en apprécier chaque détail.",
+        "description": "Derrière sa façade sobre, l'église abrite l'un des sols en majolique les plus précieux de Sicile : 5 555 carreaux peints à la main au XVIIIe siècle, avec au centre un voilier luttant contre une mer déchaînée — symbole de l'Église contre les forces du mal. Les habitants l'appellent encore aujourd'hui « l'église-salon », pour la richesse de ses stucs et de ses incrustations dorées. Pour protéger le sol, la visite se fait en suivant la passerelle, d'où l'on peut admirer chaque détail.",
         "hours": "Du mardi au dimanche, le matin : 08h00 – 13h00.",
         "tickets": "Plein tarif 2,00 € | Tarif réduit 1,00 € (jeunes UE 18-25 ans ou avec billet du Château le même jour) | Gratuit pour les moins de 18 ans"
       },
@@ -216,7 +216,7 @@
       },
       "annunziata": {
         "title": "Paroisse SS. Annunziata",
-        "description": "Ses origines remontent au XIIIe siècle, ce qui en fait l'une des plus anciennes de Caccamo. Elle conserve une grande toile de Guglielmo Borremans, l'Annonciation, ainsi que des stucs de l'école de Serpotta. Au XVIIIe siècle, elle abritait également un sol en majolique peint par le maître Nicolò Sarzana — le même artisan qui réalisa ensuite le célèbre sol de la Badia, non loin de là. Chaque printemps, l'église s'anime pour la fête de San Giuseppe, l'une des traditions les plus vivantes du bourg.",
+        "description": "L'église fut construite entre la fin du XIVe et le début du XVe siècle, puis agrandie en 1643, lorsqu'elle prit la forme d'une croix latine à trois nefs. La coupole octogonale date de 1762, tandis que les fresques des voûtes sont de Gianbecchina, de 1952. Selon la tradition, le clocher était une tour médiévale par la suite transformée. Sur la tribune se trouve un orgue à tuyaux de 1934, dans un ancien buffet en bois doré et sculpté.",
         "hours": "Horaires d'été en semaine : Sainte Messe à 18h00 (au mois d'août à 19h00). Dimanches et jours fériés : Saintes Messes à 09h30, 12h00 et 19h00.",
         "fiera_agosto_tag": "🎉 Foire d'Août 2026",
         "fiera_agosto_title": "Célébrations en l'honneur de Saint Nicaise Martyr",
@@ -234,13 +234,14 @@
       },
       "cappuccini": {
         "title": "Couvent des Frères Capucins",
-        "description": "Les frères Capucins arrivèrent ici en 1589, apportant avec eux le style sobre et silencieux qui a toujours caractérisé leur ordre. C'est l'un des derniers couvents encore habités de toute la Sicile occidentale : aujourd'hui comme hier, les frères vivent de prière, de travail manuel et d'accueil des pèlerins. Ses murs racontent près de deux siècles d'histoire, bien avant l'Unité d'Italie.",
+        "description": "Les frères Capucins arrivèrent ici en 1589, apportant avec eux le style sobre et silencieux qui a toujours caractérisé leur ordre. C'est l'un des derniers couvents encore habités de toute la Sicile occidentale : aujourd'hui comme hier, les frères vivent de prière, de travail manuel et d'accueil des pèlerins. Ses murs racontent près de trois siècles d'histoire, bien avant l'Unité d'Italie.",
         "hours": "Accessible principalement avant ou après les offices. Ouvert tous les jours de 16h00 à 20h00.",
         "secret_info": "💡 Les Joyaux Cachés de Caccamo : le bourg compte pas moins de 33 églises. Utilisez la carte de Din Don Dan et zoomez sur Caccamo pour découvrir les horaires et ouvertures en temps réel de trésors moins connus et d'autres petits chefs-d'œuvre disséminés dans le village. Du 1er au 15 août, le couvent accueillera la « quindicina », neuvaine de quinze jours en l'honneur de Notre-Dame de l'Assomption. Saint Rosaire à 18h00, Coroncina à 18h30, Sainte Messe à 19h00."
       },
       "cappuccini_gallery": {
         "pala_altare": "Retable d'autel",
-        "sacra_famiglia": "Sainte Famille",
+        "sacra_famiglia": "La Visite de Sainte Élisabeth à la Vierge",
+        "gloria_angeli": "La Gloire des Anges",
         "crocifisso": "Crucifix",
         "madonna_di_lourdes": "Notre-Dame de Lourdes",
         "san_rocco": "Saint Roch de Montpellier"
@@ -254,9 +255,6 @@
         "caption_catacombe": "Les catacombes",
         "caption_altare": "L'autel",
         "events_button": "🌿 Association Vivere è Pensare →",
-        "event_title": "🕯️ Fête de la Confrérie",
-        "event_date": "Samedi 16 août – 18h30 – Sous les étoiles de la Confrérie",
-        "event_text": "Une soirée organisée par la Confrérie des Âmes Saintes du Purgatoire, ouverte à toute la communauté de Caccamo, se déroulant à l'extérieur et à l'intérieur de l'église. Elle s'ouvre avec le concert de Renato Filippello et d'une violoniste, suivi d'un moment dédié aux enfants et d'un rosaire sous les étoiles. La soirée se termine par un moment de convivialité avec du pain, de l'huile et du vin. Durée prévue : environ deux heures à deux heures et demie.",
         "confraternita_text": "La confrérie des Âmes Saintes du Purgatoire consacre du temps et des ressources à cette église : nous apprécions leur travail de bénévolat et leur persévérance. La collaboration de la confrérie avec l'association Vivere è Pensare est pensée pour l'organisation d'événements directement dans le monument, afin de vous faire apprécier sa beauté à 360 degrés."
       }
     },
@@ -272,11 +270,6 @@
       "activity_5": "Le Prix \"Vivere è Pensare\" - Che cielo, che stelle!, qui récompense chaque année des histoires, des personnes et des réalités du territoire",
       "closing": "Suivez-les pour découvrir les prochains événements !",
       "btn_instagram": "Suivez-les sur Instagram",
-      "events_title": "🎉 Événements d'Août",
-      "event1_date": "📖 Jeudi 6 août – 19h00",
-      "event1_text": "Le Professeur Battistella récite les vers du Purgatoire de la Divine Comédie, à l'intérieur de l'église des Âmes Saintes du Purgatoire. Une heure de lecture et de poésie, organisée par l'Association Vivere è Pensare avec la collaboration de la GeA et de la Confrérie des Âmes Saintes du Purgatoire, sous le patronage de la Commune de Caccamo. Le Maire et d'autres représentants institutionnels seront présents. Entrée libre. La violoniste Giada Calderone se produira également pendant la soirée. L'affiche de l'événement est consultable sur les pages sociales des organisateurs.",
-      "event2_date": "🕯️ Samedi 16 août – 18h30 – Sous les étoiles de la Confrérie",
-      "event2_text": "Une soirée organisée par la Confrérie des Âmes Saintes du Purgatoire, ouverte à toute la communauté de Caccamo, devant et à l'intérieur de l'église. Elle s'ouvre avec le concert de Renato Filippello et de la violoniste Giada Calderone, suivi d'un moment dédié aux enfants et d'un rosaire sous les étoiles. La soirée se termine par un moment de convivialité autour de pain, d'huile et de vin. Durée prévue : environ deux heures à deux heures et demie. L'affiche de l'événement est consultable sur les pages sociales des organisateurs.",
       "btn_facebook": "Suivez-les sur Facebook"
     }
   },
@@ -324,7 +317,7 @@
     "nicasio_title": "Fête de Saint Nicasio et le Palio",
     "nicasio_desc": "Célébrations animées en l'honneur du Saint, enrichies par le Palio de la ville, très attendu et palpitant, qui suscite le défi et l'enthousiasme des petits et des grands.",
     "sagra_title": "Fête de la Saucisse",
-    "sagra_desc": "Chaque année, le deuxième dimanche d'octobre, les parfums de la tradition envahissent le bourg. Un rendez-vous gastronomique à ne pas manquer pour déguster l'authentique saucisse locale, entre chants, vin et convivialité.",
+    "sagra_desc": "Chaque année en octobre, les parfums de la tradition envahissent le bourg. Un rendez-vous gastronomique à ne pas manquer pour déguster l'authentique saucisse locale, entre musique live, spectacles et convivialité. En 2026, la XVIIe édition a lieu le samedi 10 et le dimanche 11 octobre, avec le cortège historique et des événements au Château.",
     "facebook_group_btn": "📅 Evenements et festivites mis a jour sur Facebook",
     "facebook_group_note": "Un groupe gere par un habitant du village avec toutes les manifestations de Caccamo, toujours a jour.",
     "estate_title": "🎉 Été sous le Château (Juillet–Septembre)",
