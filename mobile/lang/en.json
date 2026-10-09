@@ -165,7 +165,7 @@
       },
       "badia": {
         "title": "Church of San Benedetto alla Badia",
-        "description": "Behind its sober façade, the church houses one of the most precious majolica floors in Sicily: 5,555 hand-painted tiles from the 18th century, with a sailing ship battling a stormy sea at its center — a symbol of the Church against the forces of evil. Locals still call it the 'parlour church' for its wealth of stucco work and gilded inlays. Many visitors choose to walk through it barefoot, out of respect and to appreciate every detail.",
+        "description": "Behind its sober façade, the church houses one of the most precious majolica floors in Sicily: 5,555 hand-painted tiles from the 18th century, with a sailing ship battling a stormy sea at its center — a symbol of the Church against the forces of evil. Locals still call it the 'parlour church' for its wealth of stucco work and gilded inlays. To protect the floor, the visit is made by walking along the wooden walkway, from which every detail can be admired.",
         "hours": "Tuesday to Sunday, morning: 08:00 – 13:00.",
         "tickets": "Full price € 2.00 | Reduced € 1.00 (EU youth aged 18-25 or with a same-day Castle ticket) | Free under 18"
       },
@@ -216,7 +216,7 @@
       },
       "annunziata": {
         "title": "Parish of SS. Annunziata",
-        "description": "Its origins date back to the 13th century, making it one of the oldest in Caccamo. It houses a large canvas by Guglielmo Borremans, the Annunciation, and stucco work from the school of Serpotta. In the 18th century it also had a majolica floor painted by the master Nicolò Sarzana — the same craftsman who later created the famous floor of the nearby Badia church. Every spring, the church comes alive for the feast of San Giuseppe, one of the most cherished traditions in the village.",
+        "description": "The church was built between the end of the 14th and the beginning of the 15th century and enlarged in 1643, when it took the form of a Latin cross with three naves. The octagonal dome dates from 1762, while the frescoes on the vaults are by Gianbecchina, from 1952. According to tradition, the bell tower was a medieval tower that was later transformed. On the choir loft stands a pipe organ from 1934, set in an antique case of carved, gilded wood.",
         "hours": "Summer weekday hours: Holy Mass at 18:00 (in August at 19:00). Sundays and holidays: Holy Masses at 09:30, 12:00 and 19:00.",
         "fiera_agosto_tag": "🎉 August Fair 2026",
         "fiera_agosto_title": "Celebrations in honour of Saint Nicasius the Martyr",
@@ -234,13 +234,14 @@
       },
       "cappuccini": {
         "title": "Convent of the Capuchin Friars",
-        "description": "The Capuchin friars arrived here in 1589, bringing with them the sober, quiet style that has always distinguished their order. It is one of the last still-inhabited convents in all of western Sicily: today, as then, the friars live by prayer, manual work and the welcoming of pilgrims. Its walls tell almost two centuries of history, even before the Unification of Italy.",
+        "description": "The Capuchin friars arrived here in 1589, bringing with them the sober, quiet style that has always distinguished their order. It is one of the last still-inhabited convents in all of western Sicily: today, as then, the friars live by prayer, manual work and the welcoming of pilgrims. Its walls tell almost three centuries of history, even before the Unification of Italy.",
         "hours": "Accessible mainly before or after services. Open daily from 16:00 to 20:00.",
         "secret_info": "💡 The Hidden Gems of Caccamo: The village is home to as many as 33 churches. Use the Din Don Dan map and zoom in on Caccamo to discover real-time hours and openings of lesser-known treasures and other small hidden masterpieces. From 1 to 15 August, the convent will hold the \"quindicina\", a fifteen-day novena in honour of Our Lady of the Assumption. Holy Rosary at 18:00, Coroncina at 18:30, Holy Mass at 19:00."
       },
       "cappuccini_gallery": {
         "pala_altare": "Altarpiece",
-        "sacra_famiglia": "Holy Family",
+        "sacra_famiglia": "The Visit of Saint Elizabeth to the Virgin",
+        "gloria_angeli": "The Glory of the Angels",
         "crocifisso": "Crucifix",
         "madonna_di_lourdes": "Our Lady of Lourdes",
         "san_rocco": "Saint Roch of Montpellier"
@@ -254,10 +255,7 @@
         "address": "Piazza Duomo, next to the Monte di Pietà",
         "caption_catacombe": "The catacombs",
         "caption_altare": "The altar",
-        "events_button": "🌿 Vivere è Pensare Association →",
-        "event_title": "🕯️ Confraternity Feast",
-        "event_date": "Saturday 16 August – 6:30 PM – Under the Stars of the Confraternity",
-        "event_text": "An evening organised by the Confraternity of the Holy Souls of Purgatory, open to the whole community of Caccamo, held both outside and inside the church. It opens with a concert by Renato Filippello and a violinist, followed by an activity for children and a rosary under the stars. The evening closes with a shared moment of bread, olive oil and wine. Expected duration: about two to two and a half hours."
+        "events_button": "🌿 Vivere è Pensare Association →"
       }
     },
     "vivereepensare_page": {
@@ -272,11 +270,6 @@
       "activity_5": "The \"Vivere è Pensare\" Award - Che cielo, che stelle!, which every year celebrates stories, people and realities from the local area",
       "closing": "Follow them to discover upcoming events!",
       "btn_instagram": "Follow on Instagram",
-      "events_title": "🎉 August Events",
-      "event1_date": "📖 Thursday 6 August – 7:00 PM",
-      "event1_text": "Professor Battistella recites verses from the Purgatorio of Dante's Divine Comedy, inside the Church of the Holy Souls of Purgatory. An hour of reading and poetry, organised by the Vivere è Pensare Association with the collaboration of GeA and the Confraternity of the Holy Souls of Purgatory, under the patronage of the Municipality of Caccamo. The Mayor and other institutional representatives will attend. Free admission. Violinist Giada Calderone will also perform during the evening. The event poster can be found on the organisers' social media pages.",
-      "event2_date": "🕯️ Saturday 16 August – 6:30 PM – Under the Stars of the Confraternity",
-      "event2_text": "An evening organised by the Confraternity of the Holy Souls of Purgatory, open to the whole Caccamo community, in front of and inside the church. It opens with a concert by Renato Filippello and violinist Giada Calderone, followed by a moment dedicated to children and a rosary under the stars. The evening closes with a shared moment of bread, oil and wine. Expected duration: about two to two and a half hours. The event poster can be found on the organisers' social media pages.",
       "btn_facebook": "Follow them on Facebook"
     }
   },
@@ -324,7 +317,7 @@
     "nicasio_title": "Feast of San Nicasio and the Palio",
     "nicasio_desc": "Vibrant celebrations in honor of the Saint, enriched by the eagerly awaited and thrilling town Palio, which sparks excitement and rivalry among young and old alike.",
     "sagra_title": "Sausage Festival",
-    "sagra_desc": "Every year, on the second Sunday of October, the scents of tradition fill the village. An unmissable food event to taste authentic local sausage amid songs, wine and conviviality.",
+    "sagra_desc": "Every year in October, the scents of tradition fill the village. An unmissable food event to taste authentic local sausage amid live music, shows and conviviality. In 2026 the 17th edition takes place on Saturday 10 and Sunday 11 October, with the historic parade and events at the Castle.",
     "facebook_group_btn": "📅 Updated events & festivals on Facebook",
     "facebook_group_note": "A group curated by a local resident with all of Caccamo's events, always up to date.",
     "estate_title": "🎉 Summer under the Castle (July–September)",
