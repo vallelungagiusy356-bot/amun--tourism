@@ -216,7 +216,7 @@
       },
       "annunziata": {
         "title": "Parrocchia SS. Annunziata",
-        "description": "Le sue origini risalgono al Duecento, tra le più antiche di Caccamo. Custodisce una grande tela di Guglielmo Borremans, l'Annunciazione, e stucchi della scuola di Serpotta. Nel Settecento ospitava anche un pavimento in maiolica dipinto dal maestro Nicolò Sarzana — lo stesso artigiano che realizzò poi il celebre pavimento della Badia poco distante. Ogni primavera, la chiesa si anima per la festa di San Giuseppe, tra le tradizioni più sentite del borgo.",
+        "description": "La chiesa fu costruita tra la fine del Trecento e l'inizio del Quattrocento e ampliata nel 1643, quando assunse la forma a croce latina con tre navate. La cupola ottagonale è del 1762, mentre gli affreschi delle volte sono di Gianbecchina, del 1952. Il campanile, secondo la tradizione, era una torre medievale poi trasformata. Sulla cantoria si trova un organo a canne del 1934, in una cassa antica di legno dorato e intagliato.",
         "hours": "Orario estivo feriale: Santa Messa ore 18:00 (nel mese di Agosto ore 19:00). Festivo: Sante Messe ore 09:30, 12:00 e 19:00.",
         "fiera_agosto_tag": "🎉 Fiera d'Agosto 2026",
         "fiera_agosto_title": "Festeggiamenti in onore di San Nicasio Martire",
@@ -234,13 +234,14 @@
       },
       "cappuccini": {
         "title": "Convento dei Frati Cappuccini",
-        "description": "I frati Cappuccini arrivarono qui nel 1589, portando con sé lo stile sobrio e silenzioso che da sempre contraddistingue il loro ordine. È uno degli ultimi conventi ancora abitati in tutta la Sicilia occidentale: oggi come allora, i frati vivono di preghiera, lavoro manuale e accoglienza dei pellegrini. Le sue mura raccontano quasi due secoli di storia prima ancora dell'Unità d'Italia. Dentro trovate un altare ligneo scolpito. E non perdete la vista mozzafiato che questo luogo offre.",
+        "description": "I frati Cappuccini arrivarono qui nel 1589, portando con sé lo stile sobrio e silenzioso che da sempre contraddistingue il loro ordine. È uno degli ultimi conventi ancora abitati in tutta la Sicilia occidentale: oggi come allora, i frati vivono di preghiera, lavoro manuale e accoglienza dei pellegrini. Le sue mura raccontano quasi tre secoli di storia prima ancora dell'Unità d'Italia. Dentro trovate un altare ligneo scolpito. E non perdete la vista mozzafiato che questo luogo offre.",
         "hours": "Accessibile principalmente prima o dopo le funzioni. Tutti i giorni dalle 16 alle 20.",
         "secret_info": "💡 I Gioielli Nascosti di Caccamo: Il borgo ospita ben 33 chiese. Utilizza la mappa di Din Don Dan e ingrandisci su Caccamo per scoprire gli orari e le aperture in tempo reale di tesori meno noti e altri piccoli capolavori diffusi. Dall'1 al 15 agosto presso il convento si terrà la quindicina, in onore di Maria SS. Assunta in cielo. Santo Rosario ore 18, Coroncina ore 18,30, Santa Messa alle 19,00 . "
       },
       "cappuccini_gallery": {
         "pala_altare": "Pala d'altare",
-        "sacra_famiglia": "Sacra Famiglia",
+        "sacra_famiglia": "La Visita di Santa Elisabetta",
+        "gloria_angeli": "La Gloria degli Angeli",
         "crocifisso": "Crocifisso",
         "madonna_di_lourdes": "Madonna di Lourdes",
         "san_rocco": "San Rocco di Montpellier"
@@ -324,7 +325,7 @@
     "nicasio_title": "Festa di San Nicasio e il Palio",
     "nicasio_desc": "Celebrazioni vibranti in onore del Santo, arricchite dall'attesissimo e avvincente Palio cittadino che accende la sfida e l'entusiasmo di grandi e piccini.",
     "sagra_title": "Sagra della Salsiccia",
-    "sagra_desc": "Ogni anno, la seconda domenica di ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra canti, vino e convivialità.",
+    "sagra_desc": "Ogni anno, a ottobre, i profumi della tradizione invadono il borgo. Un appuntamento gastronomico imperdibile per gustare l'autentica salsiccia locale tra musica dal vivo, spettacoli e convivialità. Nel 2026 la XVII edizione si tiene sabato 10 e domenica 11 ottobre, con il corteo storico e gli eventi al Castello.",
     "facebook_group_btn": "📅 Eventi e manifestazioni aggiornate su Facebook",
     "facebook_group_note": "Un gruppo curato da un concittadino con tutte le manifestazioni di Caccamo, sempre aggiornate.",
     "estate_title": "🎉 Estate sotto il Castello (Luglio–Settembre)",
