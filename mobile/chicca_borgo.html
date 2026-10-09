@@ -751,6 +751,12 @@ window.silktideConsentManager.init({
 
         function trovaNomeClip(text) {
             if (currentLang !== "it") return null;
+            // Messaggio "attiva la versione Premium": una sola registrazione per tutto il sito
+            if (text && text.replace(/\s+/g, " ").trim() === "Per accedere a questo contenuto, attiva la versione Premium — ti aspetto!") return "premium_blocco_it";
+            // Messaggio di benvenuto della chiesa
+            if (typeof WELCOME_MESSAGE_MOBILE !== "undefined" && text === WELCOME_MESSAGE_MOBILE.it) {
+                return "purgatorio_benvenuto_it";
+            }
             const id = TOPIC_PER_TESTO[text];
             if (!id || !CLIP_MANIFEST[id]) return null;
             const pulito = stripEmotionTags(text).replace(/\s+/g, " ").trim();
