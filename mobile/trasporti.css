@@ -262,3 +262,38 @@ body {
         border-color: var(--terracotta);
     }
 }
+/* ==========================================================================
+   TABLET (da 560px a 899px) — contenuti centrati e più grandi,
+   footer sempre in fondo alla pagina anche quando il contenuto è poco
+   ========================================================================== */
+@media screen and (min-width: 560px) and (max-width: 899px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .footer-copyright { margin-top: auto !important; }
+
+    .dashboard { min-height: 78px; }
+    .logo-title { font-size: 1.25rem; }
+    .btn-home { width: 40px; height: 40px; }
+    .lang-switcher button { width: 36px; height: 36px; font-size: 0.8rem; }
+
+    .scroll-content {
+        padding: 125px 24px 48px 24px;
+        gap: 32px;
+    }
+
+    .home-welcome-poetry { max-width: 640px; }
+    .home-welcome-poetry h1 { font-size: 2rem; }
+    .home-welcome-poetry p { font-size: 1.3rem; line-height: 1.65; }
+
+    .stops-box { padding: 26px 30px; margin-top: 20px; }
+    .stops-box h3 { font-size: 1.4rem; margin-bottom: 14px; }
+    .stops-box ul { padding-left: 24px; }
+    .stops-box li { font-size: 1.25rem; margin-bottom: 12px; }
+
+    .transport-buttons { max-width: 520px; gap: 18px; }
+    .transport-buttons .btn-barocco { padding: 18px 20px; font-size: 1.15rem; }
+}
