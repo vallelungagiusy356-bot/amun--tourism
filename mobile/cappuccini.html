@@ -337,9 +337,9 @@ window.silktideConsentManager.init({
                 "fallback": "Pala d'altare"
         },
         {
-                "src": "../gallery-chiese/sacra_famiglia_cappuccini.jpg",
+                "src": "../gallery-chiese/santa_elisabetta_cappuccini.jpg",
                 "captionKey": "pages.monuments_pages.cappuccini_gallery.sacra_famiglia",
-                "fallback": "Sacra Famiglia"
+                "fallback": "La Visita di Santa Elisabetta"
         },
         {
                 "src": "../gallery-chiese/crocifisso_cappuccini.jpg",
@@ -976,8 +976,13 @@ window.silktideConsentManager.init({
                         },
                         {
                                     "topic": "chiese.cappuccini.opere.sacrafamiglia",
-                                    "label": "La Sacra Famiglia",
-                                    "thumb": "sacra_famiglia_cappuccini.jpg"
+                                    "label": "La Visita di Santa Elisabetta",
+                                    "thumb": "santa_elisabetta_cappuccini.jpg"
+                        },
+                        {
+                                    "topic": "chiese.cappuccini.opere.gloriaangeli",
+                                    "label": "La Gloria degli Angeli",
+                                    "thumb": "gloria_angeli_cappuccini.jpg"
                         },
                         {
                                     "topic": "chiese.cappuccini.opere.sanrocco",
@@ -1327,7 +1332,7 @@ window.silktideConsentManager.init({
         // rispondeva con una sola opera a caso).
         // Se la frase nomina un'opera precisa, la gestisce il server.
         const RICHIESTA_OPERE_GENERICA = /\b(quadr[io]|tel[ae]|opere|dipint[io]|miniature)\b/i;
-        const NOME_OPERA_PRECISA = /(porziuncola|perdono|francesco|sacra famiglia|famiglia|sant.anna|giuseppe|rocco|peste|pellegrino)/i;
+        const NOME_OPERA_PRECISA = /(porziuncola|perdono|francesco|visita|elisabetta|gloria|angeli|santa chiara|santa lucia|rocco|peste|pellegrino)/i;
 
         function gestisciRichiestaOpereGenerica(text) {
             if (currentLang !== 'it') return false;
