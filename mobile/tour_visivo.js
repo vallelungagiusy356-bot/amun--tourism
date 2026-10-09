@@ -28,18 +28,42 @@
   // ------------------------------------------------------------
   const TOURS = [
     {
-      nome: 'Sacra Famiglia',
+      nome: 'La Visita di Santa Elisabetta',
       // frase che identifica l'opera (minuscolo)
-      riconosci: 'pala della cappella laterale sinistra',
-      immagine: '../gallery-chiese/sacra_famiglia_cappuccini.jpg',
+      riconosci: 'tela della visita di santa elisabetta alla madonna',
+      immagine: '../gallery-chiese/santa_elisabetta_cappuccini.jpg',
       cue: [
-        { parola: "pala della cappella", tutto: true },
+        { parola: "tela della visita", tutto: true },
         { parola: "azzurro del manto", x: 0.440, y: 0.620, larg: 0.40 },
-        { parola: "mani di sant'anna", x: 0.590, y: 0.640, larg: 0.36 },
-        { parola: "bastone fiorito", x: 0.360, y: 0.270, larg: 0.28 },
-        { parola: "vecchio seduto", x: 0.240, y: 0.740, larg: 0.44 },
+        { parola: "velo giallo", x: 0.660, y: 0.560, larg: 0.34 },
+        { parola: "le sue mani", x: 0.590, y: 0.640, larg: 0.36 },
+        { parola: "seduto sulle ginocchia", x: 0.500, y: 0.580, larg: 0.34 },
+        { parola: "un'altra donna anziana", x: 0.700, y: 0.440, larg: 0.36 },
+        { parola: "un uomo anziano con un lungo bastone", x: 0.300, y: 0.330, larg: 0.40 },
+        { parola: "turbante bianco", x: 0.220, y: 0.720, larg: 0.40 },
         { parola: "bambino riccioluto", x: 0.350, y: 0.685, larg: 0.30 },
+        { parola: "un angioletto", x: 0.580, y: 0.190, larg: 0.36 },
         { parola: "guardate i volti", x: 0.580, y: 0.480, larg: 0.55 },
+        { parola: "vi va di vedere", tutto: true }
+      ]
+    },
+    {
+      nome: 'La Gloria degli Angeli',
+      riconosci: 'tela della gloria degli angeli',
+      immagine: '../gallery-chiese/gloria_angeli_cappuccini.jpg',
+      cue: [
+        { parola: "tela della gloria", x: 0.515, y: 0.650, larg: 0.75 },
+        { parola: "drappo giallo", x: 0.550, y: 0.530, larg: 0.50 },
+        { parola: "madonna con il bambino", x: 0.500, y: 0.520, larg: 0.34 },
+        { parola: "angioletti", x: 0.500, y: 0.520, larg: 0.80 },
+        { parola: "angelo con il capo coperto", x: 0.580, y: 0.700, larg: 0.34 },
+        { parola: "pergamena aperta", x: 0.590, y: 0.720, larg: 0.22 },
+        { parola: "figura in abito scuro", x: 0.650, y: 0.770, larg: 0.30 },
+        { parola: "donna in piedi", x: 0.810, y: 0.760, larg: 0.28 },
+        { parola: "uomo anziano e calvo", x: 0.330, y: 0.800, larg: 0.36 },
+        { parola: "leone accovacciato", x: 0.220, y: 0.860, larg: 0.26 },
+        { parola: "altra figura incappucciata", x: 0.210, y: 0.720, larg: 0.26 },
+        { parola: "dal basso verso l'alto", x: 0.515, y: 0.650, larg: 0.75 },
         { parola: "vi va di vedere", tutto: true }
       ]
     },
