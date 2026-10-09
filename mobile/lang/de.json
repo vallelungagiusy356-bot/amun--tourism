@@ -171,7 +171,7 @@
       },
       "badia": {
         "title": "Kirche San Benedetto alla Badia",
-        "description": "Hinter ihrer schlichten Fassade birgt die Kirche einen der wertvollsten Majolika-Böden Siziliens: 5.555 im 18. Jahrhundert von Hand bemalte Fliesen, in deren Mitte ein Segelschiff gegen ein stürmisches Meer kämpft — Symbol der Kirche gegen die Mächte des Bösen. Die Einheimischen nennen sie bis heute die 'Salon-Kirche', wegen des Reichtums an Stuckarbeiten und vergoldeten Einlegearbeiten. Viele Besucher entscheiden sich, sie barfuß zu durchqueren, aus Respekt und um jedes Detail zu genießen.",
+        "description": "Hinter ihrer schlichten Fassade birgt die Kirche einen der wertvollsten Majolika-Böden Siziliens: 5.555 im 18. Jahrhundert von Hand bemalte Fliesen, in deren Mitte ein Segelschiff gegen ein stürmisches Meer kämpft — Symbol der Kirche gegen die Mächte des Bösen. Die Einheimischen nennen sie bis heute die 'Salon-Kirche', wegen des Reichtums an Stuckarbeiten und vergoldeten Einlegearbeiten. Zum Schutz des Bodens verläuft der Besuch über den Holzsteg, von dem aus sich jedes Detail bewundern lässt.",
         "hours": "Dienstag bis Sonntag, vormittags: 08:00 – 13:00 Uhr.",
         "tickets": "Voller Preis € 2,00 | Ermäßigt € 1,00 (EU-Jugendliche 18-25 Jahre oder mit Burg-Ticket vom gleichen Tag) | Kostenlos unter 18 Jahren"
       },
@@ -222,7 +222,7 @@
       },
       "annunziata": {
         "title": "Pfarrei SS. Annunziata",
-        "description": "Ihre Ursprünge reichen bis ins 13. Jahrhundert zurück und machen sie zu einer der ältesten in Caccamo. Sie bewahrt ein großes Gemälde von Guglielmo Borremans, die Verkündigung, sowie Stuckarbeiten der Schule Serpottas. Im 18. Jahrhundert besaß sie zudem einen Majolika-Boden, bemalt vom Meister Nicolò Sarzana — demselben Handwerker, der später den berühmten Boden der nahegelegenen Badia-Kirche schuf. Jeden Frühling erwacht die Kirche zum Fest des San Giuseppe, einer der lebendigsten Traditionen des Dorfes.",
+        "description": "Die Kirche wurde zwischen dem Ende des 14. und dem Beginn des 15. Jahrhunderts erbaut und 1643 erweitert, als sie die Form eines lateinischen Kreuzes mit drei Schiffen erhielt. Die achteckige Kuppel stammt von 1762, die Fresken der Gewölbe sind von Gianbecchina aus dem Jahr 1952. Der Überlieferung nach war der Glockenturm ein mittelalterlicher Turm, der später umgebaut wurde. Auf der Empore steht eine Pfeifenorgel von 1934 in einem alten Gehäuse aus vergoldetem, geschnitztem Holz.",
         "hours": "Sommer-Werktagszeiten: Heilige Messe um 18:00 Uhr (im August um 19:00 Uhr). Sonn- und Feiertags: Heilige Messen um 09:30, 12:00 und 19:00 Uhr.",
         "fiera_agosto_tag": "🎉 Augustfest 2026",
         "fiera_agosto_title": "Feierlichkeiten zu Ehren des Heiligen Nikasius Märtyrer",
@@ -240,13 +240,14 @@
       },
       "cappuccini": {
         "title": "Kloster der Kapuzinerbrüder",
-        "description": "Die Kapuzinerbrüder kamen 1589 hierher und brachten den schlichten, stillen Stil mit, der ihren Orden seit jeher auszeichnet. Es ist eines der letzten noch bewohnten Klöster in ganz Westsizilien: Heute wie damals leben die Brüder von Gebet, Handarbeit und der Aufnahme von Pilgern. Seine Mauern erzählen fast zwei Jahrhunderte Geschichte, noch vor der Einigung Italiens.",
+        "description": "Die Kapuzinerbrüder kamen 1589 hierher und brachten den schlichten, stillen Stil mit, der ihren Orden seit jeher auszeichnet. Es ist eines der letzten noch bewohnten Klöster in ganz Westsizilien: Heute wie damals leben die Brüder von Gebet, Handarbeit und der Aufnahme von Pilgern. Seine Mauern erzählen fast drei Jahrhunderte Geschichte, noch vor der Einigung Italiens.",
         "hours": "Zugänglich hauptsächlich vor oder nach den Gottesdiensten. Täglich geöffnet von 16:00 bis 20:00 Uhr.",
         "secret_info": "💡 Die verborgenen Schätze von Caccamo: Das Dorf beherbergt nicht weniger als 33 Kirchen. Nutzen Sie die Karte von Din Don Dan und zoomen Sie auf Caccamo, um in Echtzeit Öffnungszeiten weniger bekannter Schätze und anderer kleiner, verstreuter Meisterwerke zu entdecken. Vom 1. bis 15. August findet im Kloster die \"quindicina\" statt, eine fünfzehntägige Novene zu Ehren Mariä Himmelfahrt. Heiliger Rosenkranz um 18:00 Uhr, Coroncina um 18:30 Uhr, Heilige Messe um 19:00 Uhr."
       },
       "cappuccini_gallery": {
         "pala_altare": "Altarbild",
-        "sacra_famiglia": "Heilige Familie",
+        "sacra_famiglia": "Der Besuch der Heiligen Elisabeth bei Maria",
+        "gloria_angeli": "Die Herrlichkeit der Engel",
         "crocifisso": "Kruzifix",
         "madonna_di_lourdes": "Unsere Liebe Frau von Lourdes",
         "san_rocco": "Heiliger Rochus von Montpellier"
@@ -260,10 +261,7 @@
         "address": "Piazza Duomo, neben dem Monte di Pietà",
         "caption_catacombe": "Die Katakomben",
         "caption_altare": "Der Altar",
-        "events_button": "🌿 Verein Vivere è Pensare →",
-        "event_title": "🕯️ Fest der Bruderschaft",
-        "event_date": "Samstag, 16. August – 18:30 Uhr – Unter den Sternen der Bruderschaft",
-        "event_text": "Ein von der Bruderschaft der Heiligen Seelen des Fegefeuers organisierter Abend, offen für die gesamte Gemeinschaft von Caccamo, der sowohl vor als auch in der Kirche stattfindet. Er beginnt mit einem Konzert von Renato Filippello und einer Geigerin, gefolgt von einem Programm für Kinder und einem Rosenkranzgebet unter den Sternen. Zum Abschluss gibt es ein geselliges Beisammensein mit Brot, Olivenöl und Wein. Voraussichtliche Dauer: etwa zwei bis zweieinhalb Stunden."
+        "events_button": "🌿 Verein Vivere è Pensare →"
       }
     },
     "vivereepensare_page": {
@@ -278,11 +276,6 @@
       "activity_5": "Der Preis \"Vivere è Pensare\" - Che cielo, che stelle!, der jedes Jahr Geschichten, Menschen und Initiativen aus der Region auszeichnet",
       "closing": "Folgt ihnen, um kommende Veranstaltungen zu entdecken!",
       "btn_instagram": "Auf Instagram folgen",
-      "events_title": "🎉 Veranstaltungen im August",
-      "event1_date": "📖 Donnerstag, 6. August – 19:00 Uhr",
-      "event1_text": "Professor Battistella rezitiert Verse aus dem Purgatorio von Dantes Göttlicher Komödie, in der Kirche der Heiligen Seelen des Fegefeuers. Eine Stunde Lesung und Poesie, organisiert von der Vereinigung Vivere è Pensare in Zusammenarbeit mit der GeA und der Bruderschaft der Heiligen Seelen des Fegefeuers, unter der Schirmherrschaft der Gemeinde Caccamo. Der Bürgermeister und weitere institutionelle Vertreter werden anwesend sein. Eintritt frei. Im Laufe des Abends tritt auch die Geigerin Giada Calderone auf. Das Veranstaltungsplakat ist auf den Social-Media-Seiten der Organisatoren einsehbar.",
-      "event2_date": "🕯️ Samstag, 16. August – 18:30 Uhr – Unter den Sternen der Bruderschaft",
-      "event2_text": "Ein von der Bruderschaft der Heiligen Seelen des Fegefeuers organisierter Abend, offen für die gesamte Gemeinde von Caccamo, vor und in der Kirche. Er beginnt mit einem Konzert von Renato Filippello und der Geigerin Giada Calderone, gefolgt von einem Moment für Kinder und einem Rosenkranz unter den Sternen. Zum Abschluss ein geselliges Beisammensein mit Brot, Öl und Wein. Voraussichtliche Dauer: etwa zwei bis zweieinhalb Stunden. Das Veranstaltungsplakat ist auf den Social-Media-Seiten der Organisatoren einsehbar.",
       "btn_facebook": "Folge ihnen auf Facebook"
     }
   },
@@ -330,7 +323,7 @@
     "nicasio_title": "Fest des San Nicasio und der Palio",
     "nicasio_desc": "Lebendige Feierlichkeiten zu Ehren des Heiligen, bereichert durch den mit Spannung erwarteten und mitreißenden städtischen Palio, der bei Groß und Klein Wetteifer und Begeisterung entfacht.",
     "sagra_title": "Wurstfest",
-    "sagra_desc": "Jedes Jahr, am zweiten Sonntag im Oktober, erfüllen die Düfte der Tradition das Dorf. Ein unverzichtbares kulinarisches Ereignis, um die authentische lokale Wurst bei Gesang, Wein und Geselligkeit zu genießen.",
+    "sagra_desc": "Jedes Jahr im Oktober erfüllen die Düfte der Tradition das Dorf. Ein unverzichtbares kulinarisches Ereignis, um die authentische lokale Wurst bei Livemusik, Shows und Geselligkeit zu genießen. 2026 findet die 17. Ausgabe am Samstag, 10., und Sonntag, 11. Oktober statt, mit dem historischen Umzug und Veranstaltungen auf der Burg.",
     "facebook_group_btn": "📅 Aktuelle Veranstaltungen auf Facebook",
     "facebook_group_note": "Eine von einem Einwohner gepflegte Gruppe mit allen Veranstaltungen in Caccamo, stets aktuell.",
     "estate_title": "🎉 Sommer unter der Burg (Juli–September)",
