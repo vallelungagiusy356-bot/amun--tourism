@@ -859,9 +859,26 @@ window.silktideConsentManager.init({
             }
         }
 
+        // Diagnosi (solo se l'indirizzo della pagina finisce con ?vocedebug=1):
+        // mostra in basso una scritta che dice quale file audio viene cercato e com'è andata.
+        function diagnosiClip(messaggio) {
+            try {
+                if (location.search.indexOf("vocedebug") === -1) return;
+                let box = document.getElementById("voce-debug-box");
+                if (!box) {
+                    box = document.createElement("div");
+                    box.id = "voce-debug-box";
+                    box.style.cssText = "position:fixed;left:0;right:0;bottom:0;max-height:40vh;overflow:auto;z-index:2147483647;background:#000;color:#0f0;font:12px/1.4 monospace;padding:6px 8px;white-space:pre-wrap;word-break:break-all;";
+                    document.body.appendChild(box);
+                }
+                box.textContent += messaggio + "\n";
+            } catch (e) {}
+        }
+
         function speakText(text) {
-            if (!voiceEnabled || !text) return;
+            if (!voiceEnabled || !text) { diagnosiClip("Voce spenta (icona altoparlante) o testo vuoto: niente audio"); return; }
             const nome = trovaNomeClip(text);
+            if (!nome) diagnosiClip("Questo testo non ha un audio registrato previsto: parla la voce del telefono");
             if (nome) {
                 fermaClip();
                 if ("speechSynthesis" in window) window.speechSynthesis.cancel();
@@ -876,14 +893,17 @@ window.silktideConsentManager.init({
                         return;
                     }
                     const audioClip = new Audio(base + estensioni[i]);
+                    diagnosiClip("Provo: " + audioClip.src);
                     clipCorrente = audioClip;
                     let giaGestito = false;
                     const prossimo = () => {
                         if (giaGestito) return;
                         giaGestito = true;
+                        diagnosiClip("NON riesco a riprodurre: " + audioClip.src);
                         provaEstensione(i + 1);
                     };
                     audioClip.addEventListener("error", prossimo);
+                    audioClip.addEventListener("playing", () => diagnosiClip("PARTE la tua voce: " + audioClip.src));
                     audioClip.play().catch(prossimo);
                 };
                 provaEstensione(0);
