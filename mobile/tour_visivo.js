@@ -148,12 +148,6 @@
       cue: []   // nessun movimento automatico: si ingrandisce con le dita
     },
     {
-      nome: 'La Porziuncola',
-      riconosci: "grande tela dell'altare maggiore",
-      immagine: '../gallery-chiese/pala_altare_cappuccini.jpg',
-      cue: []   // nessun movimento automatico: si ingrandisce con le dita
-    },
-    {
       nome: "L'Adorazione dei Pastori",
       riconosci: 'gesù appena nato',
       immagine: '../gallery-chiese/adorazione_animesante.jpg',
