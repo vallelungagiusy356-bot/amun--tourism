@@ -1269,7 +1269,7 @@ window.silktideConsentManager.init({
         function extraStepsFor(topicId) {
             const next = NEXT_STEPS_MOBILE[topicId];
             if (!next) return [];
-            return [{ topic: next.topic, label: next.label[currentLang] || next.label.it, thumb: (currentLang === 'it' ? next.thumb : undefined) }];
+            return [{ topic: next.topic, label: next.label[currentLang] || next.label.it, thumb: next.thumb }];
         }
 
         const BACK_TO_MENU_LABELS_MOBILE = {
