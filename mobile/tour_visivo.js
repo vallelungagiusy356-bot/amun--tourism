@@ -628,10 +628,11 @@
     return s.y / s.x;
   }
 
+  let debugStato = '';
   function mostraDebug() {
     if (!DEBUG || !viewer || !viewer.world.getItemCount()) return;
     const c = viewer.viewport.getCenter(true);
-    const txt = 'x: ' + c.x.toFixed(2) + ', y: ' + (c.y / aspetto()).toFixed(2) +
+    const txt = (debugStato ? debugStato + ' | ' : '') + 'x: ' + c.x.toFixed(2) + ', y: ' + (c.y / aspetto()).toFixed(2) +
                 ', larg: ' + (1 / viewer.viewport.getZoom(true)).toFixed(2);
     boxDebug.textContent = txt;
     console.log('[tour] ' + txt);
@@ -646,9 +647,11 @@
     }
     const vp = viewer.viewport;
     clearTimeout(timerHold);
-    if (c.tutto) { vp.goHome(); return; }
+    debugStato = c.tutto ? 'visione intera' : 'ZOOM su "' + c.parola + '"';
+    if (c.tutto) { vp.goHome(); mostraDebug(); return; }
     vp.panTo(new OpenSeadragon.Point(c.x, c.y * aspetto()));
     vp.zoomTo(1 / c.larg);
+    mostraDebug();
     // dopo un po' si torna alla visione intera, se non arriva un altro dettaglio
     timerHold = setTimeout(tornaPanoramica, HOLD_MS);
   }
@@ -707,9 +710,38 @@
     return TOURS.find(function (t) { return testoMinuscolo.indexOf(t.riconosci) !== -1; }) || null;
   }
 
-  function sulParlato(utt) {
+  // Altre lingue: i movimenti seguono il NUMERO della frase (0,1,2...) e non
+  // le parole italiane. La tabella GUIDA dice, per ogni dettaglio, in quale
+  // frase del testo italiano compare e a che punto della frase.
+  function sulParlatoTradotto(utt, n) {
+    const g = tourAttivo.guida;
+    const lunghezza = (utt.text || '').length || 1;
+    const rate = utt.rate || 1;
+    let trovato = false;
+    if (DEBUG) { debugStato = 'frase ' + n + ' (' + tourAttivo.lingua + ')'; mostraDebug(); }
+    tourAttivo.cue.forEach(function (c, ci) {
+      (g[ci] || []).forEach(function (occ) {
+        if (occ[0] !== n) return;
+        trovato = true;
+        const ritardo = Math.round(occ[1] * lunghezza * MS_PER_CARATTERE / rate);
+        if (ritardo < 150) applicaCue(c);
+        else timers.push(setTimeout(function () { applicaCue(c); }, ritardo));
+      });
+    });
+    if (!trovato && tourAttivo.cue.length) timers.push(setTimeout(tornaPanoramica, 700));
+  }
+
+  function sulParlato(utt, indice) {
     const testo = (utt.text || '').toLowerCase();
     fermaTimers();
+
+    // altre lingue: il quadro è già stato aperto dall'argomento (vedi 5-ter)
+    if (topicPendente && !tourAttivo && Date.now() - topicPendente.ts < 2500) {
+      clearTimeout(topicPendente.timer);
+      apriTour(topicPendente.tour);
+    }
+    if (tourAttivo && tourAttivo.guida) { sulParlatoTradotto(utt, indice || 0); return; }
+    if (DEBUG && !tourAttivo && !trovaTour(testo)) { debugStato = 'nessun quadro aperto'; boxDebug.textContent = debugStato; }
 
     // se l'utente ha chiuso il quadro e riascolta, lo riapriamo alla prima frase
     const t = trovaTour(testo);
@@ -732,8 +764,16 @@
 
   if ('speechSynthesis' in window) {
     const speakOriginale = window.speechSynthesis.speak;
+    // numero della frase dentro la risposta: riparte da 0 a ogni cancel()
+    let indiceFrase = 0;
+    const cancelOriginale = window.speechSynthesis.cancel;
+    window.speechSynthesis.cancel = function () {
+      indiceFrase = 0;
+      return cancelOriginale.apply(window.speechSynthesis, arguments);
+    };
     window.speechSynthesis.speak = function (utt) {
-      try { utt.addEventListener('start', function () { sulParlato(utt); }); } catch (e) {}
+      const n = indiceFrase++;
+      try { utt.addEventListener('start', function () { sulParlato(utt, n); }); } catch (e) {}
       // quando la Castellana smette di parlare (o la voce viene interrotta) il quadro torna intero
       const alFine = function () {
         if (tourAttivo && tourAttivo.cue.length) timers.push(setTimeout(tornaPanoramica, 1500));
@@ -780,7 +820,8 @@
       });
 
       if (DEBUG) {
-        boxDebug.textContent = 'voce registrata agganciata';
+        debugStato = 'voce registrata agganciata';
+        boxDebug.textContent = debugStato;
         console.log('[tour] voce registrata agganciata, frasi: ' + frasi.length);
       }
 
@@ -862,18 +903,302 @@
     'castello.tour.terrazza': 'Castello: la Terrazza'
   };
 
+  // GUIDA: per ogni opera, per ogni dettaglio (stesso ordine di "cue" in TOURS)
+  // l'elenco [numero frase, punto nella frase 0-1] in cui l'italiano lo nomina.
+  const GUIDA = {
+    "La Visita di Santa Elisabetta": [
+      [[0,0.07]],
+      [[1,0.53]],
+      [[4,0.23]],
+      [[4,0.41]],
+      [[5,0.15]],
+      [[6,0.1]],
+      [[7,0.12]],
+      [[7,0.71]],
+      [[8,0.28]],
+      [[9,0.16]],
+      [[10,0]],
+      [[11,0]]
+    ],
+    "La Gloria degli Angeli": [
+      [[0,0.07]],
+      [[1,0.13]],
+      [[1,0.5]],
+      [[2,0.42]],
+      [[3,0.37]],
+      [[3,0.63]],
+      [[4,0.16]],
+      [[4,0.58]],
+      [[5,0.11]],
+      [[5,0.86]],
+      [[6,0.26]],
+      [[7,0.31]],
+      [[8,0]]
+    ],
+    "San Rocco": [
+      [[1,0]],
+      [[2,0.02]],
+      [[2,0.16]],
+      [[2,0.37]],
+      [[2,0.76]],
+      [[2,0.86]],
+      [[3,0]]
+    ],
+    "Il Miracolo di Sant'Isidoro (Stomer)": [
+      [[0,0.22]],
+      [],
+      [[1,0.1]],
+      [[1,0.55]],
+      [[1,0.71]],
+      [[1,0.89]],
+      [[2,0.07]],
+      [[2,0.19]],
+      [[2,0.29]],
+      [[3,0.19]],
+      [[5,0]]
+    ],
+    "Gli Affreschi del Coro": [
+      [[0,0]],
+      [[1,0.38]],
+      [[2,0]],
+      [[3,0.35]],
+      [[4,0.19]],
+      [[4,0.52]],
+      [[4,0.72]],
+      [[5,0.75]],
+      [[6,0.22]],
+      [[7,0.57]],
+      [[8,0.66]],
+      [[9,0.44]],
+      [[10,0.54]],
+      [[11,0]],
+      [[13,0]]
+    ],
+    "L'Adorazione dei Pastori": [
+      [[2,0]],
+      [[4,0.28]],
+      [[5,0.89]],
+      [[6,0.33]],
+      [[7,0.66]],
+      [[9,0.81]],
+      []
+    ],
+    "La Messa di Suffragio": [
+      [[0,0.75]],
+      [[2,0.25]],
+      [[3,0.06]],
+      [[4,0.33]],
+      [[4,0.75]],
+      [[5,0.29]],
+      [[5,0.54]],
+      [[5,0.61]],
+      [[5,0.79]],
+      [[6,0.11]],
+      [[7,0.14]],
+      []
+    ],
+    "L'Adorazione dell'Ostensorio": [
+      [[1,0.38]],
+      [[2,0.29]],
+      [[2,0.65]],
+      [[4,0.38]],
+      [[6,0.26]],
+      []
+    ],
+    "San Filippo Neri": [
+      [[1,0.4]],
+      [[3,0.32]],
+      [[3,0.64]],
+      []
+    ],
+    "San Giovanni e l'Immacolata": [
+      [[1,0.1]],
+      [[1,0.37]],
+      [[2,0.13]],
+      [[2,0.57]],
+      []
+    ],
+    "La Madonna del Carmelo": [
+      [[1,0.31]],
+      [[2,0.34]],
+      [[3,0.2]],
+      [[4,0.67]],
+      []
+    ],
+    "Santa Maria: la Madonna degli Angeli": [
+      [[0,0.04]],
+      [[1,0.35]],
+      [[2,0.13]],
+      [[2,0.61]],
+      [[3,0.42]],
+      [[4,0]]
+    ],
+    "Santa Maria: la Madonna col Bambino (Gagini)": [
+      [[0,0.03]],
+      [[1,0.32]],
+      [[1,0.56]],
+      [[2,0]],
+      [[3,0]]
+    ],
+    "Santa Maria: la Madonna Visita Poveri": [
+      [[1,0.29]],
+      [[2,0.12]],
+      [[2,0.7]],
+      [[3,0.24]],
+      [[3,0.45]],
+      [[3,0.64]],
+      [[4,0]]
+    ],
+    "Santa Maria: la Levitazione di San Giuseppe da Copertino": [
+      [],
+      [[2,0]],
+      [[2,0.44]],
+      [[3,0]]
+    ],
+    "Santa Maria: la SS. Trinità con San Michele": [
+      [[1,0.06]],
+      [[2,0.02]],
+      [[2,0.15]],
+      [[2,0.6]],
+      [[2,0.96]],
+      [[3,0]]
+    ],
+    "Santa Maria: l'Urna del Beato Giovanni Liccio": [
+      [[1,0.01]],
+      [[1,0.57]],
+      [[1,0.86]],
+      [[3,0]]
+    ],
+    "Badia: il Sacrificio di Isacco": [
+      [[0,0]],
+      [[0,0.39]],
+      [[0,0.53]],
+      [[0,0.82]],
+      [[2,0]]
+    ],
+    "Badia: San Benedetto, Mauro e Placido": [
+      [[0,0.14]],
+      [[1,0.33]],
+      [[2,0.07]],
+      [[2,0.4]],
+      [[2,0.5]],
+      [[3,0]]
+    ],
+    "Badia: la Madonna della Neve": [
+      [[0,0.58]],
+      [[1,0.11]],
+      [[1,0.45]],
+      [[1,0.54]],
+      [[2,0.09]],
+      [[2,0.28]],
+      [[2,0.64]],
+      [[3,0]]
+    ],
+    "Badia: San Benedetto indica la Regola": [
+      [[0,0.07]],
+      [[1,0.07]],
+      [[1,0.64]],
+      [[2,0.23]],
+      [[3,0.49]],
+      [[4,0]]
+    ],
+    "Badia: il Crocifisso": [
+      [[0,0.16]],
+      [[1,0.16]],
+      [[2,0.12]],
+      [[2,0.53]],
+      [[3,0]]
+    ],
+    "Annunziata: il Crocifisso e l'Addolorata": [
+      [[0,0.23]],
+      [[1,0.32]],
+      [[1,0.72]],
+      [[2,0.33]],
+      [[3,0.46]],
+      [[3,0.73]],
+      [[3,0.85]],
+      [[4,0.55]],
+      [[5,0.33]],
+      [[5,0.81]],
+      [[6,0.24]],
+      [[6,0.46]],
+      [[6,0.69]]
+    ],
+    "Annunziata: Santa Rosalia Pellegrina": [
+      [[0,0.39]],
+      [[1,0.22]],
+      [[1,0.66]],
+      [[2,0.03]],
+      [[2,0.4]],
+      [[3,0.13]],
+      [[3,0.9]],
+      [[4,0.56]],
+      [[5,0]],
+      [[6,0]],
+      [[7,0.58]],
+      [[8,0]],
+      [[8,0.41]]
+    ],
+    "Annunziata: l'Immacolata": [
+      [[0,0.08]],
+      [[1,0.37]],
+      [[1,0.64]],
+      [[2,0.04]],
+      [[2,0.8]],
+      [[3,0.17]],
+      [[3,0.45]],
+      [[3,0.77]],
+      [[4,0.21]],
+      [[4,0.45]],
+      [[5,0]],
+      [[5,0.49]]
+    ],
+    "Annunziata: la Cupola e il Presbiterio": [
+      [[0,0]],
+      [[1,0]],
+      [[2,0.28]],
+      [[3,0]],
+      [[4,0.36]],
+      [[5,0.17]],
+      [[5,0.3]],
+      [[5,0.54]],
+      [[5,0.69]],
+      [[5,0.91]]
+    ],
+    "Annunziata: l'Organo": [
+      [[0,0.71]],
+      [[1,0.31]],
+      [[3,0.28]],
+      [[4,0.13]],
+      [[5,0.5]],
+      [[6,0.12]],
+      [[6,0.53]]
+    ],
+    "Castello: le Prigioni": [
+      [[2,0.23]]
+    ]
+  };
+
+  let topicPendente = null;
+
   function apriPerTopic(topic, lang) {
     linguaHint = lang || 'it';
+    topicPendente = null;
     // in italiano il quadro si apre già dalle frasi del testo
     if (!lang || lang === 'it') return;
     const nome = TOPIC_TOUR[topic];
     if (!nome) return;
     const t = TOURS.find(function (x) { return x.nome === nome; });
     if (!t) return;
+    const guida = GUIDA[nome];
+    const tour = Object.assign({}, t, guida ? { lingua: lang, guida: guida } : { cue: [] });
+    topicPendente = { tour: tour, ts: Date.now(), timer: null };
+    const mio = topicPendente;
     // piccola attesa: prima la chat deve finire di mostrare il messaggio
-    setTimeout(function () {
-      apriTour(Object.assign({}, t, { cue: [] }));
-    }, 200);
+    mio.timer = setTimeout(function () {
+      if (tourAttivo && tourAttivo.nome === tour.nome && tourAttivo.lingua === tour.lingua) return;
+      apriTour(tour);
+    }, 40);
   }
 
   // Ascolta le risposte del server alla chat (senza cambiarle) per sapere
@@ -912,7 +1237,7 @@
           if (n.classList.contains('user-msg-mobile')) return;
           const t = trovaTour(n.textContent.toLowerCase());
           if (t) { if (tourAttivo !== t) apriTour(t); }
-          else if (tourAttivo) chiudiTour();
+          else if (tourAttivo && !(topicPendente && Date.now() - topicPendente.ts < 3000)) chiudiTour();
         });
       });
     }).observe(messaggi, { childList: true });
