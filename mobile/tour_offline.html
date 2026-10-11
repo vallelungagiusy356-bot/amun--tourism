@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amunì · Offline tour</title>
+<style>
+  :root { --fondo:#0f1922; --oro:#B8873B; --crema:#F3ECDC; --carta:#1b2a37; }
+  * { box-sizing:border-box; }
+  html, body { margin:0; background:var(--fondo); color:var(--crema);
+    font-family: Georgia, 'Times New Roman', serif; -webkit-text-size-adjust:100%; }
+  header { padding:14px 16px 6px; max-width:560px; margin:0 auto; }
+  h1 { font-size:1.15rem; margin:0 0 4px; color:var(--oro); letter-spacing:.02em; }
+  .sotto { font-size:.82rem; opacity:.8; margin:0 0 10px; }
+  .lingue { display:flex; gap:8px; margin:8px 0; }
+  .lingue button { flex:0 0 auto; min-width:64px; padding:10px 14px; font-size:1rem; border-radius:999px;
+    border:1px solid var(--oro); background:transparent; color:var(--crema); cursor:pointer; }
+  .lingue button.attiva { background:var(--oro); color:#1a1208; font-weight:700; }
+  #stato { font-size:.8rem; padding:6px 10px; border-radius:8px; background:var(--carta); display:inline-block; }
+  #stato.ok { color:#9be3a8; }
+  main { max-width:560px; margin:0 auto; padding:6px 16px 40px; }
+  #griglia { display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-top:12px; }
+  .opera { background:var(--carta); border:1px solid #2b3d4c; border-radius:12px; padding:0; overflow:hidden;
+    color:var(--crema); text-align:center; cursor:pointer; font:inherit; }
+  .opera img { display:block; width:100%; height:130px; object-fit:cover; background:#223344; }
+  .opera span { display:block; padding:8px 6px 10px; font-size:.88rem; line-height:1.25; }
+  body.tour-attivo main, body.tour-attivo header { display:none; }
+
+  #viewer { display:none; position:fixed; top:0; left:0; right:0; height:56vh; background:#0f1922;
+    z-index:20; border-bottom:1px solid var(--oro); }
+  body.tour-attivo #viewer { display:block; }
+  #viewer-img { width:100%; height:100%; }
+  #chiudi { position:absolute; z-index:5; right:10px; top:calc(env(safe-area-inset-top,0px) + 10px);
+    width:44px; height:44px; border-radius:50%; border:none; background:rgba(15,25,34,.78);
+    color:var(--crema); font-size:1.1rem; cursor:pointer; }
+  #hint { position:absolute; z-index:5; left:50%; bottom:12px; transform:translateX(-50%);
+    padding:6px 12px; border-radius:999px; background:rgba(15,25,34,.78); font-size:.8rem;
+    opacity:0; pointer-events:none; transition:opacity .5s; }
+  #hint.visibile { opacity:1; }
+
+  #pannello { display:none; position:fixed; left:0; right:0; bottom:0; top:56vh; z-index:19;
+    background:var(--fondo); overflow-y:auto; padding:12px 16px 24px; }
+  body.tour-attivo #pannello { display:block; }
+  #pannello > div.dentro { max-width:560px; margin:0 auto; }
+  #op-titolo { font-size:1.05rem; margin:0 0 8px; color:var(--oro); }
+  .comandi { display:flex; gap:10px; margin:6px 0 10px; }
+  .comandi button { flex:1; padding:12px; font-size:1rem; border-radius:10px; border:1px solid var(--oro);
+    background:transparent; color:var(--crema); cursor:pointer; }
+  .comandi button.primario { background:var(--oro); color:#1a1208; font-weight:700; }
+  #avviso { font-size:.82rem; color:#f0c987; margin:4px 0 8px; display:none; }
+  #testo { font-size:1.02rem; line-height:1.55; }
+  #testo .frase { transition:background .3s; border-radius:4px; padding:1px 2px; }
+  #testo .frase.ora { background:rgba(184,135,59,.28); }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="titolo"></h1>
+  <p class="sotto" id="sotto"></p>
+  <div class="lingue">
+    <button data-l="en">EN</button>
+    <button data-l="fr">FR</button>
+  </div>
+  <div id="stato"></div>
+</header>
+<main>
+  <div id="griglia"></div>
+</main>
+
+<div id="viewer">
+  <div id="viewer-img"></div>
+  <button id="chiudi" aria-label="Close">✕</button>
+  <div id="hint"></div>
+</div>
+<section id="pannello">
+  <div class="dentro">
+    <h2 id="op-titolo"></h2>
+    <div class="comandi">
+      <button id="btn-play" class="primario"></button>
+      <button id="btn-stop"></button>
+    </div>
+    <p id="avviso"></p>
+    <div id="testo"></div>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---- dati generati dai testi della knowledge e dalla guida dello zoom ----
+  const DATA = {"opere":[{"id":"chiese.purgatorio.opere.sanfilippo","thumb":"sanfilippo_animesante.jpg","img":"sanfilippo_animesante.jpg","titolo":{"en":"Saint Philip Neri","fr":"Saint Philippe Néri"},"frasi":{"en":["You are in front of Saint Philip Neri, a painting by an unknown artist.","The saint, kneeling, receives a visit from the Madonna with the Child, who blesses him for his work on earth.","Look at the band below the saint: small scenes of everyday life, in different settings.","Because the painting is worn, two can be recognized: a bedroom, with a four-poster bed, and a boat at sea, perhaps in a small harbor.","Tap the cards below to discover the other paintings."],"fr":["Vous êtes devant Saint Philippe Néri, une toile d'auteur inconnu.","Le saint, à genoux, reçoit la visite de la Vierge à l'Enfant, qui le bénit pour son œuvre sur terre.","Regardez en bas, dans la bande sous le saint : de petites scènes de vie quotidienne, dans des cadres différents.","À cause de l'usure du tableau, on en reconnaît deux : une chambre à coucher, avec un lit à baldaquin, et une embarcation en mer, peut-être dans un petit port d'accostage.","Touchez les cartes ci-dessous pour découvrir les autres toiles."]},"cue":{"en":[{"k":1,"pos":44,"x":0.24,"y":0.17,"larg":0.45},{"k":3,"pos":43,"x":0.25,"y":0.8,"larg":0.5},{"k":3,"pos":85,"x":0.75,"y":0.8,"larg":0.5}],"fr":[{"k":1,"pos":40,"x":0.24,"y":0.17,"larg":0.45},{"k":3,"pos":54,"x":0.25,"y":0.8,"larg":0.5},{"k":3,"pos":109,"x":0.75,"y":0.8,"larg":0.5}]}},{"id":"chiese.purgatorio.opere.sangiovanniimmacolata","thumb":"vergine_imm_animesante.jpg","img":"vergine_imm_animesante.jpg","titolo":{"en":"Saint John and the Immaculate Conception","fr":"Saint Jean et l'Immaculée"},"frasi":{"en":["You are in front of Saint John the Evangelist with the Immaculate Conception, a painting by an unknown artist.","At the bottom right, the young John is seated on some stones, with a holy book in his hand and a quill for writing: the signs of his role as witness and herald of Christ's word.","Above, on the clouds, the Virgin Immaculate: you recognize her precisely because she is placed among the clouds, with a crescent moon under her feet, as in the traditional image of the Immaculate Conception.","She seems to watch over John's work.","Look at their gazes: John does not look at the Madonna, and the Madonna does not look at him, but downward.","They seem to be staring at the same thing, which however cannot be seen in the painting.","Tap the cards to discover the other paintings in the church."],"fr":["Vous êtes devant Saint Jean l'Évangéliste avec l'Immaculée, une toile d'auteur inconnu.","En bas à droite, le jeune Jean est assis sur des pierres, un livre sacré à la main et une plume pour écrire : ce sont les signes de son rôle de témoin et d'annonciateur de la parole du Christ.","En haut, sur les nuages, la Vierge Immaculée : vous la reconnaissez précisément parce qu'elle est placée parmi les nuées, avec un croissant de lune sous les pieds, comme dans l'iconographie de l'Immaculée Conception.","Elle semble veiller sur l'œuvre de Jean.","Regardez les regards : Jean ne regarde pas la Vierge, et la Vierge ne le regarde pas, mais vers le bas.","On dirait qu'ils fixent la même chose, qui cependant ne se voit pas dans le tableau.","Touchez les cartes pour connaître les autres toiles de l'église."]},"cue":{"en":[{"k":1,"pos":18,"x":0.62,"y":0.58,"larg":0.6},{"k":1,"pos":65,"x":0.8,"y":0.64,"larg":0.35},{"k":2,"pos":27,"x":0.3,"y":0.2,"larg":0.55},{"k":2,"pos":118,"x":0.22,"y":0.44,"larg":0.3}],"fr":[{"k":1,"pos":19,"x":0.62,"y":0.58,"larg":0.6},{"k":1,"pos":71,"x":0.8,"y":0.64,"larg":0.35},{"k":2,"pos":28,"x":0.3,"y":0.2,"larg":0.55},{"k":2,"pos":123,"x":0.22,"y":0.44,"larg":0.3}]}},{"id":"chiese.purgatorio.opere.adorazionepastori","thumb":"adorazione_animesante.jpg","img":"adorazione_animesante.jpg","titolo":{"en":"The Adoration of the Shepherds","fr":"L'Adoration des Bergers"},"frasi":{"en":["You are in front of a Nativity: the newborn Jesus, adored by the shepherds.","It is the Adoration of the Shepherds of 1729, by Giovanni Bonomo, a Caccamo painter of the 18th century.","At the center, Mary in her blue mantle and the Child lying on the straw.","He is the true protagonist: the light starts from his tiny body and spreads outward, lighting up the whole scene.","Behind her, Saint Joseph in his orange cloak.","In the foreground on the left, a bare-chested shepherd brings a lamb as a gift.","On the right, a young woman in a yellow turban and, beside her, a little angel holding a dove.","Look down at the steps: there is also a rooster, with a hen.","Everyday animals and gestures, beside the miracle.","And above, among the clouds, little angels in flight.","The popular character, the intimate and simple atmosphere and the presence of domestic animals are typical of Bonomo.","But a small mystery remains: it is not clear why the light is so different from the one he uses in his other paintings.","It seems almost inspired by Caravaggio.","To discover the other paintings, tap the cards below."],"fr":["Vous êtes devant une Nativité : Jésus tout juste né, adoré par les bergers.","C'est l'Adoration des Bergers de 1729, œuvre de Giovanni Bonomo, peintre de Caccamo du XVIIIe siècle.","Au centre, Marie dans son manteau bleu et l'Enfant couché sur la paille.","C'est lui le véritable protagoniste : la lumière part de son petit corps et rayonne vers l'extérieur, éclairant toute la scène.","Derrière elle, Saint Joseph dans son manteau orange.","Au premier plan à gauche, un berger torse nu apporte un agneau en offrande.","À droite, une jeune femme au turban jaune et, à côté d'elle, un petit ange qui serre une colombe.","Cherchez en bas, sur les marches : il y a aussi un coq, avec une poule.","Ce sont des animaux et des gestes de la vie de tous les jours, à côté du miracle.","Et en haut, parmi les nuages, des angelots en vol.","Le caractère populaire, l'atmosphère intime et simple et la présence des animaux domestiques sont typiques de Bonomo.","Il reste pourtant un petit mystère : on ne comprend pas pourquoi la lumière est si différente de celle qu'il utilise dans ses autres tableaux.","Elle semble presque d'inspiration caravagesque.","Si vous voulez découvrir les autres toiles, touchez les cartes ci-dessous."]},"cue":{"en":[{"k":2,"pos":15,"x":0.41,"y":0.65,"larg":0.47},{"k":4,"pos":12,"x":0.32,"y":0.54,"larg":0.43},{"k":5,"pos":33,"x":0.23,"y":0.71,"larg":0.4},{"k":6,"pos":16,"x":0.76,"y":0.65,"larg":0.43},{"k":7,"pos":40,"x":0.56,"y":0.8,"larg":0.33},{"k":9,"pos":0,"x":0.46,"y":0.31,"larg":0.52}],"fr":[{"k":2,"pos":11,"x":0.41,"y":0.65,"larg":0.47},{"k":4,"pos":15,"x":0.32,"y":0.54,"larg":0.43},{"k":5,"pos":36,"x":0.23,"y":0.71,"larg":0.4},{"k":6,"pos":14,"x":0.76,"y":0.65,"larg":0.43},{"k":7,"pos":51,"x":0.56,"y":0.8,"larg":0.33},{"k":9,"pos":0,"x":0.46,"y":0.31,"larg":0.52}]}},{"id":"chiese.purgatorio.opere.messasuffragio","thumb":"messa_di_suffraggio_animesante.jpg","img":"messa_di_suffraggio_animesante.jpg","titolo":{"en":"The Mass of Suffrage","fr":"La Messe de Suffrage"},"frasi":{"en":["This large painting, by Tommaso Pollace, from 1782 or 1784, is on the high altar and tells of the power of prayer for the dead.","The painting is divided into two zones: earth below, where Mass is celebrated, and heaven above.","Below, a priest raises the host during Mass.","He wears rose-colored vestments, a color used only on special occasions: here the Mass is celebrated in suffrage for the souls, that is, offered for the dead.","On the left, near the altar, an altar boy with a candle; in front of him, two clerics kneeling.","Look up: on the clouds is the Madonna in her blue mantle, then Christ and God the Father, and between them the dove of the Holy Spirit.","On the right, an angel lifts toward heaven a soul just freed: it is the ascent of the soul.","Below, among the flames, the souls of Purgatory burn and stretch out their hands.","Tap below to discover the other paintings."],"fr":["Cette grande toile, œuvre de Tommaso Pollace, de 1782 ou 1784, se trouve sur le maître-autel et raconte la force de la prière pour les défunts.","Le tableau est divisé en deux zones : la terre en bas, où l'on célèbre la Messe, et le ciel en haut.","En bas, un prêtre élève l'hostie pendant la Messe.","Il porte des ornements roses, une couleur qu'on n'utilise que dans les occasions spéciales : ici la Messe est célébrée en suffrage des âmes.","À gauche, près de l'autel, un enfant de chœur avec la bougie ; devant lui, deux clercs à genoux.","Levez les yeux : sur les nuages se trouve la Vierge au manteau bleu, puis le Christ et Dieu le Père, et entre eux la colombe de l'Esprit Saint.","À droite, un ange élève vers le ciel une âme tout juste libérée : c'est l'ascension de l'âme.","En bas, parmi les flammes, les âmes du Purgatoire brûlent et tendent les mains.","Touchez ci-dessous pour découvrir les autres œuvres."]},"cue":{"en":[{"k":0,"pos":95,"x":0.53,"y":0.51,"larg":0.89},{"k":2,"pos":11,"x":0.42,"y":0.53,"larg":0.4},{"k":3,"pos":9,"x":0.43,"y":0.62,"larg":0.37},{"k":4,"pos":31,"x":0.27,"y":0.75,"larg":0.36},{"k":4,"pos":71,"x":0.59,"y":0.72,"larg":0.4},{"k":5,"pos":39,"x":0.28,"y":0.24,"larg":0.37},{"k":5,"pos":73,"x":0.34,"y":0.18,"larg":0.36},{"k":5,"pos":82,"x":0.68,"y":0.17,"larg":0.36},{"k":5,"pos":107,"x":0.53,"y":0.18,"larg":0.34},{"k":6,"pos":10,"x":0.68,"y":0.51,"larg":0.37},{"k":7,"pos":11,"x":0.8,"y":0.73,"larg":0.36}],"fr":[{"k":0,"pos":107,"x":0.53,"y":0.51,"larg":0.89},{"k":2,"pos":13,"x":0.42,"y":0.53,"larg":0.4},{"k":3,"pos":8,"x":0.43,"y":0.62,"larg":0.37},{"k":4,"pos":32,"x":0.27,"y":0.75,"larg":0.36},{"k":4,"pos":72,"x":0.59,"y":0.72,"larg":0.4},{"k":5,"pos":41,"x":0.28,"y":0.24,"larg":0.37},{"k":5,"pos":77,"x":0.34,"y":0.18,"larg":0.36},{"k":5,"pos":87,"x":0.68,"y":0.17,"larg":0.36},{"k":5,"pos":113,"x":0.53,"y":0.18,"larg":0.34},{"k":6,"pos":10,"x":0.68,"y":0.51,"larg":0.37},{"k":7,"pos":11,"x":0.8,"y":0.73,"larg":0.36}]}},{"id":"chiese.purgatorio.opere.madonnacarmelo","thumb":"madonna_del_carmelo_animesante.jpg","img":"madonna_del_carmelo_animesante.jpg","titolo":{"en":"Our Lady of Mount Carmel","fr":"Notre-Dame du Mont-Carmel"},"frasi":{"en":["You are in front of Our Lady of Mount Carmel, a painting by an unknown painter of the second half of the 18th century.","The protagonists are the Virgin, who is about to be crowned by an angel, and the Child Jesus seated on her lap: they are the most brightly lit figures in the scene.","On the left, a Carmelite friar, Saint John of the Cross, leans toward the Madonna and receives the scapular.","In the center, a putto (a little cherub) points with his hand to the protagonists.","On the right, a figure holding a large cross.","The church's information panel identifies it as a copy of the altarpiece by Sebastiano Conca in the church of Santa Teresa alla Kalsa, in Palermo.","Use the menu below to discover more about the Church of Purgatory."],"fr":["Vous êtes devant Notre-Dame du Mont-Carmel, toile d'un peintre inconnu de la seconde moitié du XVIIIe siècle.","Les protagonistes sont la Vierge, sur le point d'être couronnée par un ange, et l'Enfant Jésus assis sur ses genoux : ce sont les personnages les plus éclairés de la scène.","À gauche, un frère carme, Saint Jean de la Croix, se penche vers la Vierge et reçoit le scapulaire.","Au centre, un putto indique de la main les protagonistes.","À droite, une figure soutenant une grande croix.","Le panneau de l'église l'indique comme une copie du retable de Sebastiano Conca dans l'église de Santa Teresa alla Kalsa, à Palerme.","Consultez le menu ci-dessous pour découvrir d'autres choses sur l'église du Purgatoire."]},"cue":{"en":[{"k":1,"pos":51,"x":0.6,"y":0.22,"larg":0.55},{"k":2,"pos":37,"x":0.24,"y":0.56,"larg":0.45},{"k":3,"pos":16,"x":0.46,"y":0.78,"larg":0.42},{"k":4,"pos":30,"x":0.78,"y":0.62,"larg":0.45}],"fr":[{"k":1,"pos":53,"x":0.6,"y":0.22,"larg":0.55},{"k":2,"pos":34,"x":0.24,"y":0.56,"larg":0.45},{"k":3,"pos":11,"x":0.46,"y":0.78,"larg":0.42},{"k":4,"pos":32,"x":0.78,"y":0.62,"larg":0.45}]}},{"id":"chiese.purgatorio.opere.ostensorio","thumb":"adorazione_eucaristica_animesante.jpg","img":"adorazione_eucaristica_animesante.jpg","titolo":{"en":"The Adoration of the Monstrance","fr":"L'Adoration de l'Ostensoir"},"frasi":{"en":["You are in front of the Adoration of the Monstrance, by Giovanni Bonomo, from 1729.","Above, among the clouds and angels, the monstrance with the Host: it is the center of the whole scene.","Below, two saints in adoration: on the left a bishop saint, recognizable by his rich vestments; on the right Saint Francis of Assisi, in his simple habit and with the stigmata.","The bishop and Francis are the sacred side of the painting: their faces, turned toward God, are all in adoration.","But there is also a touch of lightness: in the center, two putti play with the bishop's mitre, as if poking fun at power.","Francis is the saint of poverty and of gratitude for creation: his is the Canticle of Brother Sun, which begins with \"Laudato sii, mi' Signore\" (\"Praised be You, my Lord\").","At his feet, a skull on a book recalls the fragility of life.","Tap the cards to discover the other paintings."],"fr":["Vous êtes devant l'Adoration de l'Ostensoir, œuvre de Giovanni Bonomo, de 1729.","En haut, parmi les nuages et les anges, l'ostensoir avec l'Hostie : c'est le centre de toute la scène.","En bas, deux saints en adoration : à gauche un saint évêque, reconnaissable à ses riches ornements ; à droite Saint François d'Assise, dans son simple habit et avec les stigmates.","L'évêque et François sont le côté sacré du tableau : leurs visages, tournés vers Dieu, sont tout entiers en adoration.","Mais il y a aussi une touche de légèreté : au centre, deux putti jouent avec la mitre de l'évêque, presque pour se moquer du pouvoir.","François est le saint de la pauvreté et de la gratitude pour la création : de lui est le Cantique de frère Soleil, qui commence par « Laudato sii, mi' Signore » (« Loué sois-tu, mon Seigneur »).","À ses pieds, un crâne sur un livre rappelle la fragilité de la vie.","Touchez les cartes pour connaître les autres toiles."]},"cue":{"en":[{"k":1,"pos":39,"x":0.5,"y":0.2,"larg":0.5},{"k":2,"pos":7,"x":0.26,"y":0.62,"larg":0.48},{"k":2,"pos":96,"x":0.72,"y":0.6,"larg":0.48},{"k":4,"pos":46,"x":0.5,"y":0.8,"larg":0.4},{"k":6,"pos":16,"x":0.76,"y":0.86,"larg":0.35}],"fr":[{"k":1,"pos":39,"x":0.5,"y":0.2,"larg":0.5},{"k":2,"pos":8,"x":0.26,"y":0.62,"larg":0.48},{"k":2,"pos":101,"x":0.72,"y":0.6,"larg":0.48},{"k":4,"pos":51,"x":0.5,"y":0.8,"larg":0.4},{"k":6,"pos":17,"x":0.76,"y":0.86,"larg":0.35}]}}],"basi":["../gallery-chiese/","/gallery-chiese/","gallery-chiese/","../../gallery-chiese/"],"osdLocale":"openseadragon.min.js","osdCdn":"https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js","cache":"amuni-tour-offline-v1"};
+
+  const TESTI = {
+    en: {
+      titolo: 'Holy Souls of Purgatory',
+      sotto: 'Offline tour · tap a painting to hear its story with the guided zoom.',
+      play: '▶ Listen again', stop: '■ Stop', chiudi: 'Close',
+      salvataggio: 'Saving for offline use… keep the connection on for a moment.',
+      pronto: function (n, t) { return '✓ Works without internet · ' + n + ' of ' + t + ' paintings saved'; },
+      nonPronto: function (n, t) { return 'Not saved yet (' + n + ' of ' + t + '). Open this page once with internet.'; },
+      noSW: 'To use it offline, open this page from the website address (https).',
+      senzaVoce: 'No voice available offline for this language: follow the text, the zoom moves on its own.',
+      hint: 'Pinch to zoom', lang: 'en-US'
+    },
+    fr: {
+      titolo: 'Âmes Saintes du Purgatoire',
+      sotto: 'Visite hors ligne · touchez un tableau pour écouter son histoire avec le zoom guidé.',
+      play: '▶ Réécouter', stop: '■ Arrêter', chiudi: 'Fermer',
+      salvataggio: 'Enregistrement pour le hors ligne… gardez la connexion un instant.',
+      pronto: function (n, t) { return '✓ Fonctionne sans internet · ' + n + ' tableaux sur ' + t + ' enregistrés'; },
+      nonPronto: function (n, t) { return 'Pas encore enregistré (' + n + ' sur ' + t + '). Ouvrez cette page une fois avec internet.'; },
+      noSW: 'Pour l’utiliser hors ligne, ouvrez cette page depuis l’adresse du site (https).',
+      senzaVoce: 'Aucune voix disponible hors ligne pour cette langue : suivez le texte, le zoom avance tout seul.',
+      hint: 'Pincez pour agrandir', lang: 'fr-FR'
+    }
+  };
+
+  const $ = function (id) { return document.getElementById(id); };
+
+  // La cartella delle foto (gallery-chiese) viene cercata in alcuni punti
+  // possibili; si usa il primo in cui si trova la prima foto.
+  let BASE = DATA.basi[0];
+  let baseTrovata = false, fotoMancanti = false;
+  function trovaBase() {
+    const test = DATA.opere[0].img;
+    let i = 0;
+    return new Promise(function (ok) {
+      function prova() {
+        if (i >= DATA.basi.length) { ok(false); return; }
+        const b = DATA.basi[i++];
+        const im = new Image();
+        im.onload = function () { BASE = b; baseTrovata = true; ok(true); };
+        im.onerror = prova;
+        im.src = b + test;
+      }
+      prova();
+    });
+  }
+  let lingua = 'en';
+  try { const s = localStorage.getItem('amuni_offline_lang'); if (s && TESTI[s]) lingua = s; } catch (e) {}
+
+  // ---------------------------------------------------------------
+  // INTERFACCIA
+  // ---------------------------------------------------------------
+  function disegnaGriglia() {
+    const t = TESTI[lingua];
+    document.documentElement.lang = lingua;
+    document.title = 'Amunì · ' + t.titolo;
+    $('titolo').textContent = t.titolo;
+    $('sotto').textContent = t.sotto;
+    $('btn-play').textContent = t.play;
+    $('btn-stop').textContent = t.stop;
+    $('chiudi').setAttribute('aria-label', t.chiudi);
+    document.querySelectorAll('.lingue button').forEach(function (b) {
+      b.classList.toggle('attiva', b.dataset.l === lingua);
+    });
+    const g = $('griglia');
+    g.innerHTML = '';
+    DATA.opere.forEach(function (o) {
+      const b = document.createElement('button');
+      b.className = 'opera';
+      b.type = 'button';
+      const img = document.createElement('img');
+      img.alt = '';
+      img.loading = 'lazy';
+      let prova = 0;
+      const cand = [BASE + 'thumbs/' + o.thumb, BASE + o.thumb];
+      img.onerror = function () { prova++; if (prova < cand.length) img.src = cand[prova]; };
+      img.src = cand[0];
+      const sp = document.createElement('span');
+      sp.textContent = o.titolo[lingua];
+      b.appendChild(img); b.appendChild(sp);
+      b.addEventListener('click', function () { apriOpera(o); });
+      g.appendChild(b);
+    });
+    aggiornaStato();
+  }
+
+  document.querySelectorAll('.lingue button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lingua = b.dataset.l;
+      try { localStorage.setItem('amuni_offline_lang', lingua); } catch (e) {}
+      disegnaGriglia();
+    });
+  });
+
+  // ---------------------------------------------------------------
+  // STATO "FUNZIONA SENZA INTERNET"
+  // ---------------------------------------------------------------
+  let statoCache = { n: 0, t: DATA.opere.length, sw: 'attesa' };
+  function aggiornaStato() {
+    const t = TESTI[lingua], el = $('stato');
+    el.classList.remove('ok');
+    if (fotoMancanti) {
+      el.textContent = '⚠ Photos folder not found. This page is at: ' + location.pathname +
+        ' · it looks for the folder "gallery-chiese" next to the website pages.';
+      return;
+    }
+    if (statoCache.sw === 'no') { el.textContent = t.noSW; return; }
+    if (statoCache.sw === 'attesa') { el.textContent = t.salvataggio; return; }
+    if (statoCache.n >= statoCache.t) { el.textContent = t.pronto(statoCache.n, statoCache.t); el.classList.add('ok'); }
+    else el.textContent = t.nonPronto(statoCache.n, statoCache.t);
+  }
+  function verificaCache() {
+    if (!('caches' in window)) { statoCache.sw = 'no'; aggiornaStato(); return; }
+    caches.open(DATA.cache).then(function (c) {
+      return Promise.all(DATA.opere.map(function (o) { return c.match(BASE + o.img, { ignoreSearch: true }); }));
+    }).then(function (res) {
+      statoCache.n = res.filter(Boolean).length;
+      statoCache.sw = 'pronto';
+      aggiornaStato();
+    }).catch(function () { statoCache.sw = 'no'; aggiornaStato(); });
+  }
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw_tour_offline.js').then(function () {
+      return navigator.serviceWorker.ready;
+    }).then(function () {
+      verificaCache();
+      setTimeout(verificaCache, 4000);
+      setTimeout(verificaCache, 12000);
+    }).catch(function () { statoCache.sw = 'no'; aggiornaStato(); });
+  } else { statoCache.sw = 'no'; }
+
+  // ---------------------------------------------------------------
+  // VISORE (OpenSeadragon): locale se presente, altrimenti dal CDN;
+  // il service worker conserva entrambi per l'uso senza rete.
+  // ---------------------------------------------------------------
+  let osdPromise = null;
+  function carica(src) {
+    return new Promise(function (ok, ko) {
+      const s = document.createElement('script');
+      s.src = src; s.onload = ok; s.onerror = function () { ko(new Error(src)); };
+      document.head.appendChild(s);
+    });
+  }
+  function caricaOSD() {
+    if (window.OpenSeadragon) return Promise.resolve();
+    if (!osdPromise) {
+      osdPromise = carica(DATA.osdLocale).catch(function () { return carica(DATA.osdCdn); })
+        .catch(function (e) { osdPromise = null; throw e; });
+    }
+    return osdPromise;
+  }
+
+  let viewer = null, cuePendente = null, timerHold = null, timerHint = null;
+  const HOLD_MS = 6500;
+
+  function aspetto() { const s = viewer.world.getItemAt(0).getContentSize(); return s.y / s.x; }
+  function tornaPanoramica() { if (viewer && viewer.world.getItemCount()) viewer.viewport.goHome(); }
+  function applicaCue(c) {
+    if (!viewer || !viewer.world.getItemCount()) { cuePendente = c; return; }
+    const vp = viewer.viewport;
+    clearTimeout(timerHold);
+    vp.panTo(new OpenSeadragon.Point(c.x, c.y * aspetto()));
+    vp.zoomTo(1 / c.larg);
+    timerHold = setTimeout(tornaPanoramica, HOLD_MS);
+  }
+  function chiudiViewer() {
+    clearTimeout(timerHold);
+    cuePendente = null;
+    if (viewer) { try { viewer.destroy(); } catch (e) {} viewer = null; }
+  }
+  function apriViewer(opera) {
+    chiudiViewer();
+    return caricaOSD().then(function () {
+      if (opera !== operaAttuale) return;
+      viewer = OpenSeadragon({
+        element: $('viewer-img'), prefixUrl: '',
+        tileSources: { type: 'image', url: BASE + opera.img },
+        showNavigationControl: false, animationTime: 1.6,
+        minZoomImageRatio: 0.9, maxZoomPixelRatio: 3, visibilityRatio: 0.6,
+        gestureSettingsTouch: { clickToZoom: false, flickEnabled: false },
+        gestureSettingsMouse: { clickToZoom: false }
+      });
+      window.__viewer = viewer;
+      viewer.addHandler('open', function () {
+        if (cuePendente) { const c = cuePendente; cuePendente = null; applicaCue(c); }
+      });
+    }).catch(function (e) { console.error('Viewer', e); });
+  }
+
+  // ---------------------------------------------------------------
+  // VOCE: legge una frase alla volta e sposta il quadro a tempo
+  // ---------------------------------------------------------------
+  let operaAttuale = null, sessione = 0, timersCue = [], timersPlayer = [];
+  let msMisurato = null, silenzioso = false;
+
+  function pulisciCue() { timersCue.forEach(clearTimeout); timersCue = []; }
+  function pulisciPlayer() { timersPlayer.forEach(clearTimeout); timersPlayer = []; }
+
+  function scegliVoce() {
+    try {
+      const voci = window.speechSynthesis.getVoices() || [];
+      const pre = TESTI[lingua].lang.slice(0, 2).toLowerCase();
+      const adatte = voci.filter(function (v) { return (v.lang || '').toLowerCase().indexOf(pre) === 0; });
+      if (!adatte.length) return null;
+      const locali = adatte.filter(function (v) { return v.localService; });
+      if (locali.length) return locali[0];
+      return navigator.onLine === false ? null : adatte[0];
+    } catch (e) { return null; }
+  }
+
+  function evidenzia(k) {
+    document.querySelectorAll('#testo .frase').forEach(function (s, i) { s.classList.toggle('ora', i === k); });
+    const s = document.querySelectorAll('#testo .frase')[k];
+    if (s && s.scrollIntoView) { try { s.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {} }
+  }
+
+  function suFrase(k, utt, msCar) {
+    pulisciCue();
+    const cues = (operaAttuale.cue[lingua] || []).filter(function (c) { return c.k === k; });
+    const programma = cues.map(function (c) { return { c: c, pos: c.pos, fatto: false }; });
+    function esegui(p) { if (p.fatto) return; p.fatto = true; applicaCue(p.c); }
+    programma.forEach(function (p) {
+      const ritardo = Math.round(p.pos * msCar);
+      if (ritardo < 150) esegui(p);
+      else timersCue.push(setTimeout(function () { esegui(p); }, ritardo));
+    });
+    if (utt && programma.length) {
+      try {
+        utt.addEventListener('boundary', function (ev) {
+          const ci = ev.charIndex || 0;
+          programma.forEach(function (p) { if (!p.fatto && ci >= p.pos - 8) esegui(p); });
+        });
+      } catch (e) {}
+    }
+    if (!programma.length) timersCue.push(setTimeout(tornaPanoramica, 700));
+  }
+
+  function mostraAvviso(testo) {
+    const a = $('avviso');
+    a.textContent = testo || '';
+    a.style.display = testo ? 'block' : 'none';
+  }
+
+  function dire(k, mia) {
+    if (mia !== sessione) return;
+    const frasi = operaAttuale.frasi[lingua];
+    if (k >= frasi.length) { fine(); return; }
+    evidenzia(k);
+    const testo = frasi[k];
+
+    if (silenzioso) {
+      const ms = 62;
+      suFrase(k, null, ms);
+      timersPlayer.push(setTimeout(function () { dire(k + 1, mia); }, Math.round(testo.length * ms + 450)));
+      return;
+    }
+
+    let partita = false;
+    const u = new SpeechSynthesisUtterance(testo);
+    u.lang = TESTI[lingua].lang;
+    u.rate = 1;
+    const v = scegliVoce();
+    if (v) u.voice = v;
+    u.onstart = function () {
+      if (mia !== sessione) return;
+      partita = true;
+      u._t0 = Date.now();
+      suFrase(k, u, msMisurato || 70);
+    };
+    u.onend = function () {
+      if (mia !== sessione) return;
+      if (u._t0 && testo.length >= 25) {
+        const ms = (Date.now() - u._t0) / testo.length;
+        if (ms >= 40 && ms <= 110) msMisurato = msMisurato ? Math.round((msMisurato + ms) / 2) : Math.round(ms);
+      }
+      timersPlayer.push(setTimeout(function () { dire(k + 1, mia); }, 120));
+    };
+    u.onerror = function (e) {
+      if (mia !== sessione) return;
+      if (e && (e.error === 'interrupted' || e.error === 'canceled')) return;
+      passaSilenzioso(k, mia);
+    };
+    try { window.speechSynthesis.speak(u); } catch (e) { passaSilenzioso(k, mia); return; }
+    // se la voce non parte entro 4 secondi (nessuna voce offline) si prosegue in silenzio
+    timersPlayer.push(setTimeout(function () {
+      if (!partita && mia === sessione) { try { window.speechSynthesis.cancel(); } catch (e) {} passaSilenzioso(k, mia); }
+    }, 4000));
+  }
+
+  function passaSilenzioso(k, mia) {
+    if (mia !== sessione) return;
+    silenzioso = true;
+    mostraAvviso(TESTI[lingua].senzaVoce);
+    pulisciPlayer();
+    dire(k, mia);
+  }
+
+  function fine() {
+    pulisciCue();
+    timersCue.push(setTimeout(tornaPanoramica, 1500));
+    document.querySelectorAll('#testo .frase').forEach(function (s) { s.classList.remove('ora'); });
+  }
+
+  function ferma() {
+    sessione++;
+    pulisciCue(); pulisciPlayer();
+    try { window.speechSynthesis.cancel(); } catch (e) {}
+  }
+
+  function avvia() {
+    ferma();
+    const mia = sessione;
+    silenzioso = false;
+    mostraAvviso('');
+    if (!('speechSynthesis' in window)) { silenzioso = true; mostraAvviso(TESTI[lingua].senzaVoce); }
+    tornaPanoramica();
+    timersPlayer.push(setTimeout(function () { dire(0, mia); }, 150));
+  }
+
+  function apriOpera(o) {
+    ferma();
+    operaAttuale = o;
+    document.body.classList.add('tour-attivo');
+    $('op-titolo').textContent = o.titolo[lingua];
+    const box = $('testo');
+    box.innerHTML = '';
+    o.frasi[lingua].forEach(function (f) {
+      const s = document.createElement('span');
+      s.className = 'frase';
+      s.textContent = f + ' ';
+      box.appendChild(s);
+    });
+    $('hint').textContent = '🔍 ' + TESTI[lingua].hint;
+    $('hint').classList.add('visibile');
+    clearTimeout(timerHint);
+    timerHint = setTimeout(function () { $('hint').classList.remove('visibile'); }, 4500);
+    apriViewer(o);
+    avvia();
+  }
+
+  function chiudiOpera() {
+    ferma();
+    operaAttuale = null;
+    chiudiViewer();
+    document.body.classList.remove('tour-attivo');
+  }
+
+  $('chiudi').addEventListener('click', chiudiOpera);
+  $('btn-stop').addEventListener('click', function () { ferma(); tornaPanoramica(); });
+  $('btn-play').addEventListener('click', avvia);
+  document.addEventListener('visibilitychange', function () { if (document.hidden) ferma(); });
+
+  // le voci si caricano in ritardo su alcuni dispositivi
+  try { window.speechSynthesis.getVoices(); } catch (e) {}
+
+  trovaBase().then(function (ok) {
+    fotoMancanti = !ok;
+    disegnaGriglia();
+  });
+})();
+</script>
+</body>
+</html>
