@@ -713,17 +713,35 @@
   // Altre lingue: i movimenti seguono il NUMERO della frase (0,1,2...) e non
   // le parole italiane. La tabella GUIDA dice, per ogni dettaglio, in quale
   // frase del testo italiano compare e a che punto della frase.
+  let codaFrasi = []; // lunghezza di ogni frase messa in coda per la risposta in corso
+
   function sulParlatoTradotto(utt, n) {
     const g = tourAttivo.guida;
     const lunghezza = (utt.text || '').length || 1;
     const rate = utt.rate || 1;
+    const coda = codaFrasi;
+    // stesso numero di frasi dell'italiano: si segue il numero della frase.
+    // Numero diverso (traduzione che unisce o divide frasi): si segue la
+    // posizione nel testo, in proporzione.
+    const stessoNumero = coda.length === g.n;
+    let totale = 0, prima = 0;
+    coda.forEach(function (l, k) { totale += l; if (k < n) prima += l; });
     let trovato = false;
-    if (DEBUG) { debugStato = 'frase ' + n + ' (' + tourAttivo.lingua + ')'; mostraDebug(); }
+    if (DEBUG) { debugStato = 'frase ' + n + '/' + coda.length + ' (' + tourAttivo.lingua + (stessoNumero ? '' : ', a proporzione') + ')'; mostraDebug(); }
     tourAttivo.cue.forEach(function (c, ci) {
-      (g[ci] || []).forEach(function (occ) {
-        if (occ[0] !== n) return;
+      (g.v[ci] || []).forEach(function (occ) {
+        let ritardo;
+        if (stessoNumero) {
+          if (occ[0] !== n) return;
+          ritardo = occ[1] * lunghezza * MS_PER_CARATTERE / rate;
+        } else {
+          const pos = occ[2] * totale;
+          const ultima = n === coda.length - 1;
+          if (pos < prima || (!ultima && pos >= prima + lunghezza)) return;
+          ritardo = (pos - prima) * MS_PER_CARATTERE / rate;
+        }
         trovato = true;
-        const ritardo = Math.round(occ[1] * lunghezza * MS_PER_CARATTERE / rate);
+        ritardo = Math.round(ritardo);
         if (ritardo < 150) applicaCue(c);
         else timers.push(setTimeout(function () { applicaCue(c); }, ritardo));
       });
@@ -769,10 +787,12 @@
     const cancelOriginale = window.speechSynthesis.cancel;
     window.speechSynthesis.cancel = function () {
       indiceFrase = 0;
+      codaFrasi = [];
       return cancelOriginale.apply(window.speechSynthesis, arguments);
     };
     window.speechSynthesis.speak = function (utt) {
       const n = indiceFrase++;
+      codaFrasi.push(String(utt.text || '').length);
       try { utt.addEventListener('start', function () { sulParlato(utt, n); }); } catch (e) {}
       // quando la Castellana smette di parlare (o la voce viene interrotta) il quadro torna intero
       const alFine = function () {
@@ -904,280 +924,282 @@
   };
 
   // GUIDA: per ogni opera, per ogni dettaglio (stesso ordine di "cue" in TOURS)
-  // l'elenco [numero frase, punto nella frase 0-1] in cui l'italiano lo nomina.
+  // l'elenco [numero frase, punto nella frase 0-1, punto in tutto il testo 0-1]
+  // in cui l'italiano lo nomina. n = numero di frasi del testo italiano.
   const GUIDA = {
-    "La Visita di Santa Elisabetta": [
-      [[0,0.07]],
-      [[1,0.53]],
-      [[4,0.23]],
-      [[4,0.41]],
-      [[5,0.15]],
-      [[6,0.1]],
-      [[7,0.12]],
-      [[7,0.71]],
-      [[8,0.28]],
-      [[9,0.16]],
-      [[10,0]],
-      [[11,0]]
-    ],
-    "La Gloria degli Angeli": [
-      [[0,0.07]],
-      [[1,0.13]],
-      [[1,0.5]],
-      [[2,0.42]],
-      [[3,0.37]],
-      [[3,0.63]],
-      [[4,0.16]],
-      [[4,0.58]],
-      [[5,0.11]],
-      [[5,0.86]],
-      [[6,0.26]],
-      [[7,0.31]],
-      [[8,0]]
-    ],
-    "San Rocco": [
-      [[1,0]],
-      [[2,0.02]],
-      [[2,0.16]],
-      [[2,0.37]],
-      [[2,0.76]],
-      [[2,0.86]],
-      [[3,0]]
-    ],
-    "Il Miracolo di Sant'Isidoro (Stomer)": [
-      [[0,0.22]],
+    "La Visita di Santa Elisabetta": { n: 12, v: [
+      [[0,0.07,0.01]],
+      [[1,0.53,0.176]],
+      [[4,0.23,0.382]],
+      [[4,0.41,0.4]],
+      [[5,0.15,0.469]],
+      [[6,0.1,0.529]],
+      [[7,0.12,0.603]],
+      [[7,0.71,0.681]],
+      [[8,0.28,0.742]],
+      [[9,0.16,0.81]],
+      [[10,0,0.876]],
+      [[11,0,0.948]]
+    ] },
+    "La Gloria degli Angeli": { n: 9, v: [
+      [[0,0.07,0.01]],
+      [[1,0.13,0.162]],
+      [[1,0.5,0.216]],
+      [[2,0.42,0.33]],
+      [[3,0.37,0.434]],
+      [[3,0.63,0.465]],
+      [[4,0.16,0.538]],
+      [[4,0.58,0.605]],
+      [[5,0.11,0.684]],
+      [[5,0.86,0.77]],
+      [[6,0.26,0.802]],
+      [[7,0.31,0.874]],
+      [[8,0,0.939]]
+    ] },
+    "San Rocco": { n: 6, v: [
+      [[1,0,0.204]],
+      [[2,0.02,0.273]],
+      [[2,0.16,0.301]],
+      [[2,0.37,0.342]],
+      [[2,0.76,0.418]],
+      [[2,0.86,0.439]],
+      [[3,0,0.466]]
+    ] },
+    "Il Miracolo di Sant'Isidoro (Stomer)": { n: 6, v: [
+      [[0,0.22,0.028]],
       [],
-      [[1,0.1]],
-      [[1,0.55]],
-      [[1,0.71]],
-      [[1,0.89]],
-      [[2,0.07]],
-      [[2,0.19]],
-      [[2,0.29]],
-      [[3,0.19]],
-      [[5,0]]
-    ],
-    "Gli Affreschi del Coro": [
-      [[0,0]],
-      [[1,0.38]],
-      [[2,0]],
-      [[3,0.35]],
-      [[4,0.19]],
-      [[4,0.52]],
-      [[4,0.72]],
-      [[5,0.75]],
-      [[6,0.22]],
-      [[7,0.57]],
-      [[8,0.66]],
-      [[9,0.44]],
-      [[10,0.54]],
-      [[11,0]],
-      [[13,0]]
-    ],
-    "L'Adorazione dei Pastori": [
-      [[2,0]],
-      [[4,0.28]],
-      [[5,0.89]],
-      [[6,0.33]],
-      [[7,0.66]],
-      [[9,0.81]],
+      [[1,0.1,0.154]],
+      [[1,0.55,0.28]],
+      [[1,0.71,0.325]],
+      [[1,0.89,0.375]],
+      [[2,0.07,0.425]],
+      [[2,0.19,0.457]],
+      [[2,0.29,0.484]],
+      [[3,0.19,0.7]],
+      [[5,0,0.857]]
+    ] },
+    "Gli Affreschi del Coro": { n: 14, v: [
+      [[0,0,0]],
+      [[1,0.38,0.088]],
+      [[2,0,0.142]],
+      [[3,0.35,0.228]],
+      [[4,0.19,0.283]],
+      [[4,0.52,0.319]],
+      [[4,0.72,0.341]],
+      [[5,0.75,0.43]],
+      [[6,0.22,0.452]],
+      [[7,0.57,0.479]],
+      [[8,0.66,0.507]],
+      [[9,0.44,0.531]],
+      [[10,0.54,0.563]],
+      [[11,0,0.574]],
+      [[13,0,0.936]]
+    ] },
+    "L'Adorazione dei Pastori": { n: 14, v: [
+      [[2,0,0.148]],
+      [[4,0.28,0.334]],
+      [[5,0.89,0.431]],
+      [[6,0.33,0.47]],
+      [[7,0.66,0.575]],
+      [[9,0.81,0.691]],
       []
-    ],
-    "La Messa di Suffragio": [
-      [[0,0.75]],
-      [[2,0.25]],
-      [[3,0.06]],
-      [[4,0.33]],
-      [[4,0.75]],
-      [[5,0.29]],
-      [[5,0.54]],
-      [[5,0.61]],
-      [[5,0.79]],
-      [[6,0.11]],
-      [[7,0.14]],
+    ] },
+    "La Messa di Suffragio": { n: 9, v: [
+      [[0,0.75,0.124]],
+      [[2,0.25,0.292]],
+      [[3,0.06,0.348]],
+      [[4,0.33,0.523]],
+      [[4,0.75,0.574]],
+      [[5,0.29,0.649]],
+      [[5,0.54,0.688]],
+      [[5,0.61,0.699]],
+      [[5,0.79,0.727]],
+      [[6,0.11,0.771]],
+      [[7,0.14,0.876]],
       []
-    ],
-    "L'Adorazione dell'Ostensorio": [
-      [[1,0.38]],
-      [[2,0.29]],
-      [[2,0.65]],
-      [[4,0.38]],
-      [[6,0.26]],
+    ] },
+    "L'Adorazione dell'Ostensorio": { n: 8, v: [
+      [[1,0.38,0.139]],
+      [[2,0.29,0.264]],
+      [[2,0.65,0.336]],
+      [[4,0.38,0.593]],
+      [[6,0.26,0.884]],
       []
-    ],
-    "San Filippo Neri": [
-      [[1,0.4]],
-      [[3,0.32]],
-      [[3,0.64]],
+    ] },
+    "San Filippo Neri": { n: 5, v: [
+      [[1,0.4,0.221]],
+      [[3,0.32,0.679]],
+      [[3,0.64,0.781]],
       []
-    ],
-    "San Giovanni e l'Immacolata": [
-      [[1,0.1]],
-      [[1,0.37]],
-      [[2,0.13]],
-      [[2,0.57]],
+    ] },
+    "San Giovanni e l'Immacolata": { n: 7, v: [
+      [[1,0.1,0.143]],
+      [[1,0.37,0.215]],
+      [[2,0.13,0.417]],
+      [[2,0.57,0.529]],
       []
-    ],
-    "La Madonna del Carmelo": [
-      [[1,0.31]],
-      [[2,0.34]],
-      [[3,0.2]],
-      [[4,0.67]],
+    ] },
+    "La Madonna del Carmelo": { n: 7, v: [
+      [[1,0.31,0.219]],
+      [[2,0.34,0.435]],
+      [[3,0.2,0.559]],
+      [[4,0.67,0.672]],
       []
-    ],
-    "Santa Maria: la Madonna degli Angeli": [
-      [[0,0.04]],
-      [[1,0.35]],
-      [[2,0.13]],
-      [[2,0.61]],
-      [[3,0.42]],
-      [[4,0]]
-    ],
-    "Santa Maria: la Madonna col Bambino (Gagini)": [
-      [[0,0.03]],
-      [[1,0.32]],
-      [[1,0.56]],
-      [[2,0]],
-      [[3,0]]
-    ],
-    "Santa Maria: la Madonna Visita Poveri": [
-      [[1,0.29]],
-      [[2,0.12]],
-      [[2,0.7]],
-      [[3,0.24]],
-      [[3,0.45]],
-      [[3,0.64]],
-      [[4,0]]
-    ],
-    "Santa Maria: la Levitazione di San Giuseppe da Copertino": [
+    ] },
+    "Santa Maria: la Madonna degli Angeli": { n: 5, v: [
+      [[0,0.04,0.012]],
+      [[1,0.35,0.33]],
+      [[2,0.13,0.474]],
+      [[2,0.61,0.617]],
+      [[3,0.42,0.781]],
+      [[4,0,0.849]]
+    ] },
+    "Santa Maria: la Madonna col Bambino (Gagini)": { n: 4, v: [
+      [[0,0.03,0.012]],
+      [[1,0.32,0.475]],
+      [[1,0.56,0.545]],
+      [[2,0,0.676]],
+      [[3,0,0.815]]
+    ] },
+    "Santa Maria: la Madonna Visita Poveri": { n: 5, v: [
+      [[1,0.29,0.105]],
+      [[2,0.12,0.27]],
+      [[2,0.7,0.386]],
+      [[3,0.24,0.521]],
+      [[3,0.45,0.588]],
+      [[3,0.64,0.645]],
+      [[4,0,0.758]]
+    ] },
+    "Santa Maria: la Levitazione di San Giuseppe da Copertino": { n: 5, v: [
       [],
-      [[2,0]],
-      [[2,0.44]],
-      [[3,0]]
-    ],
-    "Santa Maria: la SS. Trinità con San Michele": [
-      [[1,0.06]],
-      [[2,0.02]],
-      [[2,0.15]],
-      [[2,0.6]],
-      [[2,0.96]],
-      [[3,0]]
-    ],
-    "Santa Maria: l'Urna del Beato Giovanni Liccio": [
-      [[1,0.01]],
-      [[1,0.57]],
-      [[1,0.86]],
-      [[3,0]]
-    ],
-    "Badia: il Sacrificio di Isacco": [
-      [[0,0]],
-      [[0,0.39]],
-      [[0,0.53]],
-      [[0,0.82]],
-      [[2,0]]
-    ],
-    "Badia: San Benedetto, Mauro e Placido": [
-      [[0,0.14]],
-      [[1,0.33]],
-      [[2,0.07]],
-      [[2,0.4]],
-      [[2,0.5]],
-      [[3,0]]
-    ],
-    "Badia: la Madonna della Neve": [
-      [[0,0.58]],
-      [[1,0.11]],
-      [[1,0.45]],
-      [[1,0.54]],
-      [[2,0.09]],
-      [[2,0.28]],
-      [[2,0.64]],
-      [[3,0]]
-    ],
-    "Badia: San Benedetto indica la Regola": [
-      [[0,0.07]],
-      [[1,0.07]],
-      [[1,0.64]],
-      [[2,0.23]],
-      [[3,0.49]],
-      [[4,0]]
-    ],
-    "Badia: il Crocifisso": [
-      [[0,0.16]],
-      [[1,0.16]],
-      [[2,0.12]],
-      [[2,0.53]],
-      [[3,0]]
-    ],
-    "Annunziata: il Crocifisso e l'Addolorata": [
-      [[0,0.23]],
-      [[1,0.32]],
-      [[1,0.72]],
-      [[2,0.33]],
-      [[3,0.46]],
-      [[3,0.73]],
-      [[3,0.85]],
-      [[4,0.55]],
-      [[5,0.33]],
-      [[5,0.81]],
-      [[6,0.24]],
-      [[6,0.46]],
-      [[6,0.69]]
-    ],
-    "Annunziata: Santa Rosalia Pellegrina": [
-      [[0,0.39]],
-      [[1,0.22]],
-      [[1,0.66]],
-      [[2,0.03]],
-      [[2,0.4]],
-      [[3,0.13]],
-      [[3,0.9]],
-      [[4,0.56]],
-      [[5,0]],
-      [[6,0]],
-      [[7,0.58]],
-      [[8,0]],
-      [[8,0.41]]
-    ],
-    "Annunziata: l'Immacolata": [
-      [[0,0.08]],
-      [[1,0.37]],
-      [[1,0.64]],
-      [[2,0.04]],
-      [[2,0.8]],
-      [[3,0.17]],
-      [[3,0.45]],
-      [[3,0.77]],
-      [[4,0.21]],
-      [[4,0.45]],
-      [[5,0]],
-      [[5,0.49]]
-    ],
-    "Annunziata: la Cupola e il Presbiterio": [
-      [[0,0]],
-      [[1,0]],
-      [[2,0.28]],
-      [[3,0]],
-      [[4,0.36]],
-      [[5,0.17]],
-      [[5,0.3]],
-      [[5,0.54]],
-      [[5,0.69]],
-      [[5,0.91]]
-    ],
-    "Annunziata: l'Organo": [
-      [[0,0.71]],
-      [[1,0.31]],
-      [[3,0.28]],
-      [[4,0.13]],
-      [[5,0.5]],
-      [[6,0.12]],
-      [[6,0.53]]
-    ],
-    "Castello: le Prigioni": [
-      [[2,0.23]]
-    ]
+      [[2,0,0.348]],
+      [[2,0.44,0.502]],
+      [[3,0,0.7]]
+    ] },
+    "Santa Maria: la SS. Trinità con San Michele": { n: 4, v: [
+      [[1,0.06,0.243]],
+      [[2,0.02,0.416]],
+      [[2,0.15,0.466]],
+      [[2,0.6,0.649]],
+      [[2,0.96,0.794]],
+      [[3,0,0.812]]
+    ] },
+    "Santa Maria: l'Urna del Beato Giovanni Liccio": { n: 4, v: [
+      [[1,0.01,0.245]],
+      [[1,0.57,0.437]],
+      [[1,0.86,0.537]],
+      [[3,0,0.913]]
+    ] },
+    "Badia: il Sacrificio di Isacco": { n: 3, v: [
+      [[0,0,0]],
+      [[0,0.39,0.173]],
+      [[0,0.53,0.235]],
+      [[0,0.82,0.367]],
+      [[2,0,0.798]]
+    ] },
+    "Badia: San Benedetto, Mauro e Placido": { n: 4, v: [
+      [[0,0.14,0.02]],
+      [[1,0.33,0.239]],
+      [[2,0.07,0.466]],
+      [[2,0.4,0.602]],
+      [[2,0.5,0.644]],
+      [[3,0,0.853]]
+    ] },
+    "Badia: la Madonna della Neve": { n: 4, v: [
+      [[0,0.58,0.167]],
+      [[1,0.11,0.312]],
+      [[1,0.45,0.387]],
+      [[1,0.54,0.408]],
+      [[2,0.09,0.538]],
+      [[2,0.28,0.603]],
+      [[2,0.64,0.726]],
+      [[3,0,0.851]]
+    ] },
+    "Badia: San Benedetto indica la Regola": { n: 5, v: [
+      [[0,0.07,0.015]],
+      [[1,0.07,0.236]],
+      [[1,0.64,0.398]],
+      [[2,0.23,0.552]],
+      [[3,0.49,0.79]],
+      [[4,0,0.861]]
+    ] },
+    "Badia: il Crocifisso": { n: 4, v: [
+      [[0,0.16,0.033]],
+      [[1,0.16,0.231]],
+      [[2,0.12,0.407]],
+      [[2,0.53,0.588]],
+      [[3,0,0.793]]
+    ] },
+    "Annunziata: il Crocifisso e l'Addolorata": { n: 9, v: [
+      [[0,0.23,0.023]],
+      [[1,0.32,0.157]],
+      [[1,0.72,0.23]],
+      [[2,0.33,0.299]],
+      [[3,0.46,0.42]],
+      [[3,0.73,0.47]],
+      [[3,0.85,0.491]],
+      [[4,0.55,0.541]],
+      [[5,0.33,0.621]],
+      [[5,0.81,0.71]],
+      [[6,0.24,0.771]],
+      [[6,0.46,0.794]],
+      [[6,0.69,0.82]]
+    ] },
+    "Annunziata: Santa Rosalia Pellegrina": { n: 11, v: [
+      [[0,0.39,0.039]],
+      [[1,0.22,0.125]],
+      [[1,0.66,0.176]],
+      [[2,0.03,0.219]],
+      [[2,0.4,0.261]],
+      [[3,0.13,0.342]],
+      [[3,0.9,0.417]],
+      [[4,0.56,0.443]],
+      [[5,0,0.456]],
+      [[6,0,0.542]],
+      [[7,0.58,0.713]],
+      [[8,0,0.763]],
+      [[8,0.41,0.811]]
+    ] },
+    "Annunziata: l'Immacolata": { n: 7, v: [
+      [[0,0.08,0.007]],
+      [[1,0.37,0.172]],
+      [[1,0.64,0.23]],
+      [[2,0.04,0.313]],
+      [[2,0.8,0.42]],
+      [[3,0.17,0.469]],
+      [[3,0.45,0.504]],
+      [[3,0.77,0.545]],
+      [[4,0.21,0.613]],
+      [[4,0.45,0.661]],
+      [[5,0,0.77]],
+      [[5,0.49,0.856]]
+    ] },
+    "Annunziata: la Cupola e il Presbiterio": { n: 7, v: [
+      [[0,0,0]],
+      [[1,0,0.119]],
+      [[2,0.28,0.333]],
+      [[3,0,0.392]],
+      [[4,0.36,0.647]],
+      [[5,0.17,0.761]],
+      [[5,0.3,0.792]],
+      [[5,0.54,0.846]],
+      [[5,0.69,0.88]],
+      [[5,0.91,0.93]]
+    ] },
+    "Annunziata: l'Organo": { n: 8, v: [
+      [[0,0.71,0.068]],
+      [[1,0.31,0.149]],
+      [[3,0.28,0.39]],
+      [[4,0.13,0.536]],
+      [[5,0.5,0.69]],
+      [[6,0.12,0.753]],
+      [[6,0.53,0.846]]
+    ] },
+    "Castello: le Prigioni": { n: 4, v: [
+      [[2,0.23,0.631]]
+    ] }
   };
+
 
   let topicPendente = null;
 
