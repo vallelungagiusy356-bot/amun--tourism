@@ -160,12 +160,18 @@
       riconosci: 'gesù appena nato',
       immagine: '../gallery-chiese/adorazione_animesante.jpg',
       cue: [
-        { parola: 'al centro, maria',   x: 0.41, y: 0.65, larg: 0.47 },
-        { parola: 'san giuseppe',       x: 0.32, y: 0.54, larg: 0.43 },
-        { parola: 'agnello',            x: 0.23, y: 0.71, larg: 0.40 },
-        { parola: 'turbante giallo',    x: 0.76, y: 0.65, larg: 0.43 },
-        { parola: 'gallo',              x: 0.56, y: 0.80, larg: 0.33 },
-        { parola: 'in volo',            x: 0.46, y: 0.31, larg: 0.52 },
+        { parola: 'al centro, maria',   x: 0.41, y: 0.65, larg: 0.47,
+          tr: { en: 'mary in her', fr: 'marie dans', de: 'maria im', es: 'maría con' } },
+        { parola: 'san giuseppe',       x: 0.32, y: 0.54, larg: 0.43,
+          tr: { en: 'saint joseph', fr: 'saint joseph', de: 'heilige josef', es: 'san josé' } },
+        { parola: 'agnello',            x: 0.23, y: 0.71, larg: 0.40,
+          tr: { en: 'bare-chested', fr: 'torse nu', de: 'nacktem oberkörper', es: 'torso desnudo' } },
+        { parola: 'turbante giallo',    x: 0.76, y: 0.65, larg: 0.43,
+          tr: { en: 'young woman', fr: 'jeune femme', de: 'junge frau', es: 'joven con' } },
+        { parola: 'gallo',              x: 0.56, y: 0.80, larg: 0.33,
+          tr: { en: 'rooster', fr: 'coq', de: 'hahn', es: 'gallo' } },
+        { parola: 'in volo',            x: 0.46, y: 0.31, larg: 0.52,
+          tr: { en: 'and above', fr: 'et en haut', de: 'und oben', es: 'y arriba' } },
         { parola: 'vi va di vedere',    x: 0.50, y: 0.50, larg: 0.95 }
       ]
     },
@@ -734,39 +740,69 @@
     return out; // lunghezza di ogni frase
   }
 
+  // velocità reale della voce (millisecondi per carattere), misurata sulle
+  // frasi già lette: serve a far arrivare gli zoom nel momento giusto
+  let msMisurato = null;
+
   function sulParlatoTradotto(utt, n) {
     const g = tourAttivo.guida;
     const lens = tourAttivo.frasiLen || null; // lunghezze di tutte le frasi della risposta
-    const lunghezza = (utt.text || '').length || 1;
+    const testo = (utt.text || '');
+    const minuscolo = testo.toLowerCase();
+    const lunghezza = testo.length || 1;
     const rate = utt.rate || 1;
+    const msCar = msMisurato || (MS_PER_CARATTERE / rate);
     // stesso numero di frasi dell'italiano: si segue il numero della frase.
     // Numero diverso (traduzione che unisce o divide frasi): si segue la
     // posizione nel testo, in proporzione.
     const stessoNumero = !lens || lens.length === g.n;
     let totale = 0, prima = 0;
     if (lens) lens.forEach(function (l, k) { totale += l; if (k < n) prima += l; });
-    let trovato = false;
     if (DEBUG) { debugStato = 'frase ' + n + '/' + (lens ? lens.length : '?') + ' (' + tourAttivo.lingua + (stessoNumero ? '' : ', a proporzione') + ')'; mostraDebug(); }
+
+    // programma: quali dettagli mostrare in questa frase e a che carattere
+    const programma = [];
     tourAttivo.cue.forEach(function (c, ci) {
+      // 1) dettaglio con la sua parola nella lingua: si cerca proprio quella
+      if (c.tr && c.tr[tourAttivo.lingua]) {
+        const i = minuscolo.indexOf(c.tr[tourAttivo.lingua]);
+        if (i !== -1) programma.push({ c: c, pos: i });
+        return;
+      }
+      // 2) altrimenti si usa la guida calcolata dall'italiano
       (g.v[ci] || []).forEach(function (occ) {
-        let ritardo;
         if (stessoNumero) {
-          if (occ[0] !== n) return;
-          ritardo = occ[1] * lunghezza * MS_PER_CARATTERE / rate;
+          if (occ[0] === n) programma.push({ c: c, pos: occ[1] * lunghezza });
         } else {
           const pos = occ[2] * totale;
           const lunga = lens[n] || lunghezza;
           const ultima = n === lens.length - 1;
-          if (pos < prima || (!ultima && pos >= prima + lunga)) return;
-          ritardo = (pos - prima) * MS_PER_CARATTERE / rate;
+          if (pos >= prima && (ultima || pos < prima + lunga)) programma.push({ c: c, pos: pos - prima });
         }
-        trovato = true;
-        ritardo = Math.round(ritardo);
-        if (ritardo < 150) applicaCue(c);
-        else timers.push(setTimeout(function () { applicaCue(c); }, ritardo));
       });
     });
-    if (!trovato && tourAttivo.cue.length) timers.push(setTimeout(tornaPanoramica, 700));
+
+    function esegui(p) {
+      if (p.fatto) return;
+      p.fatto = true;
+      clearTimeout(p.timer);
+      applicaCue(p.c);
+    }
+    programma.forEach(function (p) {
+      const ritardo = Math.round(p.pos * msCar);
+      if (ritardo < 150) esegui(p);
+      else { p.timer = setTimeout(function () { esegui(p); }, ritardo); timers.push(p.timer); }
+    });
+    // se la voce segnala a che parola è arrivata, si anticipa lo zoom di conseguenza
+    if (programma.length) {
+      try {
+        utt.addEventListener('boundary', function (ev) {
+          const ci = ev.charIndex || 0;
+          programma.forEach(function (p) { if (!p.fatto && ci >= p.pos - 8) esegui(p); });
+        });
+      } catch (e) {}
+    }
+    if (!programma.length && tourAttivo.cue.length) timers.push(setTimeout(tornaPanoramica, 700));
   }
 
   function sulParlato(utt, indice) {
@@ -813,7 +849,16 @@
     window.speechSynthesis.speak = function (utt) {
       const n = indiceFrase++;
       codaFrasi.push(String(utt.text || '').length);
-      try { utt.addEventListener('start', function () { sulParlato(utt, n); }); } catch (e) {}
+      try { utt.addEventListener('start', function () { utt._tInizio = Date.now(); sulParlato(utt, n); }); } catch (e) {}
+      try {
+        utt.addEventListener('end', function () {
+          const L = String(utt.text || '').length;
+          if (!utt._tInizio || L < 25) return;
+          const ms = (Date.now() - utt._tInizio) / L;
+          if (ms < 40 || ms > 110) return;
+          msMisurato = msMisurato ? Math.round((msMisurato + ms) / 2) : Math.round(ms);
+        });
+      } catch (e) {}
       // quando la Castellana smette di parlare (o la voce viene interrotta) il quadro torna intero
       const alFine = function () {
         if (tourAttivo && tourAttivo.cue.length) timers.push(setTimeout(tornaPanoramica, 1500));
@@ -1224,6 +1269,7 @@
   let topicPendente = null;
 
   function apriPerTopic(topic, lang, risposta) {
+    if ((lang || 'it') !== linguaHint) msMisurato = null;
     linguaHint = lang || 'it';
     topicPendente = null;
     // in italiano il quadro si apre già dalle frasi del testo
