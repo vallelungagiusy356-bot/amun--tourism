@@ -200,8 +200,12 @@
       immagine: '../gallery-chiese/adorazione_eucaristica_animesante.jpg',
       cue: [
         { parola: "l'ostensorio con l'ostia", x: 0.50, y: 0.20, larg: 0.50 },
-        { parola: "santo vescovo", x: 0.26, y: 0.62, larg: 0.48 },
-        { parola: "san francesco d'assisi", x: 0.72, y: 0.60, larg: 0.48 },
+        // le parole di aggancio sono messe un po' prima del nome del santo: lo zoom
+        // ha bisogno di circa un secondo e mezzo per arrivare
+        { parola: "due santi in adorazione", x: 0.26, y: 0.62, larg: 0.48,
+          tr: { en: 'two saints in', fr: 'deux saints en', de: 'zwei heilige', es: 'dos santos en' } },
+        { parola: "a destra san francesco", x: 0.72, y: 0.60, larg: 0.48,
+          tr: { en: 'on the right saint', fr: 'à droite saint', de: 'rechts der heilige', es: 'a la derecha san' } },
         { parola: "due putti", x: 0.50, y: 0.80, larg: 0.40 },
         { parola: "teschio", x: 0.76, y: 0.86, larg: 0.35 },
         { parola: "vi va di vedere", x: 0.50, y: 0.50, larg: 1.00 }
