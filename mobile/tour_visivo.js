@@ -3,10 +3,18 @@
    La Castellana racconta un'opera e il quadro si sposta e si
    ingrandisce da solo sul dettaglio di cui sta parlando.
 
-   OPERE CON LO ZOOM GUIDATO: Sacra Famiglia e San Rocco (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo), le 6 opere di Santa Maria degli Angeli, le 6 opere della Badia e le 5 opere dell'Annunziata.
-   ALTRE OPERE E TAPPE DEL CASTELLO: il quadro si apre comunque in alto e si ingrandisce con le dita. Solo italiano.
+   OPERE CON LO ZOOM GUIDATO: Sacra Famiglia e San Rocco (Cappuccini), Miracolo di Sant'Isidoro e Affreschi del Coro (Duomo), le 6 opere di Santa Maria degli Angeli, le 6 opere della Badia e le 5 opere dell'Annunziata, le 6 opere delle Anime Sante del Purgatorio.
+   ALTRE OPERE E TAPPE DEL CASTELLO: il quadro si apre comunque in alto e si ingrandisce con le dita.
    Non modifica la chat, il backend né la knowledge base: si "aggancia"
    alla voce già esistente e riconosce l'opera dalla prima frase.
+
+   NOVITÀ 1: funziona sia con la voce del telefono sia con la VOCE
+   REGISTRATA della Castellana (i file mp3 in voce-castellana/).
+   Prima, con la voce registrata, il quadro si apriva ma non si muoveva.
+
+   NOVITÀ 2: nelle ALTRE LINGUE (EN, FR, DE, ES) il quadro dell'opera si
+   apre comunque, riconosciuto dall'argomento scelto. Si ingrandisce con
+   le dita; i movimenti automatici restano solo in italiano.
 
    Per aggiungere un'altra opera: copia un blocco dentro TOURS.
    ============================================================ */
@@ -549,7 +557,16 @@
   const boxDebug = box.querySelector('#tour-debug');
   const boxHint = box.querySelector('#tour-hint');
   let timerHint = null;
+  const HINT_TESTI = {
+    it: 'Pizzica per ingrandire',
+    en: 'Pinch to zoom',
+    fr: 'Pincez pour agrandir',
+    es: 'Pellizca para ampliar',
+    de: 'Zum Vergrößern zusammenziehen'
+  };
+  let linguaHint = 'it';
   function mostraHint() {
+    boxHint.textContent = '🔍 ' + (HINT_TESTI[linguaHint] || HINT_TESTI.it);
     boxHint.classList.add('visibile');
     clearTimeout(timerHint);
     timerHint = setTimeout(function () { boxHint.classList.remove('visibile'); }, 4500);
@@ -723,6 +740,162 @@
       };
       try { utt.addEventListener('end', alFine); utt.addEventListener('error', alFine); } catch (e) {}
       return speakOriginale.call(window.speechSynthesis, utt);
+    };
+  }
+
+  // ------------------------------------------------------------
+  // 5-bis. AGGANCIO ALLA VOCE REGISTRATA (i file mp3 della Castellana)
+  // La pagina, quando parte un mp3, chiama AmuniTourClip.avvia(testo, audio),
+  // poi .fine() quando l'audio finisce e .ferma() quando viene interrotto.
+  // Qui seguiamo l'audio mentre scorre e spostiamo il quadro frase per
+  // frase, come si fa con la voce del telefono.
+  // ------------------------------------------------------------
+  let clipAudio = null;
+  let clipAscolto = null;
+
+  function clipPulisci() {
+    if (clipAudio && clipAscolto) {
+      try { clipAudio.removeEventListener('timeupdate', clipAscolto); } catch (e) {}
+    }
+    clipAudio = null;
+    clipAscolto = null;
+  }
+
+  window.AmuniTourClip = {
+    avvia: function (testo, audio) {
+      clipPulisci();
+      if (!audio) return;
+      const frasi = String(testo || '')
+        .split(/(?<=[.!?])\s+|\n+/)
+        .map(function (f) { return f.trim(); })
+        .filter(function (f) { return f.length > 0; });
+      if (!frasi.length) return;
+
+      const totale = frasi.reduce(function (s, f) { return s + f.length; }, 0);
+      let somma = 0;
+      const inizi = frasi.map(function (f) {
+        const x = somma / totale;
+        somma += f.length;
+        return x;
+      });
+
+      if (DEBUG) {
+        boxDebug.textContent = 'voce registrata agganciata';
+        console.log('[tour] voce registrata agganciata, frasi: ' + frasi.length);
+      }
+
+      let indice = -1;
+      clipAudio = audio;
+      clipAscolto = function () {
+        const d = audio.duration;
+        if (!d || !isFinite(d)) return;
+        const frazione = audio.currentTime / d;
+        let i = 0;
+        for (let k = 0; k < inizi.length; k++) {
+          if (frazione >= inizi[k]) i = k;
+        }
+        if (i === indice) return;
+        indice = i;
+        const msPerCarattere = (d * 1000) / totale;
+        sulParlato({ text: frasi[i], rate: MS_PER_CARATTERE / msPerCarattere });
+      };
+      audio.addEventListener('timeupdate', clipAscolto);
+      clipAscolto();
+    },
+    fine: function () {
+      clipPulisci();
+      if (tourAttivo && tourAttivo.cue.length) timers.push(setTimeout(tornaPanoramica, 1500));
+    },
+    ferma: function () {
+      clipPulisci();
+    }
+  };
+
+  // ------------------------------------------------------------
+  // 5-ter. ALTRE LINGUE: il quadro si apre in base all'ARGOMENTO
+  // Nelle lingue diverse dall'italiano il testo della Castellana è
+  // tradotto, quindi le frasi di riconoscimento italiane non lo
+  // trovano. Qui ascoltiamo la risposta del server (che dice quale
+  // argomento è stato appena raccontato) e apriamo il quadro giusto.
+  // In queste lingue il quadro si ingrandisce con le dita, senza i
+  // movimenti automatici (dipendono dalle parole italiane).
+  // Per aggiungere un'opera: una riga qui sotto, "argomento": "nome in TOURS".
+  // ------------------------------------------------------------
+  const TOPIC_TOUR = {
+    'chiese.cappuccini.opere.sacrafamiglia': 'La Visita di Santa Elisabetta',
+    'chiese.cappuccini.opere.gloriaangeli': 'La Gloria degli Angeli',
+    'chiese.cappuccini.opere.sanrocco': 'San Rocco',
+    'chiese.duomo.opere.stomer': "Il Miracolo di Sant'Isidoro (Stomer)",
+    'chiese.duomo.opere.affreschicoro': 'Gli Affreschi del Coro',
+    'chiese.duomo.opere.cappelladellereliquie': 'La Cappella delle Reliquie',
+    'chiese.duomo.opere.sansebastiano': 'Il Martirio di San Sebastiano',
+    'chiese.duomo.opere.beatogiovanni': 'Il Beato Giovanni Liccio',
+    'chiese.duomo.opere.cupola': 'La Cupola',
+    'chiese.purgatorio.opere.adorazionepastori': "L'Adorazione dei Pastori",
+    'chiese.purgatorio.opere.messasuffragio': 'La Messa di Suffragio',
+    'chiese.purgatorio.opere.ostensorio': "L'Adorazione dell'Ostensorio",
+    'chiese.purgatorio.opere.sanfilippo': 'San Filippo Neri',
+    'chiese.purgatorio.opere.sangiovanniimmacolata': "San Giovanni e l'Immacolata",
+    'chiese.purgatorio.opere.madonnacarmelo': 'La Madonna del Carmelo',
+    'chiese.santamariaangeli.opere.madonnadegliangeli': 'Santa Maria: la Madonna degli Angeli',
+    'chiese.santamariaangeli.opere.madonnacolbambino': 'Santa Maria: la Madonna col Bambino (Gagini)',
+    'chiese.santamariaangeli.opere.madonnavisitapoveri': 'Santa Maria: la Madonna Visita Poveri',
+    'chiese.santamariaangeli.opere.levitazionesangiuseppe': 'Santa Maria: la Levitazione di San Giuseppe da Copertino',
+    'chiese.santamariaangeli.opere.sstrinita': 'Santa Maria: la SS. Trinità con San Michele',
+    'chiese.santamariaangeli.opere.urnabeato': "Santa Maria: l'Urna del Beato Giovanni Liccio",
+    'chiese.badia.opere.pavimento': 'Badia: il Pavimento in Maiolica',
+    'chiese.badia.opere.sacrificioisacco': 'Badia: il Sacrificio di Isacco',
+    'chiese.badia.opere.sanbenedettomauroeplacido': 'Badia: San Benedetto, Mauro e Placido',
+    'chiese.badia.opere.madonnadellaneve': 'Badia: la Madonna della Neve',
+    'chiese.badia.opere.sanbenedettoregola': 'Badia: San Benedetto indica la Regola',
+    'chiese.badia.opere.crocifisso': 'Badia: il Crocifisso',
+    'chiese.annunziata.opere.crocifisso': "Annunziata: il Crocifisso e l'Addolorata",
+    'chiese.annunziata.opere.santarosalia': 'Annunziata: Santa Rosalia Pellegrina',
+    'chiese.annunziata.opere.immacolata': "Annunziata: l'Immacolata",
+    'chiese.annunziata.opere.cupola': 'Annunziata: la Cupola e il Presbiterio',
+    'chiese.annunziata.opere.organo': "Annunziata: l'Organo",
+    'castello.tour.ingresso': "Castello: l'ingresso",
+    'castello.tour.ala_prades': 'Castello: Ala Prades',
+    'castello.tour.corte_cappella': 'Castello: Gran Corte',
+    'castello.tour.cappella': 'Castello: la Cappella',
+    'castello.tour.prigioni': 'Castello: le Prigioni',
+    'castello.tour.terrazza': 'Castello: la Terrazza'
+  };
+
+  function apriPerTopic(topic, lang) {
+    linguaHint = lang || 'it';
+    // in italiano il quadro si apre già dalle frasi del testo
+    if (!lang || lang === 'it') return;
+    const nome = TOPIC_TOUR[topic];
+    if (!nome) return;
+    const t = TOURS.find(function (x) { return x.nome === nome; });
+    if (!t) return;
+    // piccola attesa: prima la chat deve finire di mostrare il messaggio
+    setTimeout(function () {
+      apriTour(Object.assign({}, t, { cue: [] }));
+    }, 200);
+  }
+
+  // Ascolta le risposte del server alla chat (senza cambiarle) per sapere
+  // quale argomento è stato appena raccontato.
+  if (typeof window.fetch === 'function') {
+    const fetchOriginale = window.fetch;
+    window.fetch = function (input, init) {
+      const promessa = fetchOriginale.apply(this, arguments);
+      try {
+        const url = typeof input === 'string' ? input : ((input && input.url) || '');
+        if (url.indexOf('/chat') !== -1 && init && typeof init.body === 'string') {
+          let richiesta = {};
+          try { richiesta = JSON.parse(init.body) || {}; } catch (e) {}
+          promessa.then(function (res) {
+            if (!res || !res.ok) return;
+            res.clone().json().then(function (data) {
+              apriPerTopic((data && data.topic) || richiesta.topic, richiesta.lang);
+            }).catch(function () {});
+          }).catch(function () {});
+        }
+      } catch (e) {}
+      return promessa;
     };
   }
 
