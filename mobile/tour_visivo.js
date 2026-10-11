@@ -715,19 +715,38 @@
   // frase del testo italiano compare e a che punto della frase.
   let codaFrasi = []; // lunghezza di ogni frase messa in coda per la risposta in corso
 
+  // Divide la risposta come fa la pagina per la voce: prima per i tag di tono,
+  // poi per frase. Serve a sapere in anticipo quante frasi ha la risposta.
+  function dividiFrasi(testo) {
+    const seg = [];
+    const re = /\[(energico|malinconico|fiero|orgoglioso|giocoso|dolce|dramatico)\]([\s\S]*?)\[\/\1\]/gi;
+    let ultimo = 0, m;
+    while ((m = re.exec(testo)) !== null) {
+      if (m.index > ultimo) { const p = testo.slice(ultimo, m.index).trim(); if (p) seg.push(p); }
+      seg.push(m[2].trim());
+      ultimo = re.lastIndex;
+    }
+    if (ultimo < testo.length) { const r = testo.slice(ultimo).trim(); if (r) seg.push(r); }
+    const out = [];
+    seg.forEach(function (x) {
+      x.split(/(?<=[.!?])\s+|\n+/).forEach(function (f) { f = f.trim(); if (f) out.push(f.length); });
+    });
+    return out; // lunghezza di ogni frase
+  }
+
   function sulParlatoTradotto(utt, n) {
     const g = tourAttivo.guida;
+    const lens = tourAttivo.frasiLen || null; // lunghezze di tutte le frasi della risposta
     const lunghezza = (utt.text || '').length || 1;
     const rate = utt.rate || 1;
-    const coda = codaFrasi;
     // stesso numero di frasi dell'italiano: si segue il numero della frase.
     // Numero diverso (traduzione che unisce o divide frasi): si segue la
     // posizione nel testo, in proporzione.
-    const stessoNumero = coda.length === g.n;
+    const stessoNumero = !lens || lens.length === g.n;
     let totale = 0, prima = 0;
-    coda.forEach(function (l, k) { totale += l; if (k < n) prima += l; });
+    if (lens) lens.forEach(function (l, k) { totale += l; if (k < n) prima += l; });
     let trovato = false;
-    if (DEBUG) { debugStato = 'frase ' + n + '/' + coda.length + ' (' + tourAttivo.lingua + (stessoNumero ? '' : ', a proporzione') + ')'; mostraDebug(); }
+    if (DEBUG) { debugStato = 'frase ' + n + '/' + (lens ? lens.length : '?') + ' (' + tourAttivo.lingua + (stessoNumero ? '' : ', a proporzione') + ')'; mostraDebug(); }
     tourAttivo.cue.forEach(function (c, ci) {
       (g.v[ci] || []).forEach(function (occ) {
         let ritardo;
@@ -736,8 +755,9 @@
           ritardo = occ[1] * lunghezza * MS_PER_CARATTERE / rate;
         } else {
           const pos = occ[2] * totale;
-          const ultima = n === coda.length - 1;
-          if (pos < prima || (!ultima && pos >= prima + lunghezza)) return;
+          const lunga = lens[n] || lunghezza;
+          const ultima = n === lens.length - 1;
+          if (pos < prima || (!ultima && pos >= prima + lunga)) return;
           ritardo = (pos - prima) * MS_PER_CARATTERE / rate;
         }
         trovato = true;
@@ -1203,7 +1223,7 @@
 
   let topicPendente = null;
 
-  function apriPerTopic(topic, lang) {
+  function apriPerTopic(topic, lang, risposta) {
     linguaHint = lang || 'it';
     topicPendente = null;
     // in italiano il quadro si apre già dalle frasi del testo
@@ -1213,7 +1233,7 @@
     const t = TOURS.find(function (x) { return x.nome === nome; });
     if (!t) return;
     const guida = GUIDA[nome];
-    const tour = Object.assign({}, t, guida ? { lingua: lang, guida: guida } : { cue: [] });
+    const tour = Object.assign({}, t, guida ? { lingua: lang, guida: guida, frasiLen: risposta ? dividiFrasi(String(risposta)) : null } : { cue: [] });
     topicPendente = { tour: tour, ts: Date.now(), timer: null };
     const mio = topicPendente;
     // piccola attesa: prima la chat deve finire di mostrare il messaggio
@@ -1237,7 +1257,7 @@
           promessa.then(function (res) {
             if (!res || !res.ok) return;
             res.clone().json().then(function (data) {
-              apriPerTopic((data && data.topic) || richiesta.topic, richiesta.lang);
+              apriPerTopic((data && data.topic) || richiesta.topic, richiesta.lang, data && data.reply);
             }).catch(function () {});
           }).catch(function () {});
         }
