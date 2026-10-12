@@ -1,10 +1,28 @@
 // Amunì Tourism · service worker del tour offline
 // Salva sul dispositivo la pagina, le foto dei quadri e il visore, così il tour
 // funziona anche senza rete. Per aggiornare i file basta cambiare VERSIONE.
-const VERSIONE = 'v1';
+const VERSIONE = 'v2';
 const CACHE = 'amuni-tour-offline-' + VERSIONE;
 const FILE = [
   "tour_offline.html",
+  "../voce-castellana/purgatorio_opere_sanfilippo_it.mp3",
+  "/voce-castellana/purgatorio_opere_sanfilippo_it.mp3",
+  "voce-castellana/purgatorio_opere_sanfilippo_it.mp3",
+  "../voce-castellana/purgatorio_opere_sangiovanniimmacolata_it.mp3",
+  "/voce-castellana/purgatorio_opere_sangiovanniimmacolata_it.mp3",
+  "voce-castellana/purgatorio_opere_sangiovanniimmacolata_it.mp3",
+  "../voce-castellana/purgatorio_opere_adorazionepastori_it.mp3",
+  "/voce-castellana/purgatorio_opere_adorazionepastori_it.mp3",
+  "voce-castellana/purgatorio_opere_adorazionepastori_it.mp3",
+  "../voce-castellana/purgatorio_opere_messasuffragio_it.mp3",
+  "/voce-castellana/purgatorio_opere_messasuffragio_it.mp3",
+  "voce-castellana/purgatorio_opere_messasuffragio_it.mp3",
+  "../voce-castellana/purgatorio_opere_madonnacarmelo_it.mp3",
+  "/voce-castellana/purgatorio_opere_madonnacarmelo_it.mp3",
+  "voce-castellana/purgatorio_opere_madonnacarmelo_it.mp3",
+  "../voce-castellana/purgatorio_opere_ostensorio_it.mp3",
+  "/voce-castellana/purgatorio_opere_ostensorio_it.mp3",
+  "voce-castellana/purgatorio_opere_ostensorio_it.mp3",
   "img/sanfilippo_animesante.jpg",
   "img/thumbs/sanfilippo_animesante.jpg",
   "../gallery-chiese/sanfilippo_animesante.jpg",
@@ -139,6 +157,21 @@ self.addEventListener('fetch', function (e) {
   // foto, visore: prima quelli salvati, poi la rete
   e.respondWith((async function () {
     const hit = await caches.match(req, { ignoreSearch: true });
-    return hit || fetch(req);
+    if (!hit) return fetch(req);
+    // l'audio chiede spezzoni (Range): si risponde con la parte richiesta
+    const range = req.headers.get('range');
+    if (range && hit.status === 200) {
+      const m = /bytes=(\d*)-(\d*)/.exec(range);
+      if (m) {
+        const buf = await hit.arrayBuffer();
+        const da = m[1] ? parseInt(m[1], 10) : 0;
+        const a = m[2] ? Math.min(parseInt(m[2], 10), buf.byteLength - 1) : buf.byteLength - 1;
+        return new Response(buf.slice(da, a + 1), { status: 206, headers: {
+          'Content-Type': hit.headers.get('Content-Type') || 'audio/mpeg',
+          'Content-Range': 'bytes ' + da + '-' + a + '/' + buf.byteLength,
+          'Content-Length': String(a - da + 1), 'Accept-Ranges': 'bytes' } });
+      }
+    }
+    return hit;
   })());
 });
