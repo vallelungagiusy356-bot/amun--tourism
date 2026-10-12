@@ -118,9 +118,9 @@ self.addEventListener('fetch', function (e) {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  const èPagina = req.mode === 'navigate' && url.pathname.endsWith('/tour_offline.html');
+  const isPagina = req.mode === 'navigate' && url.pathname.endsWith('/tour_offline.html');
 
-  if (èPagina) {
+  if (isPagina) {
     // pagina: prima la rete (per ricevere gli aggiornamenti), se non c'è campo quella salvata
     e.respondWith((async function () {
       const c = await caches.open(CACHE);
