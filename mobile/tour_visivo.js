@@ -96,16 +96,15 @@
       immagineAlt: '../gallery-chiese/stomer_sangiorgio.jpg',   // se manca la foto _zoom, usa questa
       cue: [
         { parola: "miracolo di sant'isidoro", x: 0.50, y: 0.50, larg: 1.00 },
-        { parola: 'delle tele più importanti', x: 0.50, y: 0.50, larg: 1.00 },
-        { parola: 'contadino spagnolo',        x: 0.33, y: 0.60, larg: 0.55 },
-        { parola: 'bastone',                   x: 0.27, y: 0.74, larg: 0.55 },
-        { parola: "fonte d'acqua",            x: 0.24, y: 0.80, larg: 0.45 },
-        { parola: 'compagni assetati',         x: 0.68, y: 0.58, larg: 0.60 },
-        { parola: 'luce drammatica',           x: 0.50, y: 0.31, larg: 0.70 },
-        { parola: 'mani callose',              x: 0.42, y: 0.49, larg: 0.40 },
-        { parola: 'volti segnati',             x: 0.68, y: 0.49, larg: 0.50 },
-        { parola: 'madonna col bambino',       x: 0.64, y: 0.22, larg: 0.50 },
-        { parola: 'vi va di vedere',           x: 0.50, y: 0.50, larg: 1.00 }
+        { parola: 'contadino spagnolo', x: 0.33, y: 0.60, larg: 0.55 },
+        { parola: 'bastone', x: 0.27, y: 0.74, larg: 0.55 },
+        { parola: "fonte d'acqua", x: 0.24, y: 0.80, larg: 0.45 },
+        { parola: "sguardo rivolto verso l'alto", x: 0.42, y: 0.49, larg: 0.40 },
+        { parola: 'madonna col bambino', x: 0.64, y: 0.22, larg: 0.50 },
+        { parola: 'flesso sulle ginocchia', x: 0.68, y: 0.58, larg: 0.60 },
+        { parola: 'altri tre personaggi', x: 0.68, y: 0.49, larg: 0.50 },
+        { parola: 'luce drammatica', x: 0.50, y: 0.31, larg: 0.70 },
+        { parola: 'vi va di vedere', x: 0.50, y: 0.50, larg: 1.00 }
       ]
     },
     {
@@ -248,27 +247,27 @@
     },
     {
       nome: 'Santa Maria: la Madonna degli Angeli',
-      riconosci: 'opera del maestro fiorentino gregorio di lorenzo',
+      riconosci: 'attribuito al maestro delle madonne di marmo',
       immagine: '../gallery-chiese/madonna_angeli_santamaria.jpg',
       cue: [
-        { parola: 'altorilievo in marmo',   x: 0.50, y: 0.50, larg: 1.00 },
-        { parola: 'regge il bambino',       x: 0.50, y: 0.28, larg: 0.60 },
-        { parola: 'un uomo tra le onde',    x: 0.20, y: 0.82, larg: 0.45 },
-        { parola: 'figura demoniaca',       x: 0.43, y: 0.82, larg: 0.45 },
-        { parola: 'veduta di una città',    x: 0.77, y: 0.82, larg: 0.45 },
-        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+        { parola: 'altorilievo in marmo', x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'tiene il figlio', x: 0.50, y: 0.28, larg: 0.60 },
+        { parola: 'figura demoniaca', x: 0.43, y: 0.82, larg: 0.45 },
+        { parola: 'uomo in pericolo', x: 0.20, y: 0.82, larg: 0.45 },
+        { parola: 'grande disco', x: 0.77, y: 0.82, larg: 0.45 },
+        { parola: 'vi va di vedere', x: 0.50, y: 0.50, larg: 1.00 }
       ]
     },
     {
       nome: 'Santa Maria: la Madonna col Bambino (Gagini)',
-      riconosci: 'opera di antonello gagini',
+      riconosci: 'commissionato nel 1516 dal priore',
       immagine: '../gallery-chiese/madonna_gagini_santamaria.jpg',
       cue: [
-        { parola: 'cappella del rosario',   x: 0.50, y: 0.50, larg: 1.00 },
-        { parola: 'un panneggio',           x: 0.52, y: 0.42, larg: 0.40 },
-        { parola: 'il bambino colto',       x: 0.56, y: 0.31, larg: 0.30 },
-        { parola: 'alla base della statua', x: 0.52, y: 0.56, larg: 0.45 },
-        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+        { parola: 'madonna del rosario', x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'il panneggio', x: 0.52, y: 0.42, larg: 0.40 },
+        { parola: 'il bambino colto', x: 0.56, y: 0.31, larg: 0.30 },
+        { parola: 'alla base è scolpita', x: 0.52, y: 0.56, larg: 0.45 },
+        { parola: 'vi va di vedere', x: 0.50, y: 0.50, larg: 1.00 }
       ]
     },
     {
@@ -290,10 +289,11 @@
       riconosci: 'aloisio rizzo',
       immagine: '../gallery-chiese/levitazione_sangiuseppe_santamaria.jpg',
       cue: [
-        { parola: 'cappella del ss. crocifisso', x: 0.50, y: 0.50, larg: 1.00 },
-        { parola: 'raffigura',              x: 0.50, y: 0.50, larg: 1.00 },
-        { parola: 'levitazione',            x: 0.43, y: 0.24, larg: 0.45 },
-        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+        { parola: 'quella del ss. crocifisso', x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'due livelli', x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'si solleva da terra', x: 0.43, y: 0.24, larg: 0.45 },
+        { parola: 'la gente assiste attonita', x: 0.50, y: 0.72, larg: 0.90 },
+        { parola: 'vi va di vedere', x: 0.50, y: 0.50, larg: 1.00 }
       ]
     },
     {
@@ -301,28 +301,26 @@
       riconosci: 'antonino spatafora',
       immagine: '../gallery-chiese/sstrinita_santamaria.jpg',
       cue: [
-        { parola: 'registro superiore',     x: 0.52, y: 0.38, larg: 0.75 },
-        { parola: 'registro inferiore',     x: 0.50, y: 0.65, larg: 0.95 },
-        { parola: 'san michele arcangelo',  x: 0.26, y: 0.68, larg: 0.45 },
-        { parola: 'beato giovanni liccio',  x: 0.60, y: 0.68, larg: 0.45 },
-        { parola: 'andrea',                 x: 0.82, y: 0.62, larg: 0.40 },
-        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+        { parola: 'santissima trinità', x: 0.52, y: 0.38, larg: 0.75 },
+        { parola: 'protagonista della visione', x: 0.26, y: 0.68, larg: 0.45 },
+        { parola: "sant'andrea", x: 0.82, y: 0.62, larg: 0.40 },
+        { parola: 'vi va di vedere', x: 0.50, y: 0.50, larg: 1.00 }
       ]
     },
     {
       nome: "Santa Maria: l'Urna del Beato Giovanni Liccio",
-      riconosci: 'consacrata nella conformazione attuale',
+      riconosci: 'fu benedetta il 21 maggio 2006',
       immagine: '../gallery-chiese/urna_beato_santamaria.jpg',
       cue: [
-        { parola: 'urna reliquiario',       x: 0.50, y: 0.50, larg: 1.00 },
-        { parola: 'resti mortali',          x: 0.50, y: 0.66, larg: 0.28 },
-        { parola: 'figura in cera',         x: 0.50, y: 0.52, larg: 0.35 },
-        { parola: 'vi va di vedere',        x: 0.50, y: 0.50, larg: 1.00 }
+        { parola: "urna d'argento", x: 0.50, y: 0.50, larg: 1.00 },
+        { parola: 'spoglie del beato', x: 0.50, y: 0.66, larg: 0.28 },
+        { parola: 'mani di cera', x: 0.50, y: 0.52, larg: 0.35 },
+        { parola: 'vi va di vedere', x: 0.50, y: 0.50, larg: 1.00 }
       ]
     },
     {
       nome: 'Badia: il Pavimento in Maiolica',
-      riconosci: '5.555 mattonelle maiolicate',
+      riconosci: 'raffinatissimo pavimento in maiolica',
       immagine: '../gallery-chiese/pavimento_badia.jpg',
       cue: []   // nessun movimento automatico: si ingrandisce con le dita
     },
@@ -353,7 +351,7 @@
     },
     {
       nome: 'Badia: la Madonna della Neve',
-      riconosci: "pala d'altare di antonino spadafora",
+      riconosci: "attribuita ad antonino spatafora",
       immagine: '../gallery-chiese/madonna_neve_badia.jpg',
       cue: [
         { parola: "pala d'altare",          x: 0.50, y: 0.50, larg: 1.00 },
@@ -381,7 +379,7 @@
     },
     {
       nome: 'Badia: il Crocifisso',
-      riconosci: 'francesco quaresima',
+      riconosci: 'francesco quaresma',
       immagine: '../gallery-chiese/crocifisso_badia.jpg',
       cue: [
         { parola: 'firmata e datata',       x: 0.50, y: 0.50, larg: 1.00 },
