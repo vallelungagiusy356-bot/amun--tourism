@@ -471,7 +471,12 @@
     $('rit-msg').textContent = t.ritMsg;
     const a = $('rit-btn');
     a.textContent = t.ritBtn;
-    a.href = urlRitorno;
+    // torna alla pagina online con la chat della Castellana già aperta
+    try {
+      var u = new URL(urlRitorno, location.href);
+      u.searchParams.set('chat', 'open');
+      a.href = u.href;
+    } catch (e) { a.href = urlRitorno; }
     a.onclick = function () { try { localStorage.removeItem('amuni_ritorno'); } catch (e) {} };
     $('ritorno').style.display = 'block';
   }
