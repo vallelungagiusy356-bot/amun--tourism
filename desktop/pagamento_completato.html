@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento completato — Amunì</title>
+
+<!-- Stessi font usati nel resto del sito -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #C9A24B;
+    --sea: #2E5C6E;
+    --terracotta: #B5654A;
+    --ink: #2A2420;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #1a1510, var(--ink));
+    font-family: 'Cormorant Garamond', serif;
+    color: #f5efe6;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 40px 28px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin: 12px 0;
+  }
+
+  .code-box {
+    font-family: monospace;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    background: rgba(255,255,255,0.08);
+    border: 1px dashed var(--gold);
+    border-radius: 4px;
+    padding: 16px;
+    margin: 24px 0;
+    color: #fff;
+    word-break: break-all;
+  }
+
+  button {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    background: var(--terracotta);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 28px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+
+  button:active { opacity: 0.8; }
+
+  .stato { font-size: 1rem; opacity: 0.8; }
+  .errore { color: #e07a6b; }
+
+  .legale { font-size: 0.9rem; opacity: 0.7; margin-top: 26px; }
+  .legale a { color: var(--gold); }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1 data-i18n="c_h1">Grazie, viandante!</h1>
+  <div id="contenuto">
+    <p class="stato" data-i18n="c_checking">Sto verificando il tuo pagamento…</p>
+  </div>
+  <p class="legale">
+    <a href="condizioni_premium.html" data-i18n="c_terms">Condizioni del servizio</a> ·
+    <a href="privacy.html" data-i18n="privacy_word">Privacy</a>
+  </p>
+</div>
+
+<script>
+// ---------------------------------------------------------
+// Testi della pagina nelle 5 lingue (italiano, inglese, francese, spagnolo, tedesco)
+// ---------------------------------------------------------
+const I18N = {"it": {"c_h1": "Grazie, viandante!", "c_checking": "Sto verificando il tuo pagamento…", "c_terms": "Condizioni del servizio", "privacy_word": "Privacy", "c_missing": "Manca il riferimento al pagamento. Se hai appena pagato, controlla la tua email o contattaci.", "c_cant_confirm": "Non riesco a confermare il pagamento. Riprova tra qualche secondo ricaricando la pagina.", "c_ok": "Il tuo pagamento è andato a buon fine. Il tuo accesso Premium è già attivo su questo dispositivo.", "c_keep_code": "Tieni da parte questo codice: ti servirà solo se vorrai usare la chat anche da un altro telefono o computer. Lo riceverai anche per email, all'indirizzo che hai usato per pagare (controlla anche lo spam).", "c_copy": "Copia codice", "c_go": "Vai ora", "c_redirect": "Ti porto alla tua pagina tra {n}…", "c_copied": "Codice copiato!", "c_conn_error": "Errore di collegamento. Ricarica questa pagina tra qualche istante.", "title": "Pagamento completato — Amunì"}, "en": {"c_h1": "Thank you, wayfarer!", "c_checking": "I'm checking your payment…", "c_terms": "Terms of service", "privacy_word": "Privacy", "c_missing": "The payment reference is missing. If you have just paid, check your email or contact us.", "c_cant_confirm": "I can't confirm the payment. Please try again in a few seconds by reloading the page.", "c_ok": "Your payment was successful. Your Premium access is already active on this device.", "c_keep_code": "Keep this code: you will only need it if you want to use the chat from another phone or computer. You will also receive it by email at the address you used to pay (check your spam folder too).", "c_copy": "Copy code", "c_go": "Go now", "c_redirect": "Taking you to your page in {n}…", "c_copied": "Code copied!", "c_conn_error": "Connection error. Please reload this page in a moment.", "title": "Payment completed — Amunì"}, "fr": {"c_h1": "Merci, voyageur !", "c_checking": "Je vérifie votre paiement…", "c_terms": "Conditions du service", "privacy_word": "Confidentialité", "c_missing": "La référence du paiement est manquante. Si vous venez de payer, vérifiez votre e-mail ou contactez-nous.", "c_cant_confirm": "Je n'arrive pas à confirmer le paiement. Réessayez dans quelques secondes en rechargeant la page.", "c_ok": "Votre paiement a bien été effectué. Votre accès Premium est déjà actif sur cet appareil.", "c_keep_code": "Conservez ce code : il ne vous servira que si vous souhaitez utiliser le chat depuis un autre téléphone ou ordinateur. Vous le recevrez aussi par e-mail, à l'adresse utilisée pour payer (vérifiez aussi vos spams).", "c_copy": "Copier le code", "c_go": "Y aller maintenant", "c_redirect": "Je vous emmène sur votre page dans {n}…", "c_copied": "Code copié !", "c_conn_error": "Erreur de connexion. Rechargez cette page dans quelques instants.", "title": "Paiement effectué — Amunì"}, "es": {"c_h1": "¡Gracias, caminante!", "c_checking": "Estoy verificando tu pago…", "c_terms": "Condiciones del servicio", "privacy_word": "Privacidad", "c_missing": "Falta la referencia del pago. Si acabas de pagar, revisa tu correo electrónico o contáctanos.", "c_cant_confirm": "No consigo confirmar el pago. Vuelve a intentarlo en unos segundos recargando la página.", "c_ok": "Tu pago se ha realizado correctamente. Tu acceso Premium ya está activo en este dispositivo.", "c_keep_code": "Guarda este código: solo lo necesitarás si quieres usar el chat desde otro teléfono u ordenador. También lo recibirás por correo electrónico, en la dirección que usaste para pagar (revisa también el spam).", "c_copy": "Copiar código", "c_go": "Ir ahora", "c_redirect": "Te llevo a tu página en {n}…", "c_copied": "¡Código copiado!", "c_conn_error": "Error de conexión. Recarga esta página en unos instantes.", "title": "Pago completado — Amunì"}, "de": {"c_h1": "Danke, Wanderer!", "c_checking": "Ich überprüfe Ihre Zahlung…", "c_terms": "Nutzungsbedingungen", "privacy_word": "Datenschutz", "c_missing": "Die Zahlungsreferenz fehlt. Wenn Sie gerade bezahlt haben, prüfen Sie Ihre E-Mail oder kontaktieren Sie uns.", "c_cant_confirm": "Ich kann die Zahlung nicht bestätigen. Versuchen Sie es in einigen Sekunden erneut, indem Sie die Seite neu laden.", "c_ok": "Ihre Zahlung war erfolgreich. Ihr Premium-Zugang ist auf diesem Gerät bereits aktiv.", "c_keep_code": "Bewahren Sie diesen Code auf: Sie benötigen ihn nur, wenn Sie den Chat auch von einem anderen Telefon oder Computer aus nutzen möchten. Sie erhalten ihn außerdem per E-Mail an die Adresse, die Sie zum Bezahlen verwendet haben (prüfen Sie auch den Spam-Ordner).", "c_copy": "Code kopieren", "c_go": "Jetzt weiter", "c_redirect": "Weiterleitung zu Ihrer Seite in {n}…", "c_copied": "Code kopiert!", "c_conn_error": "Verbindungsfehler. Laden Sie diese Seite in einigen Augenblicken neu.", "title": "Zahlung abgeschlossen — Amunì"}};
+
+    // ---- Lingua: la stessa chiave "lang" usata dal resto del sito (default: italiano)
+    const SUPPORTED_LANGS = ["it", "en", "fr", "es", "de"];
+    let LANG = "it";
+    try {
+        const saved = localStorage.getItem("lang");
+        if (SUPPORTED_LANGS.indexOf(saved) !== -1) LANG = saved;
+    } catch (e) { /* memoria del browser non disponibile: resta l'italiano */ }
+
+    function t(key) {
+        const d = I18N[LANG] || I18N.it;
+        return (d[key] !== undefined) ? d[key] : I18N.it[key];
+    }
+
+    function applyStaticTranslations() {
+        document.documentElement.lang = LANG;
+        document.title = t("title");
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+            el.innerHTML = t(el.getAttribute("data-i18n"));
+        });
+    }
+
+applyStaticTranslations();
+
+// ---------------------------------------------------------
+// Indirizzo del tuo backend su PythonAnywhere
+// ---------------------------------------------------------
+const BACKEND_URL = "https://castellana.pythonanywhere.com";
+
+// Stessa chiave usata dalle pagine del sito per salvare l'accesso Premium
+const PREMIUM_STORAGE_KEY = "amuni_premium_access";
+
+// Legge "session_id" e "return_page" dall'indirizzo della pagina
+const params = new URLSearchParams(window.location.search);
+const sessionId = params.get("session_id");
+const returnPageGrezzo = params.get("return_page") || "";
+const returnPage = /^[A-Za-z0-9_-]+\.html$/.test(returnPageGrezzo) ? returnPageGrezzo : "desktop_index.html";
+
+const contenuto = document.getElementById("contenuto");
+
+async function recuperaCodice() {
+  if (!sessionId) {
+    contenuto.innerHTML = `<p class="errore">${t("c_missing")}</p>`;
+    return;
+  }
+
+  try {
+    const risposta = await fetch(`${BACKEND_URL}/get-code?session_id=${encodeURIComponent(sessionId)}`);
+    const dati = await risposta.json();
+
+    if (!risposta.ok || dati.error) {
+      contenuto.innerHTML = `<p class="errore">${dati.error || t("c_cant_confirm")}</p>`;
+      return;
+    }
+
+    const codice = dati.code;
+
+    // Attiviamo subito il codice su QUESTO dispositivo, cosi' l'utente
+    // arriva nel sito gia' con l'accesso Premium attivo, senza dover
+    // copiare/incollare nulla a mano.
+    try {
+      const attivazione = await fetch(`${BACKEND_URL}/activate-code`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: codice, lang: LANG })
+      });
+      const datiAttivazione = await attivazione.json();
+      if (datiAttivazione.success) {
+        localStorage.setItem(PREMIUM_STORAGE_KEY, JSON.stringify({
+          code: codice,
+          expires_at: datiAttivazione.expires_at
+        }));
+      }
+    } catch (e) {
+      console.error("Errore attivazione automatica:", e);
+      // Non blocchiamo la pagina: l'utente ha comunque il codice a video
+      // e potra' inserirlo a mano nella chat come prima.
+    }
+
+    contenuto.innerHTML = `
+      <p>${t("c_ok")}</p>
+      <div class="code-box" id="codice">${codice}</div>
+      <p style="font-size:0.95rem; opacity:0.85;">${t("c_keep_code")}</p>
+      <button onclick="copiaCodice()">${t("c_copy")}</button>
+      <button onclick="vaiOra()" style="margin-left:8px; background: var(--sea);">${t("c_go")}</button>
+      <p class="stato" style="margin-top:20px;">${t("c_redirect").replace("{n}", '<span id="countdown">8</span>')}</p>
+    `;
+
+    let secondi = 8;
+    const countdownEl = document.getElementById("countdown");
+    const timer = setInterval(() => {
+      secondi -= 1;
+      if (countdownEl) countdownEl.textContent = secondi;
+      if (secondi <= 0) {
+        clearInterval(timer);
+        vaiOra();
+      }
+    }, 1000);
+
+  } catch (e) {
+    contenuto.innerHTML = `<p class="errore">${t("c_conn_error")}</p>`;
+  }
+}
+
+function vaiOra() {
+  window.location.href = returnPage;
+}
+
+function copiaCodice() {
+  const testo = document.getElementById("codice").innerText;
+  navigator.clipboard.writeText(testo).then(() => {
+    alert(t("c_copied"));
+  });
+}
+
+recuperaCodice();
+</script>
+
+</body>
+</html>

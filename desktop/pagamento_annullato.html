@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento annullato — Amunì</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #C9A24B;
+    --terracotta: #B5654A;
+    --ink: #2A2420;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #1a1510, var(--ink));
+    font-family: 'Cormorant Garamond', serif;
+    color: #f5efe6;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 40px 28px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+
+  p { font-size: 1.15rem; line-height: 1.5; }
+
+  a.torna {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    background: var(--terracotta);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 12px 28px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1 data-i18n="a_h1">Nessun problema, viandante</h1>
+  <p data-i18n="a_p1">Il pagamento è stato annullato: non ti è stato addebitato nulla.</p>
+  <p data-i18n="a_p2">Quando vorrai, potrai riprovare direttamente dal sito.</p>
+  <a class="torna" href="https://vallelungagiusy356-bot.github.io/amun--tourism/desktop_index.html" data-i18n="a_back">Torna al sito</a>
+</div>
+
+<script>
+const I18N = {"it": {"a_h1": "Nessun problema, viandante", "a_p1": "Il pagamento è stato annullato: non ti è stato addebitato nulla.", "a_p2": "Quando vorrai, potrai riprovare direttamente dal sito.", "a_back": "Torna al sito", "title": "Pagamento annullato — Amunì"}, "en": {"a_h1": "No problem, wayfarer", "a_p1": "The payment was cancelled: you have not been charged anything.", "a_p2": "Whenever you like, you can try again directly from the site.", "a_back": "Back to the site", "title": "Payment cancelled — Amunì"}, "fr": {"a_h1": "Pas de problème, voyageur", "a_p1": "Le paiement a été annulé : rien ne vous a été débité.", "a_p2": "Quand vous le souhaiterez, vous pourrez réessayer directement depuis le site.", "a_back": "Retour au site", "title": "Paiement annulé — Amunì"}, "es": {"a_h1": "No pasa nada, caminante", "a_p1": "El pago se ha cancelado: no se te ha cobrado nada.", "a_p2": "Cuando quieras, podrás volver a intentarlo directamente desde el sitio.", "a_back": "Volver al sitio", "title": "Pago cancelado — Amunì"}, "de": {"a_h1": "Kein Problem, Wanderer", "a_p1": "Die Zahlung wurde abgebrochen: Ihnen wurde nichts berechnet.", "a_p2": "Wann immer Sie möchten, können Sie es direkt auf der Website erneut versuchen.", "a_back": "Zurück zur Website", "title": "Zahlung abgebrochen — Amunì"}};
+
+    // ---- Lingua: la stessa chiave "lang" usata dal resto del sito (default: italiano)
+    const SUPPORTED_LANGS = ["it", "en", "fr", "es", "de"];
+    let LANG = "it";
+    try {
+        const saved = localStorage.getItem("lang");
+        if (SUPPORTED_LANGS.indexOf(saved) !== -1) LANG = saved;
+    } catch (e) { /* memoria del browser non disponibile: resta l'italiano */ }
+
+    function t(key) {
+        const d = I18N[LANG] || I18N.it;
+        return (d[key] !== undefined) ? d[key] : I18N.it[key];
+    }
+
+    function applyStaticTranslations() {
+        document.documentElement.lang = LANG;
+        document.title = t("title");
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+            el.innerHTML = t(el.getAttribute("data-i18n"));
+        });
+    }
+
+applyStaticTranslations();
+</script>
+
+</body>
+</html>
