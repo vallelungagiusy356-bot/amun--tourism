@@ -19,7 +19,7 @@
   "premium": {
     "cta_label": "🔒 Premium content available",
     "btn_code": "I already have a code",
-    "btn_buy": "Buy access — €3.90",
+    "btn_buy": "Buy access — €5.00",
     "activated_prefix": "Premium activated! You'll have access to exclusive content until ",
     "invalid_code": "Invalid code.",
     "code_check_error": "I can't verify the code right now — please try again shortly.",
@@ -36,7 +36,19 @@
       "history_intro": "The Castle was built in <strong>1094</strong> by order of Count Roger I. Over the centuries it passed through <strong>14 noble families</strong> — including the Chiaramonte, Cabrera and De Spuches — until 1963, when it was handed over to the Sicilian Region.",
       "towers": "The <strong>Torre Mastra</strong>, the oldest and tallest, holds a cistern at its base. The <strong>Torre Gibellina</strong> watches over Terravecchia, while the <strong>Torre della Fossa</strong> closes off the southern front.",
       "size_note": "One of the best-preserved Norman castles in Sicily: walking through it all takes at least an hour, between courtyards and walkways.",
-      "biglietti": "<strong>Tickets</strong> — Full price €6 · Reduced online €4.50 · Residents €1 · Students 18-25 €3 · Free under 18."
+      "biglietti": "<strong>Tickets</strong> — Full price €6 · Reduced online €4.50 · Residents €1 · Students 18-25 €3 · Free under 18.",
+      "gallery": {
+        "esterno": "The Castle seen from the outside",
+        "vicolo": "A glimpse of the village towards the Castle",
+        "ingresso": "The entrance ramp",
+        "grancorte": "The Great Court (Gran Corte)",
+        "ala_prades": "The Prades Wing",
+        "cappella": "The Chapel",
+        "ingresso_prigioni": "The entrance to the Prisons",
+        "prigioni": "The Prisons",
+        "terrazza": "The Terrace of the Hanged"
+      },
+      "gallery_btn": "Photo Gallery"
     },
     "chiese_page": {
       "page_title": "The Churches of Caccamo",
@@ -99,7 +111,35 @@
         "immacolata": "Immaculate Conception",
         "organo": "The organ",
         "santa_rosalia": "Santa Rosalia the Pilgrim"
-      }
+      },
+      "cappuccini_gallery": {
+        "esterno": "Exterior of the convent",
+        "crocifisso": "The Crucifix",
+        "gloria_angeli": "The Glory of the Angels",
+        "madonna_lourdes": "Our Lady of Lourdes",
+        "sacrafamiglia": "The Visit of Saint Elizabeth",
+        "sanrocco": "Saint Roch"
+      },
+      "santamaria_gallery": {
+        "esterno": "Exterior of the church",
+        "madonna_gagini": "The Madonna and Child by Gagini",
+        "madonna_angeli": "Our Lady of the Angels",
+        "madonna_visita_poveri": "Our Lady Visita Poveri (Visitor of the Poor)",
+        "sstrinita": "The Holy Trinity with Saint Michael the Archangel",
+        "levitazione_sangiuseppe": "The Levitation of Saint Joseph of Cupertino",
+        "urna_beato": "The Urn of the Blessed Giovanni Liccio"
+      },
+      "purgatorio_gallery": {
+        "interno": "Interior of the church",
+        "crocifisso": "The Crucifix",
+        "adorazionepastori": "The Adoration of the Shepherds",
+        "madonnacarmelo": "Our Lady of Mount Carmel",
+        "messasuffragio": "The Mass of Suffrage and the Souls in Purgatory",
+        "ostensorio": "The Adoration of the Monstrance",
+        "sanfilipponeri": "Saint Philip Neri in prayer",
+        "sangiovanniimmacolata": "Saint John the Evangelist and the Immaculate Conception"
+      },
+      "esoterico_link": "🔮 Discover the Esoteric Path →"
     },
     "cibo_eventi_page": {
       "page_title": "The Village Calendar",
@@ -233,9 +273,26 @@
     "open_webapp": "Go to the WebApp",
     "scan_qr": "Scan the QR code",
     "premium_title": "Unlock the Premium Castellana",
-    "premium_text": "For €3.90, you get access to the Castellana for 4 days: the multilingual guide who knows every secret of Caccamo, from transport to the hidden gems of the area.",
+    "premium_text": "For €5.00, you get access to the Castellana for 4 days: the multilingual guide who knows every secret of Caccamo, from transport to the hidden gems of the area.",
     "premium_howto": "After payment you'll see your code right on the screen: type it in chat preceded by the word <strong>“code”</strong>. Each code works on up to 2 devices — handy for a second phone, a travel companion, or if anything unexpected comes up.",
-    "premium_cta": "Buy access — €3.90",
-    "social_follow_text": "Follow us on social media"
+    "premium_cta": "Buy access — €5.00",
+    "social_follow_text": "Follow us on social media",
+    "sitemap_discover_title": "Discover Caccamo",
+    "sitemap_castle": "The Castle of Caccamo",
+    "sitemap_churches": "Churches and art",
+    "sitemap_legends": "Legends and traditions",
+    "sitemap_esoteric": "The esoteric path",
+    "sitemap_food": "Food and events",
+    "sitemap_live_title": "Experience the village",
+    "sitemap_citizen": "Citizen of the village",
+    "sitemap_mobile": "Mobile version",
+    "sitemap_eat": "Where to eat",
+    "sitemap_sleep": "Where to stay",
+    "sitemap_arrive": "How to get here",
+    "sitemap_project_title": "The project",
+    "sitemap_about": "The Amunì project",
+    "sitemap_who": "About us",
+    "sitemap_contact": "Contact",
+    "sitemap_privacy": "Privacy and cookies"
   }
 }
