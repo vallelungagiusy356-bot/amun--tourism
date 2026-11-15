@@ -307,15 +307,12 @@ window.silktideConsentManager.init({
             <div class="premium-card">
                 <h2 data-i18n="home.premium_title">Sblocca la Castellana Premium</h2>
                 <p data-i18n="home.premium_text">
-                    Per 3,90€ accedi alla Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.
+                    Per 5,00€ accedi alla Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.
                 </p>
                 <p class="premium-howto" data-i18n="home.premium_howto">
                     Dopo il pagamento vedrai subito il tuo codice a schermo: scrivilo in chat preceduto dalla parola <strong>"codice"</strong>. Ogni codice funziona su fino a 2 dispositivi — utile su un secondo telefono, per chi viaggia con te, o in caso di imprevisti.
                 </p>
-                <p class="premium-launch-badge" data-i18n="premium.launch_badge" style="font-size: 0.85rem; color: #D4AF6A; font-weight: 700; letter-spacing: 0.3px; margin: 0 0 0.6rem;">
-                    🎉 Prezzo di lancio, valido fino al 1° novembre 2026 — poi 5,00€
-                </p>
-                <button type="button" class="btn-desktop premium-cta" id="premium-chat-btn" data-i18n="home.premium_cta">Acquista l'accesso — 3,90€</button>
+                <button type="button" class="btn-desktop premium-cta" id="premium-chat-btn" data-i18n="home.premium_cta">Acquista l'accesso — 5,00€</button>
             </div>
         </section>
 
@@ -344,34 +341,34 @@ window.silktideConsentManager.init({
         <div class="site-map-inner">
 
             <div class="site-map-col">
-                <h3>Scopri Caccamo</h3>
+                <h3 data-i18n="home.sitemap_discover_title">Scopri Caccamo</h3>
                 <ul>
-                    <li><a href="castello.html">Il Castello di Caccamo</a></li>
-                    <li><a href="chiese-arte.html">Chiese e arte</a></li>
-                    <li><a href="leggende_e_tradizioni.html">Leggende e tradizioni</a></li>
-                    <li><a href="percorso_esoterico.html">Il percorso esoterico</a></li>
-                    <li><a href="cibo_eventi.html">Cibo ed eventi</a></li>
+                    <li><a href="castello.html" data-i18n="home.sitemap_castle">Il Castello di Caccamo</a></li>
+                    <li><a href="chiese-arte.html" data-i18n="home.sitemap_churches">Chiese e arte</a></li>
+                    <li><a href="leggende_e_tradizioni.html" data-i18n="home.sitemap_legends">Leggende e tradizioni</a></li>
+                    <li><a href="percorso_esoterico.html" data-i18n="home.sitemap_esoteric">Il percorso esoterico</a></li>
+                    <li><a href="cibo_eventi.html" data-i18n="home.sitemap_food">Cibo ed eventi</a></li>
                 </ul>
             </div>
 
             <div class="site-map-col">
-                <h3>Vivere il borgo</h3>
+                <h3 data-i18n="home.sitemap_live_title">Vivere il borgo</h3>
                 <ul>
-                    <li><a href="cittadino.html">Cittadino del borgo</a></li>
-                    <li><a href="https://www.amunitourism.it/mobile/mobile_index.html">Versione mobile</a></li>
-                    <li><a href="https://www.amunitourism.it/mobile/mangiare.html">Dove mangiare</a></li>
-                    <li><a href="https://www.amunitourism.it/mobile/dormire.html">Dove dormire</a></li>
-                    <li><a href="https://www.amunitourism.it/mobile/trasporti.html">Come arrivare</a></li>
+                    <li><a href="cittadino.html" data-i18n="home.sitemap_citizen">Cittadino del borgo</a></li>
+                    <li><a href="https://www.amunitourism.it/mobile/mobile_index.html" data-i18n="home.sitemap_mobile">Versione mobile</a></li>
+                    <li><a href="https://www.amunitourism.it/mobile/mangiare.html" data-i18n="home.sitemap_eat">Dove mangiare</a></li>
+                    <li><a href="https://www.amunitourism.it/mobile/dormire.html" data-i18n="home.sitemap_sleep">Dove dormire</a></li>
+                    <li><a href="https://www.amunitourism.it/mobile/trasporti.html" data-i18n="home.sitemap_arrive">Come arrivare</a></li>
                 </ul>
             </div>
 
             <div class="site-map-col">
-                <h3>Il progetto</h3>
+                <h3 data-i18n="home.sitemap_project_title">Il progetto</h3>
                 <ul>
-                    <li><a href="about.html">Il progetto Amunì</a></li>
-                    <li><a href="chi_siamo.html">Chi siamo</a></li>
-                    <li><a href="contact.html">Contatti</a></li>
-                    <li><a href="privacy.html">Privacy e cookie</a></li>
+                    <li><a href="about.html" data-i18n="home.sitemap_about">Il progetto Amunì</a></li>
+                    <li><a href="chi_siamo.html" data-i18n="home.sitemap_who">Chi siamo</a></li>
+                    <li><a href="contact.html" data-i18n="home.sitemap_contact">Contatti</a></li>
+                    <li><a href="privacy.html" data-i18n="home.sitemap_privacy">Privacy e cookie</a></li>
                 </ul>
             </div>
 
@@ -1397,13 +1394,13 @@ Wie funktioniert der Chat? Wähle unten, worauf du Lust hast, und ich führe dic
                         } else {
                             alert(t('premium.payment_start_error', "Non riesco ad avviare il pagamento. Riprova tra poco."));
                             premiumBtn.disabled = false;
-                            premiumBtn.textContent = "Acquista l'accesso — 3,90€";
+                            premiumBtn.textContent = "Acquista l'accesso — 5,00€";
                         }
                     } catch (err) {
                         console.error("Errore avvio pagamento:", err);
                         alert(t('premium.payment_connection_error', "Errore di collegamento. Riprova tra poco."));
                         premiumBtn.disabled = false;
-                        premiumBtn.textContent = "Acquista l'accesso — 3,90€";
+                        premiumBtn.textContent = "Acquista l'accesso — 5,00€";
                     }
                 });
             }
