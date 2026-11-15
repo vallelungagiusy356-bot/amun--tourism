@@ -19,7 +19,7 @@
   "premium": {
     "cta_label": "🔒 Premium-Inhalte verfügbar",
     "btn_code": "Ich habe bereits einen Code",
-    "btn_buy": "Zugang kaufen — 3,90 €",
+    "btn_buy": "Zugang kaufen — 5,00 €",
     "activated_prefix": "Premium aktiviert! Du hast Zugriff auf exklusive Inhalte bis zum ",
     "invalid_code": "Ungultiger Code.",
     "code_check_error": "Ich kann den Code gerade nicht uberprufen — versuch es gleich noch einmal.",
@@ -36,7 +36,19 @@
       "history_intro": "Die Burg entsteht im Jahr <strong>1094</strong> auf Geheiß von Graf Roger I. Im Laufe der Jahrhunderte geht sie durch <strong>14 Adelsfamilien</strong> — darunter Chiaramonte, Cabrera und De Spuches — bis sie 1963 an die Region Sizilien übergeben wird.",
       "towers": "Der <strong>Torre Mastra</strong>, der älteste und höchste Turm, birgt an seiner Basis eine Zisterne. Der <strong>Torre Gibellina</strong> wacht über Terravecchia, während der <strong>Torre della Fossa</strong> die Südfront abschließt.",
       "size_note": "Eine der am besten erhaltenen normannischen Burgen Siziliens: sie ganz zu durchqueren dauert mindestens eine Stunde, zwischen Höfen und Wehrgängen.",
-      "biglietti": "<strong>Eintrittskarten</strong> — Voller Preis 6 € · Ermäßigt online 4,50 € · Einwohner 1 € · Studierende 18-25 Jahre 3 € · Kostenlos unter 18 Jahren."
+      "biglietti": "<strong>Eintrittskarten</strong> — Voller Preis 6 € · Ermäßigt online 4,50 € · Einwohner 1 € · Studierende 18-25 Jahre 3 € · Kostenlos unter 18 Jahren.",
+      "gallery": {
+        "esterno": "Die Burg von außen gesehen",
+        "vicolo": "Ein Blick auf das Dorf in Richtung Burg",
+        "ingresso": "Die Eingangsrampe",
+        "grancorte": "Der Große Hof (Gran Corte)",
+        "ala_prades": "Der Prades-Flügel",
+        "cappella": "Die Kapelle",
+        "ingresso_prigioni": "Der Eingang zu den Gefängnissen",
+        "prigioni": "Die Gefängnisse",
+        "terrazza": "Die Terrasse der Gehängten"
+      },
+      "gallery_btn": "Fotogalerie"
     },
     "chiese_page": {
       "page_title": "Die Kirchen von Caccamo",
@@ -99,7 +111,35 @@
         "immacolata": "Unbefleckte Empfängnis",
         "organo": "Die Orgel",
         "santa_rosalia": "Santa Rosalia Pellegrina"
-      }
+      },
+      "cappuccini_gallery": {
+        "esterno": "Außenansicht des Klosters",
+        "crocifisso": "Das Kruzifix",
+        "gloria_angeli": "Die Glorie der Engel",
+        "madonna_lourdes": "Unsere Liebe Frau von Lourdes",
+        "sacrafamiglia": "Der Besuch der Heiligen Elisabeth",
+        "sanrocco": "Der Heilige Rochus"
+      },
+      "santamaria_gallery": {
+        "esterno": "Außenansicht der Kirche",
+        "madonna_gagini": "Die Madonna mit Kind von Gagini",
+        "madonna_angeli": "Maria von den Engeln",
+        "madonna_visita_poveri": "Madonna Visita Poveri (Besucherin der Armen)",
+        "sstrinita": "Die Heilige Dreifaltigkeit mit dem Heiligen Erzengel Michael",
+        "levitazione_sangiuseppe": "Die Levitation des Heiligen Josef von Copertino",
+        "urna_beato": "Die Urne des Seligen Giovanni Liccio"
+      },
+      "purgatorio_gallery": {
+        "interno": "Innenraum der Kirche",
+        "crocifisso": "Das Kruzifix",
+        "adorazionepastori": "Die Anbetung der Hirten",
+        "madonnacarmelo": "Unsere Liebe Frau vom Berge Karmel",
+        "messasuffragio": "Die Seelenmesse und die Armen Seelen im Fegefeuer",
+        "ostensorio": "Die Anbetung der Monstranz",
+        "sanfilipponeri": "Der Heilige Philipp Neri im Gebet",
+        "sangiovanniimmacolata": "Der Heilige Johannes der Evangelist und die Unbefleckte Empfängnis"
+      },
+      "esoterico_link": "🔮 Entdecken Sie den Esoterischen Pfad →"
     },
     "cibo_eventi_page": {
       "page_title": "Der Dorfkalender",
@@ -232,9 +272,26 @@
     "install_app_text": "Öffne Amunì auf deinem Smartphone, um Karten, Öffnungszeiten und Verkehrsmittel jederzeit griffbereit zu haben — und füge es zum Startbildschirm hinzu, um es mit einem Fingertipp wiederzufinden.",
     "open_webapp": "Zur WebApp",
     "premium_title": "Schalte die Premium-Castellana frei",
-    "premium_text": "Für 3,90 € erhältst du 4 Tage lang Zugang zur Castellana: der mehrsprachigen Führerin, die jedes Geheimnis von Caccamo kennt, von den Verkehrsmitteln bis zu den verborgenen Schätzen der Umgebung.",
+    "premium_text": "Für 5,00 € erhältst du 4 Tage lang Zugang zur Castellana: der mehrsprachigen Führerin, die jedes Geheimnis von Caccamo kennt, von den Verkehrsmitteln bis zu den verborgenen Schätzen der Umgebung.",
     "premium_howto": "Nach der Zahlung siehst du deinen Code sofort auf dem Bildschirm: gib ihn im Chat ein, mit dem Wort <strong>\"code\"</strong> davor. Jeder Code funktioniert auf bis zu 2 Geräten — praktisch für ein zweites Handy, einen Reisebegleiter oder für unvorhergesehene Situationen.",
-    "premium_cta": "Zugang kaufen — 3,90 €",
-    "social_follow_text": "Folge uns in den sozialen Medien"
+    "premium_cta": "Zugang kaufen — 5,00 €",
+    "social_follow_text": "Folge uns in den sozialen Medien",
+    "sitemap_discover_title": "Caccamo entdecken",
+    "sitemap_castle": "Die Burg von Caccamo",
+    "sitemap_churches": "Kirchen und Kunst",
+    "sitemap_legends": "Legenden und Traditionen",
+    "sitemap_esoteric": "Der esoterische Pfad",
+    "sitemap_food": "Essen und Veranstaltungen",
+    "sitemap_live_title": "Das Dorf erleben",
+    "sitemap_citizen": "Bürger des Dorfes",
+    "sitemap_mobile": "Mobile Version",
+    "sitemap_eat": "Wo essen",
+    "sitemap_sleep": "Wo übernachten",
+    "sitemap_arrive": "Anreise",
+    "sitemap_project_title": "Das Projekt",
+    "sitemap_about": "Das Projekt Amunì",
+    "sitemap_who": "Über uns",
+    "sitemap_contact": "Kontakt",
+    "sitemap_privacy": "Datenschutz und Cookies"
   }
 }
