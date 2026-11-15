@@ -19,7 +19,7 @@
   "premium": {
     "cta_label": "🔒 Contenus Premium disponibles",
     "btn_code": "J'ai déjà un code",
-    "btn_buy": "Acheter l'accès — 3,90 €",
+    "btn_buy": "Acheter l'accès — 5,00 €",
     "activated_prefix": "Premium active ! Tu auras acces aux contenus exclusifs jusqu'au ",
     "invalid_code": "Code non valide.",
     "code_check_error": "Je n'arrive pas a verifier le code pour le moment — reessaie bientot.",
@@ -36,7 +36,19 @@
       "history_intro": "Le Château naît en <strong>1094</strong> sur ordre du comte Roger Ier. Au fil des siècles, il passe entre <strong>14 familles nobles</strong> — parmi lesquelles les Chiaramonte, Cabrera et De Spuches — jusqu'en 1963, date à laquelle il est cédé à la Région sicilienne.",
       "towers": "La <strong>Torre Mastra</strong>, la plus ancienne et la plus haute, abrite une citerne à sa base. La <strong>Torre Gibellina</strong> veille sur Terravecchia, tandis que la <strong>Torre della Fossa</strong> ferme la façade sud.",
       "size_note": "L'un des châteaux normands les mieux conservés de Sicile : le parcourir entièrement demande au moins une heure, entre cours et chemins de ronde.",
-      "biglietti": "<strong>Billets</strong> — Plein tarif 6 € · Tarif réduit en ligne 4,50 € · Résidents 1 € · Étudiants 18-25 ans 3 € · Gratuit pour les moins de 18 ans."
+      "biglietti": "<strong>Billets</strong> — Plein tarif 6 € · Tarif réduit en ligne 4,50 € · Résidents 1 € · Étudiants 18-25 ans 3 € · Gratuit pour les moins de 18 ans.",
+      "gallery": {
+        "esterno": "Le Château vu de l'extérieur",
+        "vicolo": "Un aperçu du bourg vers le Château",
+        "ingresso": "La rampe d'entrée",
+        "grancorte": "La Grande Cour (Gran Corte)",
+        "ala_prades": "L'aile Prades",
+        "cappella": "La Chapelle",
+        "ingresso_prigioni": "L'entrée des Prisons",
+        "prigioni": "Les Prisons",
+        "terrazza": "La Terrasse des Pendus"
+      },
+      "gallery_btn": "Galerie photo"
     },
     "chiese_page": {
       "page_title": "Les Églises de Caccamo",
@@ -99,7 +111,35 @@
         "immacolata": "Immaculée Conception",
         "organo": "L'orgue",
         "santa_rosalia": "Sainte Rosalie Pèlerine"
-      }
+      },
+      "cappuccini_gallery": {
+        "esterno": "Extérieur du couvent",
+        "crocifisso": "Le Crucifix",
+        "gloria_angeli": "La Gloire des Anges",
+        "madonna_lourdes": "Notre-Dame de Lourdes",
+        "sacrafamiglia": "La Visite de Sainte Élisabeth",
+        "sanrocco": "Saint Roch"
+      },
+      "santamaria_gallery": {
+        "esterno": "Extérieur de l'église",
+        "madonna_gagini": "La Vierge à l'Enfant de Gagini",
+        "madonna_angeli": "Notre-Dame des Anges",
+        "madonna_visita_poveri": "Notre-Dame Visita Poveri (Visiteuse des Pauvres)",
+        "sstrinita": "La Sainte Trinité avec Saint Michel Archange",
+        "levitazione_sangiuseppe": "La Lévitation de Saint Joseph de Copertino",
+        "urna_beato": "L'Urne du Bienheureux Giovanni Liccio"
+      },
+      "purgatorio_gallery": {
+        "interno": "Intérieur de l'église",
+        "crocifisso": "Le Crucifix",
+        "adorazionepastori": "L'Adoration des Bergers",
+        "madonnacarmelo": "Notre-Dame du Mont-Carmel",
+        "messasuffragio": "La Messe de suffrage et les Âmes du Purgatoire",
+        "ostensorio": "L'Adoration de l'Ostensoir",
+        "sanfilipponeri": "Saint Philippe Néri en prière",
+        "sangiovanniimmacolata": "Saint Jean l'Évangéliste et l'Immaculée Conception"
+      },
+      "esoterico_link": "🔮 Découvrez le Parcours Ésotérique →"
     },
     "cibo_eventi_page": {
       "page_title": "Le Calendrier du Bourg",
@@ -232,9 +272,26 @@
     "install_app_text": "Ouvrez Amunì depuis votre smartphone pour avoir toujours à portée de main cartes, horaires et transports — et ajoutez-la à l'écran d'accueil pour la retrouver en un geste.",
     "open_webapp": "Aller à la WebApp",
     "premium_title": "Débloquez la Castellana Premium",
-    "premium_text": "Pour 3,90 €, accédez à la Castellana pendant 4 jours : le guide multilingue qui connaît tous les secrets de Caccamo, des transports aux trésors cachés du territoire.",
+    "premium_text": "Pour 5,00 €, accédez à la Castellana pendant 4 jours : le guide multilingue qui connaît tous les secrets de Caccamo, des transports aux trésors cachés du territoire.",
     "premium_howto": "Après le paiement, ton code s'affiche directement à l'écran : écris-le dans le chat précédé du mot <strong>« code »</strong>. Chaque code fonctionne sur 2 appareils maximum — utile pour un second téléphone, un compagnon de voyage, ou en cas d'imprévu.",
-    "premium_cta": "Acheter l'accès — 3,90 €",
-    "social_follow_text": "Suivez-nous sur les réseaux sociaux"
+    "premium_cta": "Acheter l'accès — 5,00 €",
+    "social_follow_text": "Suivez-nous sur les réseaux sociaux",
+    "sitemap_discover_title": "Découvrir Caccamo",
+    "sitemap_castle": "Le Château de Caccamo",
+    "sitemap_churches": "Églises et art",
+    "sitemap_legends": "Légendes et traditions",
+    "sitemap_esoteric": "Le parcours ésotérique",
+    "sitemap_food": "Gastronomie et événements",
+    "sitemap_live_title": "Vivre le bourg",
+    "sitemap_citizen": "Citoyen du bourg",
+    "sitemap_mobile": "Version mobile",
+    "sitemap_eat": "Où manger",
+    "sitemap_sleep": "Où dormir",
+    "sitemap_arrive": "Comment s'y rendre",
+    "sitemap_project_title": "Le projet",
+    "sitemap_about": "Le projet Amunì",
+    "sitemap_who": "Qui sommes-nous",
+    "sitemap_contact": "Contact",
+    "sitemap_privacy": "Confidentialité et cookies"
   }
 }
