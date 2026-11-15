@@ -19,7 +19,7 @@
   "premium": {
     "cta_label": "🔒 Contenuti Premium disponibili",
     "btn_code": "Ho già un codice",
-    "btn_buy": "Acquista l'accesso — 3,90€",
+    "btn_buy": "Acquista l'accesso — 5,00€",
     "activated_prefix": "Premium attivato! Avrai accesso ai contenuti esclusivi fino al ",
     "invalid_code": "Codice non valido.",
     "code_check_error": "Al momento non riesco a verificare il codice — riprova tra poco.",
@@ -36,7 +36,19 @@
       "history_intro": "Il Castello nasce nel <strong>1094</strong> per volere del Conte Ruggero I. Nei secoli passa tra <strong>14 famiglie nobiliari</strong> — tra cui Chiaramonte, Cabrera e De Spuches — fino al 1963, quando viene ceduto alla Regione Siciliana.",
       "towers": "La <strong>Torre Mastra</strong>, la più antica e alta, custodisce una cisterna alla base. La <strong>Torre Gibellina</strong> veglia su Terravecchia, mentre la <strong>Torre della Fossa</strong> chiude il prospetto sud.",
       "size_note": "Uno dei castelli normanni meglio conservati di Sicilia: percorrerlo tutto richiede almeno un'ora, tra cortili e camminamenti.",
-      "biglietti": "<strong>Biglietti</strong> — Intero 6€ · Ridotto online 4,50€ · Residenti 1€ · Studenti 18-25 anni 3€ · Gratuito under 18."
+      "biglietti": "<strong>Biglietti</strong> — Intero 6€ · Ridotto online 4,50€ · Residenti 1€ · Studenti 18-25 anni 3€ · Gratuito under 18.",
+      "gallery": {
+        "esterno": "Il Castello visto dall'esterno",
+        "vicolo": "Uno scorcio del borgo verso il Castello",
+        "ingresso": "La rampa d'ingresso",
+        "grancorte": "La Gran Corte",
+        "ala_prades": "L'Ala Prades",
+        "cappella": "La Cappella",
+        "ingresso_prigioni": "L'ingresso alle Prigioni",
+        "prigioni": "Le Prigioni",
+        "terrazza": "La Terrazza degli Impiccati"
+      },
+      "gallery_btn": "Galleria Fotografica"
     },
     "chiese_page": {
       "page_title": "Le Chiese di Caccamo",
@@ -99,7 +111,35 @@
         "immacolata": "Immacolata Concezione",
         "organo": "L'organo",
         "santa_rosalia": "Santa Rosalia Pellegrina"
-      }
+      },
+      "cappuccini_gallery": {
+        "esterno": "Esterno del convento",
+        "crocifisso": "Il Crocifisso",
+        "gloria_angeli": "La Gloria degli Angeli",
+        "madonna_lourdes": "La Madonna di Lourdes",
+        "sacrafamiglia": "La Visita di Santa Elisabetta",
+        "sanrocco": "San Rocco"
+      },
+      "santamaria_gallery": {
+        "esterno": "Esterno della chiesa",
+        "madonna_gagini": "La Madonna col Bambino del Gagini",
+        "madonna_angeli": "La Madonna degli Angeli",
+        "madonna_visita_poveri": "La Madonna Visita Poveri",
+        "sstrinita": "La SS. Trinità con San Michele Arcangelo",
+        "levitazione_sangiuseppe": "La Levitazione di San Giuseppe da Copertino",
+        "urna_beato": "L'Urna del Beato Giovanni Liccio"
+      },
+      "purgatorio_gallery": {
+        "interno": "Interno della chiesa",
+        "crocifisso": "Il Crocifisso",
+        "adorazionepastori": "L'Adorazione dei Pastori",
+        "madonnacarmelo": "La Madonna del Carmelo",
+        "messasuffragio": "La Messa di Suffragio e le Anime Purganti",
+        "ostensorio": "L'Adorazione dell'Ostensorio",
+        "sanfilipponeri": "San Filippo Neri in preghiera",
+        "sangiovanniimmacolata": "San Giovanni Evangelista e l'Immacolata Concezione"
+      },
+      "esoterico_link": "🔮 Scopri il Percorso Esoterico →"
     },
     "cibo_eventi_page": {
       "page_title": "Il Calendario del Borgo",
@@ -233,9 +273,26 @@
     "open_webapp": "Vai alla WebApp",
     "scan_qr": "Scansiona il QR",
     "premium_title": "Sblocca la Castellana Premium",
-    "premium_text": "Per 3,90€ accedi alla Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.",
+    "premium_text": "Per 5,00€ accedi alla Castellana per 4 giorni: la guida multilingue che conosce ogni segreto di Caccamo, dai trasporti alle gemme nascoste del territorio.",
     "premium_howto": "Dopo il pagamento vedrai subito il tuo codice a schermo: scrivilo in chat preceduto dalla parola <strong>\"codice\"</strong>. Ogni codice funziona su fino a 2 dispositivi — utile su un secondo telefono, per chi viaggia con te, o in caso di imprevisti.",
-    "premium_cta": "Acquista l'accesso — 3,90€",
-    "social_follow_text": "Seguici sui social"
+    "premium_cta": "Acquista l'accesso — 5,00€",
+    "social_follow_text": "Seguici sui social",
+    "sitemap_discover_title": "Scopri Caccamo",
+    "sitemap_castle": "Il Castello di Caccamo",
+    "sitemap_churches": "Chiese e arte",
+    "sitemap_legends": "Leggende e tradizioni",
+    "sitemap_esoteric": "Il percorso esoterico",
+    "sitemap_food": "Cibo ed eventi",
+    "sitemap_live_title": "Vivere il borgo",
+    "sitemap_citizen": "Cittadino del borgo",
+    "sitemap_mobile": "Versione mobile",
+    "sitemap_eat": "Dove mangiare",
+    "sitemap_sleep": "Dove dormire",
+    "sitemap_arrive": "Come arrivare",
+    "sitemap_project_title": "Il progetto",
+    "sitemap_about": "Il progetto Amunì",
+    "sitemap_who": "Chi siamo",
+    "sitemap_contact": "Contatti",
+    "sitemap_privacy": "Privacy e cookie"
   }
 }
