@@ -35,6 +35,7 @@
 }
 </style>
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
+<script src="../cookie-i18n.js"></script>
 <script>
 window.silktideConsentManager.init({
   backdrop: { show: false },
@@ -246,7 +247,7 @@ window.silktideConsentManager.init({
                 <div class="hero-text">
                     <h1 data-i18n="home.welcome_title">Benvenuti a Caccamo</h1>
                     <div class="gold-divider"></div>
-                    <a href="#sezione-racconto" class="scroll-cue">Scopri il racconto ↓</a>
+                    <a href="#sezione-racconto" class="scroll-cue" data-i18n="home.scroll_cue">Scopri il racconto ↓</a>
                 </div>
 
             </div>
@@ -376,8 +377,8 @@ window.silktideConsentManager.init({
     </nav>
 
     <footer class="footer-copyright">
-        <p>&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
-        <p style="font-size: 0.8rem; margin-top: 8px;">
+        <p data-i18n="home.footer_copy">&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.</p>
+        <p style="font-size: 0.8rem; margin-top: 8px;" data-i18n="home.footer_notice">
             Le conversazioni con la Castellana possono essere registrate in forma anonima
             per migliorare la qualità del servizio.
             <a href="privacy.html" style="color: #D4AF6A;">Maggiori informazioni</a>
