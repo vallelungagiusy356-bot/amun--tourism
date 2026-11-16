@@ -10,7 +10,30 @@
     "btn_monuments": "Monumenti",
     "btn_desktop_redirect": "Vai alla versione Desktop",
     "welcome_title": "Benvenuti a Caccamo",
-    "btn_add_home": "Aggiungi alla schermata Home"
+    "btn_add_home": "Aggiungi alla schermata Home",
+    "music_volume": "🎵 Volume della musica",
+    "music_pause": "Metti in pausa la musica",
+    "music_resume": "Riattiva la musica",
+    "social_follow_text": "Seguici sui social",
+    "footer_copy": "&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.",
+    "footer_notice": "Le conversazioni con la Castellana possono essere registrate in forma anonima per migliorare la qualità del servizio. <a href=\"../mobile/privacy.html\" style=\"color: #D4AF6A;\">Maggiori informazioni</a>",
+    "chat_placeholder": "Scrivi alla Castellana...",
+    "voice_toggle_title": "Attiva/disattiva voce",
+    "mic_title": "Parla con la Castellana",
+    "send_label": "Invia",
+    "audio_listen": "Ascolta la Castellana",
+    "goto_page": "Vai alla pagina →",
+    "back_to_menu": "‹ Torna al menu",
+    "pwa_ios": "Su iPhone/iPad: tocca l'icona Condividi in Safari, poi «Aggiungi alla schermata Home».",
+    "pwa_other": "Apri il menu del browser e cerca «Aggiungi alla schermata Home» o «Installa app».",
+    "chat_error": "Al momento non riesco a risponderti — riprova tra poco.",
+    "code_error": "Al momento non riesco a verificare il codice — riprova tra poco.",
+    "code_invalid": "Codice non valido.",
+    "code_prompt": "Per attivare il tuo accesso Premium, scrivimi qui: \"codice TUOCODICE\"",
+    "premium_activated": "Premium attivato! Avrai accesso ai contenuti esclusivi fino al {date}.",
+    "checkout_wait": "Un momento...",
+    "pay_error": "Non riesco ad avviare il pagamento. Riprova tra poco.",
+    "pay_link_error": "Errore di collegamento. Riprova tra poco."
   },
   "pages": {
     "food_page": {
@@ -328,7 +351,7 @@
   "premium": {
     "cta_label": "🔒 Contenuti Premium disponibili",
     "btn_code": "Ho già un codice",
-    "btn_buy": "Acquista l'accesso — 3,90€",
+    "btn_buy": "Acquista l'accesso — 5,00€",
     "launch_price_note": "🎉 Prezzo di lancio"
   }
 }

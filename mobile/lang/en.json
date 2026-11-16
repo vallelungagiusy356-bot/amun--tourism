@@ -10,7 +10,30 @@
     "btn_monuments": "Monuments",
     "btn_desktop_redirect": "Go to the Desktop version",
     "welcome_title": "Welcome to Caccamo",
-    "btn_add_home": "Add to Home Screen"
+    "btn_add_home": "Add to Home Screen",
+    "music_volume": "🎵 Music volume",
+    "music_pause": "Pause the music",
+    "music_resume": "Resume the music",
+    "social_follow_text": "Follow us on social media",
+    "footer_copy": "&copy; 2026 Amunì Tourism. A project dedicated to promoting the village of Caccamo.",
+    "footer_notice": "Conversations with the Castellana may be recorded anonymously to improve the quality of the service. <a href=\"../mobile/privacy.html\" style=\"color: #D4AF6A;\">More information</a>",
+    "chat_placeholder": "Write to the Castellana...",
+    "voice_toggle_title": "Turn voice on/off",
+    "mic_title": "Talk to the Castellana",
+    "send_label": "Send",
+    "audio_listen": "Listen to the Castellana",
+    "goto_page": "Go to the page →",
+    "back_to_menu": "‹ Back to menu",
+    "pwa_ios": "On iPhone/iPad: tap the Share icon in Safari, then «Add to Home Screen».",
+    "pwa_other": "Open the browser menu and look for «Add to Home screen» or «Install app».",
+    "chat_error": "I can't answer you right now — please try again shortly.",
+    "code_error": "I can't verify the code right now — please try again shortly.",
+    "code_invalid": "Invalid code.",
+    "code_prompt": "To activate your Premium access, write to me here: \"code YOURCODE\"",
+    "premium_activated": "Premium activated! You will have access to the exclusive content until {date}.",
+    "checkout_wait": "One moment...",
+    "pay_error": "I can't start the payment. Please try again shortly.",
+    "pay_link_error": "Connection error. Please try again shortly."
   },
   "pages": {
     "food_page": {
@@ -328,7 +351,7 @@
   "premium": {
     "cta_label": "🔒 Premium content available",
     "btn_code": "I already have a code",
-    "btn_buy": "Buy access — €3.90",
+    "btn_buy": "Buy access — €5.00",
     "launch_price_note": "🎉 Launch price"
   }
 }

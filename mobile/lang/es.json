@@ -10,7 +10,30 @@
     "btn_monuments": "Monumentos",
     "btn_desktop_redirect": "Ir a la versión de Escritorio",
     "welcome_title": "Bienvenido a Caccamo",
-    "btn_add_home": "Añadir a la pantalla de inicio"
+    "btn_add_home": "Añadir a la pantalla de inicio",
+    "music_volume": "🎵 Volumen de la música",
+    "music_pause": "Pausar la música",
+    "music_resume": "Reanudar la música",
+    "social_follow_text": "Síguenos en redes sociales",
+    "footer_copy": "&copy; 2026 Amunì Tourism. Proyecto dedicado a la puesta en valor del pueblo de Caccamo.",
+    "footer_notice": "Las conversaciones con la Castellana pueden registrarse de forma anónima para mejorar la calidad del servicio. <a href=\"../mobile/privacy.html\" style=\"color: #D4AF6A;\">Más información</a>",
+    "chat_placeholder": "Escribe a la Castellana...",
+    "voice_toggle_title": "Activar/desactivar la voz",
+    "mic_title": "Habla con la Castellana",
+    "send_label": "Enviar",
+    "audio_listen": "Escuchar a la Castellana",
+    "goto_page": "Ir a la página →",
+    "back_to_menu": "‹ Volver al menú",
+    "pwa_ios": "En iPhone/iPad: toca el icono Compartir en Safari y luego «Añadir a pantalla de inicio».",
+    "pwa_other": "Abre el menú del navegador y busca «Añadir a la pantalla de inicio» o «Instalar aplicación».",
+    "chat_error": "Ahora mismo no puedo responderte — inténtalo de nuevo en un momento.",
+    "code_error": "Ahora mismo no puedo verificar el código — inténtalo de nuevo en un momento.",
+    "code_invalid": "Código no válido.",
+    "code_prompt": "Para activar tu acceso Premium, escríbeme aquí: \"code TUCODIGO\"",
+    "premium_activated": "¡Premium activado! Tendrás acceso a los contenidos exclusivos hasta el {date}.",
+    "checkout_wait": "Un momento...",
+    "pay_error": "No puedo iniciar el pago. Inténtalo de nuevo en un momento.",
+    "pay_link_error": "Error de conexión. Inténtalo de nuevo en un momento."
   },
   "pages": {
     "food_page": {
@@ -328,7 +351,7 @@
   "premium": {
     "cta_label": "🔒 Contenido Premium disponible",
     "btn_code": "Ya tengo un código",
-    "btn_buy": "Comprar acceso — 3,90 €",
+    "btn_buy": "Comprar acceso — 5,00 €",
     "launch_price_note": "🎉 Precio de lanzamiento"
   }
 }

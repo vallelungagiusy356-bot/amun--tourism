@@ -10,7 +10,30 @@
     "btn_monuments": "Monuments",
     "btn_desktop_redirect": "Aller à la version Ordinateur",
     "welcome_title": "Bienvenue a Caccamo",
-    "btn_add_home": "Ajouter à l'écran d'accueil"
+    "btn_add_home": "Ajouter à l'écran d'accueil",
+    "music_volume": "🎵 Volume de la musique",
+    "music_pause": "Mettre la musique en pause",
+    "music_resume": "Relancer la musique",
+    "social_follow_text": "Suivez-nous sur les réseaux sociaux",
+    "footer_copy": "&copy; 2026 Amunì Tourism. Projet dédié à la valorisation du bourg de Caccamo.",
+    "footer_notice": "Les conversations avec la Castellana peuvent être enregistrées de manière anonyme afin d'améliorer la qualité du service. <a href=\"../mobile/privacy.html\" style=\"color: #D4AF6A;\">Plus d'informations</a>",
+    "chat_placeholder": "Écris à la Castellana...",
+    "voice_toggle_title": "Activer/désactiver la voix",
+    "mic_title": "Parler à la Castellana",
+    "send_label": "Envoyer",
+    "audio_listen": "Écouter la Castellana",
+    "goto_page": "Aller à la page →",
+    "back_to_menu": "‹ Retour au menu",
+    "pwa_ios": "Sur iPhone/iPad : touche l'icône Partager dans Safari, puis «Sur l'écran d'accueil».",
+    "pwa_other": "Ouvre le menu du navigateur et cherche «Ajouter à l'écran d'accueil» ou «Installer l'application».",
+    "chat_error": "Pour le moment, je n'arrive pas à te répondre — réessaie dans un instant.",
+    "code_error": "Pour le moment, je n'arrive pas à vérifier le code — réessaie dans un instant.",
+    "code_invalid": "Code non valide.",
+    "code_prompt": "Pour activer ton accès Premium, écris-moi ici : \"code TONCODE\"",
+    "premium_activated": "Premium activé ! Tu auras accès aux contenus exclusifs jusqu'au {date}.",
+    "checkout_wait": "Un instant...",
+    "pay_error": "Impossible de lancer le paiement. Réessaie dans un instant.",
+    "pay_link_error": "Erreur de connexion. Réessaie dans un instant."
   },
   "pages": {
     "food_page": {
@@ -328,7 +351,7 @@
   "premium": {
     "cta_label": "🔒 Contenu Premium disponible",
     "btn_code": "J'ai déjà un code",
-    "btn_buy": "Acheter l'accès — 3,90 €",
+    "btn_buy": "Acheter l'accès — 5,00 €",
     "launch_price_note": "🎉 Prix de lancement"
   }
 }
