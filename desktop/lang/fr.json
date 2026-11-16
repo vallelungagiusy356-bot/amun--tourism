@@ -29,7 +29,12 @@
     "launch_badge": "🎉 Prix de lancement, valable jusqu'au 1er novembre 2026 — puis 5,00 €"
   },
   "pages": {
+    "gallery_modal": {
+      "hint": "‹ touchez la photo pour faire défiler, ou utilisez les flèches du clavier ›",
+      "next_title": "Touchez pour la photo suivante"
+    },
     "castle_page": {
+      "scroll_cue": "Découvrez son histoire ↓",
       "category": "Monuments Historiques",
       "title": "Le Château de Caccamo",
       "rhyme_1": "Dans un château normand forgé par le temps,<br>venez, admirez, arrêtez-vous un instant.<br>Ce n'est pas que de la pierre, ni un froid rempart,<br>mais une âme ancienne qui attend votre regard.",
@@ -263,6 +268,9 @@
     "castle_desc": "La forteresse millénaire : histoire, mystères et prisons."
   },
   "home": {
+    "footer_copy": "&copy; 2026 Amunì Tourism. Projet dédié à la valorisation du bourg de Caccamo.",
+    "footer_notice": "Les conversations avec la Castellana peuvent être enregistrées de manière anonyme afin d'améliorer la qualité du service. <a href=\"privacy.html\" style=\"color: #D4AF6A;\">Plus d'informations</a>",
+    "scroll_cue": "Découvrez le récit ↓",
     "welcome_title": "Bienvenue à Caccamo",
     "poetry": "Au-delà de l'horizon où le lac devient miroir et gloire,<br>Caccamo tisse son souffle à l'ancienne mémoire.<br>Ce n'est pas que de la pierre qui défie les âges et les gens,<br><strong>qui cache entre ses murs de surprenants trésors.</strong><br><br>Comme une pelote qui se déroule lentement,<br>elle se diffuse dans chaque ruelle, dans chaque petite histoire.<br>Un entrelacs de siècles dévoilé <strong>avec amour et mystère,</strong><br>pour qui cherche le cœur battant d'un vrai bourg.<br><br><strong>Amunì, prends le chemin,</strong><br><strong>la Castellana est là pour te tenir compagnie.</strong>",
     "castellana_intro_title": "Vivez le Caccamo le plus authentique",

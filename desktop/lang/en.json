@@ -29,7 +29,12 @@
     "launch_badge": "🎉 Launch price, valid until November 1, 2026 — then €5.00"
   },
   "pages": {
+    "gallery_modal": {
+      "hint": "‹ tap the photo to browse, or use the keyboard arrows ›",
+      "next_title": "Tap for the next photo"
+    },
     "castle_page": {
+      "scroll_cue": "Discover its history ↓",
       "category": "Historic Monuments",
       "title": "The Castle of Caccamo",
       "rhyme_1": "In a Norman castle forged by time,<br>come, admire, stop for a while.<br>It's not just stone, nor a cold rampart,<br>but an ancient soul awaiting your gaze.",
@@ -263,6 +268,9 @@
     "castle_desc": "The thousand-year-old fortress: history, mysteries and prisons."
   },
   "home": {
+    "footer_copy": "&copy; 2026 Amunì Tourism. A project dedicated to promoting the village of Caccamo.",
+    "footer_notice": "Conversations with the Castellana may be recorded anonymously to improve the quality of the service. <a href=\"privacy.html\" style=\"color: #D4AF6A;\">More information</a>",
+    "scroll_cue": "Discover the story ↓",
     "welcome_title": "Welcome to Caccamo",
     "poetry": "Beyond the horizon where the lake becomes a mirror and glory,<br>Caccamo weaves its breath into ancient memory.<br>It's not just stone defying ages and people,<br><strong>hiding surprising treasures within its walls.</strong><br><br>Like a ball of yarn slowly unwinding,<br>it spreads through every alley, in every small story.<br>A weave of centuries revealed <strong>with love and mystery,</strong><br>for those seeking the beating heart of a true village.<br><br><strong>Amunì, take the path,</strong><br><strong>the Castellana is here to keep you company.</strong>",
     "castellana_intro_title": "Live the most authentic Caccamo",

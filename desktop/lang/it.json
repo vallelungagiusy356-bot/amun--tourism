@@ -29,7 +29,12 @@
     "launch_badge": "🎉 Prezzo di lancio, valido fino al 1° novembre 2026 — poi 5,00€"
   },
   "pages": {
+    "gallery_modal": {
+      "hint": "‹ tocca la foto per scorrere, o usa le frecce della tastiera ›",
+      "next_title": "Tocca per la foto successiva"
+    },
     "castle_page": {
+      "scroll_cue": "Scopri la sua storia ↓",
       "category": "Monumenti Storici",
       "title": "Il Castello di Caccamo",
       "rhyme_1": "In un castello normanno forgiato dal tempo,<br>venite, ammirate, fermatevi un momento.<br>Non è solo pietra, né freddo baluardo,<br>ma un'anima antica che attende il tuo sguardo.",
@@ -263,6 +268,9 @@
     "castle_desc": "La fortezza millenaria: storia, misteri e prigioni."
   },
   "home": {
+    "footer_copy": "&copy; 2026 Amunì Tourism. Progetto dedicato alla valorizzazione del borgo di Caccamo.",
+    "footer_notice": "Le conversazioni con la Castellana possono essere registrate in forma anonima per migliorare la qualità del servizio. <a href=\"privacy.html\" style=\"color: #D4AF6A;\">Maggiori informazioni</a>",
+    "scroll_cue": "Scopri il racconto ↓",
     "welcome_title": "Benvenuti a Caccamo",
     "poetry": "Oltre l'orizzonte dove il lago si fa specchio e gloria,<br>Caccamo intreccia il suo respiro all'antica memoria.<br>Non è solo pietra che sfida le ere e le genti,<br><strong>che cela tra le mura tesori sorprendenti.</strong><br><br>Come un gomitolo che lento si srotola,<br>si diffonde in ogni vicolo, in ogni piccola storia.<br>Un intreccio di secoli svelato <strong>con amore e mistero,</strong><br>per chi cerca il cuore pulsante di un borgo vero.<br><br><strong>Amunì, imbocca la via,</strong><br><strong>la Castellana è qui per farti compagnia.</strong>",
     "castellana_intro_title": "Vivi la Caccamo più autentica",

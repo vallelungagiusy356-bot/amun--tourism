@@ -29,7 +29,12 @@
     "launch_badge": "🎉 Einführungspreis, gültig bis zum 1. November 2026 — danach 5,00 €"
   },
   "pages": {
+    "gallery_modal": {
+      "hint": "‹ tippen Sie auf das Foto, um weiterzublättern, oder nutzen Sie die Pfeiltasten ›",
+      "next_title": "Tippen für das nächste Foto"
+    },
     "castle_page": {
+      "scroll_cue": "Entdecken Sie seine Geschichte ↓",
       "category": "Historische Denkmäler",
       "title": "Die Burg von Caccamo",
       "rhyme_1": "In einer normannischen Burg, von der Zeit geschmiedet,<br>kommt, bewundert, verweilt einen Moment.<br>Sie ist nicht nur Stein, kein kalter Wall,<br>sondern eine alte Seele, die auf deinen Blick wartet.",
@@ -263,6 +268,9 @@
     "castle_desc": "Die jahrtausendealte Festung: Geschichte, Geheimnisse und Gefängnisse."
   },
   "home": {
+    "footer_copy": "&copy; 2026 Amunì Tourism. Projekt zur Aufwertung des Dorfes Caccamo.",
+    "footer_notice": "Die Gespräche mit der Castellana können anonym aufgezeichnet werden, um die Qualität des Dienstes zu verbessern. <a href=\"privacy.html\" style=\"color: #D4AF6A;\">Weitere Informationen</a>",
+    "scroll_cue": "Entdecken Sie die Erzählung ↓",
     "welcome_title": "Willkommen in Caccamo",
     "poetry": "Jenseits des Horizonts, wo der See zum Spiegel und zur Herrlichkeit wird,<br>verwebt Caccamo seinen Atem mit alter Erinnerung.<br>Es ist nicht nur Stein, der Zeitaltern und Menschen trotzt,<br><strong>der zwischen seinen Mauern überraschende Schätze verbirgt.</strong><br><br>Wie ein Wollknäuel, der sich langsam abwickelt,<br>verbreitet es sich in jeder Gasse, in jeder kleinen Geschichte.<br>Ein Geflecht aus Jahrhunderten, enthüllt <strong>mit Liebe und Geheimnis,</strong><br>für alle, die das schlagende Herz eines echten Dorfes suchen.<br><br><strong>Amunì, schlag den Weg ein,</strong><br><strong>die Castellana ist hier, um dir Gesellschaft zu leisten.</strong>",
     "castellana_intro_title": "Erlebe das authentischste Caccamo",
