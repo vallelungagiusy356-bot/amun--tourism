@@ -34,6 +34,7 @@
 }
 </style>
 <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js" integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq" crossorigin="anonymous"></script>
+<script src="../cookie-i18n.js"></script>
 <script>
 window.silktideConsentManager.init({
   backdrop: { show: false },
@@ -476,7 +477,7 @@ window.silktideConsentManager.init({
                 </p>
             </div>
 
-            <a href="#sezione-info" class="scroll-cue">Scopri la sua storia ↓</a>
+            <a href="#sezione-info" class="scroll-cue" data-i18n="pages.castle_page.scroll_cue">Scopri la sua storia ↓</a>
         </section>
 
         <!-- ============================================================
@@ -513,7 +514,7 @@ window.silktideConsentManager.init({
             class="premium-btn premium-btn-gold"
             data-i18n="premium.btn_buy"
           >
-            Acquista l'accesso — 3,90€
+            Acquista l'accesso — 5,00€
           </a>
         </div>
 
@@ -526,7 +527,7 @@ window.silktideConsentManager.init({
                 <img class="modal-img" id="modal-target-img" src="" alt="" style="cursor: pointer;" title="Tocca per la foto successiva">
             </div>
             <span class="modal-gallery-counter" id="modal-gallery-counter"></span>
-            <p class="modal-gallery-hint" id="modal-gallery-hint" style="color: var(--cst-gold); font-size: 0.78rem; margin: 4px 0 0; display:none;">‹ tocca la foto per scorrere, o usa le frecce della tastiera ›</p>
+            <p class="modal-gallery-hint" id="modal-gallery-hint" data-i18n="pages.gallery_modal.hint" style="color: var(--cst-gold); font-size: 0.78rem; margin: 4px 0 0; display:none;">‹ tocca la foto per scorrere, o usa le frecce della tastiera ›</p>
             <h2 class="modal-title" id="modal-target-title"></h2>
         </div>
     </div>
@@ -617,6 +618,7 @@ window.silktideConsentManager.init({
             const caption = (typeof t === 'function') ? t(item.captionKey, item.fallback) : item.fallback;
             document.getElementById('modal-target-img').src = item.src;
             document.getElementById('modal-target-img').alt = caption;
+            document.getElementById('modal-target-img').title = (typeof t === 'function') ? t('pages.gallery_modal.next_title', 'Tocca per la foto successiva') : 'Tocca per la foto successiva';
             document.getElementById('modal-target-title').textContent = caption;
             const counterEl = document.getElementById('modal-gallery-counter');
             if (currentModalGallery.length > 1) {
@@ -769,6 +771,7 @@ window.silktideConsentManager.init({
                     document.querySelectorAll(".lang-switcher button").forEach(btn => {
                         btn.classList.toggle("active", btn.dataset.lang === lang);
                     });
+                    document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
                 })
                 .catch(err => console.error("Errore lingua:", err));
             localStorage.setItem("lang", lang);
